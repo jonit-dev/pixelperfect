@@ -4,6 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "bootstrap": "yarn install && yarn setup",
+    "setup": "chmod +x ./scripts/setup.sh ./scripts/setup/*.sh && ./scripts/setup.sh",
+    "setup:env": "./scripts/setup/02-environment.sh",
+    "setup:db": "./scripts/setup/05-migrations.sh",
+    "setup:db:manual": "./scripts/setup/05-migrations.sh manual",
+    "setup:types": "./scripts/setup/06-types.sh",
     "dev": "concurrently -n next,wrangler,stripe -c cyan,magenta,yellow \"next dev\" \"wrangler pages dev --proxy 3000\" \"stripe listen --forward-to localhost:3000/api/webhooks/stripe\"",
     "dev:test": "./scripts/dev-test.sh",
     "build": "next build",
@@ -23,8 +29,7 @@
     "test:all": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug",
-    "test:e2e:report": "playwright show-report",
-    "configure": "chmod +x ./environment/*.sh && ./environment/configure.sh"
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@baselime/edge-logger": "^0.4.2",
@@ -61,6 +66,7 @@
     "autoprefixer": "^10.4.18",
     "concurrently": "^9.2.1",
     "daisyui": "^5.5.5",
+    "dotenv": "^17.2.3",
     "eslint": "^9.9.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.2",
