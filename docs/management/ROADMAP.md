@@ -836,11 +836,12 @@ xychart-beta
 
 - [ ] Customize Supabase email templates
 - [ ] Enable Stripe receipt emails
-- [x] Baselime error monitoring (client RUM + server logger)
-- [x] 4 foundation blog posts
-- [x] Lighthouse score optimization
 - [ ] Production environment variables
 - [ ] CI/CD deployment workflow
+- [ ] Mobile responsive testing
+- [ ] Security audit (RLS policies, rate limiting)
+- [ ] Privacy policy & terms
+- [ ] Help documentation (FAQ page)
 
 ---
 
@@ -855,3 +856,6 @@ xychart-beta
 | 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                |
 | 2025-11-21 | 1.5     | Stripe integration complete: success/canceled pages, portal API, dynamic billing page  |
 | 2025-11-21 | 1.6     | E2E testing strategy implemented: Upscaler, Auth, Billing tests with API mocking       |
+| 2025-11-21 | 1.7     | Comprehensive E2E test suite: UpscalerPage POM, auth tests, fixture system             |
+| 2025-11-21 | 1.8     | Codebase cleanup: Removed portfolio app leftovers, updated to image upscaler branding  |
+| 2025-11-21 | 1.9     | Developer experience: Modular setup scripts, yarn bootstrap/verify commands            |
