@@ -73,7 +73,6 @@ sequenceDiagram
     participant API as API Route
     participant DB as Supabase
     participant AI as Gemini API
-    participant R2 as Cloudflare R2
 
     U->>FE: Upload Image
     FE->>FE: Validate (size, format)
@@ -87,27 +86,14 @@ sequenceDiagram
         FE-->>U: Upgrade Prompt
     end
 
-    API->>R2: Store Input Image
-    R2-->>API: Input Path
-
-    API->>DB: Create Processing Job
     API->>DB: Deduct Credits
+    API->>AI: Send Image + Prompt
+    AI-->>API: Processed Image
 
-    API->>AI: Submit to Gemini Flash
-    AI-->>API: Processing Started
-
-    loop Poll Status
-        API->>AI: Check Status
-        AI-->>API: Status Update
-    end
-
-    AI-->>API: Completed + Output URL
-    API->>R2: Store Output Image
-    R2-->>API: Output Path
-
-    API->>DB: Update Job (completed)
-    API-->>FE: Success + Image URLs
+    API->>DB: Log Transaction
+    API-->>FE: Return Processed Image
     FE-->>U: Show Before/After
+    U->>FE: Download Image
 ```
 
 ## 4. Subscription Purchase

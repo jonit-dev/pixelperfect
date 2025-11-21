@@ -15,7 +15,6 @@ graph TB
     subgraph "Edge Layer - Cloudflare"
         CDN[CDN]
         WORKERS[Workers Runtime]
-        R2[R2 Storage]
     end
 
     subgraph "Application Layer - Next.js"
@@ -51,12 +50,9 @@ graph TB
     MW --> STRIPE
 
     API --> GEMINI
-    API --> R2
 
     GEMINI --> GEMINI_FLASH
     GEMINI --> GEMINI_PRO
-
-    R2 --> CDN
 ```
 
 ## Component Architecture
@@ -108,7 +104,6 @@ sequenceDiagram
     participant Auth as Supabase Auth
     participant DB as PostgreSQL
     participant AI as Gemini API
-    participant Storage as R2
 
     Client->>CDN: HTTPS Request
     CDN->>Worker: Route Request
@@ -127,13 +122,12 @@ sequenceDiagram
         DB-->>App: Data
 
         opt Image Processing
-            App->>Storage: Store Input
-            App->>AI: Process Request
-            AI-->>App: Result
-            App->>Storage: Store Output
+            App->>AI: Send Image + Prompt
+            AI-->>App: Processed Image
+            App->>DB: Log Transaction
         end
 
-        App-->>Worker: JSON Response
+        App-->>Worker: Response + Image Data
         Worker-->>Client: Response
     end
 ```
@@ -142,46 +136,37 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    subgraph "Input Sources"
+    subgraph "Input"
         UPLOAD[User Upload]
         API_IN[API Request]
-        BATCH[Batch Upload]
     end
 
     subgraph "Processing Pipeline"
         VALIDATE[Validation]
-        QUEUE[Job Queue]
+        CREDITS[Credit Check]
         PROCESS[AI Processing]
-        POST[Post-Processing]
     end
 
-    subgraph "Storage"
-        INPUT_S3[Input Storage]
-        OUTPUT_S3[Output Storage]
-        DB[(Database)]
+    subgraph "Database"
+        DB[(PostgreSQL)]
     end
 
     subgraph "Output"
+        RESPONSE[API Response]
         DOWNLOAD[Direct Download]
-        CDN_OUT[CDN Delivery]
-        WEBHOOK[Webhook Callback]
     end
 
     UPLOAD --> VALIDATE
     API_IN --> VALIDATE
-    BATCH --> VALIDATE
 
-    VALIDATE --> QUEUE
-    QUEUE --> INPUT_S3
-    QUEUE --> PROCESS
+    VALIDATE --> CREDITS
+    CREDITS --> PROCESS
+    CREDITS --> DB
 
-    PROCESS --> POST
-    POST --> OUTPUT_S3
-    POST --> DB
+    PROCESS --> RESPONSE
+    PROCESS --> DB
 
-    OUTPUT_S3 --> CDN_OUT
-    CDN_OUT --> DOWNLOAD
-    DB --> WEBHOOK
+    RESPONSE --> DOWNLOAD
 ```
 
 ## Authentication Architecture
@@ -231,7 +216,6 @@ graph TB
         CF_DNS[DNS]
         CF_CDN[CDN/Cache]
         CF_WORKERS[Workers]
-        CF_R2[R2 Storage]
     end
 
     subgraph "External Services"
@@ -245,7 +229,6 @@ graph TB
 
     CF_DNS --> CF_CDN
     CF_CDN --> CF_WORKERS
-    CF_WORKERS --> CF_R2
 
     CF_WORKERS --> SUPABASE
     CF_WORKERS --> STRIPE_SVC

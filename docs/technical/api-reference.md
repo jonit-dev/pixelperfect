@@ -127,9 +127,8 @@ sequenceDiagram
     participant C as Client
     participant A as API
     participant V as Validator
-    participant Q as Queue
+    participant DB as Database
     participant AI as Gemini API
-    participant S as Storage
 
     C->>A: POST /upscale + image
     A->>V: Validate image
@@ -138,18 +137,17 @@ sequenceDiagram
         V-->>C: 400 Bad Request
     end
 
-    A->>A: Check credits
+    A->>DB: Check credits
 
     alt Insufficient
         A-->>C: 402 Payment Required
     end
 
-    A->>S: Upload input
-    A->>Q: Create job
-    A->>AI: Submit processing
-    AI-->>A: Result
-    A->>S: Upload output
-    A-->>C: 200 Success + URLs
+    A->>DB: Deduct credits
+    A->>AI: Process image
+    AI-->>A: Processed image
+    A->>DB: Log transaction
+    A-->>C: 200 Success + image data
 ```
 
 **Error Responses:**

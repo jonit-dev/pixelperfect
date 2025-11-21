@@ -114,9 +114,6 @@ flowchart LR
   - [x] Create `app/api/upscale/route.ts`
   - [x] Install `@google/genai` SDK
   - [x] Implement prompt engineering for text preservation
-- [ ] **OpenRouter fallback** (P1)
-  - [ ] Implement error handling for Gemini API
-  - [ ] Add OpenRouter client as backup
 - [x] **Text/logo preservation prompts** (P0)
   - [x] Refine system instructions for Gemini
 - [x] **Before/after comparison UI** (P0)
@@ -158,20 +155,14 @@ flowchart LR
 
 ### Milestone 1.4: Communication (Weeks 6-7)
 
-- [ ] **Email System Setup (Resend + React Email)** (P0)
-  - [ ] Install `resend` and `@react-email/components`
-  - [ ] Configure `RESEND_API_KEY`
-  - [ ] Create `src/lib/email/EmailService.ts`
-- [ ] **Transactional Templates (Welcome, Reset Password)** (P0)
-  - [ ] Create `emails/WelcomeEmail.tsx`
-  - [ ] Create `emails/PasswordResetEmail.tsx`
-  - [ ] Set up React Email preview server
-- [ ] **Notification Preferences Schema** (P1)
-  - [ ] Create `email_preferences` table
-  - [ ] Add database trigger for new users
+> **Note:** Auth emails (verification, password reset) are handled by Supabase. Payment receipts can be enabled in Stripe Dashboard. Custom email system deferred to Phase 2.
+
+- [x] **Auth Emails (Supabase built-in)** (P0)
+  - [x] Email verification on signup
+  - [x] Password reset emails
+  - [ ] Customize email templates in Supabase Dashboard
 - [ ] **Stripe Receipt Emails** (P1)
   - [ ] Enable automatic receipts in Stripe Dashboard
-  - [ ] Or implement `PaymentSuccessEmail.tsx` template
 
 ### Milestone 1.5: SEO & Landing (Weeks 7-8)
 
@@ -372,7 +363,6 @@ flowchart TD
 | 4x upscale                  | Output is 4x dimensions         | [ ]       |
 | Processing with 0 credits   | Blocked before API call         | [ ]       |
 | AI API failure              | Graceful error, credit refunded | [ ]       |
-| Fallback to OpenRouter      | Works when Gemini fails         | [ ]       |
 
 ### SEO Validation
 
@@ -590,8 +580,25 @@ flowchart LR
 - [ ] **Processing mode selection** (P1)
 - [ ] **Batch ZIP download** (P1)
 - [ ] **HEIC support** (P1)
+- [ ] **OpenRouter fallback** (P2)
+  - [ ] Implement error handling for Gemini API
+  - [ ] Add OpenRouter client as backup
 
-### Milestone 2.2: Business Features (Month 5-6)
+### Milestone 2.2: Custom Email System (Month 4-5)
+
+- [ ] **Email System Setup (Resend + React Email)** (P2)
+  - [ ] Install `resend` and `@react-email/components`
+  - [ ] Configure `RESEND_API_KEY`
+  - [ ] Create `src/lib/email/EmailService.ts`
+- [ ] **Custom Transactional Templates** (P2)
+  - [ ] Create `emails/WelcomeEmail.tsx`
+  - [ ] Create `emails/LowCreditsAlert.tsx`
+  - [ ] Set up React Email preview server
+- [ ] **Notification Preferences Schema** (P2)
+  - [ ] Create `email_preferences` table
+  - [ ] Add database trigger for new users
+
+### Milestone 2.3: Business Features (Month 5-6)
 
 - [ ] **Business tier ($99/2,500 credits)** (P2)
 - [ ] **API access for Business tier** (P2)
@@ -600,7 +607,7 @@ flowchart LR
 - [ ] **Annual billing (20% discount)** (P2)
 - [ ] **Credit rollover (6x monthly)** (P1)
 
-### Milestone 2.3: Shopify Integration (Month 6-7)
+### Milestone 2.4: Shopify Integration (Month 6-7)
 
 ```mermaid
 flowchart TD
@@ -799,7 +806,8 @@ xychart-beta
 
 ### Next Up
 
-- [ ] Email system (Resend + React Email)
+- [ ] Customize Supabase email templates
+- [ ] Enable Stripe receipt emails
 - [ ] Sentry error monitoring
 - [ ] 4 foundation blog posts
 - [ ] Lighthouse score optimization
