@@ -1,12 +1,28 @@
 'use client';
 
+import { useEffect } from 'react';
 import Features from '@/components/pixelperfect/Landing/Features';
 import HowItWorks from '@/components/pixelperfect/Landing/HowItWorks';
 import Pricing from '@/components/pixelperfect/Pricing';
 import Workspace from '@/components/pixelperfect/Workspace/Workspace';
 import { ArrowRight, Zap } from 'lucide-react';
+import { useAuthStore } from '@/store/authStore';
 
 export function HomePageClient(): JSX.Element {
+  const { isAuthenticated, isLoading } = useAuthStore();
+
+  // Redirect authenticated users to dashboard immediately
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      window.location.href = '/dashboard';
+    }
+  }, [isAuthenticated, isLoading]);
+
+  // Show nothing while checking auth to avoid flicker
+  if (isLoading || isAuthenticated) {
+    return <div className="min-h-screen bg-slate-50" />;
+  }
+
   return (
     <main className="flex-grow bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-700">
       {/* Hero Section */}

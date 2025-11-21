@@ -3,15 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  LayoutDashboard,
-  CreditCard,
-  History,
-  Settings,
-  HelpCircle,
-  LogOut,
-} from 'lucide-react';
+import { LayoutDashboard, CreditCard, History, Settings, HelpCircle, LogOut } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
+import { CreditsDisplay } from '@/components/stripe/CreditsDisplay';
 
 interface ISidebarItem {
   label: string;
@@ -71,17 +65,19 @@ export const DashboardSidebar: React.FC = () => {
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-900 truncate">
-              {user?.name || 'User'}
-            </p>
+            <p className="text-sm font-medium text-slate-900 truncate">{user?.name || 'User'}</p>
             <p className="text-xs text-slate-500 truncate">{user?.email}</p>
           </div>
+        </div>
+        {/* Credits Display */}
+        <div className="mt-3">
+          <CreditsDisplay />
         </div>
       </div>
 
       {/* Main Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {menuItems.map((item) => {
+        {menuItems.map(item => {
           const Icon = item.icon;
           const active = isActive(item.href);
 
@@ -98,10 +94,7 @@ export const DashboardSidebar: React.FC = () => {
                 }
               `}
             >
-              <Icon
-                size={20}
-                className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`}
-              />
+              <Icon size={20} className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`} />
               {item.label}
             </Link>
           );
@@ -110,7 +103,7 @@ export const DashboardSidebar: React.FC = () => {
 
       {/* Bottom Navigation */}
       <div className="px-3 py-4 border-t border-slate-100 space-y-1">
-        {bottomMenuItems.map((item) => {
+        {bottomMenuItems.map(item => {
           const Icon = item.icon;
           const active = isActive(item.href);
 
@@ -127,10 +120,7 @@ export const DashboardSidebar: React.FC = () => {
                 }
               `}
             >
-              <Icon
-                size={20}
-                className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`}
-              />
+              <Icon size={20} className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`} />
               {item.label}
             </Link>
           );

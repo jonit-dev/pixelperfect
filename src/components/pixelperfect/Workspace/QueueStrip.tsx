@@ -1,7 +1,7 @@
-import React from 'react';
-import { Plus, X, Check, AlertTriangle, Loader2 } from 'lucide-react';
-import Dropzone from '../Dropzone';
 import { IBatchItem, ProcessingStatus } from '@/types/pixelperfect';
+import { AlertTriangle, Check, Loader2, Plus, X } from 'lucide-react';
+import React from 'react';
+import Dropzone from '../Dropzone';
 
 interface IQueueStripProps {
   queue: IBatchItem[];
@@ -21,15 +21,19 @@ const QueueStrip: React.FC<IQueueStripProps> = ({
   onAddFiles,
 }) => {
   return (
-    <div className="h-32 bg-white border-t border-slate-200 p-4 flex gap-4 overflow-x-auto custom-scrollbar shrink-0 items-center">
+    <div className="h-32 bg-white border-t border-slate-200 p-4 flex gap-4 overflow-x-auto overflow-y-hidden custom-scrollbar shrink-0 items-center">
       {/* Add More Button */}
       <div className="shrink-0 h-24 w-24 relative">
-        <Dropzone onFilesSelected={onAddFiles} disabled={isProcessing} />
-        {/* Simplified visual for the mini dropzone */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none bg-slate-50 rounded-lg border-2 border-dashed border-slate-300 hover:bg-slate-100">
-          <Plus size={24} className="text-slate-400" />
-          <span className="text-xs text-slate-500 mt-1">Add</span>
-        </div>
+        <Dropzone
+          onFilesSelected={onAddFiles}
+          disabled={isProcessing}
+          className="h-full w-full !p-0 !border-2 !border-dashed !border-slate-300 hover:!bg-slate-100 !rounded-lg"
+        >
+          <div className="flex flex-col items-center justify-center h-full w-full pointer-events-none">
+            <Plus size={24} className="text-slate-400" />
+            <span className="text-xs text-slate-500 mt-1">Add</span>
+          </div>
+        </Dropzone>
       </div>
 
       {/* Queue Items */}

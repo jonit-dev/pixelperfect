@@ -1,13 +1,21 @@
+import { AlertCircle, FileUp, UploadCloud } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
-import { UploadCloud, AlertCircle, FileUp } from 'lucide-react';
 
 interface IDropzoneProps {
   onFilesSelected: (files: File[]) => void;
   disabled?: boolean;
   compact?: boolean; // Prop to render a smaller version if needed
+  children?: React.ReactNode;
+  className?: string;
 }
 
-const Dropzone: React.FC<IDropzoneProps> = ({ onFilesSelected, disabled, compact = false }) => {
+const Dropzone: React.FC<IDropzoneProps> = ({
+  onFilesSelected,
+  disabled,
+  compact = false,
+  children,
+  className = '',
+}) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -88,7 +96,8 @@ const Dropzone: React.FC<IDropzoneProps> = ({ onFilesSelected, disabled, compact
       onDrop={handleDrop}
       className={`
         relative group cursor-pointer transition-all duration-300 ease-out
-        ${compact ? 'p-4' : 'p-12'}
+        ${className}
+        ${!children && (compact ? 'p-4' : 'p-12')}
         ${
           isDragging
             ? 'bg-indigo-50 border-indigo-500 scale-[1.02] shadow-xl ring-4 ring-indigo-100'
@@ -107,43 +116,47 @@ const Dropzone: React.FC<IDropzoneProps> = ({ onFilesSelected, disabled, compact
         disabled={disabled}
       />
 
-      <div className="flex flex-col items-center justify-center text-center space-y-4 pointer-events-none select-none">
-        {/* Icon Container */}
-        <div
-          className={`
+      {children ? (
+        children
+      ) : (
+        <div className="flex flex-col items-center justify-center text-center space-y-4 pointer-events-none select-none">
+          {/* Icon Container */}
+          <div
+            className={`
           relative flex items-center justify-center rounded-2xl transition-all duration-300
           ${isDragging ? 'bg-indigo-600 text-white shadow-lg scale-110' : 'bg-white text-indigo-600 shadow-sm ring-1 ring-slate-900/5 group-hover:scale-110 group-hover:text-indigo-500'}
           ${compact ? 'w-12 h-12' : 'w-20 h-20'}
         `}
-        >
-          {isDragging ? (
-            <FileUp size={compact ? 24 : 40} className="animate-bounce" />
-          ) : (
-            <UploadCloud size={compact ? 24 : 40} strokeWidth={1.5} />
-          )}
+          >
+            {isDragging ? (
+              <FileUp size={compact ? 24 : 40} className="animate-bounce" />
+            ) : (
+              <UploadCloud size={compact ? 24 : 40} strokeWidth={1.5} />
+            )}
 
-          {/* Decorative background blob behind icon */}
-          {!isDragging && !compact && (
-            <div className="absolute -inset-4 bg-indigo-100/50 rounded-full blur-xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            {/* Decorative background blob behind icon */}
+            {!isDragging && !compact && (
+              <div className="absolute -inset-4 bg-indigo-100/50 rounded-full blur-xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            )}
+          </div>
+
+          {!compact && (
+            <div className="space-y-2 max-w-xs mx-auto">
+              <h3
+                className={`font-bold text-slate-900 transition-colors ${isDragging ? 'text-indigo-700' : 'group-hover:text-indigo-600'} text-xl`}
+              >
+                {isDragging ? 'Drop to upload' : 'Click or drag images'}
+              </h3>
+              <p className="text-slate-500 text-sm font-medium leading-relaxed">
+                Support for JPG, PNG, and WEBP
+                <span className="block text-xs text-slate-400 mt-1 font-normal">
+                  Up to 5MB per file • Batch processing available
+                </span>
+              </p>
+            </div>
           )}
         </div>
-
-        {!compact && (
-          <div className="space-y-2 max-w-xs mx-auto">
-            <h3
-              className={`font-bold text-slate-900 transition-colors ${isDragging ? 'text-indigo-700' : 'group-hover:text-indigo-600'} text-xl`}
-            >
-              {isDragging ? 'Drop to upload' : 'Click or drag images'}
-            </h3>
-            <p className="text-slate-500 text-sm font-medium leading-relaxed">
-              Support for JPG, PNG, and WEBP
-              <span className="block text-xs text-slate-400 mt-1 font-normal">
-                Up to 5MB per file • Batch processing available
-              </span>
-            </p>
-          </div>
-        )}
-      </div>
+      )}
 
       {error && (
         <div className="absolute inset-x-0 -bottom-16 flex items-center justify-center">

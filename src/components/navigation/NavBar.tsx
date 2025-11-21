@@ -1,5 +1,6 @@
 import { loadEnv } from '@config/env';
 import { Menu, Zap } from 'lucide-react';
+import { useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useModalStore } from '../../store/modalStore';
 import { AuthProvider } from '../../types/authProviders';
@@ -7,7 +8,8 @@ import { CreditsDisplay } from '../stripe/CreditsDisplay';
 
 export const NavBar = (): JSX.Element => {
   const { open } = useModalStore();
-  const { isAuthenticated, user, signOut } = useAuthStore();
+  const { isAuthenticated, isLoading, user, signOut } = useAuthStore();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleAuthClick = () => {
     if (!isAuthenticated) {
@@ -38,7 +40,10 @@ export const NavBar = (): JSX.Element => {
 
         <nav className="hidden md:flex items-center gap-8">
           {isAuthenticated && (
-            <a href="/dashboard" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+            <a
+              href="/dashboard"
+              className="text-sm font-medium text-slate-600 hover:text-slate-900"
+            >
               Dashboard
             </a>
           )}
@@ -57,7 +62,12 @@ export const NavBar = (): JSX.Element => {
         </nav>
 
         <div className="flex items-center gap-4">
-          {!isAuthenticated ? (
+          {isLoading ? (
+            <div className="hidden md:flex items-center gap-3">
+              <div className="h-8 w-24 bg-slate-200 rounded-full animate-pulse"></div>
+              <div className="h-9 w-20 bg-slate-200 rounded-lg animate-pulse"></div>
+            </div>
+          ) : !isAuthenticated ? (
             <>
               <div className="hidden md:flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>
@@ -75,9 +85,10 @@ export const NavBar = (): JSX.Element => {
               <div className="hidden md:flex items-center">
                 <CreditsDisplay />
               </div>
-              <div className="dropdown dropdown-end">
-                <label
-                  tabIndex={0}
+              <div className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
                 >
                   <span className="max-w-[180px] truncate">{user?.email}</span>
@@ -95,42 +106,41 @@ export const NavBar = (): JSX.Element => {
                       d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                     />
                   </svg>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-slate-200"
-                >
-                  <li className="md:hidden">
-                    <div className="pointer-events-none">
-                      <CreditsDisplay />
-                    </div>
-                  </li>
-                  <li>
-                    <a href="/dashboard" className="text-sm text-slate-600 hover:bg-slate-50">
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/pricing" className="text-sm text-slate-600 hover:bg-slate-50">
-                      Buy Credits
-                    </a>
-                  </li>
-                  {isPasswordUser && (
+                </button>
+                {isDropdownOpen && (
+                  <ul className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-slate-200 absolute top-full right-0 mt-2 z-10">
+                    <li className="md:hidden">
+                      <div className="pointer-events-none">
+                        <CreditsDisplay />
+                      </div>
+                    </li>
                     <li>
-                      <button
-                        onClick={handleChangePassword}
-                        className="text-sm text-slate-600 hover:bg-slate-50"
-                      >
-                        Change Password
+                      <a href="/dashboard" className="text-sm text-slate-600 hover:bg-slate-50">
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/pricing" className="text-sm text-slate-600 hover:bg-slate-50">
+                        Buy Credits
+                      </a>
+                    </li>
+                    {isPasswordUser && (
+                      <li>
+                        <button
+                          onClick={handleChangePassword}
+                          className="text-sm text-slate-600 hover:bg-slate-50"
+                        >
+                          Change Password
+                        </button>
+                      </li>
+                    )}
+                    <li>
+                      <button onClick={signOut} className="text-sm text-red-600 hover:bg-red-50">
+                        Sign Out
                       </button>
                     </li>
-                  )}
-                  <li>
-                    <button onClick={signOut} className="text-sm text-red-600 hover:bg-red-50">
-                      Sign Out
-                    </button>
-                  </li>
-                </ul>
+                  </ul>
+                )}
               </div>
             </>
           )}
