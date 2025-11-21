@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
 
+// eslint-disable-next-line import/no-default-export
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'PixelPerfect - Portfolio Management',
+    name: 'PixelPerfect AI - Image Upscaling & Enhancement',
     short_name: 'PixelPerfect',
-    description: 'Manage your investment portfolio with detailed asset tracking and analytics',
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

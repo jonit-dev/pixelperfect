@@ -24,7 +24,7 @@ graph TD
     B --> C[Metadata API]
     C --> D[Robots.txt (app/robots.ts)]
     C --> E[Sitemap.xml (app/sitemap.ts)]
-    B --> F[Dynamic Pages (app/portfolio/[id])]
+    B --> F[Dynamic Pages (app/blog/[slug])]
     F --> G[generateMetadata]
 ```
 
@@ -32,7 +32,7 @@ graph TD
 
 - **Metadata**: Basic `title` and `description` defined in `app/layout.tsx`.
 - **Robots**: `robots.ts` allows all agents and points to sitemap.
-- **Sitemap**: `sitemap.ts` generates URLs for static pages and dynamic portfolio categories.
+- **Sitemap**: `sitemap.ts` generates URLs for static pages and dynamic blog posts.
 - **Missing**: OpenGraph tags, Twitter cards, Canonical URLs, JSON-LD structured data, Favicon configuration, Manifest.
 
 ### 1.4 Problem Statement
@@ -46,7 +46,7 @@ The application lacks a comprehensive SEO foundation, missing critical metadata 
 ### 2.1 Architecture Summary
 
 - **Centralized Configuration**: Define a robust `metadataBase` and default `openGraph`/`twitter` configuration in `app/layout.tsx`.
-- **Dynamic Metadata**: Implement `generateMetadata` in dynamic routes (e.g., `app/portfolio/[id]/page.tsx`) to override defaults with specific content.
+- **Dynamic Metadata**: Implement `generateMetadata` in dynamic routes (e.g., `app/blog/[slug]/page.tsx`) to override defaults with specific content.
 - **Structured Data**: Create a reusable `JsonLd` component to inject `application/ld+json` scripts for rich results.
 - **Manifest**: Add `app/manifest.ts` for PWA installability and better mobile integration.
 
@@ -91,7 +91,7 @@ sequenceDiagram
     participant Next as Next.js Server
     participant Page as Page Component
 
-    Crawler->>Next: GET /portfolio/1
+    Crawler->>Next: GET /blog/example-post
     Next->>Page: generateMetadata({ params })
     Page-->>Next: Return specific Title, Desc, OG Images
     Next->>Next: Merge with Root Layout Defaults
@@ -117,7 +117,7 @@ sequenceDiagram
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   title: {
-    default: 'PixelPerfect - Portfolio Management',
+    default: 'PixelPerfect AI - Image Upscaling & Enhancement',
     template: '%s | PixelPerfect',
   },
   openGraph: {
@@ -151,10 +151,10 @@ export function JsonLd({ data }: { data: Record<string, any> }) {
 - **Purpose**: Web App Manifest.
 - **Content**: Name, short_name, start_url, display, background_color, theme_color, icons.
 
-### D. `app/portfolio/[id]/page.tsx` (Target for Dynamic SEO)
+### D. `app/blog/[slug]/page.tsx` (Target for Dynamic SEO)
 
 - **Changes**: Add `generateMetadata`.
-- **Logic**: Fetch category data, return title/description/OG based on category.
+- **Logic**: Fetch blog post data, return title/description/OG based on post content.
 
 ---
 
@@ -173,7 +173,7 @@ export function JsonLd({ data }: { data: Record<string, any> }) {
 
 ### Phase 3: Dynamic Pages
 
-- [ ] Implement `generateMetadata` in `app/portfolio/[id]/page.tsx` (if exists) or placeholder.
+- [ ] Implement `generateMetadata` in `app/blog/[slug]/page.tsx`.
 - [ ] Add `JsonLd` with `CollectionPage` schema to dynamic pages.
 
 ---

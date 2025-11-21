@@ -58,7 +58,7 @@ graph TD
 
 #### 1.4 Problem Statement
 
-Integrate the image upscaling tool into the portfolio app as a new feature tab, ensuring secure API handling and consistent styling, then remove the template source. **Crucially, existing Auth must remain intact.**
+Integrate the image upscaling tool into the Next.js app as a new feature tab, ensuring secure API handling and consistent styling, then remove the template source. **Crucially, existing Auth must remain intact.**
 
 ---
 
@@ -98,7 +98,7 @@ sequenceDiagram
 
 - **API Route:** Use Next.js API Routes (Edge or Node runtime) to proxy requests to Google Gemini, keeping API keys server-side.
 - **Component Location:** `src/components/pixelperfect` to keep the source tree organized.
-- **Routing:** Top-level `/upscaler` route instead of nesting under `/portfolio`.
+- **Routing:** Top-level `/upscaler` route.
 - **Cleanup:** Complete removal of `template` directory post-verification.
 - **Auth:** Zero changes to `src/components/auth` or `src/lib/supabase`.
 

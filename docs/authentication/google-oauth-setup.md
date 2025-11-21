@@ -19,7 +19,7 @@ This guide will walk you through configuring Google OAuth for your Supabase proj
    - Navigate to **APIs & Services > OAuth consent screen**.
    - Choose **External** for the user type and click "Create."
    - Complete the required fields:
-     - **App name**: e.g., "Portfolio Manager App"
+     - **App name**: e.g., "PixelPerfect AI"
      - **Support email**: your support email
      - **Authorized domains**: add `supabase.co`
      - **Contact email**: your contact email

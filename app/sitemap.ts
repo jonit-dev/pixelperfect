@@ -1,19 +1,11 @@
 import { MetadataRoute } from 'next';
-import { getCategories } from '../src/lib/data';
 import { getAllPosts } from '../src/lib/blog';
 import { clientEnv } from '@/config/env';
 
+// eslint-disable-next-line import/no-default-export
 export default function sitemap(): MetadataRoute.Sitemap {
-  const categories = getCategories();
   const posts = getAllPosts();
   const baseUrl = clientEnv.BASE_URL;
-
-  const categoryUrls = categories.map(category => ({
-    url: `${baseUrl}/portfolio/${category.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'daily' as const,
-    priority: 0.8,
-  }));
 
   const blogUrls = posts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -47,7 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    ...categoryUrls,
     ...blogUrls,
   ];
 }
