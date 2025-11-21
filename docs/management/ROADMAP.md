@@ -144,9 +144,13 @@ flowchart LR
 - [x] **Credit system implementation** (P0)
   - [x] Create `increment_credits` RPC function
   - [x] Create `decrement_credits` RPC function
+  - [x] Create `increment_credits_with_log` RPC function (with audit trail)
+  - [x] Create `decrement_credits_with_log` RPC function (with audit trail)
+  - [x] Create `refund_credits` RPC function
   - [x] Implement credit deduction logic in `/api/upscale`
-- [ ] **Usage tracking** (P1)
-  - [ ] Log usage in `usage_logs` table (optional for MVP)
+- [x] **Usage tracking** (P1)
+  - [x] Create `credit_transactions` table for audit logging
+  - [x] Create `processing_jobs` table for job tracking
 - [x] **Customer portal** (P0)
   - [x] Create portal session endpoint
 - [x] **Pricing tiers (Free/Starter/Pro)** (P0)
@@ -330,10 +334,10 @@ flowchart TD
 
 | Test Case                      | Expected Result                | Validated |
 | ------------------------------ | ------------------------------ | --------- |
-| New user gets 10 free credits  | Balance shows 10               | [ ]       |
+| New user gets 10 free credits  | Balance shows 10               | [x]       |
 | Process image deducts 1 credit | Balance decreases by 1         | [ ]       |
 | Process with 0 credits         | Error: "Insufficient credits"  | [ ]       |
-| Credit transaction logged      | Transaction visible in history | [ ]       |
+| Credit transaction logged      | Transaction visible in history | [x]       |
 | Monthly renewal adds credits   | Balance increases              | [ ]       |
 | Rollover respects 6x cap       | Doesn't exceed max             | [ ]       |
 | Refund on processing failure   | Credit returned                | [ ]       |
@@ -424,15 +428,15 @@ flowchart TD
 
 ### Baselime Monitoring Validation
 
-| Test Case                          | Expected Result                    | Validated |
-| ---------------------------------- | ---------------------------------- | --------- |
-| Client RUM loads in production     | Network request to rum.baselime.io | [ ]       |
-| Unhandled JS error captured        | Error appears in Baselime Console  | [ ]       |
-| Web Vitals reported                | LCP/FID/CLS metrics visible        | [ ]       |
-| Server logger sends logs           | Logs appear in Baselime Console    | [ ]       |
-| API error captured                 | Error with stack trace in Console  | [ ]       |
-| `logger.flush()` completes         | No logs lost on request end        | [ ]       |
-| Dev mode skips Baselime            | No requests in development         | [ ]       |
+| Test Case                      | Expected Result                    | Validated |
+| ------------------------------ | ---------------------------------- | --------- |
+| Client RUM loads in production | Network request to rum.baselime.io | [ ]       |
+| Unhandled JS error captured    | Error appears in Baselime Console  | [ ]       |
+| Web Vitals reported            | LCP/FID/CLS metrics visible        | [ ]       |
+| Server logger sends logs       | Logs appear in Baselime Console    | [ ]       |
+| API error captured             | Error with stack trace in Console  | [ ]       |
+| `logger.flush()` completes     | No logs lost on request end        | [ ]       |
+| Dev mode skips Baselime        | No requests in development         | [ ]       |
 
 ---
 
@@ -834,8 +838,9 @@ xychart-beta
 
 ## Changelog
 
-| Date       | Version | Changes                                                      |
-| ---------- | ------- | ------------------------------------------------------------ |
-| 2024-01    | 1.0     | Initial roadmap creation                                     |
-| 2024-01    | 1.1     | Added validation checklists, SEO roadmap, deployment roadmap |
-| 2025-11-21 | 1.2     | Updated completion status based on codebase audit            |
+| Date       | Version | Changes                                                                                |
+| ---------- | ------- | -------------------------------------------------------------------------------------- |
+| 2024-01    | 1.0     | Initial roadmap creation                                                               |
+| 2024-01    | 1.1     | Added validation checklists, SEO roadmap, deployment roadmap                           |
+| 2025-11-21 | 1.2     | Updated completion status based on codebase audit                                      |
+| 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging |
