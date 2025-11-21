@@ -46,3 +46,15 @@ export interface IPortfolioStats {
     btc: IHistoricalData[];
   };
 }
+
+// Re-export Stripe types for convenience
+export type {
+  SubscriptionStatus,
+  UserProfile,
+  Subscription,
+  Product,
+  Price,
+  CheckoutSessionRequest,
+  CheckoutSessionResponse,
+  CreditsPackage,
+} from './lib/stripe/types';
