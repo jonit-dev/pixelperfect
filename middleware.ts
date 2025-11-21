@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { rateLimit, publicRateLimit } from '@/lib/rateLimit';
+import { clientEnv } from '@/config/env';
 
 /**
  * Public routes that don't require authentication
@@ -98,10 +99,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // 4. Verify JWT for protected routes
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-  if (!supabaseUrl || !supabaseAnonKey) {
+  if (!clientEnv.SUPABASE_URL || !clientEnv.SUPABASE_ANON_KEY) {
     console.error('Missing Supabase environment variables');
     return NextResponse.json(
       { error: 'Server configuration error' },
@@ -110,7 +108,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // Create Supabase client for middleware
-  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  const supabase = createClient(clientEnv.SUPABASE_URL, clientEnv.SUPABASE_ANON_KEY, {
     global: {
       headers: {
         Authorization: req.headers.get('Authorization') ?? '',

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe/config';
 import { supabaseAdmin } from '@/lib/supabase/supabaseAdmin';
 import type { ICheckoutSessionRequest } from '@/lib/stripe/types';
+import { clientEnv } from '@/config/env';
 
 export const runtime = 'edge'; // Cloudflare Worker compatible
 
@@ -71,7 +72,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 4. Create Stripe Checkout Session
-    const baseUrl = request.headers.get('origin') || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,

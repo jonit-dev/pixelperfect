@@ -5,6 +5,7 @@ import { Card } from '../../../src/components/common/Card';
 import { JsonLd } from '../../../src/components/seo/JsonLd';
 import { AssetTable } from '../../../src/components/tables/AssetTable';
 import { getAssetsByCategory, getCategories, getCategoryById } from '../../../src/lib/data';
+import { clientEnv } from '@/config/env';
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = clientEnv.BASE_URL;
   const pageUrl = `${baseUrl}/portfolio/${categoryId}`;
 
   return {
@@ -72,7 +73,7 @@ export default async function CategoryPage({ params }: Props) {
   const assets = getAssetsByCategory(categoryId);
   const totalValue = assets.reduce((sum, asset) => sum + asset.valueCAD, 0);
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = clientEnv.BASE_URL;
   const collectionPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',

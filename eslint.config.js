@@ -14,6 +14,18 @@ export default [
       'import/no-default-export': 'off',
     },
   },
+  // Allow process.env in specific files where it's necessary
+  {
+    files: [
+      'src/config/env.ts',       // Centralized env config
+      'next.config.js',          // Next.js config (runs at build time)
+      'playwright.config.ts',    // Test config
+      'tests/**/*',              // Test files
+    ],
+    rules: {
+      'no-restricted-syntax': 'off',
+    },
+  },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: ['src/app/**/*'], // Next.js App Router requires default exports
@@ -61,6 +73,14 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'error',
       'react/react-in-jsx-scope': 'off', // Not needed with React 17+
       'react/jsx-uses-react': 'off', // Not needed with React 17+
+      // Prevent direct process.env usage - use @/config/env instead
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'MemberExpression[object.object.name="process"][object.property.name="env"]',
+          message: 'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
+        },
+      ],
     },
   },
   {
@@ -100,6 +120,14 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
+      // Prevent direct process.env usage - use @/config/env instead
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'MemberExpression[object.object.name="process"][object.property.name="env"]',
+          message: 'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
+        },
+      ],
     },
   },
 ];

@@ -1,13 +1,12 @@
 import { MetadataRoute } from 'next';
+import { clientEnv } from '@/config/env';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${clientEnv.BASE_URL}/sitemap.xml`,
   };
 }

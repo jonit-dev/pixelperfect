@@ -26,6 +26,8 @@
     "configure": "chmod +x ./environment/*.sh && ./environment/configure.sh"
   },
   "dependencies": {
+    "@baselime/edge-logger": "^0.4.2",
+    "@baselime/react-rum": "^0.3.1",
     "@google/genai": "^1.30.0",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.9.1",

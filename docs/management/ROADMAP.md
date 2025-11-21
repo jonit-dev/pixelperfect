@@ -202,9 +202,12 @@ flowchart LR
   - [ ] Create `.github/workflows/deploy.yml` for production
 - [x] **Health check endpoint (`/api/health`)** (P0)
   - [x] Create simple status endpoint
-- [ ] **Error monitoring (Sentry)** (P0)
-  - [ ] Install `@sentry/nextjs`
-  - [ ] Configure DSN
+- [ ] **Error monitoring (Baselime)** (P0)
+  - [x] Install `@baselime/react-rum` and `@baselime/edge-logger`
+  - [x] Configure client-side RUM in `BaselimeProvider`
+  - [x] Create server-side logger utility
+  - [ ] Test Baselime integration works (client + server)
+  - [ ] Add API keys in Cloudflare Pages settings
 
 ### Milestone 1.7: Launch Prep (Week 9)
 
@@ -402,7 +405,7 @@ flowchart TD
 | HTTPS enforced                  | HTTP redirects to HTTPS         | [ ]       |
 | Environment variables loaded    | API keys work                   | [ ]       |
 | `/api/health` returns 200       | Health check passes             | [ ]       |
-| Sentry captures errors          | Test error appears in dashboard | [ ]       |
+| Baselime captures errors        | Test error appears in dashboard | [ ]       |
 | Cloudflare Analytics active     | Traffic visible                 | [ ]       |
 | Edge caching works              | Static assets cached            | [ ]       |
 
@@ -418,6 +421,18 @@ flowchart TD
 | API without auth rejected        | 401 Unauthorized           | [ ]       |
 | Stripe webhook without signature | 401 rejected               | [ ]       |
 | Security headers present         | CSP, X-Frame-Options, etc. | [ ]       |
+
+### Baselime Monitoring Validation
+
+| Test Case                          | Expected Result                    | Validated |
+| ---------------------------------- | ---------------------------------- | --------- |
+| Client RUM loads in production     | Network request to rum.baselime.io | [ ]       |
+| Unhandled JS error captured        | Error appears in Baselime Console  | [ ]       |
+| Web Vitals reported                | LCP/FID/CLS metrics visible        | [ ]       |
+| Server logger sends logs           | Logs appear in Baselime Console    | [ ]       |
+| API error captured                 | Error with stack trace in Console  | [ ]       |
+| `logger.flush()` completes         | No logs lost on request end        | [ ]       |
+| Dev mode skips Baselime            | No requests in development         | [ ]       |
 
 ---
 
@@ -511,7 +526,7 @@ flowchart TD
 - [ ] **Production environment variables** (Day 2)
 - [ ] **GitHub Actions workflow** (Day 3)
 - [ ] **`/api/health` endpoint** (Day 3)
-- [ ] **Sentry error tracking** (Day 3)
+- [x] **Baselime error tracking** (Day 3)
 - [ ] **Cloudflare Analytics** (Day 3)
 
 ### CI/CD Pipeline
@@ -798,6 +813,7 @@ xychart-beta
 - [x] Health check endpoint
 - [x] Rate limiting middleware
 - [x] Security headers
+- [x] Baselime error monitoring (client RUM + server logger)
 
 ### In Progress
 
@@ -808,7 +824,7 @@ xychart-beta
 
 - [ ] Customize Supabase email templates
 - [ ] Enable Stripe receipt emails
-- [ ] Sentry error monitoring
+- [x] Baselime error monitoring (client RUM + server logger)
 - [ ] 4 foundation blog posts
 - [ ] Lighthouse score optimization
 - [ ] Production environment variables

@@ -1,28 +1,150 @@
 import { z } from 'zod';
 
-const envSchema = z.object({
+/**
+ * Centralized environment variable configuration.
+ *
+ * All environment variables should be accessed through this module.
+ * Direct usage of process.env is prohibited by ESLint rules.
+ *
+ * Usage:
+ * - Client-side: import { clientEnv } from '@/config/env'
+ * - Server-side: import { serverEnv } from '@/config/env'
+ */
+
+// =============================================================================
+// Client-side environment variables (NEXT_PUBLIC_*)
+// These are safe to expose to the browser
+// =============================================================================
+
+const clientEnvSchema = z.object({
   APP_NAME: z.string().default('PixelPerfect'),
-  SUPABASE_URL: z.string().url().optional().default('https://example.com'),
-  SUPABASE_ANON_KEY: z.string().optional().default(''),
-  GOOGLE_CLIENT_ID: z.string().optional().default(''),
-  FACEBOOK_CLIENT_ID: z.string().optional().default(''),
-  AZURE_CLIENT_ID: z.string().optional().default(''),
+  BASE_URL: z.string().url().default('http://localhost:3000'),
+  SUPABASE_URL: z.string().url().default('https://example.supabase.co'),
+  SUPABASE_ANON_KEY: z.string().default(''),
+  GOOGLE_CLIENT_ID: z.string().default(''),
+  FACEBOOK_CLIENT_ID: z.string().default(''),
+  AZURE_CLIENT_ID: z.string().default(''),
+  BASELIME_KEY: z.string().default(''),
 });
 
-export type Env = z.infer<typeof envSchema>;
+export type IClientEnv = z.infer<typeof clientEnvSchema>;
 
-export function loadEnv(): Env {
-  // In Next.js, client-side variables must be prefixed with NEXT_PUBLIC_
-  // These are safe to expose to the browser (anon keys, public URLs, etc.)
+function loadClientEnv(): IClientEnv {
+  // eslint-disable-next-line no-restricted-syntax -- This is the only place where process.env should be accessed
   const env = {
     APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'PixelPerfect',
+    BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
     SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://example.supabase.co',
-    SUPABASE_ANON_KEY:
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4YW1wbGUiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTYxMjI4MDY4MywiZXhwIjoxOTI3ODU2NjgzfQ.dummy',
+    SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
     GOOGLE_CLIENT_ID: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '',
     FACEBOOK_CLIENT_ID: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID || '',
     AZURE_CLIENT_ID: process.env.NEXT_PUBLIC_AZURE_CLIENT_ID || '',
+    BASELIME_KEY: process.env.NEXT_PUBLIC_BASELIME_KEY || '',
   };
-  return envSchema.parse(env);
+  return clientEnvSchema.parse(env);
+}
+
+/**
+ * Client-side environment variables.
+ * Safe to use in both client and server components.
+ */
+export const clientEnv = loadClientEnv();
+
+// =============================================================================
+// Server-side environment variables (secrets)
+// These are NEVER exposed to the browser
+// =============================================================================
+
+const serverEnvSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  // Supabase
+  SUPABASE_SERVICE_ROLE_KEY: z.string().default(''),
+  // Stripe
+  STRIPE_SECRET_KEY: z.string().default(''),
+  STRIPE_WEBHOOK_SECRET: z.string().default(''),
+  // Gemini AI
+  GEMINI_API_KEY: z.string().default(''),
+  // Baselime monitoring (server-side)
+  BASELIME_API_KEY: z.string().default(''),
+  // CORS
+  ALLOWED_ORIGIN: z.string().default('*'),
+  // Upstash Redis (rate limiting)
+  UPSTASH_REDIS_REST_URL: z.string().default(''),
+  UPSTASH_REDIS_REST_TOKEN: z.string().default(''),
+  // Cloudflare
+  CF_PAGES_URL: z.string().optional(),
+  // Testing
+  TEST_AUTH_TOKEN: z.string().optional(),
+});
+
+export type IServerEnv = z.infer<typeof serverEnvSchema>;
+
+function loadServerEnv(): IServerEnv {
+  // eslint-disable-next-line no-restricted-syntax -- This is the only place where process.env should be accessed
+  const env = {
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    // Supabase
+    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+    // Stripe
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || '',
+    STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET || '',
+    // Gemini AI
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
+    // Baselime monitoring
+    BASELIME_API_KEY: process.env.BASELIME_API_KEY || '',
+    // CORS
+    ALLOWED_ORIGIN: process.env.ALLOWED_ORIGIN || '*',
+    // Upstash Redis
+    UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL || '',
+    UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN || '',
+    // Cloudflare
+    CF_PAGES_URL: process.env.CF_PAGES_URL,
+    // Testing
+    TEST_AUTH_TOKEN: process.env.TEST_AUTH_TOKEN,
+  };
+  return serverEnvSchema.parse(env);
+}
+
+/**
+ * Server-side environment variables.
+ * Only use in server components, API routes, and middleware.
+ * These values are NEVER sent to the client.
+ */
+export const serverEnv = loadServerEnv();
+
+// =============================================================================
+// Helper functions
+// =============================================================================
+
+/**
+ * Check if running in production environment
+ */
+export function isProduction(): boolean {
+  return serverEnv.NODE_ENV === 'production';
+}
+
+/**
+ * Check if running in development environment
+ */
+export function isDevelopment(): boolean {
+  return serverEnv.NODE_ENV === 'development';
+}
+
+/**
+ * Check if running in test environment
+ */
+export function isTest(): boolean {
+  return serverEnv.NODE_ENV === 'test';
+}
+
+// =============================================================================
+// Legacy support - deprecated, use clientEnv instead
+// =============================================================================
+
+/** @deprecated Use clientEnv instead */
+export type Env = IClientEnv;
+
+/** @deprecated Use clientEnv instead */
+export function loadEnv(): IClientEnv {
+  return clientEnv;
 }

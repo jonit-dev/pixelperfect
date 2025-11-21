@@ -1,5 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
+import { serverEnv } from '@/config/env';
 
 interface IUpscaleConfig {
   mode: 'upscale' | 'enhance' | 'both' | 'custom';
@@ -65,7 +66,7 @@ const generatePrompt = (config: IUpscaleConfig): string => {
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = serverEnv.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
         { error: 'Server configuration error: GEMINI_API_KEY is missing.' },

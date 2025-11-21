@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getCategories } from '../src/lib/data';
+import { clientEnv } from '@/config/env';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const categories = getCategories();
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = clientEnv.BASE_URL;
 
   const categoryUrls = categories.map(category => ({
     url: `${baseUrl}/portfolio/${category.id}`,

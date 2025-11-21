@@ -4,6 +4,7 @@ import { ClientProviders } from '../src/components/ClientProviders';
 import { Layout } from '../src/components/layout/Layout';
 import { JsonLd } from '../src/components/seo/JsonLd';
 import '../src/index.css';
+import { clientEnv } from '@/config/env';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(clientEnv.BASE_URL),
   title: {
     default: 'PixelPerfect AI - Image Upscaling & Enhancement',
     template: '%s | PixelPerfect AI',
@@ -83,7 +84,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'PixelPerfect AI',
-    url: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+    url: clientEnv.BASE_URL,
     description: 'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
   };
 
@@ -91,8 +92,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'PixelPerfect AI',
-    url: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
-    logo: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/og-image.png`,
+    url: clientEnv.BASE_URL,
+    logo: `${clientEnv.BASE_URL}/og-image.png`,
     description: 'AI-powered image upscaling and enhancement platform',
   };
 
