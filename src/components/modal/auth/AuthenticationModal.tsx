@@ -144,62 +144,75 @@ export const AuthenticationModal: React.FC = () => {
     return 'Sign In';
   };
 
+  const getContentKey = () => {
+    if (isChangingPassword && isPasswordUser) return 'change-password';
+    if (isSettingNewPassword) return 'set-new-password';
+    if (isForgotPassword) return 'forgot-password';
+    if (isRegistering) return 'register';
+    return 'login';
+  };
+
   return (
     <div className="font-sans">
       <Modal title={getModalTitle()} onClose={close} isOpen={isOpen} showCloseButton={false}>
-        {isChangingPassword && isPasswordUser ? (
-          <ChangePasswordForm onSubmit={handleChangePassword} />
-        ) : isSettingNewPassword ? (
-          <ForgotPasswordSetNewPasswordForm onClose={close} />
-        ) : isForgotPassword ? (
-          <>
-            <ForgotPasswordForm onSubmit={handleForgotPassword} />
-            <button
-              type="button"
-              onClick={handleBackToLogin}
-              className="text-primary text-center hover:text-primary-hover font-medium w-full mt-4 text-sm"
-            >
-              Back to Login
-            </button>
-          </>
-        ) : (
-          <>
-            {isRegistering ? (
-              <RegisterForm
-                onSubmit={handleRegisterSubmit(onRegisterSubmit)}
-                register={registerRegister}
-                errors={registerErrors}
-              />
-            ) : (
-              <LoginForm
-                onSubmit={handleLoginSubmit(onLoginSubmit)}
-                register={loginRegister}
-                errors={loginErrors}
-              />
-            )}
-            <SocialLoginButton />
-            <div className="flex flex-col gap-2 mt-6">
+        <div
+          key={getContentKey()}
+          className="animate-in fade-in duration-200"
+        >
+          {isChangingPassword && isPasswordUser ? (
+            <ChangePasswordForm onSubmit={handleChangePassword} />
+          ) : isSettingNewPassword ? (
+            <ForgotPasswordSetNewPasswordForm onClose={close} />
+          ) : isForgotPassword ? (
+            <>
+              <ForgotPasswordForm onSubmit={handleForgotPassword} />
               <button
                 type="button"
-                onClick={() => setIsRegistering(!isRegistering)}
-                className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm"
+                onClick={handleBackToLogin}
+                className="text-primary text-center hover:text-primary-hover font-medium w-full mt-6 text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
               >
-                {isRegistering
-                  ? 'Already have an account? Sign in'
-                  : "Don't have an account? Create one"}
+                Back to Login
               </button>
-              {!isRegistering && (
+            </>
+          ) : (
+            <>
+              {isRegistering ? (
+                <RegisterForm
+                  onSubmit={handleRegisterSubmit(onRegisterSubmit)}
+                  register={registerRegister}
+                  errors={registerErrors}
+                />
+              ) : (
+                <LoginForm
+                  onSubmit={handleLoginSubmit(onLoginSubmit)}
+                  register={loginRegister}
+                  errors={loginErrors}
+                />
+              )}
+              <SocialLoginButton />
+              <div className="flex flex-col gap-2 mt-6 border-t border-border/50 pt-5">
                 <button
                   type="button"
-                  onClick={() => setIsForgotPassword(true)}
-                  className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm"
+                  onClick={() => setIsRegistering(!isRegistering)}
+                  className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
                 >
-                  Forgot Password?
+                  {isRegistering
+                    ? 'Already have an account? Sign in'
+                    : "Don't have an account? Create one"}
                 </button>
-              )}
-            </div>
-          </>
-        )}
+                {!isRegistering && (
+                  <button
+                    type="button"
+                    onClick={() => setIsForgotPassword(true)}
+                    className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
+                  >
+                    Forgot Password?
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </Modal>
     </div>
   );

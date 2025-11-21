@@ -42,8 +42,8 @@ export const ForgotPasswordSetNewPasswordForm: React.FC<IProps> = ({ onClose }) 
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-4">
-      <p className="text-center text-muted-foreground mb-2">Enter your new password</p>
+    <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-5">
+      <p className="text-center text-muted-foreground text-sm mb-1">Enter your new password</p>
       <InputField
         {...register('newPassword', {
           required: 'New password is required',
@@ -69,7 +69,7 @@ export const ForgotPasswordSetNewPasswordForm: React.FC<IProps> = ({ onClose }) 
       />
       <button
         type="submit"
-        className="w-full px-4 py-3 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg transition-colors shadow-sm hover:shadow-md"
+        className="w-full px-4 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98] mt-2"
       >
         Set New Password
       </button>

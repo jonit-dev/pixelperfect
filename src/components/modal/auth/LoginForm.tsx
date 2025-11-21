@@ -14,8 +14,8 @@ interface ILoginFormProps {
 
 export const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit, register, errors }) => {
   return (
-    <form onSubmit={onSubmit} className="flex flex-col space-y-4">
-      <p className="text-center text-muted-foreground mb-2">Sign in to your account to continue</p>
+    <form onSubmit={onSubmit} className="flex flex-col space-y-5">
+      <p className="text-center text-muted-foreground text-sm mb-1">Sign in to your account to continue</p>
       <InputField
         {...register('email')}
         type="email"
@@ -32,7 +32,7 @@ export const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit, register, error
       />
       <button
         type="submit"
-        className="w-full px-4 py-3 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg transition-colors shadow-sm hover:shadow-md"
+        className="w-full px-4 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98] mt-2"
       >
         Sign In
       </button>
