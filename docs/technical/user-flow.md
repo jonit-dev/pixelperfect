@@ -72,7 +72,7 @@ sequenceDiagram
     participant FE as Frontend
     participant API as API Route
     participant DB as Supabase
-    participant AI as Replicate
+    participant AI as Gemini API
     participant R2 as Cloudflare R2
 
     U->>FE: Upload Image
@@ -93,7 +93,7 @@ sequenceDiagram
     API->>DB: Create Processing Job
     API->>DB: Deduct Credits
 
-    API->>AI: Submit to Nano Banana
+    API->>AI: Submit to Gemini Flash
     AI-->>API: Processing Started
 
     loop Poll Status
@@ -284,7 +284,7 @@ sequenceDiagram
     participant API as PixelPerfect API
     participant Auth as Auth Middleware
     participant DB as Database
-    participant AI as Replicate
+    participant AI as Gemini API
 
     App->>API: POST /api/v1/upscale
     Note over App,API: Headers: Authorization: Bearer <api_key>

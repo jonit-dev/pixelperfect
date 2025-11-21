@@ -28,12 +28,12 @@ graph TB
         AUTH[Supabase Auth]
         DB[(PostgreSQL)]
         STRIPE[Stripe]
-        REPLICATE[Replicate AI]
+        GEMINI[Gemini API / OpenRouter]
     end
 
     subgraph "AI Processing"
-        NANO[Nano Banana]
-        ESRGAN[Real-ESRGAN]
+        GEMINI_FLASH[Gemini 2.5 Flash]
+        GEMINI_PRO[Gemini 3 Pro]
     end
 
     WEB --> CDN
@@ -50,11 +50,11 @@ graph TB
     MW --> DB
     MW --> STRIPE
 
-    API --> REPLICATE
+    API --> GEMINI
     API --> R2
 
-    REPLICATE --> NANO
-    REPLICATE --> ESRGAN
+    GEMINI --> GEMINI_FLASH
+    GEMINI --> GEMINI_PRO
 
     R2 --> CDN
 ```
@@ -107,7 +107,7 @@ sequenceDiagram
     participant App as Next.js
     participant Auth as Supabase Auth
     participant DB as PostgreSQL
-    participant AI as Replicate
+    participant AI as Gemini API
     participant Storage as R2
 
     Client->>CDN: HTTPS Request
@@ -237,7 +237,7 @@ graph TB
     subgraph "External Services"
         SUPABASE[Supabase Cloud]
         STRIPE_SVC[Stripe]
-        REPLICATE_SVC[Replicate]
+        GEMINI_SVC[Gemini API / OpenRouter]
     end
 
     LOCAL --> PREVIEW
@@ -249,7 +249,7 @@ graph TB
 
     CF_WORKERS --> SUPABASE
     CF_WORKERS --> STRIPE_SVC
-    CF_WORKERS --> REPLICATE_SVC
+    CF_WORKERS --> GEMINI_SVC
 ```
 
 ## Security Architecture

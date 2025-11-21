@@ -128,7 +128,7 @@ sequenceDiagram
     participant A as API
     participant V as Validator
     participant Q as Queue
-    participant AI as Replicate
+    participant AI as Gemini API
     participant S as Storage
 
     C->>A: POST /upscale + image
