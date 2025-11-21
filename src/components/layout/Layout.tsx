@@ -1,3 +1,5 @@
+'use client';
+
 import { BarChart2, Home, Menu as MenuIcon, Settings } from 'lucide-react';
 import React, { JSX } from 'react';
 import { Navbar } from 'react-daisyui';
