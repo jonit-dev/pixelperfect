@@ -9,6 +9,23 @@ const nextConfig = {
     // Keep TypeScript checking enabled
     ignoreBuildErrors: false,
   },
+  // Performance optimizations
+  images: {
+    // Allow external images from dicebear for avatars
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+      },
+    ],
+    // Optimize image formats
+    formats: ['image/avif', 'image/webp'],
+  },
+  // Enable experimental features for better performance
+  experimental: {
+    // Optimize package imports for smaller bundles
+    optimizePackageImports: ['lucide-react', '@tremor/react', 'recharts'],
+  },
   async headers() {
     return [
       {
@@ -33,6 +50,16 @@ const nextConfig = {
             key: 'Access-Control-Allow-Headers',
             value:
               'X-CSRF-Token, X-Requested-With, Accept, Authorization, Content-Type, X-User-Id',
+          },
+        ],
+      },
+      {
+        // Cache static assets
+        source: '/:all*(svg|jpg|png|webp|avif|woff|woff2)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },

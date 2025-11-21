@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import Dropzone from '../Dropzone';
 import { CheckCircle2, Layers } from 'lucide-react';

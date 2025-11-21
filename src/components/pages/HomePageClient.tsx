@@ -5,6 +5,7 @@ import HowItWorks from '@/components/pixelperfect/Landing/HowItWorks';
 import Pricing from '@/components/pixelperfect/Pricing';
 import Workspace from '@/components/pixelperfect/Workspace/Workspace';
 import { ArrowRight, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 export function HomePageClient(): JSX.Element {
   // Auth redirects are now handled server-side in middleware
@@ -55,7 +56,14 @@ export function HomePageClient(): JSX.Element {
                   key={i}
                   className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 overflow-hidden shadow-md hover:scale-110 hover:z-10 transition-all duration-300"
                 >
-                  <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`} alt="User" />
+                  <Image
+                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`}
+                    alt={`User avatar ${i}`}
+                    width={40}
+                    height={40}
+                    className="w-full h-full"
+                    unoptimized
+                  />
                 </div>
               ))}
             </div>

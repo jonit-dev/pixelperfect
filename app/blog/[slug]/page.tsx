@@ -58,7 +58,6 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const allPosts = getAllPosts();
-  const currentIndex = allPosts.findIndex(p => p.slug === slug);
   const relatedPosts = allPosts
     .filter(p => p.slug !== slug && p.category === post.category)
     .slice(0, 3);

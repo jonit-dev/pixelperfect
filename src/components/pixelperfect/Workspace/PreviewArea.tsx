@@ -46,8 +46,10 @@ const PreviewArea: React.FC<IPreviewAreaProps> = ({ activeItem, onDownload, onRe
     <div className="relative w-full h-full flex items-center justify-center">
       <img
         src={activeItem.previewUrl}
-        alt="Preview"
+        alt={`Preview of ${activeItem.file.name}`}
         className="max-h-full max-w-full object-contain rounded-lg shadow-lg"
+        loading="eager"
+        decoding="async"
       />
 
       {/* Processing Overlay */}

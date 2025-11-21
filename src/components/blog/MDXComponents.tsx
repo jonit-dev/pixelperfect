@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface HeadingProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface LinkProps {
   href?: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface ImageProps {
@@ -19,16 +19,16 @@ interface ImageProps {
 }
 
 interface CodeProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
 interface BlockquoteProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface ListProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const H1 = ({ children }: HeadingProps) => (
@@ -49,7 +49,7 @@ const H4 = ({ children }: HeadingProps) => (
   <h4 className="text-lg font-medium text-slate-700 mt-4 mb-2">{children}</h4>
 );
 
-const Paragraph = ({ children }: { children: ReactNode }) => (
+const Paragraph = ({ children }: { children?: ReactNode }) => (
   <p className="text-slate-600 leading-relaxed mb-4">{children}</p>
 );
 
@@ -138,13 +138,13 @@ const OrderedList = ({ children }: ListProps) => (
   </ol>
 );
 
-const ListItem = ({ children }: { children: ReactNode }) => (
+const ListItem = ({ children }: { children?: ReactNode }) => (
   <li className="leading-relaxed">{children}</li>
 );
 
 const HorizontalRule = () => <hr className="my-8 border-slate-200" />;
 
-const Table = ({ children }: { children: ReactNode }) => (
+const Table = ({ children }: { children?: ReactNode }) => (
   <div className="overflow-x-auto my-6">
     <table className="min-w-full border-collapse border border-slate-200 rounded-lg">
       {children}
@@ -152,25 +152,25 @@ const Table = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const TableHead = ({ children }: { children: ReactNode }) => (
+const TableHead = ({ children }: { children?: ReactNode }) => (
   <thead className="bg-slate-100">{children}</thead>
 );
 
-const TableBody = ({ children }: { children: ReactNode }) => (
+const TableBody = ({ children }: { children?: ReactNode }) => (
   <tbody className="divide-y divide-slate-200">{children}</tbody>
 );
 
-const TableRow = ({ children }: { children: ReactNode }) => (
+const TableRow = ({ children }: { children?: ReactNode }) => (
   <tr className="hover:bg-slate-50">{children}</tr>
 );
 
-const TableHeader = ({ children }: { children: ReactNode }) => (
+const TableHeader = ({ children }: { children?: ReactNode }) => (
   <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700 border border-slate-200">
     {children}
   </th>
 );
 
-const TableCell = ({ children }: { children: ReactNode }) => (
+const TableCell = ({ children }: { children?: ReactNode }) => (
   <td className="px-4 py-3 text-sm text-slate-600 border border-slate-200">
     {children}
   </td>
@@ -179,7 +179,7 @@ const TableCell = ({ children }: { children: ReactNode }) => (
 // Callout component for tips, warnings, etc.
 interface CalloutProps {
   type?: 'info' | 'warning' | 'tip' | 'error';
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Callout = ({ type = 'info', children }: CalloutProps) => {
@@ -216,7 +216,7 @@ export const mdxComponents = {
   a: Anchor,
   img: MDXImage,
   code: CodeBlock,
-  pre: ({ children }: { children: ReactNode }) => <>{children}</>,
+  pre: ({ children }: { children?: ReactNode }) => <>{children}</>,
   blockquote: Blockquote,
   ul: UnorderedList,
   ol: OrderedList,

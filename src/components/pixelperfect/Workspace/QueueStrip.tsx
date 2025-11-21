@@ -46,7 +46,13 @@ const QueueStrip: React.FC<IQueueStripProps> = ({
               ${activeId === item.id ? 'border-indigo-600 ring-2 ring-indigo-200' : 'border-slate-200 hover:border-indigo-300'}
             `}
         >
-          <img src={item.previewUrl} alt="Thumb" className="h-full w-full object-cover" />
+          <img
+            src={item.previewUrl}
+            alt={`Thumbnail of queued image`}
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
 
           {/* Remove Button (Hover) */}
           {!isProcessing && (

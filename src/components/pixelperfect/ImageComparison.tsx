@@ -95,9 +95,12 @@ const ImageComparison: React.FC<IImageComparisonProps> = ({ beforeUrl, afterUrl,
           {/* After Image (Background) */}
           <img
             src={afterUrl}
-            alt="Enhanced"
+            alt="Enhanced image result"
             className="absolute top-0 left-0 w-full h-full object-contain object-center select-none"
             draggable={false}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
           />
 
           {/* Before Image (Foreground - Clipped) */}
@@ -107,9 +110,12 @@ const ImageComparison: React.FC<IImageComparisonProps> = ({ beforeUrl, afterUrl,
           >
             <img
               src={beforeUrl}
-              alt="Original"
+              alt="Original image for comparison"
               className="absolute top-0 left-0 w-full h-full object-contain object-center"
               draggable={false}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
         </div>

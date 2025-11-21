@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"next dev\" \"wrangler pages dev --proxy 3000\"",
+    "dev": "concurrently -n next,wrangler,stripe -c cyan,magenta,yellow \"next dev\" \"wrangler pages dev --proxy 3000\" \"stripe listen --forward-to localhost:3000/api/webhooks/stripe\"",
     "dev:test": "./scripts/dev-test.sh",
     "build": "next build",
     "start": "next start",

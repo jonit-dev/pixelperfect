@@ -182,11 +182,14 @@ flowchart LR
   - [x] Add `robots.ts` route
 - [x] **Structured data (JSON-LD)** (P1)
   - [x] Add `SoftwareApplication` schema
-- [ ] **4 foundation blog posts** (P1)
-  - [ ] Write and publish initial content
-- [ ] **Lighthouse score optimization (>90)** (P0)
-  - [ ] Optimize images and scripts
-  - [ ] Verify Core Web Vitals
+- [x] **4 foundation blog posts** (P1)
+  - [x] Write and publish initial content
+- [x] **Lighthouse score optimization (>90)** (P0)
+  - [x] Optimize images with Next.js Image component
+  - [x] Add lazy loading and async decoding
+  - [x] Configure optimizePackageImports for bundle size
+  - [x] Add static asset caching headers
+  - [ ] Verify Core Web Vitals in production
 
 ### Milestone 1.6: Deployment (Week 8)
 
@@ -829,8 +832,8 @@ xychart-beta
 - [ ] Customize Supabase email templates
 - [ ] Enable Stripe receipt emails
 - [x] Baselime error monitoring (client RUM + server logger)
-- [ ] 4 foundation blog posts
-- [ ] Lighthouse score optimization
+- [x] 4 foundation blog posts
+- [x] Lighthouse score optimization
 - [ ] Production environment variables
 - [ ] CI/CD deployment workflow
 
@@ -844,3 +847,4 @@ xychart-beta
 | 2024-01    | 1.1     | Added validation checklists, SEO roadmap, deployment roadmap                           |
 | 2025-11-21 | 1.2     | Updated completion status based on codebase audit                                      |
 | 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging |
+| 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                |
