@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS public.profiles (
   id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL PRIMARY KEY,
   stripe_customer_id TEXT UNIQUE,
-  credits_balance INTEGER DEFAULT 0 NOT NULL,
+  credits_balance INTEGER DEFAULT 10 NOT NULL,
   subscription_status TEXT CHECK (subscription_status IN ('active', 'trialing', 'past_due', 'canceled', 'unpaid')),
   subscription_tier TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
