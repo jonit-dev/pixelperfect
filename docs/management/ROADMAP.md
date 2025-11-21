@@ -854,3 +854,4 @@ xychart-beta
 | 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging |
 | 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                |
 | 2025-11-21 | 1.5     | Stripe integration complete: success/canceled pages, portal API, dynamic billing page  |
+| 2025-11-21 | 1.6     | E2E testing strategy implemented: Upscaler, Auth, Billing tests with API mocking       |

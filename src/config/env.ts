@@ -30,7 +30,7 @@ const clientEnvSchema = z.object({
 export type IClientEnv = z.infer<typeof clientEnvSchema>;
 
 function loadClientEnv(): IClientEnv {
-  /* eslint-disable no-restricted-syntax -- This is the only place where process.env should be accessed */
+   
   const env = {
     APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'PixelPerfect',
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
@@ -41,7 +41,7 @@ function loadClientEnv(): IClientEnv {
     AZURE_CLIENT_ID: process.env.NEXT_PUBLIC_AZURE_CLIENT_ID || '',
     BASELIME_KEY: process.env.NEXT_PUBLIC_BASELIME_KEY || '',
   };
-  /* eslint-enable no-restricted-syntax */
+   
   return clientEnvSchema.parse(env);
 }
 
@@ -78,7 +78,7 @@ const serverEnvSchema = z.object({
 export type IServerEnv = z.infer<typeof serverEnvSchema>;
 
 function loadServerEnv(): IServerEnv {
-  /* eslint-disable no-restricted-syntax -- This is the only place where process.env should be accessed */
+   
   const env = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     // Supabase
@@ -97,7 +97,7 @@ function loadServerEnv(): IServerEnv {
     // Testing
     TEST_AUTH_TOKEN: process.env.TEST_AUTH_TOKEN,
   };
-  /* eslint-enable no-restricted-syntax */
+   
   return serverEnvSchema.parse(env);
 }
 
