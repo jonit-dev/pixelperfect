@@ -1,6 +1,7 @@
-# Claude Code Instructions
+## Critical Rules
 
-Project-specific instructions for Claude Code AI assistant.
+- Don't trust, verify. Always run related tests to your file changes, `yarn verify` command to make sure everything is working as expected.
+- Prefix interfaces with `I`: eg. `IBlogPost`, `IBlogPostMeta`
 
 ## Environment Variables
 

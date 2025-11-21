@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { clientEnv, serverEnv } from '@/config/env';
 
 if (!clientEnv.SUPABASE_URL) {
@@ -11,7 +11,10 @@ if (!serverEnv.SUPABASE_SERVICE_ROLE_KEY) {
 
 // Service role key for admin operations (bypasses RLS)
 // This should ONLY be used in secure server-side contexts (API routes, webhooks)
-export const supabaseAdmin = createClient(clientEnv.SUPABASE_URL, serverEnv.SUPABASE_SERVICE_ROLE_KEY, {
+// Use a placeholder key during build if not set to avoid build failures
+const serviceRoleKey = serverEnv.SUPABASE_SERVICE_ROLE_KEY || 'placeholder-key-for-build';
+
+export const supabaseAdmin: SupabaseClient = createClient(clientEnv.SUPABASE_URL, serviceRoleKey, {
   auth: {
     autoRefreshToken: false,
     persistSession: false,

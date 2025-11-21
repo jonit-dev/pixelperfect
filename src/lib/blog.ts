@@ -5,7 +5,7 @@ import readingTime from 'reading-time';
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
-export interface BlogPost {
+export interface IBlogPost {
   slug: string;
   title: string;
   description: string;
@@ -18,7 +18,7 @@ export interface BlogPost {
   content: string;
 }
 
-export interface BlogPostMeta {
+export interface IBlogPostMeta {
   slug: string;
   title: string;
   description: string;
@@ -30,7 +30,7 @@ export interface BlogPostMeta {
   readingTime: string;
 }
 
-export function getAllPosts(): BlogPostMeta[] {
+export function getAllPosts(): IBlogPostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) {
     return [];
   }
@@ -60,7 +60,7 @@ export function getAllPosts(): BlogPostMeta[] {
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
+export function getPostBySlug(slug: string): IBlogPost | null {
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
@@ -96,13 +96,13 @@ export function getAllSlugs(): string[] {
     .map(file => file.replace(/\.mdx$/, ''));
 }
 
-export function getPostsByCategory(category: string): BlogPostMeta[] {
+export function getPostsByCategory(category: string): IBlogPostMeta[] {
   return getAllPosts().filter(
     post => post.category.toLowerCase() === category.toLowerCase()
   );
 }
 
-export function getPostsByTag(tag: string): BlogPostMeta[] {
+export function getPostsByTag(tag: string): IBlogPostMeta[] {
   return getAllPosts().filter(post =>
     post.tags.some(t => t.toLowerCase() === tag.toLowerCase())
   );

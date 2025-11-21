@@ -9,7 +9,7 @@ interface IPricingCardProps {
   price: number;
   currency?: string;
   interval?: 'month' | 'year' | null;
-  features: string[];
+  features: readonly string[];
   priceId: string;
   recommended?: boolean;
   creditsAmount?: number;

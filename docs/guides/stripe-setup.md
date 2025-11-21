@@ -126,26 +126,44 @@ stripe prices create \
 
 ### Local Development
 
-Create a `.env.local` file in the project root:
+This project uses a split environment variable structure:
+
+**`.env`** - Public variables (safe to commit examples):
 
 ```bash
 # Supabase
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+# App
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# Stripe Price IDs (from Stripe Dashboard > Products)
+# Credit Packs (one-time payments)
+NEXT_PUBLIC_STRIPE_PRICE_STARTER_CREDITS=price_xxx
+NEXT_PUBLIC_STRIPE_PRICE_PRO_CREDITS=price_xxx
+NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE_CREDITS=price_xxx
+# Subscription Plans (recurring)
+NEXT_PUBLIC_STRIPE_PRICE_HOBBY_MONTHLY=price_xxx
+NEXT_PUBLIC_STRIPE_PRICE_PRO_MONTHLY=price_xxx
+NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_MONTHLY=price_xxx
+```
+
+**`.env.prod`** - Server-side secrets (NEVER commit):
+
+```bash
+# Supabase
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
 # Stripe
 STRIPE_SECRET_KEY=sk_test_your-secret-key
 STRIPE_WEBHOOK_SECRET=whsec_your-webhook-secret
-
-# App
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 **Security Notes:**
-- ⚠️ **NEVER** commit `.env.local` to version control
+- ⚠️ **NEVER** commit `.env.prod` to version control
 - ⚠️ `SUPABASE_SERVICE_ROLE_KEY` and `STRIPE_SECRET_KEY` are server-side only
-- ⚠️ Only `VITE_*` and `NEXT_PUBLIC_*` variables are exposed to the client
+- ⚠️ Only `NEXT_PUBLIC_*` variables are exposed to the client
 
 ### Cloudflare Pages Deployment
 
@@ -179,13 +197,24 @@ Webhooks ensure your database stays in sync with Stripe events.
    stripe login
    ```
 
-3. **Forward webhooks to local server**
+3. **Get Webhook Secret**
+
+   The first time you run `yarn dev`, the Stripe CLI will output a webhook signing secret (starts with `whsec_...`). Copy this and add it to `.env.prod`:
+
    ```bash
-   stripe listen --forward-to localhost:3000/api/webhooks/stripe
+   STRIPE_WEBHOOK_SECRET=whsec_your-webhook-secret
    ```
 
-4. **Copy the webhook signing secret** (starts with `whsec_...`)
-   Add it to `.env.local` as `STRIPE_WEBHOOK_SECRET`
+4. **Start Development** (includes automatic webhook forwarding)
+
+   ```bash
+   yarn dev
+   ```
+
+   This runs Next.js, Wrangler, and Stripe CLI concurrently:
+   - `next dev` - Next.js development server
+   - `wrangler pages dev` - Cloudflare Pages proxy
+   - `stripe listen` - Forwards webhooks to `localhost:3000/api/webhooks/stripe`
 
 5. **Test a webhook**
    ```bash
@@ -205,6 +234,36 @@ Webhooks ensure your database stays in sync with Stripe events.
    - `invoice.payment_succeeded`
    - `invoice.payment_failed`
 5. Copy the **Signing secret** and add to Cloudflare environment variables
+
+## Configuration
+
+### Price IDs Configuration
+
+Stripe Price IDs are configured in `src/config/stripe.ts`. This file provides:
+
+- **`STRIPE_PRICES`** - Maps environment variables to price IDs
+- **`CREDIT_PACKS`** - Configuration for one-time credit purchases
+- **`SUBSCRIPTION_PLANS`** - Configuration for recurring subscriptions
+
+The pricing page (`app/pricing/page.tsx`) uses these configurations automatically.
+
+### Pages
+
+| Page | Path | Description |
+|------|------|-------------|
+| Pricing | `/pricing` | Displays all credit packs and subscription plans |
+| Success | `/success` | Landing page after successful payment |
+| Canceled | `/canceled` | Landing page after canceled payment |
+| Billing | `/dashboard/billing` | User's billing dashboard with credits and subscription info |
+
+### Customer Portal
+
+The Stripe Customer Portal allows users to:
+- Update payment methods
+- View invoices
+- Cancel/modify subscriptions
+
+Access it from the Billing page via "Manage Subscription" button.
 
 ## Testing
 
@@ -333,6 +392,34 @@ async function processImage() {
   } catch (error) {
     console.error('Processing error:', error);
   }
+}
+```
+
+### Frontend: Manage Subscription (Customer Portal)
+
+```tsx
+import { StripeService } from '@/lib/stripe';
+
+function ManageSubscriptionButton() {
+  const [loading, setLoading] = useState(false);
+
+  const handleManageSubscription = async () => {
+    try {
+      setLoading(true);
+      await StripeService.redirectToPortal();
+    } catch (error) {
+      console.error('Portal error:', error);
+      alert('Failed to open billing portal');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button onClick={handleManageSubscription} disabled={loading}>
+      {loading ? 'Opening...' : 'Manage Subscription'}
+    </button>
+  );
 }
 ```
 

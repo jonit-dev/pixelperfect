@@ -136,6 +136,9 @@ flowchart LR
 - [x] **Checkout flow** (P0)
   - [x] Create `app/api/checkout/route.ts`
   - [x] Implement Stripe checkout components on frontend
+  - [x] Create success page (`/success`)
+  - [x] Create canceled page (`/canceled`)
+  - [x] Configure Price IDs via environment variables (`src/config/stripe.ts`)
 - [x] **Webhook handlers (Signature Verification)** (P0)
   - [x] Create `app/api/webhooks/stripe/route.ts`
   - [x] Implement `checkout.session.completed` handler
@@ -152,7 +155,9 @@ flowchart LR
   - [x] Create `credit_transactions` table for audit logging
   - [x] Create `processing_jobs` table for job tracking
 - [x] **Customer portal** (P0)
-  - [x] Create portal session endpoint
+  - [x] Create portal session endpoint (`/api/portal`)
+  - [x] Add `createPortalSession` and `redirectToPortal` methods to StripeService
+  - [x] Integrate portal into billing page
 - [x] **Pricing tiers (Free/Starter/Pro)** (P0)
   - [x] Define products and prices in Stripe
   - [x] Create pricing page with tier cards
@@ -848,3 +853,4 @@ xychart-beta
 | 2025-11-21 | 1.2     | Updated completion status based on codebase audit                                      |
 | 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging |
 | 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                |
+| 2025-11-21 | 1.5     | Stripe integration complete: success/canceled pages, portal API, dynamic billing page  |

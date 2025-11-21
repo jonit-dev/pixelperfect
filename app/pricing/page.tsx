@@ -1,14 +1,42 @@
 'use client';
 
 import { PricingCard } from '@/components/stripe';
+import {
+  STRIPE_PRICES,
+  CREDIT_PACKS,
+  SUBSCRIPTION_PLANS,
+  isStripePricesConfigured,
+} from '@/config/stripe';
 
 export default function PricingPage() {
-  // TODO: Replace these with your actual Stripe Price IDs from your dashboard
-  // Create products in Stripe Dashboard and copy the price IDs here
+  const pricesConfigured = isStripePricesConfigured();
 
   return (
     <main className="flex-1">
       <div className="container mx-auto py-16 px-6">
+        {/* Configuration Warning (dev only) */}
+        {!pricesConfigured && (
+          <div className="alert alert-warning mb-8 max-w-3xl mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+            <span>
+              Stripe Price IDs are not configured. Add them to your .env file to enable
+              purchases.
+            </span>
+          </div>
+        )}
+
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -29,48 +57,31 @@ export default function PricingPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <PricingCard
-              name="Starter Pack"
-              description="Perfect for trying out"
-              price={9.99}
-              features={[
-                '100 processing credits',
-                'Valid for 12 months',
-                'Email support',
-                'Basic features',
-              ]}
-              priceId="price_starter_credits"
-              creditsAmount={100}
+              name={CREDIT_PACKS.STARTER_CREDITS.name}
+              description={CREDIT_PACKS.STARTER_CREDITS.description}
+              price={CREDIT_PACKS.STARTER_CREDITS.price}
+              features={CREDIT_PACKS.STARTER_CREDITS.features}
+              priceId={STRIPE_PRICES.STARTER_CREDITS}
+              creditsAmount={CREDIT_PACKS.STARTER_CREDITS.credits}
             />
 
             <PricingCard
-              name="Pro Pack"
-              description="Best value for regular users"
-              price={29.99}
-              features={[
-                '500 processing credits',
-                'Valid for 12 months',
-                'Priority email support',
-                'All features included',
-                '40% more credits',
-              ]}
-              priceId="price_pro_credits"
-              creditsAmount={500}
-              recommended
+              name={CREDIT_PACKS.PRO_CREDITS.name}
+              description={CREDIT_PACKS.PRO_CREDITS.description}
+              price={CREDIT_PACKS.PRO_CREDITS.price}
+              features={CREDIT_PACKS.PRO_CREDITS.features}
+              priceId={STRIPE_PRICES.PRO_CREDITS}
+              creditsAmount={CREDIT_PACKS.PRO_CREDITS.credits}
+              recommended={CREDIT_PACKS.PRO_CREDITS.recommended}
             />
 
             <PricingCard
-              name="Enterprise Pack"
-              description="For power users"
-              price={99.99}
-              features={[
-                '2000 processing credits',
-                'Valid for 12 months',
-                '24/7 priority support',
-                'All features included',
-                'Best value per credit',
-              ]}
-              priceId="price_enterprise_credits"
-              creditsAmount={2000}
+              name={CREDIT_PACKS.ENTERPRISE_CREDITS.name}
+              description={CREDIT_PACKS.ENTERPRISE_CREDITS.description}
+              price={CREDIT_PACKS.ENTERPRISE_CREDITS.price}
+              features={CREDIT_PACKS.ENTERPRISE_CREDITS.features}
+              priceId={STRIPE_PRICES.ENTERPRISE_CREDITS}
+              creditsAmount={CREDIT_PACKS.ENTERPRISE_CREDITS.credits}
             />
           </div>
         </div>
@@ -86,49 +97,31 @@ export default function PricingPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <PricingCard
-              name="Hobby"
-              description="For personal projects"
-              price={19}
-              interval="month"
-              features={[
-                '200 credits per month',
-                'Rollover unused credits',
-                'Email support',
-                'All features included',
-              ]}
-              priceId="price_hobby_monthly"
+              name={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name}
+              description={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.description}
+              price={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.price}
+              interval={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.interval}
+              features={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.features}
+              priceId={STRIPE_PRICES.HOBBY_MONTHLY}
             />
 
             <PricingCard
-              name="Professional"
-              description="For professionals"
-              price={49}
-              interval="month"
-              features={[
-                '1000 credits per month',
-                'Rollover unused credits',
-                'Priority support',
-                'All features included',
-                'Early access to new features',
-              ]}
-              priceId="price_pro_monthly"
-              recommended
+              name={SUBSCRIPTION_PLANS.PRO_MONTHLY.name}
+              description={SUBSCRIPTION_PLANS.PRO_MONTHLY.description}
+              price={SUBSCRIPTION_PLANS.PRO_MONTHLY.price}
+              interval={SUBSCRIPTION_PLANS.PRO_MONTHLY.interval}
+              features={SUBSCRIPTION_PLANS.PRO_MONTHLY.features}
+              priceId={STRIPE_PRICES.PRO_MONTHLY}
+              recommended={SUBSCRIPTION_PLANS.PRO_MONTHLY.recommended}
             />
 
             <PricingCard
-              name="Business"
-              description="For teams and agencies"
-              price={149}
-              interval="month"
-              features={[
-                '5000 credits per month',
-                'Rollover unused credits',
-                '24/7 priority support',
-                'All features included',
-                'Dedicated account manager',
-                'Custom integrations',
-              ]}
-              priceId="price_business_monthly"
+              name={SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.name}
+              description={SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.description}
+              price={SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.price}
+              interval={SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.interval}
+              features={SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.features}
+              priceId={STRIPE_PRICES.BUSINESS_MONTHLY}
             />
           </div>
         </div>

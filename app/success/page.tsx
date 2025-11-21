@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
 
-export default function SuccessPage() {
+function SuccessContent(): JSX.Element {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
   const [loading, setLoading] = useState(true);
@@ -83,5 +83,24 @@ export default function SuccessPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+function LoadingFallback(): JSX.Element {
+  return (
+    <main className="flex-1 flex items-center justify-center min-h-[60vh]">
+      <div className="text-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+        <p className="text-lg text-base-content/70">Loading...</p>
+      </div>
+    </main>
+  );
+}
+
+export default function SuccessPage(): JSX.Element {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <SuccessContent />
+    </Suspense>
   );
 }

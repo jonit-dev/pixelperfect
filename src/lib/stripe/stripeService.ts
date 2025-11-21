@@ -234,4 +234,41 @@ export class StripeService {
 
     return data;
   }
+
+  /**
+   * Create a Stripe Customer Portal session
+   * @returns The portal URL to redirect the user to
+   */
+  static async createPortalSession(): Promise<{ url: string }> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error('User not authenticated');
+    }
+
+    const response = await fetch('/api/portal', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${session.access_token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to create portal session');
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Redirect to Stripe Customer Portal
+   */
+  static async redirectToPortal(): Promise<void> {
+    const { url } = await this.createPortalSession();
+    window.location.href = url;
+  }
 }

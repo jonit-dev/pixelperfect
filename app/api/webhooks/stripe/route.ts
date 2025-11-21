@@ -87,10 +87,13 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
     const creditsAmount = parseInt(session.metadata?.credits_amount || '0', 10);
 
     if (creditsAmount > 0) {
-      // Use the RPC function to increment credits
-      const { error } = await supabaseAdmin.rpc('increment_credits', {
+      // Use the RPC function to increment credits with logging for audit trail
+      const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
         target_user_id: userId,
         amount: creditsAmount,
+        transaction_type: 'purchase',
+        ref_id: session.id,
+        description: `Credit pack purchase - ${creditsAmount} credits`,
       });
 
       if (error) {

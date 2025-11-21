@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/config';
 import { supabaseAdmin } from '@/lib/supabase/supabaseAdmin';
 import type { ICheckoutSessionRequest } from '@/lib/stripe/types';
@@ -71,10 +72,14 @@ export async function POST(request: NextRequest) {
         .eq('id', user.id);
     }
 
-    // 4. Create Stripe Checkout Session
+    // 4. Get the price to determine checkout mode
+    const price = await stripe.prices.retrieve(priceId);
+    const isSubscription = price.type === 'recurring';
+
+    // 5. Create Stripe Checkout Session
     const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
-    const session = await stripe.checkout.sessions.create({
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       customer: customerId,
       line_items: [
         {
@@ -82,16 +87,27 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
-      mode: 'payment', // or 'subscription' based on the price type
+      mode: isSubscription ? 'subscription' : 'payment',
       success_url: successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl || `${baseUrl}/canceled`,
       metadata: {
         user_id: user.id,
         ...metadata,
       },
-    });
+    };
 
-    // 5. Return the session URL
+    // For subscriptions, also store metadata on subscription
+    if (isSubscription) {
+      sessionParams.subscription_data = {
+        metadata: {
+          user_id: user.id,
+        },
+      };
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionParams);
+
+    // 6. Return the session URL
     return NextResponse.json({
       url: session.url,
       sessionId: session.id,
