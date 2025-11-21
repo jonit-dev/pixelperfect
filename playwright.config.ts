@@ -1,12 +1,18 @@
 /* eslint-disable import/no-default-export */
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+// Load test environment variables
+dotenv.config({ path: '.env.test' });
+
+const isCI = !!process.env.CI;
 
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  forbidOnly: isCI,
+  retries: isCI ? 2 : 0,
+  workers: isCI ? 1 : undefined,
   reporter: [['html'], ['list']],
   use: {
     baseURL: 'http://localhost:3000',
@@ -47,7 +53,7 @@ export default defineConfig({
   webServer: {
     command: 'next dev',
     url: 'http://localhost:3000/api/health',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !isCI,
     timeout: 120000,
     stdout: 'pipe',
     stderr: 'pipe',

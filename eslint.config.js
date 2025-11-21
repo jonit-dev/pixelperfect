@@ -14,18 +14,6 @@ export default [
       'import/no-default-export': 'off',
     },
   },
-  // Allow process.env in specific files where it's necessary
-  {
-    files: [
-      'src/config/env.ts',       // Centralized env config
-      'next.config.js',          // Next.js config (runs at build time)
-      'playwright.config.ts',    // Test config
-      'tests/**/*',              // Test files
-    ],
-    rules: {
-      'no-restricted-syntax': 'off',
-    },
-  },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: ['src/app/**/*'], // Next.js App Router requires default exports
@@ -78,7 +66,8 @@ export default [
         'error',
         {
           selector: 'MemberExpression[object.object.name="process"][object.property.name="env"]',
-          message: 'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
+          message:
+            'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
         },
       ],
     },
@@ -125,9 +114,30 @@ export default [
         'error',
         {
           selector: 'MemberExpression[object.object.name="process"][object.property.name="env"]',
-          message: 'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
+          message:
+            'Direct process.env access is forbidden. Import from "@/config/env" instead: `import { clientEnv, serverEnv } from "@/config/env"`',
         },
       ],
+    },
+  },
+  // OVERRIDES - These MUST come after main config to take precedence
+  // Allow process.env in specific files where it's necessary
+  {
+    files: [
+      'src/config/env.ts', // Centralized env config
+      'next.config.js', // Next.js config (runs at build time)
+      'playwright.config.ts', // Test config
+    ],
+    rules: {
+      'no-restricted-syntax': 'off',
+    },
+  },
+  // Test files - relax process.env restriction since tests can't use @/config/env
+  {
+    files: ['tests/**/*.ts', 'tests/**/*.tsx', '**/*.spec.ts', '**/*.test.ts'],
+    rules: {
+      'no-restricted-syntax': 'off',
+      'react-hooks/rules-of-hooks': 'off', // Playwright fixtures use 'use' function that triggers this
     },
   },
 ];

@@ -2,6 +2,7 @@
 
 - Don't trust, verify. Always run related tests to your file changes, `yarn verify` command to make sure everything is working as expected.
 - Prefix interfaces with `I`: eg. `IBlogPost`, `IBlogPostMeta`
+- Update `docs/management/ROADMAP.md` when adding new features or changes to the system.
 
 ## Environment Variables
 
@@ -15,6 +16,8 @@ This project uses a split environment variable structure:
 - Example: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_BASELIME_KEY`
 
 ### `.env.prod` - Server-side secrets only
+
+c
 
 - Contains sensitive keys with NO prefix
 - NEVER commit this file

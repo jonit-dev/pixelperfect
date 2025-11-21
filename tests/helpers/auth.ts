@@ -7,7 +7,7 @@ type AuthFixtures = {
 };
 
 export const test = base.extend<AuthFixtures>({
-  testUser: async ({}, use) => {
+  testUser: async (_, use) => {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -17,31 +17,49 @@ export const test = base.extend<AuthFixtures>({
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
 
-    // Create test user with unique email
-    const testEmail = `test-${Date.now()}@example.com`;
+    // Create test user with unique email using admin API
+    const testEmail = `test-${Date.now()}-${Math.random().toString(36).substring(7)}@test.local`;
     const testPassword = 'test-password-123';
 
-    const { data, error } = await supabase.auth.signUp({
+    // Use admin API to create user (bypasses email confirmation)
+    const { data: adminData, error: adminError } = await supabase.auth.admin.createUser({
+      email: testEmail,
+      password: testPassword,
+      email_confirm: true, // Auto-confirm email
+    });
+
+    if (adminError) throw adminError;
+    if (!adminData.user) {
+      throw new Error('Failed to create test user');
+    }
+
+    // Now sign in to get a session token
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
       email: testEmail,
       password: testPassword,
     });
 
-    if (error) throw error;
-    if (!data.user || !data.session) {
-      throw new Error('Failed to create test user');
+    if (signInError) throw signInError;
+    if (!signInData.session) {
+      throw new Error('Failed to sign in test user');
     }
 
     await use({
-      id: data.user.id,
-      email: data.user.email!,
-      token: data.session.access_token,
+      id: adminData.user.id,
+      email: adminData.user.email!,
+      token: signInData.session.access_token,
     });
 
     // Cleanup: Delete test user after test completes
     try {
-      await supabase.auth.admin.deleteUser(data.user.id);
+      await supabase.auth.admin.deleteUser(adminData.user.id);
     } catch (cleanupError) {
       console.warn('Failed to cleanup test user:', cleanupError);
     }
