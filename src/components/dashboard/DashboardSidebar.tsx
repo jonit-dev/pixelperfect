@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, CreditCard, History, Settings, HelpCircle, LogOut } from 'lucide-react';
+import { LayoutDashboard, CreditCard, Settings, HelpCircle, LogOut } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 import { CreditsDisplay } from '@/components/stripe/CreditsDisplay';
 
@@ -15,7 +15,6 @@ interface ISidebarItem {
 
 const menuItems: ISidebarItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { label: 'History', href: '/dashboard/history', icon: History },
   { label: 'Billing', href: '/dashboard/billing', icon: CreditCard },
   { label: 'Settings', href: '/dashboard/settings', icon: Settings },
 ];
