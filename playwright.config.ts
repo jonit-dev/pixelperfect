@@ -22,13 +22,40 @@ export default defineConfig({
   },
 
   projects: [
-    // Browser Tests
+    // Desktop Browser Tests
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
       },
       testMatch: /.*\.e2e\.spec\.ts/,
+    },
+
+    // Mobile Tests - iPhone
+    {
+      name: 'mobile-iphone',
+      use: {
+        ...devices['iPhone 14'],
+      },
+      testMatch: /.*\.mobile\.spec\.ts/,
+    },
+
+    // Mobile Tests - Android
+    {
+      name: 'mobile-android',
+      use: {
+        ...devices['Pixel 7'],
+      },
+      testMatch: /.*\.mobile\.spec\.ts/,
+    },
+
+    // Tablet Tests - iPad
+    {
+      name: 'tablet',
+      use: {
+        ...devices['iPad Pro 11'],
+      },
+      testMatch: /.*\.mobile\.spec\.ts/,
     },
 
     // API Tests (no browser needed)
