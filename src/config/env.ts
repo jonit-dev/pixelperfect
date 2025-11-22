@@ -25,12 +25,14 @@ const clientEnvSchema = z.object({
   FACEBOOK_CLIENT_ID: z.string().default(''),
   AZURE_CLIENT_ID: z.string().default(''),
   BASELIME_KEY: z.string().default(''),
+  // Analytics
+  AMPLITUDE_API_KEY: z.string().default(''),
+  GA_MEASUREMENT_ID: z.string().default(''),
 });
 
 export type IClientEnv = z.infer<typeof clientEnvSchema>;
 
 function loadClientEnv(): IClientEnv {
-   
   const env = {
     APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'PixelPerfect',
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
@@ -40,8 +42,11 @@ function loadClientEnv(): IClientEnv {
     FACEBOOK_CLIENT_ID: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID || '',
     AZURE_CLIENT_ID: process.env.NEXT_PUBLIC_AZURE_CLIENT_ID || '',
     BASELIME_KEY: process.env.NEXT_PUBLIC_BASELIME_KEY || '',
+    // Analytics
+    AMPLITUDE_API_KEY: process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '',
+    GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '',
   };
-   
+
   return clientEnvSchema.parse(env);
 }
 
@@ -67,6 +72,8 @@ const serverEnvSchema = z.object({
   GEMINI_API_KEY: z.string().default(''),
   // Baselime monitoring (server-side)
   BASELIME_API_KEY: z.string().default(''),
+  // Analytics (server-side HTTP API)
+  AMPLITUDE_API_KEY: z.string().default(''),
   // CORS
   ALLOWED_ORIGIN: z.string().default('*'),
   // Cloudflare
@@ -78,7 +85,6 @@ const serverEnvSchema = z.object({
 export type IServerEnv = z.infer<typeof serverEnvSchema>;
 
 function loadServerEnv(): IServerEnv {
-   
   const env = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     // Supabase
@@ -90,6 +96,8 @@ function loadServerEnv(): IServerEnv {
     GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
     // Baselime monitoring
     BASELIME_API_KEY: process.env.BASELIME_API_KEY || '',
+    // Analytics (server-side HTTP API)
+    AMPLITUDE_API_KEY: process.env.AMPLITUDE_API_KEY || '',
     // CORS
     ALLOWED_ORIGIN: process.env.ALLOWED_ORIGIN || '*',
     // Cloudflare
@@ -97,7 +105,7 @@ function loadServerEnv(): IServerEnv {
     // Testing
     TEST_AUTH_TOKEN: process.env.TEST_AUTH_TOKEN,
   };
-   
+
   return serverEnvSchema.parse(env);
 }
 

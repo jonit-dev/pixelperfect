@@ -214,12 +214,18 @@ flowchart LR
   - [ ] Create `.github/workflows/deploy.yml` for production
 - [x] **Health check endpoint (`/api/health`)** (P0)
   - [x] Create simple status endpoint
-- [ ] **Error monitoring (Baselime)** (P0)
+- [x] **Error monitoring (Baselime)** (P0)
   - [x] Install `@baselime/react-rum` and `@baselime/edge-logger`
   - [x] Configure client-side RUM in `BaselimeProvider`
   - [x] Create server-side logger utility
-  - [ ] Test Baselime integration works (client + server)
+  - [x] Wrap critical API routes with logging (upscale, analytics)
   - [ ] Add API keys in Cloudflare Pages settings
+- [x] **Analytics (Amplitude + GA4)** (P0)
+  - [x] Install `@amplitude/analytics-browser`
+  - [x] Create analytics service (client + server)
+  - [x] Create AnalyticsProvider with router navigation tracking
+  - [x] Add Google Analytics 4 integration
+  - [x] Create API endpoint for custom events (`/api/analytics/event`)
 
 ### Milestone 1.7: Launch Prep (Week 9)
 
@@ -461,7 +467,7 @@ flowchart TD
 - [ ] **Landing page optimization** (Week 6-7)
 - [ ] **4 foundation blog posts** (Week 7-8)
 - [ ] **Google Search Console setup** (Week 7)
-- [ ] **Google Analytics 4 setup** (Week 7)
+- [x] **Google Analytics 4 setup** (Week 7)
 
 **Foundation Blog Posts**:
 
@@ -831,6 +837,7 @@ xychart-beta
 - [x] Rate limiting middleware
 - [x] Security headers
 - [x] Baselime error monitoring (client RUM + server logger)
+- [x] Analytics system (Amplitude + Google Analytics 4)
 
 ### In Progress
 
@@ -865,3 +872,4 @@ xychart-beta
 | 2025-11-21 | 1.8     | Codebase cleanup: Removed portfolio app leftovers, updated to image upscaler branding                                |
 | 2025-11-21 | 1.9     | Developer experience: Modular setup scripts, yarn bootstrap/verify commands                                          |
 | 2025-11-21 | 2.0     | Security audit: Locked down credit RPCs, added credits_balance protection trigger, refactored API with service layer |
+| 2025-11-21 | 2.1     | Analytics & Monitoring: Added Amplitude + GA4 analytics, enhanced Baselime logging on critical routes                |

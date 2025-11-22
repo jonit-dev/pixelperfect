@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
 import { ClientProviders } from '../src/components/ClientProviders';
+import { GoogleAnalytics } from '../src/components/analytics/GoogleAnalytics';
 import { Layout } from '../src/components/layout/Layout';
 import { JsonLd } from '../src/components/seo/JsonLd';
 import '../src/index.css';
@@ -19,8 +21,15 @@ export const metadata: Metadata = {
     default: 'PixelPerfect AI - Image Upscaling & Enhancement',
     template: '%s | PixelPerfect AI',
   },
-  description: 'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
-  keywords: ['image upscaling', 'AI image enhancement', 'photo restoration', 'image quality', 'AI upscaler'],
+  description:
+    'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+  keywords: [
+    'image upscaling',
+    'AI image enhancement',
+    'photo restoration',
+    'image quality',
+    'AI upscaler',
+  ],
   authors: [{ name: 'PixelPerfect AI' }],
   creator: 'PixelPerfect AI',
   publisher: 'PixelPerfect AI',
@@ -35,7 +44,8 @@ export const metadata: Metadata = {
     url: '/',
     siteName: 'PixelPerfect AI',
     title: 'PixelPerfect AI - Image Upscaling & Enhancement',
-    description: 'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     images: [
       {
         url: '/og-image.png',
@@ -48,7 +58,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'PixelPerfect AI - Image Upscaling & Enhancement',
-    description: 'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     images: ['/og-image.png'],
     creator: '@pixelperfectai',
   },
@@ -69,23 +80,19 @@ export const metadata: Metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png' }],
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// eslint-disable-next-line import/no-default-export
+export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'PixelPerfect AI',
     url: clientEnv.BASE_URL,
-    description: 'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
   };
 
   const organizationJsonLd = {
@@ -103,11 +110,12 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={organizationJsonLd} />
       </head>
-      <body className={`${inter.className} bg-slate-50 text-foreground antialiased selection:bg-indigo-100 selection:text-indigo-700`}>
+      <body
+        className={`${inter.className} bg-slate-50 text-foreground antialiased selection:bg-indigo-100 selection:text-indigo-700`}
+      >
+        <GoogleAnalytics />
         <ClientProviders>
-          <Layout>
-            {children}
-          </Layout>
+          <Layout>{children}</Layout>
         </ClientProviders>
       </body>
     </html>

@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -21,36 +17,16 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@store/*": [
-        "src/store/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ],
-      "@views/*": [
-        "src/views/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@validation/*": [
-        "src/validation/*"
-      ],
-      "@mocks/*": [
-        "src/mocks/*"
-      ]
+      "@/*": ["./src/*"],
+      "@store/*": ["src/store/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"],
+      "@types/*": ["src/types/*"],
+      "@views/*": ["src/views/*"],
+      "@config/*": ["src/config/*"],
+      "@validation/*": ["src/validation/*"],
+      "@mocks/*": ["src/mocks/*"]
     },
     "plugins": [
       {
@@ -70,6 +46,13 @@
     "middleware.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "vitest.config.ts",
+    "vitest.setup.tsx"
   ]
 }

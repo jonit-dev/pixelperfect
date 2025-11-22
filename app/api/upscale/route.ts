@@ -6,19 +6,28 @@ import {
   AIGenerationError,
 } from '@/lib/services/image-generation.service';
 import { ZodError } from 'zod';
+import { createLogger } from '@/lib/monitoring/logger';
+import { trackServerEvent } from '@/lib/analytics';
+import { serverEnv } from '@/config/env';
 
 export const runtime = 'edge';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  const logger = createLogger(req, 'upscale-api');
+  const startTime = Date.now();
+
   try {
     // 1. Extract authenticated user ID from middleware header
     const userId = req.headers.get('X-User-Id');
     if (!userId) {
+      logger.warn('Unauthorized request - no user ID');
       return NextResponse.json(
         { error: 'Unauthorized', message: 'Authentication required' },
         { status: 401 }
       );
     }
+
+    logger.info('Processing upscale request', { userId });
 
     // 2. Parse and validate request body
     const body = await req.json();
@@ -28,6 +37,22 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const service = new ImageGenerationService();
     const result = await service.processImage(userId, validatedInput);
 
+    const durationMs = Date.now() - startTime;
+
+    // Track successful upscale event
+    await trackServerEvent(
+      'image_upscaled',
+      {
+        scaleFactor: validatedInput.config.scale,
+        mode: validatedInput.config.mode,
+        durationMs,
+        creditsRemaining: result.creditsRemaining,
+      },
+      { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+    );
+
+    logger.info('Upscale completed', { userId, durationMs });
+
     // 4. Return successful response
     return NextResponse.json({
       imageData: result.imageData,
@@ -36,6 +61,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   } catch (error) {
     // Handle validation errors
     if (error instanceof ZodError) {
+      logger.warn('Validation error', { errors: error.errors });
       return NextResponse.json(
         {
           error: 'Validation Error',
@@ -48,6 +74,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     // Handle insufficient credits
     if (error instanceof InsufficientCreditsError) {
+      logger.info('Insufficient credits');
       return NextResponse.json(
         {
           error: 'Payment Required',
@@ -60,6 +87,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // Handle AI generation errors
     if (error instanceof AIGenerationError) {
       const status = error.finishReason === 'SAFETY' ? 422 : 500;
+      logger.error('AI generation error', {
+        message: error.message,
+        finishReason: error.finishReason,
+      });
       return NextResponse.json(
         {
           error: 'Generation Failed',
@@ -71,7 +102,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // Handle unexpected errors
-    console.error('Upscale API Error:', error);
+    logger.error('Unexpected error', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     return NextResponse.json(
       {
         error: 'Internal Server Error',
@@ -79,5 +113,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       },
       { status: 500 }
     );
+  } finally {
+    await logger.flush();
   }
 }
