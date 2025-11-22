@@ -23,6 +23,7 @@
     "prepare": "husky",
     "verify": "npm run tsc && npm run lint",
     "test:e2e": "playwright test --project=chromium",
+    "test:e2e:full": "playwright test",
     "test:api": "playwright test --project=api",
     "test:api:dev": "playwright test --project=api --ui",
     "test:preview": "playwright test --project=workers-preview",

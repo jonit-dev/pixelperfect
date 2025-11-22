@@ -225,9 +225,12 @@ flowchart LR
 
 - [ ] **Mobile responsive testing** (P0)
   - [ ] Verify UI on iOS and Android
-- [ ] **Security audit** (P0)
-  - [ ] Review RLS policies
-  - [ ] Test API rate limiting
+- [x] **Security audit** (P0)
+  - [x] Review RLS policies
+  - [x] Test API rate limiting
+  - [x] Locked down credit-modifying RPCs (revoked `authenticated` access)
+  - [x] Added trigger to prevent direct `credits_balance` updates
+  - [x] Refactored `/api/upscale` with service layer for credit management
 - [ ] **Privacy policy & terms** (P0)
   - [ ] Generate and publish legal docs
 - [ ] **Help documentation** (P0)
@@ -430,9 +433,11 @@ flowchart TD
 | SQL injection attempt            | Request sanitized/blocked  | [ ]       |
 | XSS attempt in input             | Escaped/blocked            | [ ]       |
 | JWT tampering detected           | Request rejected           | [ ]       |
-| API without auth rejected        | 401 Unauthorized           | [ ]       |
+| API without auth rejected        | 401 Unauthorized           | [x]       |
 | Stripe webhook without signature | 401 rejected               | [ ]       |
 | Security headers present         | CSP, X-Frame-Options, etc. | [ ]       |
+| Credit RPCs blocked from client  | Permission denied          | [x]       |
+| Direct credits_balance update    | Trigger blocks update      | [x]       |
 
 ### Baselime Monitoring Validation
 
@@ -847,15 +852,16 @@ xychart-beta
 
 ## Changelog
 
-| Date       | Version | Changes                                                                                |
-| ---------- | ------- | -------------------------------------------------------------------------------------- |
-| 2024-01    | 1.0     | Initial roadmap creation                                                               |
-| 2024-01    | 1.1     | Added validation checklists, SEO roadmap, deployment roadmap                           |
-| 2025-11-21 | 1.2     | Updated completion status based on codebase audit                                      |
-| 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging |
-| 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                |
-| 2025-11-21 | 1.5     | Stripe integration complete: success/canceled pages, portal API, dynamic billing page  |
-| 2025-11-21 | 1.6     | E2E testing strategy implemented: Upscaler, Auth, Billing tests with API mocking       |
-| 2025-11-21 | 1.7     | Comprehensive E2E test suite: UpscalerPage POM, auth tests, fixture system             |
-| 2025-11-21 | 1.8     | Codebase cleanup: Removed portfolio app leftovers, updated to image upscaler branding  |
-| 2025-11-21 | 1.9     | Developer experience: Modular setup scripts, yarn bootstrap/verify commands            |
+| Date       | Version | Changes                                                                                                              |
+| ---------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| 2024-01    | 1.0     | Initial roadmap creation                                                                                             |
+| 2024-01    | 1.1     | Added validation checklists, SEO roadmap, deployment roadmap                                                         |
+| 2025-11-21 | 1.2     | Updated completion status based on codebase audit                                                                    |
+| 2025-11-21 | 1.3     | Added credit_transactions, processing_jobs tables, enhanced RPC functions with logging                               |
+| 2025-11-21 | 1.4     | Added blog infrastructure, 4 foundation posts, Lighthouse optimizations                                              |
+| 2025-11-21 | 1.5     | Stripe integration complete: success/canceled pages, portal API, dynamic billing page                                |
+| 2025-11-21 | 1.6     | E2E testing strategy implemented: Upscaler, Auth, Billing tests with API mocking                                     |
+| 2025-11-21 | 1.7     | Comprehensive E2E test suite: UpscalerPage POM, auth tests, fixture system                                           |
+| 2025-11-21 | 1.8     | Codebase cleanup: Removed portfolio app leftovers, updated to image upscaler branding                                |
+| 2025-11-21 | 1.9     | Developer experience: Modular setup scripts, yarn bootstrap/verify commands                                          |
+| 2025-11-21 | 2.0     | Security audit: Locked down credit RPCs, added credits_balance protection trigger, refactored API with service layer |

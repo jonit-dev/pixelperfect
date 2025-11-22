@@ -25,6 +25,12 @@ export class PricingPage extends BasePage {
   readonly customPlanTitle: Locator;
   readonly contactSalesButton: Locator;
 
+  // Pricing cards for mobile tests
+  readonly pricingGrid: Locator;
+  readonly freeTierCard: Locator;
+  readonly starterTierCard: Locator;
+  readonly proTierCard: Locator;
+
   constructor(page: Page) {
     super(page);
 
@@ -50,6 +56,21 @@ export class PricingPage extends BasePage {
     this.customPlanTitle = page.getByRole('heading', { name: 'Need a custom plan?' });
     this.customPlanSection = page.locator('.card').filter({ has: this.customPlanTitle });
     this.contactSalesButton = page.getByRole('link', { name: 'Contact Sales' });
+
+    // Pricing cards for mobile tests - update to match actual pricing structure
+    this.pricingGrid = page.locator('.grid').first();
+    this.freeTierCard = page
+      .locator('div:has-text("Hobby")')
+      .filter({ has: page.locator('h2') })
+      .first(); // $19/month
+    this.starterTierCard = page
+      .locator('div:has-text("Starter Pack")')
+      .filter({ has: page.locator('h2') })
+      .first(); // $9.99
+    this.proTierCard = page
+      .locator('div:has-text("Pro Pack")')
+      .filter({ has: page.locator('h2') })
+      .first(); // $29.99
   }
 
   /**

@@ -143,54 +143,25 @@ export class TestDataManager {
   }
 
   /**
-   * Adds credits to a user's balance and optionally creates a transaction record
-   * Note: Transaction record creation may fail due to RLS policies, which is acceptable for test setup
+   * Adds credits to a user's balance using the RPC function
+   * This uses increment_credits_with_log which logs the transaction automatically
    */
   async addCredits(
     userId: string,
     amount: number,
     type: 'purchase' | 'bonus' = 'purchase'
   ): Promise<void> {
-    // First, get current balance
-    const { data: profile, error: fetchError } = await this.supabase
-      .from('profiles')
-      .select('credits_balance')
-      .eq('id', userId)
-      .single();
-
-    if (fetchError) {
-      throw new Error(`Failed to fetch current credits: ${fetchError.message}`);
-    }
-
-    const newBalance = (profile?.credits_balance || 0) + amount;
-
-    // Update balance
-    const { error: updateError } = await this.supabase
-      .from('profiles')
-      .update({
-        credits_balance: newBalance,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', userId);
-
-    if (updateError) {
-      throw new Error(`Failed to update credits: ${updateError.message}`);
-    }
-
-    // Try to create transaction record - may fail due to RLS, which is acceptable for test setup
-    const { error: transactionError } = await this.supabase.from('credit_transactions').insert({
-      user_id: userId,
+    // Use the RPC function which is accessible to service_role
+    const { error: rpcError } = await this.supabase.rpc('increment_credits_with_log', {
+      target_user_id: userId,
       amount: amount,
-      type: type,
-      reference_id: `test_${Date.now()}`,
+      transaction_type: type,
+      ref_id: `test_${Date.now()}`,
       description: `Test ${type} credits`,
     });
 
-    if (transactionError) {
-      // Log but don't fail - the credit balance was updated, transaction logging is secondary
-      console.warn(
-        `Could not create credit transaction (RLS policy may prevent this): ${transactionError.message}`
-      );
+    if (rpcError) {
+      throw new Error(`Failed to add credits: ${rpcError.message}`);
     }
   }
 
