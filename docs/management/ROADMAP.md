@@ -211,7 +211,7 @@ flowchart LR
   - [ ] Add secrets to Cloudflare Pages settings
 - [x] **CI/CD pipeline (GitHub Actions)** (P0)
   - [x] Create `.github/workflows/code-quality.yml`
-  - [ ] Create `.github/workflows/deploy.yml` for production
+  - [x] Create `.github/workflows/deploy.yml` for production
 - [x] **Health check endpoint (`/api/health`)** (P0)
   - [x] Create simple status endpoint
 - [x] **Error monitoring (Baselime)** (P0)
@@ -873,3 +873,4 @@ xychart-beta
 | 2025-11-21 | 1.9     | Developer experience: Modular setup scripts, yarn bootstrap/verify commands                                          |
 | 2025-11-21 | 2.0     | Security audit: Locked down credit RPCs, added credits_balance protection trigger, refactored API with service layer |
 | 2025-11-21 | 2.1     | Analytics & Monitoring: Added Amplitude + GA4 analytics, enhanced Baselime logging on critical routes                |
+| 2025-11-22 | 2.2     | Performance & SEO: Added canonical URLs, Product structured data for pricing, accessibility improvements             |

@@ -1,11 +1,25 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import Button from './Button';
+import { JsonLd } from '@/components/seo/JsonLd';
 
-const tiers = [
+interface ITier {
+  name: string;
+  price: string;
+  priceValue: number;
+  period: string;
+  description: string;
+  features: string[];
+  cta: string;
+  variant: 'outline' | 'secondary' | 'primary';
+  recommended?: boolean;
+}
+
+const tiers: ITier[] = [
   {
     name: 'Free Tier',
     price: '$0',
+    priceValue: 0,
     period: '/mo',
     description: 'For testing and personal use.',
     features: [
@@ -16,11 +30,12 @@ const tiers = [
       '5MB file limit',
     ],
     cta: 'Start for Free',
-    variant: 'outline' as const,
+    variant: 'outline',
   },
   {
     name: 'Starter',
     price: '$9',
+    priceValue: 9,
     period: '/mo',
     description: 'For hobbyists and occasional sellers.',
     features: [
@@ -31,11 +46,12 @@ const tiers = [
       '64MP file support',
     ],
     cta: 'Start Free Trial',
-    variant: 'secondary' as const,
+    variant: 'secondary',
   },
   {
     name: 'Pro',
     price: '$29',
+    priceValue: 29,
     period: '/mo',
     description: 'For power sellers and creators.',
     features: [
@@ -47,13 +63,41 @@ const tiers = [
     ],
     recommended: true,
     cta: 'Get Started',
-    variant: 'primary' as const,
+    variant: 'primary',
   },
 ];
+
+// Generate Product structured data for SEO
+const generateProductJsonLd = (tier: ITier) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: `PixelPerfect AI ${tier.name}`,
+  description: tier.description,
+  brand: {
+    '@type': 'Brand',
+    name: 'PixelPerfect AI',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: tier.priceValue.toFixed(2),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+      .toISOString()
+      .split('T')[0],
+  },
+});
 
 const Pricing: React.FC = () => {
   return (
     <section id="pricing" className="py-20 bg-slate-50">
+      {/* Product structured data for SEO */}
+      {tiers
+        .filter(tier => tier.priceValue > 0)
+        .map(tier => (
+          <JsonLd key={`jsonld-${tier.name}`} data={generateProductJsonLd(tier)} />
+        ))}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">

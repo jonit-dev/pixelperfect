@@ -77,7 +77,10 @@ export function HomePageClient(): JSX.Element {
       {/* Main Application Workspace */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-24 relative z-10 animate-fade-in-up animation-delay-600">
         {/* Visual cue pointing to workspace - enhanced */}
-        <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div
+          className="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          aria-hidden="true"
+        >
           <span className="text-xs font-semibold text-indigo-600 tracking-wide uppercase animate-pulse">
             Try it now
           </span>
@@ -102,7 +105,10 @@ export function HomePageClient(): JSX.Element {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-2 text-white mb-6">
-                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                <div
+                  className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center"
+                  aria-hidden="true"
+                >
                   <Zap size={18} fill="currentColor" className="text-white" />
                 </div>
                 <span className="text-xl font-bold tracking-tight">PixelPerfect AI</span>
