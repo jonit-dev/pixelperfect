@@ -59,6 +59,9 @@ export const NavBar = (): JSX.Element => {
           <a href="#pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900">
             Pricing
           </a>
+          <a href="/blog" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+            Blog
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">
