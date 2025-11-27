@@ -3,6 +3,7 @@
 - Don't trust, verify. Always run related tests to your file changes, `yarn verify` command to make sure everything is working as expected.
 - Prefix interfaces with `I`: eg. `IBlogPost`, `IBlogPostMeta`
 - Update `docs/management/ROADMAP.md` when adding new features or changes to the system.
+- Refer to specific system docs when adding new features or changes to the system: `docs/technical/systems/`
 
 ## Environment Variables
 
@@ -31,9 +32,12 @@ c
 
 ## Documentation
 
+### General Documentation
+
 - Setup guides are in `docs/guides/`
 - PRDs are in `docs/PRDs/`
 - Technical docs are in `docs/technical/`
+- Systems documentation is in `docs/technical/systems/`
 - Roadmap is at `docs/management/ROADMAP.md`
 
 ## Tech Stack

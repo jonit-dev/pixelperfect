@@ -1,0 +1,1914 @@
+yarn run v1.22.22
+$ /home/joao/projects/pixelperfect/node_modules/.bin/playwright test --project=api tests/api/error-handling.api.spec.ts --reporter=json
+[dotenv@17.2.3] injecting env (16) from .env.test -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+{
+  "config": {
+    "configFile": "/home/joao/projects/pixelperfect/playwright.config.ts",
+    "rootDir": "/home/joao/projects/pixelperfect/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 9
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.e2e\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-iphone",
+        "name": "mobile-iphone",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.mobile\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-android",
+        "name": "mobile-android",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.mobile\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "tablet",
+        "name": "tablet",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.mobile\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "api",
+        "name": "api",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.api\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/joao/projects/pixelperfect/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "workers-preview",
+        "name": "workers-preview",
+        "testDir": "/home/joao/projects/pixelperfect/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.preview\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.48.2",
+    "workers": 10,
+    "webServer": {
+      "command": "next dev --port 3000",
+      "url": "http://localhost:3000/api/health",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "stdout": "pipe",
+      "stderr": "pipe"
+    }
+  },
+  "suites": [
+    {
+      "title": "api/error-handling.api.spec.ts",
+      "file": "api/error-handling.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API Error Handling",
+          "file": "api/error-handling.api.spec.ts",
+          "line": 13,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "/api/upscale Error Handling",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 29,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should return 401 when no user ID header",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "status": "failed",
+                          "duration": 129,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"error\": \"Unauthorized\",\u001b[22m\n\u001b[32m-   \"message\": \"Authentication required\",\u001b[39m\n\u001b[31m+   \"message\": \"Valid authentication token required\",\u001b[39m\n\u001b[2m  }\u001b[22m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"error\": \"Unauthorized\",\u001b[22m\n\u001b[32m-   \"message\": \"Authentication required\",\u001b[39m\n\u001b[31m+   \"message\": \"Valid authentication token required\",\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:47:20",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 20,
+                              "line": 47
+                            },
+                            "snippet": "  45 |       expect(response.status()).toBe(401);\n  46 |       const body = await response.json();\n> 47 |       expect(body).toMatchObject({\n     |                    ^\n  48 |         error: 'Unauthorized',\n  49 |         message: 'Authentication required',\n  50 |       });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 20,
+                                "line": 47
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"error\": \"Unauthorized\",\u001b[22m\n\u001b[32m-   \"message\": \"Authentication required\",\u001b[39m\n\u001b[31m+   \"message\": \"Valid authentication token required\",\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  45 |       expect(response.status()).toBe(401);\n  46 |       const body = await response.json();\n> 47 |       expect(body).toMatchObject({\n     |                    ^\n  48 |         error: 'Unauthorized',\n  49 |         message: 'Authentication required',\n  50 |       });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:47:20"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.011Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-e3e6f--401-when-no-user-ID-header-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 20,
+                            "line": 47
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-2b837a2f46baa8d6addb",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 30,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for invalid request body",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "status": "passed",
+                          "duration": 962,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:04.790Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-49143-00-for-invalid-request-body-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-3393dd0b360568847908",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 53,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for missing image data",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "status": "passed",
+                          "duration": 319,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.208Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-4d6bd--400-for-missing-image-data-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-3934e571cc58bfd4017a",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 73,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for invalid image format",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "status": "failed",
+                          "duration": 714,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m500\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m500\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:112:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 112
+                            },
+                            "snippet": "  110 |       });\n  111 |\n> 112 |       expect(response.status()).toBe(400);\n      |                                 ^\n  113 |       const body = await response.json();\n  114 |       expect(body.error).toBe('Validation Error');\n  115 |     });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 112
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m500\u001b[39m\n\n  110 |       });\n  111 |\n> 112 |       expect(response.status()).toBe(400);\n      |                                 ^\n  113 |       const body = await response.json();\n  114 |       expect(body.error).toBe('Validation Error');\n  115 |     });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:112:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.541Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-86d29-00-for-invalid-image-format-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 112
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-e39c528ab713dade95e7",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 94,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for invalid scale factor",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "status": "passed",
+                          "duration": 2241,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.011Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-27f51-00-for-invalid-scale-factor-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-d58d1cd85c7c98da8f08",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 117,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for invalid mode",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "status": "passed",
+                          "duration": 306,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.206Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-27400-return-400-for-invalid-mode-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-877c758aedc6c3381db3",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 140,
+                  "column": 5
+                },
+                {
+                  "title": "should return 402 for insufficient credits",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "status": "passed",
+                          "duration": 836,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.526Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-f0f5f-02-for-insufficient-credits-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-c2e903125666fdc27764",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 164,
+                  "column": 5
+                },
+                {
+                  "title": "should return 422 for AI safety violations",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "status": "passed",
+                          "duration": 551,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.375Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-f502c-22-for-AI-safety-violations-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-12969f2ad05ee2b62830",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 198,
+                  "column": 5
+                },
+                {
+                  "title": "should return 500 for server errors",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 2,
+                          "status": "passed",
+                          "duration": 1399,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.061Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-2a8c6-eturn-500-for-server-errors-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-f57c944d3335d3c76d6f",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 231,
+                  "column": 5
+                },
+                {
+                  "title": "should handle malformed JSON",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 2,
+                          "status": "failed",
+                          "duration": 1052,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:272:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 272
+                            },
+                            "snippet": "  270 |       });\n  271 |\n> 272 |       expect(response.status()).toBe(400);\n      |                                 ^\n  273 |     });\n  274 |\n  275 |     test('should handle oversized request body', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 272
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  270 |       });\n  271 |\n> 272 |       expect(response.status()).toBe(400);\n      |                                 ^\n  273 |     });\n  274 |\n  275 |     test('should handle oversized request body', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:272:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.382Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-9ab25-hould-handle-malformed-JSON-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 272
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-2849b2b11e8b5036c6d2",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 263,
+                  "column": 5
+                },
+                {
+                  "title": "should handle oversized request body",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 16,
+                          "status": "passed",
+                          "duration": 413,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.124Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-13b2c-ndle-oversized-request-body-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-1675457f1b779575dccd",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 275,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "/api/checkout Error Handling",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 300,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should return 400 for missing priceId",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 16,
+                          "status": "passed",
+                          "duration": 68,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:08.339Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-955f8-urn-400-for-missing-priceId-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-e3d8596c429667a76436",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 301,
+                  "column": 5
+                },
+                {
+                  "title": "should return 401 for missing authorization header",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 3,
+                          "status": "failed",
+                          "duration": 178,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Missing authorization header\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Missing authorization header\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:325:20",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 20,
+                              "line": 325
+                            },
+                            "snippet": "  323 |       expect(response.status()).toBe(401);\n  324 |       const body = await response.json();\n> 325 |       expect(body).toMatchObject({\n      |                    ^\n  326 |         error: 'Missing authorization header',\n  327 |       });\n  328 |     });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 20,
+                                "line": 325
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Missing authorization header\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  323 |       expect(response.status()).toBe(401);\n  324 |       const body = await response.json();\n> 325 |       expect(body).toMatchObject({\n      |                    ^\n  326 |         error: 'Missing authorization header',\n  327 |       });\n  328 |     });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:325:20"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.069Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-30d19-issing-authorization-header-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 20,
+                            "line": 325
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-f597cfeee51d4199d021",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 316,
+                  "column": 5
+                },
+                {
+                  "title": "should return 401 for invalid auth token",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 11,
+                          "status": "failed",
+                          "duration": 175,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Invalid authentication token\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Invalid authentication token\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:342:20",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 20,
+                              "line": 342
+                            },
+                            "snippet": "  340 |       expect(response.status()).toBe(401);\n  341 |       const body = await response.json();\n> 342 |       expect(body).toMatchObject({\n      |                    ^\n  343 |         error: 'Invalid authentication token',\n  344 |       });\n  345 |     });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 20,
+                                "line": 342
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"error\": \"Invalid authentication token\",\u001b[39m\n\u001b[31m+   \"error\": \"Unauthorized\",\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  340 |       expect(response.status()).toBe(401);\n  341 |       const body = await response.json();\n> 342 |       expect(body).toMatchObject({\n      |                    ^\n  343 |         error: 'Invalid authentication token',\n  344 |       });\n  345 |     });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:342:20"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:04.793Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-e26b4--401-for-invalid-auth-token-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 20,
+                            "line": 342
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-fa6f8c3b59f488eec73d",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 330,
+                  "column": 5
+                },
+                {
+                  "title": "should return 401 for malformed auth header",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 14,
+                          "status": "passed",
+                          "duration": 175,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.994Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-31925-1-for-malformed-auth-header-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-cb9e451db1475428d662",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 347,
+                  "column": 5
+                },
+                {
+                  "title": "should handle invalid priceId format",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 14,
+                          "status": "failed",
+                          "duration": 686,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m500\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m500\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:370:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 370
+                            },
+                            "snippet": "  368 |       });\n  369 |\n> 370 |       expect(response.status()).toBe(500);\n      |                                 ^\n  371 |       const body = await response.json();\n  372 |       expect(body.error).toBeTruthy();\n  373 |     });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 370
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m500\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  368 |       });\n  369 |\n> 370 |       expect(response.status()).toBe(500);\n      |                                 ^\n  371 |       const body = await response.json();\n  372 |       expect(body.error).toBeTruthy();\n  373 |     });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:370:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.541Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-72b91-ndle-invalid-priceId-format-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 370
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-07b2aefedff82e788243",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 360,
+                  "column": 5
+                },
+                {
+                  "title": "should handle malformed JSON",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 4,
+                          "status": "passed",
+                          "duration": 113,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.040Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-9ba01-hould-handle-malformed-JSON-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-8665a21b8d3b8a9bbca7",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 375,
+                  "column": 5
+                },
+                {
+                  "title": "should handle missing user in database",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 4,
+                          "status": "passed",
+                          "duration": 1317,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:04.004Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-f663f-le-missing-user-in-database-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-b90cb7af5a51e283c568",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 387,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "/api/analytics/event Error Handling",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 404,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should return 400 for missing event name",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 4,
+                          "status": "failed",
+                          "duration": 1109,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:414:26",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 26,
+                              "line": 414
+                            },
+                            "snippet": "  412 |       expect(response.status()).toBe(400);\n  413 |       const body = await response.json();\n> 414 |       expect(body.error).toContain('eventName');\n      |                          ^\n  415 |     });\n  416 |\n  417 |     test('should return 400 for invalid event name', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 26,
+                                "line": 414
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m\n\n  412 |       expect(response.status()).toBe(400);\n  413 |       const body = await response.json();\n> 414 |       expect(body.error).toContain('eventName');\n      |                          ^\n  415 |     });\n  416 |\n  417 |     test('should return 400 for invalid event name', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:414:26"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.334Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-e8641--400-for-missing-event-name-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 26,
+                            "line": 414
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-48edf308d5598adda538",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 405,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for invalid event name",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 15,
+                          "status": "failed",
+                          "duration": 71,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:427:26",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 26,
+                              "line": 427
+                            },
+                            "snippet": "  425 |       expect(response.status()).toBe(400);\n  426 |       const body = await response.json();\n> 427 |       expect(body.error).toContain('eventName');\n      |                          ^\n  428 |     });\n  429 |\n  430 |     test('should return 400 for malformed JSON', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 26,
+                                "line": 427
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"eventName\"\u001b[39m\nReceived string:    \u001b[31m\"Invalid event payload\"\u001b[39m\n\n  425 |       expect(response.status()).toBe(400);\n  426 |       const body = await response.json();\n> 427 |       expect(body.error).toContain('eventName');\n      |                          ^\n  428 |     });\n  429 |\n  430 |     test('should return 400 for malformed JSON', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:427:26"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.110Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-bfa68--400-for-invalid-event-name-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 26,
+                            "line": 427
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-545c56a32abf04425fd9",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 417,
+                  "column": 5
+                },
+                {
+                  "title": "should return 400 for malformed JSON",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 5,
+                          "status": "passed",
+                          "duration": 1336,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.013Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-de2af-turn-400-for-malformed-JSON-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-1b9427a6b9ac65ca25c4",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 430,
+                  "column": 5
+                },
+                {
+                  "title": "should handle oversized event payload",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 5,
+                          "status": "passed",
+                          "duration": 1140,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.282Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-3b8a5-dle-oversized-event-payload-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-7674c838f21530c89e22",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 441,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "HTTP Method Validation",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 458,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should reject GET requests to POST endpoints",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 5,
+                          "status": "failed",
+                          "duration": 68,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:462:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 462
+                            },
+                            "snippet": "  460 |       const response = await request.get(`${BASE_URL}/api/upscale`);\n  461 |\n> 462 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  463 |     });\n  464 |\n  465 |     test('should reject PUT requests to POST-only endpoints', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 462
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  460 |       const response = await request.get(`${BASE_URL}/api/upscale`);\n  461 |\n> 462 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  463 |     });\n  464 |\n  465 |     test('should reject PUT requests to POST-only endpoints', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:462:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.442Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-805f5--requests-to-POST-endpoints-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 462
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-69108ed9b09b52f0c368",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 459,
+                  "column": 5
+                },
+                {
+                  "title": "should reject PUT requests to POST-only endpoints",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 17,
+                          "status": "failed",
+                          "duration": 140,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:470:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 470
+                            },
+                            "snippet": "  468 |       });\n  469 |\n> 470 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  471 |     });\n  472 |\n  473 |     test('should reject DELETE requests to POST-only endpoints', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 470
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  468 |       });\n  469 |\n> 470 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  471 |     });\n  472 |\n  473 |     test('should reject DELETE requests to POST-only endpoints', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:470:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.183Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-e724f-ests-to-POST-only-endpoints-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 470
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-08daedc6fa27ec4c57c5",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 465,
+                  "column": 5
+                },
+                {
+                  "title": "should reject DELETE requests to POST-only endpoints",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 6,
+                          "status": "failed",
+                          "duration": 172,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:476:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 476
+                            },
+                            "snippet": "  474 |       const response = await request.delete(`${BASE_URL}/api/upscale`);\n  475 |\n> 476 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  477 |     });\n  478 |\n  479 |     test('should reject PATCH requests to POST-only endpoints', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 476
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  474 |       const response = await request.delete(`${BASE_URL}/api/upscale`);\n  475 |\n> 476 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  477 |     });\n  478 |\n  479 |     test('should reject PATCH requests to POST-only endpoints', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:476:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.050Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-a3b2e-ests-to-POST-only-endpoints-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 476
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-b46fe1658b4b6b81141f",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 473,
+                  "column": 5
+                },
+                {
+                  "title": "should reject PATCH requests to POST-only endpoints",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 10,
+                          "status": "failed",
+                          "duration": 162,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:484:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 484
+                            },
+                            "snippet": "  482 |       });\n  483 |\n> 484 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  485 |     });\n  486 |   });\n  487 |"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 484
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m405\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  482 |       });\n  483 |\n> 484 |       expect(response.status()).toBe(405); // Method Not Allowed\n      |                                 ^\n  485 |     });\n  486 |   });\n  487 |\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:484:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:04.801Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-e85b9-ests-to-POST-only-endpoints-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 484
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-9ba85f60ad43e3e7fb32",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 479,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Content-Type Validation",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 488,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should reject requests with invalid content-type",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 13,
+                          "status": "failed",
+                          "duration": 208,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:498:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 498
+                            },
+                            "snippet": "  496 |       });\n  497 |\n> 498 |       expect(response.status()).toBe(400);\n      |                                 ^\n  499 |     });\n  500 |\n  501 |     test('should handle requests without content-type header', async ({ request }) => {"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 498
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m\n\n  496 |       });\n  497 |\n> 498 |       expect(response.status()).toBe(400);\n      |                                 ^\n  499 |     });\n  500 |\n  501 |     test('should handle requests without content-type header', async ({ request }) => {\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:498:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.974Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-17947-s-with-invalid-content-type-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 498
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-bad133f7c73cbd9023ef",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 489,
+                  "column": 5
+                },
+                {
+                  "title": "should handle requests without content-type header",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 18,
+                          "status": "passed",
+                          "duration": 130,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.226Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-4dc4e-without-content-type-header-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-c77898b063386842973c",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 501,
+                  "column": 5
+                },
+                {
+                  "title": "should accept application/json content-type",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 7,
+                          "status": "passed",
+                          "duration": 1335,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.005Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-7996c-plication-json-content-type-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-6112661cc1c955531488",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 512,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Header Validation",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 527,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should handle malformed user-agent header",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 7,
+                          "status": "passed",
+                          "duration": 1156,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.283Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-c49a7-malformed-user-agent-header-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-27061f6ac5d556b192b1",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 528,
+                  "column": 5
+                },
+                {
+                  "title": "should handle extremely long headers",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 7,
+                          "status": "passed",
+                          "duration": 37,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.455Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-a3e81-ndle-extremely-long-headers-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-d4d1460c7c49e21159e3",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 542,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "Rate Limiting Error Responses",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 560,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should return 429 with proper headers when rate limited",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 7,
+                          "status": "passed",
+                          "duration": 643,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:06.508Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-ca8e2-r-headers-when-rate-limited-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-c6ed32ee43bc431dd37f",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 561,
+                  "column": 5
+                },
+                {
+                  "title": "should include rate limit headers in all responses",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 8,
+                          "status": "failed",
+                          "duration": 1339,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:589:59",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 59,
+                              "line": 589
+                            },
+                            "snippet": "  587 |\n  588 |       // Public routes should have rate limit headers\n> 589 |       expect(response.headers()['x-ratelimit-remaining']).toBeTruthy();\n      |                                                           ^\n  590 |       expect(response.headers()['x-ratelimit-limit']).toBeTruthy();\n  591 |       expect(response.headers()['x-ratelimit-reset']).toBeTruthy();\n  592 |     });"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 59,
+                                "line": 589
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\n  587 |\n  588 |       // Public routes should have rate limit headers\n> 589 |       expect(response.headers()['x-ratelimit-remaining']).toBeTruthy();\n      |                                                           ^\n  590 |       expect(response.headers()['x-ratelimit-limit']).toBeTruthy();\n  591 |       expect(response.headers()['x-ratelimit-reset']).toBeTruthy();\n  592 |     });\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:589:59"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:03.080Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-32c2c-it-headers-in-all-responses-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 59,
+                            "line": 589
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-4f77eafe062dc507b8e9",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 580,
+                  "column": 5
+                }
+              ]
+            },
+            {
+              "title": "CORS Error Handling",
+              "file": "api/error-handling.api.spec.ts",
+              "line": 595,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "should handle preflight requests properly",
+                  "ok": false,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 12,
+                          "status": "failed",
+                          "duration": 235,
+                          "error": {
+                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m400\u001b[39m\nReceived:   \u001b[31m401\u001b[39m",
+                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m400\u001b[39m\nReceived:   \u001b[31m401\u001b[39m\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:606:33",
+                            "location": {
+                              "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                              "column": 33,
+                              "line": 606
+                            },
+                            "snippet": "  604 |       });\n  605 |\n> 606 |       expect(response.status()).toBeLessThan(400);\n      |                                 ^\n  607 |       expect(response.headers()['access-control-allow-origin']).toBeTruthy();\n  608 |     });\n  609 |"
+                          },
+                          "errors": [
+                            {
+                              "location": {
+                                "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                                "column": 33,
+                                "line": 606
+                              },
+                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m400\u001b[39m\nReceived:   \u001b[31m401\u001b[39m\n\n  604 |       });\n  605 |\n> 606 |       expect(response.status()).toBeLessThan(400);\n      |                                 ^\n  607 |       expect(response.headers()['access-control-allow-origin']).toBeTruthy();\n  608 |     });\n  609 |\n\n    at /home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts:606:33"
+                            }
+                          ],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:05.910Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-10d93-preflight-requests-properly-api/trace.zip"
+                            }
+                          ],
+                          "errorLocation": {
+                            "file": "/home/joao/projects/pixelperfect/tests/api/error-handling.api.spec.ts",
+                            "column": 33,
+                            "line": 606
+                          }
+                        }
+                      ],
+                      "status": "unexpected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-1b3eb247d8c0a588ee55",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 596,
+                  "column": 5
+                },
+                {
+                  "title": "should reject requests from unauthorized origins",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "api",
+                      "projectName": "api",
+                      "results": [
+                        {
+                          "workerIndex": 19,
+                          "status": "passed",
+                          "duration": 145,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-26T22:31:07.250Z",
+                          "attachments": [
+                            {
+                              "name": "trace",
+                              "contentType": "application/zip",
+                              "path": "/home/joao/projects/pixelperfect/test-results/api-error-handling.api-API-b2f76-s-from-unauthorized-origins-api/trace.zip"
+                            }
+                          ]
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "43b308cd099b58e1b8cc-d2bda40b6993fc54cfa1",
+                  "file": "api/error-handling.api.spec.ts",
+                  "line": 610,
+                  "column": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-26T22:31:01.897Z",
+    "duration": 6613.6320000000005,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 15,
+    "flaky": 0
+  }
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

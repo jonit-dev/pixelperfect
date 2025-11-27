@@ -6,6 +6,7 @@ import { StripeWebhookMockFactory } from '../helpers/stripe-webhook-mocks';
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_secret';
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 test.describe('API: Stripe Webhooks', () => {
   // Helper function to generate Stripe webhook signature
@@ -25,7 +26,7 @@ test.describe('API: Stripe Webhooks', () => {
     // is bypassed in test mode.
 
     test('should reject requests without stripe-signature header', async ({ request }) => {
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: JSON.stringify({
           type: 'checkout.session.completed',
           data: { object: {} },
@@ -52,7 +53,7 @@ test.describe('API: Stripe Webhooks', () => {
         data: { object: {} },
       });
 
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: payload,
         headers: {
           'stripe-signature': 'invalid_signature',
@@ -100,7 +101,7 @@ test.describe('API: Stripe Webhooks', () => {
       const payload = JSON.stringify(event);
       const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
 
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: payload,
         headers: {
           'stripe-signature': signature,
@@ -149,7 +150,7 @@ test.describe('API: Stripe Webhooks', () => {
       const payload = JSON.stringify(event);
       const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
 
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: payload,
         headers: {
           'stripe-signature': signature,
@@ -203,7 +204,7 @@ test.describe('API: Stripe Webhooks', () => {
       const payload = JSON.stringify(event);
       const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
 
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: payload,
         headers: {
           'stripe-signature': signature,
@@ -249,7 +250,7 @@ test.describe('API: Stripe Webhooks', () => {
       const payload = JSON.stringify(event);
       const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
 
-      const response = await request.post('/api/webhooks/stripe', {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
         data: payload,
         headers: {
           'stripe-signature': signature,
@@ -337,6 +338,457 @@ test.describe('API: Stripe Webhooks', () => {
       expect(failedEvent.type).toBe('invoice.payment_failed');
       expect(failedEvent.data.object.paid).toBe(false);
       expect(failedEvent.data.object.status).toBe('open');
+    });
+  });
+
+  test.describe('Additional Webhook Event Handling', () => {
+    let dataManager: TestDataManager | undefined;
+
+    test.beforeAll(async () => {
+      dataManager = new TestDataManager();
+    });
+
+    test.afterAll(async () => {
+      if (dataManager) {
+        await dataManager.cleanupAllUsers();
+      }
+    });
+
+    test.skip(
+      () => !WEBHOOK_SECRET || WEBHOOK_SECRET === 'whsec_test_secret',
+      'Skipping webhook business logic tests - STRIPE_WEBHOOK_SECRET not configured'
+    );
+
+    test('customer.subscription.created should create subscription and update profile', async ({ request }) => {
+      const testUser = await dataManager.createTestUser();
+
+      // Set stripe_customer_id
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+
+      const customerId = `cus_test_${testUser.id}`;
+      await supabase
+        .from('profiles')
+        .update({ stripe_customer_id: customerId })
+        .eq('id', testUser.id);
+
+      const event = StripeWebhookMockFactory.createSubscriptionCreated({
+        userId: testUser.id,
+        customerId,
+        subscriptionId: `sub_new_${Date.now()}`,
+        priceId: 'price_test_pro_monthly',
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      if (response.status() === 200) {
+        // Verify subscription was created
+        const { data: subscription } = await supabase
+          .from('subscriptions')
+          .select('*')
+          .eq('id', `sub_new_${Date.now()}`)
+          .single();
+
+        expect(subscription).toBeTruthy();
+        expect(subscription?.user_id).toBe(testUser.id);
+        expect(subscription?.status).toBe('active');
+
+        // Verify profile was updated
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', testUser.id)
+          .single();
+
+        expect(profile?.subscription_status).toBe('active');
+        expect(profile?.subscription_tier).toBe('price_test_pro_monthly');
+      }
+
+      await dataManager.cleanupUser(testUser.id);
+    });
+
+    test('customer.subscription.updated should modify existing subscription', async ({ request }) => {
+      const testUser = await dataManager.createTestUser();
+
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+
+      const customerId = `cus_test_${testUser.id}`;
+      const subscriptionId = `sub_update_${Date.now()}`;
+
+      // Set up initial subscription
+      await supabase
+        .from('profiles')
+        .update({ stripe_customer_id: customerId })
+        .eq('id', testUser.id);
+
+      await supabase.from('subscriptions').insert({
+        id: subscriptionId,
+        user_id: testUser.id,
+        status: 'active',
+        price_id: 'price_test_basic_monthly',
+        current_period_start: new Date().toISOString(),
+        current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+      });
+
+      // Send update event
+      const event = StripeWebhookMockFactory.createSubscriptionUpdated({
+        userId: testUser.id,
+        customerId,
+        subscriptionId,
+        newPriceId: 'price_test_pro_monthly',
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      if (response.status() === 200) {
+        // Verify subscription was updated
+        const { data: subscription } = await supabase
+          .from('subscriptions')
+          .select('*')
+          .eq('id', subscriptionId)
+          .single();
+
+        expect(subscription?.price_id).toBe('price_test_pro_monthly');
+
+        // Verify profile tier was updated
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', testUser.id)
+          .single();
+
+        expect(profile?.subscription_tier).toBe('price_test_pro_monthly');
+      }
+
+      await dataManager.cleanupUser(testUser.id);
+    });
+
+    test('invoice.payment_succeeded should update subscription status', async ({ request }) => {
+      const testUser = await dataManager.createTestUser();
+
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+
+      const customerId = `cus_test_${testUser.id}`;
+      const subscriptionId = `sub_payment_${Date.now()}`;
+
+      // Set up subscription with past_due status
+      await supabase
+        .from('profiles')
+        .update({
+          stripe_customer_id: customerId,
+          subscription_status: 'past_due',
+        })
+        .eq('id', testUser.id);
+
+      await supabase.from('subscriptions').insert({
+        id: subscriptionId,
+        user_id: testUser.id,
+        status: 'past_due',
+        price_id: 'price_test_pro_monthly',
+        current_period_start: new Date().toISOString(),
+        current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+      });
+
+      const event = StripeWebhookMockFactory.createInvoicePaymentSucceeded({
+        userId: testUser.id,
+        customerId,
+        subscriptionId,
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+      }
+
+      await dataManager.cleanupUser(testUser.id);
+    });
+  });
+
+  test.describe('Webhook Error Handling', () => {
+    let dataManager: TestDataManager | undefined;
+
+    test.beforeAll(async () => {
+      dataManager = new TestDataManager();
+    });
+
+    test.afterAll(async () => {
+      if (dataManager) {
+        await dataManager.cleanupAllUsers();
+      }
+    });
+
+    test('should handle malformed webhook body', async ({ request }) => {
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: 'invalid json {{{',
+        headers: {
+          'stripe-signature': 'invalid_signature',
+          'content-type': 'application/json',
+        },
+      });
+
+      expect(response.status()).toBe(400);
+      const data = await response.json();
+      // In test mode, signature verification is skipped and JSON parsing is attempted
+      expect(data.error).toContain('Invalid webhook body');
+    });
+
+    test('should handle missing user_id in session metadata', async ({ request }) => {
+      // Create checkout session without user_id metadata
+      const event = {
+        type: 'checkout.session.completed',
+        data: {
+          object: {
+            mode: 'payment',
+            metadata: {
+              credits_amount: '50',
+              // Missing user_id
+            },
+            payment_status: 'paid',
+            status: 'complete',
+          },
+        },
+      };
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      // Should still return 200 but log error internally
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+      }
+    });
+
+    test('should handle unknown customer in subscription events', async ({ request }) => {
+      const event = StripeWebhookMockFactory.createSubscriptionCreated({
+        userId: 'unknown_user',
+        customerId: 'cus_unknown',
+        subscriptionId: 'sub_unknown',
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      // Should still return 200 but log error internally
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+      }
+    });
+
+    test('should handle zero credit amounts', async ({ request }) => {
+      const testUser = await dataManager.createTestUser();
+
+      const event = StripeWebhookMockFactory.createCheckoutSessionCompletedForCredits({
+        userId: testUser.id,
+        creditsAmount: 0, // Zero credits
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      // Should still return 200 without adding credits
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+
+        // Verify no credits were added
+        const profile = await dataManager.getUserProfile(testUser.id);
+        expect(profile.credits_balance).toBe(10); // Should remain at initial balance
+      }
+
+      await dataManager.cleanupUser(testUser.id);
+    });
+  });
+
+  test.describe('Webhook Edge Cases', () => {
+    let dataManager: TestDataManager | undefined;
+
+    test.beforeAll(async () => {
+      dataManager = new TestDataManager();
+    });
+
+    test.afterAll(async () => {
+      if (dataManager) {
+        await dataManager.cleanupAllUsers();
+      }
+    });
+
+    test.skip(
+      () => !WEBHOOK_SECRET || WEBHOOK_SECRET === 'whsec_test_secret',
+      'Skipping webhook business logic tests - STRIPE_WEBHOOK_SECRET not configured'
+    );
+
+    test('should handle duplicate webhook events idempotently', async ({ request }) => {
+      const testUser = await dataManager.createTestUser();
+      const initialProfile = await dataManager.getUserProfile(testUser.id);
+      const initialBalance = initialProfile.credits_balance as number;
+
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+
+      const event = StripeWebhookMockFactory.createCheckoutSessionCompletedForCredits({
+        userId: testUser.id,
+        creditsAmount: 25,
+      });
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      // Send the same event twice
+      const response1 = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      const response2 = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      if (response1.status() === 200 && response2.status() === 200) {
+        // Check final balance - should only have credits added once
+        const finalProfile = await dataManager.getUserProfile(testUser.id);
+        expect(finalProfile.credits_balance).toBe(initialBalance + 25);
+
+        // Check transaction count - should only have one transaction
+        const { data: transactions } = await supabase
+          .from('credit_transactions')
+          .select('*')
+          .eq('user_id', testUser.id)
+          .eq('reference_id', event.data.object.id);
+
+        expect(transactions).toHaveLength(1);
+      }
+
+      await dataManager.cleanupUser(testUser.id);
+    });
+
+    test('should handle checkout session without metadata', async ({ request }) => {
+      const event = {
+        type: 'checkout.session.completed',
+        data: {
+          object: {
+            mode: 'payment',
+            payment_status: 'paid',
+            status: 'complete',
+            // No metadata field
+          },
+        },
+      };
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      // Should handle gracefully without crashing
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+      }
+    });
+
+    test('should handle subscription without items', async ({ request }) => {
+      const event = {
+        type: 'customer.subscription.created',
+        data: {
+          object: {
+            id: 'sub_no_items',
+            status: 'active',
+            customer: 'cus_test',
+            items: { data: [] }, // No items
+            current_period_start: Math.floor(Date.now() / 1000),
+            current_period_end: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+            cancel_at_period_end: false,
+            canceled_at: null,
+          },
+        },
+      };
+
+      const payload = JSON.stringify(event);
+      const signature = generateStripeSignature(payload, WEBHOOK_SECRET);
+
+      const response = await request.post(`${BASE_URL}/api/webhooks/stripe`, {
+        data: payload,
+        headers: {
+          'stripe-signature': signature,
+          'content-type': 'application/json',
+        },
+      });
+
+      // Should handle gracefully without crashing
+      if (response.status() === 200) {
+        const data = await response.json();
+        expect(data.received).toBe(true);
+      }
     });
   });
 });

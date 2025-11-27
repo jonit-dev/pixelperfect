@@ -35,6 +35,8 @@ graph TB
 | [credits.md](./credits.md)                   | Credit system, transactions, rollover       |
 | [rate-limiting.md](./rate-limiting.md)       | Request throttling, tier limits             |
 | [error-handling.md](./error-handling.md)     | Error codes, recovery, logging              |
+| [analytics.md](./analytics.md)               | User behavior tracking, business metrics    |
+| [monitoring.md](./monitoring.md)             | Application health, error monitoring        |
 
 ## System Interactions
 

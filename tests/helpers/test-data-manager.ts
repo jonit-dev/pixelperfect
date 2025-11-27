@@ -9,6 +9,8 @@ export interface ITestUser {
 export class TestDataManager {
   private supabase: ReturnType<typeof createClient>;
   private createdUsers: string[] = [];
+  private static userPool: ITestUser[] = [];
+  private static poolInitialized = false;
 
   constructor() {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -29,6 +31,96 @@ export class TestDataManager {
   }
 
   /**
+   * Initialize user pool with shared test users to reduce API calls
+   */
+  private static async initializeUserPool(): Promise<void> {
+    if (this.poolInitialized) return;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseServiceKey) return;
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
+    // Create a pool of test users
+    const poolSize = 5;
+    for (let i = 0; i < poolSize; i++) {
+      try {
+        const testEmail = `pool-user-${i}@test.pool.local`;
+        const testPassword = 'test-password-123';
+
+        // Try to get existing user or create new one
+        const { data: existingUser } = await supabase.auth.admin.listUsers();
+        const user = existingUser.users.find(u => u.email === testEmail);
+
+        let authUser;
+        if (user) {
+          authUser = user;
+        } else {
+          // Create new user with delay to avoid rate limits
+          await new Promise(resolve => setTimeout(resolve, 200));
+          const { data: adminData, error: adminError } = await supabase.auth.admin.createUser({
+            email: testEmail,
+            password: testPassword,
+            email_confirm: true,
+          });
+
+          if (adminError) continue;
+          authUser = adminData.user;
+        }
+
+        // Sign in to get token
+        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+          email: testEmail,
+          password: testPassword,
+        });
+
+        if (signInError || !signInData.session) continue;
+
+        this.userPool.push({
+          id: authUser.id,
+          email: authUser.email!,
+          token: signInData.session.access_token,
+        });
+      } catch (error) {
+        console.warn(`Failed to create pool user ${i}:`, error);
+      }
+    }
+
+    this.poolInitialized = true;
+  }
+
+  /**
+   * Get a user from the pool or create a new one if pool is empty
+   */
+  private async getPooledUser(): Promise<ITestUser> {
+    await TestDataManager.initializeUserPool();
+
+    if (TestDataManager.userPool.length > 0) {
+      return TestDataManager.userPool.pop()!;
+    }
+
+    // Fallback to creating new user with rate limit protection
+    await new Promise(resolve => setTimeout(resolve, 500));
+    return this.createTestUser();
+  }
+
+  /**
+   * Return a user to the pool for reuse
+   */
+  private returnToPool(user: ITestUser): void {
+    if (TestDataManager.userPool.length < 10) {
+      TestDataManager.userPool.push(user);
+    }
+  }
+
+  /**
    * Creates a fresh test user with authentication using admin API
    */
   async createTestUser(
@@ -38,6 +130,9 @@ export class TestDataManager {
       overrides?.email ||
       `test-${Date.now()}-${Math.random().toString(36).substring(7)}@test.local`;
     const testPassword = overrides?.password || 'test-password-123';
+
+    // Add delay to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 300));
 
     // Use admin API to create user (bypasses email validation and confirmation)
     const { data: adminData, error: adminError } = await this.supabase.auth.admin.createUser({
@@ -53,6 +148,9 @@ export class TestDataManager {
     if (!adminData.user) {
       throw new Error('Failed to create test user: No user returned');
     }
+
+    // Add another delay before sign in
+    await new Promise(resolve => setTimeout(resolve, 200));
 
     // Sign in to get a session token
     const { data: signInData, error: signInError } = await this.supabase.auth.signInWithPassword({

@@ -81,8 +81,8 @@ test.describe('API: Analytics Event', () => {
           expect(data).toHaveProperty('success', true);
         } else {
           // Rate limited response - still means the event type was valid
-          const data = await response.json();
-          expect(data).toBeDefined();
+          // Just check that we got a response, rate limiting is expected
+          expect(response.status()).toBe(429);
         }
 
         // Add small delay to avoid rate limiting
