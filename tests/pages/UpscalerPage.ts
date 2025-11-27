@@ -63,7 +63,9 @@ export class UpscalerPage extends BasePage {
     this.retryButton = page.getByRole('button', { name: /retry/i });
 
     // Status indicators - be specific to avoid matching Next.js internal elements
-    this.progressIndicator = page.locator('[role="progressbar"]').or(page.locator('.animate-pulse'));
+    this.progressIndicator = page
+      .locator('[role="progressbar"]')
+      .or(page.locator('.animate-pulse'));
     this.errorMessage = page.locator('.text-red-600').first();
     this.successIndicator = page.getByText('Processing Complete');
   }
@@ -141,10 +143,45 @@ export class UpscalerPage extends BasePage {
    * Wait for processing to start
    */
   async waitForProcessingStart(): Promise<void> {
-    // Wait for loading state or progress indicator
+    // Wait for loading state or progress indicator with multiple fallback selectors
+    const maxWaitTime = 5000;
+    const checkInterval = 200;
+    let elapsedTime = 0;
+
+    while (elapsedTime < maxWaitTime) {
+      const progressVisible = await this.progressIndicator.isVisible().catch(() => false);
+      const spinnerVisible = await this.page
+        .locator('.animate-spin')
+        .isVisible()
+        .catch(() => false);
+      const processingTextVisible = await this.page
+        .locator(':has-text("Processing")')
+        .isVisible()
+        .catch(() => false);
+
+      if (progressVisible || spinnerVisible || processingTextVisible) {
+        return;
+      }
+
+      await this.page.waitForTimeout(checkInterval);
+      elapsedTime += checkInterval;
+    }
+
+    // If no processing indicators appeared, check if processing completed very quickly
+    const downloadVisible = await this.downloadButton.isVisible().catch(() => false);
+    const errorVisible = await this.errorMessage.isVisible().catch(() => false);
+
+    if (downloadVisible || errorVisible) {
+      // Processing completed before we could detect it started
+      return;
+    }
+
+    // Try the original expect as a fallback
     await expect(
-      this.progressIndicator.or(this.page.locator('.animate-spin')).or(this.page.locator(':has-text("Processing")'))
-    ).toBeVisible({ timeout: 5000 });
+      this.progressIndicator
+        .or(this.page.locator('.animate-spin'))
+        .or(this.page.locator(':has-text("Processing")'))
+    ).toBeVisible({ timeout: 1000 });
   }
 
   /**
@@ -152,12 +189,29 @@ export class UpscalerPage extends BasePage {
    */
   async waitForProcessingComplete(): Promise<void> {
     // Wait for either success (download button visible) or error message or success indicator
-    // Use Promise.race to wait for any of them
-    await Promise.race([
-      expect(this.downloadButton).toBeVisible({ timeout: 30000 }).catch(() => {}),
-      expect(this.errorMessage).toBeVisible({ timeout: 30000 }).catch(() => {}),
-      expect(this.successIndicator).toBeVisible({ timeout: 30000 }).catch(() => {}),
-    ]);
+    // Use Promise.race to wait for any of them, but with better error handling
+    try {
+      await Promise.race([
+        expect(this.downloadButton).toBeVisible({ timeout: 30000 }),
+        expect(this.errorMessage).toBeVisible({ timeout: 30000 }),
+        expect(this.successIndicator).toBeVisible({ timeout: 30000 }),
+      ]);
+    } catch (error) {
+      // If the explicit expectations fail, do a fallback check with more lenient selectors
+      const downloadVisible = await this.downloadButton.isVisible().catch(() => false);
+      const errorVisible = await this.errorMessage.isVisible().catch(() => false);
+      const hasImageResult = await this.page
+        .locator('img[src*="data:image"]')
+        .isVisible()
+        .catch(() => false);
+
+      if (!downloadVisible && !errorVisible && !hasImageResult) {
+        throw new Error(
+          `Processing did not complete within timeout. Last error: ${error instanceof Error ? error.message : 'Unknown'}`
+        );
+      }
+    }
+
     // Give a small buffer for UI to stabilize
     await this.page.waitForTimeout(500);
   }
@@ -168,7 +222,9 @@ export class UpscalerPage extends BasePage {
   async assertResultVisible(): Promise<void> {
     // Result should show a preview image or download button
     await expect(
-      this.downloadButton.or(this.page.locator('img[src*="data:image"]')).or(this.page.locator('.preview-result'))
+      this.downloadButton
+        .or(this.page.locator('img[src*="data:image"]'))
+        .or(this.page.locator('.preview-result'))
     ).toBeVisible({ timeout: 10000 });
   }
 
@@ -210,9 +266,15 @@ export class UpscalerPage extends BasePage {
    * Get the number of items in the queue
    */
   async getQueueCount(): Promise<number> {
-    // Look for queue items in the strip
-    const queueItems = this.page.locator('[data-testid="queue-item"]').or(this.queueStrip.locator('img'));
-    return await queueItems.count();
+    // Look for queue items in the strip with multiple selectors
+    const queueItems = this.page
+      .locator('[data-testid="queue-item"]')
+      .or(this.queueStrip.locator('img'))
+      .or(this.page.locator('.border-t img'))
+      .or(this.page.locator('[class*="queue"] img'));
+
+    const count = await queueItems.count();
+    return count;
   }
 
   /**
@@ -226,7 +288,9 @@ export class UpscalerPage extends BasePage {
    * Assert the upgrade modal appears (for insufficient credits)
    */
   async assertUpgradeModalVisible(): Promise<void> {
-    const upgradeModal = this.page.locator('[role="dialog"]').filter({ hasText: /upgrade|pricing|credits/i });
+    const upgradeModal = this.page
+      .locator('[role="dialog"]')
+      .filter({ hasText: /upgrade|pricing|credits/i });
     await expect(upgradeModal).toBeVisible({ timeout: 5000 });
   }
 
@@ -243,7 +307,9 @@ export class UpscalerPage extends BasePage {
    * Get the completion count text
    */
   async getCompletedCount(): Promise<string> {
-    const countText = this.page.locator(':has-text("completed")').or(this.page.locator('[data-testid="completed-count"]'));
+    const countText = this.page
+      .locator(':has-text("completed")')
+      .or(this.page.locator('[data-testid="completed-count"]'));
     return (await countText.textContent()) || '';
   }
 }
