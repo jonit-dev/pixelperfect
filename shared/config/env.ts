@@ -28,6 +28,11 @@ const clientEnvSchema = z.object({
   // Analytics
   AMPLITUDE_API_KEY: z.string().default(''),
   GA_MEASUREMENT_ID: z.string().default(''),
+  // OAuth Provider Toggles
+  ENABLE_GOOGLE_OAUTH: z.string().default('true'),
+  ENABLE_AZURE_OAUTH: z.string().default('false'),
+  // Contact
+  ADMIN_EMAIL: z.string().email().default('admin@pixelperfect.com'),
 });
 
 export type IClientEnv = z.infer<typeof clientEnvSchema>;
@@ -45,6 +50,11 @@ function loadClientEnv(): IClientEnv {
     // Analytics
     AMPLITUDE_API_KEY: process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '',
     GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '',
+    // OAuth Provider Toggles
+    ENABLE_GOOGLE_OAUTH: process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH || 'true',
+    ENABLE_AZURE_OAUTH: process.env.NEXT_PUBLIC_ENABLE_AZURE_OAUTH || 'false',
+    // Contact
+    ADMIN_EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@pixelperfect.com',
   };
 
   return clientEnvSchema.parse(env);

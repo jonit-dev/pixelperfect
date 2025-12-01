@@ -66,8 +66,8 @@ Before starting validation:
 ### 1.4 Session Management
 
 - [x] Login successfully - ✅ PASS
-- [ ] Refresh the page - **⚠️ MANUAL: Multi-step browser test**
-- [ ] Verify session persists (user still logged in) - **⚠️ MANUAL**
+- [x] Refresh the page - **⚠️ ISSUE: Session NOT persisting after page refresh (tested via Playwright 2025-11-30)**
+- [ ] Verify session persists (user still logged in) - **❌ FAIL: Session lost on page refresh**
 - [ ] Open new tab, navigate to app - **⚠️ MANUAL**
 - [ ] Verify session is shared across tabs - **⚠️ MANUAL**
 - [ ] Logout - **⚠️ MANUAL**
@@ -79,6 +79,7 @@ Before starting validation:
 
 - Session persists across page refreshes and tabs
 - Logout clears session completely
+- **⚠️ ISSUE FOUND (2025-11-30):** Session does not persist across page navigation/refresh. After signup, the user is logged in, but refreshing the page logs them out.
 
 ### 1.5 Protected Routes
 
@@ -553,19 +554,20 @@ Check Lighthouse report for:
 
 **iPad (768x1024):**
 
-- [ ] Layout adapts to tablet size - **⚠️ MANUAL**
-- [ ] No horizontal scrolling - **⚠️ MANUAL**
+- [x] Layout adapts to tablet size - **✅ PASS (tested via Playwright 2025-11-30)**
+- [x] No horizontal scrolling - **✅ PASS**
 - [ ] Touch targets adequately sized (≥44x44px) - **⚠️ MANUAL**
 
 **Android (360x640):**
 
-- [ ] All features accessible - **⚠️ MANUAL**
-- [ ] Text legible (≥16px) - **⚠️ MANUAL**
-- [ ] No layout breaks - **⚠️ MANUAL**
+- [x] All features accessible - **✅ PASS (tested via Playwright 2025-11-30)**
+- [x] Text legible (≥16px) - **✅ PASS**
+- [x] No layout breaks - **✅ PASS**
+- [x] Hamburger menu visible - **✅ PASS**
 
 **Expected:**
 
-- App is fully functional on all screen sizes - **PARTIAL PASS (iPhone tested)**
+- App is fully functional on all screen sizes - **✅ PASS (iPhone, iPad, Android viewports tested via Playwright)**
 
 ### 7.2 Touch Interactions
 
@@ -584,8 +586,8 @@ Check Lighthouse report for:
 
 ### 8.1 Authentication Security
 
-- [ ] Attempt to access `/api/upscale` without token - **⚠️ MANUAL**
-- [ ] Verify 401 Unauthorized response - **⚠️ MANUAL**
+- [x] Attempt to access `/api/upscale` without token - **✅ PASS: Returns 401 Unauthorized with message "Valid authentication token required" (tested via curl 2025-11-30)**
+- [x] Verify 401 Unauthorized response - **✅ PASS (verified 2025-11-30)**
 - [ ] Attempt with expired JWT - **⚠️ MANUAL**
 - [ ] Verify 401 response - **⚠️ MANUAL**
 - [ ] Attempt with tampered JWT (change payload) - **⚠️ MANUAL**
@@ -668,17 +670,17 @@ Check Lighthouse report for:
 
 ### 8.6 Security Headers
 
-- [ ] Use https://securityheaders.com/ to scan homepage - **⚠️ MANUAL**
-- [ ] Verify headers present:
-  - `Content-Security-Policy` - **⚠️ MANUAL**
-  - `X-Frame-Options: DENY` - **⚠️ MANUAL**
-  - `X-Content-Type-Options: nosniff` - **⚠️ MANUAL**
-  - `Referrer-Policy: strict-origin-when-cross-origin` - **⚠️ MANUAL**
-  - `Permissions-Policy` - **⚠️ MANUAL**
+- [ ] Use https://securityheaders.com/ to scan homepage - **⚠️ MANUAL: Requires production URL**
+- [x] Verify headers present (tested via curl 2025-11-30):
+  - `Content-Security-Policy` - **✅ PASS: Comprehensive CSP policy configured**
+  - `X-Frame-Options: DENY` - **✅ PASS**
+  - `X-Content-Type-Options: nosniff` - **✅ PASS**
+  - `Referrer-Policy: strict-origin-when-cross-origin` - **✅ PASS**
+  - `Permissions-Policy` - **✅ PASS: camera=(), microphone=(), geolocation=()**
 
 **Expected:**
 
-- Grade A or B on security headers
+- Grade A or B on security headers - **✅ All critical headers present locally**
 
 ### 8.7 Credit System Security
 
@@ -897,16 +899,23 @@ Check Lighthouse report for:
 
 ### 12.1 Production Build
 
-- [ ] Run `yarn build` locally - **⚠️ MANUAL**
-- [ ] Verify build completes without errors - **⚠️ MANUAL**
-- [ ] Check output for warnings - **⚠️ MANUAL**
-- [ ] Verify bundle size is reasonable (check `.next/` folder) - **⚠️ MANUAL**
+- [x] Run `yarn build` locally - **✅ PASS (tested 2025-11-30, completed in 29.76s)**
+- [x] Verify build completes without errors - **✅ PASS: No errors, compiled successfully**
+- [x] Check output for warnings - **✅ PASS: Only browserslist update warning (non-critical)**
+- [x] Verify bundle size is reasonable (check `.next/` folder) - **✅ PASS: First Load JS ~102-202kB per route**
 - [ ] Run `yarn start` (production server) - **⚠️ MANUAL**
 - [ ] Verify app runs correctly in production mode - **⚠️ MANUAL**
 
+**Build Output Summary (2025-11-30):**
+
+- 20 static pages generated
+- Middleware: 79.6kB
+- Largest route: `/` at 202kB First Load JS
+- All API routes properly marked as dynamic (ƒ)
+
 **Expected:**
 
-- Clean build with no errors
+- Clean build with no errors - **✅ PASS**
 - App functional in production mode
 
 ### 12.2 Environment Variables
@@ -1095,7 +1104,7 @@ Test core functionality in:
 
 **Validated By:** Automated (Playwright MCP + Supabase MCP)
 
-**Date:** 2025-11-27
+**Date:** 2025-11-30 (Updated)
 
 **Notes:**
 
@@ -1112,28 +1121,34 @@ Test core functionality in:
 - Robots.txt (exists, has sitemap directive)
 - JSON-LD structured data (WebSite, Organization, Product schemas)
 - Canonical URLs
-- Mobile responsiveness (iPhone viewport tested)
+- Mobile responsiveness (iPhone, iPad, Android viewports tested via Playwright)
 - Health endpoint (/api/health returns 200)
 - Legal pages (Privacy, Terms, Help - all comprehensive)
 - Footer links
+- **NEW (2025-11-30):** Production build completes successfully (29.76s)
+- **NEW (2025-11-30):** Security headers all present (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
+- **NEW (2025-11-30):** API authentication returns 401 for unauthenticated requests
+- **NEW (2025-11-30):** All major pages load without errors (homepage, upscaler, pricing, blog, help, privacy, terms)
 
 **ISSUES FOUND:**
 
 1. **BLOCKER:** STRIPE_SECRET_KEY not configured - payment flows cannot be tested
-2. **WARNING:** Robots.txt allows all routes (sensitive routes like /api, /dashboard not blocked)
-3. **WARNING:** Supabase security advisory - Leaked Password Protection is disabled
-4. **NOTE:** Favicon 404 error in console
+2. **BLOCKER:** Session persistence not working - user logged out after page refresh (tested 2025-11-30)
+3. **WARNING:** Robots.txt allows all routes (sensitive routes like /api, /dashboard not blocked)
+4. **WARNING:** Supabase security advisory - Leaked Password Protection is disabled
+5. **NOTE:** Favicon 404 error in console
+6. **NOTE:** Hamburger menu button present on mobile but dropdown not visible in accessibility snapshot
 
 **CANNOT TEST (Manual Required):**
 
 - Email verification flow (requires email inbox access)
 - Google/Azure OAuth completion (requires real accounts)
 - Stripe payment flows (requires Stripe configuration)
-- Session persistence across page refreshes
+- ~~Session persistence across page refreshes~~ **TESTED: FAIL - session not persisting**
 - Lighthouse performance audits
 - Analytics dashboards (Amplitude, GA4, Baselime)
-- Security header scanning (requires external tool)
-- Rate limiting verification
+- ~~Security header scanning~~ **TESTED: PASS via curl**
+- Rate limiting verification (health endpoint allows rapid requests)
 - Image upload and processing (requires file upload)
 
 ---
@@ -1157,8 +1172,9 @@ If any of the following are **not checked**, deployment should be **postponed**:
 **Blockers:**
 
 1. STRIPE_SECRET_KEY must be configured
-2. Enable leaked password protection in Supabase Auth settings
-3. Update robots.txt to block sensitive routes
+2. **NEW:** Session persistence not working - users logged out after page refresh
+3. Enable leaked password protection in Supabase Auth settings
+4. Update robots.txt to block sensitive routes
 
 ---
 

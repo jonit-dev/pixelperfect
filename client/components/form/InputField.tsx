@@ -15,12 +15,14 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
           ref={ref}
           type={type}
           placeholder={placeholder}
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 bg-background ${
-            error ? 'border-error ring-2 ring-error/20' : 'border-border hover:border-border/80'
-          } ${className || ''} text-foreground placeholder:text-muted-foreground/60`}
+          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 bg-white ${
+            error
+              ? 'border-red-300 ring-2 ring-red-500/20 focus:border-red-500 focus:ring-red-500/20'
+              : 'border-slate-200 hover:border-slate-300 focus:border-indigo-500 focus:ring-indigo-500/20'
+          } ${className || ''} text-slate-900 placeholder:text-slate-400`}
           {...props}
         />
-        {error && <p className="mt-1.5 text-sm text-error font-medium">{error}</p>}
+        {error && <p className="mt-1.5 text-sm text-red-600 font-medium">{error}</p>}
       </div>
     );
   }

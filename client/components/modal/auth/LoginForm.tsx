@@ -1,8 +1,8 @@
+import { InputField } from '@client/components/form/InputField';
+import { loginSchema } from '@shared/validation/authValidationSchema';
 import React, { FormEventHandler } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { loginSchema } from '@shared/validation/authValidationSchema';
 import { z } from 'zod';
-import { InputField } from '@client/components/form/InputField';
 
 export type ILoginForm = z.infer<typeof loginSchema>;
 
@@ -34,7 +34,7 @@ export const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit, register, error
       />
       <button
         type="submit"
-        className="w-full px-4 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98] mt-2"
+        className="w-full px-4 py-3 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 active:scale-[0.98] mt-2"
       >
         Sign In
       </button>

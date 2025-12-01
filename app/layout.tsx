@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
   };
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={organizationJsonLd} />

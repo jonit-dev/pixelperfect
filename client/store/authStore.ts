@@ -1,7 +1,10 @@
 import { create } from 'zustand';
-import { supabase } from '@server/supabase/supabaseClient';
+import { createClient } from '@shared/utils/supabase/client';
 import { AuthProvider } from '@shared/types/authProviders';
 import { loadingStore } from '@client/store/loadingStore';
+
+// Create a single browser client instance for the auth store
+const supabase = createClient();
 
 interface IAuthState {
   isAuthenticated: boolean;

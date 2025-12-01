@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '@server/supabase/supabaseClient';
+import { createClient } from '@shared/utils/supabase/client';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 
@@ -11,6 +11,7 @@ export const useGoogleSignIn = (): { signIn: () => Promise<void>; loading: boole
   const signIn = async (): Promise<void> => {
     setLoading(true);
     try {
+      const supabase = createClient();
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {

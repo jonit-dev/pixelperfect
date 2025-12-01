@@ -1,6 +1,6 @@
 import { SocialLoginButton } from '@client/components/form/SocialLoginButton';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { supabase } from '@server/supabase/supabaseClient';
+import { createClient } from '@shared/utils/supabase/client';
 import { useAuthStore } from '@client/store/authStore';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
@@ -46,6 +46,7 @@ export const AuthenticationModal: React.FC = () => {
   const isPasswordUser = user?.provider === 'email';
 
   useEffect(() => {
+    const supabase = createClient();
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(event => {
@@ -191,7 +192,7 @@ export const AuthenticationModal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsRegistering(!isRegistering)}
-                  className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
+                  className="text-muted-foreground text-center hover:text-foreground font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
                 >
                   {isRegistering
                     ? 'Already have an account? Sign in'
@@ -201,7 +202,7 @@ export const AuthenticationModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsForgotPassword(true)}
-                    className="text-primary text-center hover:text-primary-hover font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
+                    className="text-muted-foreground text-center hover:text-foreground font-medium w-full text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
                   >
                     Forgot Password?
                   </button>
