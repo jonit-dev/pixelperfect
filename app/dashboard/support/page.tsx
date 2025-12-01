@@ -8,9 +8,7 @@ export default function SupportPage() {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Help & Support</h1>
-        <p className="text-slate-500 mt-1">
-          Get help with PixelPerfect AI
-        </p>
+        <p className="text-slate-500 mt-1">Get help with PixelPerfect AI</p>
       </div>
 
       {/* Support Options */}
@@ -35,9 +33,7 @@ export default function SupportPage() {
             <MessageCircle size={24} className="text-purple-600" />
           </div>
           <h2 className="font-semibold text-slate-900 mb-2">FAQ</h2>
-          <p className="text-sm text-slate-500 mb-4">
-            Find answers to commonly asked questions
-          </p>
+          <p className="text-sm text-slate-500 mb-4">Find answers to commonly asked questions</p>
           <button className="text-indigo-600 text-sm font-medium hover:text-indigo-700">
             View FAQ
           </button>
@@ -58,23 +54,19 @@ export default function SupportPage() {
 
         <form className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Subject
-            </label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Subject</label>
             <input
               type="text"
               placeholder="What do you need help with?"
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Message
-            </label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
             <textarea
               rows={4}
               placeholder="Describe your issue or question..."
-              className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+              className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
             />
           </div>
           <button
