@@ -64,10 +64,19 @@ export const AuthenticationModal: React.FC = () => {
   }, [open]);
 
   useEffect(() => {
+    // Only update state when modal opens, not when it closes
+    // This prevents the flash of login form during close animation
     if (isOpen && isAuthenticated && !isSettingNewPassword) {
       setIsChangingPassword(isPasswordUser);
-    } else {
-      setIsChangingPassword(false);
+    }
+    // Reset states only after modal has fully closed (with delay for animation)
+    if (!isOpen) {
+      const timer = setTimeout(() => {
+        setIsChangingPassword(false);
+        setIsForgotPassword(false);
+        setIsRegistering(false);
+      }, 250); // Match modal close animation duration
+      return () => clearTimeout(timer);
     }
   }, [isOpen, isAuthenticated, isSettingNewPassword, isPasswordUser]);
 

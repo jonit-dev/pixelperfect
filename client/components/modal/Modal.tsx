@@ -88,7 +88,7 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
           </div>
 
           {/* Body */}
-          <div className="px-6 py-2 overflow-y-auto max-h-[calc(90vh-180px)]">{children}</div>
+          <div className="px-6 py-5 overflow-y-auto max-h-[calc(90vh-180px)]">{children}</div>
 
           {/* Footer */}
           {showCloseButton && (
