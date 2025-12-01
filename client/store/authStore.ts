@@ -109,12 +109,23 @@ export const useAuthStore = create<IAuthState>((set, get) => ({
         data: { session },
       } = await supabase.auth.getSession();
       if (session?.user) {
-        const provider = session.user.app_metadata?.provider;
+        // Determine the auth provider consistently
+        const providers = session.user.app_metadata?.providers as string[] | undefined;
+        const primaryProvider = session.user.app_metadata?.provider as string | undefined;
+
+        let provider: AuthProvider;
+        if (primaryProvider === 'email' || (providers?.length === 1 && providers[0] === 'email')) {
+          provider = AuthProvider.EMAIL;
+        } else {
+          const oauthProvider = primaryProvider || providers?.find((p: string) => p !== 'email');
+          provider = (oauthProvider as AuthProvider) || AuthProvider.EMAIL;
+        }
+
         set({
           user: {
             email: session.user.email || '',
             name: session.user.user_metadata?.name,
-            provider: provider as AuthProvider,
+            provider: provider,
           },
           isAuthenticated: true,
           isLoading: false,
@@ -182,20 +193,30 @@ useAuthStore.getState().initializeAuth();
 // Listen for auth changes
 supabase.auth.onAuthStateChange((event, session) => {
   if (session?.user) {
-    // I had to do this because the azure provider was returning an array with the 'email' field, confusing the type inference
-    const cleanedUpProvidersArray = session.user.app_metadata?.providers.filter(
-      (elm: string) => elm !== 'email'
-    );
+    // Determine the auth provider
+    // For email/password users, app_metadata.provider is 'email'
+    // For OAuth users (google, azure, facebook), it's the OAuth provider name
+    // The providers array may contain both 'email' and the OAuth provider for linked accounts
+    const providers = session.user.app_metadata?.providers as string[] | undefined;
+    const primaryProvider = session.user.app_metadata?.provider as string | undefined;
 
-    console.log('session', session);
-    const provider = cleanedUpProvidersArray[0] as AuthProvider;
+    // Use the primary provider first, or check if it's an email-only user
+    let provider: AuthProvider;
+    if (primaryProvider === 'email' || (providers?.length === 1 && providers[0] === 'email')) {
+      provider = AuthProvider.EMAIL;
+    } else {
+      // For OAuth users, use the primary provider or first non-email provider
+      const oauthProvider = primaryProvider || providers?.find((p: string) => p !== 'email');
+      provider = (oauthProvider as AuthProvider) || AuthProvider.EMAIL;
+    }
+
     const wasAuthenticated = useAuthStore.getState().isAuthenticated;
 
     useAuthStore.setState({
       user: {
         email: session.user.email || '',
         name: session.user.user_metadata?.name,
-        provider: provider as AuthProvider,
+        provider: provider,
       },
       isAuthenticated: true,
       isLoading: false,
