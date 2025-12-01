@@ -126,7 +126,7 @@
 - **Database**: Supabase (PostgreSQL with RLS)
 - **Authentication**: Supabase Auth with OAuth providers
 - **Payments**: Stripe integration with webhook handling
-- **AI Processing**: Gemini API / OpenRouter integration
+- **AI Processing**: Google Gemini API integration
 - **File Storage**: Supabase Storage with CDN
 
 ### Monitoring & Analytics
