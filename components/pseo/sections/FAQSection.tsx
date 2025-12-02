@@ -9,20 +9,49 @@
 import { useState, ReactElement } from 'react';
 import type { IFAQ } from '@/lib/seo/pseo-types';
 import { FAQAccordion } from '../ui/FAQAccordion';
+import { analytics } from '@client/analytics/analyticsClient';
 
 interface IFAQSectionProps {
   faqs: IFAQ[];
   title?: string;
+  pageType?:
+    | 'tool'
+    | 'comparison'
+    | 'guide'
+    | 'useCase'
+    | 'alternative'
+    | 'format'
+    | 'scale'
+    | 'free';
+  slug?: string;
 }
 
 export function FAQSection({
   faqs,
   title = 'Frequently Asked Questions',
+  pageType,
+  slug,
 }: IFAQSectionProps): ReactElement {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   if (!faqs || faqs.length === 0) {
     return <></>;
+  }
+
+  function handleFAQToggle(index: number, question: string): void {
+    const newIndex = openIndex === index ? null : index;
+    setOpenIndex(newIndex);
+
+    // Track FAQ expansion
+    if (newIndex === index && pageType && slug) {
+      analytics.track('pseo_faq_expanded', {
+        pageType,
+        slug,
+        elementType: 'faq',
+        elementId: `faq-${index}`,
+        question,
+      });
+    }
   }
 
   return (
@@ -35,7 +64,7 @@ export function FAQSection({
             question={faq.question}
             answer={faq.answer}
             isOpen={openIndex === index}
-            onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+            onToggle={() => handleFAQToggle(index, faq.question)}
           />
         ))}
       </div>

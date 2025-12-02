@@ -48,6 +48,52 @@ export interface IImageUpscaledProperties {
   durationMs: number;
 }
 
+// pSEO-specific event properties
+export interface IPSEOPageViewProperties extends IPageViewProperties {
+  pageType:
+    | 'tool'
+    | 'comparison'
+    | 'guide'
+    | 'useCase'
+    | 'alternative'
+    | 'format'
+    | 'scale'
+    | 'free';
+  slug: string;
+  primaryKeyword?: string;
+  tier?: number;
+}
+
+export interface IPSEOInteractionProperties {
+  pageType:
+    | 'tool'
+    | 'comparison'
+    | 'guide'
+    | 'useCase'
+    | 'alternative'
+    | 'format'
+    | 'scale'
+    | 'free';
+  slug: string;
+  elementType: 'cta' | 'faq' | 'feature' | 'benefit' | 'usecase' | 'internal_link';
+  elementId?: string;
+}
+
+export interface IPSEOScrollProperties {
+  pageType:
+    | 'tool'
+    | 'comparison'
+    | 'guide'
+    | 'useCase'
+    | 'alternative'
+    | 'format'
+    | 'scale'
+    | 'free';
+  slug: string;
+  depth: 25 | 50 | 75 | 100;
+  timeToDepthMs: number;
+}
+
 // =============================================================================
 // Event Types
 // =============================================================================
@@ -78,7 +124,13 @@ export type IAnalyticsEventName =
   | 'checkout_abandoned'
   // Error/limit events (server-side only)
   | 'rate_limit_exceeded'
-  | 'processing_failed';
+  | 'processing_failed'
+  // pSEO-specific events
+  | 'pseo_page_view'
+  | 'pseo_cta_clicked'
+  | 'pseo_scroll_depth'
+  | 'pseo_faq_expanded'
+  | 'pseo_internal_link_clicked';
 
 export interface IAnalyticsEvent {
   name: IAnalyticsEventName;
