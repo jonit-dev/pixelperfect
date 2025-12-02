@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllGuides } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Image Enhancement Guides & Tutorials | PixelPerfect',
-  description:
-    'Learn how to enhance, upscale, and optimize your images with our comprehensive guides and tutorials.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/guides',
-  },
-};
+export const metadata = generateCategoryMetadata('guides');
 
 export default async function GuidesHubPage() {
   const guides = await getAllGuides();

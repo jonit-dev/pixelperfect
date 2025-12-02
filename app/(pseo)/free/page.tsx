@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllFreeTools } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Free AI Image Tools | PixelPerfect',
-  description:
-    'Free AI image upscaling and enhancement tools. No credit card required. Try professional image tools for free.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/free',
-  },
-};
+export const metadata = generateCategoryMetadata('free');
 
 export default async function FreeHubPage() {
   const freeTools = await getAllFreeTools();

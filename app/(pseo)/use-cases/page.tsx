@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllUseCases } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Image Upscaling Use Cases | PixelPerfect',
-  description:
-    'Discover how AI image upscaling helps different industries - e-commerce, real estate, gaming, and more.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/use-cases',
-  },
-};
+export const metadata = generateCategoryMetadata('use-cases');
 
 export default async function UseCasesHubPage() {
   const useCases = await getAllUseCases();

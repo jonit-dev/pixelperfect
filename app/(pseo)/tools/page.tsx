@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllTools } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'AI Image Tools - Upscaler, Enhancer & More | PixelPerfect',
-  description:
-    'Discover our suite of AI-powered image tools. Upscale, enhance, restore, and optimize your photos with cutting-edge technology. Free to try.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/tools',
-  },
-};
+export const metadata = generateCategoryMetadata('tools');
 
 export default async function ToolsHubPage() {
   const tools = await getAllTools();

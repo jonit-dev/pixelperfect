@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllAlternatives } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Image Upscaler Alternatives | PixelPerfect',
-  description:
-    'Looking for image upscaler alternatives? Compare PixelPerfect with other tools and find the best solution for your needs.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/alternatives',
-  },
-};
+export const metadata = generateCategoryMetadata('alternatives');
 
 export default async function AlternativesHubPage() {
   const alternatives = await getAllAlternatives();

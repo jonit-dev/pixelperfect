@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getUseCaseData, getAllUseCaseSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IUseCasePageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IUseCasePageProps): Promise<M
 
   if (!useCase) return {};
 
-  return {
-    title: useCase.metaTitle,
-    description: useCase.metaDescription,
-    keywords: useCase.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/use-cases/${slug}`,
-    },
-  };
+  return generatePageMetadata(useCase, 'use-cases');
 }
 
 export default async function UseCasePage({ params }: IUseCasePageProps) {

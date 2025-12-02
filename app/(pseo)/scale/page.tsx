@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllScales } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Image Upscaling Resolutions | PixelPerfect',
-  description:
-    'Upscale images to any resolution - HD, 4K, 8K and more. AI-powered upscaling for every use case.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/scale',
-  },
-};
+export const metadata = generateCategoryMetadata('scale');
 
 export default async function ScaleHubPage() {
   const scales = await getAllScales();

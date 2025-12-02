@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllComparisons } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'AI Image Upscaler Comparisons | PixelPerfect',
-  description:
-    'Compare PixelPerfect with other AI image upscaling tools. Find the best solution for your needs.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/compare',
-  },
-};
+export const metadata = generateCategoryMetadata('compare');
 
 export default async function CompareHubPage() {
   const comparisons = await getAllComparisons();

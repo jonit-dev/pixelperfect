@@ -8,11 +8,16 @@ export class LoginPage extends BasePage {
     await this.page.locator('header').waitFor({ state: 'visible', timeout: 15000 });
 
     // Wait for auth state to load and login button to be visible
-    const loginButton = this.page.getByRole('button', { name: /sign in/i });
+    // Use the first sign-in button (header one) to avoid conflicts with content area buttons
+    const loginButton = this.page.locator('header').getByRole('button', { name: /sign in/i });
     await loginButton.waitFor({ state: 'visible', timeout: 15000 });
+
+    // Add a small delay to ensure the page is ready
+    await this.page.waitForTimeout(500);
+
     await loginButton.click();
 
-    // Wait for modal to appear
+    // Wait for modal to appear - add extra time for animations
     const modal = this.page.locator('div[role="dialog"]');
     await expect(modal).toBeVisible({ timeout: 10000 });
   }
@@ -24,7 +29,7 @@ export class LoginPage extends BasePage {
     const modal = this.page.locator('div[role="dialog"]');
     await modal.getByPlaceholder(/email/i).fill(email);
     await modal.getByPlaceholder(/password/i).fill(password);
-    await modal.getByRole('button', { name: /sign in/i }).click();
+    await modal.getByRole('button', { name: 'Sign In' }).first().click();
   }
 
   async assertModalVisible(): Promise<void> {

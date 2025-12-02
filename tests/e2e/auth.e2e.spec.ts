@@ -44,7 +44,7 @@ test.describe('Authentication', () => {
 
       // Verify submit button exists within modal
       const modal = page.locator('div[role="dialog"]');
-      const submitButton = modal.getByRole('button', { name: /sign in/i });
+      const submitButton = modal.getByRole('button', { name: 'Sign In' }).first();
       await expect(submitButton).toBeVisible();
     });
 
@@ -71,7 +71,7 @@ test.describe('Authentication', () => {
       // The app may: show dashboard with sign in option, redirect, or show login modal
       // Just verify the page loads without crashing
       const url = page.url();
-      const hasSignIn = await page.getByRole('button', { name: /sign in/i }).isVisible();
+      const hasSignIn = await page.locator('header').getByRole('button', { name: 'Sign In' }).first().isVisible();
       const hasModal = await page.locator('div[role="dialog"]').isVisible();
 
       // Page should be functional - either shows sign in button, modal, or redirected
@@ -83,10 +83,10 @@ test.describe('Authentication', () => {
       await page.waitForLoadState('networkidle');
 
       // Should show login requirement or redirect or stay on page with sign in option
-      const hasLoginOption = await page.getByRole('button', { name: /sign in/i }).isVisible();
+      const hasLoginOption = await page.locator('header').getByRole('button', { name: 'Sign In' }).first().isVisible();
       const redirectedToLogin = page.url().includes('/login');
       const isOnBillingPage = page.url().includes('/billing');
-      const isOnHomePage = page.url() === 'http://localhost:3000/';
+      const isOnHomePage = page.url() === 'http://localhost:3003/';
 
       // One of these conditions should be true for protected routes
       expect(hasLoginOption || redirectedToLogin || isOnBillingPage || isOnHomePage).toBe(true);
@@ -102,7 +102,7 @@ test.describe('Authentication', () => {
       await page.locator('header').waitFor({ state: 'visible', timeout: 15000 });
 
       // Wait for sign-in button to be visible (auth state loading)
-      const signInButton = page.getByRole('button', { name: /sign in/i });
+      const signInButton = page.locator('header').getByRole('button', { name: 'Sign In' }).first();
       await expect(signInButton).toBeVisible({ timeout: 15000 });
     });
 
@@ -111,7 +111,7 @@ test.describe('Authentication', () => {
       await loginPage.goto('/');
 
       // Wait for and click the sign in button in the header
-      const signInButton = page.getByRole('button', { name: /sign in/i });
+      const signInButton = page.locator('header').getByRole('button', { name: 'Sign In' }).first();
       await signInButton.waitFor({ state: 'visible', timeout: 15000 });
       await signInButton.click();
 
@@ -128,7 +128,7 @@ test.describe('Authentication', () => {
 
       // Try to submit without filling fields
       const modal = page.locator('div[role="dialog"]');
-      const submitButton = modal.getByRole('button', { name: /sign in/i });
+      const submitButton = modal.getByRole('button', { name: 'Sign In' }).first();
       await submitButton.click();
 
       // Form should show validation (HTML5 validation or custom)
@@ -149,7 +149,7 @@ test.describe('Authentication', () => {
       await modal.getByPlaceholder(/email/i).fill('invalid-email');
       await modal.getByPlaceholder(/password/i).fill('somepassword');
 
-      const submitButton = modal.getByRole('button', { name: /sign in/i });
+      const submitButton = modal.getByRole('button', { name: 'Sign In' }).first();
       await submitButton.click();
 
       // Form should remain open due to validation

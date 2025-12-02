@@ -48,7 +48,7 @@ export class HomePage extends BasePage {
       .filter({ hasNot: page.locator('a') })
       .first();
     this.desktopNav = page.locator('nav.hidden.md\\:flex');
-    this.signInButton = page.getByRole('button', { name: 'Sign In' });
+    this.signInButton = page.getByRole('button', { name: 'Sign In' }).first();
     this.freeCreditsIndicator = page.getByText('10 Free Credits');
 
     // Hero elements

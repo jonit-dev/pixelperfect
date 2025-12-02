@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFormatData, getAllFormatSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IFormatPageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IFormatPageProps): Promise<Me
 
   if (!format) return {};
 
-  return {
-    title: format.metaTitle,
-    description: format.metaDescription,
-    keywords: format.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/formats/${slug}`,
-    },
-  };
+  return generatePageMetadata(format, 'formats');
 }
 
 export default async function FormatPage({ params }: IFormatPageProps) {

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFreeData, getAllFreeSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IFreePageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IFreePageProps): Promise<Meta
 
   if (!freeTool) return {};
 
-  return {
-    title: freeTool.metaTitle,
-    description: freeTool.metaDescription,
-    keywords: freeTool.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/free/${slug}`,
-    },
-  };
+  return generatePageMetadata(freeTool, 'free');
 }
 
 export default async function FreePage({ params }: IFreePageProps) {

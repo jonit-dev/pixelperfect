@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAlternativeData, getAllAlternativeSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IAlternativePageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IAlternativePageProps): Promi
 
   if (!alternative) return {};
 
-  return {
-    title: alternative.metaTitle,
-    description: alternative.metaDescription,
-    keywords: alternative.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/alternatives/${slug}`,
-    },
-  };
+  return generatePageMetadata(alternative, 'alternatives');
 }
 
 export default async function AlternativePage({ params }: IAlternativePageProps) {

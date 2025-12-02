@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getGuideData, getAllGuideSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IGuidePageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IGuidePageProps): Promise<Met
 
   if (!guide) return {};
 
-  return {
-    title: guide.metaTitle,
-    description: guide.metaDescription,
-    keywords: guide.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/guides/${slug}`,
-    },
-  };
+  return generatePageMetadata(guide, 'guides');
 }
 
 export default async function GuidePage({ params }: IGuidePageProps) {

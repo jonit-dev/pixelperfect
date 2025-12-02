@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getScaleData, getAllScaleSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IScalePageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IScalePageProps): Promise<Met
 
   if (!scale) return {};
 
-  return {
-    title: scale.metaTitle,
-    description: scale.metaDescription,
-    keywords: scale.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/scale/${slug}`,
-    },
-  };
+  return generatePageMetadata(scale, 'scale');
 }
 
 export default async function ScalePage({ params }: IScalePageProps) {

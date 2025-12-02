@@ -7,4 +7,4 @@
 export $(grep -v '^#' .env.test | grep -v '^$' | xargs)
 
 # Run the dev server
-concurrently "next dev" "wrangler pages dev --proxy 3000"
+yarn concurrently "next dev" "wrangler pages dev --proxy 3000 --port 8788"

@@ -105,9 +105,16 @@ export const useAuthStore = create<IAuthState>((set, get) => ({
   initializeAuth: async () => {
     try {
       loadingStore.getState().setLoading(true);
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+
+      // Add a timeout to prevent infinite loading in test environments
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Auth initialization timeout')), 5000);
+      });
+
+      const sessionPromise = supabase.auth.getSession();
+
+      const { data: { session } } = await Promise.race([sessionPromise, timeoutPromise]) as { data: { session: { user: { id: string; email: string; user_metadata: Record<string, unknown>; app_metadata: Record<string, unknown> } } | null } };
+
       if (session?.user) {
         // Determine the auth provider consistently
         const providers = session.user.app_metadata?.providers as string[] | undefined;
@@ -124,7 +131,7 @@ export const useAuthStore = create<IAuthState>((set, get) => ({
         set({
           user: {
             email: session.user.email || '',
-            name: session.user.user_metadata?.name,
+            name: session.user.user_metadata?.name as string | undefined,
             provider: provider,
           },
           isAuthenticated: true,

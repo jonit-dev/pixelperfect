@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getComparisonData, getAllComparisonSlugs } from '@/lib/seo/data-loader';
+import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 
 interface IComparisonPageProps {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,7 @@ export async function generateMetadata({ params }: IComparisonPageProps): Promis
 
   if (!comparison) return {};
 
-  return {
-    title: comparison.metaTitle,
-    description: comparison.metaDescription,
-    keywords: comparison.secondaryKeywords.join(', '),
-    alternates: {
-      canonical: `https://pixelperfect.app/compare/${slug}`,
-    },
-  };
+  return generatePageMetadata(comparison, 'compare');
 }
 
 export default async function ComparisonPage({ params }: IComparisonPageProps) {

@@ -1,15 +1,8 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllFormats } from '@/lib/seo/data-loader';
+import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata: Metadata = {
-  title: 'Image Format Upscaling | PixelPerfect',
-  description:
-    'Upscale images in any format - JPEG, PNG, WebP, HEIC, RAW and more. AI-powered enhancement for every file type.',
-  alternates: {
-    canonical: 'https://pixelperfect.app/formats',
-  },
-};
+export const metadata = generateCategoryMetadata('formats');
 
 export default async function FormatsHubPage() {
   const formats = await getAllFormats();
