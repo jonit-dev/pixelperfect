@@ -268,8 +268,13 @@ test.describe('API: Stripe Customer Portal Integration', () => {
       if (response.status() >= 400) {
         const data = await response.json();
         expect(data.error).toBeTruthy();
-        // Should not leak sensitive information
-        expect(typeof data.error).toBe('string');
+        // Should not leak sensitive information and should follow new error format
+        if (typeof data.error === 'object') {
+          expect(data.error.code).toBeTruthy();
+          expect(data.error.message).toBeTruthy();
+        } else {
+          expect(typeof data.error).toBe('string');
+        }
       }
     });
 

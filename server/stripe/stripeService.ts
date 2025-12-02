@@ -17,7 +17,7 @@ export class StripeService {
    * Create a Stripe Checkout Session
    * @param priceId - The Stripe Price ID
    * @param options - Additional options for the checkout session
-   * @returns The checkout URL to redirect the user to
+   * @returns The checkout session data (URL for hosted, clientSecret for embedded)
    */
   static async createCheckoutSession(
     priceId: string,
@@ -25,6 +25,7 @@ export class StripeService {
       successUrl?: string;
       cancelUrl?: string;
       metadata?: Record<string, string>;
+      uiMode?: 'hosted' | 'embedded';
     }
   ): Promise<ICheckoutSessionResponse> {
     const {
@@ -40,6 +41,7 @@ export class StripeService {
       successUrl: options?.successUrl,
       cancelUrl: options?.cancelUrl,
       metadata: options?.metadata,
+      uiMode: options?.uiMode,
     };
 
     const response = await fetch('/api/checkout', {
@@ -56,8 +58,14 @@ export class StripeService {
       throw new Error(error.error || 'Failed to create checkout session');
     }
 
-    const data: ICheckoutSessionResponse = await response.json();
-    return data;
+    const responseJson = await response.json();
+
+    // Handle both wrapped and unwrapped response formats
+    if (responseJson.success && responseJson.data) {
+      return responseJson.data as ICheckoutSessionResponse;
+    } else {
+      return responseJson as ICheckoutSessionResponse;
+    }
   }
 
   /**

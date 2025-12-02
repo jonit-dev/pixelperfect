@@ -75,8 +75,8 @@ function SuccessContent(): JSX.Element {
       <main className="flex-1 flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <Loader2 className="h-12 w-12 animate-spin text-indigo-600 mx-auto mb-4" />
-          <p className="text-lg text-slate-600">Processing your payment...</p>
-          <p className="text-sm text-slate-400 mt-2">This usually takes a few seconds</p>
+          <p className="text-lg text-slate-600">Activating your subscription...</p>
+          <p className="text-sm text-slate-400 mt-2">Your credits will be available in a moment</p>
         </div>
       </main>
     );
@@ -94,8 +94,8 @@ function SuccessContent(): JSX.Element {
           </div>
 
           {/* Success Message */}
-          <h1 className="text-3xl font-bold mb-4">Payment Successful!</h1>
-          <p className="text-lg text-slate-600 mb-4">Thank you for your purchase.</p>
+          <h1 className="text-3xl font-bold mb-4">Subscription Activated!</h1>
+          <p className="text-lg text-slate-600 mb-4">Thank you for subscribing. Your monthly credits will be added shortly.</p>
 
           {/* Credits Balance */}
           {credits !== null && (
@@ -110,7 +110,7 @@ function SuccessContent(): JSX.Element {
             <div className="flex items-center justify-center gap-2 text-amber-600 mb-6">
               <AlertCircle className="h-4 w-4" />
               <p className="text-sm">
-                If your credits haven&apos;t updated, please refresh the page.
+                Your subscription is active. If your credits haven&apos;t updated yet, please refresh the page or check your billing dashboard.
               </p>
             </div>
           )}

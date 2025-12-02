@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js';
-import { loadStripe, type StripeEmbeddedCheckoutOptions } from '@stripe/stripe-js';
-import { StripeService } from '@server/stripe';
 import { useToastStore } from '@client/store/toastStore';
+import { StripeService } from '@server/stripe';
 import { clientEnv } from '@shared/config/env';
+import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
+import { loadStripe, type StripeEmbeddedCheckoutOptions } from '@stripe/stripe-js';
+import { useEffect, useState } from 'react';
 
 interface ICheckoutModalProps {
   priceId: string;
@@ -111,11 +111,11 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden"
+        className="relative bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[95vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -141,7 +141,7 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
         </button>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[90vh]">
+        <div className="overflow-y-auto flex-1 min-h-0">
           {loading && (
             <div className="flex items-center justify-center py-20">
               <div className="flex flex-col items-center gap-4">
@@ -167,9 +167,11 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
           )}
 
           {!loading && !error && clientSecret && (
-            <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-              <EmbeddedCheckout />
-            </EmbeddedCheckoutProvider>
+            <div className="min-h-[600px]">
+              <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+                <EmbeddedCheckout />
+              </EmbeddedCheckoutProvider>
+            </div>
           )}
         </div>
       </div>

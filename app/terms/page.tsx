@@ -79,13 +79,13 @@ export default function TermsOfServicePage(): JSX.Element {
               standard Terms and may be modified or discontinued at any time.
             </p>
 
-            <h3 className="text-xl font-medium mb-3">4.3 Purchased Credits</h3>
+            <h3 className="text-xl font-medium mb-3">4.3 Subscription Credits</h3>
             <ul className="list-disc pl-6 mb-4 text-slate-700">
-              <li>Credit packs are one-time purchases and do not expire for 12 months</li>
               <li>
-                Subscription credits renew monthly and may roll over (up to 6x monthly amount)
+                Subscription credits renew monthly and roll over (up to 6× your monthly credit allowance)
               </li>
-              <li>All purchases are processed through Stripe</li>
+              <li>Credits are only available while your subscription is active</li>
+              <li>All subscriptions are processed through Stripe</li>
               <li>Prices are in USD unless otherwise stated</li>
             </ul>
 

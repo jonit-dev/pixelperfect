@@ -6,9 +6,9 @@ import { StripeService } from '@server/stripe';
 import type { IUserProfile, ISubscription } from '@server/stripe/types';
 import {
   STRIPE_PRICES,
-  CREDIT_PACKS,
   SUBSCRIPTION_PLANS,
   isStripePricesConfigured,
+  getPlanForPriceId,
 } from '@shared/config/stripe';
 
 export default function PricingPage() {
@@ -52,7 +52,9 @@ export default function PricingPage() {
               {subscription && (
                 <div className="text-right">
                   <p className="text-sm text-indigo-600">Active subscription</p>
-                  <p className="font-medium text-indigo-700">{profile.subscription_tier}</p>
+                  <p className="font-medium text-indigo-700">
+                    {getPlanForPriceId(subscription.price_id)?.name || profile.subscription_tier}
+                  </p>
                 </div>
               )}
             </div>
@@ -89,53 +91,14 @@ export default function PricingPage() {
             Simple, Transparent Pricing
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Choose the plan that fits your needs. Purchase credits for one-time use or subscribe for
-            ongoing access.
+            Choose the subscription plan that fits your needs. Get monthly credits with automatic rollover.
           </p>
         </div>
 
-        {/* Credits Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">Credit Packs</h2>
-          <p className="text-center text-slate-600 mb-8">
-            Buy credits once, use them anytime. Perfect for occasional users.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <PricingCard
-              name={CREDIT_PACKS.STARTER_CREDITS.name}
-              description={CREDIT_PACKS.STARTER_CREDITS.description}
-              price={CREDIT_PACKS.STARTER_CREDITS.price}
-              features={CREDIT_PACKS.STARTER_CREDITS.features}
-              priceId={STRIPE_PRICES.STARTER_CREDITS}
-              creditsAmount={CREDIT_PACKS.STARTER_CREDITS.credits}
-            />
-
-            <PricingCard
-              name={CREDIT_PACKS.PRO_CREDITS.name}
-              description={CREDIT_PACKS.PRO_CREDITS.description}
-              price={CREDIT_PACKS.PRO_CREDITS.price}
-              features={CREDIT_PACKS.PRO_CREDITS.features}
-              priceId={STRIPE_PRICES.PRO_CREDITS}
-              creditsAmount={CREDIT_PACKS.PRO_CREDITS.credits}
-              recommended={CREDIT_PACKS.PRO_CREDITS.recommended}
-            />
-
-            <PricingCard
-              name={CREDIT_PACKS.ENTERPRISE_CREDITS.name}
-              description={CREDIT_PACKS.ENTERPRISE_CREDITS.description}
-              price={CREDIT_PACKS.ENTERPRISE_CREDITS.price}
-              features={CREDIT_PACKS.ENTERPRISE_CREDITS.features}
-              priceId={STRIPE_PRICES.ENTERPRISE_CREDITS}
-              creditsAmount={CREDIT_PACKS.ENTERPRISE_CREDITS.credits}
-            />
-          </div>
-        </div>
-
-        {/* Subscriptions Section */}
+        {/* Subscription Plans Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">
-            Monthly Subscriptions
+            Choose Your Plan
           </h2>
           <p className="text-center text-slate-600 mb-8">
             Get credits every month with our subscription plans. Cancel anytime.
@@ -192,8 +155,7 @@ export default function PricingPage() {
             <div className="bg-white p-6 rounded-lg border border-slate-200">
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Do credits expire?</h3>
               <p className="text-slate-600">
-                One-time credit packs are valid for 12 months from purchase. Subscription credits
-                roll over month-to-month as long as your subscription is active.
+                Subscription credits roll over month-to-month up to your plan's maximum limit as long as your subscription is active.
               </p>
             </div>
 

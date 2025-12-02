@@ -4,6 +4,8 @@ import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import type { ICheckoutSessionRequest } from '@server/stripe/types';
 import { clientEnv } from '@shared/config/env';
+import { getPlanForPriceId } from '@shared/config/stripe';
+import { BILLING_COPY } from '@shared/constants/billing';
 
 export const runtime = 'edge'; // Cloudflare Worker compatible
 
@@ -11,7 +13,7 @@ export async function POST(request: NextRequest) {
   try {
     // 1. Get the request body
     const body: ICheckoutSessionRequest = await request.json();
-    const { priceId, successUrl, cancelUrl, metadata = {} } = body;
+    const { priceId, successUrl, cancelUrl, metadata = {}, uiMode = 'hosted' } = body;
 
     // Basic validation first (always run this, even in test mode)
     if (!priceId) {
@@ -25,6 +27,27 @@ export async function POST(request: NextRequest) {
         },
         { status: 400 }
       );
+    }
+
+    // Check if we're in test mode (before plan validation)
+    const isTestMode = process.env.STRIPE_SECRET_KEY?.includes('dummy_key') && process.env.NODE_ENV === 'test';
+
+    // Validate that the price ID is a valid subscription price (skip in test mode)
+    let plan = null;
+    if (!isTestMode) {
+      plan = getPlanForPriceId(priceId);
+      if (!plan) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'INVALID_PRICE',
+              message: 'Invalid price ID. Only subscription plans are supported.'
+            }
+          },
+          { status: 400 }
+        );
+      }
     }
 
     // 2. Get the authenticated user from the Authorization header
@@ -75,7 +98,7 @@ export async function POST(request: NextRequest) {
 
     // Only use mock mode if we have an explicitly dummy key or are in NODE_ENV=test
     // Real test keys (sk_test_*) should go through normal Stripe flow
-    if (process.env.STRIPE_SECRET_KEY?.includes('dummy_key') && process.env.NODE_ENV === 'test') {
+    if (isTestMode) {
       // Create mock customer ID if it doesn't exist
       if (!customerId) {
         customerId = `cus_test_${user.id}`;
@@ -118,11 +141,24 @@ export async function POST(request: NextRequest) {
         .eq('id', user.id);
     }
 
-    // 4. Get the price to determine checkout mode
-    const price = await stripe.prices.retrieve(priceId);
-    const isSubscription = price.type === 'recurring';
+    // 4. Verify price is a recurring subscription (double-check with Stripe in production)
+    if (!isTestMode) {
+      const price = await stripe.prices.retrieve(priceId);
+      if (price.type !== 'recurring') {
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'INVALID_PRICE',
+              message: 'Only subscription plans are supported. One-time payments are not allowed.'
+            }
+          },
+          { status: 400 }
+        );
+      }
+    }
 
-    // 5. Create Stripe Checkout Session
+    // 5. Create Stripe Checkout Session (subscription mode only)
     const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
@@ -133,32 +169,39 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
-      mode: isSubscription ? 'subscription' : 'payment',
-      success_url: successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: cancelUrl || `${baseUrl}/canceled`,
+      mode: 'subscription',
+      ui_mode: uiMode,
       metadata: {
         user_id: user.id,
+        ...(plan ? { plan_key: plan.key } : {}),
         ...metadata,
+      },
+      subscription_data: {
+        metadata: {
+          user_id: user.id,
+          ...(plan ? { plan_key: plan.key } : {}),
+        },
       },
     };
 
-    // For subscriptions, also store metadata on subscription
-    if (isSubscription) {
-      sessionParams.subscription_data = {
-        metadata: {
-          user_id: user.id,
-        },
-      };
+    // Add return URLs only for hosted mode
+    if (uiMode === 'hosted') {
+      sessionParams.success_url = successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
+      sessionParams.cancel_url = cancelUrl || `${baseUrl}/canceled`;
+    } else {
+      // For embedded mode, use return_url
+      sessionParams.return_url = successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
     }
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    // 6. Return the session URL
+    // 6. Return the session data
     return NextResponse.json({
       success: true,
       data: {
         url: session.url,
         sessionId: session.id,
+        clientSecret: session.client_secret, // Required for embedded checkout
       }
     });
   } catch (error: unknown) {

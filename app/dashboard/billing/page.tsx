@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { CreditCard, Package, Receipt, ExternalLink, Loader2, RefreshCw } from 'lucide-react';
 import { StripeService } from '@server/stripe';
 import { useToastStore } from '@client/store/toastStore';
+import { getPlanDisplayName } from '@shared/config/stripe';
 import type { IUserProfile, ISubscription } from '@server/stripe/types';
 
 export default function BillingPage() {
@@ -109,7 +110,12 @@ export default function BillingPage() {
     );
   }
 
-  const planName = subscription ? profile?.subscription_tier || 'Active Plan' : 'Free Plan';
+  const planName = subscription
+    ? getPlanDisplayName({
+        priceId: subscription.price_id,
+        subscriptionTier: profile?.subscription_tier,
+      })
+    : 'Free Plan';
 
   return (
     <div className="space-y-6">
@@ -154,7 +160,7 @@ export default function BillingPage() {
               onClick={handleUpgrade}
               className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
             >
-              {subscription ? 'Buy More Credits' : 'Upgrade Plan'}
+              {subscription ? 'Change Plan' : 'Choose Plan'}
             </button>
           </div>
         </div>
@@ -215,7 +221,7 @@ export default function BillingPage() {
         ) : (
           <div className="text-center py-8 text-slate-500">
             <p>No payment methods added yet</p>
-            <p className="text-sm mt-2">Make your first purchase to set up a payment method.</p>
+            <p className="text-sm mt-2">Choose a subscription plan to set up a payment method.</p>
             <button
               onClick={handleUpgrade}
               className="mt-4 px-4 py-2 border border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"

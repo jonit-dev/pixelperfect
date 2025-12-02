@@ -177,24 +177,60 @@ test.describe('API: Checkout Flow', () => {
     });
   });
 
-  test.describe('Price Detection and Session Mode', () => {
-    test('should detect one-time payment mode for non-recurring prices', async ({ request }) => {
-      // Reset test user for this test
-
+  test.describe('Subscription-Only Validation', () => {
+    test('should reject non-subscription price IDs', async ({ request }) => {
       const testUser = await resetTestUser();
 
-      // Set up existing customer to skip customer creation
+      // Set up existing customer
       const { createClient } = await import('@supabase/supabase-js');
       const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
       await supabase
         .from('profiles')
-        .update({ stripe_customer_id: 'cus_test_one_time' })
+        .update({ stripe_customer_id: 'cus_test_invalid' })
         .eq('id', testUser.id);
 
+      // Test invalid/unknown price IDs
+      const invalidPriceIds = [
+        'price_invalid_unknown',
+        'price_one_time_123', // Simulate old credit pack price
+        'price_legacy_credits',
+        'nonexistent_price',
+      ];
+
+      for (const priceId of invalidPriceIds) {
+        const response = await request.post('/api/checkout', {
+          data: { priceId },
+          headers: {
+            authorization: `Bearer ${testUser.access_token}`,
+            'content-type': 'application/json',
+            origin: 'https://example.com',
+          },
+        });
+
+        expect(response.status()).toBe(400);
+        const data = await response.json();
+        expect(data.error.code).toBe('INVALID_PRICE');
+        expect(data.error.message).toContain('subscription plans are supported');
+      }
+
+      // No cleanup needed - using fixed test user
+    });
+
+    test('should reject one-time payment prices even if they exist in Stripe', async ({ request }) => {
+      const testUser = await resetTestUser();
+
+      // Set up existing customer
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+      await supabase
+        .from('profiles')
+        .update({ stripe_customer_id: 'cus_test_onetime' })
+        .eq('id', testUser.id);
+
+      // Simulate a Stripe price that exists but is one-time (would fail at Stripe retrieval)
       const response = await request.post('/api/checkout', {
         data: {
-          priceId: 'price_one_time_123',
-          metadata: { credits_amount: '100' }, // Indicates one-time credit purchase
+          priceId: 'price_one_time_valid_but_not_allowed',
         },
         headers: {
           authorization: `Bearer ${testUser.access_token}`,
@@ -203,14 +239,15 @@ test.describe('API: Checkout Flow', () => {
         },
       });
 
-      expect(response.status()).toBeGreaterThanOrEqual(400);
+      // Should fail at our validation first, before Stripe API call
+      expect(response.status()).toBe(400);
+      const data = await response.json();
+      expect(data.error.code).toBe('INVALID_PRICE');
 
       // No cleanup needed - using fixed test user
     });
 
-    test('should detect subscription mode for recurring prices', async ({ request }) => {
-      // Reset test user for this test
-
+    test('should accept valid subscription price IDs', async ({ request }) => {
       const testUser = await resetTestUser();
 
       // Set up existing customer
@@ -221,18 +258,29 @@ test.describe('API: Checkout Flow', () => {
         .update({ stripe_customer_id: 'cus_test_subscription' })
         .eq('id', testUser.id);
 
-      const response = await request.post('/api/checkout', {
-        data: {
-          priceId: 'price_subscription_123', // This would be a recurring price in Stripe
-        },
-        headers: {
-          authorization: `Bearer ${testUser.access_token}`,
-          'content-type': 'application/json',
-          origin: 'https://example.com',
-        },
-      });
+      // Test with actual subscription price IDs from config
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+      const subscriptionPriceIds = Object.values(STRIPE_PRICES);
 
-      expect(response.status()).toBeGreaterThanOrEqual(400);
+      for (const priceId of subscriptionPriceIds) {
+        const response = await request.post('/api/checkout', {
+          data: { priceId },
+          headers: {
+            authorization: `Bearer ${testUser.access_token}`,
+            'content-type': 'application/json',
+            origin: 'https://example.com',
+          },
+        });
+
+        // Should pass our validation and fail at Stripe API (since we're using test IDs)
+        expect(response.status()).toBeGreaterThanOrEqual(400);
+
+        // Should not be our validation error
+        if (response.status() === 400) {
+          const data = await response.json();
+          expect(data.error.code).not.toBe('INVALID_PRICE');
+        }
+      }
 
       // No cleanup needed - using fixed test user
     });
@@ -333,10 +381,8 @@ test.describe('API: Checkout Flow', () => {
     });
   });
 
-  test.describe('Metadata Handling', () => {
-    test('should include user_id in session metadata', async ({ request }) => {
-      // Reset test user for this test
-
+  test.describe('Subscription Metadata Handling', () => {
+    test('should include plan_key in session and subscription metadata', async ({ request }) => {
       const testUser = await resetTestUser();
 
       // Set up existing customer
@@ -344,19 +390,18 @@ test.describe('API: Checkout Flow', () => {
       const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
       await supabase
         .from('profiles')
-        .update({ stripe_customer_id: 'cus_test_metadata' })
+        .update({ stripe_customer_id: 'cus_test_plan_metadata' })
         .eq('id', testUser.id);
 
-      const customMetadata = {
-        credits_amount: '50',
-        source: 'web',
-        campaign: 'summer_sale',
-      };
-
+      // Test with actual subscription price ID
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
       const response = await request.post('/api/checkout', {
         data: {
-          priceId: 'price_test_metadata_user',
-          metadata: customMetadata,
+          priceId: STRIPE_PRICES.HOBBY_MONTHLY,
+          metadata: {
+            source: 'web',
+            campaign: 'summer_sale',
+          },
         },
         headers: {
           authorization: `Bearer ${testUser.access_token}`,
@@ -370,11 +415,9 @@ test.describe('API: Checkout Flow', () => {
       // No cleanup needed - using fixed test user
     });
 
-    test('should include user_id in subscription metadata for recurring prices', async ({
+    test('should include user_id in both session and subscription metadata', async ({
       request,
     }) => {
-      // Reset test user for this test
-
       const testUser = await resetTestUser();
 
       // Set up existing customer
@@ -385,9 +428,10 @@ test.describe('API: Checkout Flow', () => {
         .update({ stripe_customer_id: 'cus_test_sub_metadata' })
         .eq('id', testUser.id);
 
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
       const response = await request.post('/api/checkout', {
         data: {
-          priceId: 'price_subscription_metadata',
+          priceId: STRIPE_PRICES.PRO_MONTHLY,
         },
         headers: {
           authorization: `Bearer ${testUser.access_token}`,
@@ -401,9 +445,7 @@ test.describe('API: Checkout Flow', () => {
       // No cleanup needed - using fixed test user
     });
 
-    test('should merge custom metadata with required metadata', async ({ request }) => {
-      // Reset test user for this test
-
+    test('should merge custom metadata with subscription metadata', async ({ request }) => {
       const testUser = await resetTestUser();
 
       // Set up existing customer
@@ -414,13 +456,14 @@ test.describe('API: Checkout Flow', () => {
         .update({ stripe_customer_id: 'cus_test_merge_metadata' })
         .eq('id', testUser.id);
 
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
       const response = await request.post('/api/checkout', {
         data: {
-          priceId: 'price_test_merge',
+          priceId: STRIPE_PRICES.BUSINESS_MONTHLY,
           metadata: {
-            credits_amount: '100',
             promotion: 'new_user',
             referral_code: 'friend123',
+            source: 'web',
           },
         },
         headers: {
@@ -595,18 +638,18 @@ test.describe('API: Checkout Flow', () => {
     });
   });
 
-  test.describe('Integration with Webhook Flow', () => {
-    test('should create sessions compatible with webhook processing', async ({ request }) => {
-      // Reset test user for this test
-
+  test.describe('Integration with Subscription Webhook Flow', () => {
+    test('should create sessions compatible with subscription webhook processing', async ({ request }) => {
       const testUser = await resetTestUser();
 
-      // Create checkout session for credit purchase
+      // Create checkout session for subscription
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
       const response = await request.post('/api/checkout', {
         data: {
-          priceId: 'price_credit_100',
+          priceId: STRIPE_PRICES.HOBBY_MONTHLY,
           metadata: {
-            credits_amount: '100',
+            source: 'pricing_page',
+            campaign: 'launch_promo',
           },
         },
         headers: {
@@ -616,8 +659,45 @@ test.describe('API: Checkout Flow', () => {
         },
       });
 
-      // The session should be created with metadata that webhooks can process
+      // The session should be created with subscription metadata that webhooks can process
       expect(response.status()).toBeGreaterThanOrEqual(400);
+
+      // No cleanup needed - using fixed test user
+    });
+
+    test('should always create subscription mode sessions', async ({ request }) => {
+      const testUser = await resetTestUser();
+
+      // Set up existing customer
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_KEY!);
+      await supabase
+        .from('profiles')
+        .update({ stripe_customer_id: 'cus_test_subscription_mode' })
+        .eq('id', testUser.id);
+
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+
+      // Test all subscription prices create subscription mode
+      for (const [planKey, priceId] of Object.entries(STRIPE_PRICES)) {
+        const response = await request.post('/api/checkout', {
+          data: { priceId },
+          headers: {
+            authorization: `Bearer ${testUser.access_token}`,
+            'content-type': 'application/json',
+            origin: 'https://example.com',
+          },
+        });
+
+        // Should pass validation and fail at Stripe API
+        expect(response.status()).toBeGreaterThanOrEqual(400);
+
+        // Should not be validation error for subscription prices
+        if (response.status() === 400) {
+          const data = await response.json();
+          expect(data.error.code).not.toBe('INVALID_PRICE');
+        }
+      }
 
       // No cleanup needed - using fixed test user
     });

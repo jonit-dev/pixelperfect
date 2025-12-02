@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'STRIPE_CUSTOMER_NOT_FOUND',
-            message: 'No Stripe customer found. Please make a purchase first.'
+            message: 'Activate a subscription to manage billing.'
           }
         },
         { status: 400 }

@@ -139,7 +139,7 @@ export const NavBar = (): JSX.Element => {
                         href="/pricing"
                         className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
                       >
-                        Buy Credits
+                        View Plans
                       </a>
                     </li>
                     {isPasswordUser && (

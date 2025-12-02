@@ -1,24 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { StripeService } from '@server/stripe';
-import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
+import { CheckoutModal } from '@client/components/stripe/CheckoutModal';
 
 interface IPricingCardProps {
   name: string;
   description?: string;
   price: number;
   currency?: string;
-  interval?: 'month' | 'year' | null;
+  interval?: 'month' | 'year';
   features: readonly string[];
   priceId: string;
   recommended?: boolean;
-  creditsAmount?: number;
 }
 
 /**
- * Pricing card component for displaying subscription or credit packages
+ * Pricing card component for displaying subscription plans only
  *
  * Usage:
  * ```tsx
@@ -27,7 +25,7 @@ interface IPricingCardProps {
  *   description="Perfect for professionals"
  *   price={29}
  *   interval="month"
- *   features={["Unlimited projects", "Priority support"]}
+ *   features={["1000 credits per month", "Priority support"]}
  *   priceId="price_XXX"
  *   recommended={true}
  * />
@@ -42,45 +40,25 @@ export function PricingCard({
   features,
   priceId,
   recommended = false,
-  creditsAmount,
 }: IPricingCardProps): JSX.Element {
-  const [loading, setLoading] = useState(false);
-  const { openAuthModal } = useModalStore();
+  const [showCheckout, setShowCheckout] = useState(false);
   const { showToast } = useToastStore();
 
-  const handleSubscribe = async () => {
-    try {
-      setLoading(true);
+  const handleSubscribe = () => {
+    // Check if user is authenticated by trying to get session
+    // The CheckoutModal will handle the actual auth check
+    setShowCheckout(true);
+  };
 
-      await StripeService.redirectToCheckout(priceId, {
-        metadata: creditsAmount ? { credits_amount: creditsAmount.toString() } : {},
-        successUrl: `${window.location.origin}/success`,
-        cancelUrl: window.location.href,
-      });
-    } catch (error: unknown) {
-      console.error('Checkout error:', error);
+  const handleCheckoutClose = () => {
+    setShowCheckout(false);
+  };
 
-      // Handle authentication errors - add price to URL and open auth modal
-      if (error instanceof Error && error.message.includes('not authenticated')) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('checkout_price', priceId);
-        if (creditsAmount) {
-          url.searchParams.set('checkout_credits', creditsAmount.toString());
-        }
-        window.history.replaceState({}, '', url.toString());
-        openAuthModal('login');
-        return;
-      }
-
-      // Show user-friendly error
-      const errorMessage = error instanceof Error ? error.message : 'Failed to initiate checkout';
-      showToast({
-        message: errorMessage,
-        type: 'error',
-      });
-    } finally {
-      setLoading(false);
-    }
+  const handleCheckoutSuccess = () => {
+    showToast({
+      message: 'Subscription activated successfully!',
+      type: 'success',
+    });
   };
 
   return (
@@ -102,9 +80,6 @@ export function PricingCard({
             {price}
           </div>
           {interval && <div className="text-sm text-slate-600 mt-1">per {interval}</div>}
-          {creditsAmount && (
-            <div className="text-sm text-slate-600 mt-1">{creditsAmount} credits</div>
-          )}
         </div>
 
         <div className="border-t border-slate-200 pt-6 mb-6"></div>
@@ -134,17 +109,21 @@ export function PricingCard({
         <div className="mt-auto">
           <button
             onClick={handleSubscribe}
-            disabled={loading}
-            className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-              loading
-                ? 'bg-slate-300 text-slate-600 cursor-not-allowed'
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg'
-            }`}
+            className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg"
           >
-            {loading ? 'Processing...' : interval ? 'Subscribe Now' : 'Buy Credits'}
+            Subscribe Now
           </button>
         </div>
       </div>
+
+      {/* Embedded Checkout Modal */}
+      {showCheckout && (
+        <CheckoutModal
+          priceId={priceId}
+          onClose={handleCheckoutClose}
+          onSuccess={handleCheckoutSuccess}
+        />
+      )}
     </div>
   );
 }

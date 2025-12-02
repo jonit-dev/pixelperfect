@@ -384,19 +384,13 @@ test.describe('API Error Handling', () => {
         },
       });
 
-      // In test mode with dummy Stripe key, this will return 200 with mock success
-      // In production with real Stripe, this would return 500 for invalid priceId
-      expect([200, 500]).toContain(response.status());
+      // Should reject invalid price IDs with 400 validation error
+      expect(response.status()).toBe(400);
       const body = await response.json();
 
-      if (response.status() === 200) {
-        // Test mode - should return mock success response
-        expect(body.success).toBe(true);
-        expect(body.data.mock).toBe(true);
-      } else {
-        // Production mode - should return error
-        expect(body.error).toBeTruthy();
-      }
+      expect(body.success).toBe(false);
+      expect(body.error.code).toBe('INVALID_PRICE');
+      expect(body.error.message).toContain('Invalid price ID');
     });
 
     test('should handle malformed JSON', async ({ request }) => {

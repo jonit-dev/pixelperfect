@@ -3,6 +3,7 @@ import { NextRequest } from 'next/server';
 import { POST } from '../../../app/api/webhooks/stripe/route';
 import { supabaseAdmin } from '../../../server/supabase/supabaseAdmin';
 import { stripe } from '../../../server/stripe';
+import { getPlanForPriceId } from '@shared/config/stripe';
 
 // Mock dependencies
 vi.mock('@server/stripe', () => ({
@@ -53,6 +54,7 @@ vi.mock('@shared/config/stripe', () => ({
     PRO_MONTHLY: { creditsPerMonth: 1000 },
     BUSINESS_MONTHLY: { creditsPerMonth: 5000 },
   },
+  getPlanForPriceId: vi.fn(),
 }));
 
 describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
@@ -63,6 +65,20 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
     consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
     vi.spyOn(console, 'error').mockImplementation(() => {});
     vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    // Mock plan lookup for different price IDs
+    (getPlanForPriceId as any).mockImplementation((priceId: string) => {
+      if (priceId === 'price_hobby_monthly') {
+        return { key: 'hobby', name: 'Hobby', creditsPerMonth: 200, maxRollover: 1200 };
+      }
+      if (priceId === 'price_pro_monthly') {
+        return { key: 'pro', name: 'Professional', creditsPerMonth: 1000, maxRollover: 6000 };
+      }
+      if (priceId === 'price_business_monthly') {
+        return { key: 'business', name: 'Business', creditsPerMonth: 5000, maxRollover: 30000 };
+      }
+      return null;
+    });
   });
 
   afterEach(() => {
@@ -133,10 +149,10 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       amount: 200, // Hobby tier credits
       transaction_type: 'subscription',
       ref_id: invoiceId,
-      description: 'Monthly subscription renewal - 200 credits',
+      description: 'Monthly subscription renewal - Hobby plan - 200 credits',
     });
     expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Adding 200 credits for subscription renewal')
+      expect.stringContaining('Added 200 subscription credits')
     );
   });
 
@@ -203,7 +219,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       amount: 1000, // Pro tier credits
       transaction_type: 'subscription',
       ref_id: invoiceId,
-      description: 'Monthly subscription renewal - 1000 credits',
+      description: 'Monthly subscription renewal - Professional plan - 1000 credits',
     });
   });
 
@@ -270,7 +286,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       amount: 5000, // Business tier credits
       transaction_type: 'subscription',
       ref_id: invoiceId,
-      description: 'Monthly subscription renewal - 5000 credits',
+      description: 'Monthly subscription renewal - Business plan - 5000 credits',
     });
   });
 

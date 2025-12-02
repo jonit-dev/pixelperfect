@@ -55,11 +55,13 @@ export interface ICheckoutSessionRequest {
   successUrl?: string;
   cancelUrl?: string;
   metadata?: Record<string, string>;
+  uiMode?: 'hosted' | 'embedded';
 }
 
 export interface ICheckoutSessionResponse {
   url: string;
   sessionId: string;
+  clientSecret?: string; // Required for embedded checkout
 }
 
 export interface ICreditsPackage {

@@ -9,12 +9,7 @@ import { clientEnv, serverEnv } from './env';
 
 // Static Stripe Price IDs - Real Stripe Price IDs
 export const STRIPE_PRICES = {
-  // Credit Packs (One-time payments)
-  STARTER_CREDITS: 'price_1SZmVxALMLhQocpfYPN36mgk', // $9.99 for 100 credits
-  PRO_CREDITS: 'price_1SZmVxALMLhQocpfVYhFMSO5',        // $29.99 for 500 credits
-  ENTERPRISE_CREDITS: 'price_1SZmVyALMLhQocpfZwmDQ5kt', // $99.99 for 2000 credits
-
-  // Subscriptions (Recurring payments)
+  // Subscriptions (Recurring payments) - ONLY subscription prices are allowed
   HOBBY_MONTHLY: 'price_1SZmVyALMLhQocpf0H7n5ls8',     // $19/month for 200 credits
   PRO_MONTHLY: 'price_1SZmVzALMLhQocpfPyRX2W8D', // $49/month for 1000 credits
   BUSINESS_MONTHLY: 'price_1SZmVzALMLhQocpfqPk9spg4', // $149/month for 5000 credits
@@ -23,44 +18,128 @@ export const STRIPE_PRICES = {
 export type StripePriceKey = keyof typeof STRIPE_PRICES;
 
 /**
- * Credit pack configuration with associated credits
+ * Subscription plan metadata with credits, rollover, and feature details
  */
-export const CREDIT_PACKS = {
-  STARTER_CREDITS: {
-    name: 'Starter Pack',
-    description: 'Perfect for trying out',
-    price: 9.99,
-    credits: 100,
-    features: ['100 processing credits', 'Valid for 12 months', 'Email support', 'Basic features'],
-  },
-  PRO_CREDITS: {
-    name: 'Pro Pack',
-    description: 'Best value for regular users',
-    price: 29.99,
-    credits: 500,
+export interface ISubscriptionPlanMetadata {
+  key: string;
+  name: string;
+  creditsPerMonth: number;
+  maxRollover: number;
+  features: readonly string[];
+  recommended?: boolean;
+}
+
+/**
+ * Subscription price map - single source of truth for plan validation and metadata
+ * Maps Stripe price IDs to plan details
+ */
+export const SUBSCRIPTION_PRICE_MAP: Record<string, ISubscriptionPlanMetadata> = {
+  [STRIPE_PRICES.HOBBY_MONTHLY]: {
+    key: 'hobby',
+    name: 'Hobby',
+    creditsPerMonth: 200,
+    maxRollover: 1200, // 6× monthly credits
     features: [
-      '500 processing credits',
-      'Valid for 12 months',
-      'Priority email support',
+      '200 credits per month',
+      'Rollover unused credits',
+      'Email support',
       'All features included',
-      '40% more credits',
+    ],
+    recommended: false,
+  },
+  [STRIPE_PRICES.PRO_MONTHLY]: {
+    key: 'pro',
+    name: 'Professional',
+    creditsPerMonth: 1000,
+    maxRollover: 6000, // 6× monthly credits
+    features: [
+      '1000 credits per month',
+      'Rollover unused credits',
+      'Priority support',
+      'All features included',
+      'Early access to new features',
     ],
     recommended: true,
   },
-  ENTERPRISE_CREDITS: {
-    name: 'Enterprise Pack',
-    description: 'For power users',
-    price: 99.99,
-    credits: 2000,
+  [STRIPE_PRICES.BUSINESS_MONTHLY]: {
+    key: 'business',
+    name: 'Business',
+    creditsPerMonth: 5000,
+    maxRollover: 30000, // 6× monthly credits
     features: [
-      '2000 processing credits',
-      'Valid for 12 months',
+      '5000 credits per month',
+      'Rollover unused credits',
       '24/7 priority support',
       'All features included',
-      'Best value per credit',
+      'Dedicated account manager',
+      'Custom integrations',
     ],
+    recommended: false,
   },
 } as const;
+
+/**
+ * Get plan metadata for a given Stripe price ID
+ * Returns null if the price ID is not a valid subscription price
+ */
+export function getPlanForPriceId(priceId: string): ISubscriptionPlanMetadata | null {
+  return SUBSCRIPTION_PRICE_MAP[priceId] ?? null;
+}
+
+/**
+ * Get plan metadata by plan key (e.g., 'hobby', 'pro', 'business')
+ * Returns null if the key is not found
+ */
+export function getPlanByKey(key: string): ISubscriptionPlanMetadata | null {
+  const entry = Object.values(SUBSCRIPTION_PRICE_MAP).find((plan) => plan.key === key);
+  return entry ?? null;
+}
+
+/**
+ * Get human-readable plan display name from various input sources
+ * This is the single source of truth for displaying plan names in UI components
+ */
+export function getPlanDisplayName(input: {
+  priceId?: string | null;
+  planKey?: string | null;
+  subscriptionTier?: string | null;
+}): string {
+  const { priceId, planKey, subscriptionTier } = input;
+
+  // Try subscription_tier first (most reliable, human-readable)
+  if (subscriptionTier) {
+    return subscriptionTier;
+  }
+
+  // Try priceId lookup
+  if (priceId) {
+    const plan = getPlanForPriceId(priceId);
+    if (plan) {
+      return plan.name;
+    }
+  }
+
+  // Try planKey lookup
+  if (planKey) {
+    const plan = getPlanByKey(planKey);
+    if (plan) {
+      return plan.name;
+    }
+  }
+
+  return 'Unknown Plan';
+}
+
+/**
+ * Array of valid subscription price IDs for validation
+ */
+export const SUBSCRIPTION_PRICE_IDS = Object.keys(SUBSCRIPTION_PRICE_MAP);
+
+/**
+ * @deprecated Credit packs are no longer supported. Use subscriptions only.
+ * This is kept for backwards compatibility but should not be used.
+ */
+export const CREDIT_PACKS = {} as const;
 
 /**
  * Subscription plan configuration
@@ -213,8 +292,8 @@ export function getStripeConfig(): {
   secretKey: string;
   webhookSecret: string;
   prices: typeof STRIPE_PRICES;
-  creditPacks: typeof CREDIT_PACKS;
   subscriptionPlans: typeof SUBSCRIPTION_PLANS;
+  subscriptionPriceMap: typeof SUBSCRIPTION_PRICE_MAP;
   homepageTiers: typeof HOMEPAGE_TIERS;
 } {
   return {
@@ -229,8 +308,8 @@ export function getStripeConfig(): {
     prices: STRIPE_PRICES,
 
     // Product configurations
-    creditPacks: CREDIT_PACKS,
     subscriptionPlans: SUBSCRIPTION_PLANS,
+    subscriptionPriceMap: SUBSCRIPTION_PRICE_MAP,
 
     // Homepage pricing
     homepageTiers: HOMEPAGE_TIERS,

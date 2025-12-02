@@ -3,6 +3,7 @@ import { NextRequest } from 'next/server';
 import { POST } from '../../../app/api/webhooks/stripe/route';
 import { supabaseAdmin } from '../../../server/supabase/supabaseAdmin';
 import { stripe } from '../../../server/stripe';
+import { getPlanForPriceId } from '@shared/config/stripe';
 import Stripe from 'stripe';
 
 // Mock webhook secret that can be changed per test
@@ -21,6 +22,10 @@ vi.mock('@server/stripe', () => ({
   get STRIPE_WEBHOOK_SECRET() {
     return mockWebhookSecret;
   },
+}));
+
+vi.mock('@shared/config/stripe', () => ({
+  getPlanForPriceId: vi.fn(),
 }));
 
 vi.mock('@server/supabase/supabaseAdmin', () => ({
@@ -234,8 +239,8 @@ describe('Stripe Webhook Handler', () => {
       status: 'complete',
     };
 
-    test('should add credits for one-time payment', async () => {
-      // Arrange
+    test('should ignore one-time payment sessions (subscription-only mode)', async () => {
+      // Arrange - one-time payments are no longer supported
       const event = {
         type: 'checkout.session.completed',
         data: { object: sessionWithCredits },
@@ -250,28 +255,41 @@ describe('Stripe Webhook Handler', () => {
         },
       });
 
-      // Mock successful credit addition
-      (supabaseAdmin.rpc as any).mockResolvedValue({ error: null });
-
       // Act
       const response = await POST(request);
 
       // Assert
       expect(response.status).toBe(200);
-      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('increment_credits_with_log', {
-        target_user_id: 'user_123',
-        amount: 100,
-        transaction_type: 'purchase',
-        ref_id: 'cs_test_credits_123',
-        description: 'Credit pack purchase - 100 credits',
-      });
+      // Should not add any credits for one-time payments
+      expect(supabaseAdmin.rpc).not.toHaveBeenCalled();
     });
 
-    test('should handle credit addition failure gracefully', async () => {
+    test('should handle subscription credit addition failure gracefully', async () => {
       // Arrange
+      const mockPlan = {
+        key: 'hobby',
+        name: 'Hobby',
+        creditsPerMonth: 200,
+        maxRollover: 1200,
+      };
+
+      // Mock successful plan lookup
+      (getPlanForPriceId as any).mockReturnValue(mockPlan);
+
+      // Mock Stripe subscription retrieval
+      (stripe.subscriptions.retrieve as any).mockResolvedValue({
+        items: {
+          data: [{
+            price: {
+              id: 'price_test_hobby',
+            },
+          }],
+        },
+      });
+
       const event = {
         type: 'checkout.session.completed',
-        data: { object: sessionWithCredits },
+        data: { object: sessionWithSubscription },
       };
 
       const request = new NextRequest('http://localhost/api/webhooks/stripe', {
@@ -294,7 +312,7 @@ describe('Stripe Webhook Handler', () => {
       // Assert
       expect(response.status).toBe(200); // Still returns 200 as webhook was processed
       expect(consoleSpy.error).toHaveBeenCalledWith(
-        'Error incrementing credits:',
+        'Error adding test subscription credits:',
         { message: 'Database error' }
       );
     });
@@ -331,8 +349,18 @@ describe('Stripe Webhook Handler', () => {
       expect(supabaseAdmin.rpc).not.toHaveBeenCalled();
     });
 
-    test('should handle subscription mode without immediate action', async () => {
+    test('should handle subscription mode by adding initial credits', async () => {
       // Arrange
+      const mockPlan = {
+        key: 'pro',
+        name: 'Professional',
+        creditsPerMonth: 1000,
+        maxRollover: 6000,
+      };
+
+      // Mock successful plan lookup for the default PRO_MONTHLY price ID
+      (getPlanForPriceId as any).mockReturnValue(mockPlan);
+
       const event = {
         type: 'checkout.session.completed',
         data: { object: sessionWithSubscription },
@@ -347,15 +375,22 @@ describe('Stripe Webhook Handler', () => {
         },
       });
 
+      // Mock successful credit addition
+      (supabaseAdmin.rpc as any).mockResolvedValue({ error: null });
+
       // Act
       const response = await POST(request);
 
       // Assert
       expect(response.status).toBe(200);
-      expect(supabaseAdmin.rpc).not.toHaveBeenCalled();
-      expect(consoleSpy.log).toHaveBeenCalledWith(
-        'Subscription created for user user_456'
-      );
+      expect(getPlanForPriceId).toHaveBeenCalledWith('price_1SZmVzALMLhQocpfPyRX2W8D');
+      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('increment_credits_with_log', {
+        target_user_id: 'user_456',
+        amount: 1000,
+        transaction_type: 'subscription',
+        ref_id: 'cs_test_sub_123',
+        description: 'Test subscription credits - Professional plan - 1000 credits',
+      });
     });
 
     test('should handle missing user_id in metadata', async () => {
@@ -413,6 +448,16 @@ describe('Stripe Webhook Handler', () => {
 
     test('should handle customer.subscription.created', async () => {
       // Arrange
+      const mockPlan = {
+        key: 'business',
+        name: 'Business',
+        creditsPerMonth: 5000,
+        maxRollover: 30000,
+      };
+
+      // Mock successful plan lookup
+      (getPlanForPriceId as any).mockReturnValue(mockPlan);
+
       const event = {
         type: 'customer.subscription.created',
         data: { object: subscriptionData },
@@ -617,6 +662,16 @@ describe('Stripe Webhook Handler', () => {
   describe('invoice event handlers', () => {
     test('should handle invoice.payment_succeeded and add credits in test mode', async () => {
       // Arrange
+      const mockPlan = {
+        key: 'pro',
+        name: 'Professional',
+        creditsPerMonth: 1000,
+        maxRollover: 6000,
+      };
+
+      // Mock successful plan lookup
+      (getPlanForPriceId as any).mockReturnValue(mockPlan);
+
       const customerId = 'cus_test_renewal';
       const userId = 'user_renewal_123';
 
@@ -682,7 +737,7 @@ describe('Stripe Webhook Handler', () => {
         description: expect.stringContaining('Monthly subscription renewal'),
       });
       expect(consoleSpy.log).toHaveBeenCalledWith(
-        expect.stringContaining('Adding')
+        expect.stringContaining('Added')
       );
       expect(stripe.subscriptions.retrieve).not.toHaveBeenCalled();
     });

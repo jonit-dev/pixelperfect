@@ -2,63 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe, STRIPE_WEBHOOK_SECRET } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
-import { SUBSCRIPTION_PLANS, STRIPE_PRICES } from '@shared/config/stripe';
+import { getPlanForPriceId } from '@shared/config/stripe';
 import Stripe from 'stripe';
 
-/**
- * Subscription tier info including monthly credits and max rollover
- */
-interface ISubscriptionTierInfo {
-  creditsPerMonth: number;
-  maxRollover: number; // 6× monthly credits as per docs
-}
-
-/**
- * Get the subscription tier info (monthly credits and max rollover) based on price ID
- */
-function getTierInfoForPriceId(priceId: string): ISubscriptionTierInfo {
-  // Check against configured price IDs
-  if (priceId === STRIPE_PRICES.HOBBY_MONTHLY) {
-    const monthly = SUBSCRIPTION_PLANS.HOBBY_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-  if (priceId === STRIPE_PRICES.PRO_MONTHLY) {
-    const monthly = SUBSCRIPTION_PLANS.PRO_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-  if (priceId === STRIPE_PRICES.BUSINESS_MONTHLY) {
-    const monthly = SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-
-  // Fallback: check for test price IDs or infer from naming
-  const priceIdLower = priceId.toLowerCase();
-  if (priceIdLower.includes('hobby')) {
-    const monthly = SUBSCRIPTION_PLANS.HOBBY_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-  if (priceIdLower.includes('pro') && !priceIdLower.includes('business')) {
-    const monthly = SUBSCRIPTION_PLANS.PRO_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-  if (priceIdLower.includes('business')) {
-    const monthly = SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.creditsPerMonth;
-    return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-  }
-
-  // Default to hobby tier credits
-  console.warn(`Unknown price ID for credit calculation: ${priceId}, defaulting to hobby tier`);
-  const monthly = SUBSCRIPTION_PLANS.HOBBY_MONTHLY.creditsPerMonth;
-  return { creditsPerMonth: monthly, maxRollover: monthly * 6 };
-}
-
-/**
- * Get the monthly credits amount for a subscription tier based on price ID
- * @deprecated Use getTierInfoForPriceId instead to also get maxRollover
- */
-function getCreditsForPriceId(priceId: string): number {
-  return getTierInfoForPriceId(priceId).creditsPerMonth;
-}
 
 export const runtime = 'edge'; // Cloudflare Worker compatible
 
@@ -151,30 +97,69 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
     return;
   }
 
-  // Check if it's a one-time payment for credits or a subscription
-  if (session.mode === 'payment') {
-    // One-time purchase (credits)
-    const creditsAmount = parseInt(session.metadata?.credits_amount || '0', 10);
+  console.log(`Checkout completed for user ${userId}, mode: ${session.mode}`);
 
-    if (creditsAmount > 0) {
-      // Use the RPC function to increment credits with logging for audit trail
-      const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
-        target_user_id: userId,
-        amount: creditsAmount,
-        transaction_type: 'purchase',
-        ref_id: session.id,
-        description: `Credit pack purchase - ${creditsAmount} credits`,
-      });
+  if (session.mode === 'subscription') {
+    // For subscriptions, add initial credits immediately since user lands on success page
+    // The subscription will be fully set up by the subscription.created event
+    const subscriptionId = session.subscription as string;
 
-      if (error) {
-        console.error('Error incrementing credits:', error);
-      } else {
-        console.log(`Added ${creditsAmount} credits to user ${userId}`);
+    if (subscriptionId) {
+      try {
+        // Check if this is a test subscription ID
+        if (subscriptionId.startsWith('sub_test_')) {
+          console.log('Test subscription detected, using mock data');
+
+          // For test subscriptions, add credits based on session metadata or a default
+          const testPriceId = 'price_1SZmVzALMLhQocpfPyRX2W8D'; // Default to PRO_MONTHLY for testing
+          const plan = getPlanForPriceId(testPriceId);
+
+          if (plan) {
+            const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+              target_user_id: userId,
+              amount: plan.creditsPerMonth,
+              transaction_type: 'subscription',
+              ref_id: session.id,
+              description: `Test subscription credits - ${plan.name} plan - ${plan.creditsPerMonth} credits`,
+            });
+
+            if (error) {
+              console.error('Error adding test subscription credits:', error);
+            } else {
+              console.log(`Added ${plan.creditsPerMonth} test subscription credits to user ${userId} for ${plan.name} plan`);
+            }
+          }
+        } else {
+          // Real subscription - get details from Stripe
+          const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+          const priceId = subscription.items.data[0]?.price.id;
+
+          if (priceId) {
+            const plan = getPlanForPriceId(priceId);
+            if (plan) {
+              // Add initial credits for the first month
+              const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+                target_user_id: userId,
+                amount: plan.creditsPerMonth,
+                transaction_type: 'subscription',
+                ref_id: session.id,
+                description: `Initial subscription credits - ${plan.name} plan - ${plan.creditsPerMonth} credits`,
+              });
+
+              if (error) {
+                console.error('Error adding initial subscription credits:', error);
+              } else {
+                console.log(`Added ${plan.creditsPerMonth} initial subscription credits to user ${userId} for ${plan.name} plan`);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error processing subscription checkout:', error);
       }
     }
-  } else if (session.mode === 'subscription') {
-    // Subscription - will be handled by subscription.created event
-    console.log(`Subscription created for user ${userId}`);
+  } else {
+    console.warn(`Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription mode is supported.`);
   }
 }
 
@@ -196,7 +181,7 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
 
   const userId = profile.id;
 
-  // Upsert subscription data
+  // Get price ID and plan metadata
   // Cast to access raw properties from Stripe webhook events
   const rawSub = subscription as unknown as {
     id: string;
@@ -207,11 +192,21 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     cancel_at_period_end: boolean;
     canceled_at: number | null;
   };
+
+  const priceId = rawSub.items.data[0]?.price.id || '';
+  const plan = getPlanForPriceId(priceId);
+
+  if (!plan) {
+    console.error(`Unknown price ID in subscription update: ${priceId}`);
+    return;
+  }
+
+  // Upsert subscription data
   const { error: subError } = await supabaseAdmin.from('subscriptions').upsert({
     id: rawSub.id,
     user_id: userId,
     status: rawSub.status,
-    price_id: rawSub.items.data[0]?.price.id || '',
+    price_id: priceId,
     current_period_start: new Date(rawSub.current_period_start * 1000).toISOString(),
     current_period_end: new Date(rawSub.current_period_end * 1000).toISOString(),
     cancel_at_period_end: rawSub.cancel_at_period_end,
@@ -223,19 +218,19 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     return;
   }
 
-  // Update profile subscription status
+  // Update profile subscription status with human-readable plan name
   const { error: profileError } = await supabaseAdmin
     .from('profiles')
     .update({
       subscription_status: subscription.status,
-      subscription_tier: subscription.items.data[0]?.price.id || null,
+      subscription_tier: plan.name, // Use friendly name instead of price ID
     })
     .eq('id', userId);
 
   if (profileError) {
     console.error('Error updating profile subscription status:', profileError);
   } else {
-    console.log(`Updated subscription for user ${userId}: ${subscription.status}`);
+    console.log(`Updated subscription for user ${userId}: ${plan.name} (${subscription.status})`);
   }
 }
 
@@ -327,6 +322,13 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
     invoiceWithSub.lines?.data?.[0]?.plan?.id ||
     '';
 
+  const plan = getPlanForPriceId(priceId);
+
+  if (!plan) {
+    console.error(`Unknown price ID in invoice payment: ${priceId}`);
+    return;
+  }
+
   // In test environment, use simplified logic
   const isTestMode =
     serverEnv.NODE_ENV === 'test' ||
@@ -335,62 +337,48 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
     STRIPE_WEBHOOK_SECRET === 'whsec_test_YOUR_STRIPE_WEBHOOK_SECRET_HERE' ||
     STRIPE_WEBHOOK_SECRET === 'whsec_test_secret';
 
-  let creditsToAdd = 0;
-
-  if (isTestMode) {
-    // In test mode, derive credits from invoice data
-    creditsToAdd = getCreditsForPriceId(priceId);
-    console.log(`Test mode: Adding ${creditsToAdd} credits for subscription renewal`);
-  } else {
-    // In production, fetch the full subscription to get the price ID
+  if (!isTestMode) {
+    // In production, fetch the full subscription to ensure we have latest status
     try {
       const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-      const subPriceId = subscription.items.data[0]?.price.id || '';
-      creditsToAdd = getCreditsForPriceId(subPriceId);
-
-      // Also update subscription status
       await handleSubscriptionUpdate(subscription);
     } catch (error) {
       console.error('Failed to retrieve subscription from Stripe:', error);
-      // Fall back to invoice-derived price ID
-      creditsToAdd = getCreditsForPriceId(priceId);
     }
   }
 
   // Add monthly subscription credits with rollover cap enforcement
-  if (creditsToAdd > 0) {
-    const currentBalance = profile.credits_balance ?? 0;
-    const tierInfo = getTierInfoForPriceId(priceId);
-    const maxRollover = tierInfo.maxRollover;
+  const creditsToAdd = plan.creditsPerMonth;
+  const currentBalance = profile.credits_balance ?? 0;
+  const maxRollover = plan.maxRollover;
 
-    // Calculate capped amount to prevent exceeding rollover limit
-    const newBalanceIfAdded = currentBalance + creditsToAdd;
-    const actualCreditsToAdd =
-      newBalanceIfAdded > maxRollover
-        ? Math.max(0, maxRollover - currentBalance)
-        : creditsToAdd;
+  // Calculate capped amount to prevent exceeding rollover limit
+  const newBalanceIfAdded = currentBalance + creditsToAdd;
+  const actualCreditsToAdd =
+    newBalanceIfAdded > maxRollover
+      ? Math.max(0, maxRollover - currentBalance)
+      : creditsToAdd;
 
-    if (actualCreditsToAdd > 0) {
-      const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
-        target_user_id: userId,
-        amount: actualCreditsToAdd,
-        transaction_type: 'subscription',
-        ref_id: invoice.id,
-        description: `Monthly subscription renewal - ${actualCreditsToAdd} credits${actualCreditsToAdd < creditsToAdd ? ` (capped from ${creditsToAdd} due to rollover limit of ${maxRollover})` : ''}`,
-      });
+  if (actualCreditsToAdd > 0) {
+    const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+      target_user_id: userId,
+      amount: actualCreditsToAdd,
+      transaction_type: 'subscription',
+      ref_id: invoice.id,
+      description: `Monthly subscription renewal - ${plan.name} plan - ${actualCreditsToAdd} credits${actualCreditsToAdd < creditsToAdd ? ` (capped from ${creditsToAdd} due to rollover limit of ${maxRollover})` : ''}`,
+    });
 
-      if (error) {
-        console.error('Error adding subscription credits:', error);
-      } else {
-        console.log(
-          `Added ${actualCreditsToAdd} subscription credits to user ${userId} (balance: ${currentBalance} → ${currentBalance + actualCreditsToAdd}, max: ${maxRollover})`
-        );
-      }
+    if (error) {
+      console.error('Error adding subscription credits:', error);
     } else {
       console.log(
-        `Skipped adding credits for user ${userId}: already at max rollover (${currentBalance}/${maxRollover})`
+        `Added ${actualCreditsToAdd} subscription credits to user ${userId} from ${plan.name} plan (balance: ${currentBalance} → ${currentBalance + actualCreditsToAdd}, max: ${maxRollover})`
       );
     }
+  } else {
+    console.log(
+      `Skipped adding credits for user ${userId}: already at max rollover (${currentBalance}/${maxRollover})`
+    );
   }
 }
 

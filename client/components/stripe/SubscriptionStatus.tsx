@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { StripeService } from '@server/stripe';
 import type { ISubscription, IUserProfile } from '@server/stripe/types';
+import { getPlanDisplayName } from '@shared/config/stripe';
 
 /**
  * Component to display user's current subscription status
@@ -122,7 +123,12 @@ export function SubscriptionStatus(): JSX.Element {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <span className="text-slate-600">Plan:</span>
-          <span className="font-semibold">{profile?.subscription_tier || 'Unknown'}</span>
+          <span className="font-semibold">
+            {getPlanDisplayName({
+              priceId: subscription.price_id,
+              subscriptionTier: profile?.subscription_tier,
+            })}
+          </span>
         </div>
 
         <div className="flex justify-between items-center">
@@ -161,7 +167,7 @@ export function SubscriptionStatus(): JSX.Element {
           Refresh
         </button>
         <a
-          href="/account/billing"
+          href="/dashboard/billing"
           className="px-3 py-1.5 text-sm bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
         >
           Manage Subscription

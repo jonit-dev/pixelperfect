@@ -246,15 +246,17 @@ export default function HelpPage(): JSX.Element {
                   <Link href="/pricing" className="text-indigo-600 hover:underline">
                     Pricing page
                   </Link>{' '}
-                  to choose between:
+                  to choose from our subscription plans:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-slate-700">
                   <li>
-                    <strong>Credit Packs:</strong> One-time purchases (100, 500, or 2500 credits)
+                    <strong>Hobby:</strong> 200 credits/month for $19/month
                   </li>
                   <li>
-                    <strong>Subscriptions:</strong> Monthly plans with recurring credits (50, 250,
-                    or 1000 credits/month)
+                    <strong>Professional:</strong> 1000 credits/month for $49/month
+                  </li>
+                  <li>
+                    <strong>Business:</strong> 5000 credits/month for $149/month
                   </li>
                 </ul>
               </div>
@@ -278,12 +280,10 @@ export default function HelpPage(): JSX.Element {
                 </svg>
               </summary>
               <div className="px-5 pb-5">
-                <p className="text-slate-700 mb-4">
-                  <strong>Credit Packs:</strong> Valid for 12 months from purchase date.
-                </p>
                 <p className="text-slate-700">
-                  <strong>Subscription Credits:</strong> Roll over month-to-month up to 6x your
-                  monthly amount, as long as your subscription is active.
+                  Subscription credits roll over month-to-month up to 6× your monthly credit allowance,
+                  as long as your subscription remains active. For example, the Hobby plan can accumulate
+                  up to 1,200 credits (6 × 200).
                 </p>
               </div>
             </details>
