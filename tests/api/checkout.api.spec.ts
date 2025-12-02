@@ -82,85 +82,91 @@ authenticatedTest.describe('API: Stripe Checkout - Authenticated Users', () => {
     expect(data.error.message).toContain('Invalid price ID');
   });
 
-  authenticatedTest('should handle custom success and cancel URLs', async ({ request, testUser }) => {
-    const { STRIPE_PRICES } = await import('@shared/config/stripe');
-    const response = await request.post('/api/checkout', {
-      data: {
-        priceId: STRIPE_PRICES.PRO_MONTHLY, // Use valid price ID
-        successUrl: 'https://example.com/success',
-        cancelUrl: 'https://example.com/cancel',
-        metadata: {
-          test_key: 'test_value',
-          user_source: 'mobile_app',
+  authenticatedTest(
+    'should handle custom success and cancel URLs',
+    async ({ request, testUser }) => {
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+      const response = await request.post('/api/checkout', {
+        data: {
+          priceId: STRIPE_PRICES.PRO_MONTHLY, // Use valid price ID
+          successUrl: 'https://example.com/success',
+          cancelUrl: 'https://example.com/cancel',
+          metadata: {
+            test_key: 'test_value',
+            user_source: 'mobile_app',
+          },
         },
-      },
-      headers: {
-        Authorization: `Bearer ${testUser.token}`,
-      },
-    });
+        headers: {
+          Authorization: `Bearer ${testUser.token}`,
+        },
+      });
 
-    // Should pass validation and create a checkout session
-    expect([200, 400, 500]).toContain(response.status());
+      // Should pass validation and create a checkout session
+      expect([200, 400, 500]).toContain(response.status());
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.status() === 200) {
-      // Success case - checkout session created
-      expect(data.success).toBe(true);
-      expect(data.data.url).toBeTruthy();
-      expect(data.data.sessionId).toBeTruthy();
+      if (response.status() === 200) {
+        // Success case - checkout session created
+        expect(data.success).toBe(true);
+        expect(data.data.url).toBeTruthy();
+        expect(data.data.sessionId).toBeTruthy();
 
-      // In test mode with real Stripe keys, should return actual session
-      if (data.data.mock) {
-        // Mock session - test mode fallback
+        // In test mode with real Stripe keys, should return actual session
+        if (data.data.mock) {
+          // Mock session - test mode fallback
+          expect(data.data.mock).toBe(true);
+        } else {
+          // Real Stripe session - verify structure
+          expect(typeof data.data.url).toBe('string');
+          expect(typeof data.data.sessionId).toBe('string');
+          expect(data.data.sessionId).toMatch(/^cs_/);
+        }
+      } else {
+        // Error case - should not be a validation error for valid price ID
+        expect(data.error).toBeDefined();
+        if (response.status() === 400) {
+          expect(data.error.code).not.toBe('INVALID_PRICE');
+        }
+      }
+    }
+  );
+
+  authenticatedTest(
+    'should create checkout session with valid data',
+    async ({ request, testUser }) => {
+      // Note: This test would require a valid Stripe price ID and proper test environment
+      // For now, we test the structure and error handling
+      const response = await request.post('/api/checkout', {
+        data: {
+          priceId: 'price_1O2x3Y4Z5X6W7V8Y', // Invalid format but tests structure
+          metadata: {
+            user_id: testUser.id,
+            test_mode: 'true',
+          },
+        },
+        headers: {
+          Authorization: `Bearer ${testUser.token}`,
+        },
+      });
+
+      // In test mode, should succeed with mock response
+      // In production, would fail at Stripe API level
+      expect([200, 400, 500]).toContain(response.status());
+      const data = await response.json();
+
+      if (response.status() === 200) {
+        // Mock response in test mode
+        expect(data.success).toBe(true);
+        expect(data.data.url).toBeTruthy();
+        expect(data.data.sessionId).toBeTruthy();
         expect(data.data.mock).toBe(true);
       } else {
-        // Real Stripe session - verify structure
-        expect(typeof data.data.url).toBe('string');
-        expect(typeof data.data.sessionId).toBe('string');
-        expect(data.data.sessionId).toMatch(/^cs_/);
-      }
-    } else {
-      // Error case - should not be a validation error for valid price ID
-      expect(data.error).toBeDefined();
-      if (response.status() === 400) {
-        expect(data.error.code).not.toBe('INVALID_PRICE');
+        // Real Stripe API failure in production
+        expect(data.error).toBeDefined();
       }
     }
-  });
-
-  authenticatedTest('should create checkout session with valid data', async ({ request, testUser }) => {
-    // Note: This test would require a valid Stripe price ID and proper test environment
-    // For now, we test the structure and error handling
-    const response = await request.post('/api/checkout', {
-      data: {
-        priceId: 'price_1O2x3Y4Z5X6W7V8Y', // Invalid format but tests structure
-        metadata: {
-          user_id: testUser.id,
-          test_mode: 'true',
-        },
-      },
-      headers: {
-        Authorization: `Bearer ${testUser.token}`,
-      },
-    });
-
-    // In test mode, should succeed with mock response
-    // In production, would fail at Stripe API level
-    expect([200, 400, 500]).toContain(response.status());
-    const data = await response.json();
-
-    if (response.status() === 200) {
-      // Mock response in test mode
-      expect(data.success).toBe(true);
-      expect(data.data.url).toBeTruthy();
-      expect(data.data.sessionId).toBeTruthy();
-      expect(data.data.mock).toBe(true);
-    } else {
-      // Real Stripe API failure in production
-      expect(data.error).toBeDefined();
-    }
-  });
+  );
 
   authenticatedTest('should handle metadata properly', async ({ request, testUser }) => {
     const { STRIPE_PRICES } = await import('@shared/config/stripe');
@@ -291,4 +297,152 @@ authenticatedTest.describe('API: Stripe Checkout - Authenticated Users', () => {
       }
     }
   });
+
+  authenticatedTest(
+    'should reject checkout if user already has active subscription',
+    async ({ request, testUser }) => {
+      const { supabaseAdmin } = await import('@server/supabase/supabaseAdmin');
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+
+      // Create a mock active subscription for the test user
+      const mockSubscription = {
+        id: `sub_test_${Date.now()}`,
+        user_id: testUser.id,
+        status: 'active',
+        price_id: STRIPE_PRICES.HOBBY_MONTHLY,
+        current_period_start: new Date().toISOString(),
+        current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+        cancel_at_period_end: false,
+        canceled_at: null,
+      };
+
+      // Insert the subscription into the database
+      await supabaseAdmin.from('subscriptions').insert(mockSubscription);
+
+      try {
+        // Try to create a new checkout session
+        const response = await request.post('/api/checkout', {
+          data: {
+            priceId: STRIPE_PRICES.PRO_MONTHLY, // Trying to subscribe to a different plan
+          },
+          headers: {
+            Authorization: `Bearer ${testUser.token}`,
+          },
+        });
+
+        // Should reject with 400 status
+        expect(response.status()).toBe(400);
+        const data = await response.json();
+
+        // Verify error response
+        expect(data.success).toBe(false);
+        expect(data.error).toBeDefined();
+        expect(data.error.code).toBe('ALREADY_SUBSCRIBED');
+        expect(data.error.message).toContain('already have an active subscription');
+      } finally {
+        // Cleanup: Delete the test subscription
+        await supabaseAdmin.from('subscriptions').delete().eq('id', mockSubscription.id);
+      }
+    }
+  );
+
+  authenticatedTest(
+    'should reject checkout if user has trialing subscription',
+    async ({ request, testUser }) => {
+      const { supabaseAdmin } = await import('@server/supabase/supabaseAdmin');
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+
+      // Create a mock trialing subscription for the test user
+      const mockSubscription = {
+        id: `sub_test_${Date.now()}_trial`,
+        user_id: testUser.id,
+        status: 'trialing',
+        price_id: STRIPE_PRICES.HOBBY_MONTHLY,
+        current_period_start: new Date().toISOString(),
+        current_period_end: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+        cancel_at_period_end: false,
+        canceled_at: null,
+      };
+
+      // Insert the subscription into the database
+      await supabaseAdmin.from('subscriptions').insert(mockSubscription);
+
+      try {
+        // Try to create a new checkout session
+        const response = await request.post('/api/checkout', {
+          data: {
+            priceId: STRIPE_PRICES.BUSINESS_MONTHLY,
+          },
+          headers: {
+            Authorization: `Bearer ${testUser.token}`,
+          },
+        });
+
+        // Should reject with 400 status
+        expect(response.status()).toBe(400);
+        const data = await response.json();
+
+        // Verify error response
+        expect(data.success).toBe(false);
+        expect(data.error).toBeDefined();
+        expect(data.error.code).toBe('ALREADY_SUBSCRIBED');
+        expect(data.error.message).toContain('already have an active subscription');
+      } finally {
+        // Cleanup: Delete the test subscription
+        await supabaseAdmin.from('subscriptions').delete().eq('id', mockSubscription.id);
+      }
+    }
+  );
+
+  authenticatedTest(
+    'should allow checkout if user has canceled subscription',
+    async ({ request, testUser }) => {
+      const { supabaseAdmin } = await import('@server/supabase/supabaseAdmin');
+      const { STRIPE_PRICES } = await import('@shared/config/stripe');
+
+      // Create a mock canceled subscription for the test user
+      const mockSubscription = {
+        id: `sub_test_${Date.now()}_canceled`,
+        user_id: testUser.id,
+        status: 'canceled',
+        price_id: STRIPE_PRICES.HOBBY_MONTHLY,
+        current_period_start: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        current_period_end: new Date().toISOString(),
+        cancel_at_period_end: false,
+        canceled_at: new Date().toISOString(),
+      };
+
+      // Insert the subscription into the database
+      await supabaseAdmin.from('subscriptions').insert(mockSubscription);
+
+      try {
+        // Try to create a new checkout session
+        const response = await request.post('/api/checkout', {
+          data: {
+            priceId: STRIPE_PRICES.PRO_MONTHLY,
+          },
+          headers: {
+            Authorization: `Bearer ${testUser.token}`,
+          },
+        });
+
+        // Should succeed since subscription is canceled
+        expect([200, 400, 500]).toContain(response.status());
+        const data = await response.json();
+
+        if (response.status() === 200) {
+          // Should create checkout session successfully
+          expect(data.success).toBe(true);
+          expect(data.data.url).toBeTruthy();
+          expect(data.data.sessionId).toBeTruthy();
+        } else if (response.status() === 400) {
+          // Should NOT be an ALREADY_SUBSCRIBED error
+          expect(data.error.code).not.toBe('ALREADY_SUBSCRIBED');
+        }
+      } finally {
+        // Cleanup: Delete the test subscription
+        await supabaseAdmin.from('subscriptions').delete().eq('id', mockSubscription.id);
+      }
+    }
+  );
 });

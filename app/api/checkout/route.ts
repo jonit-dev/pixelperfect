@@ -22,15 +22,16 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'VALIDATION_ERROR',
-            message: 'priceId is required'
-          }
+            message: 'priceId is required',
+          },
         },
         { status: 400 }
       );
     }
 
     // Check if we're in test mode (before plan validation)
-    const isTestMode = serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') && serverEnv.ENV === 'test';
+    const isTestMode =
+      serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') && serverEnv.ENV === 'test';
 
     // Validate that the price ID is a valid subscription price (skip in test mode)
     let plan = null;
@@ -42,8 +43,8 @@ export async function POST(request: NextRequest) {
             success: false,
             error: {
               code: 'INVALID_PRICE',
-              message: 'Invalid price ID. Only subscription plans are supported.'
-            }
+              message: 'Invalid price ID. Only subscription plans are supported.',
+            },
           },
           { status: 400 }
         );
@@ -58,8 +59,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Missing authorization header'
-          }
+            message: 'Missing authorization header',
+          },
         },
         { status: 401 }
       );
@@ -80,14 +81,38 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Invalid authentication token'
-          }
+            message: 'Invalid authentication token',
+          },
         },
         { status: 401 }
       );
     }
 
-    // 3. Get or create Stripe customer
+    // 3. Check if user already has an active subscription
+    const { data: existingSubscription } = await supabaseAdmin
+      .from('subscriptions')
+      .select('id, status, price_id')
+      .eq('user_id', user.id)
+      .in('status', ['active', 'trialing'])
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (existingSubscription) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: 'ALREADY_SUBSCRIBED',
+            message:
+              'You already have an active subscription. Please manage your subscription through the billing portal to upgrade or downgrade.',
+          },
+        },
+        { status: 400 }
+      );
+    }
+
+    // 4. Get or create Stripe customer
     const { data: profile } = await supabaseAdmin
       .from('profiles')
       .select('stripe_customer_id')
@@ -119,7 +144,7 @@ export async function POST(request: NextRequest) {
           url: `${baseUrl}/success?session_id=${mockSessionId}`,
           sessionId: mockSessionId,
           mock: true,
-        }
+        },
       });
     }
 
@@ -141,7 +166,7 @@ export async function POST(request: NextRequest) {
         .eq('id', user.id);
     }
 
-    // 4. Verify price is a recurring subscription (double-check with Stripe in production)
+    // 5. Verify price is a recurring subscription (double-check with Stripe in production)
     if (!isTestMode) {
       const price = await stripe.prices.retrieve(priceId);
       if (price.type !== 'recurring') {
@@ -150,15 +175,15 @@ export async function POST(request: NextRequest) {
             success: false,
             error: {
               code: 'INVALID_PRICE',
-              message: 'Only subscription plans are supported. One-time payments are not allowed.'
-            }
+              message: 'Only subscription plans are supported. One-time payments are not allowed.',
+            },
           },
           { status: 400 }
         );
       }
     }
 
-    // 5. Create Stripe Checkout Session (subscription mode only)
+    // 6. Create Stripe Checkout Session (subscription mode only)
     const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
@@ -186,34 +211,37 @@ export async function POST(request: NextRequest) {
 
     // Add return URLs only for hosted mode
     if (uiMode === 'hosted') {
-      sessionParams.success_url = successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
+      sessionParams.success_url =
+        successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
       sessionParams.cancel_url = cancelUrl || `${baseUrl}/canceled`;
     } else {
       // For embedded mode, use return_url
-      sessionParams.return_url = successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
+      sessionParams.return_url =
+        successUrl || `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
     }
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    // 6. Return the session data
+    // 7. Return the session data
     return NextResponse.json({
       success: true,
       data: {
         url: session.url,
         sessionId: session.id,
         clientSecret: session.client_secret, // Required for embedded checkout
-      }
+      },
     });
   } catch (error: unknown) {
     console.error('Checkout error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'An error occurred during checkout';
+    const errorMessage =
+      error instanceof Error ? error.message : 'An error occurred during checkout';
     return NextResponse.json(
       {
         success: false,
         error: {
           code: 'INTERNAL_ERROR',
-          message: errorMessage
-        }
+          message: errorMessage,
+        },
       },
       { status: 500 }
     );

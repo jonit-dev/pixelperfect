@@ -39,7 +39,7 @@ _Do when time permits_
 
 8. **Portal Session Response Type** - Type signature fix
 9. **Health Check Endpoint** - Simple validation endpoint
-10. **Multiple Subscriptions Edge Case** - Query refinement
+10. ~~**Multiple Subscriptions Edge Case**~~ - ✅ **RESOLVED** (2025-12-02)
 
 ### 🤔 Thankless Tasks (High Effort, Low Impact)
 
@@ -300,15 +300,27 @@ const isTestMode =
 
 ---
 
-### FI-3: Multiple Active Subscriptions Edge Case
+### ✅ FI-3: Multiple Active Subscriptions Edge Case [RESOLVED]
 
 **Effort:** 30 minutes | **Impact:** Low (Rare edge case) | **Priority:** #10
 
-**Location:** `server/stripe/stripeService.ts:115-139`
+**Location:** `app/api/checkout/route.ts:90-111`
 
-**Issue:** `.single()` will error if user somehow has multiple active subscriptions.
+**Status:** ✅ **FIXED** - Implemented on 2025-12-02
 
-**Fix:** Add `.order('created_at', { ascending: false }).limit(1)` to ensure deterministic selection.
+**Solution Implemented:**
+
+- Added active subscription check in checkout endpoint before creating Stripe Checkout session
+- Query checks for subscriptions with status 'active' or 'trialing'
+- Returns 400 error with code 'ALREADY_SUBSCRIBED' if user has existing subscription
+- Users are directed to billing portal for plan changes
+- Includes comprehensive test coverage for active, trialing, and canceled subscription scenarios
+
+**Test Coverage:**
+
+- `tests/api/checkout.api.spec.ts:295-341` - Active subscription rejection
+- `tests/api/checkout.api.spec.ts:343-389` - Trialing subscription rejection
+- `tests/api/checkout.api.spec.ts:391-441` - Allows checkout for canceled subscriptions
 
 ---
 
