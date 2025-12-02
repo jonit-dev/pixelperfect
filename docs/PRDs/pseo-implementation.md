@@ -1,22 +1,70 @@
 # Programmatic SEO (pSEO) Implementation PRD
 
-## Product Requirements Document
+## Product Requirements Document - DEPRECATED
 
-| Field            | Value                           |
-| ---------------- | ------------------------------- |
-| **Document ID**  | PRD-PSEO-001                    |
-| **Version**      | 1.0                             |
-| **Status**       | Draft                           |
-| **Created**      | 2025-12-01                      |
-| **Author**       | Development Team                |
-| **Stakeholders** | Product, Engineering, Marketing |
-| **Priority**     | P1 - Phase 2 Growth             |
+> **⚠️ NOTICE:** This document has been split into a comprehensive sub-PRD suite for better organization and detail.
+>
+> **Please refer to: [docs/PRDs/pseo/00-index.md](./pseo/00-index.md)** for the complete pSEO implementation documentation.
 
 ---
 
-## Executive Summary
+| Field            | Value                             |
+| ---------------- | --------------------------------- |
+| **Document ID**  | PRD-PSEO-001                      |
+| **Version**      | 2.0                               |
+| **Status**       | Deprecated - See pseo/00-index.md |
+| **Created**      | 2025-12-01                        |
+| **Updated**      | 2025-12-01                        |
+| **Author**       | Development Team                  |
+| **Stakeholders** | Product, Engineering, Marketing   |
+| **Priority**     | P1 - Phase 2 Growth               |
 
-This PRD outlines a comprehensive programmatic SEO strategy for PixelPerfect, designed to capture significant organic search traffic in the AI image upscaler/enhancer market. Based on analysis of 1,340+ keywords and competitive research of major players (Upscale.media, VanceAI, TopazLabs, Remini, BigJPG), this strategy will generate 200+ targeted landing pages across multiple intent categories.
+---
+
+## New Documentation Structure
+
+This PRD has been reorganized into the following detailed sub-PRDs:
+
+### Master Index
+
+- **[00-index.md](./pseo/00-index.md)** - Executive summary, competitive landscape, and implementation overview
+
+### Detailed Sub-PRDs
+
+| Document                                                            | Description                                                             | Priority |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------- |
+| **[01-keyword-strategy.md](./pseo/01-keyword-strategy.md)**         | Keyword research, intent mapping, prioritization, and canonical mapping | P0       |
+| **[02-url-architecture.md](./pseo/02-url-architecture.md)**         | URL structure, routing patterns, dynamic page generation                | P0       |
+| **[03-content-templates.md](./pseo/03-content-templates.md)**       | Page templates, data schemas, content specifications                    | P0       |
+| **[04-seo-infrastructure.md](./pseo/04-seo-infrastructure.md)**     | Sitemap generation, schema markup, meta tags, canonical URLs            | P0       |
+| **[05-component-library.md](./pseo/05-component-library.md)**       | React components for pSEO pages, templates, UI components               | P1       |
+| **[06-analytics-monitoring.md](./pseo/06-analytics-monitoring.md)** | Tracking, KPIs, dashboards, alerts, A/B testing                         | P1       |
+
+---
+
+## Quick Reference
+
+### Total Scope
+
+- **85+ pSEO pages** across 8 categories
+- **1,340+ keywords** analyzed
+- **100K+ monthly organic traffic** target (Month 12)
+- **12-week implementation** roadmap
+
+### Categories
+
+1. `/tools/` - 10 pages - Core tool landing pages
+2. `/formats/` - 8 pages - File format specific pages
+3. `/scale/` - 7 pages - Resolution/scale pages
+4. `/use-cases/` - 10 pages - Industry vertical pages
+5. `/compare/` - 15 pages - Competitor comparisons
+6. `/alternatives/` - 10 pages - Alternative tool pages
+7. `/guides/` - 20 pages - How-to educational content
+8. `/free/` - 5 pages - Free tool landing pages
+
+---
+
+## Original Executive Summary (Archived)
 
 ### Key Opportunity
 
