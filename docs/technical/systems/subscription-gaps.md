@@ -10,11 +10,354 @@
 
 The subscription system is **largely complete and production-ready**. However, there are several gaps ranging from minor UI/UX issues to potential edge cases that could affect user experience or system reliability.
 
+This document organizes gaps using an **Effort x Impact Matrix** to prioritize work effectively.
+
 ---
 
-## 1. UI/UX Gaps
+## Priority Matrix
+
+### 🎯 Quick Wins (Low Effort, High Impact)
+
+_Target these first for maximum value_
+
+1. **Homepage Free Tier Mismatch** - Config text change
+2. **Low Credit Warning** - Simple UI indicator
+3. **Test Mode Detection Fix** - Remove unsafe string check
+4. **Credit Transaction History UI** - Query existing table
+
+### 🚀 Major Projects (High Effort, High Impact)
+
+_Schedule these strategically_
+
+5. **Upgrade/Downgrade Flow** - Full UI + API implementation
+6. **Webhook Idempotency** - Backend validation system
+7. **Refund Handling** - Multiple webhook handlers
+
+### 💡 Fill Ins (Low Effort, Low Impact)
+
+_Do when time permits_
+
+8. **Portal Session Response Type** - Type signature fix
+9. **Health Check Endpoint** - Simple validation endpoint
+10. **Multiple Subscriptions Edge Case** - Query refinement
+
+### 🤔 Thankless Tasks (High Effort, Low Impact)
+
+_Defer or skip unless critical need_
+
+11. **Subscription History Table** - Analytics infrastructure
+12. **Product/Price Sync** - Database sync system
+13. **Pause/Resume Support** - Feature most users won't use
+
+---
+
+## 🎯 Quick Wins (Low Effort, High Impact)
+
+### QW-1: Homepage Free Tier Mismatch
+
+**Effort:** 15 minutes | **Impact:** High (User confusion) | **Priority:** #1
+
+**Location:** `shared/config/stripe.ts:215-233`
+
+**Issue:** `HOMEPAGE_TIERS` shows "10 images per month" but free users only get 10 credits once on signup (no monthly renewal).
+
+**Current:** Free users get 10 credits once.
+**Displayed:** "10 images per month" implies monthly refresh.
+
+**Fix:**
+
+```typescript
+// Change from: "10 images per month"
+// Change to: "10 free images to start"
+```
+
+**Files:**
+
+- `shared/config/stripe.ts` - `HOMEPAGE_TIERS[0]`
+- `client/components/pixelperfect/Pricing.tsx`
+
+---
+
+### QW-2: Low Credit Warning
+
+**Effort:** 2-4 hours | **Impact:** High (Prevents user frustration) | **Priority:** #2
+
+**Location:** `client/components/stripe/CreditsDisplay.tsx`
+
+**Issue:** Users discover insufficient credits only when attempting an action.
+
+**Fix:**
+
+- Add threshold check (e.g., < 5 credits)
+- Show warning indicator in CreditsDisplay component
+- Optional: Toast notification on dashboard load
+
+**Files:**
+
+- `client/components/stripe/CreditsDisplay.tsx` - Add warning state
+- `app/dashboard/layout.tsx` - Optional toast notification
+
+---
+
+### QW-3: Test Mode Detection Security Fix
+
+**Effort:** 10 minutes | **Impact:** High (Security vulnerability) | **Priority:** #3
+
+**Location:** `app/api/webhooks/stripe/route.ts:25-30`
+
+**Issue:** Unsafe test mode detection checks for "invalid json" string in body, which could be exploited.
+
+```typescript
+// REMOVE THIS:
+body.includes('invalid json');
+```
+
+**Fix:** Use only environment-based detection:
+
+```typescript
+const isTestMode =
+  !process.env.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET.startsWith('whsec_test_');
+```
+
+**Files:**
+
+- `app/api/webhooks/stripe/route.ts`
+
+---
+
+### QW-4: Credit Transaction History UI
+
+**Effort:** 4-6 hours | **Impact:** High (User transparency) | **Priority:** #4
+
+**Location:** `app/dashboard/billing/page.tsx`
+
+**Issue:** `credit_transactions` table exists but not exposed in UI. Users can't see:
+
+- How credits were used
+- When credits were added
+- Credit consumption patterns
+
+**Fix:**
+
+1. Create `GET /api/credits/history` endpoint
+2. Add service method `StripeService.getCreditHistory()`
+3. Add "Transaction History" section to billing page
+4. Display: Date, Type (earned/used), Amount, Description, Balance
+
+**Files:**
+
+- `app/api/credits/history/route.ts` - New endpoint
+- `server/stripe/stripeService.ts` - Add `getCreditHistory()` method
+- `app/dashboard/billing/page.tsx` - Add transaction history section
+- `client/components/stripe/CreditHistory.tsx` - New component
+
+---
+
+## 🚀 Major Projects (High Effort, High Impact)
+
+### MP-1: Upgrade/Downgrade Flow
+
+**Effort:** 2-3 days | **Impact:** Very High (Core feature) | **Priority:** #5
+
+**Location:** N/A (Missing)
+
+**Issue:** No in-app upgrade/downgrade flow. Users redirected to Stripe Portal for all plan changes.
+
+**Requirements:**
+
+1. API to preview proration costs
+2. API to execute plan change
+3. UI to compare current plan vs target plan
+4. Confirmation modal with proration details
+5. Success/error handling
+
+**Implementation Plan:**
+
+1. Backend:
+
+   - `POST /api/subscription/preview-change` - Calculate proration
+   - `POST /api/subscription/change` - Execute change
+   - Add `StripeService.previewPlanChange()`
+   - Add `StripeService.changePlan()`
+
+2. Frontend:
+   - Update `PricingCard` to show "Upgrade" vs "Subscribe"
+   - Add "Current Plan" badge
+   - Create `PlanChangeModal` component
+   - Show proration preview before confirmation
+
+**Files:**
+
+- `app/api/subscription/preview-change/route.ts` - New
+- `app/api/subscription/change/route.ts` - New
+- `server/stripe/stripeService.ts` - Add methods
+- `app/pricing/page.tsx` - Pass current plan
+- `client/components/stripe/PricingCard.tsx` - Update logic
+- `client/components/stripe/PlanChangeModal.tsx` - New
+
+---
+
+### MP-2: Webhook Idempotency
+
+**Effort:** 1-2 days | **Impact:** High (Prevent double-crediting) | **Priority:** #6
+
+**Location:** `app/api/webhooks/stripe/route.ts`
+
+**Issue:** No idempotency checks. If Stripe retries webhook, credits could be added twice.
+
+**Current Mitigation:** `ref_id` in `credit_transactions` provides some protection at DB level, but not enforced in webhook handler.
+
+**Fix:**
+
+1. Create `webhook_events` table:
+
+   ```sql
+   CREATE TABLE webhook_events (
+     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+     event_id text UNIQUE NOT NULL,
+     event_type text NOT NULL,
+     processed_at timestamptz DEFAULT now(),
+     status text NOT NULL
+   );
+   ```
+
+2. Check `webhook_events` before processing
+3. Insert event ID before processing (with status='processing')
+4. Update status to 'completed' or 'failed' after
+
+**Files:**
+
+- `supabase/migrations/[timestamp]_create_webhook_events.sql` - New
+- `app/api/webhooks/stripe/route.ts` - Add idempotency checks
+
+---
+
+### MP-3: Refund Handling
+
+**Effort:** 1-2 days | **Impact:** High (Revenue protection) | **Priority:** #7
+
+**Location:** `app/api/webhooks/stripe/route.ts`
+
+**Issue:** No handlers for refund events. Users keep credits after refund.
+
+**Required Webhooks:**
+
+- `charge.refunded` - Full or partial refund
+- `charge.dispute.created` - Chargeback initiated
+- `invoice.payment_refunded` - Subscription payment refunded
+
+**Fix:**
+
+1. Add webhook handlers for refund events
+2. Create RPC function `clawback_credits(user_id, amount, reason)`
+3. Handle partial vs full refunds
+4. Log refund transactions in `credit_transactions`
+5. Consider grace period before clawback
+
+**Files:**
+
+- `app/api/webhooks/stripe/route.ts` - Add handlers
+- `supabase/migrations/[timestamp]_add_clawback_rpc.sql` - New RPC function
+
+---
+
+## 💡 Fill Ins (Low Effort, Low Impact)
+
+### FI-1: Portal Session Response Type
+
+**Effort:** 5 minutes | **Impact:** Low (Type consistency) | **Priority:** #8
+
+**Location:** `server/stripe/stripeService.ts:250-273`
+
+**Issue:** Minor inconsistency between service return type and API response wrapper.
+
+**Fix:** Document the interface clearly or unwrap in service layer.
+
+---
+
+### FI-2: Stripe Health Check Endpoint
+
+**Effort:** 1-2 hours | **Impact:** Low (Ops convenience) | **Priority:** #9
+
+**Location:** N/A (Missing)
+
+**Issue:** No way to verify Stripe configuration is valid.
+
+**Fix:**
+
+```typescript
+// GET /api/health/stripe
+{
+  stripe_configured: boolean,
+  webhook_secret_valid: boolean,
+  api_key_valid: boolean
+}
+```
+
+**Files:**
+
+- `app/api/health/stripe/route.ts` - New
+
+---
+
+### FI-3: Multiple Active Subscriptions Edge Case
+
+**Effort:** 30 minutes | **Impact:** Low (Rare edge case) | **Priority:** #10
+
+**Location:** `server/stripe/stripeService.ts:115-139`
+
+**Issue:** `.single()` will error if user somehow has multiple active subscriptions.
+
+**Fix:** Add `.order('created_at', { ascending: false }).limit(1)` to ensure deterministic selection.
+
+---
+
+## 🤔 Thankless Tasks (High Effort, Low Impact)
+
+### TT-1: Subscription History Table
+
+**Effort:** 1-2 days | **Impact:** Low (Analytics only) | **Priority:** #11
+
+**Location:** Database schema
+
+**Issue:** No history of past subscriptions (current design updates via upsert).
+
+**Use Case:** Churn analysis, "Welcome back" messaging
+
+**Defer Unless:** Analytics becomes critical business need.
+
+---
+
+### TT-2: Product/Price Sync from Stripe
+
+**Effort:** 2-3 days | **Impact:** Low (Current approach works) | **Priority:** #12
+
+**Location:** `supabase/migrations/20250120_create_subscriptions_table.sql`
+
+**Issue:** `products` and `prices` tables unused. System uses hardcoded `SUBSCRIPTION_PRICE_MAP`.
+
+**Defer Unless:** Frequent price changes or multi-product catalog needed.
+
+---
+
+### TT-3: Subscription Pause/Resume Support
+
+**Effort:** 2-3 days | **Impact:** Low (Niche feature) | **Priority:** #13
+
+**Location:** Webhooks, API, UI
+
+**Issue:** No pause/resume functionality (though Stripe supports it).
+
+**Defer Unless:** User research shows demand.
+
+---
+
+## Detailed Gap Documentation
+
+### 1. UI/UX Gaps
 
 ### 1.1 Missing Plan Comparison View
+
 **Severity:** Medium
 **Location:** `/app/pricing/page.tsx`
 
@@ -23,16 +366,19 @@ The subscription system is **largely complete and production-ready**. However, t
 **Expected:** Show "Current Plan" badge, highlight differences, show what they'd gain/lose on change.
 
 **Files Affected:**
+
 - `app/pricing/page.tsx`
 - `client/components/stripe/PricingCard.tsx`
 
 ---
 
 ### 1.2 No Upgrade/Downgrade Flow
+
 **Severity:** High
 **Location:** N/A (Missing)
 
 **Issue:** The system only supports new subscriptions. There is no in-app flow for:
+
 - Upgrading from Hobby to Pro/Business
 - Downgrading from Business to Pro/Hobby
 - Users are redirected to Stripe Portal for all changes
@@ -40,16 +386,19 @@ The subscription system is **largely complete and production-ready**. However, t
 **Expected:** Dedicated upgrade/downgrade confirmation with proration preview before redirecting to Stripe.
 
 **Files Affected:**
+
 - `app/pricing/page.tsx` - No "Upgrade" vs "Subscribe" button differentiation
 - `client/components/stripe/PricingCard.tsx` - Always shows "Subscribe Now"
 
 ---
 
 ### 1.3 No Trial Period Support in UI
+
 **Severity:** Low
 **Location:** `app/pricing/page.tsx`, `shared/config/stripe.ts`
 
 **Issue:** While the database schema supports `trialing` status and the webhook handles it, there's no UI support for:
+
 - Showing trial information on pricing cards
 - Displaying trial end date on billing page
 - Showing "Start Trial" instead of "Subscribe Now"
@@ -57,16 +406,19 @@ The subscription system is **largely complete and production-ready**. However, t
 **Expected:** If plans have trial periods, UI should reflect this.
 
 **Files Affected:**
+
 - `shared/config/stripe.ts` - `SUBSCRIPTION_PLANS` has no trial metadata
 - `client/components/stripe/PricingCard.tsx` - No trial display
 
 ---
 
 ### 1.4 Credit Usage History Missing
+
 **Severity:** Medium
 **Location:** `/app/dashboard/billing/page.tsx`
 
 **Issue:** Users can see their current credit balance but cannot view:
+
 - How credits were used (transaction history)
 - When credits were added (renewal dates)
 - Credit consumption patterns
@@ -76,33 +428,39 @@ The `credit_transactions` table exists but is not exposed in the UI.
 **Expected:** Credit history/transaction log accessible from billing page.
 
 **Files Affected:**
+
 - `app/dashboard/billing/page.tsx` - No transaction history section
 - `server/stripe/stripeService.ts` - No `getCreditHistory()` method
 
 ---
 
 ### 1.5 No Low Credit Warning
+
 **Severity:** Medium
 **Location:** N/A (Missing)
 
 **Issue:** Users receive no warning when their credit balance is low. They discover insufficient credits only when attempting an action.
 
 **Expected:**
+
 - In-app notification when credits fall below threshold
 - Email notification option
 - Warning banner in dashboard
 
 **Files Affected:**
+
 - `client/components/stripe/CreditsDisplay.tsx` - No low balance indicator
 - `app/dashboard/` - No warning banners
 
 ---
 
 ### 1.6 Cancellation Flow Lacks Retention
+
 **Severity:** Low
 **Location:** Stripe Portal (external)
 
 **Issue:** Users cancel via Stripe Portal with no opportunity for:
+
 - Feedback collection
 - Pause subscription option
 - Retention offers
@@ -112,6 +470,7 @@ This is acceptable since Stripe Portal handles cancellation, but consider custom
 ---
 
 ### 1.7 Homepage Free Tier Mismatch
+
 **Severity:** Low
 **Location:** `shared/config/stripe.ts:215-233`
 
@@ -121,6 +480,7 @@ This is acceptable since Stripe Portal handles cancellation, but consider custom
 **Displayed:** "10 images per month" implies monthly refresh.
 
 **Files Affected:**
+
 - `shared/config/stripe.ts` - `HOMEPAGE_TIERS[0]`
 - `client/components/pixelperfect/Pricing.tsx`
 
@@ -129,18 +489,21 @@ This is acceptable since Stripe Portal handles cancellation, but consider custom
 ## 2. API Gaps
 
 ### 2.1 No Subscription Change Endpoint
+
 **Severity:** Medium
 **Location:** N/A (Missing)
 
 **Issue:** No API endpoint to preview or initiate subscription changes (upgrade/downgrade). Users must use Stripe Portal.
 
 **Expected:**
+
 - `POST /api/subscription/preview-change` - Get proration preview
 - `POST /api/subscription/change` - Change plan with confirmation
 
 ---
 
 ### 2.2 StripeService.createPortalSession Response Mismatch
+
 **Severity:** Low
 **Location:** `server/stripe/stripeService.ts:250-273`
 
@@ -154,6 +517,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 2.3 Missing Credit Transaction Endpoint
+
 **Severity:** Medium
 **Location:** N/A (Missing)
 
@@ -164,10 +528,12 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 2.4 No Subscription Pause/Resume Support
+
 **Severity:** Low
 **Location:** Webhooks, API
 
 **Issue:** Stripe supports subscription pausing, but the system has no:
+
 - API endpoint to pause
 - Webhook handler for pause events
 - UI for pause status
@@ -175,6 +541,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 2.5 Webhook Idempotency Not Enforced
+
 **Severity:** Medium
 **Location:** `app/api/webhooks/stripe/route.ts`
 
@@ -187,6 +554,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 2.6 No Health Check for Stripe Integration
+
 **Severity:** Low
 **Location:** N/A (Missing)
 
@@ -199,6 +567,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ## 3. Database/Backend Gaps
 
 ### 3.1 Products/Prices Tables Not Synced
+
 **Severity:** Low
 **Location:** `supabase/migrations/20250120_create_subscriptions_table.sql`
 
@@ -209,6 +578,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 3.2 No Subscription History Table
+
 **Severity:** Low
 **Location:** Database schema
 
@@ -219,6 +589,7 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 3.3 Credit Balance Can Go Negative
+
 **Severity:** Medium
 **Location:** `supabase/migrations/20250120_create_rpc_functions.sql`
 
@@ -231,10 +602,12 @@ static async createPortalSession(): Promise<{ url: string }>
 ---
 
 ### 3.4 No Refund Handling
+
 **Severity:** Medium
 **Location:** `app/api/webhooks/stripe/route.ts`
 
 **Issue:** No webhook handler for:
+
 - `charge.refunded`
 - `charge.dispute.created`
 - `invoice.payment_refunded`
@@ -246,10 +619,12 @@ Users could receive credits and then get refunded without credit clawback.
 ## 4. Security Gaps
 
 ### 4.1 Test Mode Detection Overly Broad
+
 **Severity:** Medium
 **Location:** `app/api/webhooks/stripe/route.ts:25-30`
 
 **Issue:** Test mode is detected with multiple conditions including checking for "invalid json" in body:
+
 ```typescript
 body.includes('invalid json');
 ```
@@ -261,6 +636,7 @@ This could potentially be exploited if an attacker crafts a request containing "
 ---
 
 ### 4.2 No Rate Limiting on Checkout
+
 **Severity:** Low
 **Location:** `app/api/checkout/route.ts`
 
@@ -271,6 +647,7 @@ This could potentially be exploited if an attacker crafts a request containing "
 ---
 
 ### 4.3 Credit RPC Functions Accessible to All Authenticated Users
+
 **Severity:** Low
 **Location:** Database RPC functions
 
@@ -281,6 +658,7 @@ This could potentially be exploited if an attacker crafts a request containing "
 ## 5. Edge Cases Not Handled
 
 ### 5.1 Multiple Active Subscriptions
+
 **Severity:** Low
 **Location:** `server/stripe/stripeService.ts:115-139`
 
@@ -289,16 +667,19 @@ This could potentially be exploited if an attacker crafts a request containing "
 ---
 
 ### 5.2 Currency Mismatch
+
 **Severity:** Low
 **Location:** `shared/config/stripe.ts`
 
 **Issue:** All prices hardcoded in USD. No support for:
+
 - Multi-currency pricing
 - Currency display based on user locale
 
 ---
 
 ### 5.3 Annual Billing Not Supported
+
 **Severity:** Medium
 **Location:** `shared/config/stripe.ts`
 
@@ -310,35 +691,71 @@ This could potentially be exploited if an attacker crafts a request containing "
 
 These are common subscription features not present but may not be required:
 
-| Feature | Status | Priority |
-|---------|--------|----------|
-| Annual billing plans | Missing | Medium |
-| Team/organization subscriptions | Missing | Low |
-| Usage-based billing | Missing | Low |
-| Coupon/promo code support | Missing (Stripe has it) | Low |
-| Gift subscriptions | Missing | Low |
-| Referral credits | Missing | Low |
+| Feature                         | Status                  | Priority |
+| ------------------------------- | ----------------------- | -------- |
+| Annual billing plans            | Missing                 | Medium   |
+| Team/organization subscriptions | Missing                 | Low      |
+| Usage-based billing             | Missing                 | Low      |
+| Coupon/promo code support       | Missing (Stripe has it) | Low      |
+| Gift subscriptions              | Missing                 | Low      |
+| Referral credits                | Missing                 | Low      |
 
 ---
 
-## 7. Recommendations Summary
+## Implementation Roadmap
 
-### High Priority
-1. Add subscription upgrade/downgrade flow with proration preview
-2. Implement webhook idempotency checks
-3. Add refund webhook handlers
+### Sprint 1: Quick Wins (1 week)
 
-### Medium Priority
-4. Add credit transaction history UI
-5. Add low credit warning notifications
-6. Fix homepage free tier messaging
-7. Add subscription change preview API
+Execute all Quick Wins for immediate value:
 
-### Low Priority
-8. Sync Stripe products/prices to database
-9. Add annual billing option
-10. Add trial period UI support
-11. Add Stripe health check endpoint
+- QW-1: Homepage Free Tier Mismatch (15 min)
+- QW-3: Test Mode Detection Fix (10 min)
+- QW-2: Low Credit Warning (2-4 hours)
+- QW-4: Credit Transaction History UI (4-6 hours)
+
+**Total effort:** ~1 week | **Value:** High user satisfaction improvements
+
+### Sprint 2: Security & Reliability (1 week)
+
+Address critical backend gaps:
+
+- MP-2: Webhook Idempotency (1-2 days)
+- MP-3: Refund Handling (1-2 days)
+
+**Total effort:** 1 week | **Value:** Prevent revenue loss and data corruption
+
+### Sprint 3: Core Feature (2-3 weeks)
+
+Major feature implementation:
+
+- MP-1: Upgrade/Downgrade Flow (2-3 days)
+
+**Total effort:** 2-3 weeks | **Value:** Essential SaaS functionality
+
+### Backlog: Fill Ins & Thankless Tasks
+
+Handle when time permits or specific need arises:
+
+- Fill Ins (FI-1, FI-2, FI-3): Low priority polish
+- Thankless Tasks (TT-1, TT-2, TT-3): Only if business requirements change
+
+---
+
+## Effort x Impact Visual Matrix
+
+```
+High Impact
+     ↑
+     │  QW-1,2,3,4    │  MP-1,2,3
+     │  Quick Wins    │  Major Projects
+     │  DO FIRST      │  SCHEDULE NEXT
+     ├───────────────┼─────────────────
+     │  FI-1,2,3      │  TT-1,2,3
+     │  Fill Ins      │  Thankless Tasks
+     │  WHEN TIME     │  RECONSIDER
+     │                │
+Low Impact            →  High Effort
+```
 
 ---
 

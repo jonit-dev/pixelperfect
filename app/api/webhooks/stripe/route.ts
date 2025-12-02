@@ -4,7 +4,7 @@ import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
 import { getPlanForPriceId } from '@shared/config/stripe';
 import Stripe from 'stripe';
-
+import dayjs from 'dayjs';
 
 export const runtime = 'edge'; // Cloudflare Worker compatible
 
@@ -29,7 +29,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       // Additional check: test for malformed JSON which indicates this is likely a test
       body.includes('invalid json');
 
-    
     if (isTestMode) {
       // In test mode, parse the body directly as JSON event
       try {
@@ -126,7 +125,9 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
             if (error) {
               console.error('Error adding test subscription credits:', error);
             } else {
-              console.log(`Added ${plan.creditsPerMonth} test subscription credits to user ${userId} for ${plan.name} plan`);
+              console.log(
+                `Added ${plan.creditsPerMonth} test subscription credits to user ${userId} for ${plan.name} plan`
+              );
             }
           }
         } else {
@@ -149,7 +150,9 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
               if (error) {
                 console.error('Error adding initial subscription credits:', error);
               } else {
-                console.log(`Added ${plan.creditsPerMonth} initial subscription credits to user ${userId} for ${plan.name} plan`);
+                console.log(
+                  `Added ${plan.creditsPerMonth} initial subscription credits to user ${userId} for ${plan.name} plan`
+                );
               }
             }
           }
@@ -159,7 +162,9 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
       }
     }
   } else {
-    console.warn(`Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription mode is supported.`);
+    console.warn(
+      `Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription mode is supported.`
+    );
   }
 }
 
@@ -182,18 +187,7 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
   const userId = profile.id;
 
   // Get price ID and plan metadata
-  // Cast to access raw properties from Stripe webhook events
-  const rawSub = subscription as unknown as {
-    id: string;
-    status: string;
-    items: { data: Array<{ price: { id: string } }> };
-    current_period_start: number;
-    current_period_end: number;
-    cancel_at_period_end: boolean;
-    canceled_at: number | null;
-  };
-
-  const priceId = rawSub.items.data[0]?.price.id || '';
+  const priceId = subscription.items.data[0]?.price.id || '';
   const plan = getPlanForPriceId(priceId);
 
   if (!plan) {
@@ -201,16 +195,46 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     return;
   }
 
+  // Access period timestamps - these are standard Stripe subscription fields (Unix timestamps in seconds)
+  const currentPeriodStart = (subscription as any).current_period_start as number | undefined;
+  const currentPeriodEnd = (subscription as any).current_period_end as number | undefined;
+  const canceledAt = (subscription as any).canceled_at as number | null | undefined;
+
+  // Validate required timestamp fields
+  if (!currentPeriodStart || !currentPeriodEnd) {
+    console.error('Missing required period timestamps in subscription:', {
+      id: subscription.id,
+      current_period_start: currentPeriodStart,
+      current_period_end: currentPeriodEnd,
+    });
+    return;
+  }
+
+  // Validate that timestamps are valid numbers
+  if (isNaN(currentPeriodStart) || isNaN(currentPeriodEnd)) {
+    console.error('Invalid timestamp values in subscription:', {
+      id: subscription.id,
+      current_period_start: currentPeriodStart,
+      current_period_end: currentPeriodEnd,
+    });
+    return;
+  }
+
+  // Convert Unix timestamps to ISO strings using dayjs
+  const currentPeriodStartISO = dayjs.unix(currentPeriodStart).toISOString();
+  const currentPeriodEndISO = dayjs.unix(currentPeriodEnd).toISOString();
+  const canceledAtISO = canceledAt ? dayjs.unix(canceledAt).toISOString() : null;
+
   // Upsert subscription data
   const { error: subError } = await supabaseAdmin.from('subscriptions').upsert({
-    id: rawSub.id,
+    id: subscription.id,
     user_id: userId,
-    status: rawSub.status,
+    status: subscription.status,
     price_id: priceId,
-    current_period_start: new Date(rawSub.current_period_start * 1000).toISOString(),
-    current_period_end: new Date(rawSub.current_period_end * 1000).toISOString(),
-    cancel_at_period_end: rawSub.cancel_at_period_end,
-    canceled_at: rawSub.canceled_at ? new Date(rawSub.canceled_at * 1000).toISOString() : null,
+    current_period_start: currentPeriodStartISO,
+    current_period_end: currentPeriodEndISO,
+    cancel_at_period_end: subscription.cancel_at_period_end,
+    canceled_at: canceledAtISO,
   });
 
   if (subError) {
@@ -257,7 +281,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
     .from('subscriptions')
     .update({
       status: 'canceled',
-      canceled_at: new Date().toISOString(),
+      canceled_at: dayjs().toISOString(),
     })
     .eq('id', subscription.id);
 
@@ -318,9 +342,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
 
   // Get the price ID from invoice lines to determine credit amount
   const priceId =
-    invoiceWithSub.lines?.data?.[0]?.price?.id ||
-    invoiceWithSub.lines?.data?.[0]?.plan?.id ||
-    '';
+    invoiceWithSub.lines?.data?.[0]?.price?.id || invoiceWithSub.lines?.data?.[0]?.plan?.id || '';
 
   const plan = getPlanForPriceId(priceId);
 
@@ -355,9 +377,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
   // Calculate capped amount to prevent exceeding rollover limit
   const newBalanceIfAdded = currentBalance + creditsToAdd;
   const actualCreditsToAdd =
-    newBalanceIfAdded > maxRollover
-      ? Math.max(0, maxRollover - currentBalance)
-      : creditsToAdd;
+    newBalanceIfAdded > maxRollover ? Math.max(0, maxRollover - currentBalance) : creditsToAdd;
 
   if (actualCreditsToAdd > 0) {
     const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
