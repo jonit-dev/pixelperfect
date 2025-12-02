@@ -3,13 +3,18 @@ import { useAuthStore } from '@client/store/authStore';
 import { useModalStore } from '@client/store/modalStore';
 import { loadEnv } from '@shared/config/env';
 import { AuthProvider } from '@shared/types/authProviders';
-import { Menu, Zap } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, Zap, X } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { useClickOutside } from '@client/hooks/useClickOutside';
 
 export const NavBar = (): JSX.Element => {
   const { openAuthModal } = useModalStore();
   const { isAuthenticated, isLoading, user, signOut } = useAuthStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(dropdownRef, () => setIsDropdownOpen(false));
 
   const handleAuthClick = () => {
     if (!isAuthenticated) {
@@ -97,10 +102,9 @@ export const NavBar = (): JSX.Element => {
               <div className="hidden md:flex items-center">
                 <CreditsDisplay />
               </div>
-              <div className="relative">
+              <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
                 >
                   <span className="max-w-[180px] truncate">{user?.email}</span>
@@ -165,11 +169,73 @@ export const NavBar = (): JSX.Element => {
               </div>
             </>
           )}
-          <button className="md:hidden p-2 text-slate-600">
-            <Menu size={24} />
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-slate-600"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t border-slate-200 bg-white">
+          <nav className="flex flex-col px-4 py-4 space-y-2">
+            {isAuthenticated && (
+              <a
+                href="/dashboard"
+                className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+              >
+                Dashboard
+              </a>
+            )}
+            <a
+              href="#features"
+              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#how-it-works"
+              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              How it Works
+            </a>
+            <a
+              href="#pricing"
+              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Pricing
+            </a>
+            <a
+              href="/blog"
+              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Blog
+            </a>
+            {!isAuthenticated && (
+              <>
+                <div className="border-t border-slate-200 my-2 pt-2">
+                  <button
+                    onClick={handleAuthClick}
+                    className="block w-full text-left px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    onClick={() => openAuthModal('register')}
+                    className="block w-full mt-2 px-4 py-2 text-sm font-semibold bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white rounded-lg transition-all"
+                  >
+                    Get Started Free
+                  </button>
+                </div>
+              </>
+            )}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
