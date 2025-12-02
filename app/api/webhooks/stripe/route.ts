@@ -54,7 +54,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // 3. Handle the event
     console.log(`Processing webhook event: ${event.type}`);
 
-    switch (event.type) {
+    switch (event.type as any) {
       case 'checkout.session.completed':
         await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
         break;
@@ -74,6 +74,18 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
       case 'invoice.payment_failed':
         await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice);
+        break;
+
+      case 'charge.refunded':
+        await handleChargeRefunded(event.data.object as any);
+        break;
+
+      case 'charge.dispute.created':
+        await handleChargeDisputeCreated(event.data.object as any);
+        break;
+
+      case 'invoice.payment_refunded':
+        await handleInvoicePaymentRefunded(event.data.object as any);
         break;
 
       default:
@@ -433,4 +445,48 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   } else {
     console.log(`Marked user ${userId} subscription as past_due`);
   }
+}
+
+// Handle charge refund - clawback credits
+async function handleChargeRefunded(charge: any) {
+  const customerId = charge.customer;
+  const refundAmount = charge.amount_refunded || 0;
+
+  if (refundAmount === 0) {
+    console.log(`Charge ${charge.id} has no refund amount, skipping`);
+    return;
+  }
+
+  // Get the user ID from the customer
+  const { data: profile } = await supabaseAdmin
+    .from('profiles')
+    .select('id')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (!profile) {
+    console.error(`No profile found for customer ${customerId} for charge refund`);
+    return;
+  }
+
+  const userId = profile.id;
+
+  // For now, log the refund - the clawback logic will be implemented later
+  console.log(`Charge ${charge.id} refunded ${refundAmount} cents for user ${userId}`);
+
+  // TODO: Implement credit clawback logic when database migrations are applied
+}
+
+// Handle charge dispute created - immediate credit hold
+async function handleChargeDisputeCreated(dispute: any) {
+  console.log(`Charge dispute ${dispute.id} created for charge ${dispute.charge}`);
+
+  // TODO: Implement dispute handling logic
+}
+
+// Handle invoice payment refunded
+async function handleInvoicePaymentRefunded(invoice: any) {
+  console.log(`Invoice ${invoice.id} payment refunded`);
+
+  // TODO: Implement invoice refund handling logic
 }

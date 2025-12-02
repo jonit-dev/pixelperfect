@@ -8,6 +8,42 @@ import type {
   IProduct,
 } from '@shared/types/stripe';
 
+interface ICreditTransaction {
+  id: string;
+  amount: number;
+  type: 'purchase' | 'subscription' | 'usage' | 'refund' | 'bonus';
+  reference_id: string | null;
+  description: string | null;
+  created_at: string;
+}
+
+interface ICreditHistoryResponse {
+  transactions: ICreditTransaction[];
+  pagination: {
+    limit: number;
+    offset: number;
+    total: number;
+  };
+}
+
+interface ISubscriptionPreviewResponse {
+  proration: {
+    amount_due: number;
+    currency: string;
+    period_start: string;
+    period_end: string;
+  };
+}
+
+interface ISubscriptionChangeResponse {
+  subscription_id: string;
+  status: string;
+  new_price_id: string;
+  effective_immediately: boolean;
+  current_period_start: string;
+  current_period_end: string;
+}
+
 /**
  * Frontend service for Stripe operations
  * All methods interact with the backend API routes or Supabase
@@ -278,5 +314,119 @@ export class StripeService {
   static async redirectToPortal(): Promise<void> {
     const { url } = await this.createPortalSession();
     window.location.href = url;
+  }
+
+  /**
+   * Get credit history for the current user
+   * @param limit - Maximum number of transactions to fetch
+   * @param offset - Number of transactions to skip
+   * @returns Object with transactions array and pagination info
+   */
+  static async getCreditHistory(limit: number = 50, offset: number = 0): Promise<ICreditHistoryResponse> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error('User not authenticated');
+    }
+
+    const response = await fetch(`/api/credits/history?limit=${limit}&offset=${offset}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${session.access_token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to fetch credit history');
+    }
+
+    const result = await response.json();
+    return result.success ? result.data : result;
+  }
+
+  /**
+   * Preview subscription change costs
+   * @param targetPriceId - The target price ID to change to
+   * @returns Preview data with proration information
+   */
+  static async previewSubscriptionChange(targetPriceId: string): Promise<ISubscriptionPreviewResponse & {
+    current_plan: {
+      name: string;
+      price_id: string;
+      credits_per_month: number;
+    } | null;
+    new_plan: {
+      name: string;
+      price_id: string;
+      credits_per_month: number;
+    };
+    effective_immediately: boolean;
+  }> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error('User not authenticated');
+    }
+
+    const response = await fetch('/api/subscription/preview-change', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ targetPriceId }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to preview subscription change');
+    }
+
+    const result = await response.json();
+    const apiData = result.success ? result.data : result;
+
+    // Transform API response to match expected format
+    return {
+      ...apiData,
+      effective_immediately: true,
+    };
+  }
+
+  /**
+   * Change subscription to a new price tier
+   * @param targetPriceId - The target price ID to change to
+   * @returns Subscription change result
+   */
+  static async changeSubscription(targetPriceId: string): Promise<ISubscriptionChangeResponse> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error('User not authenticated');
+    }
+
+    const response = await fetch('/api/subscription/change', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ targetPriceId }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to change subscription');
+    }
+
+    const result = await response.json();
+    return result.success ? result.data : result;
   }
 }
