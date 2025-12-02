@@ -54,26 +54,18 @@ export const Pricing: React.FC = () => {
     // Set loading state
     setLoadingTier(tier.name);
 
-    // Store intended purchase for after auth
-    sessionStorage.setItem(
-      'intendedPurchase',
-      JSON.stringify({
-        priceId: tier.priceId,
-        planName: tier.name,
-        successUrl: `${window.location.origin}/success`,
-        cancelUrl: window.location.href,
-      })
-    );
-
     try {
       await StripeService.redirectToCheckout(tier.priceId, {
         successUrl: `${window.location.origin}/success`,
         cancelUrl: window.location.href,
       });
     } catch (error) {
-      // User not authenticated - open auth modal
+      // User not authenticated - add price to URL and open auth modal
       if (error instanceof Error && error.message.includes('not authenticated')) {
-        openAuthModal('register');
+        const url = new URL(window.location.href);
+        url.searchParams.set('checkout_price', tier.priceId);
+        window.history.replaceState({}, '', url.toString());
+        openAuthModal('login');
       } else {
         // Actual error - show toast
         showToast({

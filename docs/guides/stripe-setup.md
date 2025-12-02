@@ -138,15 +138,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 # App
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-# Stripe Price IDs (from Stripe Dashboard > Products)
-# Credit Packs (one-time payments)
-NEXT_PUBLIC_STRIPE_PRICE_STARTER_CREDITS=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_PRO_CREDITS=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE_CREDITS=price_xxx
-# Subscription Plans (recurring)
-NEXT_PUBLIC_STRIPE_PRICE_HOBBY_MONTHLY=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_PRO_MONTHLY=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_MONTHLY=price_xxx
+# Stripe Price IDs are now configured in shared/config/stripe.ts
+# See shared/config/stripe.ts for Price ID configuration
 ```
 
 **`.env.prod`** - Server-side secrets (NEVER commit):

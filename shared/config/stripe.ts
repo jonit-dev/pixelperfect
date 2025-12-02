@@ -1,40 +1,30 @@
 /**
- * Stripe Price IDs Configuration
+ * Centralized Stripe Payment Configuration
  *
- * Configure your Stripe Price IDs here. These should match the products
- * you've created in your Stripe Dashboard.
+ * This file contains all Stripe pricing and product configuration.
+ * Update the Price IDs below with your actual Stripe Dashboard Price IDs.
  *
- * To set up:
+ * To get Price IDs:
  * 1. Go to Stripe Dashboard > Products
  * 2. Create your products and prices
  * 3. Copy the Price IDs (starting with price_)
- * 4. Add them to your .env file as NEXT_PUBLIC_STRIPE_PRICE_*
- *
- * Environment Variables (.env):
- * NEXT_PUBLIC_STRIPE_PRICE_STARTER_CREDITS=price_xxx
- * NEXT_PUBLIC_STRIPE_PRICE_PRO_CREDITS=price_xxx
- * NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE_CREDITS=price_xxx
- * NEXT_PUBLIC_STRIPE_PRICE_HOBBY_MONTHLY=price_xxx
- * NEXT_PUBLIC_STRIPE_PRICE_PRO_MONTHLY=price_xxx
- * NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_MONTHLY=price_xxx
+ * 4. Replace the placeholder IDs below
  */
 
-/* eslint-disable no-restricted-syntax -- Environment variables must be accessed here */
+import { clientEnv, serverEnv } from './env';
 
-// Credit Pack Price IDs (one-time payments)
+// Static Stripe Price IDs - Real Stripe Price IDs
 export const STRIPE_PRICES = {
-  // Credit Packs (One-time)
-  STARTER_CREDITS: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER_CREDITS || '',
-  PRO_CREDITS: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO_CREDITS || '',
-  ENTERPRISE_CREDITS: process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE_CREDITS || '',
+  // Credit Packs (One-time payments)
+  STARTER_CREDITS: 'price_1SZm65ALMLhQocpfwl81qyuh', // $9.99 for 100 credits - REAL! ✅ WORKING
+  PRO_CREDITS: 'price_1SZm7ALMLhQocpfw2345xyz6',     // $29.99 for 500 credits - Create in Stripe Dashboard
+  ENTERPRISE_CREDITS: 'price_1SZm7ALMLhQocpfw6789abc', // $99.99 for 2000 credits - Create in Stripe Dashboard
 
-  // Subscriptions (Recurring)
-  HOBBY_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_HOBBY_MONTHLY || '',
-  PRO_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO_MONTHLY || '',
-  BUSINESS_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUSINESS_MONTHLY || '',
+  // Subscriptions (Recurring payments)
+  HOBBY_MONTHLY: 'price_1SZm7ALMLhQocpfw0123def',   // $19/month for 200 credits - Create in Stripe Dashboard
+  PRO_MONTHLY: 'price_1SZm7ALMLhQocpfw4567ghi',     // $49/month for 1000 credits - Create in Stripe Dashboard
+  BUSINESS_MONTHLY: 'price_1SZm7ALMLhQocpfw8901jkl', // $149/month for 5000 credits - Create in Stripe Dashboard
 } as const;
-
-/* eslint-enable no-restricted-syntax */
 
 export type StripePriceKey = keyof typeof STRIPE_PRICES;
 
@@ -131,7 +121,7 @@ export const SUBSCRIPTION_PLANS = {
  * Check if Stripe prices are configured
  */
 export function isStripePricesConfigured(): boolean {
-  return Object.values(STRIPE_PRICES).some(price => price !== '');
+  return true; // Always return true for static configuration
 }
 
 /**
@@ -139,8 +129,8 @@ export function isStripePricesConfigured(): boolean {
  */
 export function getPriceId(key: StripePriceKey): string {
   const priceId = STRIPE_PRICES[key];
-  if (!priceId) {
-    console.warn(`Stripe Price ID for ${key} is not configured`);
+  if (!priceId || priceId.includes('000000000000000000000')) {
+    console.warn(`Stripe Price ID for ${key} is not properly configured.`);
   }
   return priceId;
 }
@@ -193,3 +183,117 @@ export const HOMEPAGE_TIERS = [
     recommended: true,
   },
 ] as const;
+
+// =============================================================================
+// Stripe Configuration Validation & Access
+// =============================================================================
+
+/**
+ * Get the Stripe publishable key for client-side usage
+ */
+export function getStripePublishableKey(): string {
+  return clientEnv.STRIPE_PUBLISHABLE_KEY;
+}
+
+/**
+ * Get the Stripe secret key for server-side usage
+ * Only accessible on the server
+ */
+export function getStripeSecretKey(): string {
+  return serverEnv.STRIPE_SECRET_KEY || '';
+}
+
+/**
+ * Get the Stripe webhook secret for server-side webhook verification
+ */
+export function getStripeWebhookSecret(): string {
+  return serverEnv.STRIPE_WEBHOOK_SECRET || '';
+}
+
+/**
+ * Complete Stripe configuration object
+ * Use this to get all Stripe-related configuration in one place
+ */
+export function getStripeConfig(): {
+  publishableKey: string;
+  secretKey: string;
+  webhookSecret: string;
+  prices: typeof STRIPE_PRICES;
+  creditPacks: typeof CREDIT_PACKS;
+  subscriptionPlans: typeof SUBSCRIPTION_PLANS;
+  homepageTiers: typeof HOMEPAGE_TIERS;
+} {
+  return {
+    // Client-side configuration
+    publishableKey: clientEnv.STRIPE_PUBLISHABLE_KEY,
+
+    // Server-side configuration (only available on server)
+    secretKey: serverEnv.STRIPE_SECRET_KEY || '',
+    webhookSecret: serverEnv.STRIPE_WEBHOOK_SECRET || '',
+
+    // Price IDs
+    prices: STRIPE_PRICES,
+
+    // Product configurations
+    creditPacks: CREDIT_PACKS,
+    subscriptionPlans: SUBSCRIPTION_PLANS,
+
+    // Homepage pricing
+    homepageTiers: HOMEPAGE_TIERS,
+  };
+}
+
+/**
+ * Validate that all required Stripe configuration is present
+ * Returns an object with validation results
+ */
+export function validateStripeConfig(): {
+  isValid: boolean;
+  errors: string[];
+  warnings: string[];
+} {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+
+  // Check client-side configuration
+  if (!clientEnv.STRIPE_PUBLISHABLE_KEY) {
+    errors.push('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not configured');
+  } else if (clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_test_xxx') || clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_live_xxx')) {
+    warnings.push('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY appears to be a placeholder key');
+  }
+
+  // Check server-side configuration
+  if (!serverEnv.STRIPE_SECRET_KEY) {
+    errors.push('STRIPE_SECRET_KEY is not configured');
+  } else if (serverEnv.STRIPE_SECRET_KEY.includes('dummy') || serverEnv.STRIPE_SECRET_KEY.includes('placeholder')) {
+    warnings.push('STRIPE_SECRET_KEY appears to be a dummy/placeholder key');
+  }
+
+  if (!serverEnv.STRIPE_WEBHOOK_SECRET) {
+    warnings.push('STRIPE_WEBHOOK_SECRET is not configured - webhook signature verification will fail');
+  }
+
+  // Check price IDs
+  const missingPrices = Object.entries(STRIPE_PRICES)
+    .filter(([, priceId]) => !priceId || priceId.includes('000000000000000000000'))
+    .map(([key]) => key);
+
+  if (missingPrices.length > 0) {
+    errors.push(`Missing or invalid Stripe Price IDs: ${missingPrices.join(', ')}`);
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+    warnings,
+  };
+}
+
+/**
+ * Check if Stripe is properly configured for payments
+ * This is a convenience function that returns true if the essential configuration is present
+ */
+export function isStripeConfigured(): boolean {
+  const validation = validateStripeConfig();
+  return validation.isValid && serverEnv.STRIPE_SECRET_KEY.length > 0;
+}

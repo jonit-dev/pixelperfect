@@ -13,6 +13,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '475px',
+      },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
       },

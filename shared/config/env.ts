@@ -36,6 +36,8 @@ const clientEnvSchema = z.object({
   SUPPORT_EMAIL: z.string().email().default('support@pixelperfect.app'),
   LEGAL_EMAIL: z.string().email().default('legal@pixelperfect.app'),
   PRIVACY_EMAIL: z.string().email().default('privacy@pixelperfect.app'),
+  // Stripe
+  STRIPE_PUBLISHABLE_KEY: z.string().default(''),
 });
 
 export type IClientEnv = z.infer<typeof clientEnvSchema>;
@@ -61,6 +63,8 @@ function loadClientEnv(): IClientEnv {
     SUPPORT_EMAIL: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@pixelperfect.app',
     LEGAL_EMAIL: process.env.NEXT_PUBLIC_LEGAL_EMAIL || 'legal@pixelperfect.app',
     PRIVACY_EMAIL: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@pixelperfect.app',
+    // Stripe
+    STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
   };
 
   return clientEnvSchema.parse(env);

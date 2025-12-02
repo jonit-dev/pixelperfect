@@ -2,6 +2,8 @@
 
 This checklist contains manual tests you must perform to verify PixelPerfect is ready for production deployment.
 
+> **Note:** Validation checklists were moved from `ROADMAP.md` to this file on 2025-12-01 to keep the roadmap focused on MVP delivery tasks.
+
 ## Prerequisites
 
 Before starting validation:

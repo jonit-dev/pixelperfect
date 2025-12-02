@@ -3,6 +3,43 @@ import { createClient } from '@shared/utils/supabase/client';
 import { AuthProvider } from '@shared/types/authProviders';
 import { loadingStore } from '@client/store/loadingStore';
 
+// Helper function to handle checkout redirect after authentication
+const handleCheckoutRedirect = async () => {
+  if (typeof window === 'undefined') return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const checkoutPriceId = urlParams.get('checkout_price');
+
+  if (checkoutPriceId) {
+    // Handle pending checkout - redirect to Stripe
+    const creditsAmount = urlParams.get('checkout_credits');
+
+    // Clean up URL params
+    urlParams.delete('checkout_price');
+    urlParams.delete('checkout_credits');
+    const cleanUrl = urlParams.toString()
+      ? `${window.location.pathname}?${urlParams.toString()}`
+      : window.location.pathname;
+    window.history.replaceState({}, '', cleanUrl);
+
+    // Redirect to Stripe checkout
+    try {
+      const { StripeService } = await import('@server/stripe/stripeService');
+      await StripeService.redirectToCheckout(checkoutPriceId, {
+        metadata: creditsAmount ? { credits_amount: creditsAmount } : {},
+        successUrl: `${window.location.origin}/success`,
+        cancelUrl: window.location.href,
+      });
+    } catch (error) {
+      console.error('Error processing checkout:', error);
+      window.location.href = '/dashboard';
+    }
+    return true; // Indicates that a redirect is happening
+  }
+
+  return false; // No checkout redirect needed
+};
+
 // Create a single browser client instance for the auth store
 const supabase = createClient();
 
@@ -72,17 +109,9 @@ export const useAuthStore = create<IAuthState>((set, get) => ({
         throw new Error('An account with this email already exists');
       }
 
-      if (data.user) {
-        set({
-          user: {
-            email: data.user.email || '',
-            name: data.user.user_metadata?.name,
-            provider: AuthProvider.EMAIL,
-          },
-          isAuthenticated: true,
-          isLoading: false,
-        });
-      }
+      // For email signup, user needs to confirm email first
+      // Don't set as authenticated yet - the onAuthStateChange handler will handle it
+      // after email confirmation
     } finally {
       loadingStore.getState().setLoading(false);
     }
@@ -198,7 +227,7 @@ export const useAuthStore = create<IAuthState>((set, get) => ({
 useAuthStore.getState().initializeAuth();
 
 // Listen for auth changes
-supabase.auth.onAuthStateChange((event, session) => {
+supabase.auth.onAuthStateChange(async (event, session) => {
   if (session?.user) {
     // Determine the auth provider
     // For email/password users, app_metadata.provider is 'email'
@@ -229,14 +258,18 @@ supabase.auth.onAuthStateChange((event, session) => {
       isLoading: false,
     });
 
-    // Redirect to dashboard only on fresh sign in (not token refresh or if already on dashboard)
+    // Redirect after fresh sign in (not token refresh or if already on dashboard)
     if (
       event === 'SIGNED_IN' &&
       !wasAuthenticated &&
       typeof window !== 'undefined' &&
       !window.location.pathname.startsWith('/dashboard')
     ) {
-      window.location.href = '/dashboard';
+      // Check for pending checkout first
+      const isRedirecting = await handleCheckoutRedirect();
+      if (!isRedirecting) {
+        window.location.href = '/dashboard';
+      }
     }
   } else {
     useAuthStore.setState({

@@ -52,17 +52,6 @@ export function PricingCard({
     try {
       setLoading(true);
 
-      // Store intended purchase for post-auth redirect
-      sessionStorage.setItem(
-        'intendedPurchase',
-        JSON.stringify({
-          priceId,
-          planName: name,
-          successUrl: `${window.location.origin}/success`,
-          cancelUrl: window.location.href,
-        })
-      );
-
       await StripeService.redirectToCheckout(priceId, {
         metadata: creditsAmount ? { credits_amount: creditsAmount.toString() } : {},
         successUrl: `${window.location.origin}/success`,
@@ -71,9 +60,15 @@ export function PricingCard({
     } catch (error: unknown) {
       console.error('Checkout error:', error);
 
-      // Handle authentication errors
+      // Handle authentication errors - add price to URL and open auth modal
       if (error instanceof Error && error.message.includes('not authenticated')) {
-        openAuthModal('register');
+        const url = new URL(window.location.href);
+        url.searchParams.set('checkout_price', priceId);
+        if (creditsAmount) {
+          url.searchParams.set('checkout_credits', creditsAmount.toString());
+        }
+        window.history.replaceState({}, '', url.toString());
+        openAuthModal('login');
         return;
       }
 
