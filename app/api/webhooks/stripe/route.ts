@@ -3,10 +3,98 @@ import { stripe, STRIPE_WEBHOOK_SECRET } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
 import { getPlanForPriceId } from '@shared/config/stripe';
+import type { IIdempotencyResult, WebhookEventStatus } from '@shared/types/stripe';
 import Stripe from 'stripe';
 import dayjs from 'dayjs';
 
 export const runtime = 'edge'; // Cloudflare Worker compatible
+
+// ============================================================================
+// Idempotency Helpers
+// ============================================================================
+
+/**
+ * Check if webhook event has already been processed.
+ * If new, atomically insert with 'processing' status.
+ */
+async function checkAndClaimEvent(
+  eventId: string,
+  eventType: string,
+  payload: unknown
+): Promise<IIdempotencyResult> {
+  // First, check if event exists
+  const { data: existing } = await supabaseAdmin
+    .from('webhook_events')
+    .select('status')
+    .eq('event_id', eventId)
+    .single();
+
+  if (existing) {
+    console.log(`Webhook event ${eventId} already exists with status: ${existing.status}`);
+    return { isNew: false, existingStatus: existing.status as WebhookEventStatus };
+  }
+
+  // Try to insert - may fail if concurrent request beat us
+  const { error: insertError } = await supabaseAdmin.from('webhook_events').insert({
+    event_id: eventId,
+    event_type: eventType,
+    status: 'processing',
+    payload: payload as Record<string, unknown>,
+  });
+
+  if (insertError) {
+    // Unique constraint violation = another request got there first
+    if (insertError.code === '23505') {
+      console.log(`Webhook event ${eventId} claimed by concurrent request`);
+      return { isNew: false, existingStatus: 'processing' };
+    }
+    // Other error - let it bubble up
+    throw insertError;
+  }
+
+  console.log(`Webhook event ${eventId} claimed for processing`);
+  return { isNew: true };
+}
+
+/**
+ * Mark webhook event as completed
+ */
+async function markEventCompleted(eventId: string): Promise<void> {
+  const { error } = await supabaseAdmin
+    .from('webhook_events')
+    .update({
+      status: 'completed',
+      completed_at: new Date().toISOString(),
+    })
+    .eq('event_id', eventId);
+
+  if (error) {
+    console.error(`Failed to mark event ${eventId} as completed:`, error);
+    // Don't throw - event was processed successfully
+  }
+}
+
+/**
+ * Mark webhook event as failed
+ */
+async function markEventFailed(eventId: string, errorMessage: string): Promise<void> {
+  const { error } = await supabaseAdmin
+    .from('webhook_events')
+    .update({
+      status: 'failed',
+      error_message: errorMessage,
+      completed_at: new Date().toISOString(),
+    })
+    .eq('event_id', eventId);
+
+  if (error) {
+    console.error(`Failed to mark event ${eventId} as failed:`, error);
+  }
+}
+
+// ============================================================================
+// Main Webhook Handler
+// ============================================================================
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
@@ -51,48 +139,71 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       }
     }
 
-    // 3. Handle the event
-    console.log(`Processing webhook event: ${event.type}`);
+    // 3. Idempotency check - prevent duplicate processing
+    const idempotencyResult = await checkAndClaimEvent(event.id, event.type, event);
 
-    switch (event.type as any) {
-      case 'checkout.session.completed':
-        await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
-        break;
-
-      case 'customer.subscription.created':
-      case 'customer.subscription.updated':
-        await handleSubscriptionUpdate(event.data.object as Stripe.Subscription);
-        break;
-
-      case 'customer.subscription.deleted':
-        await handleSubscriptionDeleted(event.data.object as Stripe.Subscription);
-        break;
-
-      case 'invoice.payment_succeeded':
-        await handleInvoicePaymentSucceeded(event.data.object as Stripe.Invoice);
-        break;
-
-      case 'invoice.payment_failed':
-        await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice);
-        break;
-
-      case 'charge.refunded':
-        await handleChargeRefunded(event.data.object as any);
-        break;
-
-      case 'charge.dispute.created':
-        await handleChargeDisputeCreated(event.data.object as any);
-        break;
-
-      case 'invoice.payment_refunded':
-        await handleInvoicePaymentRefunded(event.data.object as any);
-        break;
-
-      default:
-        console.log(`Unhandled event type: ${event.type}`);
+    if (!idempotencyResult.isNew) {
+      console.log(`Skipping duplicate webhook: ${event.id} (${event.type})`);
+      return NextResponse.json({
+        received: true,
+        skipped: true,
+        reason: `Event already ${idempotencyResult.existingStatus}`,
+      });
     }
 
-    return NextResponse.json({ received: true });
+    // 4. Handle the event
+    console.log(`Processing webhook event: ${event.type}`);
+
+    try {
+      switch (event.type as any) {
+        case 'checkout.session.completed':
+          await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
+          break;
+
+        case 'customer.subscription.created':
+        case 'customer.subscription.updated':
+          await handleSubscriptionUpdate(event.data.object as Stripe.Subscription);
+          break;
+
+        case 'customer.subscription.deleted':
+          await handleSubscriptionDeleted(event.data.object as Stripe.Subscription);
+          break;
+
+        case 'invoice.payment_succeeded':
+          await handleInvoicePaymentSucceeded(event.data.object as Stripe.Invoice);
+          break;
+
+        case 'invoice.payment_failed':
+          await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice);
+          break;
+
+        case 'charge.refunded':
+          await handleChargeRefunded(event.data.object as any);
+          break;
+
+        case 'charge.dispute.created':
+          await handleChargeDisputeCreated(event.data.object as any);
+          break;
+
+        case 'invoice.payment_refunded':
+          await handleInvoicePaymentRefunded(event.data.object as any);
+          break;
+
+        default:
+          console.log(`Unhandled event type: ${event.type}`);
+      }
+
+      // Mark event as completed after successful processing
+      await markEventCompleted(event.id);
+
+      return NextResponse.json({ received: true });
+    } catch (processingError) {
+      // Mark event as failed and re-throw
+      const errorMessage =
+        processingError instanceof Error ? processingError.message : 'Unknown error';
+      await markEventFailed(event.id, errorMessage);
+      throw processingError;
+    }
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Webhook handler failed';
     console.error('Webhook error:', error);

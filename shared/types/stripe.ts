@@ -2,12 +2,22 @@
 
 export type SubscriptionStatus = 'active' | 'trialing' | 'past_due' | 'canceled' | 'unpaid';
 
+export type WebhookEventStatus = 'processing' | 'completed' | 'failed';
+
+export interface IIdempotencyResult {
+  isNew: boolean;
+  existingStatus?: WebhookEventStatus;
+}
+
+export type UserRole = 'user' | 'admin';
+
 export interface IUserProfile {
   id: string;
   stripe_customer_id: string | null;
   credits_balance: number;
   subscription_status: SubscriptionStatus | null;
   subscription_tier: string | null;
+  role: UserRole;
   created_at: string;
   updated_at: string;
 }
@@ -70,4 +80,45 @@ export interface ICreditsPackage {
   price: number; // Price in dollars
   name: string;
   description?: string;
+}
+
+export interface IProrationPreview {
+  /** Current plan details */
+  current_plan: {
+    name: string;
+    price_id: string;
+    credits_per_month: number;
+  } | null;
+  /** Target plan details */
+  new_plan: {
+    name: string;
+    price_id: string;
+    credits_per_month: number;
+  };
+  /** Proration calculation */
+  proration: {
+    /** Amount due immediately (positive = charge, negative = credit) in cents */
+    amount_due: number;
+    /** Currency code */
+    currency: string;
+    /** Period start date ISO string */
+    period_start: string;
+    /** Period end date ISO string */
+    period_end: string;
+  };
+  /** Whether this is an upgrade or downgrade */
+  effective_immediately: boolean;
+}
+
+export interface ISubscriptionChangeRequest {
+  targetPriceId: string;
+}
+
+export interface ISubscriptionChangeResponse {
+  subscription_id: string;
+  status: string;
+  new_price_id: string;
+  effective_immediately: boolean;
+  current_period_start: string;
+  current_period_end: string;
 }

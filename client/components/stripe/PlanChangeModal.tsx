@@ -48,26 +48,27 @@ export function PlanChangeModal({
   const targetPlan = getPlanForPriceId(targetPriceId);
   const currentPlan = currentPriceId ? getPlanForPriceId(currentPriceId) : null;
 
-  const loadPreview = async () => {
+  const loadPreview = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       const previewData = await StripeService.previewSubscriptionChange(targetPriceId);
       setPreview(previewData);
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to preview subscription change';
+      const errorMessage =
+        err instanceof Error ? err.message : 'Failed to preview subscription change';
       setError(errorMessage);
       console.error('Preview error:', err);
     } finally {
       setLoading(false);
     }
-  };
+  }, [targetPriceId]);
 
   useEffect(() => {
     if (isOpen && targetPriceId) {
       loadPreview();
     }
-  }, [isOpen, targetPriceId]);
+  }, [isOpen, targetPriceId, loadPreview]);
 
   const handleConfirmChange = async () => {
     try {
@@ -156,7 +157,9 @@ export function PlanChangeModal({
                 )}
 
                 {/* New Plan */}
-                <div className={`border rounded-lg p-4 ${isUpgrade ? 'border-green-200 bg-green-50' : 'border-orange-200 bg-orange-50'}`}>
+                <div
+                  className={`border rounded-lg p-4 ${isUpgrade ? 'border-green-200 bg-green-50' : 'border-orange-200 bg-orange-50'}`}
+                >
                   <h3 className="font-medium text-gray-900 mb-2">New Plan</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
@@ -179,34 +182,37 @@ export function PlanChangeModal({
 
               {/* Proration Details */}
               {preview.current_plan && (
-                <div className={`border rounded-lg p-4 mb-6 ${
-                  preview.proration.amount_due > 0
-                    ? 'border-blue-200 bg-blue-50'
-                    : preview.proration.amount_due < 0
-                    ? 'border-green-200 bg-green-50'
-                    : 'border-gray-200 bg-gray-50'
-                }`}>
+                <div
+                  className={`border rounded-lg p-4 mb-6 ${
+                    preview.proration.amount_due > 0
+                      ? 'border-blue-200 bg-blue-50'
+                      : preview.proration.amount_due < 0
+                        ? 'border-green-200 bg-green-50'
+                        : 'border-gray-200 bg-gray-50'
+                  }`}
+                >
                   <h3 className="font-medium text-gray-900 mb-2">Billing Adjustment</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">Proration amount:</span>
-                      <span className={`font-medium ${
-                        preview.proration.amount_due > 0
-                          ? 'text-blue-900'
-                          : preview.proration.amount_due < 0
-                          ? 'text-green-900'
-                          : 'text-gray-900'
-                      }`}>
-                        {preview.proration.amount_due > 0 ? '+' : ''}
-                        ${(preview.proration.amount_due / 100).toFixed(2)}
+                      <span
+                        className={`font-medium ${
+                          preview.proration.amount_due > 0
+                            ? 'text-blue-900'
+                            : preview.proration.amount_due < 0
+                              ? 'text-green-900'
+                              : 'text-gray-900'
+                        }`}
+                      >
+                        {preview.proration.amount_due > 0 ? '+' : ''}$
+                        {(preview.proration.amount_due / 100).toFixed(2)}
                       </span>
                     </div>
                     {preview.proration.amount_due !== 0 && (
                       <p className="text-sm text-gray-600">
                         {preview.proration.amount_due > 0
                           ? 'This amount will be charged immediately'
-                          : 'This amount will be credited to your account'
-                        }
+                          : 'This amount will be credited to your account'}
                       </p>
                     )}
                   </div>

@@ -13,6 +13,7 @@ interface IPricingCardProps {
   recommended?: boolean;
   disabled?: boolean;
   disabledReason?: string;
+  onSelect?: () => void;
 }
 
 /**
@@ -42,11 +43,18 @@ export function PricingCard({
   recommended = false,
   disabled = false,
   disabledReason = 'Current Plan',
+  onSelect,
 }: IPricingCardProps): JSX.Element {
   const router = useRouter();
 
   const handleSubscribe = () => {
     if (disabled) return;
+
+    if (onSelect) {
+      onSelect();
+      return;
+    }
+
     // Redirect to checkout page with plan details
     const checkoutUrl = `/checkout?priceId=${encodeURIComponent(priceId)}&plan=${encodeURIComponent(name)}`;
     router.push(checkoutUrl);

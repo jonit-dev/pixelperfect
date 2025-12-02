@@ -322,7 +322,10 @@ export class StripeService {
    * @param offset - Number of transactions to skip
    * @returns Object with transactions array and pagination info
    */
-  static async getCreditHistory(limit: number = 50, offset: number = 0): Promise<ICreditHistoryResponse> {
+  static async getCreditHistory(
+    limit: number = 50,
+    offset: number = 0
+  ): Promise<ICreditHistoryResponse> {
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -353,19 +356,21 @@ export class StripeService {
    * @param targetPriceId - The target price ID to change to
    * @returns Preview data with proration information
    */
-  static async previewSubscriptionChange(targetPriceId: string): Promise<ISubscriptionPreviewResponse & {
-    current_plan: {
-      name: string;
-      price_id: string;
-      credits_per_month: number;
-    } | null;
-    new_plan: {
-      name: string;
-      price_id: string;
-      credits_per_month: number;
-    };
-    effective_immediately: boolean;
-  }> {
+  static async previewSubscriptionChange(targetPriceId: string): Promise<
+    ISubscriptionPreviewResponse & {
+      current_plan: {
+        name: string;
+        price_id: string;
+        credits_per_month: number;
+      } | null;
+      new_plan: {
+        name: string;
+        price_id: string;
+        credits_per_month: number;
+      };
+      effective_immediately: boolean;
+    }
+  > {
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -424,6 +429,42 @@ export class StripeService {
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || 'Failed to change subscription');
+    }
+
+    const result = await response.json();
+    return result.success ? result.data : result;
+  }
+
+  /**
+   * Cancel the current subscription (at period end)
+   * @param reason - Optional reason for cancellation
+   * @returns Cancellation result with period end date
+   */
+  static async cancelSubscription(reason?: string): Promise<{
+    subscription_id: string;
+    cancel_at_period_end: boolean;
+    current_period_end: number;
+  }> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error('User not authenticated');
+    }
+
+    const response = await fetch('/api/subscriptions/cancel', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ reason }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error?.message || 'Failed to cancel subscription');
     }
 
     const result = await response.json();
