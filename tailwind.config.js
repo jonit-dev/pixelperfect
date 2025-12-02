@@ -1,5 +1,4 @@
 /* eslint-disable import/no-default-export */
-import daisyui from 'daisyui';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -33,8 +32,5 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
-  daisyui: {
-    themes: ['light'],
-  },
+  plugins: [],
 };

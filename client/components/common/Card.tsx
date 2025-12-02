@@ -9,12 +9,10 @@ interface ICardProps {
 export const Card = ({ title, children, className = '' }: ICardProps): JSX.Element => {
   return (
     <div
-      className={`card bg-base-200/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 ${className}`}
+      className={`bg-slate-100/50 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${className}`}
     >
-      <div className="card-body">
-        <h2 className="card-title text-primary font-bold">{title}</h2>
-        {children}
-      </div>
+      <h2 className="text-lg font-bold text-indigo-600 mb-4">{title}</h2>
+      {children}
     </div>
   );
 };

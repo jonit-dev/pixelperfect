@@ -23,8 +23,8 @@ function SuccessContent(): JSX.Element {
     return (
       <main className="flex-1 flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-lg text-base-content/70">Processing your payment...</p>
+          <Loader2 className="h-12 w-12 animate-spin text-indigo-600 mx-auto mb-4" />
+          <p className="text-lg text-slate-600">Processing your payment...</p>
         </div>
       </main>
     );
@@ -36,22 +36,22 @@ function SuccessContent(): JSX.Element {
         <div className="max-w-lg mx-auto text-center">
           {/* Success Icon */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/20">
-              <CheckCircle className="h-12 w-12 text-success" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100">
+              <CheckCircle className="h-12 w-12 text-green-600" />
             </div>
           </div>
 
           {/* Success Message */}
           <h1 className="text-3xl font-bold mb-4">Payment Successful!</h1>
-          <p className="text-lg text-base-content/70 mb-8">
-            Thank you for your purchase. Your credits have been added to your account
-            and are ready to use.
+          <p className="text-lg text-slate-600 mb-8">
+            Thank you for your purchase. Your credits have been added to your account and are ready
+            to use.
           </p>
 
           {/* Session ID (for reference) */}
           {sessionId && (
-            <div className="bg-base-200 rounded-lg p-4 mb-8">
-              <p className="text-sm text-base-content/60">
+            <div className="bg-slate-100 rounded-lg p-4 mb-8">
+              <p className="text-sm text-slate-500">
                 Reference: <code className="text-xs">{sessionId.slice(0, 20)}...</code>
               </p>
             </div>
@@ -59,22 +59,31 @@ function SuccessContent(): JSX.Element {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/dashboard" className="btn btn-primary">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+            >
               Go to Dashboard
               <ArrowRight className="h-4 w-4 ml-2" />
             </Link>
-            <Link href="/dashboard/billing" className="btn btn-outline">
+            <Link
+              href="/dashboard/billing"
+              className="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors"
+            >
               View Billing
             </Link>
           </div>
 
           {/* Additional Info */}
-          <div className="mt-12 text-sm text-base-content/60">
+          <div className="mt-12 text-sm text-slate-500">
             <p>
               A receipt has been sent to your email address.
               <br />
               If you have any questions, please{' '}
-              <a href="mailto:support@pixelperfect.com" className="link link-primary">
+              <a
+                href="mailto:support@pixelperfect.com"
+                className="text-indigo-600 hover:text-indigo-700 underline"
+              >
                 contact support
               </a>
               .
@@ -90,8 +99,8 @@ function LoadingFallback(): JSX.Element {
   return (
     <main className="flex-1 flex items-center justify-center min-h-[60vh]">
       <div className="text-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
-        <p className="text-lg text-base-content/70">Loading...</p>
+        <Loader2 className="h-12 w-12 animate-spin text-indigo-600 mx-auto mb-4" />
+        <p className="text-lg text-slate-600">Loading...</p>
       </div>
     </main>
   );

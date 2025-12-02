@@ -117,7 +117,7 @@ export const NavBar = (): JSX.Element => {
                   </svg>
                 </button>
                 {isDropdownOpen && (
-                  <ul className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-slate-200 absolute top-full right-0 mt-2 z-10">
+                  <ul className="p-2 shadow-lg bg-white rounded-xl w-52 border border-slate-200 absolute top-full right-0 mt-2 z-10">
                     <li className="md:hidden">
                       <div className="pointer-events-none">
                         <CreditsDisplay />
