@@ -101,3 +101,24 @@ export {
   getAllFreeTools,
   getAllPSEOPages,
 } from './data-loader';
+
+// Schema Generators
+export {
+  generateToolSchema,
+  generateComparisonSchema,
+  generateGuideSchema,
+  generateUseCaseSchema,
+  generateAlternativeSchema,
+} from './schema-generator';
+
+// Meta Tag Patterns and Validation
+export {
+  META_PATTERNS,
+  validateMeta,
+  getMetaLengthRanges,
+  type IMetaPattern,
+  type IMetaValidation,
+} from './meta-generator';
+
+// Metadata Factory
+export { generateMetadata, generateCategoryMetadata } from './metadata-factory';

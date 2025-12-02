@@ -1,0 +1,128 @@
+/**
+ * Meta Tag Generator and Validation Module
+ * Based on PRD-PSEO-04 Section 3.1: Meta Tag Patterns
+ * Provides patterns and validation for meta titles and descriptions
+ */
+
+import type { PSEOCategory } from './url-utils';
+
+export interface IMetaPattern {
+  title: string;
+  description: string;
+  titleMaxLength: number;
+  descriptionMaxLength: number;
+}
+
+export interface IMetaValidation {
+  valid: boolean;
+  issues: string[];
+  titleLength: number;
+  descriptionLength: number;
+}
+
+/**
+ * Meta tag patterns by category
+ * Variables in {braces} should be replaced with actual values
+ */
+export const META_PATTERNS: Record<PSEOCategory, IMetaPattern> = {
+  tools: {
+    title: '{ToolName} - {Benefit} Free | PixelPerfect',
+    description:
+      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try PixelPerfect now.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  formats: {
+    title: 'Upscale {Format} Images to {Resolution} | PixelPerfect',
+    description:
+      'Upscale {Format} images with AI. Free online {Format} upscaler that preserves quality. Convert low-res {Format} to HD instantly.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  compare: {
+    title: 'PixelPerfect vs {Competitor}: Which {ToolType} is Best?',
+    description:
+      'Compare PixelPerfect and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  alternatives: {
+    title: 'Best {Competitor} Alternatives in 2025 | PixelPerfect',
+    description:
+      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including PixelPerfect. Free options, pricing, and features compared.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  'use-cases': {
+    title: '{Industry} Image Enhancement - {UseCase} | PixelPerfect',
+    description:
+      'Enhance {Industry} images with AI. Perfect for {UseCase}. Upscale product photos, listings, and more. Free to start.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  guides: {
+    title: 'How to {Action} - Step-by-Step Guide | PixelPerfect',
+    description:
+      'Learn how to {Action} with this comprehensive guide. {Benefit}. Free tips and tools included.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  free: {
+    title: 'Free {ToolName} - No Registration Required | PixelPerfect',
+    description:
+      'Use our free {ToolName} online. No watermarks, no sign-up required. {Benefit}. Try it now!',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  scale: {
+    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | PixelPerfect',
+    description:
+      'Upscale images to {Scale} resolution with AI. Free online tool for {Resolution} enhancement. Perfect for {UseCase}.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+};
+
+/**
+ * Validate meta title and description
+ * Returns validation result with issues if any
+ */
+export function validateMeta(title: string, description: string): IMetaValidation {
+  const issues: string[] = [];
+
+  // Title validation
+  if (title.length < 30) {
+    issues.push('Title too short (min 30 chars)');
+  }
+  if (title.length > 60) {
+    issues.push(`Title too long: ${title.length}/60 chars`);
+  }
+
+  // Description validation
+  if (description.length < 120) {
+    issues.push('Description too short (min 120 chars)');
+  }
+  if (description.length > 160) {
+    issues.push(`Description too long: ${description.length}/160 chars`);
+  }
+
+  return {
+    valid: issues.length === 0,
+    issues,
+    titleLength: title.length,
+    descriptionLength: description.length,
+  };
+}
+
+/**
+ * Get recommended meta length ranges
+ */
+export function getMetaLengthRanges(): {
+  title: { min: number; ideal: number; max: number };
+  description: { min: number; ideal: number; max: number };
+} {
+  return {
+    title: { min: 30, ideal: 50, max: 60 },
+    description: { min: 120, ideal: 155, max: 160 },
+  };
+}
