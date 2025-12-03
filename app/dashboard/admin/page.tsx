@@ -4,21 +4,23 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Users, CreditCard, Coins, TrendingUp } from 'lucide-react';
 import { IAdminStats } from '@/shared/types/admin';
+import { adminFetch } from '@/client/utils/admin-api-client';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<IAdminStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('/api/admin/stats');
-        const data = await response.json();
+        const data = await adminFetch<{ success: boolean; data: IAdminStats }>('/api/admin/stats');
         if (data.success) {
           setStats(data.data);
         }
-      } catch (error) {
-        console.error('Failed to fetch admin stats:', error);
+      } catch (err) {
+        console.error('Failed to fetch admin stats:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load stats');
       } finally {
         setLoading(false);
       }
@@ -31,6 +33,17 @@ export default function AdminDashboard() {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="animate-pulse text-slate-500">Loading stats...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="text-red-600">
+          <p className="font-medium">Error loading stats</p>
+          <p className="text-sm">{error}</p>
+        </div>
       </div>
     );
   }
@@ -92,9 +105,7 @@ function StatsCard({ title, value, icon: Icon, iconBg, iconColor }: IStatsCardPr
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-slate-500">{title}</p>
-          <p className="text-2xl font-bold text-slate-900 mt-2">
-            {value.toLocaleString()}
-          </p>
+          <p className="text-2xl font-bold text-slate-900 mt-2">{value.toLocaleString()}</p>
         </div>
         <div className={`p-3 rounded-lg ${iconBg}`}>
           <Icon className={`h-6 w-6 ${iconColor}`} />
@@ -122,7 +133,9 @@ function QuickActionsCard() {
         </div>
         <div className="block p-3 rounded-lg bg-slate-50 opacity-50 cursor-not-allowed">
           <div className="font-medium text-slate-900">Credit Operations</div>
-          <div className="text-sm text-slate-500">Adjust user credits (Available in user detail)</div>
+          <div className="text-sm text-slate-500">
+            Adjust user credits (Available in user detail)
+          </div>
         </div>
       </div>
     </div>

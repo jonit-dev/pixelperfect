@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, Coins } from 'lucide-react';
 import dayjs from 'dayjs';
 import { IAdminUserDetail } from '@/shared/types/admin';
+import { adminFetch } from '@/client/utils/admin-api-client';
 
 export default function AdminUserDetailPage() {
   const params = useParams();
@@ -16,17 +17,20 @@ export default function AdminUserDetailPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [showCreditModal, setShowCreditModal] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`/api/admin/users/${userId}`);
-        const data = await response.json();
+        const data = await adminFetch<{ success: boolean; data: IAdminUserDetail }>(
+          `/api/admin/users/${userId}`
+        );
         if (data.success) {
           setUser(data.data);
         }
-      } catch (error) {
-        console.error('Failed to fetch user:', error);
+      } catch (err) {
+        console.error('Failed to fetch user:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load user');
       } finally {
         setLoading(false);
       }
@@ -38,14 +42,15 @@ export default function AdminUserDetailPage() {
   const handleRoleChange = async (newRole: string) => {
     setSaving(true);
     try {
-      const response = await fetch(`/api/admin/users/${userId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ role: newRole }),
-      });
-      const data = await response.json();
+      const data = await adminFetch<{ success: boolean; data: unknown }>(
+        `/api/admin/users/${userId}`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify({ role: newRole }),
+        }
+      );
       if (data.success) {
-        setUser((prev) =>
+        setUser(prev =>
           prev
             ? {
                 ...prev,
@@ -54,8 +59,9 @@ export default function AdminUserDetailPage() {
             : null
         );
       }
-    } catch (error) {
-      console.error('Failed to update role:', error);
+    } catch (err) {
+      console.error('Failed to update role:', err);
+      alert(err instanceof Error ? err.message : 'Failed to update role');
     } finally {
       setSaving(false);
     }
@@ -69,11 +75,28 @@ export default function AdminUserDetailPage() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-red-600 mb-4">{error}</p>
+        <Link
+          href="/dashboard/admin/users"
+          className="text-indigo-600 hover:text-indigo-900 inline-block"
+        >
+          Back to users
+        </Link>
+      </div>
+    );
+  }
+
   if (!user) {
     return (
       <div className="text-center py-12">
         <p className="text-slate-500">User not found</p>
-        <Link href="/dashboard/admin/users" className="text-indigo-600 hover:text-indigo-900 mt-4 inline-block">
+        <Link
+          href="/dashboard/admin/users"
+          className="text-indigo-600 hover:text-indigo-900 mt-4 inline-block"
+        >
           Back to users
         </Link>
       </div>
@@ -118,7 +141,7 @@ export default function AdminUserDetailPage() {
               <dd className="mt-1">
                 <select
                   value={user.profile.role}
-                  onChange={(e) => handleRoleChange(e.target.value)}
+                  onChange={e => handleRoleChange(e.target.value)}
                   disabled={saving}
                   className="block w-full rounded-lg border-slate-300 text-sm disabled:opacity-50"
                 >
@@ -157,7 +180,7 @@ export default function AdminUserDetailPage() {
               {user.recentTransactions.length === 0 ? (
                 <p className="text-sm text-slate-500">No transactions</p>
               ) : (
-                user.recentTransactions.map((tx) => (
+                user.recentTransactions.map(tx => (
                   <div key={tx.id} className="flex items-center justify-between text-sm">
                     <div>
                       <span className="text-slate-900 capitalize">{tx.type}</span>
@@ -226,8 +249,8 @@ export default function AdminUserDetailPage() {
           userId={userId}
           currentBalance={user.profile.credits_balance}
           onClose={() => setShowCreditModal(false)}
-          onSuccess={(newBalance) => {
-            setUser((prev) =>
+          onSuccess={newBalance => {
+            setUser(prev =>
               prev
                 ? {
                     ...prev,
@@ -269,24 +292,24 @@ function CreditAdjustmentModal({
     setError('');
 
     try {
-      const response = await fetch('/api/admin/credits/adjust', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          amount: parseInt(amount),
-          reason,
-        }),
-      });
-
-      const data = await response.json();
+      const data = await adminFetch<{ success: boolean; data: { newBalance: number } }>(
+        '/api/admin/credits/adjust',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            userId,
+            amount: parseInt(amount),
+            reason,
+          }),
+        }
+      );
       if (data.success) {
         onSuccess(data.data.newBalance);
       } else {
-        setError(data.error || 'Failed to adjust credits');
+        setError('Failed to adjust credits');
       }
     } catch (err) {
-      setError('An error occurred');
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setSubmitting(false);
     }
@@ -306,7 +329,7 @@ function CreditAdjustmentModal({
             <input
               type="number"
               value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={e => setAmount(e.target.value)}
               className="mt-1 block w-full rounded-lg border-slate-300"
               placeholder="e.g., 50 or -20"
               required
@@ -320,7 +343,7 @@ function CreditAdjustmentModal({
             <input
               type="text"
               value={reason}
-              onChange={(e) => setReason(e.target.value)}
+              onChange={e => setReason(e.target.value)}
               className="mt-1 block w-full rounded-lg border-slate-300"
               placeholder="e.g., Customer support compensation"
               required

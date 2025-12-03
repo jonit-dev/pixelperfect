@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import dayjs from 'dayjs';
 import { IAdminUserProfile } from '@/shared/types/admin';
+import { adminFetch } from '@/client/utils/admin-api-client';
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<IAdminUserProfile[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -17,20 +19,24 @@ export default function AdminUsersPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
+      setError(null);
       try {
         const params = new URLSearchParams({
           page: page.toString(),
           limit: limit.toString(),
           ...(search && { search }),
         });
-        const response = await fetch(`/api/admin/users?${params}`);
-        const data = await response.json();
+        const data = await adminFetch<{
+          success: boolean;
+          data: { users: IAdminUserProfile[]; total: number };
+        }>(`/api/admin/users?${params}`);
         if (data.success) {
           setUsers(data.data.users);
           setTotal(data.data.total);
         }
-      } catch (error) {
-        console.error('Failed to fetch users:', error);
+      } catch (err) {
+        console.error('Failed to fetch users:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load users');
       } finally {
         setLoading(false);
       }
@@ -52,7 +58,7 @@ export default function AdminUsersPage() {
             type="text"
             placeholder="Search by email..."
             value={search}
-            onChange={(e) => {
+            onChange={e => {
               setSearch(e.target.value);
               setPage(1);
             }}
@@ -93,6 +99,12 @@ export default function AdminUsersPage() {
                   Loading...
                 </td>
               </tr>
+            ) : error ? (
+              <tr>
+                <td colSpan={6} className="px-6 py-4 text-center text-red-600">
+                  {error}
+                </td>
+              </tr>
             ) : users.length === 0 ? (
               <tr>
                 <td colSpan={6} className="px-6 py-4 text-center text-slate-500">
@@ -100,7 +112,7 @@ export default function AdminUsersPage() {
                 </td>
               </tr>
             ) : (
-              users.map((user) => (
+              users.map(user => (
                 <tr key={user.id} className="hover:bg-slate-50">
                   <td className="px-6 py-4 text-sm text-slate-900">{user.email}</td>
                   <td className="px-6 py-4">
@@ -149,7 +161,7 @@ export default function AdminUsersPage() {
             </div>
             <div className="flex items-center space-x-2">
               <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
                 className="p-1 rounded hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -159,7 +171,7 @@ export default function AdminUsersPage() {
                 Page {page} of {totalPages}
               </span>
               <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
                 className="p-1 rounded hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed"
               >
