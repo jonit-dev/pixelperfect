@@ -113,9 +113,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const isTestMode =
       serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') ||
       serverEnv.ENV === 'test' ||
-      STRIPE_WEBHOOK_SECRET === 'whsec_test_secret' ||
-      // Additional check: test for malformed JSON which indicates this is likely a test
-      body.includes('invalid json');
+      STRIPE_WEBHOOK_SECRET === 'whsec_test_secret';
 
     if (isTestMode) {
       // In test mode, parse the body directly as JSON event
