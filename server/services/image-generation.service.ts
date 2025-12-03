@@ -2,6 +2,7 @@ import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { GoogleGenAI } from '@google/genai';
 import { serverEnv } from '@shared/config/env';
 import type { IUpscaleInput, IUpscaleConfig } from '@shared/validation/upscale.schema';
+import { calculateCreditCost as configCalculateCreditCost } from '@shared/config/subscription.utils';
 
 /**
  * Custom error class for insufficient credits
@@ -37,30 +38,16 @@ export interface IGenerationResult {
 
 /**
  * Calculate the credit cost for an image processing operation.
- *
- * Credit costs based on mode:
- * - upscale (basic upscaling): 1 credit
- * - enhance (quality enhancement): 2 credits
- * - both (upscale + enhance): 2 credits
- * - custom (custom prompt): 2 credits
+ * Now uses centralized subscription configuration.
  *
  * @param config - The upscale configuration
  * @returns The number of credits required
  */
 export function calculateCreditCost(config: IUpscaleConfig): number {
-  switch (config.mode) {
-    case 'upscale':
-      // Basic upscaling is the cheapest operation
-      return 1;
-    case 'enhance':
-    case 'both':
-    case 'custom':
-      // Enhanced processing modes cost more
-      return 2;
-    default:
-      // Default to 1 credit for unknown modes
-      return 1;
-  }
+  return configCalculateCreditCost({
+    mode: config.mode,
+    scale: config.scale,
+  });
 }
 
 /**

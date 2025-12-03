@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Missing authorization header'
-          }
+            message: 'Missing authorization header',
+          },
         },
         { status: 401 }
       );
@@ -39,8 +39,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Invalid authentication token'
-          }
+            message: 'Invalid authentication token',
+          },
         },
         { status: 401 }
       );
@@ -57,8 +57,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'INVALID_JSON',
-            message: 'Invalid JSON in request body'
-          }
+            message: 'Invalid JSON in request body',
+          },
         },
         { status: 400 }
       );
@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'MISSING_PRICE_ID',
-            message: 'targetPriceId is required'
-          }
+            message: 'targetPriceId is required',
+          },
         },
         { status: 400 }
       );
@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'INVALID_PRICE_ID',
-            message: 'Invalid or unsupported price ID'
-          }
+            message: 'Invalid or unsupported price ID',
+          },
         },
         { status: 400 }
       );
@@ -109,8 +109,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'SAME_PLAN',
-            message: 'Target plan is the same as current plan'
-          }
+            message: 'Target plan is the same as current plan',
+          },
         },
         { status: 400 }
       );
@@ -129,8 +129,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'STRIPE_CUSTOMER_NOT_FOUND',
-            message: 'User has no Stripe customer ID'
-          }
+            message: 'User has no Stripe customer ID',
+          },
         },
         { status: 400 }
       );
@@ -145,8 +145,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'NO_ACTIVE_SUBSCRIPTION',
-            message: 'No active subscription found. Use checkout endpoint instead.'
-          }
+            message: 'No active subscription found. Use checkout endpoint instead.',
+          },
         },
         { status: 400 }
       );
@@ -169,7 +169,9 @@ export async function POST(request: NextRequest) {
       // Check if we're in test mode
       if (serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') || serverEnv.ENV === 'test') {
         // Mock subscription change for testing
-        console.log(`[TEST MODE] Would change subscription ${currentSubscription.id} to price ${body.targetPriceId}`);
+        console.log(
+          `[TEST MODE] Would change subscription ${currentSubscription.id} to price ${body.targetPriceId}`
+        );
 
         // Update local database to simulate the change
         await supabaseAdmin
@@ -214,19 +216,41 @@ export async function POST(request: NextRequest) {
             effective_immediately: true,
             credits_added: creditDifference > 0 ? creditDifference : 0,
             mock: true,
-          }
+          },
         });
       }
 
-      // Real Stripe subscription modification
-      const subscription = await stripe.subscriptions.retrieve(currentSubscription.id);
+      // CRITICAL-5 FIX: Fetch fresh subscription data immediately before update
+      // This prevents using stale item IDs if subscription was modified in Stripe Portal
+      const latestSubscription = await stripe.subscriptions.retrieve(currentSubscription.id);
 
-      // Update the subscription
+      // Validate the subscription hasn't changed since we started processing
+      const latestPriceId = latestSubscription.items.data[0]?.price.id;
+      if (latestPriceId !== currentSubscription.price_id) {
+        console.warn(
+          `Subscription ${currentSubscription.id} was modified during processing. Expected price: ${currentSubscription.price_id}, Found: ${latestPriceId}`
+        );
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'SUBSCRIPTION_MODIFIED',
+              message:
+                'Your subscription was modified elsewhere. Please refresh the page and try again.',
+            },
+          },
+          { status: 409 }
+        );
+      }
+
+      // Update the subscription with fresh item ID
       const updatedSubscription = await stripe.subscriptions.update(currentSubscription.id, {
-        items: [{
-          id: subscription.items.data[0]?.id,
-          price: body.targetPriceId,
-        }],
+        items: [
+          {
+            id: latestSubscription.items.data[0]?.id, // Use fresh ID
+            price: body.targetPriceId,
+          },
+        ],
         proration_behavior: 'create_prorations',
       });
 
@@ -252,10 +276,7 @@ export async function POST(request: NextRequest) {
         updateData.current_period_end = new Date(periodEnd * 1000).toISOString();
       }
 
-      await supabaseAdmin
-        .from('subscriptions')
-        .update(updateData)
-        .eq('id', currentSubscription.id);
+      await supabaseAdmin.from('subscriptions').update(updateData).eq('id', currentSubscription.id);
 
       // Update profile subscription tier
       await supabaseAdmin
@@ -296,9 +317,8 @@ export async function POST(request: NextRequest) {
           ...(periodEnd && {
             current_period_end: new Date(periodEnd * 1000).toISOString(),
           }),
-        }
+        },
       });
-
     } catch (stripeError: unknown) {
       console.error('Stripe subscription change error:', stripeError);
       const errorMessage = stripeError instanceof Error ? stripeError.message : 'Unknown error';
@@ -308,13 +328,12 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'STRIPE_ERROR',
-            message: `Failed to change subscription: ${errorMessage}`
-          }
+            message: `Failed to change subscription: ${errorMessage}`,
+          },
         },
         { status: 500 }
       );
     }
-
   } catch (error: unknown) {
     console.error('Subscription change error:', error);
     const errorMessage = error instanceof Error ? error.message : 'An error occurred';
@@ -324,8 +343,8 @@ export async function POST(request: NextRequest) {
         success: false,
         error: {
           code: 'INTERNAL_ERROR',
-          message: errorMessage
-        }
+          message: errorMessage,
+        },
       },
       { status: 500 }
     );

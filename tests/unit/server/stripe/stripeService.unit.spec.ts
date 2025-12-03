@@ -34,8 +34,8 @@ describe('StripeService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Reset window.location
-    delete (window as any).location;
-    window.location = { href: '' } as any;
+    delete (window as unknown as { location?: Location }).location;
+    (window as unknown as { location: { href: string } }).location = { href: '' };
   });
 
   afterEach(() => {
@@ -46,7 +46,8 @@ describe('StripeService', () => {
     it('should throw error when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: null },
-      } as any);
+        error: null,
+      });
 
       await expect(StripeService.createCheckoutSession('price_test_123')).rejects.toThrow(
         'User not authenticated'
@@ -57,7 +58,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
@@ -66,7 +68,7 @@ describe('StripeService', () => {
           data: { url: 'https://checkout.stripe.com/pay/test_session' },
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       const result = await StripeService.createCheckoutSession('price_test_123', {
         successUrl: 'https://example.com/success',
@@ -97,7 +99,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
@@ -105,7 +108,7 @@ describe('StripeService', () => {
           url: 'https://checkout.stripe.com/pay/test_session_unwrapped',
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       const result = await StripeService.createCheckoutSession('price_test_123');
 
@@ -118,7 +121,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: false,
@@ -126,7 +130,7 @@ describe('StripeService', () => {
           error: 'Invalid price ID',
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       await expect(StripeService.createCheckoutSession('invalid_price')).rejects.toThrow(
         'Invalid price ID'
@@ -137,13 +141,14 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: false,
         json: vi.fn().mockResolvedValue({}),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       await expect(StripeService.createCheckoutSession('invalid_price')).rejects.toThrow(
         'Failed to create checkout session'
@@ -156,7 +161,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
@@ -165,7 +171,7 @@ describe('StripeService', () => {
           data: { url: 'https://checkout.stripe.com/pay/redirect_test' },
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       await StripeService.redirectToCheckout('price_test_123');
 
@@ -177,7 +183,8 @@ describe('StripeService', () => {
     it('should return null when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: null },
-      } as any);
+        error: null,
+      });
 
       const result = await StripeService.getUserProfile();
       expect(result).toBeNull();
@@ -187,7 +194,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       const mockFrom = vi.fn().mockReturnValue({
         select: vi.fn().mockReturnValue({
@@ -216,7 +224,8 @@ describe('StripeService', () => {
 
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       const mockFrom = vi.fn().mockReturnValue({
         select: vi.fn().mockReturnValue({
@@ -240,7 +249,8 @@ describe('StripeService', () => {
     it('should return null when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: null },
-      } as any);
+        error: null,
+      });
 
       const result = await StripeService.getActiveSubscription();
       expect(result).toBeNull();
@@ -250,7 +260,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       const mockFrom = vi.fn().mockReturnValue({
         select: vi.fn().mockReturnValue({
@@ -286,7 +297,8 @@ describe('StripeService', () => {
 
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       const mockFrom = vi.fn().mockReturnValue({
         select: vi.fn().mockReturnValue({
@@ -416,7 +428,8 @@ describe('StripeService', () => {
     it('should return false when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: null },
-      } as any);
+        error: null,
+      });
 
       const result = await StripeService.hasSufficientCredits(50);
       expect(result).toBe(false);
@@ -426,7 +439,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: null,
@@ -441,7 +455,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: true,
@@ -462,7 +477,8 @@ describe('StripeService', () => {
     it('should throw error when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: null },
-      } as any);
+        error: null,
+      });
 
       await expect(StripeService.decrementCredits(10)).rejects.toThrow('User not authenticated');
     });
@@ -471,7 +487,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: null,
@@ -485,7 +502,8 @@ describe('StripeService', () => {
       const mockUser = { id: 'user_123' };
       vi.mocked(supabase.auth.getUser).mockResolvedValue({
         data: { user: mockUser },
-      } as any);
+        error: null,
+      });
 
       vi.mocked(supabase.rpc).mockResolvedValue({
         data: 90,
@@ -506,7 +524,8 @@ describe('StripeService', () => {
     it('should throw error when user is not authenticated', async () => {
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: null },
-      } as any);
+        error: null,
+      });
 
       await expect(StripeService.createPortalSession()).rejects.toThrow('User not authenticated');
     });
@@ -515,7 +534,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
@@ -524,7 +544,7 @@ describe('StripeService', () => {
           data: { url: 'https://billing.stripe.com/portal/session_123' },
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       const result = await StripeService.createPortalSession();
 
@@ -537,8 +557,7 @@ describe('StripeService', () => {
       });
 
       expect(result).toEqual({
-        success: true,
-        data: { url: 'https://billing.stripe.com/portal/session_123' },
+        url: 'https://billing.stripe.com/portal/session_123',
       });
     });
 
@@ -546,7 +565,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: false,
@@ -554,7 +574,7 @@ describe('StripeService', () => {
           error: 'No active subscription',
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       await expect(StripeService.createPortalSession()).rejects.toThrow('No active subscription');
     });
@@ -565,15 +585,17 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
         json: vi.fn().mockResolvedValue({
-          url: 'https://billing.stripe.com/portal/redirect_test',
+          success: true,
+          data: { url: 'https://billing.stripe.com/portal/redirect_test' },
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       await StripeService.redirectToPortal();
 
@@ -584,7 +606,8 @@ describe('StripeService', () => {
       const mockSession = { access_token: 'test_token' };
       vi.mocked(supabase.auth.getSession).mockResolvedValue({
         data: { session: mockSession },
-      } as any);
+        error: null,
+      });
 
       const mockResponse = {
         ok: true,
@@ -593,7 +616,7 @@ describe('StripeService', () => {
           data: { url: 'https://billing.stripe.com/portal/redirect_test' },
         }),
       };
-      vi.mocked(fetch).mockResolvedValue(mockResponse as any);
+      vi.mocked(fetch).mockResolvedValue(mockResponse as Response);
 
       // This should not throw but will not redirect due to destructuring issue
       await expect(StripeService.redirectToPortal()).resolves.not.toThrow();

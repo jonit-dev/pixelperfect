@@ -58,6 +58,7 @@ async function checkAndClaimEvent(
 
 /**
  * Mark webhook event as completed
+ * CRITICAL-3 FIX: Throws on error to trigger Stripe retry if DB update fails
  */
 async function markEventCompleted(eventId: string): Promise<void> {
   const { error } = await supabaseAdmin
@@ -70,7 +71,9 @@ async function markEventCompleted(eventId: string): Promise<void> {
 
   if (error) {
     console.error(`Failed to mark event ${eventId} as completed:`, error);
-    // Don't throw - event was processed successfully
+    // Throw to trigger 500 response - Stripe will retry the webhook
+    // This prevents orphaned events stuck in 'processing' status
+    throw new Error(`Database error marking event completed: ${error.message}`);
   }
 }
 
@@ -109,11 +112,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // 2. Verify the webhook signature
     let event: Stripe.Event;
 
-    // Skip signature verification in test environment with dummy keys
+    // CRITICAL-4 FIX: Use AND conditions to prevent accidental test mode in production
+    // Both conditions must be true for test mode
     const isTestMode =
-      serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') ||
-      serverEnv.ENV === 'test' ||
-      STRIPE_WEBHOOK_SECRET === 'whsec_test_secret';
+      serverEnv.ENV === 'test' && serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key');
+
+    // Production safety check: detect misconfigured test webhook secret
+    if (STRIPE_WEBHOOK_SECRET === 'whsec_test_secret' && serverEnv.ENV !== 'test') {
+      console.error('CRITICAL: Test webhook secret detected in non-test environment!');
+      return NextResponse.json(
+        { error: 'Misconfigured webhook secret - check environment variables' },
+        { status: 500 }
+      );
+    }
 
     if (isTestMode) {
       // In test mode, parse the body directly as JSON event
@@ -196,7 +207,22 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           break;
 
         default:
-          console.log(`Unhandled event type: ${event.type}`);
+          // MEDIUM-2 FIX: Mark unhandled events as unrecoverable instead of completed
+          console.warn(`UNHANDLED WEBHOOK TYPE: ${event.type} - this may require code update`);
+          await supabaseAdmin
+            .from('webhook_events')
+            .update({
+              status: 'unrecoverable',
+              error_message: `Unhandled event type: ${event.type}`,
+              completed_at: new Date().toISOString(),
+            })
+            .eq('event_id', event.id);
+
+          // Return success to prevent Stripe retries, but event is marked for investigation
+          return NextResponse.json({
+            received: true,
+            warning: `Unhandled event type: ${event.type}`,
+          });
       }
 
       // Mark event as completed after successful processing
@@ -260,19 +286,23 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
             }
           }
         } else {
-          // Real subscription - get details from Stripe
+          // MEDIUM-5 FIX: Real subscription - get details from Stripe
           const subscription = await stripe.subscriptions.retrieve(subscriptionId);
           const priceId = subscription.items.data[0]?.price.id;
+
+          // Get the invoice ID from the session for proper reference tracking
+          const invoiceId = session.invoice as string | null;
 
           if (priceId) {
             const plan = getPlanForPriceId(priceId);
             if (plan) {
               // Add initial credits for the first month
+              // Use invoice ID as ref_id for refund correlation
               const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
                 target_user_id: userId,
                 amount: plan.creditsPerMonth,
                 transaction_type: 'subscription',
-                ref_id: session.id,
+                ref_id: invoiceId ? `invoice_${invoiceId}` : `session_${session.id}`,
                 description: `Initial subscription credits - ${plan.name} plan - ${plan.creditsPerMonth} credits`,
               });
 
@@ -509,11 +539,12 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
     newBalanceIfAdded > maxRollover ? Math.max(0, maxRollover - currentBalance) : creditsToAdd;
 
   if (actualCreditsToAdd > 0) {
+    // MEDIUM-5: Use consistent invoice reference format for refund correlation
     const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
       target_user_id: userId,
       amount: actualCreditsToAdd,
       transaction_type: 'subscription',
-      ref_id: invoice.id,
+      ref_id: `invoice_${invoice.id}`,
       description: `Monthly subscription renewal - ${plan.name} plan - ${actualCreditsToAdd} credits${actualCreditsToAdd < creditsToAdd ? ` (capped from ${creditsToAdd} due to rollover limit of ${maxRollover})` : ''}`,
     });
 
@@ -564,7 +595,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   }
 }
 
-// Handle charge refund - clawback credits
+// CRITICAL-2 FIX: Handle charge refund - clawback credits
 async function handleChargeRefunded(charge: any) {
   const customerId = charge.customer;
   const refundAmount = charge.amount_refunded || 0;
@@ -588,10 +619,48 @@ async function handleChargeRefunded(charge: any) {
 
   const userId = profile.id;
 
-  // For now, log the refund - the clawback logic will be implemented later
-  console.log(`Charge ${charge.id} refunded ${refundAmount} cents for user ${userId}`);
+  console.log(
+    `Processing refund for charge ${charge.id}: ${refundAmount} cents for user ${userId}`
+  );
 
-  // TODO: Implement credit clawback logic when database migrations are applied
+  // Get the invoice to find the original credit transaction
+  const invoiceId = charge.invoice;
+
+  if (!invoiceId) {
+    console.warn(`Charge ${charge.id} has no invoice - cannot clawback credits`);
+    // For charges without invoices (one-time payments), we can't easily determine which credits to clawback
+    // This is acceptable as our system is subscription-only
+    return;
+  }
+
+  try {
+    // Clawback all credits added from this invoice transaction
+    const { data: result, error } = await supabaseAdmin.rpc('clawback_credits_from_transaction', {
+      p_target_user_id: userId,
+      p_original_ref_id: `invoice_${invoiceId}`,
+      p_reason: `Refund for charge ${charge.id} (${refundAmount} cents)`,
+    });
+
+    if (error) {
+      console.error(`Failed to clawback credits for refund:`, error);
+      throw error;
+    }
+
+    if (result && result.length > 0) {
+      const clawbackResult = result[0];
+      if (clawbackResult.success) {
+        console.log(
+          `Successfully clawed back ${clawbackResult.credits_clawed_back} credits. New balance: ${clawbackResult.new_balance}`
+        );
+      } else {
+        console.error(`Clawback failed: ${clawbackResult.error_message}`);
+      }
+    }
+  } catch (error) {
+    console.error(`Error during credit clawback:`, error);
+    // Re-throw to mark webhook as failed and trigger retry
+    throw error;
+  }
 }
 
 // Handle charge dispute created - immediate credit hold

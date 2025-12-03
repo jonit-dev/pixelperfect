@@ -3,12 +3,12 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useToastStore } from '@client/store/toastStore';
 import { StripeService } from '@client/services/stripeService';
+import { getLowCreditWarningConfig } from '@shared/config/subscription.utils';
 
-// Low credit threshold - show warning when credits fall below this amount
-const LOW_CREDIT_THRESHOLD = 5;
-
-// Time interval to check credits (in milliseconds)
-const CHECK_INTERVAL = 5 * 60 * 1000; // 5 minutes
+// Get warning configuration from centralized config
+const warningConfig = getLowCreditWarningConfig();
+const LOW_CREDIT_THRESHOLD = warningConfig.threshold;
+const CHECK_INTERVAL = warningConfig.checkIntervalMs;
 
 // Store if we've already shown a warning for current session to avoid spam
 const warningShownKey = 'low-credit-warning-shown';
