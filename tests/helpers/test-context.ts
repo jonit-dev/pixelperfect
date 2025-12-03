@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test';
-import { TestDataManager, ITestUser } from './test-data-manager';
+import { TestDataManager, type ITestUser } from './test-data-manager';
 
 export interface ITestContextOptions {
   autoCleanup?: boolean;

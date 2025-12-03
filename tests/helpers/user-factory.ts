@@ -1,4 +1,4 @@
-import { TestDataManager, ITestUser } from './test-data-manager';
+import { TestDataManager, type ITestUser } from './test-data-manager';
 
 export type SubscriptionStatus = 'free' | 'active' | 'trialing' | 'past_due' | 'canceled';
 export type SubscriptionTier = 'starter' | 'pro' | 'business';

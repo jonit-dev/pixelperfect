@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
-export interface ITestUser {
+export type ITestUser = {
   id: string;
   email: string;
   token: string;
-}
+};
 
 export class TestDataManager {
   private supabase: ReturnType<typeof createClient>;

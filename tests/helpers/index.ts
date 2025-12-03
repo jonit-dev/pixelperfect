@@ -20,7 +20,7 @@ export {
 } from './user-factory';
 
 // Existing exports (maintained for backward compatibility)
-export { TestDataManager, ITestUser } from './test-data-manager';
+export { TestDataManager, type ITestUser } from './test-data-manager';
 export { IntegrationTestHelpers, testFixtures, customMatchers } from './integration-test-helpers';
 export {
   StripeWebhookMockFactory,
@@ -28,8 +28,8 @@ export {
   type IWebhookTestOptions
 } from './stripe-webhook-mocks';
 export { CheckoutMock } from './checkout-mock';
-export { resetTestUsers } from './test-user-reset';
-export { getTestAuthHeaders } from './auth';
+export { resetTestUser, cleanupOldTestUsers } from './test-user-reset';
+export { test as authTest, expect } from './auth';
 
 // Re-export commonly used combinations
 export type { ITestContextOptions } from './test-context';
