@@ -67,6 +67,7 @@ export default defineConfig({
       },
       testMatch: /.*\.api\.spec\.ts/,
       workers: 1, // Keep single worker for API tests to avoid Supabase rate limits
+      timeout: 60000, // Increase timeout to handle rate limiting retries
     },
 
     // Workers Preview Tests (validate Cloudflare behavior)

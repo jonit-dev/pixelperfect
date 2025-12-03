@@ -43,6 +43,71 @@ const ALLOWED_EVENTS = [
   'processing_failed',
 ] as const;
 
+// Enhanced security validation for event names
+const validateEventNameSecurity = (eventName: string): { valid: boolean; reason?: string } => {
+  // Check for null bytes first
+  if (eventName.includes('\x00')) {
+    return {
+      valid: false,
+      reason: 'Null byte detected'
+    };
+  }
+
+  // Check for directory traversal
+  if (eventName.includes('../') || eventName.includes('..\\')) {
+    return {
+      valid: false,
+      reason: 'Directory traversal detected'
+    };
+  }
+
+  // Check for script tags
+  if (eventName.includes('<script>') || eventName.includes('</script>') || eventName.toLowerCase().includes('<script')) {
+    return {
+      valid: false,
+      reason: 'Script tag detected'
+    };
+  }
+
+  // Check for SQL keywords
+  const sqlKeywords = ['SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 'UNION', 'CREATE', 'ALTER'];
+  const upperEventName = eventName.toUpperCase();
+  for (const keyword of sqlKeywords) {
+    if (upperEventName.includes(keyword)) {
+      return {
+        valid: false,
+        reason: `SQL keyword detected: ${keyword}`
+      };
+    }
+  }
+
+  // Check for template injection
+  if (eventName.includes('${') || eventName.includes('}}')) {
+    return {
+      valid: false,
+      reason: 'Template injection detected'
+    };
+  }
+
+  // Check for prototype pollution
+  if (eventName.includes('__proto__') || eventName.includes('constructor') || eventName.includes('prototype')) {
+    return {
+      valid: false,
+      reason: 'Prototype pollution detected'
+    };
+  }
+
+  // Check for quotes (malicious usage)
+  if ((eventName.includes("'") || eventName.includes('"')) && !ALLOWED_EVENTS.includes(eventName as any)) {
+    return {
+      valid: false,
+      reason: 'Suspicious quote characters detected'
+    };
+  }
+
+  return { valid: true };
+};
+
 const eventSchema = z.object({
   eventName: z.enum(ALLOWED_EVENTS),
   properties: z.record(z.unknown()).optional(),
@@ -59,8 +124,48 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const logger = createLogger(req, 'analytics-event');
 
   try {
-    // 1. Parse and validate request body
-    const body = await req.json();
+    // 1. Check for empty request body
+    const contentLength = req.headers.get('content-length');
+    if (!contentLength || parseInt(contentLength, 10) === 0) {
+      logger.warn('Empty request body received');
+      return NextResponse.json(
+        { error: 'Invalid event payload', details: ['Request body is required'] },
+        { status: 400 }
+      );
+    }
+
+    // 2. Parse and validate request body
+    let body;
+    try {
+      body = await req.json();
+    } catch (parseError) {
+      logger.warn('Invalid JSON in request body', {
+        error: parseError instanceof Error ? parseError.message : String(parseError)
+      });
+      return NextResponse.json(
+        { error: 'Invalid event payload', details: ['Invalid JSON format'] },
+        { status: 400 }
+      );
+    }
+
+    // 3. Security validation before schema validation
+    if (body.eventName) {
+      const securityCheck = validateEventNameSecurity(body.eventName);
+      if (!securityCheck.valid) {
+        logger.warn('Security violation detected', {
+          eventName: body.eventName,
+          reason: securityCheck.reason,
+          userAgent: req.headers.get('user-agent'),
+          ip: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip')
+        });
+        return NextResponse.json(
+          { error: 'Invalid event payload', details: ['Invalid event name'] },
+          { status: 400 }
+        );
+      }
+    }
+
+    // 4. Schema validation
     const validated = eventSchema.safeParse(body);
 
     if (!validated.success) {
@@ -73,7 +178,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const { eventName, properties = {}, sessionId } = validated.data;
 
-    // 2. Check for authenticated user (optional)
+    // 5. Check for authenticated user (optional)
     let userId: string | undefined;
     const authHeader = req.headers.get('authorization');
 
@@ -85,7 +190,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       userId = user?.id;
     }
 
-    // 3. Track the event
+    // 6. Track the event
     const success = await trackServerEvent(
       eventName,
       {

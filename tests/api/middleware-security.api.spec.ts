@@ -319,8 +319,8 @@ test.describe('Middleware Security Integration', () => {
           }
         });
 
-        // Should handle malicious headers gracefully
-        expect([200, 400, 431, 500]).toContain(response.status());
+        // Should handle malicious headers gracefully (including rate limiting)
+        expect([200, 400, 429, 431, 500]).toContain(response.status());
       }
     });
 

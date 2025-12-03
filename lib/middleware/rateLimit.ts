@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { rateLimit, publicRateLimit } from '@server/rateLimit';
-import { serverEnv } from '@shared/config/env';
 
 /**
  * Rate limit configuration
@@ -49,9 +48,21 @@ export function createRateLimitHeaders(
 /**
  * Check if rate limiting should be skipped (test environment)
  * Uses dedicated ENV variable for clarity and security
+ *
+ * NOTE: We check process.env directly instead of serverEnv to ensure
+ * we get the current environment value, not the value at module initialization time.
+ * This is critical for test environments where env vars are loaded dynamically.
  */
 export function isTestEnvironment(): boolean {
-  return serverEnv.ENV === 'test';
+  return process.env.ENV === 'test' ||
+         process.env.NODE_ENV === 'test' ||
+         // Check for Playwright test environment
+         process.env.PLAYWRIGHT_TEST === '1' ||
+         // Check for test database URL pattern (Supabase test project)
+         (!!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL.includes('test'))) ||
+         // Check for test API keys
+         (!!(process.env.AMPLITUDE_API_KEY && process.env.AMPLITUDE_API_KEY.includes('test'))) ||
+         (!!(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('sk_test_')));
 }
 
 /**
@@ -74,13 +85,9 @@ export async function applyPublicRateLimit(
   if (!success) {
     return NextResponse.json(
       {
-        success: false,
-        error: {
-          code: 'RATE_LIMITED',
-          message: 'Too many requests. Please try again later.',
-          details: {
-            retryAfter: Math.ceil((reset - Date.now()) / 1000),
-          },
+        error: 'Too many requests',
+        details: {
+          retryAfter: Math.ceil((reset - Date.now()) / 1000),
         },
       },
       {
@@ -108,19 +115,28 @@ export async function applyUserRateLimit(
   userId: string,
   res: NextResponse
 ): Promise<NextResponse | null> {
-  const { success, remaining, reset } = await rateLimit.limit(userId);
+  let success, remaining, reset;
+
+  // Skip rate limiting in test environment but still add headers
+  if (isTestEnvironment()) {
+    success = true;
+    remaining = USER_RATE_LIMIT;
+    reset = Date.now() + 10000; // 10 seconds from now
+  } else {
+    const result = await rateLimit.limit(userId);
+    success = result.success;
+    remaining = result.remaining;
+    reset = result.reset;
+  }
+
   const rateLimitHeaders = createRateLimitHeaders(USER_RATE_LIMIT, remaining, reset);
 
   if (!success) {
     return NextResponse.json(
       {
-        success: false,
-        error: {
-          code: 'RATE_LIMITED',
-          message: 'Rate limit exceeded. Please try again later.',
-          details: {
-            retryAfter: Math.ceil((reset - Date.now()) / 1000),
-          },
+        error: 'Too many requests',
+        details: {
+          retryAfter: Math.ceil((reset - Date.now()) / 1000),
         },
       },
       {

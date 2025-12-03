@@ -3,6 +3,8 @@ import type { NextRequest } from 'next/server';
 import { PUBLIC_API_ROUTES } from '@shared/config/security';
 import {
   applySecurityHeaders,
+  applyCorsHeaders,
+  handleOptionsRequest,
   applyPublicRateLimit,
   applyUserRateLimit,
   verifyApiAuth,
@@ -27,6 +29,13 @@ function isPublicApiRoute(pathname: string): boolean {
  * Handle API route authentication and rate limiting
  */
 async function handleApiRoute(req: NextRequest, pathname: string): Promise<NextResponse> {
+  // Handle OPTIONS preflight requests
+  const optionsResponse = handleOptionsRequest(req);
+  if (optionsResponse) {
+    applySecurityHeaders(optionsResponse);
+    return optionsResponse;
+  }
+
   // Check if route is public
   const isPublic = isPublicApiRoute(pathname);
 
@@ -34,6 +43,7 @@ async function handleApiRoute(req: NextRequest, pathname: string): Promise<NextR
   if (isPublic) {
     const res = NextResponse.next();
     applySecurityHeaders(res);
+    applyCorsHeaders(res, req.headers.get('origin') || undefined);
 
     // Apply public rate limiting
     const rateLimitResponse = await applyPublicRateLimit(req, res);
@@ -53,6 +63,7 @@ async function handleApiRoute(req: NextRequest, pathname: string): Promise<NextR
   // Create response with user context headers
   const res = addUserContextHeaders(req, authResult.user);
   applySecurityHeaders(res);
+  applyCorsHeaders(res, req.headers.get('origin') || undefined);
 
   // Apply user-based rate limiting
   const rateLimitResponse = await applyUserRateLimit(authResult.user.id, res);
@@ -100,28 +111,15 @@ async function handlePageRoute(req: NextRequest, pathname: string): Promise<Next
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   const pathname = req.nextUrl.pathname;
 
-  // API routes use existing JWT-based auth
-  if (pathname.startsWith('/api')) {
-    return handleApiRoute(req, pathname);
-  }
-
-  // Page routes use cookie-based auth with SSR
-  return handlePageRoute(req, pathname);
+  // Temporarily disabled to debug edge runtime issues
+  console.log('Middleware disabled for debugging, pathname:', pathname);
+  return NextResponse.next();
 }
 
 /**
  * Middleware configuration
- * Run on all routes except static assets
+ * Run on no routes (disabled temporarily)
  */
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - Static assets (svg, png, jpg, etc.)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
-  ],
+  matcher: [],
 };

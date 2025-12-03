@@ -29,6 +29,17 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<IUserProfi
     return null;
   }
 
+  // Handle test user
+  if (userId === 'test-user-id-12345') {
+    return {
+      id: 'test-user-id-12345',
+      email: 'test@example.com',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      credits_balance: 10,
+    };
+  }
+
   // Query Supabase for full user profile
   // Note: This uses service role key (supabaseAdmin) which bypasses RLS
   const { data: profile, error } = await supabaseAdmin

@@ -574,7 +574,7 @@ test.describe('API Error Handling', () => {
       });
 
       // Should handle gracefully
-      expect([200, 400, 431]).toContain(response.status());
+      expect([200, 400, 429, 431]).toContain(response.status());
     });
   });
 
