@@ -2,3 +2,11 @@ name = "pixelperfect"
 compatibility_date = "2024-11-20"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+# ============================================================================
+# Cron Triggers Configuration
+# ============================================================================
+# NOTE: Cloudflare Pages doesn't support cron triggers directly in wrangler.toml
+# We need a separate Worker for cron jobs.
+# See workers/cron/README.md for setup instructions.
+# ============================================================================

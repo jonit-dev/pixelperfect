@@ -1,0 +1,30 @@
+# Cloudflare Workers Configuration for Cron Jobs
+# Documentation: https://developers.cloudflare.com/workers/configuration/cron-triggers/
+
+name = "pixelperfect-cron"
+main = "index.ts"
+compatibility_date = "2025-03-02"
+compatibility_flags = ["nodejs_compat"]
+
+# Cron Triggers
+[triggers]
+crons = [
+  # Webhook recovery - every 15 minutes
+  "*/15 * * * *",
+  # Expiration check - every hour at :05
+  "5 * * * *",
+  # Full reconciliation - daily at 3:05 AM UTC
+  "5 3 * * *"
+]
+
+# Environment Variables (non-sensitive defaults)
+# IMPORTANT: Set CRON_SECRET via Cloudflare dashboard or `wrangler secret put CRON_SECRET`
+[vars]
+API_BASE_URL = "https://pixelperfect.app"
+
+# Development environment
+[env.development]
+vars = { API_BASE_URL = "http://localhost:3000" }
+
+# Secrets (set these via: wrangler secret put <SECRET_NAME>)
+# - CRON_SECRET: Authentication secret for cron endpoints (generate with: openssl rand -hex 32)
