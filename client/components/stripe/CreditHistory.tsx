@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { StripeService } from '@client/services/stripeService';
+import { TransactionIcon, getTransactionTypeLabel } from './TransactionIcon';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
@@ -54,105 +55,6 @@ export function CreditHistory({ limit = 50 }: IProps): JSX.Element {
     loadTransactions();
   }, [loadTransactions]);
 
-  const getTypeIcon = (type: ICreditTransaction['type']) => {
-    switch (type) {
-      case 'subscription':
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-green-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-            />
-          </svg>
-        );
-      case 'purchase':
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
-        );
-      case 'usage':
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-red-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-            />
-          </svg>
-        );
-      case 'refund':
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-orange-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-            />
-          </svg>
-        );
-      case 'bonus':
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-purple-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
-            />
-          </svg>
-        );
-    }
-  };
-
-  const getTypeLabel = (type: ICreditTransaction['type']) => {
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  };
 
   if (loading) {
     return (
@@ -263,9 +165,9 @@ export function CreditHistory({ limit = 50 }: IProps): JSX.Element {
               <tr key={transaction.id} className="hover:bg-slate-50 transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-2">
-                    {getTypeIcon(transaction.type)}
+                    <TransactionIcon type={transaction.type} />
                     <span className="text-sm font-medium text-slate-900">
-                      {getTypeLabel(transaction.type)}
+                      {getTransactionTypeLabel(transaction.type)}
                     </span>
                   </div>
                 </td>

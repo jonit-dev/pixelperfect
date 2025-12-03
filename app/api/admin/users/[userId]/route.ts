@@ -89,3 +89,62 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
     return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
   }
 }
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ userId: string }> }
+) {
+  const { isAdmin, error } = await requireAdmin(req);
+  if (!isAdmin) return error;
+
+  const { userId } = await params;
+
+  try {
+    // Delete in order: credit_transactions, subscriptions, profiles, then auth user
+    // Using Promise.allSettled to continue even if some tables have no data
+
+    // First delete related data
+    const [transactionsResult, subscriptionsResult] = await Promise.allSettled([
+      supabaseAdmin.from('credit_transactions').delete().eq('user_id', userId),
+      supabaseAdmin.from('subscriptions').delete().eq('user_id', userId),
+    ]);
+
+    // Log any errors but continue
+    if (transactionsResult.status === 'rejected') {
+      console.warn('Error deleting transactions:', transactionsResult.reason);
+    }
+    if (subscriptionsResult.status === 'rejected') {
+      console.warn('Error deleting subscriptions:', subscriptionsResult.reason);
+    }
+
+    // Delete profile
+    const { error: profileError } = await supabaseAdmin
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (profileError) {
+      console.error('Error deleting profile:', profileError);
+      return NextResponse.json(
+        { error: 'Failed to delete user profile', details: profileError.message },
+        { status: 500 }
+      );
+    }
+
+    // Finally delete the auth user
+    const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(userId);
+
+    if (authError) {
+      console.error('Error deleting auth user:', authError);
+      return NextResponse.json(
+        { error: 'Failed to delete auth user', details: authError.message },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, message: 'User deleted successfully' });
+  } catch (err) {
+    console.error('Admin user delete error:', err);
+    return NextResponse.json({ error: 'Failed to delete user' }, { status: 500 });
+  }
+}

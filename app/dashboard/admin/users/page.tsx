@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState, useCallback } from 'react';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import dayjs from 'dayjs';
 import { IAdminUserProfile } from '@/shared/types/admin';
 import { adminFetch } from '@/client/utils/admin-api-client';
+import { UserActionsDropdown } from '@/client/components/admin/UserActionsDropdown';
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<IAdminUserProfile[]>([]);
@@ -14,36 +14,41 @@ export default function AdminUsersPage() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
   const limit = 20;
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const params = new URLSearchParams({
-          page: page.toString(),
-          limit: limit.toString(),
-          ...(search && { search }),
-        });
-        const data = await adminFetch<{
-          success: boolean;
-          data: { users: IAdminUserProfile[]; total: number };
-        }>(`/api/admin/users?${params}`);
-        if (data.success) {
-          setUsers(data.data.users);
-          setTotal(data.data.total);
-        }
-      } catch (err) {
-        console.error('Failed to fetch users:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load users');
-      } finally {
-        setLoading(false);
+  const fetchUsers = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const params = new URLSearchParams({
+        page: page.toString(),
+        limit: limit.toString(),
+        ...(search && { search }),
+      });
+      const data = await adminFetch<{
+        success: boolean;
+        data: { users: IAdminUserProfile[]; total: number };
+      }>(`/api/admin/users?${params}`);
+      if (data.success) {
+        setUsers(data.data.users);
+        setTotal(data.data.total);
       }
-    };
-
-    fetchUsers();
+    } catch (err) {
+      console.error('Failed to fetch users:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load users');
+    } finally {
+      setLoading(false);
+    }
   }, [page, search]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers, refreshKey]);
+
+  const handleUserUpdate = useCallback(() => {
+    setRefreshKey(k => k + 1);
+  }, []);
 
   const totalPages = Math.ceil(total / limit);
 
@@ -140,12 +145,7 @@ export default function AdminUsersPage() {
                     {dayjs(user.created_at).format('MMM D, YYYY')}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <Link
-                      href={`/dashboard/admin/users/${user.id}`}
-                      className="text-indigo-600 hover:text-indigo-900 text-sm font-medium"
-                    >
-                      View
-                    </Link>
+                    <UserActionsDropdown user={user} onUpdate={handleUserUpdate} />
                   </td>
                 </tr>
               ))

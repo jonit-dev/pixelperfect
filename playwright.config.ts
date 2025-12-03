@@ -9,6 +9,7 @@ const isCI = !!process.env.CI;
 
 export default defineConfig({
   testDir: './tests',
+  globalTeardown: './tests/global-teardown.ts', // Clean up test users after all tests
   fullyParallel: false, // Disable full parallelization for memory optimization
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,

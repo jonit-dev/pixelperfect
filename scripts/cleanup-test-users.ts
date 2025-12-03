@@ -8,9 +8,10 @@ import { config } from 'dotenv';
 import { resolve } from 'path';
 import { cleanupOldTestUsers } from '../tests/helpers/test-user-reset';
 
-// Load environment variables from .env and .env.prod
-config({ path: resolve(process.cwd(), '.env') });
-config({ path: resolve(process.cwd(), '.env.prod') });
+// Load environment variables from .env.test, .env.api, and .env.client
+config({ path: resolve(process.cwd(), '.env.test') });
+config({ path: resolve(process.cwd(), '.env.api') });
+config({ path: resolve(process.cwd(), '.env.client') });
 
 async function main() {
   console.log('🧹 Cleaning up old test users...');

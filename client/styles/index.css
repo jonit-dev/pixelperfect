@@ -78,6 +78,14 @@
   }
 }
 
+/* Image comparison checkerboard background pattern */
+@layer components {
+  .bg-checkerboard {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjNmNGY2Ii8+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4=");
+    background-repeat: repeat;
+  }
+}
+
 /* 2025 Landing Page Animations */
 @layer utilities {
   /* Fade in animations */

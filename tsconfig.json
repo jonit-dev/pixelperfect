@@ -24,7 +24,8 @@
       "@client/*": ["./client/*"],
       "@server/*": ["./server/*"],
       "@shared/*": ["./shared/*"],
-      "@app/*": ["./app/*"]
+      "@app/*": ["./app/*"],
+      "@lib/*": ["./lib/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true

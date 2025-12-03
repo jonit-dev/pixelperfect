@@ -118,7 +118,7 @@ async function getCurrentCredits(
 }
 
 /**
- * Clean up old test users (those with email pattern test-*@test.local)
+ * Clean up old test users (those with email pattern test-*@test.local or @test.pool.local)
  * Run this manually or in a maintenance script to clean up pollution
  */
 export async function cleanupOldTestUsers(): Promise<number> {
@@ -136,20 +136,38 @@ export async function cleanupOldTestUsers(): Promise<number> {
     },
   });
 
-  const { data: allUsers } = await supabase.auth.admin.listUsers();
-
-  if (!allUsers) return 0;
-
   let deletedCount = 0;
-  for (const user of allUsers.users) {
-    // Delete users with test email pattern (but keep the fixed test user)
-    if (user.email && user.email.includes('@test.local') && user.email !== FIXED_TEST_USER.email) {
-      await supabase.auth.admin.deleteUser(user.id);
-      deletedCount++;
+  let page = 1;
+  const perPage = 100;
 
-      // Add delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 100));
+  // Paginate through all users
+  while (true) {
+    const { data: usersPage } = await supabase.auth.admin.listUsers({
+      page,
+      perPage,
+    });
+
+    if (!usersPage || usersPage.users.length === 0) break;
+
+    for (const user of usersPage.users) {
+      // Delete users with test email patterns (but keep the fixed test user)
+      const isTestUser =
+        user.email &&
+        (user.email.includes('@test.local') || user.email.includes('@test.pool.local')) &&
+        user.email !== FIXED_TEST_USER.email;
+
+      if (isTestUser) {
+        await supabase.auth.admin.deleteUser(user.id);
+        deletedCount++;
+
+        // Add delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
     }
+
+    // If we got fewer users than perPage, we've reached the end
+    if (usersPage.users.length < perPage) break;
+    page++;
   }
 
   return deletedCount;

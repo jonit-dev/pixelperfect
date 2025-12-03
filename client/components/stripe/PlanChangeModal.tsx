@@ -1,9 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { X, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react';
+import { TrendingUp, TrendingDown } from 'lucide-react';
 import { StripeService } from '@client/services/stripeService';
 import { getPlanForPriceId } from '@shared/config/stripe';
+import { ModalHeader } from './ModalHeader';
+import { PlanComparisonCard } from './PlanComparisonCard';
+import { ProrationCard } from './ProrationCard';
+import { LoadingSpinner } from './LoadingSpinner';
+import { ErrorAlert } from './ErrorAlert';
 
 interface IPlanChangeModalProps {
   isOpen: boolean;
@@ -97,133 +102,51 @@ export function PlanChangeModal({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
-          <div className="flex items-center gap-3">
-            <Icon className={`h-6 w-6 ${isUpgrade ? 'text-green-600' : 'text-orange-600'}`} />
-            <h2 className="text-xl font-semibold text-gray-900">
-              {currentPlan ? 'Change Plan' : 'Select Plan'}
-            </h2>
-          </div>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
-            disabled={changing}
-          >
-            <X className="h-6 w-6" />
-          </button>
-        </div>
+        <ModalHeader
+          title={currentPlan ? 'Change Plan' : 'Select Plan'}
+          icon={Icon}
+          iconClassName={isUpgrade ? 'text-green-600' : 'text-orange-600'}
+          onClose={onClose}
+          disabled={changing}
+        />
 
-        {/* Content */}
         <div className="p-6">
-          {loading && (
-            <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-              <p className="text-gray-600">Calculating plan changes...</p>
-            </div>
-          )}
+          {loading && <LoadingSpinner message="Calculating plan changes..." />}
 
-          {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-              <div className="flex items-center gap-3">
-                <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0" />
-                <div>
-                  <h3 className="font-medium text-red-900">Error</h3>
-                  <p className="text-sm text-red-700 mt-1">{error}</p>
-                </div>
-              </div>
-            </div>
-          )}
+          {error && <ErrorAlert message={error} className="mb-6" />}
 
           {preview && !loading && preview.new_plan && (
             <>
               {/* Plan Comparison */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                {/* Current Plan */}
                 {preview.current_plan && (
-                  <div className="border rounded-lg p-4">
-                    <h3 className="font-medium text-gray-900 mb-2">Current Plan</h3>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Plan:</span>
-                        <span className="font-medium">{preview.current_plan.name}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Credits:</span>
-                        <span>{preview.current_plan.credits_per_month.toLocaleString()}/month</span>
-                      </div>
-                    </div>
-                  </div>
+                  <PlanComparisonCard
+                    title="Current Plan"
+                    name={preview.current_plan.name}
+                    creditsPerMonth={preview.current_plan.credits_per_month}
+                    variant="current"
+                  />
                 )}
 
-                {/* New Plan */}
-                <div
-                  className={`border rounded-lg p-4 ${isUpgrade ? 'border-green-200 bg-green-50' : 'border-orange-200 bg-orange-50'}`}
-                >
-                  <h3 className="font-medium text-gray-900 mb-2">New Plan</h3>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Plan:</span>
-                      <span className="font-medium">{preview.new_plan.name}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Credits:</span>
-                      <span>{preview.new_plan.credits_per_month.toLocaleString()}/month</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Effective:</span>
-                      <span className="text-sm">
-                        {preview.effective_immediately ? 'Immediately' : 'Next billing cycle'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <PlanComparisonCard
+                  title="New Plan"
+                  name={preview.new_plan.name}
+                  creditsPerMonth={preview.new_plan.credits_per_month}
+                  variant={isUpgrade ? 'upgrade' : 'downgrade'}
+                  effectiveText={preview.effective_immediately ? 'Immediately' : 'Next billing cycle'}
+                />
               </div>
 
               {/* Proration Details */}
               {preview.current_plan && (
-                <div
-                  className={`border rounded-lg p-4 mb-6 ${
-                    preview.proration.amount_due > 0
-                      ? 'border-blue-200 bg-blue-50'
-                      : preview.proration.amount_due < 0
-                        ? 'border-green-200 bg-green-50'
-                        : 'border-gray-200 bg-gray-50'
-                  }`}
-                >
-                  <h3 className="font-medium text-gray-900 mb-2">Billing Adjustment</h3>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Proration amount:</span>
-                      <span
-                        className={`font-medium ${
-                          preview.proration.amount_due > 0
-                            ? 'text-blue-900'
-                            : preview.proration.amount_due < 0
-                              ? 'text-green-900'
-                              : 'text-gray-900'
-                        }`}
-                      >
-                        {preview.proration.amount_due > 0 ? '+' : ''}$
-                        {(preview.proration.amount_due / 100).toFixed(2)}
-                      </span>
-                    </div>
-                    {preview.proration.amount_due !== 0 && (
-                      <p className="text-sm text-gray-600">
-                        {preview.proration.amount_due > 0
-                          ? 'This amount will be charged immediately'
-                          : 'This amount will be credited to your account'}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                <ProrationCard amountDue={preview.proration.amount_due} />
               )}
 
               {/* Action Buttons */}
               <div className="flex gap-4 justify-end">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                  className="px-6 py-2 text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
                   disabled={changing}
                 >
                   Cancel
