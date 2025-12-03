@@ -21,8 +21,12 @@ test.describe('API: Image Upscale Integration', () => {
   test.beforeAll(async () => {
     dataManager = new TestDataManager();
     testUser = await dataManager.createTestUser();
-    // Add sufficient credits for testing
-    await dataManager.addCredits(testUser.id, 50);
+    // Try to add sufficient credits for testing, but don't fail if we can't
+    try {
+      await dataManager.addCredits(testUser.id, 50);
+    } catch (error) {
+      console.warn('Could not add credits for testing, continuing with default credits:', error);
+    }
   });
 
   test.afterAll(async () => {

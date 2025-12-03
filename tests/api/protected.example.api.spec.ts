@@ -22,6 +22,8 @@ test.describe('API: Protected Example - Authentication', () => {
     expect(response.status()).toBe(401);
     const data = await response.json();
     expect(data).toHaveProperty('error');
+    expect(data.success).toBe(false);
+    expect(data.error.code).toBe('UNAUTHORIZED');
   });
 
   test('should reject unauthenticated POST requests', async ({ request }) => {
@@ -31,7 +33,8 @@ test.describe('API: Protected Example - Authentication', () => {
 
     expect(response.status()).toBe(401);
     const data = await response.json();
-    expect(data).toHaveProperty('error');
+    expect(data.success).toBe(false);
+    expect(data.error.code).toBe('UNAUTHORIZED');
   });
 
   test('should reject unauthenticated PATCH requests', async ({ request }) => {
@@ -41,7 +44,8 @@ test.describe('API: Protected Example - Authentication', () => {
 
     expect(response.status()).toBe(401);
     const data = await response.json();
-    expect(data).toHaveProperty('error');
+    expect(data.success).toBe(false);
+    expect(data.error.code).toBe('UNAUTHORIZED');
   });
 
   test('should reject unauthenticated DELETE requests', async ({ request }) => {
@@ -49,7 +53,8 @@ test.describe('API: Protected Example - Authentication', () => {
 
     expect(response.status()).toBe(401);
     const data = await response.json();
-    expect(data).toHaveProperty('error');
+    expect(data.success).toBe(false);
+    expect(data.error.code).toBe('UNAUTHORIZED');
   });
 
   test('should reject invalid authentication tokens', async ({ request }) => {
@@ -61,7 +66,8 @@ test.describe('API: Protected Example - Authentication', () => {
 
     expect(response.status()).toBe(401);
     const data = await response.json();
-    expect(data).toHaveProperty('error');
+    expect(data.success).toBe(false);
+    expect(data.error.code).toBe('UNAUTHORIZED');
   });
 });
 

@@ -111,15 +111,24 @@ async function handlePageRoute(req: NextRequest, pathname: string): Promise<Next
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   const pathname = req.nextUrl.pathname;
 
-  // Temporarily disabled to debug edge runtime issues
-  console.log('Middleware disabled for debugging, pathname:', pathname);
-  return NextResponse.next();
+  // Route to appropriate handler
+  if (pathname.startsWith('/api/')) {
+    return handleApiRoute(req, pathname);
+  }
+
+  // Handle page routes
+  return handlePageRoute(req, pathname);
 }
 
 /**
  * Middleware configuration
- * Run on no routes (disabled temporarily)
+ *
+ * Match all routes except:
+ * - Static files (_next/static, _next/image, favicon, sitemap, robots)
+ * - API routes that don't need auth (handled in middleware logic)
  */
 export const config = {
-  matcher: [],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+  ],
 };
