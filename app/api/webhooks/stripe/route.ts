@@ -126,7 +126,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       ENV: serverEnv.ENV,
       STRIPE_SECRET_KEY: serverEnv.STRIPE_SECRET_KEY,
       isTestMode,
-      includesDummy: serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key')
+      includesDummy: serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key'),
     });
 
     // Production safety check: detect misconfigured test webhook secret
@@ -337,41 +337,14 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
       }
     }
   } else if (session.mode === 'payment') {
-    // Legacy support: Handle one-time credit purchases
-    console.log(`Processing legacy credit purchase for user ${userId}`);
-    console.log('Session metadata:', session.metadata);
-    console.log('Credits amount from metadata:', session.metadata?.credits_amount);
-
-    const creditsAmount = session.metadata?.credits_amount;
-
-    if (creditsAmount) {
-      const creditAmount = parseInt(creditsAmount, 10);
-      console.log(`Parsed credit amount: ${creditAmount}`);
-
-      if (!isNaN(creditAmount) && creditAmount > 0) {
-        console.log(`Calling increment_credits_with_log for user ${userId}, amount ${creditAmount}`);
-        const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
-          target_user_id: userId,
-          amount: creditAmount,
-          transaction_type: 'purchase',
-          ref_id: session.payment_intent as string || session.id,
-          description: `Credit purchase - ${creditAmount} credits`,
-        });
-
-        if (error) {
-          console.error('Error adding purchased credits:', error);
-        } else {
-          console.log(`Successfully added ${creditAmount} purchased credits to user ${userId}`);
-        }
-      } else {
-        console.warn(`Invalid credits amount in metadata: ${creditsAmount}`);
-      }
-    } else {
-      console.warn('No credits_amount found in session metadata for payment mode');
-    }
+    // One-time payments are no longer supported - ignore these sessions
+    console.log(
+      `Ignoring one-time payment session for user ${userId} - payment mode no longer supported`
+    );
+    return;
   } else {
     console.warn(
-      `Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription and payment modes are supported.`
+      `Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription mode is supported.`
     );
   }
 }
@@ -476,7 +449,9 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
       if (error) {
         console.error('Error adding trial credits:', error);
       } else {
-        console.log(`Added ${trialCredits} trial credits to user ${userId} for ${planConfig.name} plan`);
+        console.log(
+          `Added ${trialCredits} trial credits to user ${userId} for ${planConfig.name} plan`
+        );
       }
     }
   }
@@ -523,7 +498,9 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
   if (profileError) {
     console.error('Error updating profile subscription status:', profileError);
   } else {
-    console.log(`Updated subscription for user ${userId}: ${planConfig.name} (${subscription.status})`);
+    console.log(
+      `Updated subscription for user ${userId}: ${planConfig.name} (${subscription.status})`
+    );
   }
 }
 
@@ -864,5 +841,7 @@ async function handleTrialWillEnd(subscription: Stripe.Subscription) {
 
   // TODO: Send trial ending soon email notification
   // This would integrate with your email service provider
-  console.log(`TODO: Send trial ending soon email to ${profile.email} (${daysUntilEnd} days remaining)`);
+  console.log(
+    `TODO: Send trial ending soon email to ${profile.email} (${daysUntilEnd} days remaining)`
+  );
 }

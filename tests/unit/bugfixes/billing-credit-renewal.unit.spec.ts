@@ -167,8 +167,8 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       target_user_id: userId,
       amount: 200, // Hobby tier credits
       transaction_type: 'subscription',
-      ref_id: invoiceId,
-      description: 'Monthly subscription renewal - Hobby plan - 200 credits',
+      ref_id: `invoice_${invoiceId}`,
+      description: 'Monthly subscription renewal - Hobby plan',
     });
     expect(consoleSpy).toHaveBeenCalledWith(
       expect.stringContaining('Added 200 subscription credits')
@@ -239,8 +239,8 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       target_user_id: userId,
       amount: 1000, // Pro tier credits
       transaction_type: 'subscription',
-      ref_id: invoiceId,
-      description: 'Monthly subscription renewal - Professional plan - 1000 credits',
+      ref_id: `invoice_${invoiceId}`,
+      description: 'Monthly subscription renewal - Professional plan',
     });
   });
 
@@ -308,8 +308,8 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       target_user_id: userId,
       amount: 5000, // Business tier credits
       transaction_type: 'subscription',
-      ref_id: invoiceId,
-      description: 'Monthly subscription renewal - Business plan - 5000 credits',
+      ref_id: `invoice_${invoiceId}`,
+      description: 'Monthly subscription renewal - Business plan',
     });
   });
 

@@ -4,6 +4,11 @@ import { POST } from '../../../app/api/webhooks/stripe/route';
 import { supabaseAdmin } from '../../../server/supabase/supabaseAdmin';
 import { stripe } from '../../../server/stripe';
 import { getPlanForPriceId } from '@shared/config/stripe';
+import { getPlanConfig } from '@shared/config/subscription.config';
+import {
+  getPlanByPriceId,
+  calculateBalanceWithExpiration,
+} from '@shared/config/subscription.utils';
 
 // Mock webhook secret that can be changed per test
 let mockWebhookSecret = 'whsec_test_secret';
@@ -25,6 +30,16 @@ vi.mock('@server/stripe', () => ({
 
 vi.mock('@shared/config/stripe', () => ({
   getPlanForPriceId: vi.fn(),
+}));
+
+vi.mock('@shared/config/subscription.config', () => ({
+  getPlanConfig: vi.fn(),
+  getTrialConfig: vi.fn(),
+}));
+
+vi.mock('@shared/config/subscription.utils', () => ({
+  getPlanByPriceId: vi.fn(),
+  calculateBalanceWithExpiration: vi.fn(),
 }));
 
 // Helper to create a webhook_events mock that allows events through (for idempotency)
@@ -93,6 +108,7 @@ describe('Stripe Webhook Handler', () => {
     consoleSpy = {
       log: vi.spyOn(console, 'log').mockImplementation(() => {}),
       error: vi.spyOn(console, 'error').mockImplementation(() => {}),
+      warn: vi.spyOn(console, 'warn').mockImplementation(() => {}),
     };
   });
 
@@ -474,6 +490,7 @@ describe('Stripe Webhook Handler', () => {
 
       // Mock successful plan lookup
       vi.mocked(getPlanForPriceId).mockReturnValue(mockPlan);
+      vi.mocked(getPlanConfig).mockReturnValue({ key: 'business', name: 'Business' });
 
       const event = {
         type: 'customer.subscription.created',
@@ -493,7 +510,11 @@ describe('Stripe Webhook Handler', () => {
       const mockSelect = vi.fn(() => ({
         eq: vi.fn(() => ({
           single: vi.fn(() => ({
-            data: { id: 'user_123' },
+            data: {
+              id: 'user_123',
+              subscription_status: 'trialing',
+              credits_balance: 100,
+            },
           })),
         })),
       }));
@@ -519,7 +540,7 @@ describe('Stripe Webhook Handler', () => {
 
       // Assert
       expect(response.status).toBe(200);
-      expect(mockSelect).toHaveBeenCalledWith('id');
+      expect(mockSelect).toHaveBeenCalledWith('id, subscription_status, credits_balance');
       expect(mockUpsert).toHaveBeenCalledWith(
         expect.objectContaining({
           id: 'sub_test_123',
@@ -632,6 +653,9 @@ describe('Stripe Webhook Handler', () => {
 
     test('should handle subscription update errors gracefully', async () => {
       // Arrange
+      // Mock successful plan lookup to get past that validation
+      vi.mocked(getPlanConfig).mockReturnValue({ key: 'pro', name: 'Professional' });
+
       const event = {
         type: 'customer.subscription.created',
         data: { object: subscriptionData },
@@ -650,7 +674,11 @@ describe('Stripe Webhook Handler', () => {
       const mockSelect = vi.fn(() => ({
         eq: vi.fn(() => ({
           single: vi.fn(() => ({
-            data: { id: 'user_123' },
+            data: {
+              id: 'user_123',
+              subscription_status: 'active',
+              credits_balance: 500,
+            },
           })),
         })),
       }));
@@ -694,6 +722,12 @@ describe('Stripe Webhook Handler', () => {
 
       // Mock successful plan lookup
       vi.mocked(getPlanForPriceId).mockReturnValue(mockPlan);
+      vi.mocked(getPlanConfig).mockReturnValue({ key: 'pro', name: 'Professional' });
+      vi.mocked(getPlanByPriceId).mockReturnValue({ creditsExpiration: { mode: 'never' } });
+      vi.mocked(calculateBalanceWithExpiration).mockReturnValue({
+        newBalance: 1100,
+        expiredAmount: 0,
+      });
 
       const customerId = 'cus_test_renewal';
       const userId = 'user_renewal_123';
@@ -731,7 +765,11 @@ describe('Stripe Webhook Handler', () => {
       const mockSelect = vi.fn(() => ({
         eq: vi.fn(() => ({
           single: vi.fn(() => ({
-            data: { id: userId, credits_balance: 100 },
+            data: {
+              id: userId,
+              credits_balance: 100,
+              subscription_status: 'active',
+            },
           })),
         })),
       }));
@@ -756,10 +794,10 @@ describe('Stripe Webhook Handler', () => {
       // Now we add credits on subscription renewal (this was the bug fix!)
       expect(supabaseAdmin.rpc).toHaveBeenCalledWith('increment_credits_with_log', {
         target_user_id: userId,
-        amount: expect.any(Number), // Credits based on price tier
+        amount: 1000, // Professional tier credits
         transaction_type: 'subscription',
-        ref_id: 'in_test_123',
-        description: expect.stringContaining('Monthly subscription renewal'),
+        ref_id: 'invoice_in_test_123',
+        description: 'Monthly subscription renewal - Professional plan',
       });
       expect(consoleSpy.log).toHaveBeenCalledWith(expect.stringContaining('Added'));
       expect(stripe.subscriptions.retrieve).not.toHaveBeenCalled();
@@ -923,7 +961,9 @@ describe('Stripe Webhook Handler', () => {
 
       // Assert
       expect(response.status).toBe(200);
-      expect(consoleSpy.log).toHaveBeenCalledWith('Unhandled event type: account.updated');
+      expect(consoleSpy.warn).toHaveBeenCalledWith(
+        'UNHANDLED WEBHOOK TYPE: account.updated - this may require code update'
+      );
     });
   });
 
