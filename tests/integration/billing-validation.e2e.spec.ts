@@ -6,8 +6,7 @@ import { StripeWebhookMockFactory } from '../helpers/stripe-webhook-mocks';
  * Billing Integration Validation Tests
  *
  * These tests validate the TestContext helper and Stripe webhook mocks.
- * Note: Some operations (credit_transactions, subscriptions table) are blocked
- * by RLS policies, so tests focus on profile-level operations which work.
+ * Note: Credit pack purchases are no longer supported - subscription only.
  */
 test.describe('Billing Integration Validation', () => {
   let ctx: TestContext;
@@ -34,29 +33,16 @@ test.describe('Billing Integration Validation', () => {
     expect(profile.subscription_status).toBe('active');
     expect(profile.subscription_tier).toBe('pro');
 
-    // Test adding credits (balance update works, transaction logging may fail due to RLS)
+    // Test adding credits via subscription
     const initialBalance = profile.credits_balance;
-    await ctx.data.addCredits(testUser.id, 25, 'purchase');
+    await ctx.data.addCredits(testUser.id, 25, 'subscription');
 
     const updatedProfile = await ctx.data.getUserProfile(testUser.id);
     expect(updatedProfile.credits_balance).toBe(initialBalance + 25);
-
-    // Note: TestContext handles cleanup automatically
   });
 
-  test('should generate valid Stripe webhook mocks', async () => {
+  test('should generate valid Stripe subscription webhook mocks', async () => {
     const testUser = await ctx.createUser();
-
-    // Test credit purchase webhook
-    const creditPurchaseEvent = StripeWebhookMockFactory.createCheckoutSessionCompletedForCredits({
-      userId: testUser.id,
-      creditsAmount: 100,
-    });
-
-    expect(creditPurchaseEvent.type).toBe('checkout.session.completed');
-    expect(creditPurchaseEvent.data.object.metadata?.user_id).toBe(testUser.id);
-    expect(creditPurchaseEvent.data.object.metadata?.credits_amount).toBe('100');
-    expect(creditPurchaseEvent.data.object.mode).toBe('payment');
 
     // Test subscription webhook
     const subscriptionEvent = StripeWebhookMockFactory.createSubscriptionCreated({
@@ -79,15 +65,9 @@ test.describe('Billing Integration Validation', () => {
     expect(invoiceEvent.type).toBe('invoice.payment_succeeded');
     expect(invoiceEvent.data.object.subscription).toBe('sub_test_456');
     expect(invoiceEvent.data.object.paid).toBe(true);
-
-    // Note: TestContext handles cleanup automatically
   });
 
   test('should handle different subscription scenarios via profile', async () => {
-    // Test creating users with different states
-    // Note: subscription_status defaults to null for new profiles,
-    // we update it via setSubscriptionStatus
-
     const testUser = await ctx.createUser();
 
     // Initial state should have credits
@@ -109,8 +89,6 @@ test.describe('Billing Integration Validation', () => {
     await ctx.data.setSubscriptionStatus(testUser.id, 'past_due');
     const pastDueProfile = await ctx.data.getUserProfile(testUser.id);
     expect(pastDueProfile.subscription_status).toBe('past_due');
-
-    // Note: TestContext handles cleanup automatically
   });
 
   test('should update credits balance correctly', async () => {
@@ -119,8 +97,8 @@ test.describe('Billing Integration Validation', () => {
     const initialProfile = await ctx.data.getUserProfile(testUser.id);
     const initialBalance = initialProfile.credits_balance;
 
-    // Add credits via different methods
-    await ctx.data.addCredits(testUser.id, 20, 'purchase');
+    // Add credits via subscription
+    await ctx.data.addCredits(testUser.id, 20, 'subscription');
 
     const afterFirstAdd = await ctx.data.getUserProfile(testUser.id);
     expect(afterFirstAdd.credits_balance).toBe(initialBalance + 20);
@@ -129,8 +107,6 @@ test.describe('Billing Integration Validation', () => {
 
     const finalProfile = await ctx.data.getUserProfile(testUser.id);
     expect(finalProfile.credits_balance).toBe(initialBalance + 30);
-
-    // Note: TestContext handles cleanup automatically
   });
 
   test('should verify profile state consistency across updates', async () => {
@@ -138,7 +114,7 @@ test.describe('Billing Integration Validation', () => {
 
     // Set initial state
     await ctx.data.setSubscriptionStatus(testUser.id, 'active', 'pro');
-    await ctx.data.addCredits(testUser.id, 50, 'purchase');
+    await ctx.data.addCredits(testUser.id, 50, 'subscription');
 
     // Verify profile
     const profile = await ctx.data.getUserProfile(testUser.id);
@@ -154,7 +130,5 @@ test.describe('Billing Integration Validation', () => {
     expect(updatedProfile.subscription_status).toBe('canceled');
     // Credits should remain unchanged when updating subscription
     expect(updatedProfile.credits_balance).toBe(initialBalance);
-
-    // Note: TestContext handles cleanup automatically
   });
 });

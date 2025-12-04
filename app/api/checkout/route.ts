@@ -46,26 +46,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if we're in test mode (before plan validation)
-    const isTestMode =
-      serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') && serverEnv.ENV === 'test';
-
-    // Validate that the price ID is a valid subscription price (skip in test mode)
-    let plan = null;
-    if (!isTestMode) {
-      plan = getPlanForPriceId(priceId);
-      if (!plan) {
-        return NextResponse.json(
-          {
-            success: false,
-            error: {
-              code: 'INVALID_PRICE',
-              message: 'Invalid price ID. Only subscription plans are supported.',
-            },
+    // Basic format validation for price ID (always run, even in test mode)
+    if (typeof priceId !== 'string' || priceId.trim() === '') {
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: 'VALIDATION_ERROR',
+            message: 'priceId must be a non-empty string',
           },
-          { status: 400 }
-        );
-      }
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate basic Stripe price ID format (starts with 'price_' and has reasonable length)
+    if (!priceId.startsWith('price_') || priceId.length < 10) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: 'INVALID_PRICE',
+            message: 'Invalid price ID format. Price IDs must start with "price_" and be valid Stripe price identifiers.',
+          },
+        },
+        { status: 400 }
+      );
     }
 
     // 2. Get the authenticated user from the Authorization header
@@ -86,14 +92,46 @@ export async function POST(request: NextRequest) {
     // Extract the JWT token
     const token = authHeader.replace('Bearer ', '');
 
-    // Check if we're in test mode and using mock authentication
+    // Check if we're in test mode (after basic validation)
+    const isTestMode =
+      (serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') && serverEnv.ENV === 'test') ||
+      (serverEnv.ENV === 'test' && token.startsWith('test_token_'));
+
+    // Validate that the price ID is a known subscription price (skip in test mode, but validate basic format)
+    let plan = null;
+    if (!isTestMode) {
+      plan = getPlanForPriceId(priceId);
+      if (!plan) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'INVALID_PRICE',
+              message: 'Invalid price ID. Only subscription plans are supported.',
+            },
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    // 3. Get user from token (mock authentication for testing)
     let user: any = null;
     let authError: any = null;
 
     if (serverEnv.ENV === 'test' && token.startsWith('test_token_')) {
       // Mock authentication for testing
-      // Token format: test_token_mock_user_{uniqueId}
-      const mockUserId = token.replace('test_token_', '');
+      // Handle both format: test_token_mock_user_{userId} and test_token_{userId}
+      let mockUserId: string;
+
+      if (token.startsWith('test_token_mock_user_')) {
+        // New format from test data manager
+        mockUserId = token.replace('test_token_mock_user_', '');
+      } else {
+        // Legacy format
+        mockUserId = token.replace('test_token_', '');
+      }
+
       user = {
         id: mockUserId,
         email: `test-${mockUserId}@example.com`
@@ -118,13 +156,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Check if user already has an active subscription (skip for mock users in test)
+    // 4. Check if user already has an active subscription (skip for mock users in test)
     let existingSubscription = null;
 
-    if (user.id.startsWith('mock_user_') && serverEnv.ENV === 'test') {
-      // For mock users, check if subscription status is encoded in the user data
+    if (serverEnv.ENV === 'test' && token.startsWith('test_token_')) {
+      // For mock users, check if subscription status is encoded in the token metadata
       // Mock users can include subscription info in their token metadata
-      const token = request.headers.get('authorization')?.replace('Bearer ', '') || '';
 
       // Check if token includes subscription metadata (format: test_token_mock_user_id_sub_status_tier)
       const tokenParts = token.split('_');
@@ -161,10 +198,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 4. Get or create Stripe customer
+    // 5. Get or create Stripe customer
     let customerId = null;
 
-    if (!(user.id.startsWith('mock_user_') && serverEnv.ENV === 'test')) {
+    if (!(serverEnv.ENV === 'test' && token.startsWith('test_token_'))) {
       const { data: profile } = await supabaseAdmin
         .from('profiles')
         .select('stripe_customer_id')
@@ -180,11 +217,15 @@ export async function POST(request: NextRequest) {
       // Create mock customer ID if it doesn't exist
       if (!customerId) {
         customerId = `cus_test_${user.id}`;
-        // Update the profile with the mock customer ID
-        await supabaseAdmin
-          .from('profiles')
-          .update({ stripe_customer_id: customerId })
-          .eq('id', user.id);
+
+        // Only try to update profile for non-mock users
+        if (!token.startsWith('test_token_mock_user_')) {
+          // Update the profile with the mock customer ID
+          await supabaseAdmin
+            .from('profiles')
+            .update({ stripe_customer_id: customerId })
+            .eq('id', user.id);
+        }
       }
 
       // Return mock checkout session for testing
@@ -219,7 +260,7 @@ export async function POST(request: NextRequest) {
         .eq('id', user.id);
     }
 
-    // 5. Verify price is a recurring subscription (double-check with Stripe in production)
+    // 6. Verify price is a recurring subscription (double-check with Stripe in production)
     if (!isTestMode) {
       const price = await stripe.prices.retrieve(priceId);
       if (price.type !== 'recurring') {
@@ -236,7 +277,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 6. Create Stripe Checkout Session (subscription mode only)
+    // 7. Create Stripe Checkout Session (subscription mode only)
     const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
@@ -290,7 +331,7 @@ export async function POST(request: NextRequest) {
 
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    // 7. Return the session data
+    // 8. Return the session data
     return NextResponse.json({
       success: true,
       data: {

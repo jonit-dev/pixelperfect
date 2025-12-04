@@ -571,6 +571,22 @@ export class ApiResponse<T = unknown> {
   }
 
   /**
+   * Asserts webhook response format (for Stripe webhook endpoints)
+   *
+   * @param assertions - Expected webhook response properties
+   * @returns This instance for chaining
+   */
+  async expectWebhookResponse(assertions: Partial<Record<string, unknown>>): Promise<this> {
+    const data = await this.json();
+    expect(data.received).toBe(true);
+
+    for (const [key, value] of Object.entries(assertions)) {
+      expect(data[key]).toStrictEqual(value);
+    }
+    return this;
+  }
+
+  /**
    * Helper method to get nested object values by path
    *
    * @param obj - Object to search

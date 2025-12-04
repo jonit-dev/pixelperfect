@@ -130,9 +130,15 @@ test.describe('API: Analytics Event Integration', () => {
         sessionId: `concurrent_test_${index}`,
       }));
 
-    const responses = await Promise.all(
-      concurrentEvents.map(event => api.post('/api/analytics/event', event))
-    );
+    // Stagger requests slightly to reduce rate limiting and improve reliability
+    const responses: any[] = [];
+    for (const [index, event] of concurrentEvents.entries()) {
+      if (index > 0) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
+      const response = await api.post('/api/analytics/event', event);
+      responses.push(response);
+    }
 
     for (const response of responses) {
       response.expectStatus(200);

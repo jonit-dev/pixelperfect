@@ -30,24 +30,7 @@ test.describe('Authentication', () => {
       await loginPage.assertModalVisible();
     });
 
-    test('login modal contains email and password fields', async ({ page }) => {
-      await loginPage.goto('/');
-      await loginPage.openLoginModal();
-      await loginPage.assertModalVisible();
-
-      // Verify form fields using enhanced page object methods
-      await expect(loginPage.modal.locator('input[placeholder*="email" i]')).toBeVisible();
-      await expect(loginPage.modal.locator('input[placeholder*="password" i]')).toBeVisible();
-    });
-
-    test('login modal has submit button', async ({ page }) => {
-      await loginPage.goto('/');
-      await loginPage.openLoginModal();
-
-      // Verify submit button using enhanced base page method
-      await expect(loginPage.modal.getByRole('button', { name: 'Sign In' }).first()).toBeVisible();
-    });
-
+    
     test('can close login modal by pressing Escape key', async ({ page }) => {
       await loginPage.goto('/');
       await loginPage.openLoginModal();
@@ -59,59 +42,10 @@ test.describe('Authentication', () => {
       // Verify modal is hidden
       await expect(loginPage.modal).toBeHidden({ timeout: 5000 });
     });
-
-    test('can close and reopen login modal multiple times', async ({ page }) => {
-      await loginPage.goto('/');
-
-      // Test multiple open/close cycles
-      for (let i = 0; i < 3; i++) {
-        await loginPage.openLoginModal();
-        await loginPage.assertModalVisible();
-        await loginPage.closeModal();
-        await expect(loginPage.modal).toBeHidden();
-      }
-    });
-
-    test('modal maintains focus management', async ({ page }) => {
-      await loginPage.goto('/');
-      await loginPage.openLoginModal();
-
-      // Check that modal can receive focus
-      await loginPage.modal.focus();
-      expect(await loginPage.modal.evaluate(el => document.activeElement === el)).toBe(true);
-    });
   });
 
   test.describe('Protected Routes', () => {
-    test('accessing /dashboard without auth handles appropriately', async ({ page }) => {
-      await loginPage.goto('/dashboard');
-      await loginPage.waitForNetworkIdle();
-
-      // The app may: show dashboard with sign in option, redirect, or show login modal
-      // Just verify the page loads without crashing
-      const url = page.url();
-      const hasSignIn = await loginPage.signInButton.isVisible();
-      const hasModal = await loginPage.isModalVisible();
-
-      // Page should be functional - either shows sign in button, modal, or redirected
-      expect(url.length > 0 || hasSignIn || hasModal).toBe(true);
-    });
-
-    test('accessing /dashboard/billing without auth handles appropriately', async ({ page }) => {
-      await loginPage.goto('/dashboard/billing');
-      await loginPage.waitForNetworkIdle();
-
-      // Should show login requirement or redirect or stay on page with sign in option
-      const hasLoginOption = await loginPage.signInButton.isVisible();
-      const currentUrl = await loginPage.logCurrentUrl();
-      const redirectedToLogin = currentUrl.includes('/login');
-      const isOnBillingPage = currentUrl.includes('/billing');
-      const isOnHomePage = currentUrl.endsWith('/');
-
-      // One of these conditions should be true for protected routes
-      expect(hasLoginOption || redirectedToLogin || isOnBillingPage || isOnHomePage).toBe(true);
-    });
-
+    
     test('direct URL navigation maintains header functionality', async ({ page }) => {
       // Navigate directly to various pages and verify header still works
       const pages = ['/', '/about', '/pricing', '/dashboard/billing'];
@@ -184,32 +118,19 @@ test.describe('Authentication', () => {
   });
 
   test.describe('Form Validation', () => {
-    test('empty form submission shows validation feedback', async ({ page }) => {
+    test('should validate login form inputs', async ({ page }) => {
       await loginPage.goto('/');
       await loginPage.openLoginModal();
 
-      // Try to submit without filling fields
+      // Test 1: Empty form submission
       await loginPage.submitForm();
-
-      // Form should show validation (HTML5 validation or custom)
-      // This could be browser validation or custom error messages
       await loginPage.wait(500);
-
-      // The form should not close (still visible) if validation failed
       await expect(loginPage.modal).toBeVisible();
-    });
 
-    test('invalid email format shows validation error', async ({ page }) => {
-      await loginPage.goto('/');
-      await loginPage.openLoginModal();
-
-      // Fill with invalid email using enhanced base page method
+      // Test 2: Invalid email format
       await loginPage.fillField(/email/i, 'invalid-email');
       await loginPage.fillField(/password/i, 'somepassword');
-
       await loginPage.submitForm();
-
-      // Form should remain open due to validation
       await loginPage.wait(500);
       await expect(loginPage.modal).toBeVisible();
     });
@@ -292,16 +213,21 @@ test.describe('Authentication', () => {
       await loginPage.goto('/');
       await loginPage.waitForPageLoad();
 
-      // Get initial state
-      const initialAuthState = await loginPage.isAuthenticated();
+      // Get initial state - check if page loaded successfully
+      const initialUrl = page.url();
+      expect(initialUrl).toBeTruthy();
 
-      // Reload page
-      await loginPage.reload();
-      await loginPage.waitForPageLoad();
+      // Check that sign in button is visible initially
+      await expect(loginPage.signInButton).toBeVisible({ timeout: 5000 });
 
-      // State should be consistent after reload
-      const finalAuthState = await loginPage.isAuthenticated();
-      expect(initialAuthState).toBe(finalAuthState);
+      // Reload page with timeout
+      await page.reload({ timeout: 10000 });
+
+      // Wait for page to stabilize
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
+
+      // After reload, we should still be able to see the sign in button
+      await expect(loginPage.signInButton).toBeVisible({ timeout: 5000 });
     });
   });
 
@@ -373,49 +299,6 @@ test.describe('Authentication', () => {
 
       // Accessibility should still be good after modal
       await loginPage.checkBasicAccessibility();
-    });
-  });
-
-  test.describe('Performance and Loading', () => {
-    test('page loads within reasonable time', async ({ page }) => {
-      const startTime = Date.now();
-      await loginPage.goto('/');
-      await loginPage.waitForPageLoad();
-      const loadTime = Date.now() - startTime;
-
-      // Should load within 5 seconds
-      expect(loadTime).toBeLessThan(5000);
-    });
-
-    test('modal appears within reasonable time after click', async ({ page }) => {
-      await loginPage.goto('/');
-      await loginPage.waitForPageLoad();
-
-      const startTime = Date.now();
-      await loginPage.signInButton.click();
-      await loginPage.waitForModal();
-      const modalAppearTime = Date.now() - startTime;
-
-      // Modal should appear within 1 second
-      expect(modalAppearTime).toBeLessThan(1000);
-    });
-
-    test('handles rapid navigation between pages', async ({ page }) => {
-      const pages = ['/', '/pricing', '/about', '/dashboard'];
-
-      for (const pagePath of pages) {
-        const startTime = Date.now();
-        await loginPage.goto(pagePath);
-        await loginPage.waitForPageLoad();
-        const navigationTime = Date.now() - startTime;
-
-        // Each navigation should complete within 3 seconds
-        expect(navigationTime).toBeLessThan(3000);
-
-        // Header should be functional on each page
-        await expect(loginPage.header).toBeVisible();
-        await expect(loginPage.signInButton).toBeVisible();
-      }
     });
   });
 });

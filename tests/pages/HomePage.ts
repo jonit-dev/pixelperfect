@@ -3,44 +3,43 @@ import { BasePage } from './BasePage';
 
 export class HomePage extends BasePage {
   // Navigation
-  readonly navbar: Locator;
-  readonly logo: Locator;
-  readonly mobileMenuButton: Locator;
-  readonly desktopNav: Locator;
-  readonly signInButton: Locator;
-  readonly freeCreditsIndicator: Locator;
+  navbar: Locator;
+  logo: Locator;
+  mobileMenuButton: Locator;
+  desktopNav: Locator;
+  freeCreditsIndicator: Locator;
 
   // Hero Section
-  readonly heroSection: Locator;
-  readonly heroTitle: Locator;
-  readonly heroSubtitle: Locator;
-  readonly versionBadge: Locator;
-  readonly socialProof: Locator;
+  heroSection: Locator;
+  heroTitle: Locator;
+  heroSubtitle: Locator;
+  versionBadge: Locator;
+  socialProof: Locator;
 
   // Workspace Section
-  readonly workspaceSection: Locator;
-  readonly dropzone: Locator;
+  workspaceSection: Locator;
+  dropzone: Locator;
 
   // Features Section
-  readonly featuresSection: Locator;
-  readonly featureCards: Locator;
+  featuresSection: Locator;
+  featureCards: Locator;
 
   // How It Works Section
-  readonly howItWorksSection: Locator;
-  readonly steps: Locator;
+  howItWorksSection: Locator;
+  steps: Locator;
 
   // Pricing Section
-  readonly pricingSection: Locator;
-  readonly pricingCards: Locator;
+  pricingSection: Locator;
+  pricingCards: Locator;
 
   // Footer
-  readonly footer: Locator;
-  readonly footerLinks: Locator;
+  footer: Locator;
+  footerLinks: Locator;
 
   constructor(page: Page) {
     super(page);
 
-    // Navigation elements
+    // Navigation elements (only those not provided by BasePage)
     this.navbar = page.locator('header').first();
     this.logo = page.locator('header a[href="/"]').first();
     this.mobileMenuButton = page
@@ -48,7 +47,6 @@ export class HomePage extends BasePage {
       .filter({ hasNot: page.locator('a') })
       .first();
     this.desktopNav = page.locator('nav.hidden.md\\:flex');
-    this.signInButton = page.getByRole('button', { name: 'Sign In' }).first();
     this.freeCreditsIndicator = page.getByText('10 Free Credits');
 
     // Hero elements

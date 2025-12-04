@@ -122,6 +122,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const isTestMode =
       serverEnv.ENV === 'test' && serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key');
 
+    console.log('Webhook test mode detection:', {
+      ENV: serverEnv.ENV,
+      STRIPE_SECRET_KEY: serverEnv.STRIPE_SECRET_KEY,
+      isTestMode,
+      includesDummy: serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key')
+    });
+
     // Production safety check: detect misconfigured test webhook secret
     if (STRIPE_WEBHOOK_SECRET === 'whsec_test_secret' && serverEnv.ENV !== 'test') {
       console.error('CRITICAL: Test webhook secret detected in non-test environment!');
@@ -329,9 +336,42 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
         console.error('Error processing subscription checkout:', error);
       }
     }
+  } else if (session.mode === 'payment') {
+    // Legacy support: Handle one-time credit purchases
+    console.log(`Processing legacy credit purchase for user ${userId}`);
+    console.log('Session metadata:', session.metadata);
+    console.log('Credits amount from metadata:', session.metadata?.credits_amount);
+
+    const creditsAmount = session.metadata?.credits_amount;
+
+    if (creditsAmount) {
+      const creditAmount = parseInt(creditsAmount, 10);
+      console.log(`Parsed credit amount: ${creditAmount}`);
+
+      if (!isNaN(creditAmount) && creditAmount > 0) {
+        console.log(`Calling increment_credits_with_log for user ${userId}, amount ${creditAmount}`);
+        const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+          target_user_id: userId,
+          amount: creditAmount,
+          transaction_type: 'purchase',
+          ref_id: session.payment_intent as string || session.id,
+          description: `Credit purchase - ${creditAmount} credits`,
+        });
+
+        if (error) {
+          console.error('Error adding purchased credits:', error);
+        } else {
+          console.log(`Successfully added ${creditAmount} purchased credits to user ${userId}`);
+        }
+      } else {
+        console.warn(`Invalid credits amount in metadata: ${creditsAmount}`);
+      }
+    } else {
+      console.warn('No credits_amount found in session metadata for payment mode');
+    }
   } else {
     console.warn(
-      `Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription mode is supported.`
+      `Unexpected checkout mode: ${session.mode} for session ${session.id}. Only subscription and payment modes are supported.`
     );
   }
 }

@@ -171,10 +171,10 @@ export class WebhookClient {
    * Sends a raw webhook event with optional signature
    *
    * @param event - Complete Stripe webhook event object
-   * @param signature - Optional custom signature (uses default if not provided)
+   * @param signature - Optional custom signature (uses default if not provided). Pass null to omit header.
    * @returns ApiResponse with fluent assertion methods
    */
-  async send(event: unknown, signature?: string): Promise<ApiResponse> {
+  async send(event: unknown, signature?: string | null): Promise<ApiResponse> {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
     };
@@ -184,8 +184,17 @@ export class WebhookClient {
       const webhookSignature = signature || this.generateSignature(event);
       headers['Stripe-Signature'] = webhookSignature;
     } else {
-      // In test mode, use simple test signature
-      headers['Stripe-Signature'] = signature || this.signature;
+      // In test mode, handle signature based on what's passed
+      if (signature === null) {
+        // Explicitly omit the signature header
+        // Do nothing - don't add the Stripe-Signature header at all
+      } else if (signature === undefined) {
+        // Use default test signature
+        headers['Stripe-Signature'] = this.signature;
+      } else {
+        // Use the provided signature (even if empty string)
+        headers['Stripe-Signature'] = signature;
+      }
     }
 
     const response = await this.request.post(this.endpoint, {

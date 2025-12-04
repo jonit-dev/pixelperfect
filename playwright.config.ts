@@ -9,7 +9,8 @@ const isCI = !!process.env.CI;
 
 // Generate random ports for each test run to avoid conflicts with dev server or parallel runs
 const TEST_PORT = process.env.TEST_PORT || (3100 + Math.floor(Math.random() * 900)).toString();
-const TEST_WRANGLER_PORT = process.env.TEST_WRANGLER_PORT || (8800 + Math.floor(Math.random() * 200)).toString();
+const TEST_WRANGLER_PORT =
+  process.env.TEST_WRANGLER_PORT || (8800 + Math.floor(Math.random() * 200)).toString();
 
 // Export for use in tests if needed
 process.env.TEST_PORT = TEST_PORT;

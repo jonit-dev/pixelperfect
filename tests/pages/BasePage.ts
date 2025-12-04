@@ -20,11 +20,14 @@ export class BasePage {
   /**
    * Navigates to a specific path and waits for network idle
    *
-   * @param path - URL path or full URL
+   * Uses Playwright's configured baseURL from playwright.config.ts,
+   * which uses dynamic ports to avoid conflicts with dev server.
+   *
+   * @param path - URL path (relative) or full URL (absolute)
    */
   async goto(path: string): Promise<void> {
-    const url = path.startsWith('http') ? path : `http://localhost:3000${path}`;
-    await this.page.goto(url);
+    // For absolute URLs, use as-is; for relative paths, let Playwright prepend baseURL
+    await this.page.goto(path);
     await this.page.waitForLoadState('networkidle');
   }
 

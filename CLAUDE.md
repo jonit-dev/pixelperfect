@@ -7,6 +7,7 @@
 - **Update roadmap**: Modify `docs/management/ROADMAP.md` for new features
 - **Debug**: Check `yarn dev` logs (uses concurrently)
 - **Dayjs**: For date handling.
+- **Testing**: Make sure to only test relevant behavior.
 
 ## Agents
 

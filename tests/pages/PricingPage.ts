@@ -6,15 +6,11 @@ export class PricingPage extends BasePage {
   readonly pageTitle: Locator;
   readonly pageDescription: Locator;
 
-  // Credit packs section - uses div.mb-16 structure, not <section>
-  readonly creditPacksSection: Locator;
-  readonly creditPacksTitle: Locator;
-  readonly creditPacksDescription: Locator;
-
-  // Subscriptions section
+  // Subscription plans section
   readonly subscriptionsSection: Locator;
   readonly subscriptionsTitle: Locator;
   readonly subscriptionsDescription: Locator;
+  readonly pricingGrid: Locator;
 
   // FAQ section
   readonly faqSection: Locator;
@@ -25,28 +21,23 @@ export class PricingPage extends BasePage {
   readonly customPlanTitle: Locator;
   readonly contactSalesButton: Locator;
 
-  // Pricing cards for mobile tests
-  readonly pricingGrid: Locator;
-  readonly freeTierCard: Locator;
-  readonly starterTierCard: Locator;
-  readonly proTierCard: Locator;
+  // Individual plan cards
+  readonly hobbyCard: Locator;
+  readonly proCard: Locator;
+  readonly businessCard: Locator;
 
   constructor(page: Page) {
     super(page);
 
     // Page header
     this.pageTitle = page.getByRole('heading', { name: 'Simple, Transparent Pricing' });
-    this.pageDescription = page.getByText('Choose the plan that fits your needs');
+    this.pageDescription = page.getByText('Choose the subscription plan that fits your needs');
 
-    // Credit packs section - locate by h2 heading "Credit Packs"
-    this.creditPacksTitle = page.getByRole('heading', { name: 'Credit Packs' });
-    this.creditPacksSection = page.locator('div.mb-16').filter({ has: this.creditPacksTitle });
-    this.creditPacksDescription = page.getByText('Buy credits once, use them anytime');
-
-    // Subscriptions section - locate by h2 heading "Monthly Subscriptions"
-    this.subscriptionsTitle = page.getByRole('heading', { name: 'Monthly Subscriptions' });
+    // Subscription plans section - locate by h2 heading "Choose Your Plan"
+    this.subscriptionsTitle = page.getByRole('heading', { name: 'Choose Your Plan' });
     this.subscriptionsSection = page.locator('div.mb-16').filter({ has: this.subscriptionsTitle });
-    this.subscriptionsDescription = page.getByText('Get credits every month');
+    this.subscriptionsDescription = page.getByText('Get credits every month with our subscription plans');
+    this.pricingGrid = page.locator('.grid.md\\:grid-cols-3');
 
     // FAQ section
     this.faqTitle = page.getByRole('heading', { name: 'Frequently Asked Questions' });
@@ -54,23 +45,13 @@ export class PricingPage extends BasePage {
 
     // Custom plan CTA
     this.customPlanTitle = page.getByRole('heading', { name: 'Need a custom plan?' });
-    this.customPlanSection = page.locator('.card').filter({ has: this.customPlanTitle });
+    this.customPlanSection = page.locator('div.bg-gradient-to-br').filter({ has: this.customPlanTitle });
     this.contactSalesButton = page.getByRole('link', { name: 'Contact Sales' });
 
-    // Pricing cards for mobile tests - update to match actual pricing structure
-    this.pricingGrid = page.locator('.grid').first();
-    this.freeTierCard = page
-      .locator('div:has-text("Hobby")')
-      .filter({ has: page.locator('h2') })
-      .first(); // $19/month
-    this.starterTierCard = page
-      .locator('div:has-text("Starter Pack")')
-      .filter({ has: page.locator('h2') })
-      .first(); // $9.99
-    this.proTierCard = page
-      .locator('div:has-text("Pro Pack")')
-      .filter({ has: page.locator('h2') })
-      .first(); // $29.99
+    // Individual plan cards
+    this.hobbyCard = page.locator('div:has-text("Hobby")').first();
+    this.proCard = page.locator('div:has-text("Professional")').first();
+    this.businessCard = page.locator('div:has-text("Business")').first();
   }
 
   /**
@@ -87,44 +68,21 @@ export class PricingPage extends BasePage {
   async waitForLoad(): Promise<void> {
     await this.waitForPageLoad();
     await expect(this.pageTitle).toBeVisible();
-    await expect(this.creditPacksSection).toBeVisible();
     await expect(this.subscriptionsSection).toBeVisible();
-  }
-
-  /**
-   * Get a pricing card by name (for credit packs)
-   */
-  getCreditPackCard(packName: string): PricingCard {
-    return new PricingCard(this.page.locator('.card').filter({ hasText: packName }).first());
   }
 
   /**
    * Get a pricing card by name (for subscriptions)
    */
   getSubscriptionCard(planName: string): PricingCard {
-    return new PricingCard(this.page.locator('.card').filter({ hasText: planName }).first());
-  }
-
-  /**
-   * Get all credit pack cards
-   */
-  async getAllCreditPackCards(): Promise<PricingCard[]> {
-    const cards = this.creditPacksSection.locator('.card');
-    const count = await cards.count();
-    const result: PricingCard[] = [];
-
-    for (let i = 0; i < count; i++) {
-      result.push(new PricingCard(cards.nth(i)));
-    }
-
-    return result;
+    return new PricingCard(this.page.locator('div').filter({ hasText: planName }).first());
   }
 
   /**
    * Get all subscription cards
    */
   async getAllSubscriptionCards(): Promise<PricingCard[]> {
-    const cards = this.subscriptionsSection.locator('.card');
+    const cards = this.pricingGrid.locator('> div');
     const count = await cards.count();
     const result: PricingCard[] = [];
 
@@ -133,6 +91,22 @@ export class PricingPage extends BasePage {
     }
 
     return result;
+  }
+
+  /**
+   * Get a specific plan card by plan type
+   */
+  getPlanCard(planType: 'hobby' | 'pro' | 'business'): PricingCard {
+    switch (planType) {
+      case 'hobby':
+        return new PricingCard(this.hobbyCard);
+      case 'pro':
+        return new PricingCard(this.proCard);
+      case 'business':
+        return new PricingCard(this.businessCard);
+      default:
+        throw new Error(`Unknown plan type: ${planType}`);
+    }
   }
 
   /**
@@ -148,19 +122,7 @@ export class PricingPage extends BasePage {
     await this.waitForNetworkIdle();
   }
 
-  /**
-   * Buy a specific credit pack
-   *
-   * @param packName - Name of credit pack
-   */
-  async buyCreditPack(packName: string): Promise<void> {
-    const card = this.getCreditPackCard(packName);
-    await card.buyNow();
-
-    // Wait for potential redirect to checkout
-    await this.waitForNetworkIdle();
-  }
-
+  
   /**
    * Click contact sales button for custom plans
    */
@@ -184,22 +146,9 @@ export class PricingPage extends BasePage {
   async verifyPageStructure(): Promise<void> {
     await expect(this.pageTitle).toBeVisible();
     await expect(this.pageDescription).toBeVisible();
-    await expect(this.creditPacksTitle).toBeVisible();
-    await expect(this.creditPacksDescription).toBeVisible();
     await expect(this.subscriptionsTitle).toBeVisible();
     await expect(this.subscriptionsDescription).toBeVisible();
     await expect(this.faqTitle).toBeVisible();
-  }
-
-  /**
-   * Verify that specific credit packs are available
-   */
-  async verifyCreditPacksAvailable(packNames: string[]): Promise<void> {
-    for (const packName of packNames) {
-      const card = this.getCreditPackCard(packName);
-      await expect(card.cardLocator).toBeVisible();
-      await expect(card.name).toContainText(packName);
-    }
   }
 
   /**
