@@ -91,12 +91,28 @@ export const AuthenticationModal: React.FC = () => {
   };
 
   const onRegisterSubmit = async (data: IRegisterForm) => {
-    await handleAuthAction(
-      () => signUpWithEmail(data.email, data.password),
-      'Account created successfully!',
-      showToast,
-      close
-    );
+    try {
+      const result = await signUpWithEmail(data.email, data.password);
+
+      if (result.emailConfirmationRequired) {
+        showToast({
+          message: 'Please check your email to verify your account',
+          type: 'success'
+        });
+        close();
+        window.location.href = '/verify-email';
+      } else {
+        showToast({ message: 'Account created successfully!', type: 'success' });
+        close();
+        // onAuthStateChange handles redirect to dashboard
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      showToast({
+        message: error instanceof Error ? error.message : 'Registration failed',
+        type: 'error',
+      });
+    }
   };
 
   const handleChangePassword = async (data: { currentPassword: string; newPassword: string }) => {

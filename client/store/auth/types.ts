@@ -7,6 +7,10 @@ export interface IAuthUser {
   role?: 'user' | 'admin';
 }
 
+export interface ISignUpResult {
+  emailConfirmationRequired: boolean;
+}
+
 export interface IAuthState {
   // State
   isAuthenticated: boolean;
@@ -21,7 +25,7 @@ export interface IAuthState {
 
   // Auth operations
   signInWithEmail: (email: string, password: string) => Promise<void>;
-  signUpWithEmail: (email: string, password: string) => Promise<void>;
+  signUpWithEmail: (email: string, password: string) => Promise<ISignUpResult>;
   signOut: () => Promise<void>;
   initializeAuth: () => Promise<void>;
 

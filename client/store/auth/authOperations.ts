@@ -2,7 +2,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { AuthProvider } from '@shared/types/authProviders';
 import { loadingStore } from '@client/store/loadingStore';
 import { loadAuthCache, saveAuthCache, clearAuthCache } from './authCache';
-import type { IAuthState, IAuthUser } from './types';
+import type { IAuthState, IAuthUser, ISignUpResult } from './types';
 
 const AUTH_INIT_TIMEOUT = 2000; // Reduced from 5000ms
 
@@ -48,14 +48,14 @@ export function createSignInWithEmail(
  */
 export function createSignUpWithEmail(
   supabase: SupabaseClient
-): (email: string, password: string) => Promise<void> {
+): (email: string, password: string) => Promise<ISignUpResult> {
   return async (email: string, password: string) => {
-    await withLoading(async () => {
+    return await withLoading(async () => {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo: `${window.location.origin}/auth/confirm`,
         },
       });
 
@@ -64,7 +64,11 @@ export function createSignUpWithEmail(
       if (!data.user?.identities?.length) {
         throw new Error('An account with this email already exists');
       }
-      // User needs to confirm email first - onAuthStateChange handles post-confirmation
+
+      // When email confirmation is required, Supabase returns user but no session
+      const emailConfirmationRequired = data.user && !data.session;
+
+      return { emailConfirmationRequired };
     });
   };
 }
