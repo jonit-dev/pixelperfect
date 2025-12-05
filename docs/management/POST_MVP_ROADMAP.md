@@ -38,6 +38,7 @@ quadrantChart
     Referral Program: [0.5, 0.7]
     Team Accounts: [0.7, 0.75]
     8x/16x Upscaling: [0.65, 0.6]
+    Image SEO Tools: [0.3, 0.65]
     Enterprise SSO: [0.85, 0.65]
     Mobile Apps: [0.9, 0.7]
 ```
@@ -60,10 +61,11 @@ quadrantChart
 3. **Batch Processing** - Core feature, multi-image queue system
 4. **WordPress Plugin** - WordPress.org distribution, huge reach
 
-**📋 Fill-Ins** (Low Effort, Low Impact) - **DO WHEN TIME PERMITS**
+**📋 Fill-Ins** (Low Effort, Low-Moderate Impact) - **DO WHEN TIME PERMITS**
 
 1. **User Gallery** - Social proof, moderate conversion lift
 2. **Referral Program** - Viral loop, incremental growth
+3. **Image SEO Tools** - Alt text, metadata optimization, platform-specific resizing
 
 **⚠️ Time Sinks** (High Effort, Low Impact) - **AVOID OR DELAY**
 
@@ -267,6 +269,25 @@ timeline
   - LocalBusiness schema
   - Review aggregation
   - FAQ schema for rich snippets
+
+**Image SEO Tools (P3 - FILL-IN)**
+
+- [ ] **Built-in SEO optimization features**
+  - Alt text generator (AI-powered suggestions based on image content)
+  - Image metadata editor (title, description, copyright)
+  - Platform-specific resize presets (Instagram, Facebook, Twitter, Pinterest, LinkedIn)
+  - File size optimizer with quality controls
+  - SEO-friendly filename suggestions
+  - Bulk metadata editing for batch operations
+  - **Impact**: Improves user workflow, adds value for content creators & e-commerce sellers
+  - **Effort**: 3-4 days (UI components + metadata handling)
+- [ ] **Export options**
+  - Pre-configured size templates for common platforms
+  - WebP format support for faster loading
+  - Progressive JPEG encoding
+  - Automatic image compression recommendations
+  - **Impact**: Better user experience, SEO best practices
+  - **Effort**: 2-3 days (format conversion + templates)
 
 ## Phase 3: Scale (Months 9-12)
 
@@ -521,6 +542,7 @@ xychart-beta
 | ---------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | 2025-12-01 | 1.0     | Extracted post-MVP roadmap from main ROADMAP.md                                                                               |
 | 2025-12-04 | 1.1     | Updated with business model canvas: Real-ESRGAN via Replicate, pricing/revenue projections, scaling triggers, risk mitigation |
+| 2025-12-05 | 1.2     | Added Image SEO Tools feature (Fill-In): Alt text generator, metadata editor, platform-specific resizing, export options      |
 
 ---
 
