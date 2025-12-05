@@ -13,28 +13,87 @@ Build the leading AI image enhancement tool for e-commerce sellers and content c
 - **Gross Margins**: 95-98% enabling aggressive growth investment
 - **Infrastructure**: Vercel + Supabase + Cloudflare R2
 
+## Effort × Impact Prioritization Matrix
+
+```mermaid
+quadrantChart
+    title Feature Prioritization Matrix
+    x-axis Low Effort --> High Effort
+    y-axis Low Impact --> High Impact
+    quadrant-1 Big Bets
+    quadrant-2 Quick Wins
+    quadrant-3 Fill-Ins
+    quadrant-4 Time Sinks
+    Annual Billing: [0.15, 0.85]
+    Credit Rollover: [0.2, 0.8]
+    Email System: [0.25, 0.75]
+    Usage Analytics: [0.3, 0.7]
+    Comparison Pages: [0.35, 0.85]
+    User Gallery: [0.4, 0.6]
+    Batch Processing: [0.6, 0.9]
+    API Access: [0.65, 0.9]
+    Shopify App: [0.75, 0.95]
+    WordPress Plugin: [0.7, 0.85]
+    Workspace Protection: [0.3, 0.8]
+    Referral Program: [0.5, 0.7]
+    Team Accounts: [0.7, 0.75]
+    8x/16x Upscaling: [0.65, 0.6]
+    Enterprise SSO: [0.85, 0.65]
+    Mobile Apps: [0.9, 0.7]
+```
+
+### Priority Categories
+
+**🚀 Quick Wins** (Low Effort, High Impact) - **DO FIRST**
+
+1. **Credit Rollover** - Simple logic, huge churn reduction
+2. **Annual Billing** - Stripe integration, 17% discount drives LTV
+3. **Email System** - Resend setup, improves retention/engagement
+4. **Workspace Protection** - Fingerprinting + Turnstile, unlocks growth
+5. **Usage Analytics** - Dashboard views, drives upsells
+6. **Comparison Pages** - SEO content, high organic traffic
+
+**💎 Big Bets** (High Effort, High Impact) - **DO AFTER QUICK WINS**
+
+1. **Shopify App** - Complex OAuth, massive TAM (500k+ sellers)
+2. **API Access** - Enterprise revenue, developer ecosystem
+3. **Batch Processing** - Core feature, multi-image queue system
+4. **WordPress Plugin** - WordPress.org distribution, huge reach
+
+**📋 Fill-Ins** (Low Effort, Low Impact) - **DO WHEN TIME PERMITS**
+
+1. **User Gallery** - Social proof, moderate conversion lift
+2. **Referral Program** - Viral loop, incremental growth
+
+**⚠️ Time Sinks** (High Effort, Low Impact) - **AVOID OR DELAY**
+
+1. **Enterprise SSO** - Complex integration, premature for phase 2
+2. **Mobile Apps** - Full app development, web-first strategy better
+
+---
+
 ## Post-MVP Timeline (Months 4-12)
 
 ```mermaid
 timeline
     title Post-MVP Development Timeline
     section Phase 2 (M4-8)
-        Month 4   : Batch Processing
+        Month 4   : Credit Rollover
+                   : Annual Billing
                    : Email System
-                   : Business Tier
-        Month 5-6 : Shopify App
-                   : API Access
-                   : SEO Growth
-        Month 7-8 : Annual Billing
-                   : Credit Rollover
+        Month 5-6 : Workspace Protection
+                   : Usage Analytics
                    : Comparison Pages
+        Month 7-8 : Batch Processing
+                   : API Access
+                   : Shopify App
     section Phase 3 (M9-12)
-        Month 9-10 : 8x/16x Upscaling
-                    : WordPress Plugin
-                    : Team Accounts
-        Month 11-12 : Referral Program
-                     : User Gallery
-                     : Enterprise
+        Month 9-10 : WordPress Plugin
+                    : Referral Program
+                    : User Gallery
+        Month 11-12 : Team Accounts
+                     : Advanced Features
+                     : Optional: Mobile
 ```
 
 ---
@@ -54,121 +113,160 @@ timeline
 
 **Infrastructure Cost**: $200-500/month
 
-### Month 4: Enhanced Processing & Communication
+### Month 4: Quick Wins (🚀 High Priority)
 
-**Batch Processing (P1)**
+**Credit Rollover (P1 - QUICK WIN)**
 
-- [ ] **Multi-image upload**
+- [ ] **Implement credit rollover system**
+  - Up to 6x monthly credit cap
+  - Track rollover balance separately from monthly credits
+  - Clear expiration notifications (7 days before)
+  - Display rollover credits in dashboard
+  - **Impact**: Reduces "use it or lose it" churn by 30-40%
+  - **Effort**: 2-3 days (simple database logic)
+
+**Annual Billing (P1 - QUICK WIN)**
+
+- [ ] **Add annual subscription option**
+  - 17% discount on annual plans ($90, $290, $990/year)
+  - Stripe annual price ID setup
+  - Billing interval selector in UI
+  - Proration logic for upgrades
+  - **Impact**: 12-month lock-in, +17% revenue per customer
+  - **Effort**: 2-3 days (Stripe integration)
+
+**Email System (P2 - QUICK WIN)**
+
+- [ ] **Resend + React Email setup**
+  - Custom email templates with branding
+  - Transactional email service
+  - Email preference management
+- [ ] **Notification types**
+  - Low credit alerts (80% threshold)
+  - Processing completion emails
+  - Monthly usage summaries
+  - Welcome series (3-email onboarding)
+  - **Impact**: Improves retention 15-20%, drives engagement
+  - **Effort**: 3-4 days (template setup + integration)
+
+### Month 5: Conversion & Growth Optimization (🚀 Quick Wins)
+
+**Workspace Protection (P1 - QUICK WIN)**
+
+- [ ] **Landing page demo workspace with abuse prevention**
+  - Re-enable interactive "Try It Now" workspace on landing page
+  - Implement smart protection against abuse:
+    - **Soft limit**: 2 free tries for guests → signup prompt
+    - **Browser fingerprinting** + localStorage tracking
+    - **Cloudflare Turnstile** CAPTCHA for bot prevention
+    - **Rate limiting**: Per IP (5 images/hour) + per fingerprint (3 images/day)
+  - **Lead capture**: Modal after 2nd try with "Sign up for 10 more credits"
+  - Analytics tracking: Guest usage vs conversion metrics
+  - Cost monitoring: Track guest processing costs
+  - **Impact**: Unlocks product-led growth, 20-30% conversion lift
+  - **Effort**: 3-4 days (fingerprinting + modal + Turnstile)
+  - See: `docs/business-model-canvas/04-revenue-costs.md` for cost analysis
+
+**Usage Analytics Dashboard (P2 - QUICK WIN)**
+
+- [ ] **User-facing analytics**
+  - Processing history dashboard (last 30 days)
+  - Credits usage graph (daily/weekly/monthly)
+  - Cost per image tracking
+  - Most used features insights
+  - Upgrade prompts when approaching limits
+  - **Impact**: Drives upsells, 10-15% upgrade rate
+  - **Effort**: 3-4 days (chart.js + dashboard UI)
+
+**Comparison Pages (P2 - QUICK WIN)**
+
+- [ ] **SEO competitor comparison content** (10 pages)
+  - PixelPerfect vs Topaz Gigapixel
+  - PixelPerfect vs Magnific AI
+  - PixelPerfect vs Let's Enhance
+  - PixelPerfect vs Upscale.media
+  - PixelPerfect vs VanceAI
+  - PixelPerfect vs Remini
+  - PixelPerfect vs Gigapixel AI
+  - PixelPerfect vs Photoroom
+  - PixelPerfect vs Cutout Pro
+  - PixelPerfect vs Icons8 Upscaler
+  - **Impact**: High SEO traffic (40k+ monthly searches)
+  - **Effort**: 5-6 days (content writing + structured data)
+
+### Month 6-7: Big Bets - Core Features (💎 High Impact)
+
+**Batch Processing (P1 - BIG BET)**
+
+- [ ] **Multi-image upload system**
   - Up to 50 images simultaneously
-  - Progress tracking for batch
+  - Progress tracking for batch operations
   - ZIP download of results
+  - Parallel processing queue
+  - **Impact**: Core e-commerce feature, critical for TAM
+  - **Effort**: 7-10 days (queue system + S3 batch)
 - [ ] **Processing modes**
-  - Portrait mode enhancement
+  - Portrait mode enhancement (GFPGAN)
   - Product/e-commerce mode
   - Automatic mode detection
 - [ ] **Format support**
   - HEIC support (iPhone photos)
   - TIFF support (professional photographers)
 
-**Email System (P2)**
+**API Access (P1 - BIG BET)**
 
-- [ ] **Resend + React Email setup**
-  - Custom email templates
-  - Transactional email service
-  - Email preference management
-- [ ] **Notification types**
-  - Low credit alerts
-  - Processing completion emails
-  - Monthly usage summaries
-  - Welcome series
-
-### Month 5: Business Features & API
-
-**Business Tier Enhancement**
-
-- [ ] **API Access for Business Tier ($99/mo)**
-  - 25,000 API calls/month included
-  - RESTful API endpoints
+- [ ] **API v1 Development**
+  - RESTful API endpoints (enhance, upscale, batch)
   - API key management portal
   - Rate limiting by tier
-  - Comprehensive documentation
-- [ ] **API Standalone Pricing**
+  - Comprehensive API documentation
+  - **Impact**: Enterprise revenue stream, developer ecosystem
+  - **Effort**: 10-12 days (API design + auth + docs)
+- [ ] **API Pricing Tiers**
   - Developer: Free (100 calls/month)
   - API Starter: $49/mo (2,000 calls)
   - API Pro: $199/mo (10,000 calls)
   - Enterprise: Custom pricing
+- [ ] **Webhook system**
+  - Async processing notifications
+  - Callback URL configuration
+  - Retry logic for failed webhooks
 
-**Advanced Features**
+### Month 8: Platform Integration (💎 Big Bet)
 
-- [ ] **Credit rollover**
-  - Up to 6x monthly cap
-  - Rollover tracking
-  - Clear expiration notifications
-- [ ] **Usage analytics**
-  - Processing history dashboard
-  - Cost per image tracking
-  - Usage insights
-
-### Month 6-7: Platform Integrations
-
-**Shopify App (P2)**
+**Shopify App (P1 - BIG BET)**
 
 - [ ] **OAuth integration**
   - Shopify app development kit
   - OAuth flow implementation
-  - Merchant onboarding
+  - Merchant onboarding wizard
+  - **Impact**: 500k+ TAM, recurring revenue
+  - **Effort**: 12-14 days (OAuth + app review process)
 - [ ] **Bulk operations**
-  - Sync product images
-  - Batch processing API
+  - Sync product images from store
+  - Batch processing integration
   - Automatic image updates
+  - Product collection support
 - [ ] **App store listing**
-  - App store submission
-  - Documentation and guides
-  - Merchant support
+  - Shopify app store submission
+  - Documentation and setup guides
+  - Merchant support resources
+  - Pricing integration (embed in Shopify billing)
 
-**WordPress Plugin (P3)**
+**SEO Content Expansion (📋 Fill-In)**
 
-- [ ] **Plugin development**
-  - WordPress coding standards
-  - Media library integration
-  - Bulk image enhancement
-- [ ] **Plugin distribution**
-  - WordPress.org submission
-  - Premium version with features
-  - Automatic updates
-
-### Month 8: SEO & Content Strategy
-
-**Content Marketing**
-
-- [ ] **Blog expansion**
-  - 2 blog posts per week
-  - SEO-optimized content
-  - Video tutorials
-- [ ] **Comparison pages** (10 pages)
-  - PixelPerfect vs Topaz Gigapixel
-  - PixelPerfect vs Magnific AI
-  - PixelPerfect vs Upscale.media
-  - And 7 more competitors
-
-**Use Case Pages** (5 pages)
-
-- [ ] `/use-cases/ecommerce`
-- [ ] `/use-cases/real-estate`
-- [ ] `/use-cases/photographers`
-- [ ] `/use-cases/print`
-- [ ] `/use-cases/content-creators`
-
-**SEO Improvements**
-
+- [ ] **Use Case Pages** (5 pages)
+  - `/use-cases/ecommerce`
+  - `/use-cases/real-estate`
+  - `/use-cases/photographers`
+  - `/use-cases/print`
+  - `/use-cases/content-creators`
+  - **Impact**: Moderate SEO traffic
+  - **Effort**: 3-4 days (content writing)
 - [ ] **Advanced schema markup**
   - LocalBusiness schema
   - Review aggregation
-  - FAQ schema
-- [ ] **Backlink campaign**
-  - Guest posting
-  - Partner outreach
-  - Digital PR
+  - FAQ schema for rich snippets
 
 ## Phase 3: Scale (Months 9-12)
 
@@ -185,94 +283,90 @@ timeline
 
 **Infrastructure Cost**: $500-1,500/month
 
-### Month 9-10: Advanced Processing & Expansion
+### Month 9-10: Distribution & Growth (💎 Big Bet + 📋 Fill-Ins)
 
-**Enhanced Upscaling**
+**WordPress Plugin (P2 - BIG BET)**
 
-- [ ] **8x upscaling** (P2)
-  - SwinIR model for ultra-quality (9.7/10 benchmark)
-  - GPU-optimized processing (A100)
-  - Quality vs speed options
-  - Preview before full processing
-- [ ] **16x upscaling** (P3)
-  - Professional photographer tier
-  - Print-ready outputs
-  - Custom resolution targeting
-- [ ] **Processing queue optimization**
-  - Priority queue for paid tiers (A100 GPUs)
-  - Queue status tracking
-  - Processing time estimates
-  - Consider self-hosting at 100K+ images/month
+- [ ] **Plugin development**
+  - WordPress coding standards compliance
+  - Media library integration
+  - Bulk image enhancement in Media Library
+  - Gutenberg block for inline enhancement
+  - **Impact**: WordPress.org distribution, 40%+ of web
+  - **Effort**: 8-10 days (plugin dev + testing)
+- [ ] **Plugin distribution**
+  - WordPress.org submission
+  - Premium version with API access
+  - Automatic updates via WordPress.org
+  - Support forum management
 
-**Platform Expansion**
-
-- [ ] **Browser extensions**
-  - Chrome extension for right-click enhance
-  - Firefox extension
-  - Safari extension (macOS)
-- [ ] **Mobile apps**
-  - iOS app prototype
-  - Android app prototype
-  - Core photo library integration
-
-### Month 11: Team & Enterprise Features
-
-**Multi-User Accounts**
-
-- [ ] **Team management**
-  - Invite team members
-  - Role-based permissions
-  - Shared credit pools
-  - Team usage analytics
-- [ ] **Admin dashboard**
-  - Organization management
-  - Billing administration
-  - Usage monitoring
-
-**Enterprise Features**
-
-- [ ] **Custom AI models**
-  - Fine-tuned models for specific use cases
-  - White-label solutions
-  - On-premise deployment options
-- [ ] **Advanced security**
-  - SSO integration
-  - SOC 2 compliance
-  - Advanced audit logs
-
-### Month 12: Growth Engine
-
-**Referral Program**
+**Referral Program (P3 - FILL-IN)**
 
 - [ ] **Referral system**
-  - 10-20% commission incentives
+  - 10-20% commission for referrers
+  - 10% discount for referred users
   - Referral tracking dashboard
   - Automated payouts via Stripe
   - Marketing materials for affiliates
+  - **Impact**: Viral loop, incremental growth
+  - **Effort**: 5-6 days (tracking + Stripe Connect)
 
-**Community & Social Proof**
+**User Gallery (P3 - FILL-IN)**
 
-- [ ] **User showcase gallery**
-  - Before/after gallery
+- [ ] **Public showcase**
+  - Before/after gallery (user opt-in)
   - User testimonials
   - Success stories
-  - Community forum
-- [ ] **Video content**
-  - YouTube channel
-  - Tutorial videos
+  - Community voting/likes
+  - **Impact**: Social proof, moderate conversion lift
+  - **Effort**: 4-5 days (gallery UI + moderation)
+
+### Month 11-12: Team Features & Advanced (💎 Big Bet)
+
+**Team Accounts (P2 - BIG BET)**
+
+- [ ] **Multi-user management**
+  - Invite team members (up to 5 for Business tier)
+  - Role-based permissions (Admin, Member, Viewer)
+  - Shared credit pools with allocation
+  - Team usage analytics dashboard
+  - **Impact**: B2B revenue, higher LTV
+  - **Effort**: 8-10 days (org structure + permissions)
+- [ ] **Admin dashboard**
+  - Organization management
+  - Billing administration
+  - Usage monitoring by team member
+  - Audit logs for team activities
+
+**Advanced Features (Optional)**
+
+- [ ] **8x/16x upscaling** (P3 - OPTIONAL)
+
+  - SwinIR model for ultra-quality
+  - A100 GPU for speed
+  - Preview before full processing
+  - **Impact**: Premium tier differentiator
+  - **Effort**: 6-8 days (model integration)
+  - **Note**: Lower priority than distribution
+
+- [ ] **Video content marketing** (P3 - FILL-IN)
+  - YouTube channel setup
+  - Tutorial video series (10 videos)
   - Case study videos
   - Live demonstrations
+  - **Impact**: Brand building, moderate traffic
+  - **Effort**: 5-7 days (video production)
 
-**Advanced Analytics**
+**Advanced Analytics (P3 - FILL-IN)**
 
-- [ ] **User behavior tracking**
-  - Funnel analysis
-  - Cohort retention
-  - Feature usage tracking
-- [ ] **Business intelligence**
+- [ ] **Business intelligence dashboard**
+  - Funnel analysis (signup → paid conversion)
+  - Cohort retention tracking
+  - Feature usage heatmaps
   - Revenue analytics
-  - Customer lifetime value
-  - Churn prediction
+  - Churn prediction model
+  - **Impact**: Data-driven decisions
+  - **Effort**: 6-8 days (analytics setup)
 
 ## SEO & Growth Roadmap
 
