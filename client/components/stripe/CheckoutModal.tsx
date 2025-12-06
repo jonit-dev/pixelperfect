@@ -19,7 +19,9 @@ const getStripePromise = () => {
   const publishableKey = clientEnv.STRIPE_PUBLISHABLE_KEY;
 
   if (!publishableKey) {
-    console.error('Stripe publishable key is not configured. Please set NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY in your .env file.');
+    console.error(
+      'Stripe publishable key is not configured. Please set NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY in your .env file.'
+    );
     return null;
   }
 
@@ -69,9 +71,9 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
         setLoading(true);
         setError(null);
 
+        // Don't pass successUrl - let the server construct it with proper type & credits params
         const response = await StripeService.createCheckoutSession(priceId, {
           uiMode: 'embedded',
-          successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
         });
 
         if (response.clientSecret) {
@@ -116,7 +118,7 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
     >
       <div
         className="relative bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[95vh] overflow-hidden flex flex-col"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
         <button
