@@ -9,7 +9,7 @@ import {
   isStripePricesConfigured,
 } from '@shared/config/stripe';
 import type { ISubscription, IUserProfile } from '@shared/types/stripe';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export default function PricingPage() {
   const pricesConfigured = isStripePricesConfigured();
@@ -53,6 +53,23 @@ export default function PricingPage() {
     };
     loadUserData();
   }, []);
+
+  // Compute the current subscription price for upgrade/downgrade display
+  const currentSubscriptionPrice = useMemo(() => {
+    if (!subscription?.price_id) return null;
+
+    // Find the matching plan to get the price
+    if (subscription.price_id === STRIPE_PRICES.HOBBY_MONTHLY) {
+      return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.price;
+    }
+    if (subscription.price_id === STRIPE_PRICES.PRO_MONTHLY) {
+      return SUBSCRIPTION_PLANS.PRO_MONTHLY.price;
+    }
+    if (subscription.price_id === STRIPE_PRICES.BUSINESS_MONTHLY) {
+      return SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.price;
+    }
+    return null;
+  }, [subscription?.price_id]);
 
   return (
     <main className="flex-1 bg-slate-50">
@@ -133,6 +150,7 @@ export default function PricingPage() {
               onSelect={
                 subscription ? () => handlePlanSelect(STRIPE_PRICES.HOBBY_MONTHLY) : undefined
               }
+              currentSubscriptionPrice={currentSubscriptionPrice}
             />
 
             <PricingCard
@@ -147,6 +165,7 @@ export default function PricingPage() {
               onSelect={
                 subscription ? () => handlePlanSelect(STRIPE_PRICES.PRO_MONTHLY) : undefined
               }
+              currentSubscriptionPrice={currentSubscriptionPrice}
             />
 
             <PricingCard
@@ -160,6 +179,7 @@ export default function PricingPage() {
               onSelect={
                 subscription ? () => handlePlanSelect(STRIPE_PRICES.BUSINESS_MONTHLY) : undefined
               }
+              currentSubscriptionPrice={currentSubscriptionPrice}
             />
           </div>
         </div>

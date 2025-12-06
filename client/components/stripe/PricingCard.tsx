@@ -21,6 +21,8 @@ interface IPricingCardProps {
     enabled: boolean;
     durationDays: number;
   };
+  /** Current user's subscription price (for Upgrade/Downgrade text) */
+  currentSubscriptionPrice?: number | null;
 }
 
 /**
@@ -52,6 +54,7 @@ export function PricingCard({
   disabledReason = 'Current Plan',
   onSelect,
   trial,
+  currentSubscriptionPrice,
 }: IPricingCardProps): JSX.Element {
   const router = useRouter();
   const { isAuthenticated } = useAuthStore();
@@ -158,7 +161,11 @@ export function PricingCard({
               ? 'Current Plan'
               : trial?.enabled
                 ? `Start ${trial.durationDays}-Day Trial`
-                : 'Get Started'}
+                : onSelect && currentSubscriptionPrice != null
+                  ? price > currentSubscriptionPrice
+                    ? 'Upgrade'
+                    : 'Downgrade'
+                  : 'Get Started'}
           </button>
         </div>
       </div>

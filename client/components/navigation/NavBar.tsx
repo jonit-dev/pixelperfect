@@ -63,7 +63,7 @@ export const NavBar = (): JSX.Element => {
           >
             How it Works
           </a>
-          <a href="#pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+          <a href="/pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900">
             Pricing
           </a>
           <a href="/blog" className="text-sm font-medium text-slate-600 hover:text-slate-900">
@@ -204,7 +204,7 @@ export const NavBar = (): JSX.Element => {
               How it Works
             </a>
             <a
-              href="#pricing"
+              href="/pricing"
               className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
             >
               Pricing
