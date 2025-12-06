@@ -382,10 +382,9 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
           const plan = getPlanForPriceId(testPriceId);
 
           if (plan) {
-            const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+            const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
               target_user_id: userId,
               amount: plan.creditsPerMonth,
-              transaction_type: 'subscription',
               ref_id: session.id,
               description: `Test subscription credits - ${plan.name} plan - ${plan.creditsPerMonth} credits`,
             });
@@ -411,10 +410,9 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
             if (plan) {
               // Add initial credits for the first month
               // Use invoice ID as ref_id for refund correlation
-              const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+              const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
                 target_user_id: userId,
                 amount: plan.creditsPerMonth,
-                transaction_type: 'subscription',
                 ref_id: invoiceId ? `invoice_${invoiceId}` : `session_${session.id}`,
                 description: `Initial subscription credits - ${plan.name} plan - ${plan.creditsPerMonth} credits`,
               });
@@ -462,10 +460,9 @@ async function handleCreditPackPurchase(
   const paymentIntentId = session.payment_intent as string;
 
   try {
-    const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+    const { error } = await supabaseAdmin.rpc('add_purchased_credits', {
       target_user_id: userId,
       amount: credits,
-      transaction_type: 'purchase',
       ref_id: paymentIntentId ? `pi_${paymentIntentId}` : `session_${session.id}`,
       description: `Credit pack purchase - ${packKey || 'unknown'} - ${credits} credits`,
     });
@@ -668,10 +665,9 @@ async function handleSubscriptionUpdate(
       // Determine how many credits to allocate for trial
       const trialCredits = trialConfig.trialCredits ?? planConfig.creditsPerCycle;
 
-      const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+      const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
         target_user_id: userId,
         amount: trialCredits,
-        transaction_type: 'trial',
         ref_id: subscription.id,
         description: `Trial credits - ${planConfig.name} plan - ${trialCredits} credits`,
       });
@@ -699,10 +695,9 @@ async function handleSubscriptionUpdate(
       const creditsToAdd = Math.max(0, fullCredits - currentBalance);
 
       if (creditsToAdd > 0) {
-        const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+        const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
           target_user_id: userId,
           amount: creditsToAdd,
-          transaction_type: 'subscription',
           ref_id: subscription.id,
           description: `Trial conversion - ${planConfig.name} plan - ${creditsToAdd} additional credits`,
         });
@@ -781,10 +776,9 @@ async function handleSubscriptionUpdate(
         });
 
         if (creditsToAdd > 0) {
-          const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+          const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
             target_user_id: userId,
             amount: creditsToAdd,
-            transaction_type: 'subscription',
             ref_id: subscription.id,
             description: `Plan upgrade - ${previousPlanConfig.name} → ${planConfig.name} - ${creditsToAdd} credits (tier difference)`,
           });
@@ -928,7 +922,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
   // Get the user ID from the customer
   const { data: profile } = await supabaseAdmin
     .from('profiles')
-    .select('id, credits_balance')
+    .select('id, subscription_credits_balance, purchased_credits_balance')
     .eq('stripe_customer_id', customerId)
     .maybeSingle();
 
@@ -987,7 +981,8 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
   // Get detailed plan config to check expiration settings
   const planConfig = getPlanByPriceId(priceId);
   const creditsToAdd = plan.creditsPerMonth;
-  const currentBalance = profile.credits_balance ?? 0;
+  // Calculate total balance from both pools
+  const currentBalance = (profile.subscription_credits_balance ?? 0) + (profile.purchased_credits_balance ?? 0);
   const maxRollover = plan.maxRollover;
 
   // Calculate new balance considering expiration mode
@@ -1005,7 +1000,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
 
     try {
       const { data: expiredCount, error: expireError } = await supabaseAdmin.rpc(
-        'expire_credits_at_cycle_end',
+        'expire_subscription_credits',
         {
           target_user_id: userId,
           expiration_reason: expirationMode === 'rolling_window' ? 'rolling_window' : 'cycle_end',
@@ -1042,10 +1037,9 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
     }
 
     // MEDIUM-5: Use consistent invoice reference format for refund correlation
-    const { error } = await supabaseAdmin.rpc('increment_credits_with_log', {
+    const { error } = await supabaseAdmin.rpc('add_subscription_credits', {
       target_user_id: userId,
       amount: actualCreditsToAdd,
-      transaction_type: 'subscription',
       ref_id: `invoice_${invoice.id}`,
       description,
     });
@@ -1274,23 +1268,22 @@ async function handleSubscriptionScheduleCompleted(schedule: any) {
       const { error: creditError } = await supabaseAdmin
         .from('profiles')
         .update({
-          credits_balance: newPlan.creditsPerMonth,
+          subscription_credits_balance: newPlan.creditsPerMonth,
         })
         .eq('id', subscription.user_id);
 
       if (creditError) {
         console.error(`Error resetting credits for user ${subscription.user_id}:`, creditError);
       } else {
-        console.log(`[SCHEDULE_DOWNGRADE_CREDITS_RESET] User ${subscription.user_id} credits reset to ${newPlan.creditsPerMonth} for ${newPlan.name} plan`);
+        console.log(`[SCHEDULE_DOWNGRADE_CREDITS_RESET] User ${subscription.user_id} subscription credits reset to ${newPlan.creditsPerMonth} for ${newPlan.name} plan`);
       }
 
-      // Log the credit transaction
-      await supabaseAdmin.rpc('increment_credits_with_log', {
+      // Log the credit transaction (using add_subscription_credits with 0 amount just for logging)
+      await supabaseAdmin.rpc('add_subscription_credits', {
         target_user_id: subscription.user_id,
         amount: 0, // Amount doesn't matter - we're just logging
-        transaction_type: 'subscription',
         ref_id: `schedule_${schedule.id}`,
-        description: `Scheduled downgrade completed - credits reset to ${newPlan.creditsPerMonth} for ${newPlan.name} plan`,
+        description: `Scheduled downgrade completed - subscription credits reset to ${newPlan.creditsPerMonth} for ${newPlan.name} plan`,
       });
     }
   }

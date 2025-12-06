@@ -7,6 +7,15 @@
 
 import { clientEnv, serverEnv } from './env';
 
+/**
+ * Stripe subscription plan metadata interface
+ */
+export interface ISubscriptionPlanMetadata {
+  name: string;
+  creditsPerMonth: number;
+  maxRollover: number;
+}
+
 // Static Stripe Price IDs - Real Stripe Price IDs
 export const STRIPE_PRICES = {
   // Credit Packs (One-time payments)
@@ -72,6 +81,8 @@ export const SUBSCRIPTION_PLANS = {
     price: 19,
     interval: 'month' as const,
     creditsPerMonth: 200,
+    maxRollover: 400,
+    key: 'HOBBY_MONTHLY',
     features: [
       '200 credits per month',
       'Rollover unused credits',
@@ -85,6 +96,8 @@ export const SUBSCRIPTION_PLANS = {
     price: 49,
     interval: 'month' as const,
     creditsPerMonth: 1000,
+    maxRollover: 2000,
+    key: 'PRO_MONTHLY',
     features: [
       '1000 credits per month',
       'Rollover unused credits',
@@ -100,6 +113,8 @@ export const SUBSCRIPTION_PLANS = {
     price: 149,
     interval: 'month' as const,
     creditsPerMonth: 5000,
+    maxRollover: 10000,
+    key: 'BUSINESS_MONTHLY',
     features: [
       '5000 credits per month',
       'Rollover unused credits',
@@ -281,6 +296,63 @@ export function validateStripeConfig(): {
     errors,
     warnings,
   };
+}
+
+/**
+ * Get subscription plan details for a given price ID
+ */
+export function getPlanForPriceId(priceId: string): (typeof SUBSCRIPTION_PLANS)[keyof typeof SUBSCRIPTION_PLANS] | null {
+  switch (priceId) {
+    case STRIPE_PRICES.HOBBY_MONTHLY:
+      return SUBSCRIPTION_PLANS.HOBBY_MONTHLY;
+    case STRIPE_PRICES.PRO_MONTHLY:
+      return SUBSCRIPTION_PLANS.PRO_MONTHLY;
+    case STRIPE_PRICES.BUSINESS_MONTHLY:
+      return SUBSCRIPTION_PLANS.BUSINESS_MONTHLY;
+    default:
+      return null;
+  }
+}
+
+/**
+ * Get display name for a subscription plan tier
+ * Accepts either a string tier name or an object with priceId and subscriptionTier
+ */
+export function getPlanDisplayName(input: string | { priceId: string; subscriptionTier?: string | null }): string {
+  if (typeof input === 'string') {
+    // Handle string input (legacy support)
+    switch (input.toLowerCase()) {
+      case 'hobby':
+      case 'HOBBY_MONTHLY':
+        return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name;
+      case 'pro':
+      case 'professional':
+      case 'PRO_MONTHLY':
+        return SUBSCRIPTION_PLANS.PRO_MONTHLY.name;
+      case 'business':
+      case 'BUSINESS_MONTHLY':
+        return SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.name;
+      default:
+        return input;
+    }
+  }
+
+  // Handle object input with priceId and subscriptionTier
+  const { priceId, subscriptionTier } = input;
+
+  // First try to get plan by priceId
+  const plan = getPlanForPriceId(priceId);
+  if (plan) {
+    return plan.name;
+  }
+
+  // Fallback to subscriptionTier
+  if (subscriptionTier) {
+    return getPlanDisplayName(subscriptionTier);
+  }
+
+  // Final fallback
+  return 'Unknown Plan';
 }
 
 /**

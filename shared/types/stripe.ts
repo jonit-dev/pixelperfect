@@ -14,7 +14,11 @@ export type UserRole = 'user' | 'admin';
 export interface IUserProfile {
   id: string;
   stripe_customer_id: string | null;
-  credits_balance: number;
+  // DEPRECATED: Use subscription_credits_balance + purchased_credits_balance instead
+  credits_balance?: number;
+  // Separate credit pools (see docs/PRDs/separate-credit-pools.md)
+  subscription_credits_balance: number; // Credits from subscription (expire at cycle end)
+  purchased_credits_balance: number; // Credits from one-time purchases (never expire)
   subscription_status: SubscriptionStatus | null;
   subscription_tier: string | null;
   role: UserRole;

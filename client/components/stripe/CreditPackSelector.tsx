@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { getEnabledCreditPacks } from '@shared/config/subscription.utils';
 import type { ICreditPack } from '@shared/config/subscription.types';
-import { StripeService } from '@client/services/stripeService';
 import { CreditCard, Check } from 'lucide-react';
+import { CheckoutModal } from './CheckoutModal';
 
 interface ICreditPackSelectorProps {
   onPurchaseStart?: () => void;
@@ -14,27 +14,30 @@ interface ICreditPackSelectorProps {
 
 export function CreditPackSelector({
   onPurchaseStart,
-  onError,
+  onPurchaseComplete,
 }: ICreditPackSelectorProps): JSX.Element {
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [selectedPriceId, setSelectedPriceId] = useState<string | null>(null);
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
   const packs = getEnabledCreditPacks();
 
-  const handlePurchase = async (packKey: string) => {
-    setIsLoading(true);
-    setSelectedPack(packKey);
+  const handlePurchase = (pack: ICreditPack) => {
+    setSelectedPack(pack.key);
+    setSelectedPriceId(pack.stripePriceId);
+    setShowCheckoutModal(true);
     onPurchaseStart?.();
+  };
 
-    try {
-      const { url } = await StripeService.purchaseCredits(packKey);
-      window.location.href = url;
-    } catch (error) {
-      console.error('Purchase error:', error);
-      onError?.(error instanceof Error ? error : new Error('Purchase failed'));
-      setIsLoading(false);
-      setSelectedPack(null);
-    }
+  const handleCheckoutClose = () => {
+    setShowCheckoutModal(false);
+    setSelectedPack(null);
+    setSelectedPriceId(null);
+  };
+
+  const handleCheckoutSuccess = () => {
+    onPurchaseComplete?.();
+    handleCheckoutClose();
   };
 
   const formatPrice = (cents: number) => {
@@ -49,15 +52,16 @@ export function CreditPackSelector({
   };
 
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
-      {packs.map(pack => (
-        <div
-          key={pack.key}
-          className={`relative bg-white border rounded-xl p-6 transition-all cursor-pointer hover:border-indigo-500 hover:shadow-md ${
-            selectedPack === pack.key ? 'border-indigo-500 ring-2 ring-indigo-500' : 'border-slate-200'
-          } ${pack.popular ? 'border-indigo-300' : ''}`}
-          onClick={() => !isLoading && handlePurchase(pack.key)}
-        >
+    <>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+        {packs.map(pack => (
+          <div
+            key={pack.key}
+            className={`relative bg-white border rounded-xl p-6 transition-all cursor-pointer hover:border-indigo-500 hover:shadow-md ${
+              selectedPack === pack.key ? 'border-indigo-500 ring-2 ring-indigo-500' : 'border-slate-200'
+            } ${pack.popular ? 'border-indigo-300' : ''}`}
+            onClick={() => handlePurchase(pack)}
+          >
           {pack.popular && (
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full">
               Best Value
@@ -94,24 +98,25 @@ export function CreditPackSelector({
                 pack.popular
                   ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
                   : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
-              } disabled:opacity-50 disabled:cursor-not-allowed`}
-              disabled={isLoading}
+              }`}
             >
-              {isLoading && selectedPack === pack.key ? (
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Processing...</span>
-                </div>
-              ) : (
-                <div className="flex items-center justify-center gap-2">
-                  <CreditCard className="h-4 w-4" />
-                  <span>Buy Now</span>
-                </div>
-              )}
+              <div className="flex items-center justify-center gap-2">
+                <CreditCard className="h-4 w-4" />
+                <span>Buy Now</span>
+              </div>
             </button>
           </div>
         </div>
       ))}
     </div>
+
+    {showCheckoutModal && selectedPriceId && (
+      <CheckoutModal
+        priceId={selectedPriceId}
+        onClose={handleCheckoutClose}
+        onSuccess={handleCheckoutSuccess}
+      />
+    )}
+    </>
   );
 }

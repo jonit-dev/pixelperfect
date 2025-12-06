@@ -47,7 +47,10 @@ export function CreditsDisplay(): JSX.Element {
     }
   };
 
-  const creditBalance = profile?.credits_balance || 0;
+  // Calculate total balance from both pools (subscription + purchased)
+  const subscriptionCredits = profile?.subscription_credits_balance || 0;
+  const purchasedCredits = profile?.purchased_credits_balance || 0;
+  const creditBalance = subscriptionCredits + purchasedCredits;
   const isLowCredits = creditBalance > 0 && creditBalance <= LOW_CREDIT_THRESHOLD;
   const isNoCredits = creditBalance === 0;
 

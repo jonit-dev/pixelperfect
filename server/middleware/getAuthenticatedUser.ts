@@ -36,7 +36,8 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<IUserProfi
       email: 'test@example.com',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      credits_balance: 10,
+      subscription_credits_balance: 10,
+      purchased_credits_balance: 0,
     };
   }
 
@@ -56,7 +57,8 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<IUserProfi
         .from('profiles')
         .insert({
           id: userId,
-          credits_balance: 10, // Default credits
+          subscription_credits_balance: 10, // Default subscription credits
+          purchased_credits_balance: 0, // No purchased credits initially
         })
         .select('*')
         .single();

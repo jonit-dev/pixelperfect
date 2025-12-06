@@ -94,13 +94,12 @@ export class ImageGenerationService implements IImageProcessor {
     const jobId = `gen_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
     const creditCost = calculateCreditCost(input.config);
 
-    // Step 1: Deduct credits atomically based on mode
-    const { data: newBalance, error: creditError } = await supabaseAdmin.rpc(
-      'decrement_credits_with_log',
+    // Step 1: Deduct credits atomically using FIFO (subscription first, then purchased)
+    const { data: balanceResult, error: creditError } = await supabaseAdmin.rpc(
+      'consume_credits_v2',
       {
         target_user_id: userId,
         amount: creditCost,
-        transaction_type: 'usage',
         ref_id: jobId,
         description: `Image ${input.config.mode} (${creditCost} credits)`,
       }
@@ -113,6 +112,9 @@ export class ImageGenerationService implements IImageProcessor {
       }
       throw new Error(`Failed to deduct credits: ${creditError.message}`);
     }
+
+    // Extract total balance from result (returns array with single row)
+    const newBalance = balanceResult?.[0]?.new_total_balance ?? 0;
 
     try {
       // Step 2: Generate the image
