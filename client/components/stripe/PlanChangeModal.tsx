@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { TrendingUp, TrendingDown } from 'lucide-react';
+import { TrendingUp, TrendingDown, Calendar, Info } from 'lucide-react';
 import { StripeService } from '@client/services/stripeService';
 import { getPlanForPriceId } from '@shared/config/stripe';
 import { ModalHeader } from './ModalHeader';
@@ -9,6 +9,18 @@ import { PlanComparisonCard } from './PlanComparisonCard';
 import { ProrationCard } from './ProrationCard';
 import { LoadingSpinner } from './LoadingSpinner';
 import { ErrorAlert } from './ErrorAlert';
+
+/**
+ * Format a date string for display
+ */
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
 
 interface IPlanChangeModalProps {
   isOpen: boolean;
@@ -36,6 +48,8 @@ interface IPreviewData {
     credits_per_month: number;
   };
   effective_immediately: boolean;
+  effective_date?: string;
+  is_downgrade: boolean;
 }
 
 export function PlanChangeModal({
@@ -133,13 +147,42 @@ export function PlanChangeModal({
                   name={preview.new_plan.name}
                   creditsPerMonth={preview.new_plan.credits_per_month}
                   variant={isUpgrade ? 'upgrade' : 'downgrade'}
-                  effectiveText={preview.effective_immediately ? 'Immediately' : 'Next billing cycle'}
+                  effectiveText={
+                    preview.effective_immediately
+                      ? 'Immediately'
+                      : preview.effective_date
+                        ? formatDate(preview.effective_date)
+                        : 'Next billing cycle'
+                  }
                 />
               </div>
 
-              {/* Proration Details */}
-              {preview.current_plan && (
+              {/* Upgrade: Show Proration Details */}
+              {preview.current_plan && !preview.is_downgrade && (
                 <ProrationCard amountDue={preview.proration.amount_due} />
+              )}
+
+              {/* Downgrade: Show Scheduled Change Info */}
+              {preview.is_downgrade && preview.effective_date && (
+                <div className="border border-orange-200 bg-orange-50 rounded-lg p-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-medium text-slate-900 mb-1">Scheduled Downgrade</h3>
+                      <p className="text-sm text-slate-600 mb-3">
+                        Your plan will change to <strong>{preview.new_plan.name}</strong> on{' '}
+                        <strong>{formatDate(preview.effective_date)}</strong>.
+                      </p>
+                      <div className="flex items-start gap-2 text-sm text-slate-500 bg-white/50 rounded p-2">
+                        <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                        <span>
+                          You&apos;ll keep your current {preview.current_plan?.name} plan benefits
+                          until then. No refund or additional charges.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
 
               {/* Action Buttons */}
@@ -160,7 +203,11 @@ export function PlanChangeModal({
                   } ${changing ? 'opacity-50 cursor-not-allowed' : ''}`}
                   disabled={changing}
                 >
-                  {changing ? 'Processing...' : `Confirm ${isUpgrade ? 'Upgrade' : 'Downgrade'}`}
+                  {changing
+                    ? 'Processing...'
+                    : isUpgrade
+                      ? 'Confirm Upgrade'
+                      : 'Schedule Downgrade'}
                 </button>
               </div>
             </>
