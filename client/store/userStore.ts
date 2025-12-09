@@ -3,6 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { createClient } from '@shared/utils/supabase/client';
 import type { IUserProfile, ISubscription } from '@shared/types/stripe';
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
+import { handlePostAuthRedirect } from './auth/postAuthRedirect';
 
 // Cache keys
 const USER_CACHE_KEY = 'pixelperfect_user_cache';
@@ -57,6 +58,14 @@ const supabase = createClient();
 
 // In-flight request deduplication
 let fetchPromise: Promise<void> | null = null;
+
+// Set to true when user actively logs in/signs up (not on page refresh)
+let shouldRedirectToDashboard = false;
+
+/** Mark that user should be redirected after auth completes */
+function enablePostAuthRedirect(): void {
+  shouldRedirectToDashboard = true;
+}
 
 export const useUserStore = create<IUserState>((set, get) => ({
   // Initial state
@@ -145,12 +154,13 @@ export const useUserStore = create<IUserState>((set, get) => ({
   },
 
   signInWithEmail: async (email, password) => {
+    enablePostAuthRedirect();
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    // Auth state change listener will handle the rest
   },
 
   signUpWithEmail: async (email, password) => {
+    enablePostAuthRedirect();
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -259,6 +269,12 @@ supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session 
 
     // Fetch full data in background
     store.fetchUserData(session.user.id);
+
+    // Redirect to dashboard only for active login/signup (not page refresh)
+    if (shouldRedirectToDashboard) {
+      shouldRedirectToDashboard = false;
+      await handlePostAuthRedirect();
+    }
   }
 });
 
@@ -288,3 +304,21 @@ export const useSubscription = (): ISubscription | null =>
 
 export const useProfile = (): IUserProfile | null =>
   useUserStore(state => state.user?.profile ?? null);
+
+// Combined selector for components that need multiple values
+export const useUserData = (): {
+  totalCredits: number;
+  profile: IUserProfile | null;
+  subscription: ISubscription | null;
+  isAuthenticated: boolean;
+} =>
+  useUserStore(
+    useShallow(state => ({
+      totalCredits:
+        (state.user?.profile?.subscription_credits_balance ?? 0) +
+        (state.user?.profile?.purchased_credits_balance ?? 0),
+      profile: state.user?.profile ?? null,
+      subscription: state.user?.subscription ?? null,
+      isAuthenticated: state.isAuthenticated,
+    }))
+  );
