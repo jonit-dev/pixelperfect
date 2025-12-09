@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { StripeService } from '@client/services/stripeService';
+import { useEffect } from 'react';
+import { useProfileStore } from '@client/store/profileStore';
 import { getPlanByPriceId } from '@shared/config/subscription.utils';
-import type { IUserProfile, ISubscription } from '@shared/types/stripe';
 import { formatDistanceToNow } from 'date-fns';
 
 // Low credit threshold - show warning when credits fall below this amount
@@ -18,33 +17,15 @@ const LOW_CREDIT_THRESHOLD = 5;
  * ```
  */
 export function CreditsDisplay(): JSX.Element {
-  const [profile, setProfile] = useState<IUserProfile | null>(null);
-  const [subscription, setSubscription] = useState<ISubscription | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { profile, subscription, isLoading: loading, error, fetchProfile, invalidate } = useProfileStore();
 
   useEffect(() => {
-    console.log('[CreditsDisplay] useEffect - calling loadProfile');
-    loadProfile();
-  }, []);
+    fetchProfile();
+  }, [fetchProfile]);
 
-  const loadProfile = async () => {
-    try {
-      setLoading(true);
-      console.log('[CreditsDisplay] Calling StripeService.getUserProfile');
-      const [profileData, subscriptionData] = await Promise.all([
-        StripeService.getUserProfile(),
-        StripeService.getActiveSubscription(),
-      ]);
-      setProfile(profileData);
-      setSubscription(subscriptionData);
-      setError(null);
-    } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to load profile';
-      setError(errorMessage);
-    } finally {
-      setLoading(false);
-    }
+  const handleRefresh = () => {
+    invalidate();
+    fetchProfile();
   };
 
   // Calculate total balance from both pools (subscription + purchased)
@@ -161,7 +142,7 @@ export function CreditsDisplay(): JSX.Element {
 
         {/* Refresh button */}
         <button
-          onClick={loadProfile}
+          onClick={handleRefresh}
           className="ml-1 text-slate-500 hover:text-indigo-600 transition-colors"
           title="Refresh credits"
         >

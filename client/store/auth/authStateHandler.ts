@@ -2,6 +2,7 @@ import type { AuthChangeEvent, Session, SupabaseClient } from '@supabase/supabas
 import { createUserFromSession } from './authUtils';
 import { handlePostAuthRedirect } from './postAuthRedirect';
 import { saveAuthCache } from './authCache';
+import { useProfileStore } from '@client/store/profileStore';
 import type { IAuthState } from './types';
 
 const PROFILE_FETCH_TIMEOUT = 1500; // Reduced from 3000ms
@@ -60,6 +61,8 @@ function handleSignOut(
     isLoading: false,
   });
   saveAuthCache(null);
+  // Reset profile store to clear cached user data
+  useProfileStore.getState().reset();
 }
 
 /**

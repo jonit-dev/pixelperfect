@@ -26,7 +26,7 @@ function isDowngrade(currentPriceId: string | null, targetPriceId: string): bool
     if (currentResolved.type !== 'plan' || targetResolved.type !== 'plan') {
       console.warn('[PLAN_CHANGE] Non-plan price IDs in subscription change:', {
         currentPriceId,
-        targetType: currentResolved.type,
+        currentType: currentResolved.type,
         targetPriceId,
         targetType: targetResolved.type,
       });
@@ -137,6 +137,20 @@ export async function POST(request: NextRequest) {
           },
         },
         { status: 400 }
+      );
+    }
+
+    // At this point, targetPlan is guaranteed to be non-null due to validation above
+    if (!targetPlan) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: 'INTERNAL_ERROR',
+            message: 'Failed to resolve target plan after validation',
+          },
+        },
+        { status: 500 }
       );
     }
 

@@ -148,7 +148,7 @@ export default function SubscriptionConfirmedPage() {
                   <div>
                     <p className="font-medium text-slate-900">No charges today</p>
                     <p className="text-sm text-slate-600">
-                      Your next bill will be {formatCurrency((resolvedNewPlan || newPlan)?.priceInCents || 0)}/month for the{' '}
+                      Your next bill will be {formatCurrency(newPlan?.priceInCents || 0)}/month for the{' '}
                       {resolvedNewPlan?.name || newPlan?.name} plan.
                     </p>
                   </div>

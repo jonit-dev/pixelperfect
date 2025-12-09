@@ -17,8 +17,11 @@ import {
   buildStripePrices,
   buildSubscriptionPlans,
   buildCreditPacks,
-  buildHomepageTiers
+  buildHomepageTiers,
+  getPlanByPriceId,
+  buildSubscriptionPriceMap
 } from './subscription.utils';
+import { getSubscriptionConfig } from './subscription.config';
 
 /**
  * Stripe subscription plan metadata interface
@@ -27,6 +30,22 @@ export interface ISubscriptionPlanMetadata {
   name: string;
   creditsPerMonth: number;
   maxRollover: number;
+}
+
+/**
+ * Legacy subscription plan format
+ * Used for backward compatibility with existing code
+ */
+interface ILegacySubscriptionPlan {
+  key: string;
+  name: string;
+  creditsPerMonth: number;
+  maxRollover: number;
+  features: readonly string[];
+  recommended: boolean;
+  description?: string;
+  price?: number;
+  interval?: string;
 }
 
 // Stripe Price IDs - Derived from subscription.config.ts (single source of truth)
@@ -137,7 +156,7 @@ export function getPriceId(key: StripePriceKey): string {
  * Used by Pricing.tsx on homepage
  * Now unified with subscription.config.ts
  */
-export const HOMEPAGE_TIERS = buildHomepageTiers() as const;
+export const HOMEPAGE_TIERS = buildHomepageTiers();
 
 // =============================================================================
 // Stripe Configuration Validation & Access
@@ -248,7 +267,17 @@ export function validateStripeConfig(): {
  * Get subscription plan details for a given price ID
  * Now uses unified resolver from subscription.config.ts
  */
-export function getPlanForPriceId(priceId: string): (typeof SUBSCRIPTION_PLANS)[keyof typeof SUBSCRIPTION_PLANS] | null {
+export function getPlanForPriceId(priceId: string): {
+  key: string;
+  name: string;
+  creditsPerMonth: number;
+  maxRollover: number;
+  features: readonly string[];
+  recommended: boolean;
+  description?: string;
+  price?: number;
+  interval?: 'month' | 'year';
+} | null {
   const resolved = resolvePriceId(priceId);
 
   // Only return plans, not credit packs
@@ -256,18 +285,77 @@ export function getPlanForPriceId(priceId: string): (typeof SUBSCRIPTION_PLANS)[
     return null;
   }
 
-  // Convert unified format to legacy format
-  const planKey = `${resolved.key.toUpperCase()}_${resolved.currency === 'usd' ? 'MONTHLY' : 'YEARLY'}` as keyof typeof SUBSCRIPTION_PLANS;
-  return SUBSCRIPTION_PLANS[planKey] || null;
+  // Get the actual plan from config
+  const plan = getPlanByPriceId(priceId);
+  if (!plan) {
+    return null;
+  }
+
+  // Return in legacy format expected by tests
+  return {
+    key: plan.key,
+    name: plan.name,
+    creditsPerMonth: plan.creditsPerCycle,
+    maxRollover: plan.maxRollover ?? plan.creditsPerCycle * plan.rolloverMultiplier,
+    features: plan.features,
+    recommended: plan.recommended,
+    description: plan.description,
+    price: plan.priceInCents / 100,
+    interval: plan.interval,
+  };
+}
+
+
+// =============================================================================
+// Backward Compatibility Exports
+// =============================================================================
+
+/**
+ * Export the subscription price map for backward compatibility
+ * This maps price IDs to plan details
+ */
+export const SUBSCRIPTION_PRICE_MAP = buildSubscriptionPriceMap();
+
+/**
+ * Export subscription price IDs array for backward compatibility
+ */
+export const SUBSCRIPTION_PRICE_IDS = Object.values(STRIPE_PRICES).filter(priceId => {
+  // Only include subscription plan price IDs, not credit pack price IDs
+  const resolved = resolvePriceId(priceId);
+  return resolved && resolved.type === 'plan';
+});
+
+/**
+ * Get plan by key for backward compatibility
+ * Re-export from subscription utils
+ */
+export function getPlanByKey(key: string): ILegacySubscriptionPlan | null {
+  const config = getSubscriptionConfig();
+  const plan = config.plans.find(p => p.key === key);
+  if (!plan) return null;
+
+  // Convert to legacy format
+  return {
+    key: plan.key,
+    name: plan.name,
+    creditsPerMonth: plan.creditsPerCycle,
+    maxRollover: plan.maxRollover ?? plan.creditsPerCycle * plan.rolloverMultiplier,
+    features: plan.features,
+    recommended: plan.recommended,
+  };
 }
 
 /**
  * Get display name for a subscription plan tier
  * Accepts either a string tier name or an object with priceId and subscriptionTier
  */
-export function getPlanDisplayName(input: string | { priceId: string; subscriptionTier?: string | null }): string {
+export function getPlanDisplayName(input: string | {
+  subscriptionTier?: string | null;
+  priceId?: string | null;
+  planKey?: string | null;
+}): string {
+  // Handle string input (legacy support)
   if (typeof input === 'string') {
-    // Handle string input (legacy support)
     switch (input.toLowerCase()) {
       case 'hobby':
       case 'HOBBY_MONTHLY':
@@ -284,18 +372,28 @@ export function getPlanDisplayName(input: string | { priceId: string; subscripti
     }
   }
 
-  // Handle object input with priceId and subscriptionTier
-  const { priceId, subscriptionTier } = input;
+  // Handle object input with multiple possible fields
+  const { subscriptionTier, priceId, planKey } = input;
 
-  // First try to get plan by priceId
-  const plan = getPlanForPriceId(priceId);
-  if (plan) {
-    return plan.name;
+  // First try subscriptionTier
+  if (subscriptionTier) {
+    return subscriptionTier;
   }
 
-  // Fallback to subscriptionTier
-  if (subscriptionTier) {
-    return getPlanDisplayName(subscriptionTier);
+  // Then try priceId lookup
+  if (priceId) {
+    const plan = getPlanForPriceId(priceId);
+    if (plan) {
+      return plan.name;
+    }
+  }
+
+  // Then try planKey lookup
+  if (planKey) {
+    const plan = getPlanByKey(planKey);
+    if (plan) {
+      return plan.name;
+    }
   }
 
   // Final fallback
@@ -315,6 +413,12 @@ export {
   resolvePriceId,
   resolvePlanOrPack,
   assertKnownPriceId,
+  getPlanByPriceId,
+  buildSubscriptionPriceMap,
+  buildStripePrices,
+  buildSubscriptionPlans,
+  buildCreditPacks,
+  buildHomepageTiers,
 };
 
 /**

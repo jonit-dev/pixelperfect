@@ -165,6 +165,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // At this point, targetPlan is guaranteed to be non-null due to validation above
+    if (!targetPlan) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: 'INTERNAL_ERROR',
+            message: 'Failed to resolve target plan after validation'
+          }
+        },
+        { status: 500 }
+      );
+    }
+
     // 4. Get user's current subscription
     const { data: currentSubscription, error: subError } = await supabaseAdmin
       .from('subscriptions')

@@ -30,6 +30,26 @@ vi.mock('@server/stripe', () => ({
 
 vi.mock('@shared/config/stripe', () => ({
   getPlanForPriceId: vi.fn(),
+  assertKnownPriceId: vi.fn((priceId: string) => ({
+    type: 'plan',
+    key: 'hobby',
+    name: 'Hobby',
+    stripePriceId: priceId,
+    priceInCents: 1900,
+    currency: 'usd',
+    credits: 200,
+    maxRollover: 1200,
+  })),
+  resolvePriceId: vi.fn((priceId: string) => ({
+    type: 'plan',
+    key: 'hobby',
+    name: 'Hobby',
+    stripePriceId: priceId,
+    priceInCents: 1900,
+    currency: 'usd',
+    credits: 200,
+    maxRollover: 1200,
+  })),
 }));
 
 vi.mock('@shared/config/subscription.config', () => ({
@@ -419,10 +439,9 @@ describe('Stripe Webhook Handler', () => {
       // Assert
       expect(response.status).toBe(200);
       expect(getPlanForPriceId).toHaveBeenCalledWith('price_1SZmVzALMLhQocpfPyRX2W8D');
-      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('increment_credits_with_log', {
+      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('add_subscription_credits', {
         target_user_id: 'user_456',
         amount: 1000,
-        transaction_type: 'subscription',
         ref_id: 'cs_test_sub_123',
         description: 'Test subscription credits - Professional plan - 1000 credits',
       });
@@ -792,10 +811,9 @@ describe('Stripe Webhook Handler', () => {
       // Assert
       expect(response.status).toBe(200);
       // Now we add credits on subscription renewal (this was the bug fix!)
-      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('increment_credits_with_log', {
+      expect(supabaseAdmin.rpc).toHaveBeenCalledWith('add_subscription_credits', {
         target_user_id: userId,
         amount: 1000, // Professional tier credits
-        transaction_type: 'subscription',
         ref_id: 'invoice_in_test_123',
         description: 'Monthly subscription renewal - Professional plan',
       });

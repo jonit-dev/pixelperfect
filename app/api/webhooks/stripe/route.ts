@@ -1115,7 +1115,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
         'expire_subscription_credits',
         {
           target_user_id: userId,
-          expiration_reason: expirationMode === 'rolling_window' ? 'rolling_window' : 'cycle_end',
+          expiration_reason: expirationMode === 'end_of_cycle' ? 'cycle_end' : 'rolling_window',
           subscription_stripe_id: subscriptionId,
           cycle_end_date: invoice.period_end
             ? new Date(invoice.period_end * 1000).toISOString()
@@ -1140,7 +1140,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
 
   if (actualCreditsToAdd > 0) {
     // Build description based on expiration
-    let description = `Monthly subscription renewal - ${plan.name} plan`;
+    let description = `Monthly subscription renewal - ${planDetails.name} plan`;
 
     if (expiredAmount > 0) {
       description += ` (${expiredAmount} credits expired, ${actualCreditsToAdd} new credits added)`;
@@ -1160,7 +1160,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
       console.error('Error adding subscription credits:', error);
     } else {
       console.log(
-        `Added ${actualCreditsToAdd} subscription credits to user ${userId} from ${plan.name} plan (balance: ${currentBalance} → ${newBalance}, mode: ${expirationMode})`
+        `Added ${actualCreditsToAdd} subscription credits to user ${userId} from ${planDetails.name} plan (balance: ${currentBalance} → ${newBalance}, mode: ${expirationMode})`
       );
     }
   } else if (expiredAmount === 0) {

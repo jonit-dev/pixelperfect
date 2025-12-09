@@ -14,7 +14,7 @@ import type { IPlanConfig, ProcessingMode, ICreditsExpirationConfig, ICreditPack
  * Unified price index that maps all Stripe price IDs to their metadata
  * This combines plans and credit packs into a single lookup table
  */
-interface PriceIndexEntry {
+interface IPriceIndexEntry {
   type: 'plan' | 'pack';
   key: string;
   name: string;
@@ -25,15 +25,15 @@ interface PriceIndexEntry {
   maxRollover: number | null;
 }
 
-let _priceIndex: Record<string, PriceIndexEntry> | null = null;
+let _priceIndex: Record<string, IPriceIndexEntry> | null = null;
 
 /**
  * Build the unified price index from subscription.config.ts
  * This should be the ONLY source of truth for all price lookups
  */
-function buildPriceIndex(): Record<string, PriceIndexEntry> {
+function buildPriceIndex(): Record<string, IPriceIndexEntry> {
   const config = getSubscriptionConfig();
-  const index: Record<string, PriceIndexEntry> = {};
+  const index: Record<string, IPriceIndexEntry> = {};
 
   // Add subscription plans to index
   for (const plan of config.plans.filter(p => p.enabled)) {
@@ -69,7 +69,7 @@ function buildPriceIndex(): Record<string, PriceIndexEntry> {
 /**
  * Get the unified price index (cached)
  */
-export function getPriceIndex(): Record<string, PriceIndexEntry> {
+export function getPriceIndex(): Record<string, IPriceIndexEntry> {
   if (!_priceIndex) {
     _priceIndex = buildPriceIndex();
   }
@@ -80,7 +80,7 @@ export function getPriceIndex(): Record<string, PriceIndexEntry> {
  * Resolve a price ID to its metadata (unified resolver)
  * Returns null for unknown price IDs - this should be treated as an error
  */
-export function resolvePriceId(priceId: string): PriceIndexEntry | null {
+export function resolvePriceId(priceId: string): IPriceIndexEntry | null {
   const index = getPriceIndex();
   return index[priceId] ?? null;
 }
@@ -89,7 +89,7 @@ export function resolvePriceId(priceId: string): PriceIndexEntry | null {
  * Assert that a price ID is known and valid
  * Throws an error if the price ID is not found in the index
  */
-export function assertKnownPriceId(priceId: string): PriceIndexEntry {
+export function assertKnownPriceId(priceId: string): IPriceIndexEntry {
   const resolved = resolvePriceId(priceId);
   if (!resolved) {
     throw new Error(`Unknown price ID: ${priceId}. This price is not configured in the subscription config.`);

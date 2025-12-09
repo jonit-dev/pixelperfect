@@ -122,6 +122,10 @@ export function createInitializeAuth(
           isAuthenticated: true,
           isLoading: false, // UI can render immediately!
         });
+      } else {
+        // No cached user = most likely unauthenticated
+        // Show unauthenticated state immediately to avoid LCP delays
+        setState({ isLoading: false });
       }
 
       // BACKGROUND: Validate session with server (still needed for security)

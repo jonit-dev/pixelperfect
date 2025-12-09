@@ -140,6 +140,38 @@ export const NavBar = (): JSX.Element => {
                     </li>
                     <li>
                       <a
+                        href="/dashboard/billing"
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Billing
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/dashboard/settings"
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Settings
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/dashboard/history"
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                      >
+                        History
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/help"
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Help
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         href="/pricing"
                         className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
                       >

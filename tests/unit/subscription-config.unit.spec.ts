@@ -35,8 +35,12 @@ describe('Subscription Configuration', () => {
   });
 
   describe('SUBSCRIPTION_PRICE_MAP', () => {
-    it('should have entry for each subscription price', () => {
-      const priceIds = Object.values(STRIPE_PRICES);
+    it('should have entry for each subscription price (but not credit packs)', () => {
+      const priceIds = Object.values(STRIPE_PRICES).filter((priceId, index) => {
+        // Only check subscription plans, not credit packs (first 3 are plans)
+        const key = Object.keys(STRIPE_PRICES)[index];
+        return !key.includes('_CREDITS');
+      });
       priceIds.forEach((priceId) => {
         expect(SUBSCRIPTION_PRICE_MAP[priceId]).toBeDefined();
         expect(SUBSCRIPTION_PRICE_MAP[priceId]).toMatchObject({
@@ -106,10 +110,16 @@ describe('Subscription Configuration', () => {
   });
 
   describe('SUBSCRIPTION_PRICE_IDS', () => {
-    it('should contain all subscription price IDs', () => {
-      expect(SUBSCRIPTION_PRICE_IDS).toHaveLength(Object.keys(STRIPE_PRICES).length);
-      Object.values(STRIPE_PRICES).forEach((priceId) => {
-        expect(SUBSCRIPTION_PRICE_IDS).toContain(priceId);
+    it('should contain all subscription price IDs (but not credit packs)', () => {
+      // Count only subscription plans, not credit packs
+      const subscriptionCount = Object.keys(STRIPE_PRICES).filter(key =>
+        !key.includes('_CREDITS')
+      ).length;
+      expect(SUBSCRIPTION_PRICE_IDS).toHaveLength(subscriptionCount);
+
+      // SUBSCRIPTION_PRICE_IDS should only contain subscription plan price IDs
+      SUBSCRIPTION_PRICE_IDS.forEach((priceId) => {
+        expect(Object.values(STRIPE_PRICES)).toContain(priceId);
       });
     });
 
@@ -219,12 +229,29 @@ describe('Subscription Configuration', () => {
     });
   });
 
-  describe('Subscription-Only Guarantees', () => {
-    it('should not contain any credit pack references', () => {
-      // Check that CREDIT_PACKS is empty (deprecated)
+  describe('Credit Packs Configuration', () => {
+    it('should contain credit pack references', () => {
+      // Check that CREDIT_PACKS is populated (credits pack feature is implemented)
       expect(CREDIT_PACKS).toBeDefined();
-      expect(CREDIT_PACKS).toEqual({});
-      expect(Object.keys(CREDIT_PACKS)).toHaveLength(0);
+      expect(Object.keys(CREDIT_PACKS)).toHaveLength(3); // small, medium, large
+
+      // Check structure of credit packs
+      expect(CREDIT_PACKS.SMALL_CREDITS).toMatchObject({
+        name: 'Small Pack',
+        credits: 50,
+        price: 4.99,
+      });
+      expect(CREDIT_PACKS.MEDIUM_CREDITS).toMatchObject({
+        name: 'Medium Pack',
+        credits: 200,
+        price: 14.99,
+        popular: true,
+      });
+      expect(CREDIT_PACKS.LARGE_CREDITS).toMatchObject({
+        name: 'Large Pack',
+        credits: 600,
+        price: 39.99,
+      });
     });
 
     it('should only expose subscription-related functions', () => {
@@ -282,11 +309,14 @@ describe('Subscription Configuration', () => {
     });
 
     it('should work with all subscription price IDs', () => {
+      // Only test subscription plan price IDs, not credit pack price IDs
       Object.entries(STRIPE_PRICES).forEach(([key, priceId]) => {
-        const result = getPlanDisplayName({ priceId });
-        expect(result).toBeTruthy();
-        expect(result).not.toBe('Unknown Plan');
-        expect(typeof result).toBe('string');
+        if (!key.includes('_CREDITS')) { // Skip credit packs
+          const result = getPlanDisplayName({ priceId });
+          expect(result).toBeTruthy();
+          expect(result).not.toBe('Unknown Plan');
+          expect(typeof result).toBe('string');
+        }
       });
     });
   });

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     // Disable ESLint during Cloudflare Pages builds
     ignoreDuringBuilds: true,
