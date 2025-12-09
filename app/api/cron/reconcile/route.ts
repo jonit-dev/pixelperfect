@@ -12,6 +12,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { serverEnv } from '@shared/config/env';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { stripe } from '@server/stripe/config';
+import type Stripe from 'stripe';
 import {
   createSyncRun,
   completeSyncRun,
@@ -130,7 +131,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         }
 
         // Check for period end discrepancies (significant drift only - more than 1 hour)
-        const stripeCurrentPeriodEnd = (stripeSub as any).current_period_end as number;
+        const subscriptionWithPeriod = stripeSub as unknown as Stripe.Subscription & {
+          current_period_start: number;
+          current_period_end: number;
+        };
+        const stripeCurrentPeriodEnd = subscriptionWithPeriod.current_period_end;
         const stripePeriodEndDate = new Date(stripeCurrentPeriodEnd * 1000);
         const dbPeriodEndDate = new Date(dbSub.current_period_end);
         const timeDiffMs = Math.abs(stripePeriodEndDate.getTime() - dbPeriodEndDate.getTime());
@@ -157,7 +162,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
         // Rate limiting delay
         await sleep(RATE_LIMIT_DELAY_MS);
-      } catch (error: any) {
+      } catch (error: unknown) {
         if (isStripeNotFoundError(error)) {
           // Subscription exists in DB but not in Stripe
           discrepancies++;
@@ -178,7 +183,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           const issue: IDiscrepancyIssue = {
             subId: dbSub.id,
             userId: dbSub.user_id,
-            issue: `Error: ${error.message || 'Unknown error'}`,
+            issue: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
             action: 'failed',
           };
           issues.push(issue);
@@ -217,7 +222,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       issues,
       syncRunId,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('[CRON] Reconciliation failed:', errorMessage);
 

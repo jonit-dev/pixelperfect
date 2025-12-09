@@ -19,7 +19,7 @@
     "pages:preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
     "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
     "format": "prettier --write --log-level silent \"{client,server,shared,app}/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "lint": "eslint {client,server,shared,app}/**/*.{js,jsx,ts,tsx} --fix",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "tsc": "tsc --noEmit",
     "prepare": "husky",
     "verify": "npm run tsc && npm run lint",

@@ -8,7 +8,6 @@ import {
   assertKnownPriceId,
 } from '@shared/config/stripe';
 import {
-  getPlanByPriceId,
   calculateBalanceWithExpiration,
 } from '@shared/config/subscription.utils';
 import { getTrialConfig } from '@shared/config/subscription.config';
@@ -21,6 +20,44 @@ export const runtime = 'edge'; // Cloudflare Worker compatible
 
 type PreviousAttributes = Record<string, unknown> | null | undefined;
 
+type StripeWebhookEventType =
+  | 'checkout.session.completed'
+  | 'customer.created'
+  | 'customer.subscription.created'
+  | 'customer.subscription.updated'
+  | 'customer.subscription.deleted'
+  | 'customer.subscription.trial_will_end'
+  | 'invoice.payment_succeeded'
+  | 'invoice.paid'
+  | 'invoice_payment.paid'
+  | 'invoice.payment_failed'
+  | 'invoice_payment.failed'
+  | 'charge.refunded'
+  | 'charge.dispute.created'
+  | 'invoice.payment_refunded'
+  | 'subscription_schedule.completed';
+
+// Stripe subscription interface for accessing fields not in the SDK types
+type IStripeSubscriptionExtended = Stripe.Subscription & {
+  current_period_start?: number;
+  current_period_end?: number;
+  canceled_at?: number | null | undefined;
+};
+
+// Invoice line item interface for accessing runtime properties
+interface IStripeInvoiceLineItemExtended {
+  type?: string;
+  proration?: boolean;
+  amount?: number;
+  price?: { id?: string } | string;
+  plan?: { id?: string } | string;
+}
+
+// Charge interface for accessing invoice property
+interface IStripeChargeExtended extends Stripe.Charge {
+  invoice?: string | null | undefined;
+}
+
 function extractPreviousPriceId(
   previousAttributes: PreviousAttributes | null | undefined
 ): string | null {
@@ -28,19 +65,41 @@ function extractPreviousPriceId(
     return null;
   }
 
-  const items = (previousAttributes as any).items;
-  const candidates: any[] = [];
+  // Define proper types for previous attributes structure
+  interface IPreviousAttributesItems {
+    data?: Array<{
+      price?: { id?: string } | string;
+      plan?: { id?: string } | string;
+    }>;
+  }
+
+  interface IPreviousAttributesDirect {
+    items?: IPreviousAttributesItems | Array<{
+      price?: { id?: string } | string;
+      plan?: { id?: string } | string;
+    }>;
+    price?: { id?: string } | string;
+    plan?: { id?: string } | string;
+  }
+
+  const prevUnknown = previousAttributes as IPreviousAttributesDirect;
+  const items = prevUnknown.items;
+  const candidates: Array<{
+    price?: { id?: string } | string;
+    plan?: { id?: string } | string;
+  }>[] = [];
 
   if (Array.isArray(items)) {
     candidates.push(items);
-  } else if (items && Array.isArray((items as any).data)) {
-    candidates.push((items as any).data);
+  } else if (items && Array.isArray(items.data)) {
+    candidates.push(items.data);
   }
 
   for (const list of candidates) {
     const firstItem = list?.[0];
     const priceId =
-      firstItem?.price?.id ?? firstItem?.plan?.id ?? firstItem?.price ?? firstItem?.plan;
+      (typeof firstItem?.price === 'object' ? firstItem.price.id : firstItem?.price) ??
+      (typeof firstItem?.plan === 'object' ? firstItem.plan.id : firstItem?.plan);
 
     if (typeof priceId === 'string') {
       return priceId;
@@ -48,10 +107,8 @@ function extractPreviousPriceId(
   }
 
   const directPrice =
-    (previousAttributes as any).price?.id ??
-    (previousAttributes as any).plan?.id ??
-    (previousAttributes as any).price ??
-    (previousAttributes as any).plan;
+    (typeof prevUnknown.price === 'object' ? prevUnknown.price?.id : prevUnknown.price) ??
+    (typeof prevUnknown.plan === 'object' ? prevUnknown.plan?.id : prevUnknown.plan);
 
   return typeof directPrice === 'string' ? directPrice : null;
 }
@@ -266,7 +323,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     try {
-      switch (event.type as any) {
+      switch (event.type as StripeWebhookEventType) {
         case 'checkout.session.completed':
           await handleCheckoutSessionCompleted(event.data.object as Stripe.Checkout.Session);
           break;
@@ -302,19 +359,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           break;
 
         case 'charge.refunded':
-          await handleChargeRefunded(event.data.object as any);
+          await handleChargeRefunded(event.data.object as Stripe.Charge);
           break;
 
         case 'charge.dispute.created':
-          await handleChargeDisputeCreated(event.data.object as any);
+          await handleChargeDisputeCreated(event.data.object as Stripe.Dispute);
           break;
 
         case 'invoice.payment_refunded':
-          await handleInvoicePaymentRefunded(event.data.object as any);
+          await handleInvoicePaymentRefunded(event.data.object as Stripe.Invoice);
           break;
 
         case 'subscription_schedule.completed':
-          await handleSubscriptionScheduleCompleted(event.data.object as any);
+          await handleSubscriptionScheduleCompleted(event.data.object as Stripe.SubscriptionSchedule);
           break;
 
         default:
@@ -627,10 +684,10 @@ async function handleSubscriptionUpdate(
   }
 
   // Access period timestamps - these are standard Stripe subscription fields (Unix timestamps in seconds)
-  let currentPeriodStart = (subscription as any).current_period_start as number | undefined;
-  let currentPeriodEnd = (subscription as any).current_period_end as number | undefined;
-  const trialEnd = (subscription as any).trial_end as number | null | undefined;
-  const canceledAt = (subscription as any).canceled_at as number | null | undefined;
+  let currentPeriodStart = (subscription as IStripeSubscriptionExtended).current_period_start as number | undefined;
+  let currentPeriodEnd = (subscription as IStripeSubscriptionExtended).current_period_end as number | undefined;
+  const trialEnd = (subscription as IStripeSubscriptionExtended).trial_end as number | null | undefined;
+  const canceledAt = (subscription as IStripeSubscriptionExtended).canceled_at as number | null | undefined;
 
   // If period timestamps are missing, fetch fresh subscription data from Stripe
   if (!currentPeriodStart || !currentPeriodEnd) {
@@ -638,8 +695,8 @@ async function handleSubscriptionUpdate(
     try {
       const freshSubscription = await stripe.subscriptions.retrieve(subscription.id);
       // Access the subscription data
-      currentPeriodStart = (freshSubscription as any).current_period_start;
-      currentPeriodEnd = (freshSubscription as any).current_period_end;
+      currentPeriodStart = (freshSubscription as IStripeSubscriptionExtended).current_period_start;
+      currentPeriodEnd = (freshSubscription as IStripeSubscriptionExtended).current_period_end;
       console.log('Fetched fresh subscription data:', {
         id: subscription.id,
         current_period_start: currentPeriodStart,
@@ -1025,23 +1082,37 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice): Promise<v
   // Get the price ID from invoice lines to determine credit amount.
   // Prefer the subscription line item; if missing (proration invoice), choose the positive proration line
   // so upgrades map to the new plan instead of the previous one.
-  // Cast to any[] because Stripe's InvoiceLineItem type doesn't expose all runtime properties
-  const lines = (invoiceWithSub.lines?.data ?? []) as any[];
+  // Cast to extended type to access runtime properties
+  const lines = (invoiceWithSub.lines?.data ?? []) as IStripeInvoiceLineItemExtended[];
+
+  const hasPriceId = (line: IStripeInvoiceLineItemExtended): boolean => {
+    if (typeof line.price === 'object' && line.price?.id) return true;
+    if (typeof line.price === 'string') return true;
+    if (typeof line.plan === 'object' && line.plan?.id) return true;
+    if (typeof line.plan === 'string') return true;
+    return false;
+  };
+
   const subscriptionLine = lines.find(
-    line => line.type === 'subscription' && (line.price?.id || line.plan?.id)
+    line => line.type === 'subscription' && hasPriceId(line)
   );
   const positiveProrationLine = lines.find(
-    line => line.proration && (line.amount ?? 0) > 0 && (line.price?.id || line.plan?.id)
+    line => line.proration && (line.amount ?? 0) > 0 && hasPriceId(line)
   );
-  const anyPricedLine = lines.find(line => line.price?.id || line.plan?.id);
+  const anyPricedLine = lines.find(hasPriceId);
+
+  const getPriceId = (price?: { id?: string } | string, plan?: { id?: string } | string): string => {
+    if (typeof price === 'object' && price?.id) return price.id;
+    if (typeof price === 'string') return price;
+    if (typeof plan === 'object' && plan?.id) return plan.id;
+    if (typeof plan === 'string') return plan;
+    return '';
+  };
 
   const priceId =
-    subscriptionLine?.price?.id ||
-    subscriptionLine?.plan?.id ||
-    positiveProrationLine?.price?.id ||
-    positiveProrationLine?.plan?.id ||
-    anyPricedLine?.price?.id ||
-    anyPricedLine?.plan?.id ||
+    getPriceId(subscriptionLine?.price, subscriptionLine?.plan) ||
+    getPriceId(positiveProrationLine?.price, positiveProrationLine?.plan) ||
+    getPriceId(anyPricedLine?.price, anyPricedLine?.plan) ||
     '';
 
   // Use unified resolver to get plan details
@@ -1204,7 +1275,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
 }
 
 // CRITICAL-2 FIX: Handle charge refund - clawback credits
-async function handleChargeRefunded(charge: any) {
+async function handleChargeRefunded(charge: IStripeChargeExtended) {
   const customerId = charge.customer;
   const refundAmount = charge.amount_refunded || 0;
 
@@ -1272,14 +1343,14 @@ async function handleChargeRefunded(charge: any) {
 }
 
 // Handle charge dispute created - immediate credit hold
-async function handleChargeDisputeCreated(dispute: any) {
+async function handleChargeDisputeCreated(dispute: Stripe.Dispute) {
   console.log(`Charge dispute ${dispute.id} created for charge ${dispute.charge}`);
 
   // TODO: Implement dispute handling logic
 }
 
 // Handle invoice payment refunded
-async function handleInvoicePaymentRefunded(invoice: any) {
+async function handleInvoicePaymentRefunded(invoice: Stripe.Invoice) {
   console.log(`Invoice ${invoice.id} payment refunded`);
 
   // TODO: Implement invoice refund handling logic
@@ -1302,7 +1373,7 @@ async function handleTrialWillEnd(subscription: Stripe.Subscription) {
   }
 
   const userId = profile.id;
-  const trialEnd = (subscription as any).trial_end as number | null;
+  const trialEnd = (subscription as IStripeSubscriptionExtended).trial_end as number | null;
 
   if (!trialEnd) {
     console.error(`No trial end date for subscription ${subscription.id}`);
@@ -1322,7 +1393,7 @@ async function handleTrialWillEnd(subscription: Stripe.Subscription) {
 }
 
 // Handle subscription schedule completion (scheduled downgrade taking effect)
-async function handleSubscriptionScheduleCompleted(schedule: any) {
+async function handleSubscriptionScheduleCompleted(schedule: Stripe.SubscriptionSchedule) {
   const subscriptionId = schedule.subscription;
 
   if (!subscriptionId) {

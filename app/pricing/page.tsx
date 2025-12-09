@@ -12,7 +12,6 @@ import {
   SUBSCRIPTION_PLANS,
   getPlanForPriceId,
   isStripePricesConfigured,
-  resolvePlanOrPack,
 } from '@shared/config/stripe';
 import type { ISubscription, IUserProfile } from '@shared/types/stripe';
 import { useEffect, useState, useMemo } from 'react';
@@ -356,7 +355,7 @@ export default function PricingPage() {
             <div className="bg-white p-6 rounded-lg border border-slate-200">
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Do credits expire?</h3>
               <p className="text-slate-600">
-                Subscription credits roll over month-to-month up to your plan's maximum limit as
+                Subscription credits roll over month-to-month up to your plan&apos;s maximum limit as
                 long as your subscription is active.
               </p>
             </div>
@@ -366,7 +365,7 @@ export default function PricingPage() {
                 Can I cancel my subscription anytime?
               </h3>
               <p className="text-slate-600">
-                Yes! You can cancel your subscription at any time. You'll continue to have access
+                Yes! You can cancel your subscription at any time. You&apos;ll continue to have access
                 until the end of your billing period, and any remaining credits will stay in your
                 account.
               </p>

@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { SECURITY_HEADERS, buildCspHeader } from '@shared/config/security';
+import { clientEnv } from '@shared/config/env';
 
 /**
  * Allowed origins for CORS
@@ -7,7 +8,7 @@ import { SECURITY_HEADERS, buildCspHeader } from '@shared/config/security';
 const ALLOWED_ORIGINS = [
   'http://localhost:3000',
   'https://localhost:3000',
-  process.env.NEXT_PUBLIC_BASE_URL,
+  clientEnv.NEXT_PUBLIC_BASE_URL,
 ].filter(Boolean) as string[];
 
 /**

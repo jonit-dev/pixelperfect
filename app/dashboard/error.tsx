@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { AlertTriangle, RefreshCw, LayoutDashboard } from 'lucide-react';
+import { isDevelopment } from '@shared/config/env';
 
 /**
  * Error boundary for dashboard routes
@@ -18,12 +19,15 @@ export default function DashboardError({
   useEffect(() => {
     console.error('Dashboard error caught:', error);
 
-    if (typeof window !== 'undefined' && (window as any).baselime) {
-      (window as any).baselime.logError(error, {
-        digest: error.digest,
-        boundary: 'dashboard-error',
-        route: window.location.pathname,
-      });
+    if (typeof window !== 'undefined') {
+      const baselime = (window as unknown as { baselime?: { logError: (error: Error, metadata: unknown) => void } }).baselime;
+      if (baselime) {
+        baselime.logError(error, {
+          digest: error.digest,
+          boundary: 'dashboard-error',
+          route: window.location.pathname,
+        });
+      }
     }
   }, [error]);
 
@@ -40,7 +44,7 @@ export default function DashboardError({
             We encountered an error loading this dashboard page. Please try again.
           </p>
 
-          {process.env.NODE_ENV === 'development' && error && (
+          {isDevelopment() && error && (
             <details className="mt-4 text-left">
               <summary className="cursor-pointer text-sm text-slate-500 hover:text-slate-700">
                 Error details (dev only)

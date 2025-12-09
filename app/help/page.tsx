@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-// eslint-disable-next-line import/no-default-export
+ 
 export default function HelpPage(): JSX.Element {
   return (
     <main className="flex-1">

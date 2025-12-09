@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-// eslint-disable-next-line import/no-default-export
+ 
 export default function TermsOfServicePage(): JSX.Element {
   const lastUpdated = 'November 26, 2025';
 

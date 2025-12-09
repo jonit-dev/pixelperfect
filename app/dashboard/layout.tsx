@@ -2,6 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
+import React from 'react';
 import { DashboardLayout } from '@client/components/dashboard';
 import { useAuthStore } from '@client/store/authStore';
 import { useRouter } from 'next/navigation';

@@ -86,7 +86,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         );
         return NextResponse.json(errorBody, { status });
       }
-    } catch (error) {
+    } catch {
       const { body: errorBody, status } = createErrorResponse(
         ErrorCodes.VALIDATION_ERROR,
         'Invalid image data format',

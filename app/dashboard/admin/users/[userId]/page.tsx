@@ -1,7 +1,8 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Coins } from 'lucide-react';
 import dayjs from 'dayjs';
@@ -10,7 +11,6 @@ import { adminFetch } from '@/client/utils/admin-api-client';
 
 export default function AdminUserDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const userId = params.userId as string;
 
   const [user, setUser] = useState<IAdminUserDetail | null>(null);

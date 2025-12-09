@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   },
 };
 
-// eslint-disable-next-line import/no-default-export
+ 
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
   const websiteJsonLd = {
     '@context': 'https://schema.org',

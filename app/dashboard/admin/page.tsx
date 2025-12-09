@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Users, CreditCard, Coins, TrendingUp } from 'lucide-react';

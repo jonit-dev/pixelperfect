@@ -33,7 +33,6 @@ export async function GET(req: NextRequest) {
     }
 
     // Get emails from auth.users for these profiles
-    const userIds = profiles?.map((p) => p.id) || [];
     const { data: authUsers, error: authError } = await supabaseAdmin.auth.admin.listUsers();
 
     if (authError) {

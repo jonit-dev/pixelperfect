@@ -31,7 +31,6 @@ interface IHealthCheckResult {
 }
 
 export async function GET(): Promise<NextResponse<IHealthCheckResult>> {
-  const startTime = Date.now();
   const checks: IHealthCheckResult['checks'] = {
     dataLoader: { status: 'fail', message: '' },
     samplePage: { status: 'fail', message: '' },

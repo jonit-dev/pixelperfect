@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { clientEnv } from '@shared/config/env';
+import { clientEnv, serverEnv } from '@shared/config/env';
 import { updateSession } from '@shared/utils/supabase/middleware';
 
 /**
@@ -100,7 +100,7 @@ export async function verifyApiAuth(
   }
 
   // For environment-specific test tokens
-  if (token === process.env.TEST_AUTH_TOKEN) {
+  if (token === serverEnv.TEST_AUTH_TOKEN) {
     return {
       user: {
         id: 'test-user-id-12345',
@@ -111,7 +111,7 @@ export async function verifyApiAuth(
 
   // Handle mock authentication tokens in test environment
   // Token format: test_token_{userId} where userId is 'mock_user_{uniquePart}'
-  if (process.env.ENV === 'test' && token.startsWith('test_token_')) {
+  if (serverEnv.ENV === 'test' && token.startsWith('test_token_')) {
     const mockUserId = token.replace('test_token_', '');
     return {
       user: {

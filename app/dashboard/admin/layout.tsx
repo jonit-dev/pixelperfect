@@ -1,5 +1,4 @@
-import { redirect } from 'next/navigation';
-import { supabaseAdmin } from '@/server/supabase/supabaseAdmin';
+import React from 'react';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Note: This layout relies on middleware for authentication

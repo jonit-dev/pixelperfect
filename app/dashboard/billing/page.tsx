@@ -13,7 +13,6 @@ import {
   RefreshCw,
   Calendar,
   ArrowRight,
-  X,
 } from 'lucide-react';
 import { StripeService } from '@client/services/stripeService';
 import { useToastStore } from '@client/store/toastStore';

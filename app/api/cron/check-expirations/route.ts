@@ -95,7 +95,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           await updateSubscriptionPeriod(sub.id, stripeSub);
           fixed++;
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         if (isStripeNotFoundError(error)) {
           // Subscription deleted in Stripe but still in our DB
           console.log(`[CRON] Subscription ${sub.id} not found in Stripe - marking as canceled`);
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       fixed,
       syncRunId,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('[CRON] Expiration check failed:', errorMessage);
 

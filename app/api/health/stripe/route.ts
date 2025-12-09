@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@server/stripe';
-import { clientEnv, serverEnv } from '@shared/config/env';
+import { serverEnv } from '@shared/config/env';
 
 export const runtime = 'edge';
 

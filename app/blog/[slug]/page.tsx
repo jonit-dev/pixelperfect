@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPostBySlug, getAllSlugs, getAllPosts } from '@server/blog';
+import { getPostBySlug, getAllPosts } from '@server/blog';
 import { mdxComponents } from '@client/components/blog/MDXComponents';
 import { Calendar, Clock, ArrowLeft, Tag, User } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
 
-interface PageProps {
+interface IPageProps {
   params: Promise<{ slug: string }>;
 }
 
@@ -20,7 +20,7 @@ interface PageProps {
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: IPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage({ params }: IPageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 

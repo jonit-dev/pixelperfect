@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { CheckCircle, Calendar, CreditCard, ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import { getPlanByPriceId, assertKnownPriceId } from '@shared/config/subscription.utils';
+import { getPlanByPriceId } from '@shared/config/subscription.utils';
 import { resolvePlanOrPack } from '@shared/config/stripe';
 
 function formatDate(dateString: string): string {

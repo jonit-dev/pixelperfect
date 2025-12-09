@@ -5,6 +5,7 @@ import { trackServerEvent } from '@server/analytics';
 import { serverEnv } from '@shared/config/env';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serializeError } from '@shared/utils/errors';
+import type { IAnalyticsEventName } from '@server/analytics/types';
 
 export const runtime = 'edge';
 
@@ -109,7 +110,7 @@ const validateEventNameSecurity = (eventName: string): { valid: boolean; reason?
   // Check for quotes (malicious usage)
   if (
     (eventName.includes("'") || eventName.includes('"')) &&
-    !ALLOWED_EVENTS.includes(eventName as any)
+    !ALLOWED_EVENTS.includes(eventName as IAnalyticsEventName)
   ) {
     return {
       valid: false,

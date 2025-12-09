@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-// eslint-disable-next-line import/no-default-export
+ 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'PixelPerfect AI - Image Upscaling & Enhancement',

@@ -17,7 +17,18 @@ export default [
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: ['app/**/*', 'next.config.js'], // Next.js App Router requires default exports
+    ignores: [
+      '.next/**/*',
+      'node_modules/**/*',
+      'out/**/*',
+      'dist/**/*',
+      'build/**/*',
+      'coverage/**/*',
+      '.turbo/**/*',
+      '.wrangler/**/*',
+      'next.config.js',
+      'next-env.d.ts'
+    ],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooks,
@@ -170,10 +181,35 @@ export default [
   },
   // Test files - relax process.env restriction since tests can't use @/config/env
   {
-    files: ['tests/**/*.ts', 'tests/**/*.tsx', '**/*.spec.ts', '**/*.test.ts'],
+    files: [
+      'tests/**/*.ts',
+      'tests/**/*.tsx',
+      '**/*.spec.ts',
+      '**/*.test.ts',
+      '**/vitest.config.ts',
+      '**/playwright.config.ts'
+    ],
     rules: {
       'no-restricted-syntax': 'off',
       'react-hooks/rules-of-hooks': 'off', // Playwright fixtures use 'use' function that triggers this
+      '@typescript-eslint/no-explicit-any': 'warn', // Allow 'any' in tests for mocking
+      '@typescript-eslint/no-unused-vars': 'warn', // Allow unused vars like fixture params
+      'import/no-default-export': 'off', // Test configs often need default exports
+      '@typescript-eslint/explicit-module-boundary-types': 'off', // Not needed for test functions
+      '@typescript-eslint/no-require-imports': 'off', // Some tests use require() for dynamic imports
+      'no-undef': 'warn', // Workers tests may have globals like ScheduledEvent
+      'no-empty-pattern': 'off', // Test fixtures may have empty destructuring
+      '@typescript-eslint/no-empty-function': 'off', // Empty functions are fine in test mocks
+    },
+  },
+  // Scripts - relax TypeScript rules since they're often simple utility scripts
+  {
+    files: ['scripts/**/*.js', 'scripts/**/*.ts'],
+    rules: {
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-restricted-syntax': 'off',
+      'import/no-default-export': 'off',
     },
   },
 ];

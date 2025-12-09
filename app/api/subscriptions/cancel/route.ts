@@ -131,7 +131,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Access period end timestamp - Stripe returns Unix timestamps
-    const currentPeriodEnd = (updatedSubscription as any).current_period_end as number;
+    const updatedSubUnknown = updatedSubscription as unknown as {
+      current_period_end?: number;
+    };
+    const currentPeriodEnd = updatedSubUnknown.current_period_end || 0;
 
     return NextResponse.json({
       success: true,

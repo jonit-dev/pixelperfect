@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
+import { isDevelopment } from '@shared/config/env';
 
 /**
  * Global error boundary for the entire application
@@ -19,11 +20,14 @@ export default function GlobalError({
     // Log error to monitoring service
     console.error('Global error caught:', error);
 
-    if (typeof window !== 'undefined' && (window as any).baselime) {
-      (window as any).baselime.logError(error, {
-        digest: error.digest,
-        boundary: 'global-error',
-      });
+    if (typeof window !== 'undefined') {
+      const baselime = (window as unknown as { baselime?: { logError: (error: Error, metadata: unknown) => void } }).baselime;
+      if (baselime) {
+        baselime.logError(error, {
+          digest: error.digest,
+          boundary: 'global-error',
+        });
+      }
     }
   }, [error]);
 
@@ -43,7 +47,7 @@ export default function GlobalError({
                 fix.
               </p>
 
-              {process.env.NODE_ENV === 'development' && error && (
+              {isDevelopment() && error && (
                 <details className="mt-4 text-left">
                   <summary className="cursor-pointer text-sm text-slate-500 hover:text-slate-700">
                     Error details (dev only)

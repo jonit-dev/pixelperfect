@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
-import { getPlanForPriceId, assertKnownPriceId, resolvePriceId } from '@shared/config/stripe';
-import type { ISubscriptionPlanMetadata } from '@shared/config/stripe';
+import { getPlanForPriceId, assertKnownPriceId } from '@shared/config/stripe';
 import { getPlanByPriceId } from '@shared/config/subscription.utils';
 import dayjs from 'dayjs';
+import type Stripe from 'stripe';
 
 export const runtime = 'edge';
 
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
     try {
       const text = await request.text();
       body = JSON.parse(text) as IPreviewChangeRequest;
-    } catch (parseError) {
+    } catch {
       return NextResponse.json(
         {
           success: false,
@@ -315,8 +315,12 @@ export async function POST(request: NextRequest) {
 
         // For downgrades: no proration, just get the period end date
         if (isDowngradeChange) {
-          const periodStart = (subscription as any).current_period_start as number | undefined;
-          const periodEnd = (subscription as any).current_period_end as number | undefined;
+          const subscriptionUnknown = subscription as unknown as {
+            current_period_start?: number;
+            current_period_end?: number;
+          };
+          const periodStart = subscriptionUnknown.current_period_start;
+          const periodEnd = subscriptionUnknown.current_period_end;
 
           const periodStartISO = periodStart ? dayjs.unix(periodStart).toISOString() : dayjs().toISOString();
           effectiveDate = periodEnd ? dayjs.unix(periodEnd).toISOString() : undefined;
@@ -358,7 +362,7 @@ export async function POST(request: NextRequest) {
           const targetPlanName = targetPlan.name;
 
           // Only include items related to the current change (current plan -> target plan)
-          const relevantItems = invoice.lines.data.filter((line: any) => {
+          const relevantItems = invoice.lines.data.filter((line) => {
             const desc = line.description || '';
             // Include: unused current plan (credit) OR remaining target plan (charge)
             return (
@@ -369,7 +373,7 @@ export async function POST(request: NextRequest) {
 
           // Take only the first occurrence of each type to avoid duplicates
           const seenTypes = new Set<string>();
-          const uniqueItems = relevantItems.filter((line: any) => {
+          const uniqueItems = relevantItems.filter((line: Stripe.InvoiceLineItem) => {
             const desc = line.description || '';
             const type = desc.includes('Unused') ? `unused_${currentPlanName}` : `remaining_${targetPlanName}`;
             if (seenTypes.has(type)) return false;
@@ -378,7 +382,7 @@ export async function POST(request: NextRequest) {
           });
 
           const prorationTotal = uniqueItems.reduce(
-            (sum: number, line: any) => sum + (line.amount || 0),
+            (sum: number, line: Stripe.InvoiceLineItem) => sum + (line.amount || 0),
             0
           );
 
@@ -388,7 +392,7 @@ export async function POST(request: NextRequest) {
             currentPlan: currentPlanName,
             targetPlan: targetPlanName,
             prorationTotal,
-            relevantItems: uniqueItems.map((line: any) => ({
+            relevantItems: uniqueItems.map((line: Stripe.InvoiceLineItem) => ({
               description: line.description,
               amount: line.amount,
             })),

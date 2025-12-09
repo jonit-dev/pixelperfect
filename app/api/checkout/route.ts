@@ -4,7 +4,6 @@ import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import type { ICheckoutSessionRequest } from '@shared/types/stripe';
 import { clientEnv, serverEnv } from '@shared/config/env';
-import { BILLING_COPY } from '@shared/constants/billing';
 import { getTrialConfig } from '@shared/config/subscription.config';
 import { resolvePlanOrPack, assertKnownPriceId } from '@shared/config/stripe';
 
@@ -17,7 +16,7 @@ export async function POST(request: NextRequest) {
     try {
       const text = await request.text();
       body = JSON.parse(text);
-    } catch (parseError) {
+    } catch {
       return NextResponse.json(
         {
           success: false,
@@ -136,8 +135,16 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Get user from token (mock authentication for testing)
-    let user: any = null;
-    let authError: any = null;
+    let user: {
+      id: string;
+      email?: string;
+      user_metadata?: Record<string, string>;
+      app_metadata?: Record<string, string>;
+    } | null = null;
+    let authError: {
+      message: string;
+      status?: number;
+    } | null = null;
 
     if (serverEnv.ENV === 'test' && token.startsWith('test_token_')) {
       // Mock authentication for testing

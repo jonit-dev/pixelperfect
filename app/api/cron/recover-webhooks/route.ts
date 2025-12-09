@@ -18,7 +18,6 @@ import {
   processStripeEvent,
   isStripeNotFoundError,
 } from '@server/services/subscription-sync.service';
-import type Stripe from 'stripe';
 
 export const runtime = 'edge';
 
@@ -101,7 +100,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
         console.log(`[CRON] Successfully recovered webhook event ${event.event_id}`);
         recovered++;
-      } catch (error: any) {
+      } catch (error: unknown) {
         if (isStripeNotFoundError(error)) {
           // Event not found in Stripe (older than 30 days or deleted)
           console.log(
@@ -134,7 +133,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             .update({
               retry_count: newRetryCount,
               last_retry_at: new Date().toISOString(),
-              error_message: error.message || 'Unknown error',
+              error_message: error instanceof Error ? error.message : 'Unknown error',
               ...(shouldMarkUnrecoverable && {
                 status: 'unrecoverable',
                 recoverable: false,
@@ -171,7 +170,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       unrecoverable,
       syncRunId,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('[CRON] Webhook recovery failed:', errorMessage);
 

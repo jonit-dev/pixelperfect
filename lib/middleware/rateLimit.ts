@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { rateLimit, publicRateLimit } from '@server/rateLimit';
+import { serverEnv } from '@shared/config/env';
 
 /**
  * Rate limit configuration
@@ -48,21 +49,17 @@ export function createRateLimitHeaders(
 /**
  * Check if rate limiting should be skipped (test environment)
  * Uses dedicated ENV variable for clarity and security
- *
- * NOTE: We check process.env directly instead of serverEnv to ensure
- * we get the current environment value, not the value at module initialization time.
- * This is critical for test environments where env vars are loaded dynamically.
  */
 export function isTestEnvironment(): boolean {
-  return process.env.ENV === 'test' ||
-         process.env.NODE_ENV === 'test' ||
+  return serverEnv.ENV === 'test' ||
+         serverEnv.NODE_ENV === 'test' ||
          // Check for Playwright test environment
-         process.env.PLAYWRIGHT_TEST === '1' ||
+         serverEnv.PLAYWRIGHT_TEST === '1' ||
          // Check for test database URL pattern (Supabase test project)
-         (!!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL.includes('test'))) ||
+         (!!(serverEnv.NEXT_PUBLIC_SUPABASE_URL && serverEnv.NEXT_PUBLIC_SUPABASE_URL.includes('test'))) ||
          // Check for test API keys
-         (!!(process.env.AMPLITUDE_API_KEY && process.env.AMPLITUDE_API_KEY.includes('test'))) ||
-         (!!(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_SECRET_KEY.startsWith('sk_test_')));
+         (!!(serverEnv.AMPLITUDE_API_KEY && serverEnv.AMPLITUDE_API_KEY.includes('test'))) ||
+         (!!(serverEnv.STRIPE_SECRET_KEY && serverEnv.STRIPE_SECRET_KEY.startsWith('sk_test_')));
 }
 
 /**

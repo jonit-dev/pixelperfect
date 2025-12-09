@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
-import { getPlanForPriceId, assertKnownPriceId, resolvePriceId } from '@shared/config/stripe';
+import { getPlanForPriceId, assertKnownPriceId } from '@shared/config/stripe';
 
 export const runtime = 'edge';
 
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     try {
       const text = await request.text();
       body = JSON.parse(text) as ISubscriptionChangeRequest;
-    } catch (parseError) {
+    } catch {
       return NextResponse.json(
         {
           success: false,
@@ -335,9 +335,13 @@ export async function POST(request: NextRequest) {
 
       // Access period timestamps from latestSubscription
       // Note: In newer Stripe API versions, these fields may not be in the SDK types
-      // Cast to any to access them, with fallback calculation below
-      let periodStart = (latestSubscription as any).current_period_start as number | undefined;
-      let periodEnd = (latestSubscription as any).current_period_end as number | undefined;
+      // Cast to unknown to access them, with fallback calculation below
+      const latestSubUnknown = latestSubscription as unknown as {
+        current_period_start?: number;
+        current_period_end?: number;
+      };
+      let periodStart = latestSubUnknown.current_period_start;
+      let periodEnd = latestSubUnknown.current_period_end;
 
       // Fallback: Calculate period from billing_cycle_anchor if direct fields not available
       if (!periodEnd && latestSubscription.billing_cycle_anchor) {
@@ -476,12 +480,12 @@ export async function POST(request: NextRequest) {
       });
 
       // Access updated period timestamps
-      const updatedPeriodStart = (updatedSubscription as any).current_period_start as
-        | number
-        | undefined;
-      const updatedPeriodEnd = (updatedSubscription as any).current_period_end as
-        | number
-        | undefined;
+      const updatedSubUnknown = updatedSubscription as unknown as {
+        current_period_start?: number;
+        current_period_end?: number;
+      };
+      const updatedPeriodStart = updatedSubUnknown.current_period_start;
+      const updatedPeriodEnd = updatedSubUnknown.current_period_end;
 
       // Update local database with new price ID
       const updateData: {

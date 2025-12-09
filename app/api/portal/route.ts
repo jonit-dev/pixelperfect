@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       if (text) {
         body = JSON.parse(text);
       }
-    } catch (parseError) {
+    } catch {
       return NextResponse.json(
         {
           success: false,
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
         }
 
         returnUrl = body.returnUrl;
-      } catch (urlError) {
+      } catch {
         return NextResponse.json(
           {
             success: false,
@@ -173,7 +173,6 @@ export async function POST(request: NextRequest) {
     }
 
     // 5. Create Stripe Customer Portal session
-    const baseUrl = request.headers.get('origin') || clientEnv.BASE_URL;
 
     // Check if we're in test mode with dummy Stripe key
     if (serverEnv.STRIPE_SECRET_KEY?.includes('dummy_key') || serverEnv.ENV === 'test') {

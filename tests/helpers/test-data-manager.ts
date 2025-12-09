@@ -458,24 +458,20 @@ export class TestDataManager {
       return;
     }
 
-    try {
-      // First ensure the user profile exists to avoid foreign key constraint errors
-      await this.ensureUserProfile(userId, `test-${userId}@example.com`);
+    // First ensure the user profile exists to avoid foreign key constraint errors
+    await this.ensureUserProfile(userId, `test-${userId}@example.com`);
 
-      // Use the RPC function which is accessible to service_role
-      const { error: rpcError } = await this.supabase.rpc('increment_credits_with_log', {
-        target_user_id: userId,
-        amount: amount,
-        transaction_type: type,
-        ref_id: `test_${Date.now()}`,
-        description: `Test ${type} credits`,
-      });
+    // Use the RPC function which is accessible to service_role
+    const { error: rpcError } = await this.supabase.rpc('increment_credits_with_log', {
+      target_user_id: userId,
+      amount: amount,
+      transaction_type: type,
+      ref_id: `test_${Date.now()}`,
+      description: `Test ${type} credits`,
+    });
 
-      if (rpcError) {
-        throw new Error(`Failed to add credits: ${rpcError.message}`);
-      }
-    } catch (error) {
-      throw error;
+    if (rpcError) {
+      throw new Error(`Failed to add credits: ${rpcError.message}`);
     }
   }
 

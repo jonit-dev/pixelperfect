@@ -1,4 +1,4 @@
-/* eslint-disable import/no-default-export */
+ 
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
