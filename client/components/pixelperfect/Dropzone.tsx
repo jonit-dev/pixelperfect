@@ -1,5 +1,8 @@
 import { AlertCircle, FileUp, UploadCloud } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
+import { useUserData } from '@client/store/userStore';
+import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
+import { FileSizeUpgradePrompt } from './FileSizeUpgradePrompt';
 
 interface IDropzoneProps {
   onFilesSelected: (files: File[]) => void;
@@ -18,6 +21,10 @@ const Dropzone: React.FC<IDropzoneProps> = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showSizeUpgradePrompt, setShowSizeUpgradePrompt] = useState(false);
+  const [oversizedFile, setOversizedFile] = useState<File | null>(null);
+  const { subscription } = useUserData();
+  const isPaidUser = !!subscription?.price_id;
 
   const handleDragOver = useCallback(
     (e: React.DragEvent) => {
@@ -33,17 +40,20 @@ const Dropzone: React.FC<IDropzoneProps> = ({
     setIsDragging(false);
   }, []);
 
-  const validateFile = (file: File): boolean => {
-    const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (!validTypes.includes(file.type)) {
-      return false;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      // 5MB
-      return false;
-    }
-    return true;
-  };
+  const validateFile = useCallback(
+    (file: File): { valid: boolean; reason?: string } => {
+      const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+      if (!validTypes.includes(file.type)) {
+        return { valid: false, reason: 'type' };
+      }
+      const maxSize = isPaidUser ? IMAGE_VALIDATION.MAX_SIZE_PAID : IMAGE_VALIDATION.MAX_SIZE_FREE;
+      if (file.size > maxSize) {
+        return { valid: false, reason: 'size' };
+      }
+      return { valid: true };
+    },
+    [isPaidUser]
+  );
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
@@ -53,10 +63,26 @@ const Dropzone: React.FC<IDropzoneProps> = ({
 
       const droppedFiles = Array.from(e.dataTransfer.files);
       if (droppedFiles.length > 0) {
-        const validFiles = droppedFiles.filter(validateFile);
+        const validationResults = droppedFiles.map(f => ({ file: f, result: validateFile(f) }));
+        const validFiles = validationResults.filter(r => r.result.valid).map(r => r.file);
+        const oversizedFiles = validationResults.filter(
+          r => !r.result.valid && r.result.reason === 'size'
+        );
+
+        if (oversizedFiles.length > 0 && !isPaidUser) {
+          setShowSizeUpgradePrompt(true);
+          setOversizedFile(oversizedFiles[0].file);
+          setError(null);
+          // Still process valid files if any
+          if (validFiles.length > 0) {
+            onFilesSelected(validFiles);
+          }
+          return;
+        }
 
         if (validFiles.length !== droppedFiles.length) {
-          setError(`Some files were rejected. Only JPG, PNG, WEBP under 5MB are allowed.`);
+          const maxMB = isPaidUser ? 25 : 5;
+          setError(`Some files were rejected. Only JPG, PNG, WEBP under ${maxMB}MB are allowed.`);
         } else {
           setError(null);
         }
@@ -66,17 +92,33 @@ const Dropzone: React.FC<IDropzoneProps> = ({
         }
       }
     },
-    [onFilesSelected, disabled]
+    [onFilesSelected, disabled, isPaidUser, validateFile]
   );
 
   const handleFileInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const selectedFiles = Array.from(e.target.files || []);
       if (selectedFiles.length > 0) {
-        const validFiles = selectedFiles.filter(validateFile);
+        const validationResults = selectedFiles.map(f => ({ file: f, result: validateFile(f) }));
+        const validFiles = validationResults.filter(r => r.result.valid).map(r => r.file);
+        const oversizedFiles = validationResults.filter(
+          r => !r.result.valid && r.result.reason === 'size'
+        );
+
+        if (oversizedFiles.length > 0 && !isPaidUser) {
+          setShowSizeUpgradePrompt(true);
+          setOversizedFile(oversizedFiles[0].file);
+          setError(null);
+          // Still process valid files if any
+          if (validFiles.length > 0) {
+            onFilesSelected(validFiles);
+          }
+          return;
+        }
 
         if (validFiles.length !== selectedFiles.length) {
-          setError(`Some files were rejected. Only JPG, PNG, WEBP under 5MB are allowed.`);
+          const maxMB = isPaidUser ? 25 : 5;
+          setError(`Some files were rejected. Only JPG, PNG, WEBP under ${maxMB}MB are allowed.`);
         } else {
           setError(null);
         }
@@ -86,7 +128,7 @@ const Dropzone: React.FC<IDropzoneProps> = ({
         }
       }
     },
-    [onFilesSelected]
+    [onFilesSelected, isPaidUser, validateFile]
   );
 
   return (
@@ -164,6 +206,18 @@ const Dropzone: React.FC<IDropzoneProps> = ({
             <AlertCircle size={16} className="mr-2" />
             {error}
           </div>
+        </div>
+      )}
+
+      {showSizeUpgradePrompt && oversizedFile && (
+        <div className="absolute inset-x-0 -bottom-32 flex items-center justify-center">
+          <FileSizeUpgradePrompt
+            fileSize={oversizedFile.size}
+            onDismiss={() => {
+              setShowSizeUpgradePrompt(false);
+              setOversizedFile(null);
+            }}
+          />
         </div>
       )}
     </div>

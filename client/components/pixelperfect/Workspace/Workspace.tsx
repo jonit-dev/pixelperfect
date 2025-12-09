@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropzone from '@client/components/pixelperfect/Dropzone';
 import { CheckCircle2, Layers } from 'lucide-react';
 import { useBatchQueue } from '@client/hooks/pixelperfect/useBatchQueue';
@@ -9,6 +9,8 @@ import BatchSidebar from '@client/components/pixelperfect/Workspace/BatchSidebar
 import PreviewArea from '@client/components/pixelperfect/Workspace/PreviewArea';
 import QueueStrip from '@client/components/pixelperfect/Workspace/QueueStrip';
 import { downloadSingle } from '@client/utils/download';
+import { UpgradeSuccessBanner } from './UpgradeSuccessBanner';
+import { useUserData } from '@client/store/userStore';
 
 const Workspace: React.FC = () => {
   // Hook managing all queue state
@@ -26,6 +28,9 @@ const Workspace: React.FC = () => {
     processSingleItem,
   } = useBatchQueue();
 
+  const { subscription } = useUserData();
+  const hasSubscription = !!subscription?.price_id;
+
   // Config State
   const [config, setConfig] = useState<IUpscaleConfig>({
     mode: 'both',
@@ -34,6 +39,16 @@ const Workspace: React.FC = () => {
     preserveText: true,
     denoise: true,
   });
+
+  // Success banner state
+  const [showSuccessBanner, setShowSuccessBanner] = useState(false);
+
+  // Show success banner after first successful batch completion
+  useEffect(() => {
+    if (completedCount > 0 && !isProcessingBatch) {
+      setShowSuccessBanner(true);
+    }
+  }, [completedCount, isProcessingBatch]);
 
   // Handlers
   const handleDownloadSingle = (url: string, filename: string) => {
@@ -82,6 +97,17 @@ const Workspace: React.FC = () => {
 
         {/* Right Area: Main View + Queue Strip */}
         <div className="flex-grow flex flex-col bg-slate-50 overflow-hidden relative">
+          {/* Success Banner */}
+          {showSuccessBanner && (
+            <div className="p-4">
+              <UpgradeSuccessBanner
+                processedCount={completedCount}
+                onDismiss={() => setShowSuccessBanner(false)}
+                hasSubscription={hasSubscription}
+              />
+            </div>
+          )}
+
           {/* Main Preview Area */}
           <div className="flex-grow p-6 flex items-center justify-center overflow-hidden relative">
             <PreviewArea

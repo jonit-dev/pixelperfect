@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Settings,
   ArrowUpCircle,
@@ -15,6 +16,10 @@ import {
 import Button from '@client/components/pixelperfect/Button';
 import { IUpscaleConfig, IBatchItem, ProcessingStatus } from '@shared/types/pixelperfect';
 import { downloadBatch } from '@client/utils/download';
+import { CreditCostPreview } from './CreditCostPreview';
+import { InsufficientCreditsModal } from '@client/components/stripe/InsufficientCreditsModal';
+import { useUserData } from '@client/store/userStore';
+import { getCreditCostForMode } from '@shared/config/subscription.utils';
 
 interface IBatchSidebarProps {
   config: IUpscaleConfig;
@@ -78,8 +83,37 @@ const BatchSidebar: React.FC<IBatchSidebarProps> = ({
   onProcess,
   onClear,
 }) => {
+  const router = useRouter();
+  const { totalCredits } = useUserData();
+  const [showInsufficientModal, setShowInsufficientModal] = useState(false);
+
   const handleDownloadAll = () => {
     downloadBatch(queue, config.mode);
+  };
+
+  // Calculate credit costs
+  const pendingQueue = queue.filter(i => i.status !== ProcessingStatus.COMPLETED);
+  const costPerImage = getCreditCostForMode(config.mode);
+  const totalCost = pendingQueue.length * costPerImage;
+  const hasEnoughCredits = totalCredits >= totalCost;
+
+  // Debug logging
+  React.useEffect(() => {
+    console.log('[BatchSidebar] Debug:', {
+      pendingQueueLength: pendingQueue.length,
+      totalCredits,
+      costPerImage,
+      totalCost,
+      hasEnoughCredits,
+    });
+  }, [pendingQueue.length, totalCredits, costPerImage, totalCost, hasEnoughCredits]);
+
+  const handleProcessClick = () => {
+    if (!hasEnoughCredits && pendingQueue.length > 0) {
+      setShowInsufficientModal(true);
+      return;
+    }
+    onProcess();
   };
 
   // Generate a placeholder prompt based on current settings (forcing 'both' mode logic to give a good full example)
@@ -219,8 +253,17 @@ const BatchSidebar: React.FC<IBatchSidebarProps> = ({
 
       {/* Actions */}
       <div className="mt-6 pt-6 border-t border-slate-100 space-y-3">
+        {/* Credit Cost Preview */}
+        {pendingQueue.length > 0 && (
+          <CreditCostPreview
+            queueLength={pendingQueue.length}
+            mode={config.mode}
+            currentBalance={totalCredits}
+          />
+        )}
+
         <Button
-          onClick={onProcess}
+          onClick={handleProcessClick}
           className="w-full shadow-md shadow-indigo-100"
           size="lg"
           disabled={isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)}
@@ -256,6 +299,16 @@ const BatchSidebar: React.FC<IBatchSidebarProps> = ({
           Clear Queue
         </Button>
       </div>
+
+      {/* Insufficient Credits Modal */}
+      <InsufficientCreditsModal
+        isOpen={showInsufficientModal}
+        onClose={() => setShowInsufficientModal(false)}
+        requiredCredits={totalCost}
+        currentBalance={totalCredits}
+        onBuyCredits={() => router.push('/dashboard/billing')}
+        onViewPlans={() => router.push('/pricing')}
+      />
     </div>
   );
 };

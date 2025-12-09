@@ -46,7 +46,7 @@ export function CreditsDisplay(): JSX.Element {
   }
 
   // Should show tooltip?
-  const showTooltip = isLowCredits || isNoCredits || showExpiration;
+  const showTooltip = isLowCredits || isNoCredits || !!showExpiration;
 
   if (loading) {
     return (

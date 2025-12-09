@@ -4,7 +4,12 @@
  */
 
 import { getSubscriptionConfig } from './subscription.config';
-import type { IPlanConfig, ProcessingMode, ICreditsExpirationConfig, ICreditPack } from './subscription.types';
+import type {
+  IPlanConfig,
+  ProcessingMode,
+  ICreditsExpirationConfig,
+  ICreditPack,
+} from './subscription.types';
 
 // ============================================
 // Unified Pricing Resolver - Single Source of Truth
@@ -92,7 +97,9 @@ export function resolvePriceId(priceId: string): IPriceIndexEntry | null {
 export function assertKnownPriceId(priceId: string): IPriceIndexEntry {
   const resolved = resolvePriceId(priceId);
   if (!resolved) {
-    throw new Error(`Unknown price ID: ${priceId}. This price is not configured in the subscription config.`);
+    throw new Error(
+      `Unknown price ID: ${priceId}. This price is not configured in the subscription config.`
+    );
   }
   return resolved;
 }
@@ -242,6 +249,14 @@ export function getCreditCostForMode(mode: ProcessingMode): number {
 export function getAllCreditCosts(): Record<ProcessingMode, number> {
   const { creditCosts } = getSubscriptionConfig();
   return { ...creditCosts.modes };
+}
+
+/**
+ * Calculate total credits needed for a batch
+ * Used for pre-processing cost preview in the UI
+ */
+export function calculateBatchCost(imageCount: number, mode: ProcessingMode): number {
+  return imageCount * getCreditCostForMode(mode);
 }
 
 /**
