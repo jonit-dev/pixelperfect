@@ -70,9 +70,12 @@ function loadClientEnv(): IClientEnv {
     // Stripe
     STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
     // Stripe Credit Pack Price IDs
-    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_SMALL: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_SMALL || 'price_credits_small',
-    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_MEDIUM: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_MEDIUM || 'price_credits_medium',
-    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_LARGE: process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_LARGE || 'price_credits_large',
+    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_SMALL:
+      process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_SMALL || 'price_credits_small',
+    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_MEDIUM:
+      process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_MEDIUM || 'price_credits_medium',
+    NEXT_PUBLIC_STRIPE_PRICE_CREDITS_LARGE:
+      process.env.NEXT_PUBLIC_STRIPE_PRICE_CREDITS_LARGE || 'price_credits_large',
   };
 
   return clientEnvSchema.parse(env);
@@ -91,6 +94,13 @@ export const clientEnv = loadClientEnv();
 
 const serverEnvSchema = z.object({
   ENV: z.enum(['development', 'production', 'test']).default('development'),
+  // Node environment
+  NODE_ENV: z.string().optional(),
+  // Test flags
+  PLAYWRIGHT_TEST: z.string().optional(),
+  // Public URLs (for server-side use)
+  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_BASE_URL: z.string().url().optional(),
   // Supabase
   SUPABASE_SERVICE_ROLE_KEY: z.string().default(''),
   // Stripe
@@ -115,6 +125,8 @@ const serverEnvSchema = z.object({
   CF_PAGES_URL: z.string().optional(),
   // Cron Job Authentication
   CRON_SECRET: z.string().default(''),
+  // Test Authentication
+  TEST_AUTH_TOKEN: z.string().optional(),
 });
 
 export type IServerEnv = z.infer<typeof serverEnvSchema>;
@@ -122,6 +134,13 @@ export type IServerEnv = z.infer<typeof serverEnvSchema>;
 function loadServerEnv(): IServerEnv {
   const env = {
     ENV: process.env.ENV || process.env.NODE_ENV || 'development',
+    // Node environment
+    NODE_ENV: process.env.NODE_ENV,
+    // Test flags
+    PLAYWRIGHT_TEST: process.env.PLAYWRIGHT_TEST,
+    // Public URLs
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     // Supabase
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
     // Stripe
@@ -144,6 +163,8 @@ function loadServerEnv(): IServerEnv {
     CF_PAGES_URL: process.env.CF_PAGES_URL,
     // Cron Job Authentication
     CRON_SECRET: process.env.CRON_SECRET || '',
+    // Test Authentication
+    TEST_AUTH_TOKEN: process.env.TEST_AUTH_TOKEN,
   };
 
   return serverEnvSchema.parse(env);

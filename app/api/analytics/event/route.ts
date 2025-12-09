@@ -43,6 +43,13 @@ const ALLOWED_EVENTS = [
   // Error/limit events (server-side only)
   'rate_limit_exceeded',
   'processing_failed',
+
+  // pSEO-specific events
+  'pseo_page_view',
+  'pseo_cta_clicked',
+  'pseo_scroll_depth',
+  'pseo_faq_expanded',
+  'pseo_internal_link_clicked',
 ] as const;
 
 // Enhanced security validation for event names

@@ -8,7 +8,7 @@ import { clientEnv } from '@shared/config/env';
 const ALLOWED_ORIGINS = [
   'http://localhost:3000',
   'https://localhost:3000',
-  clientEnv.NEXT_PUBLIC_BASE_URL,
+  clientEnv.BASE_URL,
 ].filter(Boolean) as string[];
 
 /**
