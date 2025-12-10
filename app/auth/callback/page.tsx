@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@shared/utils/supabase/client';
 import { setAuthIntent } from '@client/utils/authRedirectManager';
+import '@client/store/auth'; // Ensure auth store is initialized
 
 export default function AuthCallbackPage() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -30,10 +31,7 @@ export default function AuthCallbackPage() {
         if (event === 'SIGNED_IN' && session) {
           setStatus('success');
           // The redirect will be handled by the postAuthRedirect in authStateHandler
-          setTimeout(() => {
-            // Give time for the auth state handler to process
-            router.push('/dashboard');
-          }, 100);
+          // No need to manually redirect here
         } else if (event === 'SIGNED_OUT') {
           setStatus('error');
         }
@@ -47,9 +45,7 @@ export default function AuthCallbackPage() {
 
       if (session) {
         setStatus('success');
-        setTimeout(() => {
-          router.push('/dashboard');
-        }, 100);
+        // The redirect will be handled by the auth state handler after initialization
       } else if (error) {
         setStatus('error');
       }

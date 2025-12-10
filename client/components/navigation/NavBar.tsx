@@ -54,13 +54,10 @@ export const NavBar = (): JSX.Element => {
               Dashboard
             </a>
           )}
-          <a href="#features" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+          <a href="/features" className="text-sm font-medium text-slate-600 hover:text-slate-900">
             Features
           </a>
-          <a
-            href="#how-it-works"
-            className="text-sm font-medium text-slate-600 hover:text-slate-900"
-          >
+          <a href="/how-it-works" className="text-sm font-medium text-slate-600 hover:text-slate-900">
             How it Works
           </a>
           <a href="/pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900">
@@ -224,13 +221,13 @@ export const NavBar = (): JSX.Element => {
               </a>
             )}
             <a
-              href="#features"
+              href="/features"
               className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
             >
               Features
             </a>
             <a
-              href="#how-it-works"
+              href="/how-it-works"
               className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
             >
               How it Works

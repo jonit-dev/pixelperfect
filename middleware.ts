@@ -83,6 +83,22 @@ async function handlePageRoute(req: NextRequest, pathname: string): Promise<Next
   // Apply security headers
   applySecurityHeaders(response);
 
+  // Authenticated user on root domain -> redirect to dashboard
+  if (user && pathname === '/') {
+    // Check if there are any query parameters that suggest other intent (like login prompts)
+    const loginRequired = req.nextUrl.searchParams.get('login');
+
+    // Only redirect if there's no login prompt to avoid conflicts with existing flow
+    if (!loginRequired) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/dashboard';
+      // Clear any existing search params for clean redirect
+      url.searchParams.delete('login');
+      url.searchParams.delete('next');
+      return NextResponse.redirect(url);
+    }
+  }
+
   // Unauthenticated user on protected dashboard routes -> redirect to landing with login prompt
   if (!user && pathname.startsWith('/dashboard')) {
     const url = req.nextUrl.clone();

@@ -45,8 +45,8 @@ export function CreditsDisplay(): JSX.Element {
     }
   }
 
-  // Should show tooltip?
-  const showTooltip = isLowCredits || isNoCredits || !!showExpiration;
+  // Should show tooltip? (excluding expiration)
+  const showTooltip = isLowCredits || isNoCredits;
 
   if (loading) {
     return (
@@ -118,9 +118,6 @@ export function CreditsDisplay(): JSX.Element {
             Buy more credits →
           </a>
         </>
-      )}
-      {showExpiration && expirationText && (
-        <div className="text-amber-300">Credits expire {expirationText}</div>
       )}
     </div>
   );
