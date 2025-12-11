@@ -1,8 +1,6 @@
 'use client';
 
-import { useCredits, useSubscription, useUserStore } from '@client/store/userStore';
-import { getPlanByPriceId } from '@shared/config/subscription.utils';
-import { formatDistanceToNow } from 'date-fns';
+import { useCredits, useUserStore } from '@client/store/userStore';
 import { SmartTooltip } from '@client/components/ui/SmartTooltip';
 
 // Low credit threshold - show warning when credits fall below this amount
@@ -18,7 +16,6 @@ const LOW_CREDIT_THRESHOLD = 5;
  */
 export function CreditsDisplay(): JSX.Element {
   const { total: creditBalance } = useCredits();
-  const subscription = useSubscription();
   const { isLoading: loading, error, invalidate } = useUserStore();
 
   const handleRefresh = () => {
@@ -28,24 +25,7 @@ export function CreditsDisplay(): JSX.Element {
   const isLowCredits = creditBalance > 0 && creditBalance <= LOW_CREDIT_THRESHOLD;
   const isNoCredits = creditBalance === 0;
 
-  // Check if credits will expire
-  const priceId = subscription?.price_id;
-  const planConfig = priceId ? getPlanByPriceId(priceId) : null;
-  const expiresAt = subscription?.current_period_end;
-  const creditsExpire = planConfig?.creditsExpiration?.mode !== 'never';
-  const showExpiration = creditsExpire && expiresAt && creditBalance > 0;
-
-  // Calculate time until expiration
-  let expirationText = '';
-  if (showExpiration && expiresAt) {
-    try {
-      expirationText = formatDistanceToNow(new Date(expiresAt), { addSuffix: true });
-    } catch {
-      expirationText = '';
-    }
-  }
-
-  // Should show tooltip? (excluding expiration)
+  // Should show tooltip?
   const showTooltip = isLowCredits || isNoCredits;
 
   if (loading) {

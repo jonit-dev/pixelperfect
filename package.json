@@ -38,7 +38,9 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "stripe:listen": "bash -c 'source ./scripts/load-env.sh && stripe listen --api-key $STRIPE_SECRET_KEY --forward-to localhost:3000/api/webhooks/stripe'",
-    "stripe:setup": "./scripts/stripe-product-sync.sh",
+    "stripe:setup": "bash -c 'source ./scripts/load-env.sh && npx tsx scripts/setup-stripe.ts'",
+    "stripe:setup:test": "bash -c 'source ./scripts/load-env.sh && npx tsx scripts/setup-stripe.ts --test'",
+    "stripe:setup:prod": "bash -c 'source ./scripts/load-env.sh && npx tsx scripts/setup-stripe.ts --prod'",
     "stripe:check": "./scripts/load-env.sh --print"
   },
   "dependencies": {
