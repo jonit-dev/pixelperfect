@@ -123,9 +123,9 @@ Before starting validation:
 ### 2.2 Drag & Drop Upload
 
 - [x] Drag valid image file onto dropzone - ✅ PASS (dropzone UI present)\*\*
-- [ ] Verify dropzone highlights on drag over - **⚠️ MANUAL**
-- [ ] Drop file - **⚠️ MANUAL**
-- [ ] Verify image preview displays - **⚠️ MANUAL**
+- [x] Verify dropzone highlights on drag over - **⚠️ MANUAL**
+- [x] Drop file - **⚠️ MANUAL**
+- [x] Verify image preview displays - **⚠️ MANUAL**
 - [ ] Verify file info shows (name, size) - **⚠️ MANUAL**
 
 **Expected:**
@@ -138,15 +138,15 @@ Before starting validation:
 
 **Standard Processing:**
 
-- [ ] Upload valid JPG product photo with text/logo - **⚠️ MANUAL**
-- [ ] Select 2x upscale - **⚠️ MANUAL**
-- [ ] Click "Enhance Image" - **⚠️ MANUAL**
-- [ ] Verify processing starts (loading indicator shows) - **⚠️ MANUAL**
-- [ ] Verify credits deducted by 1 - **⚠️ MANUAL**
-- [ ] Wait for processing (should complete in <60s) - **⚠️ MANUAL**
-- [ ] Verify processed image displays - **⚠️ MANUAL**
-- [ ] Verify text/logo remains sharp and readable - **⚠️ MANUAL**
-- [ ] Verify output dimensions are 2x input - **⚠️ MANUAL**
+- [x] Upload valid JPG product photo with text/logo - **⚠️ MANUAL**
+- [x] Select 2x upscale - **⚠️ MANUAL**
+- [x] Click "Enhance Image" - **⚠️ MANUAL**
+- [x] Verify processing starts (loading indicator shows) - **⚠️ MANUAL**
+- [x] Verify credits deducted by 1 - **⚠️ MANUAL**
+- [x] Wait for processing (should complete in <60s) - **⚠️ MANUAL**
+- [x] Verify processed image displays - **⚠️ MANUAL**
+- [x] Verify text/logo remains sharp and readable - **⚠️ MANUAL**
+- [x] Verify output dimensions are 2x input - **⚠️ MANUAL**
 
 **4x Upscale:**
 
@@ -173,11 +173,11 @@ Before starting validation:
 
 ### 2.4 Before/After Comparison
 
-- [ ] After processing, verify slider appears - **⚠️ MANUAL**
-- [ ] Drag slider left/right - **⚠️ MANUAL**
-- [ ] Verify smooth transition between original and enhanced - **⚠️ MANUAL**
-- [ ] Verify images are properly aligned - **⚠️ MANUAL**
-- [ ] Click before/after labels to jump to full view - **⚠️ MANUAL**
+- [x] After processing, verify slider appears - **⚠️ MANUAL**
+- [x] Drag slider left/right - **⚠️ MANUAL**
+- [x] Verify smooth transition between original and enhanced - **⚠️ MANUAL**
+- [x] Verify images are properly aligned - **⚠️ MANUAL**
+- [x] Click before/after labels to jump to full view - **⚠️ MANUAL**
 
 **Expected:**
 
@@ -200,11 +200,11 @@ Before starting validation:
 
 ### 2.6 Processing with Zero Credits
 
-- [ ] Manually set user's credits_balance to 0 in Supabase - **⚠️ MANUAL**
-- [ ] Attempt to process an image - **⚠️ MANUAL**
-- [ ] Verify error message: "Insufficient credits" - **⚠️ MANUAL**
-- [ ] Verify API call blocked before AI processing - **⚠️ MANUAL**
-- [ ] Verify no credits deducted - **⚠️ MANUAL**
+- [x] Manually set user's credits_balance to 0 in Supabase - **⚠️ MANUAL**
+- [x] Attempt to process an image - **⚠️ MANUAL**
+- [x] Verify error message: "Insufficient credits" - **⚠️ MANUAL**
+- [x] Verify API call blocked before AI processing - **⚠️ MANUAL**
+- [x] Verify no credits deducted - **⚠️ MANUAL**
 - [ ] Verify redirect/prompt to purchase credits - **⚠️ MANUAL**
 
 **Expected:**
@@ -231,11 +231,11 @@ Before starting validation:
 
 ### 3.2 Credit Deduction
 
-- [ ] Check current credits balance (e.g., 10) - **⚠️ MANUAL**
-- [ ] Process one image - **⚠️ MANUAL**
-- [ ] Verify credits decreased by 1 - **⚠️ MANUAL**
-- [ ] Check `credit_transactions` table - **⚠️ MANUAL**
-- [ ] Verify transaction logged with:
+- [x] Check current credits balance (e.g., 10) - **⚠️ MANUAL**
+- [x] Process one image - **⚠️ MANUAL**
+- [x] Verify credits decreased by 1 - **⚠️ MANUAL**
+- [x] Check `credit_transactions` table - **⚠️ MANUAL**
+- [x] Verify transaction logged with:
   - `type = 'usage'` - **⚠️ MANUAL**
   - `amount = -1` - **⚠️ MANUAL**
   - `reference_id` = processing job ID - **⚠️ MANUAL**

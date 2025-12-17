@@ -24,11 +24,28 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   }
 
   try {
-    const response = await fetch(url);
+    // Add headers that Replicate might require
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; PixelPerfect/1.0)',
+        Accept: 'image/*',
+      },
+    });
 
     if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unknown error');
+      console.error('[Proxy] Fetch failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: url.substring(0, 100),
+        error: errorText,
+      });
+
       return NextResponse.json(
-        { error: `Failed to fetch image: ${response.status}` },
+        {
+          error: `Failed to fetch image: ${response.status}`,
+          details: errorText.substring(0, 200),
+        },
         { status: response.status }
       );
     }
@@ -45,6 +62,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     });
   } catch (error) {
     console.error('Proxy image error:', error);
-    return NextResponse.json({ error: 'Failed to proxy image' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Failed to proxy image';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

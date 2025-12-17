@@ -21,11 +21,17 @@ const STAGE_MESSAGES: Record<ProcessingStage, string> = {
   [ProcessingStage.FINALIZING]: 'Finalizing...',
 };
 
+interface IBatchProgress {
+  current: number;
+  total: number;
+}
+
 interface IPreviewAreaProps {
   activeItem: IBatchItem | null;
   onDownload: (url: string, filename: string) => void;
   onRetry: (item: IBatchItem) => void;
   selectedModel?: string; // For time estimation
+  batchProgress?: IBatchProgress | null;
 }
 
 export const PreviewArea: React.FC<IPreviewAreaProps> = ({
@@ -33,6 +39,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   onDownload,
   onRetry,
   selectedModel = 'auto',
+  batchProgress,
 }) => {
   // Interpolated progress for smooth animation
   const [displayProgress, setDisplayProgress] = useState(0);
@@ -159,6 +166,15 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
           )}
 
           <div className="w-72 space-y-4 p-6 bg-white rounded-xl shadow-2xl border border-slate-100">
+            {/* Batch progress indicator */}
+            {batchProgress && batchProgress.total > 1 && (
+              <div className="flex items-center justify-center gap-2 pb-2 border-b border-slate-100">
+                <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                  Image {batchProgress.current} of {batchProgress.total}
+                </span>
+              </div>
+            )}
+
             {/* Stage indicator with spinner */}
             <div className="flex items-center gap-3">
               <div className="relative">

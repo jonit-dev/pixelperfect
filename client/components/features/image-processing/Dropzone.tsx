@@ -2,7 +2,8 @@ import { AlertCircle, FileUp, UploadCloud } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { useUserData } from '@client/store/userStore';
 import { processFiles } from '@client/utils/file-validation';
-import { FileSizeUpgradePrompt } from './FileSizeUpgradePrompt';
+import { OversizedImageModal } from './OversizedImageModal';
+import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
 
 interface IDropzoneProps {
   onFilesSelected: (files: File[]) => void;
@@ -21,10 +22,14 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showSizeUpgradePrompt, setShowSizeUpgradePrompt] = useState(false);
-  const [oversizedFile, setOversizedFile] = useState<File | null>(null);
+  const [showOversizedModal, setShowOversizedModal] = useState(false);
+  const [oversizedFiles, setOversizedFiles] = useState<File[]>([]);
+  const [currentOversizedIndex, setCurrentOversizedIndex] = useState(0);
   const { subscription } = useUserData();
   const isPaidUser = !!subscription?.price_id;
+  const currentLimit = isPaidUser
+    ? IMAGE_VALIDATION.MAX_SIZE_PAID
+    : IMAGE_VALIDATION.MAX_SIZE_FREE;
 
   const handleDragOver = useCallback(
     (e: React.DragEvent) => {
@@ -44,8 +49,9 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
     (files: File[]) => {
       const { validFiles, oversizedFiles, errorMessage } = processFiles(files, isPaidUser);
 
-      if (oversizedFiles.length > 0 && !isPaidUser) {
-        setShowSizeUpgradePrompt(true);
+      if (oversizedFiles.length > 0) {
+        // Show modal for oversized files (works for both free and paid users)
+        setShowOversizedModal(true);
         setOversizedFile(oversizedFiles[0]);
         setError(null);
       } else if (errorMessage) {
@@ -59,6 +65,14 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
       }
     },
     [isPaidUser, onFilesSelected]
+  );
+
+  const handleResizeAndContinue = useCallback(
+    (resizedFile: File) => {
+      // Pass the resized file to the parent
+      onFilesSelected([resizedFile]);
+    },
+    [onFilesSelected]
   );
 
   const handleDrop = useCallback(
@@ -156,16 +170,18 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
         </div>
       )}
 
-      {showSizeUpgradePrompt && oversizedFile && (
-        <div className="absolute inset-x-0 -bottom-32 flex items-center justify-center">
-          <FileSizeUpgradePrompt
-            fileSize={oversizedFile.size}
-            onDismiss={() => {
-              setShowSizeUpgradePrompt(false);
-              setOversizedFile(null);
-            }}
-          />
-        </div>
+      {/* Oversized Image Modal */}
+      {oversizedFile && (
+        <OversizedImageModal
+          file={oversizedFile}
+          isOpen={showOversizedModal}
+          onClose={() => {
+            setShowOversizedModal(false);
+            setOversizedFile(null);
+          }}
+          onResizeAndContinue={handleResizeAndContinue}
+          currentLimit={currentLimit}
+        />
       )}
     </div>
   );

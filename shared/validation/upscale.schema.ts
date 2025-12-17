@@ -10,6 +10,7 @@ export const IMAGE_VALIDATION = {
   ALLOWED_TYPES: ['image/jpeg', 'image/png', 'image/webp', 'image/heic'] as const,
   MIN_DIMENSION: 64,
   MAX_DIMENSION: 8192,
+  MAX_PIXELS: 2_000_000, // ~1414x1414 max - GPU memory limit for upscaling
 };
 
 /**

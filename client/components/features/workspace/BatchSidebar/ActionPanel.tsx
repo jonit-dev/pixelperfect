@@ -5,9 +5,15 @@ import { Download, Loader2, Trash2, Wand2 } from 'lucide-react';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import React from 'react';
 
+interface IBatchProgress {
+  current: number;
+  total: number;
+}
+
 export interface IActionPanelProps {
   queue: IBatchItem[];
   isProcessing: boolean;
+  batchProgress: IBatchProgress | null;
   completedCount: number;
   totalCost: number;
   currentBalance: number;
@@ -22,6 +28,7 @@ export interface IActionPanelProps {
 export const ActionPanel: React.FC<IActionPanelProps> = ({
   queue,
   isProcessing,
+  batchProgress,
   completedCount,
   totalCost,
   currentBalance,
@@ -77,13 +84,15 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
         <div className="flex items-center justify-center gap-2">
           {isProcessing ? <Loader2 className="animate-spin" size={18} /> : <Wand2 size={18} />}
           <span className="text-sm font-bold">
-            {isProcessing
-              ? `Processing...`
-              : completedCount > 0 && completedCount < queue.length
-                ? `Process Remaining (${queue.length - completedCount})`
-                : completedCount === queue.length
-                  ? 'Processed All'
-                  : `Process All (${queue.length})`}
+            {isProcessing && batchProgress
+              ? `Processing ${batchProgress.current} of ${batchProgress.total}`
+              : isProcessing
+                ? 'Processing...'
+                : completedCount > 0 && completedCount < queue.length
+                  ? `Process Remaining (${queue.length - completedCount})`
+                  : completedCount === queue.length
+                    ? 'Processed All'
+                    : `Process All (${queue.length})`}
           </span>
         </div>
 

@@ -2,29 +2,96 @@ import JSZip from 'jszip';
 import { IBatchItem } from '@shared/types/pixelperfect';
 
 /**
- * Check if URL is external (needs proxy) or internal (data URL)
+ * Check if URL is external (Replicate, etc.) or internal (data URL)
  */
 const isExternalUrl = (url: string): boolean => {
   return url.startsWith('http://') || url.startsWith('https://');
 };
 
 /**
- * Fetch image blob, using proxy for external URLs to bypass CORS
+ * Convert image URL to blob using canvas (works even with CORS-restricted URLs if already loaded)
+ */
+const urlToBlobViaCanvas = async (url: string): Promise<Blob> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error('Failed to get canvas context'));
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0);
+
+        canvas.toBlob(
+          blob => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Failed to convert canvas to blob'));
+            }
+          },
+          'image/png',
+          1.0
+        );
+      } catch (error) {
+        reject(error);
+      }
+    };
+
+    img.onerror = () => {
+      reject(new Error('Failed to load image for canvas conversion'));
+    };
+
+    img.src = url;
+  });
+};
+
+/**
+ * Fetch image blob, trying multiple methods
  */
 const fetchImageBlob = async (url: string): Promise<Blob> => {
-  if (isExternalUrl(url)) {
-    // Use proxy for external URLs (e.g., Replicate delivery URLs)
-    const proxyUrl = `/api/proxy-image?url=${encodeURIComponent(url)}`;
-    const response = await fetch(proxyUrl);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.status}`);
-    }
-    return response.blob();
-  } else {
-    // Data URL - fetch directly
+  // For data URLs, fetch directly
+  if (!isExternalUrl(url)) {
     const response = await fetch(url);
     return response.blob();
   }
+
+  // For external URLs, try canvas method first (works if image is already cached)
+  try {
+    return await urlToBlobViaCanvas(url);
+  } catch (canvasError) {
+    console.log('Canvas method failed, trying direct fetch:', canvasError);
+  }
+
+  // Try direct fetch (might work with CORS)
+  try {
+    const response = await fetch(url, {
+      mode: 'cors',
+      credentials: 'omit',
+    });
+    if (response.ok) {
+      return response.blob();
+    }
+  } catch (directError) {
+    console.log('Direct fetch failed, trying proxy:', directError);
+  }
+
+  // Last resort: use proxy
+  const proxyUrl = `/api/proxy-image?url=${encodeURIComponent(url)}`;
+  const response = await fetch(proxyUrl);
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+    throw new Error(errorData.error || `Failed to fetch image: ${response.status}`);
+  }
+  return response.blob();
 };
 
 export const downloadSingle = async (
@@ -32,7 +99,11 @@ export const downloadSingle = async (
   filename: string,
   mode: string
 ): Promise<void> => {
-  if (!url) return;
+  if (!url) {
+    throw new Error('No URL provided for download');
+  }
+
+  const downloadFilename = `pixelperfect_${mode}_${filename.split('.')[0]}.png`;
 
   try {
     const blob = await fetchImageBlob(url);
@@ -40,15 +111,16 @@ export const downloadSingle = async (
 
     const link = document.createElement('a');
     link.href = blobUrl;
-    link.download = `pixelperfect_${mode}_${filename.split('.')[0]}.png`;
+    link.download = downloadFilename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(blobUrl);
   } catch (error) {
     console.error('Download failed:', error);
-    // Fallback: open URL in new tab
-    window.open(url, '_blank');
+    const errorMessage =
+      error instanceof Error ? error.message : 'Failed to download image';
+    throw new Error(`Download failed: ${errorMessage}`);
   }
 };
 

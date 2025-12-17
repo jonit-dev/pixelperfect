@@ -10,11 +10,17 @@ import { serializeError } from '@shared/utils/errors';
 import { useToastStore } from '@client/store/toastStore';
 import { useUserStore } from '@client/store/userStore';
 
+interface IBatchProgress {
+  current: number;
+  total: number;
+}
+
 interface IUseBatchQueueReturn {
   queue: IBatchItem[];
   activeId: string | null;
   activeItem: IBatchItem | null;
   isProcessingBatch: boolean;
+  batchProgress: IBatchProgress | null;
   completedCount: number;
   setActiveId: (id: string) => void;
   addFiles: (files: File[]) => void;
@@ -28,6 +34,7 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
   const [queue, setQueue] = useState<IBatchItem[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isProcessingBatch, setIsProcessingBatch] = useState(false);
+  const [batchProgress, setBatchProgress] = useState<IBatchProgress | null>(null);
   const showToast = useToastStore(state => state.showToast);
 
   // Cleanup object URLs on unmount
@@ -143,13 +150,23 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
       item => item.status === ProcessingStatus.IDLE || item.status === ProcessingStatus.ERROR
     );
 
-    // Process sequentially
-    for (const item of itemsToProcess) {
-      // Check if item still exists in current queue state (handle removal during processing)
-      // We need to check the ref or just let the loop run, but checking existence is safer
+    const total = itemsToProcess.length;
+
+    // Process sequentially with delay to avoid Replicate rate limits
+    // Replicate limits: 6 req/min without payment method, stricter when low balance
+    for (let i = 0; i < itemsToProcess.length; i++) {
+      const item = itemsToProcess[i];
+      setBatchProgress({ current: i + 1, total });
       await processSingleItem(item, config);
+
+      // Add 12-second delay between requests (5 req/min = safe margin under 6 req/min limit)
+      // Skip delay after the last item
+      if (i < itemsToProcess.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 12000));
+      }
     }
 
+    setBatchProgress(null);
     setIsProcessingBatch(false);
   };
 
@@ -158,6 +175,7 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
     activeId,
     activeItem,
     isProcessingBatch,
+    batchProgress,
     completedCount,
     setActiveId,
     addFiles,

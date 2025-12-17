@@ -23,11 +23,17 @@ import {
   ActionPanel,
 } from './BatchSidebar/index';
 
+interface IBatchProgress {
+  current: number;
+  total: number;
+}
+
 interface IBatchSidebarProps {
   config: IUpscaleConfig;
   setConfig: (config: IUpscaleConfig) => void;
   queue: IBatchItem[];
   isProcessing: boolean;
+  batchProgress: IBatchProgress | null;
   completedCount: number;
   onProcess: () => void;
   onClear: () => void;
@@ -38,6 +44,7 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
   setConfig,
   queue,
   isProcessing,
+  batchProgress,
   completedCount,
   onProcess,
   onClear,
@@ -122,6 +129,7 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
         <ActionPanel
           queue={queue}
           isProcessing={isProcessing}
+          batchProgress={batchProgress}
           completedCount={completedCount}
           totalCost={totalCost}
           currentBalance={totalCredits}

@@ -20,6 +20,7 @@ const Workspace: React.FC = () => {
     activeId,
     activeItem,
     isProcessingBatch,
+    batchProgress,
     completedCount,
     setActiveId,
     addFiles,
@@ -45,6 +46,7 @@ const Workspace: React.FC = () => {
 
   // Success banner state
   const [showSuccessBanner, setShowSuccessBanner] = useState(false);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
 
   // Show success banner after first successful batch completion
   useEffect(() => {
@@ -54,8 +56,16 @@ const Workspace: React.FC = () => {
   }, [completedCount, isProcessingBatch]);
 
   // Handlers
-  const handleDownloadSingle = (url: string, filename: string) => {
-    downloadSingle(url, filename, config.mode);
+  const handleDownloadSingle = async (url: string, filename: string) => {
+    try {
+      setDownloadError(null);
+      await downloadSingle(url, filename, config.mode);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to download image';
+      setDownloadError(errorMessage);
+      console.error('Download error:', error);
+    }
   };
 
   // Empty State
@@ -93,6 +103,7 @@ const Workspace: React.FC = () => {
           setConfig={setConfig}
           queue={queue}
           isProcessing={isProcessingBatch}
+          batchProgress={batchProgress}
           completedCount={completedCount}
           onProcess={() => processBatch(config)}
           onClear={clearQueue}
@@ -111,6 +122,29 @@ const Workspace: React.FC = () => {
             </div>
           )}
 
+          {/* Download Error Notification */}
+          {downloadError && (
+            <div className="p-4">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-sm font-bold">
+                  !
+                </div>
+                <div className="flex-grow">
+                  <h4 className="text-sm font-semibold text-red-900 mb-1">Download Failed</h4>
+                  <p className="text-sm text-red-700">{downloadError}</p>
+                </div>
+                <button
+                  onClick={() => setDownloadError(null)}
+                  className="flex-shrink-0 text-red-400 hover:text-red-600 transition-colors"
+                  aria-label="Dismiss error"
+                >
+                  <span className="sr-only">Dismiss</span>
+                  ×
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Main Preview Area */}
           <div className="flex-grow p-6 flex items-center justify-center overflow-hidden relative">
             <PreviewArea
@@ -118,6 +152,7 @@ const Workspace: React.FC = () => {
               onDownload={handleDownloadSingle}
               onRetry={(item: IBatchItem) => processSingleItem(item, config)}
               selectedModel={config.selectedModel}
+              batchProgress={batchProgress}
             />
           </div>
 
