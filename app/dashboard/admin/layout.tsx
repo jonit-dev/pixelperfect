@@ -2,9 +2,9 @@ import React from 'react';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Note: This layout relies on middleware for authentication
-  // The actual admin check happens client-side via the admin routes
-  // For now, we trust that the middleware handles auth
-  // TODO: Add proper server-side auth check when server client is available
+  // The middleware.ts file already protects admin routes and handles authentication
+  // If user reaches here, they are authenticated and authorized
+  // Server-side auth check can be added here in the future if needed
 
   return (
     <div className="space-y-6">

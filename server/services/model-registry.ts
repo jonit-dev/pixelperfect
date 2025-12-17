@@ -1,4 +1,7 @@
 import { serverEnv } from '@shared/config/env';
+import { CREDIT_COSTS } from '@shared/config/credits.config';
+import { TIMEOUTS } from '@shared/config/timeouts.config';
+import { MODEL_COSTS as CONFIG_MODEL_COSTS } from '@shared/config/model-costs.config';
 import type {
   IModelConfig,
   ModelCapability,
@@ -29,25 +32,25 @@ const DEFAULT_MODEL_VERSIONS: Record<string, string> = {
 };
 
 /**
- * Model costs per run (USD) - rarely change, kept in code
+ * Model costs per run (USD) - now using centralized config
  */
 const MODEL_COSTS: Record<string, number> = {
-  'real-esrgan': 0.0017,
-  gfpgan: 0.0025,
-  'nano-banana': 0.0, // Google Gemini free tier (500 req/day)
-  'clarity-upscaler': 0.017,
-  'nano-banana-pro': 0.13,
+  'real-esrgan': CONFIG_MODEL_COSTS.REAL_ESRGAN_COST,
+  gfpgan: CONFIG_MODEL_COSTS.GFPGAN_COST,
+  'nano-banana': CONFIG_MODEL_COSTS.NANO_BANANA_COST, // Google Gemini free tier (500 req/day)
+  'clarity-upscaler': CONFIG_MODEL_COSTS.CLARITY_UPSCALER_COST,
+  'nano-banana-pro': CONFIG_MODEL_COSTS.NANO_BANANA_PRO_COST,
 };
 
 /**
- * Model credit multipliers - tied to model economics
+ * Model credit multipliers - using centralized config
  */
 const MODEL_CREDIT_MULTIPLIERS: Record<string, number> = {
-  'real-esrgan': 1,
-  gfpgan: 2,
-  'nano-banana': 2,
-  'clarity-upscaler': 4,
-  'nano-banana-pro': 8,
+  'real-esrgan': CREDIT_COSTS.REAL_ESRGAN_MULTIPLIER,
+  gfpgan: CREDIT_COSTS.GFPGAN_MULTIPLIER,
+  'nano-banana': CREDIT_COSTS.NANO_BANANA_MULTIPLIER,
+  'clarity-upscaler': CREDIT_COSTS.CLARITY_UPSCALER_MULTIPLIER,
+  'nano-banana-pro': CREDIT_COSTS.NANO_BANANA_PRO_MULTIPLIER,
 };
 
 /**
@@ -114,10 +117,10 @@ export class ModelRegistry {
         costPerRun: MODEL_COSTS['real-esrgan'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['real-esrgan'],
         qualityScore: 8.5,
-        processingTimeMs: 2000,
-        maxInputResolution: 2048 * 2048,
-        maxOutputResolution: 4096 * 4096,
-        supportedScales: [2, 4], // Real-ESRGAN only supports 2x and 4x
+        processingTimeMs: TIMEOUTS.REAL_ESRGAN_PROCESSING_TIME,
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+        supportedScales: [CONFIG_MODEL_COSTS.DEFAULT_SCALE, CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD], // Real-ESRGAN only supports 2x and 4x
         isEnabled: true, // Always enabled as fallback
       },
       // GFPGAN (Face Restore / Old Photos)
@@ -130,10 +133,10 @@ export class ModelRegistry {
         costPerRun: MODEL_COSTS['gfpgan'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['gfpgan'],
         qualityScore: 9.0,
-        processingTimeMs: 5000,
-        maxInputResolution: 2048 * 2048,
-        maxOutputResolution: 4096 * 4096,
-        supportedScales: [2, 4], // GFPGAN max scale is 4
+        processingTimeMs: TIMEOUTS.GFPGAN_PROCESSING_TIME,
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+        supportedScales: [CONFIG_MODEL_COSTS.DEFAULT_SCALE, CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD], // GFPGAN max scale is 4
         isEnabled: true,
       },
       // Nano Banana (Text/Logo Preservation)
@@ -146,10 +149,14 @@ export class ModelRegistry {
         costPerRun: MODEL_COSTS['nano-banana'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['nano-banana'],
         qualityScore: 8.0,
-        processingTimeMs: 3000,
-        maxInputResolution: 2048 * 2048,
-        maxOutputResolution: 4096 * 4096,
-        supportedScales: [2, 4, 8],
+        processingTimeMs: TIMEOUTS.NANO_BANANA_PROCESSING_TIME,
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+        supportedScales: [
+          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
+          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
+          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
+        ],
         isEnabled: true,
       },
       // Clarity Upscaler (Upscale Plus)
@@ -162,10 +169,14 @@ export class ModelRegistry {
         costPerRun: MODEL_COSTS['clarity-upscaler'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['clarity-upscaler'],
         qualityScore: 9.5,
-        processingTimeMs: 15000,
-        maxInputResolution: 2048 * 2048,
-        maxOutputResolution: 4096 * 4096,
-        supportedScales: [2, 4, 8],
+        processingTimeMs: TIMEOUTS.CLARITY_UPSCALER_PROCESSING_TIME,
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+        supportedScales: [
+          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
+          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
+          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
+        ],
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
       },
       // Nano Banana Pro (Upscale Ultra - Premium)
@@ -186,10 +197,14 @@ export class ModelRegistry {
         costPerRun: MODEL_COSTS['nano-banana-pro'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['nano-banana-pro'],
         qualityScore: 9.8,
-        processingTimeMs: 30000,
-        maxInputResolution: 2048 * 2048,
-        maxOutputResolution: 8192 * 8192,
-        supportedScales: [2, 4, 8],
+        processingTimeMs: TIMEOUTS.NANO_BANANA_PRO_PROCESSING_TIME,
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION_ULTRA,
+        supportedScales: [
+          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
+          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
+          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
+        ],
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
         tierRestriction: 'hobby',
       },
@@ -280,8 +295,9 @@ export class ModelRegistry {
     const model = this.getModel(modelId);
     if (!model) return 0;
 
-    // Base credits: 1 for upscale, 2 for enhance/both
-    const baseCredits = mode === 'upscale' ? 1 : 2;
+    // Base credits: from config
+    const baseCredits =
+      mode === 'upscale' ? CREDIT_COSTS.BASE_UPSCALE_COST : CREDIT_COSTS.BASE_ENHANCE_COST;
 
     // Final calculation: only base credits × model multiplier
     return Math.ceil(baseCredits * model.creditMultiplier);
@@ -370,14 +386,14 @@ export class ModelRegistry {
     let reasoning = 'Standard upscaling selected.';
 
     // Apply rule-based recommendation using use-case assignments
-    if (analysis.damageLevel && analysis.damageLevel > 0.7) {
+    if (analysis.damageLevel && analysis.damageLevel > CONFIG_MODEL_COSTS.DAMAGE_THRESHOLD_HIGH) {
       const damageModel = this.useCaseAssignments.damagedPhotos;
       if (eligibleModels.some(m => m.id === damageModel)) {
         recommended = damageModel;
         reasoning = 'Heavy damage detected. Premium restoration recommended.';
       }
     } else if (
-      (analysis.textCoverage && analysis.textCoverage > 0.15) ||
+      (analysis.textCoverage && analysis.textCoverage > CONFIG_MODEL_COSTS.TEXT_THRESHOLD_HIGH) ||
       analysis.contentType === 'document'
     ) {
       const textModel = this.useCaseAssignments.textLogos;
@@ -395,7 +411,10 @@ export class ModelRegistry {
         recommended = portraitModel;
         reasoning = 'Portrait or old photo detected. Face restoration model selected.';
       }
-    } else if (analysis.noiseLevel && analysis.noiseLevel > 0.5) {
+    } else if (
+      analysis.noiseLevel &&
+      analysis.noiseLevel > CONFIG_MODEL_COSTS.NOISE_THRESHOLD_HIGH
+    ) {
       const qualityModel = this.useCaseAssignments.maxQuality;
       if (eligibleModels.some(m => m.id === qualityModel)) {
         recommended = qualityModel;
@@ -426,7 +445,7 @@ export class ModelRegistry {
       reasoning,
       creditCost,
       alternatives,
-      confidence: 0.7,
+      confidence: CONFIG_MODEL_COSTS.RECOMMENDATION_CONFIDENCE_DEFAULT,
     };
   }
 

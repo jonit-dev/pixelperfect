@@ -8,8 +8,25 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
 export default [
+  // Global ignores must be in their own object with only ignores property
   {
-    files: ['eslint.config.js', 'next.config.js'],
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'out/**',
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      '.turbo/**',
+      '.wrangler/**',
+      'playwright-report/**',
+      'test-results/**',
+      'next-env.d.ts',
+      'next.config.js', // Next.js config file
+    ],
+  },
+  {
+    files: ['eslint.config.js'],
     rules: {
       'import/no-default-export': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -17,20 +34,6 @@ export default [
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: [
-      '.next/**/*',
-      'node_modules/**/*',
-      'out/**/*',
-      'dist/**/*',
-      'build/**/*',
-      'coverage/**/*',
-      '.turbo/**/*',
-      '.wrangler/**/*',
-      'playwright-report/**/*',
-      'test-results/**/*',
-      'next.config.js',
-      'next-env.d.ts',
-    ],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooks,
@@ -220,6 +223,13 @@ export default [
       '@typescript-eslint/no-unused-vars': 'off',
       'no-restricted-syntax': 'off',
       'import/no-default-export': 'off',
+    },
+  },
+  // Repository files - allow 'any' for TypeScript generic workarounds with Supabase types
+  {
+    files: ['shared/repositories/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'warn', // Allow 'any' for Supabase type constraints
     },
   },
 ];

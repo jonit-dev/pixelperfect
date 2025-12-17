@@ -3,10 +3,12 @@
  * Single source of truth for all subscription-related settings
  *
  * IMPORTANT: This file should be the ONLY place where subscription
- * values are defined. All other files should import from here.
+ * configuration values are defined. All other files should import from here.
  */
 
 import type { ISubscriptionConfig } from './subscription.types';
+import { CREDIT_COSTS } from './credits.config';
+import { TIMEOUTS } from './timeouts.config';
 
 /**
  * Default subscription configuration
@@ -23,10 +25,9 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       priceInCents: 1900, // $19.00
       currency: 'usd',
       interval: 'month',
-      creditsPerCycle: 200,
+      creditsPerCycle: CREDIT_COSTS.HOBBY_MONTHLY_CREDITS,
       maxRollover: null, // No rollover - credits reset each cycle
       rolloverMultiplier: 6,
-      // TODO: Trial periods not yet implemented - see docs/PRDs/subscription-config/trial-periods.md
       trial: {
         enabled: false,
         durationDays: 0,
@@ -59,10 +60,9 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       priceInCents: 4900, // $49.00
       currency: 'usd',
       interval: 'month',
-      creditsPerCycle: 1000,
+      creditsPerCycle: CREDIT_COSTS.PRO_MONTHLY_CREDITS,
       maxRollover: null, // No rollover - credits reset each cycle
       rolloverMultiplier: 6,
-      // TODO: Trial periods not yet implemented - see docs/PRDs/subscription-config/trial-periods.md
       trial: {
         enabled: false,
         durationDays: 0,
@@ -99,7 +99,6 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       creditsPerCycle: 5000,
       maxRollover: null, // No rollover - credits reset each cycle
       rolloverMultiplier: 6,
-      // TODO: Trial periods not yet implemented - see docs/PRDs/subscription-config/trial-periods.md
       trial: {
         enabled: false,
         durationDays: 0,
@@ -133,7 +132,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     {
       key: 'small',
       name: 'Small Pack',
-      credits: 50,
+      credits: CREDIT_COSTS.SMALL_PACK_CREDITS,
       priceInCents: 499, // $4.99
       currency: 'usd',
       stripePriceId: 'price_1SbAASALMLhQocpfGUg3wLXM',
@@ -144,7 +143,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     {
       key: 'medium',
       name: 'Medium Pack',
-      credits: 200,
+      credits: CREDIT_COSTS.MEDIUM_PACK_CREDITS,
       priceInCents: 1499, // $14.99
       currency: 'usd',
       stripePriceId: 'price_1SbAASALMLhQocpf7nw3wRj7',
@@ -155,7 +154,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     {
       key: 'large',
       name: 'Large Pack',
-      credits: 600,
+      credits: CREDIT_COSTS.LARGE_PACK_CREDITS,
       priceInCents: 3999, // $39.99
       currency: 'usd',
       stripePriceId: 'price_1SbAASALMLhQocpfCrD7P7TW',
@@ -167,17 +166,17 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
 
   creditCosts: {
     modes: {
-      upscale: 1, // Basic upscaling - cheapest operation
-      enhance: 2, // AI enhancement - more compute intensive
-      both: 2, // Upscale + enhance - same as enhance alone
-      custom: 2, // Custom prompt - AI-intensive
+      upscale: CREDIT_COSTS.BASE_UPSCALE_COST, // Basic upscaling - cheapest operation
+      enhance: CREDIT_COSTS.BASE_ENHANCE_COST, // AI enhancement - more compute intensive
+      both: CREDIT_COSTS.BASE_BOTH_COST, // Upscale + enhance - same as enhance alone
+      custom: CREDIT_COSTS.BASE_CUSTOM_COST, // Custom prompt - AI-intensive
     },
     // Model-based multipliers for different AI models
     modelMultipliers: {
-      'real-esrgan': 1,
-      gfpgan: 2,
-      'clarity-upscaler': 4,
-      'nano-banana-pro': 8,
+      'real-esrgan': CREDIT_COSTS.REAL_ESRGAN_MULTIPLIER,
+      gfpgan: CREDIT_COSTS.GFPGAN_MULTIPLIER,
+      'clarity-upscaler': CREDIT_COSTS.CLARITY_UPSCALER_MULTIPLIER,
+      'nano-banana-pro': CREDIT_COSTS.NANO_BANANA_PRO_MULTIPLIER,
     },
     scaleMultipliers: {
       '2x': 1.0,
@@ -189,22 +188,22 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       priorityProcessing: 1, // Future feature
       batchPerImage: 0, // No extra cost per batch image
     },
-    minimumCost: 1, // At least 1 credit per operation
-    maximumCost: 20, // Safety cap increased for premium models
+    minimumCost: CREDIT_COSTS.BASE_UPSCALE_COST, // At least 1 credit per operation
+    maximumCost: CREDIT_COSTS.NANO_BANANA_PRO_MULTIPLIER * CREDIT_COSTS.BASE_ENHANCE_COST * 1.25, // Safety cap for premium models
   },
 
   freeUser: {
-    initialCredits: 10, // One-time credits on signup
+    initialCredits: CREDIT_COSTS.DEFAULT_FREE_CREDITS, // One-time credits on signup
     monthlyRefresh: false, // Free users don't get monthly refresh
-    monthlyCredits: 0, // Only for paid subscriptions
-    maxBalance: 10, // Free users capped at initial credits
+    monthlyCredits: CREDIT_COSTS.DEFAULT_TRIAL_CREDITS, // Only for paid subscriptions
+    maxBalance: CREDIT_COSTS.DEFAULT_FREE_CREDITS, // Free users capped at initial credits
   },
 
   warnings: {
-    lowCreditThreshold: 5, // Warn when balance falls below this
-    lowCreditPercentage: 0.2, // Also warn at 20% of monthly allowance
+    lowCreditThreshold: CREDIT_COSTS.LOW_CREDIT_WARNING_THRESHOLD, // Warn when balance falls below this
+    lowCreditPercentage: CREDIT_COSTS.CREDIT_WARNING_PERCENTAGE, // Also warn at 20% of monthly allowance
     showToastOnDashboard: true, // Show toast notification
-    checkIntervalMs: 300000, // Check every 5 minutes
+    checkIntervalMs: TIMEOUTS.CACHE_MEDIUM_TTL, // Check every 5 minutes
   },
 
   defaults: {
@@ -221,10 +220,32 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
  * to allow for future environment overrides
  */
 export function getSubscriptionConfig(): ISubscriptionConfig {
-  // TODO: Future enhancement - check for environment variable overrides
-  // if (process.env.SUBSCRIPTION_CONFIG_OVERRIDE) {
-  //   return JSON.parse(process.env.SUBSCRIPTION_CONFIG_OVERRIDE);
-  // }
+  // Check for environment variable overrides
+  // Note: This is an optional environment variable that may not be defined in the type system
+  const configOverride = (process.env as unknown as { SUBSCRIPTION_CONFIG_OVERRIDE?: string })
+    .SUBSCRIPTION_CONFIG_OVERRIDE;
+
+  if (configOverride) {
+    try {
+      const override = JSON.parse(configOverride);
+      // Merge with base config to ensure all required fields exist
+      return {
+        ...SUBSCRIPTION_CONFIG,
+        ...override,
+        // Ensure nested objects are properly merged
+        plans: override.plans || SUBSCRIPTION_CONFIG.plans,
+        creditPacks: override.creditPacks || SUBSCRIPTION_CONFIG.creditPacks,
+        creditCosts: { ...SUBSCRIPTION_CONFIG.creditCosts, ...override.creditCosts },
+        freeUser: { ...SUBSCRIPTION_CONFIG.freeUser, ...override.freeUser },
+        warnings: { ...SUBSCRIPTION_CONFIG.warnings, ...override.warnings },
+        defaults: { ...SUBSCRIPTION_CONFIG.defaults, ...override.defaults },
+      };
+    } catch (error) {
+      console.error('Failed to parse SUBSCRIPTION_CONFIG_OVERRIDE:', error);
+      // Fall back to default config if override is invalid
+      return SUBSCRIPTION_CONFIG;
+    }
+  }
   return SUBSCRIPTION_CONFIG;
 }
 

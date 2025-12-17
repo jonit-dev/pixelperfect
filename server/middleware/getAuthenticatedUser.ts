@@ -1,5 +1,7 @@
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import { UserRepository } from '@shared/repositories';
 import { NextRequest } from 'next/server';
+import { CREDIT_COSTS } from '@shared/config/credits.config';
 
 /**
  * Extract authenticated user from middleware-set headers
@@ -36,53 +38,26 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<IUserProfi
       email: 'test@example.com',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      subscription_credits_balance: 10,
-      purchased_credits_balance: 0,
+      subscription_credits_balance: CREDIT_COSTS.DEFAULT_FREE_CREDITS,
+      purchased_credits_balance: CREDIT_COSTS.DEFAULT_TRIAL_CREDITS,
+      stripe_customer_id: null,
+      subscription_status: null,
+      subscription_tier: null,
+      role: 'user',
     };
   }
 
-  // Query Supabase for full user profile
-  // Note: This uses service role key (supabaseAdmin) which bypasses RLS
-  const { data: profile, error } = await supabaseAdmin
-    .from('profiles')
-    .select('*')
-    .eq('id', userId)
-    .single();
+  // Use repository for database operations
+  const userRepository = new UserRepository(supabaseAdmin);
 
-  if (error) {
-    if (error.code === 'PGRST116') {
-      // No rows returned, profile doesn't exist - create it
-      console.log(`Profile not found for user ${userId}, creating one...`);
-      const { error: insertError } = await supabaseAdmin
-        .from('profiles')
-        .insert({
-          id: userId,
-          subscription_credits_balance: 10, // Default subscription credits
-          purchased_credits_balance: 0, // No purchased credits initially
-        })
-        .select('*')
-        .single();
-
-      if (insertError) {
-        console.error('Error creating user profile:', insertError);
-        return null;
-      }
-
-      // Return the newly created profile
-      const { data: newProfile } = await supabaseAdmin
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single();
-
-      return newProfile;
-    } else {
-      console.error('Error fetching user profile:', error);
-      return null;
-    }
+  try {
+    // Get or create user profile (creates with defaults if not found)
+    const profile = await userRepository.getOrCreate(userId);
+    return profile;
+  } catch (error) {
+    console.error('Error in getAuthenticatedUser:', error);
+    return null;
   }
-
-  return profile;
 }
 
 /**
@@ -94,5 +69,12 @@ export interface IUserProfile {
   email?: string;
   created_at?: string;
   updated_at?: string;
+  stripe_customer_id?: string | null;
+  credits_balance?: number;
+  subscription_credits_balance?: number;
+  purchased_credits_balance?: number;
+  subscription_status?: string | null;
+  subscription_tier?: string | null;
+  role?: 'user' | 'admin';
   [key: string]: unknown;
 }

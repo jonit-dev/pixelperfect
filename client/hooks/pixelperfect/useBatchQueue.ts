@@ -9,6 +9,7 @@ import { processImage } from '@client/utils/api-client';
 import { serializeError } from '@shared/utils/errors';
 import { useToastStore } from '@client/store/toastStore';
 import { useUserStore } from '@client/store/userStore';
+import { TIMEOUTS } from '@shared/config/timeouts.config';
 
 interface IBatchProgress {
   current: number;
@@ -138,7 +139,7 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
       showToast({
         message: `Failed to process ${item.file.name}: ${errorMessage}`,
         type: 'error',
-        duration: 5000,
+        duration: TIMEOUTS.TOAST_LONG_AUTO_CLOSE_DELAY,
       });
     }
   };
@@ -159,10 +160,10 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
       setBatchProgress({ current: i + 1, total });
       await processSingleItem(item, config);
 
-      // Add 12-second delay between requests (5 req/min = safe margin under 6 req/min limit)
+      // Add delay between requests to avoid rate limits
       // Skip delay after the last item
       if (i < itemsToProcess.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 12000));
+        await new Promise(resolve => setTimeout(resolve, TIMEOUTS.BATCH_REQUEST_DELAY));
       }
     }
 

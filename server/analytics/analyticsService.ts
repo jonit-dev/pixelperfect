@@ -93,3 +93,6 @@ export async function trackServerEvent(
     return false;
   }
 }
+
+// Re-export hashEmail for backwards compatibility
+export { hashEmail } from '@shared/utils/crypto';

@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { LayoutDashboard, CreditCard, Settings, HelpCircle, LogOut, Shield } from 'lucide-react';
 import { useUserStore, useIsAdmin } from '@client/store/userStore';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
+import { useLogger } from '@client/utils/logger';
 
 interface ISidebarItem {
   label: string;
@@ -18,6 +19,7 @@ export const DashboardSidebar: React.FC = () => {
   const router = useRouter();
   const { signOut, user } = useUserStore();
   const isAdmin = useIsAdmin();
+  const logger = useLogger('DashboardSidebar');
 
   // Build menu items dynamically based on user role
   const menuItems: ISidebarItem[] = [
@@ -47,8 +49,10 @@ export const DashboardSidebar: React.FC = () => {
       await signOut();
       router.push('/');
     } catch (error) {
-      // TODO: Replace with proper logging once logger is implemented
-      console.error('Error signing out:', error);
+      logger.error('Error signing out', {
+        error: error instanceof Error ? error.message : 'Unknown error',
+        userEmail: user?.email,
+      });
     }
   };
 

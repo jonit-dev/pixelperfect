@@ -4,11 +4,12 @@ import { createClient } from '@shared/utils/supabase/client';
 import type { IUserProfile, ISubscription } from '@shared/types/stripe';
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 import { handlePostAuthRedirect } from './auth/postAuthRedirect';
+import { TIMEOUTS } from '@shared/config/timeouts.config';
 
 // Cache keys
 const USER_CACHE_KEY = 'pixelperfect_user_cache';
 const CACHE_VERSION = 1;
-const CACHE_MAX_AGE = 5 * 60 * 1000; // 5 minutes
+const CACHE_MAX_AGE = TIMEOUTS.CACHE_MEDIUM_TTL; // 5 minutes
 
 interface IUserCache {
   version: number;

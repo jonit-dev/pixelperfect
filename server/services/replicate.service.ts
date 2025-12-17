@@ -319,57 +319,26 @@ export class ReplicateService implements IImageProcessor {
     // Prepare Replicate input based on model type
     const replicateInput = this.buildModelInput(selectedModel, imageDataUrl, input);
 
-    // Log the full input being sent to the model (excluding image data for brevity)
-    const logInput = { ...replicateInput } as Record<string, unknown>;
-    if ('image' in logInput) logInput.image = '[BASE64_IMAGE]';
-    if ('img' in logInput) logInput.img = '[BASE64_IMAGE]';
-    if ('input_image' in logInput) logInput.input_image = '[BASE64_IMAGE]';
-    if ('image_input' in logInput) logInput.image_input = ['[BASE64_IMAGE]'];
-
-    console.log('[Replicate] Model input:', {
-      model: selectedModel,
-      modelVersion,
-      input: logInput,
-    });
-
     try {
       // Run the model - returns output URL(s)
       const output = await this.replicate.run(modelVersion as `${string}/${string}:${string}`, {
         input: replicateInput,
       });
 
-      console.log('[Replicate] Raw output type:', typeof output);
-      console.log('[Replicate] Raw output value:', output);
-      console.log('[Replicate] Is array:', Array.isArray(output));
-
       // Handle different output formats
       let outputUrl: string;
 
-      // Helper to extract URL string from various formats with detailed logging
-      const extractUrl = (value: unknown, label: string): string | null => {
-        console.log(`[Replicate] extractUrl(${label}):`, {
-          type: typeof value,
-          isNull: value === null,
-          isUndefined: value === undefined,
-          constructor: value?.constructor?.name,
-        });
-
+      // Helper to extract URL string from various Replicate output formats
+      const extractUrl = (value: unknown): string | null => {
         if (typeof value === 'string') {
-          console.log(`[Replicate] ${label}: Got direct string URL`);
           return value;
         }
 
         if (value && typeof value === 'object') {
-          const keys = Object.keys(value);
-          console.log(`[Replicate] ${label}: Object keys:`, keys.slice(0, 10));
-
           // FileOutput objects can be converted to string (they extend URL class)
           if (typeof (value as { toString?: () => string }).toString === 'function') {
             const stringified = String(value);
-            console.log(`[Replicate] ${label}: String(value) =`, stringified.slice(0, 100));
-            // Check if it's a valid URL string (not [object Object])
             if (stringified.startsWith('http')) {
-              console.log(`[Replicate] ${label}: Extracted via String() conversion`);
               return stringified;
             }
           }
@@ -377,58 +346,37 @@ export class ReplicateService implements IImageProcessor {
           // Try .url property (could be string or function)
           if ('url' in value) {
             const urlValue = (value as { url: unknown }).url;
-            console.log(`[Replicate] ${label}: .url type =`, typeof urlValue);
             if (typeof urlValue === 'function') {
-              const result = urlValue();
-              console.log(`[Replicate] ${label}: .url() returned:`, String(result).slice(0, 100));
-              return result;
+              return urlValue();
             }
             if (typeof urlValue === 'string') {
-              console.log(`[Replicate] ${label}: .url is string`);
               return urlValue;
             }
           }
 
           // Try .href property (URL-like objects)
           if ('href' in value && typeof (value as { href: unknown }).href === 'string') {
-            console.log(`[Replicate] ${label}: Extracted via .href property`);
             return (value as { href: string }).href;
           }
-
-          console.log(`[Replicate] ${label}: Could not extract URL from object`);
         }
 
         return null;
       };
 
       if (Array.isArray(output)) {
-        // Some models return array of URLs or FileOutput objects
-        console.log('[Replicate] Processing array output, length:', output.length);
         const first = output[0];
-        const extracted = extractUrl(first, 'array[0]');
+        const extracted = extractUrl(first);
         if (extracted) {
           outputUrl = extracted;
-          console.log('[Replicate] Successfully extracted URL from array:', outputUrl.slice(0, 80));
         } else {
-          console.error('[Replicate] FAILED to extract URL from array element:', {
-            type: typeof first,
-            keys: first && typeof first === 'object' ? Object.keys(first) : 'N/A',
-            value: String(first).slice(0, 200),
-            prototypeChain: first?.constructor?.name,
-          });
           throw new ReplicateError('Unexpected array output format from Replicate', 'NO_OUTPUT');
         }
       } else {
-        console.log('[Replicate] Processing non-array output');
-        const extracted = extractUrl(output, 'output');
+        const extracted = extractUrl(output);
         if (extracted) {
           outputUrl = extracted;
-          console.log('[Replicate] Successfully extracted URL:', outputUrl.slice(0, 80));
         } else {
-          throw new ReplicateError(
-            `No output URL returned from Replicate. Got: ${JSON.stringify(output)}`,
-            'NO_OUTPUT'
-          );
+          throw new ReplicateError('No output URL returned from Replicate', 'NO_OUTPUT');
         }
       }
 

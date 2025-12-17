@@ -24,7 +24,7 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     // Optimize package imports for smaller bundles
-    optimizePackageImports: ['lucide-react', '@tremor/react', 'recharts'],
+    optimizePackageImports: ['lucide-react'],
   },
   async redirects() {
     return [

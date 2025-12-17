@@ -32,19 +32,54 @@ describe('Analytics Service', () => {
     });
   });
 
-  // Note: hashEmail functionality not yet implemented in analytics service
-  // Tests skipped until implementation is added
-  describe.skip('hashEmail utility', () => {
+  // Test hashEmail utility
+  describe('hashEmail utility', () => {
     test('should consistently hash the same email', async () => {
-      // TODO: Implement hashEmail in analytics service
+      const { hashEmail } = await import('../../server/analytics/analyticsService');
+
+      const email = 'test@example.com';
+      const hash1 = await hashEmail(email);
+      const hash2 = await hashEmail(email);
+
+      expect(hash1).toBe(hash2);
+      expect(hash1).toMatch(/^[a-f0-9]{64}$/); // SHA-256 hex format
     });
 
     test('should produce different hashes for different emails', async () => {
-      // TODO: Implement hashEmail in analytics service
+      const { hashEmail } = await import('../../server/analytics/analyticsService');
+
+      const hash1 = await hashEmail('user1@example.com');
+      const hash2 = await hashEmail('user2@example.com');
+
+      expect(hash1).not.toBe(hash2);
     });
 
     test('should produce non-empty hash', async () => {
-      // TODO: Implement hashEmail in analytics service
+      const { hashEmail } = await import('../../server/analytics/analyticsService');
+
+      const hash = await hashEmail('test@example.com');
+
+      expect(hash).toBeTruthy();
+      expect(typeof hash).toBe('string');
+      expect(hash.length).toBe(64); // SHA-256 hex length
+    });
+
+    test('should handle email normalization', async () => {
+      const { hashEmail } = await import('../../server/analytics/analyticsService');
+
+      const hash1 = await hashEmail('Test@Example.COM');
+      const hash2 = await hashEmail('test@example.com  ');
+
+      expect(hash1).toBe(hash2);
+    });
+
+    test('should throw error for invalid input', async () => {
+      const { hashEmail } = await import('../../server/analytics/analyticsService');
+
+      await expect(hashEmail('')).rejects.toThrow('Valid email string is required');
+      await expect(hashEmail(null as any)).rejects.toThrow('Valid email string is required');
+      await expect(hashEmail(undefined as any)).rejects.toThrow('Valid email string is required');
+      await expect(hashEmail(123 as any)).rejects.toThrow('Valid email string is required');
     });
   });
 });

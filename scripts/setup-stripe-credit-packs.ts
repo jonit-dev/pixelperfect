@@ -18,6 +18,7 @@
  */
 
 import Stripe from 'stripe';
+import { CREDIT_COSTS } from '../shared/config/credits.config';
 
 // Initialize Stripe
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
@@ -38,21 +39,21 @@ const CREDIT_PACKS = [
   {
     key: 'small',
     name: 'Small Credit Pack',
-    credits: 50,
+    credits: CREDIT_COSTS.SMALL_PACK_CREDITS,
     priceInCents: 499, // $4.99
     description: '50 credits - Perfect for occasional use',
   },
   {
     key: 'medium',
     name: 'Medium Credit Pack',
-    credits: 200,
+    credits: CREDIT_COSTS.MEDIUM_PACK_CREDITS,
     priceInCents: 1499, // $14.99
     description: '200 credits - Best value for one-time purchases',
   },
   {
     key: 'large',
     name: 'Large Credit Pack',
-    credits: 600,
+    credits: CREDIT_COSTS.LARGE_PACK_CREDITS,
     priceInCents: 3999, // $39.99
     description: '600 credits - For larger projects',
   },
