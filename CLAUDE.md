@@ -12,6 +12,9 @@
 - **Dayjs**: For date handling.
 - **Testing**: Make sure to only test relevant behavior.
 - **Docs**: Use mermaid if diagrams/flows are needed.
+  - Do not create any new .md files, documentation, summaries, plans, readmes, guides, or explanatory documents unless explicitly requested by the user.
+  - Focus solely on code changes, edits, or implementations. Avoid generating any ancillary files.
+  - If documentation is needed, ask for confirmation first instead of auto-generating it.
 
 ## Agents
 

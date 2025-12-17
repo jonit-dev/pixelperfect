@@ -77,9 +77,15 @@ describe('Analytics Service', () => {
       const { hashEmail } = await import('../../server/analytics/analyticsService');
 
       await expect(hashEmail('')).rejects.toThrow('Valid email string is required');
-      await expect(hashEmail(null as any)).rejects.toThrow('Valid email string is required');
-      await expect(hashEmail(undefined as any)).rejects.toThrow('Valid email string is required');
-      await expect(hashEmail(123 as any)).rejects.toThrow('Valid email string is required');
+      await expect(hashEmail(null as unknown as string)).rejects.toThrow(
+        'Valid email string is required'
+      );
+      await expect(hashEmail(undefined as unknown as string)).rejects.toThrow(
+        'Valid email string is required'
+      );
+      await expect(hashEmail(123 as unknown as string)).rejects.toThrow(
+        'Valid email string is required'
+      );
     });
   });
 });

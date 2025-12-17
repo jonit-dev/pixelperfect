@@ -11,6 +11,7 @@ interface IQueueStripProps {
   onSelect: (id: string) => void;
   onRemove: (id: string) => void;
   onAddFiles: (files: File[]) => void;
+  batchLimit?: number;
 }
 
 export const QueueStrip: React.FC<IQueueStripProps> = ({
@@ -20,6 +21,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
   onSelect,
   onRemove,
   onAddFiles,
+  batchLimit,
 }) => {
   return (
     <div
@@ -32,7 +34,10 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
       {/* Header - Mobile only */}
       <div className="md:hidden flex items-center justify-between mb-2">
         <h3 className="font-semibold text-slate-900">Processing Queue</h3>
-        <span className="text-sm text-slate-500">{queue.length} items</span>
+        <span className="text-sm text-slate-500">
+          {queue.length}{' '}
+          {batchLimit !== undefined && `/ ${batchLimit === Infinity ? '∞' : batchLimit}`} items
+        </span>
       </div>
 
       {/* Add More Button */}
@@ -44,16 +49,38 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
       >
         <Dropzone
           onFilesSelected={onAddFiles}
-          disabled={isProcessing}
+          disabled={isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)}
           className={cn(
-            'h-full w-full !p-0 !border-2 !border-dashed !border-slate-300 hover:!bg-slate-100 !rounded-lg',
+            'h-full w-full !p-0 !border-2 !border-dashed !rounded-lg',
             // Mobile: larger touch target
-            'min-h-[64px] md:min-h-[96px]'
+            'min-h-[64px] md:min-h-[96px]',
+            // Disabled state styling
+            isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
+              ? '!border-slate-200 !bg-slate-50 !cursor-not-allowed'
+              : '!border-slate-300 hover:!bg-slate-100'
           )}
         >
           <div className="flex flex-col items-center justify-center h-full w-full pointer-events-none">
-            <Plus className="w-5 h-5 md:w-6 md:h-6 text-slate-400" />
-            <span className="text-xs text-slate-500 mt-1">Add More</span>
+            <Plus
+              className={cn(
+                'w-5 h-5 md:w-6 md:h-6',
+                isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
+                  ? 'text-slate-300'
+                  : 'text-slate-400'
+              )}
+            />
+            <span
+              className={cn(
+                'text-xs mt-1',
+                isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
+                  ? 'text-slate-400'
+                  : 'text-slate-500'
+              )}
+            >
+              {batchLimit !== undefined && queue.length >= batchLimit
+                ? 'Limit Reached'
+                : 'Add More'}
+            </span>
           </div>
         </Dropzone>
       </div>
@@ -62,6 +89,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
       {queue.map(item => (
         <div
           key={item.id}
+          data-testid="queue-item"
           onClick={() => onSelect(item.id)}
           className={cn(
             'group relative cursor-pointer border-2 overflow-hidden transition-all touch-manipulation',

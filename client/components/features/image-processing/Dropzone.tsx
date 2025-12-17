@@ -31,9 +31,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
   const [resizedFiles, setResizedFiles] = useState<File[]>([]);
   const { subscription } = useUserData();
   const isPaidUser = !!subscription?.price_id;
-  const currentLimit = isPaidUser
-    ? IMAGE_VALIDATION.MAX_SIZE_PAID
-    : IMAGE_VALIDATION.MAX_SIZE_FREE;
+  const currentLimit = isPaidUser ? IMAGE_VALIDATION.MAX_SIZE_PAID : IMAGE_VALIDATION.MAX_SIZE_FREE;
 
   const handleDragOver = useCallback(
     (e: React.DragEvent) => {
@@ -51,7 +49,11 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 
   const handleFilesReceived = useCallback(
     (files: File[]) => {
-      const { validFiles, oversizedFiles: oversized, errorMessage } = processFiles(files, isPaidUser);
+      const {
+        validFiles,
+        oversizedFiles: oversized,
+        errorMessage,
+      } = processFiles(files, isPaidUser);
 
       if (oversized.length > 0) {
         // Store all oversized files and show modal for the first one
@@ -139,6 +141,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 
   return (
     <div
+      data-testid="dropzone"
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -198,7 +201,11 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
               <p className="text-slate-500 text-sm font-medium leading-relaxed">
                 Support for JPG, PNG, and WEBP
                 <span className="block text-xs text-slate-400 mt-1 font-normal">
-                  Up to 5MB per file • Batch processing available
+                  Up to {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE ? '5MB' : '10MB'} per file
+                  •
+                  {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE
+                    ? ' 1 image at a time • Upgrade for batch processing'
+                    : ' Batch processing available'}
                 </span>
               </p>
             </div>

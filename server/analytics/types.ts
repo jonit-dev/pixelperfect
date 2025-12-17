@@ -125,6 +125,11 @@ export type IAnalyticsEventName =
   // Error/limit events (server-side only)
   | 'rate_limit_exceeded'
   | 'processing_failed'
+  // Batch limit events
+  | 'batch_limit_modal_shown'
+  | 'batch_limit_upgrade_clicked'
+  | 'batch_limit_partial_add_clicked'
+  | 'batch_limit_modal_closed'
   // pSEO-specific events
   | 'pseo_page_view'
   | 'pseo_cta_clicked'

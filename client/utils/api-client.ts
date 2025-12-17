@@ -2,6 +2,35 @@ import { IUpscaleConfig, ProcessingStage } from '@shared/types/pixelperfect';
 import { createClient } from '@shared/utils/supabase/client';
 import { serverEnv } from '@shared/config/env';
 
+/**
+ * Error class for batch limit violations
+ */
+export class BatchLimitError extends Error {
+  public readonly current: number;
+  public readonly limit: number;
+  public readonly resetAt?: Date;
+  public readonly upgradeUrl?: string;
+
+  constructor(options: {
+    current: number;
+    limit: number;
+    resetAt?: Date;
+    upgradeUrl?: string;
+    message?: string;
+  }) {
+    const message =
+      options.message ||
+      `Batch limit exceeded. Your plan allows ${options.limit} images, but you've attempted to process ${options.current}. Upgrade for higher limits.`;
+
+    super(message);
+    this.name = 'BatchLimitError';
+    this.current = options.current;
+    this.limit = options.limit;
+    this.resetAt = options.resetAt;
+    this.upgradeUrl = options.upgradeUrl;
+  }
+}
+
 // Extend Window interface for test environment markers
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -199,6 +228,20 @@ export const processImage = async (
 
     if (!response.ok) {
       const errorData = await response.json();
+
+      // Handle batch limit exceeded errors specifically
+      if (errorData.error?.code === 'BATCH_LIMIT_EXCEEDED') {
+        throw new BatchLimitError({
+          current: errorData.error.details?.current ?? 0,
+          limit: errorData.error.details?.limit ?? 0,
+          resetAt: errorData.error.details?.resetAt
+            ? new Date(errorData.error.details.resetAt)
+            : undefined,
+          upgradeUrl: errorData.error.details?.upgradeUrl,
+          message: errorData.error.message,
+        });
+      }
+
       throw new Error(errorData.error || 'Failed to process image');
     }
 

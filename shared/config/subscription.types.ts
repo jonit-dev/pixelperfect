@@ -81,6 +81,8 @@ export interface IPlanConfig {
   displayOrder: number;
   /** Whether plan is currently available */
   enabled: boolean;
+  /** Maximum images allowed in batch queue (null = unlimited) */
+  batchLimit: number | null;
 }
 
 /**
@@ -120,6 +122,8 @@ export interface IFreeUserConfig {
   monthlyCredits: number;
   /** Maximum balance for free users */
   maxBalance: number;
+  /** Maximum images in batch queue for free users */
+  batchLimit: number;
 }
 
 /**

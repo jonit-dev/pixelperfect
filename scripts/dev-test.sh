@@ -14,7 +14,7 @@ export $(grep -v '^#' .env.test | grep -v '^$' | xargs)
 TEST_PORT=${TEST_PORT:-$((3100 + RANDOM % 900))}
 TEST_WRANGLER_PORT=${TEST_WRANGLER_PORT:-$((8800 + RANDOM % 200))}
 
-echo "Starting test server on ports: Next.js=$TEST_PORT, Wrangler=$TEST_WRANGLER_PORT"
+echo "Starting test server on port: Next.js=$TEST_PORT"
 
-# Run the dev server on test-specific ports
-yarn concurrently "next dev --port $TEST_PORT" "wrangler pages dev --proxy $TEST_PORT --port $TEST_WRANGLER_PORT"
+# Run the dev server on test-specific ports (wrangler disabled for faster test startup)
+npx next dev --port $TEST_PORT

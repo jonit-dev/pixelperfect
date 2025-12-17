@@ -59,11 +59,13 @@ export class UpscalerPage extends BasePage {
     this.scaleSelector = page.locator('select').filter({ hasText: /2x|4x/i });
 
     // Action buttons - Process button with dynamic text (Process All, Processing..., Process Remaining, etc.)
+    // Target the desktop button specifically by its structure and text content
     this.processButton = page
-      .getByRole('button', { name: /process/i })
-      .or(page.locator('button:has-text("Process")'))
-      .or(page.locator('button:has-text("Processing")'));
-    this.clearButton = page.getByRole('button', { name: /clear queue/i });
+      .locator('button.w-full.relative.overflow-hidden.rounded-xl:has-text("Process")')
+      .or(page.getByRole('button', { name: /^Process All/ }))
+      .or(page.getByRole('button', { name: /Process/ }))
+      .first();
+    this.clearButton = page.getByRole('button', { name: 'Clear Queue' });
     this.downloadButton = page.getByRole('button', { name: 'Download Result' });
     this.retryButton = page.getByRole('button', { name: /try again/i });
 
@@ -320,14 +322,10 @@ export class UpscalerPage extends BasePage {
    * Get the number of items in the queue
    */
   async getQueueCount(): Promise<number> {
-    // Look for queue items in the strip. QueueStrip has images for each item
-    // Exclude the "Add" button dropzone which also contains images
-    const queueStripImages = this.page
-      .locator('.border-t.border-slate-200 img') // Images in QueueStrip
-      .or(this.page.locator('.h-32.bg-white.border-t img')) // More specific QueueStrip selector
-      .or(this.queueStrip.locator('img')); // Fallback to queueStrip locator
-
-    const count = await queueStripImages.count();
+    // Use the data-testid attribute that's present on each queue item
+    // This is more reliable than counting images which can be affected by DOM changes
+    const queueItems = this.page.locator('[data-testid="queue-item"]');
+    const count = await queueItems.count();
     return count;
   }
 

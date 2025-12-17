@@ -468,6 +468,31 @@ export function shouldSendExpirationWarning(params: {
 }
 
 // ============================================
+// Batch Limit Functions
+// ============================================
+
+/**
+ * Get batch limit for a user based on their subscription tier
+ * @param subscriptionTier - The user's subscription tier key (null = free user)
+ * @returns Maximum images allowed in queue
+ */
+export function getBatchLimit(subscriptionTier: string | null): number {
+  const config = getSubscriptionConfig();
+
+  if (!subscriptionTier) {
+    return config.freeUser.batchLimit;
+  }
+
+  const plan = config.plans.find(p => p.key === subscriptionTier);
+  if (!plan) {
+    // Unknown tier, default to free limit
+    return config.freeUser.batchLimit;
+  }
+
+  return plan.batchLimit ?? Infinity;
+}
+
+// ============================================
 // Backward Compatibility Exports
 // ============================================
 

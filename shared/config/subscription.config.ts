@@ -47,11 +47,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'Credits reset monthly',
         'Email support',
         'All features included',
+        'Batch upload up to 10 images',
       ],
       recommended: false,
       description: 'For personal projects',
       displayOrder: 1,
       enabled: true,
+      batchLimit: 10, // Up to 10 images in batch
     },
     {
       key: 'pro',
@@ -83,11 +85,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'Priority support',
         'All features included',
         'Early access to new features',
+        'Batch upload up to 50 images',
       ],
       recommended: true,
       description: 'For professionals',
       displayOrder: 2,
       enabled: true,
+      batchLimit: 50, // Up to 50 images in batch
     },
     {
       key: 'business',
@@ -120,11 +124,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'All features included',
         'Dedicated account manager',
         'Custom integrations',
+        'Batch upload up to 500 images',
       ],
       recommended: false,
       description: 'For teams and agencies',
       displayOrder: 3,
       enabled: true,
+      batchLimit: 500, // Up to 500 images in batch
     },
   ],
 
@@ -197,6 +203,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     monthlyRefresh: false, // Free users don't get monthly refresh
     monthlyCredits: CREDIT_COSTS.DEFAULT_TRIAL_CREDITS, // Only for paid subscriptions
     maxBalance: CREDIT_COSTS.DEFAULT_FREE_CREDITS, // Free users capped at initial credits
+    batchLimit: 1, // Single image only for free users
   },
 
   warnings: {

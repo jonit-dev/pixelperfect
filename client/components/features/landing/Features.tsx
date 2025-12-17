@@ -38,7 +38,7 @@ const features = [
     icon: ImageIcon,
     name: 'Batch Processing',
     description:
-      'Upload 50+ images at once. Smart queuing system handles bulk e-commerce catalogs efficiently.',
+      'Upload multiple images at once. Paid plans support 10-500 images per batch with smart queuing for bulk processing.',
     color: 'text-purple-600',
     bg: 'bg-purple-50',
   },

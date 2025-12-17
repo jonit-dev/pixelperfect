@@ -18,6 +18,7 @@ export const ErrorCodes = {
   NOT_FOUND: 'NOT_FOUND',
   INSUFFICIENT_CREDITS: 'INSUFFICIENT_CREDITS',
   RATE_LIMITED: 'RATE_LIMITED',
+  BATCH_LIMIT_EXCEEDED: 'BATCH_LIMIT_EXCEEDED',
   VALIDATION_ERROR: 'VALIDATION_ERROR',
   PAYMENT_REQUIRED: 'PAYMENT_REQUIRED',
   MODEL_NOT_FOUND: 'MODEL_NOT_FOUND',
@@ -156,6 +157,10 @@ export const ErrorStatusMap: Record<ErrorCode, { status: number; defaultMessage:
   [ErrorCodes.RATE_LIMITED]: {
     status: 429,
     defaultMessage: 'Too many requests. Please try again later.',
+  },
+  [ErrorCodes.BATCH_LIMIT_EXCEEDED]: {
+    status: 429,
+    defaultMessage: 'Batch limit exceeded. Upgrade your plan for higher limits.',
   },
   [ErrorCodes.MODEL_NOT_FOUND]: {
     status: 400,

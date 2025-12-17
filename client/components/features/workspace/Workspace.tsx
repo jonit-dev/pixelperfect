@@ -10,6 +10,7 @@ import { PreviewArea } from '@client/components/features/workspace/PreviewArea';
 import { QueueStrip } from '@client/components/features/workspace/QueueStrip';
 import { downloadSingle } from '@client/utils/download';
 import { UpgradeSuccessBanner } from './UpgradeSuccessBanner';
+import { BatchLimitModal } from './BatchLimitModal';
 import { useUserData } from '@client/store/userStore';
 import { DEFAULT_ENHANCEMENT_SETTINGS } from '@shared/types/pixelperfect';
 import { TabButton } from '@client/components/ui/TabButton';
@@ -26,12 +27,15 @@ const Workspace: React.FC = () => {
     isProcessingBatch,
     batchProgress,
     completedCount,
+    batchLimit,
+    batchLimitExceeded,
     setActiveId,
     addFiles,
     removeItem,
     clearQueue,
     processBatch,
     processSingleItem,
+    clearBatchLimitError,
   } = useBatchQueue();
 
   const { subscription } = useUserData();
@@ -90,6 +94,13 @@ const Workspace: React.FC = () => {
     }
   };
 
+  // Handler for partial add from modal
+  const handleAddPartial = () => {
+    clearBatchLimitError();
+    // We need to get the pending files somehow
+    // For now, just clear the error - the user will need to re-upload fewer files
+  };
+
   // Empty State
   if (queue.length === 0) {
     return (
@@ -104,7 +115,8 @@ const Workspace: React.FC = () => {
               <CheckCircle2 size={16} /> No Watermark
             </div>
             <div className="flex items-center gap-2 text-indigo-500">
-              <Layers size={16} /> Batch Supported
+              <Layers size={16} /> Batch{' '}
+              {batchLimit === 1 ? 'Upgrade Required' : `Up to ${batchLimit} images`}
             </div>
           </div>
         </div>
@@ -206,6 +218,7 @@ const Workspace: React.FC = () => {
             onSelect={setActiveId}
             onRemove={removeItem}
             onAddFiles={addFiles}
+            batchLimit={batchLimit}
           />
         </div>
       </div>
@@ -271,6 +284,17 @@ const Workspace: React.FC = () => {
           Queue
         </TabButton>
       </nav>
+
+      {/* Batch Limit Modal */}
+      <BatchLimitModal
+        isOpen={!!batchLimitExceeded}
+        onClose={clearBatchLimitError}
+        limit={batchLimitExceeded?.limit ?? batchLimit}
+        attempted={batchLimitExceeded?.attempted ?? 0}
+        currentCount={queue.length}
+        onAddPartial={handleAddPartial}
+        serverEnforced={batchLimitExceeded?.serverEnforced}
+      />
     </div>
   );
 };

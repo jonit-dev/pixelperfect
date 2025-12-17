@@ -5,11 +5,12 @@ import {
   ProcessingStage,
   IUpscaleConfig,
 } from '@shared/types/pixelperfect';
-import { processImage } from '@client/utils/api-client';
+import { processImage, BatchLimitError } from '@client/utils/api-client';
 import { serializeError } from '@shared/utils/errors';
 import { useToastStore } from '@client/store/toastStore';
-import { useUserStore } from '@client/store/userStore';
+import { useUserData, useUserStore } from '@client/store/userStore';
 import { TIMEOUTS } from '@shared/config/timeouts.config';
+import { getBatchLimit } from '@shared/config/subscription.utils';
 
 interface IBatchProgress {
   current: number;
@@ -23,12 +24,15 @@ interface IUseBatchQueueReturn {
   isProcessingBatch: boolean;
   batchProgress: IBatchProgress | null;
   completedCount: number;
+  batchLimit: number;
+  batchLimitExceeded: { attempted: number; limit: number; serverEnforced?: boolean } | null;
   setActiveId: (id: string) => void;
   addFiles: (files: File[]) => void;
   removeItem: (id: string) => void;
   clearQueue: () => void;
   processBatch: (config: IUpscaleConfig) => Promise<void>;
   processSingleItem: (item: IBatchItem, config: IUpscaleConfig) => Promise<void>;
+  clearBatchLimitError: () => void;
 }
 
 export const useBatchQueue = (): IUseBatchQueueReturn => {
@@ -36,7 +40,16 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isProcessingBatch, setIsProcessingBatch] = useState(false);
   const [batchProgress, setBatchProgress] = useState<IBatchProgress | null>(null);
+  const [batchLimitExceeded, setBatchLimitExceeded] = useState<{
+    attempted: number;
+    limit: number;
+    serverEnforced?: boolean;
+  } | null>(null);
   const showToast = useToastStore(state => state.showToast);
+
+  // Get user subscription data
+  const { profile } = useUserData();
+  const batchLimit = getBatchLimit(profile?.subscription_tier ?? null);
 
   // Cleanup object URLs on unmount
   useEffect(() => {
@@ -51,7 +64,23 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
 
   const addFiles = useCallback(
     (files: File[]) => {
-      const newItems: IBatchItem[] = files.map(file => ({
+      const currentCount = queue.length;
+      const availableSlots = Math.max(0, batchLimit - currentCount);
+
+      // If we're already at limit, show modal
+      if (availableSlots === 0) {
+        setBatchLimitExceeded({
+          attempted: files.length,
+          limit: batchLimit,
+        });
+        return;
+      }
+
+      // Add files up to available slots
+      const filesToAdd = files.slice(0, availableSlots);
+      const rejectedCount = files.length - filesToAdd.length;
+
+      const newItems: IBatchItem[] = filesToAdd.map(file => ({
         id: Math.random().toString(36).substring(2, 15),
         file,
         previewUrl: URL.createObjectURL(file),
@@ -67,8 +96,16 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
         }
         return updated;
       });
+
+      // Show modal if some files were rejected due to limit
+      if (rejectedCount > 0) {
+        setBatchLimitExceeded({
+          attempted: files.length,
+          limit: batchLimit,
+        });
+      }
     },
-    [activeId]
+    [activeId, queue.length, batchLimit]
   );
 
   const removeItem = useCallback(
@@ -100,6 +137,10 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
     setIsProcessingBatch(false);
   }, [queue]);
 
+  const clearBatchLimitError = useCallback(() => {
+    setBatchLimitExceeded(null);
+  }, []);
+
   const processSingleItem = async (item: IBatchItem, config: IUpscaleConfig) => {
     updateItemStatus(item.id, {
       status: ProcessingStatus.PROCESSING,
@@ -129,6 +170,19 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
       useUserStore.getState().updateCreditsFromProcessing(result.creditsRemaining);
     } catch (error: unknown) {
       const errorMessage = serializeError(error);
+
+      // Handle batch limit exceeded from API
+      if (error instanceof BatchLimitError) {
+        // Stop batch processing, show upgrade modal
+        setIsProcessingBatch(false);
+        setBatchLimitExceeded({
+          attempted: queue.filter(i => i.status === ProcessingStatus.IDLE).length,
+          limit: error.limit,
+          serverEnforced: true,
+        });
+        return;
+      }
+
       updateItemStatus(item.id, {
         status: ProcessingStatus.ERROR,
         error: errorMessage,
@@ -178,11 +232,14 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
     isProcessingBatch,
     batchProgress,
     completedCount,
+    batchLimit,
+    batchLimitExceeded,
     setActiveId,
     addFiles,
     removeItem,
     clearQueue,
     processBatch,
     processSingleItem,
+    clearBatchLimitError,
   };
 };

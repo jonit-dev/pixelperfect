@@ -13,11 +13,21 @@ import { trackServerEvent } from '@server/analytics';
 import { serverEnv } from '@shared/config/env';
 import { ErrorCodes, createErrorResponse, serializeError } from '@shared/utils/errors';
 import { upscaleRateLimit } from '@server/rateLimit';
+import { batchLimitCheck } from '@server/services/batch-limit.service';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import type { IUpscaleResponse } from '@shared/types/pixelperfect';
 import type { SubscriptionTier } from '@server/services/model-registry.types';
 
 export const runtime = 'edge';
+
+function isPaidSubscriptionStatus(status: string | null | undefined): boolean {
+  return status === 'active' || status === 'trialing';
+}
+
+function normalizePaidTier(tier: string | null | undefined): SubscriptionTier {
+  if (tier === 'hobby' || tier === 'pro' || tier === 'business') return tier;
+  return 'hobby';
+}
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const logger = createLogger(req, 'upscale-api');
@@ -61,11 +71,53 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     logger.info('Processing upscale request', { userId });
 
-    // 3. Parse and validate request body
+    // 3. Get user's subscription status and tier to determine limits
+    const { data: profile } = await supabaseAdmin
+      .from('profiles')
+      .select('subscription_status, subscription_tier')
+      .eq('id', userId)
+      .single();
+
+    const subscriptionStatus = profile?.subscription_status ?? null;
+    const isPaidUser = isPaidSubscriptionStatus(subscriptionStatus);
+    const userTier = isPaidUser ? normalizePaidTier(profile?.subscription_tier) : null;
+
+    // 4. Check batch limit (after rate limit, before processing)
+    const batchCheck = batchLimitCheck.check(userId, userTier);
+    if (!batchCheck.allowed) {
+      logger.warn('Batch limit exceeded', {
+        userId,
+        tier: userTier,
+        current: batchCheck.current,
+        limit: batchCheck.limit,
+      });
+      const { body, status } = createErrorResponse(
+        ErrorCodes.BATCH_LIMIT_EXCEEDED,
+        `Batch limit exceeded. Your plan allows ${batchCheck.limit} images per hour. ` +
+          `You've processed ${batchCheck.current}. Upgrade for higher limits.`,
+        429,
+        {
+          current: batchCheck.current,
+          limit: batchCheck.limit,
+          resetAt: batchCheck.resetAt.toISOString(),
+          upgradeUrl: '/pricing',
+        }
+      );
+      return NextResponse.json(body, {
+        status,
+        headers: {
+          'X-Batch-Limit': batchCheck.limit.toString(),
+          'X-Batch-Current': batchCheck.current.toString(),
+          'X-Batch-Reset': batchCheck.resetAt.toISOString(),
+        },
+      });
+    }
+
+    // 5. Parse and validate request body
     const body = await req.json();
     const validatedInput = upscaleSchema.parse(body);
 
-    // 4. Additional validation: Check if image data is valid base64
+    // 6. Additional validation: Check if image data is valid base64
     try {
       const imageData = validatedInput.imageData;
       const base64Data = imageData.startsWith('data:') ? imageData.split(',')[1] : imageData;
@@ -97,24 +149,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(errorBody, { status });
     }
 
-    // 5. Get user's subscription status and tier to determine size limit and model access
-    const { data: profile } = await supabaseAdmin
-      .from('profiles')
-      .select('subscription_status, subscription_tier')
-      .eq('id', userId)
-      .single();
-
-    const isPaidUser = profile?.subscription_status === 'active';
-
     // Determine user tier for model access validation
     // Active subscriptions without tier default to 'hobby' (lowest paid tier)
     // to avoid blocking paying users who have missing tier data
-    let userTier: SubscriptionTier = 'free';
+    let userTierForModels: SubscriptionTier = 'free';
     if (isPaidUser) {
-      userTier = (profile?.subscription_tier as SubscriptionTier) || 'hobby';
+      userTierForModels = userTier ?? 'hobby';
     }
 
-    // 6. Validate image size based on user tier (BEFORE charging credits)
+    // 8. Validate image size based on user tier (BEFORE charging credits)
     const sizeValidation = validateImageSizeForTier(validatedInput.imageData, isPaidUser);
     if (!sizeValidation.valid) {
       logger.warn('Image size validation failed', {
@@ -130,7 +173,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(errorBody, { status });
     }
 
-    // 7. Model selection and validation
+    // 9. Model selection and validation
     const modelRegistry = ModelRegistry.getInstance();
     let selectedModelId = validatedInput.config.selectedModel;
 
@@ -148,14 +191,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // Validate model is available for user's tier
-    const eligibleModels = modelRegistry.getModelsByTier(userTier);
+    const eligibleModels = modelRegistry.getModelsByTier(userTierForModels);
     const isModelEligible = eligibleModels.some(m => m.id === selectedModelId);
 
     if (!isModelEligible) {
       logger.warn('Model requires higher tier', {
         userId,
         modelId: selectedModelId,
-        userTier,
+        userTier: userTierForModels,
         requiredTier: selectedModel?.tierRestriction,
       });
       const { body: errorBody, status } = createErrorResponse(
@@ -173,7 +216,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       validatedInput.config.mode
     );
 
-    // 8. Process image with selected model
+    // 10. Process image with selected model
     let processor;
     try {
       processor = ImageProcessorFactory.createProcessorForModel(selectedModelId);
@@ -280,7 +323,20 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       };
     }
 
-    return NextResponse.json(response);
+    // Increment batch counter after successful processing
+    batchLimitCheck.increment(userId);
+
+    // Get updated batch usage to include in response headers
+    const batchUsage = batchLimitCheck.getUsage(userId, userTier);
+
+    // 11. Return successful response with enhanced information and batch headers
+    return NextResponse.json(response, {
+      headers: {
+        'X-Batch-Limit': batchUsage.limit.toString(),
+        'X-Batch-Current': batchUsage.current.toString(),
+        'X-Batch-Reset': batchCheck.resetAt.toISOString(),
+      },
+    });
   } catch (error) {
     // Handle validation errors
     if (error instanceof ZodError) {

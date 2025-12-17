@@ -355,8 +355,19 @@ export default function PricingPage() {
             <div className="bg-white p-6 rounded-lg border border-slate-200">
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Do credits expire?</h3>
               <p className="text-slate-600">
-                Subscription credits roll over month-to-month up to your plan&apos;s maximum limit as
-                long as your subscription is active.
+                Subscription credits roll over month-to-month up to your plan&apos;s maximum limit
+                as long as your subscription is active.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg border border-slate-200">
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                What is batch processing?
+              </h3>
+              <p className="text-slate-600">
+                Batch processing allows you to upload and process multiple images at once. Free
+                users can process 1 image at a time, while paid plans support batch processing of up
+                to 10, 50, or 500 images simultaneously depending on your plan.
               </p>
             </div>
 
@@ -365,9 +376,9 @@ export default function PricingPage() {
                 Can I cancel my subscription anytime?
               </h3>
               <p className="text-slate-600">
-                Yes! You can cancel your subscription at any time. You&apos;ll continue to have access
-                until the end of your billing period, and any remaining credits will stay in your
-                account.
+                Yes! You can cancel your subscription at any time. You&apos;ll continue to have
+                access until the end of your billing period, and any remaining credits will stay in
+                your account.
               </p>
             </div>
 
@@ -378,6 +389,15 @@ export default function PricingPage() {
               <p className="text-slate-600">
                 We accept all major credit cards (Visa, Mastercard, American Express) and various
                 other payment methods through Stripe.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg border border-slate-200">
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Is there a free plan?</h3>
+              <p className="text-slate-600">
+                Yes! Free users get initial credits to try the service. However, batch processing
+                and advanced features require a paid subscription. Free users can process one image
+                at a time.
               </p>
             </div>
           </div>
