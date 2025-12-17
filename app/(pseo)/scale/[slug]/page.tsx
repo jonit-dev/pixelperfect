@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getScaleData, getAllScaleSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
-import { ScalePageTemplate } from '@/components/pseo/templates/ScalePageTemplate';
+import { ScalePageTemplate } from '@/app/(pseo)/_components/pseo/templates/ScalePageTemplate';
 
 interface IScalePageProps {
   params: Promise<{ slug: string }>;

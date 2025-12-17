@@ -5,12 +5,14 @@ if (!serverEnv.STRIPE_SECRET_KEY) {
   console.warn('Warning: STRIPE_SECRET_KEY is not set. Stripe operations will fail.');
 }
 
-// Initialize Stripe client
-// This will be used in API routes (server-side only)
-// Use a dummy key in development if not set to prevent build failures
+// Initialize Stripe client with fetch-based HTTP client for Cloudflare Workers compatibility
+// This avoids the Node.js HTTP/TLS stack which isn't available in Workers
+// See: https://github.com/stripe/stripe-node#usage-with-cloudflare-workers
 export const stripe = new Stripe(serverEnv.STRIPE_SECRET_KEY || 'sk_test_dummy_key_for_build', {
   apiVersion: '2025-11-17.clover',
   typescript: true,
+  httpClient: Stripe.createFetchHttpClient(),
+  telemetry: false, // Disable telemetry for edge environments
 });
 
 // Stripe webhook secret for signature verification

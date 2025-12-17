@@ -1,4 +1,3 @@
- 
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
@@ -77,6 +76,17 @@ export default defineConfig({
       testMatch: /.*\.api\.spec\.ts/,
       workers: 1, // Keep single worker for API tests to avoid Supabase rate limits
       timeout: 60000, // Increase timeout to handle rate limiting retries
+    },
+
+    // Integration Tests (API integration without browser)
+    {
+      name: 'integration',
+      use: {
+        baseURL: `http://localhost:${TEST_PORT}`,
+      },
+      testMatch: /.*\.integration\.spec\.ts/,
+      workers: 1, // Keep single worker for integration tests to avoid Supabase rate limits
+      timeout: 90000, // Increase timeout for complex integration workflows
     },
 
     // Workers Preview Tests (validate Cloudflare behavior)

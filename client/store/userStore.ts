@@ -39,6 +39,7 @@ export interface IUserState {
   fetchUserData: (userId: string) => Promise<void>;
   invalidate: () => void;
   reset: () => void;
+  updateCreditsFromProcessing: (creditsRemaining: number) => void;
 
   // Auth operations (delegated to Supabase)
   signInWithEmail: (email: string, password: string) => Promise<void>;
@@ -158,6 +159,45 @@ export const useUserStore = create<IUserState>((set, get) => ({
       lastFetched: null,
     });
     clearUserCache();
+  },
+
+  updateCreditsFromProcessing: (creditsRemaining: number) => {
+    const currentUser = get().user;
+    if (!currentUser?.profile) return;
+
+    const currentTotal =
+      (currentUser.profile.subscription_credits_balance ?? 0) +
+      (currentUser.profile.purchased_credits_balance ?? 0);
+    const creditsDelta = creditsRemaining - currentTotal;
+
+    // If credits decreased, deduct from subscription first (FIFO), then purchased
+    // If credits increased (refund), add back proportionally
+    let newSubscriptionBalance = currentUser.profile.subscription_credits_balance ?? 0;
+    let newPurchasedBalance = currentUser.profile.purchased_credits_balance ?? 0;
+
+    if (creditsDelta < 0) {
+      // Credits were consumed
+      const consumed = Math.abs(creditsDelta);
+      const fromSubscription = Math.min(newSubscriptionBalance, consumed);
+      const fromPurchased = consumed - fromSubscription;
+      newSubscriptionBalance -= fromSubscription;
+      newPurchasedBalance -= fromPurchased;
+    } else if (creditsDelta > 0) {
+      // Credits were refunded - add to purchased balance
+      newPurchasedBalance += creditsDelta;
+    }
+
+    const updatedUser: IUserData = {
+      ...currentUser,
+      profile: {
+        ...currentUser.profile,
+        subscription_credits_balance: newSubscriptionBalance,
+        purchased_credits_balance: newPurchasedBalance,
+      },
+    };
+
+    set({ user: updatedUser });
+    saveUserCache(updatedUser);
   },
 
   signInWithEmail: async (email, password) => {

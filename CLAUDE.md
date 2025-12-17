@@ -2,6 +2,9 @@
 
 ## Critical Rules
 
+- **Principles**: Always have these principles when planning or writing code: SOLID, SRP, KISS, DRY, YAGNI.
+- **Cloudflare Workers**: Code runs on CF Workers free plan (10ms CPU limit). Avoid heavy computation, prefer streaming, use efficient algorithms. Delegate to browser whatever can safely run client-side; if security concerns exist, report and suggest alternatives.
+- **Minimum changes**: Only add minimum necessary changes to make your feature work reliably and bug free.
 - **Verify changes**: Run `yarn verify` after modifications
 - **Interface naming**: Prefix with `I` (e.g., `IBlogPost`)
 - **Update roadmap**: Modify `docs/management/ROADMAP.md` for new features

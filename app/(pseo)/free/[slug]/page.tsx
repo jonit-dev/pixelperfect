@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFreeData, getAllFreeSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
-import { FreePageTemplate } from '@/components/pseo/templates/FreePageTemplate';
+import { FreePageTemplate } from '@/app/(pseo)/_components/pseo/templates/FreePageTemplate';
 
 interface IFreePageProps {
   params: Promise<{ slug: string }>;

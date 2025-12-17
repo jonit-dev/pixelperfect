@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getComparisonData, getAllComparisonSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
-import { ComparePageTemplate } from '@/components/pseo/templates/ComparePageTemplate';
+import { ComparePageTemplate } from '@/app/(pseo)/_components/pseo/templates/ComparePageTemplate';
 
 interface IComparisonPageProps {
   params: Promise<{ slug: string }>;

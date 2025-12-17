@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getToolData, getAllToolSlugs, generateMetadata as generatePageMetadata } from '@/lib/seo';
-import { ToolPageTemplate } from '@/components/pseo/templates/ToolPageTemplate';
-import { SchemaMarkup } from '@/components/seo/SchemaMarkup';
+import { ToolPageTemplate } from '@/app/(pseo)/_components/pseo/templates/ToolPageTemplate';
+import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { generateToolSchema } from '@/lib/seo';
 
 interface IToolPageProps {

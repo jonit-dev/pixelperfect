@@ -172,9 +172,17 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       both: 2, // Upscale + enhance - same as enhance alone
       custom: 2, // Custom prompt - AI-intensive
     },
+    // Model-based multipliers for different AI models
+    modelMultipliers: {
+      'real-esrgan': 1,
+      gfpgan: 2,
+      'clarity-upscaler': 4,
+      'nano-banana-pro': 8,
+    },
     scaleMultipliers: {
-      '2x': 1.0, // No extra cost for 2x scaling
-      '4x': 1.0, // Currently same as 2x (could be changed later)
+      '2x': 1.0,
+      '4x': 1.0,
+      '8x': 1.0,
     },
     options: {
       customPrompt: 0, // Included in 'custom' mode cost
@@ -182,7 +190,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       batchPerImage: 0, // No extra cost per batch image
     },
     minimumCost: 1, // At least 1 credit per operation
-    maximumCost: 10, // Safety cap
+    maximumCost: 20, // Safety cap increased for premium models
   },
 
   freeUser: {

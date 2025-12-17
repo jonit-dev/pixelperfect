@@ -223,7 +223,7 @@ export function calculateCreditCost(config: { mode: ProcessingMode; scale?: numb
 
   // Apply scale multiplier if provided
   if (config.scale) {
-    const scaleKey = `${config.scale}x` as '2x' | '4x';
+    const scaleKey = `${config.scale}x` as '2x' | '4x' | '8x';
     const multiplier = creditCosts.scaleMultipliers[scaleKey] ?? 1.0;
     cost = Math.ceil(cost * multiplier);
   }
@@ -233,6 +233,101 @@ export function calculateCreditCost(config: { mode: ProcessingMode; scale?: numb
   cost = Math.min(cost, creditCosts.maximumCost);
 
   return cost;
+}
+
+/**
+ * Calculate credit cost with model-based multiplier
+ * Formula: baseCreditCost × modelMultiplier × scaleMultiplier
+ */
+export function calculateModelCreditCost(params: {
+  mode: ProcessingMode;
+  modelId: string;
+  scale: 2 | 4 | 8;
+}): number {
+  const { creditCosts } = getSubscriptionConfig();
+
+  // Base cost from mode
+  const baseCost = creditCosts.modes[params.mode] ?? creditCosts.modes.enhance;
+
+  // Get model multiplier (default to 1 if model not found)
+  const modelMultiplier = creditCosts.modelMultipliers[params.modelId] ?? 1;
+
+  // Get scale multiplier
+  const scaleKey = `${params.scale}x` as '2x' | '4x' | '8x';
+  const scaleMultiplier = creditCosts.scaleMultipliers[scaleKey] ?? 1.0;
+
+  // Apply formula: baseCreditCost × modelMultiplier × scaleMultiplier
+  let totalCost = Math.ceil(baseCost * modelMultiplier * scaleMultiplier);
+
+  // Apply bounds
+  totalCost = Math.max(totalCost, creditCosts.minimumCost);
+  totalCost = Math.min(totalCost, creditCosts.maximumCost);
+
+  return totalCost;
+}
+
+/**
+ * Get credit cost breakdown for UI display
+ * Shows how the total cost is calculated
+ */
+export function getCreditCostBreakdown(params: {
+  mode: ProcessingMode;
+  modelId: string;
+  scale: 2 | 4 | 8;
+}): {
+  baseCost: number;
+  modelMultiplier: number;
+  modelCost: number;
+  scaleMultiplier: number;
+  totalCost: number;
+  formula: string;
+} {
+  const { creditCosts } = getSubscriptionConfig();
+
+  // Base cost from mode
+  const baseCost = creditCosts.modes[params.mode] ?? creditCosts.modes.enhance;
+
+  // Get model multiplier
+  const modelMultiplier = creditCosts.modelMultipliers[params.modelId] ?? 1;
+
+  // Calculate cost after model multiplier
+  const modelCost = baseCost * modelMultiplier;
+
+  // Get scale multiplier
+  const scaleKey = `${params.scale}x` as '2x' | '4x' | '8x';
+  const scaleMultiplier = creditCosts.scaleMultipliers[scaleKey] ?? 1.0;
+
+  // Calculate total
+  let totalCost = Math.ceil(modelCost * scaleMultiplier);
+
+  // Apply bounds
+  totalCost = Math.max(totalCost, creditCosts.minimumCost);
+  totalCost = Math.min(totalCost, creditCosts.maximumCost);
+
+  return {
+    baseCost,
+    modelMultiplier,
+    modelCost: Math.ceil(modelCost),
+    scaleMultiplier,
+    totalCost,
+    formula: `${baseCost} × ${modelMultiplier} × ${scaleMultiplier} = ${totalCost} credits`,
+  };
+}
+
+/**
+ * Get all model multipliers for display
+ */
+export function getAllModelMultipliers(): Record<string, number> {
+  const { creditCosts } = getSubscriptionConfig();
+  return { ...creditCosts.modelMultipliers };
+}
+
+/**
+ * Get model multiplier for a specific model
+ */
+export function getModelMultiplier(modelId: string): number {
+  const { creditCosts } = getSubscriptionConfig();
+  return creditCosts.modelMultipliers[modelId] ?? 1;
 }
 
 /**

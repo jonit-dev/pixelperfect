@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Pricing } from '@client/components/pixelperfect/Pricing';
+import { Pricing } from '@client/components/features/landing/Pricing';
 import { useAuthStore } from '@client/store/authStore';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
@@ -215,7 +215,9 @@ describe('Pricing Component', () => {
       });
 
       // Need to re-import after mocking
-      const { Pricing: PricingWithMock } = await import('@client/components/pixelperfect/Pricing');
+      const { Pricing: PricingWithMock } = await import(
+        '@client/components/features/landing/Pricing'
+      );
       render(<PricingWithMock />);
 
       const proButton = screen.getByRole('button', { name: 'Subscribe Now' });

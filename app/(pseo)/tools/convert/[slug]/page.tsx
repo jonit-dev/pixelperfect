@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import interactiveToolsData from '@/app/seo/data/interactive-tools.json';
-import { InteractiveToolPageTemplate } from '@/components/pseo/templates/InteractiveToolPageTemplate';
-import { SchemaMarkup } from '@/components/seo/SchemaMarkup';
+import { InteractiveToolPageTemplate } from '@/app/(pseo)/_components/pseo/templates/InteractiveToolPageTemplate';
+import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 
 const toolsData = interactiveToolsData as IPSEODataFile<IToolPage>;

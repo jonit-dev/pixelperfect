@@ -4,7 +4,7 @@
  */
 
 export type ProcessingMode = 'upscale' | 'enhance' | 'both' | 'custom';
-export type ScaleFactor = '2x' | '4x';
+export type ScaleFactor = '2x' | '4x' | '8x';
 export type Currency = 'usd' | 'eur' | 'gbp';
 export type BillingInterval = 'month' | 'year';
 export type ExpirationMode = 'never' | 'end_of_cycle' | 'rolling_window';
@@ -89,7 +89,9 @@ export interface IPlanConfig {
 export interface ICreditCostConfig {
   /** Base costs per processing mode */
   modes: Record<ProcessingMode, number>;
-  /** Multipliers for scale factors (currently all 1.0) */
+  /** Multipliers for different AI models */
+  modelMultipliers: Record<string, number>;
+  /** Multipliers for scale factors (1.0, 1.5, 2.0) */
   scaleMultipliers: Record<ScaleFactor, number>;
   /** Additional costs for premium options (future features) */
   options: {

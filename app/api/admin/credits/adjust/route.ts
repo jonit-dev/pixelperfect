@@ -3,6 +3,8 @@ import { requireAdmin } from '@/server/middleware/requireAdmin';
 import { supabaseAdmin } from '@/server/supabase/supabaseAdmin';
 import { z } from 'zod';
 
+export const runtime = 'edge';
+
 const setCreditsSchema = z.object({
   userId: z.string().uuid(),
   newBalance: z.number().int().min(0),

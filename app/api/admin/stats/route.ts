@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/server/middleware/requireAdmin';
 import { supabaseAdmin } from '@/server/supabase/supabaseAdmin';
 
+export const runtime = 'edge';
+
 export async function GET(req: NextRequest) {
   const { isAdmin, error } = await requireAdmin(req);
   if (!isAdmin) return error;
@@ -17,12 +19,12 @@ export async function GET(req: NextRequest) {
     ]);
 
     const totalCreditsIssued = (creditsResult.data || [])
-      .filter((t) => t.amount > 0)
+      .filter(t => t.amount > 0)
       .reduce((sum, t) => sum + t.amount, 0);
 
     const totalCreditsUsed = Math.abs(
       (creditsResult.data || [])
-        .filter((t) => t.type === 'usage')
+        .filter(t => t.type === 'usage')
         .reduce((sum, t) => sum + t.amount, 0)
     );
 
@@ -37,9 +39,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (err) {
     console.error('Admin stats error:', err);
-    return NextResponse.json(
-      { error: 'Failed to fetch admin stats' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch admin stats' }, { status: 500 });
   }
 }

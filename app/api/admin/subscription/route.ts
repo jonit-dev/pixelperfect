@@ -6,6 +6,8 @@ import { z } from 'zod';
 import { getPlanForPriceId } from '@/shared/config/stripe';
 import dayjs from 'dayjs';
 
+export const runtime = 'edge';
+
 const updateSubscriptionSchema = z.object({
   userId: z.string().uuid(),
   action: z.enum(['cancel', 'change']),
@@ -99,16 +101,12 @@ export async function POST(req: NextRequest) {
 
       const targetPlan = getPlanForPriceId(targetPriceId);
       if (!targetPlan) {
-        return NextResponse.json(
-          { error: 'Invalid price ID' },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: 'Invalid price ID' }, { status: 400 });
       }
 
       // Check if user has an active subscription in Stripe we can modify
-      const activeSubscription = subscription &&
-        subscription.status !== 'canceled' &&
-        subscription.status !== 'incomplete';
+      const activeSubscription =
+        subscription && subscription.status !== 'canceled' && subscription.status !== 'incomplete';
 
       if (activeSubscription) {
         // Update existing subscription in Stripe

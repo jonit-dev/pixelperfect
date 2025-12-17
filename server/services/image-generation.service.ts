@@ -4,6 +4,7 @@ import { serverEnv } from '@shared/config/env';
 import type { IUpscaleInput, IUpscaleConfig } from '@shared/validation/upscale.schema';
 import { calculateCreditCost as configCalculateCreditCost } from '@shared/config/subscription.utils';
 import type { IImageProcessor, IImageProcessorResult } from './image-processor.interface';
+import { ModelRegistry } from './model-registry';
 
 /**
  * Custom error class for insufficient credits
@@ -36,16 +37,24 @@ export type IGenerationResult = IImageProcessorResult;
 
 /**
  * Calculate the credit cost for an image processing operation.
- * Now uses centralized subscription configuration.
+ * Uses ModelRegistry as the single source of truth for credit calculations.
  *
  * @param config - The upscale configuration
  * @returns The number of credits required
  */
 export function calculateCreditCost(config: IUpscaleConfig): number {
-  return configCalculateCreditCost({
-    mode: config.mode,
-    scale: config.scale,
-  });
+  // If auto mode selected, use the original calculation method as fallback
+  if (config.selectedModel === 'auto') {
+    return configCalculateCreditCost({
+      mode: config.mode,
+      scale: config.scale,
+    });
+  }
+
+  // Use ModelRegistry as the single source of truth for credit calculations
+  // This ensures consistency between estimation and actual deduction
+  const modelRegistry = ModelRegistry.getInstance();
+  return modelRegistry.calculateCreditCostWithMode(config.selectedModel, config.scale, config.mode);
 }
 
 /**
@@ -260,13 +269,6 @@ export class ImageGenerationService implements IImageProcessor {
     }
 
     // Feature Constraints
-    if (config.preserveText) {
-      prompt +=
-        'Constraint: Text and logos MUST remain legible, straight, and spelled correctly. Sharpen the text boundaries. ';
-    } else {
-      prompt += 'Constraint: Prioritize visual aesthetics. ';
-    }
-
     if (config.enhanceFace) {
       prompt +=
         "Constraint: Enhance facial features naturally (eyes, skin texture) without altering the person's identity. ";

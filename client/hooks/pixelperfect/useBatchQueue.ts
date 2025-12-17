@@ -1,8 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
-import { IBatchItem, ProcessingStatus, IUpscaleConfig } from '@shared/types/pixelperfect';
+import {
+  IBatchItem,
+  ProcessingStatus,
+  ProcessingStage,
+  IUpscaleConfig,
+} from '@shared/types/pixelperfect';
 import { processImage } from '@client/utils/api-client';
 import { serializeError } from '@shared/utils/errors';
 import { useToastStore } from '@client/store/toastStore';
+import { useUserStore } from '@client/store/userStore';
 
 interface IUseBatchQueueReturn {
   queue: IBatchItem[];
@@ -90,23 +96,35 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
     updateItemStatus(item.id, {
       status: ProcessingStatus.PROCESSING,
       progress: 0,
+      stage: ProcessingStage.PREPARING,
       error: undefined,
     });
 
     try {
-      const resultUrl = await processImage(item.file, config, p => {
-        updateItemStatus(item.id, { progress: p });
+      const result = await processImage(item.file, config, (p, stage) => {
+        updateItemStatus(item.id, {
+          progress: p,
+          stage: stage || ProcessingStage.ENHANCING,
+        });
       });
+
+      // Prefer imageUrl (direct URL, edge-optimized) over imageData (base64)
+      // Both work in <img> tags, but URL is faster and avoids CORS issues
       updateItemStatus(item.id, {
         status: ProcessingStatus.COMPLETED,
-        processedUrl: resultUrl,
+        processedUrl: result.imageUrl || result.imageData || '',
         progress: 100,
+        stage: undefined, // Clear stage on completion
       });
+
+      // Update credits immediately after successful processing
+      useUserStore.getState().updateCreditsFromProcessing(result.creditsRemaining);
     } catch (error: unknown) {
       const errorMessage = serializeError(error);
       updateItemStatus(item.id, {
         status: ProcessingStatus.ERROR,
         error: errorMessage,
+        stage: undefined, // Clear stage on error
       });
 
       // Show toast notification for the error

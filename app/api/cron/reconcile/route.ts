@@ -28,6 +28,10 @@ export const runtime = 'edge';
 // Rate limiting: 100ms between Stripe API calls to respect rate limits
 const RATE_LIMIT_DELAY_MS = 100;
 
+// Cloudflare Workers free plan: 50 subrequests max
+// Process max 40 subscriptions per run to stay under limit (each needs ~1-2 Stripe API calls)
+const BATCH_SIZE = 40;
+
 interface IDiscrepancyIssue {
   subId: string;
   userId: string;
@@ -79,10 +83,16 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ processed: 0, discrepancies: 0, fixed: 0, issues: [] });
     }
 
-    console.log(`[CRON] Reconciling ${dbSubs.length} subscriptions with Stripe...`);
+    // Limit batch size for Cloudflare Workers subrequest limit (50 max)
+    const batch = dbSubs.slice(0, BATCH_SIZE);
+    const hasMore = dbSubs.length > BATCH_SIZE;
 
-    // Process each subscription
-    for (const dbSub of dbSubs) {
+    console.log(
+      `[CRON] Reconciling ${batch.length} subscriptions with Stripe (${dbSubs.length} total, batch processing ${hasMore ? 'enabled' : 'not needed'})...`
+    );
+
+    // Process each subscription in batch
+    for (const dbSub of batch) {
       processed++;
 
       try {
@@ -221,6 +231,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       fixed,
       issues,
       syncRunId,
+      hasMore,
+      totalSubscriptions: dbSubs.length,
+      batchSize: BATCH_SIZE,
+      message: hasMore
+        ? `Processed batch of ${BATCH_SIZE}. Re-run to process remaining ${dbSubs.length - BATCH_SIZE} subscriptions.`
+        : 'All subscriptions processed',
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

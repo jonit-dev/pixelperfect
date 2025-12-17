@@ -1,9 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
+import blogDataRaw from '@/content/blog-data.json';
 
-const BLOG_DIR = path.join(process.cwd(), 'content/blog');
+const blogData = blogDataRaw as { posts: IBlogPost[] };
 
 export interface IBlogPost {
   slug: string;
@@ -30,92 +27,65 @@ export interface IBlogPostMeta {
   readingTime: string;
 }
 
+/**
+ * Get all blog posts (sorted by date, newest first)
+ * Edge-compatible - no filesystem access
+ */
 export function getAllPosts(): IBlogPostMeta[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
-
-  const posts = files.map(file => {
-    const slug = file.replace(/\.mdx$/, '');
-    const filePath = path.join(BLOG_DIR, file);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-    const stats = readingTime(content);
-
-    return {
-      slug,
-      title: data.title || '',
-      description: data.description || '',
-      date: data.date || '',
-      author: data.author || 'PixelPerfect Team',
-      category: data.category || 'General',
-      tags: data.tags || [],
-      image: data.image,
-      readingTime: stats.text,
-    };
-  });
-
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return blogData.posts.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    author: post.author,
+    category: post.category,
+    tags: post.tags,
+    image: post.image,
+    readingTime: post.readingTime,
+  }));
 }
 
+/**
+ * Get a single post by slug
+ * Edge-compatible - no filesystem access
+ */
 export function getPostBySlug(slug: string): IBlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-  const stats = readingTime(content);
-
-  return {
-    slug,
-    title: data.title || '',
-    description: data.description || '',
-    date: data.date || '',
-    author: data.author || 'PixelPerfect Team',
-    category: data.category || 'General',
-    tags: data.tags || [],
-    image: data.image,
-    readingTime: stats.text,
-    content,
-  };
+  return blogData.posts.find(p => p.slug === slug) || null;
 }
 
+/**
+ * Get all slugs for static generation
+ */
 export function getAllSlugs(): string[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
-  }
-
-  return fs
-    .readdirSync(BLOG_DIR)
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => file.replace(/\.mdx$/, ''));
+  return blogData.posts.map(p => p.slug);
 }
 
+/**
+ * Get posts by category
+ */
 export function getPostsByCategory(category: string): IBlogPostMeta[] {
-  return getAllPosts().filter(
-    post => post.category.toLowerCase() === category.toLowerCase()
-  );
+  return getAllPosts().filter(post => post.category.toLowerCase() === category.toLowerCase());
 }
 
+/**
+ * Get posts by tag
+ */
 export function getPostsByTag(tag: string): IBlogPostMeta[] {
-  return getAllPosts().filter(post =>
-    post.tags.some(t => t.toLowerCase() === tag.toLowerCase())
-  );
+  return getAllPosts().filter(post => post.tags.some(t => t.toLowerCase() === tag.toLowerCase()));
 }
 
+/**
+ * Get all unique categories
+ */
 export function getAllCategories(): string[] {
-  const posts = getAllPosts();
-  const categories = new Set(posts.map(post => post.category));
+  const categories = new Set(blogData.posts.map(p => p.category));
   return Array.from(categories);
 }
 
+/**
+ * Get all unique tags
+ */
 export function getAllTags(): string[] {
-  const posts = getAllPosts();
-  const tags = new Set(posts.flatMap(post => post.tags));
+  const tags = new Set(blogData.posts.flatMap(p => p.tags));
   return Array.from(tags);
 }

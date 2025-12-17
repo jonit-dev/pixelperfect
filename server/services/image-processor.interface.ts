@@ -4,9 +4,11 @@ import type { IUpscaleInput } from '@shared/validation/upscale.schema';
  * Result from a successful image processing operation
  */
 export interface IImageProcessorResult {
-  imageData: string; // base64 data URL
+  imageData?: string; // base64 data URL (legacy, deprecated for Workers)
+  imageUrl?: string; // Direct URL to result image (preferred for Cloudflare Workers)
   mimeType: string; // e.g., 'image/png'
   creditsRemaining: number;
+  expiresAt?: number; // Timestamp when URL expires (for imageUrl)
 }
 
 /**

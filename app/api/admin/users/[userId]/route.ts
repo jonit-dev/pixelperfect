@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/server/middleware/requireAdmin';
 import { supabaseAdmin } from '@/server/supabase/supabaseAdmin';
 
+export const runtime = 'edge';
+
 export async function GET(req: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   const { isAdmin, error } = await requireAdmin(req);
   if (!isAdmin) return error;
@@ -118,10 +120,7 @@ export async function DELETE(
     }
 
     // Delete profile
-    const { error: profileError } = await supabaseAdmin
-      .from('profiles')
-      .delete()
-      .eq('id', userId);
+    const { error: profileError } = await supabaseAdmin.from('profiles').delete().eq('id', userId);
 
     if (profileError) {
       console.error('Error deleting profile:', profileError);

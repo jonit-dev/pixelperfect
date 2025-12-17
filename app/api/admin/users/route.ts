@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/server/middleware/requireAdmin';
 import { supabaseAdmin } from '@/server/supabase/supabaseAdmin';
 
+export const runtime = 'edge';
+
 export async function GET(req: NextRequest) {
   const { isAdmin, error } = await requireAdmin(req);
   if (!isAdmin) return error;
@@ -14,15 +16,15 @@ export async function GET(req: NextRequest) {
 
   try {
     // Build query
-    let query = supabaseAdmin
-      .from('profiles')
-      .select('*, email:id', { count: 'exact' });
+    let query = supabaseAdmin.from('profiles').select('*, email:id', { count: 'exact' });
 
     // We need to join with auth.users to get email
     // Since we can't directly join in Supabase client, we'll fetch profiles and then get emails
-    const { data: profiles, count, error: profilesError } = await query
-      .range(offset, offset + limit - 1)
-      .order('created_at', { ascending: false });
+    const {
+      data: profiles,
+      count,
+      error: profilesError,
+    } = await query.range(offset, offset + limit - 1).order('created_at', { ascending: false });
 
     if (profilesError) {
       console.error('Error fetching profiles:', profilesError);
@@ -37,17 +39,14 @@ export async function GET(req: NextRequest) {
 
     if (authError) {
       console.error('Error fetching auth users:', authError);
-      return NextResponse.json(
-        { error: 'Failed to fetch user emails' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to fetch user emails' }, { status: 500 });
     }
 
     // Create email lookup map
-    const emailMap = new Map(authUsers.users.map((u) => [u.id, u.email]));
+    const emailMap = new Map(authUsers.users.map(u => [u.id, u.email]));
 
     // Combine profile data with emails
-    const usersWithEmails = (profiles || []).map((profile) => ({
+    const usersWithEmails = (profiles || []).map(profile => ({
       ...profile,
       email: emailMap.get(profile.id) || 'unknown@example.com',
     }));
@@ -55,7 +54,7 @@ export async function GET(req: NextRequest) {
     // Apply search filter if provided
     let filteredUsers = usersWithEmails;
     if (search) {
-      filteredUsers = usersWithEmails.filter((u) =>
+      filteredUsers = usersWithEmails.filter(u =>
         u.email.toLowerCase().includes(search.toLowerCase())
       );
     }
@@ -71,9 +70,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (err) {
     console.error('Admin users list error:', err);
-    return NextResponse.json(
-      { error: 'Failed to fetch users' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
   }
 }

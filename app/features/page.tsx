@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import Features from '@client/components/pixelperfect/Landing/Features';
-import { CTASection } from '@client/components/pixelperfect/Landing/CTASection';
+import Features from '@client/components/features/landing/Features';
+import { CTASection } from '@client/components/features/landing/CTASection';
 
 export const metadata: Metadata = {
   title: 'Features | PixelPerfect AI - Image Upscaling & Enhancement',
-  description: 'Discover powerful features of PixelPerfect AI: Text preservation, batch processing, ethical AI, lightning fast upscaling, and more.',
+  description:
+    'Discover powerful features of PixelPerfect AI: Text preservation, batch processing, ethical AI, lightning fast upscaling, and more.',
 };
 
 export default function FeaturesPage() {
@@ -20,8 +21,8 @@ export default function FeaturesPage() {
             </span>
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Everything you need to enhance your images with cutting-edge AI technology.
-            From text preservation to batch processing, we&apos;ve got you covered.
+            Everything you need to enhance your images with cutting-edge AI technology. From text
+            preservation to batch processing, we&apos;ve got you covered.
           </p>
         </div>
       </section>

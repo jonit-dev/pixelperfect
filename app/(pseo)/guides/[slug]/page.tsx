@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getGuideData, getAllGuideSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
-import { GuidePageTemplate } from '@/components/pseo/templates/GuidePageTemplate';
+import { GuidePageTemplate } from '@/app/(pseo)/_components/pseo/templates/GuidePageTemplate';
 
 interface IGuidePageProps {
   params: Promise<{ slug: string }>;

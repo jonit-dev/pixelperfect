@@ -3,10 +3,10 @@ import { upscaleSchema, validateImageSizeForTier } from '@shared/validation/upsc
 import {
   InsufficientCreditsError,
   AIGenerationError,
-  calculateCreditCost,
 } from '@server/services/image-generation.service';
 import { ReplicateError } from '@server/services/replicate.service';
 import { ImageProcessorFactory } from '@server/services/image-processor.factory';
+import { ModelRegistry } from '@server/services/model-registry';
 import { ZodError } from 'zod';
 import { createLogger } from '@server/monitoring/logger';
 import { trackServerEvent } from '@server/analytics';
@@ -14,6 +14,8 @@ import { serverEnv } from '@shared/config/env';
 import { ErrorCodes, createErrorResponse, serializeError } from '@shared/utils/errors';
 import { upscaleRateLimit } from '@server/rateLimit';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import type { IUpscaleResponse } from '@shared/types/pixelperfect';
+import type { SubscriptionTier } from '@server/services/model-registry.types';
 
 export const runtime = 'edge';
 
@@ -95,14 +97,22 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(errorBody, { status });
     }
 
-    // 5. Get user's subscription status to determine size limit
+    // 5. Get user's subscription status and tier to determine size limit and model access
     const { data: profile } = await supabaseAdmin
       .from('profiles')
-      .select('subscription_status')
+      .select('subscription_status, subscription_tier')
       .eq('id', userId)
       .single();
 
     const isPaidUser = profile?.subscription_status === 'active';
+
+    // Determine user tier for model access validation
+    // Active subscriptions without tier default to 'hobby' (lowest paid tier)
+    // to avoid blocking paying users who have missing tier data
+    let userTier: SubscriptionTier = 'free';
+    if (isPaidUser) {
+      userTier = (profile?.subscription_tier as SubscriptionTier) || 'hobby';
+    }
 
     // 6. Validate image size based on user tier (BEFORE charging credits)
     const sizeValidation = validateImageSizeForTier(validatedInput.imageData, isPaidUser);
@@ -120,34 +130,101 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(errorBody, { status });
     }
 
-    // Calculate credit cost based on the configuration
-    creditCost = calculateCreditCost(validatedInput.config);
+    // 7. Model selection and validation
+    const modelRegistry = ModelRegistry.getInstance();
+    let selectedModelId = validatedInput.config.selectedModel;
 
-    // 7. Process image with credit management using Factory pattern
-    const { primary, fallback } = ImageProcessorFactory.createProcessorWithFallback(
+    // If auto mode, use preferredModel hint or default
+    if (selectedModelId === 'auto') {
+      selectedModelId = validatedInput.config.preferredModel || 'real-esrgan';
+    }
+
+    // Validate model exists and is enabled
+    const selectedModel = modelRegistry.getModel(selectedModelId);
+    if (!selectedModel || !selectedModel.isEnabled) {
+      logger.warn('Selected model not available', { modelId: selectedModelId, userId });
+      // Fall back to default model
+      selectedModelId = 'real-esrgan';
+    }
+
+    // Validate model is available for user's tier
+    const eligibleModels = modelRegistry.getModelsByTier(userTier);
+    const isModelEligible = eligibleModels.some(m => m.id === selectedModelId);
+
+    if (!isModelEligible) {
+      logger.warn('Model requires higher tier', {
+        userId,
+        modelId: selectedModelId,
+        userTier,
+        requiredTier: selectedModel?.tierRestriction,
+      });
+      const { body: errorBody, status } = createErrorResponse(
+        ErrorCodes.FORBIDDEN,
+        `Model ${selectedModelId} requires ${selectedModel?.tierRestriction || 'pro'} tier or higher. Please upgrade your subscription or select a different model.`,
+        403
+      );
+      return NextResponse.json(errorBody, { status });
+    }
+
+    // Calculate credit cost based on the model and configuration
+    creditCost = modelRegistry.calculateCreditCostWithMode(
+      selectedModelId,
+      validatedInput.config.scale,
       validatedInput.config.mode
     );
 
+    // 8. Process image with selected model
+    let processor;
+    try {
+      processor = ImageProcessorFactory.createProcessorForModel(selectedModelId);
+    } catch {
+      // Fallback to legacy processor selection if model-specific fails
+      logger.warn('Model-specific processor failed, using fallback', { modelId: selectedModelId });
+      const { primary } = ImageProcessorFactory.createProcessorWithFallback(
+        validatedInput.config.mode
+      );
+      processor = primary;
+    }
+
     logger.info('Using image processor', {
-      provider: primary.providerName,
+      provider: processor.providerName,
       mode: validatedInput.config.mode,
-      hasFallback: Boolean(fallback),
+      selectedModel: selectedModelId,
+      creditCost,
     });
+
+    // Update the input config with the resolved model for the processor
+    // Map enhancementPrompt to customPrompt for processing
+    const inputWithResolvedModel = {
+      ...validatedInput,
+      config: {
+        ...validatedInput.config,
+        selectedModel: selectedModelId as typeof validatedInput.config.selectedModel,
+        // If enhancementPrompt is provided (from LLM analysis), use it as customPrompt
+        customPrompt: validatedInput.enhancementPrompt || validatedInput.config.customPrompt,
+      },
+    };
 
     let result;
 
     try {
-      // Try primary provider (Replicate by default for upscale/both)
-      result = await primary.processImage(userId, validatedInput);
+      result = await processor.processImage(userId, inputWithResolvedModel);
     } catch (error) {
-      // Try fallback if available and error is not due to insufficient credits
-      if (fallback && !(error instanceof InsufficientCreditsError)) {
-        logger.warn('Primary provider failed, using fallback', {
-          primaryProvider: primary.providerName,
-          fallbackProvider: fallback.providerName,
-          error: serializeError(error),
-        });
-        result = await fallback.processImage(userId, validatedInput);
+      // Try fallback provider if error is not due to insufficient credits
+      if (!(error instanceof InsufficientCreditsError)) {
+        const { fallback } = ImageProcessorFactory.createProcessorWithFallback(
+          validatedInput.config.mode
+        );
+        if (fallback && fallback.providerName !== processor.providerName) {
+          logger.warn('Primary provider failed, using fallback', {
+            primaryProvider: processor.providerName,
+            fallbackProvider: fallback.providerName,
+            error: serializeError(error),
+          });
+          result = await fallback.processImage(userId, inputWithResolvedModel);
+        } else {
+          throw error;
+        }
       } else {
         throw error;
       }
@@ -168,13 +245,42 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
     );
 
-    logger.info('Upscale completed', { userId, durationMs, creditsUsed: creditCost });
-
-    // 8. Return successful response
-    return NextResponse.json({
-      imageData: result.imageData,
-      creditsRemaining: result.creditsRemaining,
+    logger.info('Upscale completed', {
+      userId,
+      durationMs,
+      creditsUsed: creditCost,
+      modelUsed: selectedModelId,
     });
+
+    // 9. Return successful response with enhanced information
+    // Get the actual model config for display name
+    const modelConfig = modelRegistry.getModel(selectedModelId);
+    const modelDisplayName = modelConfig?.displayName || selectedModelId;
+
+    const response: IUpscaleResponse = {
+      success: true,
+      imageData: result.imageData, // Legacy base64 support (may be undefined)
+      imageUrl: result.imageUrl, // New URL-based result (Cloudflare Workers optimized)
+      expiresAt: result.expiresAt, // Expiry timestamp for URL
+      mimeType: result.mimeType || 'image/png',
+      processing: {
+        modelUsed: selectedModelId,
+        modelDisplayName,
+        processingTimeMs: durationMs,
+        creditsUsed: creditCost,
+        creditsRemaining: result.creditsRemaining,
+      },
+    };
+
+    // Include analysis hint if auto mode was originally requested
+    if (validatedInput.config.selectedModel === 'auto') {
+      response.analysis = {
+        modelRecommendation: selectedModelId,
+        contentType: undefined, // Would be populated if analyze-image was called first
+      };
+    }
+
+    return NextResponse.json(response);
   } catch (error) {
     // Handle validation errors
     if (error instanceof ZodError) {

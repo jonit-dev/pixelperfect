@@ -1,4 +1,4 @@
-import Workspace from '@client/components/pixelperfect/Workspace/Workspace';
+import Workspace from '@client/components/features/workspace/Workspace';
 
 export default function UpscalerPage() {
   return (

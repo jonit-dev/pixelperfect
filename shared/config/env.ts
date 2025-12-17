@@ -115,6 +115,12 @@ const serverEnvSchema = z.object({
     .default(
       'nightmareai/real-esrgan:f121d640bd286e1fdc67f9799164c1d5be36ff74576ee11c803ae5b665dd46aa'
     ),
+  // Qwen VL for LLM-based image analysis
+  QWEN_VL_MODEL_VERSION: z
+    .string()
+    .default(
+      'lucataco/qwen3-vl-8b-instruct:39e893666996acf464cff75688ad49ac95ef54e9f1c688fbc677330acc478e11'
+    ),
   // Baselime monitoring (server-side)
   BASELIME_API_KEY: z.string().default(''),
   // Analytics (server-side HTTP API)
@@ -127,6 +133,32 @@ const serverEnvSchema = z.object({
   CRON_SECRET: z.string().default(''),
   // Test Authentication
   TEST_AUTH_TOKEN: z.string().optional(),
+
+  // ==========================================
+  // MODEL ASSIGNMENTS BY USE CASE
+  // ==========================================
+  MODEL_FOR_GENERAL_UPSCALE: z.string().default('real-esrgan'),
+  MODEL_FOR_PORTRAITS: z.string().default('gfpgan'),
+  MODEL_FOR_DAMAGED_PHOTOS: z.string().default('nano-banana-pro'),
+  MODEL_FOR_TEXT_LOGOS: z.string().default('nano-banana'),
+  MODEL_FOR_MAX_QUALITY: z.string().default('clarity-upscaler'),
+
+  // ==========================================
+  // FEATURE FLAGS
+  // ==========================================
+  ENABLE_AUTO_MODEL_SELECTION: z.coerce.boolean().default(true),
+  ENABLE_PREMIUM_MODELS: z.coerce.boolean().default(true),
+
+  // ==========================================
+  // MODEL VERSION OVERRIDES (optional)
+  // Only set these if you need non-default versions
+  // Defaults are defined in model-registry.ts
+  // ==========================================
+  MODEL_VERSION_REAL_ESRGAN: z.string().optional(),
+  MODEL_VERSION_GFPGAN: z.string().optional(),
+  MODEL_VERSION_NANO_BANANA: z.string().optional(),
+  MODEL_VERSION_CLARITY_UPSCALER: z.string().optional(),
+  MODEL_VERSION_NANO_BANANA_PRO: z.string().optional(),
 });
 
 export type IServerEnv = z.infer<typeof serverEnvSchema>;
@@ -153,6 +185,9 @@ function loadServerEnv(): IServerEnv {
     REPLICATE_MODEL_VERSION:
       process.env.REPLICATE_MODEL_VERSION ||
       'nightmareai/real-esrgan:f121d640bd286e1fdc67f9799164c1d5be36ff74576ee11c803ae5b665dd46aa',
+    QWEN_VL_MODEL_VERSION:
+      process.env.QWEN_VL_MODEL_VERSION ||
+      'lucataco/qwen3-vl-8b-instruct:39e893666996acf464cff75688ad49ac95ef54e9f1c688fbc677330acc478e11',
     // Baselime monitoring
     BASELIME_API_KEY: process.env.BASELIME_API_KEY || '',
     // Analytics (server-side HTTP API)
@@ -165,6 +200,24 @@ function loadServerEnv(): IServerEnv {
     CRON_SECRET: process.env.CRON_SECRET || '',
     // Test Authentication
     TEST_AUTH_TOKEN: process.env.TEST_AUTH_TOKEN,
+
+    // Model Assignments by Use Case
+    MODEL_FOR_GENERAL_UPSCALE: process.env.MODEL_FOR_GENERAL_UPSCALE || 'real-esrgan',
+    MODEL_FOR_PORTRAITS: process.env.MODEL_FOR_PORTRAITS || 'gfpgan',
+    MODEL_FOR_DAMAGED_PHOTOS: process.env.MODEL_FOR_DAMAGED_PHOTOS || 'nano-banana-pro',
+    MODEL_FOR_TEXT_LOGOS: process.env.MODEL_FOR_TEXT_LOGOS || 'nano-banana',
+    MODEL_FOR_MAX_QUALITY: process.env.MODEL_FOR_MAX_QUALITY || 'clarity-upscaler',
+
+    // Feature Flags
+    ENABLE_AUTO_MODEL_SELECTION: process.env.ENABLE_AUTO_MODEL_SELECTION ?? 'true',
+    ENABLE_PREMIUM_MODELS: process.env.ENABLE_PREMIUM_MODELS ?? 'true',
+
+    // Model Version Overrides (optional)
+    MODEL_VERSION_REAL_ESRGAN: process.env.MODEL_VERSION_REAL_ESRGAN,
+    MODEL_VERSION_GFPGAN: process.env.MODEL_VERSION_GFPGAN,
+    MODEL_VERSION_NANO_BANANA: process.env.MODEL_VERSION_NANO_BANANA,
+    MODEL_VERSION_CLARITY_UPSCALER: process.env.MODEL_VERSION_CLARITY_UPSCALER,
+    MODEL_VERSION_NANO_BANANA_PRO: process.env.MODEL_VERSION_NANO_BANANA_PRO,
   };
 
   return serverEnvSchema.parse(env);

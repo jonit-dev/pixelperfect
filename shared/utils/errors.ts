@@ -20,6 +20,9 @@ export const ErrorCodes = {
   RATE_LIMITED: 'RATE_LIMITED',
   VALIDATION_ERROR: 'VALIDATION_ERROR',
   PAYMENT_REQUIRED: 'PAYMENT_REQUIRED',
+  MODEL_NOT_FOUND: 'MODEL_NOT_FOUND',
+  MODEL_NOT_SUPPORTED: 'MODEL_NOT_SUPPORTED',
+  TIER_RESTRICTED: 'TIER_RESTRICTED',
 
   // 5xx Server Errors
   INTERNAL_ERROR: 'INTERNAL_ERROR',
@@ -153,6 +156,18 @@ export const ErrorStatusMap: Record<ErrorCode, { status: number; defaultMessage:
   [ErrorCodes.RATE_LIMITED]: {
     status: 429,
     defaultMessage: 'Too many requests. Please try again later.',
+  },
+  [ErrorCodes.MODEL_NOT_FOUND]: {
+    status: 400,
+    defaultMessage: 'The specified model was not found.',
+  },
+  [ErrorCodes.MODEL_NOT_SUPPORTED]: {
+    status: 400,
+    defaultMessage: 'The model does not support this operation.',
+  },
+  [ErrorCodes.TIER_RESTRICTED]: {
+    status: 403,
+    defaultMessage: 'This feature requires a higher subscription tier.',
   },
   [ErrorCodes.INTERNAL_ERROR]: {
     status: 500,

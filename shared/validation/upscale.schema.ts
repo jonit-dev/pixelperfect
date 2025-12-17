@@ -68,10 +68,7 @@ export function validateImageSizeForTier(
  * @param height - Image height in pixels
  * @returns Validation result with error message if invalid
  */
-export function validateImageDimensions(
-  width: number,
-  height: number
-): IImageValidationResult {
+export function validateImageDimensions(width: number, height: number): IImageValidationResult {
   const { MIN_DIMENSION, MAX_DIMENSION } = IMAGE_VALIDATION;
 
   if (width < MIN_DIMENSION || height < MIN_DIMENSION) {
@@ -119,16 +116,78 @@ export const upscaleSchema = z.object({
     .string()
     .default('image/jpeg')
     .refine(
-      type => IMAGE_VALIDATION.ALLOWED_TYPES.includes(type as (typeof IMAGE_VALIDATION.ALLOWED_TYPES)[number]),
+      type =>
+        IMAGE_VALIDATION.ALLOWED_TYPES.includes(
+          type as (typeof IMAGE_VALIDATION.ALLOWED_TYPES)[number]
+        ),
       { message: `Invalid image type. Allowed: ${IMAGE_VALIDATION.ALLOWED_TYPES.join(', ')}` }
     ),
+  // Enhancement prompt from LLM analysis
+  enhancementPrompt: z.string().optional(),
   config: z.object({
+    // Existing fields
     mode: z.enum(['upscale', 'enhance', 'both', 'custom']),
-    scale: z.union([z.literal(2), z.literal(4)]).default(2),
+    scale: z.union([z.literal(2), z.literal(4), z.literal(8)]).default(2),
     denoise: z.boolean().default(false),
-    enhanceFace: z.boolean().default(false),
+    enhanceFace: z.boolean().default(true),
     preserveText: z.boolean().default(false),
     customPrompt: z.string().optional(),
+
+    // Enhancement aspect settings for fine-tuned control
+    enhancement: z
+      .object({
+        clarity: z.boolean().default(true),
+        color: z.boolean().default(true),
+        lighting: z.boolean().default(false),
+        denoise: z.boolean().default(true),
+        artifacts: z.boolean().default(true),
+        details: z.boolean().default(false),
+      })
+      .default({
+        clarity: true,
+        color: true,
+        lighting: false,
+        denoise: true,
+        artifacts: true,
+        details: false,
+      }),
+
+    // New multi-model architecture fields (PRD Section 6.1)
+    qualityLevel: z.enum(['standard', 'enhanced', 'premium']).default('standard'),
+    selectedModel: z
+      .enum(['auto', 'real-esrgan', 'gfpgan', 'nano-banana', 'clarity-upscaler', 'nano-banana-pro'])
+      .default('auto'),
+    autoModelSelection: z.boolean().default(true),
+    preferredModel: z
+      .enum(['real-esrgan', 'gfpgan', 'nano-banana', 'clarity-upscaler', 'nano-banana-pro'])
+      .optional(),
+    targetResolution: z.enum(['2k', '4k', '8k']).optional(),
+
+    // Nano Banana Pro specific configuration (Upscale Ultra)
+    nanoBananaProConfig: z
+      .object({
+        aspectRatio: z
+          .enum([
+            'match_input_image',
+            '1:1',
+            '2:3',
+            '3:2',
+            '3:4',
+            '4:3',
+            '4:5',
+            '5:4',
+            '9:16',
+            '16:9',
+            '21:9',
+          ])
+          .default('match_input_image'),
+        resolution: z.enum(['1K', '2K', '4K']).default('2K'),
+        outputFormat: z.enum(['jpg', 'png']).default('png'),
+        safetyFilterLevel: z
+          .enum(['block_low_and_above', 'block_medium_and_above', 'block_only_high'])
+          .default('block_only_high'),
+      })
+      .optional(),
   }),
 });
 

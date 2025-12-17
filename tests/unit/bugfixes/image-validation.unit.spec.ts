@@ -46,7 +46,8 @@ describe('Bug Fix: Server-side Image Validation', () => {
   });
 
   describe('MIME type validation', () => {
-    const validBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const validBase64 =
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
     const validConfig = {
       mode: 'upscale' as const,
       scale: 2 as const,
@@ -224,7 +225,8 @@ describe('Bug Fix: Server-side Image Validation', () => {
   });
 
   describe('Config validation', () => {
-    const validBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    const validBase64 =
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
 
     test('should accept valid modes', () => {
       const modes = ['upscale', 'enhance', 'both', 'custom'] as const;
@@ -265,7 +267,7 @@ describe('Bug Fix: Server-side Image Validation', () => {
     });
 
     test('should reject invalid scale factors', () => {
-      const invalidScales = [1, 3, 8, 16];
+      const invalidScales = [1, 3, 16];
 
       for (const scale of invalidScales) {
         const result = upscaleSchema.safeParse({

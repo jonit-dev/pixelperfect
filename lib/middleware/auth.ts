@@ -4,7 +4,8 @@ import { clientEnv, serverEnv } from '@shared/config/env';
 import { updateSession } from '@shared/utils/supabase/middleware';
 
 /**
- * Validate JWT format
+ * Validate JWT format using edge-compatible base64url validation
+ * Note: Uses atob() instead of Buffer.from() for Cloudflare Workers compatibility
  */
 function isValidJwtFormat(token: string): boolean {
   // JWT should have 3 parts separated by dots
@@ -18,11 +19,14 @@ function isValidJwtFormat(token: string): boolean {
     if (!part || part.length === 0) {
       return false;
     }
-    // Check if it's valid base64url (basic check)
+    // Check if it's valid base64url (edge-compatible)
     try {
+      // Convert base64url to base64 (replace URL-safe chars)
+      const base64 = part.replace(/-/g, '+').replace(/_/g, '/');
       // Add padding if needed for base64 validation
-      const padded = part + '='.repeat((4 - part.length % 4) % 4);
-      Buffer.from(padded, 'base64');
+      const padded = base64 + '='.repeat((4 - (base64.length % 4)) % 4);
+      // atob() is available in all modern runtimes including Cloudflare Workers
+      atob(padded);
     } catch {
       return false;
     }

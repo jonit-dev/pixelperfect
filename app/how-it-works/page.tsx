@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
-import HowItWorks from '@client/components/pixelperfect/Landing/HowItWorks';
-import { CTASection } from '@client/components/pixelperfect/Landing/CTASection';
+import HowItWorks from '@client/components/features/landing/HowItWorks';
+import { CTASection } from '@client/components/features/landing/CTASection';
 
 export const metadata: Metadata = {
   title: 'How it Works | PixelPerfect AI - Image Upscaling & Enhancement',
-  description: 'Learn how PixelPerfect AI transforms your images in three simple steps: Upload, Process, and Download. Get professional results in seconds.',
+  description:
+    'Learn how PixelPerfect AI transforms your images in three simple steps: Upload, Process, and Download. Get professional results in seconds.',
 };
 
 export default function HowItWorksPage() {
@@ -16,11 +17,13 @@ export default function HowItWorksPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
             How it
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600">
-              {' '}Works
+              {' '}
+              Works
             </span>
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Transform your workflow in three simple steps. No complex settings, just professional results every time.
+            Transform your workflow in three simple steps. No complex settings, just professional
+            results every time.
           </p>
         </div>
       </section>

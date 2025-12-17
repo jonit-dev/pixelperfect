@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Features from '@client/components/pixelperfect/Landing/Features';
-import HowItWorks from '@client/components/pixelperfect/Landing/HowItWorks';
+import Features from '@client/components/features/landing/Features';
+import HowItWorks from '@client/components/features/landing/HowItWorks';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
