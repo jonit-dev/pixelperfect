@@ -61,8 +61,7 @@ const Workspace: React.FC = () => {
       setDownloadError(null);
       await downloadSingle(url, filename, config.mode);
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Failed to download image';
+      const errorMessage = error instanceof Error ? error.message : 'Failed to download image';
       setDownloadError(errorMessage);
       console.error('Download error:', error);
     }
@@ -138,8 +137,7 @@ const Workspace: React.FC = () => {
                   className="flex-shrink-0 text-red-400 hover:text-red-600 transition-colors"
                   aria-label="Dismiss error"
                 >
-                  <span className="sr-only">Dismiss</span>
-                  ×
+                  <span className="sr-only">Dismiss</span>×
                 </button>
               </div>
             </div>
@@ -153,6 +151,7 @@ const Workspace: React.FC = () => {
               onRetry={(item: IBatchItem) => processSingleItem(item, config)}
               selectedModel={config.selectedModel}
               batchProgress={batchProgress}
+              isProcessingBatch={isProcessingBatch}
             />
           </div>
 

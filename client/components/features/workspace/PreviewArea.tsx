@@ -32,6 +32,7 @@ interface IPreviewAreaProps {
   onRetry: (item: IBatchItem) => void;
   selectedModel?: string; // For time estimation
   batchProgress?: IBatchProgress | null;
+  isProcessingBatch?: boolean;
 }
 
 export const PreviewArea: React.FC<IPreviewAreaProps> = ({
@@ -40,6 +41,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   onRetry,
   selectedModel = 'auto',
   batchProgress,
+  isProcessingBatch = false,
 }) => {
   // Interpolated progress for smooth animation
   const [displayProgress, setDisplayProgress] = useState(0);
@@ -105,6 +107,13 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
     );
   }
 
+  // Check if we're waiting for the next batch item (between items during batch processing)
+  const isWaitingForNextBatchItem =
+    isProcessingBatch &&
+    batchProgress &&
+    batchProgress.current < batchProgress.total &&
+    activeItem?.status === ProcessingStatus.COMPLETED;
+
   if (activeItem.status === ProcessingStatus.COMPLETED && activeItem.processedUrl) {
     return (
       <div className="w-full h-[65vh] min-h-[400px] flex flex-col">
@@ -122,6 +131,67 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
             afterUrl={activeItem.processedUrl}
             onDownload={() => onDownload(activeItem.processedUrl!, activeItem.file.name)}
           />
+
+          {/* Waiting for next batch item overlay */}
+          {isWaitingForNextBatchItem && (
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-xl z-10">
+              <div className="bg-white p-6 rounded-xl shadow-2xl border border-slate-100 text-center max-w-sm">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full">
+                    Image {batchProgress.current} of {batchProgress.total} complete
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Loader2 size={20} className="text-indigo-600 animate-spin" />
+                  <span className="text-sm font-medium text-slate-900">
+                    Preparing next image...
+                  </span>
+                </div>
+
+                {/* Processing indicator dots */}
+                <div className="flex justify-center gap-1.5">
+                  <span
+                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    style={{
+                      animation: 'pulse-dot 1.4s ease-in-out infinite',
+                      animationDelay: '0ms',
+                    }}
+                  />
+                  <span
+                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    style={{
+                      animation: 'pulse-dot 1.4s ease-in-out infinite',
+                      animationDelay: '200ms',
+                    }}
+                  />
+                  <span
+                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    style={{
+                      animation: 'pulse-dot 1.4s ease-in-out infinite',
+                      animationDelay: '400ms',
+                    }}
+                  />
+                  <style>{`
+                    @keyframes pulse-dot {
+                      0%, 100% {
+                        transform: scale(1);
+                        opacity: 0.4;
+                      }
+                      50% {
+                        transform: scale(1.3);
+                        opacity: 1;
+                      }
+                    }
+                  `}</style>
+                </div>
+
+                <p className="text-xs text-slate-400 mt-4">
+                  Rate limiting pause to ensure reliable processing
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
