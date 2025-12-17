@@ -25,6 +25,10 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
   const [showOversizedModal, setShowOversizedModal] = useState(false);
   const [oversizedFiles, setOversizedFiles] = useState<File[]>([]);
   const [currentOversizedIndex, setCurrentOversizedIndex] = useState(0);
+  // Store valid files to add after all oversized files are handled
+  const [pendingValidFiles, setPendingValidFiles] = useState<File[]>([]);
+  // Store resized files as they are processed
+  const [resizedFiles, setResizedFiles] = useState<File[]>([]);
   const { subscription } = useUserData();
   const isPaidUser = !!subscription?.price_id;
   const currentLimit = isPaidUser
@@ -47,33 +51,74 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 
   const handleFilesReceived = useCallback(
     (files: File[]) => {
-      const { validFiles, oversizedFiles, errorMessage } = processFiles(files, isPaidUser);
+      const { validFiles, oversizedFiles: oversized, errorMessage } = processFiles(files, isPaidUser);
 
-      if (oversizedFiles.length > 0) {
-        // Show modal for oversized files (works for both free and paid users)
+      if (oversized.length > 0) {
+        // Store all oversized files and show modal for the first one
+        // Hold valid files until oversized files are handled (prevents Dropzone unmounting)
+        setOversizedFiles(oversized);
+        setCurrentOversizedIndex(0);
+        setPendingValidFiles(validFiles);
+        setResizedFiles([]);
         setShowOversizedModal(true);
-        setOversizedFile(oversizedFiles[0]);
         setError(null);
-      } else if (errorMessage) {
-        setError(errorMessage);
       } else {
-        setError(null);
-      }
-
-      if (validFiles.length > 0) {
-        onFilesSelected(validFiles);
+        // No oversized files, add valid files immediately
+        if (errorMessage) {
+          setError(errorMessage);
+        } else {
+          setError(null);
+        }
+        if (validFiles.length > 0) {
+          onFilesSelected(validFiles);
+        }
       }
     },
     [isPaidUser, onFilesSelected]
   );
 
+  const finishOversizedHandling = useCallback(
+    (finalResizedFiles: File[]) => {
+      // Combine pending valid files with all resized files and submit together
+      const allFiles = [...pendingValidFiles, ...finalResizedFiles];
+      if (allFiles.length > 0) {
+        onFilesSelected(allFiles);
+      }
+      // Reset all state
+      setShowOversizedModal(false);
+      setOversizedFiles([]);
+      setCurrentOversizedIndex(0);
+      setPendingValidFiles([]);
+      setResizedFiles([]);
+    },
+    [onFilesSelected, pendingValidFiles]
+  );
+
   const handleResizeAndContinue = useCallback(
     (resizedFile: File) => {
-      // Pass the resized file to the parent
-      onFilesSelected([resizedFile]);
+      const newResizedFiles = [...resizedFiles, resizedFile];
+
+      // Move to next oversized file if there are more
+      if (currentOversizedIndex < oversizedFiles.length - 1) {
+        setResizedFiles(newResizedFiles);
+        setCurrentOversizedIndex(prev => prev + 1);
+      } else {
+        // All oversized files handled, submit all files together
+        finishOversizedHandling(newResizedFiles);
+      }
     },
-    [onFilesSelected]
+    [currentOversizedIndex, oversizedFiles.length, resizedFiles, finishOversizedHandling]
   );
+
+  const handleSkipOversized = useCallback(() => {
+    // Skip current file and move to next
+    if (currentOversizedIndex < oversizedFiles.length - 1) {
+      setCurrentOversizedIndex(prev => prev + 1);
+    } else {
+      // All oversized files handled, submit all files together
+      finishOversizedHandling(resizedFiles);
+    }
+  }, [currentOversizedIndex, oversizedFiles.length, resizedFiles, finishOversizedHandling]);
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
@@ -171,16 +216,15 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
       )}
 
       {/* Oversized Image Modal */}
-      {oversizedFile && (
+      {oversizedFiles.length > 0 && oversizedFiles[currentOversizedIndex] && (
         <OversizedImageModal
-          file={oversizedFile}
+          file={oversizedFiles[currentOversizedIndex]}
           isOpen={showOversizedModal}
-          onClose={() => {
-            setShowOversizedModal(false);
-            setOversizedFile(null);
-          }}
+          onClose={handleSkipOversized}
           onResizeAndContinue={handleResizeAndContinue}
           currentLimit={currentLimit}
+          currentIndex={currentOversizedIndex}
+          totalCount={oversizedFiles.length}
         />
       )}
     </div>

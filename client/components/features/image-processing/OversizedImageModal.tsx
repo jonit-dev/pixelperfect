@@ -14,6 +14,8 @@ export interface IOversizedImageModalProps {
   onClose: () => void;
   onResizeAndContinue: (resizedFile: File) => void;
   currentLimit: number;
+  currentIndex?: number;
+  totalCount?: number;
 }
 
 export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
@@ -22,6 +24,8 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
   onClose,
   onResizeAndContinue,
   currentLimit,
+  currentIndex = 0,
+  totalCount = 1,
 }) => {
   const [isCompressing, setIsCompressing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -93,8 +97,8 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
         lastModified: Date.now(),
       });
 
+      // onResizeAndContinue handles advancing to next file or closing modal
       onResizeAndContinue(resizedFile);
-      onClose();
     } catch (err) {
       console.error('Compression error:', err);
       setError('Failed to compress image. Please try a smaller file or upgrade to Pro.');
@@ -108,8 +112,13 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
   const fileSizeMB = file.size / (1024 * 1024);
   const excessMB = fileSizeMB - limitMB;
 
+  const showMultipleIndicator = totalCount > 1;
+  const modalTitle = showMultipleIndicator
+    ? `Image Too Large (${currentIndex + 1} of ${totalCount})`
+    : 'Image Too Large';
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="lg" title="Image Too Large">
+    <Modal isOpen={isOpen} onClose={onClose} size="lg" title={modalTitle}>
       <div className="space-y-6">
         {/* Warning Banner */}
         <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
@@ -232,13 +241,13 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
             </Link>
           )}
 
-          {/* Option 3: Cancel */}
+          {/* Option 3: Skip/Cancel */}
           <button
             onClick={onClose}
             disabled={isCompressing}
             className="w-full p-4 border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-xl transition-all text-slate-700 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Use a Different Image
+            {showMultipleIndicator ? 'Skip This Image' : 'Use a Different Image'}
           </button>
         </div>
 
