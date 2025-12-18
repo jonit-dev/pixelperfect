@@ -1,6 +1,6 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { BaseRepository, IBaseRepository } from './base.repository';
-import type { IUserProfile } from '@shared/types/stripe';
+import type { IUserProfile, SubscriptionStatus } from '@shared/types/stripe';
 
 /**
  * User profile interface for database operations
@@ -216,7 +216,7 @@ export class UserRepository
   ): Promise<IUserProfileDB> {
     const currentProfile = await this.findById(userId);
     if (!currentProfile) {
-      throw this.handleError({ message: 'User profile not found' } as any, 'addCredits');
+      throw this.handleError({ message: 'User profile not found' }, 'addCredits');
     }
 
     const updates: Partial<ICreditBalance> = {
@@ -236,7 +236,7 @@ export class UserRepository
   async consumeCredits(userId: string, amount: number): Promise<IUserProfileDB> {
     const currentProfile = await this.findById(userId);
     if (!currentProfile) {
-      throw this.handleError({ message: 'User profile not found' } as any, 'consumeCredits');
+      throw this.handleError({ message: 'User profile not found' }, 'consumeCredits');
     }
 
     const totalCredits =
@@ -244,7 +244,7 @@ export class UserRepository
       (currentProfile.purchased_credits_balance ?? 0);
 
     if (totalCredits < amount) {
-      throw this.handleError({ message: 'Insufficient credits' } as any, 'consumeCredits');
+      throw this.handleError({ message: 'Insufficient credits' }, 'consumeCredits');
     }
 
     // Consume from subscription credits first (FIFO), then purchased
@@ -266,7 +266,7 @@ export class UserRepository
 
     if (remainingToConsume > 0) {
       throw this.handleError(
-        { message: 'Insufficient credits after calculation' } as any,
+        { message: 'Insufficient credits after calculation' },
         'consumeCredits'
       );
     }
@@ -297,7 +297,7 @@ export class UserRepository
     const updateData: Partial<IUserProfileDB> = {};
 
     if (info.status !== undefined) {
-      updateData.subscription_status = info.status as any;
+      updateData.subscription_status = info.status as SubscriptionStatus | null;
     }
     if (info.tier !== undefined) {
       updateData.subscription_tier = info.tier;
@@ -310,11 +310,11 @@ export class UserRepository
   }
 
   async findBySubscriptionStatus(status: string): Promise<IUserProfileDB[]> {
-    return this.findMany({ subscription_status: status as any });
+    return this.findMany({ subscription_status: status } as Partial<IUserProfileDB>);
   }
 
   async findByRole(role: string): Promise<IUserProfileDB[]> {
-    return this.findMany({ role: role as any });
+    return this.findMany({ role } as Partial<IUserProfileDB>);
   }
 
   async searchByEmail(email: string): Promise<IUserProfileDB[]> {

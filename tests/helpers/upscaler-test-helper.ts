@@ -80,7 +80,7 @@ export class UpscalerTestHelper {
    */
   async setupErrorScenario(
     errorType: 'insufficient-credits' | 'server-error' | 'timeout' | 'custom',
-    customError?: any
+    customError?: Record<string, unknown>
   ): Promise<void> {
     // Set up auth with appropriate credits
     if (errorType === 'insufficient-credits') {

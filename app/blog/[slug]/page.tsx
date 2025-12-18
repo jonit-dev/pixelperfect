@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 // import { MDXRemote } from 'next-mdx-remote/rsc'; // Temporarily disabled for OpenNext
 import { getPostBySlug, getAllPosts } from '@server/blog';
-import { mdxComponents } from '@client/components/blog/MDXComponents';
+// import { mdxComponents } from '@client/components/blog/MDXComponents'; // Temporarily disabled for OpenNext
 import { Calendar, Clock, ArrowLeft, Tag, User } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
 

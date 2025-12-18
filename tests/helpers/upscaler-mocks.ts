@@ -7,14 +7,14 @@ import {
 
 export interface IApiMockConfig {
   delay?: number;
-  response?: IMockUpscaleResponse | any;
+  response?: IMockUpscaleResponse | Record<string, unknown>;
   status?: number;
   shouldTimeout?: boolean;
 }
 
 export interface IAuthMockConfig {
   credits?: number;
-  subscription?: any;
+  subscription?: Record<string, unknown> | null;
 }
 
 /**
@@ -170,7 +170,7 @@ export class UpscalerMockHelper {
   /**
    * Sets up a custom error response
    */
-  async mockCustomError(error: any, status = 500, delay = 300): Promise<void> {
+  async mockCustomError(error: Record<string, unknown>, status = 500, delay = 300): Promise<void> {
     await this.setupUpscaleMock({
       delay,
       response: error,

@@ -190,7 +190,7 @@ export class SubscriptionRepository
   }
 
   async findAllByUserId(userId: string): Promise<ISubscriptionDB[]> {
-    return this.findMany({ user_id: userId } as any, { orderBy: 'created_at', ascending: false });
+    return this.findMany({ user_id: userId } as Partial<ISubscriptionDB>, { orderBy: 'created_at', ascending: false });
   }
 
   async findActiveByUserId(userId: string): Promise<ISubscriptionDB | null> {
@@ -211,11 +211,11 @@ export class SubscriptionRepository
   }
 
   async findByStatus(status: string): Promise<ISubscriptionDB[]> {
-    return this.findMany({ status } as any);
+    return this.findMany({ status } as Partial<ISubscriptionDB>);
   }
 
   async findByPriceId(priceId: string): Promise<ISubscriptionDB[]> {
-    return this.findMany({ price_id: priceId } as any);
+    return this.findMany({ price_id: priceId } as Partial<ISubscriptionDB>);
   }
 
   async findEndingSoon(days: number = 7): Promise<ISubscriptionDB[]> {
@@ -248,7 +248,7 @@ export class SubscriptionRepository
   async cancelAtPeriodEnd(subscriptionId: string): Promise<ISubscriptionDB> {
     return this.updateById(subscriptionId, {
       cancel_at_period_end: true,
-    } as any);
+    } as Partial<ISubscriptionDB>);
   }
 
   async updateStatus(subscriptionId: string, status: string): Promise<ISubscriptionDB> {
@@ -260,7 +260,7 @@ export class SubscriptionRepository
       updateData.cancel_at_period_end = false;
     }
 
-    return this.updateById(subscriptionId, updateData as any);
+    return this.updateById(subscriptionId, updateData as Partial<ISubscriptionDB>);
   }
 
   async schedulePriceChange(
@@ -271,14 +271,14 @@ export class SubscriptionRepository
     return this.updateById(subscriptionId, {
       scheduled_price_id: newPriceId,
       scheduled_change_date: changeDate,
-    } as any);
+    } as Partial<ISubscriptionDB>);
   }
 
   async cancelScheduledChange(subscriptionId: string): Promise<ISubscriptionDB> {
     return this.updateById(subscriptionId, {
       scheduled_price_id: null,
       scheduled_change_date: null,
-    } as any);
+    } as Partial<ISubscriptionDB>);
   }
 
   async processRenewal(subscriptionId: string, newPeriodEnd: string): Promise<ISubscriptionDB> {
@@ -286,7 +286,7 @@ export class SubscriptionRepository
       current_period_end: newPeriodEnd,
       // Clear cancellation flags if it was renewed
       cancel_at_period_end: false,
-    } as any);
+    } as Partial<ISubscriptionDB>);
   }
 
   async getStats(): Promise<ISubscriptionStats> {
@@ -305,8 +305,8 @@ export class SubscriptionRepository
 
     // Get counts by status
     for (const status of statuses) {
-      const count = await this.count({ status } as any);
-      (stats as any)[status] = count;
+      const count = await this.count({ status } as Partial<ISubscriptionDB>);
+      stats[status as keyof ISubscriptionStats] = count;
     }
 
     return stats;
