@@ -634,7 +634,348 @@ client/components/features/workspace/BatchSidebar/ModeSelector.tsx
 
 ---
 
-## 8. Migration Notes
+## 8. UI/UX Design Specifications
+
+### 8.1 Quality Tier Selector Design
+
+**Desktop (md+):**
+```
+┌─────────────────────────────────────────────────────┐
+│  Quality                                            │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌─────────┐│
+│  │   Fast   │ │ Standard │ │ Premium  │ │  Ultra  ││
+│  │  1 cr    │ │  2 cr    │ │  4 cr    │ │  8 cr   ││
+│  └──────────┘ └──────────┘ └──────────┘ └─────────┘│
+│  Quick upscale for everyday images                  │
+└─────────────────────────────────────────────────────┘
+```
+
+**Mobile (<md):**
+```
+┌─────────────────────────────┐
+│  Quality                    │
+│  ┌────────────┬────────────┐│
+│  │    Fast    │  Standard  ││
+│  │   1 cr     │   2 cr     ││
+│  ├────────────┼────────────┤│
+│  │  Premium   │   Ultra    ││
+│  │   4 cr     │   8 cr     ││
+│  └────────────┴────────────┘│
+│  Quick upscale              │
+└─────────────────────────────┘
+```
+
+**Visual States:**
+- **Default**: `border-slate-200 bg-white text-slate-600`
+- **Selected**: `border-indigo-600 bg-indigo-50 text-indigo-700 ring-2 ring-indigo-500`
+- **Disabled**: `opacity-50 cursor-not-allowed`
+- **Locked (free user)**: `border-amber-200 bg-amber-50` with lock icon overlay
+
+**Responsive Breakpoints:**
+- Mobile: 2x2 grid (`grid-cols-2`)
+- Tablet+: 4-column row (`md:grid-cols-4`)
+
+---
+
+### 8.2 Additional Options Section Design
+
+**Collapsed State:**
+```
+┌─────────────────────────────────────────────────────┐
+│  ▶ Additional Options                          (3) │
+└─────────────────────────────────────────────────────┘
+```
+- Shows count of enabled options in badge
+- Click anywhere to expand
+
+**Expanded State (Desktop):**
+```
+┌─────────────────────────────────────────────────────┐
+│  ▼ Additional Options                               │
+│  ┌─────────────────────────────────────────────────┐│
+│  │ ☑ Enhance Image                                 ││
+│  │   ┌─────────────────────────────────────────┐   ││
+│  │   │ ☑ Clarity  ☑ Color  ☐ Lighting         │   ││
+│  │   │ ☑ Denoise  ☑ Artifacts  ☐ Details      │   ││
+│  │   └─────────────────────────────────────────┘   ││
+│  ├─────────────────────────────────────────────────┤│
+│  │ ☑ Enhance Faces                    (detected)  ││
+│  ├─────────────────────────────────────────────────┤│
+│  │ ☐ Preserve Text                                ││
+│  ├─────────────────────────────────────────────────┤│
+│  │ ☐ Custom Instructions                    ✏️     ││
+│  └─────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────┘
+```
+
+**Expanded State (Mobile):**
+```
+┌─────────────────────────────┐
+│  ▼ Additional Options       │
+│  ┌─────────────────────────┐│
+│  │ ☑ Enhance Image         ││
+│  │  ☑ Clarity  ☑ Color    ││
+│  │  ☐ Lighting            ││
+│  │  ☑ Denoise  ☑ Artifacts││
+│  │  ☐ Details             ││
+│  ├─────────────────────────┤│
+│  │ ☑ Enhance Faces  (auto)││
+│  ├─────────────────────────┤│
+│  │ ☐ Preserve Text        ││
+│  ├─────────────────────────┤│
+│  │ ☐ Custom Instructions ✏││
+│  └─────────────────────────┘│
+└─────────────────────────────┘
+```
+
+**Component Specifications:**
+
+| Element | Desktop | Mobile |
+|---------|---------|--------|
+| Section padding | `p-4` | `p-3` |
+| Toggle row height | `44px` | `48px` (touch target) |
+| Enhancement grid | `grid-cols-3` | `grid-cols-2` |
+| Checkboxes | `w-4 h-4` | `w-5 h-5` |
+| Font size | `text-sm` | `text-sm` |
+
+---
+
+### 8.3 Custom Instructions Modal Design
+
+**Desktop (centered modal):**
+```
+┌───────────────────────────────────────────────────────────┐
+│                                                     ✕     │
+│   Custom Instructions                                     │
+│   ─────────────────────────────────────────────────────   │
+│   Tell the AI exactly how to process your image          │
+│                                                           │
+│   ┌───────────────────────────────────────────────────┐   │
+│   │                                                   │   │
+│   │  Enhance this image while preserving the...      │   │
+│   │                                                   │   │
+│   │                                                   │   │
+│   │                                                   │   │
+│   └───────────────────────────────────────────────────┘   │
+│   256 / 2000 characters                                   │
+│                                                           │
+│   ┌──────────────┐                                        │
+│   │ Load Template│                                        │
+│   └──────────────┘                                        │
+│                                                           │
+│                           ┌─────────┐  ┌─────────────┐    │
+│                           │ Cancel  │  │    Save     │    │
+│                           └─────────┘  └─────────────┘    │
+└───────────────────────────────────────────────────────────┘
+```
+
+**Mobile (bottom sheet):**
+```
+┌─────────────────────────────┐
+│   ━━━                       │  ← drag handle
+│   Custom Instructions       │
+│   ─────────────────────────│
+│   ┌─────────────────────────┐
+│   │                         │
+│   │  Enter your custom...   │
+│   │                         │
+│   │                         │
+│   └─────────────────────────┘
+│   128 / 2000 chars          │
+│                             │
+│   [Load Template]           │
+│                             │
+│   ┌───────────┐┌───────────┐│
+│   │  Cancel   ││   Save    ││
+│   └───────────┘└───────────┘│
+└─────────────────────────────┘
+```
+
+**Behavior:**
+- Desktop: `max-w-lg` centered modal with backdrop blur
+- Mobile: Bottom sheet that slides up, `max-h-[80vh]`
+- Textarea: `min-h-[200px]` desktop, `min-h-[150px]` mobile
+- Close on ESC (desktop) or swipe down (mobile)
+
+---
+
+### 8.4 BatchSidebar Responsive Layout
+
+**Desktop (md+): Fixed width sidebar**
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│ ┌─────────────────────┐ ┌────────────────────────────────────────────┐ │
+│ │   BATCH SIDEBAR     │ │                                            │ │
+│ │   ───────────────   │ │                                            │ │
+│ │   [Action Panel]    │ │              PREVIEW AREA                  │ │
+│ │                     │ │                                            │ │
+│ │   Quality           │ │                                            │ │
+│ │   [Fast][Std][Pr][U]│ │                                            │ │
+│ │                     │ │                                            │ │
+│ │   Upscale Factor    │ │                                            │ │
+│ │   [2x] [4x] [8x]    │ │                                            │ │
+│ │                     │ │                                            │ │
+│ │   ▶ Additional Opts │ │                                            │ │
+│ │                     │ │                                            │ │
+│ │   (scrollable)      │ │                                            │ │
+│ └─────────────────────┘ └────────────────────────────────────────────┘ │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+**Mobile: Collapsible bottom panel**
+```
+┌─────────────────────────────┐
+│                             │
+│       PREVIEW AREA          │
+│       (full width)          │
+│                             │
+│                             │
+├─────────────────────────────┤
+│  ▼ Settings            ━━━  │  ← drag to expand
+│  ┌─────────────────────────┐│
+│  │  [Process] [Download]   ││
+│  │  2 credits · 1 image    ││
+│  ├─────────────────────────┤│
+│  │  Quality                ││
+│  │  ┌─────────┬───────────┐││
+│  │  │  Fast   │ Standard  │││
+│  │  ├─────────┼───────────┤││
+│  │  │ Premium │   Ultra   │││
+│  │  └─────────┴───────────┘││
+│  │                         ││
+│  │  ▶ Additional Options   ││
+│  └─────────────────────────┘│
+└─────────────────────────────┘
+```
+
+**Mobile Sidebar Behavior:**
+- Default: Collapsed, shows only action buttons + summary
+- Tap header or drag up: Expands to show all options
+- Max height: `60vh` when expanded
+- Smooth spring animation on expand/collapse
+- Backdrop dims preview area when expanded
+
+---
+
+### 8.5 Touch Target & Accessibility
+
+**Minimum Touch Targets (WCAG 2.2):**
+
+| Element | Size | Notes |
+|---------|------|-------|
+| Tier buttons | `48px` height | Full width on mobile |
+| Checkboxes | `48x48px` tap area | Visual checkbox can be smaller |
+| Action buttons | `48px` height | Primary CTA is full width |
+| Modal close | `44x44px` | Corner X button |
+
+**Accessibility Requirements:**
+- All interactive elements focusable with keyboard
+- `aria-pressed` on toggle buttons
+- `aria-expanded` on collapsible sections
+- `aria-describedby` for tier descriptions
+- `role="dialog"` + `aria-modal` for custom instructions modal
+- Color contrast ratio ≥ 4.5:1 for all text
+
+---
+
+### 8.6 Animation & Micro-interactions
+
+**Quality Tier Selection:**
+```css
+/* Transition on selection */
+transition: all 150ms ease-out;
+
+/* Selected state */
+transform: scale(1.02);
+box-shadow: 0 0 0 2px theme(colors.indigo.500);
+```
+
+**Additional Options Expand:**
+```css
+/* Smooth height transition */
+transition: max-height 200ms ease-out;
+
+/* Content fade in */
+.content {
+  animation: fadeIn 150ms ease-out 50ms both;
+}
+```
+
+**Mobile Bottom Sheet:**
+```css
+/* Spring animation for natural feel */
+transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1);
+```
+
+**Processing State:**
+- Subtle pulse on action button during processing
+- Progress bar with gradient animation
+- Skeleton loading for tier buttons when loading user data
+
+---
+
+### 8.7 Responsive Component Summary
+
+| Component | Desktop | Mobile |
+|-----------|---------|--------|
+| QualityTierSelector | 4-col grid | 2x2 grid |
+| UpscaleFactorSelector | 3-col row | 3-col row (unchanged) |
+| AdditionalOptions | Full width, inline expand | Full width, inline expand |
+| CustomInstructionsModal | Centered modal | Bottom sheet |
+| BatchSidebar | Fixed 320px left | Bottom collapsible panel |
+| ActionPanel | Fixed in sidebar | Fixed at panel top |
+
+---
+
+### 8.8 Implementation: Responsive Components
+
+**QualityTierSelector.tsx:**
+```tsx
+<div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+  {TIERS.map(tier => (
+    <button
+      key={tier.id}
+      className={cn(
+        "flex flex-col items-center justify-center",
+        "py-3 px-2 rounded-lg border-2 transition-all",
+        "min-h-[60px] md:min-h-[72px]", // Larger touch target mobile
+        selected === tier.id
+          ? "border-indigo-600 bg-indigo-50 text-indigo-700"
+          : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+      )}
+    >
+      <span className="font-semibold text-sm">{tier.label}</span>
+      <span className="text-xs text-slate-500 mt-0.5">
+        {tier.credits} {tier.credits === 1 ? 'credit' : 'credits'}
+      </span>
+    </button>
+  ))}
+</div>
+```
+
+**Mobile Bottom Sheet (BatchSidebar):**
+```tsx
+// Use @radix-ui/react-dialog or similar for sheet behavior
+<Sheet>
+  <SheetTrigger asChild>
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t">
+      {/* Collapsed view */}
+    </div>
+  </SheetTrigger>
+  <SheetContent side="bottom" className="max-h-[60vh]">
+    {/* Full settings */}
+  </SheetContent>
+</Sheet>
+
+// Desktop: regular sidebar
+<aside className="hidden md:flex w-80 ...">
+  {/* Full settings */}
+</aside>
+```
+
+---
+
+## 9. Migration Notes
 
 ### For Existing Users
 
