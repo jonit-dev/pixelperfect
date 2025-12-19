@@ -4,6 +4,14 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
+# Parse flags
+export SKIP_SECRETS="false"
+for arg in "$@"; do
+    case $arg in
+        --skip-secrets) SKIP_SECRETS="true" ;;
+    esac
+done
+
 source "$SCRIPT_DIR/common.sh"
 source "$PROJECT_ROOT/scripts/load-env.sh"
 
