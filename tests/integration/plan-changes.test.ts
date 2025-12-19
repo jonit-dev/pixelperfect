@@ -1,10 +1,10 @@
-import { describe, test, expect, beforeAll, beforeEach } from 'vitest';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import {
-  getPlanByKey,
-  calculateBalanceWithExpiration,
-} from '../../shared/config/subscription.utils';
+import { beforeAll, beforeEach, describe, expect, test } from 'vitest';
 import { CREDIT_COSTS } from '../../shared/config/credits.config';
+import {
+  calculateBalanceWithExpiration,
+  getPlanByKey,
+} from '../../shared/config/subscription.utils';
 
 describe('Plan Changes with Credit Preservation Integration Tests', () => {
   let supabase: SupabaseClient;

@@ -132,12 +132,10 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
       mockSupabaseAdmin.from = vi.fn(() => ({
         select: vi.fn(() => ({
           eq: vi.fn(() => ({
-            maybeSingle: vi.fn(() =>
-              Promise.resolve({
-                data: mockProfile,
-                error: null,
-              })
-            ),
+            maybeSingle: vi.fn(() => Promise.resolve({
+              data: mockProfile,
+              error: null,
+            })),
           })),
         })),
       }));
@@ -153,8 +151,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
       });
 
       // Test the calculation logic
-      const currentBalance =
-        mockProfile.subscription_credits_balance + mockProfile.purchased_credits_balance;
+      const currentBalance = mockProfile.subscription_credits_balance + mockProfile.purchased_credits_balance;
       const maxRollover = CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 6; // 600
       const newCredits = CREDIT_COSTS.STARTER_MONTHLY_CREDITS; // 100
 
@@ -180,8 +177,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
         purchased_credits_balance: 0,
       });
 
-      const currentBalance =
-        mockProfile.subscription_credits_balance + mockProfile.purchased_credits_balance;
+      const currentBalance = mockProfile.subscription_credits_balance + mockProfile.purchased_credits_balance;
       const maxRollover = CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 6; // 600
       const newCredits = CREDIT_COSTS.STARTER_MONTHLY_CREDITS; // 100
 

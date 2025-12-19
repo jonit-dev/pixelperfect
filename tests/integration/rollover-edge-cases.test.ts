@@ -1,6 +1,6 @@
-import { describe, test, expect } from 'vitest';
-import { calculateBalanceWithExpiration } from '../../shared/config/subscription.utils';
+import { describe, expect, test } from 'vitest';
 import { CREDIT_COSTS } from '../../shared/config/credits.config';
+import { calculateBalanceWithExpiration } from '../../shared/config/subscription.utils';
 
 describe('Credit Rollover Edge Cases', () => {
   describe('6x Cap Scenarios', () => {

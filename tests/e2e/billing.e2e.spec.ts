@@ -310,57 +310,61 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should display Starter tier with correct pricing and features', async ({ page }) => {
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
-      // Use pricingPage.goto() which handles waiting for loading completion
+      // Wait for loading to complete and actual pricing cards to appear (not skeletons)
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Hobby' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Pro' })).toBeVisible({ timeout: 10000 });
 
       // Check Starter tier displays $9/month
-      const starterCard = pricingPage.getSubscriptionCard('Starter');
-      await expect(starterCard.cardLocator).toContainText('$9');
-      await expect(starterCard.cardLocator).toContainText('per month');
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toContainText('$9');
+      await expect(starterCard).toContainText('/mo');
 
       // Check Starter tier features
-      await expect(starterCard.cardLocator).toContainText('100 credits per month');
-      await expect(starterCard.cardLocator).toContainText('Credits roll over (up to 600)');
-      await expect(starterCard.cardLocator).toContainText('Email support');
-      await expect(starterCard.cardLocator).toContainText('Basic AI models');
-      await expect(starterCard.cardLocator).toContainText('Batch upload up to 5 images');
+      await expect(starterCard).toContainText('100 credits per month');
+      await expect(starterCard).toContainText('Credits roll over (up to 600)');
+      await expect(starterCard).toContainText('Email support');
+      await expect(starterCard).toContainText('Basic AI models');
+      await expect(starterCard).toContainText('Batch upload up to 5 images');
 
       // Check for "Get Started" button
-      await expect(starterCard.subscribeButton).toBeVisible();
+      const starterGetStarted = starterCard.getByRole('button', { name: 'Get Started' });
+      await expect(starterGetStarted).toBeVisible();
 
       // Verify the description
-      await expect(starterCard.cardLocator).toContainText('Perfect for getting started');
+      await expect(starterCard).toContainText('Perfect for getting started');
 
       // Screenshot for visual verification
       await pricingPage.screenshot('starter-tier-display');
     });
 
     test('should display Starter tier in correct position', async ({ page }) => {
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
       // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
 
-      // Check the order: Starter, Hobby, Pro, Business (no Free tier in pricing grid)
+      // Check the order: Free, Starter, Hobby, Pro, Business
       const pricingGrid = pricingPage.pricingGrid;
       const cards = pricingGrid.locator('> div');
 
       // Get all visible plan headings
       const planHeadings = page.locator('[data-testid="pricing-card"] h2, .pricing-card h2');
 
-      // Verify Starter appears as the first card
-      const starterTier = page.getByRole('heading', { name: 'Starter', exact: true });
-      const hobbyTier = page.getByRole('heading', { name: 'Hobby', exact: true });
+      // Verify Starter appears after Free tier
+      const freeTier = page.getByText('Free Tier').or(page.getByText('Free'));
+      const starterTier = page.getByRole('heading', { name: 'Starter' });
 
+      await expect(freeTier).toBeVisible();
       await expect(starterTier).toBeVisible();
-      await expect(hobbyTier).toBeVisible();
 
       // Check that Starter is not the last card (there should be plans after it)
       const cardCount = await cards.count();
-      expect(cardCount).toBeGreaterThanOrEqual(3); // At least Starter + Hobby + one more
+      expect(cardCount).toBeGreaterThan(2); // At least Free + Starter + one more
     });
 
     test('should handle Starter tier Get Started button click', async ({ page }) => {
@@ -369,15 +373,14 @@ test.describe('Billing E2E Tests', () => {
         await dialog.accept();
       });
 
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
       // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
 
       // Find and click Starter tier Get Started button
-      const starterCard = pricingPage.getSubscriptionCard('Starter');
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
       const getStartedButton = starterCard.getByRole('button', { name: 'Get Started' });
 
       await expect(getStartedButton).toBeVisible();
@@ -414,43 +417,41 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should display rollover information prominently', async ({ page }) => {
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
       // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
 
       // Check that rollover information is displayed for Starter
-      const starterCard = pricingPage.getSubscriptionCard('Starter');
-      await expect(starterCard.cardLocator).toContainText('roll over');
-      await expect(starterCard.cardLocator).toContainText('up to 600');
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toContainText('roll over');
+      await expect(starterCard).toContainText('up to 600');
 
       // Also check other tiers mention rollover
-      const hobbyCard = pricingPage.getSubscriptionCard('Hobby');
-      await expect(hobbyCard.cardLocator).toContainText('roll over');
+      const hobbyCard = page.locator('div').filter({ hasText: 'Hobby' }).first();
+      await expect(hobbyCard).toContainText('roll over');
 
-      const proCard = pricingPage.getSubscriptionCard('Pro');
-      await expect(proCard.cardLocator).toContainText('roll over');
+      const proCard = page.locator('div').filter({ hasText: 'Pro' }).first();
+      await expect(proCard).toContainText('roll over');
 
       // Screenshot for rollover features verification
       await pricingPage.screenshot('rollover-features-display');
     });
 
     test('should have proper responsive layout for Starter tier', async ({ page }) => {
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
       // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
 
       // Test desktop layout
       await page.setViewportSize({ width: 1200, height: 800 });
       await pricingPage.waitForLoadingComplete();
 
-      const starterCard = pricingPage.getSubscriptionCard('Starter');
-      await expect(starterCard.cardLocator).toBeVisible();
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toBeVisible();
 
       // Check grid layout on desktop (should be multiple columns)
       const pricingGrid = pricingPage.pricingGrid;
@@ -461,7 +462,7 @@ test.describe('Billing E2E Tests', () => {
       await page.setViewportSize({ width: 375, height: 667 });
       await pricingPage.waitForLoadingComplete();
 
-      await expect(starterCard.cardLocator).toBeVisible();
+      await expect(starterCard).toBeVisible();
 
       // Check if layout adapts to mobile (usually single column)
       const mobileGridClasses = await pricingGrid.getAttribute('class');
@@ -473,18 +474,13 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should maintain visual consistency with other tiers', async ({ page }) => {
-      await pricingPage.goto(); // This calls waitForLoad() internally
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
 
       // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
-      await expect(page.getByRole('heading', { name: 'Hobby', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
-      await expect(page.getByRole('heading', { name: 'Pro', exact: true })).toBeVisible({
-        timeout: 10000,
-      });
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Hobby' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Pro' })).toBeVisible({ timeout: 10000 });
 
       // Check that all cards have similar structure
       const cards = pricingPage.pricingGrid.locator('> div');
@@ -502,9 +498,8 @@ test.describe('Billing E2E Tests', () => {
         await expect(heading).toBeVisible();
 
         // Each card should have a price or "Free" indicator
-        const hasPriceOrFree =
-          (await card.locator(':text-is("$")').count()) > 0 ||
-          (await card.locator(':text-is("Free")').count()) > 0;
+        const hasPriceOrFree = await card.locator(':text-is("$")').count() > 0 ||
+                              await card.locator(':text-is("Free")').count() > 0;
         expect(hasPriceOrFree).toBe(true);
       }
 

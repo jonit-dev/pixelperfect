@@ -4,8 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { LayoutDashboard, CreditCard, Settings, HelpCircle, LogOut, Shield, X } from 'lucide-react';
-import { useUserStore, useIsAdmin } from '@client/store/userStore';
+import { useUserStore, useIsAdmin, useSubscription } from '@client/store/userStore';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
+import { resolvePriceId } from '@shared/config/subscription.utils';
 import { useLogger } from '@client/utils/logger';
 import { cn } from '@client/utils/cn';
 import { clientEnv } from '@shared/config/env';
@@ -26,7 +27,11 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
   const router = useRouter();
   const { signOut, user } = useUserStore();
   const isAdmin = useIsAdmin();
+  const subscription = useSubscription();
   const logger = useLogger('DashboardSidebar');
+
+  // Resolve subscription to plan name
+  const planInfo = subscription?.price_id ? resolvePriceId(subscription.price_id) : null;
 
   // Build menu items dynamically based on user role
   const menuItems: ISidebarItem[] = [
@@ -136,6 +141,9 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
                 )}
               </div>
               <p className="text-xs text-slate-500 truncate">{user?.email}</p>
+              <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-600">
+                {planInfo?.name ?? 'Free'} plan
+              </span>
             </div>
           </div>
           {/* Credits Display */}

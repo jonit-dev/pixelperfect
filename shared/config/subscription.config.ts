@@ -6,8 +6,8 @@
  * configuration values are defined. All other files should import from here.
  */
 
-import type { ISubscriptionConfig } from './subscription.types';
 import { CREDIT_COSTS } from './credits.config';
+import type { ISubscriptionConfig } from './subscription.types';
 import { TIMEOUTS } from './timeouts.config';
 
 /**
@@ -51,7 +51,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       ],
       recommended: false,
       description: 'Perfect for getting started',
-      displayOrder: 1,
+      displayOrder: 0,
       enabled: true,
       batchLimit: 5,
     },

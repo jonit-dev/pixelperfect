@@ -173,6 +173,14 @@ _(Repeat for every touched file.)_
 
 Break work into atomic PR-sized tasks.
 
+### Critical: Parallelize Phases 
+
+**Design the plan so multiple engineers can work on different phases simultaneously without blocking each other.** Your implementation plan must, WHENEVER POSSIBLE:
+
+- ✅ Divide work into clear, independent phases
+- ✅ Minimize cross-phase dependencies
+- ✅ Specify clear interfaces between phases
+
 #### Phase 1: Backend Core (Logic Layer)
 
 - [ ] Create migration for …

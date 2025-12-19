@@ -1,14 +1,14 @@
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
+import { CREDIT_COSTS } from '../../shared/config/credits.config';
+import { getSubscriptionConfig } from '../../shared/config/subscription.config';
 import {
-  getPlanByKey,
+  buildHomepageTiers,
   calculateBalanceWithExpiration,
-  getExpirationConfig,
   creditsExpireForPlan,
   getEnabledPlans,
-  buildHomepageTiers,
+  getExpirationConfig,
+  getPlanByKey,
 } from '../../shared/config/subscription.utils';
-import { getSubscriptionConfig } from '../../shared/config/subscription.config';
-import { CREDIT_COSTS } from '../../shared/config/credits.config';
 
 describe('getPlanByKey', () => {
   test('should return Starter plan configuration for "starter" key', () => {

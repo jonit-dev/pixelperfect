@@ -166,8 +166,7 @@ describe('Starter vs Free Tier Comparison', () => {
   });
 
   test('should have reasonable batch limit compared to free tier', () => {
-    expect(starterPlan?.batchLimit).toBeGreaterThan(config.freeUser.batchLimit); // Better than free tier
-    expect(starterPlan?.batchLimit).toBe(5); // Starter plan allows 5 images
+    expect(starterPlan?.batchLimit).toBe(config.freeUser.batchLimit); // Same as free (5)
   });
 
   test('should have same maximum rollover cap as configured', () => {

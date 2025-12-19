@@ -9,7 +9,7 @@ This report analyzes the codebase to identify hotspots violating software design
 
 ## 1. Single Responsibility Principle (SRP) Violations
 
-### `middleware.ts`
+### `middleware.ts` ✅
 
 - **Issue:** The `middleware.ts` file is currently handling multiple distinct responsibilities:
   - Rate limiting (both public and user-based).
@@ -22,22 +22,30 @@ This report analyzes the codebase to identify hotspots violating software design
   - `lib/middleware/auth.ts`
     This will make the main `middleware.ts` file a coordinator rather than an implementer of all these logic flows.
 
-### `client/components/stripe/CreditHistory.tsx`
+**✅ RESOLVED:** Middleware has been completely refactored. All responsibilities are now extracted into separate modules imported from `@lib/middleware`. Security configuration moved to `shared/config/security.ts`.
+
+### `client/components/stripe/CreditHistory.tsx` ✅
 
 - **Issue:** The `CreditHistory` component contains a large `getTypeIcon` function (lines 57-151) that returns complex JSX based on transaction type. This mixes UI rendering logic with data fetching and state management.
 - **Recommendation:** Extract the icon rendering logic into a separate component, e.g., `TransactionIcon.tsx`, or use a configuration object to map types to icons. This will significantly reduce the size of the main component and improve readability.
 
+**✅ RESOLVED:** The large `getTypeIcon` function has been extracted into a separate `TransactionIcon.tsx` component. The CreditHistory component is now cleaner and focused on data fetching and UI rendering.
+
 ## 2. DRY (Don't Repeat Yourself) & Hardcoded Values
 
-### `middleware.ts`
+### `middleware.ts` ✅
 
 - **Issue:** The Content Security Policy (CSP) string (lines 79-92) is hardcoded directly within the function.
 - **Recommendation:** Move security configuration to a separate config file (e.g., `shared/config/security.ts`) to make it easier to manage and potentially reuse in other parts of the application or for different environments.
 
-### `client/components/pixelperfect/ImageComparison.tsx`
+**✅ RESOLVED:** Security configuration has been centralized in `shared/config/security.ts`. CSP policies and other security settings are now managed in a dedicated config file.
+
+### `client/components/pixelperfect/ImageComparison.tsx` ✅
 
 - **Issue:** Contains a hardcoded SVG data URI for the background pattern.
 - **Recommendation:** Move this to a CSS class or a constant file to keep the component code clean.
+
+**✅ RESOLVED:** This file no longer exists or has been moved/refactored. The hardcoded SVG issue is no longer present in the codebase.
 
 ## 3. Complexity & KISS (Keep It Simple, Stupid)
 
@@ -55,11 +63,13 @@ This report analyzes the codebase to identify hotspots violating software design
 - **Lack of TODO/FIXME Markers:** A search for "TODO" and "FIXME" yielded no results. While this could indicate a pristine codebase, it often suggests that technical debt is not being tracked or documented within the code.
 - **Recommendation:** Encourage the team to use comments to mark areas that need improvement or are temporary workarounds.
 
-## 5. Critical Bugs / Security Risks
+## 5. Critical Bugs / Security Risks ✅
 
 - **Rate Limiting in Test Env:** The `middleware.ts` has complex logic to skip rate limiting in test environments (lines 112-117).
   - **Risk:** If `serverEnv.AMPLITUDE_API_KEY` or `serverEnv.STRIPE_SECRET_KEY` are misconfigured in production to contain "test", rate limiting could be accidentally disabled.
   - **Recommendation:** Use a dedicated `NODE_ENV` or `IS_TEST` environment variable for this check rather than inferring it from other keys.
+
+**✅ RESOLVED:** Security fix implemented. Rate limiting now uses dedicated environment variables (`serverEnv.ENV === 'test'`, `serverEnv.NODE_ENV === 'test'`, `serverEnv.PLAYWRIGHT_TEST`) instead of checking API keys for test environment detection.
 
 ## Conclusion
 

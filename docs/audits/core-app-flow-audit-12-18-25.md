@@ -58,11 +58,13 @@ This audit traces the core product flow end-to-end (auth → workspace processin
 
 ### Critical
 
-#### C1) Auth bypass token accepted in non-test environments
+#### C1) Auth bypass token accepted in non-test environments ✅
 
 - **Evidence:** `lib/middleware/auth.ts:97` accepts `Bearer test_auth_token_for_testing_only` unconditionally.
 - **Impact:** Any attacker who knows this constant can call protected `/api/*` endpoints gated by `verifyApiAuth()` without real Supabase authentication. This undermines billing, credit protection, and any protected API surface.
 - **Recommendation:** Gate _all_ test-token shortcuts behind `serverEnv.ENV === 'test'` (and/or a dedicated flag like `PLAYWRIGHT_TEST`) and remove the hardcoded fallback token.
+
+**✅ PARTIALLY FIXED:** Test token is now gated behind `serverEnv.ENV === 'test'` condition with `TEST_AUTH_TOKEN` environment variable. However, hardcoded fallback still exists.
 
 #### C2) Stripe secret key is written to logs
 
@@ -70,15 +72,17 @@ This audit traces the core product flow end-to-end (auth → workspace processin
 - **Impact:** Credential leakage into logs (Cloudflare, Baselime, etc.) can lead to full Stripe account compromise.
 - **Recommendation:** Remove the secret from logs entirely (or mask to last 4 chars at most, but best is to not log it).
 
-#### C3) Cron jobs are blocked by middleware authentication
+#### C3) Cron jobs are blocked by middleware authentication ✅
 
 - **Evidence:**
   - Middleware enforces JWT for non-public `/api/*` (`middleware.ts:57`)
   - Public routes list excludes `/api/cron/*` (`shared/config/security.ts:69`)
   - Cron worker sends only `x-cron-secret` (`workers/cron/index.ts:65`)
   - Cron handlers expect `x-cron-secret` (`app/api/cron/check-expirations/route.ts:30`, `app/api/cron/reconcile/route.ts:45`, `app/api/cron/recover-webhooks/route.ts:30`)
-- **Impact:** In production, cron triggers will likely receive `401` from middleware before reaching handlers, so subscription reconciliation and webhook recovery won’t run.
+- **Impact:** In production, cron triggers will likely receive `401` from middleware before reaching handlers, so subscription reconciliation and webhook recovery won't run.
 - **Recommendation:** Explicitly bypass JWT middleware for `/api/cron/*` and rely on `x-cron-secret` auth (or add `/api/cron/*` to public API routes while keeping secret validation).
+
+**✅ FIXED:** `/api/cron/*` routes are properly listed in `PUBLIC_API_ROUTES` with comment explaining they use `x-cron-secret` auth. Middleware correctly bypasses JWT for cron routes.
 
 ---
 
@@ -93,11 +97,13 @@ This audit traces the core product flow end-to-end (auth → workspace processin
 - **Impact:** Users will see intermittent download failures when direct fetch + canvas methods fail due to CORS; the intended proxy fallback is blocked.
 - **Recommendation:** Either make `/api/proxy-image` a public API route (still validate allowed domains), or include the user’s JWT in the proxy request.
 
-#### H2) Proxy allowlist domain check is bypassable (`endsWith`)
+#### H2) Proxy allowlist domain check is bypassable (`endsWith`) ✅
 
 - **Evidence:** `app/api/proxy-image/route.ts:18` uses `urlObj.hostname.endsWith(domain)`.
 - **Impact:** Hostnames like `evilreplicate.com` match `replicate.com` and pass allowlist, enabling SSRF-style downloads from attacker-controlled domains.
 - **Recommendation:** Use a strict boundary check: `hostname === domain || hostname.endsWith('.' + domain)`.
+
+**✅ FIXED:** Strict boundary check implemented: `hostname === domain || hostname.endsWith('.' + domain)`. Prevents subdomain spoofing attacks.
 
 #### H3) CORS configuration has insecure/invalid defaults and is duplicated
 

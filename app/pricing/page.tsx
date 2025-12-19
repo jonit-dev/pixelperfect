@@ -235,18 +235,13 @@ export default function PricingPage() {
                 {/* Starter Plan - Add when available in configuration */}
                 {(() => {
                   const starterPriceId = (STRIPE_PRICES as Record<string, string>).STARTER_MONTHLY;
-                  const starterPlan = (
-                    SUBSCRIPTION_PLANS as Record<
-                      string,
-                      {
-                        name: string;
-                        description: string;
-                        price: number;
-                        interval: string;
-                        features: readonly string[];
-                      }
-                    >
-                  ).STARTER_MONTHLY;
+                  const starterPlan = (SUBSCRIPTION_PLANS as Record<string, {
+                    name: string;
+                    description: string;
+                    price: number;
+                    interval: string;
+                    features: readonly string[];
+                  }>).STARTER_MONTHLY;
 
                   return starterPriceId && starterPlan ? (
                     <PricingCard
@@ -267,7 +262,9 @@ export default function PricingPage() {
                           : undefined
                       }
                       cancelingScheduled={cancelingSchedule}
-                      onSelect={subscription ? () => handlePlanSelect(starterPriceId) : undefined}
+                      onSelect={
+                        subscription ? () => handlePlanSelect(starterPriceId) : undefined
+                      }
                       currentSubscriptionPrice={currentSubscriptionPrice}
                     />
                   ) : null;
