@@ -17,7 +17,7 @@
     "build": "next build",
     "start": "next start",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "./scripts/deploy/deploy.sh",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "format": "prettier --write --log-level silent \"{client,server,shared,app}/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
