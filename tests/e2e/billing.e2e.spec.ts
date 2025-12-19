@@ -353,7 +353,7 @@ test.describe('Billing E2E Tests', () => {
       const cards = pricingGrid.locator('> div');
 
       // Get all visible plan headings
-      const planHeadings = page.locator('[data-testid="pricing-card"] h2, .pricing-card h2');
+      const _planHeadings = page.locator('[data-testid="pricing-card"] h2, .pricing-card h2');
 
       // Verify Starter appears after Free tier
       const freeTier = page.getByText('Free Tier').or(page.getByText('Free'));
@@ -465,7 +465,7 @@ test.describe('Billing E2E Tests', () => {
       await expect(starterCard).toBeVisible();
 
       // Check if layout adapts to mobile (usually single column)
-      const mobileGridClasses = await pricingGrid.getAttribute('class');
+      const _mobileGridClasses = await pricingGrid.getAttribute('class');
 
       // Screenshot for both layouts
       await pricingPage.screenshot('starter-tier-desktop');

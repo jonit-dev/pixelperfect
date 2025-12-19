@@ -36,7 +36,7 @@ describe('Credit Rollover Edge Cases', () => {
         },
       ];
 
-      scenarios.forEach(({ name, currentBalance, newCredits, maxRollover, expected }) => {
+      scenarios.forEach(({ name: _name, currentBalance, newCredits, maxRollover, expected }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance,
           newCredits,
@@ -74,7 +74,7 @@ describe('Credit Rollover Edge Cases', () => {
         },
       ];
 
-      scenarios.forEach(({ name, currentBalance, newCredits, maxRollover, expected }) => {
+      scenarios.forEach(({ name: _name, currentBalance, newCredits, maxRollover, expected }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance,
           newCredits,
@@ -105,7 +105,7 @@ describe('Credit Rollover Edge Cases', () => {
         },
       ];
 
-      scenarios.forEach(({ name, currentBalance, newCredits, maxRollover, expected }) => {
+      scenarios.forEach(({ name: _name, currentBalance, newCredits, maxRollover, expected }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance,
           newCredits,
@@ -148,7 +148,7 @@ describe('Credit Rollover Edge Cases', () => {
         },
       ];
 
-      downgradeScenarios.forEach(({ from, to, fromBalance, toCap, newCredits, expected }) => {
+      downgradeScenarios.forEach(({ from: _from, to: _to, fromBalance, toCap, newCredits, expected }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance: fromBalance,
           newCredits,
@@ -228,7 +228,7 @@ describe('Credit Rollover Edge Cases', () => {
       ];
 
       scenarios.forEach(
-        ({ name, subscriptionCredits, purchasedCredits, newCredits, cap, expected }) => {
+        ({ name: _name, subscriptionCredits, purchasedCredits, newCredits, cap, expected }) => {
           const totalBalance = subscriptionCredits + purchasedCredits;
           const result = calculateBalanceWithExpiration({
             currentBalance: totalBalance,
@@ -330,7 +330,7 @@ describe('Credit Rollover Edge Cases', () => {
         },
       ];
 
-      scenarios.forEach(({ name, currentBalance, newCredits, expected }) => {
+      scenarios.forEach(({ name: _name, currentBalance, newCredits, expected }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance,
           newCredits,

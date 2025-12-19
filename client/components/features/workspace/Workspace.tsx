@@ -6,7 +6,7 @@ import { BatchSidebar } from '@client/components/features/workspace/BatchSidebar
 import { PreviewArea } from '@client/components/features/workspace/PreviewArea';
 import { QueueStrip } from '@client/components/features/workspace/QueueStrip';
 import { TabButton } from '@client/components/ui/TabButton';
-import { useBatchQueue } from '@client/hooks/pixelperfect/useBatchQueue';
+import { useBatchQueue } from '@/client/hooks/useBatchQueue';
 import { useUserData } from '@client/store/userStore';
 import { cn } from '@client/utils/cn';
 import { downloadSingle } from '@client/utils/download';

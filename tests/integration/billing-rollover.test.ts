@@ -1,11 +1,10 @@
-import { describe, test, expect, beforeAll, beforeEach } from 'vitest';
+import { describe, test, expect, beforeAll, beforeEach, vi } from 'vitest';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { InvoiceHandler } from '../../app/api/webhooks/stripe/handlers/invoice.handler';
 import { calculateBalanceWithExpiration } from '../../shared/config/subscription.utils';
 import { CREDIT_COSTS } from '../../shared/config/credits.config';
 
 // Mock Stripe invoice for testing
-const createMockInvoice = (overrides: Partial<any> = {}) => ({
+const createMockInvoice = (overrides: Partial<Record<string, unknown>> = {}) => ({
   id: 'in_test_123',
   customer: 'cus_test_123',
   subscription: 'sub_test_123',
@@ -24,7 +23,7 @@ const createMockInvoice = (overrides: Partial<any> = {}) => ({
 });
 
 // Mock profile response
-const createMockProfile = (overrides: Partial<any> = {}) => ({
+const createMockProfile = (overrides: Partial<Record<string, unknown>> = {}) => ({
   id: 'profile_test_123',
   stripe_customer_id: 'cus_test_123',
   subscription_credits_balance: 0,
@@ -33,9 +32,9 @@ const createMockProfile = (overrides: Partial<any> = {}) => ({
 });
 
 describe('Billing System with Credit Rollover Integration Tests', () => {
-  let supabase: SupabaseClient;
-  let testUserId: string;
-  let mockSupabaseAdmin: any;
+  let _supabase: SupabaseClient;
+  let _testUserId: string;
+  let mockSupabaseAdmin: Record<string, unknown>;
 
   // Test configuration
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -43,7 +42,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
 
   beforeAll(async () => {
     // Initialize Supabase client with service role for admin operations
-    supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
+    _supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
       auth: {
         autoRefreshToken: false,
         persistSession: false,
@@ -67,7 +66,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
   });
 
   beforeEach(async () => {
-    testUserId = 'profile_test_123';
+    _testUserId = 'profile_test_123';
   });
 
   describe('Credit Rollover Calculations', () => {
@@ -122,7 +121,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
 
   describe('Invoice Payment with Rollover Caps', () => {
     test('should add credits with rollover for Starter tier', async () => {
-      const mockInvoice = createMockInvoice();
+      const _mockInvoice = createMockInvoice();
       const mockProfile = createMockProfile({
         subscription_credits_balance: 400,
         purchased_credits_balance: 100,
@@ -140,7 +139,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
         })),
       }));
 
-      mockSupabaseAdmin.rpc = vi.fn((fnName, params) => {
+      mockSupabaseAdmin.rpc = vi.fn((fnName, _params) => {
         if (fnName === 'add_subscription_credits') {
           return Promise.resolve({
             data: null,
@@ -171,7 +170,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
     });
 
     test('should not add credits when already at rollover cap', async () => {
-      const mockInvoice = createMockInvoice();
+      const _mockInvoice = createMockInvoice();
       const mockProfile = createMockProfile({
         subscription_credits_balance: 600,
         purchased_credits_balance: 0,
@@ -217,7 +216,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
         },
       ];
 
-      testCases.forEach(({ plan, currentBalance, creditsPerCycle, expectedCap }) => {
+      testCases.forEach(({ plan: _plan, currentBalance, creditsPerCycle, expectedCap }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance,
           newCredits: creditsPerCycle,
@@ -408,7 +407,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
         },
       ];
 
-      scenarios.forEach(({ name, starterBalance, hobbyCredits, hobbyCap, expectedBalance }) => {
+      scenarios.forEach(({ name: _name, starterBalance, hobbyCredits, hobbyCap, expectedBalance }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance: starterBalance,
           newCredits: hobbyCredits,
@@ -439,7 +438,7 @@ describe('Billing System with Credit Rollover Integration Tests', () => {
         },
       ];
 
-      scenarios.forEach(({ name, proBalance, starterCredits, starterCap, expectedBalance }) => {
+      scenarios.forEach(({ name: _name, proBalance, starterCredits, starterCap, expectedBalance }) => {
         const result = calculateBalanceWithExpiration({
           currentBalance: proBalance,
           newCredits: starterCredits,

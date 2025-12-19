@@ -9,7 +9,7 @@ import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { resolvePriceId } from '@shared/config/subscription.utils';
 import { useLogger } from '@client/utils/logger';
 import { cn } from '@client/utils/cn';
-import { clientEnv } from '@shared/config/env';
+import { clientEnv, getAppLogoAbbr } from '@shared/config/env';
 
 interface ISidebarItem {
   label: string;
@@ -115,7 +115,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         <div className="p-6 border-b border-slate-100">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PP</span>
+              <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
             </div>
             <span className="font-semibold text-slate-900">{clientEnv.APP_NAME}</span>
           </Link>

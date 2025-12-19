@@ -3,7 +3,7 @@ import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { useClickOutside } from '@client/hooks/useClickOutside';
 import { useModalStore } from '@client/store/modalStore';
 import { useUserStore } from '@client/store/userStore';
-import { loadEnv } from '@shared/config/env';
+import { clientEnv } from '@shared/config/env';
 import { ChevronDown, Menu, X, Zap } from 'lucide-react';
 import { useRef, useState } from 'react';
 
@@ -31,7 +31,6 @@ export const NavBar = (): JSX.Element => {
 
   // Check if user is authenticated through email/password
   const isPasswordUser = user?.provider === AuthProvider.EMAIL;
-  const { APP_NAME } = loadEnv();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
@@ -44,7 +43,7 @@ export const NavBar = (): JSX.Element => {
             <Zap size={20} fill="currentColor" />
           </div>
           <span className="hidden xs:inline text-xl font-bold tracking-tight text-slate-900">
-            {APP_NAME}
+            {clientEnv.APP_NAME}
           </span>
         </a>
 

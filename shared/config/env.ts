@@ -86,6 +86,22 @@ function loadClientEnv(): IClientEnv {
 }
 
 /**
+ * Generate logo abbreviation from app name.
+ * Takes the first letter of each word, up to 2 characters.
+ */
+export function getAppLogoAbbr(appName?: string): string {
+  const name = appName || clientEnv.APP_NAME;
+  const words = name.trim().split(/\s+/);
+  if (words.length === 0) return '';
+  if (words.length === 1) {
+    // For single word, take first 2 letters
+    return words[0].substring(0, 2).toUpperCase();
+  }
+  // For multiple words, take first letter of each word, up to 2 letters
+  return words.slice(0, 2).map(word => word.charAt(0).toUpperCase()).join('');
+}
+
+/**
  * Client-side environment variables.
  * Safe to use in both client and server components.
  */

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import interactiveToolsData from '@/app/seo/data/interactive-tools.json';
 import { InteractiveToolPageTemplate } from '@/app/(pseo)/_components/pseo/templates/InteractiveToolPageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
+import { clientEnv } from '@shared/config/env';
 import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 
 const toolsData = interactiveToolsData as IPSEODataFile<IToolPage>;
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: IPageProps): Promise<Metadata
       title: tool.metaTitle,
       description: tool.metaDescription,
       type: 'website',
-      url: `https://pixelperfect.ai/tools/resize/${slug}`,
+      url: `${clientEnv.BASE_URL}/tools/resize/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: IPageProps): Promise<Metadata
       description: tool.metaDescription,
     },
     alternates: {
-      canonical: `https://pixelperfect.ai/tools/resize/${slug}`,
+      canonical: `${clientEnv.BASE_URL}/tools/resize/${slug}`,
     },
   };
 }

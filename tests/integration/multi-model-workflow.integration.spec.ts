@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { TestContext, ApiClient } from '../helpers';
-import type { IModelInfo } from '../../shared/types/pixelperfect';
+import type { IModelInfo } from '../../shared/types/coreflow.types';
 
 // Test the complete multi-model architecture workflow
 test.describe('Integration: Multi-Model Workflow', () => {

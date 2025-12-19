@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { TestContext, ApiClient } from '../helpers';
-import type { IModelInfo } from '../../shared/types/pixelperfect';
+import type { IModelInfo } from '../../shared/types/coreflow.types';
 
 test.describe('API: Multi-Model Architecture', () => {
   let ctx: TestContext;

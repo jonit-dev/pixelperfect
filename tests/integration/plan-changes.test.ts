@@ -7,8 +7,8 @@ import {
 } from '../../shared/config/subscription.utils';
 
 describe('Plan Changes with Credit Preservation Integration Tests', () => {
-  let supabase: SupabaseClient;
-  let testUserId: string;
+  let _supabase: SupabaseClient;
+  let _testUserId: string;
 
   // Test configuration
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -16,7 +16,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
 
   beforeAll(async () => {
     // Initialize Supabase client with service role for admin operations
-    supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
+    _supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
       auth: {
         autoRefreshToken: false,
         persistSession: false,
@@ -25,21 +25,21 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
   });
 
   beforeEach(async () => {
-    testUserId = 'profile_test_plan_changes';
+    _testUserId = 'profile_test_plan_changes';
   });
 
   describe('Plan Upgrade Scenarios', () => {
     test('should preserve credits when upgrading from Starter to Hobby', () => {
       const starterPlan = getPlanByKey('starter');
-      const hobbyPlan = getPlanByKey('hobby');
+      const _hobbyPlan = getPlanByKey('hobby');
 
       expect(starterPlan).not.toBeNull();
-      expect(hobbyPlan).not.toBeNull();
+      expect(_hobbyPlan).not.toBeNull();
 
       // User has 500 credits from Starter tier (under 600 cap)
       const currentBalance = 500;
-      const newCredits = hobbyPlan!.creditsPerCycle; // 200
-      const newCap = hobbyPlan!.maxRollover!; // 1200
+      const newCredits = _hobbyPlan!.creditsPerCycle; // 200
+      const newCap = _hobbyPlan!.maxRollover!; // 1200
 
       const result = calculateBalanceWithExpiration({
         currentBalance,
@@ -75,7 +75,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
     });
 
     test('should preserve credits when upgrading from Hobby to Pro', () => {
-      const hobbyPlan = getPlanByKey('hobby');
+      const _hobbyPlan = getPlanByKey('hobby');
       const proPlan = getPlanByKey('pro');
 
       // User has 1000 credits from Hobby tier
@@ -99,7 +99,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
       const plans = ['starter', 'hobby', 'pro', 'business'];
       let currentBalance = 0;
 
-      plans.forEach((planKey, index) => {
+      plans.forEach((planKey, _index) => {
         const plan = getPlanByKey(planKey);
         expect(plan).not.toBeNull();
 
@@ -133,7 +133,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
 
   describe('Plan Downgrade Scenarios', () => {
     test('should cap credits to new plan limit when downgrading', () => {
-      const proPlan = getPlanByKey('pro');
+      const _proPlan = getPlanByKey('pro');
       const starterPlan = getPlanByKey('starter');
 
       // User has 2000 credits from Pro tier
@@ -184,7 +184,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
     });
 
     test('should handle Pro to Hobby downgrade', () => {
-      const proPlan = getPlanByKey('pro');
+      const _proPlan = getPlanByKey('pro');
       const hobbyPlan = getPlanByKey('hobby');
 
       // User has 3000 credits from Pro tier
@@ -281,7 +281,7 @@ describe('Plan Changes with Credit Preservation Integration Tests', () => {
       ];
 
       scenarios.forEach(({ from, to }) => {
-        const fromPlan = getPlanByKey(from);
+        const _fromPlan = getPlanByKey(from);
         const toPlan = getPlanByKey(to);
 
         const result = calculateBalanceWithExpiration({
