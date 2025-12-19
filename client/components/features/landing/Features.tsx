@@ -46,19 +46,17 @@ const features = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-24 bg-white relative overflow-hidden">
+    <section id="features" className="py-24 bg-surface relative overflow-hidden">
       {/* Decorative bg blob */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/3 h-full bg-slate-50 -z-10 skew-x-12 opacity-50"></div>
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/3 h-full bg-base -z-10 skew-x-12 opacity-50"></div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center mb-16">
-          <h2 className="text-base font-bold uppercase tracking-wide text-indigo-600">
-            Feature Rich
-          </h2>
-          <p className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-base font-bold uppercase tracking-wide text-accent">Feature Rich</h2>
+          <p className="mt-2 text-3xl font-extrabold tracking-tight text-text sm:text-4xl">
             Everything you need for professional results
           </p>
-          <p className="mt-6 text-lg text-slate-600 leading-8">
+          <p className="mt-6 text-lg text-text-secondary leading-8">
             We combine state-of-the-art generative AI with traditional computer vision to deliver
             the best of both worlds: creativity and fidelity.
           </p>
@@ -68,49 +66,49 @@ const Features: React.FC = () => {
           {features.map(feature => (
             <div
               key={feature.name}
-              className="group relative p-8 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="group relative p-8 glass-card rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animated-border"
             >
               <div
-                className={`inline-flex items-center justify-center h-12 w-12 rounded-xl mb-6 ${feature.bg} ${feature.color} group-hover:scale-110 transition-transform duration-300`}
+                className={`inline-flex items-center justify-center h-12 w-12 rounded-xl mb-6 bg-surface ${feature.color} group-hover:scale-110 transition-transform duration-300`}
               >
                 <feature.icon size={24} strokeWidth={2.5} />
               </div>
 
-              <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+              <h3 className="text-lg font-bold text-text mb-3 group-hover:text-accent transition-colors">
                 {feature.name}
               </h3>
 
-              <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
 
         {/* Secondary Feature Strip */}
-        <div className="mt-20 border-t border-slate-100 pt-16">
+        <div className="mt-20 border-t border-border pt-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="flex flex-col items-center gap-2">
-              <div className="p-2 bg-slate-100 rounded-full text-slate-600">
+              <div className="p-2 bg-surface rounded-full text-text-secondary">
                 <Sparkles size={16} />
               </div>
-              <span className="font-semibold text-slate-900">Face Enhancement</span>
+              <span className="font-semibold text-text">Face Enhancement</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <div className="p-2 bg-slate-100 rounded-full text-slate-600">
+              <div className="p-2 bg-surface rounded-full text-text-secondary">
                 <Lock size={16} />
               </div>
-              <span className="font-semibold text-slate-900">Secure Processing</span>
+              <span className="font-semibold text-text">Secure Processing</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <div className="p-2 bg-slate-100 rounded-full text-slate-600">
+              <div className="p-2 bg-surface rounded-full text-text-secondary">
                 <Cpu size={16} />
               </div>
-              <span className="font-semibold text-slate-900">Fast Processing</span>
+              <span className="font-semibold text-text">Fast Processing</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <div className="p-2 bg-slate-100 rounded-full text-slate-600">
+              <div className="p-2 bg-surface rounded-full text-text-secondary">
                 <CheckCircle2 size={16} />
               </div>
-              <span className="font-semibold text-slate-900">High Availability</span>
+              <span className="font-semibold text-text">High Availability</span>
             </div>
           </div>
         </div>

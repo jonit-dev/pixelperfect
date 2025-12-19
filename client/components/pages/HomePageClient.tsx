@@ -11,6 +11,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { getSubscriptionConfig } from '@shared/config/subscription.config';
 import { clientEnv } from '@shared/config/env';
+import { HeroBeforeAfter } from '@client/components/landing/HeroBeforeAfter';
 
 export function HomePageClient(): JSX.Element {
   const { openAuthModal } = useModalStore();
@@ -53,29 +54,29 @@ export function HomePageClient(): JSX.Element {
   }, [searchParams, openAuthModal, showToast]);
 
   return (
-    <main className="flex-grow bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-700">
+    <main className="flex-grow bg-base font-sans selection:bg-indigo-100 selection:text-indigo-700">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden hero-gradient">
         {/* Background Gradients - Enhanced with dynamic light effects */}
         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-br from-indigo-200/60 via-violet-200/40 to-purple-200/60 blur-[150px] -z-10 rounded-full pointer-events-none animate-pulse-slow"></div>
-        <div className="absolute top-20 right-10 w-72 h-72 bg-indigo-400/20 blur-[100px] -z-10 rounded-full pointer-events-none animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-violet-400/20 blur-[120px] -z-10 rounded-full pointer-events-none animate-float-delayed"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-br from-blue-200/60 via-cyan-200/40 to-accent-light/60 blur-[150px] -z-10 rounded-full pointer-events-none animate-pulse-slow"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 blur-[100px] -z-10 rounded-full pointer-events-none animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-400/20 blur-[120px] -z-10 rounded-full pointer-events-none animate-float-delayed"></div>
 
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 relative">
           {/* Badge - with glassmorphism */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-indigo-200/50 shadow-lg shadow-indigo-100/50 text-xs font-semibold text-indigo-600 mb-8 animate-fade-in hover:shadow-xl hover:shadow-indigo-200/60 hover:border-indigo-300/60 transition-all duration-300 cursor-default group">
-            <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-semibold text-accent mb-8 animate-fade-in hover:shadow-xl hover:shadow-accent/20 transition-all duration-300 cursor-default group">
+            <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
             <span className="group-hover:scale-105 transition-transform">v2.0 Now Available</span>
-            <span className="w-px h-3 bg-indigo-200/50 mx-1"></span>
-            <span className="text-slate-600 group-hover:text-slate-700 transition-colors">
+            <span className="w-px h-3 bg-accent/30 mx-1"></span>
+            <span className="text-text-secondary group-hover:text-text transition-colors">
               Enhanced Generation
             </span>
           </div>
 
-          <h1 className="text-6xl font-black tracking-tight text-slate-900 sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05] animate-fade-in-up">
+          <h1 className="text-6xl font-black tracking-tight text-text sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05] animate-fade-in-up">
             Upscale Images <br className="hidden sm:block" />
-            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 animate-gradient">
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-cyan-400 animate-gradient">
               For Professional Use
             </span>
           </h1>
@@ -117,7 +118,7 @@ export function HomePageClient(): JSX.Element {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
             <button
               onClick={() => openAuthModal('register')}
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98]"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl transition-all duration-300 glow-blue hover:scale-[1.02] active:scale-[0.98]"
             >
               <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
               {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
@@ -125,7 +126,7 @@ export function HomePageClient(): JSX.Element {
             </button>
             <button
               onClick={() => openAuthModal('login')}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all duration-300 border border-slate-200 hover:border-slate-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-surface text-text font-semibold rounded-xl transition-all duration-300 border border-border hover:border-border-hover"
             >
               Sign In
             </button>
@@ -133,6 +134,11 @@ export function HomePageClient(): JSX.Element {
           <p className="mt-4 text-sm text-slate-500 animate-fade-in-up animation-delay-600">
             No credit card required &bull; 10 free credits included
           </p>
+
+          {/* Hero Before/After Slider */}
+          <div className="mt-12 animate-fade-in-up animation-delay-800">
+            <HeroBeforeAfter />
+          </div>
         </div>
       </section>
 

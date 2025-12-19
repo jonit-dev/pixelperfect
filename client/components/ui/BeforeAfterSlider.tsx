@@ -97,16 +97,16 @@ export const BeforeAfterSlider: React.FC<IBeforeAfterSliderProps> = ({
         className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <ArrowLeftRight size={14} className="text-indigo-600" />
+        <div className="w-10 h-10 bg-accent rounded-full shadow-lg glow-blue flex items-center justify-center">
+          <ArrowLeftRight size={14} className="text-white" />
         </div>
       </div>
 
       {/* Labels */}
-      <div className="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded pointer-events-none">
+      <div className="absolute bottom-3 left-3 glass text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium">
         {beforeLabel}
       </div>
-      <div className="absolute bottom-3 right-3 bg-indigo-600/90 text-white text-xs px-2 py-1 rounded pointer-events-none">
+      <div className="absolute bottom-3 right-3 bg-accent text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium glow-blue">
         {afterLabel}
       </div>
     </div>
