@@ -119,15 +119,15 @@ SITE_URL: z.string().url().default('http://localhost:3000'),
 DOMAIN: z.string().default('localhost:3000'),
 
 // Complete email configuration (extend existing)
-SALES_EMAIL: z.string().email().default('sales@pixelperfect.app'),
-NOREPLY_EMAIL: z.string().email().default('noreply@pixelperfect.app'),
-BILLING_SUPPORT_EMAIL: z.string().email().default('billing@pixelperfect.app'),
-PARTNERSHIPS_EMAIL: z.string().email().default('partnerships@pixelperfect.app'),
-PRESS_EMAIL: z.string().email().default('press@pixelperfect.app'),
-SECURITY_EMAIL: z.string().email().default('security@pixelperfect.app'),
-ABUSE_EMAIL: z.string().email().default('abuse@pixelperfect.app'),
-FEEDBACK_EMAIL: z.string().email().default('feedback@pixelperfect.app'),
-FEATURE_REQUEST_EMAIL: z.string().email().default('features@pixelperfect.app'),
+SALES_EMAIL: z.string().email().default('sales@myimageupscaler.com'),
+NOREPLY_EMAIL: z.string().email().default('noreply@myimageupscaler.com'),
+BILLING_SUPPORT_EMAIL: z.string().email().default('billing@myimageupscaler.com'),
+PARTNERSHIPS_EMAIL: z.string().email().default('partnerships@myimageupscaler.com'),
+PRESS_EMAIL: z.string().email().default('press@myimageupscaler.com'),
+SECURITY_EMAIL: z.string().email().default('security@myimageupscaler.com'),
+ABUSE_EMAIL: z.string().email().default('abuse@myimageupscaler.com'),
+FEEDBACK_EMAIL: z.string().email().default('feedback@myimageupscaler.com'),
+FEATURE_REQUEST_EMAIL: z.string().email().default('features@myimageupscaler.com'),
 
 // Social media (new)
 TWITTER_HANDLE: z.string().default('@pixelperfectai'),
@@ -318,10 +318,10 @@ export default function manifest(): MetadataRoute.Manifest {
 **Specific Replacements:**
 
 ```typescript
-// Replace: href="mailto:support@pixelperfect.app"
+// Replace: href="mailto:support@myimageupscaler.com"
 href={`mailto:${domainConfig.contact.support}`}
 
-// Replace: support@pixelperfect.app
+// Replace: support@myimageupscaler.com
 {domainConfig.contact.support}
 ```
 
@@ -379,15 +379,15 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_DOMAIN=localhost:3000
 
 # Extended contact emails
-NEXT_PUBLIC_SALES_EMAIL=sales@pixelperfect.app
-NEXT_PUBLIC_NOREPLY_EMAIL=noreply@pixelperfect.app
-NEXT_PUBLIC_BILLING_SUPPORT_EMAIL=billing@pixelperfect.app
-NEXT_PUBLIC_PARTNERSHIPS_EMAIL=partnerships@pixelperfect.app
-NEXT_PUBLIC_PRESS_EMAIL=press@pixelperfect.app
-NEXT_PUBLIC_SECURITY_EMAIL=security@pixelperfect.app
-NEXT_PUBLIC_ABUSE_EMAIL=abuse@pixelperfect.app
-NEXT_PUBLIC_FEEDBACK_EMAIL=feedback@pixelperfect.app
-NEXT_PUBLIC_FEATURE_REQUEST_EMAIL=features@pixelperfect.app
+NEXT_PUBLIC_SALES_EMAIL=sales@myimageupscaler.com
+NEXT_PUBLIC_NOREPLY_EMAIL=noreply@myimageupscaler.com
+NEXT_PUBLIC_BILLING_SUPPORT_EMAIL=billing@myimageupscaler.com
+NEXT_PUBLIC_PARTNERSHIPS_EMAIL=partnerships@myimageupscaler.com
+NEXT_PUBLIC_PRESS_EMAIL=press@myimageupscaler.com
+NEXT_PUBLIC_SECURITY_EMAIL=security@myimageupscaler.com
+NEXT_PUBLIC_ABUSE_EMAIL=abuse@myimageupscaler.com
+NEXT_PUBLIC_FEEDBACK_EMAIL=feedback@myimageupscaler.com
+NEXT_PUBLIC_FEATURE_REQUEST_EMAIL=features@myimageupscaler.com
 
 # Social media
 NEXT_PUBLIC_TWITTER_HANDLE=@pixelperfectai

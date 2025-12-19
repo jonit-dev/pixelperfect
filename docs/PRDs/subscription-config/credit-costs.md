@@ -233,7 +233,7 @@ sequenceDiagram
 ### Display Credit Costs on Upload Page
 
 ```typescript
-// client/components/pixelperfect/UploadForm.tsx
+// client/components/myimageupscaler.com/UploadForm.tsx
 
 function CostDisplay({ selectedMode, selectedScale }: Props) {
   const costs = useCreditCosts(); // Hook that fetches config

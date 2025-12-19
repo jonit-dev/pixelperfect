@@ -382,7 +382,7 @@ import Replicate from 'replicate';
 import { GoogleGenAI, Type } from '@google/genai';
 import { serverEnv } from '@shared/config/env';
 import type { ILLMAnalysisResult, IDetectedIssue } from './llm-image-analyzer.types';
-import type { ModelId } from '@shared/types/pixelperfect';
+import type { ModelId } from '@shared/types/myimageupscaler.com';
 
 const QWEN_MODEL =
   'lucataco/qwen3-vl-8b-instruct:39e893666996acf464cff75688ad49ac95ef54e9f1c688fbc677330acc478e11';
@@ -636,7 +636,7 @@ export class LLMImageAnalyzer {
 ```typescript
 // server/services/llm-image-analyzer.types.ts
 
-import type { ModelId } from '@shared/types/pixelperfect';
+import type { ModelId } from '@shared/types/myimageupscaler.com';
 
 export type IssueType =
   | 'blur'

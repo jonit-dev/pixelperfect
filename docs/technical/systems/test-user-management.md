@@ -16,7 +16,7 @@ Instead of creating new users for every test, use a **single fixed test user** t
 
 ```typescript
 const FIXED_TEST_USER = {
-  email: 'fixed-test-user@pixelperfect.test',
+  email: 'fixed-test-user@myimageupscaler.com.test',
   password: 'TestPassword123!SecureForTests',
 };
 ```
@@ -64,7 +64,7 @@ tsx scripts/cleanup-test-users.ts
 This will:
 
 - Delete all users matching pattern `*@test.local`
-- Keep the fixed test user `fixed-test-user@pixelperfect.test`
+- Keep the fixed test user `fixed-test-user@myimageupscaler.com.test`
 - Avoid rate limiting with delays between deletions
 
 ## Migration Plan
@@ -76,7 +76,6 @@ This will:
    ```
 
 2. **Update test files to use resetTestUser:**
-
    - Replace `dataManager.createTestUser()` with `resetTestUser()`
    - Remove `dataManager.cleanupUser()` calls in `afterEach` (not needed anymore)
 

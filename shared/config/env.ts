@@ -17,7 +17,7 @@ import { z } from 'zod';
 // =============================================================================
 
 const clientEnvSchema = z.object({
-  APP_NAME: z.string().default('PixelPerfect'),
+  APP_NAME: z.string().default('myimageupscaler.com'),
   BASE_URL: z.string().url().default('http://localhost:3000'),
   SUPABASE_URL: z.string().url().default('https://example.supabase.co'),
   SUPABASE_ANON_KEY: z.string().default(''),
@@ -32,12 +32,12 @@ const clientEnvSchema = z.object({
   ENABLE_GOOGLE_OAUTH: z.string().default('true'),
   ENABLE_AZURE_OAUTH: z.string().default('false'),
   // Contact
-  ADMIN_EMAIL: z.string().email().default('admin@pixelperfect.com'),
-  SUPPORT_EMAIL: z.string().email().default('support@pixelperfect.app'),
-  LEGAL_EMAIL: z.string().email().default('legal@pixelperfect.app'),
-  PRIVACY_EMAIL: z.string().email().default('privacy@pixelperfect.app'),
-  SALES_EMAIL: z.string().email().default('sales@pixelperfect.app'),
-  TWITTER_HANDLE: z.string().default('pixelperfectai'),
+  ADMIN_EMAIL: z.string().email().default('admin@myimageupscaler.com'),
+  SUPPORT_EMAIL: z.string().email().default('support@myimageupscaler.com'),
+  LEGAL_EMAIL: z.string().email().default('legal@myimageupscaler.com'),
+  PRIVACY_EMAIL: z.string().email().default('privacy@myimageupscaler.com'),
+  SALES_EMAIL: z.string().email().default('sales@myimageupscaler.com'),
+  TWITTER_HANDLE: z.string().default('myimageupscaler'),
   // Stripe
   STRIPE_PUBLISHABLE_KEY: z.string().default(''),
   // Stripe Credit Pack Price IDs
@@ -50,7 +50,7 @@ export type IClientEnv = z.infer<typeof clientEnvSchema>;
 
 function loadClientEnv(): IClientEnv {
   const env = {
-    APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'PixelPerfect',
+    APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'myimageupscaler.com',
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
     SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://example.supabase.co',
     SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
@@ -65,12 +65,12 @@ function loadClientEnv(): IClientEnv {
     ENABLE_GOOGLE_OAUTH: process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH || 'true',
     ENABLE_AZURE_OAUTH: process.env.NEXT_PUBLIC_ENABLE_AZURE_OAUTH || 'false',
     // Contact
-    ADMIN_EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@pixelperfect.com',
-    SUPPORT_EMAIL: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@pixelperfect.app',
-    LEGAL_EMAIL: process.env.NEXT_PUBLIC_LEGAL_EMAIL || 'legal@pixelperfect.app',
-    PRIVACY_EMAIL: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@pixelperfect.app',
-    SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL || 'sales@pixelperfect.app',
-    TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE || 'pixelperfectai',
+    ADMIN_EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@myimageupscaler.com',
+    SUPPORT_EMAIL: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@myimageupscaler.com',
+    LEGAL_EMAIL: process.env.NEXT_PUBLIC_LEGAL_EMAIL || 'legal@myimageupscaler.com',
+    PRIVACY_EMAIL: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@myimageupscaler.com',
+    SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL || 'sales@myimageupscaler.com',
+    TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE || 'myimageupscaler',
     // Stripe
     STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
     // Stripe Credit Pack Price IDs
@@ -98,7 +98,10 @@ export function getAppLogoAbbr(appName?: string): string {
     return words[0].substring(0, 2).toUpperCase();
   }
   // For multiple words, take first letter of each word, up to 2 letters
-  return words.slice(0, 2).map(word => word.charAt(0).toUpperCase()).join('');
+  return words
+    .slice(0, 2)
+    .map(word => word.charAt(0).toUpperCase())
+    .join('');
 }
 
 /**

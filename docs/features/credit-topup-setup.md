@@ -40,7 +40,8 @@ npx tsx scripts/setup-stripe-credit-packs.ts
 ```
 
 The script will:
-- Create a "PixelPerfect Credit Packs" product
+
+- Create a "myimageupscaler.com Credit Packs" product
 - Create three one-time prices (Small, Medium, Large)
 - Output environment variables to add to `.env`
 
@@ -70,10 +71,11 @@ creditPacks: [
     // ...
   },
   // medium, large...
-]
+];
 ```
 
 To modify packs:
+
 1. Update the configuration in `subscription.config.ts`
 2. Create new prices in Stripe (via dashboard or script)
 3. Update environment variables
@@ -180,12 +182,14 @@ yarn test:e2e credit-purchase.spec.ts
 ### Logs to Watch
 
 1. **Checkout API** (`/api/checkout`):
+
    ```
    "Creating Stripe Checkout Session (supports both subscription and payment modes)"
    "mode: payment" // For credit packs
    ```
 
 2. **Webhook Handler** (`/api/webhooks/stripe`):
+
    ```
    "Checkout completed for user {userId}, mode: payment"
    "Added {credits} purchased credits to user {userId} (pack: {packKey})"
@@ -201,12 +205,12 @@ yarn test:e2e credit-purchase.spec.ts
 
 ### Common Issues
 
-| Issue | Solution |
-|-------|----------|
+| Issue                    | Solution                                        |
+| ------------------------ | ----------------------------------------------- |
 | "Invalid price ID" error | Verify env vars are set and match Stripe prices |
-| Webhook not processing | Check Stripe webhook secret is correct |
-| Credits not added | Check Supabase logs for RPC errors |
-| Pack not showing in UI | Verify `enabled: true` in config |
+| Webhook not processing   | Check Stripe webhook secret is correct          |
+| Credits not added        | Check Supabase logs for RPC errors              |
+| Pack not showing in UI   | Verify `enabled: true` in config                |
 
 ## Production Checklist
 
@@ -232,8 +236,8 @@ creditPacks: [
     key: 'small',
     enabled: false, // Disable this pack
     // ...
-  }
-]
+  },
+];
 ```
 
 ## Support Resources

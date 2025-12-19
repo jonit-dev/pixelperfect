@@ -1,6 +1,6 @@
-# PixelPerfect MVP Roadmap
+# myimageupscaler.com MVP Roadmap
 
-Product development roadmap for PixelPerfect AI Image Enhancer & Upscaler MVP launch.
+Product development roadmap for myimageupscaler.com AI Image Enhancer & Upscaler MVP launch.
 
 ## Vision
 

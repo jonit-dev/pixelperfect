@@ -4,12 +4,12 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/client/store/auth/authOperations.ts`
-- `/home/joao/projects/pixelperfect/client/store/auth/authStateHandler.ts`
-- `/home/joao/projects/pixelperfect/client/store/modalStore.ts`
-- `/home/joao/projects/pixelperfect/client/store/toastStore.ts`
-- `/home/joao/projects/pixelperfect/client/components/modal/auth/AuthenticationModal.tsx`
-- `/home/joao/projects/pixelperfect/client/components/modal/auth/RegisterForm.tsx`
+- `/home/joao/projects/myimageupscaler.com/client/store/auth/authOperations.ts`
+- `/home/joao/projects/myimageupscaler.com/client/store/auth/authStateHandler.ts`
+- `/home/joao/projects/myimageupscaler.com/client/store/modalStore.ts`
+- `/home/joao/projects/myimageupscaler.com/client/store/toastStore.ts`
+- `/home/joao/projects/myimageupscaler.com/client/components/modal/auth/AuthenticationModal.tsx`
+- `/home/joao/projects/myimageupscaler.com/client/components/modal/auth/RegisterForm.tsx`
 
 ### 1.2 Component & Dependency Overview
 
@@ -52,6 +52,7 @@ The UI does not adapt to Supabase's "Confirm email" setting, leaving users confu
 - **Toast notifications** for all error scenarios using existing `useToastStore`
 
 **Alternative approaches rejected:**
+
 1. ❌ Checking `email_confirmed_at` field - Less reliable than session check
 2. ❌ Making API call to check Supabase settings - Unnecessary network call, response already tells us
 
@@ -79,12 +80,12 @@ flowchart LR
 
 ### 2.3 Key Technical Decisions
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Detection method | Check `data.session` presence | Supabase returns `null` session when confirmation pending |
-| Return type | `{ emailConfirmationRequired: boolean }` | Simple, explicit contract |
-| Verification page | Standalone `/verify-email` route | Clean UX, can be bookmarked/shared |
-| Error handling | Toast notifications via existing store | Consistent with app patterns |
+| Decision          | Choice                                   | Rationale                                                 |
+| ----------------- | ---------------------------------------- | --------------------------------------------------------- |
+| Detection method  | Check `data.session` presence            | Supabase returns `null` session when confirmation pending |
+| Return type       | `{ emailConfirmationRequired: boolean }` | Simple, explicit contract                                 |
+| Verification page | Standalone `/verify-email` route         | Clean UX, can be bookmarked/shared                        |
+| Error handling    | Toast notifications via existing store   | Consistent with app patterns                              |
 
 ### 2.4 Data Model Changes
 
@@ -137,6 +138,7 @@ sequenceDiagram
 ### A. `client/store/auth/authOperations.ts`
 
 **Changes Needed:**
+
 - Modify `createSignUpWithEmail` to return signup result instead of `void`
 - Detect email confirmation requirement from response
 
@@ -208,6 +210,7 @@ signUpWithEmail: (email: string, password: string) => Promise<ISignUpResult>;
 ### D. `client/components/modal/auth/AuthenticationModal.tsx`
 
 **Changes Needed:**
+
 - Update `onRegisterSubmit` to handle the new return type
 - Conditionally show different success messages
 - Redirect to `/verify-email` when confirmation required
@@ -222,7 +225,7 @@ const onRegisterSubmit = async (data: IRegisterForm) => {
     if (result.emailConfirmationRequired) {
       showToast({
         message: 'Please check your email to verify your account',
-        type: 'success'
+        type: 'success',
       });
       close();
       window.location.href = '/verify-email';
@@ -254,7 +257,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Verify Your Email | PixelPerfect',
+  title: 'Verify Your Email | myimageupscaler.com',
   description: 'Please check your email to verify your account',
 };
 
@@ -321,13 +324,13 @@ export default function VerifyEmailPage() {
 
 All auth errors are already routed through the toast system. Ensure these specific error messages display properly:
 
-| Error Scenario | Toast Message | Type |
-|----------------|---------------|------|
+| Error Scenario       | Toast Message                               | Type  |
+| -------------------- | ------------------------------------------- | ----- |
 | Email already exists | "An account with this email already exists" | error |
-| Invalid email format | Zod validation message | error |
-| Password too short | Zod validation message | error |
-| Network error | "Registration failed" | error |
-| Rate limited | Supabase error message | error |
+| Invalid email format | Zod validation message                      | error |
+| Password too short   | Zod validation message                      | error |
+| Network error        | "Registration failed"                       | error |
+| Rate limited         | Supabase error message                      | error |
 
 ---
 
@@ -380,12 +383,12 @@ All auth errors are already routed through the toast system. Ensure these specif
 
 ### Edge Cases
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| User already exists | Toast: "An account with this email already exists" |
-| Network failure during signup | Toast: "Registration failed" |
-| Supabase rate limit | Toast shows Supabase error message |
-| User navigates directly to /verify-email | Page renders (no auth required) |
+| Scenario                                 | Expected Behavior                                  |
+| ---------------------------------------- | -------------------------------------------------- |
+| User already exists                      | Toast: "An account with this email already exists" |
+| Network failure during signup            | Toast: "Registration failed"                       |
+| Supabase rate limit                      | Toast shows Supabase error message                 |
+| User navigates directly to /verify-email | Page renders (no auth required)                    |
 
 ---
 
@@ -413,6 +416,7 @@ All auth errors are already routed through the toast system. Ensure these specif
 ### Rollback Plan
 
 If issues arise:
+
 1. Revert `authOperations.ts` changes (restore `void` return type)
 2. Revert `AuthenticationModal.tsx` to use original `handleAuthAction`
 3. Delete `/verify-email` page (optional, doesn't break anything)

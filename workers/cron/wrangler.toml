@@ -1,7 +1,7 @@
 # Cloudflare Workers Configuration for Cron Jobs
 # Documentation: https://developers.cloudflare.com/workers/configuration/cron-triggers/
 
-name = "pixelperfect-cron"
+name = "myimageupscaler-cron"
 main = "index.ts"
 compatibility_date = "2025-03-02"
 compatibility_flags = ["nodejs_compat"]
@@ -20,7 +20,7 @@ crons = [
 # Environment Variables (non-sensitive defaults)
 # IMPORTANT: Set CRON_SECRET via Cloudflare dashboard or `wrangler secret put CRON_SECRET`
 [vars]
-API_BASE_URL = "https://pixelperfect.app"
+API_BASE_URL = "https://myimageupscaler.com"
 
 # Development environment
 [env.development]

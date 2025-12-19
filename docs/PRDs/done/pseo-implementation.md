@@ -112,7 +112,7 @@ quadrantChart
     Remini: [0.70, 0.75]
     BigJPG: [0.15, 0.50]
     ImgUpscaler: [0.20, 0.40]
-    PixelPerfect: [0.10, 0.15]
+    myimageupscaler.com: [0.10, 0.15]
 ```
 
 ### 1.2 Competitor Strategy Analysis
@@ -126,7 +126,7 @@ quadrantChart
 | **BigJPG**        | <5         | Brand Only          | Technical reputation | Zero pSEO implementation   |
 | **ImgUpscaler**   | <5         | Basic Product Pages | Simple UX            | No content strategy        |
 
-### 1.3 Competitive Gaps (Opportunities for PixelPerfect)
+### 1.3 Competitive Gaps (Opportunities for myimageupscaler.com)
 
 1. **File Format Niche Pages**: Only Upscale.media targets this; opportunity for WebP, AVIF, RAW
 2. **Industry-Specific Landing Pages**: E-commerce, real estate, gaming - underserved
@@ -257,7 +257,7 @@ mindmap
 ### 3.1 URL Structure
 
 ```
-PixelPerfect pSEO URL Architecture
+myimageupscaler.com pSEO URL Architecture
 ├── /tools/                           # Primary Tools Category
 │   ├── /tools/[tool-slug]/           # Individual tool pages
 │   │   ├── ai-image-upscaler
@@ -300,13 +300,13 @@ PixelPerfect pSEO URL Architecture
 │
 ├── /compare/                         # Comparison Category
 │   ├── /compare/[comparison-slug]/   # Comparison pages
-│   │   ├── pixelperfect-vs-topaz-gigapixel
-│   │   ├── pixelperfect-vs-upscale-media
-│   │   ├── pixelperfect-vs-vanceai
-│   │   ├── pixelperfect-vs-bigjpg
-│   │   ├── pixelperfect-vs-lets-enhance
-│   │   ├── pixelperfect-vs-remini
-│   │   ├── pixelperfect-vs-waifu2x
+│   │   ├── myimageupscaler.com-vs-topaz-gigapixel
+│   │   ├── myimageupscaler.com-vs-upscale-media
+│   │   ├── myimageupscaler.com-vs-vanceai
+│   │   ├── myimageupscaler.com-vs-bigjpg
+│   │   ├── myimageupscaler.com-vs-lets-enhance
+│   │   ├── myimageupscaler.com-vs-remini
+│   │   ├── myimageupscaler.com-vs-waifu2x
 │   │   ├── free-vs-paid-upscalers
 │   │   └── online-vs-offline-upscalers
 │
@@ -562,7 +562,7 @@ interface FormatPageData {
 
 ### 4.3 Comparison Page Template
 
-**Target Keywords**: "pixelperfect vs topaz", "best ai upscaler comparison"
+**Target Keywords**: "myimageupscaler.com vs topaz", "best ai upscaler comparison"
 
 ```typescript
 interface ComparisonPageData {
@@ -571,13 +571,13 @@ interface ComparisonPageData {
   competitorUrl: string;
 
   // SEO
-  metaTitle: string; // "PixelPerfect vs [Competitor]: Which Upscaler?"
+  metaTitle: string; // "myimageupscaler.com vs [Competitor]: Which Upscaler?"
   metaDescription: string;
 
   // Content
   introduction: string;
 
-  pixelperfectProfile: {
+  myimageupscaler.comProfile: {
     overview: string;
     features: string[];
     pros: string[];
@@ -597,12 +597,12 @@ interface ComparisonPageData {
 
   comparisonTable: Array<{
     feature: string;
-    pixelperfect: string | boolean;
+    myimageupscaler.com: string | boolean;
     competitor: string | boolean;
   }>;
 
   verdict: {
-    winner: 'pixelperfect' | 'competitor' | 'tie';
+    winner: 'myimageupscaler.com' | 'competitor' | 'tie';
     summary: string;
     recommendation: string;
   };
@@ -616,18 +616,18 @@ interface ComparisonPageData {
 
 **Comparison Table Structure**:
 
-| Feature           | PixelPerfect | [Competitor] |
-| ----------------- | ------------ | ------------ |
-| Free Tier         | 10 credits   | [Value]      |
-| Max Resolution    | 8x (16x Pro) | [Value]      |
-| Text Preservation | Yes          | [Value]      |
-| Batch Processing  | Yes          | [Value]      |
-| API Access        | Pro Plan     | [Value]      |
-| No Watermarks     | Yes          | [Value]      |
-| Processing Speed  | 30-60s       | [Value]      |
-| File Size Limit   | 25MB         | [Value]      |
-| Supported Formats | JPG/PNG/WebP | [Value]      |
-| Starting Price    | Free/$19/mo  | [Value]      |
+| Feature           | myimageupscaler.com | [Competitor] |
+| ----------------- | ------------------- | ------------ |
+| Free Tier         | 10 credits          | [Value]      |
+| Max Resolution    | 8x (16x Pro)        | [Value]      |
+| Text Preservation | Yes                 | [Value]      |
+| Batch Processing  | Yes                 | [Value]      |
+| API Access        | Pro Plan            | [Value]      |
+| No Watermarks     | Yes                 | [Value]      |
+| Processing Speed  | 30-60s              | [Value]      |
+| File Size Limit   | 25MB                | [Value]      |
+| Supported Formats | JPG/PNG/WebP        | [Value]      |
+| Starting Price    | Free/$19/mo         | [Value]      |
 
 ### 4.4 Use Case Page Template
 
@@ -847,10 +847,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: tool.metaTitle,
       description: tool.metaDescription,
       type: 'website',
-      url: `https://pixelperfect.app/tools/${params.slug}`,
+      url: `https://myimageupscaler.com/tools/${params.slug}`,
     },
     alternates: {
-      canonical: `https://pixelperfect.app/tools/${params.slug}`,
+      canonical: `https://myimageupscaler.com/tools/${params.slug}`,
     },
   };
 }
@@ -922,7 +922,7 @@ export interface ComparisonPage extends PSEOPage {
   category: 'compare';
   competitor: string;
   competitorUrl: string;
-  pixelperfectProfile: CompetitorProfile;
+  myimageupscaler.comProfile: CompetitorProfile;
   competitorProfile: CompetitorProfile;
   comparisonTable: ComparisonRow[];
   verdict: Verdict;
@@ -941,8 +941,8 @@ export interface ComparisonPage extends PSEOPage {
     {
       "slug": "ai-image-upscaler",
       "title": "AI Image Upscaler",
-      "metaTitle": "AI Image Upscaler - Enhance Photos to 4K Free | PixelPerfect",
-      "metaDescription": "Upscale images to 4K resolution with AI. Free online tool that preserves text and logos. No watermarks, fast processing. Try PixelPerfect now.",
+      "metaTitle": "AI Image Upscaler - Enhance Photos to 4K Free | myimageupscaler.com",
+      "metaDescription": "Upscale images to 4K resolution with AI. Free online tool that preserves text and logos. No watermarks, fast processing. Try myimageupscaler.com now.",
       "h1": "AI Image Upscaler - Enhance Photos to 4K Resolution Free",
       "primaryKeyword": "ai image upscaler",
       "secondaryKeywords": [
@@ -951,7 +951,7 @@ export interface ComparisonPage extends PSEOPage {
         "enhance image ai",
         "upscale image online"
       ],
-      "introduction": "Transform low-resolution images into stunning high-quality visuals with PixelPerfect's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort.",
+      "introduction": "Transform low-resolution images into stunning high-quality visuals with myimageupscaler.com's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort.",
       "whatIs": {
         "title": "What is an AI Image Upscaler?",
         "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity..."
@@ -970,12 +970,12 @@ export interface ComparisonPage extends PSEOPage {
       ],
       "faq": [
         {
-          "question": "Is PixelPerfect's AI image upscaler free?",
-          "answer": "Yes! PixelPerfect offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
+          "question": "Is myimageupscaler.com's AI image upscaler free?",
+          "answer": "Yes! myimageupscaler.com offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
         },
         {
           "question": "What image formats does the AI upscaler support?",
-          "answer": "PixelPerfect supports JPEG, PNG, and WebP formats. You can upload images up to 25MB and download in your preferred format."
+          "answer": "myimageupscaler.com supports JPEG, PNG, and WebP formats. You can upload images up to 25MB and download in your preferred format."
         }
       ]
     }
@@ -1032,14 +1032,14 @@ export function generateComparisonSchema(comparison: ComparisonPage) {
     description: comparison.metaDescription,
     author: {
       '@type': 'Organization',
-      name: 'PixelPerfect',
+      name: 'myimageupscaler.com',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'PixelPerfect',
+      name: 'myimageupscaler.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pixelperfect.app/logo.png',
+        url: 'https://myimageupscaler.com/logo.png',
       },
     },
     datePublished: comparison.publishDate,
@@ -1072,7 +1072,7 @@ import { MetadataRoute } from 'next';
 import { getAllPSEOPages } from '@/lib/pseo/data-loader';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://pixelperfect.app';
+  const baseUrl = 'https://myimageupscaler.com';
 
   // Static pages
   const staticPages = [
@@ -1133,52 +1133,52 @@ function getPriorityByCategory(category: string): number {
 
 export const META_PATTERNS = {
   tools: {
-    title: '{ToolName} - {Benefit} Free | PixelPerfect',
+    title: '{ToolName} - {Benefit} Free | myimageupscaler.com',
     description:
-      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try PixelPerfect now.',
-    // Example: "AI Image Upscaler - Enhance Photos to 4K Free | PixelPerfect"
+      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try myimageupscaler.com now.',
+    // Example: "AI Image Upscaler - Enhance Photos to 4K Free | myimageupscaler.com"
   },
   formats: {
-    title: 'Upscale {Format} Images to {Resolution} | PixelPerfect',
+    title: 'Upscale {Format} Images to {Resolution} | myimageupscaler.com',
     description:
       'Upscale {Format} images with AI. Free online {Format} upscaler that preserves quality. Convert low-res {Format} to HD instantly.',
-    // Example: "Upscale JPEG Images to 4K Resolution | PixelPerfect"
+    // Example: "Upscale JPEG Images to 4K Resolution | myimageupscaler.com"
   },
   compare: {
-    title: 'PixelPerfect vs {Competitor}: Which {ToolType} is Best?',
+    title: 'myimageupscaler.com vs {Competitor}: Which {ToolType} is Best?',
     description:
-      'Compare PixelPerfect and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
-    // Example: "PixelPerfect vs Topaz Gigapixel: Which AI Upscaler is Best?"
+      'Compare myimageupscaler.com and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
+    // Example: "myimageupscaler.com vs Topaz Gigapixel: Which AI Upscaler is Best?"
   },
   alternatives: {
-    title: 'Best {Competitor} Alternatives in 2025 | PixelPerfect',
+    title: 'Best {Competitor} Alternatives in 2025 | myimageupscaler.com',
     description:
-      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including PixelPerfect. Free options, pricing, and features compared.',
-    // Example: "Best Topaz Gigapixel Alternatives in 2025 | PixelPerfect"
+      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including myimageupscaler.com. Free options, pricing, and features compared.',
+    // Example: "Best Topaz Gigapixel Alternatives in 2025 | myimageupscaler.com"
   },
   'use-cases': {
-    title: '{Industry} Image Enhancement - {UseCase} | PixelPerfect',
+    title: '{Industry} Image Enhancement - {UseCase} | myimageupscaler.com',
     description:
       'Enhance {Industry} images with AI. Perfect for {UseCase}. Upscale product photos, listings, and more. Free to start.',
-    // Example: "E-commerce Image Enhancement - Product Photo Upscaling | PixelPerfect"
+    // Example: "E-commerce Image Enhancement - Product Photo Upscaling | myimageupscaler.com"
   },
   guides: {
-    title: 'How to {Action} - Step-by-Step Guide | PixelPerfect',
+    title: 'How to {Action} - Step-by-Step Guide | myimageupscaler.com',
     description:
       'Learn how to {Action} with this comprehensive guide. {Benefit}. Free tips and tools included.',
-    // Example: "How to Upscale Images Without Losing Quality - Step-by-Step Guide | PixelPerfect"
+    // Example: "How to Upscale Images Without Losing Quality - Step-by-Step Guide | myimageupscaler.com"
   },
   free: {
-    title: 'Free {ToolName} - No Registration Required | PixelPerfect',
+    title: 'Free {ToolName} - No Registration Required | myimageupscaler.com',
     description:
       'Use our free {ToolName} online. No watermarks, no sign-up required. {Benefit}. Try it now!',
-    // Example: "Free AI Image Upscaler - No Registration Required | PixelPerfect"
+    // Example: "Free AI Image Upscaler - No Registration Required | myimageupscaler.com"
   },
   scale: {
-    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | PixelPerfect',
+    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | myimageupscaler.com',
     description:
       'Upscale images to {Scale} resolution with AI. Free online tool for {Resolution} enhancement. Perfect for {UseCase}.',
-    // Example: "Upscale Images to 4x - Free 4K Upscaler | PixelPerfect"
+    // Example: "Upscale Images to 4x - Free 4K Upscaler | myimageupscaler.com"
   },
 };
 ```
@@ -1189,7 +1189,7 @@ export const META_PATTERNS = {
 // All pSEO pages should have explicit canonical URLs
 const canonicalRules = {
   // Primary page is always canonical
-  primary: (slug: string, category: string) => `https://pixelperfect.app/${category}/${slug}`,
+  primary: (slug: string, category: string) => `https://myimageupscaler.com/${category}/${slug}`,
 
   // Avoid duplicate content
   noDuplicates: [
@@ -1386,7 +1386,6 @@ gantt
 Before publishing any pSEO page:
 
 - [ ] **Content Quality**
-
   - [ ] Minimum 1,500 words of unique content
   - [ ] No duplicate content from other pages
   - [ ] Factually accurate information
@@ -1394,7 +1393,6 @@ Before publishing any pSEO page:
   - [ ] Proper grammar and spelling
 
 - [ ] **Technical SEO**
-
   - [ ] Unique meta title (50-60 chars)
   - [ ] Unique meta description (150-160 chars)
   - [ ] Canonical URL set
@@ -1473,14 +1471,14 @@ const monitoringConfig = {
 
 ### Tier 3: Long-Tail (5K Monthly Searches)
 
-| Keyword                  | Target Page                         |
-| ------------------------ | ----------------------------------- |
-| best ai image upscaler   | /compare/best-ai-image-upscalers    |
-| pixelperfect vs topaz    | /compare/pixelperfect-vs-topaz      |
-| upscale jpeg images      | /formats/upscale-jpeg-images        |
-| ecommerce product photos | /use-cases/ecommerce-product-photos |
-| how to fix blurry photos | /guides/how-to-fix-blurry-photos    |
-| batch image upscaler     | /tools/batch-image-upscaler         |
+| Keyword                      | Target Page                           |
+| ---------------------------- | ------------------------------------- |
+| best ai image upscaler       | /compare/best-ai-image-upscalers      |
+| myimageupscaler.com vs topaz | /compare/myimageupscaler.com-vs-topaz |
+| upscale jpeg images          | /formats/upscale-jpeg-images          |
+| ecommerce product photos     | /use-cases/ecommerce-product-photos   |
+| how to fix blurry photos     | /guides/how-to-fix-blurry-photos      |
+| batch image upscaler         | /tools/batch-image-upscaler           |
 
 ---
 
@@ -1488,20 +1486,20 @@ const monitoringConfig = {
 
 ### Feature Comparison for Comparison Pages
 
-| Feature             | PixelPerfect | Upscale.media | Topaz  | VanceAI | BigJPG  |
-| ------------------- | ------------ | ------------- | ------ | ------- | ------- |
-| Free Tier           | 10 credits   | 5 images      | None   | 3/month | 5/day   |
-| Max Upscale         | 8x (16x Pro) | 4x            | 6x     | 8x      | 4x      |
-| Text Preservation   | Yes          | Limited       | Yes    | Limited | No      |
-| Batch Processing    | Yes          | Yes           | Yes    | Yes     | No      |
-| API Access          | Pro Plan     | Enterprise    | Yes    | Pro     | No      |
-| No Watermarks       | Yes          | Yes           | Yes    | Pro     | Pro     |
-| Avg Processing Time | 30-60s       | 45-90s        | 20-40s | 30-60s  | 60-120s |
-| File Size Limit     | 25MB         | 10MB          | 50MB   | 25MB    | 5MB     |
-| Supported Formats   | 5+           | 4             | 10+    | 4       | 3       |
-| Starting Price      | Free/$19     | Free/$9       | $99    | Free/$9 | Free/$5 |
-| Offline Mode        | No           | No            | Yes    | No      | No      |
-| Mobile App          | PWA          | No            | No     | Yes     | No      |
+| Feature             | myimageupscaler.com | Upscale.media | Topaz  | VanceAI | BigJPG  |
+| ------------------- | ------------------- | ------------- | ------ | ------- | ------- |
+| Free Tier           | 10 credits          | 5 images      | None   | 3/month | 5/day   |
+| Max Upscale         | 8x (16x Pro)        | 4x            | 6x     | 8x      | 4x      |
+| Text Preservation   | Yes                 | Limited       | Yes    | Limited | No      |
+| Batch Processing    | Yes                 | Yes           | Yes    | Yes     | No      |
+| API Access          | Pro Plan            | Enterprise    | Yes    | Pro     | No      |
+| No Watermarks       | Yes                 | Yes           | Yes    | Pro     | Pro     |
+| Avg Processing Time | 30-60s              | 45-90s        | 20-40s | 30-60s  | 60-120s |
+| File Size Limit     | 25MB                | 10MB          | 50MB   | 25MB    | 5MB     |
+| Supported Formats   | 5+                  | 4             | 10+    | 4       | 3       |
+| Starting Price      | Free/$19            | Free/$9       | $99    | Free/$9 | Free/$5 |
+| Offline Mode        | No                  | No            | Yes    | No      | No      |
+| Mobile App          | PWA                 | No            | No     | Yes     | No      |
 
 ---
 

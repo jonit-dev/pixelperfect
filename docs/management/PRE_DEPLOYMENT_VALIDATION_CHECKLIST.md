@@ -1,6 +1,6 @@
 # Pre-Deployment Validation Checklist
 
-This checklist contains manual tests you must perform to verify PixelPerfect is ready for production deployment.
+This checklist contains manual tests you must perform to verify myimageupscaler.com is ready for production deployment.
 
 > **Note:** Validation checklists were moved from `ROADMAP.md` to this file on 2025-12-01 to keep the roadmap focused on MVP delivery tasks.
 
@@ -391,10 +391,10 @@ Before starting validation:
 
 - [x] Open homepage in browser - ✅ PASS
 - [x] View page source (Ctrl+U) - ✅ PASS
-- [x] Verify `<title>` tag present and descriptive - **✅ PASS: "PixelPerfect AI | Image Upscaling & Enhancement"**
+- [x] Verify `<title>` tag present and descriptive - **✅ PASS: "myimageupscaler.com AI | Image Upscaling & Enhancement"**
 - [x] Verify `<meta name="description">` present - **✅ PASS: "Transform your images with cutting-edge AI..."**
 - [x] Verify Open Graph tags:
-  - `og:title` - **✅ PASS: "PixelPerfect AI - Image Upscaling & Enhancement"**
+  - `og:title` - **✅ PASS: "myimageupscaler.com AI - Image Upscaling & Enhancement"**
   - `og:description` - ✅ PASS
   - `og:image` - **✅ PASS: "/og-image.png" (1200x630)**
   - `og:url` - ✅ PASS
@@ -457,7 +457,7 @@ Before starting validation:
 - [x] Search for `<script type="application/ld+json">` - ✅ ✅ PASS (multiple found)\*\*
 - [x] Verify `SoftwareApplication` schema present - **PARTIAL: Has WebSite and Organization schemas**
 - [x] Verify fields populated:
-  - `name` - **✅ PASS: "PixelPerfect AI"**
+  - `name` - **✅ PASS: "myimageupscaler.com AI"**
   - `description` - ✅ PASS
   - `url` - ✅ PASS
   - `applicationCategory` - **NOT PRESENT**
@@ -659,7 +659,7 @@ Check Lighthouse report for:
 - [ ] Open browser DevTools Console - **⚠️ MANUAL**
 - [ ] Attempt to make fetch request from different origin:
   ````javascript
-  fetch('https://pixelperfect.app/api/profile', {
+  fetch('https://myimageupscaler.com/api/profile', {
     headers: { 'Authorization': 'Bearer xyz' }
   })
   ``` - **⚠️ MANUAL**
@@ -793,13 +793,13 @@ Check Lighthouse report for:
 ### 10.1 Privacy Policy
 
 - [x] Navigate to `/privacy` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Privacy Policy | PixelPerfect AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Privacy Policy | myimageupscaler.com AI")\*\*
 - [x] Verify content includes:
   - Data collection practices - ✅ ✅ PASS (Section 2)\*\*
   - How user data is used - ✅ ✅ PASS (Section 3)\*\*
   - Third-party services (Stripe, Supabase, Google) - ✅ ✅ PASS (Section 4)\*\*
   - User rights (access, deletion, portability) - ✅ ✅ PASS (Section 7)\*\*
-  - Contact information - ✅ PASS (privacy@pixelperfect.app)\*\*
+  - Contact information - ✅ PASS (privacy@myimageupscaler.com)\*\*
 - [x] Verify last updated date is recent - ✅ PASS (November 26, 2025)\*\*
 
 **Expected:**
@@ -809,7 +809,7 @@ Check Lighthouse report for:
 ### 10.2 Terms of Service
 
 - [x] Navigate to `/terms` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Terms of Service | PixelPerfect AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Terms of Service | myimageupscaler.com AI")\*\*
 - [x] Verify content includes:
   - Service description - ✅ ✅ PASS (Section 2)\*\*
   - User obligations - ✅ PASS (Sections 3, 6)\*\*
@@ -826,12 +826,12 @@ Check Lighthouse report for:
 ### 10.3 Help & FAQ
 
 - [x] Navigate to `/help` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Help & FAQ | PixelPerfect AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Help & FAQ | myimageupscaler.com AI")\*\*
 - [x] Verify sections cover:
   - Getting Started - ✅ PASS
   - Credits & Billing - ✅ PASS
   - Technical Support - ✅ PASS
-  - Contact information - ✅ PASS (support@pixelperfect.app)\*\*
+  - Contact information - ✅ PASS (support@myimageupscaler.com)\*\*
 - [x] Test that links work - ✅ ✅ PASS (internal links to /dashboard, /upscaler, /pricing)\*\*
 
 **Expected:**
@@ -845,7 +845,7 @@ Check Lighthouse report for:
   - Privacy Policy - ✅ ✅ PASS (/privacy)\*\*
   - Terms of Service - ✅ ✅ PASS (/terms)\*\*
   - Help - ✅ ✅ PASS (/help)\*\*
-  - Contact - ✅ ✅ PASS (mailto:support@pixelperfect.app)\*\*
+  - Contact - ✅ ✅ PASS (mailto:support@myimageupscaler.com)\*\*
 - [x] Click each link → Verify correct page loads - ✅ PASS
 
 **Expected:**
@@ -1187,7 +1187,7 @@ If any of the following are **not checked**, deployment should be **postponed**:
 
 After deploying to production, verify:
 
-- [ ] Domain resolves correctly (pixelperfect.app) - **⚠️ MANUAL**
+- [ ] Domain resolves correctly (myimageupscaler.com) - **⚠️ MANUAL**
 - [ ] HTTPS enforces automatically - **⚠️ MANUAL**
 - [ ] `/api/health` returns 200 - **⚠️ MANUAL**
 - [ ] Homepage loads without errors - **⚠️ MANUAL**

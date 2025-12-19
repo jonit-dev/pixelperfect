@@ -166,7 +166,7 @@ export interface IComparisonPage extends IPSEOPage {
   introduction: string;
 
   // Profiles (for vs comparisons)
-  pixelperfectProfile?: ICompetitorProfile;
+  myimageupscaler.comProfile?: ICompetitorProfile;
   competitorProfile?: ICompetitorProfile;
 
   // Comparison data
@@ -193,16 +193,16 @@ export interface ICompetitorProfile {
 
 export interface IComparisonRow {
   feature: string;
-  pixelperfect: string | boolean;
+  myimageupscaler.com: string | boolean;
   competitor: string | boolean;
-  winner?: 'pixelperfect' | 'competitor' | 'tie';
+  winner?: 'myimageupscaler.com' | 'competitor' | 'tie';
 }
 
 export interface IVerdict {
-  winner: 'pixelperfect' | 'competitor' | 'tie' | 'depends';
+  winner: 'myimageupscaler.com' | 'competitor' | 'tie' | 'depends';
   summary: string;
   recommendation: string;
-  choosePP: string[]; // Reasons to choose PixelPerfect
+  choosePP: string[]; // Reasons to choose myimageupscaler.com
   chooseCompetitor?: string[]; // Reasons to choose competitor
 }
 ```
@@ -348,7 +348,7 @@ export interface IAlternativePage extends IPSEOPage {
 export interface IAlternativeItem {
   rank: number;
   name: string;
-  isPixelPerfect: boolean;
+  ismyimageupscaler.com: boolean;
   description: string;
   pros: string[];
   cons: string[];
@@ -561,7 +561,7 @@ A: {faq[0].answer}
 ### 2.2 Comparison Page Content Structure
 
 ```markdown
-# [H1: PixelPerfect vs {Competitor}: {Question}]
+# [H1: myimageupscaler.com vs {Competitor}: {Question}]
 
 [Hero with side-by-side logos]
 
@@ -571,40 +571,40 @@ A: {faq[0].answer}
 
 ## Quick Comparison
 
-| Feature       | PixelPerfect       | {Competitor}     |
-| ------------- | ------------------ | ---------------- |
-| {row.feature} | {row.pixelperfect} | {row.competitor} |
+| Feature       | myimageupscaler.com       | {Competitor}     |
+| ------------- | ------------------------- | ---------------- |
+| {row.feature} | {row.myimageupscaler.com} | {row.competitor} |
 
 ...
 
 ---
 
-## PixelPerfect Overview
+## myimageupscaler.com Overview
 
-{pixelperfectProfile.overview}
+{myimageupscaler.comProfile.overview}
 
 ### Key Features
 
-- {pixelperfectProfile.features[0]}
+- {myimageupscaler.comProfile.features[0]}
 - ...
 
 ### Pros
 
-✅ {pixelperfectProfile.pros[0]}
+✅ {myimageupscaler.comProfile.pros[0]}
 ...
 
 ### Cons
 
-❌ {pixelperfectProfile.cons[0]}
+❌ {myimageupscaler.comProfile.cons[0]}
 ...
 
 ### Pricing
 
-{pixelperfectProfile.pricing}
+{myimageupscaler.comProfile.pricing}
 
 ### Best For
 
-{pixelperfectProfile.bestFor}
+{myimageupscaler.comProfile.bestFor}
 
 ---
 
@@ -657,7 +657,7 @@ A: {faq[0].answer}
 
 {verdict.summary}
 
-### Choose PixelPerfect if:
+### Choose myimageupscaler.com if:
 
 - {verdict.choosePP[0]}
 - ...
@@ -760,10 +760,10 @@ A: {faq[0].answer}
     {
       "slug": "ai-image-upscaler",
       "title": "AI Image Upscaler",
-      "metaTitle": "AI Image Upscaler - Enhance Photos to 4K Free | PixelPerfect",
-      "metaDescription": "Upscale images to 4K resolution with AI. Free online tool that preserves text and logos. No watermarks, fast processing. Try PixelPerfect now.",
+      "metaTitle": "AI Image Upscaler - Enhance Photos to 4K Free | myimageupscaler.com",
+      "metaDescription": "Upscale images to 4K resolution with AI. Free online tool that preserves text and logos. No watermarks, fast processing. Try myimageupscaler.com now.",
       "h1": "AI Image Upscaler - Enhance Photos to 4K Resolution Free",
-      "canonicalUrl": "https://pixelperfect.app/tools/ai-image-upscaler",
+      "canonicalUrl": "https://myimageupscaler.com/tools/ai-image-upscaler",
       "publishDate": "2025-01-15",
       "updateDate": "2025-01-15",
       "category": "tools",
@@ -776,10 +776,10 @@ A: {faq[0].answer}
         "upscale image online",
         "4k image upscaler"
       ],
-      "introduction": "Transform low-resolution images into stunning high-quality visuals with PixelPerfect's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort. Whether you're enhancing product photos, restoring old memories, or preparing images for print, our AI delivers professional results in seconds.",
+      "introduction": "Transform low-resolution images into stunning high-quality visuals with myimageupscaler.com's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort. Whether you're enhancing product photos, restoring old memories, or preparing images for print, our AI delivers professional results in seconds.",
       "whatIs": {
         "title": "What is an AI Image Upscaler?",
-        "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels and create blurry results, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity.\n\nPixelPerfect's AI upscaler is trained on millions of images to understand textures, edges, and fine details. This allows it to reconstruct missing information and produce results that look naturally sharp, not artificially enhanced. The technology is particularly effective at preserving text legibility, maintaining logo sharpness, and enhancing facial features without distortion."
+        "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels and create blurry results, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity.\n\nmyimageupscaler.com's AI upscaler is trained on millions of images to understand textures, edges, and fine details. This allows it to reconstruct missing information and produce results that look naturally sharp, not artificially enhanced. The technology is particularly effective at preserving text legibility, maintaining logo sharpness, and enhancing facial features without distortion."
       },
       "howItWorks": {
         "title": "How Our AI Upscaler Works",
@@ -884,12 +884,12 @@ A: {faq[0].answer}
       ],
       "faq": [
         {
-          "question": "Is PixelPerfect's AI image upscaler free?",
-          "answer": "Yes! PixelPerfect offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
+          "question": "Is myimageupscaler.com's AI image upscaler free?",
+          "answer": "Yes! myimageupscaler.com offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
         },
         {
           "question": "What image formats does the AI upscaler support?",
-          "answer": "PixelPerfect supports JPEG, PNG, and WebP formats. You can upload images up to 25MB and download in your preferred format."
+          "answer": "myimageupscaler.com supports JPEG, PNG, and WebP formats. You can upload images up to 25MB and download in your preferred format."
         },
         {
           "question": "How long does AI upscaling take?",
@@ -922,22 +922,22 @@ A: {faq[0].answer}
 {
   "pages": [
     {
-      "slug": "pixelperfect-vs-topaz-gigapixel",
-      "title": "PixelPerfect vs Topaz Gigapixel",
-      "metaTitle": "PixelPerfect vs Topaz Gigapixel: Which AI Upscaler is Best?",
-      "metaDescription": "Compare PixelPerfect and Topaz Gigapixel for AI image upscaling. See features, pricing, pros & cons. Find the best upscaler for your needs.",
-      "h1": "PixelPerfect vs Topaz Gigapixel: Which AI Upscaler is Best?",
-      "canonicalUrl": "https://pixelperfect.app/compare/pixelperfect-vs-topaz-gigapixel",
+      "slug": "myimageupscaler.com-vs-topaz-gigapixel",
+      "title": "myimageupscaler.com vs Topaz Gigapixel",
+      "metaTitle": "myimageupscaler.com vs Topaz Gigapixel: Which AI Upscaler is Best?",
+      "metaDescription": "Compare myimageupscaler.com and Topaz Gigapixel for AI image upscaling. See features, pricing, pros & cons. Find the best upscaler for your needs.",
+      "h1": "myimageupscaler.com vs Topaz Gigapixel: Which AI Upscaler is Best?",
+      "canonicalUrl": "https://myimageupscaler.com/compare/myimageupscaler.com-vs-topaz-gigapixel",
       "publishDate": "2025-01-15",
       "updateDate": "2025-01-15",
       "category": "compare",
       "comparisonType": "vs",
       "competitor": "Topaz Gigapixel AI",
       "competitorUrl": "https://www.topazlabs.com/gigapixel",
-      "introduction": "Choosing between PixelPerfect and Topaz Gigapixel AI for image upscaling? Both tools use artificial intelligence to enhance image resolution, but they take different approaches. PixelPerfect is a cloud-based solution offering instant results with no software installation, while Topaz Gigapixel is a professional desktop application with advanced controls. This comprehensive comparison will help you choose the right tool for your needs.",
-      "pixelperfectProfile": {
-        "name": "PixelPerfect",
-        "overview": "PixelPerfect is a cloud-based AI image upscaler that delivers professional results through your web browser. No software installation required - just upload, enhance, and download. Perfect for users who want quick results without the complexity of desktop software.",
+      "introduction": "Choosing between myimageupscaler.com and Topaz Gigapixel AI for image upscaling? Both tools use artificial intelligence to enhance image resolution, but they take different approaches. myimageupscaler.com is a cloud-based solution offering instant results with no software installation, while Topaz Gigapixel is a professional desktop application with advanced controls. This comprehensive comparison will help you choose the right tool for your needs.",
+      "myimageupscaler.comProfile": {
+        "name": "myimageupscaler.com",
+        "overview": "myimageupscaler.com is a cloud-based AI image upscaler that delivers professional results through your web browser. No software installation required - just upload, enhance, and download. Perfect for users who want quick results without the complexity of desktop software.",
         "features": [
           "Cloud-based processing",
           "Text and logo preservation",
@@ -994,57 +994,57 @@ A: {faq[0].answer}
       "comparisonTable": [
         {
           "feature": "Platform",
-          "pixelperfect": "Web Browser",
+          "myimageupscaler.com": "Web Browser",
           "competitor": "Windows/Mac App",
           "winner": "tie"
         },
         {
           "feature": "Free Tier",
-          "pixelperfect": "10 free credits",
+          "myimageupscaler.com": "10 free credits",
           "competitor": "No free tier",
-          "winner": "pixelperfect"
+          "winner": "myimageupscaler.com"
         },
         {
           "feature": "Max Upscale",
-          "pixelperfect": "8x (16x Enterprise)",
+          "myimageupscaler.com": "8x (16x Enterprise)",
           "competitor": "6x",
-          "winner": "pixelperfect"
+          "winner": "myimageupscaler.com"
         },
         {
           "feature": "Processing Speed",
-          "pixelperfect": "30-60 seconds",
+          "myimageupscaler.com": "30-60 seconds",
           "competitor": "1-5 minutes",
-          "winner": "pixelperfect"
+          "winner": "myimageupscaler.com"
         },
         {
           "feature": "Text Preservation",
-          "pixelperfect": "Excellent",
+          "myimageupscaler.com": "Excellent",
           "competitor": "Good",
-          "winner": "pixelperfect"
+          "winner": "myimageupscaler.com"
         },
         {
           "feature": "Offline Use",
-          "pixelperfect": "No",
+          "myimageupscaler.com": "No",
           "competitor": "Yes",
           "winner": "competitor"
         },
         {
           "feature": "Advanced Controls",
-          "pixelperfect": "Limited",
+          "myimageupscaler.com": "Limited",
           "competitor": "Extensive",
           "winner": "competitor"
         },
         {
           "feature": "Starting Price",
-          "pixelperfect": "Free / $19/mo",
+          "myimageupscaler.com": "Free / $19/mo",
           "competitor": "$99 one-time",
-          "winner": "pixelperfect"
+          "winner": "myimageupscaler.com"
         }
       ],
       "verdict": {
         "winner": "depends",
-        "summary": "The best choice depends on your specific needs. PixelPerfect wins for accessibility, speed, and value, while Topaz Gigapixel excels for professionals needing advanced controls and offline processing.",
-        "recommendation": "For most users, we recommend starting with PixelPerfect's free tier to see if it meets your needs. If you require advanced customization or offline processing, Topaz Gigapixel may be worth the investment.",
+        "summary": "The best choice depends on your specific needs. myimageupscaler.com wins for accessibility, speed, and value, while Topaz Gigapixel excels for professionals needing advanced controls and offline processing.",
+        "recommendation": "For most users, we recommend starting with myimageupscaler.com's free tier to see if it meets your needs. If you require advanced customization or offline processing, Topaz Gigapixel may be worth the investment.",
         "choosePP": [
           "You want quick results without software installation",
           "You need excellent text and logo preservation",
@@ -1062,17 +1062,17 @@ A: {faq[0].answer}
       },
       "faq": [
         {
-          "question": "Is PixelPerfect better than Topaz Gigapixel?",
-          "answer": "It depends on your needs. PixelPerfect is better for quick, accessible upscaling with excellent text preservation. Topaz Gigapixel is better for professional photographers needing advanced controls and offline processing."
+          "question": "Is myimageupscaler.com better than Topaz Gigapixel?",
+          "answer": "It depends on your needs. myimageupscaler.com is better for quick, accessible upscaling with excellent text preservation. Topaz Gigapixel is better for professional photographers needing advanced controls and offline processing."
         },
         {
-          "question": "Which is faster: PixelPerfect or Topaz?",
-          "answer": "PixelPerfect is typically faster, processing images in 30-60 seconds via cloud servers. Topaz can take 1-5 minutes depending on your hardware, though GPU acceleration helps."
+          "question": "Which is faster: myimageupscaler.com or Topaz?",
+          "answer": "myimageupscaler.com is typically faster, processing images in 30-60 seconds via cloud servers. Topaz can take 1-5 minutes depending on your hardware, though GPU acceleration helps."
         }
       ],
       "relatedComparisons": [
-        "pixelperfect-vs-upscale-media",
-        "pixelperfect-vs-vanceai",
+        "myimageupscaler.com-vs-upscale-media",
+        "myimageupscaler.com-vs-vanceai",
         "best-ai-image-upscalers"
       ]
     }
@@ -1164,7 +1164,6 @@ app/seo/data/
 ### Created Infrastructure (2025-12-01)
 
 1. **Sample Data File** (`app/seo/data/tools.json`)
-
    - Complete tool page data for 2 tools (ai-image-upscaler, ai-photo-enhancer)
    - Follows IPSEODataFile structure from PRD
    - Includes features, benefits, use cases, FAQ, how-it-works steps

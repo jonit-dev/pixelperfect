@@ -15,7 +15,7 @@
 
 ## 1. Overview
 
-This document defines the complete keyword strategy for PixelPerfect's programmatic SEO implementation, including keyword research methodology, intent classification, prioritization framework, and content mapping.
+This document defines the complete keyword strategy for myimageupscaler.com's programmatic SEO implementation, including keyword research methodology, intent classification, prioritization framework, and content mapping.
 
 ### 1.1 Objectives
 
@@ -54,7 +54,7 @@ Tier 5: Ultra-tail   (<500 monthly searches)      →  1,000+ keywords
 | **Comparison**    | Evaluating options        | "best ai upscaler", "topaz vs vanceai"          | /compare/                 |
 | **Informational** | Learning/research         | "how to upscale images", "what is ai upscaling" | /guides/                  |
 | **Commercial**    | Pre-purchase research     | "ai upscaler pricing", "topaz alternatives"     | /compare/, /alternatives/ |
-| **Navigational**  | Looking for specific tool | "pixelperfect upscaler", "bigjpg"               | Homepage, /tools/         |
+| **Navigational**  | Looking for specific tool | "myimageupscaler.com upscaler", "bigjpg"        | Homepage, /tools/         |
 
 ### 2.3 Modifier Categories
 
@@ -114,33 +114,33 @@ Each Tier 1 keyword page MUST include:
 
 ### 4.1 50K Monthly Searches
 
-| Keyword                            | Competition | YoY Change | Target Page                          | Notes                     |
-| ---------------------------------- | ----------- | ---------- | ------------------------------------ | ------------------------- |
-| ai upscale image                   | Low (18)    | 0%         | /tools/ai-image-upscaler             | Variation of T1           |
-| ai enhance image                   | Low (20)    | 0%         | /tools/ai-image-enhancer             | Variation of T1           |
-| image resolution enhancer          | Low (22)    | 0%         | /scale/upscale-to-4k                 | Scale-specific            |
-| ai image enlarger                  | Low (23)    | +900%      | /tools/ai-image-enlarger             | Trending                  |
-| photo quality enhancer online free | Low (15)    | 0%         | /free/free-photo-enhancer            | High intent               |
-| free ai photo enhancer             | Medium (48) | -90%       | /free/free-ai-photo-enhancer         | Declining but high volume |
-| ai picture enhancer                | Low (31)    | 0%         | /tools/ai-picture-enhancer           | Variation                 |
-| upscale ai                         | Low (17)    | 0%         | /tools/ai-image-upscaler             | Variation                 |
-| ai image enhancer free             | Low (18)    | 0%         | /free/free-ai-image-enhancer         | High intent               |
-| upscale photo                      | Low (19)    | 0%         | /tools/ai-photo-upscaler             | Variation                 |
-| img upscaler com                   | Low (8)     | 0%         | /compare/pixelperfect-vs-imgupscaler | Brand comparison          |
-| image upscaler 4k                  | Low (7)     | 0%         | /scale/upscale-to-4k                 | Scale-specific            |
-| hd photo enhancer                  | Low (25)    | 0%         | /scale/upscale-to-hd                 | Scale-specific            |
-| ai expand image                    | Low (12)    | 0%         | /tools/ai-image-expander             | Different feature         |
-| ai enhance image free              | Low (20)    | 0%         | /free/free-ai-image-enhancer         | High intent               |
-| free image resolution enhancer     | Low (25)    | 0%         | /free/free-resolution-enhancer       | High intent               |
-| upscale image ai                   | Low (15)    | 0%         | /tools/ai-image-upscaler             | Variation                 |
-| image upscaler free                | Low (10)    | 0%         | /free/free-image-upscaler            | High intent               |
-| ai image upscaler free             | Low (19)    | 0%         | /free/free-ai-upscaler               | High intent               |
-| image enhancer ai                  | Low (11)    | 0%         | /tools/ai-image-enhancer             | Variation                 |
-| upscale image online               | Low (12)    | 0%         | /free/free-image-upscaler            | Online intent             |
-| ai enhance photo                   | Low (33)    | +900%      | /tools/ai-photo-enhancer             | Trending                  |
-| enhance image ai                   | Low (18)    | 0%         | /tools/ai-image-enhancer             | Variation                 |
-| upscale image free                 | Low (16)    | 0%         | /free/free-image-upscaler            | High intent               |
-| ai enhance image free              | Low (20)    | 0%         | /free/free-ai-image-enhancer         | High intent               |
+| Keyword                            | Competition | YoY Change | Target Page                                 | Notes                     |
+| ---------------------------------- | ----------- | ---------- | ------------------------------------------- | ------------------------- |
+| ai upscale image                   | Low (18)    | 0%         | /tools/ai-image-upscaler                    | Variation of T1           |
+| ai enhance image                   | Low (20)    | 0%         | /tools/ai-image-enhancer                    | Variation of T1           |
+| image resolution enhancer          | Low (22)    | 0%         | /scale/upscale-to-4k                        | Scale-specific            |
+| ai image enlarger                  | Low (23)    | +900%      | /tools/ai-image-enlarger                    | Trending                  |
+| photo quality enhancer online free | Low (15)    | 0%         | /free/free-photo-enhancer                   | High intent               |
+| free ai photo enhancer             | Medium (48) | -90%       | /free/free-ai-photo-enhancer                | Declining but high volume |
+| ai picture enhancer                | Low (31)    | 0%         | /tools/ai-picture-enhancer                  | Variation                 |
+| upscale ai                         | Low (17)    | 0%         | /tools/ai-image-upscaler                    | Variation                 |
+| ai image enhancer free             | Low (18)    | 0%         | /free/free-ai-image-enhancer                | High intent               |
+| upscale photo                      | Low (19)    | 0%         | /tools/ai-photo-upscaler                    | Variation                 |
+| img upscaler com                   | Low (8)     | 0%         | /compare/myimageupscaler.com-vs-imgupscaler | Brand comparison          |
+| image upscaler 4k                  | Low (7)     | 0%         | /scale/upscale-to-4k                        | Scale-specific            |
+| hd photo enhancer                  | Low (25)    | 0%         | /scale/upscale-to-hd                        | Scale-specific            |
+| ai expand image                    | Low (12)    | 0%         | /tools/ai-image-expander                    | Different feature         |
+| ai enhance image free              | Low (20)    | 0%         | /free/free-ai-image-enhancer                | High intent               |
+| free image resolution enhancer     | Low (25)    | 0%         | /free/free-resolution-enhancer              | High intent               |
+| upscale image ai                   | Low (15)    | 0%         | /tools/ai-image-upscaler                    | Variation                 |
+| image upscaler free                | Low (10)    | 0%         | /free/free-image-upscaler                   | High intent               |
+| ai image upscaler free             | Low (19)    | 0%         | /free/free-ai-upscaler                      | High intent               |
+| image enhancer ai                  | Low (11)    | 0%         | /tools/ai-image-enhancer                    | Variation                 |
+| upscale image online               | Low (12)    | 0%         | /free/free-image-upscaler                   | Online intent             |
+| ai enhance photo                   | Low (33)    | +900%      | /tools/ai-photo-enhancer                    | Trending                  |
+| enhance image ai                   | Low (18)    | 0%         | /tools/ai-image-enhancer                    | Variation                 |
+| upscale image free                 | Low (16)    | 0%         | /free/free-image-upscaler                   | High intent               |
+| ai enhance image free              | Low (20)    | 0%         | /free/free-ai-image-enhancer                | High intent               |
 
 ### 4.2 Tier 2 Content Requirements
 
@@ -160,28 +160,28 @@ Each Tier 1 keyword page MUST include:
 
 ### 5.1 5K Monthly Searches
 
-| Keyword                      | Competition | Intent     | Target Page                       |
-| ---------------------------- | ----------- | ---------- | --------------------------------- |
-| best ai image upscaler       | Medium (44) | Comparison | /compare/best-ai-image-upscalers  |
-| best ai upscaler             | Medium (40) | Comparison | /compare/best-ai-upscalers        |
-| ai image resolution enhancer | Medium (41) | Feature    | /scale/upscale-to-4k              |
-| ai photo enhancement         | Medium (53) | Generic    | /tools/ai-photo-enhancer          |
-| image enlarger online        | Medium (40) | Online     | /free/free-image-enlarger         |
-| picture resolution enhancer  | Medium (34) | Feature    | /scale/upscale-to-hd              |
-| ai enlarge image             | Low (24)    | Action     | /tools/ai-image-enlarger          |
-| upscale an image             | Medium (39) | Action     | /guides/how-to-upscale-images     |
-| improve image quality ai     | Medium (36) | Solution   | /tools/ai-image-enhancer          |
-| clip drop image upscaler     | Medium (66) | Brand      | /compare/pixelperfect-vs-clipdrop |
-| photo resolution enhancer    | Medium (32) | Feature    | /scale/upscale-to-4k              |
-| ai resolution upscaler       | Medium (37) | Feature    | /tools/ai-resolution-upscaler     |
-| ai increase resolution       | Medium (39) | Action     | /scale/upscale-to-4k              |
-| ai improve image quality     | Medium (44) | Solution   | /tools/ai-image-enhancer          |
-| upres image                  | Medium (47) | Action     | /tools/ai-image-upscaler          |
-| best image upscaler          | Medium (40) | Comparison | /compare/best-image-upscalers     |
-| ai photo enhance             | Low (24)    | Action     | /tools/ai-photo-enhancer          |
-| photo enlarger online        | Low (19)    | Online     | /free/free-photo-enlarger         |
-| picture upscaler             | Low (11)    | Generic    | /tools/ai-picture-upscaler        |
-| enhance picture quality free | Low (32)    | Free       | /free/free-picture-enhancer       |
+| Keyword                      | Competition | Intent     | Target Page                              |
+| ---------------------------- | ----------- | ---------- | ---------------------------------------- |
+| best ai image upscaler       | Medium (44) | Comparison | /compare/best-ai-image-upscalers         |
+| best ai upscaler             | Medium (40) | Comparison | /compare/best-ai-upscalers               |
+| ai image resolution enhancer | Medium (41) | Feature    | /scale/upscale-to-4k                     |
+| ai photo enhancement         | Medium (53) | Generic    | /tools/ai-photo-enhancer                 |
+| image enlarger online        | Medium (40) | Online     | /free/free-image-enlarger                |
+| picture resolution enhancer  | Medium (34) | Feature    | /scale/upscale-to-hd                     |
+| ai enlarge image             | Low (24)    | Action     | /tools/ai-image-enlarger                 |
+| upscale an image             | Medium (39) | Action     | /guides/how-to-upscale-images            |
+| improve image quality ai     | Medium (36) | Solution   | /tools/ai-image-enhancer                 |
+| clip drop image upscaler     | Medium (66) | Brand      | /compare/myimageupscaler.com-vs-clipdrop |
+| photo resolution enhancer    | Medium (32) | Feature    | /scale/upscale-to-4k                     |
+| ai resolution upscaler       | Medium (37) | Feature    | /tools/ai-resolution-upscaler            |
+| ai increase resolution       | Medium (39) | Action     | /scale/upscale-to-4k                     |
+| ai improve image quality     | Medium (44) | Solution   | /tools/ai-image-enhancer                 |
+| upres image                  | Medium (47) | Action     | /tools/ai-image-upscaler                 |
+| best image upscaler          | Medium (40) | Comparison | /compare/best-image-upscalers            |
+| ai photo enhance             | Low (24)    | Action     | /tools/ai-photo-enhancer                 |
+| photo enlarger online        | Low (19)    | Online     | /free/free-photo-enlarger                |
+| picture upscaler             | Low (11)    | Generic    | /tools/ai-picture-upscaler               |
+| enhance picture quality free | Low (32)    | Free       | /free/free-picture-enhancer              |
 
 ### 5.2 Tier 3 Content Requirements
 
@@ -439,7 +439,6 @@ See `/app/seo/keywords.csv` for complete keyword data including:
 ### Created Infrastructure (2025-12-01)
 
 1. **Type Definitions** (`lib/seo/types.ts`)
-
    - IKeyword interface for keyword data
    - IKeywordTier for volume tier classification
    - IKeywordIntent for intent classification
@@ -447,20 +446,17 @@ See `/app/seo/keywords.csv` for complete keyword data including:
    - IPageTemplate for page generation
 
 2. **Keyword Mappings** (`lib/seo/keyword-mappings.ts`)
-
    - 20+ canonical page mappings
    - Primary and secondary keyword assignments
    - Content requirements per page
    - Helper functions for querying mappings
 
 3. **Tier System** (`lib/seo/keyword-tiers.ts`)
-
    - 5-tier volume classification
    - Word count requirements per tier
    - Helper functions for tier lookup
 
 4. **Tracking System** (`lib/seo/tracking.ts`)
-
    - KeywordTracker class for monitoring
    - Performance tracking interfaces
    - Review cadence definitions

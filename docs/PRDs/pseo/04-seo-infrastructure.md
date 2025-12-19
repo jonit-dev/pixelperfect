@@ -13,7 +13,7 @@
 
 ## Overview
 
-This document covers the technical SEO infrastructure for PixelPerfect's pSEO implementation, including sitemap generation, schema markup, meta tags, canonical URLs, and robots configuration.
+This document covers the technical SEO infrastructure for myimageupscaler.com's pSEO implementation, including sitemap generation, schema markup, meta tags, canonical URLs, and robots configuration.
 
 ---
 
@@ -42,7 +42,7 @@ This document covers the technical SEO infrastructure for PixelPerfect's pSEO im
 // app/sitemap.xml/route.ts
 import { NextResponse } from 'next/server';
 
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 const sitemaps = [
   { name: 'sitemap-static.xml', lastmod: new Date().toISOString() },
@@ -87,7 +87,7 @@ ${sitemaps
 import { NextResponse } from 'next/server';
 import { getAllTools } from '@/lib/pseo/data-loader';
 
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 export async function GET() {
   const tools = await getAllTools();
@@ -137,7 +137,7 @@ ${tools
 import { NextResponse } from 'next/server';
 import { getAllPSEOPages } from '@/lib/pseo/data-loader';
 
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 interface IImageEntry {
   pageUrl: string;
@@ -228,15 +228,18 @@ import type {
 
 const ORGANIZATION_SCHEMA = {
   '@type': 'Organization',
-  name: 'PixelPerfect',
-  url: 'https://pixelperfect.app',
+  name: 'myimageupscaler.com',
+  url: 'https://myimageupscaler.com',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://pixelperfect.app/logo.png',
+    url: 'https://myimageupscaler.com/logo.png',
     width: 512,
     height: 512,
   },
-  sameAs: ['https://twitter.com/pixelperfect', 'https://linkedin.com/company/pixelperfect'],
+  sameAs: [
+    'https://twitter.com/myimageupscaler.com',
+    'https://linkedin.com/company/myimageupscaler.com',
+  ],
 };
 
 // Tool Page Schema - SoftwareApplication + FAQPage
@@ -285,13 +288,13 @@ export function generateToolSchema(tool: IToolPage) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelperfect.app',
+            item: 'https://myimageupscaler.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Tools',
-            item: 'https://pixelperfect.app/tools',
+            item: 'https://myimageupscaler.com/tools',
           },
           {
             '@type': 'ListItem',
@@ -315,7 +318,7 @@ export function generateComparisonSchema(comparison: IComparisonPage) {
         '@id': `${comparison.canonicalUrl}#article`,
         headline: comparison.h1,
         description: comparison.metaDescription,
-        image: comparison.ogImage || 'https://pixelperfect.app/og/compare-default.png',
+        image: comparison.ogImage || 'https://myimageupscaler.com/og/compare-default.png',
         datePublished: comparison.publishDate,
         dateModified: comparison.updateDate,
         author: ORGANIZATION_SCHEMA,
@@ -343,13 +346,13 @@ export function generateComparisonSchema(comparison: IComparisonPage) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelperfect.app',
+            item: 'https://myimageupscaler.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Comparisons',
-            item: 'https://pixelperfect.app/compare',
+            item: 'https://myimageupscaler.com/compare',
           },
           {
             '@type': 'ListItem',
@@ -390,7 +393,7 @@ export function generateGuideSchema(guide: IGuidePage) {
         '@id': `${guide.canonicalUrl}#article`,
         headline: guide.h1,
         description: guide.metaDescription,
-        image: guide.ogImage || 'https://pixelperfect.app/og/guide-default.png',
+        image: guide.ogImage || 'https://myimageupscaler.com/og/guide-default.png',
         datePublished: guide.publishDate,
         dateModified: guide.updateDate,
         author: ORGANIZATION_SCHEMA,
@@ -418,13 +421,13 @@ export function generateGuideSchema(guide: IGuidePage) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelperfect.app',
+            item: 'https://myimageupscaler.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Guides',
-            item: 'https://pixelperfect.app/guides',
+            item: 'https://myimageupscaler.com/guides',
           },
           {
             '@type': 'ListItem',
@@ -448,7 +451,7 @@ export function generateUseCaseSchema(useCase: IUseCasePage) {
         '@id': `${useCase.canonicalUrl}#article`,
         headline: useCase.h1,
         description: useCase.metaDescription,
-        image: useCase.ogImage || 'https://pixelperfect.app/og/usecase-default.png',
+        image: useCase.ogImage || 'https://myimageupscaler.com/og/usecase-default.png',
         datePublished: useCase.publishDate,
         dateModified: useCase.updateDate,
         author: ORGANIZATION_SCHEMA,
@@ -476,13 +479,13 @@ export function generateUseCaseSchema(useCase: IUseCasePage) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelperfect.app',
+            item: 'https://myimageupscaler.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Use Cases',
-            item: 'https://pixelperfect.app/use-cases',
+            item: 'https://myimageupscaler.com/use-cases',
           },
           {
             '@type': 'ListItem',
@@ -547,13 +550,13 @@ export function generateAlternativeSchema(alternative: IAlternativePage) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelperfect.app',
+            item: 'https://myimageupscaler.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Alternatives',
-            item: 'https://pixelperfect.app/alternatives',
+            item: 'https://myimageupscaler.com/alternatives',
           },
           {
             '@type': 'ListItem',
@@ -601,56 +604,56 @@ export default function SchemaMarkup({ schema }: ISchemaMarkupProps) {
 
 export const META_PATTERNS: Record<string, IMetaPattern> = {
   tools: {
-    title: '{ToolName} - {Benefit} Free | PixelPerfect',
+    title: '{ToolName} - {Benefit} Free | myimageupscaler.com',
     description:
-      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try PixelPerfect now.',
+      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try myimageupscaler.com now.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   formats: {
-    title: 'Upscale {Format} Images to {Resolution} | PixelPerfect',
+    title: 'Upscale {Format} Images to {Resolution} | myimageupscaler.com',
     description:
       'Upscale {Format} images with AI. Free online {Format} upscaler that preserves quality. Convert low-res {Format} to HD instantly.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   compare: {
-    title: 'PixelPerfect vs {Competitor}: Which {ToolType} is Best?',
+    title: 'myimageupscaler.com vs {Competitor}: Which {ToolType} is Best?',
     description:
-      'Compare PixelPerfect and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
+      'Compare myimageupscaler.com and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   alternatives: {
-    title: 'Best {Competitor} Alternatives in 2025 | PixelPerfect',
+    title: 'Best {Competitor} Alternatives in 2025 | myimageupscaler.com',
     description:
-      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including PixelPerfect. Free options, pricing, and features compared.',
+      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including myimageupscaler.com. Free options, pricing, and features compared.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   'use-cases': {
-    title: '{Industry} Image Enhancement - {UseCase} | PixelPerfect',
+    title: '{Industry} Image Enhancement - {UseCase} | myimageupscaler.com',
     description:
       'Enhance {Industry} images with AI. Perfect for {UseCase}. Upscale product photos, listings, and more. Free to start.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   guides: {
-    title: 'How to {Action} - Step-by-Step Guide | PixelPerfect',
+    title: 'How to {Action} - Step-by-Step Guide | myimageupscaler.com',
     description:
       'Learn how to {Action} with this comprehensive guide. {Benefit}. Free tips and tools included.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   free: {
-    title: 'Free {ToolName} - No Registration Required | PixelPerfect',
+    title: 'Free {ToolName} - No Registration Required | myimageupscaler.com',
     description:
       'Use our free {ToolName} online. No watermarks, no sign-up required. {Benefit}. Try it now!',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   scale: {
-    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | PixelPerfect',
+    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | myimageupscaler.com',
     description:
       'Upscale images to {Scale} resolution with AI. Free online tool for {Resolution} enhancement. Perfect for {UseCase}.',
     titleMaxLength: 60,
@@ -704,7 +707,7 @@ interface IMetaValidation {
 import { Metadata } from 'next';
 import type { IPSEOPage } from '@/types/pseo';
 
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 export function generateMetadata(page: IPSEOPage, category: string): Metadata {
   const canonicalUrl = `${BASE_URL}/${category}/${page.slug}`;
@@ -719,7 +722,7 @@ export function generateMetadata(page: IPSEOPage, category: string): Metadata {
       description: page.metaDescription,
       type: 'website',
       url: canonicalUrl,
-      siteName: 'PixelPerfect',
+      siteName: 'myimageupscaler.com',
       locale: 'en_US',
       images: [
         {
@@ -737,7 +740,7 @@ export function generateMetadata(page: IPSEOPage, category: string): Metadata {
       title: page.metaTitle,
       description: page.metaDescription,
       images: [page.ogImage || `${BASE_URL}/og/${category}-default.png`],
-      creator: '@pixelperfect',
+      creator: '@myimageupscaler.com',
     },
 
     // Canonical & Alternates
@@ -755,9 +758,9 @@ export function generateMetadata(page: IPSEOPage, category: string): Metadata {
     },
 
     // Additional
-    authors: [{ name: 'PixelPerfect', url: BASE_URL }],
+    authors: [{ name: 'myimageupscaler.com', url: BASE_URL }],
     generator: 'Next.js',
-    applicationName: 'PixelPerfect',
+    applicationName: 'myimageupscaler.com',
     referrer: 'origin-when-cross-origin',
     keywords: page.secondaryKeywords?.join(', '),
     category: category,
@@ -775,7 +778,7 @@ export function generateMetadata(page: IPSEOPage, category: string): Metadata {
 ```typescript
 // src/lib/pseo/canonical-utils.ts
 
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 // Primary page is always canonical
 export function getCanonicalUrl(category: string, slug: string): string {
@@ -887,7 +890,7 @@ export const config = {
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://pixelperfect.app';
+  const baseUrl = 'https://myimageupscaler.com';
 
   return {
     rules: [

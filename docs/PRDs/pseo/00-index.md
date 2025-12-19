@@ -2,7 +2,7 @@
 
 ## PRD Suite Overview
 
-This document serves as the master index for PixelPerfect's programmatic SEO implementation. The strategy is broken down into 6 detailed sub-PRDs, each covering a specific domain of the implementation.
+This document serves as the master index for myimageupscaler.com's programmatic SEO implementation. The strategy is broken down into 6 detailed sub-PRDs, each covering a specific domain of the implementation.
 
 | Document                                                   | Status | Priority | Description                                      |
 | ---------------------------------------------------------- | ------ | -------- | ------------------------------------------------ |

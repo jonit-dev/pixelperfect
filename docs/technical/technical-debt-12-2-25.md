@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This report outlines technical debt and code smells identified in critical areas of the PixelPerfect codebase. The focus was on high-impact areas: Payment Processing, Core Image Processing Logic, Authentication, and Navigation. Addressing these issues will improve system stability, maintainability, and user experience.
+This report outlines technical debt and code smells identified in critical areas of the myimageupscaler.com codebase. The focus was on high-impact areas: Payment Processing, Core Image Processing Logic, Authentication, and Navigation. Addressing these issues will improve system stability, maintainability, and user experience.
 
 ## 1. Payment Processing (Critical)
 
@@ -24,7 +24,7 @@ This report outlines technical debt and code smells identified in critical areas
 
 ## 2. Core Logic & Queue Management (High)
 
-**File:** `client/hooks/pixelperfect/useBatchQueue.ts`
+**File:** `client/hooks/myimageupscaler.com/useBatchQueue.ts`
 
 ### Issues
 

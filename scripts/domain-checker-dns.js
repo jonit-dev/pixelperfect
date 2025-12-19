@@ -37,7 +37,7 @@ const TOP_KEYWORDS = [
   'enhancer pro',
   'upscaler pro',
   'image pro',
-  'photo pro'
+  'photo pro',
 ];
 
 // Domain extensions to check
@@ -45,24 +45,24 @@ const EXTENSIONS = ['.com', '.io', '.app', '.ai', '.co', '.dev', '.tech', '.tool
 
 // Template patterns for domain suggestions
 const DOMAIN_PATTERNS = [
-  (keyword) => keyword.replace(/\s+/g, '').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'ai').toLowerCase(),
-  (keyword) => `get${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'pro').toLowerCase(),
-  (keyword) => `my${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, '').replace('image', 'img').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, '').replace('photo', 'pic').toLowerCase(),
-  (keyword) => keyword.replace('ai ', '').replace(/\s+/g, '').toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}hq`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}lab`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}studio`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}online`.toLowerCase(),
-  (keyword) => `the${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'x').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'ify').toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}now`.toLowerCase(),
-  (keyword) => `pix${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}plus`.toLowerCase()
+  keyword => keyword.replace(/\s+/g, '').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'ai').toLowerCase(),
+  keyword => `get${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'pro').toLowerCase(),
+  keyword => `my${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, '').replace('image', 'img').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, '').replace('photo', 'pic').toLowerCase(),
+  keyword => keyword.replace('ai ', '').replace(/\s+/g, '').toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}hq`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}lab`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}studio`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}online`.toLowerCase(),
+  keyword => `the${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'x').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'ify').toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}now`.toLowerCase(),
+  keyword => `pix${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}plus`.toLowerCase(),
 ];
 
 function generateDomainSuggestions() {
@@ -89,45 +89,45 @@ async function checkDomainAvailabilityDNS(domain) {
     return {
       domain,
       available: false,
-      reason: `DNS resolves to: ${addresses.slice(0, 2).join(', ')}${addresses.length > 2 ? ` (+${addresses.length - 2} more)` : ''}`
+      reason: `DNS resolves to: ${addresses.slice(0, 2).join(', ')}${addresses.length > 2 ? ` (+${addresses.length - 2} more)` : ''}`,
     };
   } catch (error) {
     if (error.code === 'ENODATA' || error.code === 'ENOTFOUND') {
       return {
         domain,
         available: true,
-        reason: 'No DNS records found'
+        reason: 'No DNS records found',
       };
     } else {
       return {
         domain,
         available: 'unknown',
-        reason: `DNS error: ${error.code}`
+        reason: `DNS error: ${error.code}`,
       };
     }
   }
 }
 
 async function checkDomainAvailabilityWHOIS(domain) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const whois = spawn('whois', [domain]);
     let output = '';
     let errorOutput = '';
 
-    whois.stdout.on('data', (data) => {
+    whois.stdout.on('data', data => {
       output += data.toString();
     });
 
-    whois.stderr.on('data', (data) => {
+    whois.stderr.on('data', data => {
       errorOutput += data.toString();
     });
 
-    whois.on('close', (code) => {
+    whois.on('close', code => {
       const available = isDomainAvailable(output, errorOutput, domain);
       resolve({
         domain,
         available,
-        reason: available ? getAvailableReason(output, errorOutput) : getTakenReason(output)
+        reason: available ? getAvailableReason(output, errorOutput) : getTakenReason(output),
       });
     });
 
@@ -136,7 +136,7 @@ async function checkDomainAvailabilityWHOIS(domain) {
       resolve({
         domain,
         available: 'unknown',
-        reason: 'Timeout - checking failed'
+        reason: 'Timeout - checking failed',
       });
     }, 10000);
   });
@@ -155,7 +155,7 @@ function isDomainAvailable(output, errorOutput, domain) {
     'status: available',
     'no data found',
     'domain status: no object',
-    'object does not exist'
+    'object does not exist',
   ];
 
   for (const indicator of availableIndicators) {
@@ -173,7 +173,7 @@ function isDomainAvailable(output, errorOutput, domain) {
     'status: connect',
     'status: active',
     'registered on',
-    'expires on'
+    'expires on',
   ];
 
   for (const indicator of takenIndicators) {
@@ -231,7 +231,7 @@ async function checkDomainAvailability(domain) {
     return {
       domain,
       available: 'unknown',
-      reason: 'WHOIS unavailable'
+      reason: 'WHOIS unavailable',
     };
   }
 }
@@ -244,7 +244,9 @@ async function checkDomainsBatch(domains, batchSize = 10) {
     const batch = domains.slice(i, i + batchSize);
     const batchPromises = batch.map(domain => checkDomainAvailability(domain));
 
-    process.stdout.write(`\r📊 Progress: ${Math.min(i + batchSize, domains.length)}/${domains.length} (${Math.round(Math.min(i + batchSize, domains.length) / domains.length * 100)}%)`);
+    process.stdout.write(
+      `\r📊 Progress: ${Math.min(i + batchSize, domains.length)}/${domains.length} (${Math.round((Math.min(i + batchSize, domains.length) / domains.length) * 100)}%)`
+    );
 
     const batchResults = await Promise.all(batchPromises);
     results.push(...batchResults);
@@ -275,7 +277,13 @@ function displayResults(results) {
 
   console.log('\n💼 === TOP RECOMMENDATIONS ===');
   const recommendations = available
-    .filter(d => d.domain.endsWith('.com') || d.domain.endsWith('.io') || d.domain.endsWith('.ai') || d.domain.endsWith('.app'))
+    .filter(
+      d =>
+        d.domain.endsWith('.com') ||
+        d.domain.endsWith('.io') ||
+        d.domain.endsWith('.ai') ||
+        d.domain.endsWith('.app')
+    )
     .slice(0, 15);
 
   if (recommendations.length > 0) {
@@ -294,11 +302,17 @@ function displayResults(results) {
   console.log(`✅ Available: ${available.length}`);
   console.log(`❌ Taken: ${taken.length}`);
   console.log(`❓ Unknown: ${unknown.length}`);
-  console.log(`📈 Success Rate: ${results.length > 0 ? Math.round(available.length / results.length * 100) : 0}%`);
+  console.log(
+    `📈 Success Rate: ${results.length > 0 ? Math.round((available.length / results.length) * 100) : 0}%`
+  );
 
   // Show best available domains
   const bestAvailable = available
-    .filter(d => d.domain.length <= 12 && (d.domain.endsWith('.com') || d.domain.endsWith('.io') || d.domain.endsWith('.ai')))
+    .filter(
+      d =>
+        d.domain.length <= 12 &&
+        (d.domain.endsWith('.com') || d.domain.endsWith('.io') || d.domain.endsWith('.ai'))
+    )
     .slice(0, 5);
 
   if (bestAvailable.length > 0) {
@@ -318,7 +332,7 @@ function saveResults(results, filename = 'domain-check-results.json') {
 }
 
 async function main() {
-  console.log('🚀 PixelPerfect Domain Availability Checker (DNS + WHOIS)');
+  console.log('🚀 myimageupscaler.com Domain Availability Checker (DNS + WHOIS)');
   console.log('=======================================================\n');
 
   console.log('📝 Generating domain suggestions from top keywords...');
@@ -342,7 +356,7 @@ async function main() {
   console.log('\n🏁 Domain checking complete!');
   console.log('\n💡 Tips:');
   console.log('   • .com domains are most valuable');
-  console.log('   • .ai is perfect for AI tools like PixelPerfect');
+  console.log('   • .ai is perfect for AI tools like myimageupscaler.com');
   console.log('   • .io works well for tech products');
   console.log('   • .app is good for web applications');
   console.log('   • Shorter names are easier to remember');
@@ -355,8 +369,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch(console.error);
 }
 
-export {
-  generateDomainSuggestions,
-  checkDomainAvailability,
-  checkDomainsBatch
-};
+export { generateDomainSuggestions, checkDomainAvailability, checkDomainsBatch };

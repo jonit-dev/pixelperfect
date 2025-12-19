@@ -12,22 +12,22 @@
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/app/api/subscription/change/route.ts
-/home/joao/projects/pixelperfect/app/api/subscription/preview-change/route.ts
-/home/joao/projects/pixelperfect/app/api/subscription/cancel-scheduled/route.ts
-/home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts
-/home/joao/projects/pixelperfect/app/pricing/page.tsx
-/home/joao/projects/pixelperfect/app/dashboard/billing/page.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/PricingCard.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/PlanChangeModal.tsx
-/home/joao/projects/pixelperfect/client/services/stripeService.ts
-/home/joao/projects/pixelperfect/shared/config/stripe.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/server/services/SubscriptionCredits.ts
-/home/joao/projects/pixelperfect/tests/api/subscription-change.test.ts
-/home/joao/projects/pixelperfect/tests/e2e/billing.e2e.spec.ts
-/home/joao/projects/pixelperfect/tests/helpers/test-context.ts
-/home/joao/projects/pixelperfect/tests/helpers/api-client.ts
+/home/joao/projects/myimageupscaler.com/app/api/subscription/change/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/subscription/preview-change/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/subscription/cancel-scheduled/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts
+/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
+/home/joao/projects/myimageupscaler.com/app/dashboard/billing/page.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/PricingCard.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/PlanChangeModal.tsx
+/home/joao/projects/myimageupscaler.com/client/services/stripeService.ts
+/home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/server/services/SubscriptionCredits.ts
+/home/joao/projects/myimageupscaler.com/tests/api/subscription-change.test.ts
+/home/joao/projects/myimageupscaler.com/tests/e2e/billing.e2e.spec.ts
+/home/joao/projects/myimageupscaler.com/tests/helpers/test-context.ts
+/home/joao/projects/myimageupscaler.com/tests/helpers/api-client.ts
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -85,6 +85,7 @@ graph TD
 ### 1.3 Current Behavior Summary
 
 **Upgrade Flow (Hobby → Pro → Business):**
+
 - User clicks "Upgrade" on pricing card
 - Modal opens with proration preview (immediate charge calculation)
 - Upon confirmation, Stripe subscription updates immediately
@@ -93,6 +94,7 @@ graph TD
 - Database updates via webhook + direct API call
 
 **Downgrade Flow (Business → Pro → Hobby):**
+
 - User clicks "Downgrade" on pricing card
 - Modal shows scheduled change (end of billing period)
 - Stripe Subscription Schedule is created
@@ -101,6 +103,7 @@ graph TD
 - Credits reset to new tier amount on schedule completion
 
 **Cancellation of Scheduled Downgrade:**
+
 - User can cancel a scheduled downgrade from pricing page
 - Schedule is released via Stripe API
 - Subscription continues at current tier
@@ -181,13 +184,13 @@ flowchart TB
 
 ### 2.3 Key Technical Decisions
 
-| Decision | Choice | Justification |
-|----------|--------|---------------|
-| **Test Mode** | Use `ENV=test` with mock Stripe | Avoid real Stripe API calls in tests |
-| **User Creation** | TestContext with subscription states | Consistent test user management |
-| **API Testing** | ApiClient with fluent assertions | Clean, readable test assertions |
-| **Webhook Testing** | WebhookClient with mock signatures | Test webhook handlers without real events |
-| **Credits Validation** | Direct DB queries via TestDataManager | Verify actual database state changes |
+| Decision               | Choice                                | Justification                             |
+| ---------------------- | ------------------------------------- | ----------------------------------------- |
+| **Test Mode**          | Use `ENV=test` with mock Stripe       | Avoid real Stripe API calls in tests      |
+| **User Creation**      | TestContext with subscription states  | Consistent test user management           |
+| **API Testing**        | ApiClient with fluent assertions      | Clean, readable test assertions           |
+| **Webhook Testing**    | WebhookClient with mock signatures    | Test webhook handlers without real events |
+| **Credits Validation** | Direct DB queries via TestDataManager | Verify actual database state changes      |
 
 ---
 
@@ -339,7 +342,9 @@ test.describe('API: Subscription Change Flow', () => {
       expect(data.data.new_plan.name).toBe('Professional');
     });
 
-    test('should return scheduled change preview for downgrade (Pro → Hobby)', async ({ request }) => {
+    test('should return scheduled change preview for downgrade (Pro → Hobby)', async ({
+      request,
+    }) => {
       const user = await ctx.createUser({ subscription: 'active', tier: 'pro' });
       const api = new ApiClient(request).withAuth(user.token);
 
@@ -725,7 +730,7 @@ test.describe('Subscription Change E2E Tests', () => {
 async function loginAsUser(page, user) {
   // Set auth token in storage/cookies for test user
   await page.goto('/');
-  await page.evaluate((token) => {
+  await page.evaluate(token => {
     localStorage.setItem('supabase.auth.token', JSON.stringify({ access_token: token }));
   }, user.token);
 }
@@ -840,7 +845,9 @@ test.describe('Subscription Webhook Integration', () => {
   });
 
   test.describe('subscription_schedule.completed webhook', () => {
-    test('should reset credits to new tier on scheduled downgrade completion', async ({ request }) => {
+    test('should reset credits to new tier on scheduled downgrade completion', async ({
+      request,
+    }) => {
       const user = await ctx.createUser({
         subscription: 'active',
         tier: 'pro',
@@ -981,12 +988,14 @@ test.describe('Subscription Webhook Integration', () => {
 ### Unit Tests
 
 **Functions to Cover:**
+
 - `SubscriptionCreditsService.calculateUpgradeCredits()`
 - `SubscriptionCreditsService.getExplanation()`
 - `isDowngrade()` in both API routes
 - `getPlanForPriceId()` edge cases
 
 **Error Scenarios:**
+
 - Invalid price IDs
 - Missing plan configuration
 - Edge cases in credit calculation
@@ -994,11 +1003,13 @@ test.describe('Subscription Webhook Integration', () => {
 ### API Tests
 
 **Endpoints to Test:**
+
 - `POST /api/subscription/preview-change`
 - `POST /api/subscription/change`
 - `POST /api/subscription/cancel-scheduled`
 
 **Test Categories:**
+
 - Authentication (401 responses)
 - Validation (400 responses with error codes)
 - Business logic (upgrade vs downgrade)
@@ -1007,6 +1018,7 @@ test.describe('Subscription Webhook Integration', () => {
 ### E2E Tests
 
 **User Flows:**
+
 1. Subscribed user views pricing page → sees current plan badge
 2. Subscribed user clicks upgrade → sees proration modal → confirms
 3. Subscribed user clicks downgrade → sees scheduled modal → schedules
@@ -1016,30 +1028,32 @@ test.describe('Subscription Webhook Integration', () => {
 ### Integration Tests
 
 **Webhook Events:**
+
 - `customer.subscription.updated` (upgrade)
 - `customer.subscription.updated` (downgrade)
 - `subscription_schedule.completed`
 
 ### Edge Cases
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
+| Scenario                                 | Expected Behavior                          |
+| ---------------------------------------- | ------------------------------------------ |
 | User clicks upgrade during webhook delay | API validates against Stripe, not local DB |
-| User with excessive credits upgrades | Anti-farming blocks credit addition |
-| User double-clicks confirm button | Button disabled after first click |
-| Network failure during preview | Error shown in modal, retry available |
-| Session expires mid-flow | Redirect to login, preserve intent |
-| User with trialing subscription upgrades | Trial continues on new plan |
-| Concurrent plan changes | 409 Conflict with clear message |
-| Invalid price ID in request | 400 with INVALID_PRICE_ID code |
-| Same plan selected | 400 with SAME_PLAN code |
-| Duplicate webhook events | Skipped via idempotency check |
+| User with excessive credits upgrades     | Anti-farming blocks credit addition        |
+| User double-clicks confirm button        | Button disabled after first click          |
+| Network failure during preview           | Error shown in modal, retry available      |
+| Session expires mid-flow                 | Redirect to login, preserve intent         |
+| User with trialing subscription upgrades | Trial continues on new plan                |
+| Concurrent plan changes                  | 409 Conflict with clear message            |
+| Invalid price ID in request              | 400 with INVALID_PRICE_ID code             |
+| Same plan selected                       | 400 with SAME_PLAN code                    |
+| Duplicate webhook events                 | Skipped via idempotency check              |
 
 ---
 
 ## 6. Acceptance Criteria
 
 ### API Tests
+
 - [ ] All preview-change error codes return correct HTTP status
 - [ ] All change error codes return correct HTTP status
 - [ ] Upgrade returns `effective_immediately: true`
@@ -1047,6 +1061,7 @@ test.describe('Subscription Webhook Integration', () => {
 - [ ] Cancel-scheduled clears scheduled fields
 
 ### E2E Tests
+
 - [ ] Modal opens with correct plan comparison
 - [ ] Upgrade shows proration amount
 - [ ] Downgrade shows scheduled date
@@ -1057,6 +1072,7 @@ test.describe('Subscription Webhook Integration', () => {
 - [ ] Loading states display correctly
 
 ### Integration Tests
+
 - [ ] Upgrade webhook adds tier difference credits
 - [ ] Downgrade webhook does NOT modify credits
 - [ ] Anti-farming blocks excessive credit users
@@ -1065,6 +1081,7 @@ test.describe('Subscription Webhook Integration', () => {
 - [ ] Idempotency table records events
 
 ### Coverage Targets
+
 - [ ] Unit test coverage > 90% for SubscriptionCreditsService
 - [ ] API tests cover all documented error codes
 - [ ] E2E tests cover all user-visible states
@@ -1077,12 +1094,14 @@ test.describe('Subscription Webhook Integration', () => {
 ### Success Criteria
 
 **Test Metrics:**
+
 - All tests pass in CI
 - No flaky tests (< 1% failure rate)
 - Test execution time < 5 minutes total
 - Coverage thresholds met
 
 **Manual Verification:**
+
 - Run test suite locally: `yarn test`
 - Run E2E suite: `yarn test:e2e`
 - Verify no console errors in test output
@@ -1090,11 +1109,13 @@ test.describe('Subscription Webhook Integration', () => {
 ### Rollback Plan
 
 **If tests reveal bugs:**
+
 1. Document bug in issue tracker with test failure details
 2. Fix in isolation before merging
 3. Re-run full test suite
 
 **If tests are flaky:**
+
 1. Add explicit waits where needed
 2. Increase timeouts for network-dependent tests
 3. Add retry logic for transient failures
@@ -1102,6 +1123,7 @@ test.describe('Subscription Webhook Integration', () => {
 ### Maintenance
 
 **Ongoing:**
+
 - Update tests when API contracts change
 - Add tests for new error codes
 - Review and update edge case table quarterly
@@ -1131,31 +1153,39 @@ interface ITestDataManager {
 
 ```typescript
 class WebhookClient {
-  sendSubscriptionUpdated(request, options: {
-    eventId?: string;
-    subscriptionId: string;
-    customerId: string;
-    newPriceId: string;
-    previousPriceId: string;
-    status: string;
-  }): Promise<ApiResponse>;
+  sendSubscriptionUpdated(
+    request,
+    options: {
+      eventId?: string;
+      subscriptionId: string;
+      customerId: string;
+      newPriceId: string;
+      previousPriceId: string;
+      status: string;
+    }
+  ): Promise<ApiResponse>;
 
-  sendScheduleCompleted(request, options: {
-    scheduleId: string;
-    subscriptionId: string;
-    customerId: string;
-  }): Promise<ApiResponse>;
+  sendScheduleCompleted(
+    request,
+    options: {
+      scheduleId: string;
+      subscriptionId: string;
+      customerId: string;
+    }
+  ): Promise<ApiResponse>;
 }
 ```
 
 ### PricingCard Test IDs
 
 Add to `PricingCard.tsx`:
+
 ```tsx
 <div data-testid={`pricing-card-${name.toLowerCase().replace(' ', '-')}`}>
 ```
 
 Expected IDs:
+
 - `pricing-card-hobby`
 - `pricing-card-professional`
 - `pricing-card-business`

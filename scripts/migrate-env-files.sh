@@ -13,7 +13,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 cd "$PROJECT_ROOT"
 
-echo "PixelPerfect Environment Files Migration"
+echo "myimageupscaler.com Environment Files Migration"
 echo "========================================="
 echo ""
 

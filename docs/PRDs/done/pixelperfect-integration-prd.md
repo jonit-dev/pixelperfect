@@ -1,16 +1,16 @@
 ---
-description: Integration plan for PixelPerfect AI template into the Next.js boilerplate
+description: Integration plan for myimageupscaler.com AI template into the Next.js boilerplate
 globs: src/**/*, template/**/*, package.json, app/**/*
 alwaysApply: false
 ---
 
-# PixelPerfect AI Integration PRD
+# myimageupscaler.com AI Integration PRD
 
 ## User Review Required
 
 > [!IMPORTANT] > **Architecture Shift:** We are migrating the client-side React template to the Next.js App Router. The AI logic will be moved from the client (`aiService.ts`) to a server-side API route (`app/api/upscale`) to secure API keys and leverage Cloudflare Workers (via Next.js).
 
-> [!NOTE] > **Styling:** The template uses Tailwind CSS. The boilerplate also uses Tailwind (via DaisyUI). We will integrate the components into `src/components/pixelperfect` and ensure they render correctly within the existing layout.
+> [!NOTE] > **Styling:** The template uses Tailwind CSS. The boilerplate also uses Tailwind (via DaisyUI). We will integrate the components into `src/components/myimageupscaler.com` and ensure they render correctly within the existing layout.
 
 > [!CAUTION] > **Cleanup:** The `template` directory will be **permanently deleted** after migration. All necessary code must be moved to `src`.
 
@@ -42,7 +42,7 @@ graph TD
         B --> D[New /upscaler Route]
         A -.-> Auth[Existing Auth Provider]
     end
-    subgraph "PixelPerfect Integration"
+    subgraph "myimageupscaler.com Integration"
         D --> E[Upscaler Page]
         E --> F[Workspace Component]
         F --> G[API Route /api/upscale]
@@ -68,8 +68,8 @@ Integrate the image upscaling tool into the Next.js app as a new feature tab, en
 
 - **Frontend:** New route `app/upscaler/page.tsx` rendering the `Workspace` component.
 - **Backend:** New API route `app/api/upscale/route.ts` handling Google GenAI interactions.
-- **Components:** Migrate template components to `src/components/pixelperfect`.
-- **Utils/Hooks:** Migrate to `src/lib/pixelperfect` and `src/hooks/pixelperfect`.
+- **Components:** Migrate template components to `src/components/myimageupscaler.com`.
+- **Utils/Hooks:** Migrate to `src/lib/myimageupscaler.com` and `src/hooks/myimageupscaler.com`.
 - **Navigation:** Add "Upscaler" link to `TabNavigationClient`.
 - **Auth Strategy:** The new route will be automatically protected by the existing `app/layout.tsx` and `ClientProviders`. No new auth logic will be implemented.
 
@@ -97,7 +97,7 @@ sequenceDiagram
 #### 2.3 Key Technical Decisions
 
 - **API Route:** Use Next.js API Routes (Edge or Node runtime) to proxy requests to Google Gemini, keeping API keys server-side.
-- **Component Location:** `src/components/pixelperfect` to keep the source tree organized.
+- **Component Location:** `src/components/myimageupscaler.com` to keep the source tree organized.
 - **Routing:** Top-level `/upscaler` route.
 - **Cleanup:** Complete removal of `template` directory post-verification.
 - **Auth:** Zero changes to `src/components/auth` or `src/lib/supabase`.
@@ -118,7 +118,7 @@ sequenceDiagram
   - `@google/genai`
   - `jszip`
 
-#### B. `src/components/pixelperfect/`
+#### B. `src/components/myimageupscaler.com/`
 
 - **Action:** Copy `template/components/*` to this directory.
 - **Refactor:**
@@ -126,12 +126,12 @@ sequenceDiagram
   - Remove `Header` and `Pricing` components (not needed for the tool view).
   - Ensure `Workspace` accepts necessary props or handles its own state.
 
-#### C. `src/hooks/pixelperfect/` & `src/lib/pixelperfect/`
+#### C. `src/hooks/myimageupscaler.com/` & `src/lib/myimageupscaler.com/`
 
 - **Action:** Move `template/hooks/*` and `template/utils/*`.
 - **Files:**
-  - `template/hooks/useBatchQueue.ts` -> `src/hooks/pixelperfect/useBatchQueue.ts`
-  - `template/utils/download.ts` -> `src/lib/pixelperfect/download.ts`
+  - `template/hooks/useBatchQueue.ts` -> `src/hooks/myimageupscaler.com/useBatchQueue.ts`
+  - `template/utils/download.ts` -> `src/lib/myimageupscaler.com/download.ts`
 
 #### D. `app/api/upscale/route.ts`
 
@@ -146,7 +146,7 @@ sequenceDiagram
 
 - **Purpose:** The main page for the tool.
 - **Content:**
-  - Import `Workspace` from `src/components/pixelperfect/Workspace/Workspace`.
+  - Import `Workspace` from `src/components/myimageupscaler.com/Workspace/Workspace`.
   - Render within the main layout.
   - **Note:** This page sits inside `app/layout.tsx`, so it inherits the `ClientProviders` (Auth) automatically.
 
@@ -185,7 +185,7 @@ sequenceDiagram
 
 #### Phase 2: Code Migration
 
-- [ ] Create `src/components/pixelperfect`, `src/hooks/pixelperfect`, `src/lib/pixelperfect`.
+- [ ] Create `src/components/myimageupscaler.com`, `src/hooks/myimageupscaler.com`, `src/lib/myimageupscaler.com`.
 - [ ] Copy and refactor components, hooks, and utils from `template`.
 - [ ] Refactor `aiService.ts` into a client-side API caller (calling `/api/upscale`).
 

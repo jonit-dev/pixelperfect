@@ -45,7 +45,7 @@ The `handlePostAuthRedirect()` now delegates to the unified redirect manager, en
 
 ### Entry Point Updates
 
-#### 1. Pricing Page (`client/components/pixelperfect/Pricing.tsx`)
+#### 1. Pricing Page (`client/components/myimageupscaler.com/Pricing.tsx`)
 
 ```typescript
 // Before: setPendingCheckout(tier.priceId)
@@ -204,7 +204,7 @@ The system maintains backward compatibility:
 - `client/utils/authRedirectManager.ts` - New unified redirect manager
 - `client/store/auth/postAuthRedirect.ts` - Updated to use unified handler
 - `client/hooks/useGoogleSignIn.ts` - Accepts returnTo parameter
-- `client/components/pixelperfect/Pricing.tsx` - Uses prepareAuthRedirect
+- `client/components/myimageupscaler.com/Pricing.tsx` - Uses prepareAuthRedirect
 - `client/components/stripe/PricingCard.tsx` - Uses prepareAuthRedirect
 - `app/auth/confirm/page.tsx` - Uses unified redirect handler
 - `app/auth/callback/page.tsx` - New OAuth callback handler

@@ -49,7 +49,7 @@ Redirect to your application
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Click the project dropdown (top-left, next to "Google Cloud")
 3. Click **New Project** or select an existing one
-4. Enter a project name (e.g., `pixelperfect-auth`)
+4. Enter a project name (e.g., `myimageupscaler.com-auth`)
 5. Click **Create**
 
 ### Step 2: Configure OAuth Consent Screen
@@ -64,7 +64,7 @@ Redirect to your application
 
 | Field              | Value                                       |
 | ------------------ | ------------------------------------------- |
-| App name           | Your app name (e.g., `PixelPerfect`)        |
+| App name           | Your app name (e.g., `myimageupscaler.com`) |
 | User support email | Your email                                  |
 | App logo           | (Optional) Upload your logo                 |
 | App domain         | Your production domain                      |
@@ -96,7 +96,7 @@ If your app is in "Testing" mode, add test user emails:
 1. Navigate to **APIs & Services** → **Credentials**
 2. Click **Create Credentials** → **OAuth client ID**
 3. Select **Application type**: `Web application`
-4. Enter a name (e.g., `PixelPerfect Web Client`)
+4. Enter a name (e.g., `myimageupscaler.com Web Client`)
 
 #### Configure Authorized JavaScript Origins:
 

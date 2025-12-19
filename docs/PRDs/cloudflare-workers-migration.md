@@ -651,7 +651,7 @@ sequenceDiagram
     alt Option 2: Proxy through R2 (Permanent Storage)
         Worker->>Replicate: Fetch image
         Worker->>R2: Store with 7-day expiry
-        Worker-->>Browser: { resultUrl: "https://r2.pixelperfect.app/..." }
+        Worker-->>Browser: { resultUrl: "https://r2.myimageupscaler.com/..." }
         Browser->>R2: Fetch image
     end
 ```
@@ -685,7 +685,7 @@ export async function upscaleImage(input: IUpscaleInput) {
 **Setup R2 Bucket**:
 
 ```bash
-wrangler r2 bucket create pixelperfect-results
+wrangler r2 bucket create myimageupscaler.com-results
 ```
 
 **Wrangler Config**:
@@ -694,7 +694,7 @@ wrangler r2 bucket create pixelperfect-results
 # wrangler.toml
 [[r2_buckets]]
 binding = "RESULTS_BUCKET"
-bucket_name = "pixelperfect-results"
+bucket_name = "myimageupscaler.com-results"
 ```
 
 **Implementation**:
@@ -727,7 +727,7 @@ export async function storeResultImage(
   });
 
   // Return public URL
-  return `https://results.pixelperfect.app/${key}`;
+  return `https://results.myimageupscaler.com/${key}`;
 }
 ```
 
@@ -796,7 +796,7 @@ async function buildBlogData() {
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
-        author: data.author || 'PixelPerfect Team',
+        author: data.author || 'myimageupscaler.com Team',
         category: data.category || 'General',
         tags: data.tags || [],
         image: data.image,
@@ -1134,7 +1134,7 @@ export default nextConfig;
 **File**: `wrangler.toml`
 
 ```toml
-name = "pixelperfect"
+name = "myimageupscaler.com"
 compatibility_date = "2025-03-02"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
@@ -1155,8 +1155,8 @@ custom_domain = false  # Now uses edge runtime
 # R2 bucket binding (if using storage solution)
 [[r2_buckets]]
 binding = "RESULTS_BUCKET"
-bucket_name = "pixelperfect-results"
-preview_bucket_name = "pixelperfect-results-preview"
+bucket_name = "myimageupscaler.com-results"
+preview_bucket_name = "myimageupscaler.com-results-preview"
 ```
 
 ---

@@ -71,15 +71,15 @@ sequenceDiagram
 
 ```typescript
 interface ILoggerConfig {
-  service: string;           // 'pixelperfect-api'
-  namespace: string;         // Specific API endpoint or feature
-  apiKey: string;           // Baselime API key
-  isLocalDev: boolean;     // Skip external calls in development
+  service: string; // 'myimageupscaler.com-api'
+  namespace: string; // Specific API endpoint or feature
+  apiKey: string; // Baselime API key
+  isLocalDev: boolean; // Skip external calls in development
   ctx: {
-    url: string;           // Request URL
-    method: string;        // HTTP method
-    requestId?: string;    // Unique request identifier
-    userId?: string;       // Authenticated user ID
+    url: string; // Request URL
+    method: string; // HTTP method
+    requestId?: string; // Unique request identifier
+    userId?: string; // Authenticated user ID
     [key: string]: unknown; // Additional context
   };
 }
@@ -99,7 +99,7 @@ export function createLogger(
   const apiKey = serverEnv.BASELIME_API_KEY;
 
   const logger = new BaselimeLogger({
-    service: 'pixelperfect-api',
+    service: 'myimageupscaler.com-api',
     namespace,
     apiKey: apiKey || '',
     ctx: {
@@ -146,10 +146,7 @@ export function withLogging(
         responseTime: Date.now() - startTime,
       });
 
-      return Response.json(
-        { error: 'Internal server error' },
-        { status: 500 }
-      );
+      return Response.json({ error: 'Internal server error' }, { status: 500 });
     } finally {
       await logger.flush();
     }
@@ -552,7 +549,7 @@ pie title Log Storage Strategy
 
 // Find all errors for a specific user
 const userErrors = await baselime.query({
-  service: 'pixelperfect-api',
+  service: 'myimageupscaler.com-api',
   level: 'error',
   userId: 'user_123',
   timeRange: '24h',
@@ -560,7 +557,7 @@ const userErrors = await baselime.query({
 
 // Monitor processing failures
 const processingFailures = await baselime.query({
-  service: 'pixelperfect-api',
+  service: 'myimageupscaler.com-api',
   category: 'ai_processing',
   status: 'failed',
   timeRange: '1h',
@@ -568,14 +565,14 @@ const processingFailures = await baselime.query({
 
 // Track performance issues
 const slowRequests = await baselime.query({
-  service: 'pixelperfect-api',
+  service: 'myimageupscaler.com-api',
   duration: { gt: 5000 }, // > 5 seconds
   timeRange: '6h',
 });
 
 // Security monitoring
 const authFailures = await baselime.query({
-  service: 'pixelperfect-api',
+  service: 'myimageupscaler.com-api',
   category: 'authentication',
   result: 'failed',
   timeRange: '24h',
@@ -624,7 +621,7 @@ if (loggingConfig[env].enableBaselime && shouldLog(level)) {
 ```bash
 # Baselime Configuration
 BASELIME_API_KEY=your_baselime_api_key
-BASELIME_SERVICE=pixelperfect-api
+BASELIME_SERVICE=myimageupscaler.com-api
 BASELIME_ENVIRONMENT=production
 
 # Logging Configuration

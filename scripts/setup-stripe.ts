@@ -1,9 +1,9 @@
 #!/usr/bin/env npx tsx
 /**
- * Stripe Setup Script for PixelPerfect
+ * Stripe Setup Script for myimageupscaler.com
  *
  * Automatically creates all necessary Stripe products, prices, and billing portal
- * configuration for the PixelPerfect application.
+ * configuration for the myimageupscaler.com application.
  *
  * This script:
  * - Creates subscription products (Hobby, Professional, Business)
@@ -162,7 +162,7 @@ class StripeSetup {
   async run(): Promise<void> {
     try {
       this.log('\n' + '='.repeat(70), 'cyan');
-      this.log('  Stripe Setup for PixelPerfect', 'bright');
+      this.log('  Stripe Setup for myimageupscaler.com', 'bright');
       this.log('='.repeat(70) + '\n', 'cyan');
 
       // Display current configuration
@@ -462,7 +462,7 @@ class StripeSetup {
       // Create new billing portal configuration
       const config = await this.stripe.billingPortal.configurations.create({
         business_profile: {
-          headline: 'Manage your PixelPerfect subscription',
+          headline: 'Manage your myimageupscaler.com subscription',
         },
         features: {
           customer_update: {

@@ -50,7 +50,7 @@ API Routes (Service Role Key)
 1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
 2. Click **New Project**
 3. Fill in:
-   - **Name**: Your project name (e.g., `pixelperfect`)
+   - **Name**: Your project name (e.g., `myimageupscaler.com`)
    - **Database Password**: Generate a strong password (save it!)
    - **Region**: Choose closest to your users
 4. Click **Create new project**
@@ -200,7 +200,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 # App
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=PixelPerfect
+NEXT_PUBLIC_APP_NAME=myimageupscaler.com
 ```
 
 **`.env.prod`** - Server-side secrets (NEVER commit):

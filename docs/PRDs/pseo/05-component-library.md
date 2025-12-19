@@ -13,7 +13,7 @@
 
 ## Overview
 
-This document defines the React component library for PixelPerfect's pSEO implementation. All components are designed to be reusable, performant, and optimized for SEO.
+This document defines the React component library for myimageupscaler.com's pSEO implementation. All components are designed to be reusable, performant, and optimized for SEO.
 
 ---
 
@@ -201,15 +201,15 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
           rows={data.comparisonTable}
         />
 
-        {/* PixelPerfect Profile */}
+        {/* myimageupscaler.com Profile */}
         <section className="my-12">
-          <h2 className="text-3xl font-bold mb-6">PixelPerfect Overview</h2>
+          <h2 className="text-3xl font-bold mb-6">myimageupscaler.com Overview</h2>
           <div className="prose prose-lg max-w-none">
-            <p>{data.pixelperfectProfile?.overview}</p>
+            <p>{data.myimageupscaler.comProfile?.overview}</p>
 
             <h3>Key Features</h3>
             <ul>
-              {data.pixelperfectProfile?.features.map((feature, i) => (
+              {data.myimageupscaler.comProfile?.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
               ))}
             </ul>
@@ -218,7 +218,7 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
               <div>
                 <h4 className="text-lg font-semibold mb-3 text-green-600">Pros</h4>
                 <ul className="space-y-2">
-                  {data.pixelperfectProfile?.pros.map((pro, i) => (
+                  {data.myimageupscaler.comProfile?.pros.map((pro, i) => (
                     <li key={i} className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
                       {pro}
@@ -229,7 +229,7 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
               <div>
                 <h4 className="text-lg font-semibold mb-3 text-red-600">Cons</h4>
                 <ul className="space-y-2">
-                  {data.pixelperfectProfile?.cons.map((con, i) => (
+                  {data.myimageupscaler.comProfile?.cons.map((con, i) => (
                     <li key={i} className="flex items-start">
                       <span className="text-red-500 mr-2">✗</span>
                       {con}
@@ -240,8 +240,8 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
             </div>
 
             <div className="bg-blue-50 p-4 rounded-lg mt-6">
-              <p className="font-semibold">Pricing: {data.pixelperfectProfile?.pricing}</p>
-              <p className="mt-2">Best for: {data.pixelperfectProfile?.bestFor}</p>
+              <p className="font-semibold">Pricing: {data.myimageupscaler.comProfile?.pricing}</p>
+              <p className="mt-2">Best for: {data.myimageupscaler.comProfile?.bestFor}</p>
             </div>
           </div>
         </section>
@@ -250,7 +250,7 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
         {data.competitorProfile && (
           <section className="my-12">
             <h2 className="text-3xl font-bold mb-6">{data.competitor} Overview</h2>
-            {/* Similar structure as PixelPerfect profile */}
+            {/* Similar structure as myimageupscaler.com profile */}
           </section>
         )}
 
@@ -265,7 +265,7 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
 
             <div className="grid md:grid-cols-2 gap-6 mt-6">
               <div className="bg-white p-6 rounded-lg">
-                <h3>Choose PixelPerfect if:</h3>
+                <h3>Choose myimageupscaler.com if:</h3>
                 <ul>
                   {data.verdict.choosePP.map((reason, i) => (
                     <li key={i}>{reason}</li>
@@ -291,7 +291,7 @@ export default function ComparisonPageTemplate({ data }: IComparisonPageTemplate
         <FAQSection faqs={data.faq} />
 
         <CTASection
-          title="Try PixelPerfect Free"
+          title="Try myimageupscaler.com Free"
           description="See the difference for yourself. Start with 10 free credits."
           primaryCTA="Get Started Free"
           secondaryCTA="View Pricing"
@@ -443,7 +443,7 @@ export default function GuidePageTemplate({ data }: IGuidePageTemplateProps) {
 
         <CTASection
           title="Ready to put this into practice?"
-          description="Try PixelPerfect's AI image upscaler and see the results for yourself."
+          description="Try myimageupscaler.com's AI image upscaler and see the results for yourself."
           primaryCTA="Start Free Trial"
           secondaryCTA="View Demo"
         />
@@ -711,7 +711,7 @@ export default function ComparisonTable({ rows }: IComparisonTableProps) {
 
   const getWinnerHighlight = (winner?: string, column?: 'pp' | 'competitor') => {
     if (!winner || winner === 'tie') return '';
-    if (winner === 'pixelperfect' && column === 'pp') return 'bg-green-50 font-semibold';
+    if (winner === 'myimageupscaler.com' && column === 'pp') return 'bg-green-50 font-semibold';
     if (winner === 'competitor' && column === 'competitor') return 'bg-blue-50 font-semibold';
     return '';
   };
@@ -722,7 +722,7 @@ export default function ComparisonTable({ rows }: IComparisonTableProps) {
         <thead>
           <tr className="bg-gray-100">
             <th className="p-4 text-left font-semibold border">Feature</th>
-            <th className="p-4 text-center font-semibold border">PixelPerfect</th>
+            <th className="p-4 text-center font-semibold border">myimageupscaler.com</th>
             <th className="p-4 text-center font-semibold border">Competitor</th>
           </tr>
         </thead>
@@ -731,7 +731,7 @@ export default function ComparisonTable({ rows }: IComparisonTableProps) {
             <tr key={index} className="hover:bg-gray-50">
               <td className="p-4 border font-medium">{row.feature}</td>
               <td className={`p-4 border text-center ${getWinnerHighlight(row.winner, 'pp')}`}>
-                {renderValue(row.pixelperfect)}
+                {renderValue(row.myimageupscaler.com)}
               </td>
               <td className={`p-4 border text-center ${getWinnerHighlight(row.winner, 'competitor')}`}>
                 {renderValue(row.competitor)}

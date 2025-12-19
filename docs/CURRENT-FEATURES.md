@@ -1,4 +1,4 @@
-# PixelPerfect AI - Current Features Overview
+# myimageupscaler.com AI - Current Features Overview
 
 > **Last Updated**: 2025-11-30
 > **Version**: v2.0
@@ -321,7 +321,7 @@
 - **Legal**: Privacy Policy at `/privacy`, Terms at `/terms`
 - **Status**: System status and uptime monitoring
 
-**Note**: This document represents the current state of PixelPerfect AI as of v2.1. Features and capabilities are continuously evolving. Check the roadmap for upcoming features and improvements.
+**Note**: This document represents the current state of myimageupscaler.com AI as of v2.1. Features and capabilities are continuously evolving. Check the roadmap for upcoming features and improvements.
 
 ---
 

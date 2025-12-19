@@ -1,6 +1,6 @@
 # Core App Flow Audit (End-to-End)
 
-**Project:** PixelPerfect  
+**Project:** myimageupscaler.com  
 **Date:** 2025-12-18  
 **Auditor:** Claude Code (Claude Sonnet 4.5)  
 **Rating:** ★★☆☆☆ (2/5)
@@ -33,7 +33,7 @@ This audit traces the core product flow end-to-end (auth → workspace processin
    - `client/store/userStore.ts` listens to Supabase auth changes, loads cached user data, and performs post-auth redirect via `client/utils/authRedirectManager.ts`.
 
 2. **Dashboard → Upload → Process → Credits**
-   - `client/components/features/workspace/Workspace.tsx` → `client/hooks/pixelperfect/useBatchQueue.ts` → `client/utils/api-client.ts:processImage()`
+   - `client/components/features/workspace/Workspace.tsx` → `client/hooks/myimageupscaler.com/useBatchQueue.ts` → `client/utils/api-client.ts:processImage()`
    - Client calls `POST /api/upscale` with base64 image + config.
    - `app/api/upscale/route.ts`:
      - Requires `X-User-Id` from middleware header

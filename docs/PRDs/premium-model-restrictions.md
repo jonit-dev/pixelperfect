@@ -34,12 +34,12 @@ Ensure expensive AI models (`flux-2-pro`, `nano-banana-pro`, `clarity-upscaler`)
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/shared/config/model-costs.config.ts
-/home/joao/projects/pixelperfect/shared/types/pixelperfect.ts
-/home/joao/projects/pixelperfect/client/components/features/workspace/BatchSidebar/QualityTierSelector.tsx
-/home/joao/projects/pixelperfect/app/api/upscale/route.ts
-/home/joao/projects/pixelperfect/server/services/model-registry.ts
-/home/joao/projects/pixelperfect/app/pricing/page.tsx
+/home/joao/projects/myimageupscaler.com/shared/config/model-costs.config.ts
+/home/joao/projects/myimageupscaler.com/shared/types/myimageupscaler.com.ts
+/home/joao/projects/myimageupscaler.com/client/components/features/workspace/BatchSidebar/QualityTierSelector.tsx
+/home/joao/projects/myimageupscaler.com/app/api/upscale/route.ts
+/home/joao/projects/myimageupscaler.com/server/services/model-registry.ts
+/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
 ```
 
 ### 1.2 Component & Dependency Overview

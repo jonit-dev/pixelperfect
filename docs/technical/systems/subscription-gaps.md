@@ -73,7 +73,7 @@ _Defer or skip unless critical need_
 **Files:**
 
 - ✅ `shared/config/stripe.ts` - `HOMEPAGE_TIERS[0]` - FIXED
-- ✅ `client/components/pixelperfect/Pricing.tsx` - UPDATED
+- ✅ `client/components/myimageupscaler.com/Pricing.tsx` - UPDATED
 
 ---
 
@@ -181,7 +181,6 @@ const isTestMode =
 **Implementation Completed:**
 
 1. ✅ Backend:
-
    - `POST /api/subscription/preview-change` - Calculate proration
    - `POST /api/subscription/change` - Execute change
    - Added `StripeService.previewPlanChange()`
@@ -518,7 +517,7 @@ This is acceptable since Stripe Portal handles cancellation, but consider custom
 **Files Affected:**
 
 - `shared/config/stripe.ts` - `HOMEPAGE_TIERS[0]`
-- `client/components/pixelperfect/Pricing.tsx`
+- `client/components/myimageupscaler.com/Pricing.tsx`
 
 ---
 

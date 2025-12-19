@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This PRD outlines the integration of Real-ESRGAN image upscaling via Replicate API as the primary processing backend for PixelPerfect. This addresses the critical unit economics issues identified in the pricing audit, reducing per-image cost from **$0.13 (Gemini)** to **$0.0017 (Real-ESRGAN)** - a **76x cost reduction** enabling 94-98% gross margins.
+This PRD outlines the integration of Real-ESRGAN image upscaling via Replicate API as the primary processing backend for myimageupscaler.com. This addresses the critical unit economics issues identified in the pricing audit, reducing per-image cost from **$0.13 (Gemini)** to **$0.0017 (Real-ESRGAN)** - a **76x cost reduction** enabling 94-98% gross margins.
 
 ### Key Benefits
 
@@ -28,15 +28,15 @@ This PRD outlines the integration of Real-ESRGAN image upscaling via Replicate A
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/server/services/image-generation.service.ts
-/home/joao/projects/pixelperfect/app/api/upscale/route.ts
-/home/joao/projects/pixelperfect/shared/config/env.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.utils.ts
-/home/joao/projects/pixelperfect/shared/validation/upscale.schema.ts
-/home/joao/projects/pixelperfect/shared/types/pixelperfect.ts
-/home/joao/projects/pixelperfect/.env.api.example
-/home/joao/projects/pixelperfect/docs/PRDs/pricing-strategy-economics-audit.md
+/home/joao/projects/myimageupscaler.com/server/services/image-generation.service.ts
+/home/joao/projects/myimageupscaler.com/app/api/upscale/route.ts
+/home/joao/projects/myimageupscaler.com/shared/config/env.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.utils.ts
+/home/joao/projects/myimageupscaler.com/shared/validation/upscale.schema.ts
+/home/joao/projects/myimageupscaler.com/shared/types/myimageupscaler.com.ts
+/home/joao/projects/myimageupscaler.com/.env.api.example
+/home/joao/projects/myimageupscaler.com/docs/PRDs/pricing-strategy-economics-audit.md
 ```
 
 ### 1.2 Component & Dependency Overview

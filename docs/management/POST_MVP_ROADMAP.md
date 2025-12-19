@@ -1,6 +1,6 @@
-# PixelPerfect Post-MVP Roadmap
+# myimageupscaler.com Post-MVP Roadmap
 
-Product development roadmap for PixelPerfect after MVP launch - focusing on growth, scaling, and market expansion.
+Product development roadmap for myimageupscaler.com after MVP launch - focusing on growth, scaling, and market expansion.
 
 ## Vision
 
@@ -183,16 +183,16 @@ timeline
 **Comparison Pages (P2 - QUICK WIN)**
 
 - [ ] **SEO competitor comparison content** (10 pages)
-  - PixelPerfect vs Topaz Gigapixel
-  - PixelPerfect vs Magnific AI
-  - PixelPerfect vs Let's Enhance
-  - PixelPerfect vs Upscale.media
-  - PixelPerfect vs VanceAI
-  - PixelPerfect vs Remini
-  - PixelPerfect vs Gigapixel AI
-  - PixelPerfect vs Photoroom
-  - PixelPerfect vs Cutout Pro
-  - PixelPerfect vs Icons8 Upscaler
+  - myimageupscaler.com vs Topaz Gigapixel
+  - myimageupscaler.com vs Magnific AI
+  - myimageupscaler.com vs Let's Enhance
+  - myimageupscaler.com vs Upscale.media
+  - myimageupscaler.com vs VanceAI
+  - myimageupscaler.com vs Remini
+  - myimageupscaler.com vs Gigapixel AI
+  - myimageupscaler.com vs Photoroom
+  - myimageupscaler.com vs Cutout Pro
+  - myimageupscaler.com vs Icons8 Upscaler
   - **Impact**: High SEO traffic (40k+ monthly searches)
   - **Effort**: 5-6 days (content writing + structured data)
 
@@ -362,7 +362,6 @@ timeline
 **Advanced Features (Optional)**
 
 - [ ] **8x/16x upscaling** (P3 - OPTIONAL)
-
   - SwinIR model for ultra-quality
   - A100 GPU for speed
   - Preview before full processing

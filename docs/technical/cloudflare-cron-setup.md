@@ -53,7 +53,7 @@ wrangler secret put CRON_SECRET
 
 ```bash
 # Check health
-curl https://pixelperfect-cron.workers.dev/health
+curl https://myimageupscaler.com-cron.workers.dev/health
 
 # View logs
 wrangler tail
@@ -66,13 +66,11 @@ That's it! The cron jobs are now running on schedule.
 ### Method 1: Cloudflare Dashboard (Recommended for Production)
 
 1. **Navigate to Cloudflare Pages Dashboard**
-
    - Go to your Cloudflare account
-   - Select your PixelPerfect Pages project
+   - Select your myimageupscaler.com Pages project
    - Click on "Settings" > "Functions"
 
 2. **Add Cron Triggers**
-
    - Go to the "Cron Triggers" section
    - Add the following schedules:
 
@@ -83,7 +81,6 @@ That's it! The cron jobs are now running on schedule.
    | Daily at 3:05 AM UTC | `5 3 * * *`    | `/api/cron/reconcile`         | Full reconciliation with Stripe |
 
 3. **Set Environment Variable**
-
    - In Cloudflare Pages dashboard, go to "Settings" > "Environment Variables"
    - Add `CRON_SECRET` with a secure random value
    - Generate with: `openssl rand -hex 32`
@@ -98,7 +95,7 @@ That's it! The cron jobs are now running on schedule.
 Create or update `wrangler.toml` in your project root:
 
 ```toml
-name = "pixelperfect"
+name = "myimageupscaler.com"
 compatibility_date = "2025-03-02"
 
 # Cron Triggers
@@ -195,13 +192,11 @@ curl -X POST http://localhost:3000/api/cron/reconcile \
 ### Production Testing
 
 1. **Manual Trigger via Cloudflare Dashboard**
-
    - Go to Cloudflare Pages > Functions > Cron Triggers
    - Click "Trigger" next to the desired cron job
    - Check logs for execution results
 
 2. **Monitor Execution**
-
    - Check Cloudflare Analytics for cron execution logs
    - Query `sync_runs` table in Supabase to see job results:
      ```sql
@@ -223,13 +218,11 @@ curl -X POST http://localhost:3000/api/cron/reconcile \
 ### Recommended Monitoring
 
 1. **Baselime Alerts**
-
    - Set up alerts for failed sync runs
    - Alert on high discrepancy rates
    - Monitor cron execution failures
 
 2. **Supabase Dashboard**
-
    - Create views to monitor sync health:
      ```sql
      CREATE VIEW sync_health AS
@@ -274,12 +267,10 @@ WHERE s.status != p.subscription_status;
 ### Cron Jobs Not Running
 
 1. **Verify Environment Variable**
-
    - Check `CRON_SECRET` is set in Cloudflare dashboard
    - Ensure it matches the value used in requests
 
 2. **Check Cloudflare Logs**
-
    - Go to Cloudflare Pages > Functions > Logs
    - Look for cron execution entries
 
@@ -317,13 +308,11 @@ LIMIT 5;
 ## Security Considerations
 
 1. **CRON_SECRET Protection**
-
    - Never commit the secret to git
    - Use Cloudflare dashboard to set it
    - Rotate regularly (e.g., quarterly)
 
 2. **Request Validation**
-
    - All endpoints validate the cron secret header
    - Unauthorized requests return 401
    - No sensitive data in error responses
@@ -372,7 +361,7 @@ If cron jobs cause issues:
 
 4. **Start Next.js App (in another terminal):**
    ```bash
-   cd /home/joao/projects/pixelperfect
+   cd /home/joao/projects/myimageupscaler.com
    yarn dev
    ```
    App runs at `http://localhost:3000`

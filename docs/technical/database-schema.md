@@ -1,6 +1,6 @@
 # Database Schema
 
-PixelPerfect uses PostgreSQL via Supabase with Row Level Security (RLS) for data isolation.
+myimageupscaler.com uses PostgreSQL via Supabase with Row Level Security (RLS) for data isolation.
 
 ## Entity Relationship Diagram
 
@@ -83,15 +83,15 @@ erDiagram
 
 Extends Supabase `auth.users` with application-specific data.
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | uuid | PK, FK → auth.users | User identifier |
-| `stripe_customer_id` | text | UNIQUE, nullable | Stripe customer reference |
-| `credits_balance` | integer | NOT NULL, DEFAULT 10 | Available processing credits |
-| `subscription_status` | text | DEFAULT 'free' | active, trialing, past_due, canceled, free |
-| `subscription_tier` | text | nullable | starter, pro, business |
-| `created_at` | timestamptz | DEFAULT now() | Record creation time |
-| `updated_at` | timestamptz | DEFAULT now() | Last update time |
+| Column                | Type        | Constraints          | Description                                |
+| --------------------- | ----------- | -------------------- | ------------------------------------------ |
+| `id`                  | uuid        | PK, FK → auth.users  | User identifier                            |
+| `stripe_customer_id`  | text        | UNIQUE, nullable     | Stripe customer reference                  |
+| `credits_balance`     | integer     | NOT NULL, DEFAULT 10 | Available processing credits               |
+| `subscription_status` | text        | DEFAULT 'free'       | active, trialing, past_due, canceled, free |
+| `subscription_tier`   | text        | nullable             | starter, pro, business                     |
+| `created_at`          | timestamptz | DEFAULT now()        | Record creation time                       |
+| `updated_at`          | timestamptz | DEFAULT now()        | Last update time                           |
 
 ```sql
 CREATE TABLE profiles (
@@ -123,16 +123,16 @@ CREATE TRIGGER on_auth_user_created
 
 Tracks Stripe subscription state, synced via webhooks.
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | text | PK | Stripe subscription ID |
-| `user_id` | uuid | FK → profiles | Owner |
-| `status` | text | NOT NULL | Stripe subscription status |
-| `price_id` | text | NOT NULL | Stripe price ID |
-| `current_period_start` | timestamptz | | Billing period start |
-| `current_period_end` | timestamptz | | Billing period end |
-| `canceled_at` | timestamptz | nullable | When subscription was canceled |
-| `created_at` | timestamptz | DEFAULT now() | Record creation time |
+| Column                 | Type        | Constraints   | Description                    |
+| ---------------------- | ----------- | ------------- | ------------------------------ |
+| `id`                   | text        | PK            | Stripe subscription ID         |
+| `user_id`              | uuid        | FK → profiles | Owner                          |
+| `status`               | text        | NOT NULL      | Stripe subscription status     |
+| `price_id`             | text        | NOT NULL      | Stripe price ID                |
+| `current_period_start` | timestamptz |               | Billing period start           |
+| `current_period_end`   | timestamptz |               | Billing period end             |
+| `canceled_at`          | timestamptz | nullable      | When subscription was canceled |
+| `created_at`           | timestamptz | DEFAULT now() | Record creation time           |
 
 ```sql
 CREATE TABLE subscriptions (
@@ -154,19 +154,19 @@ CREATE INDEX idx_subscriptions_status ON subscriptions(status);
 
 Records all image processing operations.
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | uuid | PK, DEFAULT gen_random_uuid() | Job identifier |
-| `user_id` | uuid | FK → profiles | Owner |
-| `status` | text | NOT NULL | queued, processing, completed, failed |
-| `input_image_path` | text | NOT NULL | R2 storage path for input |
-| `output_image_path` | text | nullable | R2 storage path for output |
-| `credits_used` | integer | NOT NULL DEFAULT 1 | Credits consumed |
-| `processing_mode` | text | NOT NULL | standard, enhanced, gentle, portrait, product |
-| `settings` | jsonb | DEFAULT '{}' | Processing parameters |
-| `error_message` | text | nullable | Error details if failed |
-| `created_at` | timestamptz | DEFAULT now() | Job creation time |
-| `completed_at` | timestamptz | nullable | Job completion time |
+| Column              | Type        | Constraints                   | Description                                   |
+| ------------------- | ----------- | ----------------------------- | --------------------------------------------- |
+| `id`                | uuid        | PK, DEFAULT gen_random_uuid() | Job identifier                                |
+| `user_id`           | uuid        | FK → profiles                 | Owner                                         |
+| `status`            | text        | NOT NULL                      | queued, processing, completed, failed         |
+| `input_image_path`  | text        | NOT NULL                      | R2 storage path for input                     |
+| `output_image_path` | text        | nullable                      | R2 storage path for output                    |
+| `credits_used`      | integer     | NOT NULL DEFAULT 1            | Credits consumed                              |
+| `processing_mode`   | text        | NOT NULL                      | standard, enhanced, gentle, portrait, product |
+| `settings`          | jsonb       | DEFAULT '{}'                  | Processing parameters                         |
+| `error_message`     | text        | nullable                      | Error details if failed                       |
+| `created_at`        | timestamptz | DEFAULT now()                 | Job creation time                             |
+| `completed_at`      | timestamptz | nullable                      | Job completion time                           |
 
 ```sql
 CREATE TABLE processing_jobs (
@@ -195,15 +195,15 @@ CREATE INDEX idx_processing_jobs_created_at ON processing_jobs(created_at DESC);
 
 Audit log for all credit changes.
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | uuid | PK | Transaction identifier |
-| `user_id` | uuid | FK → profiles | User |
-| `amount` | integer | NOT NULL | Credits added (+) or used (-) |
-| `type` | text | NOT NULL | purchase, subscription, usage, refund, bonus |
-| `reference_id` | text | nullable | Related Stripe/job ID |
-| `description` | text | nullable | Human-readable description |
-| `created_at` | timestamptz | DEFAULT now() | Transaction time |
+| Column         | Type        | Constraints   | Description                                  |
+| -------------- | ----------- | ------------- | -------------------------------------------- |
+| `id`           | uuid        | PK            | Transaction identifier                       |
+| `user_id`      | uuid        | FK → profiles | User                                         |
+| `amount`       | integer     | NOT NULL      | Credits added (+) or used (-)                |
+| `type`         | text        | NOT NULL      | purchase, subscription, usage, refund, bonus |
+| `reference_id` | text        | nullable      | Related Stripe/job ID                        |
+| `description`  | text        | nullable      | Human-readable description                   |
+| `created_at`   | timestamptz | DEFAULT now() | Transaction time                             |
 
 ```sql
 CREATE TABLE credit_transactions (
@@ -226,16 +226,16 @@ CREATE INDEX idx_credit_transactions_created_at ON credit_transactions(created_a
 
 Local cache of Stripe pricing (optional, for faster lookups).
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | text | PK | Stripe price ID |
-| `product_id` | text | NOT NULL | Stripe product ID |
-| `amount` | integer | NOT NULL | Price in cents |
-| `currency` | varchar(3) | DEFAULT 'usd' | Currency code |
-| `interval` | text | nullable | month, year, or null for one-time |
-| `tier` | text | NOT NULL | starter, pro, business |
-| `credits` | integer | NOT NULL | Credits included |
-| `active` | boolean | DEFAULT true | Whether price is available |
+| Column       | Type       | Constraints   | Description                       |
+| ------------ | ---------- | ------------- | --------------------------------- |
+| `id`         | text       | PK            | Stripe price ID                   |
+| `product_id` | text       | NOT NULL      | Stripe product ID                 |
+| `amount`     | integer    | NOT NULL      | Price in cents                    |
+| `currency`   | varchar(3) | DEFAULT 'usd' | Currency code                     |
+| `interval`   | text       | nullable      | month, year, or null for one-time |
+| `tier`       | text       | NOT NULL      | starter, pro, business            |
+| `credits`    | integer    | NOT NULL      | Credits included                  |
+| `active`     | boolean    | DEFAULT true  | Whether price is available        |
 
 ```sql
 CREATE TABLE prices (
@@ -295,12 +295,12 @@ CREATE POLICY "Users can view own transactions"
 
 ## Indexes Summary
 
-| Table | Index | Purpose |
-|-------|-------|---------|
-| subscriptions | user_id | Fast subscription lookup by user |
-| subscriptions | status | Filter active subscriptions |
-| processing_jobs | user_id | User's job history |
-| processing_jobs | status | Queue processing |
-| processing_jobs | created_at DESC | Recent jobs first |
-| credit_transactions | user_id | User's transaction history |
-| credit_transactions | created_at DESC | Recent transactions first |
+| Table               | Index           | Purpose                          |
+| ------------------- | --------------- | -------------------------------- |
+| subscriptions       | user_id         | Fast subscription lookup by user |
+| subscriptions       | status          | Filter active subscriptions      |
+| processing_jobs     | user_id         | User's job history               |
+| processing_jobs     | status          | Queue processing                 |
+| processing_jobs     | created_at DESC | Recent jobs first                |
+| credit_transactions | user_id         | User's transaction history       |
+| credit_transactions | created_at DESC | Recent transactions first        |

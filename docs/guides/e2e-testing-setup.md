@@ -1,6 +1,6 @@
 # E2E Testing Setup Guide
 
-This guide covers setting up and running Playwright E2E tests for the PixelPerfect application.
+This guide covers setting up and running Playwright E2E tests for the myimageupscaler.com application.
 
 ## Prerequisites
 

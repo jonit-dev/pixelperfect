@@ -54,7 +54,7 @@ while [[ $# -gt 0 ]]; do
             echo "  CLOUDFLARE_API_TOKEN   API token with Workers and Zone permissions"
             echo "  CLOUDFLARE_ACCOUNT_ID  Your Cloudflare account ID"
             echo "  CLOUDFLARE_ZONE_ID     Zone ID for your domain (for domain config)"
-            echo "  DOMAIN_NAME            Your domain (e.g., pixelperfect.app)"
+            echo "  DOMAIN_NAME            Your domain (e.g., myimageupscaler.com)"
             exit 0
             ;;
         *)

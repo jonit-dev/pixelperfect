@@ -12,18 +12,18 @@
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/app/api/checkout/route.ts
-/home/joao/projects/pixelperfect/app/api/portal/route.ts
-/home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts
-/home/joao/projects/pixelperfect/app/pricing/page.tsx
-/home/joao/projects/pixelperfect/app/dashboard/billing/page.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/PricingCard.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/SubscriptionStatus.tsx
-/home/joao/projects/pixelperfect/client/services/stripeService.ts
-/home/joao/projects/pixelperfect/server/stripe/stripeService.ts
-/home/joao/projects/pixelperfect/shared/config/stripe.ts
-/home/joao/projects/pixelperfect/supabase/migrations/20250120_create_subscriptions_table.sql
-/home/joao/projects/pixelperfect/docs/technical/systems/subscription-gaps.md
+/home/joao/projects/myimageupscaler.com/app/api/checkout/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/portal/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts
+/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
+/home/joao/projects/myimageupscaler.com/app/dashboard/billing/page.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/PricingCard.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/SubscriptionStatus.tsx
+/home/joao/projects/myimageupscaler.com/client/services/stripeService.ts
+/home/joao/projects/myimageupscaler.com/server/stripe/stripeService.ts
+/home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+/home/joao/projects/myimageupscaler.com/supabase/migrations/20250120_create_subscriptions_table.sql
+/home/joao/projects/myimageupscaler.com/docs/technical/systems/subscription-gaps.md
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -85,11 +85,11 @@ Subscribed users cannot upgrade or downgrade their plan within the application; 
 
 **Alternative Approaches Considered:**
 
-| Approach | Pros | Cons | Decision |
-|----------|------|------|----------|
-| Stripe Checkout for changes | Simpler implementation | No proration preview, external redirect | Rejected |
-| Stripe Portal only | Zero code changes | Poor UX, no in-app experience | Current state (rejected) |
-| Custom flow with proration | Full control, best UX | More implementation effort | **Selected** |
+| Approach                    | Pros                   | Cons                                    | Decision                 |
+| --------------------------- | ---------------------- | --------------------------------------- | ------------------------ |
+| Stripe Checkout for changes | Simpler implementation | No proration preview, external redirect | Rejected                 |
+| Stripe Portal only          | Zero code changes      | Poor UX, no in-app experience           | Current state (rejected) |
+| Custom flow with proration  | Full control, best UX  | More implementation effort              | **Selected**             |
 
 ### 2.2 Architecture Diagram
 
@@ -134,14 +134,14 @@ flowchart LR
 
 ### 2.3 Key Technical Decisions
 
-| Decision | Choice | Justification |
-|----------|--------|---------------|
-| **Proration behavior** | `create_prorations` | Standard Stripe behavior, immediate billing adjustment |
-| **Credit adjustment on upgrade** | Add credit difference immediately | Users upgrading to higher tier receive additional credits right away for better UX |
-| **Credit adjustment on downgrade** | Keep existing credits | Users retain credits on downgrade; next renewal provides new tier's allocation |
-| **Billing anchor** | Keep existing | Preserve user's billing date, avoid confusion |
-| **Payment collection** | `default_incomplete` | Allow payment failure handling |
-| **Subscription item update** | Replace single item | System uses one price per subscription |
+| Decision                           | Choice                            | Justification                                                                      |
+| ---------------------------------- | --------------------------------- | ---------------------------------------------------------------------------------- |
+| **Proration behavior**             | `create_prorations`               | Standard Stripe behavior, immediate billing adjustment                             |
+| **Credit adjustment on upgrade**   | Add credit difference immediately | Users upgrading to higher tier receive additional credits right away for better UX |
+| **Credit adjustment on downgrade** | Keep existing credits             | Users retain credits on downgrade; next renewal provides new tier's allocation     |
+| **Billing anchor**                 | Keep existing                     | Preserve user's billing date, avoid confusion                                      |
+| **Payment collection**             | `default_incomplete`              | Allow payment failure handling                                                     |
+| **Subscription item update**       | Replace single item               | System uses one price per subscription                                             |
 
 **Stripe API Methods Used:**
 
@@ -153,11 +153,13 @@ flowchart LR
 **No schema changes required.**
 
 Existing `subscriptions` table handles all plan change scenarios:
+
 - `price_id` updates to new plan
 - `status` remains `active`
 - `current_period_start/end` may shift based on proration
 
 Existing webhook handler `handleSubscriptionUpdate` already:
+
 - Upserts subscription with new `price_id`
 - Updates `profiles.subscription_tier` with new plan name
 
@@ -433,6 +435,7 @@ static async changePlan(
 ```
 
 **Justification:**
+
 - `previewPlanChange`: Uses `invoices.retrieveUpcoming` to show exact proration without making changes
 - `changePlan`: Uses `subscriptions.update` with `proration_behavior: 'create_prorations'` for standard Stripe billing behavior
 - `payment_behavior: 'error_if_incomplete'`: Fails fast if payment method has issues
@@ -457,10 +460,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // 1. Authenticate user
     const authHeader = request.headers.get('authorization');
     if (!authHeader?.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -470,12 +470,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { global: { headers: { Authorization: `Bearer ${token}` } } }
     );
 
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
     // 2. Parse request body
@@ -591,7 +591,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     };
 
     return NextResponse.json({ success: true, data: preview });
-
   } catch (error: unknown) {
     console.error('Preview change error:', error);
     const message = error instanceof Error ? error.message : 'Failed to preview plan change';
@@ -604,6 +603,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 ```
 
 **Justification:**
+
 - Reuses existing authentication pattern from checkout API
 - Returns structured proration data for UI display
 - Validates same-plan and no-subscription edge cases upfront
@@ -627,10 +627,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // 1. Authenticate user
     const authHeader = request.headers.get('authorization');
     if (!authHeader?.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -640,12 +637,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { global: { headers: { Authorization: `Bearer ${token}` } } }
     );
 
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
     // 2. Parse request body
@@ -729,7 +726,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         status: updatedSubscription.status,
       },
     });
-
   } catch (error: unknown) {
     console.error('Change plan error:', error);
 
@@ -741,7 +737,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           {
             success: false,
             error: stripeError.message,
-            code: 'PAYMENT_FAILED'
+            code: 'PAYMENT_FAILED',
           },
           { status: 402 }
         );
@@ -758,6 +754,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 ```
 
 **Justification:**
+
 - Uses `payment_behavior: 'error_if_incomplete'` to fail fast on payment issues
 - Returns minimal response; webhook handles DB updates
 - Specific handling for Stripe card errors (402 status)
@@ -930,6 +927,7 @@ export function PricingCard({
 ```
 
 **Justification:**
+
 - "Current Plan" badge clearly indicates active subscription
 - Upgrade/Downgrade text provides clear user intent
 - Disabled state prevents accidental clicks on current plan
@@ -1096,6 +1094,7 @@ export function PlanChangeModal({
 ```
 
 **Justification:**
+
 - Shows clear proration breakdown (credit, debit, net)
 - Maintains billing date context
 - Loading and error states for robust UX
@@ -1194,6 +1193,7 @@ const handleChangeSuccess = () => {
 ### Unit Tests
 
 **Files to Test:**
+
 - `app/api/subscription/preview-change/route.ts`
 - `app/api/subscription/change/route.ts`
 
@@ -1227,6 +1227,7 @@ describe('POST /api/subscription/change', () => {
 ### Integration Tests
 
 **Flows to Test:**
+
 1. Full upgrade journey (Hobby → Pro)
 2. Full downgrade journey (Pro → Hobby)
 3. Modal close/cancel flow
@@ -1234,14 +1235,14 @@ describe('POST /api/subscription/change', () => {
 
 ### Edge Cases
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| User clicks upgrade during webhook delay | API validates against Stripe, not local DB |
-| Payment method expired | 402 error with clear message, modal stays open |
-| User on trial attempts upgrade | Works - trial continues on new plan |
-| Rapid double-click on confirm | Button disabled after first click |
-| Network failure during preview | Error state with retry option |
-| Session expires mid-flow | Redirect to login, preserve intent |
+| Scenario                                 | Expected Behavior                              |
+| ---------------------------------------- | ---------------------------------------------- |
+| User clicks upgrade during webhook delay | API validates against Stripe, not local DB     |
+| Payment method expired                   | 402 error with clear message, modal stays open |
+| User on trial attempts upgrade           | Works - trial continues on new plan            |
+| Rapid double-click on confirm            | Button disabled after first click              |
+| Network failure during preview           | Error state with retry option                  |
+| Session expires mid-flow                 | Redirect to login, preserve intent             |
 
 ---
 
@@ -1266,12 +1267,14 @@ describe('POST /api/subscription/change', () => {
 ### Success Criteria
 
 **Metrics to Track:**
+
 - Plan change success rate (target: >95%)
 - Preview-to-confirm conversion rate
 - Average time in modal
 - Payment failure rate on changes
 
 **Logging:**
+
 - Log all plan change attempts with user ID, from/to plans
 - Log proration amounts for audit trail
 - Log any Stripe errors with full context
@@ -1279,6 +1282,7 @@ describe('POST /api/subscription/change', () => {
 ### Rollback Plan
 
 **If issues arise:**
+
 1. Disable `/api/subscription/change` endpoint (return 503)
 2. Remove `onPlanChange` prop from `PricingCard` (hide modal trigger)
 3. Users fall back to Stripe Portal for changes (existing behavior)
@@ -1286,6 +1290,7 @@ describe('POST /api/subscription/change', () => {
 **Database Rollback:** Not required - no schema changes.
 
 **Feature Flag Option:**
+
 ```typescript
 // In shared/config/feature-flags.ts
 export const FEATURE_FLAGS = {
@@ -1314,10 +1319,10 @@ export const FEATURE_FLAGS = {
       "monthlyPrice": 49
     },
     "proration": {
-      "immediateAmount": 15.00,
+      "immediateAmount": 15.0,
       "currency": "usd",
-      "creditAmount": 9.50,
-      "debitAmount": 24.50,
+      "creditAmount": 9.5,
+      "debitAmount": 24.5,
       "billingDate": "2025-01-02T00:00:00.000Z"
     },
     "changeType": "upgrade",

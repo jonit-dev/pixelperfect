@@ -4,14 +4,14 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/middleware.ts` - Current API-only middleware
-- `/home/joao/projects/pixelperfect/src/store/authStore.ts` - Client-side Zustand auth store
-- `/home/joao/projects/pixelperfect/src/lib/supabase/supabaseClient.ts` - Existing browser Supabase client
-- `/home/joao/projects/pixelperfect/src/components/pages/HomePageClient.tsx` - Landing page with broken redirect
-- `/home/joao/projects/pixelperfect/src/components/navigation/NavBar.tsx` - NavBar with loading state
-- `/home/joao/projects/pixelperfect/app/page.tsx` - Next.js landing page entry
-- `/home/joao/projects/pixelperfect/app/dashboard/page.tsx` - Dashboard page
-- `/home/joao/projects/pixelperfect/package.json` - Dependencies
+- `/home/joao/projects/myimageupscaler.com/middleware.ts` - Current API-only middleware
+- `/home/joao/projects/myimageupscaler.com/src/store/authStore.ts` - Client-side Zustand auth store
+- `/home/joao/projects/myimageupscaler.com/src/lib/supabase/supabaseClient.ts` - Existing browser Supabase client
+- `/home/joao/projects/myimageupscaler.com/src/components/pages/HomePageClient.tsx` - Landing page with broken redirect
+- `/home/joao/projects/myimageupscaler.com/src/components/navigation/NavBar.tsx` - NavBar with loading state
+- `/home/joao/projects/myimageupscaler.com/app/page.tsx` - Next.js landing page entry
+- `/home/joao/projects/myimageupscaler.com/app/dashboard/page.tsx` - Dashboard page
+- `/home/joao/projects/myimageupscaler.com/package.json` - Dependencies
 
 ### 1.2 Component & Dependency Overview
 

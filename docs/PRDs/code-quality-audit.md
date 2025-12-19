@@ -24,13 +24,13 @@ Produce a `.md` **implementation plan so clear and explicit that a Junior Engine
 
 ### 1.1 Files Analyzed
 
-- `src/components/pixelperfect/Workspace/Workspace.tsx`
-- `src/hooks/pixelperfect/useBatchQueue.ts`
+- `src/components/myimageupscaler.com/Workspace/Workspace.tsx`
+- `src/hooks/myimageupscaler.com/useBatchQueue.ts`
 - `src/store/authStore.ts`
 - `src/components/modal/auth/AuthenticationModal.tsx`
 - `src/components/modal/auth/LoginForm.tsx`
 - `src/components/modal/auth/RegisterForm.tsx`
-- `src/lib/pixelperfect/api-client.ts`
+- `src/lib/myimageupscaler.com/api-client.ts`
 
 ### 1.2 Component & Dependency Overview
 

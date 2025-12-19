@@ -1,6 +1,6 @@
 # Baselime Error Monitoring Setup Guide
 
-This guide walks you through setting up Baselime for error monitoring and observability in PixelPerfect.
+This guide walks you through setting up Baselime for error monitoring and observability in myimageupscaler.com.
 
 ## Table of Contents
 
@@ -41,7 +41,7 @@ Browser (React)              Server (API Routes)
 ## Prerequisites
 
 1. **Baselime Account**: [Sign up for free](https://console.baselime.io)
-2. **Project Setup**: PixelPerfect with packages installed:
+2. **Project Setup**: myimageupscaler.com with packages installed:
    - `@baselime/react-rum` (client-side)
    - `@baselime/edge-logger` (server-side)
 
@@ -51,7 +51,7 @@ Browser (React)              Server (API Routes)
 
 1. Go to [console.baselime.io](https://console.baselime.io)
 2. Sign up with GitHub or email
-3. Create a new environment (e.g., "pixelperfect-production")
+3. Create a new environment (e.g., "myimageupscaler.com-production")
 
 ### Step 2: Get API Keys
 
@@ -68,12 +68,14 @@ Browser (React)              Server (API Routes)
 This project uses split environment files:
 
 **`.env`** (public variables):
+
 ```bash
 # Baselime monitoring (client-side RUM)
 NEXT_PUBLIC_BASELIME_KEY=your-api-key-here
 ```
 
 **`.env.prod`** (server-side secrets):
+
 ```bash
 # Baselime monitoring (server-side)
 BASELIME_API_KEY=your-api-key-here
@@ -101,9 +103,7 @@ The `BaselimeProvider` component in `src/components/monitoring/BaselimeProvider.
 
 ```tsx
 // Already configured in src/components/ClientProviders.tsx
-<BaselimeProvider>
-  {children}
-</BaselimeProvider>
+<BaselimeProvider>{children}</BaselimeProvider>
 ```
 
 ### Server-Side (Manual)
@@ -123,7 +123,7 @@ export async function POST(request: Request) {
   try {
     logger.info('Processing upscale request', {
       userId: 'user-123',
-      imageSize: 1024
+      imageSize: 1024,
     });
 
     // Your logic here...
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
   } catch (error) {
     logger.error('Upscale failed', {
       error: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined
+      stack: error instanceof Error ? error.stack : undefined,
     });
     return Response.json({ error: 'Failed' }, { status: 500 });
   } finally {
@@ -186,6 +186,7 @@ const logger = createLogger(request, 'checkout-api', {
 ### Test Client-Side Errors
 
 1. Add a test error in any component:
+
    ```tsx
    useEffect(() => {
      throw new Error('Test Baselime error');
@@ -237,12 +238,12 @@ In development, logs are printed to console instead of sent to Baselime:
 
 ### Recommended Alerts
 
-| Alert | Condition | Channel |
-|-------|-----------|---------|
-| High error rate | >10 errors in 5 min | Slack |
-| New error type | First occurrence | Email |
-| LCP degradation | LCP > 4s | Slack |
-| API failure | 5xx errors > 5/min | Slack |
+| Alert           | Condition           | Channel |
+| --------------- | ------------------- | ------- |
+| High error rate | >10 errors in 5 min | Slack   |
+| New error type  | First occurrence    | Email   |
+| LCP degradation | LCP > 4s            | Slack   |
+| API failure     | 5xx errors > 5/min  | Slack   |
 
 ### Slack Integration
 
@@ -270,7 +271,8 @@ In development (`NODE_ENV=development`), Baselime is disabled by default. To ena
 
 ```tsx
 // In BaselimeProvider.tsx, remove the development check:
-if (!apiKey) {  // Remove: || process.env.NODE_ENV === 'development'
+if (!apiKey) {
+  // Remove: || process.env.NODE_ENV === 'development'
   return <>{children}</>;
 }
 ```
@@ -278,6 +280,7 @@ if (!apiKey) {  // Remove: || process.env.NODE_ENV === 'development'
 ### Quota exceeded
 
 Baselime free tier includes generous limits. If exceeded:
+
 1. Check for log spam (reduce verbose logging)
 2. Filter out non-critical logs
 3. Upgrade plan if needed
@@ -288,20 +291,20 @@ Baselime free tier includes generous limits. If exceeded:
 
 Creates a new logger instance.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `request` | `Request` | The incoming request object |
-| `namespace` | `string` | Identifier for the log source (e.g., 'upscale-api') |
-| `context` | `object` | Optional additional context to include in all logs |
+| Parameter   | Type      | Description                                         |
+| ----------- | --------- | --------------------------------------------------- |
+| `request`   | `Request` | The incoming request object                         |
+| `namespace` | `string`  | Identifier for the log source (e.g., 'upscale-api') |
+| `context`   | `object`  | Optional additional context to include in all logs  |
 
 ### `withLogging(namespace, handler)`
 
 Wraps an API handler with automatic logging.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `namespace` | `string` | Identifier for the log source |
-| `handler` | `function` | `(request, logger) => Promise<Response>` |
+| Parameter   | Type       | Description                              |
+| ----------- | ---------- | ---------------------------------------- |
+| `namespace` | `string`   | Identifier for the log source            |
+| `handler`   | `function` | `(request, logger) => Promise<Response>` |
 
 ## Resources
 

@@ -26,7 +26,7 @@ const TOP_KEYWORDS = [
   'image enhancer ai',
   'ai increase resolution',
   'upre image',
-  'ai to improve image quality'
+  'ai to improve image quality',
 ];
 
 // Domain extensions to check
@@ -34,21 +34,21 @@ const EXTENSIONS = ['.com', '.io', '.app', '.ai', '.co', '.dev', '.tech', '.tool
 
 // Template patterns for domain suggestions
 const DOMAIN_PATTERNS = [
-  (keyword) => keyword.replace(/\s+/g, '').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'ai').toLowerCase(),
-  (keyword) => `get${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'pro').toLowerCase(),
-  (keyword) => `my${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, '').replace('image', 'img').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, '').replace('photo', 'pic').toLowerCase(),
-  (keyword) => keyword.replace('ai ', '').replace(/\s+/g, '').toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}hq`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}lab`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}studio`.toLowerCase(),
-  (keyword) => `${keyword.replace(/\s+/g, '')}online`.toLowerCase(),
-  (keyword) => `the${keyword.replace(/\s+/g, '')}`.toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'x').toLowerCase(),
-  (keyword) => keyword.replace(/\s+/g, 'ify').toLowerCase()
+  keyword => keyword.replace(/\s+/g, '').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'ai').toLowerCase(),
+  keyword => `get${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'pro').toLowerCase(),
+  keyword => `my${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, '').replace('image', 'img').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, '').replace('photo', 'pic').toLowerCase(),
+  keyword => keyword.replace('ai ', '').replace(/\s+/g, '').toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}hq`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}lab`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}studio`.toLowerCase(),
+  keyword => `${keyword.replace(/\s+/g, '')}online`.toLowerCase(),
+  keyword => `the${keyword.replace(/\s+/g, '')}`.toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'x').toLowerCase(),
+  keyword => keyword.replace(/\s+/g, 'ify').toLowerCase(),
 ];
 
 function generateDomainSuggestions() {
@@ -69,25 +69,25 @@ function generateDomainSuggestions() {
 }
 
 function checkDomainAvailability(domain) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const whois = spawn('whois', [domain]);
     let output = '';
     let errorOutput = '';
 
-    whois.stdout.on('data', (data) => {
+    whois.stdout.on('data', data => {
       output += data.toString();
     });
 
-    whois.stderr.on('data', (data) => {
+    whois.stderr.on('data', data => {
       errorOutput += data.toString();
     });
 
-    whois.on('close', (code) => {
+    whois.on('close', code => {
       const available = isDomainAvailable(output, errorOutput, domain);
       resolve({
         domain,
         available,
-        reason: available ? getAvailableReason(output, errorOutput) : getTakenReason(output)
+        reason: available ? getAvailableReason(output, errorOutput) : getTakenReason(output),
       });
     });
 
@@ -97,7 +97,7 @@ function checkDomainAvailability(domain) {
       resolve({
         domain,
         available: 'unknown',
-        reason: 'Timeout - checking failed'
+        reason: 'Timeout - checking failed',
       });
     }, 10000);
   });
@@ -117,7 +117,7 @@ function isDomainAvailable(output, errorOutput, domain) {
     'status: available',
     'no data found',
     'domain status: no object',
-    'object does not exist'
+    'object does not exist',
   ];
 
   // Check output first
@@ -144,7 +144,7 @@ function isDomainAvailable(output, errorOutput, domain) {
     'status: connect',
     'status: active',
     'registered on',
-    'expires on'
+    'expires on',
   ];
 
   for (const indicator of takenIndicators) {
@@ -194,7 +194,9 @@ async function checkDomainsBatch(domains, batchSize = 5) {
     const batch = domains.slice(i, i + batchSize);
     const batchPromises = batch.map(domain => checkDomainAvailability(domain));
 
-    process.stdout.write(`\r📊 Progress: ${Math.min(i + batchSize, domains.length)}/${domains.length} (${Math.round(Math.min(i + batchSize, domains.length) / domains.length * 100)}%)`);
+    process.stdout.write(
+      `\r📊 Progress: ${Math.min(i + batchSize, domains.length)}/${domains.length} (${Math.round((Math.min(i + batchSize, domains.length) / domains.length) * 100)}%)`
+    );
 
     const batchResults = await Promise.all(batchPromises);
     results.push(...batchResults);
@@ -244,7 +246,7 @@ function displayResults(results) {
   console.log(`✅ Available: ${available.length}`);
   console.log(`❌ Taken: ${taken.length}`);
   console.log(`❓ Unknown: ${unknown.length}`);
-  console.log(`📈 Success Rate: ${Math.round(available.length / results.length * 100)}%`);
+  console.log(`📈 Success Rate: ${Math.round((available.length / results.length) * 100)}%`);
 
   if (taken.length > 0) {
     console.log('\n💡 SOME TAKEN DOMAINS (for reference):');
@@ -266,7 +268,7 @@ function saveResults(results, filename = 'domain-check-results.json') {
 }
 
 async function main() {
-  console.log('🚀 PixelPerfect Domain Availability Checker');
+  console.log('🚀 myimageupscaler.com Domain Availability Checker');
   console.log('==========================================\n');
 
   console.log('📝 Generating domain suggestions from top keywords...');
@@ -295,8 +297,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch(console.error);
 }
 
-export {
-  generateDomainSuggestions,
-  checkDomainAvailability,
-  checkDomainsBatch
-};
+export { generateDomainSuggestions, checkDomainAvailability, checkDomainsBatch };

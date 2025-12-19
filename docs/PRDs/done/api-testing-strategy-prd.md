@@ -6,14 +6,14 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/playwright.config.ts`
-- `/home/joao/projects/pixelperfect/package.json`
-- `/home/joao/projects/pixelperfect/app/api/health/route.ts`
-- `/home/joao/projects/pixelperfect/app/api/checkout/route.ts`
-- `/home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts`
-- `/home/joao/projects/pixelperfect/tests/e2e/auth.spec.ts`
-- `/home/joao/projects/pixelperfect/docs/PRDs/cloudflare-migration-prd.md`
-- `/home/joao/projects/pixelperfect/docs/PRDs/stripe-implementation-prd.md`
+- `/home/joao/projects/myimageupscaler.com/playwright.config.ts`
+- `/home/joao/projects/myimageupscaler.com/package.json`
+- `/home/joao/projects/myimageupscaler.com/app/api/health/route.ts`
+- `/home/joao/projects/myimageupscaler.com/app/api/checkout/route.ts`
+- `/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts`
+- `/home/joao/projects/myimageupscaler.com/tests/e2e/auth.spec.ts`
+- `/home/joao/projects/myimageupscaler.com/docs/PRDs/cloudflare-migration-prd.md`
+- `/home/joao/projects/myimageupscaler.com/docs/PRDs/stripe-implementation-prd.md`
 
 ### 1.2 Component & Dependency Overview
 

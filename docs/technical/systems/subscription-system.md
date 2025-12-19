@@ -29,7 +29,7 @@
 
 ### 1.1 Business Model
 
-PixelPerfect uses a **subscription-only payment model** where users pay monthly for a fixed allocation of credits. Credits are used to process images.
+myimageupscaler.com uses a **subscription-only payment model** where users pay monthly for a fixed allocation of credits. Credits are used to process images.
 
 **Key Principles:**
 

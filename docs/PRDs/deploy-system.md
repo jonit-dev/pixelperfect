@@ -79,6 +79,7 @@ The current `yarn deploy` command only builds and deploys the main app, missing 
 - **Fail-fast behavior** - any step failure aborts deployment
 
 **Alternative Considered - TypeScript via tsx:**
+
 - Pros: Type safety, better error handling, consistent with codebase
 - Cons: Extra dependency (tsx), slower startup, overkill for shell operations
 - **Decision:** Bash chosen for consistency with existing `scripts/setup/` pattern and zero new dependencies
@@ -107,13 +108,13 @@ flowchart LR
 
 ### 2.3 Key Technical Decisions
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Language | Bash | Consistency with `scripts/setup/`, no new deps |
-| Error handling | `set -euo pipefail` | Fail-fast, catch undefined vars |
-| Migrations | MCP tool or `supabase db push` | Use available tooling |
-| Verification | curl health check + optional e2e | Fast feedback |
-| Rollback | Manual via Cloudflare dashboard | Automatic rollback complex, low ROI for MVP |
+| Decision       | Choice                           | Rationale                                      |
+| -------------- | -------------------------------- | ---------------------------------------------- |
+| Language       | Bash                             | Consistency with `scripts/setup/`, no new deps |
+| Error handling | `set -euo pipefail`              | Fail-fast, catch undefined vars                |
+| Migrations     | MCP tool or `supabase db push`   | Use available tooling                          |
+| Verification   | curl health check + optional e2e | Fast feedback                                  |
+| Rollback       | Manual via Cloudflare dashboard  | Automatic rollback complex, low ROI for MVP    |
 
 ### 2.4 Data Model Changes
 
@@ -211,7 +212,7 @@ export DEPLOY_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 # Get deployment target (production URL)
 get_deploy_url() {
-    echo "${NEXT_PUBLIC_BASE_URL:-https://pixelperfect.ai}"
+    echo "${NEXT_PUBLIC_BASE_URL:-https://myimageupscaler.com.ai}"
 }
 
 # Check if we're on the correct branch
@@ -478,7 +479,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
-PROJECT_NAME="${CF_PROJECT_NAME:-pixelperfect}"
+PROJECT_NAME="${CF_PROJECT_NAME:-myimageupscaler.com}"
 
 deploy_app() {
     local project_root="$(dirname "$(dirname "$SCRIPT_DIR")")"
@@ -659,7 +660,7 @@ fi
 ```bash
 #!/bin/bash
 # ============================================================================
-# PixelPerfect Deployment Orchestrator
+# myimageupscaler.com Deployment Orchestrator
 # ============================================================================
 # Orchestrates complete deployment: preflight → build → migrations → deploy → verify
 #
@@ -700,7 +701,7 @@ SKIP_VERIFY=false
 
 show_help() {
     cat << EOF
-${BOLD}PixelPerfect Deployment Orchestrator${NC}
+${BOLD}myimageupscaler.com Deployment Orchestrator${NC}
 
 Usage: ./scripts/deploy.sh [options]
 
@@ -758,7 +759,7 @@ done
 
 echo ""
 echo -e "${CYAN}╔════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║${NC}            ${BOLD}PixelPerfect Deployment${NC}                         ${CYAN}║${NC}"
+echo -e "${CYAN}║${NC}            ${BOLD}myimageupscaler.com Deployment${NC}                         ${CYAN}║${NC}"
 echo -e "${CYAN}║${NC}            $(date '+%Y-%m-%d %H:%M:%S')                           ${CYAN}║${NC}"
 echo -e "${CYAN}╚════════════════════════════════════════════════════════════╝${NC}"
 echo ""
@@ -888,24 +889,24 @@ echo ""
 
 ### Manual Testing
 
-| Step | Command | Expected |
-|------|---------|----------|
-| Preflight only | `./scripts/deploy/01-preflight.sh` | Passes with valid env |
-| Build only | `./scripts/deploy/02-build.sh` | Creates `.vercel/output/static` |
-| Full deploy | `yarn deploy` | Deploys all components |
-| Skip migrations | `yarn deploy --skip-migrations` | Skips DB step |
-| Skip tests | `yarn deploy --skip-tests` | Faster build |
+| Step            | Command                            | Expected                        |
+| --------------- | ---------------------------------- | ------------------------------- |
+| Preflight only  | `./scripts/deploy/01-preflight.sh` | Passes with valid env           |
+| Build only      | `./scripts/deploy/02-build.sh`     | Creates `.vercel/output/static` |
+| Full deploy     | `yarn deploy`                      | Deploys all components          |
+| Skip migrations | `yarn deploy --skip-migrations`    | Skips DB step                   |
+| Skip tests      | `yarn deploy --skip-tests`         | Faster build                    |
 
 ### Edge Cases
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| Missing `.env.client` | Preflight fails with clear message |
+| Scenario               | Expected Behavior                         |
+| ---------------------- | ----------------------------------------- |
+| Missing `.env.client`  | Preflight fails with clear message        |
 | Wrangler not logged in | Preflight fails, prompts `wrangler login` |
-| TypeScript errors | Build phase fails, no deployment |
-| Migration failure | Aborts before app deploy |
-| Health check fails | Warns but deployment already complete |
-| Uncommitted changes | Warning only, continues |
+| TypeScript errors      | Build phase fails, no deployment          |
+| Migration failure      | Aborts before app deploy                  |
+| Health check fails     | Warns but deployment already complete     |
+| Uncommitted changes    | Warning only, continues                   |
 
 ---
 

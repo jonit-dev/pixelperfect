@@ -1,6 +1,6 @@
 # Implementation Plan - E2E Testing Strategy & Hotspots
 
-🧠 Principal Architect Mode: Engaged. Analyzing testing coverage gaps for PixelPerfect SaaS...
+🧠 Principal Architect Mode: Engaged. Analyzing testing coverage gaps for myimageupscaler.com SaaS...
 
 ## 1. Context Analysis
 
@@ -191,7 +191,7 @@ sequenceDiagram
 
 ### Unit vs E2E
 
-- **Unit:** `src/lib/pixelperfect/prompt-utils.ts` (Prompt generation logic), `src/utils/image-validation.ts`.
+- **Unit:** `src/lib/myimageupscaler.com/prompt-utils.ts` (Prompt generation logic), `src/utils/image-validation.ts`.
 - **E2E:** The full user flow (Clicking buttons, waiting for async results, navigation).
 
 ### Edge Cases (Markdown Table)

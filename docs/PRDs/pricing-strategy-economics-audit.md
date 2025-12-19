@@ -34,11 +34,11 @@ This PRD audits the current subscription pricing against actual infrastructure c
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.utils.ts
-/home/joao/projects/pixelperfect/shared/config/stripe.ts
-/home/joao/projects/pixelperfect/client/components/pixelperfect/Pricing.tsx
-/home/joao/projects/pixelperfect/docs/business-model-canvas/competitor-analysis.md
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.utils.ts
+/home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+/home/joao/projects/myimageupscaler.com/client/components/myimageupscaler.com/Pricing.tsx
+/home/joao/projects/myimageupscaler.com/docs/business-model-canvas/competitor-analysis.md
 ```
 
 ### 1.2 Current Subscription Configuration
@@ -145,23 +145,23 @@ BUSINESS PLAN (with Real-ESRGAN)
 
 ### 3.1 Market Comparison (Verified 2025)
 
-| Competitor                 | Plan      | Price  | Credits/Images | $/Image  |
-| -------------------------- | --------- | ------ | -------------- | -------- |
-| **PixelPerfect (Current)** | Hobby     | $19    | 200            | $0.095   |
-| **PixelPerfect (Current)** | Pro       | $49    | 1,000          | $0.049   |
-| **PixelPerfect (Current)** | Business  | $149   | 5,000          | $0.030   |
-| Let's Enhance              | Personal  | $9     | 100            | $0.090   |
-| Let's Enhance              | Personal+ | $24    | 300            | $0.080   |
-| Let's Enhance              | Business  | $72    | 1,000          | $0.072   |
-| Icons8                     | Limited   | $9     | 100            | $0.090   |
-| Icons8                     | Unlimited | $99    | Unlimited      | Variable |
-| Magnific AI                | Pro       | $39    | ~200 normal    | $0.195   |
-| Magnific AI                | Premium   | Higher | ~550 normal    | ~$0.12   |
-| Topaz Labs                 | Gigapixel | $12/mo | Unlimited      | Variable |
+| Competitor                        | Plan      | Price  | Credits/Images | $/Image  |
+| --------------------------------- | --------- | ------ | -------------- | -------- |
+| **myimageupscaler.com (Current)** | Hobby     | $19    | 200            | $0.095   |
+| **myimageupscaler.com (Current)** | Pro       | $49    | 1,000          | $0.049   |
+| **myimageupscaler.com (Current)** | Business  | $149   | 5,000          | $0.030   |
+| Let's Enhance                     | Personal  | $9     | 100            | $0.090   |
+| Let's Enhance                     | Personal+ | $24    | 300            | $0.080   |
+| Let's Enhance                     | Business  | $72    | 1,000          | $0.072   |
+| Icons8                            | Limited   | $9     | 100            | $0.090   |
+| Icons8                            | Unlimited | $99    | Unlimited      | Variable |
+| Magnific AI                       | Pro       | $39    | ~200 normal    | $0.195   |
+| Magnific AI                       | Premium   | Higher | ~550 normal    | ~$0.12   |
+| Topaz Labs                        | Gigapixel | $12/mo | Unlimited      | Variable |
 
 ### 3.2 Positioning Gap
 
-**Current PixelPerfect pricing is competitively positioned** for the market, BUT:
+**Current myimageupscaler.com pricing is competitively positioned** for the market, BUT:
 
 - Competitors use lower-cost models ($0.001-0.003/image)
 - Magnific AI (similar premium pricing) charges $39/month for 200 images
@@ -570,13 +570,11 @@ features: [
 **Immediate action needed from stakeholders:**
 
 1. **Which model to use as default?**
-
    - [ ] Real-ESRGAN (cheap, good quality)
    - [ ] Nano Banana Pro (expensive, premium quality)
    - [ ] Hybrid (both, user choice)
 
 2. **Pricing approach?**
-
    - [ ] Option A: Lower costs, keep current prices
    - [ ] Option B: Keep premium model, raise prices 3-5x
    - [ ] Option C: Hybrid tiers (recommended)

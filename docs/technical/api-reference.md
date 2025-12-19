@@ -1,11 +1,11 @@
 # API Reference
 
-PixelPerfect REST API documentation for image processing and account management.
+myimageupscaler.com REST API documentation for image processing and account management.
 
 ## Base URL
 
 ```
-Production: https://pixelperfect.app/api
+Production: https://myimageupscaler.com/api
 Development: http://localhost:3000/api
 ```
 
@@ -106,8 +106,8 @@ Process and upscale an image.
   "data": {
     "jobId": "uuid",
     "status": "completed",
-    "inputUrl": "https://cdn.pixelperfect.app/input/...",
-    "outputUrl": "https://cdn.pixelperfect.app/output/...",
+    "inputUrl": "https://cdn.myimageupscaler.com/input/...",
+    "outputUrl": "https://cdn.myimageupscaler.com/output/...",
     "creditsUsed": 1,
     "processingTime": 45.2,
     "metadata": {
@@ -369,8 +369,8 @@ Create Stripe checkout session.
 ```json
 {
   "priceId": "price_xxx",
-  "successUrl": "https://pixelperfect.app/dashboard?success=true",
-  "cancelUrl": "https://pixelperfect.app/pricing"
+  "successUrl": "https://myimageupscaler.com/dashboard?success=true",
+  "cancelUrl": "https://myimageupscaler.com/pricing"
 }
 ```
 

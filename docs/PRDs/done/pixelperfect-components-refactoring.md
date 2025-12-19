@@ -1,11 +1,11 @@
-# PixelPerfect Components Refactoring Plan
+# myimageupscaler.com Components Refactoring Plan
 
 ## Context Analysis
 
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/client/components/pixelperfect/
+/home/joao/projects/myimageupscaler.com/client/components/myimageupscaler.com/
   ├── Button.tsx (72 lines)
   ├── Dropzone.tsx (228 lines)
   ├── FileSizeUpgradePrompt.tsx (54 lines)
@@ -21,7 +21,7 @@
   ├── Workspace/QueueStrip.tsx (109 lines)
   └── Workspace/UpgradeSuccessBanner.tsx (78 lines)
 
-/home/joao/projects/pixelperfect/shared/config/
+/home/joao/projects/myimageupscaler.com/shared/config/
   └── subscription.utils.ts (698 lines)
 ```
 
@@ -56,7 +56,7 @@ graph TD
 
     subgraph Shared["Shared Config"]
         SU[subscription.utils.ts]
-        PT[pixelperfect.types.ts]
+        PT[myimageupscaler.com.types.ts]
     end
 
     BS --> US
@@ -168,7 +168,7 @@ sequenceDiagram
 
 ## 3. Detailed Implementation Spec
 
-### A. `client/components/pixelperfect/ui/ToggleButtonGroup.tsx` (NEW)
+### A. `client/components/myimageupscaler.com/ui/ToggleButtonGroup.tsx` (NEW)
 
 **Purpose:** Reusable toggle button group for mode selection, scale selection, format selection.
 
@@ -207,7 +207,7 @@ export const ToggleButtonGroup = <T extends string>({
 
 ---
 
-### B. `client/components/pixelperfect/Workspace/BatchSidebar/ModeSelector.tsx` (NEW)
+### B. `client/components/myimageupscaler.com/Workspace/BatchSidebar/ModeSelector.tsx` (NEW)
 
 **Purpose:** Handle operation mode selection (upscale, enhance, both, custom).
 
@@ -251,7 +251,7 @@ export const ModeSelector: React.FC<IModeSelectorProps> = ({
 
 ---
 
-### C. `client/components/pixelperfect/Workspace/BatchSidebar/EnhancementPanel.tsx` (NEW)
+### C. `client/components/myimageupscaler.com/Workspace/BatchSidebar/EnhancementPanel.tsx` (NEW)
 
 **Purpose:** Enhancement aspect toggles when mode is 'enhance'.
 
@@ -276,7 +276,7 @@ export const EnhancementPanel: React.FC<IEnhancementPanelProps> = ({
 
 ---
 
-### D. `client/components/pixelperfect/Workspace/BatchSidebar/ModelSelector.tsx` (NEW)
+### D. `client/components/myimageupscaler.com/Workspace/BatchSidebar/ModelSelector.tsx` (NEW)
 
 **Purpose:** AI model dropdown with nano-banana-pro configuration panel.
 
@@ -299,7 +299,7 @@ export const ModelSelector: React.FC<IModelSelectorProps> = props => {
 
 ---
 
-### E. `client/components/pixelperfect/Workspace/BatchSidebar/UpscaleFactorSelector.tsx` (NEW)
+### E. `client/components/myimageupscaler.com/Workspace/BatchSidebar/UpscaleFactorSelector.tsx` (NEW)
 
 **Purpose:** Scale factor selection (2x, 4x, 8x).
 
@@ -342,7 +342,7 @@ export const UpscaleFactorSelector: React.FC<IUpscaleFactorSelectorProps> = ({
 
 ---
 
-### F. `client/components/pixelperfect/Workspace/BatchSidebar/FeatureToggles.tsx` (NEW)
+### F. `client/components/myimageupscaler.com/Workspace/BatchSidebar/FeatureToggles.tsx` (NEW)
 
 **Purpose:** Text preservation and face enhancement toggles.
 
@@ -364,7 +364,7 @@ export const FeatureToggles: React.FC<IFeatureTogglesProps> = props => {
 
 ---
 
-### G. `client/components/pixelperfect/Workspace/BatchSidebar/ActionPanel.tsx` (NEW)
+### G. `client/components/myimageupscaler.com/Workspace/BatchSidebar/ActionPanel.tsx` (NEW)
 
 **Purpose:** Process, download, and clear buttons.
 
@@ -390,7 +390,7 @@ export const ActionPanel: React.FC<IActionPanelProps> = props => {
 
 ---
 
-### H. `client/components/pixelperfect/Workspace/BatchSidebar.tsx` (REFACTOR)
+### H. `client/components/myimageupscaler.com/Workspace/BatchSidebar.tsx` (REFACTOR)
 
 **Changes Needed:**
 
@@ -496,7 +496,7 @@ export function processFiles(files: File[], isPaidUser: boolean): IProcessFilesR
 
 ---
 
-### J. `client/components/pixelperfect/Dropzone.tsx` (REFACTOR)
+### J. `client/components/myimageupscaler.com/Dropzone.tsx` (REFACTOR)
 
 **Changes Needed:**
 
@@ -606,7 +606,7 @@ export const Button: React.FC<IButtonProps> = (props) => { ... };
 
 ### Phase 1: Foundation (Shared Components)
 
-- [ ] Create `client/components/pixelperfect/ui/` directory
+- [ ] Create `client/components/myimageupscaler.com/ui/` directory
 - [ ] Implement `ToggleButtonGroup.tsx` (~50 lines)
 - [ ] Implement `ToggleButton.tsx` if needed (~30 lines)
 - [ ] Create `client/utils/file-validation.ts` (~35 lines)

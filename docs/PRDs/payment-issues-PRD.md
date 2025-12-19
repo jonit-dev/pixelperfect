@@ -4,23 +4,23 @@
 
 ### 1.1 Files Analyzed
 
-- /home/joao/projects/pixelperfect/.cursor/rules/planning-documents.mdc
-- /home/joao/projects/pixelperfect/app/api/checkout/route.ts
-- /home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts
-- /home/joao/projects/pixelperfect/app/api/subscription/change/route.ts
-- /home/joao/projects/pixelperfect/app/api/subscription/preview-change/route.ts
-- /home/joao/projects/pixelperfect/app/api/subscriptions/cancel/route.ts
-- /home/joao/projects/pixelperfect/shared/config/stripe.ts
-- /home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-- /home/joao/projects/pixelperfect/shared/config/subscription.utils.ts
-- /home/joao/projects/pixelperfect/server/services/SubscriptionCredits.ts
-- /home/joao/projects/pixelperfect/server/services/subscription-sync.service.ts
-- /home/joao/projects/pixelperfect/client/services/stripeService.ts
-- /home/joao/projects/pixelperfect/app/pricing/page.tsx
-- /home/joao/projects/pixelperfect/client/components/stripe/CreditPackSelector.tsx
-- /home/joao/projects/pixelperfect/app/success/page.tsx
-- /home/joao/projects/pixelperfect/app/subscription/confirmed/page.tsx
-- /home/joao/projects/pixelperfect/supabase/migrations/20251205_update_credit_rpcs.sql
+- /home/joao/projects/myimageupscaler.com/.cursor/rules/planning-documents.mdc
+- /home/joao/projects/myimageupscaler.com/app/api/checkout/route.ts
+- /home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts
+- /home/joao/projects/myimageupscaler.com/app/api/subscription/change/route.ts
+- /home/joao/projects/myimageupscaler.com/app/api/subscription/preview-change/route.ts
+- /home/joao/projects/myimageupscaler.com/app/api/subscriptions/cancel/route.ts
+- /home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+- /home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+- /home/joao/projects/myimageupscaler.com/shared/config/subscription.utils.ts
+- /home/joao/projects/myimageupscaler.com/server/services/SubscriptionCredits.ts
+- /home/joao/projects/myimageupscaler.com/server/services/subscription-sync.service.ts
+- /home/joao/projects/myimageupscaler.com/client/services/stripeService.ts
+- /home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
+- /home/joao/projects/myimageupscaler.com/client/components/stripe/CreditPackSelector.tsx
+- /home/joao/projects/myimageupscaler.com/app/success/page.tsx
+- /home/joao/projects/myimageupscaler.com/app/subscription/confirmed/page.tsx
+- /home/joao/projects/myimageupscaler.com/supabase/migrations/20251205_update_credit_rpcs.sql
 
 ### 1.2 Component & Dependency Overview
 

@@ -8,51 +8,51 @@
 
 ### 1.1 Files Analyzed
 
-| Path | Purpose |
-|------|---------|
-| `/app/` | Next.js App Router (pages + API routes mixed) |
-| `/src/components/` | React components |
-| `/src/hooks/` | React hooks |
-| `/src/store/` | Zustand stores |
-| `/src/lib/` | Mixed client/server code (confusing!) |
-| `/src/types/` | TypeScript types |
-| `/src/validation/` | Zod schemas |
-| `/src/config/` | Environment config |
-| `/content/` | Blog MDX files |
-| `/middleware.ts` | Next.js middleware |
+| Path               | Purpose                                       |
+| ------------------ | --------------------------------------------- |
+| `/app/`            | Next.js App Router (pages + API routes mixed) |
+| `/src/components/` | React components                              |
+| `/src/hooks/`      | React hooks                                   |
+| `/src/store/`      | Zustand stores                                |
+| `/src/lib/`        | Mixed client/server code (confusing!)         |
+| `/src/types/`      | TypeScript types                              |
+| `/src/validation/` | Zod schemas                                   |
+| `/src/config/`     | Environment config                            |
+| `/content/`        | Blog MDX files                                |
+| `/middleware.ts`   | Next.js middleware                            |
 
 ### 1.2 Current Structure (Confusing)
 
 ```mermaid
 graph TD
-    ROOT["/pixelperfect"]
+    ROOT["/myimageupscaler.com"]
     ROOT --> APP["app/"]
     ROOT --> SRC["src/"]
     ROOT --> CONTENT["content/"]
-    
+
     SRC --> COMP["components/"]
     SRC --> HOOKS["hooks/"]
     SRC --> LIB["lib/ ❌ MIXED"]
     SRC --> STORE["store/"]
     SRC --> SRCAPP["app/ ❌ VESTIGIAL"]
-    
+
     LIB --> SERVICES["services/ (server)"]
     LIB --> STRIPE["stripe/ (server)"]
     LIB --> SUPABASE["supabase/ (server)"]
-    LIB --> PIXELPERFECT["pixelperfect/ (mixed??)"]
-    
+    LIB --> PIXELPERFECT["myimageupscaler.com/ (mixed??)"]
+
     style LIB fill:#ff6b6b
     style SRCAPP fill:#ff6b6b
 ```
 
 ### 1.3 Problems
 
-| Issue | Why It's Bad |
-|-------|--------------|
-| `app/` and `src/` both at root | Unclear which is "the code" |
-| `src/lib/` has server + client code | Can't tell what runs where |
-| `src/app/` exists with only CLAUDE.md | Vestigial, confusing |
-| No clear client/server boundary | Easy to accidentally import server code in client |
+| Issue                                 | Why It's Bad                                      |
+| ------------------------------------- | ------------------------------------------------- |
+| `app/` and `src/` both at root        | Unclear which is "the code"                       |
+| `src/lib/` has server + client code   | Can't tell what runs where                        |
+| `src/app/` exists with only CLAUDE.md | Vestigial, confusing                              |
+| No clear client/server boundary       | Easy to accidentally import server code in client |
 
 ---
 
@@ -61,7 +61,7 @@ graph TD
 ### 2.1 New Structure (Clear)
 
 ```
-pixelperfect/
+myimageupscaler.com/
 ├── client/                    # ← FRONTEND (browser code)
 │   ├── components/
 │   │   ├── auth/
@@ -72,12 +72,12 @@ pixelperfect/
 │   │   ├── modal/
 │   │   ├── navigation/
 │   │   ├── pages/
-│   │   ├── pixelperfect/
+│   │   ├── myimageupscaler.com/
 │   │   ├── seo/
 │   │   ├── stripe/
 │   │   └── ...
 │   ├── hooks/
-│   │   ├── pixelperfect/
+│   │   ├── myimageupscaler.com/
 │   │   ├── useGoogleSignIn.ts
 │   │   └── ...
 │   ├── store/
@@ -148,56 +148,56 @@ graph TD
         SHARED["shared/"]
         APP["app/"]
     end
-    
+
     subgraph "client/ - Browser Code"
         C_COMP["components/"]
         C_HOOKS["hooks/"]
         C_STORE["store/"]
         C_STYLES["styles/"]
     end
-    
+
     subgraph "server/ - Node/Edge Code"
         S_SERVICES["services/"]
         S_SUPA["supabase/"]
         S_STRIPE["stripe/"]
         S_ANALYTICS["analytics/"]
     end
-    
+
     subgraph "shared/ - Universal"
         SH_TYPES["types/"]
         SH_VALID["validation/"]
         SH_CONFIG["config/"]
     end
-    
+
     subgraph "app/ - Next.js Routing"
         A_API["api/"]
         A_PAGES["pages"]
     end
-    
+
     CLIENT --> C_COMP
     CLIENT --> C_HOOKS
     CLIENT --> C_STORE
     CLIENT --> C_STYLES
-    
+
     SERVER --> S_SERVICES
     SERVER --> S_SUPA
     SERVER --> S_STRIPE
     SERVER --> S_ANALYTICS
-    
+
     SHARED --> SH_TYPES
     SHARED --> SH_VALID
     SHARED --> SH_CONFIG
-    
+
     APP --> A_API
     APP --> A_PAGES
-    
+
     A_API -.->|imports| SERVER
     A_API -.->|imports| SHARED
     A_PAGES -.->|imports| CLIENT
     A_PAGES -.->|imports| SHARED
     CLIENT -.->|imports| SHARED
     SERVER -.->|imports| SHARED
-    
+
     style CLIENT fill:#4dabf7,color:#000
     style SERVER fill:#69db7c,color:#000
     style SHARED fill:#ffd43b,color:#000
@@ -206,24 +206,24 @@ graph TD
 
 ### 2.3 Import Rules
 
-| From | Can Import |
-|------|------------|
-| `client/` | `shared/` only |
-| `server/` | `shared/` only |
-| `app/api/` | `server/`, `shared/` |
+| From          | Can Import           |
+| ------------- | -------------------- |
+| `client/`     | `shared/` only       |
+| `server/`     | `shared/` only       |
+| `app/api/`    | `server/`, `shared/` |
 | `app/(pages)` | `client/`, `shared/` |
 
 **❌ NEVER:** `client/` importing from `server/` or vice versa
 
 ### 2.4 Key Decisions
 
-| Decision | Rationale |
-|----------|-----------|
-| `client/server/shared` at root | Maximum clarity - see folder = know context |
-| `app/` stays at root | Next.js requires this folder name |
-| `app/` is a thin layer | Routes only import/call, logic lives in client/server |
-| Delete `src/` entirely | No more confusion about what's source code |
-| Merge `environment/` → `scripts/` | Both contain setup scripts |
+| Decision                          | Rationale                                             |
+| --------------------------------- | ----------------------------------------------------- |
+| `client/server/shared` at root    | Maximum clarity - see folder = know context           |
+| `app/` stays at root              | Next.js requires this folder name                     |
+| `app/` is a thin layer            | Routes only import/call, logic lives in client/server |
+| Delete `src/` entirely            | No more confusion about what's source code            |
+| Merge `environment/` → `scripts/` | Both contain setup scripts                            |
 
 ---
 
@@ -231,35 +231,35 @@ graph TD
 
 ### 3.1 File Moves
 
-| Current Path | New Path |
-|--------------|----------|
-| `src/components/` | `client/components/` |
-| `src/hooks/` | `client/hooks/` |
-| `src/store/` | `client/store/` |
-| `src/index.css` | `client/styles/index.css` |
-| `src/lib/services/` | `server/services/` |
-| `src/lib/supabase/` | `server/supabase/` |
-| `src/lib/stripe/` | `server/stripe/` |
-| `src/lib/analytics/` | `server/analytics/` |
-| `src/lib/monitoring/` | `server/monitoring/` |
-| `src/lib/middleware/` | `server/middleware/` |
-| `src/lib/rateLimit.ts` | `server/rateLimit.ts` |
-| `src/lib/blog.ts` | `server/blog.ts` |
-| `src/types/` | `shared/types/` |
-| `src/validation/` | `shared/validation/` |
-| `src/config/` | `shared/config/` |
-| `src/utils/` | `shared/utils/` |
-| `middleware.ts` | `middleware.ts` (stays at root - Next.js requirement) |
-| `src/app/` | **DELETE** (vestigial) |
-| `environment/` | Merge into `scripts/setup/` |
+| Current Path           | New Path                                              |
+| ---------------------- | ----------------------------------------------------- |
+| `src/components/`      | `client/components/`                                  |
+| `src/hooks/`           | `client/hooks/`                                       |
+| `src/store/`           | `client/store/`                                       |
+| `src/index.css`        | `client/styles/index.css`                             |
+| `src/lib/services/`    | `server/services/`                                    |
+| `src/lib/supabase/`    | `server/supabase/`                                    |
+| `src/lib/stripe/`      | `server/stripe/`                                      |
+| `src/lib/analytics/`   | `server/analytics/`                                   |
+| `src/lib/monitoring/`  | `server/monitoring/`                                  |
+| `src/lib/middleware/`  | `server/middleware/`                                  |
+| `src/lib/rateLimit.ts` | `server/rateLimit.ts`                                 |
+| `src/lib/blog.ts`      | `server/blog.ts`                                      |
+| `src/types/`           | `shared/types/`                                       |
+| `src/validation/`      | `shared/validation/`                                  |
+| `src/config/`          | `shared/config/`                                      |
+| `src/utils/`           | `shared/utils/`                                       |
+| `middleware.ts`        | `middleware.ts` (stays at root - Next.js requirement) |
+| `src/app/`             | **DELETE** (vestigial)                                |
+| `environment/`         | Merge into `scripts/setup/`                           |
 
 ### 3.2 Special Cases
 
-| Current | Decision |
-|---------|----------|
-| `src/lib/pixelperfect/` | Analyze contents - split between client/server |
-| `src/components/analytics/` | Move to `client/components/analytics/` (client-side tracking UI) |
-| `src/components/monitoring/` | Move to `client/components/monitoring/` |
+| Current                        | Decision                                                         |
+| ------------------------------ | ---------------------------------------------------------------- |
+| `src/lib/myimageupscaler.com/` | Analyze contents - split between client/server                   |
+| `src/components/analytics/`    | Move to `client/components/analytics/` (client-side tracking UI) |
+| `src/components/monitoring/`   | Move to `client/components/monitoring/`                          |
 
 ---
 
@@ -292,6 +292,7 @@ graph TD
 ### 4.2 Import Updates (Examples)
 
 **Before:**
+
 ```typescript
 // In app/api/upscale/route.ts
 import { upscaleSchema } from '@/validation/upscale.schema';
@@ -300,6 +301,7 @@ import { createLogger } from '@/lib/monitoring/logger';
 ```
 
 **After:**
+
 ```typescript
 // In app/api/upscale/route.ts
 import { upscaleSchema } from '@shared/validation/upscale.schema';
@@ -308,6 +310,7 @@ import { createLogger } from '@server/monitoring/logger';
 ```
 
 **Before:**
+
 ```typescript
 // In app/layout.tsx
 import { ClientProviders } from '../src/components/ClientProviders';
@@ -316,6 +319,7 @@ import '../src/index.css';
 ```
 
 **After:**
+
 ```typescript
 // In app/layout.tsx
 import { ClientProviders } from '@client/components/ClientProviders';
@@ -326,6 +330,7 @@ import '@client/styles/index.css';
 ### 4.3 ESLint/Prettier
 
 Update paths in:
+
 - `package.json` scripts
 - `eslint.config.js`
 - Any lint-staged config
@@ -402,12 +407,12 @@ Update paths in:
 
 ### Edge Cases
 
-| Scenario | Verification |
-|----------|--------------|
+| Scenario        | Verification                           |
+| --------------- | -------------------------------------- |
 | Dynamic imports | Search for `import()` and verify paths |
-| CSS imports | Verify `@client/styles/` resolves |
-| Test fixtures | Update test import paths |
-| Middleware | Verify `middleware.ts` imports work |
+| CSS imports     | Verify `@client/styles/` resolves      |
+| Test fixtures   | Update test import paths               |
+| Middleware      | Verify `middleware.ts` imports work    |
 
 ---
 
@@ -428,9 +433,9 @@ Update paths in:
 ## 8. Rollback Plan
 
 If issues arise:
+
 1. Git revert the restructuring commits
 2. Restore original `src/` and `app/` structure
 3. Revert `tsconfig.json` changes
 
 **Recommendation:** Do this in a feature branch, test thoroughly before merging.
-

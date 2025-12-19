@@ -4,12 +4,12 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/app/seo/keywords.csv`
-- `/home/joao/projects/pixelperfect/app/seo/top_keywords.csv`
-- `/home/joao/projects/pixelperfect/app/seo/data/tools.json`
-- `/home/joao/projects/pixelperfect/lib/seo/keyword-mappings.ts`
-- `/home/joao/projects/pixelperfect/lib/seo/data-loader.ts`
-- `/home/joao/projects/pixelperfect/app/(pseo)/*/[slug]/page.tsx`
+- `/home/joao/projects/myimageupscaler.com/app/seo/keywords.csv`
+- `/home/joao/projects/myimageupscaler.com/app/seo/top_keywords.csv`
+- `/home/joao/projects/myimageupscaler.com/app/seo/data/tools.json`
+- `/home/joao/projects/myimageupscaler.com/lib/seo/keyword-mappings.ts`
+- `/home/joao/projects/myimageupscaler.com/lib/seo/data-loader.ts`
+- `/home/joao/projects/myimageupscaler.com/app/(pseo)/*/[slug]/page.tsx`
 
 ### 1.2 Current pSEO Architecture
 
@@ -344,4 +344,4 @@ interface IInteractiveTool extends IBasePSEOPage {
 | Remove.bg  | Background removal | 20M+            |
 | Canva      | Full suite         | 100M+           |
 
-**Opportunity**: None of these competitors have PixelPerfect's AI upscaling quality. Interactive tools serve as traffic magnets that funnel to our differentiated core product.
+**Opportunity**: None of these competitors have myimageupscaler.com's AI upscaling quality. Interactive tools serve as traffic magnets that funnel to our differentiated core product.

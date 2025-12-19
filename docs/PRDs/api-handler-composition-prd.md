@@ -6,18 +6,18 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/middleware.ts` - Main Next.js middleware
-- `/home/joao/projects/pixelperfect/server/rateLimit.ts` - Rate limiting implementation
-- `/home/joao/projects/pixelperfect/server/middleware/getAuthenticatedUser.ts` - User extraction helper
-- `/home/joao/projects/pixelperfect/server/monitoring/logger.ts` - Baselime logging utilities
-- `/home/joao/projects/pixelperfect/shared/utils/errors.ts` - Error handling utilities
-- `/home/joao/projects/pixelperfect/shared/validation/upscale.schema.ts` - Zod schema example
-- `/home/joao/projects/pixelperfect/app/api/upscale/route.ts` - Full-featured route example
-- `/home/joao/projects/pixelperfect/app/api/checkout/route.ts` - Payment route
-- `/home/joao/projects/pixelperfect/app/api/portal/route.ts` - Billing portal route
-- `/home/joao/projects/pixelperfect/app/api/analytics/event/route.ts` - Analytics route
-- `/home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts` - Webhook handler
-- `/home/joao/projects/pixelperfect/app/api/protected/example/route.ts` - Example protected route
+- `/home/joao/projects/myimageupscaler.com/middleware.ts` - Main Next.js middleware
+- `/home/joao/projects/myimageupscaler.com/server/rateLimit.ts` - Rate limiting implementation
+- `/home/joao/projects/myimageupscaler.com/server/middleware/getAuthenticatedUser.ts` - User extraction helper
+- `/home/joao/projects/myimageupscaler.com/server/monitoring/logger.ts` - Baselime logging utilities
+- `/home/joao/projects/myimageupscaler.com/shared/utils/errors.ts` - Error handling utilities
+- `/home/joao/projects/myimageupscaler.com/shared/validation/upscale.schema.ts` - Zod schema example
+- `/home/joao/projects/myimageupscaler.com/app/api/upscale/route.ts` - Full-featured route example
+- `/home/joao/projects/myimageupscaler.com/app/api/checkout/route.ts` - Payment route
+- `/home/joao/projects/myimageupscaler.com/app/api/portal/route.ts` - Billing portal route
+- `/home/joao/projects/myimageupscaler.com/app/api/analytics/event/route.ts` - Analytics route
+- `/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts` - Webhook handler
+- `/home/joao/projects/myimageupscaler.com/app/api/protected/example/route.ts` - Example protected route
 
 ### 1.2 Component & Dependency Overview
 
@@ -57,6 +57,7 @@ graph TD
 ### 1.3 Current Behavior Summary
 
 **Strengths (What Exists):**
+
 - Next.js middleware handles JWT verification and cookie-based auth
 - Three-tier rate limiting (public: 10/10s, authenticated: 50/10s, upscale: 5/60s)
 - Security headers applied globally (CSP, X-Frame-Options, etc.)
@@ -65,6 +66,7 @@ graph TD
 - Baselime logging with namespace support
 
 **Weaknesses (Repeated Patterns):**
+
 1. **Auth extraction duplicated** - Every protected route extracts X-User-Id manually
 2. **Validation inconsistent** - Some routes use Zod, others do manual checks
 3. **Logging boilerplate** - Every route creates logger, wraps in try-catch, flushes in finally
@@ -74,13 +76,13 @@ graph TD
 
 **Code Duplication Analysis:**
 
-| Pattern | Routes Using It | Lines per Route |
-|---------|-----------------|-----------------|
-| Logger creation + flush | 4 routes | ~15 lines |
-| Auth extraction | 6 routes | ~5 lines |
-| Try-catch wrapper | All routes | ~10 lines |
-| Zod validation + error handling | 2 routes | ~20 lines |
-| Rate limit check + 429 response | 1 route (manual) | ~15 lines |
+| Pattern                         | Routes Using It  | Lines per Route |
+| ------------------------------- | ---------------- | --------------- |
+| Logger creation + flush         | 4 routes         | ~15 lines       |
+| Auth extraction                 | 6 routes         | ~5 lines        |
+| Try-catch wrapper               | All routes       | ~10 lines       |
+| Zod validation + error handling | 2 routes         | ~20 lines       |
+| Rate limit check + 429 response | 1 route (manual) | ~15 lines       |
 
 **Estimated Savings:** 50-70 lines per route with proper composition.
 
@@ -103,12 +105,12 @@ The API codebase suffers from significant code duplication and inconsistent patt
 
 **Alternatives Considered:**
 
-| Approach | Pros | Cons | Decision |
-|----------|------|------|----------|
-| **Express-style middleware chain** | Familiar pattern | Not native to Next.js App Router | Rejected |
-| **tRPC** | Type-safe, composable | Large dependency, learning curve | Rejected for now |
-| **Hono** | Lightweight, middleware-friendly | Another framework to learn | Rejected |
-| **Custom composition** | Native to Next.js, zero deps | Requires careful design | **Selected** |
+| Approach                           | Pros                             | Cons                             | Decision         |
+| ---------------------------------- | -------------------------------- | -------------------------------- | ---------------- |
+| **Express-style middleware chain** | Familiar pattern                 | Not native to Next.js App Router | Rejected         |
+| **tRPC**                           | Type-safe, composable            | Large dependency, learning curve | Rejected for now |
+| **Hono**                           | Lightweight, middleware-friendly | Another framework to learn       | Rejected         |
+| **Custom composition**             | Native to Next.js, zero deps     | Requires careful design          | **Selected**     |
 
 ### 2.2 Architecture Diagram
 
@@ -143,13 +145,13 @@ flowchart TD
 
 ### 2.3 Key Technical Decisions
 
-| Decision | Rationale |
-|----------|-----------|
-| **Composition over inheritance** | Functional approach aligns with project patterns |
-| **Generic type inference** | Full TypeScript support for validated request bodies |
-| **Optional layers** | Each middleware concern is opt-in via config |
-| **Request ID in headers** | Standard `X-Request-Id` header for tracing |
-| **Idempotency via header** | Standard `Idempotency-Key` header pattern |
+| Decision                         | Rationale                                            |
+| -------------------------------- | ---------------------------------------------------- |
+| **Composition over inheritance** | Functional approach aligns with project patterns     |
+| **Generic type inference**       | Full TypeScript support for validated request bodies |
+| **Optional layers**              | Each middleware concern is opt-in via config         |
+| **Request ID in headers**        | Standard `X-Request-Id` header for tracing           |
+| **Idempotency via header**       | Standard `Idempotency-Key` header pattern            |
 
 ### 2.4 Data Model Changes
 
@@ -237,6 +239,7 @@ sequenceDiagram
 **New file** - Main composition utility
 
 **Responsibilities:**
+
 - Generate and inject request ID
 - Extract authenticated user from middleware headers
 - Run Zod validation if schema provided
@@ -389,7 +392,6 @@ export function withHandler<TBody = unknown, TResult = unknown>(
         { success: true, data: result, requestId },
         { status: 200, headers: { 'X-Request-Id': requestId } }
       );
-
     } catch (error) {
       const durationMs = Date.now() - startTime;
 
@@ -407,7 +409,12 @@ export function withHandler<TBody = unknown, TResult = unknown>(
 
       // Handle AppError (custom errors with status codes)
       if (error instanceof Error && 'code' in error && 'statusCode' in error) {
-        const appError = error as { code: string; statusCode: number; message: string; details?: unknown };
+        const appError = error as {
+          code: string;
+          statusCode: number;
+          message: string;
+          details?: unknown;
+        };
         logger.error('Application error', {
           requestId,
           code: appError.code,
@@ -439,7 +446,6 @@ export function withHandler<TBody = unknown, TResult = unknown>(
         { requestId }
       );
       return NextResponse.json(body, { status, headers: { 'X-Request-Id': requestId } });
-
     } finally {
       await logger.flush();
     }
@@ -453,9 +459,8 @@ export function withGetHandler<TResult = unknown>(
   config: Omit<IHandlerConfig, 'schema'>,
   handler: (req: NextRequest, ctx: IApiContext) => Promise<TResult>
 ) {
-  return withHandler<undefined, TResult>(
-    { ...config, schema: undefined },
-    (req, ctx) => handler(req, ctx)
+  return withHandler<undefined, TResult>({ ...config, schema: undefined }, (req, ctx) =>
+    handler(req, ctx)
   );
 }
 ```
@@ -469,6 +474,7 @@ export function withGetHandler<TResult = unknown>(
 **New file** - Idempotency key handling for mutations
 
 **Responsibilities:**
+
 - Extract `Idempotency-Key` header
 - Store results in memory (or external cache)
 - Return cached result for duplicate requests
@@ -482,14 +488,17 @@ import { NextRequest, NextResponse } from 'next/server';
 const idempotencyCache = new Map<string, { response: unknown; timestamp: number }>();
 
 // Cleanup old entries every 5 minutes
-setInterval(() => {
-  const oneHourAgo = Date.now() - 60 * 60 * 1000;
-  for (const [key, entry] of idempotencyCache.entries()) {
-    if (entry.timestamp < oneHourAgo) {
-      idempotencyCache.delete(key);
+setInterval(
+  () => {
+    const oneHourAgo = Date.now() - 60 * 60 * 1000;
+    for (const [key, entry] of idempotencyCache.entries()) {
+      if (entry.timestamp < oneHourAgo) {
+        idempotencyCache.delete(key);
+      }
     }
-  }
-}, 5 * 60 * 1000);
+  },
+  5 * 60 * 1000
+);
 
 export interface IIdempotencyConfig {
   /** Header name to use (default: 'Idempotency-Key') */
@@ -553,6 +562,7 @@ export function withIdempotency<T extends (...args: never[]) => Promise<NextResp
 **New file** - Request ID utilities
 
 **Responsibilities:**
+
 - Generate unique request IDs
 - Extract from incoming headers
 - Propagate to outgoing requests
@@ -597,6 +607,7 @@ export function createOutgoingHeaders(requestId: string): Record<string, string>
 **New file** - Centralized validation schemas
 
 **Responsibilities:**
+
 - Export all Zod schemas from one location
 - Ensure consistent validation patterns
 
@@ -649,12 +660,14 @@ export type IPortalInput = z.infer<typeof portalSchema>;
 ### G. Refactored `app/api/upscale/route.ts` (Example Migration)
 
 **Changes Needed:**
+
 - Remove manual auth extraction
 - Remove manual try-catch wrapper
 - Remove manual logger creation
 - Use `withHandler` composition
 
 **Before (150 lines):**
+
 ```typescript
 // Current implementation with ~50 lines of boilerplate
 ```
@@ -666,7 +679,11 @@ import { NextRequest } from 'next/server';
 import { withHandler, IApiContext } from '@server/api/withHandler';
 import { upscaleSchema, IUpscaleInput } from '@shared/validation/schemas';
 import { upscaleRateLimit } from '@server/rateLimit';
-import { ImageGenerationService, InsufficientCreditsError, AIGenerationError } from '@server/services/image-generation.service';
+import {
+  ImageGenerationService,
+  InsufficientCreditsError,
+  AIGenerationError,
+} from '@server/services/image-generation.service';
 import { trackServerEvent } from '@server/analytics';
 import { serverEnv } from '@shared/config/env';
 
@@ -756,21 +773,21 @@ export const POST = withHandler<IUpscaleInput, { imageData: string; creditsRemai
 
 **Functions to cover:**
 
-| Function | Test Cases |
-|----------|------------|
-| `withHandler` | Auth required/optional, schema validation, error handling |
-| `getRequestId` | Generate new, extract from header |
-| `withIdempotency` | Cache hit, cache miss, TTL expiry |
+| Function          | Test Cases                                                |
+| ----------------- | --------------------------------------------------------- |
+| `withHandler`     | Auth required/optional, schema validation, error handling |
+| `getRequestId`    | Generate new, extract from header                         |
+| `withIdempotency` | Cache hit, cache miss, TTL expiry                         |
 
 **Error scenarios:**
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| Missing auth (requireAuth: true) | 401 with requestId |
-| Invalid body (schema provided) | 400 with validation errors |
-| Handler throws ZodError | 400 with validation errors |
-| Handler throws AppError | Custom status code |
-| Handler throws Error | 500 with requestId |
+| Scenario                         | Expected Behavior          |
+| -------------------------------- | -------------------------- |
+| Missing auth (requireAuth: true) | 401 with requestId         |
+| Invalid body (schema provided)   | 400 with validation errors |
+| Handler throws ZodError          | 400 with validation errors |
+| Handler throws AppError          | Custom status code         |
+| Handler throws Error             | 500 with requestId         |
 
 ### Integration Tests
 
@@ -795,13 +812,13 @@ export const POST = withHandler<IUpscaleInput, { imageData: string; creditsRemai
 
 ### Edge Cases
 
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| Request ID already in header | Use existing ID (propagate) |
-| Empty request body with schema | Validation error |
-| GET request with schema | Schema ignored |
-| Rate limiter throws | 500 error (not 429) |
-| Logger flush fails | Request still completes |
+| Scenario                       | Expected Behavior           |
+| ------------------------------ | --------------------------- |
+| Request ID already in header   | Use existing ID (propagate) |
+| Empty request body with schema | Validation error            |
+| GET request with schema        | Schema ignored              |
+| Rate limiter throws            | 500 error (not 429)         |
+| Logger flush fails             | Request still completes     |
 
 ---
 
@@ -824,16 +841,19 @@ export const POST = withHandler<IUpscaleInput, { imageData: string; creditsRemai
 ### Success Criteria
 
 **Metrics:**
+
 - Request ID present in 100% of API responses
 - Validation error rate unchanged (no regressions)
 - p99 latency < 5ms increase from wrapper overhead
 
 **Logs:**
+
 - All log entries include `requestId` field
 - Error logs include stack traces
 - Duration logged for all completed requests
 
 **Benchmarks:**
+
 - `withHandler` adds < 2ms overhead per request
 - Memory footprint unchanged (no leaks from closures)
 
@@ -849,13 +869,13 @@ export const POST = withHandler<IUpscaleInput, { imageData: string; creditsRemai
 
 ### Not In Scope (But Worth Tracking)
 
-| Feature | Reason to Defer |
-|---------|-----------------|
+| Feature                       | Reason to Defer                                                 |
+| ----------------------------- | --------------------------------------------------------------- |
 | **Distributed rate limiting** | In-memory works for now; needs Cloudflare KV for multi-instance |
-| **Request body logging** | Privacy concerns; needs PII redaction first |
-| **Automatic retry logic** | Complex; better handled client-side |
-| **OpenTelemetry tracing** | Overkill for current scale |
-| **API versioning middleware** | No breaking changes planned |
+| **Request body logging**      | Privacy concerns; needs PII redaction first                     |
+| **Automatic retry logic**     | Complex; better handled client-side                             |
+| **OpenTelemetry tracing**     | Overkill for current scale                                      |
+| **API versioning middleware** | No breaking changes planned                                     |
 
 ### Dependencies on Other Systems
 

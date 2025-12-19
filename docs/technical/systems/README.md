@@ -1,6 +1,6 @@
 # Systems Documentation
 
-Detailed documentation for PixelPerfect's subsystems.
+Detailed documentation for myimageupscaler.com's subsystems.
 
 ## Overview
 

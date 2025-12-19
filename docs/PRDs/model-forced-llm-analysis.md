@@ -4,15 +4,15 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/server/services/llm-image-analyzer.ts`
-- `/home/joao/projects/pixelperfect/server/services/llm-image-analyzer.types.ts`
-- `/home/joao/projects/pixelperfect/server/services/model-registry.ts`
-- `/home/joao/projects/pixelperfect/server/services/model-registry.types.ts`
-- `/home/joao/projects/pixelperfect/app/api/analyze-image/route.ts`
-- `/home/joao/projects/pixelperfect/app/api/upscale/route.ts`
-- `/home/joao/projects/pixelperfect/shared/config/model-costs.config.ts`
-- `/home/joao/projects/pixelperfect/client/utils/prompt-utils.ts`
-- `/home/joao/projects/pixelperfect/shared/validation/upscale.schema.ts`
+- `/home/joao/projects/myimageupscaler.com/server/services/llm-image-analyzer.ts`
+- `/home/joao/projects/myimageupscaler.com/server/services/llm-image-analyzer.types.ts`
+- `/home/joao/projects/myimageupscaler.com/server/services/model-registry.ts`
+- `/home/joao/projects/myimageupscaler.com/server/services/model-registry.types.ts`
+- `/home/joao/projects/myimageupscaler.com/app/api/analyze-image/route.ts`
+- `/home/joao/projects/myimageupscaler.com/app/api/upscale/route.ts`
+- `/home/joao/projects/myimageupscaler.com/shared/config/model-costs.config.ts`
+- `/home/joao/projects/myimageupscaler.com/client/utils/prompt-utils.ts`
+- `/home/joao/projects/myimageupscaler.com/shared/validation/upscale.schema.ts`
 
 ### 1.2 Component & Dependency Overview
 

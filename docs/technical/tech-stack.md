@@ -1,6 +1,6 @@
 # Technology Stack
 
-Complete technology stack for PixelPerfect AI Image Enhancer.
+Complete technology stack for myimageupscaler.com AI Image Enhancer.
 
 ## Stack Overview
 

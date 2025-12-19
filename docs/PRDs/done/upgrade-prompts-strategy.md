@@ -5,19 +5,19 @@
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.types.ts
-/home/joao/projects/pixelperfect/client/hooks/useLowCreditWarning.ts
-/home/joao/projects/pixelperfect/client/components/stripe/OutOfCreditsModal.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/CreditsDisplay.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/CreditPackSelector.tsx
-/home/joao/projects/pixelperfect/client/hooks/pixelperfect/useBatchQueue.ts
-/home/joao/projects/pixelperfect/client/components/pixelperfect/Workspace/Workspace.tsx
-/home/joao/projects/pixelperfect/client/components/pixelperfect/Workspace/BatchSidebar.tsx
-/home/joao/projects/pixelperfect/app/upscaler/page.tsx
-/home/joao/projects/pixelperfect/app/dashboard/page.tsx
-/home/joao/projects/pixelperfect/app/pricing/page.tsx
-/home/joao/projects/pixelperfect/app/dashboard/billing/page.tsx
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.types.ts
+/home/joao/projects/myimageupscaler.com/client/hooks/useLowCreditWarning.ts
+/home/joao/projects/myimageupscaler.com/client/components/stripe/OutOfCreditsModal.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/CreditsDisplay.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/CreditPackSelector.tsx
+/home/joao/projects/myimageupscaler.com/client/hooks/myimageupscaler.com/useBatchQueue.ts
+/home/joao/projects/myimageupscaler.com/client/components/myimageupscaler.com/Workspace/Workspace.tsx
+/home/joao/projects/myimageupscaler.com/client/components/myimageupscaler.com/Workspace/BatchSidebar.tsx
+/home/joao/projects/myimageupscaler.com/app/upscaler/page.tsx
+/home/joao/projects/myimageupscaler.com/app/dashboard/page.tsx
+/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
+/home/joao/projects/myimageupscaler.com/app/dashboard/billing/page.tsx
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -192,7 +192,7 @@ sequenceDiagram
 
 ## 3. Detailed Implementation Spec
 
-### A. `client/components/pixelperfect/Workspace/CreditCostPreview.tsx` (NEW)
+### A. `client/components/myimageupscaler.com/Workspace/CreditCostPreview.tsx` (NEW)
 
 **Purpose:** Display estimated credit cost for current batch configuration.
 
@@ -284,7 +284,7 @@ export function InsufficientCreditsModal({
 
 ---
 
-### C. `client/components/pixelperfect/Workspace/UpgradeSuccessBanner.tsx` (NEW)
+### C. `client/components/myimageupscaler.com/Workspace/UpgradeSuccessBanner.tsx` (NEW)
 
 **Purpose:** Post-success CTA shown once after first successful upscale.
 
@@ -336,7 +336,7 @@ export function UpgradeSuccessBanner({ processedCount, onDismiss, hasSubscriptio
 
 ---
 
-### D. `client/components/pixelperfect/FileSizeUpgradePrompt.tsx` (NEW)
+### D. `client/components/myimageupscaler.com/FileSizeUpgradePrompt.tsx` (NEW)
 
 **Purpose:** Shown when free user drops file exceeding 5MB limit.
 
@@ -362,7 +362,7 @@ export function FileSizeUpgradePrompt({ fileSize, onDismiss }: IProps) {
 
 ---
 
-### E. Modify `client/components/pixelperfect/Workspace/BatchSidebar.tsx`
+### E. Modify `client/components/myimageupscaler.com/Workspace/BatchSidebar.tsx`
 
 **Changes Needed:**
 
@@ -422,7 +422,7 @@ const handleProcessClick = () => {
 
 ---
 
-### F. Modify `client/components/pixelperfect/Dropzone.tsx`
+### F. Modify `client/components/myimageupscaler.com/Dropzone.tsx`
 
 **Changes Needed:** Add file size validation with upgrade prompt for free users.
 

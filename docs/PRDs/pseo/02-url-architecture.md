@@ -14,7 +14,7 @@
 
 ## Overview
 
-This document defines the URL architecture, routing patterns, and dynamic page generation strategy for PixelPerfect's programmatic SEO implementation.
+This document defines the URL architecture, routing patterns, and dynamic page generation strategy for myimageupscaler.com's programmatic SEO implementation.
 
 ---
 
@@ -26,7 +26,7 @@ This document defines the URL architecture, routing patterns, and dynamic page g
 | ------------------ | --------------------------------- | --------------------------------------- |
 | **Human-readable** | URLs should describe content      | `/tools/ai-image-upscaler` not `/t/123` |
 | **Keyword-rich**   | Include target keywords naturally | `/guides/how-to-fix-blurry-photos`      |
-| **Hierarchical**   | Category → Page structure         | `/compare/pixelperfect-vs-topaz`        |
+| **Hierarchical**   | Category → Page structure         | `/compare/myimageupscaler.com-vs-topaz` |
 | **Consistent**     | Same pattern across categories    | `/[category]/[slug]`                    |
 | **Lowercase**      | All URLs lowercase with hyphens   | `/use-cases/ecommerce-product-photos`   |
 
@@ -51,7 +51,7 @@ Rules:
 ### 2.1 Full URL Tree
 
 ```
-PixelPerfect pSEO URL Architecture
+myimageupscaler.com pSEO URL Architecture
 ├── /tools/                           # Primary Tools Category
 │   ├── page.tsx                      # Hub: /tools
 │   └── [slug]/
@@ -111,15 +111,15 @@ PixelPerfect pSEO URL Architecture
 │   ├── page.tsx                      # Hub: /compare
 │   └── [slug]/
 │       └── page.tsx                  # Dynamic: /compare/[slug]
-│       ├── pixelperfect-vs-topaz-gigapixel
-│       ├── pixelperfect-vs-upscale-media
-│       ├── pixelperfect-vs-vanceai
-│       ├── pixelperfect-vs-bigjpg
-│       ├── pixelperfect-vs-lets-enhance
-│       ├── pixelperfect-vs-remini
-│       ├── pixelperfect-vs-waifu2x
-│       ├── pixelperfect-vs-imgupscaler
-│       ├── pixelperfect-vs-deep-image
+│       ├── myimageupscaler.com-vs-topaz-gigapixel
+│       ├── myimageupscaler.com-vs-upscale-media
+│       ├── myimageupscaler.com-vs-vanceai
+│       ├── myimageupscaler.com-vs-bigjpg
+│       ├── myimageupscaler.com-vs-lets-enhance
+│       ├── myimageupscaler.com-vs-remini
+│       ├── myimageupscaler.com-vs-waifu2x
+│       ├── myimageupscaler.com-vs-imgupscaler
+│       ├── myimageupscaler.com-vs-deep-image
 │       ├── free-vs-paid-upscalers
 │       ├── online-vs-offline-upscalers
 │       ├── ai-vs-traditional-upscaling
@@ -277,10 +277,10 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
       title: tool.metaTitle,
       description: tool.metaDescription,
       type: 'website',
-      url: `https://pixelperfect.app/tools/${slug}`,
+      url: `https://myimageupscaler.com/tools/${slug}`,
       images: [
         {
-          url: tool.ogImage || 'https://pixelperfect.app/og/tools-default.png',
+          url: tool.ogImage || 'https://myimageupscaler.com/og/tools-default.png',
           width: 1200,
           height: 630,
           alt: tool.title,
@@ -293,7 +293,7 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
       description: tool.metaDescription,
     },
     alternates: {
-      canonical: `https://pixelperfect.app/tools/${slug}`,
+      canonical: `https://myimageupscaler.com/tools/${slug}`,
     },
     robots: {
       index: true,
@@ -335,10 +335,10 @@ import { getAllTools } from '@/lib/pseo/data-loader';
 import CategoryHub from '@/components/pseo/CategoryHub';
 
 export const metadata: Metadata = {
-  title: 'AI Image Tools - Upscaler, Enhancer & More | PixelPerfect',
+  title: 'AI Image Tools - Upscaler, Enhancer & More | myimageupscaler.com',
   description: 'Discover our suite of AI-powered image tools. Upscale, enhance, restore, and optimize your photos with cutting-edge technology. Free to try.',
   alternates: {
-    canonical: 'https://pixelperfect.app/tools',
+    canonical: 'https://myimageupscaler.com/tools',
   },
 };
 
@@ -755,7 +755,7 @@ export default function NotFound() {
 
 ```typescript
 // src/lib/pseo/url-utils.ts
-const BASE_URL = 'https://pixelperfect.app';
+const BASE_URL = 'https://myimageupscaler.com';
 
 export function generateCanonicalUrl(category: string, slug: string): string {
   return `${BASE_URL}/${category}/${slug}`;
@@ -827,20 +827,17 @@ export function generateSlug(title: string): string {
 ### Created Infrastructure (2025-12-01)
 
 1. **URL Utilities** (`lib/seo/url-utils.ts`)
-
    - Canonical URL generation
    - Slug validation and generation
    - Category helpers and constants
    - Category display names and descriptions
 
 2. **pSEO Page Types** (`lib/seo/pseo-types.ts`)
-
    - Complete type definitions for all page categories
    - Tool, Format, Scale, Use Case, Comparison, Alternative, Guide, Free pages
    - Supporting interfaces for features, FAQs, steps, etc.
 
 3. **Data Loader Module** (`lib/seo/data-loader.ts`)
-
    - React cache-based data loading
    - Slug generators for all categories
    - Page data loaders for all categories
@@ -848,7 +845,6 @@ export function generateSlug(title: string): string {
    - Temporary implementation using keyword mappings
 
 4. **Next.js Routes** (`app/(pseo)/`)
-
    - Created route group structure for clean URLs
    - Implemented dynamic [slug] routes for all categories
    - Hub pages for each category
@@ -856,7 +852,6 @@ export function generateSlug(title: string): string {
    - Static params generation at build time
 
 5. **Redirects** (`next.config.js`)
-
    - Legacy URL redirects (/upscale → /tools/ai-image-upscaler)
    - Singular to plural category redirects
    - Permanent (301) redirects for SEO

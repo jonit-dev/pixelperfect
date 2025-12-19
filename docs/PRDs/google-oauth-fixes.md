@@ -5,15 +5,15 @@
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/docs/authentication/google-oauth-setup.md
-/home/joao/projects/pixelperfect/client/hooks/useGoogleSignIn.ts
-/home/joao/projects/pixelperfect/client/components/form/GoogleSignInButton.tsx
-/home/joao/projects/pixelperfect/client/components/form/SocialLoginButton.tsx
-/home/joao/projects/pixelperfect/client/components/auth/AuthErrorHandler.tsx
-/home/joao/projects/pixelperfect/shared/config/env.ts
-/home/joao/projects/pixelperfect/.env.client.example
-/home/joao/projects/pixelperfect/tests/e2e/auth.e2e.spec.ts
-/home/joao/projects/pixelperfect/tests/pages/LoginPage.ts
+/home/joao/projects/myimageupscaler.com/docs/authentication/google-oauth-setup.md
+/home/joao/projects/myimageupscaler.com/client/hooks/useGoogleSignIn.ts
+/home/joao/projects/myimageupscaler.com/client/components/form/GoogleSignInButton.tsx
+/home/joao/projects/myimageupscaler.com/client/components/form/SocialLoginButton.tsx
+/home/joao/projects/myimageupscaler.com/client/components/auth/AuthErrorHandler.tsx
+/home/joao/projects/myimageupscaler.com/shared/config/env.ts
+/home/joao/projects/myimageupscaler.com/.env.client.example
+/home/joao/projects/myimageupscaler.com/tests/e2e/auth.e2e.spec.ts
+/home/joao/projects/myimageupscaler.com/tests/pages/LoginPage.ts
 ```
 
 ### 1.2 Component & Dependency Overview

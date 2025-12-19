@@ -40,7 +40,7 @@ This report analyzes the codebase to identify hotspots violating software design
 
 **✅ RESOLVED:** Security configuration has been centralized in `shared/config/security.ts`. CSP policies and other security settings are now managed in a dedicated config file.
 
-### `client/components/pixelperfect/ImageComparison.tsx` ✅
+### `client/components/myimageupscaler.com/ImageComparison.tsx` ✅
 
 - **Issue:** Contains a hardcoded SVG data URI for the background pattern.
 - **Recommendation:** Move this to a CSS class or a constant file to keep the component code clean.

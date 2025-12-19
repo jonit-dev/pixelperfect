@@ -1,4 +1,4 @@
-# PixelPerfect
+# myimageupscaler.com
 
 AI-powered image processing SaaS application built with Next.js, Supabase, and Stripe.
 

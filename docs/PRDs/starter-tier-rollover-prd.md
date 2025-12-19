@@ -37,15 +37,15 @@ Address critical market positioning issues identified in the subscription audit:
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.types.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.utils.ts
-/home/joao/projects/pixelperfect/shared/config/stripe.ts
-/home/joao/projects/pixelperfect/shared/config/credits.config.ts
-/home/joao/projects/pixelperfect/app/pricing/page.tsx
-/home/joao/projects/pixelperfect/app/api/webhooks/stripe/handlers/invoice.handler.ts
-/home/joao/projects/pixelperfect/scripts/stripe-setup.sh
-/home/joao/projects/pixelperfect/docs/audits/free-paid-plan-audit-12-18-25.md
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.types.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.utils.ts
+/home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+/home/joao/projects/myimageupscaler.com/shared/config/credits.config.ts
+/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx
+/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/handlers/invoice.handler.ts
+/home/joao/projects/myimageupscaler.com/scripts/stripe-setup.sh
+/home/joao/projects/myimageupscaler.com/docs/audits/free-paid-plan-audit-12-18-25.md
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -100,7 +100,7 @@ graph TD
 
 ### 1.4 Problem Statement
 
-PixelPerfect's entry tier ($19) is 2.1x more expensive than the market standard ($9), and credit rollover is disabled despite being a planned feature, leading to higher churn and lower conversion rates.
+myimageupscaler.com's entry tier ($19) is 2.1x more expensive than the market standard ($9), and credit rollover is disabled despite being a planned feature, leading to higher churn and lower conversion rates.
 
 ---
 

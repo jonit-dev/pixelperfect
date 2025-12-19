@@ -4,7 +4,7 @@ Credit-based usage tracking and management.
 
 ## Overview
 
-PixelPerfect uses a credit system to manage image processing quotas. Each action costs a specific number of credits based on the processing mode and options selected.
+myimageupscaler.com uses a credit system to manage image processing quotas. Each action costs a specific number of credits based on the processing mode and options selected.
 
 ```mermaid
 graph TD

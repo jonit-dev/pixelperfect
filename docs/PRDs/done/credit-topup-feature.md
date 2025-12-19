@@ -38,17 +38,17 @@
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/app/api/checkout/route.ts
-/home/joao/projects/pixelperfect/app/api/webhooks/stripe/route.ts
-/home/joao/projects/pixelperfect/shared/config/stripe.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.types.ts
-/home/joao/projects/pixelperfect/shared/types/stripe.ts
-/home/joao/projects/pixelperfect/supabase/migrations/20250121_enhanced_credit_functions.sql
-/home/joao/projects/pixelperfect/client/services/stripeService.ts
-/home/joao/projects/pixelperfect/client/components/stripe/CreditsDisplay.tsx
-/home/joao/projects/pixelperfect/client/components/stripe/CreditHistory.tsx
-/home/joao/projects/pixelperfect/docs/business-model-canvas/economics/pricing-proposal-v2.md
+/home/joao/projects/myimageupscaler.com/app/api/checkout/route.ts
+/home/joao/projects/myimageupscaler.com/app/api/webhooks/stripe/route.ts
+/home/joao/projects/myimageupscaler.com/shared/config/stripe.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.types.ts
+/home/joao/projects/myimageupscaler.com/shared/types/stripe.ts
+/home/joao/projects/myimageupscaler.com/supabase/migrations/20250121_enhanced_credit_functions.sql
+/home/joao/projects/myimageupscaler.com/client/services/stripeService.ts
+/home/joao/projects/myimageupscaler.com/client/components/stripe/CreditsDisplay.tsx
+/home/joao/projects/myimageupscaler.com/client/components/stripe/CreditHistory.tsx
+/home/joao/projects/myimageupscaler.com/docs/business-model-canvas/economics/pricing-proposal-v2.md
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -722,7 +722,7 @@ export function CreditPackSelector({
 
 **Add Credit Top-Up Section between "Current Plan" and "Payment Methods":**
 
-**File**: `/home/joao/projects/pixelperfect/app/dashboard/billing/page.tsx`
+**File**: `/home/joao/projects/myimageupscaler.com/app/dashboard/billing/page.tsx`
 **Position**: After line 242 (after Current Plan section, before Payment Methods)
 **Visibility**: All authenticated users
 
@@ -768,7 +768,7 @@ import { Plus } from 'lucide-react';
 
 **Add Credit Packs Section after subscription plans:**
 
-**File**: `/home/joao/projects/pixelperfect/app/pricing/page.tsx`
+**File**: `/home/joao/projects/myimageupscaler.com/app/pricing/page.tsx`
 **Position**: After line 165 (after subscription grid, before FAQ section)
 **Visibility**: All visitors (works for unauthenticated users)
 
@@ -809,7 +809,7 @@ import { CreditPackSelector } from '@client/components/stripe/CreditPackSelector
 
 **Add "Buy Credits" link when credits are low:**
 
-**File**: `/home/joao/projects/pixelperfect/client/components/stripe/CreditsDisplay.tsx`
+**File**: `/home/joao/projects/myimageupscaler.com/client/components/stripe/CreditsDisplay.tsx`
 **Position**: Modify lines 183-197 (tooltip section)
 
 ```tsx
@@ -848,7 +848,7 @@ import { CreditPackSelector } from '@client/components/stripe/CreditPackSelector
 
 **Create modal shown when user tries to upscale without credits:**
 
-**File**: `/home/joao/projects/pixelperfect/client/components/stripe/OutOfCreditsModal.tsx` (NEW)
+**File**: `/home/joao/projects/myimageupscaler.com/client/components/stripe/OutOfCreditsModal.tsx` (NEW)
 
 ```tsx
 'use client';
@@ -1145,7 +1145,6 @@ All components must be mobile-responsive:
 **UI Integrations**:
 
 - [ ] **Billing Page** (`/app/dashboard/billing/page.tsx`) - **ALL USERS**:
-
   - Import `CreditPackSelector` and `Plus` icon
   - Add credit top-up section after line 242
   - Show `CreditPackSelector` for all authenticated users
@@ -1153,7 +1152,6 @@ All components must be mobile-responsive:
   - Wire up callbacks: `onPurchaseComplete={() => loadBillingData()}`
 
 - [ ] **Pricing Page** (`/app/pricing/page.tsx`) - **ALL VISITORS**:
-
   - Import `CreditPackSelector`
   - Add credit packs section after line 165 (after subscriptions, before FAQ)
   - Add border-t separator and "Need Credits Without a Subscription?" heading
@@ -1161,13 +1159,11 @@ All components must be mobile-responsive:
   - Wire up callbacks: `onPurchaseComplete={() => window.location.reload()}`
 
 - [ ] **Credits Display** (`/client/components/stripe/CreditsDisplay.tsx`) - **ALL USERS**:
-
   - Modify tooltip (lines 183-197) to add "Buy more credits →" link
   - Link points to `/dashboard/billing` for all users
   - Change `pointer-events-none` to `pointer-events-auto` on tooltip
 
 - [ ] **OutOfCreditsModal** - **TABBED UI**:
-
   - Remove `hasSubscription` prop (not needed)
   - Add tab state: "Buy Credits" vs "Subscribe (Best Value)"
   - Default to "Buy Credits" tab showing `CreditPackSelector`
@@ -1335,13 +1331,13 @@ Psychology: Heavy users save 22% by subscribing
 
 ### Competitive Positioning
 
-| Competitor       | One-Time Option     | Subscription Option     |
-| ---------------- | ------------------- | ----------------------- |
-| Let's Enhance    | ✅ Credit packs     | ✅ Subscriptions        |
-| VanceAI          | ✅ Pay-per-image    | ✅ Subscriptions        |
-| Topaz Labs       | ✅ One-time license | ✅ Cloud subscription   |
-| Upscale.media    | ✅ Annual payment   | ✅ Monthly subscription |
-| **PixelPerfect** | ✅ **Credit packs** | ✅ **Subscriptions**    |
+| Competitor              | One-Time Option     | Subscription Option     |
+| ----------------------- | ------------------- | ----------------------- |
+| Let's Enhance           | ✅ Credit packs     | ✅ Subscriptions        |
+| VanceAI                 | ✅ Pay-per-image    | ✅ Subscriptions        |
+| Topaz Labs              | ✅ One-time license | ✅ Cloud subscription   |
+| Upscale.media           | ✅ Annual payment   | ✅ Monthly subscription |
+| **myimageupscaler.com** | ✅ **Credit packs** | ✅ **Subscriptions**    |
 
 **Result**: We match industry standard while maintaining subscription incentives through pricing structure.
 

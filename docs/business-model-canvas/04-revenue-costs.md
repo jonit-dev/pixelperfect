@@ -3,6 +3,7 @@
 ## Revenue Model: Credit-Based Subscription
 
 ### Why Credit-Based Subscriptions?
+
 - **Industry standard:** Let's Enhance, VanceAI use this model
 - **Flexibility:** Credits roll over (2-6x by tier), reducing churn
 - **Predictable revenue:** Monthly/annual recurring
@@ -14,20 +15,20 @@
 
 ### Consumer/Pro Tiers
 
-| Plan | Price | Credits | $/Credit | Gross Margin |
-|------|-------|---------|----------|--------------|
-| **Free** | $0 | 10 (one-time) | - | - |
-| **Starter** | $9/mo | 100 | $0.09 | 98.1% |
-| **Pro** | $29/mo | 500 | $0.058 | 97.1% |
-| **Business** | $99/mo | 2,500 | $0.04 | 95.7% |
+| Plan         | Price  | Credits       | $/Credit | Gross Margin |
+| ------------ | ------ | ------------- | -------- | ------------ |
+| **Free**     | $0     | 10 (one-time) | -        | -            |
+| **Starter**  | $9/mo  | 100           | $0.09    | 98.1%        |
+| **Pro**      | $29/mo | 500           | $0.058   | 97.1%        |
+| **Business** | $99/mo | 2,500         | $0.04    | 95.7%        |
 
 ### Annual Pricing (17% discount)
 
-| Plan | Monthly | Annual | Savings |
-|------|---------|--------|---------|
-| Starter | $9/mo | $90/yr | $18 |
-| Pro | $29/mo | $290/yr | $58 |
-| Business | $99/mo | $990/yr | $198 |
+| Plan     | Monthly | Annual  | Savings |
+| -------- | ------- | ------- | ------- |
+| Starter  | $9/mo   | $90/yr  | $18     |
+| Pro      | $29/mo  | $290/yr | $58     |
+| Business | $99/mo  | $990/yr | $198    |
 
 ---
 
@@ -39,6 +40,7 @@
 **Credits:** 10 (one-time signup bonus)
 
 **Features:**
+
 - 2x/4x upscaling
 - Basic enhancement only
 - Standard processing (T4 GPU)
@@ -46,11 +48,13 @@
 - 7-day image storage
 
 **Cost Per User:**
+
 - 10 images × $0.0017 = $0.017
 - Infrastructure share: $0.01/month
 - **Total Cost:** ~$0.03/user
 
 **Strategic Purpose:**
+
 - Product-led growth engine
 - SEO benefit (user content)
 - Word-of-mouth marketing
@@ -63,6 +67,7 @@
 **Credits:** 100/month
 
 **Features:**
+
 - All upscaling modes (2x/4x)
 - All enhancement modes + text preservation
 - Batch upload (10 images)
@@ -71,6 +76,7 @@
 - Email support
 
 **Cost Analysis:**
+
 ```
 Revenue: $9.00
 AI Processing (100 × $0.0017): $0.17
@@ -84,6 +90,7 @@ Margin: 95.3%
 **Target Customer:** Small e-commerce sellers, casual content creators
 
 **LTV Calculation:**
+
 - ARPU: $9/month
 - Average lifetime: 12 months
 - **LTV:** $108
@@ -95,6 +102,7 @@ Margin: 95.3%
 **Credits:** 500/month
 
 **Features:**
+
 - Everything in Starter
 - Priority processing (A100 available)
 - Batch upload (50 images)
@@ -104,6 +112,7 @@ Margin: 95.3%
 - Priority email support
 
 **Cost Analysis:**
+
 ```
 Revenue: $29.00
 AI Processing (500 × $0.0017): $0.85
@@ -117,6 +126,7 @@ Margin: 94.8%
 **Target Customer:** Growing e-commerce, professional content creators
 
 **LTV Calculation:**
+
 - ARPU: $29/month
 - Average lifetime: 18 months
 - **LTV:** $522
@@ -128,6 +138,7 @@ Margin: 94.8%
 **Credits:** 2,500/month
 
 **Features:**
+
 - Everything in Pro
 - Fastest processing (dedicated A100)
 - Batch upload (500 images)
@@ -139,6 +150,7 @@ Margin: 94.8%
 - Custom enhancement profiles
 
 **Cost Analysis:**
+
 ```
 Revenue: $99.00
 AI Processing (2,500 × $0.0026 for A100): $6.50
@@ -152,6 +164,7 @@ Margin: 90.4%
 **Target Customer:** Large e-commerce, agencies, photography studios
 
 **LTV Calculation:**
+
 - ARPU: $99/month
 - Average lifetime: 24 months
 - **LTV:** $2,376
@@ -160,12 +173,12 @@ Margin: 90.4%
 
 ## API Pricing
 
-| Tier | Price | Calls/Month | $/Call |
-|------|-------|-------------|--------|
-| Developer | $0 | 100 | Free |
-| API Starter | $49/mo | 2,000 | $0.0245 |
-| API Pro | $199/mo | 10,000 | $0.0199 |
-| API Enterprise | Custom | 100,000+ | Negotiated |
+| Tier           | Price   | Calls/Month | $/Call     |
+| -------------- | ------- | ----------- | ---------- |
+| Developer      | $0      | 100         | Free       |
+| API Starter    | $49/mo  | 2,000       | $0.0245    |
+| API Pro        | $199/mo | 10,000      | $0.0199    |
+| API Enterprise | Custom  | 100,000+    | Negotiated |
 
 ---
 
@@ -173,24 +186,24 @@ Margin: 90.4%
 
 ### Year 1 Breakdown
 
-| Tier | Customers | ARPU | MRR | Annual |
-|------|-----------|------|-----|--------|
-| Free | 10,000 | $0 | $0 | $0 |
-| Starter | 200 | $9 | $1,800 | $21,600 |
-| Pro | 300 | $29 | $8,700 | $104,400 |
-| Business | 80 | $99 | $7,920 | $95,040 |
-| API | 20 | $100 | $2,000 | $24,000 |
+| Tier      | Customers    | ARPU        | MRR         | Annual       |
+| --------- | ------------ | ----------- | ----------- | ------------ |
+| Free      | 10,000       | $0          | $0          | $0           |
+| Starter   | 200          | $9          | $1,800      | $21,600      |
+| Pro       | 300          | $29         | $8,700      | $104,400     |
+| Business  | 80           | $99         | $7,920      | $95,040      |
+| API       | 20           | $100        | $2,000      | $24,000      |
 | **Total** | **600 paid** | **$34 avg** | **$20,420** | **$245,040** |
 
 ### Year 2 Projections (3x growth)
 
-| Tier | Customers | MRR | Annual |
-|------|-----------|-----|--------|
-| Free | 30,000 | $0 | $0 |
-| Starter | 600 | $5,400 | $64,800 |
-| Pro | 900 | $26,100 | $313,200 |
-| Business | 250 | $24,750 | $297,000 |
-| API | 50 | $8,750 | $105,000 |
+| Tier      | Customers      | MRR         | Annual       |
+| --------- | -------------- | ----------- | ------------ |
+| Free      | 30,000         | $0          | $0           |
+| Starter   | 600            | $5,400      | $64,800      |
+| Pro       | 900            | $26,100     | $313,200     |
+| Business  | 250            | $24,750     | $297,000     |
+| API       | 50             | $8,750      | $105,000     |
 | **Total** | **1,800 paid** | **$65,000** | **$780,000** |
 
 ---
@@ -203,19 +216,19 @@ Margin: 90.4%
 
 **Real-ESRGAN via Replicate:**
 
-| GPU | Cost/Image | Speed | Use Case |
-|-----|------------|-------|----------|
-| T4 (Standard) | $0.0017 | ~1.8s | Free, Starter, Pro |
-| A100 (Priority) | $0.0026 | ~0.7s | Business tier |
-| T4 + GFPGAN | $0.0025 | ~2s | Portrait mode |
+| GPU             | Cost/Image | Speed | Use Case           |
+| --------------- | ---------- | ----- | ------------------ |
+| T4 (Standard)   | $0.0017    | ~1.8s | Free, Starter, Pro |
+| A100 (Priority) | $0.0026    | ~0.7s | Business tier      |
+| T4 + GFPGAN     | $0.0025    | ~2s   | Portrait mode      |
 
 **Monthly Processing Costs:**
 
 | Monthly Images | T4 Cost | A100 Cost |
-|----------------|---------|-----------|
-| 10,000 | $17 | $26 |
-| 100,000 | $170 | $260 |
-| 500,000 | $850 | $1,300 |
+| -------------- | ------- | --------- |
+| 10,000         | $17     | $26       |
+| 100,000        | $170    | $260      |
+| 500,000        | $850    | $1,300    |
 
 **Key Insight:** At $0.0017/image, we're 41-235x cheaper than competitors' per-image costs.
 
@@ -225,11 +238,11 @@ Margin: 90.4%
 
 **Pricing:** $0.015/GB/month
 
-| Users | Avg Storage | Monthly Cost |
-|-------|-------------|--------------|
-| 10,000 | 500 GB | $7.50 |
-| 30,000 | 1.5 TB | $22.50 |
-| 100,000 | 5 TB | $75.00 |
+| Users   | Avg Storage | Monthly Cost |
+| ------- | ----------- | ------------ |
+| 10,000  | 500 GB      | $7.50        |
+| 30,000  | 1.5 TB      | $22.50       |
+| 100,000 | 5 TB        | $75.00       |
 
 ---
 
@@ -246,28 +259,28 @@ Most usage covered by free tier until significant scale.
 
 #### Infrastructure
 
-| Service | Purpose | Monthly Cost |
-|---------|---------|--------------|
-| Vercel Pro | API + frontend hosting | $20-50 |
-| Supabase Pro | PostgreSQL database | $25-100 |
-| Upstash Redis | Job queue | $10-30 |
-| Cloudflare R2 | Object storage | $0-50 |
-| Sentry | Error monitoring | $26-100 |
-| **Total** | | **$81-330/month** |
+| Service       | Purpose                | Monthly Cost      |
+| ------------- | ---------------------- | ----------------- |
+| Vercel Pro    | API + frontend hosting | $20-50            |
+| Supabase Pro  | PostgreSQL database    | $25-100           |
+| Upstash Redis | Job queue              | $10-30            |
+| Cloudflare R2 | Object storage         | $0-50             |
+| Sentry        | Error monitoring       | $26-100           |
+| **Total**     |                        | **$81-330/month** |
 
 ---
 
 #### Software & Tools
 
-| Tool | Purpose | Monthly Cost |
-|------|---------|--------------|
-| GitHub Pro | Code hosting | $4 |
-| Ahrefs/Semrush | SEO tools | $99 |
-| Customer.io | Email automation | $100 |
-| Stripe | Payments (2.9% + $0.30) | Variable |
-| Mixpanel | Analytics | $25 |
-| Intercom | Support | $74 |
-| **Total** | | **~$300/month** |
+| Tool           | Purpose                 | Monthly Cost    |
+| -------------- | ----------------------- | --------------- |
+| GitHub Pro     | Code hosting            | $4              |
+| Ahrefs/Semrush | SEO tools               | $99             |
+| Customer.io    | Email automation        | $100            |
+| Stripe         | Payments (2.9% + $0.30) | Variable        |
+| Mixpanel       | Analytics               | $25             |
+| Intercom       | Support                 | $74             |
+| **Total**      |                         | **~$300/month** |
 
 ---
 
@@ -304,27 +317,27 @@ Most usage covered by free tier until significant scale.
 
 ### Month 6 (Growth Phase)
 
-| Category | Cost |
-|----------|------|
-| Infrastructure | $150 |
-| AI Processing (50k images) | $85 |
-| Storage | $15 |
-| Software tools | $300 |
-| Marketing | $5,000 |
-| Contractors | $3,800 |
-| **Total** | **$9,350** |
+| Category                   | Cost       |
+| -------------------------- | ---------- |
+| Infrastructure             | $150       |
+| AI Processing (50k images) | $85        |
+| Storage                    | $15        |
+| Software tools             | $300       |
+| Marketing                  | $5,000     |
+| Contractors                | $3,800     |
+| **Total**                  | **$9,350** |
 
 ### Month 12 (Scale Phase)
 
-| Category | Cost |
-|----------|------|
-| Infrastructure | $300 |
-| AI Processing (200k images) | $340 |
-| Storage | $50 |
-| Software tools | $400 |
-| Marketing | $8,000 |
-| Team | $3,800 |
-| **Total** | **$12,890** |
+| Category                    | Cost        |
+| --------------------------- | ----------- |
+| Infrastructure              | $300        |
+| AI Processing (200k images) | $340        |
+| Storage                     | $50         |
+| Software tools              | $400        |
+| Marketing                   | $8,000      |
+| Team                        | $3,800      |
+| **Total**                   | **$12,890** |
 
 ---
 
@@ -334,21 +347,21 @@ Most usage covered by free tier until significant scale.
 
 **Year 1 Target:** <$150
 
-| Channel | Estimated CAC |
-|---------|---------------|
-| SEO (organic) | $50-100 |
-| Product-led growth | $30-50 |
-| Paid ads | $200-400 |
-| Partnerships | $100-150 |
-| **Blended** | **$100-150** |
+| Channel            | Estimated CAC |
+| ------------------ | ------------- |
+| SEO (organic)      | $50-100       |
+| Product-led growth | $30-50        |
+| Paid ads           | $200-400      |
+| Partnerships       | $100-150      |
+| **Blended**        | **$100-150**  |
 
 ### Customer Lifetime Value (LTV)
 
-| Tier | Monthly | Lifetime | LTV |
-|------|---------|----------|-----|
-| Starter | $9 | 12 mo | $108 |
-| Pro | $29 | 18 mo | $522 |
-| Business | $99 | 24 mo | $2,376 |
+| Tier        | Monthly | Lifetime  | LTV       |
+| ----------- | ------- | --------- | --------- |
+| Starter     | $9      | 12 mo     | $108      |
+| Pro         | $29     | 18 mo     | $522      |
+| Business    | $99     | 24 mo     | $2,376    |
 | **Blended** | **$34** | **16 mo** | **~$400** |
 
 ### LTV:CAC Ratio
@@ -365,17 +378,18 @@ Most usage covered by free tier until significant scale.
 
 ### Gross Margin
 
-| Tier | Revenue | COGS | Margin |
-|------|---------|------|--------|
-| Starter | $9 | $0.42 | **95.3%** |
-| Pro | $29 | $1.50 | **94.8%** |
-| Business | $99 | $9.50 | **90.4%** |
-| **Blended** | | | **~93%** |
+| Tier        | Revenue | COGS  | Margin    |
+| ----------- | ------- | ----- | --------- |
+| Starter     | $9      | $0.42 | **95.3%** |
+| Pro         | $29     | $1.50 | **94.8%** |
+| Business    | $99     | $9.50 | **90.4%** |
+| **Blended** |         |       | **~93%**  |
 
 **Industry Comparison:**
+
 - Traditional SaaS: 70-85%
 - AI-intensive SaaS: 60-75%
-- **PixelPerfect: 90-95%** (excellent!)
+- **myimageupscaler.com: 90-95%** (excellent!)
 
 ---
 
@@ -395,11 +409,11 @@ Break-even customers: 317 (at $34 ARPU)
 
 ### Path to Profitability
 
-| Milestone | MRR | Customers | Timeline |
-|-----------|-----|-----------|----------|
-| Infrastructure break-even | $526 | 17 | Month 2 |
-| Operating break-even | $10,753 | 317 | Month 8-10 |
-| Profitability | $15,000+ | 450+ | Month 10-12 |
+| Milestone                 | MRR      | Customers | Timeline    |
+| ------------------------- | -------- | --------- | ----------- |
+| Infrastructure break-even | $526     | 17        | Month 2     |
+| Operating break-even      | $10,753  | 317       | Month 8-10  |
+| Profitability             | $15,000+ | 450+      | Month 10-12 |
 
 ---
 
@@ -427,6 +441,7 @@ Break-even customers: 317 (at $34 ARPU)
 ### API Price Increases
 
 **Mitigation:**
+
 - Multi-provider strategy (Stability AI, Hugging Face as backups)
 - Self-hosting evaluation at 100k+ images/month
 - Price increase clause in ToS
@@ -434,6 +449,7 @@ Break-even customers: 317 (at $34 ARPU)
 ### High Churn
 
 **Mitigation:**
+
 - Credit rollover (reduces "use it or lose it" pressure)
 - Annual plans (lock-in)
 - Proactive customer success
@@ -441,6 +457,7 @@ Break-even customers: 317 (at $34 ARPU)
 ### Low Conversion
 
 **Mitigation:**
+
 - A/B test free tier limits
 - Improve onboarding flow
 - Add high-value features to paid tiers
@@ -449,17 +466,17 @@ Break-even customers: 317 (at $34 ARPU)
 
 ## Summary
 
-| Metric | Value |
-|--------|-------|
-| **Pricing Model** | Credit-based subscription |
-| **Entry Price** | $9/mo (lowest in market for 100 credits) |
-| **Gross Margin** | 90-95% |
-| **Break-Even** | 17 customers (infrastructure) |
-| **Year 1 MRR Target** | $20,000 |
-| **LTV:CAC** | 2.7:1 → 4:1 |
-| **Payback** | 4-5 months |
+| Metric                | Value                                    |
+| --------------------- | ---------------------------------------- |
+| **Pricing Model**     | Credit-based subscription                |
+| **Entry Price**       | $9/mo (lowest in market for 100 credits) |
+| **Gross Margin**      | 90-95%                                   |
+| **Break-Even**        | 17 customers (infrastructure)            |
+| **Year 1 MRR Target** | $20,000                                  |
+| **LTV:CAC**           | 2.7:1 → 4:1                              |
+| **Payback**           | 4-5 months                               |
 
 ---
 
-*Last Updated: December 2025*
-*See also: [Pricing Proposal](./economics/pricing-proposal-v2.md), [Image Models](./economics/image-upscaling-models.md)*
+_Last Updated: December 2025_
+_See also: [Pricing Proposal](./economics/pricing-proposal-v2.md), [Image Models](./economics/image-upscaling-models.md)_

@@ -65,7 +65,7 @@ That's it! No external services to set up.
 ### File Structure
 
 ```
-pixelperfect/
+myimageupscaler.com/
 ├── middleware.ts                              # Main middleware (runs on Edge)
 ├── src/lib/
 │   ├── rateLimit.ts                          # In-memory rate limiter
@@ -193,6 +193,7 @@ export const publicRateLimit = {
 ⚠️ **Note**: The in-memory rate limiter works great for single-instance deployments. For multi-instance deployments (e.g., Cloudflare with multiple edge locations), each instance has its own memory, so limits are per-instance.
 
 If you need global rate limiting across all instances, consider:
+
 - Cloudflare KV
 - Cloudflare Durable Objects
 - Redis (self-hosted or managed)

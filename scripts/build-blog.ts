@@ -49,7 +49,7 @@ async function buildBlogData() {
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
-        author: data.author || 'PixelPerfect Team',
+        author: data.author || 'myimageupscaler.com Team',
         category: data.category || 'General',
         tags: data.tags || [],
         image: data.image,

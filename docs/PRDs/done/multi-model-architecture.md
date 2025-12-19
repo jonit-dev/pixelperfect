@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This PRD defines the architecture for supporting multiple AI models in PixelPerfect's image processing pipeline. The system will:
+This PRD defines the architecture for supporting multiple AI models in myimageupscaler.com's image processing pipeline. The system will:
 
 1. **Support multiple models** configurable via environment variables
 2. **Automatically select the best model** based on image analysis (damage level, content type)
@@ -34,7 +34,6 @@ This PRD defines the architecture for supporting multiple AI models in PixelPerf
 1. **One Model Fits All**: Currently using Replicate Real-ESRGAN for upscaling and Gemini for enhancement, with no adaptive selection based on image characteristics
 
 2. **Missed Optimization Opportunities**:
-
    - Damaged/old photos need specialized restoration
    - Simple upscales could use cheaper models
    - Face-focused images benefit from GFPGAN

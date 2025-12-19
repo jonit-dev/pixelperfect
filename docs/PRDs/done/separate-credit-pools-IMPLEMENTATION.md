@@ -23,6 +23,7 @@ Successfully implemented the fix for the critical bug where purchased credits we
 ### ✅ Phase 1: Database Migration (Completed)
 
 **Files Created:**
+
 1. `supabase/migrations/20251205_separate_credit_pools.sql`
    - Added `purchased_credits_balance` column
    - Backfilled purchased credits from transaction history
@@ -44,6 +45,7 @@ Successfully implemented the fix for the critical bug where purchased credits we
 **Files Modified:**
 
 #### 1. Webhook Handler (`app/api/webhooks/stripe/route.ts`)
+
 - **Line 465:** Updated `handleCreditPackPurchase()` to use `add_purchased_credits`
 - **Line 931:** Updated profile query to fetch both balance columns
 - **Line 991:** Calculate total balance from both pools
@@ -53,11 +55,14 @@ Successfully implemented the fix for the critical bug where purchased credits we
 - **Line 1271:** Fixed direct balance update to use `subscription_credits_balance`
 
 #### 2. Service Files
+
 **`server/services/replicate.service.ts` (Lines 88-106)**
+
 - Updated to use `consume_credits_v2` with FIFO logic
 - Handles new return structure (object with breakdown)
 
 **`server/services/image-generation.service.ts` (Lines 98-117)**
+
 - Updated to use `consume_credits_v2` with FIFO logic
 - Handles new return structure (object with breakdown)
 
@@ -68,6 +73,7 @@ Successfully implemented the fix for the critical bug where purchased credits we
 **Files Modified:**
 
 #### 1. Type Definitions (`shared/types/stripe.ts`)
+
 ```typescript
 export interface IUserProfile {
   // DEPRECATED
@@ -81,10 +87,12 @@ export interface IUserProfile {
 ```
 
 #### 2. UI Components (`client/components/stripe/CreditsDisplay.tsx`)
+
 - Updated to calculate total from both pools
 - Display logic unchanged (still shows single total)
 
 #### 3. Middleware (`server/middleware/getAuthenticatedUser.ts`)
+
 - Updated test user mock data
 - Updated profile creation to use new column names
 
@@ -130,18 +138,21 @@ RENAME COLUMN credits_balance TO subscription_credits_balance;
 ## Testing Checklist
 
 ### Unit Tests Required
+
 - [ ] `add_subscription_credits()` - positive amounts, user not found
 - [ ] `add_purchased_credits()` - positive amounts, user not found
 - [ ] `consume_credits_v2()` - FIFO logic, all consumption scenarios
 - [ ] `expire_subscription_credits()` - only expires subscription pool
 
 ### Integration Tests Required
+
 - [ ] Credit pack purchase → adds to purchased_credits_balance only
 - [ ] Subscription renewal → expires subscription, adds subscription
 - [ ] Mixed balance consumption (3 sub + 10 purchased, consume 5)
 - [ ] Zero balance expiration (no-op)
 
 ### End-to-End Tests Required
+
 - [ ] Purchase credits → renew subscription → verify purchased remain
 - [ ] Downgrade plan → verify credits preserved
 - [ ] Process images → verify FIFO consumption order
@@ -244,10 +255,12 @@ git revert <commit-hash>
 ## Files Changed
 
 ### New Files (2)
+
 - `supabase/migrations/20251205_separate_credit_pools.sql`
 - `supabase/migrations/20251205_update_credit_rpcs.sql`
 
 ### Modified Files (6)
+
 - `app/api/webhooks/stripe/route.ts`
 - `server/services/replicate.service.ts`
 - `server/services/image-generation.service.ts`
@@ -256,6 +269,7 @@ git revert <commit-hash>
 - `server/middleware/getAuthenticatedUser.ts`
 
 ### Documentation
+
 - `docs/PRDs/separate-credit-pools-IMPLEMENTATION.md` (this file)
 
 ---
@@ -288,6 +302,7 @@ git revert <commit-hash>
 ## Performance Impact
 
 **Expected:** Negligible
+
 - Two integer columns instead of one (8 bytes → 16 bytes per user)
 - RPC functions have same complexity (O(1))
 - One additional column in SELECT queries
@@ -300,6 +315,7 @@ git revert <commit-hash>
 ## Security Considerations
 
 ✅ **No new security risks introduced**
+
 - RLS policies unchanged (service_role only for credit modifications)
 - Same authentication requirements
 - No new external APIs or dependencies
@@ -336,5 +352,5 @@ Track these for 1 week post-deployment:
 
 ## Contact
 
-**Issue Tracker:** [GitHub Issues](https://github.com/yourusername/pixelperfect/issues)
+**Issue Tracker:** [GitHub Issues](https://github.com/yourusername/myimageupscaler.com/issues)
 **Documentation:** `docs/PRDs/separate-credit-pools.md`

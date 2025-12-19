@@ -6,11 +6,11 @@
 
 #### P3 - Internal Identifiers (Low Priority - Refactor Later):
 
-| Type          | Change To                                                    | Files                                                         |
-| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------- |
-| Cache keys    | `app_auth_cache`, `app_user_cache`                           | `client/store/auth/authCache.ts`, `client/store/userStore.ts` |
-| Service names | Use env-based `${APP_ID}-api`, `${APP_ID}-cron`              | `server/monitoring/logger.ts`, `workers/cron/index.ts`        |
-| Folder paths  | Rename `@shared/types/pixelperfect` → `@shared/types/models` | Requires folder rename + import updates                       |
+| Type          | Change To                                                           | Files                                                         |
+| ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Cache keys    | `app_auth_cache`, `app_user_cache`                                  | `client/store/auth/authCache.ts`, `client/store/userStore.ts` |
+| Service names | Use env-based `${APP_ID}-api`, `${APP_ID}-cron`                     | `server/monitoring/logger.ts`, `workers/cron/index.ts`        |
+| Folder paths  | Rename `@shared/types/myimageupscaler.com` → `@shared/types/models` | Requires folder rename + import updates                       |
 
 **Note**: Internal identifiers don't affect users but should be genericized. The folder rename requires updating all imports - consider as separate task.
 
@@ -69,7 +69,7 @@ graph TD
 
 **Already Centralized (no changes needed):**
 
-- `clientEnv.APP_NAME` - Application name (defaults to 'PixelPerfect')
+- `clientEnv.APP_NAME` - Application name (defaults to 'myimageupscaler.com')
 - `clientEnv.BASE_URL` - Full URL with protocol (defaults to 'http://localhost:3000')
 - `clientEnv.ADMIN_EMAIL`, `SUPPORT_EMAIL`, `LEGAL_EMAIL`, `PRIVACY_EMAIL` - Contact emails
 
@@ -91,7 +91,7 @@ graph TD
 
 **This is a MINIMAL refactor - no new modules required.**
 
-- Replace hardcoded `'PixelPerfect'` strings with `clientEnv.APP_NAME`
+- Replace hardcoded `'myimageupscaler.com'` strings with `clientEnv.APP_NAME`
 - Add `NEXT_PUBLIC_TWITTER_HANDLE` env var for social handles
 - Use existing `clientEnv` utilities - NO new domain.ts module needed
 
@@ -193,22 +193,22 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
 
     openGraph: {
       // ...
-      siteName: APP_NAME, // was: 'PixelPerfect'
+      siteName: APP_NAME, // was: 'myimageupscaler.com'
     },
 
     twitter: {
       // ...
-      creator: `@${TWITTER_HANDLE}`, // was: '@pixelperfect'
+      creator: `@${TWITTER_HANDLE}`, // was: '@myimageupscaler.com'
     },
 
-    authors: [{ name: APP_NAME, url: BASE_URL }], // was: 'PixelPerfect'
-    applicationName: APP_NAME, // was: 'PixelPerfect'
+    authors: [{ name: APP_NAME, url: BASE_URL }], // was: 'myimageupscaler.com'
+    applicationName: APP_NAME, // was: 'myimageupscaler.com'
   };
 }
 
 export function generateCategoryMetadata(category: PSEOCategory): Metadata {
-  // Same pattern - replace 'PixelPerfect' with APP_NAME
-  // Replace '@pixelperfect' with `@${TWITTER_HANDLE}`
+  // Same pattern - replace 'myimageupscaler.com' with APP_NAME
+  // Replace '@myimageupscaler.com' with `@${TWITTER_HANDLE}`
 }
 ```
 
@@ -253,22 +253,22 @@ export function getCategoryDescription(category: PSEOCategory): string {
 ### Phase 2: Update SEO Infrastructure (P0)
 
 - [ ] `/lib/seo/metadata-factory.ts`:
-  - Replace all `'PixelPerfect'` → `APP_NAME`
-  - Replace `'@pixelperfect'` → `` `@${TWITTER_HANDLE}` ``
+  - Replace all `'myimageupscaler.com'` → `APP_NAME`
+  - Replace `'@myimageupscaler.com'` → `` `@${TWITTER_HANDLE}` ``
 - [ ] `/lib/seo/schema-generator.ts`:
-  - Replace `name: 'PixelPerfect'` → `APP_NAME`
+  - Replace `name: 'myimageupscaler.com'` → `APP_NAME`
   - Replace `ORGANIZATION_SCHEMA.sameAs` array - either:
     - Use env vars: `TWITTER_URL`, `LINKEDIN_URL` (requires new env vars)
     - Derive from TWITTER_HANDLE: `` `https://twitter.com/${TWITTER_HANDLE}` ``
     - Or remove `sameAs` if not needed
 - [ ] `/lib/seo/url-utils.ts`:
-  - Replace `'Compare PixelPerfect with...'` → `` `Compare ${APP_NAME} with...` ``
+  - Replace `'Compare myimageupscaler.com with...'` → `` `Compare ${APP_NAME} with...` ``
 - [ ] `/lib/seo/meta-generator.ts`:
-  - Replace `'| PixelPerfect'` → `` `| ${APP_NAME}` ``
+  - Replace `'| myimageupscaler.com'` → `` `| ${APP_NAME}` ``
 - [ ] `/lib/seo/data-loader.ts`:
   - Replace hardcoded brand in FAQ answers
 - [ ] `/app/layout.tsx`:
-  - Replace all hardcoded `'PixelPerfect AI'` strings
+  - Replace all hardcoded `'myimageupscaler.com AI'` strings
 - [ ] `/app/manifest.ts`:
   - Replace hardcoded `name` and `short_name`
 
@@ -304,7 +304,7 @@ export function getCategoryDescription(category: PSEOCategory): string {
 ### Phase 5: Validation
 
 - [ ] Run `yarn verify`
-- [ ] Grep for remaining `pixelperfect` in user-facing strings
+- [ ] Grep for remaining `myimageupscaler.com` in user-facing strings
 - [ ] Verify metadata renders correctly
 
 ---
@@ -320,10 +320,10 @@ export function getCategoryDescription(category: PSEOCategory): string {
 
 ### Edge Cases
 
-| Scenario                       | Expected Behavior                             |
-| ------------------------------ | --------------------------------------------- |
-| Missing TWITTER_HANDLE env var | Default to 'pixelperfect'                     |
-| APP_NAME not set               | Default to 'PixelPerfect' (existing behavior) |
+| Scenario                       | Expected Behavior                                    |
+| ------------------------------ | ---------------------------------------------------- |
+| Missing TWITTER_HANDLE env var | Default to 'myimageupscaler.com'                     |
+| APP_NAME not set               | Default to 'myimageupscaler.com' (existing behavior) |
 
 ---
 
@@ -351,9 +351,9 @@ export function getCategoryDescription(category: PSEOCategory): string {
 
 ### Validation:
 
-- [ ] `grep -rE "(PixelPerfect|pixelperfect\.(com|app))" --include="*.tsx" app/ lib/ client/` returns only:
-  - Cache keys (e.g., `pixelperfect_auth_cache`)
-  - Import paths (e.g., `@shared/types/pixelperfect`)
+- [ ] `grep -rE "(myimageupscaler.com|myimageupscaler.com\.(com|app))" --include="*.tsx" app/ lib/ client/` returns only:
+  - Cache keys (e.g., `myimageupscaler.com_auth_cache`)
+  - Import paths (e.g., `@shared/types/myimageupscaler.com`)
   - Env defaults in `env.ts`
 - [ ] Metadata renders correctly in browser dev tools
 

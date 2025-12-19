@@ -6,12 +6,12 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/package.json` - Current dependencies
-- `/home/joao/projects/pixelperfect/app/api/health/route.ts` - API route structure reference
-- `/home/joao/projects/pixelperfect/next.config.js` - Next.js configuration
-- `/home/joano/projects/pixelperfect/wrangler.toml` - Cloudflare Workers config
-- `/home/joao/projects/pixelperfect/docs/PRDs/cloudflare-migration-prd.md` - Deployment constraints
-- `/home/joao/projects/pixelperfect/src/lib/supabase/*` - Existing auth utilities
+- `/home/joao/projects/myimageupscaler.com/package.json` - Current dependencies
+- `/home/joao/projects/myimageupscaler.com/app/api/health/route.ts` - API route structure reference
+- `/home/joao/projects/myimageupscaler.com/next.config.js` - Next.js configuration
+- `/home/joano/projects/myimageupscaler.com/wrangler.toml` - Cloudflare Workers config
+- `/home/joao/projects/myimageupscaler.com/docs/PRDs/cloudflare-migration-prd.md` - Deployment constraints
+- `/home/joao/projects/myimageupscaler.com/src/lib/supabase/*` - Existing auth utilities
 
 ### 1.2 Component & Dependency Overview
 
@@ -461,7 +461,6 @@ ALLOWED_ORIGIN=https://yourdomain.com # Use * for development only
 **End-to-end flows:**
 
 1. **Protected route with valid JWT:**
-
    - Send request with Supabase JWT in Authorization header
    - Verify middleware extracts user ID
    - Verify rate limiter checks Upstash
@@ -469,7 +468,6 @@ ALLOWED_ORIGIN=https://yourdomain.com # Use * for development only
    - Verify 200 response
 
 2. **Rate limit exceeded:**
-
    - Send 51 requests in 10 seconds with same user ID
    - Verify first 50 return 200
    - Verify 51st returns 429

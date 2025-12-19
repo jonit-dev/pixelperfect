@@ -6,11 +6,11 @@
 
 ### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/package.json` - Dependencies and scripts
-- `/home/joao/projects/pixelperfect/supabase/migrations/20250120_create_profiles_table.sql` - User profiles schema
-- `/home/joao/projects/pixelperfect/src/hooks/useLogout.ts` - Authentication hooks
-- `/home/joao/projects/pixelperfect/.env.example` - Environment configuration
-- `/home/joao/projects/pixelperfect/app/api/health/route.ts` - API structure reference
+- `/home/joao/projects/myimageupscaler.com/package.json` - Dependencies and scripts
+- `/home/joao/projects/myimageupscaler.com/supabase/migrations/20250120_create_profiles_table.sql` - User profiles schema
+- `/home/joao/projects/myimageupscaler.com/src/hooks/useLogout.ts` - Authentication hooks
+- `/home/joao/projects/myimageupscaler.com/.env.example` - Environment configuration
+- `/home/joao/projects/myimageupscaler.com/app/api/health/route.ts` - API structure reference
 
 ### 1.2 Component & Dependency Overview
 
@@ -308,7 +308,8 @@ export const WelcomeEmail = ({ userName, verificationUrl }: WelcomeEmailProps) =
   </Html>
 );
 
-WelcomeEmail.subject = (data: WelcomeEmailProps) => `Welcome to PixelPerfect, ${data.userName}!`;
+WelcomeEmail.subject = (data: WelcomeEmailProps) =>
+  `Welcome to myimageupscaler.com, ${data.userName}!`;
 ```
 
 **Justification:** React Email provides excellent DX, preview server, and production-ready styling
@@ -463,14 +464,12 @@ EMAIL_FROM_ADDRESS=noreply@yourdomain.com
 **End-to-end flows:**
 
 1. **New user signup flow:**
-
    - Create user via OAuth
    - Verify `email_preferences` row created via trigger
    - Verify `WelcomeEmail` sent
    - Verify `email_logs` entry created with status='sent'
 
 2. **Marketing email opt-out flow:**
-
    - User updates preferences to `marketing_emails: false`
    - Attempt to send marketing email
    - Verify email skipped

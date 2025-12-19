@@ -29,16 +29,16 @@ Restrict batch upload functionality to paid users only. Free users will be limit
 ### 1.1 Files Analyzed
 
 ```
-/home/joao/projects/pixelperfect/shared/config/subscription.config.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.types.ts
-/home/joao/projects/pixelperfect/shared/config/subscription.utils.ts
-/home/joao/projects/pixelperfect/client/hooks/pixelperfect/useBatchQueue.ts
-/home/joao/projects/pixelperfect/client/components/features/workspace/Workspace.tsx
-/home/joao/projects/pixelperfect/client/components/features/workspace/BatchSidebar.tsx
-/home/joao/projects/pixelperfect/client/components/features/workspace/QueueStrip.tsx
-/home/joao/projects/pixelperfect/client/components/features/image-processing/Dropzone.tsx
-/home/joao/projects/pixelperfect/client/store/userStore.ts
-/home/joao/projects/pixelperfect/docs/business-model-canvas/economics/pricing-proposal-v2.md
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.config.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.types.ts
+/home/joao/projects/myimageupscaler.com/shared/config/subscription.utils.ts
+/home/joao/projects/myimageupscaler.com/client/hooks/myimageupscaler.com/useBatchQueue.ts
+/home/joao/projects/myimageupscaler.com/client/components/features/workspace/Workspace.tsx
+/home/joao/projects/myimageupscaler.com/client/components/features/workspace/BatchSidebar.tsx
+/home/joao/projects/myimageupscaler.com/client/components/features/workspace/QueueStrip.tsx
+/home/joao/projects/myimageupscaler.com/client/components/features/image-processing/Dropzone.tsx
+/home/joao/projects/myimageupscaler.com/client/store/userStore.ts
+/home/joao/projects/myimageupscaler.com/docs/business-model-canvas/economics/pricing-proposal-v2.md
 ```
 
 ### 1.2 Component & Dependency Overview
@@ -320,7 +320,7 @@ export function getBatchLimit(subscriptionTier: string | null): number {
 
 ---
 
-### D. `client/hooks/pixelperfect/useBatchQueue.ts`
+### D. `client/hooks/myimageupscaler.com/useBatchQueue.ts`
 
 **Changes Needed:**
 

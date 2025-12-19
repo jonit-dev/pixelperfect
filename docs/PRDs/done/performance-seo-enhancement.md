@@ -39,14 +39,14 @@ Enhance the existing high-quality codebase to achieve 100/100 Lighthouse scores 
 
 #### 1.1 Files Analyzed
 
-- `/home/joao/projects/pixelperfect/app/layout.tsx`
-- `/home/joao/projects/pixelperfect/app/page.tsx`
-- `/home/joao/projects/pixelperfect/next.config.js`
-- `/home/joao/projects/pixelperfect/package.json`
-- `/home/joao/projects/pixelperfect/src/components/pages/HomePageClient.tsx`
-- `/home/joao/projects/pixelperfect/src/components/layout/Layout.tsx`
-- `/home/joao/projects/pixelperfect/app/sitemap.ts`
-- `/home/joao/projects/pixelperfect/app/robots.ts`
+- `/home/joao/projects/myimageupscaler.com/app/layout.tsx`
+- `/home/joao/projects/myimageupscaler.com/app/page.tsx`
+- `/home/joao/projects/myimageupscaler.com/next.config.js`
+- `/home/joao/projects/myimageupscaler.com/package.json`
+- `/home/joao/projects/myimageupscaler.com/src/components/pages/HomePageClient.tsx`
+- `/home/joao/projects/myimageupscaler.com/src/components/layout/Layout.tsx`
+- `/home/joao/projects/myimageupscaler.com/app/sitemap.ts`
+- `/home/joao/projects/myimageupscaler.com/app/robots.ts`
 
 #### 1.2 Component & Dependency Overview
 
@@ -138,7 +138,7 @@ export const metadata: Metadata = {
 };
 ```
 
-#### B. `src/components/pixelperfect/Pricing.tsx` (Assumed file)
+#### B. `src/components/myimageupscaler.com/Pricing.tsx` (Assumed file)
 
 - **Changes Needed:**
   - Inject `Product` JSON-LD data for the subscription plans.
@@ -148,7 +148,7 @@ export const metadata: Metadata = {
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'PixelPerfect AI Pro',
+  name: 'myimageupscaler.com AI Pro',
   description: 'Professional image upscaling subscription',
   offers: {
     '@type': 'Offer',

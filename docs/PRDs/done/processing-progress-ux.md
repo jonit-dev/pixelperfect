@@ -12,9 +12,9 @@
 ### 1.1 Files Analyzed
 
 - `/client/components/features/workspace/PreviewArea.tsx` (92 lines - processing overlay)
-- `/client/hooks/pixelperfect/useBatchQueue.ts` (157 lines - progress state management)
+- `/client/hooks/myimageupscaler.com/useBatchQueue.ts` (157 lines - progress state management)
 - `/client/utils/api-client.ts` (203 lines - progress callback origin)
-- `/shared/types/pixelperfect.ts` (IBatchItem, ProcessingStatus)
+- `/shared/types/myimageupscaler.com.ts` (IBatchItem, ProcessingStatus)
 
 ### 1.2 Component & Dependency Overview
 
@@ -103,7 +103,7 @@ flowchart TD
 **New TypeScript Types (extend existing):**
 
 ```typescript
-// shared/types/pixelperfect.ts
+// shared/types/myimageupscaler.com.ts
 
 export enum ProcessingStage {
   PREPARING = 'preparing', // File encoding, validation
@@ -174,7 +174,7 @@ sequenceDiagram
 
 ## 3. Detailed Implementation Spec
 
-### A. `shared/types/pixelperfect.ts` (MODIFY)
+### A. `shared/types/myimageupscaler.com.ts` (MODIFY)
 
 **Changes Needed:**
 
@@ -292,7 +292,7 @@ export const processImage = async (
 
 ---
 
-### C. `client/hooks/pixelperfect/useBatchQueue.ts` (MODIFY)
+### C. `client/hooks/myimageupscaler.com/useBatchQueue.ts` (MODIFY)
 
 **Changes Needed:**
 
@@ -348,7 +348,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Check, Layers, AlertTriangle, Loader2 } from 'lucide-react';
 import ImageComparison from '@client/components/features/image-processing/ImageComparison';
 import { Button } from '@client/components/ui/Button';
-import { IBatchItem, ProcessingStatus, ProcessingStage } from '@shared/types/pixelperfect';
+import { IBatchItem, ProcessingStatus, ProcessingStage } from '@shared/types/myimageupscaler.com';
 
 // Estimated processing times by model (in seconds)
 const MODEL_PROCESSING_TIMES: Record<string, number> = {
@@ -573,7 +573,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
 
 ### Phase 1: Type Updates (Shared)
 
-- [ ] Add `ProcessingStage` enum to `shared/types/pixelperfect.ts`
+- [ ] Add `ProcessingStage` enum to `shared/types/myimageupscaler.com.ts`
 - [ ] Add optional `stage` field to `IBatchItem` interface
 
 ### Phase 2: API Client Updates
