@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This PRD defines the architecture for supporting multiple AI models in myimageupscaler.com's image processing pipeline. The system will:
+This PRD defines the architecture for supporting multiple AI models in MyImageUpscaler's image processing pipeline. The system will:
 
 1. **Support multiple models** configurable via environment variables
 2. **Automatically select the best model** based on image analysis (damage level, content type)

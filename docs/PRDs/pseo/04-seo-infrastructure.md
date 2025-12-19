@@ -13,7 +13,7 @@
 
 ## Overview
 
-This document covers the technical SEO infrastructure for myimageupscaler.com's pSEO implementation, including sitemap generation, schema markup, meta tags, canonical URLs, and robots configuration.
+This document covers the technical SEO infrastructure for MyImageUpscaler's pSEO implementation, including sitemap generation, schema markup, meta tags, canonical URLs, and robots configuration.
 
 ---
 

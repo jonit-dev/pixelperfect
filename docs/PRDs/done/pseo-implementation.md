@@ -951,7 +951,7 @@ export interface ComparisonPage extends PSEOPage {
         "enhance image ai",
         "upscale image online"
       ],
-      "introduction": "Transform low-resolution images into stunning high-quality visuals with myimageupscaler.com's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort.",
+      "introduction": "Transform low-resolution images into stunning high-quality visuals with MyImageUpscaler's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort.",
       "whatIs": {
         "title": "What is an AI Image Upscaler?",
         "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity..."
@@ -970,8 +970,8 @@ export interface ComparisonPage extends PSEOPage {
       ],
       "faq": [
         {
-          "question": "Is myimageupscaler.com's AI image upscaler free?",
-          "answer": "Yes! myimageupscaler.com offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
+          "question": "Is MyImageUpscaler's AI image upscaler free?",
+          "answer": "Yes! MyImageUpscaler offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
         },
         {
           "question": "What image formats does the AI upscaler support?",

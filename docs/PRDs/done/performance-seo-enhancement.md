@@ -148,7 +148,7 @@ export const metadata: Metadata = {
 const productJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'myimageupscaler.com AI Pro',
+  name: 'MyImageUpscaler AI Pro',
   description: 'Professional image upscaling subscription',
   offers: {
     '@type': 'Offer',

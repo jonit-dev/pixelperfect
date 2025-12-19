@@ -13,7 +13,7 @@
 
 ## Overview
 
-This document defines the React component library for myimageupscaler.com's pSEO implementation. All components are designed to be reusable, performant, and optimized for SEO.
+This document defines the React component library for MyImageUpscaler's pSEO implementation. All components are designed to be reusable, performant, and optimized for SEO.
 
 ---
 
@@ -443,7 +443,7 @@ export default function GuidePageTemplate({ data }: IGuidePageTemplateProps) {
 
         <CTASection
           title="Ready to put this into practice?"
-          description="Try myimageupscaler.com's AI image upscaler and see the results for yourself."
+          description="Try MyImageUpscaler's AI image upscaler and see the results for yourself."
           primaryCTA="Start Free Trial"
           secondaryCTA="View Demo"
         />

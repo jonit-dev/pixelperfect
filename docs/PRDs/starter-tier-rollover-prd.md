@@ -100,7 +100,7 @@ graph TD
 
 ### 1.4 Problem Statement
 
-myimageupscaler.com's entry tier ($19) is 2.1x more expensive than the market standard ($9), and credit rollover is disabled despite being a planned feature, leading to higher churn and lower conversion rates.
+MyImageUpscaler's entry tier ($19) is 2.1x more expensive than the market standard ($9), and credit rollover is disabled despite being a planned feature, leading to higher churn and lower conversion rates.
 
 ---
 

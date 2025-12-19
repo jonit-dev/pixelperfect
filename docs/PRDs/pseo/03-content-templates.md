@@ -776,10 +776,10 @@ A: {faq[0].answer}
         "upscale image online",
         "4k image upscaler"
       ],
-      "introduction": "Transform low-resolution images into stunning high-quality visuals with myimageupscaler.com's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort. Whether you're enhancing product photos, restoring old memories, or preparing images for print, our AI delivers professional results in seconds.",
+      "introduction": "Transform low-resolution images into stunning high-quality visuals with MyImageUpscaler's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort. Whether you're enhancing product photos, restoring old memories, or preparing images for print, our AI delivers professional results in seconds.",
       "whatIs": {
         "title": "What is an AI Image Upscaler?",
-        "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels and create blurry results, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity.\n\nmyimageupscaler.com's AI upscaler is trained on millions of images to understand textures, edges, and fine details. This allows it to reconstruct missing information and produce results that look naturally sharp, not artificially enhanced. The technology is particularly effective at preserving text legibility, maintaining logo sharpness, and enhancing facial features without distortion."
+        "content": "An AI image upscaler uses artificial intelligence and deep learning algorithms to increase the resolution of images while maintaining or improving quality. Unlike traditional interpolation methods that simply duplicate pixels and create blurry results, AI upscalers analyze patterns in the image and intelligently generate new pixels that enhance detail and clarity.\n\nMyImageUpscaler's AI upscaler is trained on millions of images to understand textures, edges, and fine details. This allows it to reconstruct missing information and produce results that look naturally sharp, not artificially enhanced. The technology is particularly effective at preserving text legibility, maintaining logo sharpness, and enhancing facial features without distortion."
       },
       "howItWorks": {
         "title": "How Our AI Upscaler Works",
@@ -884,8 +884,8 @@ A: {faq[0].answer}
       ],
       "faq": [
         {
-          "question": "Is myimageupscaler.com's AI image upscaler free?",
-          "answer": "Yes! myimageupscaler.com offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
+          "question": "Is MyImageUpscaler's AI image upscaler free?",
+          "answer": "Yes! MyImageUpscaler offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
         },
         {
           "question": "What image formats does the AI upscaler support?",
@@ -1043,8 +1043,8 @@ A: {faq[0].answer}
       ],
       "verdict": {
         "winner": "depends",
-        "summary": "The best choice depends on your specific needs. myimageupscaler.com wins for accessibility, speed, and value, while Topaz Gigapixel excels for professionals needing advanced controls and offline processing.",
-        "recommendation": "For most users, we recommend starting with myimageupscaler.com's free tier to see if it meets your needs. If you require advanced customization or offline processing, Topaz Gigapixel may be worth the investment.",
+        "summary": "The best choice depends on your specific needs. MyImageUpscaler wins for accessibility, speed, and value, while Topaz Gigapixel excels for professionals needing advanced controls and offline processing.",
+        "recommendation": "For most users, we recommend starting with MyImageUpscaler's free tier to see if it meets your needs. If you require advanced customization or offline processing, Topaz Gigapixel may be worth the investment.",
         "choosePP": [
           "You want quick results without software installation",
           "You need excellent text and logo preservation",

@@ -1,10 +1,10 @@
 ---
-description: Integration plan for myimageupscaler.com AI template into the Next.js boilerplate
+description: Integration plan for MyImageUpscaler AI template into the Next.js boilerplate
 globs: src/**/*, template/**/*, package.json, app/**/*
 alwaysApply: false
 ---
 
-# myimageupscaler.com AI Integration PRD
+# MyImageUpscaler AI Integration PRD
 
 ## User Review Required
 

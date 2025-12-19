@@ -14,7 +14,7 @@
 
 ## Overview
 
-This document defines the URL architecture, routing patterns, and dynamic page generation strategy for myimageupscaler.com's programmatic SEO implementation.
+This document defines the URL architecture, routing patterns, and dynamic page generation strategy for MyImageUpscaler's programmatic SEO implementation.
 
 ---
 

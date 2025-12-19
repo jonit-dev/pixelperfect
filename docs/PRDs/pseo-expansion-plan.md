@@ -344,4 +344,4 @@ interface IInteractiveTool extends IBasePSEOPage {
 | Remove.bg  | Background removal | 20M+            |
 | Canva      | Full suite         | 100M+           |
 
-**Opportunity**: None of these competitors have myimageupscaler.com's AI upscaling quality. Interactive tools serve as traffic magnets that funnel to our differentiated core product.
+**Opportunity**: None of these competitors have MyImageUpscaler's AI upscaling quality. Interactive tools serve as traffic magnets that funnel to our differentiated core product.

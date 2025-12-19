@@ -13,7 +13,7 @@
 
 ## Overview
 
-This document defines pSEO-specific tracking integration with myimageupscaler.com's existing analytics infrastructure (Amplitude + GA4 + Baselime). Rather than building new analytics systems, this PRD focuses on adding pSEO event tracking to the existing setup.
+This document defines pSEO-specific tracking integration with MyImageUpscaler's existing analytics infrastructure (Amplitude + GA4 + Baselime). Rather than building new analytics systems, this PRD focuses on adding pSEO event tracking to the existing setup.
 
 **Note:** The core analytics infrastructure is already implemented per [analytics-monitoring-prd.md](../../done/analytics-monitoring-prd.md). This PRD only covers pSEO-specific event types and integration points.
 
@@ -789,7 +789,7 @@ Sections: 1. Executive Summary
 
 ### Status: Fully Implemented ✅
 
-**This PRD has been implemented using myimageupscaler.com's existing analytics infrastructure** per [docs/PRDs/done/analytics-monitoring-prd.md](../../done/analytics-monitoring-prd.md).
+**This PRD has been implemented using MyImageUpscaler's existing analytics infrastructure** per [docs/PRDs/done/analytics-monitoring-prd.md](../../done/analytics-monitoring-prd.md).
 
 ### Existing Analytics Stack
 
@@ -1060,7 +1060,7 @@ All KPIs defined in this PRD are now trackable:
 
 ## Conclusion
 
-✅ **All analytics requirements for pSEO have been implemented** using myimageupscaler.com's existing infrastructure.
+✅ **All analytics requirements for pSEO have been implemented** using MyImageUpscaler's existing infrastructure.
 
 The implementation includes:
 

@@ -1,6 +1,6 @@
 # Systems Documentation
 
-Detailed documentation for myimageupscaler.com's subsystems.
+Detailed documentation for MyImageUpscaler's subsystems.
 
 ## Overview
 

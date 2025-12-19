@@ -117,13 +117,13 @@ sequenceDiagram
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   title: {
-    default: 'myimageupscaler.com AI - Image Upscaling & Enhancement',
-    template: '%s | myimageupscaler.com',
+    default: 'MyImageUpscaler - Image Upscaling & Enhancement',
+    template: '%s | MyImageUpscaler',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'myimageupscaler.com',
+    siteName: 'MyImageUpscaler',
     // ...
   },
   // ...

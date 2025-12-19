@@ -15,7 +15,7 @@
 
 ## 1. Overview
 
-This document defines the complete keyword strategy for myimageupscaler.com's programmatic SEO implementation, including keyword research methodology, intent classification, prioritization framework, and content mapping.
+This document defines the complete keyword strategy for MyImageUpscaler's programmatic SEO implementation, including keyword research methodology, intent classification, prioritization framework, and content mapping.
 
 ### 1.1 Objectives
 
