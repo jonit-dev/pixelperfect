@@ -1,6 +1,6 @@
 # System Architecture
 
-High-level architecture overview for myimageupscaler.com AI Image Enhancer.
+High-level architecture overview for MyImageUpscaler AI Image Enhancer.
 
 ## Architecture Overview
 

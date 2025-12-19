@@ -1,6 +1,6 @@
 # User Flows
 
-Detailed user journey diagrams for myimageupscaler.com's core features.
+Detailed user journey diagrams for MyImageUpscaler's core features.
 
 ## 1. First-Time User (Freemium)
 
@@ -267,7 +267,7 @@ flowchart TD
 ```mermaid
 sequenceDiagram
     participant App as External App
-    participant API as myimageupscaler.com API
+    participant API as MyImageUpscaler API
     participant Auth as Auth Middleware
     participant DB as Database
     participant AI as Gemini API

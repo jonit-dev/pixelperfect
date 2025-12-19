@@ -178,12 +178,12 @@ Wedding shoot: 800 photos
 
 ### 2. Speed as Feature
 
-| Competitor              | Processing Time |
-| ----------------------- | --------------- |
-| Topaz Labs              | 90+ minutes     |
-| Magnific AI             | 30-60 seconds   |
-| Let's Enhance           | 10-30 seconds   |
-| **myimageupscaler.com** | **<10 seconds** |
+| Competitor          | Processing Time |
+| ------------------- | --------------- |
+| Topaz Labs          | 90+ minutes     |
+| Magnific AI         | 30-60 seconds   |
+| Let's Enhance       | 10-30 seconds   |
+| **MyImageUpscaler** | **<10 seconds** |
 
 Real-ESRGAN on A100: ~0.7 seconds per image.
 
@@ -211,7 +211,7 @@ Real-ESRGAN on A100: ~0.7 seconds per image.
 
 ## Competitive Comparison (Dec 2025)
 
-| Dimension             | myimageupscaler.com   | Topaz Labs         | Let's Enhance     | Magnific AI      | Upscale.media |
+| Dimension             | MyImageUpscaler       | Topaz Labs         | Let's Enhance     | Magnific AI      | Upscale.media |
 | --------------------- | --------------------- | ------------------ | ----------------- | ---------------- | ------------- |
 | **Primary Value**     | Business productivity | Quality perfection | Cloud convenience | Creative control | Free access   |
 | **Target User**       | E-comm/Business       | Pro photographers  | General/Business  | AI artists       | Casual users  |

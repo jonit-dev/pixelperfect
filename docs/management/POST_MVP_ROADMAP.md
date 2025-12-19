@@ -1,6 +1,6 @@
-# myimageupscaler.com Post-MVP Roadmap
+# MyImageUpscaler Post-MVP Roadmap
 
-Product development roadmap for myimageupscaler.com after MVP launch - focusing on growth, scaling, and market expansion.
+Product development roadmap for MyImageUpscaler after MVP launch - focusing on growth, scaling, and market expansion.
 
 ## Vision
 
@@ -183,16 +183,16 @@ timeline
 **Comparison Pages (P2 - QUICK WIN)**
 
 - [ ] **SEO competitor comparison content** (10 pages)
-  - myimageupscaler.com vs Topaz Gigapixel
-  - myimageupscaler.com vs Magnific AI
-  - myimageupscaler.com vs Let's Enhance
-  - myimageupscaler.com vs Upscale.media
-  - myimageupscaler.com vs VanceAI
-  - myimageupscaler.com vs Remini
-  - myimageupscaler.com vs Gigapixel AI
-  - myimageupscaler.com vs Photoroom
-  - myimageupscaler.com vs Cutout Pro
-  - myimageupscaler.com vs Icons8 Upscaler
+  - MyImageUpscaler vs Topaz Gigapixel
+  - MyImageUpscaler vs Magnific AI
+  - MyImageUpscaler vs Let's Enhance
+  - MyImageUpscaler vs Upscale.media
+  - MyImageUpscaler vs VanceAI
+  - MyImageUpscaler vs Remini
+  - MyImageUpscaler vs Gigapixel AI
+  - MyImageUpscaler vs Photoroom
+  - MyImageUpscaler vs Cutout Pro
+  - MyImageUpscaler vs Icons8 Upscaler
   - **Impact**: High SEO traffic (40k+ monthly searches)
   - **Effort**: 5-6 days (content writing + structured data)
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env npx tsx
 /**
- * Stripe Setup Script for myimageupscaler.com
+ * Stripe Setup Script for MyImageUpscaler
  *
  * Automatically creates all necessary Stripe products, prices, and billing portal
- * configuration for the myimageupscaler.com application.
+ * configuration for the MyImageUpscaler application.
  *
  * This script:
  * - Creates subscription products (Hobby, Professional, Business)
@@ -162,7 +162,7 @@ class StripeSetup {
   async run(): Promise<void> {
     try {
       this.log('\n' + '='.repeat(70), 'cyan');
-      this.log('  Stripe Setup for myimageupscaler.com', 'bright');
+      this.log('  Stripe Setup for MyImageUpscaler', 'bright');
       this.log('='.repeat(70) + '\n', 'cyan');
 
       // Display current configuration
@@ -462,7 +462,7 @@ class StripeSetup {
       // Create new billing portal configuration
       const config = await this.stripe.billingPortal.configurations.create({
         business_profile: {
-          headline: 'Manage your myimageupscaler.com subscription',
+          headline: 'Manage your MyImageUpscaler subscription',
         },
         features: {
           customer_update: {

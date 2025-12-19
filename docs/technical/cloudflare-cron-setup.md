@@ -67,7 +67,7 @@ That's it! The cron jobs are now running on schedule.
 
 1. **Navigate to Cloudflare Pages Dashboard**
    - Go to your Cloudflare account
-   - Select your myimageupscaler.com Pages project
+   - Select your MyImageUpscaler Pages project
    - Click on "Settings" > "Functions"
 
 2. **Add Cron Triggers**

@@ -1,7 +1,7 @@
 {
   "name": "myimageupscaler-cron-worker",
   "version": "1.0.0",
-  "description": "Cloudflare Worker for myimageupscaler.com cron jobs",
+  "description": "Cloudflare Worker for MyImageUpscaler cron jobs",
   "private": true,
   "scripts": {
     "dev": "wrangler dev --local",

@@ -200,7 +200,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 # App
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=myimageupscaler.com
+NEXT_PUBLIC_APP_NAME=MyImageUpscaler
 ```
 
 **`.env.prod`** - Server-side secrets (NEVER commit):

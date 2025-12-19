@@ -17,7 +17,7 @@ import { z } from 'zod';
 // =============================================================================
 
 const clientEnvSchema = z.object({
-  APP_NAME: z.string().default('myimageupscaler.com'),
+  APP_NAME: z.string().default('MyImageUpscaler'),
   BASE_URL: z.string().url().default('http://localhost:3000'),
   SUPABASE_URL: z.string().url().default('https://example.supabase.co'),
   SUPABASE_ANON_KEY: z.string().default(''),
@@ -50,7 +50,7 @@ export type IClientEnv = z.infer<typeof clientEnvSchema>;
 
 function loadClientEnv(): IClientEnv {
   const env = {
-    APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'myimageupscaler.com',
+    APP_NAME: process.env.NEXT_PUBLIC_APP_NAME || 'MyImageUpscaler',
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
     SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://example.supabase.co',
     SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',

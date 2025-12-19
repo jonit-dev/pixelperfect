@@ -1,6 +1,6 @@
 # Pre-Deployment Validation Checklist
 
-This checklist contains manual tests you must perform to verify myimageupscaler.com is ready for production deployment.
+This checklist contains manual tests you must perform to verify MyImageUpscaler is ready for production deployment.
 
 > **Note:** Validation checklists were moved from `ROADMAP.md` to this file on 2025-12-01 to keep the roadmap focused on MVP delivery tasks.
 
@@ -391,10 +391,10 @@ Before starting validation:
 
 - [x] Open homepage in browser - ✅ PASS
 - [x] View page source (Ctrl+U) - ✅ PASS
-- [x] Verify `<title>` tag present and descriptive - **✅ PASS: "myimageupscaler.com AI | Image Upscaling & Enhancement"**
+- [x] Verify `<title>` tag present and descriptive - **✅ PASS: "MyImageUpscaler | Image Upscaling & Enhancement"**
 - [x] Verify `<meta name="description">` present - **✅ PASS: "Transform your images with cutting-edge AI..."**
 - [x] Verify Open Graph tags:
-  - `og:title` - **✅ PASS: "myimageupscaler.com AI - Image Upscaling & Enhancement"**
+  - `og:title` - **✅ PASS: "MyImageUpscaler - Image Upscaling & Enhancement"**
   - `og:description` - ✅ PASS
   - `og:image` - **✅ PASS: "/og-image.png" (1200x630)**
   - `og:url` - ✅ PASS
@@ -457,7 +457,7 @@ Before starting validation:
 - [x] Search for `<script type="application/ld+json">` - ✅ ✅ PASS (multiple found)\*\*
 - [x] Verify `SoftwareApplication` schema present - **PARTIAL: Has WebSite and Organization schemas**
 - [x] Verify fields populated:
-  - `name` - **✅ PASS: "myimageupscaler.com AI"**
+  - `name` - **✅ PASS: "MyImageUpscaler"**
   - `description` - ✅ PASS
   - `url` - ✅ PASS
   - `applicationCategory` - **NOT PRESENT**
@@ -793,7 +793,7 @@ Check Lighthouse report for:
 ### 10.1 Privacy Policy
 
 - [x] Navigate to `/privacy` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Privacy Policy | myimageupscaler.com AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Privacy Policy | MyImageUpscaler")\*\*
 - [x] Verify content includes:
   - Data collection practices - ✅ ✅ PASS (Section 2)\*\*
   - How user data is used - ✅ ✅ PASS (Section 3)\*\*
@@ -809,7 +809,7 @@ Check Lighthouse report for:
 ### 10.2 Terms of Service
 
 - [x] Navigate to `/terms` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Terms of Service | myimageupscaler.com AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Terms of Service | MyImageUpscaler")\*\*
 - [x] Verify content includes:
   - Service description - ✅ ✅ PASS (Section 2)\*\*
   - User obligations - ✅ PASS (Sections 3, 6)\*\*
@@ -826,7 +826,7 @@ Check Lighthouse report for:
 ### 10.3 Help & FAQ
 
 - [x] Navigate to `/help` - ✅ PASS
-- [x] Verify page loads - ✅ ✅ PASS (Title: "Help & FAQ | myimageupscaler.com AI")\*\*
+- [x] Verify page loads - ✅ ✅ PASS (Title: "Help & FAQ | MyImageUpscaler")\*\*
 - [x] Verify sections cover:
   - Getting Started - ✅ PASS
   - Credits & Billing - ✅ PASS

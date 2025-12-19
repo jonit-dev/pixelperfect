@@ -1,6 +1,6 @@
 # Mobile Responsive Testing Guide
 
-This guide provides a comprehensive checklist for testing myimageupscaler.com AI on mobile devices to ensure a great user experience across all screen sizes.
+This guide provides a comprehensive checklist for testing MyImageUpscaler on mobile devices to ensure a great user experience across all screen sizes.
 
 ---
 

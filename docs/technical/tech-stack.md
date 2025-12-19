@@ -1,6 +1,6 @@
 # Technology Stack
 
-Complete technology stack for myimageupscaler.com AI Image Enhancer.
+Complete technology stack for MyImageUpscaler AI Image Enhancer.
 
 ## Stack Overview
 

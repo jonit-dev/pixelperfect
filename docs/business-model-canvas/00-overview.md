@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document presents the complete Business Model Canvas for **myimageupscaler.com**, an AI Image Enhancer & Upscaler MicroSaaS targeting e-commerce sellers and small businesses.
+This document presents the complete Business Model Canvas for **MyImageUpscaler**, an AI Image Enhancer & Upscaler MicroSaaS targeting e-commerce sellers and small businesses.
 
 ## Positioning: Enhancement + Upscaling Combined
 

@@ -49,7 +49,7 @@ async function buildBlogData() {
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
-        author: data.author || 'myimageupscaler.com Team',
+        author: data.author || 'MyImageUpscaler Team',
         category: data.category || 'General',
         tags: data.tags || [],
         image: data.image,

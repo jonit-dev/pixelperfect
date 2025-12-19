@@ -268,7 +268,7 @@ function saveResults(results, filename = 'domain-check-results.json') {
 }
 
 async function main() {
-  console.log('🚀 myimageupscaler.com Domain Availability Checker');
+  console.log('🚀 MyImageUpscaler Domain Availability Checker');
   console.log('==========================================\n');
 
   console.log('📝 Generating domain suggestions from top keywords...');

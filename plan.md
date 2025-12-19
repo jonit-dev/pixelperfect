@@ -130,13 +130,13 @@ FEEDBACK_EMAIL: z.string().email().default('feedback@myimageupscaler.com'),
 FEATURE_REQUEST_EMAIL: z.string().email().default('features@myimageupscaler.com'),
 
 // Social media (new)
-TWITTER_HANDLE: z.string().default('@pixelperfectai'),
-FACEBOOK_URL: z.string().url().default('https://facebook.com/pixelperfect'),
-LINKEDIN_URL: z.string().url().default('https://linkedin.com/company/pixelperfect'),
-GITHUB_URL: z.string().url().default('https://github.com/joaoferro42/pixelperfect'),
+TWITTER_HANDLE: z.string().default('@myimageupscaler'),
+FACEBOOK_URL: z.string().url().default('https://facebook.com/myimageupscaler'),
+LINKEDIN_URL: z.string().url().default('https://linkedin.com/company/myimageupscaler'),
+GITHUB_URL: z.string().url().default('https://github.com/joaoferro42/myimageupscaler'),
 
 // Company information (extend existing)
-COMPANY_NAME: z.string().default('PixelPerfect'),
+COMPANY_NAME: z.string().default('MyImageUpscaler'),
 PRODUCT_DESCRIPTION: z.string().default(
   'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.'
 ),
@@ -334,7 +334,7 @@ href={`mailto:${domainConfig.contact.support}`}
 **Specific Replacements:**
 
 ```typescript
-// Replace: href="mailto:support@pixelperfect.com"
+// Replace: href="mailto:support@myimageupscaler.com"
 href={`mailto:${domainConfig.contact.support}`}
 ```
 
@@ -390,13 +390,13 @@ NEXT_PUBLIC_FEEDBACK_EMAIL=feedback@myimageupscaler.com
 NEXT_PUBLIC_FEATURE_REQUEST_EMAIL=features@myimageupscaler.com
 
 # Social media
-NEXT_PUBLIC_TWITTER_HANDLE=@pixelperfectai
-NEXT_PUBLIC_FACEBOOK_URL=https://facebook.com/pixelperfect
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/pixelperfect
-NEXT_PUBLIC_GITHUB_URL=https://github.com/joaoferro42/pixelperfect
+NEXT_PUBLIC_TWITTER_HANDLE=@myimageupscaler
+NEXT_PUBLIC_FACEBOOK_URL=https://facebook.com/myimageupscaler
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/myimageupscaler
+NEXT_PUBLIC_GITHUB_URL=https://github.com/joaoferro42/myimageupscaler
 
 # Company information
-NEXT_PUBLIC_COMPANY_NAME=PixelPerfect
+NEXT_PUBLIC_COMPANY_NAME=MyImageUpscaler
 NEXT_PUBLIC_PRODUCT_DESCRIPTION=Transform your images with cutting-edge AI...
 
 # Legal URLs

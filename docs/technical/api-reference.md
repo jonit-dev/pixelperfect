@@ -1,6 +1,6 @@
 # API Reference
 
-myimageupscaler.com REST API documentation for image processing and account management.
+MyImageUpscaler REST API documentation for image processing and account management.
 
 ## Base URL
 

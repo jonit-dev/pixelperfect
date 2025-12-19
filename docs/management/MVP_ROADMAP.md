@@ -1,6 +1,6 @@
-# myimageupscaler.com MVP Roadmap
+# MyImageUpscaler MVP Roadmap
 
-Product development roadmap for myimageupscaler.com AI Image Enhancer & Upscaler MVP launch.
+Product development roadmap for MyImageUpscaler AI Image Enhancer & Upscaler MVP launch.
 
 ## Vision
 

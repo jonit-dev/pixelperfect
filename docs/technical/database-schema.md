@@ -1,6 +1,6 @@
 # Database Schema
 
-myimageupscaler.com uses PostgreSQL via Supabase with Row Level Security (RLS) for data isolation.
+MyImageUpscaler uses PostgreSQL via Supabase with Row Level Security (RLS) for data isolation.
 
 ## Entity Relationship Diagram
 

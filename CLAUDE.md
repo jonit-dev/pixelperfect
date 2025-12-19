@@ -1,4 +1,4 @@
-# PixelPerfect - Claude Instructions
+# MyImageUpscaler - Claude Instructions
 
 ## Critical Rules
 
