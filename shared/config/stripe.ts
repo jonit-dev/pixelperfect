@@ -51,6 +51,7 @@ interface ILegacySubscriptionPlan {
 // Stripe Price IDs - Derived from subscription.config.ts (single source of truth)
 export const STRIPE_PRICES = buildStripePrices() as {
   // Subscription plans
+  STARTER_MONTHLY: string;
   HOBBY_MONTHLY: string;
   PRO_MONTHLY: string;
   BUSINESS_MONTHLY: string;
@@ -98,6 +99,17 @@ export const CREDIT_PACKS = buildCreditPacks() as {
  * Derived from subscription.config.ts
  */
 export const SUBSCRIPTION_PLANS = buildSubscriptionPlans() as {
+  STARTER_MONTHLY: {
+    name: string;
+    description: string;
+    price: number;
+    interval: 'month' | 'year';
+    creditsPerMonth: number;
+    maxRollover: number;
+    key: string;
+    features: readonly string[];
+    recommended?: boolean;
+  };
   HOBBY_MONTHLY: {
     name: string;
     description: string;
@@ -357,6 +369,9 @@ export function getPlanDisplayName(input: string | {
   // Handle string input (legacy support)
   if (typeof input === 'string') {
     switch (input.toLowerCase()) {
+      case 'starter':
+      case 'STARTER_MONTHLY':
+        return SUBSCRIPTION_PLANS.STARTER_MONTHLY.name;
       case 'hobby':
       case 'HOBBY_MONTHLY':
         return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name;

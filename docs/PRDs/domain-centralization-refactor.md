@@ -1,109 +1,84 @@
-# Domain Configuration Centralization & Rebranding PRD
+# Domain Configuration Centralization PRD
 
 ## 1. Context Analysis
 
-### 1.1 Files Analyzed
+### 1.1 Grep Results: 67 files contain hardcoded brand references
 
-| Category                   | Path                                              | Purpose                                                  |
-| -------------------------- | ------------------------------------------------- | -------------------------------------------------------- |
-| **Environment Config**     | `/shared/config/env.ts`                           | Centralized environment variables with hardcoded domains |
-| **Environment Examples**   | `/.env.client.example`                            | Client variables template with pixelperfect.com emails   |
-| **Environment Examples**   | `/.env.api.example`                               | Server variables template                                |
-| **Environment Examples**   | `/.env.test.example`                              | Test environment with pixelperfect domains               |
-| **GitHub Actions**         | `/.github/workflows/deploy.yml`                   | Uses APP_NAME for deployment                             |
-| **App Branding**           | `/client/components/navigation/NavBar.tsx`        | Uses APP_NAME environment variable                       |
-| **SEO Infrastructure**     | `/lib/seo/metadata-factory.ts`                    | Generates metadata with hardcoded domains                |
-| **SEO Infrastructure**     | `/lib/seo/schema-generator.ts`                    | Schema markup with domain references                     |
-| **URL Utilities**          | `/lib/seo/url-utils.ts`                           | URL construction utilities                               |
-| **Sitemap Routes**         | `/app/sitemap*.xml/route.ts`                      | Multiple sitemap generators                              |
-| **Robots.txt**             | `/app/robots.ts`                                  | Search engine crawling rules                             |
-| **Footer Component**       | `/client/components/layout/Footer.tsx`            | Links and references to pixelperfect                     |
-| **Success/Canceled Pages** | `/app/success/page.tsx`, `/app/canceled/page.tsx` | Post-payment pages with domains                          |
-| **Pricing Page**           | `/app/pricing/page.tsx`                           | Pricing page with domain references                      |
-| **Help Page**              | `/app/help/page.tsx`                              | Support documentation with domains                       |
-| **PSEO Tool Pages**        | `/app/(pseo)/tools/*/page.tsx`                    | SEO landing pages with hardcoded domains                 |
-| **API Client**             | `/client/utils/api-client.ts`                     | API communication with BASE_URL                          |
-| **Download Utils**         | `/client/utils/download.ts`                       | File download functionality                              |
-| **Middleware**             | `/lib/middleware/*.ts`                            | Auth, rate limiting, security headers                    |
-| **Supabase Configs**       | `/shared/utils/supabase/*.ts`                     | Database client configurations                           |
-| **Worker Scripts**         | `/workers/cron/*`                                 | Cloudflare Worker scripts                                |
-| **Test Files**             | `/tests/*`                                        | Various test configurations                              |
-| **Documentation**          | `/docs/**/*.md`                                   | Technical documentation with domain references           |
+#### P3 - Internal Identifiers (Low Priority - Refactor Later):
+| Type | Change To | Files |
+| ---- | --------- | ----- |
+| Cache keys | `app_auth_cache`, `app_user_cache` | `client/store/auth/authCache.ts`, `client/store/userStore.ts` |
+| Service names | Use env-based `${APP_ID}-api`, `${APP_ID}-cron` | `server/monitoring/logger.ts`, `workers/cron/index.ts` |
+| Folder paths | Rename `@shared/types/pixelperfect` → `@shared/types/models` | Requires folder rename + import updates |
 
-### 1.2 Component & Dependency Overview
+**Note**: Internal identifiers don't affect users but should be genericized. The folder rename requires updating all imports - consider as separate task.
+
+#### MUST CHANGE (user-facing brand text):
+
+| Priority | Category | Files | Issue |
+| -------- | -------- | ----- | ----- |
+| **P0** | SEO/Metadata | `lib/seo/metadata-factory.ts`, `schema-generator.ts`, `meta-generator.ts`, `data-loader.ts`, `url-utils.ts` | Hardcoded brand in titles, siteName, author |
+| **P0** | Root Layout | `app/layout.tsx` | Hardcoded metadata throughout |
+| **P0** | Manifest | `app/manifest.ts` | Hardcoded app name |
+| **P1** | Static Pages | `app/help/page.tsx`, `app/terms/page.tsx`, `app/features/page.tsx`, `app/how-it-works/page.tsx`, `app/verify-email/page.tsx` | Brand text + hardcoded emails |
+| **P1** | Payment Pages | `app/success/page.tsx`, `app/canceled/page.tsx`, `app/pricing/page.tsx` | Hardcoded emails (need `SALES_EMAIL` env var too) |
+| **P1** | Landing Components | `client/components/features/landing/Pricing.tsx`, `CTASection.tsx`, `HomePageClient.tsx` | Brand in UI text and schema |
+| **P1** | Dashboard | `client/components/dashboard/DashboardSidebar.tsx`, `app/dashboard/support/page.tsx` | Brand in sidebar/support |
+| **P1** | Footer | `client/components/layout/Footer.tsx` | Brand name + hardcoded email |
+| **P2** | pSEO Pages | `app/(pseo)/**/*.tsx` | Brand references in templates |
+| **P2** | Blog | `app/blog/page.tsx`, `app/blog/[slug]/page.tsx` | Brand + "Try X Free" CTAs |
+| **P3** | Scripts | `scripts/setup-stripe*.ts`, `scripts/build-blog.ts` | Hardcoded in build/setup scripts |
+
+### 1.2 Current Architecture
 
 ```mermaid
 graph TD
-    subgraph "Central Configuration"
-        ENV_TS["shared/config/env.ts<br/>Domain Config"]
-        DOMAIN_TS["shared/config/domain.ts<br/>(NEW)"]
+    subgraph "Configuration (existing - use these)"
+        ENV_TS["shared/config/env.ts"]
+        APP_NAME["clientEnv.APP_NAME"]
+        EMAILS["clientEnv.SUPPORT_EMAIL, etc."]
     end
 
-    subgraph "Environment Files"
-        CLIENT[".env.client"]
-        API[".env.api"]
-        TEST[".env.test"]
-    end
-
-    subgraph "Core Application"
-        APP_LAYOUT["app/layout.tsx"]
-        NAVBAR["client/components/navigation/NavBar.tsx"]
-        FOOTER["client/components/layout/Footer.tsx"]
-    end
-
-    subgraph "SEO Infrastructure"
+    subgraph "P0 - SEO Infrastructure"
         METADATA["lib/seo/metadata-factory.ts"]
         SCHEMA["lib/seo/schema-generator.ts"]
-        URL_UTILS["lib/seo/url-utils.ts"]
-        SITEMAPS["app/sitemap*.xml/route.ts"]
-        ROBOTS["app/robots.ts"]
+        META_GEN["lib/seo/meta-generator.ts"]
+        DATA_LOAD["lib/seo/data-loader.ts"]
+        LAYOUT["app/layout.tsx"]
+        MANIFEST["app/manifest.ts"]
     end
 
-    subgraph "Pages & Routes"
-        PAGES["app/*/page.tsx"]
-        API_ROUTES["app/api/*/route.ts"]
+    subgraph "P1 - Static Pages"
+        HELP["app/help/page.tsx"]
+        TERMS["app/terms/page.tsx"]
+        SUCCESS["app/success/page.tsx"]
+        CANCELED["app/canceled/page.tsx"]
     end
 
-    subgraph "Infrastructure"
-        MIDDLEWARE["lib/middleware/*.ts"]
-        SUPABASE["shared/utils/supabase/*.ts"]
-        WORKERS["workers/cron/*"]
-        DOCS["docs/**/*.md"]
-    end
-
-    CLIENT --> ENV_TS
-    API --> ENV_TS
-    TEST --> ENV_TS
-
-    ENV_TS --> DOMAIN_TS
-    DOMAIN_TS --> APP_LAYOUT
-    DOMAIN_TS --> NAVBAR
-    DOMAIN_TS --> FOOTER
-    DOMAIN_TS --> METADATA
-    DOMAIN_TS --> SCHEMA
-    DOMAIN_TS --> URL_UTILS
-    DOMAIN_TS --> SITEMAPS
-    DOMAIN_TS --> ROBOTS
-    DOMAIN_TS --> PAGES
-    DOMAIN_TS --> API_ROUTES
-    DOMAIN_TS --> MIDDLEWARE
-    DOMAIN_TS --> SUPABASE
-    DOMAIN_TS --> WORKERS
+    ENV_TS --> APP_NAME
+    ENV_TS --> EMAILS
+    APP_NAME --> METADATA
+    APP_NAME --> SCHEMA
+    APP_NAME --> LAYOUT
+    EMAILS --> HELP
+    EMAILS --> SUCCESS
 ```
 
 ### 1.3 Current Behavior Summary
 
-- **Hardcoded Domain References**: 122 files contain "pixelperfect" references
-- **Email Configuration**: 4 email addresses hardcoded as `*@pixelperfect.com` or `*@pixelperfect.app`
-- **Domain URLs**: 6 files contain explicit pixelperfect.com URLs
-- **APP_NAME Usage**: Centralized in env.ts but defaults to "PixelPerfect"
-- **BASE_URL Configuration**: Used for API endpoints and absolute URL generation
-- **SEO Metadata**: Hardcoded domain references in metadata factory and schema generator
-- **Environment Split**: Already using `.env.client` and `.env.api` structure
+**Already Centralized (no changes needed):**
+- `clientEnv.APP_NAME` - Application name (defaults to 'PixelPerfect')
+- `clientEnv.BASE_URL` - Full URL with protocol (defaults to 'http://localhost:3000')
+- `clientEnv.ADMIN_EMAIL`, `SUPPORT_EMAIL`, `LEGAL_EMAIL`, `PRIVACY_EMAIL` - Contact emails
+
+**Remaining Hardcoded Issues:**
+- SEO files have hardcoded brand strings instead of using `clientEnv.APP_NAME`
+- Twitter handle hardcoded in metadata-factory.ts instead of using env var
+- pSEO category descriptions contain hardcoded brand text
 
 ### 1.4 Problem Statement
 
-**Domain references are scattered throughout the codebase with hardcoded "pixelperfect" references, making rebranding to "myimageupscaler.com" error-prone and requiring updates across 122+ files.**
+**The existing `clientEnv.APP_NAME` is underutilized.** SEO infrastructure files (metadata-factory.ts, schema-generator.ts, url-utils.ts) hardcode brand strings instead of using the already-centralized environment variable.
 
 ---
 
@@ -111,573 +86,266 @@ graph TD
 
 ### 2.1 Architecture Summary
 
-- **Centralized Domain Configuration**: Create a new `shared/config/domain.ts` module to centralize all domain-related configuration
-- **Environment-Driven Domains**: Use environment variables to configure domains for different environments (dev, staging, prod)
-- **Backward Compatibility**: Maintain existing environment variable patterns
-- **Email Domain Separation**: Configure email domains separately from web domains for flexibility
-- **URL Generation Utilities**: Provide helper functions for consistent URL generation
+**This is a MINIMAL refactor - no new modules required.**
+
+- Replace hardcoded `'PixelPerfect'` strings with `clientEnv.APP_NAME`
+- Add `NEXT_PUBLIC_TWITTER_HANDLE` env var for social handles
+- Use existing `clientEnv` utilities - NO new domain.ts module needed
 
 ### 2.2 Architecture Diagram
 
 ```mermaid
 flowchart TD
-    subgraph "Environment Variables"
-        DOMAIN["DOMAIN=myimageupscaler.com"]
-        EMAIL_DOMAIN["EMAIL_DOMAIN=myimageupscaler.com"]
-        BASE_URL["BASE_URL=https://myimageupscaler.com"]
-        APP_NAME["APP_NAME=MyImageUpscaler"]
+    subgraph "clientEnv (shared/config/env.ts)"
+        APP_NAME["APP_NAME"]
+        BASE_URL["BASE_URL"]
+        EMAILS["SUPPORT_EMAIL, ADMIN_EMAIL, etc."]
+        TWITTER["TWITTER_HANDLE (NEW)"]
     end
 
-    subgraph "Configuration Layer"
-        ENV_TS["shared/config/env.ts<br/>Existing loader"]
-        DOMAIN_TS["shared/config/domain.ts<br/>NEW domain module"]
+    subgraph "P0 - SEO Files"
+        META["lib/seo/metadata-factory.ts"]
+        SCHEMA["lib/seo/schema-generator.ts"]
+        URL_UTILS["lib/seo/url-utils.ts"]
+        META_GEN["lib/seo/meta-generator.ts"]
+        DATA_LOAD["lib/seo/data-loader.ts"]
+        LAYOUT["app/layout.tsx"]
+        MANIFEST["app/manifest.ts"]
     end
 
-    subgraph "Utility Functions"
-        GET_URL["getAbsoluteUrl()"]
-        GET_EMAIL["getEmailAddress()"]
-        GET_META["getDomainMetadata()"]
+    subgraph "P1 - Static Pages"
+        HELP["app/help/page.tsx"]
+        TERMS["app/terms/page.tsx"]
+        SUCCESS["app/success/page.tsx"]
     end
 
-    subgraph "Consumers"
-        PAGES["Pages"]
-        API["API Routes"]
-        SEO["SEO Infrastructure"]
-        EMAIL["Email Templates"]
-        MIDDLEWARE["Middleware"]
-    end
-
-    DOMAIN --> ENV_TS
-    EMAIL_DOMAIN --> ENV_TS
-    BASE_URL --> ENV_TS
-    APP_NAME --> ENV_TS
-
-    ENV_TS --> DOMAIN_TS
-    DOMAIN_TS --> GET_URL
-    DOMAIN_TS --> GET_EMAIL
-    DOMAIN_TS --> GET_META
-
-    GET_URL --> PAGES
-    GET_URL --> API
-    GET_EMAIL --> EMAIL
-    GET_META --> SEO
-    GET_URL --> MIDDLEWARE
+    APP_NAME --> META
+    APP_NAME --> SCHEMA
+    APP_NAME --> URL_UTILS
+    APP_NAME --> LAYOUT
+    APP_NAME --> MANIFEST
+    TWITTER --> META
+    EMAILS --> HELP
+    EMAILS --> SUCCESS
 ```
 
 ### 2.3 Key Technical Decisions
 
-| Decision                              | Rationale                                                            |
-| ------------------------------------- | -------------------------------------------------------------------- |
-| Create `shared/config/domain.ts`      | Single source of truth for all domain configuration                  |
-| Use environment variables for domains | Support different domains per environment (dev/staging/prod)         |
-| Separate email domain configuration   | Flexibility to use different email providers (e.g., .app for emails) |
-| Provide utility functions             | Ensure consistent URL generation across the app                      |
-| Update environment variable names     | Clear naming: `DOMAIN`, `EMAIL_DOMAIN`, `APP_NAME`                   |
-| Maintain backward compatibility       | Gradual migration with fallback support                              |
+| Decision                              | Rationale                                                      |
+| ------------------------------------- | -------------------------------------------------------------- |
+| NO new domain.ts module               | Existing `clientEnv` already provides everything needed        |
+| NO new DOMAIN env vars                | Domain extracted from BASE_URL if needed                       |
+| Use `clientEnv.APP_NAME` directly     | Already exists, just underutilized                             |
+| Add optional TWITTER_HANDLE env var   | Only config not already covered                                |
 
 ### 2.4 Data Model Changes
 
-**No database changes required.** Only environment variable configuration and utility functions.
-
----
-
-## 2.5 Runtime Execution Flow
-
-```mermaid
-sequenceDiagram
-    participant App as Next.js App
-    participant Domain as domain.ts
-    participant Env as env.ts
-    participant Client as .env.client
-    participant API as .env.api
-
-    App->>Domain: import { getAbsoluteUrl, getEmailAddress }
-    Domain->>Env: import { clientEnv }
-    Env->>Client: Read DOMAIN, EMAIL_DOMAIN, APP_NAME
-    Env->>API: Read server-side domain config
-    Env->>Env: Zod validation
-
-    alt Validation passes
-        Env-->>Domain: { clientEnv, serverEnv }
-        Domain->>Domain: Build domain config object
-        Domain-->>App: { getAbsoluteUrl(), getEmailAddress(), ... }
-    else Validation fails
-        Env-->>Domain: ZodError with details
-        Domain-->>App: Error with fallback to localhost
-    end
-
-    App->>Domain: getAbsoluteUrl('/api/upscale')
-    Domain-->>App: 'https://myimageupscaler.com/api/upscale'
-
-    App->>Domain: getEmailAddress('support')
-    Domain-->>App: 'support@myimageupscaler.com'
-```
+**No database changes required.** Only minor env.ts schema addition for TWITTER_HANDLE.
 
 ---
 
 ## 3. Detailed Implementation Spec
 
-### A. `/shared/config/domain.ts` (NEW FILE)
+### A. `/shared/config/env.ts` (UPDATE)
 
-**Purpose:** Centralize all domain configuration and provide utility functions.
-
-```typescript
-import { z } from 'zod';
-import { clientEnv, serverEnv } from './env';
-
-// Domain configuration schema
-const domainConfigSchema = z.object({
-  domain: z.string().min(1),
-  emailDomain: z.string().min(1),
-  appName: z.string().min(1),
-  baseUrl: z.string().url(),
-  protocol: z.enum(['http', 'https']).default('https'),
-});
-
-export type IDomainConfig = z.infer<typeof domainConfigSchema>;
-
-/**
- * Domain configuration for the current environment
- */
-function loadDomainConfig(): IDomainConfig {
-  const config = {
-    // Use environment variable or fallback to client config
-    domain:
-      serverEnv.NEXT_PUBLIC_DOMAIN ||
-      clientEnv.BASE_URL?.replace(/^https?:\/\//, '') ||
-      'localhost:3000',
-    emailDomain:
-      serverEnv.NEXT_PUBLIC_EMAIL_DOMAIN ||
-      serverEnv.NEXT_PUBLIC_DOMAIN ||
-      clientEnv.BASE_URL?.replace(/^https?:\/\//, '') ||
-      'localhost:3000',
-    appName: clientEnv.APP_NAME || 'MyImageUpscaler',
-    baseUrl: clientEnv.BASE_URL || 'http://localhost:3000',
-    protocol: clientEnv.BASE_URL?.startsWith('https:') ? 'https' : 'http',
-  };
-
-  return domainConfigSchema.parse(config);
-}
-
-export const domainConfig = loadDomainConfig();
-
-/**
- * Get absolute URL for a given path
- */
-export function getAbsoluteUrl(path: string = '/', includeTrailingSlash: boolean = false): string {
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  const baseUrl = domainConfig.baseUrl.endsWith('/')
-    ? domainConfig.baseUrl.slice(0, -1)
-    : domainConfig.baseUrl;
-  const finalPath = includeTrailingSlash && !cleanPath.endsWith('/') ? `${cleanPath}/` : cleanPath;
-
-  return `${baseUrl}${finalPath}`;
-}
-
-/**
- * Get email address for a given type
- */
-export function getEmailAddress(type: 'admin' | 'support' | 'privacy' | 'legal'): string {
-  const domain = domainConfig.emailDomain;
-  const prefix = type === 'admin' ? 'admin' : type;
-  return `${prefix}@${domain}`;
-}
-
-/**
- * Get domain metadata for SEO
- */
-export function getDomainMetadata(): {
-  domain: string;
-  baseUrl: string;
-  appName: string;
-  siteName: string;
-  titleSeparator: string;
-} {
-  return {
-    domain: domainConfig.domain,
-    baseUrl: domainConfig.baseUrl,
-    appName: domainConfig.appName,
-    siteName: domainConfig.appName,
-    titleSeparator: '|',
-  };
-}
-
-/**
- * Check if current environment is production
- */
-export function isProductionDomain(): boolean {
-  return (
-    domainConfig.domain !== 'localhost:3000' &&
-    !domainConfig.domain.includes('staging') &&
-    !domainConfig.domain.includes('dev')
-  );
-}
-
-/**
- * Get social media URLs
- */
-export function getSocialUrls(): Record<string, string> {
-  const baseUrl = domainConfig.baseUrl;
-  return {
-    twitter: 'https://twitter.com/myimageupscaler', // Update as needed
-    github: 'https://github.com/myimageupscaler', // Update as needed
-    website: baseUrl,
-  };
-}
-```
-
-**Justification:** Centralizes all domain logic, provides type-safe utilities, and handles environment differences gracefully.
-
----
-
-### B. `/shared/config/env.ts` (UPDATE)
-
-**Changes Needed:**
-
-- Add new environment variables to schema
-- Update client environment schema
-
-**New schema additions:**
+**Add TWITTER_HANDLE and SALES_EMAIL to clientEnvSchema:**
 
 ```typescript
 const clientEnvSchema = z.object({
   // ... existing fields ...
 
-  // Domain configuration (NEW)
-  NEXT_PUBLIC_DOMAIN: z.string().optional(), // e.g., "myimageupscaler.com"
-  NEXT_PUBLIC_EMAIL_DOMAIN: z.string().optional(), // e.g., "myimageupscaler.com"
+  // Contact (NEW)
+  SALES_EMAIL: z.string().email().default('sales@example.com'),
 
-  // ... rest unchanged ...
+  // Social (NEW)
+  TWITTER_HANDLE: z.string().default(''),
 });
 
 function loadClientEnv(): IClientEnv {
   const env = {
     // ... existing fields ...
-
-    // Domain configuration (NEW)
-    NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
-    NEXT_PUBLIC_EMAIL_DOMAIN: process.env.NEXT_PUBLIC_EMAIL_DOMAIN,
-
-    // ... rest unchanged ...
+    SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL || 'sales@example.com',
+    TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE || '',
   };
-
   return clientEnvSchema.parse(env);
 }
 ```
 
-**Justification:** Adds support for domain configuration through environment variables.
-
 ---
 
-### C. Environment Example Files (UPDATE)
+### B. `/lib/seo/metadata-factory.ts` (UPDATE)
 
-#### C.1 `/.env.client.example`
-
-**Add new variables:**
-
-```bash
-# App config (updated)
-NEXT_PUBLIC_APP_NAME=MyImageUpscaler
-NEXT_PUBLIC_BASE_URL=https://myimageupscaler.com
-
-# Domain configuration (NEW)
-NEXT_PUBLIC_DOMAIN=myimageupscaler.com
-NEXT_PUBLIC_EMAIL_DOMAIN=myimageupscaler.com
-
-# Contact emails (updated)
-NEXT_PUBLIC_ADMIN_EMAIL=admin@myimageupscaler.com
-NEXT_PUBLIC_SUPPORT_EMAIL=support@myimageupscaler.com
-NEXT_PUBLIC_PRIVACY_EMAIL=privacy@myimageupscaler.com
-NEXT_PUBLIC_LEGAL_EMAIL=legal@myimageupscaler.com
-```
-
-#### C.2 `/.env.api.example`
-
-**Add domain configuration:**
-
-```bash
-# Environment mode
-ENV=production
-
-# Domain configuration (NEW)
-NEXT_PUBLIC_DOMAIN=myimageupscaler.com
-NEXT_PUBLIC_EMAIL_DOMAIN=myimageupscaler.com
-
-# ... rest unchanged ...
-```
-
-#### C.3 `/.env.test.example`
-
-**Update for testing:**
-
-```bash
-# App config (updated)
-NEXT_PUBLIC_APP_NAME=MyImageUpscaler Test
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
-# Domain configuration (NEW)
-NEXT_PUBLIC_DOMAIN=localhost:3000
-NEXT_PUBLIC_EMAIL_DOMAIN=testing.myimageupscaler.com
-
-# Contact emails (updated)
-NEXT_PUBLIC_ADMIN_EMAIL=admin@test.myimageupscaler.com
-NEXT_PUBLIC_SUPPORT_EMAIL=support@test.myimageupscaler.com
-```
-
----
-
-### D. SEO Infrastructure Updates
-
-#### D.1 `/lib/seo/metadata-factory.ts`
-
-**Replace hardcoded domains with domain config:**
+**Replace hardcoded strings:**
 
 ```typescript
-import { getDomainMetadata, getAbsoluteUrl } from '@shared/config/domain';
+import { clientEnv } from '@shared/config/env';
 
-// Update functions to use centralized config
-export function createBaseMetadata(path: string = '/') {
-  const { appName, baseUrl } = getDomainMetadata();
+const BASE_URL = clientEnv.BASE_URL;
+const APP_NAME = clientEnv.APP_NAME;
+const TWITTER_HANDLE = clientEnv.TWITTER_HANDLE;
 
+export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metadata {
   return {
-    title: appName,
-    description: `Professional AI-powered image upscaling tool`,
-    url: getAbsoluteUrl(path),
-    siteName: appName,
-    images: [
-      {
-        url: getAbsoluteUrl('/og-image.jpg'),
-        width: 1200,
-        height: 630,
-        alt: `${appName} - AI Image Upscaler`,
-      },
-    ],
-    // ... rest of metadata
+    // ... existing code ...
+
+    openGraph: {
+      // ...
+      siteName: APP_NAME,  // was: 'PixelPerfect'
+    },
+
+    twitter: {
+      // ...
+      creator: `@${TWITTER_HANDLE}`,  // was: '@pixelperfect'
+    },
+
+    authors: [{ name: APP_NAME, url: BASE_URL }],  // was: 'PixelPerfect'
+    applicationName: APP_NAME,  // was: 'PixelPerfect'
   };
 }
-```
 
-#### D.2 `/lib/seo/schema-generator.ts`
-
-**Update schema generation:**
-
-```typescript
-import { getDomainMetadata, getAbsoluteUrl } from '@shared/config/domain';
-
-export function generateOrganizationSchema() {
-  const { appName, baseUrl } = getDomainMetadata();
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: appName,
-    url: baseUrl,
-    logo: getAbsoluteUrl('/logo.png'),
-    // ... rest of schema
-  };
+export function generateCategoryMetadata(category: PSEOCategory): Metadata {
+  // Same pattern - replace 'PixelPerfect' with APP_NAME
+  // Replace '@pixelperfect' with `@${TWITTER_HANDLE}`
 }
 ```
 
 ---
 
-### E. Core Application Updates
+### C. `/lib/seo/url-utils.ts` (UPDATE)
 
-#### E.1 `/app/layout.tsx`
-
-**Update root layout:**
+**Replace hardcoded brand in descriptions:**
 
 ```typescript
-import { getDomainMetadata } from '@shared/config/domain';
+import { clientEnv } from '@shared/config/env';
 
-export const metadata: Metadata = {
-  title: {
-    default: getDomainMetadata().appName,
-    template: `%s ${getDomainMetadata().titleSeparator} ${getDomainMetadata().appName}`,
-  },
-  // ... rest using domain config
-};
-```
+const APP_NAME = clientEnv.APP_NAME;
 
-#### E.2 `/client/components/layout/Footer.tsx`
-
-**Update footer links:**
-
-```typescript
-import { getEmailAddress, getAbsoluteUrl, getDomainMetadata } from '@shared/config/domain';
-
-// In component:
-const supportEmail = getEmailAddress('support');
-const privacyUrl = getAbsoluteUrl('/privacy');
-const { appName } = getDomainMetadata();
-```
-
-#### E.3 `/client/components/navigation/NavBar.tsx`
-
-**Update branding:**
-
-```typescript
-import { getDomainMetadata } from '@shared/config/domain';
-
-// In component:
-const { appName } = getDomainMetadata();
+export function getCategoryDescription(category: PSEOCategory): string {
+  const descriptions: Record<PSEOCategory, string> = {
+    // ...
+    compare: `Compare ${APP_NAME} with other image upscaling tools`,  // was hardcoded
+    // ...
+  };
+  return descriptions[category];
+}
 ```
 
 ---
 
-### F. Page Updates
+### D. `/lib/seo/schema-generator.ts` (UPDATE - if hardcoded)
 
-#### F.1 `/app/success/page.tsx` & `/app/canceled/page.tsx`
-
-**Update payment pages:**
-
-```typescript
-import { getAbsoluteUrl, getEmailAddress } from '@shared/config/domain';
-
-// Replace hardcoded URLs and emails
-const homeUrl = getAbsoluteUrl();
-const supportEmail = getEmailAddress('support');
-```
-
-#### F.2 `/app/pricing/page.tsx`
-
-**Update pricing page:**
-
-```typescript
-import { getDomainMetadata } from '@shared/config/domain';
-
-// Use centralized domain info
-const { appName } = getDomainMetadata();
-```
-
----
-
-### G. Infrastructure Updates
-
-#### G.1 Middleware Files
-
-**Update all middleware files to use domain config:**
-
-```typescript
-import { getAbsoluteUrl, isProductionDomain } from '@shared/config/domain';
-
-// Replace hardcoded URLs and domain checks
-```
-
-#### G.2 Supabase Configuration
-
-**Update Supabase client configs:**
-
-```typescript
-import { getAbsoluteUrl } from '@shared/config/domain';
-
-// Use for redirect URLs and auth callbacks
-```
+**Verify and replace any hardcoded brand references with `clientEnv.APP_NAME`.**
 
 ---
 
 ## 4. Step-by-Step Execution Plan
 
-### Phase 1: Core Domain Configuration
+### Phase 1: Add New Env Vars to env.ts
 
-- [ ] Create `/shared/config/domain.ts` with centralized domain utilities
-- [ ] Update `/shared/config/env.ts` to add new domain environment variables
-- [ ] Update all `.env.*.example` files with new domain variables
-- [ ] Add domain configuration to environment setup scripts
+- [ ] Add `TWITTER_HANDLE` to `clientEnvSchema` in `/shared/config/env.ts`
+- [ ] Add `SALES_EMAIL` to `clientEnvSchema`
+- [ ] Add both to `loadClientEnv()` function
+- [ ] Update `.env.client.example` with new variables
 
-### Phase 2: SEO Infrastructure Migration
+### Phase 2: Update SEO Infrastructure (P0)
 
-- [ ] Update `/lib/seo/metadata-factory.ts` to use domain config
-- [ ] Update `/lib/seo/schema-generator.ts` to use domain config
-- [ ] Update `/lib/seo/url-utils.ts` to use domain config
-- [ ] Update all sitemap route files to use domain config
-- [ ] Update `/app/robots.ts` to use domain config
+- [ ] `/lib/seo/metadata-factory.ts`:
+  - Replace all `'PixelPerfect'` → `APP_NAME`
+  - Replace `'@pixelperfect'` → `` `@${TWITTER_HANDLE}` ``
+- [ ] `/lib/seo/schema-generator.ts`:
+  - Replace `name: 'PixelPerfect'` → `APP_NAME`
+  - Replace `ORGANIZATION_SCHEMA.sameAs` array - either:
+    - Use env vars: `TWITTER_URL`, `LINKEDIN_URL` (requires new env vars)
+    - Derive from TWITTER_HANDLE: `` `https://twitter.com/${TWITTER_HANDLE}` ``
+    - Or remove `sameAs` if not needed
+- [ ] `/lib/seo/url-utils.ts`:
+  - Replace `'Compare PixelPerfect with...'` → `` `Compare ${APP_NAME} with...` ``
+- [ ] `/lib/seo/meta-generator.ts`:
+  - Replace `'| PixelPerfect'` → `` `| ${APP_NAME}` ``
+- [ ] `/lib/seo/data-loader.ts`:
+  - Replace hardcoded brand in FAQ answers
+- [ ] `/app/layout.tsx`:
+  - Replace all hardcoded `'PixelPerfect AI'` strings
+- [ ] `/app/manifest.ts`:
+  - Replace hardcoded `name` and `short_name`
 
-### Phase 3: Core Application Updates
+### Phase 3: Update Static Pages & Components (P1)
 
-- [ ] Update `/app/layout.tsx` metadata
-- [ ] Update `/client/components/navigation/NavBar.tsx`
-- [ ] Update `/client/components/layout/Footer.tsx`
-- [ ] Update `/client/utils/api-client.ts` to use domain config
-- [ ] Update `/client/utils/download.ts` URLs
+**Static Pages:**
+- [ ] `/app/help/page.tsx` - Replace hardcoded emails → `clientEnv.SUPPORT_EMAIL`, brand text
+- [ ] `/app/terms/page.tsx` - Replace brand references
+- [ ] `/app/features/page.tsx`, `/app/how-it-works/page.tsx` - Replace metadata brand
+- [ ] `/app/verify-email/page.tsx` - Replace metadata brand
+- [ ] `/app/success/page.tsx`, `/app/canceled/page.tsx` - Replace emails
+- [ ] `/app/pricing/page.tsx` - Replace `sales@` email (add `SALES_EMAIL` env var)
 
-### Phase 4: Page Migration
+**Landing Components:**
+- [ ] `/client/components/features/landing/Pricing.tsx` - Replace brand in schema
+- [ ] `/client/components/features/landing/CTASection.tsx` - Replace brand text
+- [ ] `/client/components/pages/HomePageClient.tsx` - Replace brand text
 
-- [ ] Update payment success/canceled pages
-- [ ] Update pricing page
-- [ ] Update help page
-- [ ] Update all PSEO tool pages
-- [ ] Update any other pages with hardcoded domains
+**Dashboard & Layout:**
+- [ ] `/client/components/dashboard/DashboardSidebar.tsx` - Replace brand in sidebar
+- [ ] `/app/dashboard/support/page.tsx` - Replace brand text
+- [ ] `/client/components/layout/Footer.tsx` - Replace brand + email
 
-### Phase 5: Infrastructure & Backend
+### Phase 4: Update pSEO and Blog (P2)
 
-- [ ] Update all middleware files
-- [ ] Update Supabase configuration files
-- [ ] Update worker scripts
-- [ ] Update any remaining API routes with domain references
+- [ ] `/app/(pseo)/**/*.tsx` - Parameterize brand references in templates
+- [ ] `/app/(pseo)/compare/page.tsx` - Replace "Compare X with..." text
+- [ ] `/app/blog/page.tsx`, `/app/blog/[slug]/page.tsx` - Update metadata + CTAs
 
-### Phase 6: Testing & Validation
+### Phase 5: Validation
 
-- [ ] Update test files to use new domain config
-- [ ] Run `yarn verify` to ensure all tests pass
-- [ ] Test environment variable loading in all modes
-- [ ] Validate URL generation across all environments
-
-### Phase 7: Documentation & Cleanup
-
-- [ ] Update technical documentation referencing domains
-- [ ] Update deployment guides
-- [ ] Remove any remaining hardcoded pixelperfect references
-- [ ] Update CLAUDE.md with domain configuration standards
+- [ ] Run `yarn verify`
+- [ ] Grep for remaining `pixelperfect` in user-facing strings
+- [ ] Verify metadata renders correctly
 
 ---
 
 ## 5. Testing Strategy
 
-### Unit Tests
+### Verification Steps
 
-- Test `getAbsoluteUrl()` with various path inputs
-- Test `getEmailAddress()` for all email types
-- Test `getDomainMetadata()` returns correct configuration
-- Test environment variable loading with missing/invalid values
-
-### Integration Tests
-
-- Test domain configuration loading in different environments
-- Test URL generation in SEO metadata
-- Test email address generation in templates
-- Test middleware behavior with new domain config
-
-### Environment Testing
-
-| Environment | Domain Config               | Email Config                | Base URL                            |
-| ----------- | --------------------------- | --------------------------- | ----------------------------------- |
-| Development | localhost:3000              | localhost:3000              | http://localhost:3000               |
-| Staging     | staging.myimageupscaler.com | staging.myimageupscaler.com | https://staging.myimageupscaler.com |
-| Production  | myimageupscaler.com         | myimageupscaler.com         | https://myimageupscaler.com         |
+1. Run `yarn verify` - all tests must pass
+2. Run `yarn dev` and check browser dev tools for correct metadata
+3. Verify OpenGraph tags show `APP_NAME` value, not hardcoded string
+4. Verify Twitter card shows correct `@TWITTER_HANDLE`
 
 ### Edge Cases
 
-| Scenario               | Expected Behavior                      |
-| ---------------------- | -------------------------------------- |
-| Missing DOMAIN env var | Fallback to BASE_URL domain extraction |
-| Invalid email domain   | Use main domain as fallback            |
-| Missing BASE_URL       | Default to localhost:3000              |
-| Protocol mismatch      | Auto-detect from BASE_URL              |
+| Scenario                        | Expected Behavior                              |
+| ------------------------------- | ---------------------------------------------- |
+| Missing TWITTER_HANDLE env var  | Default to 'pixelperfect'                      |
+| APP_NAME not set                | Default to 'PixelPerfect' (existing behavior)  |
 
 ---
 
 ## 6. Acceptance Criteria
 
-- [ ] All hardcoded "pixelperfect" references replaced with centralized configuration
-- [ ] `shared/config/domain.ts` provides all necessary domain utilities
-- [ ] Environment variables properly configured for all environments
-- [ ] SEO metadata uses correct domain information
-- [ ] Email addresses generated correctly for all types
-- [ ] URL generation works consistently across the application
-- [ ] All tests pass with new domain configuration
-- [ ] No hardcoded domains remain in the codebase
-- [ ] Documentation updated with new domain configuration standards
-- [ ] Application works correctly in development, staging, and production
+### P0 (Must complete):
+- [ ] No hardcoded brand strings in `/lib/seo/*.ts` files
+- [ ] No hardcoded Twitter handle in metadata
+- [ ] `app/layout.tsx` uses `clientEnv.APP_NAME`
+- [ ] `app/manifest.ts` uses `clientEnv.APP_NAME`
+- [ ] `yarn verify` passes
+
+### P1 (Should complete):
+- [ ] Static pages use `clientEnv.*_EMAIL` instead of hardcoded emails
+- [ ] Landing components use `clientEnv.APP_NAME`
+- [ ] Footer uses `clientEnv.APP_NAME` and `clientEnv.SUPPORT_EMAIL`
+- [ ] Dashboard sidebar uses `clientEnv.APP_NAME`
+
+### P2 (Nice to have):
+- [ ] pSEO templates use env vars
+- [ ] Blog pages use env vars
+
+### Validation:
+- [ ] `grep -rE "(PixelPerfect|pixelperfect\.(com|app))" --include="*.tsx" app/ lib/ client/` returns only:
+  - Cache keys (e.g., `pixelperfect_auth_cache`)
+  - Import paths (e.g., `@shared/types/pixelperfect`)
+  - Env defaults in `env.ts`
+- [ ] Metadata renders correctly in browser dev tools
 
 ---
 
@@ -686,30 +354,13 @@ import { getAbsoluteUrl } from '@shared/config/domain';
 ### Success Criteria
 
 - `yarn verify` completes without errors
-- `yarn dev` starts correctly with new domain configuration
-- SEO metadata displays correct domain information
-- Email addresses use correct domain in all templates
-- URL generation works for all paths and environments
-- No 404 errors from incorrect domain references
-- Sitemaps generate with correct URLs
+- `yarn dev` starts correctly
+- Browser dev tools show correct metadata values
 
 ### Rollback Plan
 
-1. **Immediate rollback**: Revert changes via `git checkout .`
-2. **Environment rollback**: Restore previous `.env.*` files
-3. **Configuration rollback**: Remove `shared/config/domain.ts` and restore hardcoded values
-4. **Validation**: Run `yarn verify` to confirm rollback success
-
-### Migration Checklist
-
-- [ ] Backup current environment files
-- [ ] Test new configuration in development first
-- [ ] Verify staging environment before production
-- [ ] Update DNS records if necessary
-- [ ] Update external services with new domain information
-- [ ] Test email delivery with new domain
-- [ ] Verify SSL certificates for new domain
-- [ ] Update monitoring and analytics with new domain
+1. `git checkout .` to revert all changes
+2. Run `yarn verify` to confirm rollback
 
 ---
 
@@ -717,18 +368,18 @@ import { getAbsoluteUrl } from '@shared/config/domain';
 
 ### New Variables
 
-| Variable                   | Example               | Purpose                         |
-| -------------------------- | --------------------- | ------------------------------- |
-| `NEXT_PUBLIC_DOMAIN`       | `myimageupscaler.com` | Main web domain                 |
-| `NEXT_PUBLIC_EMAIL_DOMAIN` | `myimageupscaler.com` | Email domain (can be different) |
+| Variable                      | Example              | Purpose                    |
+| ----------------------------- | -------------------- | -------------------------- |
+| `NEXT_PUBLIC_TWITTER_HANDLE`  | `myapp`              | Twitter handle (without @) |
+| `NEXT_PUBLIC_SALES_EMAIL`     | `sales@example.com`  | Sales contact email        |
 
-### Updated Variables
+### Existing Variables (Already Centralized)
 
-| Variable                    | Old Value                  | New Value                     |
-| --------------------------- | -------------------------- | ----------------------------- |
-| `NEXT_PUBLIC_APP_NAME`      | `PixelPerfect`             | `MyImageUpscaler`             |
-| `NEXT_PUBLIC_BASE_URL`      | `https://pixelperfect.app` | `https://myimageupscaler.com` |
-| `NEXT_PUBLIC_ADMIN_EMAIL`   | `admin@pixelperfect.com`   | `admin@myimageupscaler.com`   |
-| `NEXT_PUBLIC_SUPPORT_EMAIL` | `support@pixelperfect.app` | `support@myimageupscaler.com` |
-| `NEXT_PUBLIC_PRIVACY_EMAIL` | `privacy@pixelperfect.app` | `privacy@myimageupscaler.com` |
-| `NEXT_PUBLIC_LEGAL_EMAIL`   | `legal@pixelperfect.app`   | `legal@myimageupscaler.com`   |
+| Variable                    | Purpose                           |
+| --------------------------- | --------------------------------- |
+| `NEXT_PUBLIC_APP_NAME`      | Application/brand name            |
+| `NEXT_PUBLIC_BASE_URL`      | Full URL with protocol            |
+| `NEXT_PUBLIC_SUPPORT_EMAIL` | Support contact email             |
+| `NEXT_PUBLIC_ADMIN_EMAIL`   | Admin contact email               |
+| `NEXT_PUBLIC_LEGAL_EMAIL`   | Legal contact email               |
+| `NEXT_PUBLIC_PRIVACY_EMAIL` | Privacy contact email             |

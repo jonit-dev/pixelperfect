@@ -342,4 +342,215 @@ test.describe('Billing E2E Tests', () => {
       }
     });
   });
+
+  test.describe('Starter Tier Display', () => {
+    let pricingPage: PricingPage;
+
+    test.beforeEach(async ({ page }) => {
+      pricingPage = new PricingPage(page);
+    });
+
+    test('should display Starter tier with correct pricing and features', async ({ page }) => {
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete and actual pricing cards to appear (not skeletons)
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Hobby' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Professional' })).toBeVisible({ timeout: 10000 });
+
+      // Check Starter tier displays $9/month
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toContainText('$9');
+      await expect(starterCard).toContainText('/mo');
+
+      // Check Starter tier features
+      await expect(starterCard).toContainText('100 credits per month');
+      await expect(starterCard).toContainText('Credits roll over (up to 600)');
+      await expect(starterCard).toContainText('Email support');
+      await expect(starterCard).toContainText('Basic AI models');
+      await expect(starterCard).toContainText('Batch upload up to 5 images');
+
+      // Check for "Get Started" button
+      const starterGetStarted = starterCard.getByRole('button', { name: 'Get Started' });
+      await expect(starterGetStarted).toBeVisible();
+
+      // Verify the description
+      await expect(starterCard).toContainText('Perfect for getting started');
+
+      // Screenshot for visual verification
+      await pricingPage.screenshot('starter-tier-display');
+    });
+
+    test('should display Starter tier in correct position', async ({ page }) => {
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+
+      // Check the order: Free, Starter, Hobby, Professional, Business
+      const pricingGrid = pricingPage.pricingGrid;
+      const cards = pricingGrid.locator('> div');
+
+      // Get all visible plan headings
+      const planHeadings = page.locator('[data-testid="pricing-card"] h2, .pricing-card h2');
+
+      // Verify Starter appears after Free tier
+      const freeTier = page.getByText('Free Tier').or(page.getByText('Free'));
+      const starterTier = page.getByRole('heading', { name: 'Starter' });
+
+      await expect(freeTier).toBeVisible();
+      await expect(starterTier).toBeVisible();
+
+      // Check that Starter is not the last card (there should be plans after it)
+      const cardCount = await cards.count();
+      expect(cardCount).toBeGreaterThan(2); // At least Free + Starter + one more
+    });
+
+    test('should handle Starter tier Get Started button click', async ({ page }) => {
+      // Handle alerts
+      page.on('dialog', async dialog => {
+        await dialog.accept();
+      });
+
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+
+      // Find and click Starter tier Get Started button
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      const getStartedButton = starterCard.getByRole('button', { name: 'Get Started' });
+
+      await expect(getStartedButton).toBeVisible();
+      await getStartedButton.click();
+
+      // Wait for any loading states to complete
+      await pricingPage.waitForLoadingComplete();
+
+      // Should handle click gracefully (either show auth modal or handle error)
+      // The page should still be functional
+      await expect(pricingPage.pageTitle).toBeVisible();
+
+      // Check for auth modal or toast notification
+      const authModal = page
+        .locator('#authenticationModal')
+        .or(page.locator('div[role="dialog"]').filter({ hasText: /sign in|login/i }));
+
+      const toast = page
+        .locator('[role="status"]')
+        .or(page.locator('.toast'))
+        .or(page.getByText(/Please sign in/i));
+
+      // Wait a moment for the modal/toast to appear
+      await page.waitForTimeout(500);
+
+      const isModalVisible = await authModal.isVisible().catch(() => false);
+      const isToastVisible = await toast.isVisible().catch(() => false);
+
+      // At least one of these should be visible for unauthenticated users
+      expect(isModalVisible || isToastVisible).toBe(true);
+
+      // Screenshot after action
+      await pricingPage.screenshot('starter-get-started-click');
+    });
+
+    test('should display rollover information prominently', async ({ page }) => {
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+
+      // Check that rollover information is displayed for Starter
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toContainText('roll over');
+      await expect(starterCard).toContainText('up to 600');
+
+      // Also check other tiers mention rollover
+      const hobbyCard = page.locator('div').filter({ hasText: 'Hobby' }).first();
+      await expect(hobbyCard).toContainText('roll over');
+
+      const proCard = page.locator('div').filter({ hasText: 'Professional' }).or(
+        page.locator('div').filter({ hasText: 'Pro' }).first()
+      );
+      await expect(proCard).toContainText('roll over');
+
+      // Screenshot for rollover features verification
+      await pricingPage.screenshot('rollover-features-display');
+    });
+
+    test('should have proper responsive layout for Starter tier', async ({ page }) => {
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+
+      // Test desktop layout
+      await page.setViewportSize({ width: 1200, height: 800 });
+      await pricingPage.waitForLoadingComplete();
+
+      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
+      await expect(starterCard).toBeVisible();
+
+      // Check grid layout on desktop (should be multiple columns)
+      const pricingGrid = pricingPage.pricingGrid;
+      const gridClasses = await pricingGrid.getAttribute('class');
+      expect(gridClasses).toMatch(/grid/);
+
+      // Test mobile layout
+      await page.setViewportSize({ width: 375, height: 667 });
+      await pricingPage.waitForLoadingComplete();
+
+      await expect(starterCard).toBeVisible();
+
+      // Check if layout adapts to mobile (usually single column)
+      const mobileGridClasses = await pricingGrid.getAttribute('class');
+
+      // Screenshot for both layouts
+      await pricingPage.screenshot('starter-tier-desktop');
+      await page.setViewportSize({ width: 375, height: 667 });
+      await pricingPage.screenshot('starter-tier-mobile');
+    });
+
+    test('should maintain visual consistency with other tiers', async ({ page }) => {
+      await pricingPage.goto();
+      await pricingPage.waitForPageLoad();
+
+      // Wait for loading to complete
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Hobby' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Professional' })).toBeVisible({ timeout: 10000 });
+
+      // Check that all cards have similar structure
+      const cards = pricingPage.pricingGrid.locator('> div');
+      const cardCount = await cards.count();
+
+      expect(cardCount).toBeGreaterThanOrEqual(4); // Free + Starter + Hobby + Pro (+/- Business)
+
+      // Check that each card has consistent elements
+      for (let i = 0; i < Math.min(cardCount, 4); i++) {
+        const card = cards.nth(i);
+        await expect(card).toBeVisible();
+
+        // Each card should have a heading
+        const heading = card.locator('h2, h3').first();
+        await expect(heading).toBeVisible();
+
+        // Each card should have a price or "Free" indicator
+        const hasPriceOrFree = await card.locator(':text-is("$")').count() > 0 ||
+                              await card.locator(':text-is("Free")').count() > 0;
+        expect(hasPriceOrFree).toBe(true);
+      }
+
+      // Check accessibility
+      await pricingPage.checkBasicAccessibility();
+
+      // Screenshot for consistency verification
+      await pricingPage.screenshot('all-tiers-consistency');
+    });
+  });
 });

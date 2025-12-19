@@ -88,7 +88,14 @@ export default function PricingPage() {
   const currentSubscriptionPrice = useMemo(() => {
     if (!subscription?.price_id) return null;
 
+    // Check for Starter tier using type-safe property access
+    const starterPriceId = (STRIPE_PRICES as Record<string, string>).STARTER_MONTHLY;
+    const starterPlan = (SUBSCRIPTION_PLANS as Record<string, { price?: number }>).STARTER_MONTHLY;
+
     // Find the matching plan to get the price
+    if (starterPriceId && subscription.price_id === starterPriceId) {
+      return starterPlan?.price;
+    }
     if (subscription.price_id === STRIPE_PRICES.HOBBY_MONTHLY) {
       return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.price;
     }
@@ -213,16 +220,55 @@ export default function PricingPage() {
             Get credits every month with our subscription plans. Cancel anytime.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {loading ? (
               // Show skeleton loading cards while fetching subscription data
               <>
                 <PricingCardSkeleton />
                 <PricingCardSkeleton recommended={true} />
                 <PricingCardSkeleton />
+                <PricingCardSkeleton />
               </>
             ) : (
               <>
+                {/* Starter Plan - Add when available in configuration */}
+                {(() => {
+                  const starterPriceId = (STRIPE_PRICES as Record<string, string>).STARTER_MONTHLY;
+                  const starterPlan = (SUBSCRIPTION_PLANS as Record<string, {
+                    name: string;
+                    description: string;
+                    price: number;
+                    interval: string;
+                    features: readonly string[];
+                  }>).STARTER_MONTHLY;
+
+                  return starterPriceId && starterPlan ? (
+                    <PricingCard
+                      name={starterPlan.name}
+                      description={starterPlan.description}
+                      price={starterPlan.price}
+                      interval={starterPlan.interval as 'month' | 'year'}
+                      features={starterPlan.features}
+                      priceId={starterPriceId}
+                      disabled={
+                        subscription?.price_id === starterPriceId ||
+                        subscription?.scheduled_price_id === starterPriceId
+                      }
+                      scheduled={subscription?.scheduled_price_id === starterPriceId}
+                      onCancelScheduled={
+                        subscription?.scheduled_price_id === starterPriceId
+                          ? handleCancelScheduledChange
+                          : undefined
+                      }
+                      cancelingScheduled={cancelingSchedule}
+                      onSelect={
+                        subscription ? () => handlePlanSelect(starterPriceId) : undefined
+                      }
+                      currentSubscriptionPrice={currentSubscriptionPrice}
+                    />
+                  ) : null;
+                })()}
+
                 <PricingCard
                   name={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name}
                   description={SUBSCRIPTION_PLANS.HOBBY_MONTHLY.description}
