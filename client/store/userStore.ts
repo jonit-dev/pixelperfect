@@ -296,6 +296,10 @@ if (typeof window !== 'undefined') {
 
     if (event === 'SIGNED_OUT' || !session) {
       store.reset();
+      // Redirect to home page after sign out
+      if (typeof window !== 'undefined' && event === 'SIGNED_OUT') {
+        window.location.href = '/';
+      }
       return;
     }
 

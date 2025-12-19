@@ -12,7 +12,7 @@ cd "$WORKER_DIR"
 
 ENV="${1:-production}"
 
-echo "🚀 Deploying pixelperfect-cron worker to $ENV environment..."
+echo "🚀 Deploying myimageupscaler-cron worker to $ENV environment..."
 echo ""
 
 # Check if CRON_SECRET is set
@@ -41,6 +41,6 @@ echo "✅ Deployment complete!"
 echo ""
 echo "Next steps:"
 echo "  1. View logs: wrangler tail"
-echo "  2. Test health: curl https://pixelperfect-cron.workers.dev/health"
-echo "  3. Manual trigger: node scripts/test-trigger.js webhook-recovery https://pixelperfect-cron.workers.dev"
+echo "  2. Test health: curl https://myimageupscaler-cron.workers.dev/health"
+echo "  3. Manual trigger: node scripts/test-trigger.js webhook-recovery https://myimageupscaler-cron.workers.dev"
 echo ""

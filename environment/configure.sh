@@ -14,7 +14,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
 cd "$PROJECT_ROOT"
 
-echo "PixelPerfect Environment Configuration"
+echo "MyImageUpscaler Environment Configuration"
 echo "======================================"
 echo ""
 

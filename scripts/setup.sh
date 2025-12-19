@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ============================================================================
-# PixelPerfect Setup Orchestrator
+# MyImageUpscaler Setup Orchestrator
 # ============================================================================
 # This script orchestrates the complete development setup by running
 # modular setup scripts in sequence.

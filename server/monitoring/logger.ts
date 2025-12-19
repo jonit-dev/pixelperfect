@@ -1,5 +1,5 @@
 import { BaselimeLogger } from '@baselime/edge-logger';
-import { serverEnv, isDevelopment } from '@shared/config/env';
+import { isDevelopment, serverEnv } from '@shared/config/env';
 
 interface ILogContext {
   requestId?: string;
@@ -38,7 +38,7 @@ export function createLogger(
   const apiKey = serverEnv.BASELIME_API_KEY;
 
   const logger = new BaselimeLogger({
-    service: 'pixelperfect-api',
+    service: 'myimageupscaler-api',
     namespace,
     apiKey: apiKey || '',
     ctx: {

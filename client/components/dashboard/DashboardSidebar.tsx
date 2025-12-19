@@ -59,7 +59,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
   const handleSignOut = async () => {
     try {
       await signOut();
-      router.push('/');
+      // Redirect is handled by auth state change listener in userStore.ts
     } catch (error) {
       logger.error('Error signing out', {
         error: error instanceof Error ? error.message : 'Unknown error',
