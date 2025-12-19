@@ -1,24 +1,23 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JSX } from 'react';
+import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
   title: 'Help & FAQ',
-  description:
-    'Find answers to common questions about PixelPerfect AI image upscaling, credits, billing, and technical support.',
+  description: `Find answers to common questions about ${clientEnv.APP_NAME} image upscaling, credits, billing, and technical support.`,
   alternates: {
     canonical: '/help',
   },
 };
 
- 
 export default function HelpPage(): JSX.Element {
   return (
     <main className="flex-1">
       <div className="container mx-auto py-16 px-6 max-w-4xl">
         <h1 className="text-4xl font-bold mb-4">Help & FAQ</h1>
         <p className="text-lg text-slate-600 mb-12">
-          Find answers to common questions about using PixelPerfect AI
+          Find answers to common questions about using {clientEnv.APP_NAME}
         </p>
 
         {/* Quick Links */}
@@ -53,7 +52,7 @@ export default function HelpPage(): JSX.Element {
           <div className="space-y-4">
             <details className="group bg-slate-100 rounded-xl">
               <summary className="flex items-center justify-between cursor-pointer p-5 text-lg font-medium list-none">
-                How do I start using PixelPerfect AI?
+                How do I start using {clientEnv.APP_NAME}?
                 <svg
                   className="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform"
                   fill="none"
@@ -281,9 +280,9 @@ export default function HelpPage(): JSX.Element {
               </summary>
               <div className="px-5 pb-5">
                 <p className="text-slate-700">
-                  Subscription credits roll over month-to-month up to 6× your monthly credit allowance,
-                  as long as your subscription remains active. For example, the Hobby plan can accumulate
-                  up to 1,200 credits (6 × 200).
+                  Subscription credits roll over month-to-month up to 6× your monthly credit
+                  allowance, as long as your subscription remains active. For example, the Hobby
+                  plan can accumulate up to 1,200 credits (6 × 200).
                 </p>
               </div>
             </details>
@@ -378,10 +377,10 @@ export default function HelpPage(): JSX.Element {
                 <p className="text-slate-700 mt-4">
                   Contact{' '}
                   <a
-                    href="mailto:support@pixelperfect.app"
+                    href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
                     className="text-indigo-600 hover:underline"
                   >
-                    support@pixelperfect.app
+                    {clientEnv.SUPPORT_EMAIL}
                   </a>{' '}
                   for assistance.
                 </p>
@@ -422,10 +421,10 @@ export default function HelpPage(): JSX.Element {
                   <li>
                     If the problem persists, contact{' '}
                     <a
-                      href="mailto:support@pixelperfect.app"
+                      href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
                       className="text-indigo-600 hover:underline"
                     >
-                      support@pixelperfect.app
+                      {clientEnv.SUPPORT_EMAIL}
                     </a>
                   </li>
                 </ol>
@@ -554,7 +553,7 @@ export default function HelpPage(): JSX.Element {
               </summary>
               <div className="px-5 pb-5">
                 <p className="text-slate-700 mb-4">
-                  PixelPerfect AI works best on modern browsers:
+                  {clientEnv.APP_NAME} works best on modern browsers:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-slate-700">
                   <li>Chrome/Edge (latest 2 versions)</li>
@@ -577,7 +576,7 @@ export default function HelpPage(): JSX.Element {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="mailto:support@pixelperfect.app"
+              href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
               className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
             >
               <svg

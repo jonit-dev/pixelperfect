@@ -11,16 +11,17 @@ import { CheckoutModal } from '@client/components/stripe/CheckoutModal';
 import { HOMEPAGE_TIERS, isStripePricesConfigured } from '@shared/config/stripe';
 import { useUserStore } from '@client/store/userStore';
 import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
+import { clientEnv } from '@shared/config/env';
 
 // Generate Product structured data for SEO
 const generateProductJsonLd = (tier: (typeof HOMEPAGE_TIERS)[number]) => ({
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: `PixelPerfect AI ${tier.name}`,
+  name: `${clientEnv.APP_NAME} ${tier.name}`,
   description: tier.description,
   brand: {
     '@type': 'Brand',
-    name: 'PixelPerfect AI',
+    name: clientEnv.APP_NAME,
   },
   offers: {
     '@type': 'Offer',

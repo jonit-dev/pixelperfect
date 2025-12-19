@@ -6,6 +6,7 @@
 import { clientEnv } from '@shared/config/env';
 
 const BASE_URL = clientEnv.BASE_URL;
+const APP_NAME = clientEnv.APP_NAME;
 
 /**
  * Generate canonical URL for a page
@@ -93,7 +94,7 @@ export function getCategoryDescription(category: PSEOCategory): string {
     formats: 'Format-specific upscaling solutions for all your image file types',
     scale: 'Resolution and scale-specific upscaling options',
     'use-cases': 'Industry-specific image enhancement solutions',
-    compare: 'Compare PixelPerfect with other image upscaling tools',
+    compare: `Compare ${APP_NAME} with other image upscaling tools`,
     alternatives: 'Find the best alternatives to popular upscaling tools',
     guides: 'Learn how to get the most out of your images',
     free: 'Free AI image tools - no credit card required',

@@ -121,6 +121,11 @@ echo -e "${GREEN}✅ Enterprise Credits: $ENTERPRISE_PRICE_ID${NC}"
 echo -e "\n${BLUE}🔄 Creating Subscription Products...${NC}"
 
 # Create subscriptions
+echo "Creating Starter Monthly..."
+STARTER_PRODUCT_ID=$(create_product "Starter Plan" "For getting started - 100 credits per month")
+STARTER_MONTHLY_PRICE_ID=$(create_price "$STARTER_PRODUCT_ID" "900" "month" "metadata[credits_per_month]=100")
+echo -e "${GREEN}✅ Starter Monthly: $STARTER_MONTHLY_PRICE_ID${NC}"
+
 echo "Creating Hobby Monthly..."
 HOBBY_PRODUCT_ID=$(create_product "Hobby Plan" "For personal projects - 200 credits per month")
 HOBBY_PRICE_ID=$(create_price "$HOBBY_PRODUCT_ID" "1900" "month" "metadata[credits_per_month]=200")
@@ -160,6 +165,7 @@ export const STRIPE_PRICES = {
   ENTERPRISE_CREDITS: '$ENTERPRISE_PRICE_ID', // \$99.99 for 2000 credits
 
   // Subscriptions (Recurring payments)
+  STARTER_MONTHLY: '$STARTER_MONTHLY_PRICE_ID', // \$9/month for 100 credits
   HOBBY_MONTHLY: '$HOBBY_PRICE_ID',     // \$19/month for 200 credits
   PRO_MONTHLY: '$PRO_MONTHLY_PRICE_ID', // \$49/month for 1000 credits
   BUSINESS_MONTHLY: '$BUSINESS_PRICE_ID', // \$149/month for 5000 credits
@@ -211,6 +217,19 @@ export const CREDIT_PACKS = {
  * Subscription plan configuration
  */
 export const SUBSCRIPTION_PLANS = {
+  STARTER_MONTHLY: {
+    name: 'Starter',
+    description: 'Perfect for getting started',
+    price: 9,
+    interval: 'month' as const,
+    creditsPerMonth: 100,
+    features: [
+      '100 credits per month',
+      'Credits roll over (up to 600)',
+      'Email support',
+      'Basic AI models',
+    ],
+  },
   HOBBY_MONTHLY: {
     name: 'Hobby',
     description: 'For personal projects',
@@ -219,7 +238,7 @@ export const SUBSCRIPTION_PLANS = {
     creditsPerMonth: 200,
     features: [
       '200 credits per month',
-      'Rollover unused credits',
+      'Credits roll over (up to 1,200)',
       'Email support',
       'All features included',
     ],
@@ -232,7 +251,7 @@ export const SUBSCRIPTION_PLANS = {
     creditsPerMonth: 1000,
     features: [
       '1000 credits per month',
-      'Rollover unused credits',
+      'Credits roll over (up to 6,000)',
       'Priority support',
       'All features included',
       'Early access to new features',
@@ -247,7 +266,7 @@ export const SUBSCRIPTION_PLANS = {
     creditsPerMonth: 5000,
     features: [
       '5000 credits per month',
-      'Rollover unused credits',
+      'Credits roll over (up to 30,000)',
       '24/7 priority support',
       'All features included',
       'Dedicated account manager',
@@ -445,6 +464,7 @@ echo -e "${YELLOW}📋 Created Price IDs:${NC}"
 echo "   Starter Credits:  $STARTER_PRICE_ID"
 echo "   Pro Credits:      $PRO_PRICE_ID"
 echo "   Enterprise Credits: $ENTERPRISE_PRICE_ID"
+echo "   Starter Monthly:  $STARTER_MONTHLY_PRICE_ID"
 echo "   Hobby Monthly:    $HOBBY_PRICE_ID"
 echo "   Pro Monthly:      $PRO_MONTHLY_PRICE_ID"
 echo "   Business Monthly: $BUSINESS_PRICE_ID"

@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import HowItWorks from '@client/components/features/landing/HowItWorks';
 import { CTASection } from '@client/components/features/landing/CTASection';
+import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
-  title: 'How it Works | PixelPerfect AI - Image Upscaling & Enhancement',
-  description:
-    'Learn how PixelPerfect AI transforms your images in three simple steps: Upload, Process, and Download. Get professional results in seconds.',
+  title: `How it Works | ${clientEnv.APP_NAME} - Image Upscaling & Enhancement`,
+  description: `Learn how ${clientEnv.APP_NAME} transforms your images in three simple steps: Upload, Process, and Download. Get professional results in seconds.`,
 };
 
 export default function HowItWorksPage() {

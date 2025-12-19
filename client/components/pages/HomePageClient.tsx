@@ -10,6 +10,7 @@ import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { getSubscriptionConfig } from '@shared/config/subscription.config';
+import { clientEnv } from '@shared/config/env';
 
 export function HomePageClient(): JSX.Element {
   const { openAuthModal } = useModalStore();
@@ -181,8 +182,8 @@ export function HomePageClient(): JSX.Element {
             Ready to Transform Your Images?
           </h2>
           <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-            Join thousands of professionals using PixelPerfect AI to enhance their images. Start
-            your free trial today.
+            Join thousands of professionals using {clientEnv.APP_NAME} to enhance their images.
+            Start your free trial today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

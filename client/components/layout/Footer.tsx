@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { JSX } from 'react';
+import { clientEnv } from '@shared/config/env';
 
 export const Footer = (): JSX.Element => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ export const Footer = (): JSX.Element => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">PixelPerfect AI</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">{clientEnv.APP_NAME}</h3>
             <p className="text-sm text-slate-400">
               AI-powered image upscaling and enhancement for professionals and creators.
             </p>
@@ -59,7 +60,7 @@ export const Footer = (): JSX.Element => {
               </li>
               <li>
                 <a
-                  href="mailto:support@pixelperfect.app"
+                  href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
                   className="hover:text-white transition-colors"
                 >
                   Contact Support
@@ -94,7 +95,7 @@ export const Footer = (): JSX.Element => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-slate-400">
-            © {currentYear} PixelPerfect AI. All rights reserved.
+            © {currentYear} {clientEnv.APP_NAME}. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy" className="hover:text-white transition-colors">

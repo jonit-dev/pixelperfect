@@ -5,14 +5,12 @@ import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description:
-    'Read the terms and conditions for using PixelPerfect AI image upscaling and enhancement services.',
+  description: `Read the terms and conditions for using ${clientEnv.APP_NAME} image upscaling and enhancement services.`,
   alternates: {
     canonical: '/terms',
   },
 };
 
- 
 export default function TermsOfServicePage(): JSX.Element {
   const lastUpdated = 'November 26, 2025';
 
@@ -26,9 +24,9 @@ export default function TermsOfServicePage(): JSX.Element {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
             <p className="text-slate-700 mb-4">
-              By accessing or using PixelPerfect AI (&quot;Service&quot;), you agree to be bound by
-              these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, you
-              may not use the Service.
+              By accessing or using {clientEnv.APP_NAME} (&quot;Service&quot;), you agree to be
+              bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these
+              Terms, you may not use the Service.
             </p>
             <p className="text-slate-700">
               We reserve the right to modify these Terms at any time. Continued use of the Service
@@ -39,7 +37,7 @@ export default function TermsOfServicePage(): JSX.Element {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
             <p className="text-slate-700 mb-4">
-              PixelPerfect AI provides AI-powered image upscaling and enhancement services. The
+              {clientEnv.APP_NAME} provides AI-powered image upscaling and enhancement services. The
               Service allows users to:
             </p>
             <ul className="list-disc pl-6 mb-4 text-slate-700">
@@ -82,7 +80,8 @@ export default function TermsOfServicePage(): JSX.Element {
             <h3 className="text-xl font-medium mb-3">4.3 Subscription Credits</h3>
             <ul className="list-disc pl-6 mb-4 text-slate-700">
               <li>
-                Subscription credits renew monthly and roll over (up to 6× your monthly credit allowance)
+                Subscription credits renew monthly and roll over (up to 6× your monthly credit
+                allowance)
               </li>
               <li>Credits are only available while your subscription is active</li>
               <li>All subscriptions are processed through Stripe</li>
@@ -155,7 +154,7 @@ export default function TermsOfServicePage(): JSX.Element {
 
             <h3 className="text-xl font-medium mb-3">7.2 Our Service</h3>
             <p className="text-slate-700 mb-4">
-              PixelPerfect AI, including its technology, branding, and content, is protected by
+              {clientEnv.APP_NAME}, including its technology, branding, and content, is protected by
               intellectual property laws. You may not copy, modify, distribute, or create derivative
               works without our written permission.
             </p>
@@ -175,7 +174,8 @@ export default function TermsOfServicePage(): JSX.Element {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">9. Limitation of Liability</h2>
             <p className="text-slate-700 mb-4">
-              TO THE MAXIMUM EXTENT PERMITTED BY LAW, PIXELPERFECT AI SHALL NOT BE LIABLE FOR:
+              TO THE MAXIMUM EXTENT PERMITTED BY LAW, {clientEnv.APP_NAME.toUpperCase()} SHALL NOT
+              BE LIABLE FOR:
             </p>
             <ul className="list-disc pl-6 mb-4 text-slate-700">
               <li>Indirect, incidental, special, or consequential damages</li>
@@ -210,10 +210,10 @@ export default function TermsOfServicePage(): JSX.Element {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">11. Indemnification</h2>
             <p className="text-slate-700">
-              You agree to indemnify and hold harmless PixelPerfect AI and its officers, directors,
-              employees, and agents from any claims, damages, losses, or expenses arising from your
-              use of the Service, violation of these Terms, or infringement of any third-party
-              rights.
+              You agree to indemnify and hold harmless {clientEnv.APP_NAME} and its officers,
+              directors, employees, and agents from any claims, damages, losses, or expenses arising
+              from your use of the Service, violation of these Terms, or infringement of any
+              third-party rights.
             </p>
           </section>
 

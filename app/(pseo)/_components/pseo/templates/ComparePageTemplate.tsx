@@ -6,6 +6,7 @@
 import type { IComparisonPage } from '@/lib/seo/pseo-types';
 import { getPageMappingByUrl } from '@/lib/seo/keyword-mappings';
 import { ReactElement } from 'react';
+import { clientEnv } from '@shared/config/env';
 import { PSEOPageTracker } from '../analytics/PSEOPageTracker';
 import { ScrollTracker } from '../analytics/ScrollTracker';
 import { CTASection } from '../sections/CTASection';
@@ -78,7 +79,7 @@ export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactE
               <HeroSection
                 h1={data.h1}
                 intro={data.intro}
-                ctaText="Try PixelPerfect Free"
+                ctaText={`Try ${clientEnv.APP_NAME} Free`}
                 ctaUrl="/upscaler"
                 pageType="comparison"
                 slug={data.slug}
@@ -258,8 +259,8 @@ export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactE
             <FadeIn>
               <CTASection
                 title="Ready to try the best?"
-                description="Experience the difference with PixelPerfect's AI-powered image enhancement. Start free today."
-                ctaText="Try PixelPerfect Free"
+                description={`Experience the difference with ${clientEnv.APP_NAME}'s AI-powered image enhancement. Start free today.`}
+                ctaText={`Try ${clientEnv.APP_NAME} Free`}
                 ctaUrl="/upscaler"
                 pageType="comparison"
                 slug={data.slug}

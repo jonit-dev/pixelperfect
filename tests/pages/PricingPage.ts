@@ -25,6 +25,7 @@ export class PricingPage extends BasePage {
   readonly hobbyCard: Locator;
   readonly proCard: Locator;
   readonly businessCard: Locator;
+  readonly starterCard: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -39,7 +40,7 @@ export class PricingPage extends BasePage {
     this.subscriptionsDescription = page.getByText(
       'Get credits every month with our subscription plans'
     );
-    this.pricingGrid = page.locator('.grid.md\\:grid-cols-3');
+    this.pricingGrid = page.locator('.grid.md\\:grid-cols-2.lg\\:grid-cols-4');
 
     // FAQ section
     this.faqTitle = page.getByRole('heading', { name: 'Frequently Asked Questions' });
@@ -52,10 +53,12 @@ export class PricingPage extends BasePage {
       .filter({ has: this.customPlanTitle });
     this.contactSalesButton = page.getByRole('link', { name: 'Contact Sales' });
 
-    // Individual plan cards
-    this.hobbyCard = page.locator('div:has-text("Hobby")').first();
-    this.proCard = page.locator('div:has-text("Professional")').first();
-    this.businessCard = page.locator('div:has-text("Business")').first();
+    // Individual plan cards - scope to pricing grid for more specific selection
+    // These need to be initialized after pricingGrid is defined
+    this.hobbyCard = this.pricingGrid.locator('div').filter({ hasText: 'Hobby' }).first();
+    this.proCard = this.pricingGrid.locator('div').filter({ hasText: 'Pro' }).first();
+    this.businessCard = this.pricingGrid.locator('div').filter({ hasText: 'Business' }).first();
+    this.starterCard = this.pricingGrid.locator('div').filter({ hasText: 'Starter' }).first();
   }
 
   /**
@@ -76,14 +79,20 @@ export class PricingPage extends BasePage {
     await expect(this.pageTitle).toBeVisible({ timeout: 5000 });
 
     // Wait for skeleton cards to be replaced with actual pricing cards
-    // Look for actual pricing plan headings (Hobby, Professional, Business)
-    await expect(this.page.getByRole('heading', { name: 'Hobby' })).toBeVisible({ timeout: 10000 });
-    await expect(this.page.getByRole('heading', { name: 'Professional' })).toBeVisible({
-      timeout: 10000,
+    // Use exact text matching and scope to pricing grid to avoid conflicts with FAQ headings
+    const starterHeading = this.pricingGrid.getByRole('heading', { name: 'Starter', exact: true });
+    const hobbyHeading = this.pricingGrid.getByRole('heading', { name: 'Hobby', exact: true });
+    const proHeading = this.pricingGrid.getByRole('heading', { name: 'Pro', exact: true });
+    const businessHeading = this.pricingGrid.getByRole('heading', {
+      name: 'Business',
+      exact: true,
     });
-    await expect(this.page.getByRole('heading', { name: 'Business' })).toBeVisible({
-      timeout: 10000,
-    });
+
+    // Wait for each plan heading to be visible within the pricing grid
+    await expect(starterHeading).toBeVisible({ timeout: 10000 });
+    await expect(hobbyHeading).toBeVisible({ timeout: 10000 });
+    await expect(proHeading).toBeVisible({ timeout: 10000 });
+    await expect(businessHeading).toBeVisible({ timeout: 10000 });
 
     // Wait for Get Started buttons to be visible (not loading)
     const getStartedButtons = this.pricingGrid.getByRole('button', { name: 'Get Started' });
@@ -97,7 +106,7 @@ export class PricingPage extends BasePage {
    * Get a pricing card by name (for subscriptions)
    */
   getSubscriptionCard(planName: string): PricingCard {
-    return new PricingCard(this.page.locator('div').filter({ hasText: planName }).first());
+    return new PricingCard(this.pricingGrid.locator('div').filter({ hasText: planName }).first());
   }
 
   /**
@@ -118,8 +127,10 @@ export class PricingPage extends BasePage {
   /**
    * Get a specific plan card by plan type
    */
-  getPlanCard(planType: 'hobby' | 'pro' | 'business'): PricingCard {
+  getPlanCard(planType: 'starter' | 'hobby' | 'pro' | 'business'): PricingCard {
     switch (planType) {
+      case 'starter':
+        return new PricingCard(this.starterCard);
       case 'hobby':
         return new PricingCard(this.hobbyCard);
       case 'pro':

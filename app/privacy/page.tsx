@@ -5,14 +5,12 @@ import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description:
-    'Learn how PixelPerfect AI collects, uses, and protects your personal information and uploaded images.',
+  description: `Learn how ${clientEnv.APP_NAME} collects, uses, and protects your personal information and uploaded images.`,
   alternates: {
     canonical: '/privacy',
   },
 };
 
- 
 export default function PrivacyPolicyPage(): JSX.Element {
   const lastUpdated = 'November 26, 2025';
 
@@ -26,13 +24,13 @@ export default function PrivacyPolicyPage(): JSX.Element {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
             <p className="text-slate-700 mb-4">
-              Welcome to PixelPerfect AI (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We
-              are committed to protecting your privacy and ensuring the security of your personal
+              Welcome to {clientEnv.APP_NAME} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;).
+              We are committed to protecting your privacy and ensuring the security of your personal
               information. This Privacy Policy explains how we collect, use, disclose, and safeguard
               your information when you use our AI-powered image upscaling and enhancement service.
             </p>
             <p className="text-slate-700">
-              By using PixelPerfect AI, you agree to the collection and use of information in
+              By using {clientEnv.APP_NAME}, you agree to the collection and use of information in
               accordance with this policy.
             </p>
           </section>

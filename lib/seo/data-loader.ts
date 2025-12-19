@@ -6,6 +6,10 @@
 
 import { cache } from 'react';
 import { keywordPageMappings } from './keyword-mappings';
+import { clientEnv } from '@shared/config/env';
+
+const APP_NAME = clientEnv.APP_NAME;
+
 import toolsDataFile from '@/app/seo/data/tools.json';
 import freeDataFile from '@/app/seo/data/free.json';
 import scaleDataFile from '@/app/seo/data/scale.json';
@@ -43,8 +47,7 @@ function generatePageFromMapping(mapping: (typeof keywordPageMappings)[number]):
     },
     {
       question: 'Is it free to use?',
-      answer:
-        'Yes! PixelPerfect offers 10 free credits to get started. Each image enhancement uses 1 credit. For unlimited access, check our affordable premium plans.',
+      answer: `Yes! ${APP_NAME} offers 10 free credits to get started. Each image enhancement uses 1 credit. For unlimited access, check our affordable premium plans.`,
     },
     {
       question: 'How long does processing take?',
@@ -62,7 +65,7 @@ function generatePageFromMapping(mapping: (typeof keywordPageMappings)[number]):
     metaTitle: `${mapping.primaryKeyword
       .split(' ')
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(' ')} | PixelPerfect`,
+      .join(' ')} | ${APP_NAME}`,
     metaDescription: `Professional ${mapping.primaryKeyword}. ${mapping.intent} solution with AI-powered technology. Try free.`,
     h1: mapping.primaryKeyword
       .split(' ')

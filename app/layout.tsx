@@ -8,6 +8,9 @@ import { JsonLd } from '@client/components/seo/JsonLd';
 import '@client/styles/index.css';
 import { clientEnv } from '@shared/config/env';
 
+const APP_NAME = clientEnv.APP_NAME;
+const TWITTER_HANDLE = clientEnv.TWITTER_HANDLE;
+
 const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
@@ -18,8 +21,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(clientEnv.BASE_URL),
   title: {
-    default: 'PixelPerfect AI - Image Upscaling & Enhancement',
-    template: '%s | PixelPerfect AI',
+    default: `${APP_NAME} - Image Upscaling & Enhancement`,
+    template: `%s | ${APP_NAME}`,
   },
   description:
     'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
@@ -30,9 +33,9 @@ export const metadata: Metadata = {
     'image quality',
     'AI upscaler',
   ],
-  authors: [{ name: 'PixelPerfect AI' }],
-  creator: 'PixelPerfect AI',
-  publisher: 'PixelPerfect AI',
+  authors: [{ name: APP_NAME }],
+  creator: APP_NAME,
+  publisher: APP_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -42,8 +45,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    siteName: 'PixelPerfect AI',
-    title: 'PixelPerfect AI - Image Upscaling & Enhancement',
+    siteName: APP_NAME,
+    title: `${APP_NAME} - Image Upscaling & Enhancement`,
     description:
       'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     images: [
@@ -51,17 +54,17 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'PixelPerfect AI Image Enhancement',
+        alt: `${APP_NAME} Image Enhancement`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PixelPerfect AI - Image Upscaling & Enhancement',
+    title: `${APP_NAME} - Image Upscaling & Enhancement`,
     description:
       'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     images: ['/og-image.png'],
-    creator: '@pixelperfectai',
+    creator: `@${TWITTER_HANDLE}`,
   },
   robots: {
     index: true,
@@ -87,12 +90,11 @@ export const metadata: Metadata = {
   },
 };
 
- 
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'PixelPerfect AI',
+    name: APP_NAME,
     url: clientEnv.BASE_URL,
     description:
       'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
@@ -101,7 +103,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'PixelPerfect AI',
+    name: APP_NAME,
     url: clientEnv.BASE_URL,
     logo: `${clientEnv.BASE_URL}/og-image.png`,
     description: 'AI-powered image upscaling and enhancement platform',

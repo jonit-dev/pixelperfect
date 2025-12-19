@@ -5,6 +5,9 @@
  */
 
 import type { PSEOCategory } from './url-utils';
+import { clientEnv } from '@shared/config/env';
+
+const APP_NAME = clientEnv.APP_NAME;
 
 export interface IMetaPattern {
   title: string;
@@ -26,56 +29,54 @@ export interface IMetaValidation {
  */
 export const META_PATTERNS: Record<PSEOCategory, IMetaPattern> = {
   tools: {
-    title: '{ToolName} - {Benefit} Free | PixelPerfect',
+    title: `{ToolName} - {Benefit} Free | ${APP_NAME}`,
     description:
-      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try PixelPerfect now.',
+      '{Action} with AI. Free online {ToolType} that {UniqueValue}. No watermarks, fast processing. Try ${APP_NAME} now.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   formats: {
-    title: 'Upscale {Format} Images to {Resolution} | PixelPerfect',
+    title: `Upscale {Format} Images to {Resolution} | ${APP_NAME}`,
     description:
       'Upscale {Format} images with AI. Free online {Format} upscaler that preserves quality. Convert low-res {Format} to HD instantly.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   compare: {
-    title: 'PixelPerfect vs {Competitor}: Which {ToolType} is Best?',
-    description:
-      'Compare PixelPerfect and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.',
+    title: `${APP_NAME} vs {Competitor}: Which {ToolType} is Best?`,
+    description: `Compare ${APP_NAME} and {Competitor} for {UseCase}. See features, pricing, pros & cons. Find the best {ToolType} for your needs.`,
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   alternatives: {
-    title: 'Best {Competitor} Alternatives in 2025 | PixelPerfect',
-    description:
-      'Looking for {Competitor} alternatives? Compare top {ToolType} tools including PixelPerfect. Free options, pricing, and features compared.',
+    title: `Best {Competitor} Alternatives in 2025 | ${APP_NAME}`,
+    description: `Looking for {Competitor} alternatives? Compare top {ToolType} tools including ${APP_NAME}. Free options, pricing, and features compared.`,
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   'use-cases': {
-    title: '{Industry} Image Enhancement - {UseCase} | PixelPerfect',
+    title: `{Industry} Image Enhancement - {UseCase} | ${APP_NAME}`,
     description:
       'Enhance {Industry} images with AI. Perfect for {UseCase}. Upscale product photos, listings, and more. Free to start.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   guides: {
-    title: 'How to {Action} - Step-by-Step Guide | PixelPerfect',
+    title: `How to {Action} - Step-by-Step Guide | ${APP_NAME}`,
     description:
       'Learn how to {Action} with this comprehensive guide. {Benefit}. Free tips and tools included.',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   free: {
-    title: 'Free {ToolName} - No Registration Required | PixelPerfect',
+    title: `Free {ToolName} - No Registration Required | ${APP_NAME}`,
     description:
       'Use our free {ToolName} online. No watermarks, no sign-up required. {Benefit}. Try it now!',
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
   scale: {
-    title: 'Upscale Images to {Scale} - Free {Resolution} Upscaler | PixelPerfect',
+    title: `Upscale Images to {Scale} - Free {Resolution} Upscaler | ${APP_NAME}`,
     description:
       'Upscale images to {Scale} resolution with AI. Free online tool for {Resolution} enhancement. Perfect for {UseCase}.',
     titleMaxLength: 60,

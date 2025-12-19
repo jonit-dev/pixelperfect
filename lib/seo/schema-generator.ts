@@ -14,10 +14,12 @@ import type {
 import { clientEnv } from '@shared/config/env';
 
 const BASE_URL = clientEnv.BASE_URL;
+const APP_NAME = clientEnv.APP_NAME;
+const TWITTER_HANDLE = clientEnv.TWITTER_HANDLE;
 
 const ORGANIZATION_SCHEMA = {
   '@type': 'Organization',
-  name: 'PixelPerfect',
+  name: APP_NAME,
   url: BASE_URL,
   logo: {
     '@type': 'ImageObject',
@@ -25,7 +27,10 @@ const ORGANIZATION_SCHEMA = {
     width: 512,
     height: 512,
   },
-  sameAs: [`https://twitter.com/pixelperfect`, `https://linkedin.com/company/pixelperfect`],
+  sameAs: [
+    `https://twitter.com/${TWITTER_HANDLE}`,
+    `https://linkedin.com/company/${TWITTER_HANDLE.toLowerCase()}`,
+  ],
 };
 
 /**

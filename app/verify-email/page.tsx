@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
-  title: 'Verify Your Email | PixelPerfect',
+  title: `Verify Your Email | ${clientEnv.APP_NAME}`,
   description: 'Please check your email to verify your account',
 };
 
@@ -28,13 +29,11 @@ export default function VerifyEmailPage() {
             </svg>
           </div>
 
-          <h1 className="text-2xl font-bold text-foreground mb-2">
-            Check Your Email
-          </h1>
+          <h1 className="text-2xl font-bold text-foreground mb-2">Check Your Email</h1>
 
           <p className="text-muted-foreground mb-6">
-            We&apos;ve sent a verification link to your email address.
-            Please click the link to activate your account.
+            We&apos;ve sent a verification link to your email address. Please click the link to
+            activate your account.
           </p>
 
           <div className="space-y-4">

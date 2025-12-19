@@ -2,7 +2,11 @@ import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { stripe } from '@server/stripe';
 import { serverEnv } from '@shared/config/env';
 import { STRIPE_WEBHOOK_SECRET } from '@server/stripe';
-import { resolvePlanOrPack, assertKnownPriceId } from '@shared/config/stripe';
+import {
+  resolvePlanOrPack,
+  assertKnownPriceId,
+  getPlanByPriceId,
+} from '@shared/config/subscription.utils';
 import { calculateBalanceWithExpiration } from '@shared/config/subscription.utils';
 import Stripe from 'stripe';
 
@@ -151,7 +155,9 @@ export class InvoiceHandler {
     const maxRollover = planDetails.maxRollover ?? creditsToAdd * 6; // Default 6x rollover
 
     // Calculate new balance considering expiration mode
-    const expirationMode = 'end_of_cycle'; // Default expiration mode from config
+    // Get expiration mode from plan config (defaults to 'never' for rollover)
+    const planConfig = getPlanByPriceId(priceId);
+    const expirationMode = planConfig?.creditsExpiration?.mode ?? 'never';
     const { newBalance, expiredAmount } = calculateBalanceWithExpiration({
       currentBalance,
       newCredits: creditsToAdd,

@@ -19,7 +19,7 @@ import {
   buildCreditPacks,
   buildHomepageTiers,
   getPlanByPriceId,
-  buildSubscriptionPriceMap
+  buildSubscriptionPriceMap,
 } from './subscription.utils';
 import { getSubscriptionConfig } from './subscription.config';
 
@@ -51,6 +51,7 @@ interface ILegacySubscriptionPlan {
 // Stripe Price IDs - Derived from subscription.config.ts (single source of truth)
 export const STRIPE_PRICES = buildStripePrices() as {
   // Subscription plans
+  STARTER_MONTHLY: string;
   HOBBY_MONTHLY: string;
   PRO_MONTHLY: string;
   BUSINESS_MONTHLY: string;
@@ -98,6 +99,17 @@ export const CREDIT_PACKS = buildCreditPacks() as {
  * Derived from subscription.config.ts
  */
 export const SUBSCRIPTION_PLANS = buildSubscriptionPlans() as {
+  STARTER_MONTHLY: {
+    name: string;
+    description: string;
+    price: number;
+    interval: 'month' | 'year';
+    creditsPerMonth: number;
+    maxRollover: number;
+    key: string;
+    features: readonly string[];
+    recommended?: boolean;
+  };
   HOBBY_MONTHLY: {
     name: string;
     description: string;
@@ -232,19 +244,27 @@ export function validateStripeConfig(): {
   // Check client-side configuration
   if (!clientEnv.STRIPE_PUBLISHABLE_KEY) {
     errors.push('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not configured');
-  } else if (clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_test_xxx') || clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_live_xxx')) {
+  } else if (
+    clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_test_xxx') ||
+    clientEnv.STRIPE_PUBLISHABLE_KEY.includes('pk_live_xxx')
+  ) {
     warnings.push('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY appears to be a placeholder key');
   }
 
   // Check server-side configuration
   if (!serverEnv.STRIPE_SECRET_KEY) {
     errors.push('STRIPE_SECRET_KEY is not configured');
-  } else if (serverEnv.STRIPE_SECRET_KEY.includes('dummy') || serverEnv.STRIPE_SECRET_KEY.includes('placeholder')) {
+  } else if (
+    serverEnv.STRIPE_SECRET_KEY.includes('dummy') ||
+    serverEnv.STRIPE_SECRET_KEY.includes('placeholder')
+  ) {
     warnings.push('STRIPE_SECRET_KEY appears to be a dummy/placeholder key');
   }
 
   if (!serverEnv.STRIPE_WEBHOOK_SECRET) {
-    warnings.push('STRIPE_WEBHOOK_SECRET is not configured - webhook signature verification will fail');
+    warnings.push(
+      'STRIPE_WEBHOOK_SECRET is not configured - webhook signature verification will fail'
+    );
   }
 
   // Check price IDs
@@ -305,7 +325,6 @@ export function getPlanForPriceId(priceId: string): {
   };
 }
 
-
 // =============================================================================
 // Backward Compatibility Exports
 // =============================================================================
@@ -349,14 +368,21 @@ export function getPlanByKey(key: string): ILegacySubscriptionPlan | null {
  * Get display name for a subscription plan tier
  * Accepts either a string tier name or an object with priceId and subscriptionTier
  */
-export function getPlanDisplayName(input: string | {
-  subscriptionTier?: string | null;
-  priceId?: string | null;
-  planKey?: string | null;
-}): string {
+export function getPlanDisplayName(
+  input:
+    | string
+    | {
+        subscriptionTier?: string | null;
+        priceId?: string | null;
+        planKey?: string | null;
+      }
+): string {
   // Handle string input (legacy support)
   if (typeof input === 'string') {
     switch (input.toLowerCase()) {
+      case 'starter':
+      case 'STARTER_MONTHLY':
+        return SUBSCRIPTION_PLANS.STARTER_MONTHLY.name;
       case 'hobby':
       case 'HOBBY_MONTHLY':
         return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name;

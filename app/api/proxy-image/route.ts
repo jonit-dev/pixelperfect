@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { clientEnv } from '@shared/config/env';
 
 /**
  * Proxy endpoint for downloading images from external URLs (e.g., Replicate)
@@ -29,7 +30,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     // Add headers that Replicate might require
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; PixelPerfect/1.0)',
+        'User-Agent': `Mozilla/5.0 (compatible; ${clientEnv.APP_NAME}/1.0)`,
         Accept: 'image/*',
       },
     });

@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
     dateModified: post.date,
     publisher: {
       '@type': 'Organization',
-      name: 'PixelPerfect AI',
+      name: `${clientEnv.APP_NAME} AI`,
       logo: {
         '@type': 'ImageObject',
         url: `${clientEnv.BASE_URL}/og-image.png`,
@@ -215,7 +215,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
               href="/upscaler"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors"
             >
-              Try PixelPerfect Free
+              Try {clientEnv.APP_NAME} Free
             </Link>
           </div>
         </section>

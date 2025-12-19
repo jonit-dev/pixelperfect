@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@server/blog';
 import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react';
+import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
   title: 'Blog - Image Enhancement Tips & Guides',
-  description:
-    'Learn about AI image upscaling, photo enhancement techniques, and tips for e-commerce product photography. Expert guides from PixelPerfect.',
+  description: `Learn about AI image upscaling, photo enhancement techniques, and tips for e-commerce product photography. Expert guides from ${clientEnv.APP_NAME}.`,
   openGraph: {
-    title: 'Blog - Image Enhancement Tips & Guides | PixelPerfect AI',
+    title: `Blog - Image Enhancement Tips & Guides | ${clientEnv.APP_NAME}`,
     description:
       'Learn about AI image upscaling, photo enhancement techniques, and tips for e-commerce product photography.',
   },
@@ -26,8 +26,8 @@ export default function BlogPage() {
             Image Enhancement Blog
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Expert tips, tutorials, and guides on AI image upscaling, photo
-            restoration, and e-commerce photography optimization.
+            Expert tips, tutorials, and guides on AI image upscaling, photo restoration, and
+            e-commerce photography optimization.
           </p>
         </div>
       </section>
@@ -37,9 +37,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           {posts.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-2xl shadow-sm border border-slate-100">
-              <p className="text-slate-500 text-lg">
-                No blog posts yet. Check back soon!
-              </p>
+              <p className="text-slate-500 text-lg">No blog posts yet. Check back soon!</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 gap-8">
@@ -67,9 +65,7 @@ export default function BlogPage() {
                     </h2>
 
                     {/* Description */}
-                    <p className="text-slate-600 mb-4 line-clamp-2">
-                      {post.description}
-                    </p>
+                    <p className="text-slate-600 mb-4 line-clamp-2">{post.description}</p>
 
                     {/* Meta Info */}
                     <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-4">
@@ -121,18 +117,15 @@ export default function BlogPage() {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Enhance Your Images?
-          </h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Enhance Your Images?</h2>
           <p className="text-indigo-100 mb-8 text-lg">
-            Try our AI-powered image upscaler and see the difference for
-            yourself.
+            Try our AI-powered image upscaler and see the difference for yourself.
           </p>
           <Link
             href="/upscaler"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors"
           >
-            Try PixelPerfect Free
+            Try {clientEnv.APP_NAME} Free
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

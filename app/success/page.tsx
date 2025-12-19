@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 import { StripeService } from '@client/services/stripeService';
+import { clientEnv } from '@shared/config/env';
 
 const MAX_POLL_ATTEMPTS = 10;
 const POLL_INTERVAL_MS = 1000;
@@ -167,7 +168,7 @@ function SuccessContent(): JSX.Element {
               <br />
               If you have any questions, please{' '}
               <a
-                href="mailto:support@pixelperfect.com"
+                href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
                 className="text-indigo-600 hover:text-indigo-700 underline"
               >
                 contact support

@@ -1,6 +1,7 @@
 'use client';
 
 import { BookOpen, Mail, MessageCircle } from 'lucide-react';
+import { clientEnv } from '@shared/config/env';
 
 export default function SupportPage() {
   return (
@@ -8,7 +9,7 @@ export default function SupportPage() {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Help & Support</h1>
-        <p className="text-slate-500 mt-1">Get help with PixelPerfect AI</p>
+        <p className="text-slate-500 mt-1">Get help with {clientEnv.APP_NAME}</p>
       </div>
 
       {/* Support Options */}
@@ -20,7 +21,7 @@ export default function SupportPage() {
           </div>
           <h2 className="font-semibold text-slate-900 mb-2">Documentation</h2>
           <p className="text-sm text-slate-500 mb-4">
-            Learn how to use PixelPerfect AI with our comprehensive guides
+            Learn how to use {clientEnv.APP_NAME} with our comprehensive guides
           </p>
           <button className="text-indigo-600 text-sm font-medium hover:text-indigo-700">
             Browse docs

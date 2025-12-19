@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import Features from '@client/components/features/landing/Features';
 import { CTASection } from '@client/components/features/landing/CTASection';
+import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
-  title: 'Features | PixelPerfect AI - Image Upscaling & Enhancement',
-  description:
-    'Discover powerful features of PixelPerfect AI: Text preservation, batch processing, ethical AI, lightning fast upscaling, and more.',
+  title: `Features | ${clientEnv.APP_NAME} - Image Upscaling & Enhancement`,
+  description: `Discover powerful features of ${clientEnv.APP_NAME}: Text preservation, batch processing, ethical AI, lightning fast upscaling, and more.`,
 };
 
 export default function FeaturesPage() {

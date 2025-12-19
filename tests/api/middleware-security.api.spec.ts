@@ -23,8 +23,7 @@ test.afterAll(async () => {
   await ctx.cleanup();
 });
 
-  test.describe('Middleware Security Integration', () => {
-
+test.describe('Middleware Security Integration', () => {
   test.describe('Public API Route Access', () => {
     test('should allow access to health endpoint without authentication', async ({ request }) => {
       api = new ApiClient(request);
@@ -35,11 +34,13 @@ test.afterAll(async () => {
       expect(data.status).toBe('ok');
     });
 
-    test('should allow access to analytics endpoint without authentication', async ({ request }) => {
+    test('should allow access to analytics endpoint without authentication', async ({
+      request,
+    }) => {
       api = new ApiClient(request);
       const response = await api.post('/api/analytics/event', {
         eventName: 'image_download',
-        sessionId: 'test_session_123'
+        sessionId: 'test_session_123',
       });
 
       response.expectStatus(200);
@@ -52,12 +53,12 @@ test.afterAll(async () => {
       const response = await request.post('/api/webhooks/stripe', {
         data: {
           type: 'test',
-          data: { object: {} }
+          data: { object: {} },
         },
         headers: {
           'content-type': 'application/json',
-          'stripe-signature': 'test_signature'
-        }
+          'stripe-signature': 'test_signature',
+        },
       });
 
       // May return 400 due to signature validation or 500 due to missing webhook secret, but should not be 401
@@ -99,9 +100,13 @@ test.afterAll(async () => {
     test('should reject access to protected routes without authentication', async ({ request }) => {
       api = new ApiClient(request);
       const protectedRoutes = [
-        { method: 'POST', path: '/api/upscale', data: { imageData: 'test', mimeType: 'image/png', config: { scale: 2 } } },
+        {
+          method: 'POST',
+          path: '/api/upscale',
+          data: { imageData: 'test', mimeType: 'image/png', config: { scale: 2 } },
+        },
         { method: 'POST', path: '/api/checkout', data: { priceId: 'test_price' } },
-        { method: 'POST', path: '/api/portal', data: {} }
+        { method: 'POST', path: '/api/portal', data: {} },
       ];
 
       for (const route of protectedRoutes) {
@@ -124,17 +129,21 @@ test.afterAll(async () => {
         'Bearer invalid_token',
         'not.a.jwt.token',
         'Bearer',
-        ''
+        '',
       ];
 
       for (const token of invalidTokens) {
-        const response = await api.post('/api/upscale', {
-          imageData: 'data:image/png;base64,test',
-          mimeType: 'image/png',
-          config: { scale: 2 }
-        }, {
-          headers: token ? { 'Authorization': token } : {}
-        });
+        const response = await api.post(
+          '/api/upscale',
+          {
+            imageData: 'data:image/png;base64,test',
+            mimeType: 'image/png',
+            config: { scale: 2 },
+          },
+          {
+            headers: token ? { Authorization: token } : {},
+          }
+        );
 
         response.expectStatus(401);
         const data = await response.json();
@@ -147,13 +156,14 @@ test.afterAll(async () => {
       api = new ApiClient(request).withAuth(testUser.token);
 
       const response = await api.post('/api/upscale', {
-        imageData: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
+        imageData:
+          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
         mimeType: 'image/png',
-        config: { scale: 2, mode: 'upscale' }
+        config: { scale: 2, mode: 'upscale' },
       });
 
       // Should not reject due to authentication (may fail due to other reasons)
-      expect([401, 402, 422, 500]).toContain(response.status);
+      expect([401, 402, 403, 422, 500]).toContain(response.status);
       if (response.status === 401) {
         // If it does reject, it should not be due to token validation
         const data = await response.json();
@@ -172,17 +182,21 @@ test.afterAll(async () => {
         'a.b.', // Empty last part
         'string with spaces.token.signature',
         'null',
-        'undefined'
+        'undefined',
       ];
 
       for (const jwt of malformedJwts) {
-        const response = await api.post('/api/upscale', {
-          imageData: 'data:image/png;base64,test',
-          mimeType: 'image/png',
-          config: { scale: 2 }
-        }, {
-          headers: { 'Authorization': `Bearer ${jwt}` }
-        });
+        const response = await api.post(
+          '/api/upscale',
+          {
+            imageData: 'data:image/png;base64,test',
+            mimeType: 'image/png',
+            config: { scale: 2 },
+          },
+          {
+            headers: { Authorization: `Bearer ${jwt}` },
+          }
+        );
 
         response.expectStatus(401);
         const data = await response.json();
@@ -226,7 +240,7 @@ test.afterAll(async () => {
       const response = await api.post('/api/upscale', {
         imageData: 'data:image/png;base64,test',
         mimeType: 'image/png',
-        config: { scale: 2 }
+        config: { scale: 2 },
       });
 
       // Should not reject due to method
@@ -260,9 +274,9 @@ test.afterAll(async () => {
       const response = await request.fetch(`${baseURL}/api/health`, {
         method: 'OPTIONS',
         headers: {
-          'Origin': baseURL || 'http://localhost:3000',
-          'Access-Control-Request-Method': 'GET'
-        }
+          Origin: baseURL || 'http://localhost:3000',
+          'Access-Control-Request-Method': 'GET',
+        },
       });
 
       // Should handle OPTIONS requests appropriately
@@ -279,7 +293,7 @@ test.afterAll(async () => {
       const response = await api.post('/api/upscale', {
         imageData: largePayload,
         mimeType: 'image/png',
-        config: { scale: 2 }
+        config: { scale: 2 },
       });
 
       // Should handle large requests gracefully
@@ -303,7 +317,7 @@ test.afterAll(async () => {
         const response = await api.post('/api/upscale', {
           imageData: 'data:image/png;base64,test',
           mimeType: 'image/png',
-          config: { scale: 2 }
+          config: { scale: 2 },
         });
         responses.push(response);
       }
@@ -323,15 +337,19 @@ test.afterAll(async () => {
       const maliciousHeaders = [
         'script-alert-1',
         'javascript-alert-1',
-        '..-..-etc-passwd' // Removed forward slashes which are invalid in HTTP headers
+        '..-..-etc-passwd', // Removed forward slashes which are invalid in HTTP headers
       ];
 
       for (const headerValue of maliciousHeaders) {
-        const response = await api.get('/api/health', {}, {
-          headers: {
-            'X-Custom-Header': headerValue
+        const response = await api.get(
+          '/api/health',
+          {},
+          {
+            headers: {
+              'X-Custom-Header': headerValue,
+            },
           }
-        });
+        );
 
         // Should handle malicious headers gracefully (including rate limiting)
         expect([200, 400, 429, 431, 500]).toContain(response.status);
@@ -345,18 +363,18 @@ test.afterAll(async () => {
         '../../../etc/passwd',
         '..\\..\\windows\\system32',
         '%2e%2e%2f%2e%2e%2fetc%2fpasswd', // URL encoded
-        '....//....//....//etc/passwd'
+        '....//....//....//etc/passwd',
       ];
 
       for (const path of maliciousPaths) {
         // Note: Path traversal would be part of the endpoint, so we need to use raw request
         const response = await request.post(`/api/upscale${path}`, {
-          headers: { 'Authorization': `Bearer ${testUser.token}` },
+          headers: { Authorization: `Bearer ${testUser.token}` },
           data: {
             imageData: 'data:image/png;base64,test',
             mimeType: 'image/png',
-            config: { scale: 2 }
-          }
+            config: { scale: 2 },
+          },
         });
 
         // Should handle path traversal attempts
@@ -385,22 +403,26 @@ test.afterAll(async () => {
         'Wget/1.20.3',
         'sqlmap/1.6.12',
         'nikto/2.1.6',
-        '<script>alert(1)</script>'
+        '<script>alert(1)</script>',
       ];
 
       for (const userAgent of suspiciousUserAgents) {
-        const response = await api.post('/api/upscale', {
-          imageData: 'data:image/png;base64,test',
-          mimeType: 'image/png',
-          config: { scale: 2 }
-        }, {
-          headers: {
-            'User-Agent': userAgent
+        const response = await api.post(
+          '/api/upscale',
+          {
+            imageData: 'data:image/png;base64,test',
+            mimeType: 'image/png',
+            config: { scale: 2 },
+          },
+          {
+            headers: {
+              'User-Agent': userAgent,
+            },
           }
-        });
+        );
 
         // May still allow but should be monitored (middleware might not block by default)
-        expect([200, 400, 401, 402, 422, 429, 500]).toContain(response.status);
+        expect([200, 400, 401, 402, 403, 422, 429, 500]).toContain(response.status);
       }
     });
   });

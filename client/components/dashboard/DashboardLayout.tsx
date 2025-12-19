@@ -5,6 +5,7 @@ import { DashboardSidebar } from '@client/components/dashboard/DashboardSidebar'
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { Menu } from 'lucide-react';
 import React from 'react';
+import { clientEnv } from '@shared/config/env';
 
 interface IDashboardLayoutProps {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) =
             <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">PP</span>
             </div>
-            <span className="font-semibold text-slate-900">PixelPerfect</span>
+            <span className="font-semibold text-slate-900">{clientEnv.APP_NAME}</span>
           </div>
 
           {/* Credits Display */}

@@ -10,6 +10,8 @@ import type { PSEOCategory } from './url-utils';
 import { clientEnv } from '@shared/config/env';
 
 const BASE_URL = clientEnv.BASE_URL;
+const APP_NAME = clientEnv.APP_NAME;
+const TWITTER_HANDLE = clientEnv.TWITTER_HANDLE;
 
 /**
  * Generate complete Next.js Metadata object for pSEO pages
@@ -28,7 +30,7 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
       description: page.metaDescription,
       type: 'website',
       url: canonicalUrl,
-      siteName: 'PixelPerfect',
+      siteName: APP_NAME,
       locale: 'en_US',
       ...(page.ogImage && {
         images: [
@@ -48,7 +50,7 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
       title: page.metaTitle,
       description: page.metaDescription,
       ...(page.ogImage && { images: [page.ogImage] }),
-      creator: '@pixelperfect',
+      creator: `@${TWITTER_HANDLE}`,
     },
 
     // Canonical & Alternates
@@ -66,9 +68,9 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
     },
 
     // Additional metadata
-    authors: [{ name: 'PixelPerfect', url: BASE_URL }],
+    authors: [{ name: APP_NAME, url: BASE_URL }],
     generator: 'Next.js',
-    applicationName: 'PixelPerfect',
+    applicationName: APP_NAME,
     referrer: 'origin-when-cross-origin',
     keywords: page.secondaryKeywords?.join(', '),
     category: category,
@@ -83,14 +85,14 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
   const canonicalUrl = `${BASE_URL}/${category}`;
 
   const categoryTitles: Record<PSEOCategory, string> = {
-    tools: 'AI Image Tools - Upscaler, Enhancer & More | PixelPerfect',
-    formats: 'Image Format Upscaling - JPEG, PNG, WebP & More | PixelPerfect',
-    scale: 'Image Resolution Enhancement - 4K, 8K Upscaling | PixelPerfect',
-    'use-cases': 'Industry Solutions - E-commerce, Real Estate & More | PixelPerfect',
-    compare: 'Compare Image Upscaling Tools | PixelPerfect',
-    alternatives: 'Best Upscaler Alternatives & Comparisons | PixelPerfect',
-    guides: 'Image Enhancement Guides & Tutorials | PixelPerfect',
-    free: 'Free AI Image Tools - No Sign-Up Required | PixelPerfect',
+    tools: `AI Image Tools - Upscaler, Enhancer & More | ${APP_NAME}`,
+    formats: `Image Format Upscaling - JPEG, PNG, WebP & More | ${APP_NAME}`,
+    scale: `Image Resolution Enhancement - 4K, 8K Upscaling | ${APP_NAME}`,
+    'use-cases': `Industry Solutions - E-commerce, Real Estate & More | ${APP_NAME}`,
+    compare: `Compare Image Upscaling Tools | ${APP_NAME}`,
+    alternatives: `Best Upscaler Alternatives & Comparisons | ${APP_NAME}`,
+    guides: `Image Enhancement Guides & Tutorials | ${APP_NAME}`,
+    free: `Free AI Image Tools - No Sign-Up Required | ${APP_NAME}`,
   };
 
   const categoryDescriptions: Record<PSEOCategory, string> = {
@@ -100,10 +102,8 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       'Format-specific upscaling solutions for all your image file types. Preserve quality while enhancing JPEG, PNG, WebP, and more.',
     scale:
       'Resolution and scale-specific upscaling options. Enhance images to 4K, 8K, or custom resolutions with AI technology.',
-    'use-cases':
-      'Industry-specific image enhancement solutions for e-commerce, real estate, photography, and more. See how PixelPerfect fits your workflow.',
-    compare:
-      'Compare PixelPerfect with other image upscaling tools. See features, pricing, and performance side-by-side.',
+    'use-cases': `Industry-specific image enhancement solutions for e-commerce, real estate, photography, and more. See how ${APP_NAME} fits your workflow.`,
+    compare: `Compare ${APP_NAME} with other image upscaling tools. See features, pricing, and performance side-by-side.`,
     alternatives:
       'Find the best alternatives to popular upscaling tools. Compare features, pricing, and capabilities to make the right choice.',
     guides:
@@ -120,7 +120,7 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       description: categoryDescriptions[category],
       type: 'website',
       url: canonicalUrl,
-      siteName: 'PixelPerfect',
+      siteName: APP_NAME,
       locale: 'en_US',
     },
 
@@ -128,7 +128,7 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       card: 'summary_large_image',
       title: categoryTitles[category],
       description: categoryDescriptions[category],
-      creator: '@pixelperfect',
+      creator: `@${TWITTER_HANDLE}`,
     },
 
     alternates: {
@@ -142,9 +142,9 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       'max-snippet': -1,
     },
 
-    authors: [{ name: 'PixelPerfect', url: BASE_URL }],
+    authors: [{ name: APP_NAME, url: BASE_URL }],
     generator: 'Next.js',
-    applicationName: 'PixelPerfect',
+    applicationName: APP_NAME,
     category: category,
   };
 }

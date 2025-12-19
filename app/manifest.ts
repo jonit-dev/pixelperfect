@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
+import { clientEnv } from '@shared/config/env';
 
- 
 export default function manifest(): MetadataRoute.Manifest {
+  const APP_NAME = clientEnv.APP_NAME;
+
   return {
-    name: 'PixelPerfect AI - Image Upscaling & Enhancement',
-    short_name: 'PixelPerfect',
+    name: `${APP_NAME} - Image Upscaling & Enhancement`,
+    short_name: APP_NAME,
     description:
       'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     start_url: '/',

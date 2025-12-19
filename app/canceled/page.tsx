@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { XCircle, ArrowLeft, HelpCircle } from 'lucide-react';
+import { clientEnv } from '@shared/config/env';
 
 export default function CanceledPage() {
   return (
@@ -50,7 +51,7 @@ export default function CanceledPage() {
               support team is here to help.
             </p>
             <a
-              href="mailto:support@pixelperfect.com"
+              href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
               className="inline-flex items-center justify-center px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200 rounded-lg transition-colors"
             >
               Contact Support

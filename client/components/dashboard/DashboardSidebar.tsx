@@ -8,6 +8,7 @@ import { useUserStore, useIsAdmin } from '@client/store/userStore';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { useLogger } from '@client/utils/logger';
 import { cn } from '@client/utils/cn';
+import { clientEnv } from '@shared/config/env';
 
 interface ISidebarItem {
   label: string;
@@ -111,7 +112,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
             <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">PP</span>
             </div>
-            <span className="font-semibold text-slate-900">PixelPerfect</span>
+            <span className="font-semibold text-slate-900">{clientEnv.APP_NAME}</span>
           </Link>
         </div>
 
