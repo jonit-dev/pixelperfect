@@ -152,7 +152,7 @@ export class StripeService {
       throw new Error(`Invalid credit pack: ${packKey}`);
     }
 
-    const response = await this.createCheckoutSession(pack.stripePriceId, {
+    const response = await this.createCheckoutSession(pack.stripePriceId!, {
       uiMode: options?.uiMode || 'hosted',
       successUrl: options?.successUrl,
       cancelUrl: options?.cancelUrl,

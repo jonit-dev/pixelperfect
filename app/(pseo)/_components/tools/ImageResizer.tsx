@@ -202,10 +202,10 @@ export function ImageResizer({
           {previewUrl && (
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium mb-2 block text-slate-700">
+                <label className="text-sm font-medium mb-2 block text-muted-foreground">
                   Original Image
                 </label>
-                <div className="relative border rounded-lg overflow-hidden bg-slate-100">
+                <div className="relative border rounded-lg overflow-hidden bg-surface-light">
                   <Image
                     src={previewUrl}
                     alt="Original"
@@ -222,15 +222,15 @@ export function ImageResizer({
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block text-slate-700">
+                <label className="text-sm font-medium mb-2 block text-muted-foreground">
                   Preview (New Size)
                 </label>
-                <div className="border rounded-lg p-4 bg-slate-100 flex items-center justify-center min-h-[200px]">
+                <div className="border rounded-lg p-4 bg-surface-light flex items-center justify-center min-h-[200px]">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-slate-700">
+                    <p className="text-2xl font-bold text-muted-foreground">
                       {options.width} × {options.height}
                     </p>
-                    <p className="text-sm text-slate-500 mt-1">New dimensions</p>
+                    <p className="text-sm text-muted-foreground mt-1">New dimensions</p>
                   </div>
                 </div>
               </div>
@@ -241,13 +241,16 @@ export function ImageResizer({
           <div className="grid md:grid-cols-2 gap-6">
             {/* Preset Sizes */}
             <div>
-              <label htmlFor="preset" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="preset"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Preset Sizes
               </label>
               <select
                 id="preset"
                 onChange={e => handlePresetSelect(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="w-full px-3 py-2 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-surface text-white"
               >
                 <option value="">Choose a preset...</option>
                 {presets.map(preset => (
@@ -260,7 +263,10 @@ export function ImageResizer({
 
             {/* Format */}
             <div>
-              <label htmlFor="format" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="format"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Output Format
               </label>
               <select
@@ -272,7 +278,7 @@ export function ImageResizer({
                     format: e.target.value as 'jpeg' | 'png' | 'webp',
                   }))
                 }
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="w-full px-3 py-2 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-surface text-white"
               >
                 <option value="jpeg">JPEG</option>
                 <option value="png">PNG</option>
@@ -282,7 +288,10 @@ export function ImageResizer({
 
             {/* Width */}
             <div>
-              <label htmlFor="width" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="width"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Width (px)
               </label>
               <input
@@ -292,16 +301,21 @@ export function ImageResizer({
                 max={10000}
                 value={options.width}
                 onChange={e => handleWidthChange(parseInt(e.target.value) || 1)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Height */}
             <div>
-              <label htmlFor="height" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="height"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Height (px)
                 {options.maintainAspectRatio && (
-                  <span className="ml-2 text-xs text-slate-500 font-normal">(auto-calculated)</span>
+                  <span className="ml-2 text-xs text-muted-foreground font-normal">
+                    (auto-calculated)
+                  </span>
                 )}
               </label>
               <input
@@ -312,13 +326,16 @@ export function ImageResizer({
                 value={options.height}
                 onChange={e => handleHeightChange(parseInt(e.target.value) || 1)}
                 disabled={options.maintainAspectRatio}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50 disabled:text-slate-600 disabled:cursor-not-allowed"
+                className="w-full px-3 py-2 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-surface disabled:text-muted-foreground disabled:cursor-not-allowed"
               />
             </div>
 
             {/* Quality */}
             <div>
-              <label htmlFor="quality" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="quality"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Quality: {options.quality}%
               </label>
               <input
@@ -341,11 +358,11 @@ export function ImageResizer({
                 onChange={e =>
                   setOptions(prev => ({ ...prev, maintainAspectRatio: e.target.checked }))
                 }
-                className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                className="w-4 h-4 text-accent border-white/20 rounded focus:ring-accent"
               />
               <label
                 htmlFor="aspect-ratio"
-                className="text-sm font-medium text-slate-700 cursor-pointer"
+                className="text-sm font-medium text-muted-foreground cursor-pointer"
               >
                 Maintain aspect ratio
               </label>
@@ -354,8 +371,8 @@ export function ImageResizer({
 
           {/* File Info */}
           {file && (
-            <div className="bg-slate-50 rounded-lg p-4 text-sm">
-              <p className="text-slate-600">
+            <div className="bg-surface rounded-lg p-4 text-sm">
+              <p className="text-muted-foreground">
                 <span className="font-medium">Original:</span> {file.name} (
                 {(file.size / 1024 / 1024).toFixed(2)}MB)
               </p>

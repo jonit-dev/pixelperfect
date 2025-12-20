@@ -1,0 +1,683 @@
+{
+  "category": "use-cases",
+  "pages": [
+    {
+      "slug": "ecommerce-product-photos",
+      "title": "E-commerce Product Photos",
+      "metaTitle": "E-commerce Product Photo Requirements by Platform | MyImageUpscaler",
+      "metaDescription": "Exact image requirements for Amazon, eBay, Etsy, Shopify. Learn minimum sizes, aspect ratios, and how to upscale product photos to meet platform standards.",
+      "h1": "E-commerce Product Photo Requirements",
+      "intro": "Every marketplace has specific image requirements. Here's exactly what you need for each platform and how to get there.",
+      "primaryKeyword": "ecommerce product photos",
+      "secondaryKeywords": [
+        "product image requirements",
+        "amazon photo size",
+        "ebay image requirements",
+        "etsy photo dimensions"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "E-commerce",
+      "description": "Specific image requirements for major e-commerce platforms with guidance on how to meet them.",
+      "platformRequirements": [
+        {
+          "platform": "Amazon",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px (for zoom)",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1 preferred",
+          "format": "JPEG, PNG, GIF, TIFF",
+          "background": "Pure white (RGB 255,255,255) for main image",
+          "notes": "Product must fill 85% of frame. No watermarks, logos, or text on main image."
+        },
+        {
+          "platform": "eBay",
+          "minimumSize": "500x500px",
+          "recommendedSize": "1600x1600px",
+          "maxFileSize": "12MB",
+          "aspectRatio": "1:1 preferred",
+          "format": "JPEG, PNG, GIF, TIFF, BMP",
+          "background": "White or light gray preferred",
+          "notes": "Up to 24 images per listing. No borders, watermarks, or promotional text."
+        },
+        {
+          "platform": "Etsy",
+          "minimumSize": "2000px shortest side",
+          "recommendedSize": "2700x2025px",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3 recommended",
+          "format": "JPEG, PNG, GIF",
+          "background": "Your choice - lifestyle shots work well",
+          "notes": "First image is thumbnail. 5:4 ratio for shop icon."
+        },
+        {
+          "platform": "Shopify",
+          "minimumSize": "No minimum",
+          "recommendedSize": "2048x2048px",
+          "maxFileSize": "20MB",
+          "aspectRatio": "1:1 for consistency",
+          "format": "JPEG, PNG, GIF, HEIC, WebP",
+          "background": "Theme-dependent",
+          "notes": "Consistent sizing across products improves appearance. Automatic WebP conversion."
+        },
+        {
+          "platform": "WooCommerce",
+          "minimumSize": "Theme-dependent",
+          "recommendedSize": "1200x1200px minimum",
+          "maxFileSize": "Server-dependent",
+          "aspectRatio": "Configure in theme settings",
+          "format": "JPEG, PNG, GIF, WebP",
+          "background": "Theme-dependent",
+          "notes": "Enable image regeneration after changing thumbnail sizes."
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "Supplier images are too small",
+          "solution": "Upscale to at least 2000x2000px. Most supplier images are 500-800px - upscale 3-4x for zoom functionality.",
+          "howTo": "Upload to upscaler, select 4x, download. A 500px image becomes 2000px."
+        },
+        {
+          "problem": "Images have wrong background color",
+          "solution": "Amazon requires pure white (255,255,255). Use a background removal tool before upscaling.",
+          "howTo": "Remove background first, add white background, then upscale if needed."
+        },
+        {
+          "problem": "Product doesn't fill enough of the frame",
+          "solution": "Crop image before upscaling to center product. Then upscale to meet minimum size.",
+          "howTo": "Crop to product with minimal margins, then upscale 2-4x to reach 2000px."
+        },
+        {
+          "problem": "Images are blurry after upscaling",
+          "solution": "AI upscaling preserves sharpness, but very low quality sources have limits. Use highest quality source available.",
+          "howTo": "Request higher resolution from supplier, or enhance before upscaling."
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "Check source image size",
+          "description": "Right-click image, check properties/dimensions. Note current size."
+        },
+        {
+          "step": 2,
+          "title": "Calculate needed upscale factor",
+          "description": "If source is 500px and you need 2000px, that's 4x upscaling."
+        },
+        {
+          "step": 3,
+          "title": "Upscale image",
+          "description": "Upload to upscaler, select appropriate factor, download result."
+        },
+        {
+          "step": 4,
+          "title": "Verify output",
+          "description": "Check final dimensions meet platform requirements. Verify text/logos remain sharp."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What resolution do Amazon product images need?",
+          "answer": "Amazon requires minimum 1000x1000px, but recommends 2000x2000px or larger to enable zoom functionality. The zoom feature activates when hovering on images 1500px or larger."
+        },
+        {
+          "question": "Can I use the same image on all platforms?",
+          "answer": "Yes, if you prepare for the most demanding requirements. Create 2000x2000px images on pure white background - these work on Amazon, eBay, and Etsy with cropping."
+        },
+        {
+          "question": "Will upscaled images pass Amazon's quality check?",
+          "answer": "AI-upscaled images typically pass if the source wasn't extremely low quality. Avoid upscaling images smaller than 300px - request better source images from suppliers instead."
+        },
+        {
+          "question": "How do I handle different aspect ratios?",
+          "answer": "Most platforms prefer 1:1 (square). If your product is rectangular, either add white space to make it square, or crop to fit. Amazon's main image must be square."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["background-removal-guide"]
+    },
+    {
+      "slug": "real-estate-listings",
+      "title": "Real Estate Photo Guidelines",
+      "metaTitle": "Real Estate Photo Requirements by Platform | MLS, Zillow, Realtor.com",
+      "metaDescription": "Image requirements for MLS, Zillow, Realtor.com, and Redfin. Learn optimal sizes, aspect ratios, and how to prepare listing photos.",
+      "h1": "Real Estate Listing Photo Requirements",
+      "intro": "Different real estate platforms have different image specifications. Here's what you need for the major listing sites.",
+      "primaryKeyword": "real estate listing photos",
+      "secondaryKeywords": [
+        "mls photo requirements",
+        "zillow image size",
+        "real estate photography"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Real Estate",
+      "description": "Specific image requirements for real estate listing platforms with guidance on meeting them.",
+      "platformRequirements": [
+        {
+          "platform": "MLS (varies by region)",
+          "minimumSize": "640x480px typical minimum",
+          "recommendedSize": "2048x1536px or larger",
+          "maxFileSize": "5-15MB (varies)",
+          "aspectRatio": "4:3 most common",
+          "format": "JPEG",
+          "notes": "Requirements vary by regional MLS. Check your local MLS guidelines. Most accept up to 50 photos."
+        },
+        {
+          "platform": "Zillow",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px",
+          "maxFileSize": "50MB",
+          "aspectRatio": "4:3 preferred",
+          "format": "JPEG, PNG",
+          "notes": "Up to 200 photos. First photo appears in search results - make it count."
+        },
+        {
+          "platform": "Realtor.com",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2560x1920px",
+          "maxFileSize": "100MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "Syncs from MLS. Higher resolution images get priority in search rankings."
+        },
+        {
+          "platform": "Redfin",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px or larger",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "Emphasizes photo quality in listings. HDR photos perform well."
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "Phone photos look too dark",
+          "solution": "Use our Photo Enhancer to improve exposure and shadows. Works well for interior shots.",
+          "howTo": "Upload to Photo Enhancer, let AI auto-correct exposure, then upscale if needed."
+        },
+        {
+          "problem": "Wide-angle lens distortion",
+          "solution": "Distortion correction should be done before upscaling. Most editing apps have lens correction.",
+          "howTo": "Apply lens correction in Lightroom/Photos app first, then upscale the corrected image."
+        },
+        {
+          "problem": "Images from older phone are too small",
+          "solution": "Upscale 2x for 2-3 year old phones, 3-4x for older phones to meet current standards.",
+          "howTo": "A 1080x810px image upscaled 2x becomes 2160x1620px - above Zillow's recommended size."
+        }
+      ],
+      "photographyTips": [
+        {
+          "tip": "Shoot during golden hour",
+          "description": "Early morning or late afternoon light is most flattering. Avoid harsh midday shadows."
+        },
+        {
+          "tip": "Use a tripod for interiors",
+          "description": "Allows longer exposure for brighter interiors without blur. Essential for low-light rooms."
+        },
+        {
+          "tip": "Capture exterior first",
+          "description": "Exterior photos work best in morning light. Schedule shoot to start outside."
+        },
+        {
+          "tip": "Stage rooms before shooting",
+          "description": "Remove clutter, personal items, and distracting objects. Less is more."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What's the best photo size for Zillow?",
+          "answer": "Zillow recommends 2048x1536px minimum. Larger images (up to 50MB) display better on large screens and mobile pinch-to-zoom."
+        },
+        {
+          "question": "Should I use HDR for real estate photos?",
+          "answer": "HDR helps with interior shots where windows are bright but rooms are dark. Use natural-looking HDR, not over-processed styles."
+        },
+        {
+          "question": "How many photos should a listing have?",
+          "answer": "25-50 photos is optimal for most properties. Include exterior, all rooms, key features, and neighborhood context."
+        },
+        {
+          "question": "Can I upscale photos taken with an old phone?",
+          "answer": "Yes, but quality depends on the source. iPhone 6 era photos (2-3MP) can upscale reasonably to 4-6MP. Very old photos have limits."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["interior-photography-tips"]
+    },
+    {
+      "slug": "social-media-images",
+      "title": "Social Media Image Sizes",
+      "metaTitle": "Social Media Image Size Guide 2025 | Instagram, Facebook, Twitter, LinkedIn",
+      "metaDescription": "Complete guide to social media image dimensions. Optimal sizes for Instagram, Facebook, Twitter, LinkedIn, TikTok, and Pinterest with exact pixel dimensions.",
+      "h1": "Social Media Image Size Guide",
+      "intro": "Every platform has different optimal image sizes. Here are the exact dimensions for each platform in 2025.",
+      "primaryKeyword": "social media image size",
+      "secondaryKeywords": [
+        "instagram image size",
+        "facebook photo dimensions",
+        "twitter image size",
+        "linkedin image dimensions"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Social Media",
+      "description": "Complete reference for social media image dimensions with platform-specific requirements.",
+      "platformRequirements": [
+        {
+          "platform": "Instagram",
+          "imageTypes": [
+            { "type": "Square Post", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
+            { "type": "Portrait Post", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
+            { "type": "Landscape Post", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
+            { "type": "Story/Reel", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
+            { "type": "Profile Picture", "dimensions": "320x320px", "aspectRatio": "1:1" }
+          ],
+          "notes": "Portrait (4:5) gets more screen real estate in feeds. Stories are 9:16 vertical."
+        },
+        {
+          "platform": "Facebook",
+          "imageTypes": [
+            { "type": "Shared Image", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
+            { "type": "Square Post", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
+            { "type": "Cover Photo", "dimensions": "820x312px (desktop)", "aspectRatio": "2.63:1" },
+            { "type": "Profile Picture", "dimensions": "170x170px", "aspectRatio": "1:1" },
+            { "type": "Story", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+          ],
+          "notes": "Cover photo displays differently on mobile (640x360px visible area). Center important content."
+        },
+        {
+          "platform": "Twitter/X",
+          "imageTypes": [
+            { "type": "In-Stream Image", "dimensions": "1600x900px", "aspectRatio": "16:9" },
+            { "type": "Single Image", "dimensions": "1200x675px", "aspectRatio": "16:9" },
+            { "type": "Two Images", "dimensions": "700x800px each", "aspectRatio": "7:8" },
+            { "type": "Profile Picture", "dimensions": "400x400px", "aspectRatio": "1:1" },
+            { "type": "Header", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+          ],
+          "notes": "16:9 images display best in timeline. Square images get cropped."
+        },
+        {
+          "platform": "LinkedIn",
+          "imageTypes": [
+            { "type": "Shared Image", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
+            { "type": "Company Cover", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
+            { "type": "Profile Picture", "dimensions": "400x400px", "aspectRatio": "1:1" },
+            { "type": "Background", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+          ],
+          "notes": "Professional photos perform better. Avoid filters and heavy effects."
+        },
+        {
+          "platform": "TikTok",
+          "imageTypes": [
+            { "type": "Video/Photo", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
+            { "type": "Profile Picture", "dimensions": "200x200px", "aspectRatio": "1:1" }
+          ],
+          "notes": "Vertical 9:16 is required. Horizontal content gets letterboxed."
+        },
+        {
+          "platform": "Pinterest",
+          "imageTypes": [
+            { "type": "Standard Pin", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
+            { "type": "Long Pin", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
+            { "type": "Square Pin", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
+            { "type": "Profile Picture", "dimensions": "165x165px", "aspectRatio": "1:1" }
+          ],
+          "notes": "2:3 vertical pins perform best. Taller pins get more visibility in feed."
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "scenario": "Old photo for Instagram",
+          "source": "640x480px landscape photo",
+          "target": "1080x1080px square post",
+          "solution": "Upscale 2x to 1280x960px, then crop to square 960x960px, upscale to 1080x1080px"
+        },
+        {
+          "scenario": "Screenshot for Twitter",
+          "source": "750x500px screenshot",
+          "target": "1600x900px for timeline",
+          "solution": "Upscale 2x to 1500x1000px, add padding or crop to 16:9 aspect ratio"
+        },
+        {
+          "scenario": "Product photo for Pinterest",
+          "source": "800x800px product shot",
+          "target": "1000x1500px vertical pin",
+          "solution": "Upscale to 1200x1200px, add vertical space above/below for 2:3 ratio"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What's the best size for Instagram posts?",
+          "answer": "1080x1350px (4:5 portrait) takes up the most feed space. 1080x1080px (square) is also standard. Avoid landscape - it appears smaller in feeds."
+        },
+        {
+          "question": "Why do my images look blurry on Instagram?",
+          "answer": "Instagram compresses images. Upload at exactly 1080px width to avoid resampling. Higher resolution images get downscaled and can lose sharpness."
+        },
+        {
+          "question": "Should I upscale images for social media?",
+          "answer": "Upscale if your source is below platform minimums. But don't upscale beyond platform recommendations - a 4000px image will be compressed to 1080px anyway."
+        },
+        {
+          "question": "What format should I use?",
+          "answer": "JPEG for photos (smaller file, good enough quality). PNG for graphics with text or transparency. All platforms accept both."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["image-compression-guide"]
+    },
+    {
+      "slug": "print-preparation",
+      "title": "Print Size Guide",
+      "metaTitle": "Image Resolution for Printing Guide | DPI Calculator & Size Chart",
+      "metaDescription": "Calculate exact pixel dimensions for any print size. DPI requirements, paper sizes, and how to prepare images for professional printing.",
+      "h1": "Print Resolution Guide",
+      "intro": "Print requires higher resolution than screen display. Here's exactly what you need for different print sizes.",
+      "primaryKeyword": "image resolution for printing",
+      "secondaryKeywords": [
+        "print dpi requirements",
+        "photo print size",
+        "pixels to inches",
+        "300 dpi image size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Photography & Printing",
+      "description": "Complete guide to preparing images for print with DPI requirements and size calculations.",
+      "dpiExplanation": {
+        "title": "Understanding DPI",
+        "content": "DPI (Dots Per Inch) determines print quality. Standard photo printing requires 300 DPI. Lower DPI results in visible pixels. Higher DPI offers no visible benefit but increases file size.",
+        "recommendations": [
+          {
+            "quality": "Professional prints",
+            "dpi": "300 DPI",
+            "use": "Photos, art prints, magazines"
+          },
+          { "quality": "Standard prints", "dpi": "240-300 DPI", "use": "Home printing, snapshots" },
+          {
+            "quality": "Large format (viewing distance 3ft+)",
+            "dpi": "150-200 DPI",
+            "use": "Posters, banners"
+          },
+          {
+            "quality": "Billboards (viewing distance 10ft+)",
+            "dpi": "50-100 DPI",
+            "use": "Large outdoor displays"
+          }
+        ]
+      },
+      "printSizeChart": [
+        {
+          "size": "4x6 inches",
+          "pixels300dpi": "1200x1800",
+          "pixels240dpi": "960x1440",
+          "megapixels": "2.2 MP"
+        },
+        {
+          "size": "5x7 inches",
+          "pixels300dpi": "1500x2100",
+          "pixels240dpi": "1200x1680",
+          "megapixels": "3.2 MP"
+        },
+        {
+          "size": "8x10 inches",
+          "pixels300dpi": "2400x3000",
+          "pixels240dpi": "1920x2400",
+          "megapixels": "7.2 MP"
+        },
+        {
+          "size": "11x14 inches",
+          "pixels300dpi": "3300x4200",
+          "pixels240dpi": "2640x3360",
+          "megapixels": "13.9 MP"
+        },
+        {
+          "size": "16x20 inches",
+          "pixels300dpi": "4800x6000",
+          "pixels240dpi": "3840x4800",
+          "megapixels": "28.8 MP"
+        },
+        {
+          "size": "20x24 inches",
+          "pixels300dpi": "6000x7200",
+          "pixels240dpi": "4800x5760",
+          "megapixels": "43.2 MP"
+        },
+        {
+          "size": "24x36 inches",
+          "pixels300dpi": "7200x10800",
+          "pixels240dpi": "5760x8640",
+          "megapixels": "77.8 MP"
+        },
+        {
+          "size": "A4 (8.27x11.69 inches)",
+          "pixels300dpi": "2480x3508",
+          "pixels240dpi": "1984x2806",
+          "megapixels": "8.7 MP"
+        },
+        {
+          "size": "A3 (11.69x16.54 inches)",
+          "pixels300dpi": "3508x4961",
+          "pixels240dpi": "2806x3969",
+          "megapixels": "17.4 MP"
+        }
+      ],
+      "calculationFormula": {
+        "title": "Calculate Required Pixels",
+        "formula": "Pixels = Print Size (inches) × DPI",
+        "example": "For 8x10 inch print at 300 DPI: 8×300 = 2400 pixels wide, 10×300 = 3000 pixels tall"
+      },
+      "upscalingForPrint": [
+        {
+          "scenario": "Smartphone photo to 8x10 print",
+          "source": "4032x3024px (12MP iPhone)",
+          "requirement": "2400x3000px at 300 DPI",
+          "solution": "Already sufficient - no upscaling needed. Crop to 4:5 aspect ratio."
+        },
+        {
+          "scenario": "Web image to 8x10 print",
+          "source": "800x600px web image",
+          "requirement": "2400x3000px at 300 DPI",
+          "solution": "Upscale 4x to 3200x2400px, crop to 2400x3000px or add canvas space."
+        },
+        {
+          "scenario": "Instagram photo to poster",
+          "source": "1080x1080px",
+          "requirement": "7200x7200px for 24x24 poster at 300 DPI",
+          "solution": "Upscale 8x to 8640x8640px. Quality may be limited - consider 150 DPI for large format."
+        }
+      ],
+      "printingTips": [
+        {
+          "tip": "Use sRGB color profile for consumer printing",
+          "description": "Most consumer printers and print services expect sRGB. Convert from Adobe RGB if needed."
+        },
+        {
+          "tip": "Add bleed for edge-to-edge prints",
+          "description": "Add 0.125 inches (37.5 pixels at 300 DPI) to each edge for professional prints with full bleed."
+        },
+        {
+          "tip": "Proof on screen at actual size",
+          "description": "View at 100% zoom to check for visible pixels or artifacts before printing."
+        },
+        {
+          "tip": "Save as TIFF or high-quality JPEG",
+          "description": "TIFF is lossless. If using JPEG, export at 95-100% quality to avoid compression artifacts."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What DPI do I need for printing photos?",
+          "answer": "300 DPI is the standard for photo prints up to 16x20 inches. For larger prints viewed from distance (posters, banners), 150-200 DPI is acceptable."
+        },
+        {
+          "question": "Can I upscale a small image for a large print?",
+          "answer": "AI upscaling works well for 2-4x enlargement. Beyond that, quality depends on source. A 1000px image can reasonably become a 4000px (8x10 at 300 DPI) print."
+        },
+        {
+          "question": "Why does my print look pixelated?",
+          "answer": "Insufficient resolution. Check if your source image has enough pixels for the print size at 300 DPI. Use the chart above to verify."
+        },
+        {
+          "question": "What's the maximum print size for my image?",
+          "answer": "Divide pixel dimensions by 300 for max size at full quality. A 3000x2000px image prints at 10x6.7 inches at 300 DPI, or 20x13.3 inches at 150 DPI."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "old-photo-restoration",
+      "title": "Old Photo Restoration",
+      "metaTitle": "How to Restore Old Photos | Scanning & Enhancement Guide",
+      "metaDescription": "Complete guide to restoring old and damaged photos. Scanning tips, enhancement workflow, and realistic expectations for photo restoration.",
+      "h1": "Old Photo Restoration Guide",
+      "intro": "Restoring old photos involves multiple steps: proper scanning, enhancement, and realistic expectations about what's possible.",
+      "primaryKeyword": "old photo restoration",
+      "secondaryKeywords": [
+        "restore old photos",
+        "fix damaged photos",
+        "photo restoration",
+        "vintage photo enhancement"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Photo Restoration",
+      "description": "Step-by-step guide to restoring old and damaged photos with realistic expectations.",
+      "scanningGuide": {
+        "title": "Scanning Old Photos",
+        "steps": [
+          {
+            "step": 1,
+            "title": "Clean the scanner bed",
+            "description": "Dust and fingerprints on the glass will appear in your scan. Use microfiber cloth."
+          },
+          {
+            "step": 2,
+            "title": "Handle photos carefully",
+            "description": "Old photos are fragile. Use cotton gloves if available. Don't force bent photos flat."
+          },
+          {
+            "step": 3,
+            "title": "Scan at 600 DPI minimum",
+            "description": "Higher resolution gives more detail to work with. 1200 DPI for severely damaged photos."
+          },
+          {
+            "step": 4,
+            "title": "Scan as TIFF, not JPEG",
+            "description": "TIFF is lossless and preserves all detail. Convert to JPEG only after editing."
+          },
+          {
+            "step": 5,
+            "title": "Scan in color, even for B&W",
+            "description": "Color scanning captures subtle tones that help with restoration."
+          }
+        ]
+      },
+      "damageTypes": [
+        {
+          "type": "Fading/yellowing",
+          "description": "Colors have shifted or faded over time",
+          "canFix": "Yes - AI can restore original color balance and saturation",
+          "limitations": "Severely faded images may lack detail to recover"
+        },
+        {
+          "type": "Scratches and creases",
+          "description": "Physical damage visible as lines or marks",
+          "canFix": "Partial - AI can reduce visibility, not fully remove",
+          "limitations": "Deep scratches or creases through faces are difficult"
+        },
+        {
+          "type": "Blur/soft focus",
+          "description": "Image lacks sharpness or was out of focus",
+          "canFix": "Partial - moderate blur can be improved",
+          "limitations": "Severe blur cannot be fully fixed - the detail wasn't captured"
+        },
+        {
+          "type": "Missing sections/tears",
+          "description": "Parts of the photo are torn or missing",
+          "canFix": "No - AI cannot reconstruct missing image data",
+          "limitations": "Requires manual retouching by a professional"
+        },
+        {
+          "type": "Water damage/staining",
+          "description": "Discoloration from moisture or spills",
+          "canFix": "Partial - color correction helps, but texture loss is permanent",
+          "limitations": "Areas where emulsion is lifted can't be recovered"
+        }
+      ],
+      "restorationWorkflow": [
+        {
+          "step": 1,
+          "title": "Scan at high resolution",
+          "description": "600+ DPI as TIFF. This is your master file - don't edit the original."
+        },
+        {
+          "step": 2,
+          "title": "Make a working copy",
+          "description": "Duplicate the scan. Work on the copy, keep the original untouched."
+        },
+        {
+          "step": 3,
+          "title": "Crop and straighten",
+          "description": "Remove borders, scanner artifacts. Straighten if photo was scanned crooked."
+        },
+        {
+          "step": 4,
+          "title": "Run through Photo Enhancer",
+          "description": "AI enhancement improves color, reduces noise, and sharpens details."
+        },
+        {
+          "step": 5,
+          "title": "Upscale if needed",
+          "description": "If you need larger dimensions, upscale after enhancement for best quality."
+        },
+        {
+          "step": 6,
+          "title": "Export appropriately",
+          "description": "TIFF for archival, high-quality JPEG for sharing and printing."
+        }
+      ],
+      "realisticExpectations": {
+        "title": "What AI Restoration Can and Cannot Do",
+        "canDo": [
+          "Improve color balance and remove yellowing",
+          "Reduce visibility of minor scratches",
+          "Sharpen soft focus and add apparent detail",
+          "Reduce noise and film grain",
+          "Increase resolution for printing"
+        ],
+        "cannotDo": [
+          "Reconstruct missing or torn sections",
+          "Fix completely out-of-focus images",
+          "Remove deep scratches or creases perfectly",
+          "Add detail that was never captured",
+          "Restore photos that are almost completely destroyed"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Can you restore a torn photo?",
+          "answer": "AI can't reconstruct missing sections. For torn photos, the sections must be scanned together and manually aligned, then retouched by hand. AI can then enhance the combined result."
+        },
+        {
+          "question": "What resolution should I scan old photos?",
+          "answer": "Minimum 600 DPI for standard photos. 1200 DPI for small prints or those with fine detail. Higher is better - you can always downscale later."
+        },
+        {
+          "question": "Should I restore color to black and white photos?",
+          "answer": "That's colorization, a different process. Our tools enhance existing content - we don't add color to B&W. Colorization AI is a separate category."
+        },
+        {
+          "question": "How much improvement can I expect?",
+          "answer": "Moderately damaged photos see significant improvement. Severely damaged photos will look better but won't become perfect. Very old photos (pre-1900) have inherent limitations."
+        }
+      ],
+      "relatedTools": ["ai-photo-enhancer", "ai-image-upscaler"],
+      "relatedGuides": []
+    }
+  ]
+}

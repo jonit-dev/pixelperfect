@@ -129,6 +129,11 @@ const serverEnvSchema = z.object({
   // Stripe
   STRIPE_SECRET_KEY: z.string().default(''),
   STRIPE_WEBHOOK_SECRET: z.string().default(''),
+  // Stripe Price IDs
+  STRIPE_STARTER_MONTHLYLY_PRICE_ID: z.string().default('price_1Q4HMKALMLhQocpfhK9XKp4a'),
+  STRIPE_HOBBY_MONTHLYLY_PRICE_ID: z.string().default('price_1SZmVyALMLhQocpf0H7n5ls8'),
+  STRIPE_PRO_MONTHLYLY_PRICE_ID: z.string().default('price_1SZmVzALMLhQocpfPyRX2W8D'),
+  STRIPE_BUSINESS_MONTHLYLY_PRICE_ID: z.string().default('price_1SZmVzALMLhQocpfqPk9spg4'),
   // Gemini AI
   GEMINI_API_KEY: z.string().default(''),
   // Replicate AI (Image Upscaling)
@@ -202,6 +207,15 @@ function loadServerEnv(): IServerEnv {
     // Stripe
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || '',
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET || '',
+    // Stripe Price IDs
+    STRIPE_STARTER_MONTHLYLY_PRICE_ID:
+      process.env.STRIPE_STARTER_MONTHLYLY_PRICE_ID || 'price_1Q4HMKALMLhQocpfhK9XKp4a',
+    STRIPE_HOBBY_MONTHLYLY_PRICE_ID:
+      process.env.STRIPE_HOBBY_MONTHLYLY_PRICE_ID || 'price_1SZmVyALMLhQocpf0H7n5ls8',
+    STRIPE_PRO_MONTHLYLY_PRICE_ID:
+      process.env.STRIPE_PRO_MONTHLYLY_PRICE_ID || 'price_1SZmVzALMLhQocpfPyRX2W8D',
+    STRIPE_BUSINESS_MONTHLYLY_PRICE_ID:
+      process.env.STRIPE_BUSINESS_MONTHLYLY_PRICE_ID || 'price_1SZmVzALMLhQocpfqPk9spg4',
     // Gemini AI
     GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
     // Replicate AI

@@ -9,30 +9,28 @@ export default function HistoryPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">History</h1>
-        <p className="text-slate-500 mt-1">
-          View your previously processed images
-        </p>
+        <h1 className="text-2xl font-bold text-primary">History</h1>
+        <p className="text-muted-foreground mt-1">View your previously processed images</p>
       </div>
 
       {/* History List */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <div className="bg-surface rounded-xl border border-white/10 p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center">
             <Clock size={20} className="text-indigo-600" />
           </div>
           <div>
-            <h2 className="font-semibold text-slate-900">Recent Uploads</h2>
-            <p className="text-sm text-slate-500">Your image processing history</p>
+            <h2 className="font-semibold text-primary">Recent Uploads</h2>
+            <p className="text-sm text-muted-foreground">Your image processing history</p>
           </div>
         </div>
 
         <div className="text-center py-12">
-          <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-4">
-            <Image size={32} className="text-slate-400" />
+          <div className="w-16 h-16 rounded-full bg-surface-light flex items-center justify-center mx-auto mb-4">
+            <Image size={32} className="text-muted-foreground" />
           </div>
-          <p className="text-slate-500">No images processed yet</p>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-muted-foreground">No images processed yet</p>
+          <p className="text-sm text-muted-foreground mt-1">
             Your processed images will appear here
           </p>
         </div>

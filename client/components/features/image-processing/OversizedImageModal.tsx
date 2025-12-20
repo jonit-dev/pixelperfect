@@ -36,7 +36,7 @@ const WarningBanner: React.FC<{ fileSize: number; currentLimit: number; isPaidLi
 };
 
 const ImagePreview: React.FC<{ file: File; previewUrl: string }> = ({ file, previewUrl }) => (
-  <div className="relative rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+  <div className="relative rounded-xl overflow-hidden bg-surface-light border border-white/10">
     <Image
       src={previewUrl}
       alt={file.name}
@@ -91,7 +91,7 @@ const ResizeButton: React.FC<{
           {isCompressing ? <Loader2 size={20} className="animate-spin" /> : <Zap size={20} />}
         </div>
         <div className="text-left">
-          <p className="font-bold text-slate-900">
+          <p className="font-bold text-primary">
             {isCompressing ? (
               <span className="inline-flex items-center gap-2">
                 Compressing
@@ -101,7 +101,7 @@ const ResizeButton: React.FC<{
               'Resize & Continue'
             )}
           </p>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-muted-foreground">
             {isCompressing
               ? 'Optimizing quality while reducing file size...'
               : `Automatically compress to fit under ${formatBytes(currentLimit)} and proceed`}
@@ -116,11 +116,11 @@ const ResizeButton: React.FC<{
     {/* Progress Bar */}
     {isCompressing && (
       <div className="w-full mt-3">
-        <div className="flex justify-between text-xs text-slate-500 mb-1">
+        <div className="flex justify-between text-xs text-muted-foreground mb-1">
           <span>Processing image...</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-surface-light rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-100 ease-out"
             style={{ width: `${progress}%` }}
@@ -145,8 +145,10 @@ const UpgradeOption: React.FC<{ isPaidLimit: boolean }> = ({ isPaidLimit }) => {
             <Sparkles size={20} />
           </div>
           <div className="text-left">
-            <p className="font-bold text-slate-900">Upgrade to Pro</p>
-            <p className="text-sm text-slate-600">Upload images up to 50MB with full resolution</p>
+            <p className="font-bold text-primary">Upgrade to Pro</p>
+            <p className="text-sm text-muted-foreground">
+              Upload images up to 64MB with full resolution
+            </p>
           </div>
         </div>
         <ArrowRight className="w-5 h-5 text-purple-600 group-hover:translate-x-1 transition-transform" />
@@ -290,14 +292,14 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
           <button
             onClick={onClose}
             disabled={isCompressing}
-            className="w-full p-4 border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-xl transition-all text-slate-700 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full p-4 border-2 border-white/10 hover:border-white/20 hover:bg-surface rounded-xl transition-all text-muted-foreground font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {showMultipleIndicator ? 'Skip This Image' : 'Use a Different Image'}
           </button>
         </div>
 
         {/* Info Footer */}
-        <div className="p-4 bg-slate-50 rounded-xl text-xs text-slate-600">
+        <div className="p-4 bg-surface rounded-xl text-xs text-muted-foreground">
           <p className="font-medium mb-2">💡 What happens when you resize?</p>
           <ul className="space-y-1 ml-4 list-disc">
             <li>Image is compressed to fit under the size limit</li>

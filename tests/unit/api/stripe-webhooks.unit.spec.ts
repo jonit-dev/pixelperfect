@@ -68,15 +68,25 @@ vi.mock('@shared/config/stripe', () => ({
   })),
 }));
 
-vi.mock('@shared/config/subscription.config', () => ({
-  getPlanConfig: vi.fn(),
-  getTrialConfig: vi.fn(),
-}));
+vi.mock('@shared/config/subscription.config', async importOriginal => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    getPlanConfig: vi.fn(),
+    getTrialConfig: vi.fn(),
+  };
+});
 
-vi.mock('@shared/config/subscription.utils', () => ({
-  getPlanByPriceId: vi.fn(),
-  calculateBalanceWithExpiration: vi.fn(),
-}));
+vi.mock('@shared/config/subscription.utils', async importOriginal => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    getPlanByPriceId: vi.fn(),
+    calculateBalanceWithExpiration: vi.fn(),
+    resolvePlanOrPack: vi.fn(),
+    assertKnownPriceId: vi.fn(),
+  };
+});
 
 vi.mock('@server/services/SubscriptionCredits', () => ({
   SubscriptionCreditsService: {
@@ -607,7 +617,9 @@ describe('Stripe Webhook Handler', () => {
 
       // Assert
       expect(response.status).toBe(200);
-      expect(mockSelect).toHaveBeenCalledWith('id, subscription_status, subscription_credits_balance, purchased_credits_balance');
+      expect(mockSelect).toHaveBeenCalledWith(
+        'id, subscription_status, subscription_credits_balance, purchased_credits_balance'
+      );
       expect(mockUpsert).toHaveBeenCalledWith(
         expect.objectContaining({
           id: 'sub_test_123',
@@ -829,8 +841,9 @@ describe('Stripe Webhook Handler', () => {
         maxRollover: 6000,
       };
 
-      // Mock successful plan lookup - import resolvePlanOrPack
-      const { resolvePlanOrPack } = await import('@shared/config/stripe');
+      // Mock successful plan lookup
+      const { resolvePlanOrPack, assertKnownPriceId } =
+        await import('@shared/config/subscription.utils');
       vi.mocked(getPlanForPriceId).mockReturnValue(mockPlan);
       vi.mocked(getPlanConfig).mockReturnValue({ key: 'pro', name: 'Professional' });
       vi.mocked(getTrialConfig).mockReturnValue({ enabled: false, trialCredits: null });
@@ -844,6 +857,16 @@ describe('Stripe Webhook Handler', () => {
         key: 'pro',
         name: 'Professional',
         creditsPerCycle: 1000,
+        maxRollover: 6000,
+      });
+      vi.mocked(assertKnownPriceId).mockReturnValue({
+        type: 'plan',
+        key: 'pro',
+        name: 'Professional',
+        stripePriceId: 'price_test_pro_monthly',
+        priceInCents: 1999,
+        currency: 'usd',
+        credits: 1000,
         maxRollover: 6000,
       });
 

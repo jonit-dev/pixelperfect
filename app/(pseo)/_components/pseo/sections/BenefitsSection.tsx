@@ -24,11 +24,11 @@ export function BenefitsSection({
   }
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-base">
       <FadeIn>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{title}</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">{subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">{title}</h2>
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">{subtitle}</p>
         </div>
       </FadeIn>
       <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

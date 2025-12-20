@@ -32,14 +32,14 @@ export const useCheckoutStore = create<ICheckoutState>((set, get) => ({
     set({
       isCheckoutModalOpen: true,
       activePriceId: priceId,
-      pendingPriceId: null // Clear pending since we're opening it
+      pendingPriceId: null, // Clear pending since we're opening it
     });
   },
 
   closeCheckoutModal: () => {
     set({
       isCheckoutModalOpen: false,
-      activePriceId: null
+      activePriceId: null,
     });
   },
 

@@ -46,7 +46,10 @@ const TRANSACTION_ICONS: Record<
  * Transaction type icon component
  * Renders an SVG icon based on the transaction type
  */
-export function TransactionIcon({ type, className = 'h-5 w-5' }: ITransactionIconProps): JSX.Element {
+export function TransactionIcon({
+  type,
+  className = 'h-5 w-5',
+}: ITransactionIconProps): JSX.Element {
   const config = TRANSACTION_ICONS[type];
   const paths = Array.isArray(config.path) ? config.path : [config.path];
 
@@ -59,13 +62,7 @@ export function TransactionIcon({ type, className = 'h-5 w-5' }: ITransactionIco
       stroke="currentColor"
     >
       {paths.map((d, index) => (
-        <path
-          key={index}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d={d}
-        />
+        <path key={index} strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={d} />
       ))}
     </svg>
   );

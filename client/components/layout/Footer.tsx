@@ -12,7 +12,7 @@ export const Footer = (): JSX.Element => {
           {/* Company Info */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">{clientEnv.APP_NAME}</h3>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-muted-foreground">
               AI-powered image upscaling and enhancement for professionals and creators.
             </p>
           </div>
@@ -94,7 +94,7 @@ export const Footer = (): JSX.Element => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-muted-foreground">
             © {currentYear} {clientEnv.APP_NAME}. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">

@@ -68,7 +68,7 @@ export function CancelSubscriptionModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-surface rounded-2xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <ModalHeader
           title="Cancel Subscription"
           icon={AlertTriangle}
@@ -144,14 +144,14 @@ function CancellationReasonForm({
 
       {/* Optional Reason */}
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-3">
+        <label className="block text-sm font-medium text-muted-foreground mb-3">
           Help us improve (optional)
         </label>
         <div className="space-y-2">
           {CANCELLATION_REASONS.map(reason => (
             <label
               key={reason}
-              className="flex items-center p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors"
+              className="flex items-center p-3 border border-white/10 rounded-lg hover:bg-surface cursor-pointer transition-colors"
             >
               <input
                 type="radio"
@@ -159,9 +159,9 @@ function CancellationReasonForm({
                 value={reason}
                 checked={selectedReason === reason}
                 onChange={e => onReasonChange(e.target.value)}
-                className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                className="w-4 h-4 text-indigo-600 border-white/20 focus:ring-indigo-500"
               />
-              <span className="ml-3 text-sm text-slate-700">{reason}</span>
+              <span className="ml-3 text-sm text-muted-foreground">{reason}</span>
             </label>
           ))}
         </div>
@@ -172,7 +172,7 @@ function CancellationReasonForm({
             value={customReason}
             onChange={e => onCustomReasonChange(e.target.value)}
             placeholder="Please tell us why you're canceling..."
-            className="mt-3 w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+            className="mt-3 w-full px-4 py-3 border border-white/20 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
             rows={3}
           />
         )}
@@ -182,7 +182,7 @@ function CancellationReasonForm({
       <div className="flex gap-3">
         <button
           onClick={onClose}
-          className="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition-colors"
+          className="flex-1 px-4 py-3 bg-surface-light hover:bg-surface-light text-muted-foreground font-medium rounded-lg transition-colors"
           disabled={loading}
         >
           Keep Subscription
@@ -220,8 +220,8 @@ function CancellationConfirmation({
           <AlertTriangle className="h-8 w-8 text-red-600" />
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-slate-900 mb-2">Are you sure?</h3>
-          <p className="text-sm text-slate-600">
+          <h3 className="text-lg font-semibold text-primary mb-2">Are you sure?</h3>
+          <p className="text-sm text-muted-foreground">
             Your subscription will be canceled and you won&apos;t be charged again after{' '}
             <strong>{formattedEndDate}</strong>.
           </p>
@@ -232,7 +232,7 @@ function CancellationConfirmation({
       <div className="flex gap-3">
         <button
           onClick={onGoBack}
-          className="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition-colors"
+          className="flex-1 px-4 py-3 bg-surface-light hover:bg-surface-light text-muted-foreground font-medium rounded-lg transition-colors"
           disabled={loading}
         >
           Go Back

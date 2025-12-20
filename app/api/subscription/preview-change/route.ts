@@ -82,8 +82,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Missing authorization header'
-          }
+            message: 'Missing authorization header',
+          },
         },
         { status: 401 }
       );
@@ -101,8 +101,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'UNAUTHORIZED',
-            message: 'Invalid authentication token'
-          }
+            message: 'Invalid authentication token',
+          },
         },
         { status: 401 }
       );
@@ -119,8 +119,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'INVALID_JSON',
-            message: 'Invalid JSON in request body'
-          }
+            message: 'Invalid JSON in request body',
+          },
         },
         { status: 400 }
       );
@@ -132,8 +132,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'MISSING_PRICE_ID',
-            message: 'targetPriceId is required'
-          }
+            message: 'targetPriceId is required',
+          },
         },
         { status: 400 }
       );
@@ -156,8 +156,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'INVALID_PRICE_ID',
-            message: error instanceof Error ? error.message : 'Invalid or unsupported price ID'
-          }
+            message: error instanceof Error ? error.message : 'Invalid or unsupported price ID',
+          },
         },
         { status: 400 }
       );
@@ -170,8 +170,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'INTERNAL_ERROR',
-            message: 'Failed to resolve target plan after validation'
-          }
+            message: 'Failed to resolve target plan after validation',
+          },
         },
         { status: 500 }
       );
@@ -211,7 +211,10 @@ export async function POST(request: NextRequest) {
       try {
         resolvedCurrent = assertKnownPriceId(currentPriceId);
         if (resolvedCurrent.type !== 'plan') {
-          console.warn('[PREVIEW_CHANGE] Current subscription price ID is not a plan:', currentPriceId);
+          console.warn(
+            '[PREVIEW_CHANGE] Current subscription price ID is not a plan:',
+            currentPriceId
+          );
         } else {
           // Still get legacy plan format for compatibility
           currentPlan = getPlanForPriceId(currentPriceId);
@@ -231,8 +234,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'SAME_PLAN',
-            message: 'Target plan is the same as current plan'
-          }
+            message: 'Target plan is the same as current plan',
+          },
         },
         { status: 400 }
       );
@@ -251,8 +254,8 @@ export async function POST(request: NextRequest) {
           success: false,
           error: {
             code: 'STRIPE_CUSTOMER_NOT_FOUND',
-            message: 'User has no Stripe customer ID'
-          }
+            message: 'User has no Stripe customer ID',
+          },
         },
         { status: 400 }
       );
@@ -320,7 +323,9 @@ export async function POST(request: NextRequest) {
           const periodStart = subscriptionUnknown.current_period_start;
           const periodEnd = subscriptionUnknown.current_period_end;
 
-          const periodStartISO = periodStart ? dayjs.unix(periodStart).toISOString() : dayjs().toISOString();
+          const periodStartISO = periodStart
+            ? dayjs.unix(periodStart).toISOString()
+            : dayjs().toISOString();
           effectiveDate = periodEnd ? dayjs.unix(periodEnd).toISOString() : undefined;
 
           prorationResult = {
@@ -360,7 +365,7 @@ export async function POST(request: NextRequest) {
           const targetPlanName = targetPlan.name;
 
           // Only include items related to the current change (current plan -> target plan)
-          const relevantItems = invoice.lines.data.filter((line) => {
+          const relevantItems = invoice.lines.data.filter(line => {
             const desc = line.description || '';
             // Include: unused current plan (credit) OR remaining target plan (charge)
             return (
@@ -373,7 +378,9 @@ export async function POST(request: NextRequest) {
           const seenTypes = new Set<string>();
           const uniqueItems = relevantItems.filter((line: Stripe.InvoiceLineItem) => {
             const desc = line.description || '';
-            const type = desc.includes('Unused') ? `unused_${currentPlanName}` : `remaining_${targetPlanName}`;
+            const type = desc.includes('Unused')
+              ? `unused_${currentPlanName}`
+              : `remaining_${targetPlanName}`;
             if (seenTypes.has(type)) return false;
             seenTypes.add(type);
             return true;
@@ -426,11 +433,13 @@ export async function POST(request: NextRequest) {
     // 9. Build response
     const response: IPreviewChangeResponse = {
       proration: prorationResult,
-      current_plan: currentPlan ? {
-        name: currentPlan.name,
-        price_id: currentPriceId!,
-        credits_per_month: currentPlan.creditsPerMonth,
-      } : null,
+      current_plan: currentPlan
+        ? {
+            name: currentPlan.name,
+            price_id: currentPriceId!,
+            credits_per_month: currentPlan.creditsPerMonth,
+          }
+        : null,
       new_plan: {
         name: targetPlan.name,
         price_id: body.targetPriceId,
@@ -445,7 +454,6 @@ export async function POST(request: NextRequest) {
       success: true,
       data: response,
     });
-
   } catch (error: unknown) {
     console.error('Subscription preview error:', error);
     const errorMessage = error instanceof Error ? error.message : 'An error occurred';
@@ -455,8 +463,8 @@ export async function POST(request: NextRequest) {
         success: false,
         error: {
           code: 'INTERNAL_ERROR',
-          message: errorMessage
-        }
+          message: errorMessage,
+        },
       },
       { status: 500 }
     );

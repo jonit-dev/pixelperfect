@@ -183,6 +183,47 @@ export const useBatchQueue = (): IUseBatchQueueReturn => {
         return;
       }
 
+      // Handle insufficient credits error specifically
+      if (error instanceof Error && error.message.includes('insufficient credits')) {
+        // Show a specific error message for insufficient credits
+        const creditsError =
+          'You have insufficient credits for this operation. Please purchase more credits or upgrade your subscription.';
+        updateItemStatus(item.id, {
+          status: ProcessingStatus.ERROR,
+          error: creditsError,
+          stage: undefined, // Clear stage on error
+        });
+
+        // Show toast notification for insufficient credits
+        showToast({
+          message:
+            'Insufficient credits: Please purchase more credits to continue processing images.',
+          type: 'error',
+          duration: TIMEOUTS.TOAST_LONG_AUTO_CLOSE_DELAY,
+        });
+        return;
+      }
+
+      // Handle timeout errors specifically
+      if (error instanceof Error && error.message.includes('timeout')) {
+        // Show a specific error message for timeout
+        const timeoutError =
+          'Request timeout: The image processing request timed out. Please try again.';
+        updateItemStatus(item.id, {
+          status: ProcessingStatus.ERROR,
+          error: timeoutError,
+          stage: undefined, // Clear stage on error
+        });
+
+        // Show toast notification for timeout
+        showToast({
+          message: 'Request timeout: The image processing request took too long. Please try again.',
+          type: 'error',
+          duration: TIMEOUTS.TOAST_LONG_AUTO_CLOSE_DELAY,
+        });
+        return;
+      }
+
       updateItemStatus(item.id, {
         status: ProcessingStatus.ERROR,
         error: errorMessage,

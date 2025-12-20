@@ -38,7 +38,9 @@ describe('Subscription Configuration', () => {
     test('all plans have valid Stripe price IDs', () => {
       const config = getSubscriptionConfig();
       for (const plan of config.plans) {
-        expect(plan.stripePriceId).toMatch(/^price_/);
+        if (plan.stripePriceId !== null) {
+          expect(plan.stripePriceId).toMatch(/^price_/);
+        }
       }
     });
 

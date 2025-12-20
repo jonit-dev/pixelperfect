@@ -63,17 +63,17 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
 
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative w-full max-w-2xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+        <div className="relative w-full max-w-2xl rounded-2xl bg-surface shadow-2xl overflow-hidden">
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 z-10 p-1 rounded-full bg-white/80 text-slate-500 transition-colors hover:text-slate-700 hover:bg-white"
+            className="absolute right-4 top-4 z-10 p-1 rounded-full bg-surface/80 text-muted-foreground transition-colors hover:text-muted-foreground hover:bg-surface"
           >
             <X size={20} />
           </button>
 
           {/* Image Comparison Section */}
-          <div className="relative aspect-[4/3] bg-slate-100">
+          <div className="relative aspect-[4/3] bg-surface-light">
             <BeforeAfterSlider
               beforeUrl={currentImages.before}
               afterUrl={currentImages.after}
@@ -87,13 +87,13 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
               <>
                 <button
                   onClick={handlePrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 shadow-lg text-slate-600 hover:text-slate-900 hover:bg-white transition-all"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-surface/90 shadow-lg text-muted-foreground hover:text-primary hover:bg-surface transition-all"
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 shadow-lg text-slate-600 hover:text-slate-900 hover:bg-white transition-all"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-surface/90 shadow-lg text-muted-foreground hover:text-primary hover:bg-surface transition-all"
                 >
                   <ChevronRight size={20} />
                 </button>
@@ -108,7 +108,9 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentImageIndex ? 'bg-white w-4' : 'bg-white/50 hover:bg-white/75'
+                      index === currentImageIndex
+                        ? 'bg-surface w-4'
+                        : 'bg-surface/50 hover:bg-surface/75'
                     }`}
                   />
                 ))}
@@ -124,10 +126,10 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
                 <Sparkles size={14} />
                 Premium Quality Available
               </div>
-              <h2 className="text-xl font-bold text-slate-900 mb-2">
+              <h2 className="text-xl font-bold text-primary mb-2">
                 Unlock Premium Enhancement Models
               </h2>
-              <p className="text-slate-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Drag the slider above to see the difference. Premium models deliver sharper details,
                 better face restoration, and superior color accuracy.
               </p>
@@ -137,7 +139,7 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onProceed}
-                className="flex-1 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors"
+                className="flex-1 px-5 py-3 rounded-xl border border-white/10 text-muted-foreground font-medium hover:bg-surface transition-colors"
               >
                 Continue with Free
               </button>
@@ -151,7 +153,7 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
             </div>
 
             {/* Features hint */}
-            <p className="text-center text-xs text-slate-500 mt-4">
+            <p className="text-center text-xs text-muted-foreground mt-4">
               Premium includes HD Upscale, Face Pro, and Ultra quality tiers
             </p>
           </div>

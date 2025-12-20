@@ -33,16 +33,16 @@ export const NavBar = (): JSX.Element => {
   const isPasswordUser = user?.provider === AuthProvider.EMAIL;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-base/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="/"
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white">
             <Zap size={20} fill="currentColor" />
           </div>
-          <span className="hidden xs:inline text-xl font-bold tracking-tight text-slate-900">
+          <span className="hidden xs:inline text-xl font-bold tracking-tight text-white">
             {clientEnv.APP_NAME}
           </span>
         </a>
@@ -51,7 +51,7 @@ export const NavBar = (): JSX.Element => {
           {isAuthenticated && (
             <a
               href="/dashboard"
-              className="text-sm font-medium text-slate-600 hover:text-slate-900"
+              className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
             >
               Dashboard
             </a>
@@ -59,47 +59,56 @@ export const NavBar = (): JSX.Element => {
           <div className="relative" ref={toolsDropdownRef}>
             <button
               onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-              className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+              className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-white transition-colors"
             >
               Tools
-              <ChevronDown size={16} className="text-slate-500" />
+              <ChevronDown size={16} className="text-muted-foreground" />
             </button>
             {isToolsDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-slate-200 py-2 z-10">
+              <div className="absolute top-full left-0 mt-2 w-56 glass rounded-xl shadow-lg py-2 z-10">
                 <a
                   href="/tools/compress/image-compressor"
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
                 >
                   Image Compressor
                 </a>
                 <a
                   href="/tools/convert/png-to-jpg"
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
                 >
                   Format Converter
                 </a>
                 <a
                   href="/tools/resize/image-resizer"
-                  className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
                 >
                   Image Resizer
                 </a>
               </div>
             )}
           </div>
-          <a href="/features" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+          <a
+            href="/features"
+            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+          >
             Features
           </a>
           <a
             href="/how-it-works"
-            className="text-sm font-medium text-slate-600 hover:text-slate-900"
+            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
           >
             How it Works
           </a>
-          <a href="/pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+          <a
+            href="/pricing"
+            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+          >
             Pricing
           </a>
-          <a href="/blog" className="text-sm font-medium text-slate-600 hover:text-slate-900">
+          <a
+            href="/blog"
+            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+          >
             Blog
           </a>
         </nav>
@@ -107,24 +116,24 @@ export const NavBar = (): JSX.Element => {
         <div className="flex items-center gap-4">
           {isLoading ? (
             <div className="hidden md:flex items-center gap-3">
-              <div className="h-8 w-24 bg-slate-200 rounded-full animate-pulse"></div>
-              <div className="h-9 w-20 bg-slate-200 rounded-lg animate-pulse"></div>
+              <div className="h-8 w-24 bg-surface rounded-full animate-pulse"></div>
+              <div className="h-9 w-20 bg-surface rounded-lg animate-pulse"></div>
             </div>
           ) : !isAuthenticated ? (
             <>
-              <div className="hidden sm:flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full">
+              <div className="hidden sm:flex items-center gap-2 glass px-3 py-1 rounded-full">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                <span className="text-xs font-medium text-slate-700">10 Free Credits</span>
+                <span className="text-xs font-medium text-muted-foreground">10 Free Credits</span>
               </div>
               <button
                 onClick={handleAuthClick}
-                className="hidden sm:inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-slate-600 hover:text-slate-900 hover:bg-slate-100 h-9 px-4 py-2"
+                className="hidden sm:inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-white hover:bg-surface/10 h-9 px-4 py-2"
               >
                 Sign In
               </button>
               <button
                 onClick={() => openAuthModal('register')}
-                className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 h-9 px-3 sm:px-5 py-2"
+                className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-accent hover:bg-accent-hover text-white shadow-lg glow-blue hover:glow-blue-lg h-9 px-3 sm:px-5 py-2"
               >
                 <span className="hidden sm:inline">Get Started Free</span>
                 <span className="sm:hidden">Get Started</span>
@@ -138,7 +147,7 @@ export const NavBar = (): JSX.Element => {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors cursor-pointer"
                 >
                   <span className="max-w-[180px] truncate">{user?.email}</span>
                   <svg
@@ -147,7 +156,7 @@ export const NavBar = (): JSX.Element => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4 text-slate-600"
+                    className="w-4 h-4 text-muted-foreground"
                   >
                     <path
                       strokeLinecap="round"
@@ -157,7 +166,7 @@ export const NavBar = (): JSX.Element => {
                   </svg>
                 </button>
                 {isDropdownOpen && (
-                  <ul className="p-2 shadow-lg bg-white rounded-xl w-52 border border-slate-200 absolute top-full right-0 mt-2 z-10">
+                  <ul className="p-2 shadow-lg glass rounded-xl w-52 absolute top-full right-0 mt-2 z-10">
                     <li className="md:hidden">
                       <div className="pointer-events-none">
                         <CreditsDisplay />
@@ -166,7 +175,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/dashboard"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         Dashboard
                       </a>
@@ -174,7 +183,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/dashboard/billing"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         Billing
                       </a>
@@ -182,7 +191,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/dashboard/settings"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         Settings
                       </a>
@@ -190,7 +199,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/dashboard/history"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         History
                       </a>
@@ -198,7 +207,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/help"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         Help
                       </a>
@@ -206,7 +215,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <a
                         href="/pricing"
-                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                       >
                         View Plans
                       </a>
@@ -215,7 +224,7 @@ export const NavBar = (): JSX.Element => {
                       <li>
                         <button
                           onClick={handleChangePassword}
-                          className="block w-full text-left px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                          className="block w-full text-left px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors cursor-pointer"
                         >
                           Change Password
                         </button>
@@ -224,7 +233,7 @@ export const NavBar = (): JSX.Element => {
                     <li>
                       <button
                         onClick={signOut}
-                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                        className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/20 hover:text-red-300 rounded-lg transition-colors cursor-pointer"
                       >
                         Sign Out
                       </button>
@@ -236,7 +245,7 @@ export const NavBar = (): JSX.Element => {
           )}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-slate-600"
+            className="md:hidden p-2 text-muted-foreground hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -246,75 +255,75 @@ export const NavBar = (): JSX.Element => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white">
+        <div className="md:hidden border-t border-white/10 bg-surface">
           <nav className="flex flex-col px-4 py-4 space-y-2">
             {isAuthenticated && (
               <a
                 href="/dashboard"
-                className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
               >
                 Dashboard
               </a>
             )}
             <div className="py-2">
-              <p className="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
+              <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                 Tools
               </p>
               <a
                 href="/tools/compress/image-compressor"
-                className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
               >
                 Image Compressor
               </a>
               <a
                 href="/tools/convert/png-to-jpg"
-                className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
               >
                 Format Converter
               </a>
               <a
                 href="/tools/resize/image-resizer"
-                className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
               >
                 Image Resizer
               </a>
             </div>
             <a
               href="/features"
-              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
             >
               Features
             </a>
             <a
               href="/how-it-works"
-              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
             >
               How it Works
             </a>
             <a
               href="/pricing"
-              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
             >
               Pricing
             </a>
             <a
               href="/blog"
-              className="block px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
             >
               Blog
             </a>
             {!isAuthenticated && (
               <>
-                <div className="border-t border-slate-200 my-2 pt-2">
+                <div className="border-t border-white/10 my-2 pt-2">
                   <button
                     onClick={handleAuthClick}
-                    className="block w-full text-left px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                    className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
                   >
                     Sign In
                   </button>
                   <button
                     onClick={() => openAuthModal('register')}
-                    className="block w-full mt-2 px-4 py-2 text-sm font-semibold bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white rounded-lg transition-all"
+                    className="block w-full mt-2 px-4 py-2 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-lg transition-all glow-blue"
                   >
                     Get Started Free
                   </button>

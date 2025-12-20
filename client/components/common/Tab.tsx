@@ -38,7 +38,7 @@ export const Tab = ({ label, icon, isActive, onClick }: ITabProps): JSX.Element 
       className={`
         tab flex-1 gap-1.5 px-3 py-2 min-h-0 h-auto text-sm transition-colors duration-200 rounded-lg
         hover:bg-indigo-50
-        ${isActive ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-slate-600'}
+        ${isActive ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-muted-foreground'}
       `}
       onClick={onClick}
     >

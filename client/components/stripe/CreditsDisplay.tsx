@@ -49,13 +49,13 @@ export function CreditsDisplay(): JSX.Element {
 
   if (isProfileLoading) {
     return (
-      <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full">
+      <div className="flex items-center gap-2 bg-surface-light px-3 py-1.5 rounded-full">
         <div className="flex items-center gap-2 px-3 py-1.5">
-          <div className="h-4 w-4 bg-slate-200 rounded-full animate-pulse"></div>
-          <div className="h-4 w-10 bg-slate-200 rounded animate-pulse"></div>
-          <div className="h-3 w-12 bg-slate-200 rounded animate-pulse"></div>
+          <div className="h-4 w-4 bg-surface rounded-full animate-pulse"></div>
+          <div className="h-4 w-10 bg-surface rounded animate-pulse"></div>
+          <div className="h-3 w-12 bg-surface rounded animate-pulse"></div>
         </div>
-        <div className="h-3.5 w-3.5 bg-slate-200 rounded animate-pulse"></div>
+        <div className="h-3.5 w-3.5 bg-surface rounded animate-pulse"></div>
       </div>
     );
   }
@@ -69,22 +69,18 @@ export function CreditsDisplay(): JSX.Element {
   }
 
   // Determine background color and icon based on credit level
-  const bgColor = isNoCredits ? 'bg-red-100' : isLowCredits ? 'bg-amber-100' : 'bg-slate-100';
-  const iconColor = isNoCredits
-    ? 'text-red-600'
+  const bgColor = isNoCredits
+    ? 'bg-red-500/20'
     : isLowCredits
-      ? 'text-amber-600'
-      : 'text-indigo-600';
-  const textColor = isNoCredits
-    ? 'text-red-900'
-    : isLowCredits
-      ? 'text-amber-900'
-      : 'text-slate-900';
+      ? 'bg-amber-500/20'
+      : 'bg-surface-light';
+  const iconColor = isNoCredits ? 'text-red-500' : isLowCredits ? 'text-amber-500' : 'text-accent';
+  const textColor = isNoCredits ? 'text-red-400' : isLowCredits ? 'text-amber-400' : 'text-white';
   const subtitleColor = isNoCredits
-    ? 'text-red-700'
+    ? 'text-red-300'
     : isLowCredits
-      ? 'text-amber-700'
-      : 'text-slate-600';
+      ? 'text-amber-300'
+      : 'text-muted-foreground';
 
   // Tooltip content
   const tooltipContent = (
@@ -96,7 +92,7 @@ export function CreditsDisplay(): JSX.Element {
           </div>
           <a
             href="/dashboard/billing"
-            className="block text-indigo-400 hover:text-indigo-300 underline text-center"
+            className="block text-accent hover:text-accent-light underline text-center"
             onClick={e => e.stopPropagation()}
           >
             Buy more credits →
@@ -107,7 +103,7 @@ export function CreditsDisplay(): JSX.Element {
   );
 
   const creditsElement = (
-    <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full relative">
+    <div className="flex items-center gap-2 bg-surface-light px-3 py-1.5 rounded-full relative">
       {/* Warning indicator for low/no credits */}
       {(isLowCredits || isNoCredits) && (
         <div className="absolute -top-1 -right-1 z-10">
@@ -148,7 +144,7 @@ export function CreditsDisplay(): JSX.Element {
       <button
         onClick={handleRefresh}
         disabled={isRefreshing}
-        className="text-slate-500 hover:text-indigo-600 transition-colors disabled:opacity-50"
+        className="text-muted-foreground hover:text-accent transition-colors disabled:opacity-50"
         title="Refresh credits"
       >
         <svg

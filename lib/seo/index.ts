@@ -109,6 +109,7 @@ export {
   generateGuideSchema,
   generateUseCaseSchema,
   generateAlternativeSchema,
+  generateHomepageSchema,
 } from './schema-generator';
 
 // Meta Tag Patterns and Validation

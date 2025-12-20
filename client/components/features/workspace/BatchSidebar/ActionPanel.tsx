@@ -79,8 +79,8 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
       {/* Current Balance Display */}
       {pendingQueue.length > 0 && (
         <div className="flex items-center justify-between px-1 text-sm">
-          <span className="text-slate-500 font-medium">Your Balance</span>
-          <span className="font-bold text-slate-900">
+          <span className="text-muted-foreground font-medium">Your Balance</span>
+          <span className="font-bold text-white">
             {currentBalance} {currentBalance === 1 ? 'credit' : 'credits'}
           </span>
         </div>
@@ -96,15 +96,16 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
           transition-all duration-200
           flex flex-col items-center justify-center gap-1
           disabled:opacity-50 disabled:cursor-not-allowed
-          ${isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)
-            ? 'bg-slate-400'
-            : hasEnoughCredits
-              ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-200 hover:shadow-xl hover:shadow-indigo-300 active:scale-[0.98]'
-              : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-amber-200 hover:shadow-xl hover:shadow-amber-300 active:scale-[0.98]'
+          ${
+            isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)
+              ? 'bg-surface-light'
+              : hasEnoughCredits
+                ? 'bg-gradient-to-r from-accent via-accent to-accent-hover shadow-lg shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 active:scale-[0.98] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-1000'
+                : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 active:scale-[0.98]'
           }
         `}
       >
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 relative z-10">
           {isProcessing ? <Loader2 className="animate-spin" size={18} /> : <Wand2 size={18} />}
           <span className="text-sm font-bold">
             {isProcessing && batchProgress
@@ -124,7 +125,7 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
           !isProcessing &&
           queue.some(i => i.status !== ProcessingStatus.COMPLETED) && (
             <div
-              className={`text-xs font-medium opacity-90 ${!hasEnoughCredits ? 'animate-pulse font-bold' : ''}`}
+              className={`text-xs font-medium opacity-90 relative z-10 ${!hasEnoughCredits ? 'animate-pulse font-bold' : ''}`}
             >
               Cost: {totalCost} {totalCost === 1 ? 'credit' : 'credits'}
             </div>
@@ -133,11 +134,11 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
 
       {/* Insufficient Credits Warning */}
       {!hasEnoughCredits && pendingQueue.length > 0 && (
-        <div className="px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg text-center">
-          <p className="text-xs font-medium text-amber-800">
+        <div className="px-3 py-2 bg-amber-500/20 border border-amber-500/20 rounded-lg text-center">
+          <p className="text-xs font-medium text-amber-400">
             Need {totalCost - currentBalance} more{' '}
             {totalCost - currentBalance === 1 ? 'credit' : 'credits'} •{' '}
-            <a href="/pricing" className="underline hover:text-amber-900">
+            <a href="/pricing" className="underline hover:text-amber-300">
               Upgrade
             </a>
           </p>
@@ -157,7 +158,7 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
 
       <Button
         variant="ghost"
-        className="w-full text-slate-500 hover:text-red-600 hover:bg-red-50"
+        className="w-full text-muted-foreground hover:text-red-400 hover:bg-red-500/20"
         onClick={onClear}
         disabled={isProcessing}
         icon={<Trash2 size={16} />}

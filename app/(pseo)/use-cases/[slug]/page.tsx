@@ -33,7 +33,7 @@ export default async function UseCasePage({ params }: IUseCasePageProps) {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-6">{useCase.h1}</h1>
       <p className="text-xl text-gray-600 mb-8">{useCase.intro}</p>
-      <div className="bg-gray-50 p-8 rounded-lg">
+      <div className="bg-surface-light p-8 rounded-lg">
         <p className="text-gray-700">Use case content coming soon...</p>
       </div>
     </div>

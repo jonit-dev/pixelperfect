@@ -49,11 +49,11 @@ export const ToggleButtonGroup = <T extends string>({
             disabled={disabled}
             className={`
               ${sizes[size]}
-              rounded-lg border-2 font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+              rounded-lg border-2 font-medium transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface
               ${
                 isSelected
-                  ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                  : 'border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-700'
+                  ? 'border-accent bg-accent/10 text-accent'
+                  : 'border-white/10 text-muted-foreground hover:bg-surface-light hover:text-white'
               }
               ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             `}

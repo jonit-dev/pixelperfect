@@ -87,6 +87,16 @@
 - Community support
 - Single image processing emphasis
 
+#### Starter Tier - $9/month
+
+- 50 credits per month
+- All quality tiers including HD Upscale
+- 2x & 4x upscaling
+- 10 images per batch
+- 10MB file limit
+- Email support
+- Batch processing enabled
+
 #### Hobby Tier - $19/month
 
 - 200 credits per month

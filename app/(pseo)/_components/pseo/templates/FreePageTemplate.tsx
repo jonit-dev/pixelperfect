@@ -28,7 +28,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
   const tier = pageMapping?.tier;
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-surface relative">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -71,7 +71,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
           {/* Hero Section with Free Badge */}
           <div className="relative">
             <div className="absolute -top-4 left-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-light text-success text-sm font-semibold rounded-full">
                 <Sparkles className="w-4 h-4" />
                 100% Free
               </span>
@@ -92,7 +92,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
           {data.description && (
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto py-8">
-                <p className="text-lg text-slate-600 leading-relaxed text-center">
+                <p className="text-lg text-muted-foreground leading-relaxed text-center">
                   {data.description}
                 </p>
               </div>
@@ -112,13 +112,13 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                   <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
                     Free vs Premium
                   </h2>
-                  <p className="text-slate-600 text-center mb-8">
+                  <p className="text-muted-foreground text-center mb-8">
                     Start free, upgrade when you need more power
                   </p>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Free Tier */}
-                    <div className="bg-white border-2 border-slate-200 rounded-xl p-6">
+                    <div className="bg-surface border-2 border-white/10 rounded-xl p-6">
                       <div className="flex items-center gap-2 mb-4">
                         <Sparkles className="w-5 h-5 text-green-600" />
                         <h3 className="text-xl font-bold">Free Plan</h3>
@@ -127,13 +127,13 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                         {data.features.slice(0, 3).map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-2">
                             <Check className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                            <span className="text-sm text-slate-700">{feature.title}</span>
+                            <span className="text-sm text-muted-foreground">{feature.title}</span>
                           </div>
                         ))}
                         {data.limitations.map((limitation, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <X className="w-5 h-5 text-slate-400 shrink-0 mt-0.5" />
-                            <span className="text-sm text-slate-500">{limitation}</span>
+                            <X className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                            <span className="text-sm text-muted-foreground">{limitation}</span>
                           </div>
                         ))}
                       </div>
@@ -142,7 +142,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                     {/* Premium Tier */}
                     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-6 relative">
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+                        <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-bold rounded-full">
                           RECOMMENDED
                         </span>
                       </div>
@@ -153,7 +153,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                         {data.features.map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-2">
                             <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                            <span className="text-sm text-slate-700">{feature.title}</span>
+                            <span className="text-sm text-muted-foreground">{feature.title}</span>
                           </div>
                         ))}
                         {data.upgradePoints &&
@@ -166,7 +166,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                       </div>
                       <Link
                         href={data.upgradePath || '/pricing'}
-                        className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-center transition-colors"
+                        className="block w-full py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg text-center transition-colors"
                       >
                         Upgrade to Premium
                         <ArrowRight className="inline-block w-4 h-4 ml-1" />
@@ -200,19 +200,19 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
           {/* Related Free Tools */}
           {data.relatedFree && data.relatedFree.length > 0 && (
             <FadeIn delay={0.6}>
-              <section className="py-8 border-t border-slate-200">
+              <section className="py-8 border-t border-white/10">
                 <h2 className="text-2xl font-bold mb-6">More Free Tools</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {data.relatedFree.map((slug, idx) => (
                     <Link
                       key={idx}
                       href={`/free/${slug}`}
-                      className="p-4 border border-slate-200 rounded-lg hover:border-green-500 hover:shadow-md transition-all"
+                      className="p-4 border border-white/10 rounded-lg hover:border-green-500 hover:shadow-md transition-all"
                     >
-                      <span className="text-sm font-medium text-slate-900 capitalize">
+                      <span className="text-sm font-medium text-primary capitalize">
                         {slug.replace(/-/g, ' ')}
                       </span>
-                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-slate-400" />
+                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-muted-foreground" />
                     </Link>
                   ))}
                 </div>

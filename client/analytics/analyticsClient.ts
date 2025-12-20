@@ -25,11 +25,7 @@
  */
 
 import * as amplitude from '@amplitude/analytics-browser';
-import type {
-  IAnalyticsEvent,
-  IUserIdentity,
-  IConsentStatus,
-} from '@server/analytics/types';
+import type { IAnalyticsEvent, IUserIdentity, IConsentStatus } from '@server/analytics/types';
 
 // =============================================================================
 // Constants

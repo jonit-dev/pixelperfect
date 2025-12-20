@@ -54,7 +54,7 @@ export interface IPlanConfig {
   /** Display name for UI */
   name: string;
   /** Stripe Price ID */
-  stripePriceId: string;
+  stripePriceId: string | null;
   /** Monthly price in cents (1900 = $19.00) */
   priceInCents: number;
   /** Currency code */
@@ -169,7 +169,7 @@ export interface ICreditPack {
   /** Currency code */
   currency: Currency;
   /** Stripe Price ID for one-time payment */
-  stripePriceId: string;
+  stripePriceId: string | null;
   /** Description for UI */
   description: string;
   /** Whether this pack is highlighted as "popular" or "best value" */

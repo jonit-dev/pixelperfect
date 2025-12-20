@@ -81,27 +81,27 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
 
       // Default fallback UI
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+        <div className="min-h-screen flex items-center justify-center bg-surface px-4">
+          <div className="max-w-md w-full bg-surface rounded-lg shadow-lg p-8">
             <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full">
               <AlertTriangle className="h-6 w-6 text-red-600" />
             </div>
 
             <div className="mt-6 text-center">
-              <h1 className="text-2xl font-bold text-slate-900">Something went wrong</h1>
-              <p className="mt-2 text-slate-600">
+              <h1 className="text-2xl font-bold text-primary">Something went wrong</h1>
+              <p className="mt-2 text-muted-foreground">
                 We encountered an unexpected error. Please try refreshing the page.
               </p>
 
               {serverEnv.ENV === 'development' && this.state.error && (
                 <details className="mt-4 text-left">
-                  <summary className="cursor-pointer text-sm text-slate-500 hover:text-slate-700">
+                  <summary className="cursor-pointer text-sm text-muted-foreground hover:text-muted-foreground">
                     Error details (dev only)
                   </summary>
-                  <div className="mt-2 p-3 bg-slate-100 rounded text-xs font-mono overflow-auto max-h-48">
+                  <div className="mt-2 p-3 bg-surface-light rounded text-xs font-mono overflow-auto max-h-48">
                     <p className="font-bold text-red-600">{this.state.error.toString()}</p>
                     {this.state.errorInfo && (
-                      <pre className="mt-2 text-slate-700 whitespace-pre-wrap">
+                      <pre className="mt-2 text-muted-foreground whitespace-pre-wrap">
                         {this.state.errorInfo.componentStack}
                       </pre>
                     )}
@@ -120,7 +120,7 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
               </button>
               <a
                 href="/"
-                className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-lg shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-white/20 rounded-lg shadow-sm text-sm font-medium text-muted-foreground bg-surface hover:bg-surface focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <Home className="h-4 w-4 mr-2" />
                 Go Home

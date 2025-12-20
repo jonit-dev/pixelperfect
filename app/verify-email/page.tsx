@@ -13,7 +13,7 @@ export default function VerifyEmailPage() {
       <div className="max-w-md w-full mx-4">
         <div className="bg-card rounded-2xl shadow-xl p-8 text-center">
           {/* Email Icon */}
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center glow-blue">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -48,7 +48,7 @@ export default function VerifyEmailPage() {
 
             <Link
               href="/"
-              className="inline-block w-full px-4 py-3 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200"
+              className="inline-block w-full px-4 py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] glow-blue"
             >
               Back to Home
             </Link>

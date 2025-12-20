@@ -71,7 +71,7 @@ export function InteractiveToolPageTemplate({
   const ToolComponent = data.toolComponent ? TOOL_COMPONENTS[data.toolComponent] : null;
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-base relative">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -86,7 +86,7 @@ export function InteractiveToolPageTemplate({
       <div
         className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(45, 129, 255, 0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -114,8 +114,8 @@ export function InteractiveToolPageTemplate({
           {/* Hero Section with Title */}
           <FadeIn>
             <div className="text-center py-8 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{data.h1}</h1>
-              <p className="text-xl text-slate-600 leading-relaxed">{data.intro}</p>
+              <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">{data.h1}</h1>
+              <p className="text-xl text-text-secondary leading-relaxed">{data.intro}</p>
             </div>
           </FadeIn>
 
@@ -132,7 +132,7 @@ export function InteractiveToolPageTemplate({
           {data.description && (
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto py-8">
-                <p className="text-lg text-slate-600 leading-relaxed text-center">
+                <p className="text-lg text-text-secondary leading-relaxed text-center">
                   {data.description}
                 </p>
               </div>

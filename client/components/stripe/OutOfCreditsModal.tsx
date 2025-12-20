@@ -22,18 +22,15 @@ export function OutOfCreditsModal({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={onClose} />
 
       {/* Modal */}
       <div className="flex min-h-full items-end sm:items-center justify-center p-4">
-        <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-xl p-6">
+        <div className="relative w-full max-w-4xl bg-surface rounded-lg shadow-xl p-6">
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+            className="absolute top-4 right-4 text-muted-foreground hover:text-muted-foreground transition-colors"
           >
             <X size={24} />
           </button>
@@ -43,8 +40,8 @@ export function OutOfCreditsModal({
             <div className="mx-auto w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
               <AlertCircle className="h-6 w-6 text-amber-600" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">You&apos;re Out of Credits</h2>
-            <p className="text-slate-600">
+            <h2 className="text-2xl font-bold text-primary mb-2">You&apos;re Out of Credits</h2>
+            <p className="text-muted-foreground">
               Purchase credits to continue processing images, or subscribe for better value.
             </p>
           </div>
@@ -56,7 +53,7 @@ export function OutOfCreditsModal({
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 !showSubscriptionCTA
                   ? 'bg-indigo-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-surface-light text-muted-foreground hover:bg-surface-light'
               }`}
             >
               Buy Credits
@@ -66,7 +63,7 @@ export function OutOfCreditsModal({
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 showSubscriptionCTA
                   ? 'bg-indigo-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-surface-light text-muted-foreground hover:bg-surface-light'
               }`}
             >
               Subscribe (Best Value)
@@ -85,13 +82,13 @@ export function OutOfCreditsModal({
                 onError={error => console.error(error)}
               />
 
-              <div className="mt-4 text-center text-sm text-slate-500">
+              <div className="mt-4 text-center text-sm text-muted-foreground">
                 Subscribe for up to 58% cheaper credits
               </div>
             </>
           ) : (
             <div className="text-center py-8">
-              <p className="text-slate-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Get monthly credits with automatic rollover, plus 11-58% cheaper per-credit pricing.
               </p>
               <a
@@ -107,7 +104,7 @@ export function OutOfCreditsModal({
           <div className="mt-6 text-center">
             <button
               onClick={onClose}
-              className="text-sm text-slate-500 hover:text-slate-700 transition-colors"
+              className="text-sm text-muted-foreground hover:text-muted-foreground transition-colors"
             >
               Not now
             </button>

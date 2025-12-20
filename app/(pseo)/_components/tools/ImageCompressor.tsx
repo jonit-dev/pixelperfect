@@ -121,10 +121,10 @@ export function ImageCompressor(): React.ReactElement {
           {previewUrl && (
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium mb-2 block text-slate-700">
+                <label className="text-sm font-medium mb-2 block text-muted-foreground">
                   Original Image
                 </label>
-                <div className="relative border rounded-lg overflow-hidden bg-slate-100">
+                <div className="relative border rounded-lg overflow-hidden bg-surface-light">
                   <Image
                     src={previewUrl}
                     alt="Original"
@@ -141,19 +141,19 @@ export function ImageCompressor(): React.ReactElement {
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium mb-2 block text-slate-700">
+                <label className="text-sm font-medium mb-2 block text-muted-foreground">
                   Compression Preview
                 </label>
-                <div className="border rounded-lg p-6 bg-slate-100 flex items-center justify-center min-h-[200px]">
+                <div className="border rounded-lg p-6 bg-surface-light flex items-center justify-center min-h-[200px]">
                   <div className="text-center">
-                    <p className="text-4xl font-bold text-blue-600">{options.quality}%</p>
-                    <p className="text-sm text-slate-500 mt-2">Quality Setting</p>
+                    <p className="text-4xl font-bold text-accent">{options.quality}%</p>
+                    <p className="text-sm text-muted-foreground mt-2">Quality Setting</p>
                     {processedBlob && (
                       <div className="mt-4 space-y-1">
-                        <p className="text-lg font-semibold text-green-600">
+                        <p className="text-lg font-semibold text-success">
                           {compressionRatio}% smaller
                         </p>
-                        <p className="text-xs text-slate-600">
+                        <p className="text-xs text-muted-foreground">
                           {(originalSize / 1024 / 1024).toFixed(2)}MB →{' '}
                           {(compressedSize / 1024 / 1024).toFixed(2)}MB
                         </p>
@@ -170,10 +170,10 @@ export function ImageCompressor(): React.ReactElement {
             {/* Quality */}
             <div className="md:col-span-2">
               <div className="flex justify-between items-center mb-2">
-                <label htmlFor="quality" className="text-sm font-medium text-slate-700">
+                <label htmlFor="quality" className="text-sm font-medium text-muted-foreground">
                   Compression Quality
                 </label>
-                <span className="text-lg font-bold text-blue-600">{options.quality}%</span>
+                <span className="text-lg font-bold text-accent">{options.quality}%</span>
               </div>
               <input
                 id="quality"
@@ -182,9 +182,9 @@ export function ImageCompressor(): React.ReactElement {
                 max={100}
                 value={options.quality}
                 onChange={e => setOptions(prev => ({ ...prev, quality: parseInt(e.target.value) }))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                className="w-full h-2 bg-surface-light rounded-lg appearance-none cursor-pointer accent-accent"
               />
-              <div className="flex justify-between text-xs text-slate-500 mt-1">
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
                 <span>Smaller file (lower quality)</span>
                 <span>Larger file (higher quality)</span>
               </div>
@@ -192,7 +192,10 @@ export function ImageCompressor(): React.ReactElement {
 
             {/* Max Width */}
             <div>
-              <label htmlFor="maxWidth" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="maxWidth"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Max Width (px)
               </label>
               <input
@@ -204,13 +207,16 @@ export function ImageCompressor(): React.ReactElement {
                 onChange={e =>
                   setOptions(prev => ({ ...prev, maxWidth: parseInt(e.target.value) || 100 }))
                 }
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-surface border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-white"
               />
             </div>
 
             {/* Max Height */}
             <div>
-              <label htmlFor="maxHeight" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="maxHeight"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Max Height (px)
               </label>
               <input
@@ -222,13 +228,16 @@ export function ImageCompressor(): React.ReactElement {
                 onChange={e =>
                   setOptions(prev => ({ ...prev, maxHeight: parseInt(e.target.value) || 100 }))
                 }
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-surface border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-white"
               />
             </div>
 
             {/* Format */}
             <div>
-              <label htmlFor="format" className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="format"
+                className="mb-2 block text-sm font-medium text-muted-foreground"
+              >
                 Output Format
               </label>
               <select
@@ -240,7 +249,7 @@ export function ImageCompressor(): React.ReactElement {
                     format: e.target.value as 'jpeg' | 'png' | 'webp',
                   }))
                 }
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="w-full px-3 py-2 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-surface text-white"
               >
                 <option value="jpeg">JPEG (best for photos)</option>
                 <option value="webp">WebP (best compression)</option>
@@ -257,11 +266,11 @@ export function ImageCompressor(): React.ReactElement {
                 onChange={e =>
                   setOptions(prev => ({ ...prev, maintainAspectRatio: e.target.checked }))
                 }
-                className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                className="w-4 h-4 text-accent border-white/20 rounded focus:ring-accent bg-surface"
               />
               <label
                 htmlFor="aspect-ratio"
-                className="text-sm font-medium text-slate-700 cursor-pointer"
+                className="text-sm font-medium text-muted-foreground cursor-pointer"
               >
                 Maintain aspect ratio
               </label>
@@ -270,30 +279,30 @@ export function ImageCompressor(): React.ReactElement {
 
           {/* Compression Stats */}
           {file && processedBlob && (
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-4 border border-blue-200">
+            <div className="bg-surface-light rounded-lg p-4 border border-white/10">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <p className="text-2xl font-bold text-slate-900">
+                  <p className="text-2xl font-bold text-primary">
                     {(originalSize / 1024).toFixed(0)}KB
                   </p>
-                  <p className="text-xs text-slate-600">Original Size</p>
+                  <p className="text-xs text-muted-foreground">Original Size</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-green-600">{compressionRatio}%</p>
-                  <p className="text-xs text-slate-600">Reduction</p>
+                  <p className="text-2xl font-bold text-success">{compressionRatio}%</p>
+                  <p className="text-xs text-muted-foreground">Reduction</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-blue-600">
+                  <p className="text-2xl font-bold text-accent">
                     {(compressedSize / 1024).toFixed(0)}KB
                   </p>
-                  <p className="text-xs text-slate-600">Compressed Size</p>
+                  <p className="text-xs text-muted-foreground">Compressed Size</p>
                 </div>
               </div>
             </div>
           )}
 
           {/* Tips */}
-          <div className="bg-slate-50 rounded-lg p-4 text-sm text-slate-600">
+          <div className="bg-surface rounded-lg p-4 text-sm text-muted-foreground">
             <p className="font-medium mb-2">💡 Compression Tips:</p>
             <ul className="space-y-1 ml-4 list-disc">
               <li>For web use, 70-80% quality is usually optimal</li>

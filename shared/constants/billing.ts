@@ -14,7 +14,8 @@ export const BILLING_COPY = {
 
   // Checkout errors
   invalidPrice: 'Invalid price ID. Only subscription plans are supported.',
-  oneTimePaymentsNotSupported: 'Only subscription plans are supported. One-time payments are not allowed.',
+  oneTimePaymentsNotSupported:
+    'Only subscription plans are supported. One-time payments are not allowed.',
   paymentModeRejected: 'Payment mode not supported. Please choose a subscription plan.',
 
   // Success messages

@@ -1,5 +1,6 @@
 import { IUpscaleConfig, ProcessingStage } from '@/shared/types/coreflow.types';
 import { serverEnv } from '@shared/config/env';
+import { TIMEOUTS } from '@shared/config/timeouts.config';
 import { createClient } from '@shared/utils/supabase/client';
 
 /**
@@ -221,6 +222,7 @@ export const processImage = async (
         config,
         resolvedModel, // Pass the resolved model for server processing
       }),
+      signal: AbortSignal.timeout(TIMEOUTS.API_DEFAULT_TIMEOUT),
     });
 
     if (!response.ok) {
@@ -268,6 +270,21 @@ export const processImage = async (
     };
   } catch (error) {
     console.error('AI Processing Error:', error);
+
+    // Handle timeout errors specifically
+    if (error instanceof Error) {
+      if (error.name === 'TimeoutError' || error.message.includes('timed out')) {
+        throw new Error(
+          'Request timeout: The image processing request timed out. Please try again.'
+        );
+      }
+      if (error.name === 'AbortError') {
+        throw new Error(
+          'Request timeout: The image processing request timed out. Please try again.'
+        );
+      }
+    }
+
     throw error;
   }
 };

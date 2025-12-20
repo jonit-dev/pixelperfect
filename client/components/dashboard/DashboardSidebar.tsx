@@ -90,7 +90,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
       <aside
         className={cn(
           // Base styles
-          'flex flex-col w-64 min-h-screen bg-white border-r border-slate-200',
+          'flex flex-col w-64 min-h-screen bg-surface border-r border-white/10',
           // Desktop: static positioning
           'hidden md:flex',
           // Mobile: drawer positioning
@@ -103,7 +103,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         {/* Close button - Mobile only */}
         {isOpen && onClose && (
           <button
-            className="md:hidden absolute top-4 right-4 p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            className="md:hidden absolute top-4 right-4 p-2 rounded-lg text-muted-foreground hover:text-white hover:bg-surface-light transition-colors"
             onClick={onClose}
             aria-label="Close menu"
           >
@@ -112,36 +112,34 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         )}
 
         {/* Logo/Brand */}
-        <div className="p-6 border-b border-slate-100">
+        <div className="p-6 border-b border-white/10">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
             </div>
-            <span className="font-semibold text-slate-900">{clientEnv.APP_NAME}</span>
+            <span className="font-semibold text-white">{clientEnv.APP_NAME}</span>
           </Link>
         </div>
 
         {/* User Info */}
-        <div className="px-4 py-4 border-b border-slate-100">
+        <div className="px-4 py-4 border-b border-white/10">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
-              <span className="text-indigo-600 font-medium text-sm">
+            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+              <span className="text-accent font-medium text-sm">
                 {user?.email?.charAt(0).toUpperCase() || 'U'}
               </span>
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className="text-sm font-medium text-slate-900 truncate">
-                  {user?.name || 'User'}
-                </p>
+                <p className="text-sm font-medium text-white truncate">{user?.name || 'User'}</p>
                 {isAdmin && (
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-700">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-accent/20 text-accent">
                     Admin
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-500 truncate">{user?.email}</p>
-              <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-600">
+              <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+              <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent">
                 {planInfo?.name ?? 'Free'} plan
               </span>
             </div>
@@ -166,14 +164,14 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
                 flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-full text-left
                 ${
                   active
-                    ? 'bg-indigo-50 text-indigo-700'
-                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-muted-foreground hover:bg-surface-light hover:text-white'
                 }
               `}
               >
                 <Icon
                   size={20}
-                  className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`}
+                  className={`mr-3 ${active ? 'text-accent' : 'text-muted-foreground'}`}
                 />
                 {item.label}
               </button>
@@ -182,7 +180,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         </nav>
 
         {/* Bottom Navigation */}
-        <div className="px-3 py-4 border-t border-slate-100 space-y-1">
+        <div className="px-3 py-4 border-t border-white/10 space-y-1">
           {bottomMenuItems.map(item => {
             const Icon = item.icon;
             const active = isActive(item.href);
@@ -195,14 +193,14 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
                 flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-full text-left
                 ${
                   active
-                    ? 'bg-indigo-50 text-indigo-700'
-                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-muted-foreground hover:bg-surface-light hover:text-white'
                 }
               `}
               >
                 <Icon
                   size={20}
-                  className={`mr-3 ${active ? 'text-indigo-600' : 'text-slate-400'}`}
+                  className={`mr-3 ${active ? 'text-accent' : 'text-muted-foreground'}`}
                 />
                 {item.label}
               </button>
@@ -212,9 +210,9 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
           {/* Sign Out Button */}
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
+            className="w-full flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-red-500/10 hover:text-red-500 transition-all duration-200"
           >
-            <LogOut size={20} className="mr-3 text-slate-400" />
+            <LogOut size={20} className="mr-3 text-muted-foreground" />
             Sign Out
           </button>
         </div>

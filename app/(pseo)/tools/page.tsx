@@ -8,9 +8,9 @@ export default async function ToolsHubPage() {
   const tools = await getAllTools();
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-6">AI Image Tools</h1>
-      <p className="text-xl text-gray-600 mb-12">
+    <div className="container mx-auto px-4 py-12 bg-base min-h-screen">
+      <h1 className="text-4xl font-bold mb-6 text-text-primary">AI Image Tools</h1>
+      <p className="text-xl text-text-secondary mb-12">
         Professional-grade AI tools for every image enhancement need
       </p>
 
@@ -19,11 +19,13 @@ export default async function ToolsHubPage() {
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all"
+            className="block p-6 glass-card rounded-lg border border-white/10 hover:border-accent hover:shadow-lg transition-all group"
           >
-            <h2 className="text-xl font-semibold mb-2">{tool.title}</h2>
-            <p className="text-gray-600 text-sm">{tool.description}</p>
-            <span className="inline-block mt-4 text-blue-600 text-sm font-medium">
+            <h2 className="text-xl font-semibold mb-2 text-text-primary group-hover:text-accent transition-colors">
+              {tool.title}
+            </h2>
+            <p className="text-text-secondary text-sm">{tool.description}</p>
+            <span className="inline-block mt-4 text-accent text-sm font-medium group-hover:text-accent-hover transition-colors">
               Learn more →
             </span>
           </Link>

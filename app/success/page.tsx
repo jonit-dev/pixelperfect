@@ -85,10 +85,12 @@ function SuccessContent(): JSX.Element {
       <main className="flex-1 flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <Loader2 className="h-12 w-12 animate-spin text-indigo-600 mx-auto mb-4" />
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-muted-foreground">
             {isCredits ? 'Processing your purchase...' : 'Activating your subscription...'}
           </p>
-          <p className="text-sm text-slate-400 mt-2">Your credits will be available in a moment</p>
+          <p className="text-sm text-muted-foreground mt-2">
+            Your credits will be available in a moment
+          </p>
         </div>
       </main>
     );
@@ -109,7 +111,7 @@ function SuccessContent(): JSX.Element {
           <h1 className="text-3xl font-bold mb-4">
             {isCredits ? 'Credits Purchased!' : 'Subscription Activated!'}
           </h1>
-          <p className="text-lg text-slate-600 mb-4">
+          <p className="text-lg text-muted-foreground mb-4">
             {isCredits
               ? `Thank you for your purchase${purchasedCredits ? `. ${purchasedCredits} credits have been added to your account.` : '.'}`
               : 'Thank you for subscribing. Your monthly credits will be added shortly.'}
@@ -137,8 +139,8 @@ function SuccessContent(): JSX.Element {
 
           {/* Session ID (for reference) */}
           {sessionId && (
-            <div className="bg-slate-100 rounded-lg p-4 mb-8">
-              <p className="text-sm text-slate-500">
+            <div className="bg-surface-light rounded-lg p-4 mb-8">
+              <p className="text-sm text-muted-foreground">
                 Reference: <code className="text-xs">{sessionId.slice(0, 20)}...</code>
               </p>
             </div>
@@ -155,14 +157,14 @@ function SuccessContent(): JSX.Element {
             </Link>
             <Link
               href="/dashboard/billing"
-              className="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
             >
               View Billing
             </Link>
           </div>
 
           {/* Additional Info */}
-          <div className="mt-12 text-sm text-slate-500">
+          <div className="mt-12 text-sm text-muted-foreground">
             <p>
               A receipt has been sent to your email address.
               <br />
@@ -187,7 +189,7 @@ function LoadingFallback(): JSX.Element {
     <main className="flex-1 flex items-center justify-center min-h-[60vh]">
       <div className="text-center">
         <Loader2 className="h-12 w-12 animate-spin text-indigo-600 mx-auto mb-4" />
-        <p className="text-lg text-slate-600">Loading...</p>
+        <p className="text-lg text-muted-foreground">Loading...</p>
       </div>
     </main>
   );

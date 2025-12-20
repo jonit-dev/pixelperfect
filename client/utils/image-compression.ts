@@ -177,7 +177,13 @@ async function compressOnce(
     maintainAspectRatio?: boolean;
   }
 ): Promise<Blob> {
-  const { quality = 80, maxWidth, maxHeight, format = 'jpeg', maintainAspectRatio = true } = options;
+  const {
+    quality = 80,
+    maxWidth,
+    maxHeight,
+    format = 'jpeg',
+    maintainAspectRatio = true,
+  } = options;
 
   return new Promise((resolve, reject) => {
     const img = document.createElement('img');

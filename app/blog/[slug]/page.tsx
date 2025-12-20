@@ -1,21 +1,38 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-// import { MDXRemote } from 'next-mdx-remote/rsc'; // Temporarily disabled for OpenNext
+import Image from 'next/image';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@server/blog';
-// import { mdxComponents } from '@client/components/blog/MDXComponents'; // Temporarily disabled for OpenNext
-import { Calendar, Clock, ArrowLeft, Tag, User } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  ArrowLeft,
+  Tag,
+  User,
+  Lightbulb,
+  Info,
+  AlertTriangle,
+} from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
+
+// Convert MDX Callout components to blockquotes with type markers
+function preprocessContent(content: string): string {
+  return content.replace(
+    /<Callout type="(\w+)">\n?([\s\S]*?)\n?<\/Callout>/g,
+    (_, type, text) => `> [!${type.toUpperCase()}]\n> ${text.trim().replace(/\n/g, '\n> ')}`
+  );
+}
 
 interface IPageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Temporarily disable static generation for OpenNext compatibility
-// export async function generateStaticParams() {
-//   const posts = getAllPosts();
-//   return posts.map(post => ({ slug: post.slug }));
-// }
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map(post => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: IPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -97,14 +114,14 @@ export default async function BlogPostPage({ params }: IPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <article className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <article className="min-h-screen bg-base">
         {/* Header */}
         <header className="py-12 md:py-20">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Back Link */}
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
@@ -112,21 +129,21 @@ export default async function BlogPostPage({ params }: IPageProps) {
 
             {/* Category */}
             <div className="mb-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-700">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
                 {post.category}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
               {post.title}
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-slate-600 mb-8">{post.description}</p>
+            <p className="text-xl text-muted-foreground mb-8">{post.description}</p>
 
             {/* Meta */}
-            <div className="flex flex-wrap items-center gap-6 text-slate-500 pb-8 border-b border-slate-200">
+            <div className="flex flex-wrap items-center gap-6 text-muted-foreground pb-8 border-b border-white/10">
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 {post.author}
@@ -151,7 +168,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                 {post.tags.map(tag => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm bg-surface text-muted-foreground"
                   >
                     <Tag className="w-3.5 h-3.5" />
                     {tag}
@@ -165,36 +182,135 @@ export default async function BlogPostPage({ params }: IPageProps) {
         {/* Content */}
         <div className="pb-16">
           <div className="container mx-auto px-4 max-w-4xl">
-            <div className="prose prose-lg prose-slate max-w-none">
-              <div className="prose prose-lg max-w-none">
-                {/* Temporarily showing raw content - MDX disabled for OpenNext compatibility */}
-                <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded-lg text-sm">
-                  {post.content}
-                </pre>
-              </div>
+            <div className="prose prose-lg prose-invert max-w-none">
+              <Markdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  img: ({ src, alt }) => (
+                    <span className="block my-8">
+                      <Image
+                        src={src || ''}
+                        alt={alt || ''}
+                        width={800}
+                        height={450}
+                        className="rounded-lg w-full h-auto"
+                        unoptimized={src?.startsWith('http')}
+                      />
+                    </span>
+                  ),
+                  a: ({ href, children }) => (
+                    <Link
+                      href={href || '#'}
+                      className="text-accent hover:underline"
+                      target={href?.startsWith('http') ? '_blank' : undefined}
+                      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {children}
+                    </Link>
+                  ),
+                  code: ({ children, className }) => {
+                    const isInline = !className;
+                    return isInline ? (
+                      <code className="bg-surface-light px-1.5 py-0.5 rounded text-sm text-accent">
+                        {children}
+                      </code>
+                    ) : (
+                      <code className={className}>{children}</code>
+                    );
+                  },
+                  pre: ({ children }) => (
+                    <pre className="bg-surface-light p-4 rounded-lg overflow-x-auto border border-white/10">
+                      {children}
+                    </pre>
+                  ),
+                  blockquote: ({ children }) => {
+                    // Check if this is a callout by looking at the first text child
+                    const firstChild = Array.isArray(children) ? children[0] : children;
+                    const text = firstChild?.props?.children?.[0];
+
+                    if (typeof text === 'string') {
+                      const tipMatch = text.match(/^\[!TIP\]\s*/);
+                      const infoMatch = text.match(/^\[!INFO\]\s*/);
+                      const warningMatch = text.match(/^\[!WARNING\]\s*/);
+
+                      if (tipMatch || infoMatch || warningMatch) {
+                        const type = tipMatch ? 'tip' : infoMatch ? 'info' : 'warning';
+                        const Icon =
+                          type === 'tip' ? Lightbulb : type === 'info' ? Info : AlertTriangle;
+                        const colors = {
+                          tip: 'border-emerald-500/50 bg-emerald-500/10',
+                          info: 'border-accent/50 bg-accent/10',
+                          warning: 'border-amber-500/50 bg-amber-500/10',
+                        };
+                        const iconColors = {
+                          tip: 'text-emerald-400',
+                          info: 'text-accent',
+                          warning: 'text-amber-400',
+                        };
+
+                        return (
+                          <div
+                            className={`not-prose my-6 p-4 rounded-lg border-l-4 ${colors[type]}`}
+                          >
+                            <div className="flex gap-3">
+                              <Icon
+                                className={`w-5 h-5 mt-0.5 flex-shrink-0 ${iconColors[type]}`}
+                              />
+                              <div className="text-muted-foreground">{children}</div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    }
+
+                    return (
+                      <blockquote className="border-l-4 border-accent/50 pl-4 italic text-muted-foreground">
+                        {children}
+                      </blockquote>
+                    );
+                  },
+                  table: ({ children }) => (
+                    <div className="overflow-x-auto my-6">
+                      <table className="min-w-full border-collapse">{children}</table>
+                    </div>
+                  ),
+                  th: ({ children }) => (
+                    <th className="border border-white/10 bg-surface-light px-4 py-2 text-left font-semibold text-primary">
+                      {children}
+                    </th>
+                  ),
+                  td: ({ children }) => (
+                    <td className="border border-white/10 px-4 py-2 text-muted-foreground">
+                      {children}
+                    </td>
+                  ),
+                }}
+              >
+                {preprocessContent(post.content)}
+              </Markdown>
             </div>
           </div>
         </div>
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <section className="py-16 bg-surface-light border-t border-white/10">
             <div className="container mx-auto px-4 max-w-6xl">
-              <h2 className="text-2xl font-bold text-slate-900 mb-8">Related Articles</h2>
+              <h2 className="text-2xl font-bold text-primary mb-8">Related Articles</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPosts.map(related => (
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+                    className="bg-surface rounded-xl p-6 shadow-sm border border-white/10 hover:shadow-md hover:border-accent/50 transition-all"
                   >
-                    <span className="text-xs font-medium text-indigo-600 mb-2 block">
+                    <span className="text-xs font-medium text-accent mb-2 block">
                       {related.category}
                     </span>
-                    <h3 className="font-semibold text-slate-900 mb-2 line-clamp-2">
+                    <h3 className="font-semibold text-primary mb-2 line-clamp-2">
                       {related.title}
                     </h3>
-                    <p className="text-sm text-slate-500">{related.readingTime}</p>
+                    <p className="text-sm text-muted-foreground">{related.readingTime}</p>
                   </Link>
                 ))}
               </div>
@@ -203,17 +319,17 @@ export default async function BlogPostPage({ params }: IPageProps) {
         )}
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <section className="py-16 bg-accent">
           <div className="container mx-auto px-4 max-w-4xl text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Ready to Try AI Image Enhancement?
             </h2>
-            <p className="text-indigo-100 mb-8 text-lg">
+            <p className="text-accent-foreground mb-8 text-lg">
               Upload your image and see the results in seconds. No signup required.
             </p>
             <Link
               href="/upscaler"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-surface text-accent font-semibold rounded-xl hover:bg-accent-hover transition-colors"
             >
               Try {clientEnv.APP_NAME} Free
             </Link>

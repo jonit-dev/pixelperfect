@@ -152,7 +152,7 @@ function AuthConfirmContent() {
                 ? 'bg-gradient-to-r from-green-500 to-emerald-500'
                 : status === 'verified_please_login'
                   ? 'bg-gradient-to-r from-green-500 to-emerald-500'
-                  : 'bg-gradient-to-r from-indigo-500 to-purple-500'
+                  : 'bg-accent glow-blue'
             }`}
           >
             {status === 'success' || status === 'verified_please_login' ? (
@@ -187,7 +187,7 @@ function AuthConfirmContent() {
           {status === 'loading' && (
             <div className="space-y-2">
               <div className="w-full bg-muted rounded-full h-2">
-                <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 h-2 rounded-full animate-pulse"></div>
+                <div className="bg-accent h-2 rounded-full animate-pulse glow-blue"></div>
               </div>
             </div>
           )}
@@ -196,7 +196,7 @@ function AuthConfirmContent() {
             <div className="space-y-3 mt-4">
               <button
                 onClick={handleLoginClick}
-                className="w-full px-4 py-2 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity"
+                className="w-full px-4 py-2 bg-accent hover:bg-accent-hover text-white rounded-lg transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] glow-blue"
               >
                 Log In Now
               </button>
@@ -210,14 +210,16 @@ function AuthConfirmContent() {
 
 export default function AuthConfirmPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-accent mx-auto mb-4 glow-blue"></div>
+            <p className="text-muted-foreground">Loading...</p>
+          </div>
         </div>
-      </div>
-    }>
+      }
+    >
       <AuthConfirmContent />
     </Suspense>
   );

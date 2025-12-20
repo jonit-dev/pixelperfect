@@ -40,14 +40,14 @@ export function UserActionsDropdown({
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors text-slate-500 hover:text-slate-700"
+          className="p-1.5 rounded-lg hover:bg-surface-light transition-colors text-muted-foreground hover:text-muted-foreground"
           aria-label="User actions"
         >
           <MoreVertical className="h-4 w-4" />
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
+          <div className="absolute right-0 mt-1 w-56 bg-surface rounded-lg shadow-lg border border-white/10 py-1 z-20">
             <DropdownItem icon={Eye} label="View Details" onClick={() => handleAction('view')} />
             <DropdownDivider />
             <DropdownItem
@@ -109,8 +109,11 @@ function DropdownItem({ icon: Icon, label, onClick, variant = 'default' }: IDrop
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center px-3 py-2 text-sm transition-colors ${variant === 'danger' ? 'text-red-600 hover:bg-red-50' : 'text-slate-700 hover:bg-slate-50'
-        }`}
+      className={`w-full flex items-center px-3 py-2 text-sm transition-colors ${
+        variant === 'danger'
+          ? 'text-red-600 hover:bg-red-50'
+          : 'text-muted-foreground hover:bg-surface'
+      }`}
     >
       <Icon className="h-4 w-4 mr-2.5" />
       {label}
@@ -119,7 +122,7 @@ function DropdownItem({ icon: Icon, label, onClick, variant = 'default' }: IDrop
 }
 
 function DropdownDivider() {
-  return <div className="my-1 border-t border-slate-100" />;
+  return <div className="my-1 border-t border-white/10" />;
 }
 
 // Modal Components
@@ -162,21 +165,21 @@ function CreditAdjustmentModal({ user, onClose, onSuccess }: IModalProps) {
     <Modal title="Set Credits" onClose={onClose}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700">User</label>
-          <p className="mt-1 text-sm text-slate-900">{user.email}</p>
+          <label className="block text-sm font-medium text-muted-foreground">User</label>
+          <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700">Credits Balance</label>
+          <label className="block text-sm font-medium text-muted-foreground">Credits Balance</label>
           <input
             type="number"
             min="0"
             value={newBalance}
             onChange={e => setNewBalance(e.target.value)}
-            className="mt-1 block w-full rounded-lg border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border-white/20 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             required
           />
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             Current:{' '}
             {(user.subscription_credits_balance ?? 0) + (user.purchased_credits_balance ?? 0)}
           </p>
@@ -305,7 +308,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
   if (loading) {
     return (
       <Modal title="Manage Subscription" onClose={onClose}>
-        <p className="text-sm text-slate-500">Loading...</p>
+        <p className="text-sm text-muted-foreground">Loading...</p>
       </Modal>
     );
   }
@@ -314,27 +317,27 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
     <Modal title="Manage Subscription" onClose={onClose}>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700">User</label>
-          <p className="mt-1 text-sm text-slate-900">{user.email}</p>
+          <label className="block text-sm font-medium text-muted-foreground">User</label>
+          <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
         {/* Current State */}
-        <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
+        <div className="p-3 bg-surface border border-white/10 rounded-lg space-y-1">
           <div className="flex justify-between text-sm">
-            <span className="text-slate-600">Profile Tier:</span>
+            <span className="text-muted-foreground">Profile Tier:</span>
             <span className="font-medium">{user.subscription_tier || 'Free'}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-slate-600">Stripe Status:</span>
+            <span className="text-muted-foreground">Stripe Status:</span>
             <span
-              className={`font-medium ${hasActiveStripeSubscription ? 'text-green-600' : 'text-slate-500'}`}
+              className={`font-medium ${hasActiveStripeSubscription ? 'text-green-600' : 'text-muted-foreground'}`}
             >
               {stripeData?.stripeSubscription?.status || 'No subscription'}
             </span>
           </div>
           {stripeData?.stripeSubscription?.current_period_end && (
             <div className="flex justify-between text-sm">
-              <span className="text-slate-600">Renews:</span>
+              <span className="text-muted-foreground">Renews:</span>
               <span className="font-medium">
                 {new Date(
                   stripeData.stripeSubscription.current_period_end * 1000
@@ -346,15 +349,16 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
 
         {/* Plan Selection */}
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">Change To</label>
+          <label className="block text-sm font-medium text-muted-foreground mb-2">Change To</label>
           <div className="space-y-2">
             {PLANS.map(plan => (
               <label
                 key={plan.id}
-                className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-colors ${selectedPlan === plan.id
-                  ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-slate-200 hover:border-slate-300'
-                  }`}
+                className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-colors ${
+                  selectedPlan === plan.id
+                    ? 'border-indigo-500 bg-indigo-50'
+                    : 'border-white/10 hover:border-white/20'
+                }`}
               >
                 <div className="flex items-center">
                   <input
@@ -365,9 +369,9 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
                     onChange={() => setSelectedPlan(plan.id)}
                     className="h-4 w-4 text-indigo-600 focus:ring-indigo-500"
                   />
-                  <span className="ml-3 font-medium text-slate-900">{plan.name}</span>
+                  <span className="ml-3 font-medium text-primary">{plan.name}</span>
                 </div>
-                <span className="text-slate-600">{plan.price}</span>
+                <span className="text-muted-foreground">{plan.price}</span>
               </label>
             ))}
           </div>
@@ -376,10 +380,11 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
         {/* Action Description */}
         {actionDesc && (
           <div
-            className={`p-3 rounded-lg text-sm ${actionDesc.type === 'warning'
-              ? 'bg-amber-50 border border-amber-200 text-amber-800'
-              : 'bg-blue-50 border border-blue-200 text-blue-800'
-              }`}
+            className={`p-3 rounded-lg text-sm ${
+              actionDesc.type === 'warning'
+                ? 'bg-amber-50 border border-amber-200 text-amber-800'
+                : 'bg-blue-50 border border-blue-200 text-blue-800'
+            }`}
           >
             {actionDesc.text}
           </div>
@@ -391,7 +396,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-light rounded-lg transition-colors"
           >
             Cancel
           </button>
@@ -439,12 +444,12 @@ function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
     >
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700">User</label>
-          <p className="mt-1 text-sm text-slate-900">{user.email}</p>
+          <label className="block text-sm font-medium text-muted-foreground">User</label>
+          <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
-        <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-          <p className="text-sm text-slate-700">
+        <div className="p-3 bg-surface border border-white/10 rounded-lg">
+          <p className="text-sm text-muted-foreground">
             {newRole === 'admin' ? (
               <>
                 This will grant <strong>{user.email}</strong> full admin access to the admin panel,
@@ -509,14 +514,14 @@ function DeleteUserModal({ user, onClose, onSuccess }: IModalProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-muted-foreground">
             Type <span className="font-mono text-red-600">{user.email}</span> to confirm
           </label>
           <input
             type="text"
             value={confirmEmail}
             onChange={e => setConfirmEmail(e.target.value)}
-            className="mt-1 block w-full rounded-lg border-slate-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+            className="mt-1 block w-full rounded-lg border-white/20 shadow-sm focus:border-red-500 focus:ring-red-500"
             placeholder="user@example.com"
           />
         </div>
@@ -554,8 +559,8 @@ function Modal({ title, onClose, children }: IModalWrapperProps) {
         }
       }}
     >
-      <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
-        <h3 className="text-lg font-medium text-slate-900 mb-4">{title}</h3>
+      <div className="bg-surface rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+        <h3 className="text-lg font-medium text-primary mb-4">{title}</h3>
         {children}
       </div>
     </div>
@@ -589,7 +594,7 @@ function ModalActions({
       <button
         type="button"
         onClick={onClose}
-        className="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+        className="px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-light rounded-lg transition-colors"
       >
         Cancel
       </button>

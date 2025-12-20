@@ -135,17 +135,19 @@ vi.mock('@server/supabase/supabaseAdmin', () => ({
 }));
 
 // Use a factory function to allow test-specific overrides
-let mockEnv = {
+let mockEnv: Record<string, unknown> = {
   STRIPE_SECRET_KEY: 'sk_test_dummy_key',
   ENV: 'test',
 };
 
 vi.mock('@shared/config/env', () => ({
-  serverEnv: new Proxy({} as Record<string, unknown>, {
-    get(_, prop) {
-      return mockEnv[prop as keyof typeof mockEnv];
-    },
-  }),
+  get serverEnv() {
+    return new Proxy({} as Record<string, unknown>, {
+      get(_, prop) {
+        return mockEnv[prop as string];
+      },
+    });
+  },
 }));
 
 describe('Stripe Webhook Idempotency', () => {
@@ -286,11 +288,11 @@ describe('Stripe Webhook Idempotency', () => {
       expect(mockCalls.webhookEventsInsert).toHaveLength(0);
 
       // Verify log message - check if any log call contains the expected message
-      expect(consoleSpy.log.mock.calls.some(call =>
-        call.some(arg =>
-          typeof arg === 'string' && arg.includes('[WEBHOOK_DUPLICATE_SKIPPED]')
+      expect(
+        consoleSpy.log.mock.calls.some(call =>
+          call.some(arg => typeof arg === 'string' && arg.includes('[WEBHOOK_DUPLICATE_SKIPPED]'))
         )
-      )).toBe(true);
+      ).toBe(true);
     });
 
     test('should skip duplicate event that is still processing', async () => {

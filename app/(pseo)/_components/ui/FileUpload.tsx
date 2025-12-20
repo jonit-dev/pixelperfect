@@ -95,25 +95,28 @@ export function FileUpload({
         className={cn(
           'border-2 border-dashed rounded-lg p-12 text-center transition-all cursor-pointer',
           isDragging
-            ? 'border-blue-500 bg-blue-50'
-            : 'border-slate-300 bg-slate-50 hover:border-blue-400 hover:bg-slate-100',
-          disabled && 'opacity-50 cursor-not-allowed hover:border-slate-300 hover:bg-slate-50',
+            ? 'border-accent bg-surface-light'
+            : 'border-white/20 bg-surface hover:border-accent hover:bg-surface-light',
+          disabled && 'opacity-50 cursor-not-allowed hover:border-white/20 hover:bg-surface',
           className
         )}
       >
         <Upload
-          className={cn('w-12 h-12 mx-auto mb-4', isDragging ? 'text-blue-500' : 'text-slate-400')}
+          className={cn(
+            'w-12 h-12 mx-auto mb-4',
+            isDragging ? 'text-blue-500' : 'text-muted-foreground'
+          )}
         />
-        <p className="text-lg font-medium text-slate-700 mb-2">
+        <p className="text-lg font-medium text-muted-foreground mb-2">
           {isDragging ? 'Drop your image here' : 'Drop your image here or click to browse'}
         </p>
-        <p className="text-sm text-slate-500 mb-4">
+        <p className="text-sm text-muted-foreground mb-4">
           Supports {formatList} up to {maxFileSizeMB}MB
         </p>
         <div
           className={cn(
-            'inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg transition-colors',
-            !disabled && 'hover:bg-blue-700',
+            'inline-block px-6 py-3 bg-accent text-white font-medium rounded-lg transition-colors',
+            !disabled && 'hover:bg-accent-hover',
             disabled && 'opacity-50'
           )}
         >

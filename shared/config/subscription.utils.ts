@@ -42,12 +42,12 @@ function buildPriceIndex(): Record<string, IPriceIndexEntry> {
   const index: Record<string, IPriceIndexEntry> = {};
 
   // Add subscription plans to index
-  for (const plan of config.plans.filter(p => p.enabled)) {
-    index[plan.stripePriceId] = {
+  for (const plan of config.plans.filter(p => p.enabled && p.stripePriceId)) {
+    index[plan.stripePriceId!] = {
       type: 'plan',
       key: plan.key,
       name: plan.name,
-      stripePriceId: plan.stripePriceId,
+      stripePriceId: plan.stripePriceId!,
       priceInCents: plan.priceInCents,
       currency: plan.currency,
       credits: plan.creditsPerCycle,
@@ -56,12 +56,12 @@ function buildPriceIndex(): Record<string, IPriceIndexEntry> {
   }
 
   // Add credit packs to index
-  for (const pack of config.creditPacks.filter(p => p.enabled)) {
-    index[pack.stripePriceId] = {
+  for (const pack of config.creditPacks.filter(p => p.enabled && p.stripePriceId)) {
+    index[pack.stripePriceId!] = {
       type: 'pack',
       key: pack.key,
       name: pack.name,
-      stripePriceId: pack.stripePriceId,
+      stripePriceId: pack.stripePriceId!,
       priceInCents: pack.priceInCents,
       currency: pack.currency,
       credits: pack.credits,
@@ -439,8 +439,8 @@ export function buildSubscriptionPriceMap(): Record<
     }
   > = {};
 
-  for (const plan of config.plans) {
-    map[plan.stripePriceId] = {
+  for (const plan of config.plans.filter(p => p.stripePriceId)) {
+    map[plan.stripePriceId!] = {
       key: plan.key,
       name: plan.name,
       creditsPerMonth: plan.creditsPerCycle,
@@ -462,15 +462,15 @@ export function buildStripePrices(): Record<string, string> {
   const prices: Record<string, string> = {};
 
   // Add subscription plans
-  for (const plan of config.plans) {
+  for (const plan of config.plans.filter(p => p.stripePriceId)) {
     const key = `${plan.key.toUpperCase()}_${plan.interval.toUpperCase()}LY`;
-    prices[key] = plan.stripePriceId;
+    prices[key] = plan.stripePriceId!;
   }
 
   // Add credit packs with new naming convention
-  for (const pack of config.creditPacks) {
+  for (const pack of config.creditPacks.filter(p => p.stripePriceId)) {
     const key = `${pack.key.toUpperCase()}_CREDITS`;
-    prices[key] = pack.stripePriceId;
+    prices[key] = pack.stripePriceId!;
   }
 
   return prices;

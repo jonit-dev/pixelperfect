@@ -15,6 +15,9 @@ import freeDataFile from '@/app/seo/data/free.json';
 import scaleDataFile from '@/app/seo/data/scale.json';
 import comparisonDataFile from '@/app/seo/data/comparison.json';
 import guidesDataFile from '@/app/seo/data/guides.json';
+import formatsDataFile from '@/app/seo/data/formats.json';
+import useCasesDataFile from '@/app/seo/data/use-cases.json';
+import alternativesDataFile from '@/app/seo/data/alternatives.json';
 import type {
   IToolPage,
   IFormatPage,
@@ -30,6 +33,9 @@ import type {
 
 // Type-safe data imports
 const toolsData = toolsDataFile as IPSEODataFile<IToolPage>;
+const formatsData = formatsDataFile as unknown as IPSEODataFile<IFormatPage>;
+const useCasesData = useCasesDataFile as unknown as IPSEODataFile<IUseCasePage>;
+const alternativesData = alternativesDataFile as unknown as IPSEODataFile<IAlternativePage>;
 
 /**
  * Generate fallback page data from keyword mappings
@@ -96,34 +102,16 @@ export const getAllTools = cache(async (): Promise<IToolPage[]> => {
 
 // Format Pages
 export const getAllFormatSlugs = cache(async (): Promise<string[]> => {
-  const formats = keywordPageMappings.filter(m => m.canonicalUrl.startsWith('/formats/'));
-  return formats.map(f => f.canonicalUrl.split('/')[2]);
+  return formatsData.pages.map(page => page.slug);
 });
 
 export const getFormatData = cache(async (slug: string): Promise<IFormatPage | null> => {
-  const mapping = keywordPageMappings.find(m => m.canonicalUrl === `/formats/${slug}`);
-  if (!mapping) return null;
-
-  const base = generatePageFromMapping(mapping);
-  return {
-    ...base,
-    category: 'formats',
-    formatName: base.title!,
-    extension: slug.replace('upscale-', '').replace('-images', ''),
-    description: base.intro!,
-    characteristics: [],
-    useCases: [],
-    bestPractices: [],
-    faq: [],
-    relatedFormats: [],
-    relatedGuides: [],
-  } as IFormatPage;
+  const format = formatsData.pages.find(page => page.slug === slug);
+  return format || null;
 });
 
 export const getAllFormats = cache(async (): Promise<IFormatPage[]> => {
-  const slugs = await getAllFormatSlugs();
-  const formats = await Promise.all(slugs.map(slug => getFormatData(slug)));
-  return formats.filter((f): f is IFormatPage => f !== null);
+  return formatsData.pages;
 });
 
 // Comparison Pages
@@ -164,33 +152,16 @@ export const getAllComparisons = cache(async (): Promise<IComparisonPage[]> => {
 
 // Use Case Pages
 export const getAllUseCaseSlugs = cache(async (): Promise<string[]> => {
-  const useCases = keywordPageMappings.filter(m => m.canonicalUrl.startsWith('/use-cases/'));
-  return useCases.map(u => u.canonicalUrl.split('/')[2]);
+  return useCasesData.pages.map(page => page.slug);
 });
 
 export const getUseCaseData = cache(async (slug: string): Promise<IUseCasePage | null> => {
-  const mapping = keywordPageMappings.find(m => m.canonicalUrl === `/use-cases/${slug}`);
-  if (!mapping) return null;
-
-  const base = generatePageFromMapping(mapping);
-  return {
-    ...base,
-    category: 'use-cases',
-    industry: base.title!,
-    description: base.intro!,
-    challenges: [],
-    solutions: [],
-    results: [],
-    faq: [],
-    relatedTools: [],
-    relatedGuides: [],
-  } as IUseCasePage;
+  const useCase = useCasesData.pages.find(page => page.slug === slug);
+  return useCase || null;
 });
 
 export const getAllUseCases = cache(async (): Promise<IUseCasePage[]> => {
-  const slugs = await getAllUseCaseSlugs();
-  const useCases = await Promise.all(slugs.map(slug => getUseCaseData(slug)));
-  return useCases.filter((u): u is IUseCasePage => u !== null);
+  return useCasesData.pages;
 });
 
 // Guide Pages
@@ -234,31 +205,16 @@ export const getAllGuides = cache(async (): Promise<IGuidePage[]> => {
 
 // Alternative Pages
 export const getAllAlternativeSlugs = cache(async (): Promise<string[]> => {
-  const alternatives = keywordPageMappings.filter(m => m.canonicalUrl.startsWith('/alternatives/'));
-  return alternatives.map(a => a.canonicalUrl.split('/')[2]);
+  return alternativesData.pages.map(page => page.slug);
 });
 
 export const getAlternativeData = cache(async (slug: string): Promise<IAlternativePage | null> => {
-  const mapping = keywordPageMappings.find(m => m.canonicalUrl === `/alternatives/${slug}`);
-  if (!mapping) return null;
-
-  const base = generatePageFromMapping(mapping);
-  return {
-    ...base,
-    category: 'alternatives',
-    originalTool: slug.replace('-alternatives', ''),
-    description: base.intro!,
-    alternatives: [],
-    comparisonCriteria: [],
-    faq: [],
-    relatedAlternatives: [],
-  } as IAlternativePage;
+  const alternative = alternativesData.pages.find(page => page.slug === slug);
+  return alternative || null;
 });
 
 export const getAllAlternatives = cache(async (): Promise<IAlternativePage[]> => {
-  const slugs = await getAllAlternativeSlugs();
-  const alternatives = await Promise.all(slugs.map(slug => getAlternativeData(slug)));
-  return alternatives.filter((a): a is IAlternativePage => a !== null);
+  return alternativesData.pages;
 });
 
 // Scale Pages

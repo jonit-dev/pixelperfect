@@ -53,38 +53,30 @@ export function HeroSection({
   return (
     <section className="pt-20 pb-16 md:pt-28 md:pb-20 relative overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-blue-500/10 via-indigo-500/5 to-transparent rounded-full blur-[140px] -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-accent/10 via-accent/5 to-transparent rounded-full blur-[140px] -z-10" />
 
       <div className="text-center max-w-4xl mx-auto relative z-10">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-700 font-medium text-sm mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-muted-foreground font-medium text-sm mb-8">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
           </span>
           AI-Powered Tool
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900 leading-[1.05]">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 tracking-tight text-text-primary leading-[1.05]">
           {mainTitle}
           {subtitle && (
-            <span
-              className="block mt-4"
-              style={{
-                background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
+            <span className="block mt-4 bg-gradient-to-r from-accent via-accent-light to-cyan-400 bg-clip-text text-transparent">
               {subtitle}
             </span>
           )}
         </h1>
 
         {/* Intro Text */}
-        <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed font-light">
           {intro}
         </p>
 
@@ -94,11 +86,7 @@ export function HeroSection({
             <Link
               href={ctaUrl}
               onClick={handleCTAClick}
-              className="group relative inline-flex items-center gap-3 px-10 py-5 text-white rounded-xl font-semibold text-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1"
-              style={{
-                background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
-                boxShadow: '0 20px 40px -12px rgba(37, 99, 235, 0.5)',
-              }}
+              className="group relative inline-flex items-center gap-3 px-10 py-5 text-white rounded-xl font-semibold text-xl transition-all duration-300 cta-gradient-cyan hover:-translate-y-1"
             >
               {ctaText}
               <svg
@@ -113,7 +101,7 @@ export function HeroSection({
             </Link>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base text-slate-600">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base text-muted-foreground">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path

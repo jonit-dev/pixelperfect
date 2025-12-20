@@ -18,7 +18,7 @@ export default async function ScaleHubPage() {
           <Link
             key={scale.slug}
             href={`/scale/${scale.slug}`}
-            className="block p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all"
+            className="block p-6 bg-surface rounded-lg border border hover:border-accent hover:shadow-lg transition-all"
           >
             <h2 className="text-xl font-semibold mb-2">{scale.title}</h2>
             <p className="text-gray-600 text-sm">{scale.description}</p>

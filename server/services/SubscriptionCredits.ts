@@ -45,7 +45,9 @@ export class SubscriptionCreditsService {
     }
 
     if (newTierCredits <= previousTierCredits) {
-      throw new Error('New tier must have more credits than previous tier (use this for upgrades only)');
+      throw new Error(
+        'New tier must have more credits than previous tier (use this for upgrades only)'
+      );
     }
 
     // Always add the tier difference on upgrade

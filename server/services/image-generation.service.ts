@@ -328,5 +328,5 @@ export class ImageGenerationService implements IImageProcessor {
   }
 }
 
-// Export a singleton instance for convenience
-export const imageGenerationService = new ImageGenerationService();
+// Note: Instance creation should be handled by ImageProcessorFactory
+// Do not export singleton at module level to avoid build-time initialization

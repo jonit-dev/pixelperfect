@@ -31,7 +31,7 @@ export class PricingPage extends BasePage {
     super(page);
 
     // Page header - use a more flexible selector for the page title
-    this.pageTitle = page.locator('h1').filter({ hasText: 'Simple, Transparent Pricing' });
+    this.pageTitle = page.locator('h1').filter({ hasText: 'Simple, Transparent Pricing' }).first();
     this.pageDescription = page.getByText('Choose the subscription plan that fits your needs');
 
     // Subscription plans section - locate by h2 heading "Choose Your Plan"
@@ -40,7 +40,7 @@ export class PricingPage extends BasePage {
     this.subscriptionsDescription = page.getByText(
       'Get credits every month with our subscription plans'
     );
-    this.pricingGrid = page.locator('.grid.md\\:grid-cols-2.lg\\:grid-cols-4');
+    this.pricingGrid = page.locator('.grid.md\\:grid-cols-2.lg\\:grid-cols-4.gap-8');
 
     // FAQ section
     this.faqTitle = page.getByRole('heading', { name: 'Frequently Asked Questions' });

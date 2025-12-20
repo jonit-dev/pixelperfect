@@ -120,11 +120,11 @@ export function InteractiveTool({
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="p-6 border-2 border-slate-200 bg-white shadow-lg rounded-xl">
+      <div className="p-6 border-2 border-white/10 bg-surface shadow-lg rounded-xl">
         {/* Header */}
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">{title}</h2>
-          <p className="text-slate-600">{description}</p>
+          <h2 className="text-2xl font-bold text-primary mb-2">{title}</h2>
+          <p className="text-muted-foreground">{description}</p>
         </div>
 
         {/* Upload Area */}
@@ -161,7 +161,7 @@ export function InteractiveTool({
                 <button
                   onClick={handleProcess}
                   disabled={isProcessing}
-                  className="flex-1 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
                 >
                   {isProcessing ? (
                     <>
@@ -177,7 +177,7 @@ export function InteractiveTool({
               {processedBlob && (
                 <button
                   onClick={handleDownload}
-                  className="flex-1 px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 bg-success text-white font-medium rounded-lg hover:bg-success/90 transition-colors flex items-center justify-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Download Result
@@ -186,7 +186,7 @@ export function InteractiveTool({
 
               <button
                 onClick={handleReset}
-                className="px-6 py-3 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-surface-light text-muted-foreground font-medium rounded-lg hover:bg-surface-light transition-colors flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 Start Over
@@ -197,7 +197,7 @@ export function InteractiveTool({
       </div>
 
       {/* Info Footer */}
-      <div className="mt-4 text-center text-sm text-slate-500">
+      <div className="mt-4 text-center text-sm text-muted-foreground">
         <p>
           All processing happens in your browser. Your images are never uploaded to our servers.
         </p>

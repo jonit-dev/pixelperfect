@@ -34,25 +34,25 @@ interface IChildrenProps {
 }
 
 const H1 = ({ children }: IHeadingProps): JSX.Element => (
-  <h1 className="text-3xl font-bold text-slate-900 mt-8 mb-4">{children}</h1>
+  <h1 className="text-3xl font-bold text-primary mt-8 mb-4">{children}</h1>
 );
 
 const H2 = ({ children }: IHeadingProps): JSX.Element => (
-  <h2 className="text-2xl font-semibold text-slate-800 mt-8 mb-4 pb-2 border-b border-slate-200">
+  <h2 className="text-2xl font-semibold text-primary mt-8 mb-4 pb-2 border-b border-white/10">
     {children}
   </h2>
 );
 
 const H3 = ({ children }: IHeadingProps): JSX.Element => (
-  <h3 className="text-xl font-semibold text-slate-800 mt-6 mb-3">{children}</h3>
+  <h3 className="text-xl font-semibold text-primary mt-6 mb-3">{children}</h3>
 );
 
 const H4 = ({ children }: IHeadingProps): JSX.Element => (
-  <h4 className="text-lg font-medium text-slate-700 mt-4 mb-2">{children}</h4>
+  <h4 className="text-lg font-medium text-muted-foreground mt-4 mb-2">{children}</h4>
 );
 
 const Paragraph = ({ children }: IChildrenProps): JSX.Element => (
-  <p className="text-slate-600 leading-relaxed mb-4">{children}</p>
+  <p className="text-muted-foreground leading-relaxed mb-4">{children}</p>
 );
 
 const Anchor = ({ href, children }: ILinkProps): JSX.Element => {
@@ -86,10 +86,12 @@ const MDXImage = ({ src, alt }: IMdxImageProps): JSX.Element | null => {
 
   return (
     <figure className="my-8">
-      <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-slate-100">
+      <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-light">
         <img src={src} alt={alt || ''} className="w-full h-full object-cover" />
       </div>
-      {alt && <figcaption className="text-center text-sm text-slate-500 mt-2">{alt}</figcaption>}
+      {alt && (
+        <figcaption className="text-center text-sm text-muted-foreground mt-2">{alt}</figcaption>
+      )}
     </figure>
   );
 };
@@ -99,7 +101,7 @@ const CodeBlock = ({ children, className }: ICodeProps): JSX.Element => {
 
   if (isInline) {
     return (
-      <code className="bg-slate-100 text-indigo-600 px-1.5 py-0.5 rounded text-sm font-mono">
+      <code className="bg-surface-light text-indigo-600 px-1.5 py-0.5 rounded text-sm font-mono">
         {children}
       </code>
     );
@@ -113,35 +115,35 @@ const CodeBlock = ({ children, className }: ICodeProps): JSX.Element => {
 };
 
 const Blockquote = ({ children }: IBlockquoteProps): JSX.Element => (
-  <blockquote className="border-l-4 border-indigo-500 pl-4 my-6 italic text-slate-600 bg-indigo-50 py-3 pr-4 rounded-r-lg">
+  <blockquote className="border-l-4 border-indigo-500 pl-4 my-6 italic text-muted-foreground bg-indigo-50 py-3 pr-4 rounded-r-lg">
     {children}
   </blockquote>
 );
 
 const UnorderedList = ({ children }: IListProps): JSX.Element => (
-  <ul className="list-disc list-inside space-y-2 text-slate-600 mb-4 ml-4">{children}</ul>
+  <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-4 ml-4">{children}</ul>
 );
 
 const OrderedList = ({ children }: IListProps): JSX.Element => (
-  <ol className="list-decimal list-inside space-y-2 text-slate-600 mb-4 ml-4">{children}</ol>
+  <ol className="list-decimal list-inside space-y-2 text-muted-foreground mb-4 ml-4">{children}</ol>
 );
 
 const ListItem = ({ children }: IChildrenProps): JSX.Element => (
   <li className="leading-relaxed">{children}</li>
 );
 
-const HorizontalRule = (): JSX.Element => <hr className="my-8 border-slate-200" />;
+const HorizontalRule = (): JSX.Element => <hr className="my-8 border-white/10" />;
 
 const Table = ({ children }: IChildrenProps): JSX.Element => (
   <div className="overflow-x-auto my-6">
-    <table className="min-w-full border-collapse border border-slate-200 rounded-lg">
+    <table className="min-w-full border-collapse border border-white/10 rounded-lg">
       {children}
     </table>
   </div>
 );
 
 const TableHead = ({ children }: IChildrenProps): JSX.Element => (
-  <thead className="bg-slate-100">{children}</thead>
+  <thead className="bg-surface-light">{children}</thead>
 );
 
 const TableBody = ({ children }: IChildrenProps): JSX.Element => (
@@ -149,17 +151,17 @@ const TableBody = ({ children }: IChildrenProps): JSX.Element => (
 );
 
 const TableRow = ({ children }: IChildrenProps): JSX.Element => (
-  <tr className="hover:bg-slate-50">{children}</tr>
+  <tr className="hover:bg-surface">{children}</tr>
 );
 
 const TableHeader = ({ children }: IChildrenProps): JSX.Element => (
-  <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700 border border-slate-200">
+  <th className="px-4 py-3 text-left text-sm font-semibold text-muted-foreground border border-white/10">
     {children}
   </th>
 );
 
 const TableCell = ({ children }: IChildrenProps): JSX.Element => (
-  <td className="px-4 py-3 text-sm text-slate-600 border border-slate-200">{children}</td>
+  <td className="px-4 py-3 text-sm text-muted-foreground border border-white/10">{children}</td>
 );
 
 // Callout component for tips, warnings, etc.

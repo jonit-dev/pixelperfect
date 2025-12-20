@@ -53,13 +53,13 @@ describe('Starter Tier Configuration', () => {
       'Credits roll over (up to 600)',
       'Email support',
       'Basic AI models',
-      'Batch upload up to 5 images',
+      'Batch upload up to 1 image',
     ];
     expect(starterPlan?.features).toEqual(expectedFeatures);
   });
 
   test('should have correct batch limit for Starter tier', () => {
-    expect(starterPlan?.batchLimit).toBe(5);
+    expect(starterPlan?.batchLimit).toBe(1);
   });
 
   test('should have valid Stripe price ID format', () => {

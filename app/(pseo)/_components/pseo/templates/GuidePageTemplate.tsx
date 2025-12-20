@@ -27,13 +27,13 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
 
   // Difficulty badge styling
   const difficultyStyles = {
-    beginner: 'bg-green-100 text-green-700',
+    beginner: 'bg-surface-light text-success',
     intermediate: 'bg-yellow-100 text-yellow-700',
     advanced: 'bg-red-100 text-red-700',
   };
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-surface relative">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -106,7 +106,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
           {/* Guide Meta */}
           {data.estimatedTime && (
             <FadeIn delay={0.2}>
-              <div className="flex items-center justify-center gap-6 py-6 text-sm text-slate-600">
+              <div className="flex items-center justify-center gap-6 py-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   <span>{data.estimatedTime}</span>
@@ -125,7 +125,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
           {data.description && (
             <FadeIn delay={0.3}>
               <div className="max-w-3xl mx-auto py-8">
-                <p className="text-lg text-slate-600 leading-relaxed">{data.description}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">{data.description}</p>
               </div>
             </FadeIn>
           )}
@@ -142,7 +142,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                     <div
                       key={idx}
                       id={`step-${idx + 1}`}
-                      className="relative bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-emerald-300 transition-colors"
+                      className="relative bg-surface border-2 border-white/10 rounded-xl p-6 hover:border-accent transition-colors"
                     >
                       {/* Step Number Badge */}
                       <div className="absolute -top-4 -left-4 w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
@@ -152,10 +152,10 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                       <div className="ml-8">
                         <h3 className="text-xl font-bold mb-3">{step.title}</h3>
                         <div className="prose prose-slate max-w-none">
-                          <p className="text-slate-700 leading-relaxed">{step.content}</p>
+                          <p className="text-muted-foreground leading-relaxed">{step.content}</p>
                         </div>
                         {step.image && (
-                          <div className="mt-4 rounded-lg overflow-hidden border border-slate-200">
+                          <div className="mt-4 rounded-lg overflow-hidden border border-white/10">
                             <img
                               src={step.image}
                               alt={step.title}
@@ -198,7 +198,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                     {data.tips.map((tip, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span className="text-slate-700">{tip}</span>
+                        <span className="text-muted-foreground">{tip}</span>
                       </li>
                     ))}
                   </ul>
@@ -229,21 +229,21 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
           {/* Related Guides */}
           {data.relatedGuides && data.relatedGuides.length > 0 && (
             <FadeIn delay={0.6}>
-              <section className="py-8 border-t border-slate-200">
+              <section className="py-8 border-t border-white/10">
                 <h2 className="text-2xl font-bold mb-6">Related Guides</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {data.relatedGuides.map((slug, idx) => (
                     <Link
                       key={idx}
                       href={`/guides/${slug}`}
-                      className="p-4 border border-slate-200 rounded-lg hover:border-emerald-500 hover:shadow-md transition-all group bg-white"
+                      className="p-4 border border-white/10 rounded-lg hover:border-accent hover:shadow-md transition-all group bg-surface"
                     >
                       <div className="flex items-center gap-2">
                         <BookOpen className="w-5 h-5 text-emerald-600" />
-                        <span className="text-sm font-medium text-slate-900 capitalize flex-1">
+                        <span className="text-sm font-medium text-primary capitalize flex-1">
                           {slug.replace(/-/g, ' ')}
                         </span>
-                        <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
                       </div>
                     </Link>
                   ))}
@@ -262,12 +262,12 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                     <Link
                       key={idx}
                       href={`/tools/${slug}`}
-                      className="p-4 bg-slate-50 rounded-lg hover:bg-emerald-50 hover:border-emerald-200 border border-transparent transition-all"
+                      className="p-4 bg-surface rounded-lg hover:bg-emerald-50 hover:border-emerald-200 border border-transparent transition-all"
                     >
-                      <span className="text-sm font-medium text-slate-900 capitalize">
+                      <span className="text-sm font-medium text-primary capitalize">
                         {slug.replace(/-/g, ' ')}
                       </span>
-                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-slate-400" />
+                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-muted-foreground" />
                     </Link>
                   ))}
                 </div>

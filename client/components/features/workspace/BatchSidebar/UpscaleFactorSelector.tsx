@@ -25,7 +25,7 @@ export const UpscaleFactorSelector: React.FC<IUpscaleFactorSelectorProps> = ({
 
   return (
     <div>
-      <label className="text-sm font-medium text-slate-700 mb-3 block">Upscale Factor</label>
+      <label className="text-sm font-medium text-white mb-3 block">Upscale Factor</label>
       <ToggleButtonGroup
         options={SCALE_OPTIONS}
         value={scale.toString()}

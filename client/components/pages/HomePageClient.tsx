@@ -2,16 +2,41 @@
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { motion } from 'framer-motion';
 import Features from '@client/components/features/landing/Features';
 import HowItWorks from '@client/components/features/landing/HowItWorks';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import Image from 'next/image';
 import { getSubscriptionConfig } from '@shared/config/subscription.config';
 import { clientEnv } from '@shared/config/env';
 import { HeroBeforeAfter } from '@client/components/landing/HeroBeforeAfter';
+import { FadeIn } from '@client/components/ui/MotionWrappers';
+
+// Animation variants for hero section
+const heroContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const heroItemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.4, 0.25, 1] as const,
+    },
+  },
+};
 
 export function HomePageClient(): JSX.Element {
   const { openAuthModal } = useModalStore();
@@ -54,92 +79,95 @@ export function HomePageClient(): JSX.Element {
   }, [searchParams, openAuthModal, showToast]);
 
   return (
-    <main className="flex-grow bg-base font-sans selection:bg-indigo-100 selection:text-indigo-700">
+    <main className="flex-grow bg-base font-sans selection:bg-accent/20 selection:text-white">
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden hero-gradient">
         {/* Background Gradients - Enhanced with dynamic light effects */}
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-br from-blue-200/60 via-cyan-200/40 to-accent-light/60 blur-[150px] -z-10 rounded-full pointer-events-none animate-pulse-slow"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-br from-accent/30 via-accent/20 to-accent-light/30 blur-[150px] -z-10 rounded-full pointer-events-none animate-pulse-slow"></div>
         <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 blur-[100px] -z-10 rounded-full pointer-events-none animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-400/20 blur-[120px] -z-10 rounded-full pointer-events-none animate-float-delayed"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent-light/20 blur-[120px] -z-10 rounded-full pointer-events-none animate-float-delayed"></div>
 
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 relative">
+        <motion.div
+          className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8 relative"
+          initial="hidden"
+          animate="visible"
+          variants={heroContainerVariants}
+        >
           {/* Badge - with glassmorphism */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-semibold text-accent mb-8 animate-fade-in hover:shadow-xl hover:shadow-accent/20 transition-all duration-300 cursor-default group">
+          <motion.div
+            variants={heroItemVariants}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-semibold text-accent mb-8 hover:shadow-xl hover:shadow-accent/20 transition-all duration-300 cursor-default group"
+          >
             <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
             <span className="group-hover:scale-105 transition-transform">v2.0 Now Available</span>
             <span className="w-px h-3 bg-accent/30 mx-1"></span>
-            <span className="text-text-secondary group-hover:text-text transition-colors">
+            <span className="text-muted-foreground group-hover:text-white transition-colors">
               Enhanced Generation
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-6xl font-black tracking-tight text-text sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05] animate-fade-in-up">
+          <motion.h1
+            variants={heroItemVariants}
+            className="text-6xl font-black tracking-tight text-white sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05]"
+          >
             Upscale Images <br className="hidden sm:block" />
-            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-cyan-400 animate-gradient">
+            <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-accent animate-gradient">
               For Professional Use
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mx-auto mt-8 max-w-2xl text-xl sm:text-2xl text-slate-600 leading-relaxed font-light animate-fade-in-up animation-delay-200">
+          <motion.p
+            variants={heroItemVariants}
+            className="mx-auto mt-8 max-w-2xl text-xl sm:text-2xl text-muted-foreground leading-relaxed font-light"
+          >
             Enhance resolution, remove noise, and restore details in seconds.
             <br />
             The only upscaler designed to{' '}
-            <span className="relative text-slate-900 font-bold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-indigo-500 after:to-violet-500 after:rounded-full">
+            <span className="relative text-white font-bold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-gradient-to-r after:from-accent after:to-accent after:rounded-full">
               preserve text and logos
             </span>{' '}
             perfectly.
-          </p>
-
-          <div className="mt-12 flex items-center justify-center gap-4 text-sm font-medium text-slate-500 animate-fade-in-up animation-delay-400">
-            <div className="flex -space-x-3 hover:space-x-1 transition-all duration-300">
-              {[1, 2, 3, 4].map(i => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 overflow-hidden shadow-md hover:scale-110 hover:z-10 transition-all duration-300"
-                >
-                  <Image
-                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`}
-                    alt={`User avatar ${i}`}
-                    width={40}
-                    height={40}
-                    className="w-full h-full"
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
-            <p className="text-base">
-              <span className="font-bold text-slate-900">10,000+</span> businesses
-            </p>
-          </div>
+          </motion.p>
 
           {/* Hero CTA Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-600">
-            <button
+          <motion.div
+            variants={heroItemVariants}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <motion.button
               onClick={() => openAuthModal('register')}
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl transition-all duration-300 glow-blue hover:scale-[1.02] active:scale-[0.98]"
+              className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-colors duration-300 cta-gradient-cyan"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
               {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => openAuthModal('login')}
-              className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-surface text-text font-semibold rounded-xl transition-all duration-300 border border-border hover:border-border-hover"
+              className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-surface/10 text-white font-semibold rounded-xl transition-colors duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Sign In
-            </button>
-          </div>
-          <p className="mt-4 text-sm text-slate-500 animate-fade-in-up animation-delay-600">
+            </motion.button>
+          </motion.div>
+
+          <motion.p variants={heroItemVariants} className="mt-4 text-sm text-muted-foreground">
             No credit card required &bull; 10 free credits included
-          </p>
+          </motion.p>
 
           {/* Hero Before/After Slider */}
-          <div className="mt-12 animate-fade-in-up animation-delay-800">
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] as const }}
+          >
             <HeroBeforeAfter />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Landing Page Sections */}
@@ -147,71 +175,83 @@ export function HomePageClient(): JSX.Element {
       <HowItWorks />
 
       {/* Pricing CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Ready to get started?
-          </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-            Choose from flexible subscription plans or one-time credit packs. Get monthly credits
-            with automatic rollover, or pay as you go.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="/pricing"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              View Pricing Plans
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <button
-              onClick={() => openAuthModal('register')}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-xl transition-all duration-300 border border-slate-200 hover:border-slate-300 shadow-lg hover:shadow-xl"
-            >
-              {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
-            </button>
+      <FadeIn>
+        <section className="py-16 bg-surface">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Ready to get started?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Choose from flexible subscription plans or one-time credit packs. Get monthly credits
+              with automatic rollover, or pay as you go.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.a
+                href="/pricing"
+                className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-colors duration-300 cta-gradient-cyan"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View Pricing Plans
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+              <motion.button
+                onClick={() => openAuthModal('register')}
+                className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-surface/10 text-white font-semibold rounded-xl transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
+              </motion.button>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              10 free credits to get started &bull; No credit card required
+            </p>
           </div>
-          <p className="mt-4 text-sm text-slate-500">
-            10 free credits to get started &bull; No credit card required
-          </p>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30"></div>
+      <FadeIn>
+        <section className="relative py-24 overflow-hidden">
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-surface to-accent/10"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30"></div>
 
-        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Images?
-          </h2>
-          <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-            Join thousands of professionals using {clientEnv.APP_NAME} to enhance their images.
-            Start your free trial today.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => openAuthModal('register')}
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-indigo-600 font-semibold rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-              {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="/pricing"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all duration-300 border border-white/20 hover:border-white/30 backdrop-blur-sm"
-            >
-              View Pricing
-            </a>
+          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              Ready to Transform Your Images?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+              Join over 10,000 businesses using {clientEnv.APP_NAME} to enhance their images. Start
+              your free trial today.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.button
+                onClick={() => openAuthModal('register')}
+                className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-colors duration-300 cta-gradient-cyan"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
+                {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              <motion.a
+                href="/pricing"
+                className="inline-flex items-center gap-2 px-8 py-4 glass hover:bg-surface/10 text-white font-semibold rounded-xl transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View Pricing
+              </motion.a>
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground">
+              No credit card required &bull; 10 free credits &bull; Cancel anytime
+            </p>
           </div>
-          <p className="mt-6 text-sm text-indigo-200">
-            No credit card required &bull; 10 free credits &bull; Cancel anytime
-          </p>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
     </main>
   );
 }

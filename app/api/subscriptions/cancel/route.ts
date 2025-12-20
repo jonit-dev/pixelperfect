@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 
-function isSchemaMissingError(error: { code?: string; message?: string } | null | undefined): boolean {
+function isSchemaMissingError(
+  error: { code?: string; message?: string } | null | undefined
+): boolean {
   if (!error) return false;
 
   return (
@@ -120,7 +122,10 @@ export async function POST(request: NextRequest) {
           .eq('id', subscription.id);
 
         if (fallbackError) {
-          console.error('Fallback subscription update without cancellation_reason failed:', fallbackError);
+          console.error(
+            'Fallback subscription update without cancellation_reason failed:',
+            fallbackError
+          );
         } else {
           console.log('Retried subscription update without cancellation_reason column.');
         }

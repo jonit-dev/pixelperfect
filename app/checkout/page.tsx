@@ -116,11 +116,13 @@ function CheckoutContent() {
 
   if (!priceId) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <div className="bg-surface rounded-lg shadow-lg p-8 max-w-md w-full">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-slate-900 mb-4">No Plan Selected</h1>
-            <p className="text-slate-600 mb-6">Please select a plan from the pricing page.</p>
+            <h1 className="text-2xl font-bold text-primary mb-4">No Plan Selected</h1>
+            <p className="text-muted-foreground mb-6">
+              Please select a plan from the pricing page.
+            </p>
             <button
               onClick={handleGoBack}
               className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
@@ -136,12 +138,12 @@ function CheckoutContent() {
   // Show loading while checking authentication or waiting for user to sign in
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <div className="bg-surface rounded-lg shadow-lg p-8 max-w-md w-full">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-            <h1 className="text-xl font-semibold text-slate-900 mb-2">Checking Authentication</h1>
-            <p className="text-slate-600">Please wait...</p>
+            <h1 className="text-xl font-semibold text-primary mb-2">Checking Authentication</h1>
+            <p className="text-muted-foreground">Please wait...</p>
           </div>
         </div>
       </div>
@@ -151,14 +153,16 @@ function CheckoutContent() {
   // If not authenticated, don't render the checkout form - auth modal will be shown
   if (!isAuthenticated && priceId) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <div className="bg-surface rounded-lg shadow-lg p-8 max-w-md w-full">
           <div className="text-center">
-            <h1 className="text-xl font-semibold text-slate-900 mb-2">Authentication Required</h1>
-            <p className="text-slate-600 mb-6">Please sign in to continue with your purchase.</p>
+            <h1 className="text-xl font-semibold text-primary mb-2">Authentication Required</h1>
+            <p className="text-muted-foreground mb-6">
+              Please sign in to continue with your purchase.
+            </p>
             <button
               onClick={() => router.push('/pricing')}
-              className="inline-flex items-center px-6 py-3 bg-slate-600 hover:bg-slate-700 text-white font-medium rounded-lg transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-colors"
             >
               Back to Pricing
             </button>
@@ -169,14 +173,14 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-surface">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-surface border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={handleGoBack}
-              className="inline-flex items-center text-sm text-slate-600 hover:text-slate-900 transition-colors"
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,8 +199,8 @@ function CheckoutContent() {
               Back to Pricing
             </button>
             {planName && (
-              <div className="text-sm text-slate-600">
-                Subscribing to: <span className="font-medium text-slate-900">{planName}</span>
+              <div className="text-sm text-muted-foreground">
+                Subscribing to: <span className="font-medium text-primary">{planName}</span>
               </div>
             )}
           </div>
@@ -205,10 +209,10 @@ function CheckoutContent() {
 
       {/* Checkout Content */}
       <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="p-6 border-b border-slate-200">
-            <h1 className="text-2xl font-bold text-slate-900">Complete Your Subscription</h1>
-            <p className="text-slate-600 mt-2">Secure payment powered by Stripe</p>
+        <div className="bg-surface rounded-lg shadow-lg overflow-hidden">
+          <div className="p-6 border-b border-white/10">
+            <h1 className="text-2xl font-bold text-primary">Complete Your Subscription</h1>
+            <p className="text-muted-foreground mt-2">Secure payment powered by Stripe</p>
           </div>
 
           <div className="min-h-[600px]">
@@ -216,7 +220,7 @@ function CheckoutContent() {
               <div className="flex items-center justify-center py-20">
                 <div className="flex flex-col items-center gap-4">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-                  <p className="text-slate-600">Loading secure checkout...</p>
+                  <p className="text-muted-foreground">Loading secure checkout...</p>
                 </div>
               </div>
             )}
@@ -259,7 +263,7 @@ function CheckoutContent() {
                         </button>
                         <button
                           onClick={handleGoBack}
-                          className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors"
+                          className="px-4 py-2 bg-surface-light text-muted-foreground rounded-lg hover:bg-surface-light transition-colors"
                         >
                           Back to Plans
                         </button>
@@ -278,7 +282,7 @@ function CheckoutContent() {
                   <div className="mt-4 flex gap-3">
                     <button
                       onClick={handleGoBack}
-                      className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
+                      className="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors"
                     >
                       Back to Plans
                     </button>
@@ -303,7 +307,7 @@ function CheckoutContent() {
 
         {/* Security Badge */}
         <div className="mt-8 text-center">
-          <div className="inline-flex items-center text-sm text-slate-500">
+          <div className="inline-flex items-center text-sm text-muted-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 mr-2 text-green-500"

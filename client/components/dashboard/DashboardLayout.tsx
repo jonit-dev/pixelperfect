@@ -15,16 +15,16 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) =
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-base">
       {/* Mobile Header */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-slate-200">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-surface border-b border-white/10">
         <div className="flex items-center justify-between gap-3 px-4 h-14">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
             </div>
-            <span className="font-semibold text-slate-900">{clientEnv.APP_NAME}</span>
+            <span className="font-semibold text-white">{clientEnv.APP_NAME}</span>
           </div>
 
           {/* Credits Display */}
@@ -37,7 +37,7 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) =
           {/* Hamburger Menu */}
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-lg text-muted-foreground hover:text-white hover:bg-surface-light transition-colors"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />

@@ -68,7 +68,7 @@ export function SmartTooltip({
   // Get tooltip position classes
   const getTooltipClasses = (): string => {
     const base =
-      'absolute px-3 py-2 bg-slate-900 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto whitespace-nowrap z-50';
+      'absolute px-3 py-2 bg-surface text-primary text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto whitespace-nowrap z-50';
 
     switch (tooltipPosition) {
       case 'top':
@@ -90,15 +90,15 @@ export function SmartTooltip({
 
     switch (tooltipPosition) {
       case 'top':
-        return `${base} top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900`;
+        return `${base} top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-surface`;
       case 'bottom':
-        return `${base} bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-slate-900`;
+        return `${base} bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-surface`;
       case 'left':
-        return `${base} left-full top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-slate-900`;
+        return `${base} left-full top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-l-surface`;
       case 'right':
-        return `${base} right-full top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-slate-900`;
+        return `${base} right-full top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-surface`;
       default:
-        return `${base} top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900`;
+        return `${base} top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-surface`;
     }
   };
 

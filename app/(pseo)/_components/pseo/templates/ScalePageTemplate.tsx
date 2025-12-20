@@ -27,7 +27,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
   const tier = pageMapping?.tier;
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-surface relative">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -70,7 +70,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
           {/* Hero Section with Resolution Badge */}
           <div className="relative">
             <div className="absolute -top-4 left-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-light text-accent text-sm font-semibold rounded-full">
                 <Monitor className="w-4 h-4" />
                 {data.resolution}
               </span>
@@ -91,7 +91,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
           {data.description && (
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto py-8">
-                <p className="text-lg text-slate-600 leading-relaxed text-center">
+                <p className="text-lg text-muted-foreground leading-relaxed text-center">
                   {data.description}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
           {data.dimensions && (
             <FadeIn delay={0.3}>
               <section className="py-8">
-                <div className="max-w-2xl mx-auto bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-8 border border-slate-200">
+                <div className="max-w-2xl mx-auto bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-8 border border-white/10">
                   <div className="flex items-center justify-center gap-3 mb-4">
                     <Maximize2 className="w-6 h-6 text-purple-600" />
                     <h2 className="text-2xl font-bold">{data.resolution} Specifications</h2>
@@ -112,19 +112,19 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                       <div className="text-3xl font-bold text-purple-600">
                         {data.dimensions.width}
                       </div>
-                      <div className="text-sm text-slate-600 mt-1">Width (pixels)</div>
+                      <div className="text-sm text-muted-foreground mt-1">Width (pixels)</div>
                     </div>
                     <div>
                       <div className="text-3xl font-bold text-purple-600">
                         {data.dimensions.height}
                       </div>
-                      <div className="text-sm text-slate-600 mt-1">Height (pixels)</div>
+                      <div className="text-sm text-muted-foreground mt-1">Height (pixels)</div>
                     </div>
                   </div>
                   {data.dimensions.aspectRatio && (
-                    <div className="mt-6 pt-6 border-t border-slate-300 text-center">
-                      <div className="text-sm text-slate-600">Aspect Ratio</div>
-                      <div className="text-xl font-semibold text-slate-900 mt-1">
+                    <div className="mt-6 pt-6 border-t border-white/20 text-center">
+                      <div className="text-sm text-muted-foreground">Aspect Ratio</div>
+                      <div className="text-xl font-semibold text-primary mt-1">
                         {data.dimensions.aspectRatio}
                       </div>
                     </div>
@@ -143,11 +143,11 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                   {data.useCases.map((useCase, idx) => (
                     <div
                       key={idx}
-                      className="bg-white border border-slate-200 rounded-xl p-6 hover:border-purple-300 hover:shadow-lg transition-all"
+                      className="bg-surface border border-white/10 rounded-xl p-6 hover:border-accent hover:shadow-lg transition-all"
                     >
                       <Zap className="w-8 h-8 text-purple-600 mb-3" />
                       <h3 className="font-semibold text-lg mb-2">{useCase.title}</h3>
-                      <p className="text-sm text-slate-600">{useCase.description}</p>
+                      <p className="text-sm text-muted-foreground">{useCase.description}</p>
                     </div>
                   ))}
                 </div>
@@ -169,7 +169,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                         {benefit.metric || '✓'}
                       </div>
                       <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                      <p className="text-sm text-slate-600">{benefit.description}</p>
+                      <p className="text-sm text-muted-foreground">{benefit.description}</p>
                     </div>
                   ))}
                 </div>
@@ -199,19 +199,19 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
           {/* Related Resolutions */}
           {data.relatedScales && data.relatedScales.length > 0 && (
             <FadeIn delay={0.6}>
-              <section className="py-8 border-t border-slate-200">
+              <section className="py-8 border-t border-white/10">
                 <h2 className="text-2xl font-bold mb-6">Other Resolutions</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {data.relatedScales.map((slug, idx) => (
                     <Link
                       key={idx}
                       href={`/scale/${slug}`}
-                      className="p-4 border border-slate-200 rounded-lg hover:border-purple-500 hover:shadow-md transition-all group"
+                      className="p-4 border border-white/10 rounded-lg hover:border-purple-500 hover:shadow-md transition-all group"
                     >
-                      <span className="text-sm font-medium text-slate-900 capitalize">
+                      <span className="text-sm font-medium text-primary capitalize">
                         {slug.replace(/-/g, ' ').replace('upscale to ', '')}
                       </span>
-                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-slate-400 group-hover:text-purple-600 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-muted-foreground group-hover:text-purple-600 group-hover:translate-x-1 transition-all" />
                     </Link>
                   ))}
                 </div>
@@ -229,12 +229,12 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                     <Link
                       key={idx}
                       href={`/guides/${slug}`}
-                      className="p-4 bg-slate-50 rounded-lg hover:bg-purple-50 hover:border-purple-200 border border-transparent transition-all"
+                      className="p-4 bg-surface rounded-lg hover:bg-surface-light hover:border-accent border border-transparent transition-all"
                     >
-                      <span className="text-sm font-medium text-slate-900 capitalize">
+                      <span className="text-sm font-medium text-primary capitalize">
                         {slug.replace(/-/g, ' ')}
                       </span>
-                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-slate-400" />
+                      <ArrowRight className="inline-block w-4 h-4 ml-1 text-muted-foreground" />
                     </Link>
                   ))}
                 </div>

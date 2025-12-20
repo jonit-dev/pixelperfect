@@ -42,7 +42,7 @@ export function FileSizeUpgradePrompt({
             </Link>
             <button
               onClick={onDismiss}
-              className="inline-flex items-center rounded-md border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-50 dark:border-amber-700 dark:bg-amber-900 dark:text-amber-100 dark:hover:bg-amber-800"
+              className="inline-flex items-center rounded-md border border-amber-300 bg-surface px-3 py-2 text-sm font-medium text-amber-900 transition-colors hover:bg-amber-50 dark:border-amber-700 dark:bg-amber-900 dark:text-amber-100 dark:hover:bg-amber-800"
             >
               Use smaller file
             </button>

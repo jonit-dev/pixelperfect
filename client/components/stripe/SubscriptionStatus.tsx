@@ -45,7 +45,7 @@ export function SubscriptionStatus(): JSX.Element {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6">
+      <div className="bg-surface rounded-xl shadow-lg p-6">
         <div className="flex items-center gap-2">
           <svg
             className="animate-spin h-5 w-5 text-indigo-600"
@@ -75,9 +75,9 @@ export function SubscriptionStatus(): JSX.Element {
 
   if (!subscription) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6">
+      <div className="bg-surface rounded-xl shadow-lg p-6">
         <h2 className="text-xl font-semibold mb-2">No Active Subscription</h2>
-        <p className="text-slate-600 mb-4">
+        <p className="text-muted-foreground mb-4">
           You don&apos;t have an active subscription. Browse our plans to get started!
         </p>
         <div className="flex justify-end">
@@ -104,7 +104,7 @@ export function SubscriptionStatus(): JSX.Element {
       case 'canceled':
         return <span className={`${baseClasses} bg-red-100 text-red-800`}>Canceled</span>;
       default:
-        return <span className={`${baseClasses} bg-slate-100 text-slate-800`}>{status}</span>;
+        return <span className={`${baseClasses} bg-surface-light text-primary`}>{status}</span>;
     }
   };
 
@@ -117,17 +117,17 @@ export function SubscriptionStatus(): JSX.Element {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-surface rounded-xl shadow-lg p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">Subscription Status</h2>
         {getStatusBadge(subscription.status)}
       </div>
 
-      <hr className="border-slate-200 my-4" />
+      <hr className="border-white/10 my-4" />
 
       <div className="space-y-3">
         <div className="flex justify-between items-center">
-          <span className="text-slate-600">Plan:</span>
+          <span className="text-muted-foreground">Plan:</span>
           <span className="font-semibold">
             {getPlanDisplayName({
               priceId: subscription.price_id,
@@ -137,11 +137,15 @@ export function SubscriptionStatus(): JSX.Element {
         </div>
 
         <div className="flex justify-between items-center">
-          <span className="text-slate-600">
+          <span className="text-muted-foreground">
             {subscription.status === 'trialing' ? 'Trial Ends:' : 'Current Period Ends:'}
           </span>
           <span className="font-semibold">
-            {formatDate(subscription.status === 'trialing' && subscription.trial_end ? subscription.trial_end : subscription.current_period_end)}
+            {formatDate(
+              subscription.status === 'trialing' && subscription.trial_end
+                ? subscription.trial_end
+                : subscription.current_period_end
+            )}
           </span>
         </div>
 
@@ -164,8 +168,8 @@ export function SubscriptionStatus(): JSX.Element {
             </svg>
             <div className="text-sm">
               <p>
-                Your trial ends {dayjs(subscription.trial_end).fromNow()}.
-                After the trial, you will be charged the regular subscription price.
+                Your trial ends {dayjs(subscription.trial_end).fromNow()}. After the trial, you will
+                be charged the regular subscription price.
               </p>
             </div>
           </div>
@@ -197,7 +201,7 @@ export function SubscriptionStatus(): JSX.Element {
       <div className="flex justify-end gap-2 mt-4">
         <button
           onClick={loadSubscriptionData}
-          className="px-3 py-1.5 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+          className="px-3 py-1.5 text-sm text-muted-foreground hover:text-primary hover:bg-surface-light rounded-lg transition-colors"
         >
           Refresh
         </button>

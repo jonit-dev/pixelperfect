@@ -22,20 +22,20 @@ export function FAQAccordion({
   onToggle,
 }: IFAQAccordionProps): ReactElement {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 overflow-hidden hover:border-slate-300 transition-colors">
+    <div className="glass-card hover:border-white/20 transition-colors">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-6 text-left group"
         aria-expanded={isOpen}
       >
-        <h3 className="text-lg font-semibold text-slate-900 pr-8 flex-1">{question}</h3>
+        <h3 className="text-lg font-semibold text-text-primary pr-8 flex-1">{question}</h3>
         <div
           className={`flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
         >
           <svg
-            className="w-6 h-6 text-slate-400"
+            className="w-6 h-6 text-text-muted"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ export function FAQAccordion({
       </button>
       {isOpen && (
         <div className="px-6 pb-6 pt-0">
-          <p className="text-slate-600 leading-relaxed">{answer}</p>
+          <p className="text-text-secondary leading-relaxed">{answer}</p>
         </div>
       )}
     </div>

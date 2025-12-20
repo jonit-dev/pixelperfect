@@ -89,18 +89,18 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
           <AlertTriangle className="w-6 h-6 text-amber-600" />
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900 mb-2">
+        <h2 className="text-xl font-bold text-primary mb-2">
           {serverEnforced ? 'Batch Processing Limit Reached' : 'Batch Limit Reached'}
         </h2>
 
         {serverEnforced ? (
-          <p className="text-slate-600">
+          <p className="text-muted-foreground">
             You&apos;ve reached the processing limit for your plan. You processed{' '}
             <span className="font-semibold">{currentCount}</span> images, but your plan allows a
             maximum of <span className="font-semibold">{limit}</span> images per hour.
           </p>
         ) : (
-          <p className="text-slate-600">
+          <p className="text-muted-foreground">
             You tried to add <span className="font-semibold">{attempted}</span> image
             {attempted !== 1 ? 's' : ''}, but your plan allows a maximum of{' '}
             <span className="font-semibold">{limit}</span> image{limit !== 1 ? 's' : ''} in the
@@ -111,8 +111,8 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
 
       {/* Free User Special Message */}
       {limit === 1 && (
-        <div className="bg-slate-50 rounded-lg p-4 mb-6 border border-slate-200">
-          <p className="text-sm text-slate-600">
+        <div className="bg-surface rounded-lg p-4 mb-6 border border-white/10">
+          <p className="text-sm text-muted-foreground">
             Free users can process 1 image at a time. Upgrade to unlock higher batch limits and
             process multiple images.
           </p>

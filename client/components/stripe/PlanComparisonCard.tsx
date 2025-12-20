@@ -19,26 +19,26 @@ export function PlanComparisonCard({
   effectiveText,
 }: IPlanComparisonCardProps): JSX.Element {
   const variantStyles = {
-    current: 'border-slate-200 bg-white',
+    current: 'border-white/10 bg-surface',
     upgrade: 'border-green-200 bg-green-50',
     downgrade: 'border-orange-200 bg-orange-50',
   };
 
   return (
     <div className={`border rounded-lg p-4 ${variantStyles[variant]}`}>
-      <h3 className="font-medium text-slate-900 mb-2">{title}</h3>
+      <h3 className="font-medium text-primary mb-2">{title}</h3>
       <div className="space-y-2">
         <div className="flex justify-between">
-          <span className="text-slate-600">Plan:</span>
+          <span className="text-muted-foreground">Plan:</span>
           <span className="font-medium">{name}</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-slate-600">Credits:</span>
+          <span className="text-muted-foreground">Credits:</span>
           <span>{creditsPerMonth.toLocaleString()}/month</span>
         </div>
         {effectiveText && (
           <div className="flex justify-between">
-            <span className="text-slate-600">Effective:</span>
+            <span className="text-muted-foreground">Effective:</span>
             <span className="text-sm">{effectiveText}</span>
           </div>
         )}

@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const ScanningLineAnimation: React.FC = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <div
-      className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent"
+      className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent"
       style={{
         animation: 'scan 2s ease-in-out infinite',
       }}
@@ -30,8 +30,8 @@ const BatchProgressIndicator: React.FC<{ batchProgress?: IBatchProgress | null }
   if (!batchProgress || batchProgress.total <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 pb-2 border-b border-slate-100">
-      <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+    <div className="flex items-center justify-center gap-2 pb-2 border-b border-white/10">
+      <span className="text-xs font-semibold text-accent bg-accent/10 px-2 py-1 rounded-full">
         Image {batchProgress.current} of {batchProgress.total}
       </span>
     </div>
@@ -41,10 +41,10 @@ const BatchProgressIndicator: React.FC<{ batchProgress?: IBatchProgress | null }
 const StageIndicator: React.FC<{ stageMessage: string }> = ({ stageMessage }) => (
   <div className="flex items-center gap-3">
     <div className="relative">
-      <Loader2 size={20} className="text-indigo-600 animate-spin" />
-      <div className="absolute inset-0 rounded-full border-2 border-indigo-300 animate-ping opacity-30" />
+      <Loader2 size={20} className="text-accent animate-spin" />
+      <div className="absolute inset-0 rounded-full border-2 border-accent/30 animate-ping opacity-30" />
     </div>
-    <span className="text-sm font-medium text-slate-900">{stageMessage}</span>
+    <span className="text-sm font-medium text-white">{stageMessage}</span>
   </div>
 );
 
@@ -54,13 +54,13 @@ const ProgressBar: React.FC<{
   estimatedRemaining: number;
 }> = ({ progress, isEnhancing, estimatedRemaining }) => (
   <div className="space-y-2">
-    <div className="flex justify-between text-xs text-slate-500">
+    <div className="flex justify-between text-xs text-muted-foreground">
       <span>{Math.round(progress)}%</span>
       {isEnhancing && estimatedRemaining > 0 && <span>~{estimatedRemaining}s remaining</span>}
     </div>
-    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden relative">
+    <div className="h-2 w-full bg-surface-light rounded-full overflow-hidden relative">
       <div
-        className="h-full bg-indigo-600 transition-all duration-300 relative overflow-hidden"
+        className="h-full bg-accent transition-all duration-300 relative overflow-hidden"
         style={{ width: `${progress}%` }}
       >
         <div
@@ -85,7 +85,7 @@ const ProcessingDots: React.FC = () => (
     {[0, 200, 400].map((delay, i) => (
       <span
         key={i}
-        className="w-2 h-2 bg-indigo-500 rounded-full"
+        className="w-2 h-2 bg-accent rounded-full"
         style={{
           animation: 'pulse-dot 1.4s ease-in-out infinite',
           animationDelay: `${delay}ms`,
@@ -115,20 +115,20 @@ const StageDescription: React.FC<{ stage: ProcessingStage }> = ({ stage }) => {
     [ProcessingStage.FINALIZING]: 'Preparing your enhanced image',
   };
 
-  return <p className="text-xs text-slate-400 text-center">{descriptions[stage]}</p>;
+  return <p className="text-xs text-muted-foreground text-center">{descriptions[stage]}</p>;
 };
 
 const ErrorOverlay: React.FC<{
   item: IBatchItem;
   onRetry: (item: IBatchItem) => void;
 }> = ({ item, onRetry }) => (
-  <div className="absolute inset-0 bg-white/50 backdrop-blur-sm flex items-center justify-center">
-    <div className="bg-white p-6 rounded-xl shadow-xl border border-red-100 text-center max-w-md">
-      <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-red-600">
+  <div className="absolute inset-0 bg-surface/50 backdrop-blur-sm flex items-center justify-center">
+    <div className="bg-surface p-6 rounded-xl shadow-xl border border-red-500/20 text-center max-w-md">
+      <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-red-400">
         <AlertTriangle size={24} />
       </div>
-      <h3 className="text-lg font-semibold text-slate-900 mb-2">Processing Failed</h3>
-      <p className="text-slate-600 mb-4">{item.error}</p>
+      <h3 className="text-lg font-semibold text-white mb-2">Processing Failed</h3>
+      <p className="text-muted-foreground mb-4">{item.error}</p>
       <Button size="sm" onClick={() => onRetry(item)}>
         Try Again
       </Button>
@@ -232,7 +232,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
 
   if (!activeItem) {
     return (
-      <div className="text-slate-400 flex flex-col items-center">
+      <div className="text-muted-foreground flex flex-col items-center">
         <Layers size={48} className="mb-4 opacity-50" />
         <p>Select an image from the queue below</p>
       </div>
@@ -251,8 +251,8 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
       <div className="w-full h-[65vh] min-h-[400px] flex flex-col">
         <div className="mb-4 flex justify-between items-center shrink-0">
           <div>
-            <h3 className="text-sm font-medium text-slate-900">{activeItem.file.name}</h3>
-            <span className="text-xs text-green-600 flex items-center gap-1">
+            <h3 className="text-sm font-medium text-white">{activeItem.file.name}</h3>
+            <span className="text-xs text-green-400 flex items-center gap-1">
               <Check size={12} /> Processing Complete
             </span>
           </div>
@@ -266,39 +266,37 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
 
           {/* Waiting for next batch item overlay */}
           {isWaitingForNextBatchItem && (
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center rounded-xl z-10">
-              <div className="bg-white p-6 rounded-xl shadow-2xl border border-slate-100 text-center max-w-sm">
+            <div className="absolute inset-0 bg-surface/80 backdrop-blur-sm flex items-center justify-center rounded-xl z-10">
+              <div className="bg-surface p-6 rounded-xl shadow-2xl border border-white/10 text-center max-w-sm">
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full">
+                  <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">
                     Image {batchProgress.current} of {batchProgress.total} complete
                   </span>
                 </div>
 
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  <Loader2 size={20} className="text-indigo-600 animate-spin" />
-                  <span className="text-sm font-medium text-slate-900">
-                    Preparing next image...
-                  </span>
+                  <Loader2 size={20} className="text-accent animate-spin" />
+                  <span className="text-sm font-medium text-white">Preparing next image...</span>
                 </div>
 
                 {/* Processing indicator dots */}
                 <div className="flex justify-center gap-1.5">
                   <span
-                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    className="w-2 h-2 bg-accent rounded-full"
                     style={{
                       animation: 'pulse-dot 1.4s ease-in-out infinite',
                       animationDelay: '0ms',
                     }}
                   />
                   <span
-                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    className="w-2 h-2 bg-accent rounded-full"
                     style={{
                       animation: 'pulse-dot 1.4s ease-in-out infinite',
                       animationDelay: '200ms',
                     }}
                   />
                   <span
-                    className="w-2 h-2 bg-indigo-500 rounded-full"
+                    className="w-2 h-2 bg-accent rounded-full"
                     style={{
                       animation: 'pulse-dot 1.4s ease-in-out infinite',
                       animationDelay: '400ms',
@@ -318,7 +316,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
                   `}</style>
                 </div>
 
-                <p className="text-xs text-slate-400 mt-4">
+                <p className="text-xs text-muted-foreground mt-4">
                   Rate limiting pause to ensure reliable processing
                 </p>
               </div>
@@ -335,7 +333,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   const isEnhancing = activeItem.stage === ProcessingStage.ENHANCING;
 
   return (
-    <div className="relative w-full h-[65vh] min-h-[400px] max-w-5xl mx-auto bg-slate-100 rounded-xl border border-slate-200 overflow-hidden flex items-center justify-center">
+    <div className="relative w-full h-[65vh] min-h-[400px] max-w-5xl mx-auto bg-surface-light rounded-xl border border-white/10 overflow-hidden flex items-center justify-center">
       <img
         src={activeItem.previewUrl}
         alt={`Preview of ${activeItem.file.name}`}
@@ -346,11 +344,11 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
 
       {/* Processing Overlay */}
       {activeItem.status === ProcessingStatus.PROCESSING && (
-        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex flex-col items-center justify-center">
+        <div className="absolute inset-0 bg-surface/60 backdrop-blur-sm flex flex-col items-center justify-center">
           {/* Scanning line animation during analyzing */}
           {activeItem.stage === ProcessingStage.ANALYZING && <ScanningLineAnimation />}
 
-          <div className="w-72 space-y-4 p-6 bg-white rounded-xl shadow-2xl border border-slate-100">
+          <div className="w-72 space-y-4 p-6 bg-surface rounded-xl shadow-2xl border border-white/10">
             {/* Batch progress indicator */}
             <BatchProgressIndicator batchProgress={batchProgress} />
 

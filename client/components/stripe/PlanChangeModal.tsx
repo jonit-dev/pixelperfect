@@ -133,7 +133,7 @@ export function PlanChangeModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-surface rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <ModalHeader
           title={currentPlan ? 'Change Plan' : 'Select Plan'}
           icon={Icon}
@@ -186,12 +186,12 @@ export function PlanChangeModal({
                   <div className="flex items-start gap-3">
                     <Calendar className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium text-slate-900 mb-1">Scheduled Downgrade</h3>
-                      <p className="text-sm text-slate-600 mb-3">
+                      <h3 className="font-medium text-primary mb-1">Scheduled Downgrade</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
                         Your plan will change to <strong>{preview.new_plan.name}</strong> on{' '}
                         <strong>{formatDate(preview.effective_date)}</strong>.
                       </p>
-                      <div className="flex items-start gap-2 text-sm text-slate-500 bg-white/50 rounded p-2">
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground bg-surface/50 rounded p-2">
                         <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
                         <span>
                           You&apos;ll keep your current {preview.current_plan?.name} plan benefits
@@ -207,7 +207,7 @@ export function PlanChangeModal({
               <div className="flex gap-4 justify-end">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2 text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                  className="px-6 py-2 text-muted-foreground bg-surface-light hover:bg-surface-light rounded-lg transition-colors"
                   disabled={changing}
                 >
                   Cancel

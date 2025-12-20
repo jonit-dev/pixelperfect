@@ -137,7 +137,7 @@ export function UseCaseCard({ useCase }: IUseCaseCardProps): ReactElement {
   const { icon, color } = getConfigForUseCase(useCase.title);
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-8 h-full flex flex-col hover:shadow-lg hover:border-purple-200 transition-all duration-300">
+    <div className="bg-surface rounded-xl border border-white/10 p-8 h-full flex flex-col hover:shadow-lg hover:border-accent/30 transition-all duration-300">
       {/* Icon */}
       <div
         className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-md text-white"
@@ -147,16 +147,18 @@ export function UseCaseCard({ useCase }: IUseCaseCardProps): ReactElement {
       </div>
 
       {/* Title */}
-      <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
+      <h3 className="text-xl font-bold text-primary mb-3">{useCase.title}</h3>
 
       {/* Description */}
-      <p className="text-base text-slate-600 leading-relaxed flex-grow">{useCase.description}</p>
+      <p className="text-base text-muted-foreground leading-relaxed flex-grow">
+        {useCase.description}
+      </p>
 
       {/* Example */}
       {useCase.example && (
-        <div className="mt-6 pt-4 border-t border-slate-200">
-          <p className="text-sm text-slate-600">
-            <span className="font-semibold text-slate-900">Example: </span>
+        <div className="mt-6 pt-4 border-t border-white/10">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-semibold text-primary">Example: </span>
             {useCase.example}
           </p>
         </div>

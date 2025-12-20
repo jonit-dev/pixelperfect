@@ -45,7 +45,6 @@ export async function GET() {
 
     // Return health status
     return NextResponse.json(healthStatus);
-
   } catch (error: unknown) {
     console.error('Stripe health check error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

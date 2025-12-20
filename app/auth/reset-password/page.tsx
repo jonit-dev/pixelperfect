@@ -19,8 +19,10 @@ function ResetPasswordContent() {
       const supabase = createClient();
 
       // First check if we already have a session (auto-exchange might have happened)
-      const { data: { session: existingSession } } = await supabase.auth.getSession();
-      
+      const {
+        data: { session: existingSession },
+      } = await supabase.auth.getSession();
+
       if (existingSession) {
         setStatus('success');
         return;
@@ -31,11 +33,11 @@ function ResetPasswordContent() {
         setStatus('error');
         return;
       }
-      
+
       // Attempt to exchange the code for a session
       try {
         const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-        
+
         if (data.session) {
           setStatus('success');
           return;
@@ -43,9 +45,11 @@ function ResetPasswordContent() {
 
         if (error) {
           console.error('Code exchange failed:', error);
-          
+
           // Double check if session was established despite error (race condition)
-          const { data: { session: recheckSession } } = await supabase.auth.getSession();
+          const {
+            data: { session: recheckSession },
+          } = await supabase.auth.getSession();
           if (recheckSession) {
             setStatus('success');
             return;
@@ -70,24 +74,24 @@ function ResetPasswordContent() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center bg-surface px-4">
+      <div className="max-w-md w-full bg-surface rounded-xl shadow-lg p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900">Reset Password</h1>
-          <p className="text-slate-500 mt-2">Enter your new password below.</p>
+          <h1 className="text-2xl font-bold text-primary">Reset Password</h1>
+          <p className="text-muted-foreground mt-2">Enter your new password below.</p>
         </div>
 
         {status === 'loading' && (
           <div className="flex flex-col items-center py-8">
             <Loader2 className="w-8 h-8 text-indigo-600 animate-spin mb-4" />
-            <p className="text-slate-600">Verifying reset link...</p>
+            <p className="text-muted-foreground">Verifying reset link...</p>
           </div>
         )}
 
         {status === 'error' && (
           <div className="bg-red-50 text-red-600 p-4 rounded-lg text-center">
             <p>{error || 'Invalid or expired reset link.'}</p>
-            <button 
+            <button
               onClick={() => router.push('/')}
               className="mt-4 text-sm font-semibold hover:underline"
             >
@@ -96,9 +100,7 @@ function ResetPasswordContent() {
           </div>
         )}
 
-        {status === 'success' && (
-          <ForgotPasswordSetNewPasswordForm onClose={handlePasswordSet} />
-        )}
+        {status === 'success' && <ForgotPasswordSetNewPasswordForm onClose={handlePasswordSet} />}
       </div>
     </div>
   );
@@ -122,5 +124,3 @@ export default function ResetPasswordPage() {
     </Suspense>
   );
 }
-
-

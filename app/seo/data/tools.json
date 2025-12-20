@@ -4,1016 +4,317 @@
     {
       "slug": "ai-image-upscaler",
       "title": "AI Image Upscaler",
-      "metaTitle": "AI Image Upscaler - Enhance Photos to 4K Free | MyImageUpscaler",
-      "metaDescription": "Upscale images to 4K resolution with AI. Free online tool that preserves text and logos. No watermarks, fast processing. Try MyImageUpscaler now.",
-      "h1": "AI Image Upscaler - Enhance Photos to 4K Resolution Free",
-      "intro": "Transform low-resolution images into stunning 4K visuals in seconds. Our AI preserves text, logos, and fine details that other upscalers blur.",
+      "metaTitle": "AI Image Upscaler - Enlarge Images to 4K Without Quality Loss | MyImageUpscaler",
+      "metaDescription": "Upscale images up to 8x with AI. Free online tool that preserves text and logos. No watermarks. Perfect for e-commerce, print, and social media.",
+      "h1": "AI Image Upscaler",
+      "intro": "Increase image resolution up to 8x while preserving sharpness. Our AI adds realistic detail instead of just stretching pixels.",
       "primaryKeyword": "ai image upscaler",
       "secondaryKeywords": [
         "image upscaler",
         "ai upscale image",
-        "enhance image ai",
         "upscale image online",
-        "4k image upscaler"
+        "4k image upscaler",
+        "image enlarger",
+        "photo enlarger",
+        "ai image enlarger"
       ],
-      "lastUpdated": "2025-12-01T00:00:00Z",
+      "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "tools",
       "toolName": "AI Image Upscaler",
-      "description": "Transform low-resolution images into stunning high-quality visuals with MyImageUpscaler's AI Image Upscaler. Our advanced neural network technology intelligently enhances your photos while preserving text, logos, and fine details that other upscalers blur or distort.",
+      "description": "Transform low-resolution images into high-quality visuals. Unlike traditional resizing that creates blur, our AI reconstructs detail as it upscales.",
       "features": [
         {
-          "title": "Text & Logo Preservation",
-          "description": "Our AI is specifically trained to keep text sharp and readable, perfect for product images, documents, and branded content."
-        },
-        {
-          "title": "Lightning Fast Processing",
-          "description": "Get results in 30-60 seconds with our optimized cloud infrastructure. No waiting, no queues."
-        },
-        {
           "title": "Up to 8x Upscaling",
-          "description": "Increase image resolution up to 8x while maintaining exceptional quality and natural-looking details."
+          "description": "Increase image dimensions from 2x to 8x. A 500px image becomes 4000px at 8x."
         },
         {
-          "title": "Multiple Format Support",
-          "description": "Upload and download in JPEG, PNG, or WebP format. Convert between formats seamlessly."
+          "title": "Text & Logo Preservation",
+          "description": "Trained specifically to keep text readable and logos sharp - critical for product images and documents."
         },
         {
           "title": "Batch Processing",
-          "description": "Process up to 50 images at once to save time on large projects. Perfect for e-commerce catalogs."
+          "description": "Process up to 50 images at once on Pro plans. Individual processing on free tier."
         },
         {
-          "title": "No Watermarks Ever",
-          "description": "All outputs are clean and watermark-free, even on the free tier. Your images, your way."
+          "title": "No Watermarks",
+          "description": "All outputs are clean, even on the free tier. Your images, your way."
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Upload JPEG, PNG, or WebP. Download in any format with quality settings."
+        },
+        {
+          "title": "Fast Processing",
+          "description": "Most images process in 30-60 seconds using cloud GPU infrastructure."
         }
       ],
+      "technicalSpecs": {
+        "maxInputSize": "64MB (5MB on free tier)",
+        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "maxUpscale": "8x",
+        "processingTime": "30-60 seconds typical",
+        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "qualitySettings": "Adjustable JPEG quality 1-100%"
+      },
       "useCases": [
         {
           "title": "E-commerce Product Photos",
-          "description": "Enhance product images to meet marketplace requirements and increase conversion rates with crystal-clear visuals.",
-          "example": "Amazon requires 1000x1000px minimum - upscale your 500px photos instantly"
+          "description": "Meet marketplace image requirements. Amazon needs 1000x1000px minimum, eBay recommends 1600px.",
+          "example": "Upscale a 400x400px supplier image to 1600x1600px for your listing."
         },
         {
-          "title": "Real Estate Listings",
-          "description": "Make property photos look professional and appealing to potential buyers with enhanced detail and clarity.",
-          "example": "Transform smartphone photos into listing-ready professional images"
+          "title": "Print Preparation",
+          "description": "Print requires 300 DPI. An 8x10 inch print needs 2400x3000 pixels.",
+          "example": "Turn a 600x750px web image into a print-ready 2400x3000px file."
         },
         {
-          "title": "Social Media Content",
-          "description": "Create high-resolution images that look crisp on any platform, from Instagram to LinkedIn.",
-          "example": "Upscale old photos for throwback posts without the blur"
+          "title": "Social Media",
+          "description": "Instagram recommends 1080x1080px for posts, 1080x1920px for stories.",
+          "example": "Upscale old photos before posting - they'll look sharper even after compression."
         },
         {
-          "title": "Print Materials",
-          "description": "Upscale images to meet print resolution requirements (300 DPI) without quality loss.",
-          "example": "Turn a web image into a poster-ready 24x36 inch print"
+          "title": "Website Hero Images",
+          "description": "Full-width hero images need 1920px+ width for retina displays.",
+          "example": "Upscale a stock photo to 3840px width for crisp display on 4K monitors."
         }
       ],
       "benefits": [
         {
-          "title": "Professional Quality Results",
-          "description": "Achieve studio-quality image enhancement without expensive software or technical expertise.",
-          "metric": "4K resolution output"
+          "title": "Real Detail Generation",
+          "description": "AI adds plausible detail rather than just interpolating pixels. Edges stay sharp, textures look natural.",
+          "metric": "Neural network trained on millions of image pairs"
         },
         {
-          "title": "Save Hours of Manual Work",
-          "description": "What would take hours in Photoshop takes just seconds with our AI upscaling technology.",
-          "metric": "60 seconds average"
+          "title": "Preserves What Matters",
+          "description": "Text, logos, and fine details stay crisp. Most upscalers blur these elements.",
+          "metric": "Specialized training for text preservation"
         },
         {
-          "title": "Consistent Results Every Time",
-          "description": "AI delivers reliable, repeatable quality across all your images with no manual tweaking needed.",
-          "metric": "99.9% success rate"
+          "title": "No Technical Skills Needed",
+          "description": "Upload, select scale, download. No Photoshop or technical knowledge required.",
+          "metric": "3-step process"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
           "title": "Upload Your Image",
-          "description": "Drag and drop your image or click to browse. We support JPEG, PNG, and WebP formats up to 25MB."
+          "description": "Drag and drop or click to browse. Supports JPEG, PNG, WebP up to 64MB."
         },
         {
           "step": 2,
-          "title": "Select Upscale Level",
-          "description": "Choose your desired resolution increase: 2x, 4x, or 8x. Higher multipliers create larger images with more detail."
+          "title": "Select Scale Factor",
+          "description": "Choose 2x, 4x, or 8x. Preview shows estimated output dimensions."
         },
         {
           "step": 3,
-          "title": "AI Enhancement",
-          "description": "Our neural network analyzes your image and intelligently adds detail while preserving text, logos, and important elements."
+          "title": "Download Result",
+          "description": "Preview your upscaled image, then download in your preferred format."
+        }
+      ],
+      "commonQuestions": [
+        {
+          "question": "How is this different from Photoshop's Image Size?",
+          "answer": "Photoshop's bicubic scaling just interpolates between pixels, creating blur. Our AI actually generates new detail based on patterns learned from millions of images. The result is sharper edges and more realistic textures."
         },
         {
-          "step": 4,
-          "title": "Download Result",
-          "description": "Preview your enhanced image and download in your preferred format. No watermarks on any output."
+          "question": "What's the maximum I can upscale?",
+          "answer": "8x is the maximum in a single pass. You can download the 8x result and upscale again for even higher resolution, though quality may degrade with extreme enlargement."
+        },
+        {
+          "question": "Will upscaling fix a blurry photo?",
+          "answer": "Upscaling increases resolution but won't remove existing blur. For blurry photos, use our Photo Enhancer first to sharpen, then upscale. The combination works well."
+        },
+        {
+          "question": "How many images can I upscale for free?",
+          "answer": "10 images per month on the free tier, with no watermarks. Paid plans start at $9/month for higher limits."
+        },
+        {
+          "question": "Are my images stored on your servers?",
+          "answer": "Images are automatically deleted within 1 hour of processing. We don't use your images for training or share them with third parties."
         }
       ],
       "faq": [
         {
-          "question": "Is MyImageUpscaler's AI image upscaler free?",
-          "answer": "Yes! MyImageUpscaler offers 10 free credits to get started. Each image upscale uses 1 credit. For more credits, check our affordable pricing plans starting at $19/month."
+          "question": "Is the AI image upscaler free?",
+          "answer": "Yes, 10 free credits per month with no watermarks. Each upscale uses 1 credit. Paid plans start at $9/month for more credits."
         },
         {
-          "question": "What image formats does the AI upscaler support?",
-          "answer": "MyImageUpscaler supports JPEG, PNG, and WebP formats. You can upload images up to 25MB and download in your preferred format."
+          "question": "What formats are supported?",
+          "answer": "Upload JPEG, PNG, or WebP. Download in any of these formats. Max file size is 64MB (5MB on free tier)."
         },
         {
-          "question": "How long does AI upscaling take?",
-          "answer": "Most images are processed in 30-60 seconds. Larger images or higher upscale factors may take slightly longer."
+          "question": "How long does upscaling take?",
+          "answer": "30-60 seconds for most images. Larger images or 8x upscaling may take slightly longer."
         },
         {
-          "question": "Will my images be stored on your servers?",
-          "answer": "We take privacy seriously. Images are automatically deleted from our servers within 1 hour of processing. We never use your images for training or share them with third parties."
+          "question": "Can I upscale images for commercial use?",
+          "answer": "Yes, you retain full rights to your upscaled images. Use them for any purpose - personal, commercial, print, or web."
         }
       ],
-      "relatedTools": ["ai-photo-enhancer", "image-quality-enhancer"],
-      "relatedGuides": ["how-to-upsize-images", "how-to-upscale-images"],
+      "relatedTools": ["ai-photo-enhancer"],
+      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
       "ctaText": "Upscale Image Free",
       "ctaUrl": "/upscaler"
     },
     {
       "slug": "ai-photo-enhancer",
       "title": "AI Photo Enhancer",
-      "metaTitle": "AI Photo Enhancer - Improve Photo Quality Free | MyImageUpscaler",
-      "metaDescription": "Enhance photo quality with AI. Fix blurry images, improve colors, and restore old photos. Free online tool with professional results.",
-      "h1": "AI Photo Enhancer - Improve Photo Quality Instantly",
-      "intro": "Fix blurry images, enhance colors, and restore old photos in seconds. Our AI brings your memories back to life with professional-quality results.",
+      "metaTitle": "AI Photo Enhancer - Fix Blurry Photos, Restore Old Images | MyImageUpscaler",
+      "metaDescription": "Enhance photo quality with AI. Fix blur, improve colors, reduce noise, restore old photos. Free online tool with natural-looking results.",
+      "h1": "AI Photo Enhancer",
+      "intro": "Improve photo quality without changing dimensions. Fix blur, enhance colors, reduce noise, and restore old or damaged photos.",
       "primaryKeyword": "ai photo enhancer",
-      "secondaryKeywords": ["photo enhancer ai", "ai enhance photo", "photo enhancer online"],
-      "lastUpdated": "2025-12-01T00:00:00Z",
+      "secondaryKeywords": [
+        "photo enhancer",
+        "ai enhance photo",
+        "fix blurry photo",
+        "photo quality enhancer",
+        "image enhancer",
+        "picture enhancer",
+        "image clarity enhancer"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "tools",
       "toolName": "AI Photo Enhancer",
-      "description": "Enhance and restore your photos with professional AI-powered technology. Fix blurry images, improve colors, and bring old photos back to life with our advanced neural network.",
+      "description": "Improve photo quality while keeping the same resolution. Ideal for fixing issues before upscaling, or when you just need better quality at the current size.",
       "features": [
         {
-          "title": "Auto Color Correction",
-          "description": "AI automatically adjusts white balance, exposure, and contrast to make your photos pop."
-        },
-        {
-          "title": "Deblur Technology",
-          "description": "Fix motion blur and out-of-focus images with our advanced sharpening algorithms."
+          "title": "Deblur & Sharpen",
+          "description": "Reduce motion blur and soft focus. Works best on moderately blurry images - severe blur has physical limits."
         },
         {
           "title": "Noise Reduction",
-          "description": "Remove grain and noise from low-light photos while preserving important details."
+          "description": "Remove grain from low-light or high-ISO photos while preserving detail."
+        },
+        {
+          "title": "Color Correction",
+          "description": "Auto-adjust white balance, exposure, and contrast. Fix color casts from indoor lighting."
         },
         {
           "title": "Face Enhancement",
-          "description": "Automatically detect and enhance faces for portrait-perfect results every time."
+          "description": "Automatically detect and enhance faces with appropriate skin tone handling."
         },
         {
-          "title": "One-Click Enhancement",
-          "description": "Let AI analyze and enhance your photo with a single click. No settings to tweak."
+          "title": "Old Photo Restoration",
+          "description": "Reduce scratches, fix fading, and restore color to vintage photos."
         },
         {
           "title": "Before/After Preview",
           "description": "Compare original and enhanced versions side-by-side before downloading."
         }
       ],
+      "technicalSpecs": {
+        "maxInputSize": "64MB (5MB on free tier)",
+        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "processingTime": "20-45 seconds typical",
+        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "preservesExif": "Optional - keep or strip metadata"
+      },
       "useCases": [
         {
           "title": "Old Photo Restoration",
-          "description": "Breathe new life into faded, damaged, or aged family photos with AI restoration.",
-          "example": "Restore grandparents' wedding photos for anniversary gifts"
+          "description": "Restore scanned family photos from the 60s-90s. Fix fading, scratches, and color shifts.",
+          "example": "Restore grandparents' wedding photo for an anniversary gift."
         },
         {
-          "title": "Smartphone Photography",
-          "description": "Turn casual phone snapshots into professional-looking photos worth sharing.",
-          "example": "Enhance vacation photos taken in poor lighting conditions"
+          "title": "Low-Light Photo Fixes",
+          "description": "Reduce noise from phone photos taken in dim restaurants or evening events.",
+          "example": "Clean up grainy party photos from your phone's night mode."
         },
         {
-          "title": "Portrait Enhancement",
-          "description": "Perfect portraits with automatic face detection and intelligent skin tone correction.",
-          "example": "Enhance LinkedIn profile photos for a more professional look"
+          "title": "Portrait Improvement",
+          "description": "Enhance portraits with face detection for natural skin tones and sharpness.",
+          "example": "Improve a LinkedIn headshot taken with a phone camera."
         },
         {
-          "title": "Event Photography",
-          "description": "Fix low-light party and event photos with noise reduction and color correction.",
-          "example": "Save those dark wedding reception photos"
+          "title": "Pre-Upscaling Preparation",
+          "description": "Enhance quality before upscaling for best results. Fix issues at original size first.",
+          "example": "Sharpen a blurry photo, then upscale it 4x for printing."
         }
       ],
       "benefits": [
         {
-          "title": "Revive Old Memories",
-          "description": "Transform faded, scratched, or damaged photos into vibrant memories worth displaying.",
-          "metric": "Works on photos 50+ years old"
+          "title": "Natural Results",
+          "description": "Avoids the over-processed 'HDR look'. Enhancements look like a better camera, not a filter.",
+          "metric": "Trained on professional photography"
         },
         {
-          "title": "No Photoshop Skills Needed",
-          "description": "Get professional results without learning complex software. Our AI does all the work.",
-          "metric": "One-click enhancement"
+          "title": "Automatic Detection",
+          "description": "AI identifies what's wrong - blur, noise, color issues - and applies appropriate fixes.",
+          "metric": "Multi-model analysis"
         },
         {
-          "title": "Preserve Original Quality",
-          "description": "AI enhancement adds detail without artificial artifacts or over-processed looks.",
-          "metric": "Natural-looking results"
+          "title": "Preserves Character",
+          "description": "Old photos keep their vintage feel. We reduce damage, not character.",
+          "metric": "Context-aware enhancement"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
           "title": "Upload Your Photo",
-          "description": "Drop your photo or click to browse. Works with JPEG, PNG, WebP, and even scanned images."
+          "description": "Drag and drop or browse. Works with photos from any era or source."
         },
         {
           "step": 2,
           "title": "AI Analysis",
-          "description": "Our AI scans your image to detect issues like blur, noise, color cast, and underexposure."
+          "description": "Our AI scans for blur, noise, color issues, and damage. Different issues get different treatments."
         },
         {
           "step": 3,
-          "title": "Smart Enhancement",
-          "description": "Multiple AI models work together to fix each issue while maintaining natural-looking results."
-        },
-        {
-          "step": 4,
-          "title": "Compare & Download",
-          "description": "Use the before/after slider to see the improvement, then download your enhanced photo."
+          "title": "Review & Download",
+          "description": "Use the before/after slider to compare, then download your enhanced photo."
         }
       ],
-      "faq": [
+      "commonQuestions": [
         {
-          "question": "Can this AI enhance old or damaged photos?",
-          "answer": "Yes! Our AI is specifically trained on historical photos and can restore faded colors, reduce damage artifacts, and sharpen blurry details in photos that are decades old."
+          "question": "Can you fix severely blurry photos?",
+          "answer": "We can significantly improve moderately blurry photos. Severe blur (like strong motion blur or completely out of focus) has physical limits - the original detail simply wasn't captured. You'll see improvement, but don't expect perfection."
         },
         {
-          "question": "How is this different from the AI Image Upscaler?",
-          "answer": "The Photo Enhancer focuses on improving image quality (colors, sharpness, noise) while keeping the same resolution. The Upscaler increases image size. For best results, enhance first, then upscale."
+          "question": "What's the difference between this and the upscaler?",
+          "answer": "The Photo Enhancer improves quality at the same resolution (sharpening, color, noise). The Upscaler increases dimensions. For best results on low-quality images: enhance first, then upscale."
         },
         {
           "question": "Will my enhanced photos look over-processed?",
-          "answer": "No. Our AI is trained to produce natural-looking results. We avoid the artificial 'HDR look' that many tools produce. Your photos will look professionally enhanced, not filtered."
+          "answer": "No. We specifically train to avoid the artificial 'HDR look' or over-sharpened appearance. Results look like a better camera was used, not like a filter was applied."
         },
         {
-          "question": "Does it work on all types of photos?",
-          "answer": "Yes! Whether it's portraits, landscapes, product photos, or scanned documents, our AI adapts its enhancement approach based on the content detected in your image."
+          "question": "Can you restore very old or damaged photos?",
+          "answer": "Yes, though results vary with damage severity. We can reduce (not eliminate) scratches, fix fading, and restore color. Severe damage like torn sections can't be reconstructed."
+        },
+        {
+          "question": "Does enhancement work on screenshots?",
+          "answer": "Yes, particularly for text clarity and noise reduction. For screenshots with text, this tool can improve readability."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is the photo enhancer free?",
+          "answer": "Yes, 10 free enhancements per month with no watermarks. Paid plans offer more credits."
+        },
+        {
+          "question": "What types of photos work best?",
+          "answer": "Photos with moderate issues see the best improvement. Slightly blurry, noisy, or faded photos enhance well. Severely damaged photos will improve but have limits."
+        },
+        {
+          "question": "Can I enhance and upscale together?",
+          "answer": "Yes, but run them separately for best results. Enhance first to fix quality issues, then upscale the enhanced image."
+        },
+        {
+          "question": "Does this work on phone photos?",
+          "answer": "Absolutely. Phone photos often have noise from small sensors and can benefit significantly from enhancement."
         }
       ],
       "relatedTools": ["ai-image-upscaler"],
-      "relatedGuides": ["how-to-restore-old-photos", "how-to-fix-blurry-photos"],
+      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
       "ctaText": "Enhance Photo Free",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "ai-image-enhancer",
-      "title": "AI Image Enhancer",
-      "metaTitle": "AI Image Enhancer - Improve Image Quality Free | MyImageUpscaler",
-      "metaDescription": "Enhance image quality with AI technology. Fix blurry photos, improve colors, and restore details. Free online tool with professional results in seconds.",
-      "h1": "AI Image Enhancer - Transform Image Quality Instantly",
-      "intro": "Enhance any image with advanced AI technology. Fix blur, improve colors, and restore missing details in seconds with professional-quality results.",
-      "primaryKeyword": "ai image enhancer",
-      "secondaryKeywords": [
-        "image enhancer ai",
-        "ai enhance image",
-        "enhance image ai",
-        "image ai enhancer",
-        "image enhancer online"
-      ],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "AI Image Enhancer",
-      "description": "Transform your images with professional AI-powered enhancement. Our advanced neural network technology analyzes and improves every aspect of your images - from sharpness and color accuracy to detail restoration and noise reduction.",
-      "features": [
-        {
-          "title": "Smart Detail Enhancement",
-          "description": "AI intelligently adds detail and sharpness to your images while avoiding over-processing and artifacts."
-        },
-        {
-          "title": "Automatic Color Optimization",
-          "description": "Advanced algorithms adjust white balance, saturation, and vibrancy for natural-looking results."
-        },
-        {
-          "title": "Noise Removal",
-          "description": "Eliminate grain and digital noise from low-light or high-ISO photos without losing detail."
-        },
-        {
-          "title": "Edge Sharpening",
-          "description": "Precisely sharpen edges and important details while keeping smooth areas natural."
-        },
-        {
-          "title": "One-Click Processing",
-          "description": "Get professional results with a single click. No complex settings or technical knowledge required."
-        },
-        {
-          "title": "Batch Enhancement",
-          "description": "Process multiple images at once with consistent quality across your entire collection."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Professional Photography",
-          "description": "Perfect your photos with AI-powered enhancements that rival manual editing in Photoshop or Lightroom.",
-          "example": "Enhance wedding photos to deliver polished results to clients faster"
-        },
-        {
-          "title": "Product Photography",
-          "description": "Make product images pop with enhanced details, accurate colors, and professional presentation.",
-          "example": "Improve catalog photos to increase online sales conversions"
-        },
-        {
-          "title": "Social Media Content",
-          "description": "Create eye-catching visuals that stand out in crowded feeds with AI enhancement.",
-          "example": "Transform casual snapshots into Instagram-worthy content"
-        },
-        {
-          "title": "Digital Archives",
-          "description": "Restore and enhance scanned photos and documents for better preservation and clarity.",
-          "example": "Digitize and improve old family photo albums"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "Studio-Quality Results",
-          "description": "Achieve professional-grade image enhancement without expensive software subscriptions or training.",
-          "metric": "Professional quality"
-        },
-        {
-          "title": "Instant Processing",
-          "description": "What takes minutes in traditional editing software happens in seconds with AI automation.",
-          "metric": "30-60 second processing"
-        },
-        {
-          "title": "Natural-Looking Output",
-          "description": "AI enhancement preserves the authentic look of your images - no over-processed or artificial appearance.",
-          "metric": "Realistic results"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Your Image",
-          "description": "Drop your image or select from your device. Supports JPEG, PNG, and WebP formats up to 25MB."
-        },
-        {
-          "step": 2,
-          "title": "AI Analysis",
-          "description": "Our neural network analyzes your image to identify areas needing enhancement - blur, noise, color issues, and more."
-        },
-        {
-          "step": 3,
-          "title": "Intelligent Enhancement",
-          "description": "Multiple AI models work together to sharpen details, optimize colors, reduce noise, and improve overall quality."
-        },
-        {
-          "step": 4,
-          "title": "Download Enhanced Image",
-          "description": "Preview your enhanced result and download in your preferred format. No watermarks, ever."
-        }
-      ],
-      "faq": [
-        {
-          "question": "What's the difference between image enhancer and photo enhancer?",
-          "answer": "They're essentially the same - both use AI to improve image quality. The Photo Enhancer is optimized specifically for photographs with additional focus on skin tones and portraits, while the Image Enhancer works well on all image types including graphics, documents, and photos."
-        },
-        {
-          "question": "Can AI enhancement fix severely blurry images?",
-          "answer": "AI can significantly improve blurry images by adding sharpness and detail, but there are limits. Moderately blurry images see excellent results. Severely out-of-focus images will improve but may not become perfectly sharp. For best results, combine enhancement with upscaling."
-        },
-        {
-          "question": "Will enhancement make my images look artificial?",
-          "answer": "No. Our AI is specifically trained to produce natural-looking results. Unlike aggressive filters that create artificial 'HDR looks,' our enhancement preserves the authentic character of your images while improving quality."
-        },
-        {
-          "question": "How many images can I enhance for free?",
-          "answer": "MyImageUpscaler includes 10 free credits to start. Each enhancement uses 1 credit. For unlimited access, check our affordable plans starting at $19/month."
-        }
-      ],
-      "relatedTools": ["ai-photo-enhancer", "ai-image-upscaler"],
-      "relatedGuides": ["how-to-upscale-images"],
-      "ctaText": "Enhance Image Free",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "photo-quality-enhancer",
-      "title": "Photo Quality Enhancer",
-      "metaTitle": "Photo Quality Enhancer - Improve Photo Resolution Free | MyImageUpscaler",
-      "metaDescription": "Improve photo quality and resolution with AI. Fix low-quality images, enhance clarity, and boost detail. Free online tool with instant results.",
-      "h1": "Photo Quality Enhancer - Boost Image Resolution & Clarity",
-      "intro": "Transform low-quality photos into high-resolution images. Our AI enhances clarity, sharpness, and detail to make every photo look its best.",
-      "primaryKeyword": "photo quality enhancer",
-      "secondaryKeywords": [
-        "image quality enhancer",
-        "picture quality enhancer",
-        "photo quality enhancer online",
-        "image quality enhancer online"
-      ],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "Photo Quality Enhancer",
-      "description": "Dramatically improve photo quality with advanced AI technology. Whether your images are too small, blurry, or lacking detail, our Photo Quality Enhancer analyzes and reconstructs them to achieve stunning clarity and resolution.",
-      "features": [
-        {
-          "title": "Resolution Boost",
-          "description": "Increase photo resolution up to 8x while maintaining or improving quality through AI reconstruction."
-        },
-        {
-          "title": "Clarity Enhancement",
-          "description": "Sharpen details and improve overall image clarity without introducing artifacts or noise."
-        },
-        {
-          "title": "Quality Recovery",
-          "description": "Recover lost details from compressed or degraded images with AI-powered reconstruction."
-        },
-        {
-          "title": "Portrait Optimization",
-          "description": "Special algorithms for portrait photos that enhance faces, skin tones, and fine details."
-        },
-        {
-          "title": "Format Flexibility",
-          "description": "Upload and download in any format - JPEG, PNG, or WebP - with automatic optimization."
-        },
-        {
-          "title": "Instant Preview",
-          "description": "See before and after comparisons instantly to ensure you're happy with the results."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Low-Resolution Photos",
-          "description": "Turn small, low-quality images into high-resolution versions suitable for printing or professional use.",
-          "example": "Enlarge smartphone photos for poster-sized prints"
-        },
-        {
-          "title": "Compressed Images",
-          "description": "Restore quality lost from heavy JPEG compression or multiple re-saves.",
-          "example": "Fix quality degradation from social media downloads"
-        },
-        {
-          "title": "Screenshot Enhancement",
-          "description": "Improve clarity and readability of screenshots, especially for text and UI elements.",
-          "example": "Enhance product demo screenshots for presentations"
-        },
-        {
-          "title": "Digital Marketing",
-          "description": "Create high-quality visuals from any source for ads, websites, and promotional materials.",
-          "example": "Upgrade low-res stock photos to meet quality standards"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "Print-Ready Quality",
-          "description": "Transform web-resolution images into print-quality photos at 300 DPI or higher.",
-          "metric": "Up to 8x resolution"
-        },
-        {
-          "title": "Save Unusable Photos",
-          "description": "Rescue photos you thought were too low-quality to use with AI-powered quality recovery.",
-          "metric": "Recover lost details"
-        },
-        {
-          "title": "Professional Results",
-          "description": "Get results that match or exceed manual editing in professional software like Photoshop.",
-          "metric": "Studio-grade output"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Low-Quality Photo",
-          "description": "Select any image that needs quality improvement. Works with images as small as 100x100 pixels."
-        },
-        {
-          "step": 2,
-          "title": "Select Enhancement Level",
-          "description": "Choose how much you want to improve quality - from subtle enhancement to maximum resolution boost."
-        },
-        {
-          "step": 3,
-          "title": "AI Processing",
-          "description": "Advanced neural networks analyze and reconstruct your image, adding detail and improving clarity."
-        },
-        {
-          "step": 4,
-          "title": "Download High-Quality Result",
-          "description": "Get your enhanced photo in full resolution with no watermarks. Perfect for any use."
-        }
-      ],
-      "faq": [
-        {
-          "question": "Can you really improve low-quality photos?",
-          "answer": "Yes! Our AI doesn't just stretch pixels - it intelligently reconstructs missing details based on patterns learned from millions of high-quality images. While it can't add information that was never there, it can dramatically improve perceived quality and resolution."
-        },
-        {
-          "question": "Will this work on very old or damaged photos?",
-          "answer": "Absolutely. The Photo Quality Enhancer works great on scanned photos, old prints, and even damaged images. It can reduce scratches, restore faded colors, and improve sharpness on photos that are decades old."
-        },
-        {
-          "question": "How is this different from just increasing image size?",
-          "answer": "Traditional resizing (like in Photoshop) simply stretches pixels, making images blurry and blocky. Our AI actually generates new detail and sharpens the image as it increases resolution, resulting in clear, natural-looking results."
-        },
-        {
-          "question": "What file size can I upload?",
-          "answer": "You can upload images up to 25MB. This covers most photos and even some high-resolution scans. Larger files can be compressed before upload without affecting the enhancement quality."
-        }
-      ],
-      "relatedTools": ["ai-image-enhancer", "image-clarity-enhancer"],
-      "relatedGuides": ["how-to-upsize-images"],
-      "ctaText": "Enhance Photo Quality",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "image-clarity-enhancer",
-      "title": "Image Clarity Enhancer",
-      "metaTitle": "Image Clarity Enhancer - Sharpen Blurry Photos Free | MyImageUpscaler",
-      "metaDescription": "Enhance image clarity and sharpen blurry photos with AI. Fix out-of-focus images and improve sharpness instantly. Free online tool.",
-      "h1": "Image Clarity Enhancer - Make Blurry Photos Sharp",
-      "intro": "Fix blurry, out-of-focus images with AI-powered clarity enhancement. Restore sharpness and detail to make every image crystal clear.",
-      "primaryKeyword": "image clarity enhancer",
-      "secondaryKeywords": [
-        "photo clarity enhancer",
-        "picture clarity enhancer",
-        "enhance image clarity"
-      ],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "Image Clarity Enhancer",
-      "description": "Bring clarity to blurry, soft, or out-of-focus images with advanced AI technology. Our Clarity Enhancer analyzes your images and applies intelligent sharpening to restore detail and crispness without creating artifacts.",
-      "features": [
-        {
-          "title": "Smart Sharpening",
-          "description": "AI identifies edges and important details to sharpen selectively, avoiding over-processing and halos."
-        },
-        {
-          "title": "Deblur Technology",
-          "description": "Advanced algorithms reduce motion blur and camera shake for sharper, clearer images."
-        },
-        {
-          "title": "Focus Recovery",
-          "description": "Restore detail to slightly out-of-focus areas using AI-powered focus reconstruction."
-        },
-        {
-          "title": "Texture Enhancement",
-          "description": "Bring out fine textures and patterns while keeping smooth areas natural-looking."
-        },
-        {
-          "title": "Adjustable Strength",
-          "description": "Control enhancement intensity from subtle improvement to maximum sharpening."
-        },
-        {
-          "title": "Before/After Comparison",
-          "description": "Toggle between original and enhanced versions to see the dramatic improvement."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Action Photography",
-          "description": "Fix motion blur from sports, wildlife, or fast-moving subjects to capture crisp action shots.",
-          "example": "Sharpen sports photos taken with slow shutter speeds"
-        },
-        {
-          "title": "Smartphone Photos",
-          "description": "Improve clarity of phone camera shots affected by small sensors or digital processing.",
-          "example": "Enhance low-light phone photos that came out soft"
-        },
-        {
-          "title": "Scanned Documents",
-          "description": "Make scanned text and images crisp and readable for better digital archives.",
-          "example": "Sharpen scanned contracts and documents for OCR processing"
-        },
-        {
-          "title": "Video Screenshots",
-          "description": "Enhance clarity of video frame captures that often appear soft or compressed.",
-          "example": "Improve quality of video thumbnails and promotional stills"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "Rescue Blurry Photos",
-          "description": "Save photos you thought were ruined by blur or soft focus with AI-powered deblurring.",
-          "metric": "Fix motion & focus blur"
-        },
-        {
-          "title": "No Manual Editing",
-          "description": "Get perfect sharpening automatically without learning complex Photoshop techniques.",
-          "metric": "One-click processing"
-        },
-        {
-          "title": "Artifact-Free Results",
-          "description": "Advanced AI prevents common sharpening problems like halos, noise, and over-processing.",
-          "metric": "Natural sharpness"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Blurry Image",
-          "description": "Select your image that needs clarity improvement. Works on photos with any type of blur."
-        },
-        {
-          "step": 2,
-          "title": "AI Blur Analysis",
-          "description": "Our AI detects the type and amount of blur in your image to apply the optimal correction."
-        },
-        {
-          "step": 3,
-          "title": "Intelligent Sharpening",
-          "description": "Advanced algorithms selectively sharpen edges and details while preserving smooth, natural areas."
-        },
-        {
-          "step": 4,
-          "title": "Download Sharp Image",
-          "description": "Compare before and after, then download your crystal-clear image with no watermarks."
-        }
-      ],
-      "faq": [
-        {
-          "question": "Can you fix severely blurry images?",
-          "answer": "AI clarity enhancement works best on moderately blurry images. Slight motion blur or soft focus can be corrected very effectively. Severely out-of-focus or heavily motion-blurred images will see improvement but may not become perfectly sharp. The AI does an impressive job, but it has physical limits."
-        },
-        {
-          "question": "Will sharpening make my image look unnatural?",
-          "answer": "No. Our AI uses smart sharpening that only enhances edges and important details while keeping skin, skies, and smooth areas natural. This prevents the 'over-sharpened' look that comes from traditional sharpening tools."
-        },
-        {
-          "question": "Does this work on text in images?",
-          "answer": "Yes! The clarity enhancer is excellent for sharpening text in screenshots, scanned documents, and photos of signs or pages. It makes text more readable without introducing artifacts."
-        },
-        {
-          "question": "Can I enhance clarity and upscale at the same time?",
-          "answer": "Absolutely. For best results, we recommend using the clarity enhancer first, then upscaling. Or use our AI Image Upscaler which automatically applies both enhancements in one process."
-        }
-      ],
-      "relatedTools": ["photo-quality-enhancer", "ai-image-enhancer"],
-      "relatedGuides": ["how-to-upscale-images"],
-      "ctaText": "Enhance Clarity Free",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "picture-quality-enhancer",
-      "title": "Picture Quality Enhancer",
-      "metaTitle": "Picture Quality Enhancer - Improve Picture Quality Free | MyImageUpscaler",
-      "metaDescription": "Enhance picture quality with AI. Fix low-resolution images, improve colors, and boost clarity. Free online picture enhancer with instant results.",
-      "h1": "Picture Quality Enhancer - Transform Any Picture Instantly",
-      "intro": "Improve any picture's quality with professional AI enhancement. Fix resolution, colors, sharpness, and detail in seconds.",
-      "primaryKeyword": "picture quality enhancer",
-      "secondaryKeywords": ["enhance picture quality", "picture enhancer online"],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "Picture Quality Enhancer",
-      "description": "Transform any picture into a high-quality image with our AI-powered Picture Quality Enhancer. From family photos to professional images, our tool analyzes and improves every aspect - resolution, color, sharpness, and detail.",
-      "features": [
-        {
-          "title": "All-in-One Enhancement",
-          "description": "Improves resolution, color accuracy, sharpness, and detail in a single automated process."
-        },
-        {
-          "title": "AI Color Correction",
-          "description": "Automatically fix exposure, white balance, and color cast for vibrant, natural-looking results."
-        },
-        {
-          "title": "Detail Restoration",
-          "description": "Recover fine details lost to compression, low resolution, or poor lighting conditions."
-        },
-        {
-          "title": "Universal Compatibility",
-          "description": "Works perfectly on all picture types - portraits, landscapes, products, documents, and more."
-        },
-        {
-          "title": "Batch Processing",
-          "description": "Enhance multiple pictures at once with consistent quality across your entire collection."
-        },
-        {
-          "title": "Format Preservation",
-          "description": "Maintains original format or converts to your preferred format (JPEG, PNG, WebP)."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Family Photos",
-          "description": "Restore and enhance cherished family pictures for better preservation and sharing.",
-          "example": "Improve old family reunion photos for anniversary albums"
-        },
-        {
-          "title": "Social Media",
-          "description": "Create high-quality pictures that look great on Instagram, Facebook, and other platforms.",
-          "example": "Enhance casual snapshots before posting to social media"
-        },
-        {
-          "title": "Online Listings",
-          "description": "Make product or property pictures look professional to attract more buyers.",
-          "example": "Improve eBay listing photos to increase sales"
-        },
-        {
-          "title": "Presentations",
-          "description": "Ensure all pictures in your presentations look crisp and professional.",
-          "example": "Upgrade low-quality images in PowerPoint slides"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "One-Click Perfection",
-          "description": "Get comprehensive picture enhancement with a single click - no manual adjustments needed.",
-          "metric": "Fully automatic"
-        },
-        {
-          "title": "Versatile Quality Boost",
-          "description": "Works on pictures from any source - phone cameras, old photos, screenshots, scans, downloads.",
-          "metric": "Universal compatibility"
-        },
-        {
-          "title": "Professional Output",
-          "description": "Achieve results that look like they were professionally edited, in seconds instead of hours.",
-          "metric": "Pro-quality results"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Your Picture",
-          "description": "Drag and drop any picture or click to browse. Accepts all common image formats up to 25MB."
-        },
-        {
-          "step": 2,
-          "title": "AI Quality Analysis",
-          "description": "Our AI analyzes your picture to identify all quality issues - resolution, color, sharpness, noise."
-        },
-        {
-          "step": 3,
-          "title": "Comprehensive Enhancement",
-          "description": "Multiple AI models work together to fix each issue and optimize overall picture quality."
-        },
-        {
-          "step": 4,
-          "title": "Download Enhanced Picture",
-          "description": "Preview the dramatic improvement and download your high-quality picture with no watermarks."
-        }
-      ],
-      "faq": [
-        {
-          "question": "What types of pictures can be enhanced?",
-          "answer": "All types! Our Picture Quality Enhancer works on photographs, graphics, scanned images, screenshots, and any other picture format. Whether it's a portrait, landscape, product shot, or document scan, the AI adapts its enhancement strategy to suit the content."
-        },
-        {
-          "question": "How much can picture quality be improved?",
-          "answer": "The improvement depends on the starting quality. Low-resolution or compressed pictures can see dramatic improvements. Already high-quality pictures will see subtle but noticeable enhancements. Most users are surprised by how much better their pictures look after AI enhancement."
-        },
-        {
-          "question": "Is this safe for important family pictures?",
-          "answer": "Absolutely. Your original picture is never modified - we create an enhanced copy. Your images are automatically deleted from our servers within 1 hour, and we never use them for any purpose except your enhancement request."
-        },
-        {
-          "question": "Can I use enhanced pictures commercially?",
-          "answer": "Yes! You retain full rights to your enhanced pictures. Use them for any purpose - personal, commercial, print, web, or anything else. No attribution required."
-        }
-      ],
-      "relatedTools": ["photo-quality-enhancer", "ai-image-enhancer"],
-      "relatedGuides": ["how-to-upsize-images", "how-to-upscale-images"],
-      "ctaText": "Enhance Picture Free",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "ai-image-enlarger",
-      "title": "AI Image Enlarger",
-      "metaTitle": "AI Image Enlarger - Enlarge Images Without Quality Loss | MyImageUpscaler",
-      "metaDescription": "Enlarge images up to 8x with AI technology. Increase image size without losing quality. Free online tool with instant results.",
-      "h1": "AI Image Enlarger - Increase Image Size Without Quality Loss",
-      "intro": "Enlarge images to any size with AI-powered upscaling. Increase resolution up to 8x while maintaining perfect clarity and detail.",
-      "primaryKeyword": "ai image enlarger",
-      "secondaryKeywords": ["image enlarger ai", "ai enlarge image", "enlarge image ai"],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "AI Image Enlarger",
-      "description": "Enlarge images to any size without the blur and pixelation of traditional methods. Our AI Image Enlarger uses advanced neural networks to intelligently reconstruct details as it increases image dimensions, delivering sharp, clear results at any scale.",
-      "features": [
-        {
-          "title": "Up to 8x Enlargement",
-          "description": "Increase image dimensions up to 800% while maintaining or improving quality through AI reconstruction."
-        },
-        {
-          "title": "Smart Detail Generation",
-          "description": "AI doesn't just stretch pixels - it generates realistic details to fill the enlarged canvas."
-        },
-        {
-          "title": "Edge Preservation",
-          "description": "Maintains sharp, clean edges without the jagged pixelation of traditional enlargement."
-        },
-        {
-          "title": "Text & Logo Protection",
-          "description": "Special handling for text, logos, and graphics keeps them sharp and readable at any size."
-        },
-        {
-          "title": "Flexible Output Sizes",
-          "description": "Choose exact dimensions or scale by factor - 2x, 4x, or 8x your original size."
-        },
-        {
-          "title": "Format Options",
-          "description": "Output in JPEG, PNG, or WebP format with optimized compression settings."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Print Preparation",
-          "description": "Enlarge web images to meet print resolution requirements (300 DPI) for posters, banners, and more.",
-          "example": "Turn a 500px logo into a 4000px print-ready version"
-        },
-        {
-          "title": "E-commerce",
-          "description": "Enlarge product images to meet marketplace size requirements without quality loss.",
-          "example": "Scale up product photos to Amazon's 1000px minimum"
-        },
-        {
-          "title": "Digital Displays",
-          "description": "Create high-resolution images for large screens, projectors, and digital signage.",
-          "example": "Enlarge images for 4K TV presentations"
-        },
-        {
-          "title": "Graphic Design",
-          "description": "Upsize elements for composite designs without degrading quality.",
-          "example": "Enlarge background textures for large-format designs"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "No Quality Degradation",
-          "description": "Unlike traditional enlargement that creates blur and pixelation, AI maintains sharp details.",
-          "metric": "Crystal-clear at any size"
-        },
-        {
-          "title": "Massive Size Increase",
-          "description": "Turn tiny thumbnails into poster-sized images without visible quality loss.",
-          "metric": "Up to 8x larger"
-        },
-        {
-          "title": "Time-Saving",
-          "description": "What would take hours of manual work in Photoshop happens automatically in under a minute.",
-          "metric": "60 second processing"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Small Image",
-          "description": "Select the image you want to enlarge. Works great even with very small source images."
-        },
-        {
-          "step": 2,
-          "title": "Choose Enlargement Factor",
-          "description": "Select 2x, 4x, or 8x scaling, or specify exact output dimensions you need."
-        },
-        {
-          "step": 3,
-          "title": "AI Reconstruction",
-          "description": "Neural networks analyze your image and intelligently generate new details as they enlarge it."
-        },
-        {
-          "step": 4,
-          "title": "Download Large Image",
-          "description": "Get your enlarged, high-quality image ready for print, web, or any other use."
-        }
-      ],
-      "faq": [
-        {
-          "question": "How is AI enlargement different from normal resizing?",
-          "answer": "Traditional resizing (like in Photoshop's Image Size) just stretches pixels, creating blur and pixelation. AI enlargement actually generates new detail by analyzing patterns in your image and reconstructing it at higher resolution, resulting in sharp, clear results."
-        },
-        {
-          "question": "Can you really enlarge images 8x without quality loss?",
-          "answer": "Yes! Our AI doesn't just stretch pixels - it intelligently reconstructs the image at higher resolution. While it can't add information that was never captured, it can generate realistic details that make the enlarged image look natural and sharp, not blurry or pixelated."
-        },
-        {
-          "question": "What's the largest size I can enlarge to?",
-          "answer": "You can enlarge up to 8x the original dimensions. For example, a 500x500px image can become 4000x4000px. If you need larger, you can download the 8x version and enlarge it again for even higher resolution."
-        },
-        {
-          "question": "Will enlarged images work for professional printing?",
-          "answer": "Absolutely. AI-enlarged images meet professional print standards. Many of our users enlarge images to achieve 300 DPI at poster sizes and beyond, with excellent print results."
-        }
-      ],
-      "relatedTools": ["ai-image-upscaler", "image-enlarger"],
-      "relatedGuides": ["how-to-upsize-images"],
-      "ctaText": "Enlarge Image Free",
-      "ctaUrl": "/upscaler"
-    },
-    {
-      "slug": "image-enlarger",
-      "title": "Image Enlarger",
-      "metaTitle": "Image Enlarger - Enlarge Photos & Pictures Online Free | MyImageUpscaler",
-      "metaDescription": "Enlarge images, photos, and pictures online for free. Increase image size without blur. Professional quality in seconds.",
-      "h1": "Image Enlarger - Make Images Bigger Without Losing Quality",
-      "intro": "Enlarge any image to the exact size you need without blur or pixelation. Perfect for print, web, and digital displays.",
-      "primaryKeyword": "image enlarger",
-      "secondaryKeywords": [
-        "photo enlarger",
-        "picture enlarger",
-        "image enlarger online",
-        "photo enlarger online"
-      ],
-      "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "Image Enlarger",
-      "description": "Make images bigger without sacrificing quality. Our Image Enlarger uses proven upscaling technology to increase image dimensions while preserving sharpness, detail, and clarity - perfect for photos, graphics, logos, and more.",
-      "features": [
-        {
-          "title": "Precise Size Control",
-          "description": "Specify exact dimensions in pixels or scale by percentage for perfect sizing every time."
-        },
-        {
-          "title": "Quality Preservation",
-          "description": "Advanced algorithms maintain sharpness and detail as images are enlarged."
-        },
-        {
-          "title": "Bulk Enlargement",
-          "description": "Process multiple images at once with consistent sizing across your entire batch."
-        },
-        {
-          "title": "Aspect Ratio Lock",
-          "description": "Automatically maintains proper proportions or allows custom aspect ratios if needed."
-        },
-        {
-          "title": "Format Flexibility",
-          "description": "Accepts and outputs all common formats - JPEG, PNG, WebP, GIF, and more."
-        },
-        {
-          "title": "No Size Limits",
-          "description": "Enlarge images to any practical size for digital or print use."
-        }
-      ],
-      "useCases": [
-        {
-          "title": "Photo Printing",
-          "description": "Enlarge photos to standard print sizes - 4x6, 8x10, 11x14, poster sizes, and beyond.",
-          "example": "Convert phone photos to 8x10 inch prints at 300 DPI"
-        },
-        {
-          "title": "Website Graphics",
-          "description": "Size images exactly to your website's specifications for perfect display.",
-          "example": "Enlarge hero images to 1920x1080 for full-screen banners"
-        },
-        {
-          "title": "Marketplace Images",
-          "description": "Meet size requirements for Amazon, eBay, Etsy, and other marketplaces.",
-          "example": "Enlarge product photos to meet 1000x1000px minimums"
-        },
-        {
-          "title": "Profile Pictures",
-          "description": "Resize small profile images for use on high-resolution displays and prints.",
-          "example": "Enlarge LinkedIn profile photo for conference materials"
-        }
-      ],
-      "benefits": [
-        {
-          "title": "Exact Sizing",
-          "description": "Get precisely the dimensions you need without trial and error or complex calculations.",
-          "metric": "Pixel-perfect sizing"
-        },
-        {
-          "title": "Universal Solution",
-          "description": "Works on any image type - photos, graphics, logos, screenshots, scans, and more.",
-          "metric": "All image types"
-        },
-        {
-          "title": "Fast Processing",
-          "description": "Enlarge images in seconds, not minutes. Perfect for urgent projects and large batches.",
-          "metric": "Instant results"
-        }
-      ],
-      "howItWorks": [
-        {
-          "step": 1,
-          "title": "Upload Image",
-          "description": "Select the image or photo you want to make bigger. Any format, any size."
-        },
-        {
-          "step": 2,
-          "title": "Set Target Size",
-          "description": "Enter desired dimensions, choose a scaling factor, or select from common presets."
-        },
-        {
-          "step": 3,
-          "title": "Automatic Enlargement",
-          "description": "Our system enlarges your image using quality-preserving algorithms."
-        },
-        {
-          "step": 4,
-          "title": "Download Enlarged Image",
-          "description": "Get your perfectly-sized image ready to use for print, web, or any purpose."
-        }
-      ],
-      "faq": [
-        {
-          "question": "Can I enlarge images for professional printing?",
-          "answer": "Yes! Our Image Enlarger is perfect for print preparation. Enlarge images to meet the standard 300 DPI requirement for professional printing. For example, to print an 8x10 inch photo at 300 DPI, you need 2400x3000 pixels - easily achieved with our enlarger."
-        },
-        {
-          "question": "What's the maximum size I can enlarge to?",
-          "answer": "There's no practical limit. You can enlarge images to thousands of pixels in each dimension. However, keep in mind that extreme enlargement (10x+) from very small sources may show some quality limitations. For best results, we recommend AI-powered enlargement for factors above 4x."
-        },
-        {
-          "question": "Will my enlarged images look blurry?",
-          "answer": "Our Image Enlarger uses quality-preserving algorithms to minimize blur. Small to moderate enlargements (2-4x) typically look excellent. For larger enlargements or when quality is critical, consider using our AI Image Enlarger which actively improves quality as it upscales."
-        },
-        {
-          "question": "Can I enlarge logos and graphics with text?",
-          "answer": "Absolutely. The Image Enlarger works great for logos, graphics, and images with text. For critical business graphics, we recommend using our AI Image Enlarger which has specialized text-preservation algorithms for the sharpest possible results."
-        }
-      ],
-      "relatedTools": ["ai-image-enlarger", "ai-image-upscaler"],
-      "relatedGuides": ["how-to-upsize-images", "how-to-upscale-images"],
-      "ctaText": "Enlarge Image Free",
       "ctaUrl": "/upscaler"
     }
   ],
   "meta": {
-    "totalPages": 8,
-    "lastUpdated": "2025-12-10T00:00:00Z"
+    "totalPages": 2,
+    "lastUpdated": "2025-12-19T00:00:00Z"
   }
 }

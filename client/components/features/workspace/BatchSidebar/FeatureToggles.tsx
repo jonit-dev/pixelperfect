@@ -18,7 +18,7 @@ export const FeatureToggles: React.FC<IFeatureTogglesProps> = ({
 }) => {
   return (
     <div className="space-y-3">
-      <label className="text-sm font-medium text-slate-700">Additional Options</label>
+      <label className="text-sm font-medium text-muted-foreground">Additional Options</label>
 
       <label className="flex items-center space-x-3 cursor-pointer">
         <input
@@ -28,8 +28,8 @@ export const FeatureToggles: React.FC<IFeatureTogglesProps> = ({
           disabled={disabled}
           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
         />
-        <Type className="h-4 w-4 text-slate-500" />
-        <span className="text-sm text-slate-700">Preserve Text</span>
+        <Type className="h-4 w-4 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">Preserve Text</span>
       </label>
 
       <label className="flex items-center space-x-3 cursor-pointer">
@@ -40,8 +40,8 @@ export const FeatureToggles: React.FC<IFeatureTogglesProps> = ({
           disabled={disabled}
           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
         />
-        <UserSquare2 className="h-4 w-4 text-slate-500" />
-        <span className="text-sm text-slate-700">Enhance Face</span>
+        <UserSquare2 className="h-4 w-4 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">Enhance Face</span>
       </label>
     </div>
   );

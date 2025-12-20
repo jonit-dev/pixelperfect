@@ -117,13 +117,13 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[95vh] overflow-hidden flex flex-col"
+        className="relative bg-surface rounded-lg shadow-xl w-full max-w-3xl max-h-[95vh] overflow-hidden flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 text-slate-400 hover:text-slate-600 transition-colors bg-white rounded-full shadow-md"
+          className="absolute top-4 right-4 z-10 p-2 text-muted-foreground hover:text-muted-foreground transition-colors bg-surface rounded-full shadow-md"
           aria-label="Close"
         >
           <svg
@@ -148,7 +148,7 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
             <div className="flex items-center justify-center py-20">
               <div className="flex flex-col items-center gap-4">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-                <p className="text-slate-600">Loading checkout...</p>
+                <p className="text-muted-foreground">Loading checkout...</p>
               </div>
             </div>
           )}

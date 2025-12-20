@@ -8,9 +8,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div className="space-y-6">
-      <div className="border-b border-slate-200 pb-4">
-        <h1 className="text-2xl font-semibold text-slate-900">Admin Panel</h1>
-        <p className="text-sm text-slate-500 mt-1">Manage users, subscriptions, and credits</p>
+      <div className="border-b border-white/10 pb-4">
+        <h1 className="text-2xl font-semibold text-primary">Admin Panel</h1>
+        <p className="text-sm text-muted-foreground mt-1">
+          Manage users, subscriptions, and credits
+        </p>
       </div>
       {children}
     </div>

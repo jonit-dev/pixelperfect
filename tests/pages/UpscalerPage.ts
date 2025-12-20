@@ -49,7 +49,7 @@ export class UpscalerPage extends BasePage {
     this.fileInput = page.locator('input[type="file"]').first();
 
     // Workspace sections
-    this.workspace = page.locator('.bg-white.rounded-2xl.shadow-xl');
+    this.workspace = page.locator('.bg-surface.rounded-2xl.shadow-xl');
     this.batchSidebar = page.locator('[class*="BatchSidebar"]').or(page.locator('.md\\:w-72'));
     this.previewArea = page.locator('[class*="PreviewArea"]').or(page.locator('.flex-grow.p-6'));
     this.queueStrip = page.locator('[class*="QueueStrip"]').or(page.locator('.border-t'));

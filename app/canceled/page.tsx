@@ -11,14 +11,14 @@ export default function CanceledPage() {
         <div className="max-w-lg mx-auto text-center">
           {/* Canceled Icon */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100">
-              <XCircle className="h-12 w-12 text-slate-400" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-surface-light">
+              <XCircle className="h-12 w-12 text-muted-foreground" />
             </div>
           </div>
 
           {/* Canceled Message */}
           <h1 className="text-3xl font-bold mb-4">Payment Canceled</h1>
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-lg text-muted-foreground mb-8">
             Your payment was canceled and you have not been charged. If you experienced any issues,
             please don&apos;t hesitate to reach out.
           </p>
@@ -34,25 +34,25 @@ export default function CanceledPage() {
             </Link>
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
             >
               Go to Dashboard
             </Link>
           </div>
 
           {/* Help Section */}
-          <div className="mt-12 p-6 bg-slate-100 rounded-xl">
+          <div className="mt-12 p-6 bg-surface-light rounded-xl">
             <div className="flex items-center justify-center gap-2 mb-3">
               <HelpCircle className="h-5 w-5 text-indigo-600" />
               <h3 className="font-semibold">Need Help?</h3>
             </div>
-            <p className="text-sm text-slate-600 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               If you have questions about our pricing or need assistance with your purchase, our
               support team is here to help.
             </p>
             <a
               href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
-              className="inline-flex items-center justify-center px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200 rounded-lg transition-colors"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-surface-light rounded-lg transition-colors"
             >
               Contact Support
             </a>

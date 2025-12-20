@@ -64,8 +64,8 @@ export const ImageComparison: React.FC<IImageComparisonProps> = ({
   };
 
   return (
-    <div className="w-full h-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 flex flex-col">
-      <div className="p-3 md:p-4 border-b border-slate-100 flex flex-wrap md:flex-nowrap justify-between items-center gap-2 shrink-0">
+    <div className="w-full h-full max-w-6xl mx-auto bg-surface rounded-xl shadow-lg overflow-hidden border border-white/10 flex flex-col">
+      <div className="p-3 md:p-4 border-b border-white/10 flex flex-wrap md:flex-nowrap justify-between items-center gap-2 shrink-0">
         <div className="flex items-center">
           <span className="inline-flex items-center px-2 md:px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 whitespace-nowrap">
             ✓ Enhanced
@@ -74,7 +74,7 @@ export const ImageComparison: React.FC<IImageComparisonProps> = ({
         <div className="flex items-center gap-1 md:gap-2">
           <button
             onClick={toggleZoom}
-            className="p-2 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors"
+            className="p-2 text-muted-foreground hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors"
             title="Toggle Zoom"
           >
             {zoom === 1 ? <ZoomIn size={18} /> : <ZoomOut size={18} />}
@@ -94,7 +94,7 @@ export const ImageComparison: React.FC<IImageComparisonProps> = ({
       >
         {/* Images container with zoom support */}
         <div
-          className="relative w-full h-full transition-transform duration-300 ease-in-out origin-center flex items-center justify-center bg-slate-100"
+          className="relative w-full h-full transition-transform duration-300 ease-in-out origin-center flex items-center justify-center bg-surface-light"
           style={{ transform: `scale(${zoom})` }}
         >
           {/* After Image (Background) */}
@@ -127,10 +127,10 @@ export const ImageComparison: React.FC<IImageComparisonProps> = ({
 
         {/* Slider Handle */}
         <div
-          className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
+          className="absolute top-0 bottom-0 w-1 bg-surface shadow-[0_0_10px_rgba(0,0,0,0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-surface rounded-full shadow-lg flex items-center justify-center">
             <ArrowLeftRight size={16} className="text-indigo-600" />
           </div>
         </div>

@@ -15,40 +15,40 @@ export default function SettingsPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Settings</h1>
-        <p className="text-slate-500 mt-1">Manage your account preferences</p>
+        <h1 className="text-2xl font-bold text-white">Settings</h1>
+        <p className="text-muted-foreground mt-1">Manage your account preferences</p>
       </div>
 
       {/* Profile Settings */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <div className="bg-surface rounded-xl border border-white/10 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center">
-            <User size={20} className="text-indigo-600" />
+          <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+            <User size={20} className="text-accent" />
           </div>
           <div>
-            <h2 className="font-semibold text-slate-900">Profile</h2>
-            <p className="text-sm text-slate-500">Your account information</p>
+            <h2 className="font-semibold text-white">Profile</h2>
+            <p className="text-sm text-muted-foreground">Your account information</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-white mb-1">Email</label>
             <input
               type="email"
               value={user?.email || ''}
               disabled
-              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-500"
+              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg text-muted-foreground"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Display Name</label>
+            <label className="block text-sm font-medium text-white mb-1">Display Name</label>
             <input
               type="text"
               value={user?.name || ''}
               placeholder="Not set"
               disabled
-              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-500"
+              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg text-muted-foreground"
             />
           </div>
         </div>
@@ -56,25 +56,25 @@ export default function SettingsPage() {
 
       {/* Security Settings */}
       {isPasswordUser && (
-        <div className="bg-white rounded-xl border border-slate-200 p-6">
+        <div className="bg-surface rounded-xl border border-white/10 p-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
-              <Lock size={20} className="text-slate-600" />
+            <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
+              <Lock size={20} className="text-muted-foreground" />
             </div>
             <div>
-              <h2 className="font-semibold text-slate-900">Security</h2>
-              <p className="text-sm text-slate-500">Password and authentication</p>
+              <h2 className="font-semibold text-white">Security</h2>
+              <p className="text-sm text-muted-foreground">Password and authentication</p>
             </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-medium text-slate-900">Password</p>
-              <p className="text-sm text-slate-500">Change your account password</p>
+              <p className="font-medium text-white">Password</p>
+              <p className="text-sm text-muted-foreground">Change your account password</p>
             </div>
             <button
               onClick={() => openAuthModal('changePassword')}
-              className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"
+              className="px-4 py-2 border border-white/10 text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors"
             >
               Change Password
             </button>
@@ -83,37 +83,39 @@ export default function SettingsPage() {
       )}
 
       {/* Notification Settings */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <div className="bg-surface rounded-xl border border-white/10 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
-            <Bell size={20} className="text-slate-600" />
+          <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
+            <Bell size={20} className="text-muted-foreground" />
           </div>
           <div>
-            <h2 className="font-semibold text-slate-900">Notifications</h2>
-            <p className="text-sm text-slate-500">Email and notification preferences</p>
+            <h2 className="font-semibold text-white">Notifications</h2>
+            <p className="text-sm text-muted-foreground">Email and notification preferences</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <label className="flex items-center justify-between cursor-pointer">
             <div>
-              <p className="font-medium text-slate-900">Product updates</p>
-              <p className="text-sm text-slate-500">News about product and feature updates</p>
+              <p className="font-medium text-white">Product updates</p>
+              <p className="text-sm text-muted-foreground">
+                News about product and feature updates
+              </p>
             </div>
             <input
               type="checkbox"
               defaultChecked
-              className="w-5 h-5 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
+              className="w-5 h-5 text-accent rounded border-white/10 focus:ring-accent"
             />
           </label>
           <label className="flex items-center justify-between cursor-pointer">
             <div>
-              <p className="font-medium text-slate-900">Marketing emails</p>
-              <p className="text-sm text-slate-500">Promotions and special offers</p>
+              <p className="font-medium text-white">Marketing emails</p>
+              <p className="text-sm text-muted-foreground">Promotions and special offers</p>
             </div>
             <input
               type="checkbox"
-              className="w-5 h-5 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
+              className="w-5 h-5 text-accent rounded border-white/10 focus:ring-accent"
             />
           </label>
         </div>

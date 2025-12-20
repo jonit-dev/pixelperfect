@@ -127,13 +127,13 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
   const placeholderPrompt = generatePrompt(config);
 
   return (
-    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-slate-200 bg-white flex flex-col z-20 shadow-sm h-full">
+    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-white/10 bg-surface flex flex-col z-20 shadow-sm h-full">
       {/* Header */}
-      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-slate-100 shrink-0">
-        <h3 className="font-semibold text-slate-900 flex items-center gap-2 mb-1 text-base md:text-base">
+      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-white/10 shrink-0">
+        <h3 className="font-semibold text-white flex items-center gap-2 mb-1 text-base md:text-base">
           <Settings size={16} className="md:size-[18px]" /> Batch Settings
         </h3>
-        <p className="text-xs text-slate-500">Applies to all {queue.length} images</p>
+        <p className="text-xs text-muted-foreground">Applies to all {queue.length} images</p>
       </div>
 
       {/* Action Panel - Moved to top for better visibility */}
@@ -157,8 +157,10 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
 
       {/* Divider */}
       <div className="px-4 md:px-6 py-3 md:py-4 shrink-0">
-        <div className="h-px bg-slate-200"></div>
-        <p className="text-xs font-medium text-slate-500 mt-3 md:mt-4 mb-2">Processing Options</p>
+        <div className="h-px bg-surface/10"></div>
+        <p className="text-xs font-medium text-muted-foreground mt-3 md:mt-4 mb-2">
+          Processing Options
+        </p>
       </div>
 
       {/* Controls - Scrollable */}
@@ -191,10 +193,10 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
         {/* 4. Ultra tier specific config (conditional) */}
         {config.qualityTier === 'ultra' && (
           <div className="space-y-4 animate-fade-in">
-            <div className="p-4 border border-indigo-200 rounded-lg bg-indigo-50/30">
-              <h4 className="text-sm font-medium text-indigo-900 mb-3">Ultra Settings</h4>
+            <div className="p-4 border border-accent/20 rounded-lg bg-accent/10">
+              <h4 className="text-sm font-medium text-white mb-3">Ultra Settings</h4>
               {/* Add ultra-specific configuration here */}
-              <p className="text-xs text-indigo-700">
+              <p className="text-xs text-muted-foreground">
                 Ultra includes maximum quality processing with 4K/8K output support.
               </p>
             </div>

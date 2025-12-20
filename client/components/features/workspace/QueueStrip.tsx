@@ -26,15 +26,15 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
   return (
     <div
       className={cn(
-        'bg-white border-t md:border-t-0 border-slate-200 p-4',
+        'bg-surface border-t md:border-t-0 border-white/10 p-4',
         // Desktop: horizontal strip with fixed height, Mobile: vertical list that fills available space
         'h-full md:h-32 flex flex-col md:flex-row gap-3 md:gap-4 overflow-y-auto md:overflow-y-hidden md:overflow-x-auto custom-scrollbar'
       )}
     >
       {/* Header - Mobile only */}
       <div className="md:hidden flex items-center justify-between mb-2">
-        <h3 className="font-semibold text-slate-900">Processing Queue</h3>
-        <span className="text-sm text-slate-500">
+        <h3 className="font-semibold text-white">Processing Queue</h3>
+        <span className="text-sm text-muted-foreground">
           {queue.length}{' '}
           {batchLimit !== undefined && `/ ${batchLimit === Infinity ? '∞' : batchLimit}`} items
         </span>
@@ -56,8 +56,8 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             'min-h-[64px] md:min-h-[96px]',
             // Disabled state styling
             isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
-              ? '!border-slate-200 !bg-slate-50 !cursor-not-allowed'
-              : '!border-slate-300 hover:!bg-slate-100'
+              ? '!border-white/5 !bg-surface-light/50 !cursor-not-allowed'
+              : '!border-white/10 hover:!bg-surface-light'
           )}
         >
           <div className="flex flex-col items-center justify-center h-full w-full pointer-events-none">
@@ -65,16 +65,16 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
               className={cn(
                 'w-5 h-5 md:w-6 md:h-6',
                 isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
-                  ? 'text-slate-300'
-                  : 'text-slate-400'
+                  ? 'text-muted-foreground/50'
+                  : 'text-muted-foreground'
               )}
             />
             <span
               className={cn(
                 'text-xs mt-1',
                 isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
-                  ? 'text-slate-400'
-                  : 'text-slate-500'
+                  ? 'text-muted-foreground/50'
+                  : 'text-muted-foreground'
               )}
             >
               {batchLimit !== undefined && queue.length >= batchLimit
@@ -99,8 +99,8 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             'w-full h-16 md:w-24 md:h-24 shrink-0',
             // Active state
             activeId === item.id
-              ? 'border-indigo-600 ring-2 ring-indigo-200'
-              : 'border-slate-200 hover:border-indigo-300',
+              ? 'border-accent ring-2 ring-accent/20'
+              : 'border-white/10 hover:border-accent/50',
             // Rounded corners
             'rounded-lg'
           )}
@@ -119,7 +119,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
           {/* Mobile Item Info */}
           <div className="flex-1 md:hidden">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-slate-900 truncate max-w-[120px]">
+              <span className="text-sm font-medium text-white truncate max-w-[120px]">
                 {item.file.name}
               </span>
               <div className="flex items-center gap-2">
@@ -135,7 +135,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
                   </div>
                 )}
                 {item.status === ProcessingStatus.PROCESSING && (
-                  <div className="bg-indigo-600 p-0.5 rounded-full text-white animate-spin">
+                  <div className="bg-accent p-0.5 rounded-full text-white animate-spin">
                     <Loader2 size={12} />
                   </div>
                 )}
@@ -146,7 +146,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
                       e.stopPropagation();
                       onRemove(item.id);
                     }}
-                    className="p-2 -mr-1 text-slate-400 hover:text-red-500 active:text-red-600 active:bg-red-50 rounded-lg transition-colors touch-manipulation"
+                    className="p-2 -mr-1 text-muted-foreground hover:text-red-400 active:text-red-500 active:bg-red-500/20 rounded-lg transition-colors touch-manipulation"
                     aria-label="Remove image"
                   >
                     <X size={18} />
@@ -155,14 +155,14 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
               </div>
             </div>
             {/* Progress bar - mobile */}
-            <div className="mt-1 h-1 bg-slate-200 rounded-full overflow-hidden">
+            <div className="mt-1 h-1 bg-surface/10 rounded-full overflow-hidden">
               {item.status === ProcessingStatus.COMPLETED ? (
                 <div className="h-full bg-green-500 w-full"></div>
               ) : item.status === ProcessingStatus.ERROR ? (
                 <div className="h-full bg-red-500 w-full"></div>
               ) : (
                 <div
-                  className="h-full bg-indigo-600 transition-all duration-300"
+                  className="h-full bg-accent transition-all duration-300"
                   style={{ width: `${item.progress}%` }}
                 ></div>
               )}
@@ -185,14 +185,14 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             )}
 
             {/* Status Indicators - Desktop */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-200">
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-surface/10">
               {item.status === ProcessingStatus.COMPLETED ? (
                 <div className="h-full bg-green-500 w-full"></div>
               ) : item.status === ProcessingStatus.ERROR ? (
                 <div className="h-full bg-red-500 w-full"></div>
               ) : (
                 <div
-                  className="h-full bg-indigo-600 transition-all duration-300"
+                  className="h-full bg-accent transition-all duration-300"
                   style={{ width: `${item.progress}%` }}
                 ></div>
               )}
@@ -211,7 +211,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
                 </div>
               )}
               {item.status === ProcessingStatus.PROCESSING && (
-                <div className="bg-indigo-900/50 p-1 rounded-full text-white shadow-sm animate-spin">
+                <div className="bg-accent/50 p-1 rounded-full text-white shadow-sm animate-spin">
                   <Loader2 size={14} />
                 </div>
               )}

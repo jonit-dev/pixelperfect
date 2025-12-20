@@ -57,66 +57,70 @@ export function CreditPackSelector({
         {packs.map(pack => (
           <div
             key={pack.key}
-            className={`relative bg-white border rounded-xl p-6 transition-all cursor-pointer hover:border-indigo-500 hover:shadow-md ${
-              selectedPack === pack.key ? 'border-indigo-500 ring-2 ring-indigo-500' : 'border-slate-200'
-            } ${pack.popular ? 'border-indigo-300' : ''}`}
+            className={`relative glass border rounded-xl p-6 transition-all cursor-pointer hover:border-accent/50 hover:shadow-md ${
+              selectedPack === pack.key ? 'border-accent ring-2 ring-accent' : 'border-white/10'
+            } ${pack.popular ? 'border-accent/30' : ''}`}
             onClick={() => handlePurchase(pack)}
           >
-          {pack.popular && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full">
-              Best Value
-            </div>
-          )}
-
-          <div className="text-center mb-4">
-            <h3 className="text-lg font-semibold text-slate-900">{pack.name}</h3>
-            <div className="text-3xl font-bold text-slate-900 mt-2">{formatPrice(pack.priceInCents)}</div>
-          </div>
-
-          <div className="text-center space-y-4">
-            <div className="text-2xl font-semibold text-indigo-600">{pack.credits} credits</div>
-
-            <div className="text-sm text-slate-500">${getPricePerCredit(pack)} per credit</div>
-
-            <ul className="text-sm text-left space-y-2 mt-4">
-              <li className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <span>Never expire</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <span>Use anytime</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <span>Stack with subscription</span>
-              </li>
-            </ul>
-
-            <button
-              className={`w-full px-4 py-3 rounded-lg font-medium transition-colors mt-4 ${
-                pack.popular
-                  ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
-              }`}
-            >
-              <div className="flex items-center justify-center gap-2">
-                <CreditCard className="h-4 w-4" />
-                <span>Buy Now</span>
+            {pack.popular && (
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full">
+                Best Value
               </div>
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
+            )}
 
-    {showCheckoutModal && selectedPriceId && (
-      <CheckoutModal
-        priceId={selectedPriceId}
-        onClose={handleCheckoutClose}
-        onSuccess={handleCheckoutSuccess}
-      />
-    )}
+            <div className="text-center mb-4">
+              <h3 className="text-lg font-semibold text-white">{pack.name}</h3>
+              <div className="text-3xl font-bold text-white mt-2">
+                {formatPrice(pack.priceInCents)}
+              </div>
+            </div>
+
+            <div className="text-center space-y-4">
+              <div className="text-2xl font-semibold text-accent">{pack.credits} credits</div>
+
+              <div className="text-sm text-muted-foreground">
+                ${getPricePerCredit(pack)} per credit
+              </div>
+
+              <ul className="text-sm text-left space-y-2 mt-4">
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                  <span className="text-muted-foreground">Never expire</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                  <span className="text-muted-foreground">Use anytime</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                  <span className="text-muted-foreground">Stack with subscription</span>
+                </li>
+              </ul>
+
+              <button
+                className={`w-full px-4 py-3 rounded-lg font-medium transition-colors mt-4 ${
+                  pack.popular
+                    ? 'bg-accent hover:bg-accent-hover text-white glow-blue'
+                    : 'glass hover:bg-surface/10 text-white'
+                }`}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <CreditCard className="h-4 w-4" />
+                  <span>Buy Now</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {showCheckoutModal && selectedPriceId && (
+        <CheckoutModal
+          priceId={selectedPriceId}
+          onClose={handleCheckoutClose}
+          onSuccess={handleCheckoutSuccess}
+        />
+      )}
     </>
   );
 }

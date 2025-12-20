@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import interactiveToolsData from '@/app/seo/data/interactive-tools.json';
 import { InteractiveToolPageTemplate } from '@/app/(pseo)/_components/pseo/templates/InteractiveToolPageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
+import { generateToolSchema } from '@/lib/seo/schema-generator';
 import { clientEnv } from '@shared/config/env';
 import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 
@@ -67,20 +68,7 @@ export default async function ConversionToolPage({ params }: IPageProps) {
     notFound();
   }
 
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: tool.toolName,
-    description: tool.description,
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'Web Browser',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    featureList: tool.features.map(f => f.title).join(', '),
-  };
+  const schema = generateToolSchema(tool);
 
   return (
     <>

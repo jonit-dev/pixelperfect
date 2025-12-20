@@ -77,24 +77,21 @@ export function BenefitCard({ benefit }: IBenefitCardProps): ReactElement {
   const icon = getIconForBenefit(benefit.title);
 
   return (
-    <div className="group p-8 bg-white rounded-xl border border-slate-200 hover:shadow-lg hover:border-green-200 transition-all duration-300 h-full flex flex-col">
-      <div
-        className="mb-6 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-md"
-        style={{
-          background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-        }}
-      >
+    <div className="group glass-card animated-border h-full flex flex-col">
+      <div className="mb-6 w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-md bg-success">
         {icon}
       </div>
 
-      <h3 className="text-xl font-bold mb-3 text-slate-900">{benefit.title}</h3>
-      <p className="text-slate-600 text-base leading-relaxed mb-4 flex-grow">
+      <h3 className="text-xl font-bold mb-3 text-text-primary group-hover:text-accent transition-colors">
+        {benefit.title}
+      </h3>
+      <p className="text-text-secondary text-base leading-relaxed mb-4 flex-grow">
         {benefit.description}
       </p>
 
       {benefit.metric && (
         <div className="mt-auto pt-4">
-          <div className="inline-flex items-center gap-2 text-base font-semibold text-green-700 bg-green-50 px-5 py-2.5 rounded-lg border border-green-200">
+          <div className="inline-flex items-center gap-2 text-base font-semibold text-white bg-accent/20 px-5 py-2.5 rounded-lg border border-accent/30">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"

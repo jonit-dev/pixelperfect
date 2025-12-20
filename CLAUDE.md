@@ -3,6 +3,7 @@
 ## Critical Rules
 
 - **Principles**: Always have these principles when planning or writing code: SOLID, SRP, KISS, DRY, YAGNI.
+- **Check skills**: Before starting any task, check for existing .claude/skills that can help with your context.
 - **Cloudflare Workers**: Code runs on CF Workers free plan (10ms CPU limit). Avoid heavy computation, prefer streaming, use efficient algorithms. Delegate to browser whatever can safely run client-side; if security concerns exist, report and suggest alternatives.
 - **Minimum changes**: Only add minimum necessary changes to make your feature work reliably and bug free.
 - **Verify changes**: Run `yarn verify` after modifications
@@ -15,6 +16,7 @@
   - Do not create any new .md files, documentation, summaries, plans, readmes, guides, or explanatory documents unless explicitly requested by the user.
   - Focus solely on code changes, edits, or implementations. Avoid generating any ancillary files.
   - If documentation is needed, ask for confirmation first instead of auto-generating it.
+- **Theming**: DO NOT HARDCODE COLORS. Use tailwind config tokens (tailwind.config.js)
 
 ## Agents
 

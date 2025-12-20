@@ -32,7 +32,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="animate-pulse text-slate-500">Loading stats...</div>
+        <div className="animate-pulse text-muted-foreground">Loading stats...</div>
       </div>
     );
   }
@@ -101,11 +101,11 @@ interface IStatsCardProps {
 
 function StatsCard({ title, value, icon: Icon, iconBg, iconColor }: IStatsCardProps) {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-6">
+    <div className="bg-surface rounded-lg border border-white/10 p-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-slate-500">{title}</p>
-          <p className="text-2xl font-bold text-slate-900 mt-2">{value.toLocaleString()}</p>
+          <p className="text-sm font-medium text-muted-foreground">{title}</p>
+          <p className="text-2xl font-bold text-primary mt-2">{value.toLocaleString()}</p>
         </div>
         <div className={`p-3 rounded-lg ${iconBg}`}>
           <Icon className={`h-6 w-6 ${iconColor}`} />
@@ -117,23 +117,25 @@ function StatsCard({ title, value, icon: Icon, iconBg, iconColor }: IStatsCardPr
 
 function QuickActionsCard() {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-6">
-      <h2 className="text-lg font-medium text-slate-900 mb-4">Quick Actions</h2>
+    <div className="bg-surface rounded-lg border border-white/10 p-6">
+      <h2 className="text-lg font-medium text-primary mb-4">Quick Actions</h2>
       <div className="space-y-2">
         <Link
           href="/dashboard/admin/users"
-          className="block p-3 rounded-lg hover:bg-slate-50 transition-colors"
+          className="block p-3 rounded-lg hover:bg-surface transition-colors"
         >
-          <div className="font-medium text-slate-900">Manage Users</div>
-          <div className="text-sm text-slate-500">View and edit user accounts</div>
+          <div className="font-medium text-primary">Manage Users</div>
+          <div className="text-sm text-muted-foreground">View and edit user accounts</div>
         </Link>
-        <div className="block p-3 rounded-lg bg-slate-50 opacity-50 cursor-not-allowed">
-          <div className="font-medium text-slate-900">Manage Subscriptions</div>
-          <div className="text-sm text-slate-500">View and modify subscriptions (Coming soon)</div>
+        <div className="block p-3 rounded-lg bg-surface opacity-50 cursor-not-allowed">
+          <div className="font-medium text-primary">Manage Subscriptions</div>
+          <div className="text-sm text-muted-foreground">
+            View and modify subscriptions (Coming soon)
+          </div>
         </div>
-        <div className="block p-3 rounded-lg bg-slate-50 opacity-50 cursor-not-allowed">
-          <div className="font-medium text-slate-900">Credit Operations</div>
-          <div className="text-sm text-slate-500">
+        <div className="block p-3 rounded-lg bg-surface opacity-50 cursor-not-allowed">
+          <div className="font-medium text-primary">Credit Operations</div>
+          <div className="text-sm text-muted-foreground">
             Adjust user credits (Available in user detail)
           </div>
         </div>
@@ -144,9 +146,9 @@ function QuickActionsCard() {
 
 function RecentActivityCard() {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-6">
-      <h2 className="text-lg font-medium text-slate-900 mb-4">Recent Activity</h2>
-      <p className="text-sm text-slate-500">
+    <div className="bg-surface rounded-lg border border-white/10 p-6">
+      <h2 className="text-lg font-medium text-primary mb-4">Recent Activity</h2>
+      <p className="text-sm text-muted-foreground">
         Activity feed will be implemented in a future iteration.
       </p>
     </div>

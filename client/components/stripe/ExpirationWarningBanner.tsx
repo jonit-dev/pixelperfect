@@ -25,7 +25,9 @@ interface IExpirationWarningBannerProps {
  * <ExpirationWarningBanner warningDays={5} />
  * ```
  */
-export function ExpirationWarningBanner({ warningDays = 7 }: IExpirationWarningBannerProps): JSX.Element | null {
+export function ExpirationWarningBanner({
+  warningDays = 7,
+}: IExpirationWarningBannerProps): JSX.Element | null {
   const [profile, setProfile] = useState<IUserProfile | null>(null);
   const [subscription, setSubscription] = useState<ISubscription | null>(null);
   const [loading, setLoading] = useState(true);
@@ -97,19 +99,21 @@ export function ExpirationWarningBanner({ warningDays = 7 }: IExpirationWarningB
 
   return (
     <div
-      className={`rounded-lg p-4 mb-6 ${isUrgent
+      className={`rounded-lg p-4 mb-6 ${
+        isUrgent
           ? 'bg-red-50 border border-red-200'
           : isModerate
             ? 'bg-amber-50 border border-amber-200'
             : 'bg-blue-50 border border-blue-200'
-        }`}
+      }`}
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
         <div className="flex-shrink-0">
           <svg
-            className={`h-5 w-5 ${isUrgent ? 'text-red-600' : isModerate ? 'text-amber-600' : 'text-blue-600'
-              }`}
+            className={`h-5 w-5 ${
+              isUrgent ? 'text-red-600' : isModerate ? 'text-amber-600' : 'text-blue-600'
+            }`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -125,17 +129,22 @@ export function ExpirationWarningBanner({ warningDays = 7 }: IExpirationWarningB
         {/* Content */}
         <div className="flex-1 min-w-0">
           <h3
-            className={`text-sm font-semibold mb-1 ${isUrgent ? 'text-red-900' : isModerate ? 'text-amber-900' : 'text-blue-900'
-              }`}
+            className={`text-sm font-semibold mb-1 ${
+              isUrgent ? 'text-red-900' : isModerate ? 'text-amber-900' : 'text-blue-900'
+            }`}
           >
             {isUrgent ? 'Credits Expiring Soon!' : 'Credits Will Expire'}
           </h3>
           <p
-            className={`text-sm ${isUrgent ? 'text-red-800' : isModerate ? 'text-amber-800' : 'text-blue-800'
-              }`}
+            className={`text-sm ${
+              isUrgent ? 'text-red-800' : isModerate ? 'text-amber-800' : 'text-blue-800'
+            }`}
           >
-            Your <strong>{creditBalance} credit{creditBalance !== 1 ? 's' : ''}</strong> will
-            expire on <strong>{formattedDate}</strong>
+            Your{' '}
+            <strong>
+              {creditBalance} credit{creditBalance !== 1 ? 's' : ''}
+            </strong>{' '}
+            will expire on <strong>{formattedDate}</strong>
             {daysUntilExpiration === 0
               ? ' (today)'
               : daysUntilExpiration === 1
@@ -146,8 +155,9 @@ export function ExpirationWarningBanner({ warningDays = 7 }: IExpirationWarningB
           <div className="mt-2">
             <Link
               href="/upscaler"
-              className={`text-sm font-medium inline-flex items-center gap-1 hover:underline ${isUrgent ? 'text-red-700' : isModerate ? 'text-amber-700' : 'text-blue-700'
-                }`}
+              className={`text-sm font-medium inline-flex items-center gap-1 hover:underline ${
+                isUrgent ? 'text-red-700' : isModerate ? 'text-amber-700' : 'text-blue-700'
+              }`}
             >
               Start upscaling now
               <svg
@@ -175,13 +185,16 @@ export function ExpirationWarningBanner({ warningDays = 7 }: IExpirationWarningB
               (banner as HTMLElement).style.display = 'none';
             }
           }}
-          className="flex-shrink-0 text-slate-400 hover:text-slate-600 transition-colors"
+          className="flex-shrink-0 text-muted-foreground hover:text-muted-foreground transition-colors"
           aria-label="Dismiss"
         >
-          <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-            />
+          <svg
+            className="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
           </svg>
         </button>
       </div>

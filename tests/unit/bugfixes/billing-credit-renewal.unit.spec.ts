@@ -2,7 +2,11 @@ import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import { NextRequest } from 'next/server';
 import { POST } from '../../../app/api/webhooks/stripe/route';
 import { supabaseAdmin } from '../../../server/supabase/supabaseAdmin';
-import { getPlanForPriceId, resolvePlanOrPack, assertKnownPriceId } from '@shared/config/stripe';
+import {
+  getPlanByPriceId,
+  resolvePlanOrPack,
+  assertKnownPriceId,
+} from '@shared/config/subscription.utils';
 
 // Mock dependencies
 vi.mock('@server/stripe', () => ({
@@ -62,39 +66,100 @@ vi.mock('@shared/config/env', () => ({
   },
 }));
 
-vi.mock('@shared/config/stripe', () => ({
-  STRIPE_PRICES: {
-    HOBBY_MONTHLY: 'price_hobby_monthly',
-    PRO_MONTHLY: 'price_pro_monthly',
-    BUSINESS_MONTHLY: 'price_business_monthly',
-  },
-  SUBSCRIPTION_PLANS: {
-    HOBBY_MONTHLY: { creditsPerMonth: 200 },
-    PRO_MONTHLY: { creditsPerMonth: 1000 },
-    BUSINESS_MONTHLY: { creditsPerMonth: 5000 },
-  },
-  getPlanForPriceId: vi.fn(),
-  resolvePlanOrPack: vi.fn(),
-  assertKnownPriceId: vi.fn(),
-}));
+vi.mock('@shared/config/subscription.utils', async importOriginal => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    getPlanByPriceId: vi.fn(priceId => {
+      // Mock implementation that returns plan data for known price IDs
+      const plans = {
+        price_starter_monthly: { creditsPerMonth: 100 },
+        price_hobby_monthly: { creditsPerMonth: 200 },
+        price_pro_monthly: { creditsPerMonth: 1000 },
+        price_business_monthly: { creditsPerMonth: 5000 },
+      };
+      return plans[priceId] || null;
+    }),
+    resolvePlanOrPack: vi.fn(priceId => {
+      // Mock implementation that returns plan data for known price IDs
+      const plans = {
+        price_starter_monthly: { type: 'plan', credits: 100 },
+        price_hobby_monthly: { type: 'plan', credits: 200 },
+        price_pro_monthly: { type: 'plan', credits: 1000 },
+        price_business_monthly: { type: 'plan', credits: 5000 },
+      };
+      return plans[priceId] || null;
+    }),
+    assertKnownPriceId: vi.fn(priceId => {
+      // Mock implementation that returns IPriceIndexEntry structure
+      const plans = {
+        price_starter_monthly: {
+          type: 'plan',
+          key: 'starter',
+          name: 'Starter',
+          stripePriceId: priceId,
+          priceInCents: 499,
+          currency: 'usd',
+          credits: 100,
+          maxRollover: 600,
+        },
+        price_hobby_monthly: {
+          type: 'plan',
+          key: 'hobby',
+          name: 'Hobby',
+          stripePriceId: priceId,
+          priceInCents: 999,
+          currency: 'usd',
+          credits: 200,
+          maxRollover: 1200,
+        },
+        price_pro_monthly: {
+          type: 'plan',
+          key: 'pro',
+          name: 'Professional',
+          stripePriceId: priceId,
+          priceInCents: 1999,
+          currency: 'usd',
+          credits: 1000,
+          maxRollover: 6000,
+        },
+        price_business_monthly: {
+          type: 'plan',
+          key: 'business',
+          name: 'Business',
+          stripePriceId: priceId,
+          priceInCents: 4999,
+          currency: 'usd',
+          credits: 5000,
+          maxRollover: 30000,
+        },
+      };
+      if (!plans[priceId]) {
+        throw new Error(`Unknown price ID: ${priceId}`);
+      }
+      return plans[priceId];
+    }),
+    calculateBalanceWithExpiration: vi.fn(params => {
+      // Return the new balance as current balance + new credits (no expiration)
+      const { currentBalance, newCredits } = params;
+      return {
+        newBalance: currentBalance + newCredits,
+        expiredAmount: 0,
+      };
+    }),
+  };
+});
 
-vi.mock('@shared/config/subscription.utils', () => ({
-  calculateBalanceWithExpiration: vi.fn((params) => {
-    // Return the new balance as current balance + new credits (no expiration)
-    const { currentBalance, newCredits } = params;
-    return {
-      newBalance: currentBalance + newCredits,
-      expiredAmount: 0,
-    };
-  }),
-}));
-
-vi.mock('@shared/config/subscription.config', () => ({
-  getTrialConfig: vi.fn(() => ({
-    enabled: false,
-    trialCredits: null,
-  })),
-}));
+vi.mock('@shared/config/subscription.config', async importOriginal => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    getTrialConfig: vi.fn(() => ({
+      enabled: false,
+      trialCredits: null,
+    })),
+  };
+});
 
 vi.mock('@server/services/SubscriptionCredits', () => ({
   SubscriptionCreditsService: {
@@ -128,7 +193,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
     vi.spyOn(console, 'warn').mockImplementation(() => {});
 
     // Mock plan lookup for different price IDs
-    vi.mocked(getPlanForPriceId).mockImplementation((priceId: string) => {
+    vi.mocked(getPlanByPriceId).mockImplementation((priceId: string) => {
       if (priceId === 'price_hobby_monthly') {
         return { key: 'hobby', name: 'Hobby', creditsPerMonth: 200, maxRollover: 1200 };
       }
@@ -155,16 +220,43 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
       return null;
     });
 
-    // Mock assertKnownPriceId function
+    // Mock assertKnownPriceId function - returns IPriceIndexEntry
     vi.mocked(assertKnownPriceId).mockImplementation((priceId: string) => {
       if (priceId === 'price_hobby_monthly') {
-        return { type: 'plan', name: 'Hobby', creditsPerCycle: 200, maxRollover: 1200 };
+        return {
+          type: 'plan',
+          key: 'hobby',
+          name: 'Hobby',
+          stripePriceId: priceId,
+          priceInCents: 999,
+          currency: 'usd',
+          credits: 200,
+          maxRollover: 1200,
+        };
       }
       if (priceId === 'price_pro_monthly') {
-        return { type: 'plan', name: 'Professional', creditsPerCycle: 1000, maxRollover: 6000 };
+        return {
+          type: 'plan',
+          key: 'pro',
+          name: 'Professional',
+          stripePriceId: priceId,
+          priceInCents: 1999,
+          currency: 'usd',
+          credits: 1000,
+          maxRollover: 6000,
+        };
       }
       if (priceId === 'price_business_monthly') {
-        return { type: 'plan', name: 'Business', creditsPerCycle: 5000, maxRollover: 30000 };
+        return {
+          type: 'plan',
+          key: 'business',
+          name: 'Business',
+          stripePriceId: priceId,
+          priceInCents: 4999,
+          currency: 'usd',
+          credits: 5000,
+          maxRollover: 30000,
+        };
       }
       throw new Error(`Unknown price ID: ${priceId}`);
     });
@@ -212,12 +304,16 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
 
     // Mock profile lookup - the webhook looks up by stripe_customer_id
     const mockEq = vi.fn(() => ({
-      maybeSingle: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 50, purchased_credits_balance: 0 },
-      })),
-      single: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 50, purchased_credits_balance: 0 },
-      })),
+      maybeSingle: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 50, purchased_credits_balance: 0 },
+        })
+      ),
+      single: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 50, purchased_credits_balance: 0 },
+        })
+      ),
     }));
     const mockSelect = vi.fn(() => ({
       eq: mockEq,
@@ -251,7 +347,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
     expect(supabaseAdmin.rpc).toHaveBeenCalledWith('add_subscription_credits', {
       target_user_id: userId,
       amount: 200, // Hobby tier credits
-            ref_id: `invoice_${invoiceId}`,
+      ref_id: `invoice_${invoiceId}`,
       description: 'Monthly subscription renewal - Hobby plan',
     });
     expect(consoleSpy).toHaveBeenCalledWith(
@@ -297,12 +393,16 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
 
     // Mock profile lookup - the webhook looks up by stripe_customer_id
     const mockEq = vi.fn(() => ({
-      maybeSingle: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 100, purchased_credits_balance: 0 },
-      })),
-      single: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 100, purchased_credits_balance: 0 },
-      })),
+      maybeSingle: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 100, purchased_credits_balance: 0 },
+        })
+      ),
+      single: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 100, purchased_credits_balance: 0 },
+        })
+      ),
     }));
     const mockSelect = vi.fn(() => ({
       eq: mockEq,
@@ -336,7 +436,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
     expect(supabaseAdmin.rpc).toHaveBeenCalledWith('add_subscription_credits', {
       target_user_id: userId,
       amount: 1000, // Pro tier credits
-            ref_id: `invoice_${invoiceId}`,
+      ref_id: `invoice_${invoiceId}`,
       description: 'Monthly subscription renewal - Professional plan',
     });
   });
@@ -379,12 +479,16 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
 
     // Mock profile lookup - the webhook looks up by stripe_customer_id
     const mockEq = vi.fn(() => ({
-      maybeSingle: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 500, purchased_credits_balance: 0 },
-      })),
-      single: vi.fn(() => Promise.resolve({
-        data: { id: userId, subscription_credits_balance: 500, purchased_credits_balance: 0 },
-      })),
+      maybeSingle: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 500, purchased_credits_balance: 0 },
+        })
+      ),
+      single: vi.fn(() =>
+        Promise.resolve({
+          data: { id: userId, subscription_credits_balance: 500, purchased_credits_balance: 0 },
+        })
+      ),
     }));
     const mockSelect = vi.fn(() => ({
       eq: mockEq,
@@ -418,7 +522,7 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
     expect(supabaseAdmin.rpc).toHaveBeenCalledWith('add_subscription_credits', {
       target_user_id: userId,
       amount: 5000, // Business tier credits
-            ref_id: `invoice_${invoiceId}`,
+      ref_id: `invoice_${invoiceId}`,
       description: 'Monthly subscription renewal - Business plan',
     });
   });
@@ -489,12 +593,16 @@ describe('Bug Fix: Billing Credit Renewal on invoice.payment_succeeded', () => {
 
     // Mock profile lookup returning null
     const mockEq = vi.fn(() => ({
-      maybeSingle: vi.fn(() => Promise.resolve({
-        data: null,
-      })),
-      single: vi.fn(() => Promise.resolve({
-        data: null,
-      })),
+      maybeSingle: vi.fn(() =>
+        Promise.resolve({
+          data: null,
+        })
+      ),
+      single: vi.fn(() =>
+        Promise.resolve({
+          data: null,
+        })
+      ),
     }));
     const mockSelect = vi.fn(() => ({
       eq: mockEq,

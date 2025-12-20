@@ -11,16 +11,9 @@ const PROFILE_FETCH_TIMEOUT = 1500; // Reduced from 3000ms
  * Fetches the user role from the profiles table.
  * This runs in the background and doesn't block UI rendering.
  */
-async function fetchUserRole(
-  supabase: SupabaseClient,
-  userId: string
-): Promise<'user' | 'admin'> {
+async function fetchUserRole(supabase: SupabaseClient, userId: string): Promise<'user' | 'admin'> {
   try {
-    const profilePromise = supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', userId)
-      .maybeSingle();
+    const profilePromise = supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
 
     const profileTimeout = new Promise<never>((_, reject) => {
       setTimeout(() => reject(new Error('Profile fetch timeout')), PROFILE_FETCH_TIMEOUT);
@@ -52,9 +45,7 @@ async function updateUserRole(
 /**
  * Handles sign out or token expiry events.
  */
-function handleSignOut(
-  setState: (state: Partial<IAuthState>) => void
-): void {
+function handleSignOut(setState: (state: Partial<IAuthState>) => void): void {
   setState({
     user: null,
     isAuthenticated: false,

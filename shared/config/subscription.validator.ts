@@ -25,8 +25,8 @@ const CreditsExpirationSchema = z.object({
 const PlanConfigSchema = z.object({
   key: z.string().min(1),
   name: z.string().min(1),
-  stripePriceId: z.string().startsWith('price_'),
-  priceInCents: z.number().positive(),
+  stripePriceId: z.string().startsWith('price_').nullable(),
+  priceInCents: z.number().min(0),
   currency: z.enum(['usd', 'eur', 'gbp']),
   interval: z.enum(['month', 'year']),
   creditsPerCycle: z.number().positive(),
@@ -37,7 +37,7 @@ const PlanConfigSchema = z.object({
   features: z.array(z.string()),
   recommended: z.boolean(),
   description: z.string(),
-  displayOrder: z.number().positive(),
+  displayOrder: z.number().min(0),
   enabled: z.boolean(),
 });
 

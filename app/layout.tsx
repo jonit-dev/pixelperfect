@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
+import { Inter, DM_Sans } from 'next/font/google';
 import { ClientProviders } from '@client/components/ClientProviders';
 import { GoogleAnalytics } from '@client/components/analytics/GoogleAnalytics';
 import { Layout } from '@client/components/layout/Layout';
@@ -15,6 +15,13 @@ const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-dm-sans',
   display: 'swap',
 });
 
@@ -110,13 +117,17 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
   };
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${dmSans.variable} bg-base`}
+      suppressHydrationWarning
+    >
       <head>
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={organizationJsonLd} />
       </head>
       <body
-        className={`${inter.className} bg-slate-50 text-foreground antialiased selection:bg-indigo-100 selection:text-indigo-700`}
+        className={`${inter.className} bg-base text-foreground antialiased selection:bg-accent/20 selection:text-white`}
       >
         <GoogleAnalytics />
         <ClientProviders>

@@ -115,18 +115,15 @@ export function FeatureCard({ feature }: IFeatureCardProps): ReactElement {
   );
 
   return (
-    <div className="group relative p-8 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:border-blue-200 transition-all duration-300 h-full">
+    <div className="group relative glass-card animated-border h-full">
       <div className="relative">
-        <div
-          className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-md"
-          style={{
-            background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
-          }}
-        >
+        <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white shadow-md bg-accent glow-blue">
           {icon}
         </div>
-        <h3 className="text-xl font-bold mb-3 text-slate-900">{feature.title}</h3>
-        <p className="text-slate-600 text-base leading-relaxed">{feature.description}</p>
+        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-accent transition-colors">
+          {feature.title}
+        </h3>
+        <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
       </div>
     </div>
   );

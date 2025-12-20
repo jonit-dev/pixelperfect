@@ -34,10 +34,7 @@ export async function requireAdmin(req: NextRequest): Promise<IAdminCheckResult>
     return {
       isAdmin: false,
       userId: null,
-      error: NextResponse.json(
-        { error: 'Unauthorized', code: 'NO_USER' },
-        { status: 401 }
-      ),
+      error: NextResponse.json({ error: 'Unauthorized', code: 'NO_USER' }, { status: 401 }),
     };
   }
 

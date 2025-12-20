@@ -151,8 +151,8 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
         ${!children && (compact ? 'p-4' : 'p-12')}
         ${
           isDragging
-            ? 'bg-indigo-50 border-indigo-500 scale-[1.02] shadow-xl ring-4 ring-indigo-100'
-            : 'bg-slate-50/50 hover:bg-white border-slate-300 hover:border-indigo-400 hover:shadow-lg hover:shadow-indigo-50/50'
+            ? 'bg-accent/10 border-accent scale-[1.02] shadow-xl ring-4 ring-accent/20'
+            : 'bg-surface-light/50 hover:bg-surface-light border-white/10 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10'
         }
         border-2 border-dashed rounded-3xl
         ${disabled ? 'opacity-60 cursor-not-allowed grayscale' : ''}
@@ -175,7 +175,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
           <div
             className={`
           relative flex items-center justify-center rounded-2xl transition-all duration-300
-          ${isDragging ? 'bg-indigo-600 text-white shadow-lg scale-110' : 'bg-white text-indigo-600 shadow-sm ring-1 ring-slate-900/5 group-hover:scale-110 group-hover:text-indigo-500'}
+          ${isDragging ? 'bg-accent text-white shadow-lg scale-110' : 'bg-surface text-accent shadow-sm ring-1 ring-white/5 group-hover:scale-110 group-hover:text-accent'}
           ${compact ? 'w-12 h-12' : 'w-20 h-20'}
         `}
           >
@@ -187,20 +187,20 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 
             {/* Decorative background blob behind icon */}
             {!isDragging && !compact && (
-              <div className="absolute -inset-4 bg-indigo-100/50 rounded-full blur-xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -inset-4 bg-accent/10 rounded-full blur-xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
             )}
           </div>
 
           {!compact && (
             <div className="space-y-2 max-w-xs mx-auto">
               <h3
-                className={`font-bold text-slate-900 transition-colors ${isDragging ? 'text-indigo-700' : 'group-hover:text-indigo-600'} text-xl`}
+                className={`font-bold text-white transition-colors ${isDragging ? 'text-accent' : 'group-hover:text-accent'} text-xl`}
               >
                 {isDragging ? 'Drop to upload' : 'Click or drag images'}
               </h3>
-              <p className="text-slate-500 text-sm font-medium leading-relaxed">
+              <p className="text-muted-foreground text-sm font-medium leading-relaxed">
                 Support for JPG, PNG, and WEBP
-                <span className="block text-xs text-slate-400 mt-1 font-normal">
+                <span className="block text-xs text-muted-foreground mt-1 font-normal">
                   Up to {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE ? '5MB' : '10MB'} per file
                   •
                   {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE
@@ -215,7 +215,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
 
       {error && (
         <div className="absolute inset-x-0 -bottom-16 flex items-center justify-center">
-          <div className="bg-red-50 text-red-600 text-sm font-medium px-4 py-2 rounded-full shadow-sm border border-red-100 flex items-center animate-fade-in-up">
+          <div className="bg-red-500/20 text-red-400 text-sm font-medium px-4 py-2 rounded-full shadow-sm border border-red-500/20 flex items-center animate-fade-in-up">
             <AlertCircle size={16} className="mr-2" />
             {error}
           </div>

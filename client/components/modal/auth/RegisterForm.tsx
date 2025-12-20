@@ -61,7 +61,7 @@ export const RegisterForm: React.FC<IRegisterFormProps> = ({
           <input
             {...register('agreeToTerms')}
             type="checkbox"
-            className="mt-0.5 h-4 w-4 rounded border-gray-300 bg-white text-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 cursor-pointer"
+            className="mt-0.5 h-4 w-4 rounded border-border bg-surface text-accent focus:ring-2 focus:ring-accent focus:ring-offset-2 cursor-pointer"
           />
           <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
             I agree to the{' '}
@@ -85,12 +85,12 @@ export const RegisterForm: React.FC<IRegisterFormProps> = ({
           </span>
         </label>
         {errors.agreeToTerms && (
-          <span className="text-sm text-red-600 font-medium">{errors.agreeToTerms.message}</span>
+          <span className="text-sm text-error font-medium">{errors.agreeToTerms.message}</span>
         )}
       </div>
       <button
         type="submit"
-        className="w-full px-4 py-3 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 active:scale-[0.98] mt-2"
+        className="w-full px-4 py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] mt-2 glow-blue"
       >
         Create Account
       </button>

@@ -54,23 +54,26 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
       {/* Smart AI Analysis - Prominent Card */}
       {showSmartAnalysis && (
         <div
-          className={`rounded-lg border overflow-hidden ${isFreeUser
-            ? 'border-slate-200 bg-slate-50/50 opacity-60'
-            : 'border-indigo-100 bg-indigo-50/50'
-            }`}
+          className={`rounded-lg border overflow-hidden ${
+            isFreeUser
+              ? 'border-white/5 bg-surface-light/50 opacity-60'
+              : 'border-accent/20 bg-accent/10'
+          }`}
           title={isFreeUser ? 'Paid plans only' : undefined}
         >
           <div className="p-3 flex items-start gap-3">
             <div
-              className={`p-1.5 rounded-md shrink-0 ${isFreeUser ? 'bg-slate-200' : 'bg-indigo-100'}`}
+              className={`p-1.5 rounded-md shrink-0 ${isFreeUser ? 'bg-surface-light' : 'bg-accent/20'}`}
             >
-              <Brain className={`h-4 w-4 ${isFreeUser ? 'text-slate-500' : 'text-indigo-600'}`} />
+              <Brain
+                className={`h-4 w-4 ${isFreeUser ? 'text-muted-foreground' : 'text-accent'}`}
+              />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="smart-analysis"
-                  className={`font-medium text-sm ${isFreeUser ? 'text-slate-600 cursor-not-allowed' : 'text-indigo-900 cursor-pointer'}`}
+                  className={`font-medium text-sm ${isFreeUser ? 'text-muted-foreground cursor-not-allowed' : 'text-white cursor-pointer'}`}
                 >
                   Smart AI Analysis
                 </label>
@@ -80,10 +83,12 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
                   checked={isFreeUser ? false : options.smartAnalysis}
                   onChange={e => handleToggle('smartAnalysis', e.target.checked)}
                   disabled={disabled || isFreeUser}
-                  className="h-4 w-4 rounded border-indigo-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+                  className="h-4 w-4 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
                 />
               </div>
-              <p className={`text-xs mt-1 ${isFreeUser ? 'text-slate-500' : 'text-indigo-700'}`}>
+              <p
+                className={`text-xs mt-1 ${isFreeUser ? 'text-muted-foreground' : 'text-muted-foreground'}`}
+              >
                 {isFreeUser
                   ? 'Upgrade to let AI detect content type and optimize settings automatically.'
                   : 'AI automatically detects image content and optimizes parameters for best results.'}
@@ -95,14 +100,14 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
 
       {/* Auto tier indicator (prominent) */}
       {selectedTier === 'auto' && (
-        <div className="rounded-lg border border-indigo-100 bg-indigo-50 p-3">
+        <div className="rounded-lg border border-accent/20 bg-accent/10 p-3">
           <div className="flex items-start gap-3">
-            <div className="p-1.5 bg-indigo-100 rounded-md shrink-0">
-              <Brain className="h-4 w-4 text-indigo-600" />
+            <div className="p-1.5 bg-accent/20 rounded-md shrink-0">
+              <Brain className="h-4 w-4 text-accent" />
             </div>
             <div>
-              <div className="font-medium text-sm text-indigo-900">Smart Analysis Active</div>
-              <p className="text-xs text-indigo-700 mt-1">
+              <div className="font-medium text-sm text-white">Smart Analysis Active</div>
+              <p className="text-xs text-muted-foreground mt-1">
                 AI will automatically select the best enhancements for your image.
               </p>
             </div>
@@ -114,21 +119,22 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between py-2 text-sm font-medium text-slate-700 group hover:text-slate-900 transition-colors"
+        className="w-full flex items-center justify-between py-2 text-sm font-medium text-white group hover:text-accent transition-colors"
       >
         <div className="flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-slate-500 group-hover:text-indigo-500 transition-colors" />
+          <Sparkles className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
           <span>Additional Enhancements</span>
         </div>
         <ChevronDown
-          className={`h-4 w-4 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+          className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
         />
       </button>
 
       {/* Collapsible Content */}
       <div
-        className={`space-y-3 overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
+        className={`space-y-3 overflow-hidden transition-all duration-300 ease-in-out ${
+          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
       >
         {/* Enhance Image */}
         <div className="flex flex-col gap-1 pl-1">
@@ -139,17 +145,17 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
               checked={options.enhance}
               onChange={e => handleToggle('enhance', e.target.checked)}
               disabled={disabled}
-              className="h-3.5 w-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+              className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
             />
             <label htmlFor="enhance-image" className="flex items-center gap-2 cursor-pointer">
-              <Sparkles className="h-3.5 w-3.5 text-slate-500" />
-              <span className="text-sm text-slate-700">Enhance Image</span>
+              <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="text-sm text-white">Enhance Image</span>
             </label>
           </div>
 
           {/* Enhancement sub-options */}
           {options.enhance && options.enhancement && (
-            <div className="ml-5.5 mt-1 p-2 bg-slate-50 rounded border border-slate-100">
+            <div className="ml-5.5 mt-1 p-2 bg-surface-light rounded border border-white/10">
               <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                 {[
                   { key: 'clarity', label: 'Clarity' },
@@ -167,9 +173,9 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
                         handleEnhancementToggle(key as keyof IEnhancementSettings, e.target.checked)
                       }
                       disabled={disabled}
-                      className="h-3 w-3 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+                      className="h-3 w-3 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
                     />
-                    <span className="text-slate-600">{label}</span>
+                    <span className="text-muted-foreground">{label}</span>
                   </label>
                 ))}
               </div>
@@ -185,11 +191,11 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
             checked={options.enhanceFaces}
             onChange={e => handleToggle('enhanceFaces', e.target.checked)}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="enhance-faces" className="flex items-center gap-2 cursor-pointer">
-            <UserSquare2 className="h-3.5 w-3.5 text-slate-500" />
-            <span className="text-sm text-slate-700">Enhance Faces</span>
+            <UserSquare2 className="h-3.5 w-3.5 text-muted-foreground" />
+            <span className="text-sm text-white">Enhance Faces</span>
           </label>
         </div>
 
@@ -201,11 +207,11 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
             checked={options.preserveText}
             onChange={e => handleToggle('preserveText', e.target.checked)}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="preserve-text" className="flex items-center gap-2 cursor-pointer">
-            <Type className="h-3.5 w-3.5 text-slate-500" />
-            <span className="text-sm text-slate-700">Preserve Text</span>
+            <Type className="h-3.5 w-3.5 text-muted-foreground" />
+            <span className="text-sm text-white">Preserve Text</span>
           </label>
         </div>
 
@@ -223,13 +229,13 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
               }
             }}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="custom-instructions" className="flex items-center gap-2 cursor-pointer">
-            <Edit3 className="h-3.5 w-3.5 text-slate-500" />
-            <span className="text-sm text-slate-700">Custom Instructions</span>
+            <Edit3 className="h-3.5 w-3.5 text-muted-foreground" />
+            <span className="text-sm text-white">Custom Instructions</span>
             {options.customInstructions && (
-              <span className="text-xs text-indigo-600 ml-1">
+              <span className="text-xs text-accent ml-1">
                 ({options.customInstructions.length} chars)
               </span>
             )}

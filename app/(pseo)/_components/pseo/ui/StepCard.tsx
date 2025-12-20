@@ -87,7 +87,8 @@ export function StepCard({ step, isLast }: IStepCardProps): ReactElement {
         <div
           className="absolute left-7 top-14 bottom-0 w-0.5"
           style={{
-            background: 'linear-gradient(180deg, #3b82f6 0%, #cbd5e1 100%)',
+            background:
+              'linear-gradient(180deg, rgb(var(--color-accent)) 0%, rgb(var(--color-text-muted)) 100%)',
           }}
         />
       )}
@@ -97,7 +98,8 @@ export function StepCard({ step, isLast }: IStepCardProps): ReactElement {
         <div
           className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg"
           style={{
-            background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
+            background:
+              'linear-gradient(135deg, rgb(var(--color-accent)) 0%, rgb(var(--color-accent-hover)) 100%)',
           }}
         >
           {getStepIcon(step.step)}
@@ -107,12 +109,12 @@ export function StepCard({ step, isLast }: IStepCardProps): ReactElement {
       {/* Content */}
       <div className="flex-1 min-w-0 pt-1">
         <div className="mb-2">
-          <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wide">
             Step {step.step}
           </span>
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-3">{step.title}</h3>
-        <p className="text-lg text-slate-600 leading-relaxed">{step.description}</p>
+        <h3 className="text-2xl font-bold text-text-primary mb-3">{step.title}</h3>
+        <p className="text-lg text-text-secondary leading-relaxed">{step.description}</p>
       </div>
     </div>
   );

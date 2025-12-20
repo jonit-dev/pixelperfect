@@ -33,7 +33,7 @@ export default async function FormatPage({ params }: IFormatPageProps) {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-6">{format.h1}</h1>
       <p className="text-xl text-gray-600 mb-8">{format.intro}</p>
-      <div className="bg-gray-50 p-8 rounded-lg">
+      <div className="bg-surface-light p-8 rounded-lg">
         <p className="text-gray-700">Format content coming soon...</p>
       </div>
     </div>

@@ -24,11 +24,11 @@ export function HowItWorksSection({
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white rounded-2xl my-20">
+    <section className="py-20 bg-surface rounded-2xl my-20 border border-white/10">
       <FadeIn>
         <div className="text-center mb-16 px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">{title}</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">{subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">{title}</h2>
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">{subtitle}</p>
         </div>
       </FadeIn>
       <StaggerContainer staggerDelay={0.15} className="max-w-3xl mx-auto px-6">

@@ -34,11 +34,11 @@ export function InsufficientCreditsModal({
 
       {/* Modal */}
       <div className="flex min-h-full items-end justify-center p-4 sm:items-center">
-        <div className="relative w-full max-w-lg rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
+        <div className="relative w-full max-w-lg rounded-lg bg-surface p-6 shadow-xl dark:bg-gray-800">
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 text-slate-400 transition-colors hover:text-slate-600 dark:text-gray-500 dark:hover:text-gray-300"
+            className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-muted-foreground dark:text-gray-500 dark:hover:text-gray-300"
           >
             <X size={24} />
           </button>
@@ -48,10 +48,10 @@ export function InsufficientCreditsModal({
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900">
               <AlertCircle className="h-6 w-6 text-amber-600 dark:text-amber-400" />
             </div>
-            <h2 className="mb-2 text-2xl font-bold text-slate-900 dark:text-gray-100">
+            <h2 className="mb-2 text-2xl font-bold text-primary dark:text-gray-100">
               Not Enough Credits
             </h2>
-            <p className="text-slate-600 dark:text-gray-400">
+            <p className="text-muted-foreground dark:text-gray-400">
               This batch requires {requiredCredits} credits. You have {currentBalance}.
             </p>
           </div>
@@ -66,7 +66,7 @@ export function InsufficientCreditsModal({
             </button>
             <button
               onClick={onViewPlans}
-              className="w-full rounded-lg border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+              className="w-full rounded-lg border border-white/20 bg-surface px-6 py-3 font-medium text-muted-foreground transition-colors hover:bg-surface dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
             >
               View Plans (Save up to 58%)
             </button>
@@ -74,8 +74,8 @@ export function InsufficientCreditsModal({
 
           {/* Alternative suggestion */}
           {maxImagesWithCurrentBalance > 0 && (
-            <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-gray-700 dark:bg-gray-900">
-              <p className="text-sm text-slate-600 dark:text-gray-400">
+            <div className="rounded-lg border border-white/10 bg-surface p-4 dark:border-gray-700 dark:bg-gray-900">
+              <p className="text-sm text-muted-foreground dark:text-gray-400">
                 Or reduce batch size to {maxImagesWithCurrentBalance}{' '}
                 {maxImagesWithCurrentBalance === 1 ? 'image' : 'images'} to process with your
                 current balance

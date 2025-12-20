@@ -10,18 +10,18 @@ export const metadata: Metadata = {
 
 export default function HowItWorksPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-base">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <section className="py-20 hero-gradient">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             How it
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-cyan-400">
               {' '}
               Works
             </span>
           </h1>
-          <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Transform your workflow in three simple steps. No complex settings, just professional
             results every time.
           </p>
