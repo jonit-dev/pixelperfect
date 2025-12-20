@@ -284,7 +284,7 @@ describe('buildHomepageTiers', () => {
     expect(starterTier?.features).toContain('100 credits per month');
     expect(starterTier?.features).toContain('Credits roll over (up to 600)');
     expect(starterTier?.features).toContain('Email support');
-    expect(starterTier?.features).toContain('Basic AI models');
+    expect(starterTier?.features).toContain('All AI models included');
     expect(starterTier?.features).toContain('Batch upload up to 5 images');
   });
 

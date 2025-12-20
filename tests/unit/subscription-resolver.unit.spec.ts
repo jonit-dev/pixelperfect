@@ -15,8 +15,8 @@ describe('Unified Pricing Resolver', () => {
       const index = getPriceIndex();
 
       // Should contain starter plan
-      expect(index).toHaveProperty('price_1STARTERPLACEHOLDER');
-      expect(index['price_1STARTERPLACEHOLDER']).toMatchObject({
+      expect(index).toHaveProperty('price_1Q4HMKALMLhQocpfhK9XKp4a');
+      expect(index['price_1Q4HMKALMLhQocpfhK9XKp4a']).toMatchObject({
         type: 'plan',
         key: 'starter',
         name: 'Starter',
@@ -78,12 +78,12 @@ describe('Unified Pricing Resolver', () => {
 
   describe('resolvePriceId', () => {
     test('should resolve known subscription plan price IDs', () => {
-      const starter = resolvePriceId('price_1STARTERPLACEHOLDER');
+      const starter = resolvePriceId('price_1Q4HMKALMLhQocpfhK9XKp4a');
       expect(starter).toMatchObject({
         type: 'plan',
         key: 'starter',
         name: 'Starter',
-        stripePriceId: 'price_1STARTERPLACEHOLDER',
+        stripePriceId: 'price_1Q4HMKALMLhQocpfhK9XKp4a',
         priceInCents: 900,
         currency: 'usd',
         credits: 100,
@@ -215,7 +215,7 @@ describe('Unified Pricing Resolver', () => {
 
   describe('Starter Tier Specific Tests', () => {
     test('should resolve Starter plan with correct rollover configuration', () => {
-      const starter = resolvePriceId('price_1STARTERPLACEHOLDER');
+      const starter = resolvePriceId('price_1Q4HMKALMLhQocpfhK9XKp4a');
 
       expect(starter).toMatchObject({
         type: 'plan',
@@ -228,7 +228,7 @@ describe('Unified Pricing Resolver', () => {
     });
 
     test('should handle Starter plan in resolvePlanOrPack', () => {
-      const resolved = resolvePlanOrPack('price_1STARTERPLACEHOLDER');
+      const resolved = resolvePlanOrPack('price_1Q4HMKALMLhQocpfhK9XKp4a');
 
       expect(resolved).toMatchObject({
         type: 'plan',
@@ -240,7 +240,7 @@ describe('Unified Pricing Resolver', () => {
     });
   });
 
-describe('Integration with existing configuration', () => {
+  describe('Integration with existing configuration', () => {
     test('should ensure all price IDs from subscription config are resolvable', () => {
       // Since this is testing integration with the actual config, and the main tests
       // already cover the core functionality, we can simplify these integration tests
@@ -248,8 +248,8 @@ describe('Integration with existing configuration', () => {
 
       // Test that Starter price ID is in the index
       const index = getPriceIndex();
-      const starterPriceIds = Object.keys(index).filter(key =>
-        key.toLowerCase().includes('starter') || key === 'price_1STARTERPLACEHOLDER'
+      const starterPriceIds = Object.keys(index).filter(
+        key => key.toLowerCase().includes('starter') || key === 'price_1Q4HMKALMLhQocpfhK9XKp4a'
       );
       expect(starterPriceIds.length).toBeGreaterThan(0);
 
@@ -263,8 +263,8 @@ describe('Integration with existing configuration', () => {
 
     test('should verify rollover is enabled for Starter tier', () => {
       const index = getPriceIndex();
-      const starterPriceIds = Object.keys(index).filter(key =>
-        key.toLowerCase().includes('starter') || key === 'price_1STARTERPLACEHOLDER'
+      const starterPriceIds = Object.keys(index).filter(
+        key => key.toLowerCase().includes('starter') || key === 'price_1Q4HMKALMLhQocpfhK9XKp4a'
       );
 
       if (starterPriceIds.length > 0) {
@@ -284,7 +284,7 @@ describe('Integration with existing configuration', () => {
       // Test that Starter price ID is in the index
       const index = getPriceIndex();
       const starterPriceIds = Object.keys(index).filter(
-        key => key.toLowerCase().includes('starter') || key === 'price_1STARTERPLACEHOLDER'
+        key => key.toLowerCase().includes('starter') || key === 'price_1Q4HMKALMLhQocpfhK9XKp4a'
       );
       expect(starterPriceIds.length).toBeGreaterThan(0);
 

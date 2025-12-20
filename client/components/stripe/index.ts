@@ -1,4 +1,5 @@
 // Export all Stripe components
+export { BillingErrorBoundary } from '@client/components/stripe/BillingErrorBoundary';
 export { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 export { CheckoutModal } from '@client/components/stripe/CheckoutModal';
 export { PlanChangeModal } from '@client/components/stripe/PlanChangeModal';

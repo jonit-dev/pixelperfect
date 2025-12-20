@@ -52,14 +52,14 @@ describe('Starter Tier Configuration', () => {
       '100 credits per month',
       'Credits roll over (up to 600)',
       'Email support',
-      'Basic AI models',
-      'Batch upload up to 1 image',
+      'All AI models included',
+      'Batch upload up to 5 images',
     ];
     expect(starterPlan?.features).toEqual(expectedFeatures);
   });
 
   test('should have correct batch limit for Starter tier', () => {
-    expect(starterPlan?.batchLimit).toBe(1);
+    expect(starterPlan?.batchLimit).toBe(5);
   });
 
   test('should have valid Stripe price ID format', () => {
@@ -166,7 +166,7 @@ describe('Starter vs Free Tier Comparison', () => {
   });
 
   test('should have reasonable batch limit compared to free tier', () => {
-    expect(starterPlan?.batchLimit).toBe(config.freeUser.batchLimit); // Same as free (5)
+    expect(starterPlan?.batchLimit).toBeGreaterThan(config.freeUser.batchLimit); // Greater than free tier (5 vs 1)
   });
 
   test('should have same maximum rollover cap as configured', () => {

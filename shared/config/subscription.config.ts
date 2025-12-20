@@ -85,14 +85,14 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         '100 credits per month',
         'Credits roll over (up to 600)',
         'Email support',
-        'Basic AI models',
-        'Batch upload up to 1 image',
+        'All AI models included',
+        'Batch upload up to 5 images',
       ],
       recommended: false,
       description: 'Perfect for getting started',
       displayOrder: 1,
       enabled: true,
-      batchLimit: 1, // Same as free tier
+      batchLimit: 5, // Allow batch upload up to 5 images
     },
     {
       key: 'hobby',

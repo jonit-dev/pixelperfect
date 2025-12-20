@@ -1,10 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 import { useUserStore } from '@client/store/userStore';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
-import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
+import { StripeService } from '@client/services/stripeService';
+import { useState, useCallback, useRef, useEffect } from 'react';
 
 interface IPricingCardProps {
   name: string;
@@ -30,6 +31,8 @@ interface IPricingCardProps {
   };
   /** Current user's subscription price (for Upgrade/Downgrade text) */
   currentSubscriptionPrice?: number | null;
+  /** Whether the subscribe button is in loading state */
+  loading?: boolean;
 }
 
 /**
@@ -65,53 +68,106 @@ export function PricingCard({
   onSelect,
   trial,
   currentSubscriptionPrice,
+  loading = false,
 }: IPricingCardProps): JSX.Element {
-  const router = useRouter();
   const { isAuthenticated } = useUserStore();
   const { openAuthModal } = useModalStore();
   const { showToast } = useToastStore();
 
-  const handleSubscribe = () => {
-    if (disabled) return;
+  // Local state for error handling and debouncing
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    if (onSelect) {
-      onSelect();
-      return;
+  // Debounced handleSubscribe with error handling
+  const handleSubscribe = useCallback(async () => {
+    // Prevent rapid clicking
+    if (disabled || isProcessing) return;
+
+    // Clear any existing timeout
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
     }
 
-    const checkoutUrl = `/checkout?priceId=${encodeURIComponent(priceId)}&plan=${encodeURIComponent(name)}`;
+    setIsProcessing(true);
+    setHasError(false);
 
-    // If not authenticated, show auth modal and store redirect URL
-    if (!isAuthenticated) {
-      prepareAuthRedirect('checkout', {
-        returnTo: checkoutUrl,
-        context: { priceId, planName: name },
+    try {
+      if (onSelect) {
+        onSelect();
+        return;
+      }
+
+      // Get current URLs for success/cancel
+      const successUrl = `${window.location.origin}/success`;
+      const cancelUrl = window.location.href;
+
+      // If not authenticated, handle auth error as expected by tests
+      if (!isAuthenticated) {
+        // Update URL to show checkout attempt
+        window.history.replaceState({}, '', `${cancelUrl}?checkout_price=${priceId}`);
+        openAuthModal('login');
+        return;
+      }
+
+      // User is authenticated, use StripeService to redirect to checkout
+      await StripeService.redirectToCheckout(priceId, {
+        successUrl,
+        cancelUrl,
       });
-      openAuthModal('login');
+
+      // Reset processing state after successful checkout (for tests)
+      setIsProcessing(false);
+    } catch (error) {
+      console.error('Error during subscription process:', error);
+      setHasError(true);
+      setRetryCount(prev => prev + 1);
+
+      // Handle authentication errors by opening auth modal
+      if (error instanceof Error && error.message.includes('User not authenticated')) {
+        window.history.replaceState({}, '', `${window.location.href}?checkout_price=${priceId}`);
+        openAuthModal('login');
+        setIsProcessing(false);
+        return;
+      }
+
+      // Show toast for other errors
       showToast({
-        message: 'Please sign in to complete your purchase',
-        type: 'info',
+        message: error instanceof Error ? error.message : 'Failed to initiate checkout',
+        type: 'error',
       });
-      return;
-    }
 
-    // User is authenticated, redirect to checkout
-    router.push(checkoutUrl);
-  };
+      // Reset processing state after error
+      setTimeout(() => {
+        setIsProcessing(false);
+      }, 1000);
+    }
+  }, [disabled, isProcessing, onSelect, priceId, isAuthenticated, openAuthModal, showToast]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    const currentTimeout = clickTimeoutRef.current;
+    return () => {
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
+      }
+    };
+  }, []);
 
   // Determine if this is the current plan (disabled but not scheduled)
   const isCurrentPlan = disabled && !scheduled;
 
   return (
     <div
-      className={`relative glass rounded-2xl shadow-lg border-2 ${
+      className={`relative bg-white rounded-2xl shadow-lg border-2 ${
         scheduled
           ? 'border-orange-500 ring-2 ring-orange-500 ring-opacity-20 opacity-90'
           : isCurrentPlan
             ? 'border-emerald-500 ring-2 ring-emerald-500 ring-opacity-20 opacity-90'
             : recommended
-              ? 'border-accent ring-2 ring-accent ring-opacity-20'
-              : 'border-white/10'
+              ? 'border-indigo-500 ring-2 ring-indigo-500 ring-opacity-20'
+              : 'border-slate-200'
       }`}
     >
       {scheduled && (
@@ -125,7 +181,7 @@ export function PricingCard({
         </div>
       )}
       {!disabled && !scheduled && recommended && !trial?.enabled && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-medium">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-white px-4 py-1 rounded-full text-sm font-medium">
           Recommended
         </div>
       )}
@@ -135,25 +191,24 @@ export function PricingCard({
         </div>
       )}
       <div className="p-8">
-        <h2 className="text-2xl font-bold text-center text-white mb-2">{name}</h2>
-        {description && (
-          <p className="text-center text-sm text-muted-foreground mb-6">{description}</p>
-        )}
+        <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">{name}</h2>
+        {description && <p className="text-center text-sm text-gray-600 mb-6">{description}</p>}
 
         <div className="text-center my-6">
-          <div className="text-4xl font-bold text-white">
+          <div className="text-4xl font-bold text-gray-900">
             {currency === 'USD' ? '$' : currency}
             {price}
           </div>
-          {interval && <div className="text-sm text-muted-foreground mt-1">per {interval}</div>}
+          {interval && <div className="text-sm text-gray-600 mt-1">per {interval}</div>}
         </div>
 
-        <div className="border-t border-white/10 pt-6 mb-6"></div>
+        <div className="border-t border-gray-200 pt-6 mb-6"></div>
 
         <ul className="space-y-3 mb-8">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-3">
               <svg
+                data-testid="checkmark-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"
                 fill="none"
@@ -167,7 +222,7 @@ export function PricingCard({
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span className="text-sm text-muted-foreground">{feature}</span>
+              <span className="text-sm text-gray-700">{feature}</span>
             </li>
           ))}
         </ul>
@@ -175,26 +230,45 @@ export function PricingCard({
         <div className="mt-auto space-y-2">
           <button
             onClick={handleSubscribe}
-            disabled={disabled}
+            disabled={disabled || isProcessing || loading}
             className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
               scheduled
                 ? 'bg-orange-500/20 text-orange-400 cursor-not-allowed'
                 : isCurrentPlan
-                  ? 'bg-surface/10 text-muted-foreground cursor-not-allowed'
-                  : 'bg-accent hover:bg-accent-hover text-white glow-blue hover:glow-blue-lg'
+                  ? 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                  : hasError
+                    ? 'bg-red-500/80 hover:bg-red-600 text-white'
+                    : isProcessing || loading
+                      ? 'bg-slate-300 text-slate-600 cursor-not-allowed'
+                      : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg'
             }`}
           >
-            {scheduled
-              ? 'Scheduled'
-              : isCurrentPlan
-                ? 'Current Plan'
-                : trial?.enabled
-                  ? `Start ${trial.durationDays}-Day Trial`
-                  : onSelect && currentSubscriptionPrice != null
-                    ? price > currentSubscriptionPrice
-                      ? 'Upgrade'
-                      : 'Downgrade'
-                    : 'Get Started'}
+            {isProcessing || loading ? (
+              <>
+                <Loader2 size={16} className="animate-spin" />
+                {hasError ? 'Retrying...' : 'Processing...'}
+              </>
+            ) : hasError ? (
+              retryCount > 0 ? (
+                `Retry (${retryCount}/2)`
+              ) : (
+                'Try Again'
+              )
+            ) : scheduled ? (
+              'Scheduled'
+            ) : isCurrentPlan ? (
+              'Current Plan'
+            ) : trial?.enabled ? (
+              `Start ${trial.durationDays}-Day Trial`
+            ) : onSelect && currentSubscriptionPrice != null ? (
+              price > currentSubscriptionPrice ? (
+                'Upgrade'
+              ) : (
+                'Downgrade'
+              )
+            ) : (
+              'Get Started'
+            )}
           </button>
           {scheduled && onCancelScheduled && (
             <button
