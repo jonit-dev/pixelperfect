@@ -401,9 +401,22 @@ export function getPlanDisplayName(
   // Handle object input with multiple possible fields
   const { subscriptionTier, priceId, planKey } = input;
 
-  // First try subscriptionTier
+  // First try subscriptionTier - normalize to proper display name
   if (subscriptionTier) {
-    return subscriptionTier;
+    switch (subscriptionTier.toLowerCase()) {
+      case 'starter':
+        return SUBSCRIPTION_PLANS.STARTER_MONTHLY.name;
+      case 'hobby':
+        return SUBSCRIPTION_PLANS.HOBBY_MONTHLY.name;
+      case 'pro':
+      case 'professional':
+        return SUBSCRIPTION_PLANS.PRO_MONTHLY.name;
+      case 'business':
+        return SUBSCRIPTION_PLANS.BUSINESS_MONTHLY.name;
+      default:
+        // Capitalize first letter as fallback
+        return subscriptionTier.charAt(0).toUpperCase() + subscriptionTier.slice(1);
+    }
   }
 
   // Then try priceId lookup

@@ -3,10 +3,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, CreditCard, Settings, HelpCircle, LogOut, Shield, X } from 'lucide-react';
+import {
+  LayoutDashboard,
+  CreditCard,
+  Settings,
+  HelpCircle,
+  LogOut,
+  Shield,
+  X,
+  Loader2,
+} from 'lucide-react';
 import { useUserStore, useIsAdmin, useSubscription } from '@client/store/userStore';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
-import { resolvePriceId } from '@shared/config/subscription.utils';
+import { getPlanDisplayName } from '@shared/config/stripe';
 import { useLogger } from '@client/utils/logger';
 import { cn } from '@client/utils/cn';
 import { clientEnv, getAppLogoAbbr } from '@shared/config/env';
@@ -25,13 +34,19 @@ interface IDashboardSidebarProps {
 export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const { signOut, user } = useUserStore();
+  const { signOut, user, isLoading } = useUserStore();
   const isAdmin = useIsAdmin();
   const subscription = useSubscription();
   const logger = useLogger('DashboardSidebar');
 
-  // Resolve subscription to plan name
-  const planInfo = subscription?.price_id ? resolvePriceId(subscription.price_id) : null;
+  // Check if profile data is still loading
+  const isProfileLoading = isLoading || (user && !user.profile);
+
+  // Resolve subscription to plan name - prioritize profile's subscription_tier
+  const planDisplayName = getPlanDisplayName({
+    subscriptionTier: user?.profile?.subscription_tier,
+    priceId: subscription?.price_id,
+  });
 
   // Build menu items dynamically based on user role
   const menuItems: ISidebarItem[] = [
@@ -140,7 +155,11 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
               </div>
               <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
               <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent">
-                {planInfo?.name ?? 'Free'} plan
+                {isProfileLoading ? (
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                ) : (
+                  `${planDisplayName} Plan`
+                )}
               </span>
             </div>
           </div>
