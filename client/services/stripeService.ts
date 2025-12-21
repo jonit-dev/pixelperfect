@@ -126,8 +126,34 @@ export class StripeService {
       metadata?: Record<string, string>;
     }
   ): Promise<void> {
-    const { url } = await this.createCheckoutSession(priceId, options);
-    window.location.href = url;
+    try {
+      const { url } = await this.createCheckoutSession(priceId, options);
+
+      if (!url) {
+        throw new Error('Failed to generate checkout URL');
+      }
+
+      // Validate URL format
+      try {
+        new URL(url);
+      } catch {
+        throw new Error('Invalid checkout URL generated');
+      }
+
+      window.location.href = url;
+    } catch (error) {
+      // Re-throw with more context for the component to handle
+      if (error instanceof Error && error.message.includes('User not authenticated')) {
+        throw error; // Let auth errors bubble up
+      }
+
+      // Wrap other errors with more context
+      if (error instanceof Error) {
+        throw new Error(`Checkout failed: ${error.message}`);
+      }
+
+      throw new Error('Failed to initiate checkout');
+    }
   }
 
   /**

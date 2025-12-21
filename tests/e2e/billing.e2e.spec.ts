@@ -60,7 +60,7 @@ test.describe('Billing E2E Tests', () => {
       const toast = page
         .locator('[role="status"]')
         .or(page.locator('.toast'))
-        .or(page.getByText(/Please sign in/i));
+        .or(page.locator('text=/Please sign in/i'));
 
       // Wait a moment for the modal/toast to appear
       await page.waitForTimeout(500);
@@ -260,9 +260,9 @@ test.describe('Billing E2E Tests', () => {
         }
       }
 
-      // For test purposes, we'll consider the test passing if we can see the Pro plan
+      // For test purposes, we'll consider the test passing if we can see the Professional plan
       // Since the recommended badge might not show in all test environments
-      await expect(page.getByRole('heading', { name: 'Pro', exact: true })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Professional', exact: true })).toBeVisible();
 
       // Screenshot with badges visible
       await pricingPage.screenshot('recommended-badges-visible');
@@ -292,7 +292,9 @@ test.describe('Billing E2E Tests', () => {
       } else {
         // If no badges found, at least verify the pricing plans are visible with proper contrast
         await expect(page.getByRole('heading', { name: 'Hobby', exact: true })).toBeVisible();
-        await expect(page.getByRole('heading', { name: 'Pro', exact: true })).toBeVisible();
+        await expect(
+          page.getByRole('heading', { name: 'Professional', exact: true })
+        ).toBeVisible();
 
         // Check that pricing cards have proper styling (they should have borders/shadows)
         const pricingCards = pricingPage.pricingGrid.locator('> div');
@@ -323,7 +325,10 @@ test.describe('Billing E2E Tests', () => {
         name: 'Hobby',
         exact: true,
       });
-      const proHeading = pricingPage.pricingGrid.getByRole('heading', { name: 'Pro', exact: true });
+      const proHeading = pricingPage.pricingGrid.getByRole('heading', {
+        name: 'Professional',
+        exact: true,
+      });
 
       await expect(starterHeading).toBeVisible({ timeout: 10000 });
       await expect(hobbyHeading).toBeVisible({ timeout: 10000 });
@@ -380,7 +385,7 @@ test.describe('Billing E2E Tests', () => {
       expect(cardCount).toBeGreaterThan(2); // At least Free + Starter + one more
     });
 
-    test('should handle Starter tier Get Started button click', async ({ page }) => {
+    test('should handle Pro tier Get Started button click', async ({ page }) => {
       // Handle alerts
       page.on('dialog', async dialog => {
         await dialog.accept();
@@ -396,12 +401,9 @@ test.describe('Billing E2E Tests', () => {
       });
       await expect(starterHeading).toBeVisible({ timeout: 10000 });
 
-      // Find and click Starter tier Get Started button
-      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
-      const getStartedButton = starterCard
-        .locator('button')
-        .filter({ hasText: 'Get Started' })
-        .first();
+      // Find and click Pro tier Get Started button
+      const proCard = page.locator('div').filter({ hasText: 'Professional' }).first();
+      const getStartedButton = proCard.locator('button').filter({ hasText: 'Get Started' }).first();
 
       await expect(getStartedButton).toBeVisible();
       await getStartedButton.click();
@@ -421,7 +423,7 @@ test.describe('Billing E2E Tests', () => {
       const toast = page
         .locator('[role="status"]')
         .or(page.locator('.toast'))
-        .or(page.getByText(/Please sign in/i));
+        .or(page.locator('text=/Please sign in/i'));
 
       // Wait a moment for the modal/toast to appear
       await page.waitForTimeout(500);
@@ -433,7 +435,7 @@ test.describe('Billing E2E Tests', () => {
       expect(isModalVisible || isToastVisible).toBe(true);
 
       // Screenshot after action
-      await pricingPage.screenshot('starter-get-started-click');
+      await pricingPage.screenshot('pro-get-started-click');
     });
 
     test('should display rollover information prominently', async ({ page }) => {
@@ -510,7 +512,10 @@ test.describe('Billing E2E Tests', () => {
         name: 'Hobby',
         exact: true,
       });
-      const proHeading = pricingPage.pricingGrid.getByRole('heading', { name: 'Pro', exact: true });
+      const proHeading = pricingPage.pricingGrid.getByRole('heading', {
+        name: 'Professional',
+        exact: true,
+      });
 
       await expect(starterHeading).toBeVisible({ timeout: 10000 });
       await expect(hobbyHeading).toBeVisible({ timeout: 10000 });

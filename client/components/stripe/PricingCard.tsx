@@ -78,12 +78,20 @@ export function PricingCard({
   const [isProcessing, setIsProcessing] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
+  const [lastClickTime, setLastClickTime] = useState(0);
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Debounced handleSubscribe with error handling
+  // Enhanced handleSubscribe with proper error handling and debouncing
   const handleSubscribe = useCallback(async () => {
     // Prevent rapid clicking
     if (disabled || isProcessing) return;
+
+    // Debounce rapid clicks - only allow one click per 500ms
+    const now = Date.now();
+    if (now - lastClickTime < 500) {
+      return;
+    }
+    setLastClickTime(now);
 
     // Clear any existing timeout
     if (clickTimeoutRef.current) {
@@ -95,7 +103,10 @@ export function PricingCard({
 
     try {
       if (onSelect) {
+        // Small delay to show loading state, then call onSelect and reset
+        await new Promise(resolve => setTimeout(resolve, 100));
         onSelect();
+        setIsProcessing(false);
         return;
       }
 
@@ -126,28 +137,71 @@ export function PricingCard({
     } catch (error) {
       console.error('Error during subscription process:', error);
       setHasError(true);
-      setRetryCount(prev => prev + 1);
+      setRetryCount(prev => {
+        const newCount = prev + 1;
+        // Limit retries to 3 attempts
+        if (newCount >= 3) {
+          showToast({
+            message: 'Multiple failed attempts. Please refresh the page and try again.',
+            type: 'error',
+          });
+        }
+        return newCount;
+      });
 
       // Handle authentication errors by opening auth modal
-      if (error instanceof Error && error.message.includes('User not authenticated')) {
+      if (
+        error instanceof Error &&
+        (error.message.includes('User not authenticated') ||
+          error.message.includes('Missing authorization header') ||
+          error.message.includes('Invalid authentication token'))
+      ) {
         window.history.replaceState({}, '', `${window.location.href}?checkout_price=${priceId}`);
         openAuthModal('login');
         setIsProcessing(false);
         return;
       }
 
-      // Show toast for other errors
-      showToast({
-        message: error instanceof Error ? error.message : 'Failed to initiate checkout',
-        type: 'error',
-      });
+      // Enhanced error handling for different error types
+      if (error instanceof Error) {
+        if (error.message.includes('fetch') || error.message.includes('network')) {
+          showToast({
+            message: 'Network error. Please check your connection and try again.',
+            type: 'error',
+          });
+        } else if (error.message.includes('Failed to fetch')) {
+          showToast({
+            message: 'Unable to connect to server. Please try again later.',
+            type: 'error',
+          });
+        } else {
+          showToast({
+            message: error.message || 'Failed to initiate checkout',
+            type: 'error',
+          });
+        }
+      } else {
+        showToast({
+          message: 'An unexpected error occurred. Please try again.',
+          type: 'error',
+        });
+      }
 
-      // Reset processing state after error
+      // Reset processing state after error (longer delay for visibility)
       setTimeout(() => {
         setIsProcessing(false);
-      }, 1000);
+      }, 2000);
     }
-  }, [disabled, isProcessing, onSelect, priceId, isAuthenticated, openAuthModal, showToast]);
+  }, [
+    disabled,
+    isProcessing,
+    onSelect,
+    priceId,
+    isAuthenticated,
+    openAuthModal,
+    showToast,
+    lastClickTime,
+  ]);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -234,7 +288,7 @@ export function PricingCard({
         <div className="mt-auto space-y-2">
           <button
             onClick={handleSubscribe}
-            disabled={disabled || isProcessing || loading}
+            disabled={disabled || isProcessing || loading || retryCount >= 3}
             className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
               scheduled
                 ? 'bg-orange-500/20 text-orange-400 cursor-not-allowed'
@@ -253,8 +307,10 @@ export function PricingCard({
                 {hasError ? 'Retrying...' : 'Processing...'}
               </>
             ) : hasError ? (
-              retryCount > 0 ? (
-                `Retry (${retryCount}/2)`
+              retryCount >= 3 ? (
+                'Maximum Attempts Reached'
+              ) : retryCount > 0 ? (
+                `Retry (${retryCount}/3)`
               ) : (
                 'Try Again'
               )

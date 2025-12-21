@@ -40,17 +40,23 @@ export default function PricingPageClient() {
     if (selectHandler) {
       // For authenticated users with existing subscriptions
       setButtonLoadingStates(prev => ({ ...prev, [priceId]: true }));
-      // Add a small delay to show loading state
+      // Add a small delay to show loading state, then reset after calling handler
       setTimeout(() => {
-        setButtonLoadingStates(prev => ({ ...prev, [priceId]: false }));
         selectHandler();
+        // Reset loading state in case the modal doesn't immediately navigate
+        setTimeout(() => {
+          setButtonLoadingStates(prev => ({ ...prev, [priceId]: false }));
+        }, 500);
       }, 100);
       return;
     }
 
     // For unauthenticated users or direct checkout
     setButtonLoadingStates(prev => ({ ...prev, [priceId]: true }));
-    // The loading state will be cleared when navigation happens or user returns to page
+    // Set a timeout to clear loading state in case navigation fails
+    setTimeout(() => {
+      setButtonLoadingStates(prev => ({ ...prev, [priceId]: false }));
+    }, 5000); // Clear after 5 seconds if no navigation occurs
   };
 
   const handleCancelScheduledChange = async () => {
