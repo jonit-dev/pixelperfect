@@ -65,8 +65,8 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       currency: 'usd',
       interval: 'month',
       creditsPerCycle: 100, // 100 credits per month
-      maxRollover: 600, // 600 credits max (6 months)
-      rolloverMultiplier: 6,
+      maxRollover: 300, // 300 credits max (3x rollover) - reduced to encourage upgrade
+      rolloverMultiplier: 3,
       trial: {
         enabled: false,
         durationDays: 0,
@@ -83,7 +83,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       },
       features: [
         '100 credits per month',
-        'Credits roll over (up to 600)',
+        'Credits roll over (up to 300)',
         'Email support',
         'All AI models included',
         'Batch upload up to 5 images',
@@ -177,7 +177,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       currency: 'usd',
       interval: 'month',
       creditsPerCycle: CREDIT_COSTS.BUSINESS_MONTHLY_CREDITS,
-      maxRollover: 0, // No rollover - use it or lose it (like Let's Enhance business plans)
+      maxRollover: 0, // No rollover - use it or lose it (like Lets Enhance)
       rolloverMultiplier: 0,
       trial: {
         enabled: false,

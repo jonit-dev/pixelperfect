@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfServicePage(): JSX.Element {
-  const lastUpdated = 'November 26, 2025';
+  const lastUpdated = clientEnv.LAST_UPDATED_DATE;
 
   return (
     <main className="flex-1">

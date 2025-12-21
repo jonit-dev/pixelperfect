@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { AlertTriangle, CreditCard, RefreshCw, Home, HeadphonesIcon } from 'lucide-react';
+import { clientEnv } from '@shared/config/env';
 
 interface IBillingErrorBoundaryProps {
   children: React.ReactNode;
@@ -92,7 +93,7 @@ export class BillingErrorBoundary extends React.Component<
 
   handleContactSupport = (): void => {
     // Open email client or redirect to support page
-    window.location.href = 'mailto:support@example.com?subject=Billing Error';
+    window.location.href = `mailto:${clientEnv.SUPPORT_EMAIL}?subject=Billing Error`;
   };
 
   getErrorContent(): {
@@ -209,7 +210,7 @@ export class BillingErrorBoundary extends React.Component<
               <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <p className="text-sm text-blue-800">
                   <strong>Need help?</strong> If you continue to experience issues, please contact
-                  our support team at support@example.com or try using a different browser or
+                  our support team at {clientEnv.SUPPORT_EMAIL} or try using a different browser or
                   device.
                 </p>
               </div>

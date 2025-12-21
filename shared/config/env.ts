@@ -38,6 +38,21 @@ const clientEnvSchema = z.object({
   PRIVACY_EMAIL: z.string().email().default('privacy@myimageupscaler.com'),
   SALES_EMAIL: z.string().email().default('sales@myimageupscaler.com'),
   TWITTER_HANDLE: z.string().default('myimageupscaler'),
+  // App Configuration
+  APP_SLUG: z.string().default('pixelperfect'),
+  DOWNLOAD_PREFIX: z.string().default('pixelperfect'),
+  BATCH_FOLDER_NAME: z.string().default('pixelperfect_batch'),
+  CACHE_USER_KEY_PREFIX: z.string().default('pixelperfect'),
+  WEB_SERVICE_NAME: z.string().default('pixelperfect-web'),
+  CRON_SERVICE_NAME: z.string().default('pixelperfect-cron'),
+  // GitHub
+  GITHUB_USER: z.string().default('joaoferro42'),
+  GITHUB_REPO: z.string().default('pixelperfect'),
+  // Legal
+  LAST_UPDATED_DATE: z.string().default('November 26, 2025'),
+  // Domains and URLs
+  PRIMARY_DOMAIN: z.string().default('myimageupscaler.com'),
+  APP_DOMAIN: z.string().default('pixelperfect.app'),
   // Stripe
   STRIPE_PUBLISHABLE_KEY: z.string().default(''),
   // Stripe Credit Pack Price IDs
@@ -71,6 +86,21 @@ function loadClientEnv(): IClientEnv {
     PRIVACY_EMAIL: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@myimageupscaler.com',
     SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL || 'sales@myimageupscaler.com',
     TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE || 'myimageupscaler',
+    // App Configuration
+    APP_SLUG: process.env.NEXT_PUBLIC_APP_SLUG || 'pixelperfect',
+    DOWNLOAD_PREFIX: process.env.NEXT_PUBLIC_DOWNLOAD_PREFIX || 'pixelperfect',
+    BATCH_FOLDER_NAME: process.env.NEXT_PUBLIC_BATCH_FOLDER_NAME || 'pixelperfect_batch',
+    CACHE_USER_KEY_PREFIX: process.env.NEXT_PUBLIC_CACHE_USER_KEY_PREFIX || 'pixelperfect',
+    WEB_SERVICE_NAME: process.env.NEXT_PUBLIC_WEB_SERVICE_NAME || 'pixelperfect-web',
+    CRON_SERVICE_NAME: process.env.NEXT_PUBLIC_CRON_SERVICE_NAME || 'pixelperfect-cron',
+    // GitHub
+    GITHUB_USER: process.env.NEXT_PUBLIC_GITHUB_USER || 'joaoferro42',
+    GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO || 'pixelperfect',
+    // Legal
+    LAST_UPDATED_DATE: process.env.NEXT_PUBLIC_LAST_UPDATED_DATE || 'November 26, 2025',
+    // Domains and URLs
+    PRIMARY_DOMAIN: process.env.NEXT_PUBLIC_PRIMARY_DOMAIN || 'myimageupscaler.com',
+    APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN || 'pixelperfect.app',
     // Stripe
     STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
     // Stripe Credit Pack Price IDs
@@ -157,6 +187,11 @@ const serverEnvSchema = z.object({
   ALLOWED_ORIGIN: z.string().default('*'),
   // Cloudflare
   CF_PAGES_URL: z.string().optional(),
+  CLOUDFLARE_API_TOKEN: z.string().default(''),
+  CLOUDFLARE_ACCOUNT_ID: z.string().default(''),
+  CLOUDFLARE_ZONE_ID: z.string().default(''),
+  DOMAIN_NAME: z.string().default('myimageupscaler.com'),
+  WORKER_NAME: z.string().default('myimageupscaler'),
   // Cron Job Authentication
   CRON_SECRET: z.string().default(''),
   // Test Authentication
@@ -234,6 +269,11 @@ function loadServerEnv(): IServerEnv {
     ALLOWED_ORIGIN: process.env.ALLOWED_ORIGIN || '*',
     // Cloudflare
     CF_PAGES_URL: process.env.CF_PAGES_URL,
+    CLOUDFLARE_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN || '',
+    CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID || '',
+    CLOUDFLARE_ZONE_ID: process.env.CLOUDFLARE_ZONE_ID || '',
+    DOMAIN_NAME: process.env.DOMAIN_NAME || 'myimageupscaler.com',
+    WORKER_NAME: process.env.WORKER_NAME || 'myimageupscaler',
     // Cron Job Authentication
     CRON_SECRET: process.env.CRON_SECRET || '',
     // Test Authentication

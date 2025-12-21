@@ -1,5 +1,6 @@
 import { IBatchItem } from '@/shared/types/coreflow.types';
 import JSZip from 'jszip';
+import { clientEnv } from '@shared/config/env';
 
 /**
  * Check if URL is external (Replicate, etc.) or internal (data URL)
@@ -103,7 +104,7 @@ export const downloadSingle = async (
     throw new Error('No URL provided for download');
   }
 
-  const downloadFilename = `pixelperfect_${mode}_${filename.split('.')[0]}.png`;
+  const downloadFilename = `${clientEnv.DOWNLOAD_PREFIX}_${mode}_${filename.split('.')[0]}.png`;
 
   try {
     const blob = await fetchImageBlob(url);
@@ -136,14 +137,14 @@ export const downloadBatch = async (queue: IBatchItem[], mode: string): Promise<
   }
 
   const zip = new JSZip();
-  const folder = zip.folder('pixelperfect_batch');
+  const folder = zip.folder(clientEnv.BATCH_FOLDER_NAME);
 
   // Add files to zip
   const promises = completedItems.map(async item => {
     if (item.processedUrl && folder) {
       try {
         const blob = await fetchImageBlob(item.processedUrl);
-        const filename = `pixelperfect_${mode}_${item.file.name.split('.')[0]}.png`;
+        const filename = `${clientEnv.DOWNLOAD_PREFIX}_${mode}_${item.file.name.split('.')[0]}.png`;
         folder.file(filename, blob);
       } catch (error) {
         console.error(`Failed to add ${item.file.name} to zip:`, error);
@@ -159,7 +160,7 @@ export const downloadBatch = async (queue: IBatchItem[], mode: string): Promise<
 
   const link = document.createElement('a');
   link.href = url;
-  link.download = `pixelperfect_batch_${new Date().getTime()}.zip`;
+  link.download = `${clientEnv.BATCH_FOLDER_NAME}_${new Date().getTime()}.zip`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

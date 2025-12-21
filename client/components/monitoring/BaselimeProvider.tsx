@@ -17,7 +17,7 @@ export function BaselimeProvider({ children }: IBaselimeProviderProps): ReactNod
   }
 
   return (
-    <BaselimeRum apiKey={apiKey} enableWebVitals service="pixelperfect-web">
+    <BaselimeRum apiKey={apiKey} enableWebVitals service={clientEnv.WEB_SERVICE_NAME}>
       {children}
     </BaselimeRum>
   );

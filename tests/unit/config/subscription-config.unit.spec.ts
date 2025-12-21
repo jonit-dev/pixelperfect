@@ -176,8 +176,8 @@ describe('Subscription Configuration', () => {
     test('business plan has correct values', () => {
       const plan = getPlanByKey('business');
       expect(plan?.creditsPerCycle).toBe(5000);
-      expect(plan?.maxRollover).toBeDefined();
-      expect(plan?.rolloverMultiplier).toBe(6);
+      expect(plan?.maxRollover).toBe(0); // No rollover for business (like Let's Enhance)
+      expect(plan?.rolloverMultiplier).toBe(0);
       expect(plan?.priceInCents).toBe(14900);
     });
   });

@@ -27,8 +27,8 @@ describe('Starter Tier Configuration', () => {
 
   test('should have correct credit allocation for Starter tier', () => {
     expect(starterPlan?.creditsPerCycle).toBe(CREDIT_COSTS.STARTER_MONTHLY_CREDITS); // 100
-    expect(starterPlan?.maxRollover).toBe(CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 6); // 600
-    expect(starterPlan?.rolloverMultiplier).toBe(6);
+    expect(starterPlan?.maxRollover).toBe(CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 3); // 300 (3x rollover for starter)
+    expect(starterPlan?.rolloverMultiplier).toBe(3);
   });
 
   test('should have correct rollover configuration for Starter tier', () => {
@@ -50,7 +50,7 @@ describe('Starter Tier Configuration', () => {
   test('should have correct features for Starter tier', () => {
     const expectedFeatures = [
       '100 credits per month',
-      'Credits roll over (up to 600)',
+      'Credits roll over (up to 300)',
       'Email support',
       'All AI models included',
       'Batch upload up to 5 images',
@@ -68,47 +68,58 @@ describe('Starter Tier Configuration', () => {
   });
 });
 
-describe('Rollover Configuration for All Plans', () => {
+describe('Rollover Configuration for All Plans (Tiered)', () => {
   const config = getSubscriptionConfig();
 
-  test('should have rollover enabled for all plans', () => {
+  // Expected rollover multipliers by plan (like Let's Enhance model)
+  const expectedRolloverMultipliers: Record<string, number> = {
+    starter: 3, // 3x rollover for starter
+    hobby: 6, // 6x rollover for hobby
+    pro: 6, // 6x rollover for pro
+    business: 0, // No rollover for business (use it or lose it)
+  };
+
+  test('should have tiered rollover configuration', () => {
     const enabledPlans = config.plans.filter(p => p.enabled);
 
     enabledPlans.forEach(plan => {
-      expect(plan.maxRollover).not.toBeNull();
+      const expectedMultiplier = expectedRolloverMultipliers[plan.key] ?? 6;
+      expect(plan.rolloverMultiplier).toBe(expectedMultiplier);
+
+      if (expectedMultiplier > 0) {
+        expect(plan.maxRollover).toBe(plan.creditsPerCycle * expectedMultiplier);
+      } else {
+        expect(plan.maxRollover).toBe(0);
+      }
+    });
+  });
+
+  test('personal tiers (starter, hobby, pro) should have rollover enabled', () => {
+    const personalPlans = config.plans.filter(
+      p => p.enabled && ['starter', 'hobby', 'pro'].includes(p.key)
+    );
+
+    personalPlans.forEach(plan => {
       expect(plan.maxRollover).toBeGreaterThan(0);
+      expect(plan.rolloverMultiplier).toBeGreaterThan(0);
       expect(plan.creditsExpiration.mode).toBe('never');
     });
   });
 
-  test('should have correct rollover caps for each plan', () => {
-    const enabledPlans = config.plans.filter(p => p.enabled);
-
-    enabledPlans.forEach(plan => {
-      const expectedCap = plan.creditsPerCycle * 6;
-      expect(plan.maxRollover).toBe(expectedCap);
-    });
+  test("business tier should have no rollover (like Let's Enhance)", () => {
+    const businessPlan = config.plans.find(p => p.key === 'business');
+    expect(businessPlan?.maxRollover).toBe(0);
+    expect(businessPlan?.rolloverMultiplier).toBe(0);
   });
 
-  test('should have rollover multiplier configured for all plans', () => {
+  test('should have rollover or no-rollover mentioned in features for all plans', () => {
     const enabledPlans = config.plans.filter(p => p.enabled);
 
     enabledPlans.forEach(plan => {
-      expect(plan.rolloverMultiplier).toBe(6);
-    });
-  });
-
-  test('should have rollover mentioned in features for all plans', () => {
-    const enabledPlans = config.plans.filter(p => p.enabled);
-
-    enabledPlans.forEach(plan => {
-      const rolloverFeature = plan.features.find(f => f.includes('roll over'));
-      expect(rolloverFeature).toBeTruthy();
-
-      // Should mention the specific cap (formatted with commas)
-      const expectedCap = plan.creditsPerCycle * 6;
-      const formattedCap = expectedCap.toLocaleString();
-      expect(rolloverFeature).toContain(formattedCap);
+      const hasRolloverFeature = plan.features.some(
+        f => f.toLowerCase().includes('roll over') || f.toLowerCase().includes('rollover')
+      );
+      expect(hasRolloverFeature).toBeTruthy();
     });
   });
 });
@@ -170,7 +181,7 @@ describe('Starter vs Free Tier Comparison', () => {
   });
 
   test('should have same maximum rollover cap as configured', () => {
-    const expectedCap = CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 6;
+    const expectedCap = CREDIT_COSTS.STARTER_MONTHLY_CREDITS * 3; // Starter has 3x rollover
     expect(starterPlan?.maxRollover).toBe(expectedCap);
   });
 });

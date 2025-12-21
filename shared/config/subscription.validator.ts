@@ -30,8 +30,8 @@ const PlanConfigSchema = z.object({
   currency: z.enum(['usd', 'eur', 'gbp']),
   interval: z.enum(['month', 'year']),
   creditsPerCycle: z.number().positive(),
-  maxRollover: z.number().positive().nullable(),
-  rolloverMultiplier: z.number().positive(),
+  maxRollover: z.number().min(0).nullable(), // 0 = no rollover (like Let's Enhance business plans)
+  rolloverMultiplier: z.number().min(0), // 0 = no rollover
   trial: TrialConfigSchema,
   creditsExpiration: CreditsExpirationSchema,
   features: z.array(z.string()),

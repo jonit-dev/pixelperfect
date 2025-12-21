@@ -11,9 +11,21 @@
  *   wrangler deploy
  */
 
+// Cloudflare Worker types
+interface IScheduledEvent {
+  cron: string;
+  scheduledTime: number;
+}
+
+interface IExecutionContext {
+  waitUntil(promise: Promise<void>): void;
+}
+
 export interface IEnv {
   API_BASE_URL: string;
   CRON_SECRET: string;
+  WORKER_NAME?: string;
+  CRON_SERVICE_NAME?: string;
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -21,13 +33,7 @@ export default {
   /**
    * Scheduled event handler - triggered by cron patterns defined in wrangler.toml
    */
-  async scheduled(
-    // eslint-disable-next-line no-undef
-    event: ScheduledEvent,
-    env: IEnv,
-    // eslint-disable-next-line no-undef
-    ctx: ExecutionContext
-  ): Promise<void> {
+  async scheduled(event: IScheduledEvent, env: IEnv, ctx: IExecutionContext): Promise<void> {
     const cronPattern = event.cron;
 
     console.log(`[CRON] Triggered at ${new Date().toISOString()} with pattern: ${cronPattern}`);
@@ -85,12 +91,7 @@ export default {
    * GET /?pattern=star-slash-15 to test webhook recovery
    * GET /?pattern=5%20star%20star%20star%20star to test expiration check
    */
-  async fetch(
-    request: Request,
-    env: IEnv,
-    // eslint-disable-next-line no-undef
-    ctx: ExecutionContext
-  ): Promise<Response> {
+  async fetch(request: Request, env: IEnv, ctx: IExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
     // Health check endpoint
@@ -98,7 +99,7 @@ export default {
       return new Response(
         JSON.stringify({
           status: 'ok',
-          worker: 'pixelperfect-cron',
+          worker: env.CRON_SERVICE_NAME || 'pixelperfect-cron',
           timestamp: new Date().toISOString(),
         }),
         {
@@ -125,8 +126,7 @@ export default {
       }
 
       // Simulate scheduled event
-      // eslint-disable-next-line no-undef
-      const event = { cron: pattern } as ScheduledEvent;
+      const event = { cron: pattern, scheduledTime: Date.now() } as IScheduledEvent;
       await this.scheduled(event, env, ctx);
 
       return new Response(
