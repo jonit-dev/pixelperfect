@@ -8,10 +8,11 @@ interface IModalProps {
   onClose: () => void;
   isOpen: boolean;
   showCloseButton?: boolean;
+  modalId?: string;
 }
 
 export const Modal = forwardRef<HTMLDivElement, IModalProps>(
-  ({ title, children, onClose, isOpen, showCloseButton = true }, ref) => {
+  ({ title, children, onClose, isOpen, showCloseButton = true, modalId }, ref) => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [shouldRender, setShouldRender] = useState(isOpen);
 
@@ -57,6 +58,7 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
         {/* Modal Content */}
         <div
           ref={ref}
+          id={modalId}
           className={`relative w-11/12 max-w-md bg-card rounded-2xl shadow-2xl z-[101] max-h-[90vh] overflow-hidden border border-border/50 transition-all duration-200 ${
             isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'
           }`}

@@ -108,6 +108,10 @@ export function PricingCard({
         // Update URL to show checkout attempt
         window.history.replaceState({}, '', `${cancelUrl}?checkout_price=${priceId}`);
         openAuthModal('login');
+        showToast({
+          message: 'Please sign in to complete your purchase',
+          type: 'info',
+        });
         return;
       }
 

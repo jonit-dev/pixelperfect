@@ -223,7 +223,13 @@ export const AuthenticationModal: React.FC = () => {
 
   return (
     <div className="font-sans">
-      <Modal title={getModalTitle()} onClose={close} isOpen={isOpen} showCloseButton={false}>
+      <Modal
+        title={getModalTitle()}
+        onClose={close}
+        isOpen={isOpen}
+        showCloseButton={false}
+        modalId={MODAL_ID}
+      >
         <div key={authModalView} className="animate-in fade-in duration-200">
           {renderContent()}
         </div>
