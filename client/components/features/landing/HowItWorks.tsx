@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { UploadCloud, Wand2, Download, ArrowRight } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@client/components/ui/MotionWrappers';
+import { motion } from 'framer-motion';
+import { ArrowRight, Download, UploadCloud, Wand2 } from 'lucide-react';
+import React from 'react';
 
 const steps = [
   {
@@ -29,58 +29,51 @@ const steps = [
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-main border-y border-white/10">
+    <section id="how-it-works" className="py-32 bg-main border-y border-white/5 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center mb-20">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4">
-            How it works
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Transform your workflow in three simple steps. No complex settings, just results.
+        <FadeIn className="text-center mb-24">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Workflow</h2>
+          <p className="text-4xl font-black tracking-tight text-white sm:text-5xl mb-6">
+            Simple. <span className="gradient-text-primary">Powerful.</span> Professional.
+          </p>
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto font-light">
+            Transform your workflow in three simple steps. No complex settings, just stunning results.
           </p>
         </FadeIn>
 
         <div className="relative">
           {/* Connecting Line (Desktop) */}
           <motion.div
-            className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent/30 to-transparent -z-10 -translate-y-full"
+            className="hidden md:block absolute top-[48px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent -z-10"
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
           />
 
           <StaggerContainer
             staggerDelay={0.2}
-            className="grid grid-cols-1 gap-12 md:grid-cols-3 relative z-10"
+            className="grid grid-cols-1 gap-16 md:grid-cols-3 relative z-10"
           >
             {steps.map((step, index) => (
               <StaggerItem key={step.id}>
                 <motion.div
                   className="group relative flex flex-col items-center text-center"
-                  whileHover={{ y: -5 }}
+                  whileHover={{ y: -8 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
                   {/* Icon Bubble */}
-                  <div className="relative mb-8">
-                    <motion.div
-                      className="flex h-24 w-24 items-center justify-center rounded-3xl glass-card shadow-xl group-hover:border-accent/30 transition-colors duration-300 z-10 relative"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  <div className="relative mb-10">
+                    <div
+                      className="flex h-24 w-24 items-center justify-center rounded-[2rem] glass-strong shadow-2xl group-hover:border-secondary/30 transition-all duration-500 z-10 relative bg-white/5"
                     >
-                      <motion.div
-                        initial={{ rotate: 0 }}
-                        whileHover={{ rotate: 10, scale: 1.1 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-                      >
-                        <step.icon className="h-10 w-10 text-accent" strokeWidth={1.5} />
-                      </motion.div>
-                    </motion.div>
+                      <step.icon className="h-10 w-10 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                    </div>
                     {/* Number Badge */}
                     <motion.div
-                      className="absolute -top-3 -right-3 h-8 w-8 bg-accent rounded-full text-white font-bold flex items-center justify-center border-4 border-base shadow-sm z-20"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
+                      className="absolute -top-3 -right-3 h-10 w-10 bg-gradient-to-br from-accent to-secondary rounded-2xl text-white font-black flex items-center justify-center border-4 border-main shadow-xl z-20"
+                      initial={{ scale: 0, rotate: -20 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
                       viewport={{ once: true }}
                       transition={{
                         type: 'spring',
@@ -93,20 +86,14 @@ const HowItWorks: React.FC = () => {
                     </motion.div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3">{step.name}</h3>
-                  <p className="text-muted-foreground leading-relaxed px-4">{step.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{step.name}</h3>
+                  <p className="text-text-secondary leading-relaxed px-6 font-light">{step.description}</p>
 
                   {/* Mobile Arrow */}
                   {index < steps.length - 1 && (
-                    <motion.div
-                      className="md:hidden mt-8"
-                      initial={{ opacity: 0, y: -10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <ArrowRight className="text-muted-foreground rotate-90" />
-                    </motion.div>
+                    <div className="md:hidden mt-12 opacity-30">
+                      <ArrowRight className="text-white rotate-90" size={32} />
+                    </div>
                   )}
                 </motion.div>
               </StaggerItem>
@@ -115,25 +102,16 @@ const HowItWorks: React.FC = () => {
         </div>
 
         {/* Call to Action Area */}
-        <FadeIn delay={0.5} className="mt-20 text-center">
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg glass shadow-sm text-sm text-muted-foreground"
-            animate={{
-              boxShadow: [
-                '0 0 0 0 rgba(45, 129, 255, 0)',
-                '0 0 0 4px rgba(45, 129, 255, 0.1)',
-                '0 0 0 0 rgba(45, 129, 255, 0)',
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: 'loop',
-            }}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Systems operational
-          </motion.div>
+        <FadeIn delay={0.5} className="mt-24 text-center">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl glass-strong shadow-sm group cursor-help">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+            <span className="text-sm font-bold text-text-secondary tracking-widest uppercase">System Operational</span>
+            <span className="text-white/10 mx-2">|</span>
+            <span className="text-xs text-text-muted font-medium">Global AI Nodes Active</span>
+          </div>
         </FadeIn>
       </div>
     </section>

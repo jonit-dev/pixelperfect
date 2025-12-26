@@ -22,15 +22,28 @@ export default {
         display: ['DM Sans', 'Inter', 'ui-sans-serif', 'sans-serif'],
       },
       colors: {
-        // New dark theme colors
+        // Updated dark theme colors
         main: 'rgb(var(--color-bg-base) / <alpha-value>)',
         surface: 'rgb(var(--color-bg-surface) / <alpha-value>)',
         'surface-light': 'rgb(var(--color-bg-surface-light) / <alpha-value>)',
+        elevated: 'rgb(var(--color-bg-elevated) / <alpha-value>)',
+
         accent: {
           DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
           hover: 'rgb(var(--color-accent-hover) / <alpha-value>)',
           light: 'rgb(var(--color-accent-light) / <alpha-value>)',
         },
+
+        // NEW: Secondary accent
+        secondary: {
+          DEFAULT: 'rgb(var(--color-secondary) / <alpha-value>)',
+          hover: 'rgb(var(--color-secondary-hover) / <alpha-value>)',
+          light: 'rgb(var(--color-secondary-light) / <alpha-value>)',
+        },
+
+        // NEW: Tertiary for gradients
+        tertiary: 'rgb(var(--color-tertiary) / <alpha-value>)',
+
         indigo: {
           500: 'rgb(var(--color-accent) / <alpha-value>)',
         },
@@ -55,6 +68,12 @@ export default {
         background: 'rgb(var(--color-background))',
         card: 'rgb(var(--color-card))',
       },
+      boxShadow: {
+        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.3)',
+        'glow-violet': '0 0 20px rgba(139, 92, 246, 0.3)',
+        'glow-mixed': '0 0 30px rgba(59, 130, 246, 0.2), 0 0 30px rgba(139, 92, 246, 0.2)',
+        'card-hover': '0 20px 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(139, 92, 246, 0.1)',
+      },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0' },
@@ -69,8 +88,12 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(45, 129, 255, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(45, 129, 255, 0.5)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.5)' },
+        },
+        'gradient-shift': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       animation: {
@@ -78,6 +101,7 @@ export default {
         'scale-in': 'scale-in 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.3s ease-out',
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+        'gradient-shift': 'gradient-shift 8s ease infinite',
       },
       typography: {
         DEFAULT: {

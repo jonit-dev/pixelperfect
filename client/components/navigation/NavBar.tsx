@@ -3,6 +3,7 @@ import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { useClickOutside } from '@client/hooks/useClickOutside';
 import { useModalStore } from '@client/store/modalStore';
 import { useUserStore } from '@client/store/userStore';
+import { cn } from '@client/utils/cn';
 import { clientEnv } from '@shared/config/env';
 import { ChevronDown, Menu, X, Zap } from 'lucide-react';
 import { useRef, useState } from 'react';
@@ -33,17 +34,17 @@ export const NavBar = (): JSX.Element => {
   const isPasswordUser = user?.provider === AuthProvider.EMAIL;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-main/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-main/80 backdrop-blur-xl transition-all duration-300">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="/"
-          className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
+          className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-all active:scale-95 flex-shrink-0"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white">
-            <Zap size={20} fill="currentColor" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-secondary text-white shadow-lg shadow-accent/20">
+            <Zap size={22} fill="currentColor" />
           </div>
-          <span className="hidden xs:inline text-xl font-bold tracking-tight text-white">
-            {clientEnv.APP_NAME}
+          <span className="hidden xs:inline text-2xl font-black tracking-tight text-white">
+            {clientEnv.APP_NAME}<span className="text-accent">.</span>
           </span>
         </a>
 
@@ -59,13 +60,13 @@ export const NavBar = (): JSX.Element => {
           <div className="relative" ref={toolsDropdownRef}>
             <button
               onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-              className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+              className="flex items-center gap-1.5 text-sm font-bold text-text-muted hover:text-white transition-all group"
             >
               Tools
-              <ChevronDown size={16} className="text-muted-foreground" />
+              <ChevronDown size={14} className={cn("text-text-muted transition-transform group-hover:text-white", isToolsDropdownOpen && "rotate-180")} />
             </button>
             {isToolsDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 glass rounded-xl shadow-lg py-2 z-10">
+              <div className="absolute top-full left-0 mt-4 w-56 glass-dropdown rounded-2xl py-3 z-50 animate-in fade-in zoom-in-95 duration-200">
                 <a
                   href="/tools/compress/image-compressor"
                   className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
@@ -116,24 +117,24 @@ export const NavBar = (): JSX.Element => {
         <div className="flex items-center gap-4">
           {isLoading ? (
             <div className="hidden md:flex items-center gap-3">
-              <div className="h-8 w-24 bg-surface rounded-full animate-pulse"></div>
-              <div className="h-9 w-20 bg-surface rounded-lg animate-pulse"></div>
+              <div className="h-10 w-24 bg-white/5 rounded-full animate-pulse"></div>
+              <div className="h-10 w-20 bg-white/5 rounded-xl animate-pulse"></div>
             </div>
           ) : !isAuthenticated ? (
             <>
-              <div className="hidden sm:flex items-center gap-2 glass px-3 py-1 rounded-full">
-                <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                <span className="text-xs font-medium text-muted-foreground">10 Free Credits</span>
+              <div className="hidden sm:flex items-center gap-2 glass-strong px-4 py-2 rounded-full border-white/5">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-xs font-black text-white/80 uppercase tracking-tighter">10 Free Credits</span>
               </div>
               <button
                 onClick={handleAuthClick}
-                className="hidden sm:inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-white hover:bg-surface/10 h-9 px-4 py-2"
+                className="hidden sm:inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-text-muted hover:text-white hover:bg-white/5 h-10 px-5 py-2"
               >
                 Sign In
               </button>
               <button
                 onClick={() => openAuthModal('register')}
-                className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-accent hover:bg-accent-hover text-white shadow-lg glow-blue hover:glow-blue-lg h-9 px-3 sm:px-5 py-2"
+                className="inline-flex items-center justify-center rounded-xl text-sm font-black transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 gradient-cta shine-effect text-white shadow-lg shadow-accent/20 h-10 px-3 sm:px-6 py-2"
               >
                 <span className="hidden sm:inline">Get Started Free</span>
                 <span className="sm:hidden">Get Started</span>
@@ -166,7 +167,7 @@ export const NavBar = (): JSX.Element => {
                   </svg>
                 </button>
                 {isDropdownOpen && (
-                  <ul className="p-2 shadow-lg glass rounded-xl w-52 absolute top-full right-0 mt-2 z-10">
+                  <ul className="p-2 shadow-2xl glass-dropdown rounded-2xl w-56 absolute top-full right-0 mt-4 z-50 animate-in fade-in zoom-in-95 duration-200">
                     <li className="md:hidden">
                       <div className="pointer-events-none">
                         <CreditsDisplay />

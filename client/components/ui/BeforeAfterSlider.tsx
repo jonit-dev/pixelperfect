@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowLeftRight } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface IBeforeAfterSliderProps {
   beforeUrl: string;
@@ -101,19 +101,19 @@ export const BeforeAfterSlider: React.FC<IBeforeAfterSliderProps> = ({
 
       {/* Slider Handle */}
       <div
-        className="absolute top-0 bottom-0 w-0.5 bg-surface shadow-[0_0_10px_rgba(0,0,0,0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
+        className="absolute top-0 bottom-0 w-1 bg-white/20 backdrop-blur-sm shadow-[0_0_10px_rgba(0,0,0,0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="w-10 h-10 bg-accent rounded-full shadow-lg glow-blue flex items-center justify-center">
+        <div className="w-10 h-10 gradient-cta rounded-full shadow-xl shadow-accent/20 flex items-center justify-center border border-white/20">
           <ArrowLeftRight size={14} className="text-white" />
         </div>
       </div>
 
       {/* Labels */}
-      <div className="absolute bottom-3 left-3 glass text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium">
+      <div className="absolute bottom-3 left-3 glass-strong text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium">
         {beforeLabel}
       </div>
-      <div className="absolute bottom-3 right-3 bg-accent text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium glow-blue">
+      <div className="absolute bottom-3 right-3 gradient-cta text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none font-medium shadow-lg shadow-accent/20">
         {afterLabel}
       </div>
     </div>

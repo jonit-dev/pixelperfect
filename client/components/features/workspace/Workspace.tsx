@@ -1,5 +1,6 @@
 'use client';
 
+import { useBatchQueue } from '@/client/hooks/useBatchQueue';
 import {
   DEFAULT_ENHANCEMENT_SETTINGS,
   IBatchItem,
@@ -10,8 +11,9 @@ import { Dropzone } from '@client/components/features/image-processing/Dropzone'
 import { BatchSidebar } from '@client/components/features/workspace/BatchSidebar';
 import { PreviewArea } from '@client/components/features/workspace/PreviewArea';
 import { QueueStrip } from '@client/components/features/workspace/QueueStrip';
+import { AmbientBackground } from '@client/components/landing/AmbientBackground';
+import { ErrorAlert } from '@client/components/stripe/ErrorAlert';
 import { TabButton } from '@client/components/ui/TabButton';
-import { useBatchQueue } from '@/client/hooks/useBatchQueue';
 import { useUserData } from '@client/store/userStore';
 import { cn } from '@client/utils/cn';
 import { downloadSingle } from '@client/utils/download';
@@ -19,7 +21,6 @@ import { CheckCircle2, Image, Layers, List, Loader2, Settings, Wand2 } from 'luc
 import React, { useEffect, useState } from 'react';
 import { BatchLimitModal } from './BatchLimitModal';
 import { UpgradeSuccessBanner } from './UpgradeSuccessBanner';
-import { ErrorAlert } from '@client/components/stripe/ErrorAlert';
 
 type MobileTab = 'upload' | 'preview' | 'queue';
 
@@ -153,19 +154,22 @@ const Workspace: React.FC = () => {
   // Empty State
   if (queue.length === 0) {
     return (
-      <div className="bg-surface rounded-2xl shadow-xl border border-white/10 overflow-hidden flex flex-col min-h-[600px]">
-        <div className="p-8 sm:p-16 flex-grow flex flex-col justify-center">
-          <Dropzone onFilesSelected={addFiles} />
-          <div className="mt-8 flex justify-center gap-8 text-muted-foreground flex-wrap">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={16} /> Free 5MB limit
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={16} /> No Watermark
-            </div>
-            <div className="flex items-center gap-2 text-indigo-500">
-              <Layers size={16} /> Batch{' '}
-              {batchLimit === 1 ? 'Upgrade Required' : `Up to ${batchLimit} images`}
+      <div className="bg-surface rounded-2xl shadow-2xl border border-white/5 overflow-hidden flex flex-col min-h-[600px]">
+        <div className="p-8 sm:p-16 flex-grow flex flex-col justify-center relative">
+          <AmbientBackground variant="section" />
+          <div className="relative z-10">
+            <Dropzone onFilesSelected={addFiles} />
+            <div className="mt-8 flex justify-center gap-8 text-text-muted flex-wrap">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-secondary" /> 5MB free limit
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-secondary" /> No Watermark
+              </div>
+              <div className="flex items-center gap-2 text-accent">
+                <Layers size={16} /> Batch{' '}
+                {batchLimit === 1 ? 'Upgrade Required' : `Up to ${batchLimit} images`}
+              </div>
             </div>
           </div>
         </div>
@@ -175,13 +179,13 @@ const Workspace: React.FC = () => {
 
   // Active Workspace State
   return (
-    <div className="bg-surface rounded-2xl shadow-xl border border-white/10 overflow-hidden flex flex-col min-h-[600px] md:min-h-[600px] h-[calc(100vh-12rem)] md:h-auto">
+    <div className="bg-main rounded-3xl shadow-2xl border border-white/5 overflow-hidden flex flex-col min-h-[600px] md:min-h-[600px] h-[calc(100vh-12rem)] md:h-auto">
       {/* Desktop: Three columns, Mobile: Single panel */}
       <div className="flex flex-col md:flex-row flex-1 md:flex-grow overflow-hidden">
         {/* Upload/Batch Sidebar */}
         <div
           className={cn(
-            'w-full md:w-80 border-b md:border-b-0 md:border-r bg-surface border-white/10',
+            'w-full md:w-80 border-b md:border-b-0 md:border-r bg-surface border-white/5',
             // Mobile: full height when active, Desktop: fixed width sidebar
             mobileTab === 'upload' ? 'flex-1 md:flex-none' : 'hidden md:block'
           )}
@@ -201,7 +205,7 @@ const Workspace: React.FC = () => {
         {/* Right Area: Main View + Queue Strip */}
         <div
           className={cn(
-            'flex flex-col bg-surface-light overflow-y-auto md:overflow-hidden relative',
+            'flex flex-col bg-main overflow-y-auto md:overflow-hidden relative',
             // Mobile: full height when active, Desktop: flex-grow
             mobileTab === 'preview' ? 'flex-1 md:flex-grow' : 'hidden md:flex md:flex-grow'
           )}
@@ -286,17 +290,17 @@ const Workspace: React.FC = () => {
 
       {/* Mobile Floating Action Button - Process CTA */}
       {mobileTab !== 'upload' && queue.length > 0 && (
-        <div className="md:hidden px-4 py-3 bg-surface border-t border-white/10">
+        <div className="md:hidden px-4 py-3 bg-surface border-t border-white/5">
           <button
             onClick={() => processBatch(config)}
             disabled={
               isProcessingBatch || queue.every(i => i.status === ProcessingStatus.COMPLETED)
             }
             className={cn(
-              'w-full py-3 px-4 rounded-xl font-semibold text-white flex items-center justify-center gap-2 transition-all relative overflow-hidden',
+              'w-full py-3 px-4 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all relative overflow-hidden',
               isProcessingBatch || queue.every(i => i.status === ProcessingStatus.COMPLETED)
-                ? 'bg-surface-light cursor-not-allowed'
-                : 'bg-gradient-to-r from-accent via-accent to-accent-hover active:scale-[0.98] shadow-lg shadow-accent/30 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] active:before:translate-x-[200%] before:transition-transform before:duration-700'
+                ? 'bg-white/5 text-text-muted cursor-not-allowed'
+                : 'gradient-cta shine-effect active:scale-[0.98] shadow-lg shadow-accent/20'
             )}
           >
             <span className="relative z-10 flex items-center gap-2">

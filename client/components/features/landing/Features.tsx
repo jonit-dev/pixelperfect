@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Type, Zap, Image as ImageIcon, Sparkles, Lock, Cpu, CheckCircle2 } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@client/components/ui/MotionWrappers';
+import { motion } from 'framer-motion';
+import { CheckCircle2, Cpu, Image as ImageIcon, Lock, Sparkles, Type, Zap } from 'lucide-react';
+import React from 'react';
 
 const features = [
   {
@@ -44,17 +44,14 @@ const secondaryFeatures = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-24 bg-surface relative overflow-hidden">
-      {/* Decorative bg blob */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/3 h-full bg-main -z-10 skew-x-12 opacity-50"></div>
-
+    <section id="features" className="py-32 bg-main relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="mx-auto max-w-2xl lg:text-center mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-accent">Feature Rich</h2>
-          <p className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Everything you need for professional results
+          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Feature Rich</h2>
+          <p className="text-4xl font-black tracking-tight text-white sm:text-5xl">
+            Everything you need for <span className="gradient-text-primary">professional results</span>
           </p>
-          <p className="mt-6 text-lg text-muted-foreground leading-8">
+          <p className="mt-6 text-xl text-text-secondary leading-8 font-light">
             We combine state-of-the-art generative AI with traditional computer vision to deliver
             the best of both worlds: creativity and fidelity.
           </p>
@@ -67,22 +64,19 @@ const Features: React.FC = () => {
           {features.map(feature => (
             <StaggerItem key={feature.name}>
               <motion.div
-                className="group relative p-8 glass-card rounded-2xl hover:shadow-xl transition-shadow duration-300 animated-border h-full"
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="group relative h-full glass-card-2025 animated-border-violet flex flex-col"
               >
-                <motion.div
-                  className={`inline-flex items-center justify-center h-12 w-12 rounded-xl mb-6 bg-surface/10 ${feature.color}`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                <div
+                  className={`inline-flex items-center justify-center h-12 w-12 rounded-xl mb-6 bg-gradient-to-br from-accent/20 to-secondary/20 text-accent group-hover:scale-110 transition-transform`}
                 >
-                  <feature.icon size={24} strokeWidth={2.5} />
-                </motion.div>
+                  <feature.icon size={24} strokeWidth={2} />
+                </div>
 
-                <h3 className="text-lg font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:gradient-text-secondary transition-colors">
                   {feature.name}
                 </h3>
 
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-text-secondary text-sm leading-relaxed font-light">
                   {feature.description}
                 </p>
               </motion.div>
@@ -91,26 +85,23 @@ const Features: React.FC = () => {
         </StaggerContainer>
 
         {/* Secondary Feature Strip */}
-        <FadeIn delay={0.3} className="mt-20 border-t border-white/10 pt-16">
+        <FadeIn delay={0.3} className="mt-24 border-t border-white/5 pt-16">
           <StaggerContainer
             staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {secondaryFeatures.map(feature => (
               <StaggerItem key={feature.name}>
                 <motion.div
-                  className="flex flex-col items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  className="flex flex-col items-center gap-3 group"
+                  whileHover={{ y: -4 }}
                 >
-                  <motion.div
-                    className="p-2 bg-surface/10 rounded-full text-muted-foreground"
-                    whileHover={{ backgroundColor: 'rgba(45, 129, 255, 0.2)', color: '#2D81FF' }}
-                    transition={{ duration: 0.2 }}
+                  <div
+                    className="p-3 bg-surface rounded-full text-text-muted transition-all duration-300 group-hover:bg-accent/20 group-hover:text-accent"
                   >
-                    <feature.icon size={16} />
-                  </motion.div>
-                  <span className="font-semibold text-white">{feature.name}</span>
+                    <feature.icon size={20} />
+                  </div>
+                  <span className="font-bold text-white group-hover:text-accent transition-colors tracking-wide">{feature.name}</span>
                 </motion.div>
               </StaggerItem>
             ))}

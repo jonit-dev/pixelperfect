@@ -91,25 +91,24 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
         onClick={handleProcessClick}
         disabled={isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)}
         className={`
-          w-full relative overflow-hidden rounded-xl py-3 px-4
-          font-semibold text-white
-          transition-all duration-200
+          w-full relative overflow-hidden rounded-xl py-4 px-4
+          font-bold text-white
+          transition-all duration-300
           flex flex-col items-center justify-center gap-1
           disabled:opacity-50 disabled:cursor-not-allowed
-          ${
-            isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)
-              ? 'bg-surface-light'
-              : hasEnoughCredits
-                ? 'bg-gradient-to-r from-accent via-accent to-accent-hover shadow-lg shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 active:scale-[0.98] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-1000'
-                : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 active:scale-[0.98]'
+          ${isProcessing || queue.every(i => i.status === ProcessingStatus.COMPLETED)
+            ? 'bg-white/5 text-text-muted'
+            : hasEnoughCredits
+              ? 'gradient-cta shine-effect active:scale-[0.98] shadow-lg shadow-accent/20'
+              : 'bg-gradient-to-r from-amber-500 to-orange-500 active:scale-[0.98] shadow-lg shadow-amber-500/20'
           }
         `}
       >
         <div className="flex items-center justify-center gap-2 relative z-10">
-          {isProcessing ? <Loader2 className="animate-spin" size={18} /> : <Wand2 size={18} />}
-          <span className="text-sm font-bold">
+          {isProcessing ? <Loader2 className="animate-spin" size={18} /> : <Wand2 size={18} className={hasEnoughCredits ? "text-white" : ""} />}
+          <span className="text-sm font-black tracking-tight">
             {isProcessing && batchProgress
-              ? `Processing ${batchProgress.current} of ${batchProgress.total}`
+              ? `Processing ${batchProgress.current} / ${batchProgress.total}`
               : isProcessing
                 ? 'Processing...'
                 : completedCount > 0 && completedCount < queue.length
@@ -125,7 +124,7 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
           !isProcessing &&
           queue.some(i => i.status !== ProcessingStatus.COMPLETED) && (
             <div
-              className={`text-xs font-medium opacity-90 relative z-10 ${!hasEnoughCredits ? 'animate-pulse font-bold' : ''}`}
+              className={`text-[10px] uppercase tracking-widest font-black opacity-80 relative z-10 ${!hasEnoughCredits ? 'animate-pulse' : ''}`}
             >
               Cost: {totalCost} {totalCost === 1 ? 'credit' : 'credits'}
             </div>

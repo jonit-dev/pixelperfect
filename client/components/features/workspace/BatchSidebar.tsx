@@ -127,13 +127,13 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
   const placeholderPrompt = generatePrompt(config);
 
   return (
-    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-white/10 bg-surface flex flex-col z-20 shadow-sm h-full">
+    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-white/5 bg-surface flex flex-col z-20 shadow-sm h-full">
       {/* Header */}
-      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-white/10 shrink-0">
-        <h3 className="font-semibold text-text-primary flex items-center gap-2 mb-1 text-base md:text-base">
-          <Settings size={16} className="md:size-[18px] text-text-primary" /> Batch Settings
+      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-white/5 shrink-0">
+        <h3 className="font-bold text-white flex items-center gap-2 mb-1 text-base md:text-base tracking-tight">
+          <Settings size={18} className="text-secondary" /> Batch Settings
         </h3>
-        <p className="text-xs text-muted-foreground">Applies to all {queue.length} images</p>
+        <p className="text-xs text-text-muted font-medium">Applies to all {queue.length} images</p>
       </div>
 
       {/* Action Panel - Moved to top for better visibility */}
@@ -157,8 +157,8 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
 
       {/* Divider */}
       <div className="px-4 md:px-6 py-3 md:py-4 shrink-0">
-        <div className="h-px bg-surface/10"></div>
-        <p className="text-xs font-medium text-muted-foreground mt-3 md:mt-4 mb-2">
+        <div className="h-px bg-white/5"></div>
+        <p className="text-[10px] font-black text-text-muted uppercase tracking-widest mt-3 md:mt-4 mb-2">
           Processing Options
         </p>
       </div>

@@ -577,7 +577,7 @@ export function buildHomepageTiers(): Array<{
   description: string;
   features: string[];
   cta: string;
-  variant: 'outline' | 'primary' | 'secondary';
+  variant: 'outline' | 'primary' | 'secondary' | 'gradient';
   priceId: string | null;
   recommended: boolean;
 }> {
@@ -590,7 +590,7 @@ export function buildHomepageTiers(): Array<{
     description: string;
     features: string[];
     cta: string;
-    variant: 'outline' | 'primary' | 'secondary';
+    variant: 'outline' | 'primary' | 'secondary' | 'gradient';
     priceId: string | null;
     recommended: boolean;
   }> = [];
@@ -627,7 +627,7 @@ export function buildHomepageTiers(): Array<{
       description: plan.description,
       features: [...plan.features],
       cta: 'Get Started',
-      variant: plan.recommended ? ('primary' as const) : ('secondary' as const),
+      variant: plan.recommended ? ('gradient' as const) : ('secondary' as const),
       priceId: plan.stripePriceId,
       recommended: plan.recommended,
     });

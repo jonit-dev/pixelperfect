@@ -26,7 +26,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
   return (
     <div
       className={cn(
-        'bg-surface border-t md:border-t-0 border-white/10 p-4',
+        'bg-main border-t md:border-t-0 border-white/5 p-4',
         // Desktop: horizontal strip with fixed height, Mobile: vertical list that fills available space
         'h-full md:h-32 flex flex-col md:flex-row gap-3 md:gap-4 overflow-y-auto md:overflow-y-hidden md:overflow-x-auto custom-scrollbar'
       )}
@@ -51,13 +51,13 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
           onFilesSelected={onAddFiles}
           disabled={isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)}
           className={cn(
-            'h-full w-full !p-0 !border-2 !border-dashed !rounded-lg',
+            'h-full w-full !p-0 !border-2 !border-dashed !rounded-xl transition-all duration-300',
             // Mobile: larger touch target
             'min-h-[64px] md:min-h-[96px]',
             // Disabled state styling
             isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
-              ? '!border-white/5 !bg-surface-light/50 !cursor-not-allowed'
-              : '!border-white/10 hover:!bg-surface-light'
+              ? '!border-white/5 !bg-white/5 !cursor-not-allowed'
+              : '!border-white/10 hover:!bg-white/[0.08] hover:!border-accent/50'
           )}
         >
           <div className="flex flex-col items-center justify-center h-full w-full pointer-events-none">
@@ -92,17 +92,17 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
           data-testid="queue-item"
           onClick={() => onSelect(item.id)}
           className={cn(
-            'group relative cursor-pointer border-2 overflow-hidden transition-all touch-manipulation',
+            'group relative cursor-pointer border-2 overflow-hidden transition-all duration-300 touch-manipulation',
             // Mobile: horizontal card with thumbnail, Desktop: square
             'flex flex-row md:flex-col items-center gap-3 p-2 md:p-0 md:h-24 md:w-24',
             // Responsive sizing - shrink-0 prevents flex shrinking
             'w-full h-16 md:w-24 md:h-24 shrink-0',
             // Active state
             activeId === item.id
-              ? 'border-accent ring-2 ring-accent/20'
-              : 'border-white/10 hover:border-accent/50',
+              ? 'border-secondary ring-4 ring-secondary/20 scale-105 z-10'
+              : 'border-white/5 hover:border-secondary/50',
             // Rounded corners
-            'rounded-lg'
+            'rounded-xl'
           )}
         >
           <img
@@ -155,14 +155,14 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
               </div>
             </div>
             {/* Progress bar - mobile */}
-            <div className="mt-1 h-1 bg-surface/10 rounded-full overflow-hidden">
+            <div className="mt-1 h-1 bg-white/5 rounded-full overflow-hidden">
               {item.status === ProcessingStatus.COMPLETED ? (
-                <div className="h-full bg-green-500 w-full"></div>
+                <div className="h-full bg-emerald-500 w-full shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
               ) : item.status === ProcessingStatus.ERROR ? (
-                <div className="h-full bg-red-500 w-full"></div>
+                <div className="h-full bg-red-500 w-full shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
               ) : (
                 <div
-                  className="h-full bg-accent transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-accent to-secondary transition-all duration-300 shadow-[0_0_8px_rgba(59,130,246,0.5)]"
                   style={{ width: `${item.progress}%` }}
                 ></div>
               )}
@@ -178,21 +178,21 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
                   e.stopPropagation();
                   onRemove(item.id);
                 }}
-                className="absolute top-1 right-1 p-1 bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500"
+                className="absolute top-1 right-1 p-1 bg-black/60 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:scale-110"
               >
-                <X size={12} />
+                <X size={14} />
               </button>
             )}
 
             {/* Status Indicators - Desktop */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-surface/10">
+            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-white/5">
               {item.status === ProcessingStatus.COMPLETED ? (
-                <div className="h-full bg-green-500 w-full"></div>
+                <div className="h-full bg-emerald-500 w-full shadow-[0_-2px_8px_rgba(16,185,129,0.5)]"></div>
               ) : item.status === ProcessingStatus.ERROR ? (
-                <div className="h-full bg-red-500 w-full"></div>
+                <div className="h-full bg-red-500 w-full shadow-[0_-2px_8px_rgba(239,68,68,0.5)]"></div>
               ) : (
                 <div
-                  className="h-full bg-accent transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-accent to-secondary transition-all duration-300 shadow-[0_-2px_8px_rgba(59,130,246,0.5)]"
                   style={{ width: `${item.progress}%` }}
                 ></div>
               )}
@@ -201,18 +201,18 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             {/* Status Icon Overlay - Desktop */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               {item.status === ProcessingStatus.COMPLETED && (
-                <div className="bg-green-500/80 p-1 rounded-full text-white shadow-sm">
-                  <Check size={14} strokeWidth={3} />
+                <div className="bg-emerald-500/90 p-1.5 rounded-full text-white shadow-lg shadow-emerald-500/20 scale-110">
+                  <Check size={14} strokeWidth={4} />
                 </div>
               )}
               {item.status === ProcessingStatus.ERROR && (
-                <div className="bg-red-500/80 p-1 rounded-full text-white shadow-sm">
-                  <AlertTriangle size={14} strokeWidth={3} />
+                <div className="bg-red-500/90 p-1.5 rounded-full text-white shadow-lg shadow-red-500/20 scale-110">
+                  <AlertTriangle size={14} strokeWidth={4} />
                 </div>
               )}
               {item.status === ProcessingStatus.PROCESSING && (
-                <div className="bg-accent/50 p-1 rounded-full text-white shadow-sm animate-spin">
-                  <Loader2 size={14} />
+                <div className="bg-accent/60 p-2 rounded-full text-white shadow-lg shadow-accent/20 animate-spin backdrop-blur-sm">
+                  <Loader2 size={16} />
                 </div>
               )}
             </div>
