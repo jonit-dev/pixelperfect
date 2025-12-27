@@ -6,7 +6,7 @@
 - **Check skills**: Before starting any task, check for existing .claude/skills that can help with your context.
 - **Cloudflare Workers**: Code runs on CF Workers free plan (10ms CPU limit). Avoid heavy computation, prefer streaming, use efficient algorithms. Delegate to browser whatever can safely run client-side; if security concerns exist, report and suggest alternatives.
 - **Minimum changes**: Only add minimum necessary changes to make your feature work reliably and bug free.
-- **Verify changes**: Run `yarn verify` after modifications
+- **Verify changes**: Run `yarn verify` after modifications. If it's a significant UI change, use `playwright-mcp` to validate it!
 - **Interface naming**: Prefix with `I` (e.g., `IBlogPost`)
 - **Update roadmap**: Modify `docs/management/ROADMAP.md` for new features
 - **Debug**: Check `yarn dev` logs (uses concurrently)
@@ -17,13 +17,6 @@
   - Focus solely on code changes, edits, or implementations. Avoid generating any ancillary files.
   - If documentation is needed, ask for confirmation first instead of auto-generating it.
 - **Theming**: DO NOT HARDCODE COLORS. Use tailwind config tokens (tailwind.config.js)
-
-## Agents
-
-- `e2e-test-writer` for end-to-end test creation
-- `bug-hunter` for debugging issues
-- `code-refactorer` for improving existing code
-- `codebase-explorer` for understanding project structure
 
 ## Environment Variables
 
@@ -47,6 +40,6 @@ Next.js 15 (App Router), Supabase, Stripe, Cloudflare Pages, Baselime
 ## MCP Tools
 
 - **supabase**: Database migrations and queries
-- **playwright**: UI testing
+- **playwright**: UI testing, validating things
 - **context7**: Documentation lookup
 - **exa-search**: Web search

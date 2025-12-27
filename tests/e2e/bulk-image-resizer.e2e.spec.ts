@@ -1,0 +1,510 @@
+import { test, expect } from '../test-fixtures';
+import { BulkImageResizerPage } from '../pages/BulkImageResizerPage';
+import { getFixturePath } from '../fixtures';
+
+/**
+ * Bulk Image Resizer E2E Tests
+ *
+ * Tests for the bulk image resizer tool at /tools/resize/bulk-image-resizer
+ * Features tested:
+ * - Multi-file drag & drop upload (up to 20 images)
+ * - Width/height inputs
+ * - Maintain aspect ratio checkbox
+ * - Fit/fill mode selection
+ * - Quality slider
+ * - Output format selection (JPEG, PNG, WebP)
+ * - Individual progress bars
+ * - Download as ZIP button
+ * - Remove individual files
+ * - Clear all button
+ */
+
+test.describe('Bulk Image Resizer E2E Tests', () => {
+  const sampleImagePath = getFixturePath('sample.jpg');
+  const sampleImagePath2 = getFixturePath('sample2.jpg');
+
+  test.describe('Page Structure', () => {
+    test('Page loads with correct title and upload area', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Verify page elements
+      await expect(resizerPage.pageTitle).toBeVisible();
+      await expect(resizerPage.pageDescription).toBeVisible();
+      await expect(resizerPage.uploadArea).toBeVisible();
+    });
+
+    test('Settings panel has all controls', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Verify all settings controls are present
+      await expect(resizerPage.widthInput).toBeVisible();
+      await expect(resizerPage.heightInput).toBeVisible();
+      await expect(resizerPage.formatSelect).toBeVisible();
+      await expect(resizerPage.qualitySlider).toBeVisible();
+      await expect(resizerPage.aspectRatioCheckbox).toBeVisible();
+    });
+
+    test('Upload area shows correct instructions', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Verify upload instructions - scope to the upload area to avoid multiple matches
+      await expect(resizerPage.uploadArea).toContainText(/drag & drop/i);
+      await expect(resizerPage.uploadArea).toContainText(/up to \d+ images/i);
+    });
+  });
+
+  test.describe('Image Upload Flow', () => {
+    test('Uploading a single image shows in list', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Upload image
+      await resizerPage.uploadImage(sampleImagePath);
+
+      // Wait for image to be added
+      await page.waitForTimeout(1000);
+
+      // Verify upload area is hidden and image is in list
+      await resizerPage.assertUploadAreaHidden();
+
+      const imageCount = await resizerPage.getImageCount();
+      expect(imageCount).toBe(1);
+    });
+
+    test('Uploading multiple images shows all in list', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Upload multiple images
+      await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
+
+      // Wait for images to be added
+      await page.waitForTimeout(1000);
+
+      // Verify images are in list
+      const imageCount = await resizerPage.getImageCount();
+      expect(imageCount).toBeGreaterThanOrEqual(2);
+    });
+
+    test('Can add more images after initial upload', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Upload first image
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(500);
+
+      const initialCount = await resizerPage.getImageCount();
+
+      // Add more images using the "Add More Images" button
+      await resizerPage.addMoreImages([sampleImagePath2]);
+      await page.waitForTimeout(500);
+
+      const finalCount = await resizerPage.getImageCount();
+      expect(finalCount).toBe(initialCount + 1);
+    });
+
+    test('Image shows preview and dimensions', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      // Get image info
+      const info = await resizerPage.getImageInfo(0);
+
+      // Verify name exists
+      expect(info.name).toBeTruthy();
+      expect(info.name?.length).toBeGreaterThan(0);
+
+      // Verify dimensions are shown (format like "1920 x 1080")
+      expect(info.dimensions).toBeTruthy();
+      expect(info.dimensions).toMatch(/\d+\s*×\s*\d+/);
+    });
+  });
+
+  test.describe('Settings Controls', () => {
+    test('Can set width and height', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Set width
+      await resizerPage.setWidth(800);
+      await page.waitForTimeout(200);
+
+      // Verify width was set
+      const widthValue = await resizerPage.widthInput.inputValue();
+      expect(widthValue).toBe('800');
+
+      // Set height
+      await resizerPage.setHeight(600);
+      await page.waitForTimeout(200);
+
+      // Verify height was set
+      const heightValue = await resizerPage.heightInput.inputValue();
+      expect(heightValue).toBe('600');
+    });
+
+    test('Can toggle maintain aspect ratio', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Default should be checked
+      let isChecked = await resizerPage.aspectRatioCheckbox.isChecked();
+      expect(isChecked).toBe(true);
+
+      // Uncheck
+      await resizerPage.setMaintainAspectRatio(false);
+      isChecked = await resizerPage.aspectRatioCheckbox.isChecked();
+      expect(isChecked).toBe(false);
+
+      // Check again
+      await resizerPage.setMaintainAspectRatio(true);
+      isChecked = await resizerPage.aspectRatioCheckbox.isChecked();
+      expect(isChecked).toBe(true);
+    });
+
+    test('Height is disabled when aspect ratio is maintained', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Ensure aspect ratio is checked
+      await resizerPage.setMaintainAspectRatio(true);
+
+      // Height input should be disabled
+      const isDisabled = await resizerPage.heightInput.isDisabled();
+      expect(isDisabled).toBe(true);
+    });
+
+    test('Can set output format', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Test all formats
+      const formats: Array<'jpeg' | 'png' | 'webp'> = ['jpeg', 'png', 'webp'];
+
+      for (const format of formats) {
+        await resizerPage.setFormat(format);
+        await page.waitForTimeout(200);
+
+        const selectedValue = await resizerPage.formatSelect.inputValue();
+        expect(selectedValue).toBe(format);
+      }
+    });
+
+    test('Can set quality slider', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Set quality to different values
+      const qualities = [50, 75, 95];
+
+      for (const quality of qualities) {
+        await resizerPage.setQuality(quality);
+        await page.waitForTimeout(200);
+
+        const value = await resizerPage.qualitySlider.inputValue();
+        expect(parseInt(value)).toBe(quality);
+      }
+    });
+
+    test('Fit mode select appears when aspect ratio is maintained', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Ensure aspect ratio is checked
+      await resizerPage.setMaintainAspectRatio(true);
+
+      // Fit mode select should be visible
+      await expect(resizerPage.fitModeSelect).toBeVisible({ timeout: 5000 });
+    });
+
+    test('Can set fit mode to fit or fill', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Ensure aspect ratio is checked
+      await resizerPage.setMaintainAspectRatio(true);
+
+      // Set to fit
+      await resizerPage.setFitMode('fit');
+      await page.waitForTimeout(200);
+      let fitModeValue = await resizerPage.fitModeSelect.inputValue();
+      expect(fitModeValue).toBe('fit');
+
+      // Set to fill
+      await resizerPage.setFitMode('fill');
+      await page.waitForTimeout(200);
+      fitModeValue = await resizerPage.fitModeSelect.inputValue();
+      expect(fitModeValue).toBe('fill');
+    });
+  });
+
+  test.describe('Processing Flow', () => {
+    test('Process All button appears after upload', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      // Process All button should be visible
+      await expect(resizerPage.processAllButton).toBeVisible();
+    });
+
+    test('Clicking Process All processes images', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      // Click process all
+      await resizerPage.clickProcessAll();
+
+      // Wait for processing to start or complete
+      await page.waitForTimeout(2000);
+
+      // Check for processing indicators or completion
+      const isProcessing = await resizerPage.isProcessing();
+      const isComplete = await resizerPage.isDownloadAllVisible();
+
+      expect(isProcessing || isComplete).toBe(true);
+    });
+
+    test('Download All as ZIP button appears after processing', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      await resizerPage.clickProcessAll();
+
+      // Wait for download button to appear
+      await resizerPage.waitForProcessingComplete();
+
+      // Download All button should be visible
+      await expect(resizerPage.downloadAllButton).toBeVisible();
+    });
+
+    test('Processed images show download button individually', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      await resizerPage.clickProcessAll();
+
+      // Wait for processing to complete
+      await resizerPage.waitForProcessingComplete();
+
+      // Image item should have download button (indicated by check icon or download button)
+      const imageItems = page.locator('.rounded-lg').filter({ hasText: /×/ });
+      const firstItem = imageItems.first();
+
+      // Look for download button or success indicator
+      await expect(
+        firstItem
+          .locator('button')
+          .filter({ hasText: /download/i })
+          .or(firstItem.locator('[class*="success"]'))
+      ).toBeVisible({ timeout: 10000 });
+    });
+  });
+
+  test.describe('Image Management', () => {
+    test('Can remove individual image from list', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Upload two images
+      await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
+      await page.waitForTimeout(1000);
+
+      const initialCount = await resizerPage.getImageCount();
+      expect(initialCount).toBeGreaterThanOrEqual(2);
+
+      // Remove first image
+      await resizerPage.removeImageByIndex(0);
+      await page.waitForTimeout(500);
+
+      const finalCount = await resizerPage.getImageCount();
+      expect(finalCount).toBe(initialCount - 1);
+    });
+
+    test('Reset button clears all images', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
+      await page.waitForTimeout(1000);
+
+      // Verify images are in list
+      const initialCount = await resizerPage.getImageCount();
+      expect(initialCount).toBeGreaterThanOrEqual(1);
+
+      // Click reset
+      await resizerPage.clickReset();
+      await page.waitForTimeout(500);
+
+      // Upload area should be visible again
+      await resizerPage.assertUploadAreaVisible();
+    });
+
+    test('Can download individual processed image', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      await resizerPage.clickProcessAll();
+      await resizerPage.waitForProcessingComplete();
+
+      // Click download for first image (set up download listener to prevent actual download)
+      const downloadPromise = page.waitForEvent('download');
+
+      await resizerPage.downloadImageByIndex(0);
+
+      // Verify download was triggered
+      const download = await downloadPromise;
+      expect(download.suggestedFilename()).toContain('-resized.');
+    });
+  });
+
+  test.describe('Error Handling', () => {
+    test('Non-image files are filtered out', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Verify the file input has accept attribute that filters to images only
+      const fileInput = page.locator('input[type="file"]').first();
+      const acceptAttribute = await fileInput.getAttribute('accept');
+
+      // The accept attribute should only allow image files
+      expect(acceptAttribute).toContain('image');
+      expect(acceptAttribute).not.toContain('text');
+      expect(acceptAttribute).not.toContain('application');
+    });
+  });
+
+  test.describe('Accessibility', () => {
+    test('Page has proper semantic structure', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Check for proper heading structure
+      const headings = page.locator('h1, h2, h3');
+      await expect(headings.first()).toBeVisible();
+
+      // Check for form labels - only check visible inputs with IDs (skip file inputs and hidden inputs)
+      const inputs = page.locator(
+        'input:visible:not([type="file"]):not([type="hidden"]), select:visible'
+      );
+      const inputCount = await inputs.count();
+
+      for (let i = 0; i < inputCount; i++) {
+        const input = inputs.nth(i);
+        const hasLabel = await input.evaluate(el => {
+          const id = el.id;
+          // Skip elements without ID - they can't have a label[for] association
+          if (!id) return true;
+          const ariaLabel = el.getAttribute('aria-label');
+          const ariaLabelledBy = el.getAttribute('aria-labelledby');
+          const label = document.querySelector(`label[for="${id}"]`);
+
+          return !!(ariaLabel || ariaLabelledBy || label);
+        });
+
+        expect(hasLabel).toBe(true);
+      }
+    });
+
+    test('Buttons have accessible names', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      // Upload an image to show action buttons
+      await resizerPage.uploadImage(sampleImagePath);
+      await page.waitForTimeout(1000);
+
+      // Check that buttons have text content, aria-label, or title
+      const buttons = page.locator('button');
+      const buttonCount = await buttons.count();
+
+      for (let i = 0; i < Math.min(buttonCount, 10); i++) {
+        const button = buttons.nth(i);
+        const text = await button.textContent();
+        const ariaLabel = await button.getAttribute('aria-label');
+        const title = await button.getAttribute('title');
+
+        // Button is accessible if it has visible text, aria-label, or title
+        const hasAccessibleName = !!(text?.trim() || ariaLabel || title);
+        expect(hasAccessibleName).toBe(true);
+      }
+    });
+  });
+
+  test.describe('Performance', () => {
+    test('Page loads within reasonable time', async ({ page }) => {
+      const startTime = Date.now();
+
+      await page.goto('/tools/resize/bulk-image-resizer');
+      await page.waitForLoadState('domcontentloaded');
+
+      const loadTime = Date.now() - startTime;
+
+      // Page should load within 5 seconds
+      expect(loadTime).toBeLessThan(5000);
+    });
+
+    test('Settings updates are responsive', async ({ page }) => {
+      const resizerPage = new BulkImageResizerPage(page);
+      await resizerPage.goto();
+      await resizerPage.waitForLoad();
+
+      const startTime = Date.now();
+
+      // Update several settings
+      await resizerPage.setWidth(1920);
+      await resizerPage.setHeight(1080);
+      await resizerPage.setQuality(90);
+      await resizerPage.setFormat('webp');
+
+      const updateTime = Date.now() - startTime;
+
+      // Updates should be quick (no lag)
+      expect(updateTime).toBeLessThan(2000);
+    });
+  });
+});

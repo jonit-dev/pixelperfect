@@ -93,6 +93,7 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
     alternatives: `Best Upscaler Alternatives & Comparisons | ${APP_NAME}`,
     guides: `Image Enhancement Guides & Tutorials | ${APP_NAME}`,
     free: `Free AI Image Tools - No Sign-Up Required | ${APP_NAME}`,
+    'bulk-tools': `Bulk Image Tools - Resize, Compress Multiple Images | ${APP_NAME}`,
   };
 
   const categoryDescriptions: Record<PSEOCategory, string> = {
@@ -109,6 +110,8 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
     guides:
       'Learn how to get the most out of your images with step-by-step guides and tutorials. Expert tips and best practices included.',
     free: 'Free AI image tools with no credit card or sign-up required. Professional quality enhancement at no cost.',
+    'bulk-tools':
+      'Batch process multiple images at once. Bulk resize, compress, and optimize images with our free browser-based tools.',
   };
 
   return {

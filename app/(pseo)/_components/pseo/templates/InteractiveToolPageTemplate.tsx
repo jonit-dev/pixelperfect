@@ -21,12 +21,16 @@ import { FadeIn } from '@/app/(pseo)/_components/ui/MotionWrappers';
 import { ImageResizer } from '@/app/(pseo)/_components/tools/ImageResizer';
 import { ImageCompressor } from '@/app/(pseo)/_components/tools/ImageCompressor';
 import { FormatConverter } from '@/app/(pseo)/_components/tools/FormatConverter';
+import { BulkImageCompressor } from '@/app/(pseo)/_components/tools/BulkImageCompressor';
+import { BulkImageResizer } from '@/app/(pseo)/_components/tools/BulkImageResizer';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TOOL_COMPONENTS: Record<string, React.ComponentType<any>> = {
   ImageResizer,
   ImageCompressor,
   FormatConverter,
+  BulkImageCompressor,
+  BulkImageResizer,
 };
 
 /**

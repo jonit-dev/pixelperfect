@@ -1,14 +1,23 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { HomePageClient } from '@client/components/pages/HomePageClient';
-import { clientEnv } from '@shared/config/env';
 import { JsonLd } from '@client/components/seo/JsonLd';
 import { generateHomepageSchema } from '@lib/seo/schema-generator';
 
 export const metadata: Metadata = {
-  title: `${clientEnv.APP_NAME} | Image Upscaling & Enhancement`,
+  title: `AI Image Upscaler | Enhance & Upscale Photos Online Free`,
   description:
-    'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+    'Free AI image upscaler and picture enhancer. Upscale images up to 4x, enhance photo quality, and restore details. No signup required for basic features.',
+  openGraph: {
+    title: `AI Image Upscaler | Enhance & Upscale Photos Online Free`,
+    description:
+      'Free AI image upscaler and picture enhancer. Upscale images up to 4x, enhance photo quality, and restore details.',
+    type: 'website',
+    url: '/',
+  },
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function HomePage() {

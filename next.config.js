@@ -5,10 +5,11 @@ const nextConfig = {
     // Keep TypeScript checking enabled
     ignoreBuildErrors: false,
   },
+  // Always use trailing slashes for proper SEO
+  trailingSlash: true,
   // Skip static generation for OpenNext migration
   ...(process.env.OPENNEXT && {
     output: 'export',
-    trailingSlash: true,
   }),
   // Performance optimizations
   images: {

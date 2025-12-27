@@ -80,7 +80,7 @@ export function HomePageClient(): JSX.Element {
   }, [searchParams, openAuthModal, showToast]);
 
   return (
-    <main className="flex-grow bg-main font-sans selection:bg-accent/20 selection:text-white">
+    <div className="flex-grow bg-main font-sans selection:bg-accent/20 selection:text-white">
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 hero-gradient-2025">
         <AmbientBackground variant="hero" />
@@ -97,7 +97,9 @@ export function HomePageClient(): JSX.Element {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-strong text-xs font-semibold text-accent mb-8 hover:shadow-xl hover:shadow-accent/20 transition-all duration-300 cursor-default group"
           >
             <Sparkles size={14} className="text-secondary animate-pulse" />
-            <span className="group-hover:scale-105 transition-transform">AI-Powered Enhancement</span>
+            <span className="group-hover:scale-105 transition-transform">
+              AI-Powered Enhancement
+            </span>
             <span className="w-px h-3 bg-white/10 mx-1"></span>
             <span className="text-muted-foreground group-hover:text-white transition-colors">
               v2.0 2025 Edition
@@ -108,15 +110,27 @@ export function HomePageClient(): JSX.Element {
             variants={heroItemVariants}
             className="text-6xl font-black tracking-tight text-white sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05]"
           >
-            Upscale Images <br className="hidden sm:block" />
-            <span className="gradient-text-primary">
-              For Professional Use
-            </span>
+            AI Image Upscaler <br className="hidden sm:block" />
+            <span className="gradient-text-primary">& Photo Enhancer</span>
           </motion.h1>
+
+          <motion.h2
+            variants={heroItemVariants}
+            className="mx-auto mt-6 max-w-2xl text-2xl sm:text-3xl text-text-secondary leading-relaxed font-semibold"
+          >
+            Free AI-Powered Image Enhancement & Upscaling
+          </motion.h2>
 
           <motion.p
             variants={heroItemVariants}
-            className="mx-auto mt-8 max-w-2xl text-xl sm:text-2xl text-text-secondary leading-relaxed font-light"
+            className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary leading-relaxed"
+          >
+            The ultimate picture enhancer for professional photo quality enhancement.
+          </motion.p>
+
+          <motion.p
+            variants={heroItemVariants}
+            className="mx-auto mt-6 max-w-2xl text-xl sm:text-2xl text-text-secondary leading-relaxed font-light"
           >
             Enhance resolution, remove noise, and restore details in seconds.
             <br />
@@ -124,7 +138,7 @@ export function HomePageClient(): JSX.Element {
             <span className="relative text-white font-bold decoration-secondary underline decoration-2 underline-offset-4">
               preserve text and logos
             </span>{' '}
-            perfectly.
+            perfectly. Use our powerful image enhancer to upscale images with professional quality.
           </motion.p>
 
           {/* Hero CTA Buttons */}
@@ -251,6 +265,6 @@ export function HomePageClient(): JSX.Element {
           </div>
         </section>
       </FadeIn>
-    </main>
+    </div>
   );
 }

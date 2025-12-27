@@ -9,7 +9,7 @@ import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 const toolsData = interactiveToolsData as IPSEODataFile<IToolPage>;
 
 // Compress tool slugs from interactive-tools.json
-const COMPRESS_SLUGS = ['image-compressor'];
+const COMPRESS_SLUGS = ['image-compressor', 'bulk-image-compressor'];
 
 interface IPageProps {
   params: Promise<{ slug: string }>;

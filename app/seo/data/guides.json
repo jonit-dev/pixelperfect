@@ -25,7 +25,7 @@
         {
           "step": 1,
           "title": "Choose the Right Source Image",
-          "content": "undefined"
+          "content": "Start with the highest quality original image available. The better your source, the better your upscaled result will be.\n\n**Ideal source qualities:**\n- Good lighting and sharp focus\n- Minimal compression artifacts (avoid re-saved JPEGs)\n- At least 500px on the shortest side\n- RGB color mode (not CMYK)\n- No previous upscaling or filters applied\n\n**Red flags to avoid:**\n- Multiple generations of JPEG saves\n- Extreme blur or out-of-focus images\n- Very low resolution (below 300px)\n- Heavy filters or effects already applied\n\nAlways work from the original file, not a copy that has been previously edited or compressed."
         },
         {
           "step": 2,
@@ -569,5 +569,9 @@
       "relatedTools": ["ai-image-upscaler"],
       "estimatedTime": "5-10 minutes"
     }
-  ]
+  ],
+  "meta": {
+    "totalPages": 2,
+    "lastUpdated": "2025-12-10T00:00:00Z"
+  }
 }

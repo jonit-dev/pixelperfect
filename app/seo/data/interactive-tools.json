@@ -158,7 +158,7 @@
       "metaDescription": "Resize images for Instagram instantly. Get perfect dimensions for posts (1080x1080), stories (1080x1920), and reels. Free, no upload required.",
       "h1": "Free Instagram Image Resizer - Perfect Sizes Instantly",
       "intro": "Resize your images to perfect Instagram dimensions. Posts, stories, reels - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "resize image for instagram",
+      "primaryKeyword": "instagram photo resizer",
       "secondaryKeywords": [
         "instagram image size",
         "instagram post size",
@@ -431,7 +431,7 @@
       "metaDescription": "Resize images for Facebook instantly. Get perfect dimensions for posts (1200x630), covers (820x312), and profile pictures. Free, no upload required.",
       "h1": "Free Facebook Image Resizer - Perfect Sizes Instantly",
       "intro": "Resize your images to perfect Facebook dimensions. Posts, covers, profile pictures - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "resize image for facebook",
+      "primaryKeyword": "facebook photo resizer",
       "secondaryKeywords": [
         "facebook image size",
         "facebook post size",
@@ -569,7 +569,7 @@
       "metaDescription": "Resize images for Twitter/X instantly. Get perfect dimensions for tweets (1200x675) and headers (1500x500). Free, no upload required.",
       "h1": "Free Twitter/X Image Resizer - Perfect Sizes Instantly",
       "intro": "Resize your images to perfect Twitter/X dimensions. Posts and headers optimized for maximum engagement. Works in your browser.",
-      "primaryKeyword": "resize image for twitter",
+      "primaryKeyword": "twitter photo resizer",
       "secondaryKeywords": [
         "twitter image size",
         "twitter post size",
@@ -697,7 +697,7 @@
       "metaDescription": "Resize images for LinkedIn instantly. Get perfect dimensions for posts (1200x627) and banners (1584x396). Free, no upload required.",
       "h1": "Free LinkedIn Image Resizer - Perfect Sizes Instantly",
       "intro": "Resize your images to perfect LinkedIn dimensions. Posts and banners optimized for professional engagement. Works in your browser.",
-      "primaryKeyword": "resize image for linkedin",
+      "primaryKeyword": "linkedin photo resizer",
       "secondaryKeywords": [
         "linkedin image size",
         "linkedin post size",
@@ -821,6 +821,156 @@
       "relatedGuides": ["how-to-resize-images-for-social-media"],
       "ctaText": "Resize for LinkedIn Free",
       "ctaUrl": "/tools/resize/resize-image-for-linkedin"
+    },
+    {
+      "slug": "bulk-image-resizer",
+      "title": "Bulk Image Resizer",
+      "metaTitle": "Free Bulk Image Resizer - Resize Multiple Photos at Once | MyImageUpscaler",
+      "metaDescription": "Resize multiple images at once with our free bulk image resizer. Mass resize photos to any dimension. Works in your browser - no upload required.",
+      "h1": "Free Bulk Image Resizer - Mass Resize Photos Instantly",
+      "intro": "Resize multiple images to the same dimensions instantly. Our free bulk image resizer processes up to 20 photos at once, entirely in your browser. No uploads, no signup, no waiting.",
+      "primaryKeyword": "batch image resizer",
+      "secondaryKeywords": [
+        "bulk resize",
+        "mass resize photos",
+        "resize multiple images",
+        "bulk picture resizer",
+        "batch resize images",
+        "resize in bulk"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "tools",
+      "toolName": "Bulk Image Resizer",
+      "description": "Professional batch image resizing tool that works entirely in your browser. Resize up to 20 images at once to exact dimensions, with options to maintain aspect ratio or fill the bounds. Download all resized images as a convenient ZIP file.",
+      "isInteractive": true,
+      "toolComponent": "BulkImageResizer",
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Process Up to 20 Images",
+          "description": "Resize multiple photos in a single batch. No need to process images one at a time - save hours of work."
+        },
+        {
+          "title": "Apply Same Dimensions to All",
+          "description": "Set your target width and height once, and all images are resized consistently. Perfect for gallery uniformity."
+        },
+        {
+          "title": "Maintain Aspect Ratio",
+          "description": "Option to preserve proportions for each image, or fill exact dimensions with smart cropping."
+        },
+        {
+          "title": "Download as ZIP File",
+          "description": "Get all resized images in a single ZIP download. Keeps your files organized and saves download time."
+        },
+        {
+          "title": "Multiple Output Formats",
+          "description": "Export batch as JPEG, PNG, or WebP with adjustable quality settings. Perfect for any use case."
+        },
+        {
+          "title": "100% Browser-Based",
+          "description": "All processing happens locally using Canvas API. Your photos never leave your device - complete privacy."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "E-commerce Product Photos",
+          "description": "Resize all product images to consistent dimensions for your online store.",
+          "example": "Resize 100 product photos to 1000x1000 for Amazon listings"
+        },
+        {
+          "title": "Social Media Galleries",
+          "description": "Prepare multiple images for consistent social media posting across platforms.",
+          "example": "Batch resize 20 travel photos for Instagram feed"
+        },
+        {
+          "title": "Website Image Optimization",
+          "description": "Resize multiple images to standard dimensions for your website or blog.",
+          "example": "Resize 50 blog headers to 1920x600 for consistent layout"
+        },
+        {
+          "title": "Portfolio Preparation",
+          "description": "Create uniform thumbnail sizes from a collection of portfolio images.",
+          "example": "Resize 30 portfolio pieces to 400x300 for gallery thumbnails"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Massive Time Savings",
+          "description": "Process 20 images in the time it takes to do one manually. No more repetitive resizing work.",
+          "metric": "20x faster than manual"
+        },
+        {
+          "title": "Consistent Results",
+          "description": "All images get the exact same treatment, ensuring professional uniformity across galleries.",
+          "metric": "Pixel-perfect consistency"
+        },
+        {
+          "title": "Complete Privacy",
+          "description": "Images never leave your browser. No server uploads, no cloud storage, no privacy concerns.",
+          "metric": "100% local processing"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Upload Multiple Images",
+          "description": "Drag and drop or select up to 20 images at once. Supports JPEG, PNG, and WebP formats."
+        },
+        {
+          "step": 2,
+          "title": "Set Target Dimensions",
+          "description": "Enter your desired width and height. Choose to maintain aspect ratio or fill exact bounds."
+        },
+        {
+          "step": 3,
+          "title": "Choose Output Format",
+          "description": "Select JPEG, PNG, or WebP and adjust quality. Preview dimensions before processing."
+        },
+        {
+          "step": 4,
+          "title": "Process & Download",
+          "description": "Click 'Process All' and download all resized images as a single ZIP file."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How many images can I resize at once?",
+          "answer": "You can process up to 20 images in a single batch. This limit ensures optimal browser performance while still providing significant time savings."
+        },
+        {
+          "question": "Is the bulk image resizer really free?",
+          "answer": "Yes! Our bulk image resizer is 100% free with unlimited batches. No watermarks, no signup required, no hidden fees."
+        },
+        {
+          "question": "Are my images uploaded to your servers?",
+          "answer": "No! All image processing happens directly in your browser using the Canvas API. Your images never leave your device, ensuring complete privacy."
+        },
+        {
+          "question": "What's the difference between 'fit' and 'fill' modes?",
+          "answer": "Fit mode resizes images to fit within your dimensions while preserving aspect ratio (images may be smaller than target). Fill mode crops images to fill exact dimensions, which may remove some content from the edges."
+        },
+        {
+          "question": "Will all my images look the same size?",
+          "answer": "When 'Maintain aspect ratio' is enabled with 'fit' mode, images will be proportional but may have different final dimensions. For exact uniform sizing, use 'fill' mode or uncheck aspect ratio."
+        },
+        {
+          "question": "Can I download images individually?",
+          "answer": "Yes! After processing, you can download each image individually or download all at once as a ZIP file for convenience."
+        },
+        {
+          "question": "What formats can I convert to?",
+          "answer": "You can output resized images as JPEG (best for photos), PNG (best for graphics), or WebP (best for web optimization)."
+        },
+        {
+          "question": "Can I remove an image from the batch?",
+          "answer": "Yes! You can remove individual images from the batch before or after processing by clicking the X button next to each image."
+        }
+      ],
+      "relatedTools": ["image-resizer", "image-compressor", "ai-image-upscaler"],
+      "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
+      "ctaText": "Try Bulk Image Resizer Free",
+      "ctaUrl": "/tools/resize/bulk-image-resizer"
     },
     {
       "slug": "image-compressor",
@@ -1787,10 +1937,159 @@
       "relatedGuides": ["webp-format-guide", "web-performance-images"],
       "ctaText": "Convert PNG to WebP Free",
       "ctaUrl": "/tools/convert/png-to-webp"
+    },
+    {
+      "slug": "bulk-image-compressor",
+      "title": "Bulk Image Compressor",
+      "metaTitle": "Free Bulk Image Compressor - Compress Multiple Images | MyImageUpscaler",
+      "metaDescription": "Compress multiple images at once with our free bulk image compressor. Reduce file sizes by up to 80% with quality control. Browser-based, no upload required.",
+      "h1": "Free Bulk Image Compressor - Optimize Multiple Photos",
+      "intro": "Compress multiple images at once without losing quality. Our free bulk compressor reduces file sizes by up to 80% using advanced browser technology. Download as ZIP.",
+      "primaryKeyword": "batch image compressor",
+      "secondaryKeywords": [
+        "batch image compressor",
+        "bulk image optimization",
+        "compress multiple images",
+        "mass image compression",
+        "batch compress photos"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "tools",
+      "toolName": "Bulk Image Compressor",
+      "description": "Professional bulk image compression tool that works entirely in your browser. Compress up to 20 images at once by up to 80% while maintaining visual quality. Supports JPEG, PNG, and WebP formats with real-time compression previews and ZIP download.",
+      "isInteractive": true,
+      "toolComponent": "BulkImageCompressor",
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Compress Up to 20 Images",
+          "description": "Upload and compress multiple images at once. Perfect for photo batches, website assets, or social media content."
+        },
+        {
+          "title": "Quality or Target Size Mode",
+          "description": "Choose quality-based compression (1-100%) or set a target file size in KB. The tool automatically finds optimal settings."
+        },
+        {
+          "title": "Real-Time Progress Tracking",
+          "description": "See individual progress bars, file sizes before and after, and compression ratios for each image as it processes."
+        },
+        {
+          "title": "Download as ZIP",
+          "description": "Download all compressed images at once as a convenient ZIP file. Each file is named with '-compressed' suffix."
+        },
+        {
+          "title": "Format Conversion",
+          "description": "Convert images to JPEG, PNG, or WebP during compression. WebP offers the best compression ratio."
+        },
+        {
+          "title": "100% Private",
+          "description": "All compression happens locally in your browser. Images never leave your device - complete privacy guaranteed."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Website Speed Optimization",
+          "description": "Compress entire image libraries for websites. Reduce page load times significantly with bulk processing.",
+          "example": "Compress 100 product photos from 50MB to 10MB for e-commerce site"
+        },
+        {
+          "title": "Social Media Content",
+          "description": "Prepare multiple photos for Instagram, Facebook, or other platforms with faster upload times.",
+          "example": "Batch compress vacation photos for social media sharing"
+        },
+        {
+          "title": "Email Attachments",
+          "description": "Send multiple photos via email without hitting attachment size limits.",
+          "example": "Compress a photo album from 20MB to 4MB for email"
+        },
+        {
+          "title": "Cloud Storage Savings",
+          "description": "Compress photo backups before uploading to cloud storage to save space and costs.",
+          "example": "Compress 500 vacation photos from 10GB to 2GB before backup"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Massive Time Savings",
+          "description": "Compress up to 20 images at once instead of processing them individually.",
+          "metric": "20x faster workflow"
+        },
+        {
+          "title": "Consistent Quality",
+          "description": "Apply the same compression settings to all images for uniform results across your project.",
+          "metric": "Uniform quality"
+        },
+        {
+          "title": "Up to 80% Size Reduction",
+          "description": "Reduce image file sizes dramatically without noticeable quality loss using smart compression.",
+          "metric": "80% smaller files"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Upload Multiple Images",
+          "description": "Select or drag up to 20 images. Supports JPEG, PNG, WebP up to 25MB each. Processing stays in your browser."
+        },
+        {
+          "step": 2,
+          "title": "Choose Compression Mode",
+          "description": "Set a quality level (1-100%) or enter a target file size in KB. Select output format (JPEG, PNG, WebP)."
+        },
+        {
+          "step": 3,
+          "title": "Compress All Images",
+          "description": "Click compress and watch as each image is processed. See real-time progress and compression results."
+        },
+        {
+          "step": 4,
+          "title": "Download Results",
+          "description": "Download individual images or get all compressed images as a single ZIP file. See total space saved."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How many images can I compress at once?",
+          "answer": "You can compress up to 20 images at once. This limit ensures optimal browser performance while providing efficient batch processing."
+        },
+        {
+          "question": "What's the difference between quality and target size modes?",
+          "answer": "Quality mode (1-100%) gives you direct control over compression level. Target size mode automatically finds the best quality to achieve a specific file size in KB. Use target size when you need files under a certain limit."
+        },
+        {
+          "question": "Will compression reduce image quality?",
+          "answer": "Compression involves a trade-off between file size and quality. At 70-80% quality, most people cannot see the difference. Target size mode automatically finds the best quality for your size requirement."
+        },
+        {
+          "question": "What's the best format for compression?",
+          "answer": "WebP offers the best compression (25-35% smaller than JPEG) with excellent quality. JPEG is best for photos and has universal browser support. PNG is lossless but creates larger files."
+        },
+        {
+          "question": "Are my images uploaded to your servers?",
+          "answer": "No! All compression happens directly in your browser using Canvas API technology. Your images never leave your device, ensuring complete privacy."
+        },
+        {
+          "question": "How does the target size mode work?",
+          "answer": "Target size mode uses binary search to automatically find the highest quality setting that achieves your target file size. It tests multiple quality levels until it finds the optimal balance."
+        },
+        {
+          "question": "Can I mix different image formats?",
+          "answer": "Yes! You can upload JPEG, PNG, and WebP images together. They'll all be converted to your chosen output format during compression."
+        },
+        {
+          "question": "Is there a file size limit?",
+          "answer": "Each image can be up to 25MB. This limit is based on browser memory, not server restrictions (since we don't upload to servers)."
+        }
+      ],
+      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-webp"],
+      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "ctaText": "Try Free Bulk Compressor",
+      "ctaUrl": "/tools/compress/bulk-image-compressor"
     }
   ],
   "meta": {
-    "totalPages": 8,
-    "lastUpdated": "2025-12-10T00:00:00Z"
+    "totalPages": 10,
+    "lastUpdated": "2025-12-26T00:00:00Z"
   }
 }

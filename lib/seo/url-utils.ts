@@ -57,6 +57,7 @@ export const PSEO_CATEGORIES = [
   'alternatives',
   'guides',
   'free',
+  'bulk-tools',
 ] as const;
 
 export type PSEOCategory = (typeof PSEO_CATEGORIES)[number];
@@ -81,6 +82,7 @@ export function getCategoryDisplayName(category: PSEOCategory): string {
     alternatives: 'Alternatives',
     guides: 'Guides',
     free: 'Free Tools',
+    'bulk-tools': 'Bulk Tools',
   };
   return names[category];
 }
@@ -98,6 +100,7 @@ export function getCategoryDescription(category: PSEOCategory): string {
     alternatives: 'Find the best alternatives to popular upscaling tools',
     guides: 'Learn how to get the most out of your images',
     free: 'Free AI image tools - no credit card required',
+    'bulk-tools': 'Batch process multiple images at once - resize, compress, and optimize',
   };
   return descriptions[category];
 }

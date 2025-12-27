@@ -82,6 +82,13 @@ export const META_PATTERNS: Record<PSEOCategory, IMetaPattern> = {
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
+  'bulk-tools': {
+    title: `Free {ToolName} - Process Multiple Images at Once | ${APP_NAME}`,
+    description:
+      '{Action} multiple images at once with our free {ToolName}. Batch process up to {MaxFiles} images. Works in your browser - no upload required.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
 };
 
 /**

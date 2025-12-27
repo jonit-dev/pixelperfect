@@ -174,6 +174,29 @@ export interface IFreePage extends IBasePSEOPage {
 }
 
 /**
+ * Bulk tool page data structure
+ */
+export interface IBulkToolPage extends IBasePSEOPage {
+  category: 'bulk-tools';
+  toolName: string;
+  toolComponent: string;
+  description: string;
+  maxFiles: number;
+  acceptedFormats: string[];
+  features: IFeature[];
+  useCases: IUseCase[];
+  benefits: IBenefit[];
+  howItWorks: IHowItWorksStep[];
+  faq: IFAQ[];
+  limitations: string[];
+  outputFormat: 'zip' | 'individual';
+  relatedTools: string[];
+  relatedGuides: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+/**
  * Union type for all pSEO pages
  */
 export type PSEOPage =
@@ -184,7 +207,8 @@ export type PSEOPage =
   | IComparisonPage
   | IAlternativePage
   | IGuidePage
-  | IFreePage;
+  | IFreePage
+  | IBulkToolPage;
 
 /**
  * Supporting interfaces

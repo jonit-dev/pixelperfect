@@ -536,7 +536,7 @@
       "metaDescription": "Complete guide to restoring old and damaged photos. Scanning tips, enhancement workflow, and realistic expectations for photo restoration.",
       "h1": "Old Photo Restoration Guide",
       "intro": "Restoring old photos involves multiple steps: proper scanning, enhancement, and realistic expectations about what's possible.",
-      "primaryKeyword": "old photo restoration",
+      "primaryKeyword": "restore old photos",
       "secondaryKeywords": [
         "restore old photos",
         "fix damaged photos",
@@ -678,6 +678,452 @@
       ],
       "relatedTools": ["ai-photo-enhancer", "ai-image-upscaler"],
       "relatedGuides": []
+    },
+    {
+      "slug": "amazon-product-photos",
+      "title": "Amazon Product Photo Upscaling",
+      "metaTitle": "Upscale Product Photos for Amazon Listings | MyImageUpscaler",
+      "metaDescription": "Meet Amazon's 2000x2000px image requirement with AI upscaling. Turn supplier photos into zoom-ready product images. Free tool, no watermarks.",
+      "h1": "Upscale Product Photos for Amazon",
+      "intro": "Amazon requires minimum 1000x1000px images and recommends 2000x2000px for zoom. Here's how to upscale supplier photos to meet these requirements.",
+      "primaryKeyword": "upscale product photos amazon",
+      "secondaryKeywords": [
+        "amazon product image size",
+        "amazon listing photos",
+        "amazon image requirements 2025",
+        "upscale supplier photos",
+        "amazon zoom image size",
+        "fba product photography"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "E-commerce",
+      "description": "Complete guide to preparing product images for Amazon listings, including size requirements, white background standards, and AI upscaling workflow.",
+      "platformRequirements": [
+        {
+          "platform": "Amazon Main Image",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px (for zoom)",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1 (square)",
+          "format": "JPEG, PNG, GIF, TIFF",
+          "background": "Pure white (RGB 255,255,255)",
+          "notes": "Product must fill 85% of frame. No text, logos, watermarks, or borders."
+        },
+        {
+          "platform": "Amazon Additional Images",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1 preferred",
+          "format": "JPEG, PNG, GIF, TIFF",
+          "background": "Any (lifestyle shots allowed)",
+          "notes": "Can show product in use, packaging, size comparison, and infographics."
+        },
+        {
+          "platform": "Amazon A+ Content",
+          "minimumSize": "Varies by module",
+          "recommendedSize": "Up to 970px wide",
+          "maxFileSize": "2MB per image",
+          "aspectRatio": "Various (module dependent)",
+          "format": "JPEG, PNG",
+          "background": "Theme-appropriate",
+          "notes": "Higher resolution images display better on desktop and mobile A+ modules."
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "Supplier images are only 500-800px",
+          "solution": "Use AI upscaling to enlarge 3-4x. A 500px image becomes 2000px with zoom capability.",
+          "howTo": "Upload supplier image, select 4x upscale, download at 2000x2000px or larger."
+        },
+        {
+          "problem": "Images rejected for not meeting 1000px minimum",
+          "solution": "Upscale first, then crop to square 1:1 ratio if needed.",
+          "howTo": "Upscale to at least 1200px, then crop to 1000x1000px or 2000x2000px square."
+        },
+        {
+          "problem": "Zoom feature not working on listing",
+          "solution": "Amazon zoom requires 1500px minimum on longest side, recommends 2000px+.",
+          "howTo": "Upscale all product images to 2000x2000px to ensure zoom works."
+        },
+        {
+          "problem": "Product details look blurry after upscaling",
+          "solution": "AI upscaling preserves text and fine details unlike traditional resizing.",
+          "howTo": "Use AI upscaler specifically trained for product photography and text preservation."
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "Audit source image quality",
+          "description": "Check original dimensions. Images under 300px may not upscale well for Amazon."
+        },
+        {
+          "step": 2,
+          "title": "Remove or replace background",
+          "description": "For main image, ensure pure white background (255,255,255) before upscaling."
+        },
+        {
+          "step": 3,
+          "title": "Upload to AI upscaler",
+          "description": "Select 4x upscale for 500px images, 2x for 1000px images to reach 2000px target."
+        },
+        {
+          "step": 4,
+          "title": "Crop to 1:1 ratio",
+          "description": "Ensure final image is square with product filling 85% of frame."
+        },
+        {
+          "step": 5,
+          "title": "Verify file size and format",
+          "description": "Save as JPEG under 10MB. Use 85-95% quality for best size/quality balance."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What image size does Amazon require for product photos?",
+          "answer": "Amazon requires minimum 1000x1000px but strongly recommends 2000x2000px or larger. The zoom feature only activates on images 1500px or larger on the longest side, and 2000px+ provides the best customer experience."
+        },
+        {
+          "question": "Can I upscale dropshipping supplier photos for Amazon?",
+          "answer": "Yes, AI upscaling works well for supplier photos typically ranging from 500-800px. Upscale 3-4x to reach Amazon's 2000px recommendation. Ensure you have rights to use the images commercially."
+        },
+        {
+          "question": "Will upscaled images pass Amazon's quality check?",
+          "answer": "AI-upscaled images typically pass Amazon's automated checks if the source wasn't extremely low quality. Focus on source images above 300px for best results. Product details and text remain sharp through the upscaling process."
+        },
+        {
+          "question": "Why do my Amazon images not have zoom?",
+          "answer": "Amazon's zoom feature requires images to be at least 1500px on the longest side, with 2000px+ recommended. Upscale your images to 2000x2000px to ensure zoom works for all customers."
+        },
+        {
+          "question": "What's the best format for Amazon product images?",
+          "answer": "JPEG is preferred for most product photos due to smaller file sizes. Use 85-95% quality setting. PNG is better only if you need transparency (though Amazon main images require white backgrounds anyway)."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "real-estate-photo-enhancement",
+      "title": "Real Estate Photo Enhancement",
+      "metaTitle": "Enhance Real Estate Photos with AI | Property Listing Images",
+      "metaDescription": "Transform property photos with AI enhancement. Fix lighting, upscale resolution, and make listings stand out. Used by agents and photographers.",
+      "h1": "AI Real Estate Photo Enhancement",
+      "intro": "Professional-looking listing photos sell properties faster. Enhance and upscale property images to meet MLS standards and outshine the competition.",
+      "primaryKeyword": "real estate photography enhancement",
+      "secondaryKeywords": [
+        "property photo editing",
+        "real estate image enhancement",
+        "listing photo enhancement",
+        "mls photo quality",
+        "property listing images",
+        "real estate photography editing"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Real Estate",
+      "description": "Comprehensive guide to enhancing real estate photos for MLS, Zillow, and other property listing platforms using AI tools.",
+      "platformRequirements": [
+        {
+          "platform": "MLS (Most Systems)",
+          "minimumSize": "640x480px",
+          "recommendedSize": "2048x1536px or larger",
+          "maxFileSize": "10-15MB varies",
+          "aspectRatio": "4:3 most common",
+          "format": "JPEG",
+          "notes": "Higher quality photos get more views. Many MLS systems now support HD images."
+        },
+        {
+          "platform": "Zillow",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px+",
+          "maxFileSize": "50MB",
+          "aspectRatio": "4:3 preferred",
+          "format": "JPEG, PNG",
+          "notes": "First photo is crucial - it appears in search results. High-res images rank better."
+        },
+        {
+          "platform": "Realtor.com",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2560x1920px",
+          "maxFileSize": "100MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "Higher resolution images receive priority placement in search results."
+        },
+        {
+          "platform": "Redfin",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px+",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "Quality photos directly impact listing views and inquiries."
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "Interior photos are too dark",
+          "solution": "AI enhancement automatically corrects exposure and brings out shadow detail.",
+          "howTo": "Upload to photo enhancer, let AI auto-correct, then upscale if resolution is insufficient."
+        },
+        {
+          "problem": "Older phone photos lack resolution",
+          "solution": "Upscale 2-3x to meet modern standards. A 1200px photo becomes 2400-3600px.",
+          "howTo": "Upload to AI upscaler, select 2x or 3x, verify output meets platform requirements."
+        },
+        {
+          "problem": "Window blow-out from bright exteriors",
+          "solution": "AI enhancement can recover some window detail and balance interior/exterior exposure.",
+          "howTo": "Run through enhancer first, then upscale the corrected image."
+        },
+        {
+          "problem": "Photos from previous agent are low quality",
+          "solution": "Enhance and upscale existing photos while scheduling new professional photography.",
+          "howTo": "Process batch through enhancer and upscaler to improve immediately."
+        }
+      ],
+      "photographyTips": [
+        {
+          "tip": "Shoot during golden hour for exteriors",
+          "description": "Early morning or late afternoon provides flattering natural light without harsh shadows."
+        },
+        {
+          "tip": "Turn on all interior lights",
+          "description": "Even during day shoots, interior lights add warmth and make spaces feel inviting."
+        },
+        {
+          "tip": "Use a tripod for consistent results",
+          "description": "Tripod allows longer exposures for brighter interiors and ensures level horizons."
+        },
+        {
+          "tip": "Shoot from corners for maximum space",
+          "description": "Shooting from room corners shows two walls and makes spaces appear larger."
+        },
+        {
+          "tip": "Stage before shooting",
+          "description": "Remove personal items, close toilet lids, arrange furniture to show traffic flow."
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "Assess existing photo quality",
+          "description": "Check resolution, exposure, and composition. Identify which images need enhancement vs. reshoot."
+        },
+        {
+          "step": 2,
+          "title": "Run AI enhancement first",
+          "description": "Upload to photo enhancer to fix exposure, color balance, and clarity before upscaling."
+        },
+        {
+          "step": 3,
+          "title": "Upscale to target resolution",
+          "description": "Enlarge enhanced photos to 2048px or higher for optimal display on listing sites."
+        },
+        {
+          "step": 4,
+          "title": "Export in correct format",
+          "description": "Save as JPEG at 85-95% quality. Most MLS systems require JPEG format."
+        },
+        {
+          "step": 5,
+          "title": "Order photos strategically",
+          "description": "Lead with best exterior shot, then key rooms. First photo appears in search results."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can AI enhancement replace professional real estate photography?",
+          "answer": "AI enhancement dramatically improves existing photos but doesn't replace professional photography for high-value listings. Use enhancement to improve good photos or as a temporary solution while scheduling a professional shoot."
+        },
+        {
+          "question": "What resolution should real estate photos be?",
+          "answer": "Aim for 2048x1536px minimum. This meets requirements for Zillow, MLS, and Realtor.com while providing sharp images on both desktop and mobile. Higher resolution (2560px+) can improve search ranking on some platforms."
+        },
+        {
+          "question": "How do I fix dark interior photos?",
+          "answer": "AI photo enhancement automatically corrects exposure and brightens shadows. Upload your dark interior shot, let the AI analyze and correct, then download the improved version. For best results, enhance before upscaling."
+        },
+        {
+          "question": "Will enhanced photos look fake or over-processed?",
+          "answer": "Quality AI enhancement produces natural-looking results. Avoid tools that create the over-saturated, HDR-heavy look that buyers distrust. Our enhancer prioritizes realistic corrections over dramatic effects."
+        },
+        {
+          "question": "How many photos should a real estate listing have?",
+          "answer": "25-50 photos is optimal for most properties. Include exterior, all main rooms, key features (kitchen, bathrooms, closets), and any unique selling points. Quality matters more than quantity - 25 great photos beat 50 mediocre ones."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "anime-image-upscaler",
+      "title": "Anime Image Upscaler",
+      "metaTitle": "Anime Image Upscaler Online - Upscale Anime & Manga Art | MyImageUpscaler",
+      "metaDescription": "Upscale anime images, manga panels, and illustrations without artifacts. AI preserves clean lines and flat colors. Free online tool for anime fans.",
+      "h1": "Anime Image Upscaler Online",
+      "intro": "Upscale your favorite anime screenshots, manga scans, and digital art while preserving the clean lines and vibrant colors that define anime style.",
+      "primaryKeyword": "anime image upscaler",
+      "secondaryKeywords": [
+        "upscale anime",
+        "anime upscaler online",
+        "manga upscaler",
+        "anime screenshot upscale",
+        "waifu upscaler",
+        "anime wallpaper upscale"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Digital Art & Entertainment",
+      "description": "Specialized guide to upscaling anime images, manga art, and Japanese-style illustrations using AI technology optimized for drawn content.",
+      "contentTypes": [
+        {
+          "type": "Anime Screenshots",
+          "description": "Captures from anime series and movies",
+          "bestScaleFactor": "2x-4x",
+          "notes": "Works well for most modern anime. Older anime (pre-2000) may show more artifacts."
+        },
+        {
+          "type": "Manga Scans",
+          "description": "Scanned manga pages and panels",
+          "bestScaleFactor": "2x-4x",
+          "notes": "Preserves line art and screentones. Remove dust/scratches before upscaling."
+        },
+        {
+          "type": "Digital Anime Art",
+          "description": "Fan art, illustrations, and digital drawings",
+          "bestScaleFactor": "2x-4x",
+          "notes": "Excellent results with clean digital art. Preserves flat colors and sharp edges."
+        },
+        {
+          "type": "Anime Wallpapers",
+          "description": "Desktop and mobile wallpapers",
+          "bestScaleFactor": "2x-4x",
+          "notes": "Upscale to match your screen resolution. 4K monitors need 3840px+ width."
+        },
+        {
+          "type": "Game CGs",
+          "description": "Visual novel and game artwork",
+          "bestScaleFactor": "2x-4x",
+          "notes": "Older VN CGs often need 4x upscaling. Modern games usually sufficient at 2x."
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "Upscaling adds unwanted texture or noise",
+          "solution": "AI upscalers trained on anime preserve flat color areas better than general-purpose tools.",
+          "howTo": "Use AI upscaler with our settings optimized for illustration and artwork."
+        },
+        {
+          "problem": "Line art becomes blurry or doubled",
+          "solution": "Quality anime upscaling maintains crisp lines without ghosting or blur.",
+          "howTo": "Start with 2x upscale first. If quality is good, upscale the result again for higher resolution."
+        },
+        {
+          "problem": "JPEG artifacts become more visible after upscaling",
+          "solution": "AI upscaling can reduce JPEG artifacts while enlarging. Use highest quality source available.",
+          "howTo": "If possible, find PNG source. For JPEGs, enhancement before upscaling helps."
+        },
+        {
+          "problem": "Small images become pixelated at 4x",
+          "solution": "Very small sources (under 200px) have limits. Upscale incrementally: 2x, then 2x again.",
+          "howTo": "Upload at 2x first, download result, then upload result for another 2x."
+        }
+      ],
+      "targetResolutions": [
+        {
+          "use": "Phone Wallpaper",
+          "resolution": "1080x2400px (modern phones)",
+          "source": "540x1200px minimum",
+          "scaleFactor": "2x"
+        },
+        {
+          "use": "Desktop Wallpaper (1080p)",
+          "resolution": "1920x1080px",
+          "source": "960x540px minimum",
+          "scaleFactor": "2x"
+        },
+        {
+          "use": "Desktop Wallpaper (1440p)",
+          "resolution": "2560x1440px",
+          "source": "640x360px at 4x, 1280x720px at 2x",
+          "scaleFactor": "2x-4x"
+        },
+        {
+          "use": "Desktop Wallpaper (4K)",
+          "resolution": "3840x2160px",
+          "source": "960x540px at 4x, 1920x1080px at 2x",
+          "scaleFactor": "2x-4x"
+        },
+        {
+          "use": "Print (Poster)",
+          "resolution": "300 DPI at print size",
+          "source": "Calculate: print inches x 300",
+          "scaleFactor": "Varies by source"
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "Find highest quality source",
+          "description": "Search for PNG versions when possible. Higher source quality means better upscale results."
+        },
+        {
+          "step": 2,
+          "title": "Check current resolution",
+          "description": "Right-click image, view properties. Note dimensions to calculate needed scale factor."
+        },
+        {
+          "step": 3,
+          "title": "Calculate scale factor needed",
+          "description": "For 4K wallpaper (3840px wide) from 960px source, you need 4x upscaling."
+        },
+        {
+          "step": 4,
+          "title": "Upload and upscale",
+          "description": "Select appropriate scale factor. For anime, 2x and 4x typically work best."
+        },
+        {
+          "step": 5,
+          "title": "Review and export",
+          "description": "Check result for artifacts. Download as PNG to preserve quality without further compression."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What's the best upscaler for anime images?",
+          "answer": "AI upscalers work best for anime because they understand the characteristics of drawn content - flat colors, clean lines, and specific shading styles. Traditional upscaling makes anime look blurry, while AI maintains the crisp aesthetic."
+        },
+        {
+          "question": "Can I upscale old anime screenshots to 4K?",
+          "answer": "Yes, but results vary by source quality. Modern anime (post-2010) upscales excellently. Older anime (1990s-2000s) works well with some minor artifacts. Very old anime (1980s) may show visible limitations. Start with 2x and assess quality."
+        },
+        {
+          "question": "How do I upscale manga without losing detail?",
+          "answer": "AI upscaling preserves line art and screentones that define manga. For best results: scan at 600+ DPI if digitizing yourself, clean dust/scratches before upscaling, and use 2x-4x scale factor. PNG format preserves quality better than JPEG."
+        },
+        {
+          "question": "Will upscaling remove JPEG artifacts from anime images?",
+          "answer": "AI upscaling can reduce JPEG compression artifacts while enlarging. However, heavily compressed sources will still show some artifacts. For best results, find the highest quality source available - PNG preferred, high-quality JPEG acceptable."
+        },
+        {
+          "question": "What resolution should anime wallpapers be?",
+          "answer": "Match your screen: 1920x1080 for 1080p displays, 2560x1440 for 1440p, and 3840x2160 for 4K. Phone wallpapers typically need 1080x2400 for modern devices. Upscale your source to these target resolutions."
+        },
+        {
+          "question": "Is there a free anime upscaler?",
+          "answer": "Yes, our AI upscaler handles anime images for free with no watermarks. You can upscale anime screenshots, manga panels, and digital art up to 4x without paying. Premium plans offer batch processing and higher file size limits."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
     }
-  ]
+  ],
+  "meta": {
+    "totalPages": 8,
+    "lastUpdated": "2025-12-26T00:00:00Z"
+  }
 }
