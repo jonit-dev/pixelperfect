@@ -312,11 +312,11 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should display Starter tier with correct pricing and features', async ({ page }) => {
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete and actual pricing cards to appear (not skeletons)
       // Use exact matching and scope to pricing grid to avoid conflicts with FAQ headings
+      // These selectors should already be visible after goto() completes
       const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
         name: 'Starter',
         exact: true,
@@ -330,9 +330,10 @@ test.describe('Billing E2E Tests', () => {
         exact: true,
       });
 
-      await expect(starterHeading).toBeVisible({ timeout: 10000 });
-      await expect(hobbyHeading).toBeVisible({ timeout: 10000 });
-      await expect(proHeading).toBeVisible({ timeout: 10000 });
+      // These assertions should pass immediately since goto() waited for them
+      await expect(starterHeading).toBeVisible();
+      await expect(hobbyHeading).toBeVisible();
+      await expect(proHeading).toBeVisible();
 
       // Check Starter tier displays $9/per month
       const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
@@ -358,31 +359,27 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should display Starter tier in correct position', async ({ page }) => {
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      // This should already be visible after goto() completes
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible();
 
-      // Check the order: Free, Starter, Hobby, Pro, Business
+      // Check the order: Starter, Hobby, Pro, Business
       const pricingGrid = pricingPage.pricingGrid;
       const cards = pricingGrid.locator('> div');
 
-      // Get all visible plan headings
-      const _planHeadings = page.locator('[data-testid="pricing-card"] h2, .pricing-card h2');
-
-      // Verify Starter appears after Free tier
-      const freeTier = page
-        .getByRole('heading', { name: 'Free' })
-        .or(page.getByText('10 Free Credits'));
+      // Verify Starter tier is visible
       const starterTier = page.getByRole('heading', { name: 'Starter' });
-
-      await expect(freeTier.first()).toBeVisible();
       await expect(starterTier).toBeVisible();
+
+      // Verify Hobby tier is visible and comes after Starter
+      const hobbyTier = page.getByRole('heading', { name: 'Hobby' });
+      await expect(hobbyTier).toBeVisible();
 
       // Check that Starter is not the last card (there should be plans after it)
       const cardCount = await cards.count();
-      expect(cardCount).toBeGreaterThan(2); // At least Free + Starter + one more
+      expect(cardCount).toBeGreaterThan(2); // At least Starter + Hobby + one more
     });
 
     test('should handle Pro tier Get Started button click', async ({ page }) => {
@@ -391,15 +388,15 @@ test.describe('Billing E2E Tests', () => {
         await dialog.accept();
       });
 
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete
+      // This should already be visible after goto() completes
       const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
         name: 'Starter',
         exact: true,
       });
-      await expect(starterHeading).toBeVisible({ timeout: 10000 });
+      await expect(starterHeading).toBeVisible();
 
       // Find and click Pro tier Get Started button
       const proCard = page.locator('div').filter({ hasText: 'Professional' }).first();
@@ -439,15 +436,15 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should display rollover information prominently', async ({ page }) => {
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete
+      // This should already be visible after goto() completes
       const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
         name: 'Starter',
         exact: true,
       });
-      await expect(starterHeading).toBeVisible({ timeout: 10000 });
+      await expect(starterHeading).toBeVisible();
 
       // Check that rollover information is displayed for Starter
       const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
@@ -466,11 +463,11 @@ test.describe('Billing E2E Tests', () => {
     });
 
     test('should have proper responsive layout for Starter tier', async ({ page }) => {
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete
-      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible({ timeout: 10000 });
+      // This should already be visible after goto() completes
+      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible();
 
       // Test desktop layout
       await page.setViewportSize({ width: 1200, height: 800 });
@@ -499,11 +496,11 @@ test.describe('Billing E2E Tests', () => {
       await pricingPage.screenshot('starter-tier-mobile');
     });
 
-    test('should maintain visual consistency with other tiers', async ({ page: _page }) => {
+    test('should maintain visual consistency with other tiers', async () => {
+      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
-      await pricingPage.waitForPageLoad();
 
-      // Wait for loading to complete
+      // These should already be visible after goto() completes
       const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
         name: 'Starter',
         exact: true,
@@ -517,15 +514,15 @@ test.describe('Billing E2E Tests', () => {
         exact: true,
       });
 
-      await expect(starterHeading).toBeVisible({ timeout: 10000 });
-      await expect(hobbyHeading).toBeVisible({ timeout: 10000 });
-      await expect(proHeading).toBeVisible({ timeout: 10000 });
+      await expect(starterHeading).toBeVisible();
+      await expect(hobbyHeading).toBeVisible();
+      await expect(proHeading).toBeVisible();
 
       // Check that all cards have similar structure
       const cards = pricingPage.pricingGrid.locator('> div');
       const cardCount = await cards.count();
 
-      expect(cardCount).toBeGreaterThanOrEqual(4); // Free + Starter + Hobby + Pro (+/- Business)
+      expect(cardCount).toBeGreaterThanOrEqual(4); // Starter + Hobby + Pro + Business
 
       // Check that each card has consistent elements
       for (let i = 0; i < Math.min(cardCount, 4); i++) {
@@ -536,12 +533,12 @@ test.describe('Billing E2E Tests', () => {
         const heading = card.locator('h2, h3').first();
         await expect(heading).toBeVisible();
 
-        // Each card should have a price or "Free" indicator
-        const hasPriceOrFree =
+        // Each card should have a price indicator
+        const hasPrice =
           (await card.locator('text=/\\$/').count()) > 0 || // Contains $ sign
-          (await card.locator('text=/Free/i').count()) > 0 || // Contains Free (case insensitive)
-          (await card.locator('text=/10.*Credits/i').count()) > 0; // Contains credits (for free plan)
-        expect(hasPriceOrFree).toBe(true);
+          (await card.locator('text=/Free/i').count()) > 0 || // Contains Free (case insensitive, for text references)
+          (await card.locator('text=/per month/i').count()) > 0; // Contains "per month"
+        expect(hasPrice).toBe(true);
       }
 
       // Check accessibility

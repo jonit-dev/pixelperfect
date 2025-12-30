@@ -300,26 +300,42 @@ export class BulkImageCompressorPage extends BasePage {
   }
 
   /**
+   * Dismiss the upscaler CTA modal if it's visible
+   * This modal appears after compression completes and blocks interaction
+   */
+  async dismissUpscalerCTAModal(): Promise<void> {
+    // Look for the modal backdrop (fixed inset-0 with backdrop-blur)
+    const modal = this.page.locator('.fixed.inset-0.bg-black\\/60').first();
+    const isVisible = await modal.isVisible().catch(() => false);
+
+    if (isVisible) {
+      // Click the close button (X button) or click outside to dismiss
+      // Try clicking the close button first
+      const closeButton = modal.locator('button').filter({ hasText: '' }).first();
+      await closeButton.click().catch(async () => {
+        // If close button doesn't work, click outside the modal content
+        await modal.click({ position: { x: 10, y: 10 } });
+      });
+      await this.page.waitForTimeout(500);
+    }
+  }
+
+  /**
    * Click download button for a specific image by index
    */
   async downloadImageByIndex(index: number): Promise<void> {
-    const item = this.getImageItems().nth(index);
-    // Find the download button - should have Download icon (lucide-react Download)
-    // This is typically the first button with download functionality
-    const buttons = item.locator('button');
-    const buttonCount = await buttons.count();
+    // Dismiss any modal that might be blocking interaction
+    await this.dismissUpscalerCTAModal();
 
-    // Look for button that might be the download one (after compression, before remove)
-    // Try to click based on position or use a more specific selector
-    for (let i = buttonCount - 1; i >= 0; i--) {
-      const btn = buttons.nth(i);
-      const classList = (await btn.getAttribute('class')) || '';
-      // The download button typically has text-accent class
-      if (classList.includes('text-accent')) {
-        await btn.click();
-        return;
-      }
-    }
+    const item = this.getImageItems().nth(index);
+
+    // Find the download button using the title attribute and verify it has the text-accent class
+    // The download button has title="Download" and contains the text-accent class
+    const downloadButton = item.getByTitle('Download').and(item.locator('button.text-accent'));
+
+    // Wait for the button to be visible and clickable
+    await expect(downloadButton).toBeVisible({ timeout: 10000 });
+    await downloadButton.click();
   }
 
   /**

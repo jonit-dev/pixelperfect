@@ -90,6 +90,9 @@ test.describe('Upscaler E2E Tests', () => {
 
   test.describe('Page Structure', () => {
     test('Upscaler page loads with correct title and dropzone', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
 
@@ -101,6 +104,9 @@ test.describe('Upscaler E2E Tests', () => {
     });
 
     test('Dropzone shows upload instructions', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
 
@@ -110,22 +116,28 @@ test.describe('Upscaler E2E Tests', () => {
     });
 
     test('Dropzone shows feature badges', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
 
       // Check for feature badges that actually exist in the UI
-      await expect(page.getByText('Free 5MB limit')).toBeVisible();
+      await expect(page.getByText('5MB free limit')).toBeVisible();
       await expect(page.getByText('No Watermark')).toBeVisible();
       // Look for "Batch" text in the feature badge area (more specific selector)
-      await expect(page.locator('.flex.items-center.gap-2.text-indigo-500')).toContainText('Batch');
+      await expect(page.locator('.flex.items-center.gap-2.text-accent')).toContainText('Batch');
       // Also check for either "Upgrade Required" or "Up to X images" text
-      const batchText = page.locator('.flex.items-center.gap-2.text-indigo-500');
+      const batchText = page.locator('.flex.items-center.gap-2.text-accent');
       await expect(batchText).toContainText(/Upgrade Required|Up to \d+ images/);
     });
   });
 
   test.describe('Image Upload Flow', () => {
     test('Uploading an image shows workspace with preview', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
       await upscalerPage.waitForLoad();
@@ -139,6 +151,9 @@ test.describe('Upscaler E2E Tests', () => {
     });
 
     test('Uploaded image shows in queue strip', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
       await upscalerPage.waitForLoad();
@@ -151,6 +166,9 @@ test.describe('Upscaler E2E Tests', () => {
     });
 
     test('Can upload multiple images for batch processing', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
       await upscalerPage.waitForLoad();
@@ -417,6 +435,9 @@ test.describe('Upscaler E2E Tests', () => {
 
   test.describe('File Validation', () => {
     test('Dropzone rejects files over 5MB limit', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
       await upscalerPage.waitForLoad();
@@ -433,6 +454,9 @@ test.describe('Upscaler E2E Tests', () => {
     });
 
     test('File input accepts only image types', async ({ page }) => {
+      // Set up auth mocks first
+      await setupAuthAndApiMocks(page);
+
       const upscalerPage = new UpscalerPage(page);
       await upscalerPage.goto();
       await upscalerPage.waitForLoad();

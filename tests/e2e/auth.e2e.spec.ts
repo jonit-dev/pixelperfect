@@ -45,7 +45,6 @@ test.describe('Authentication', () => {
   test.describe('Protected Routes', () => {
     test('direct URL navigation maintains header functionality', async () => {
       // Navigate directly to various pages and verify header still works
-      // Note: Only include pages that actually exist
       const pages = ['/', '/pricing'];
 
       for (const pagePath of pages) {
@@ -55,31 +54,7 @@ test.describe('Authentication', () => {
         // Header should be visible and functional
         await expect(loginPage.header).toBeVisible();
 
-        // Check if we're not authenticated (most pages)
-        if (!pagePath.startsWith('/dashboard')) {
-          await expect(loginPage.signInButton).toBeVisible({ timeout: 10000 });
-        }
-      }
-
-      // Test that the application handles various navigation scenarios
-      // Note: Testing actual protected routes may require authentication setup
-      // For now, just verify that navigation doesn't break the header
-      try {
-        await loginPage.goto('/dashboard/billing');
-        await loginPage.waitForPageLoad();
-        // Header should still be visible even if route redirects
-        await expect(loginPage.header).toBeVisible({ timeout: 10000 });
-
-        // After navigating to a protected route, we might be redirected or see different content
-        // Let's go back to a safe page and verify header still works
-        await loginPage.goto('/');
-        await loginPage.waitForPageLoad();
-        await expect(loginPage.signInButton).toBeVisible({ timeout: 10000 });
-      } catch {
-        // If navigation fails, that's expected for protected routes without auth
-        // Just verify we can still navigate to a working page
-        await loginPage.goto('/');
-        await loginPage.waitForPageLoad();
+        // Sign in button should be visible for public pages
         await expect(loginPage.signInButton).toBeVisible({ timeout: 10000 });
       }
     });

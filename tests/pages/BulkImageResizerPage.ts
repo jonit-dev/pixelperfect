@@ -138,13 +138,16 @@ export class BulkImageResizerPage extends BasePage {
   }
 
   /**
-   * Set height - first disables aspect ratio if needed since height is disabled when aspect ratio is on
+   * Set height - first disables aspect ratio if needed since height input is hidden when aspect ratio is on
    */
   async setHeight(height: number): Promise<void> {
-    // Check if height is disabled (aspect ratio is on) and disable it first
-    const isDisabled = await this.heightInput.isDisabled();
-    if (isDisabled) {
+    // Height input is conditionally rendered - only exists when aspect ratio is off
+    // Check if it exists, and if not, disable aspect ratio first
+    const heightExists = await this.heightInput.count();
+    if (heightExists === 0) {
       await this.setMaintainAspectRatio(false);
+      // Wait for the input to appear after state change
+      await this.page.waitForTimeout(200);
     }
     await this.heightInput.fill(height.toString());
   }
@@ -273,6 +276,9 @@ export class BulkImageResizerPage extends BasePage {
    * Click download button for a specific image by index
    */
   async downloadImageByIndex(index: number): Promise<void> {
+    // Close any modal that might be blocking interaction
+    await this.closeCTAModalIfVisible();
+
     const item = this.getImageItems().nth(index);
     // Find the download button (has title attribute or download icon)
     const downloadButton = item
@@ -283,10 +289,22 @@ export class BulkImageResizerPage extends BasePage {
 
   /**
    * Wait for processing to complete for all images
+   * This also handles closing the CTA modal that appears after processing
    */
   async waitForProcessingComplete(): Promise<void> {
-    // Wait for download all button to appear
+    // First wait for the download button to appear
+    // This indicates all images have been processed
     await expect(this.downloadAllButton).toBeVisible({ timeout: 60000 });
+
+    // Wait a bit for the CTA modal to potentially appear
+    // The modal appears right after processing completes
+    await this.page.waitForTimeout(500);
+
+    // Close the CTA modal if it's visible
+    await this.closeCTAModalIfVisible();
+
+    // Verify download button is still visible after closing modal
+    await expect(this.downloadAllButton).toBeVisible({ timeout: 5000 });
   }
 
   /**
@@ -331,5 +349,37 @@ export class BulkImageResizerPage extends BasePage {
     const dimensions = await item.locator('p.text-xs.text-text-secondary').textContent();
 
     return { name, dimensions };
+  }
+
+  /**
+   * Close the CTA modal if it appears after processing
+   * This modal appears after processing completes and blocks interaction
+   */
+  async closeCTAModalIfVisible(): Promise<void> {
+    // Look for the modal content by its unique heading text
+    const modalHeading = this.page.getByText('Images Resized Successfully').first();
+
+    const isModalVisible = await modalHeading.isVisible().catch(() => false);
+
+    if (isModalVisible) {
+      // The close button is within the same modal container
+      // Look for it near the heading by targeting the modal container first
+      const modalContainer = modalHeading.locator(
+        'xpath=ancestor::div[contains(@class, "max-w-md")]'
+      );
+      const closeButton = modalContainer
+        .locator('button')
+        .filter({ has: this.page.locator('svg.lucide-x') })
+        .first();
+
+      // Try clicking the close button
+      await closeButton.click().catch(async () => {
+        // If close button doesn't work, try pressing Escape
+        await this.page.keyboard.press('Escape');
+      });
+
+      // Wait for modal to disappear
+      await modalHeading.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {});
+    }
   }
 }

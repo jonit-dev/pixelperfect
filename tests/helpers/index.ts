@@ -19,6 +19,16 @@ export {
   type IPresetUserConfig,
 } from './user-factory';
 
+// Auth helpers for E2E tests
+export {
+  createTestUser,
+  setupAuthenticatedState,
+  createUserWithCredits,
+  createAdminUser,
+  getTestHeaders,
+  type ITestUserData,
+} from './auth-helpers';
+
 // Import for internal use in utility functions
 import { TestContext as TestContextClass } from './test-context';
 import { UserFactory as UserFactoryClass } from './user-factory';

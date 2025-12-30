@@ -37,10 +37,10 @@ export class UpscalerPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // Page header
-    this.pageTitle = page.getByRole('heading', { name: 'AI Image Upscaler' });
+    // Page header - Dashboard page has "Dashboard" heading
+    this.pageTitle = page.getByRole('heading', { name: 'Dashboard' });
     this.pageDescription = page.getByText(
-      'Enhance and upscale your images using advanced AI technology'
+      'Upload and enhance your images with AI-powered upscaling'
     );
 
     // Dropzone (empty state)
@@ -79,10 +79,10 @@ export class UpscalerPage extends BasePage {
   }
 
   /**
-   * Navigate to the upscaler page
+   * Navigate to the dashboard page (where upscaler workspace is located)
    */
   async goto(): Promise<void> {
-    await super.goto('/upscaler');
+    await super.goto('/dashboard');
   }
 
   /**
@@ -90,7 +90,10 @@ export class UpscalerPage extends BasePage {
    */
   async waitForLoad(): Promise<void> {
     await expect(this.pageTitle).toBeVisible({ timeout: 15000 });
-    await expect(this.workspace).toBeVisible();
+    // The workspace element might have different classes in empty vs active state
+    // Use a more flexible selector that works for both states
+    const workspaceSelector = this.page.locator('.bg-surface.rounded-2xl, .bg-main.rounded-3xl');
+    await expect(workspaceSelector.first()).toBeVisible();
   }
 
   /**
