@@ -19,7 +19,7 @@ export default async function ToolsHubPage() {
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="block p-6 glass-card rounded-lg border border-white/10 hover:border-accent hover:shadow-lg transition-all group"
+            className="block p-6 glass-card rounded-lg border border-border hover:border-accent hover:shadow-lg transition-all group"
           >
             <h2 className="text-xl font-semibold mb-2 text-text-primary group-hover:text-accent transition-colors">
               {tool.title}

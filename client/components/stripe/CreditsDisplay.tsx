@@ -38,14 +38,44 @@ export function CreditsDisplay(): JSX.Element {
     setTimeout(() => setIsRefreshing(false), 5000);
   };
 
-  // Show loading if: explicitly loading, or authenticated but profile not yet fetched
-  const isProfileLoading = isLoading || (isAuthenticated && !user?.profile);
+  // Show loading if: explicitly loading, or authenticated but profile not yet fetched (and no error)
+  const isProfileLoading = isLoading || (isAuthenticated && !user?.profile && !error);
 
   const isLowCredits = creditBalance > 0 && creditBalance <= LOW_CREDIT_THRESHOLD;
   const isNoCredits = creditBalance === 0 && !isProfileLoading;
 
   // Should show tooltip?
   const showTooltip = isLowCredits || isNoCredits;
+
+  // Check error first - don't show loading skeleton if there's an error
+  if (error) {
+    return (
+      <div className="flex items-center gap-2 bg-error/10 px-3 py-1.5 rounded-full">
+        <span className="text-xs font-medium text-error">Error loading credits</span>
+        <button
+          onClick={handleRefresh}
+          disabled={isRefreshing}
+          className="text-error hover:text-error/80 transition-colors disabled:opacity-50"
+          title="Retry"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin' : ''}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+            />
+          </svg>
+        </button>
+      </div>
+    );
+  }
 
   if (isProfileLoading) {
     return (
@@ -56,14 +86,6 @@ export function CreditsDisplay(): JSX.Element {
           <div className="h-3 w-12 bg-surface rounded animate-pulse"></div>
         </div>
         <div className="h-3.5 w-3.5 bg-surface rounded animate-pulse"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex items-center gap-2 bg-error/10 px-3 py-1.5 rounded-full">
-        <span className="text-xs font-medium text-error">Error loading credits</span>
       </div>
     );
   }

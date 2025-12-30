@@ -127,9 +127,9 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
   const placeholderPrompt = generatePrompt(config);
 
   return (
-    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-white/5 bg-surface flex flex-col z-20 shadow-sm h-full">
+    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-border bg-surface flex flex-col z-20 shadow-sm h-full">
       {/* Header */}
-      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-white/5 shrink-0">
+      <div className="px-4 md:px-6 pt-4 md:pt-6 pb-3 md:pb-4 border-b border-border shrink-0">
         <h3 className="font-bold text-white flex items-center gap-2 mb-1 text-base md:text-base tracking-tight">
           <Settings size={18} className="text-secondary" /> Batch Settings
         </h3>

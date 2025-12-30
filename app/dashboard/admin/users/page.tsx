@@ -67,13 +67,13 @@ export default function AdminUsersPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="pl-10 pr-4 py-2 border border-white/20 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+            className="pl-10 pr-4 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
           />
         </div>
       </div>
 
       {/* Users Table */}
-      <div className="bg-surface rounded-lg border border-white/10">
+      <div className="bg-surface rounded-lg border border-border">
         <table className="min-w-full divide-y divide-slate-200">
           <thead className="bg-surface">
             <tr>
@@ -158,7 +158,7 @@ export default function AdminUsersPage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="px-6 py-3 border-t border-white/10 flex items-center justify-between">
+          <div className="px-6 py-3 border-t border-border flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
               Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)} of {total}
             </div>

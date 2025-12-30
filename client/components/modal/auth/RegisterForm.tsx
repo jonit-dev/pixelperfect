@@ -69,7 +69,7 @@ export const RegisterForm: React.FC<IRegisterFormProps> = ({
               href="/terms"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary-hover underline"
+              className="text-accent hover:text-accent-hover underline"
             >
               Terms of Service
             </a>{' '}
@@ -78,7 +78,7 @@ export const RegisterForm: React.FC<IRegisterFormProps> = ({
               href="/privacy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary-hover underline"
+              className="text-accent hover:text-accent-hover underline"
             >
               Privacy Policy
             </a>

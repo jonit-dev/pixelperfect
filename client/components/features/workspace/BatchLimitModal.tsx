@@ -111,7 +111,7 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
 
       {/* Free User Special Message */}
       {limit === 1 && (
-        <div className="bg-surface rounded-lg p-4 mb-6 border border-white/10">
+        <div className="bg-surface rounded-lg p-4 mb-6 border border-border">
           <p className="text-sm text-muted-foreground">
             Free users can process 1 image at a time. Upgrade to unlock higher batch limits and
             process multiple images.

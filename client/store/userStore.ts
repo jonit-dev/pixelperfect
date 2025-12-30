@@ -97,8 +97,11 @@ export const useUserStore = create<IUserState>((set, get) => ({
   },
 
   fetchUserData: async (userId: string) => {
+    console.log('[userStore] fetchUserData called for:', userId);
+
     // Dedupe concurrent requests
     if (fetchPromise) {
+      console.log('[userStore] Deduping - already fetching');
       await fetchPromise;
       return;
     }
@@ -109,30 +112,55 @@ export const useUserStore = create<IUserState>((set, get) => ({
 
       for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
         try {
-          // On retry, wait a bit for session to stabilize
+          console.log(`[userStore] Attempt ${attempt + 1}/${MAX_RETRIES + 1}`);
+
+          // On retry, wait with exponential backoff for session to stabilize
           if (attempt > 0) {
-            await new Promise(resolve => setTimeout(resolve, 500 * attempt));
+            console.log(`[userStore] Waiting ${1000 * attempt}ms before retry`);
+            await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
           }
+
+          // Ensure session is available before RPC call
+          // This helps with OAuth flows where cookie might not be written yet
+          console.log('[userStore] Checking session...');
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
+
+          if (!session) {
+            console.log('[userStore] No session found');
+            throw new Error('No session available for RPC call');
+          }
+          console.log('[userStore] Session found, user:', session.user?.id);
 
           // Add timeout to prevent hanging forever
           const timeoutPromise = new Promise<never>((_, reject) => {
             setTimeout(() => reject(new Error('RPC timeout after 5s')), 5000);
           });
 
+          console.log('[userStore] Calling RPC get_user_data...');
           const rpcPromise = supabase.rpc('get_user_data', {
             target_user_id: userId,
           });
 
           const { data, error } = await Promise.race([rpcPromise, timeoutPromise]);
+          console.log('[userStore] RPC result:', { data: !!data, error: error?.message });
 
           if (error) {
             // Retry on auth-related errors (session not ready yet)
-            const isAuthError =
+            // "Access denied" happens when auth.uid() is NULL during OAuth race condition
+            // "RPC timeout" can happen when session isn't propagated to DB yet
+            // "No session" happens when cookie isn't written yet
+            const isRetryableError =
               error.message?.includes('JWT') ||
               error.message?.includes('token') ||
               error.message?.includes('auth') ||
+              error.message?.includes('Access denied') ||
+              error.message?.includes('RPC timeout') ||
+              error.message?.includes('No session') ||
               error.code === 'PGRST301';
-            if (isAuthError && attempt < MAX_RETRIES) {
+            if (isRetryableError && attempt < MAX_RETRIES) {
+              console.log('[userStore] Retryable error, will retry:', error.message);
               lastError = error;
               continue;
             }
@@ -141,6 +169,7 @@ export const useUserStore = create<IUserState>((set, get) => ({
 
           const currentUser = get().user;
           if (currentUser) {
+            console.log('[userStore] Success! Updating user with profile/subscription');
             const updatedUser: IUserData = {
               ...currentUser,
               profile: data?.profile ?? null,
@@ -157,8 +186,9 @@ export const useUserStore = create<IUserState>((set, get) => ({
           return; // Success, exit retry loop
         } catch (err) {
           lastError = err instanceof Error ? err : new Error('Unknown error');
+          console.log(`[userStore] Caught error on attempt ${attempt + 1}:`, lastError.message);
           if (attempt === MAX_RETRIES) {
-            console.error('Failed to fetch user data after retries:', lastError);
+            console.error('[userStore] Failed after all retries:', lastError);
             set({ error: lastError.message });
           }
         }
@@ -318,9 +348,11 @@ function clearUserCache(): void {
 if (typeof window !== 'undefined') {
   // Auth state listener (single source of truth)
   supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
+    console.log('[userStore] onAuthStateChange:', event, 'session:', !!session);
     const store = useUserStore.getState();
 
     if (event === 'SIGNED_OUT' || !session) {
+      console.log('[userStore] Signed out or no session, resetting');
       store.reset();
       // Redirect to home page after sign out
       if (typeof window !== 'undefined' && event === 'SIGNED_OUT') {
@@ -349,13 +381,15 @@ if (typeof window !== 'undefined') {
       });
 
       // Fetch full data in background (non-blocking)
-      // Use setTimeout with small delay to allow session cookies to stabilize
-      // This helps prevent auth errors on fresh OAuth logins
+      // Use setTimeout with delay to allow session to fully propagate to Supabase backend
+      // OAuth flows especially need time for auth.uid() to be available in RPC calls
+      console.log('[userStore] Scheduling fetchUserData in 500ms');
       setTimeout(() => {
+        console.log('[userStore] Timer fired, calling fetchUserData');
         store.fetchUserData(session.user.id).catch(err => {
-          console.error('Background fetch failed:', err);
+          console.error('[userStore] Background fetch failed:', err);
         });
-      }, 100);
+      }, 500);
 
       // Redirect to dashboard for active login/signup (email/password only)
       // OAuth redirects directly to /dashboard via redirectTo option

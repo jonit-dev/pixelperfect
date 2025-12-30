@@ -99,8 +99,12 @@ export const Pricing: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-24">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Pricing</h2>
-          <h2 className="text-4xl font-black text-white sm:text-6xl">Simple, <span className="gradient-text-primary">transparent</span> pricing</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">
+            Pricing
+          </h2>
+          <h2 className="text-4xl font-black text-white sm:text-6xl">
+            Simple, <span className="gradient-text-primary">transparent</span> pricing
+          </h2>
           <p className="mt-6 text-xl text-text-secondary font-light max-w-2xl mx-auto">
             Professional quality enhancement at prosumer prices.
           </p>
@@ -118,7 +122,7 @@ export const Pricing: React.FC = () => {
               {tier.recommended && (
                 <>
                   <div className="absolute inset-0 -z-10 bg-gradient-to-b from-secondary/10 to-transparent blur-2xl opacity-50" />
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-accent to-secondary text-white px-6 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-accent/20 border border-white/20">
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-accent to-secondary text-white px-6 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-accent/20 border border-border">
                     Most Popular
                   </div>
                 </>
@@ -126,7 +130,9 @@ export const Pricing: React.FC = () => {
 
               <div className="mb-8">
                 <h3 className="text-2xl font-black text-white tracking-tight">{tier.name}</h3>
-                <p className="text-text-secondary text-sm mt-3 font-light leading-relaxed">{tier.description}</p>
+                <p className="text-text-secondary text-sm mt-3 font-light leading-relaxed">
+                  {tier.description}
+                </p>
               </div>
 
               <div className="mb-8 flex items-baseline gap-1">
@@ -140,7 +146,9 @@ export const Pricing: React.FC = () => {
                     <div className="h-5 w-5 rounded-full bg-emerald-500/10 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-emerald-500/20 transition-colors">
                       <Check className="h-3 w-3 text-emerald-400" strokeWidth={3} />
                     </div>
-                    <span className="text-sm font-light group-hover/item:text-white transition-colors">{feature}</span>
+                    <span className="text-sm font-light group-hover/item:text-white transition-colors">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>

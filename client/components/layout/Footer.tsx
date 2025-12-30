@@ -6,14 +6,18 @@ export const Footer = (): JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-main text-text-muted mt-auto border-t border-white/5">
+    <footer className="bg-main text-text-muted mt-auto border-t border-border">
       <div className="max-w-[1600px] mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-white font-black text-2xl tracking-tighter">{clientEnv.APP_NAME}<span className="text-accent">.</span></h3>
+            <h3 className="text-white font-black text-2xl tracking-tighter">
+              {clientEnv.APP_NAME}
+              <span className="text-accent">.</span>
+            </h3>
             <p className="text-sm text-text-muted font-medium leading-relaxed max-w-xs">
-              AI-powered image upscaling and enhancement for professionals and creators. Precision-engineered for 2025.
+              AI-powered image upscaling and enhancement for professionals and creators.
+              Precision-engineered for 2025.
             </p>
           </div>
 
@@ -73,7 +77,7 @@ export const Footer = (): JSX.Element => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs font-medium text-text-muted">
             © {currentYear} {clientEnv.APP_NAME}. All rights reserved. Precision made for creators.
           </p>

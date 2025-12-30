@@ -120,7 +120,7 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
               </button>
               <a
                 href="/"
-                className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-white/20 rounded-lg shadow-sm text-sm font-medium text-text-secondary bg-surface hover:bg-surface focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+                className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-border rounded-lg shadow-sm text-sm font-medium text-text-secondary bg-surface hover:bg-surface focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
               >
                 <Home className="h-4 w-4 mr-2" />
                 Go Home

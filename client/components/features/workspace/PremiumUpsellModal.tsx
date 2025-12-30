@@ -139,7 +139,7 @@ export const PremiumUpsellModal: React.FC<IPremiumUpsellModalProps> = ({
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onProceed}
-                className="flex-1 px-5 py-3 rounded-xl border border-white/10 text-muted-foreground font-medium hover:bg-surface transition-colors"
+                className="flex-1 px-5 py-3 rounded-xl border border-border text-muted-foreground font-medium hover:bg-surface transition-colors"
               >
                 Continue with Free
               </button>

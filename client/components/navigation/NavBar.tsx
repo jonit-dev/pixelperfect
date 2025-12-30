@@ -34,7 +34,7 @@ export const NavBar = (): JSX.Element => {
   const isPasswordUser = user?.provider === AuthProvider.EMAIL;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-main/80 backdrop-blur-xl transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-main/80 backdrop-blur-xl transition-all duration-300">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="/"
@@ -147,7 +147,7 @@ export const NavBar = (): JSX.Element => {
             </div>
           ) : !isAuthenticated ? (
             <>
-              <div className="hidden sm:flex items-center gap-2 glass-strong px-4 py-2 rounded-full border-white/5">
+              <div className="hidden sm:flex items-center gap-2 glass-strong px-4 py-2 rounded-full border-border">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span className="text-xs font-black text-white/80 uppercase tracking-tighter">
                   10 Free Credits
@@ -283,7 +283,7 @@ export const NavBar = (): JSX.Element => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-surface">
+        <div className="md:hidden border-t border-border bg-surface">
           <nav className="flex flex-col px-4 py-4 space-y-2">
             {isAuthenticated && (
               <a
@@ -360,7 +360,7 @@ export const NavBar = (): JSX.Element => {
             </a>
             {!isAuthenticated && (
               <>
-                <div className="border-t border-white/10 my-2 pt-2">
+                <div className="border-t border-border my-2 pt-2">
                   <button
                     onClick={handleAuthClick}
                     className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"

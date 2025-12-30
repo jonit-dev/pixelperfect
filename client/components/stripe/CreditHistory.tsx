@@ -123,7 +123,7 @@ export function CreditHistory({ limit = 50 }: IProps): JSX.Element {
 
   return (
     <div className="bg-surface rounded-lg shadow overflow-hidden">
-      <div className="p-6 border-b border-white/10">
+      <div className="p-6 border-b border-border">
         <h3 className="text-lg font-semibold text-primary">Transaction History</h3>
         <p className="text-sm text-muted-foreground mt-1">
           Showing {transactions.length} of {pagination.total} transactions

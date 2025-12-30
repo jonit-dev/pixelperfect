@@ -597,7 +597,7 @@ export default function HelpPage(): JSX.Element {
             </a>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-border text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
             >
               View Pricing
             </Link>
@@ -605,7 +605,7 @@ export default function HelpPage(): JSX.Element {
         </section>
 
         {/* Related Links */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-6">
+        <div className="mt-12 pt-8 border-t border-border flex flex-wrap gap-6">
           <Link href="/privacy" className="text-accent hover:underline">
             Privacy Policy
           </Link>

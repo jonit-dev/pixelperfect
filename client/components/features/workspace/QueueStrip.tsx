@@ -26,7 +26,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
   return (
     <div
       className={cn(
-        'bg-main border-t md:border-t-0 border-white/5 py-4 px-6',
+        'bg-main border-t md:border-t-0 border-border py-4 px-6',
         // Desktop: horizontal strip with fixed height, Mobile: vertical list that fills available space
         'h-full md:h-40 flex flex-col md:flex-row items-center gap-3 md:gap-6 overflow-y-auto md:overflow-y-hidden md:overflow-x-auto custom-scrollbar'
       )}
@@ -56,8 +56,8 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             'min-h-[64px] md:min-h-[96px]',
             // Disabled state styling
             isProcessing || (batchLimit !== undefined && queue.length >= batchLimit)
-              ? '!border-white/5 !bg-white/5 !cursor-not-allowed'
-              : '!border-white/10 hover:!bg-white/[0.08] hover:!border-accent/50'
+              ? '!border-border !bg-white/5 !cursor-not-allowed'
+              : '!border-border hover:!bg-white/[0.08] hover:!border-accent/50'
           )}
         >
           <div className="flex flex-col items-center justify-center h-full w-full pointer-events-none">
@@ -100,7 +100,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
             // Active state
             activeId === item.id
               ? 'border-secondary ring-4 ring-secondary/20 scale-105 z-10'
-              : 'border-white/5 hover:border-secondary/50',
+              : 'border-border hover:border-secondary/50',
             // Rounded corners
             'rounded-xl'
           )}

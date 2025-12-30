@@ -154,7 +154,7 @@ const Workspace: React.FC = () => {
   // Empty State
   if (queue.length === 0) {
     return (
-      <div className="bg-surface rounded-2xl shadow-2xl border border-white/5 overflow-hidden flex flex-col min-h-[600px]">
+      <div className="bg-surface rounded-2xl shadow-2xl border border-border overflow-hidden flex flex-col min-h-[600px]">
         <div className="p-8 sm:p-16 flex-grow flex flex-col justify-center relative">
           <AmbientBackground variant="section" />
           <div className="relative z-10">
@@ -179,13 +179,13 @@ const Workspace: React.FC = () => {
 
   // Active Workspace State
   return (
-    <div className="bg-main rounded-3xl shadow-2xl border border-white/5 overflow-hidden flex flex-col min-h-[600px] md:min-h-[600px] h-[calc(100vh-12rem)] md:h-auto">
+    <div className="bg-main rounded-3xl shadow-2xl border border-border overflow-hidden flex flex-col min-h-[600px] md:min-h-[600px] h-[calc(100vh-12rem)] md:h-auto">
       {/* Desktop: Three columns, Mobile: Single panel */}
       <div className="flex flex-col md:flex-row flex-1 md:flex-grow overflow-hidden">
         {/* Upload/Batch Sidebar */}
         <div
           className={cn(
-            'w-full md:w-80 border-b md:border-b-0 md:border-r bg-surface border-white/5',
+            'w-full md:w-80 border-b md:border-b-0 md:border-r bg-surface border-border',
             // Mobile: full height when active, Desktop: fixed width sidebar
             mobileTab === 'upload' ? 'flex-1 md:flex-none' : 'hidden md:block'
           )}
@@ -284,7 +284,7 @@ const Workspace: React.FC = () => {
 
       {/* Mobile Floating Action Button - Process CTA */}
       {mobileTab !== 'upload' && queue.length > 0 && (
-        <div className="md:hidden px-4 py-3 bg-surface border-t border-white/5">
+        <div className="md:hidden px-4 py-3 bg-surface border-t border-border">
           <button
             onClick={() => processBatch(config)}
             disabled={
@@ -327,7 +327,7 @@ const Workspace: React.FC = () => {
       )}
 
       {/* Mobile Tab Bar */}
-      <nav className="md:hidden flex border-t border-white/10 bg-surface">
+      <nav className="md:hidden flex border-t border-border bg-surface">
         <TabButton
           active={mobileTab === 'upload'}
           onClick={() => setMobileTab('upload')}

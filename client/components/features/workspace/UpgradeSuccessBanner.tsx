@@ -66,7 +66,7 @@ export const UpgradeSuccessBanner = ({
             </Link>
             <button
               onClick={handleDismiss}
-              className="inline-flex items-center rounded-md border border-white/30 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-surface/10"
+              className="inline-flex items-center rounded-md border border-border px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-surface/10"
             >
               Maybe later
             </button>

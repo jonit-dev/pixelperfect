@@ -176,7 +176,7 @@ export class BillingErrorBoundary extends React.Component<
               <Icon className="w-8 h-8 text-error" />
             </div>
 
-            <h1 className="text-2xl font-bold text-primary text-center mb-4">
+            <h1 className="text-2xl font-bold text-accent text-center mb-4">
               {errorContent.title}
             </h1>
 
@@ -185,7 +185,7 @@ export class BillingErrorBoundary extends React.Component<
             <div className="space-y-3">
               <button
                 onClick={errorContent.primaryAction}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-colors"
               >
                 {errorContent.primaryAction === this.handleRetry && (
                   <RefreshCw className="w-4 h-4" />

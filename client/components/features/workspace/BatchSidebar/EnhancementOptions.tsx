@@ -56,7 +56,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
         <div
           className={`rounded-lg border overflow-hidden ${
             isFreeUser
-              ? 'border-white/5 bg-surface-light/50 opacity-60'
+              ? 'border-border bg-surface-light/50 opacity-60'
               : 'border-accent/20 bg-accent/10'
           }`}
           title={isFreeUser ? 'Paid plans only' : undefined}
@@ -83,7 +83,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
                   checked={isFreeUser ? false : options.smartAnalysis}
                   onChange={e => handleToggle('smartAnalysis', e.target.checked)}
                   disabled={disabled || isFreeUser}
-                  className="h-4 w-4 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+                  className="h-4 w-4 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
                 />
               </div>
               <p
@@ -145,7 +145,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
               checked={options.enhance}
               onChange={e => handleToggle('enhance', e.target.checked)}
               disabled={disabled}
-              className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+              className="h-3.5 w-3.5 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
             />
             <label htmlFor="enhance-image" className="flex items-center gap-2 cursor-pointer">
               <Sparkles className="h-3.5 w-3.5 text-muted-foreground" />
@@ -155,7 +155,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
 
           {/* Enhancement sub-options */}
           {options.enhance && options.enhancement && (
-            <div className="ml-5.5 mt-1 p-2 bg-surface-light rounded border border-white/10">
+            <div className="ml-5.5 mt-1 p-2 bg-surface-light rounded border border-border">
               <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                 {[
                   { key: 'clarity', label: 'Clarity' },
@@ -173,7 +173,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
                         handleEnhancementToggle(key as keyof IEnhancementSettings, e.target.checked)
                       }
                       disabled={disabled}
-                      className="h-3 w-3 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+                      className="h-3 w-3 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
                     />
                     <span className="text-muted-foreground">{label}</span>
                   </label>
@@ -191,7 +191,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
             checked={options.enhanceFaces}
             onChange={e => handleToggle('enhanceFaces', e.target.checked)}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="enhance-faces" className="flex items-center gap-2 cursor-pointer">
             <UserSquare2 className="h-3.5 w-3.5 text-muted-foreground" />
@@ -207,7 +207,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
             checked={options.preserveText}
             onChange={e => handleToggle('preserveText', e.target.checked)}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="preserve-text" className="flex items-center gap-2 cursor-pointer">
             <Type className="h-3.5 w-3.5 text-muted-foreground" />
@@ -229,7 +229,7 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
               }
             }}
             disabled={disabled}
-            className="h-3.5 w-3.5 rounded border-white/10 text-accent focus:ring-accent disabled:opacity-50"
+            className="h-3.5 w-3.5 rounded border-border text-accent focus:ring-accent disabled:opacity-50"
           />
           <label htmlFor="custom-instructions" className="flex items-center gap-2 cursor-pointer">
             <Edit3 className="h-3.5 w-3.5 text-muted-foreground" />

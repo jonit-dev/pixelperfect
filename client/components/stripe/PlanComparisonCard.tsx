@@ -19,7 +19,7 @@ export function PlanComparisonCard({
   effectiveText,
 }: IPlanComparisonCardProps): JSX.Element {
   const variantStyles = {
-    current: 'border-white/10 bg-surface',
+    current: 'border-border bg-surface',
     upgrade: 'border-green-200 bg-green-50',
     downgrade: 'border-orange-200 bg-orange-50',
   };

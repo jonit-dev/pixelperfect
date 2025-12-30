@@ -83,11 +83,11 @@ export const EnhancementPanel: React.FC<IEnhancementPanelProps> = ({
               disabled={disabled}
               title={aspect.description}
               className={`
-                p-2 text-xs rounded-lg border-2 font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+                p-2 text-xs rounded-lg border-2 font-medium transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
                 ${
                   isSelected
                     ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                    : 'border-white/10 text-muted-foreground hover:bg-surface hover:text-muted-foreground'
+                    : 'border-border text-muted-foreground hover:bg-surface hover:text-muted-foreground'
                 }
                 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
               `}

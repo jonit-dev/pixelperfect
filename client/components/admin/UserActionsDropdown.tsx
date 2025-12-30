@@ -47,7 +47,7 @@ export function UserActionsDropdown({
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-1 w-56 bg-surface rounded-lg shadow-lg border border-white/10 py-1 z-20">
+          <div className="absolute right-0 mt-1 w-56 bg-surface rounded-lg shadow-lg border border-border py-1 z-20">
             <DropdownItem icon={Eye} label="View Details" onClick={() => handleAction('view')} />
             <DropdownDivider />
             <DropdownItem
@@ -122,7 +122,7 @@ function DropdownItem({ icon: Icon, label, onClick, variant = 'default' }: IDrop
 }
 
 function DropdownDivider() {
-  return <div className="my-1 border-t border-white/10" />;
+  return <div className="my-1 border-t border-border" />;
 }
 
 // Modal Components
@@ -176,7 +176,7 @@ function CreditAdjustmentModal({ user, onClose, onSuccess }: IModalProps) {
             min="0"
             value={newBalance}
             onChange={e => setNewBalance(e.target.value)}
-            className="mt-1 block w-full rounded-lg border-white/20 shadow-sm focus:border-accent focus:ring-accent"
+            className="mt-1 block w-full rounded-lg border-border shadow-sm focus:border-accent focus:ring-accent"
             required
           />
           <p className="mt-1 text-sm text-muted-foreground">
@@ -322,7 +322,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
         </div>
 
         {/* Current State */}
-        <div className="p-3 bg-surface border border-white/10 rounded-lg space-y-1">
+        <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Profile Tier:</span>
             <span className="font-medium">{user.subscription_tier || 'Free'}</span>
@@ -357,7 +357,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
                 className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-colors ${
                   selectedPlan === plan.id
                     ? 'border-accent bg-accent/10'
-                    : 'border-white/10 hover:border-white/20'
+                    : 'border-border hover:border-border'
                 }`}
               >
                 <div className="flex items-center">
@@ -448,7 +448,7 @@ function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
           <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
-        <div className="p-3 bg-surface border border-white/10 rounded-lg">
+        <div className="p-3 bg-surface border border-border rounded-lg">
           <p className="text-sm text-muted-foreground">
             {newRole === 'admin' ? (
               <>
@@ -521,7 +521,7 @@ function DeleteUserModal({ user, onClose, onSuccess }: IModalProps) {
             type="text"
             value={confirmEmail}
             onChange={e => setConfirmEmail(e.target.value)}
-            className="mt-1 block w-full rounded-lg border-white/20 shadow-sm focus:border-error focus:ring-error"
+            className="mt-1 block w-full rounded-lg border-border shadow-sm focus:border-error focus:ring-error"
             placeholder="user@example.com"
           />
         </div>

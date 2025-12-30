@@ -176,7 +176,7 @@ function CheckoutContent() {
   return (
     <div className="min-h-screen bg-surface">
       {/* Header */}
-      <div className="bg-surface border-b border-white/10">
+      <div className="bg-surface border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
@@ -211,7 +211,7 @@ function CheckoutContent() {
       {/* Checkout Content */}
       <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="bg-surface rounded-lg shadow-lg overflow-hidden">
-          <div className="p-6 border-b border-white/10">
+          <div className="p-6 border-b border-border">
             <h1 className="text-2xl font-bold text-primary">Complete Your Subscription</h1>
             <p className="text-muted-foreground mt-2">Secure payment powered by Stripe</p>
           </div>

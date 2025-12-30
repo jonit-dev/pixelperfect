@@ -76,15 +76,13 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
         className={`
           w-full flex items-center justify-between p-3.5 rounded-xl border bg-white/[0.03]
           transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/20
-          ${isOpen ? 'border-accent ring-2 ring-accent/20 shadow-lg shadow-accent/5' : 'border-white/5 hover:border-white/20'}
+          ${isOpen ? 'border-accent ring-2 ring-accent/20 shadow-lg shadow-accent/5' : 'border-border hover:border-border'}
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
         `}
       >
         <div className="flex flex-col items-start text-left min-w-0 flex-1 mr-3">
           <div className="flex items-center gap-2 w-full">
-            <span className="font-bold text-sm text-white truncate">
-              {currentTierConfig.label}
-            </span>
+            <span className="font-bold text-sm text-white truncate">{currentTierConfig.label}</span>
             {tier === 'auto' && (
               <span className="text-[10px] bg-accent/20 text-accent px-2 py-0.5 rounded-full font-black border border-accent/20 whitespace-nowrap uppercase tracking-tighter">
                 Best Value
@@ -116,7 +114,9 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm tracking-tight text-white group-hover:text-secondary transition-colors">Auto-Optimize</span>
+                  <span className="font-bold text-sm tracking-tight text-white group-hover:text-secondary transition-colors">
+                    Auto-Optimize
+                  </span>
                   {isFreeUser && <Lock className="h-3 w-3 text-secondary/70" />}
                   <span className="text-[9px] bg-secondary/20 text-secondary px-1.5 py-0.5 rounded-full font-black border border-secondary/20 uppercase">
                     Smart
@@ -127,8 +127,10 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
                 </div>
               </div>
               <div className="flex flex-col items-end ml-3 shrink-0">
-                {tier === 'auto' && <Check className="h-4 w-4 text-secondary mb-1" strokeWidth={3} />}
-                <div className="text-[10px] text-text-muted font-bold tracking-widest uppercase bg-main px-2 py-1 rounded-lg border border-white/5">
+                {tier === 'auto' && (
+                  <Check className="h-4 w-4 text-secondary mb-1" strokeWidth={3} />
+                )}
+                <div className="text-[10px] text-text-muted font-bold tracking-widest uppercase bg-main px-2 py-1 rounded-lg border border-border">
                   1-4 CR
                 </div>
               </div>
@@ -157,7 +159,9 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm tracking-tight group-hover:text-accent transition-colors">{tierConfig.label}</span>
+                        <span className="font-bold text-sm tracking-tight group-hover:text-accent transition-colors">
+                          {tierConfig.label}
+                        </span>
                         {isLocked && <Lock className="h-3 w-3 text-accent/70" />}
                       </div>
                       <div className="text-[11px] text-text-muted mt-0.5 font-light truncate pr-2">
@@ -167,12 +171,15 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
                     <div className="flex flex-col items-end ml-3 shrink-0">
                       {isSelected && <Check className="h-4 w-4 text-accent mb-1" strokeWidth={3} />}
                       <div
-                        className={`text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded-lg border ${isSelected
-                          ? 'text-accent bg-main border-accent/20'
-                          : 'text-text-muted bg-main border-white/5'
-                          }`}
+                        className={`text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded-lg border ${
+                          isSelected
+                            ? 'text-accent bg-main border-accent/20'
+                            : 'text-text-muted bg-main border-border'
+                        }`}
                       >
-                        {formatCredits(tierConfig.credits).replace(' credits', ' CR').replace(' credit', ' CR')}
+                        {formatCredits(tierConfig.credits)
+                          .replace(' credits', ' CR')
+                          .replace(' credit', ' CR')}
                       </div>
                     </div>
                   </button>
@@ -184,7 +191,7 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
           {isFreeUser && (
             <button
               onClick={() => router.push('/pricing')}
-              className="w-full p-4 bg-gradient-to-r from-secondary/10 to-accent/10 border-t border-white/5 text-text-muted flex items-center justify-between hover:from-secondary/20 hover:to-accent/20 transition-all cursor-pointer group"
+              className="w-full p-4 bg-gradient-to-r from-secondary/10 to-accent/10 border-t border-border text-text-muted flex items-center justify-between hover:from-secondary/20 hover:to-accent/20 transition-all cursor-pointer group"
             >
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-secondary/20 rounded-xl group-hover:scale-110 transition-transform">
@@ -192,7 +199,9 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
                 </div>
                 <div className="flex flex-col items-start">
                   <span className="font-bold text-white text-xs">Unlock Premium</span>
-                  <span className="text-[10px] font-medium text-text-muted">Pro & Studio Tiers</span>
+                  <span className="text-[10px] font-medium text-text-muted">
+                    Pro & Studio Tiers
+                  </span>
                 </div>
               </div>
               <span className="text-[10px] font-black text-white bg-gradient-to-r from-accent to-secondary px-3 py-1 rounded-full shadow-lg shadow-accent/20">

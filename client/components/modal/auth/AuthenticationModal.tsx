@@ -161,7 +161,7 @@ export const AuthenticationModal: React.FC = () => {
             <button
               type="button"
               onClick={() => setAuthModalView('login')}
-              className="text-primary text-center hover:text-primary-hover font-medium w-full mt-6 text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
+              className="text-accent text-center hover:text-accent-hover font-medium w-full mt-6 text-sm transition-colors duration-200 py-2 rounded-lg hover:bg-muted/30"
             >
               Back to Login
             </button>

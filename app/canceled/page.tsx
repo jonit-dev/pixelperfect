@@ -34,7 +34,7 @@ export default function CanceledPage() {
             </Link>
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-border text-muted-foreground font-medium rounded-lg hover:bg-surface transition-colors"
             >
               Go to Dashboard
             </Link>

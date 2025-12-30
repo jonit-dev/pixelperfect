@@ -31,7 +31,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/dashboard"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-muted-foreground bg-surface border border-white/20 hover:bg-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-muted-foreground bg-surface border border-border hover:bg-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
           >
             Dashboard
           </Link>

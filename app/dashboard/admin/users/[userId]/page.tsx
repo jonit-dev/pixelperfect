@@ -118,7 +118,7 @@ export default function AdminUserDetailPage() {
       {/* Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Profile Card */}
-        <div className="bg-surface rounded-lg border border-white/10 p-6">
+        <div className="bg-surface rounded-lg border border-border p-6">
           <h3 className="font-medium text-primary mb-4">Profile</h3>
           <dl className="space-y-3">
             <div>
@@ -142,7 +142,7 @@ export default function AdminUserDetailPage() {
                   value={user.profile.role}
                   onChange={e => handleRoleChange(e.target.value)}
                   disabled={saving}
-                  className="block w-full rounded-lg border-white/20 text-sm disabled:opacity-50"
+                  className="block w-full rounded-lg border-border text-sm disabled:opacity-50"
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
@@ -159,7 +159,7 @@ export default function AdminUserDetailPage() {
         </div>
 
         {/* Credits Card */}
-        <div className="bg-surface rounded-lg border border-white/10 p-6">
+        <div className="bg-surface rounded-lg border border-border p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-medium text-primary">Credits</h3>
             <button
@@ -200,7 +200,7 @@ export default function AdminUserDetailPage() {
         </div>
 
         {/* Subscription Card */}
-        <div className="bg-surface rounded-lg border border-white/10 p-6 lg:col-span-2">
+        <div className="bg-surface rounded-lg border border-border p-6 lg:col-span-2">
           <h3 className="font-medium text-primary mb-4">Subscription</h3>
           {user.subscription ? (
             <dl className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -325,7 +325,7 @@ function CreditAdjustmentModal({
               type="number"
               value={amount}
               onChange={e => setAmount(e.target.value)}
-              className="mt-1 block w-full rounded-lg border-white/20"
+              className="mt-1 block w-full rounded-lg border-border"
               placeholder="e.g., 50 or -20"
               required
             />
@@ -339,7 +339,7 @@ function CreditAdjustmentModal({
               type="text"
               value={reason}
               onChange={e => setReason(e.target.value)}
-              className="mt-1 block w-full rounded-lg border-white/20"
+              className="mt-1 block w-full rounded-lg border-border"
               placeholder="e.g., Customer support compensation"
               required
             />

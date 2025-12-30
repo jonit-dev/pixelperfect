@@ -152,7 +152,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
         ${
           isDragging
             ? 'bg-accent/10 border-accent scale-[1.02] shadow-xl ring-4 ring-accent/20'
-            : 'bg-surface-light/50 hover:bg-surface-light border-white/10 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10'
+            : 'bg-surface-light/50 hover:bg-surface-light border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10'
         }
         border-2 border-dashed rounded-3xl
         ${disabled ? 'opacity-60 cursor-not-allowed grayscale' : ''}

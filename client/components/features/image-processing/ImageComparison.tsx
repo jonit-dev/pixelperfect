@@ -64,8 +64,8 @@ export const ImageComparison: React.FC<IImageComparisonProps> = ({
   };
 
   return (
-    <div className="w-full h-full max-w-6xl mx-auto bg-surface rounded-xl shadow-lg overflow-hidden border border-white/10 flex flex-col">
-      <div className="p-3 md:p-4 border-b border-white/10 flex flex-wrap md:flex-nowrap justify-between items-center gap-2 shrink-0">
+    <div className="w-full h-full max-w-6xl mx-auto bg-surface rounded-xl shadow-lg overflow-hidden border border-border flex flex-col">
+      <div className="p-3 md:p-4 border-b border-border flex flex-wrap md:flex-nowrap justify-between items-center gap-2 shrink-0">
         <div className="flex items-center">
           <span className="inline-flex items-center px-2 md:px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/20 text-success whitespace-nowrap">
             ✓ Enhanced

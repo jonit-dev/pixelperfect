@@ -20,7 +20,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Profile Settings */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
             <User size={20} className="text-accent" />
@@ -38,7 +38,7 @@ export default function SettingsPage() {
               type="email"
               value={user?.email || ''}
               disabled
-              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg text-muted-foreground"
+              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg text-muted-foreground"
             />
           </div>
           <div>
@@ -48,7 +48,7 @@ export default function SettingsPage() {
               value={user?.name || ''}
               placeholder="Not set"
               disabled
-              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg text-muted-foreground"
+              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg text-muted-foreground"
             />
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function SettingsPage() {
 
       {/* Security Settings */}
       {isPasswordUser && (
-        <div className="bg-surface rounded-xl border border-white/10 p-6">
+        <div className="bg-surface rounded-xl border border-border p-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
               <Lock size={20} className="text-muted-foreground" />
@@ -74,7 +74,7 @@ export default function SettingsPage() {
             </div>
             <button
               onClick={() => openAuthModal('changePassword')}
-              className="px-4 py-2 border border-white/10 text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors"
+              className="px-4 py-2 border border-border text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors"
             >
               Change Password
             </button>
@@ -83,7 +83,7 @@ export default function SettingsPage() {
       )}
 
       {/* Notification Settings */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
             <Bell size={20} className="text-muted-foreground" />
@@ -105,7 +105,7 @@ export default function SettingsPage() {
             <input
               type="checkbox"
               defaultChecked
-              className="w-5 h-5 text-accent rounded border-white/10 focus:ring-accent"
+              className="w-5 h-5 text-accent rounded border-border focus:ring-accent"
             />
           </label>
           <label className="flex items-center justify-between cursor-pointer">
@@ -115,7 +115,7 @@ export default function SettingsPage() {
             </div>
             <input
               type="checkbox"
-              className="w-5 h-5 text-accent rounded border-white/10 focus:ring-accent"
+              className="w-5 h-5 text-accent rounded border-border focus:ring-accent"
             />
           </label>
         </div>

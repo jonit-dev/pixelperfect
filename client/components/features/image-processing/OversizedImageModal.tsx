@@ -36,7 +36,7 @@ const WarningBanner: React.FC<{ fileSize: number; currentLimit: number; isPaidLi
 };
 
 const ImagePreview: React.FC<{ file: File; previewUrl: string }> = ({ file, previewUrl }) => (
-  <div className="relative rounded-xl overflow-hidden bg-surface-light border border-white/10">
+  <div className="relative rounded-xl overflow-hidden bg-surface-light border border-border">
     <Image
       src={previewUrl}
       alt={file.name}
@@ -292,7 +292,7 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
           <button
             onClick={onClose}
             disabled={isCompressing}
-            className="w-full p-4 border-2 border-white/10 hover:border-white/20 hover:bg-surface rounded-xl transition-all text-muted-foreground font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full p-4 border-2 border-border hover:border-border hover:bg-surface rounded-xl transition-all text-muted-foreground font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {showMultipleIndicator ? 'Skip This Image' : 'Use a Different Image'}
           </button>

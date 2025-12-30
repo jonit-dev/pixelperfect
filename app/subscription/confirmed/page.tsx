@@ -88,9 +88,9 @@ function SubscriptionConfirmedContent() {
         </div>
 
         {/* Main Card */}
-        <div className="bg-surface rounded-xl shadow-lg border border-white/10 overflow-hidden">
+        <div className="bg-surface rounded-xl shadow-lg border border-border overflow-hidden">
           {/* Plan Change Summary */}
-          <div className="p-6 border-b border-white/10">
+          <div className="p-6 border-b border-border">
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
@@ -211,7 +211,7 @@ function SubscriptionConfirmedContent() {
           </div>
 
           {/* Actions */}
-          <div className="p-6 bg-surface border-t border-white/10">
+          <div className="p-6 bg-surface border-t border-border">
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/dashboard"
@@ -221,7 +221,7 @@ function SubscriptionConfirmedContent() {
               </Link>
               <Link
                 href="/pricing"
-                className="flex-1 px-4 py-2.5 bg-surface text-muted-foreground text-center font-medium rounded-lg border border-white/10 hover:bg-surface transition-colors"
+                className="flex-1 px-4 py-2.5 bg-surface text-muted-foreground text-center font-medium rounded-lg border border-border hover:bg-surface transition-colors"
               >
                 View Plans
               </Link>

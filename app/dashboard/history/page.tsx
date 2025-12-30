@@ -14,7 +14,7 @@ export default function HistoryPage() {
       </div>
 
       {/* History List */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
             <Clock size={20} className="text-accent" />

@@ -114,7 +114,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
             onChange={e => setCurrentInstructions(e.target.value)}
             placeholder={placeholderPrompt}
             className={`
-              w-full min-h-[200px] p-3 rounded-lg border border-white/10 text-sm
+              w-full min-h-[200px] p-3 rounded-lg border border-border text-sm
               focus:ring-2 focus:ring-accent focus:border-accent
               resize-none transition-colors
               ${isOverLimit ? 'border-error focus:ring-error focus:border-error' : ''}
@@ -168,7 +168,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
                 key={index}
                 type="button"
                 onClick={() => setCurrentInstructions(template.prompt)}
-                className="p-2 text-left border border-white/10 rounded-lg hover:bg-surface hover:border-border transition-colors"
+                className="p-2 text-left border border-border rounded-lg hover:bg-surface hover:border-border transition-colors"
               >
                 <div className="text-xs font-medium text-muted-foreground mb-1">
                   {template.title}
@@ -180,7 +180,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
           <button
             type="button"
             onClick={onClose}

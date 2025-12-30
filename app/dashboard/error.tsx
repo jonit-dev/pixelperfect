@@ -35,13 +35,13 @@ export default function DashboardError({
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-surface rounded-lg border border-white/10 p-8">
+      <div className="max-w-md w-full bg-surface rounded-lg border border-border p-8">
         <div className="flex items-center justify-center w-12 h-12 mx-auto bg-error/20 rounded-full">
           <AlertTriangle className="h-6 w-6 text-error" />
         </div>
 
         <div className="mt-6 text-center">
-          <h2 className="text-xl font-bold text-primary">Dashboard Error</h2>
+          <h2 className="text-xl font-bold text-text-primary">Dashboard Error</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             We encountered an error loading this dashboard page. Please try again.
           </p>
@@ -76,7 +76,7 @@ export default function DashboardError({
           </button>
           <Link
             href="/dashboard"
-            className="flex-1 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-muted-foreground bg-surface border border-white/20 hover:bg-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="flex-1 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-muted-foreground bg-surface border border-border hover:bg-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
           >
             <LayoutDashboard className="h-4 w-4 mr-2" />
             Dashboard

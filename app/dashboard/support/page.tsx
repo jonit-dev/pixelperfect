@@ -15,7 +15,7 @@ export default function SupportPage() {
       {/* Support Options */}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Documentation */}
-        <div className="bg-surface rounded-xl border border-white/10 p-6 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all">
+        <div className="bg-surface rounded-xl border border-border p-6 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all">
           <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
             <BookOpen size={24} className="text-accent" />
           </div>
@@ -29,7 +29,7 @@ export default function SupportPage() {
         </div>
 
         {/* FAQ */}
-        <div className="bg-surface rounded-xl border border-white/10 p-6 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all">
+        <div className="bg-surface rounded-xl border border-border p-6 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all">
           <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
             <MessageCircle size={24} className="text-accent" />
           </div>
@@ -44,7 +44,7 @@ export default function SupportPage() {
       </div>
 
       {/* Contact Support */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
             <Mail size={20} className="text-muted-foreground" />
@@ -61,7 +61,7 @@ export default function SupportPage() {
             <input
               type="text"
               placeholder="What do you need help with?"
-              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white placeholder:text-muted-foreground"
+              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white placeholder:text-muted-foreground"
             />
           </div>
           <div>
@@ -69,7 +69,7 @@ export default function SupportPage() {
             <textarea
               rows={4}
               placeholder="Describe your issue or question..."
-              className="w-full px-4 py-2 bg-surface-light border border-white/10 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none text-white placeholder:text-muted-foreground"
+              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none text-white placeholder:text-muted-foreground"
             />
           </div>
           <button

@@ -101,7 +101,7 @@ interface IStatsCardProps {
 
 function StatsCard({ title, value, icon: Icon, iconBg, iconColor }: IStatsCardProps) {
   return (
-    <div className="bg-surface rounded-lg border border-white/10 p-6">
+    <div className="bg-surface rounded-lg border border-border p-6">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-muted-foreground">{title}</p>
@@ -117,7 +117,7 @@ function StatsCard({ title, value, icon: Icon, iconBg, iconColor }: IStatsCardPr
 
 function QuickActionsCard() {
   return (
-    <div className="bg-surface rounded-lg border border-white/10 p-6">
+    <div className="bg-surface rounded-lg border border-border p-6">
       <h2 className="text-lg font-medium text-primary mb-4">Quick Actions</h2>
       <div className="space-y-2">
         <Link
@@ -146,7 +146,7 @@ function QuickActionsCard() {
 
 function RecentActivityCard() {
   return (
-    <div className="bg-surface rounded-lg border border-white/10 p-6">
+    <div className="bg-surface rounded-lg border border-border p-6">
       <h2 className="text-lg font-medium text-primary mb-4">Recent Activity</h2>
       <p className="text-sm text-muted-foreground">
         Activity feed will be implemented in a future iteration.

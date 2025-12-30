@@ -38,7 +38,7 @@ const H1 = ({ children }: IHeadingProps): JSX.Element => (
 );
 
 const H2 = ({ children }: IHeadingProps): JSX.Element => (
-  <h2 className="text-2xl font-semibold text-text-primary mt-8 mb-4 pb-2 border-b border-white/10">
+  <h2 className="text-2xl font-semibold text-text-primary mt-8 mb-4 pb-2 border-b border-border">
     {children}
   </h2>
 );
@@ -108,7 +108,7 @@ const CodeBlock = ({ children, className }: ICodeProps): JSX.Element => {
   }
 
   return (
-    <pre className="bg-surface text-text-primary p-4 rounded-lg overflow-x-auto my-6 border border-white/10">
+    <pre className="bg-surface text-text-primary p-4 rounded-lg overflow-x-auto my-6 border border-border">
       <code className={`${className} text-sm font-mono`}>{children}</code>
     </pre>
   );
@@ -132,13 +132,11 @@ const ListItem = ({ children }: IChildrenProps): JSX.Element => (
   <li className="leading-relaxed">{children}</li>
 );
 
-const HorizontalRule = (): JSX.Element => <hr className="my-8 border-white/10" />;
+const HorizontalRule = (): JSX.Element => <hr className="my-8 border-border" />;
 
 const Table = ({ children }: IChildrenProps): JSX.Element => (
   <div className="overflow-x-auto my-6">
-    <table className="min-w-full border-collapse border border-white/10 rounded-lg">
-      {children}
-    </table>
+    <table className="min-w-full border-collapse border border-border rounded-lg">{children}</table>
   </div>
 );
 
@@ -155,13 +153,13 @@ const TableRow = ({ children }: IChildrenProps): JSX.Element => (
 );
 
 const TableHeader = ({ children }: IChildrenProps): JSX.Element => (
-  <th className="px-4 py-3 text-left text-sm font-semibold text-text-secondary border border-white/10">
+  <th className="px-4 py-3 text-left text-sm font-semibold text-text-secondary border border-border">
     {children}
   </th>
 );
 
 const TableCell = ({ children }: IChildrenProps): JSX.Element => (
-  <td className="px-4 py-3 text-sm text-text-secondary border border-white/10">{children}</td>
+  <td className="px-4 py-3 text-sm text-text-secondary border border-border">{children}</td>
 );
 
 // Callout component for tips, warnings, etc.

@@ -17,7 +17,7 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) =
   return (
     <div className="flex min-h-screen bg-main">
       {/* Mobile Header */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-surface border-b border-white/10">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-surface border-b border-border">
         <div className="flex items-center justify-between gap-3 px-4 h-14">
           {/* Logo */}
           <div className="flex items-center space-x-2">

@@ -174,7 +174,7 @@ export default function BillingPage() {
       </div>
 
       {/* Current Plan */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
             <Package size={20} className="text-accent" />
@@ -207,7 +207,7 @@ export default function BillingPage() {
 
           {/* Cancel Subscription Button */}
           {subscription && !subscription.cancel_at_period_end && (
-            <div className="pt-4 border-t border-white/10">
+            <div className="pt-4 border-t border-border">
               <button
                 onClick={() => setShowCancelModal(true)}
                 className="text-sm text-red-400 hover:text-red-300 font-medium transition-colors"
@@ -220,7 +220,7 @@ export default function BillingPage() {
 
         {/* Subscription Details */}
         {subscription && (
-          <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
+          <div className="mt-4 pt-4 border-t border-border space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">
                 {subscription.status === 'trialing' ? 'Trial Ends' : 'Current Period Ends'}
@@ -287,7 +287,7 @@ export default function BillingPage() {
       </div>
 
       {/* Credit Top-Up Section */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
             <Plus size={20} className="text-accent" />
@@ -320,7 +320,7 @@ export default function BillingPage() {
       </div>
 
       {/* Payment Methods / Manage Subscription */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
             <CreditCard size={20} className="text-muted-foreground" />
@@ -360,7 +360,7 @@ export default function BillingPage() {
             <p className="text-sm mt-2">Choose a subscription plan to set up a payment method.</p>
             <button
               onClick={handleUpgrade}
-              className="mt-4 px-4 py-2 border border-white/10 text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors"
+              className="mt-4 px-4 py-2 border border-border text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors"
             >
               View Pricing
             </button>
@@ -369,7 +369,7 @@ export default function BillingPage() {
       </div>
 
       {/* Billing History */}
-      <div className="bg-surface rounded-xl border border-white/10 p-6">
+      <div className="bg-surface rounded-xl border border-border p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-surface-light flex items-center justify-center">
             <Receipt size={20} className="text-muted-foreground" />
@@ -388,7 +388,7 @@ export default function BillingPage() {
             <button
               onClick={handleManageSubscription}
               disabled={portalLoading}
-              className="px-4 py-2 border border-white/10 text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors inline-flex items-center gap-2"
+              className="px-4 py-2 border border-border text-white rounded-lg text-sm font-medium hover:bg-surface/10 transition-colors inline-flex items-center gap-2"
             >
               <Receipt size={16} />
               View Invoices

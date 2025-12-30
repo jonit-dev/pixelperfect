@@ -47,9 +47,12 @@ const Features: React.FC = () => {
     <section id="features" className="py-32 bg-main relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="mx-auto max-w-2xl lg:text-center mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Feature Rich</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">
+            Feature Rich
+          </h2>
           <p className="text-4xl font-black tracking-tight text-white sm:text-5xl">
-            Everything you need for <span className="gradient-text-primary">professional results</span>
+            Everything you need for{' '}
+            <span className="gradient-text-primary">professional results</span>
           </p>
           <p className="mt-6 text-xl text-text-secondary leading-8 font-light">
             We combine state-of-the-art generative AI with traditional computer vision to deliver
@@ -63,9 +66,7 @@ const Features: React.FC = () => {
         >
           {features.map(feature => (
             <StaggerItem key={feature.name}>
-              <motion.div
-                className="group relative h-full glass-card-2025 animated-border-violet flex flex-col"
-              >
+              <motion.div className="group relative h-full glass-card-2025 animated-border-violet flex flex-col">
                 <div
                   className={`inline-flex items-center justify-center h-12 w-12 rounded-xl mb-6 bg-gradient-to-br from-accent/20 to-secondary/20 text-accent group-hover:scale-110 transition-transform`}
                 >
@@ -85,7 +86,7 @@ const Features: React.FC = () => {
         </StaggerContainer>
 
         {/* Secondary Feature Strip */}
-        <FadeIn delay={0.3} className="mt-24 border-t border-white/5 pt-16">
+        <FadeIn delay={0.3} className="mt-24 border-t border-border pt-16">
           <StaggerContainer
             staggerDelay={0.1}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
@@ -96,12 +97,12 @@ const Features: React.FC = () => {
                   className="flex flex-col items-center gap-3 group"
                   whileHover={{ y: -4 }}
                 >
-                  <div
-                    className="p-3 bg-surface rounded-full text-text-muted transition-all duration-300 group-hover:bg-accent/20 group-hover:text-accent"
-                  >
+                  <div className="p-3 bg-surface rounded-full text-text-muted transition-all duration-300 group-hover:bg-accent/20 group-hover:text-accent">
                     <feature.icon size={20} />
                   </div>
-                  <span className="font-bold text-white group-hover:text-accent transition-colors tracking-wide">{feature.name}</span>
+                  <span className="font-bold text-white group-hover:text-accent transition-colors tracking-wide">
+                    {feature.name}
+                  </span>
                 </motion.div>
               </StaggerItem>
             ))}

@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
             <p className="text-xl text-muted-foreground mb-8">{post.description}</p>
 
             {/* Meta */}
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground pb-8 border-b border-white/10">
+            <div className="flex flex-wrap items-center gap-6 text-muted-foreground pb-8 border-b border-border">
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 {post.author}
@@ -219,7 +219,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                     );
                   },
                   pre: ({ children }) => (
-                    <pre className="bg-surface-light p-4 rounded-lg overflow-x-auto border border-white/10">
+                    <pre className="bg-surface-light p-4 rounded-lg overflow-x-auto border border-border">
                       {children}
                     </pre>
                   ),
@@ -275,12 +275,12 @@ export default async function BlogPostPage({ params }: IPageProps) {
                     </div>
                   ),
                   th: ({ children }) => (
-                    <th className="border border-white/10 bg-surface-light px-4 py-2 text-left font-semibold text-primary">
+                    <th className="border border-border bg-surface-light px-4 py-2 text-left font-semibold text-primary">
                       {children}
                     </th>
                   ),
                   td: ({ children }) => (
-                    <td className="border border-white/10 px-4 py-2 text-muted-foreground">
+                    <td className="border border-border px-4 py-2 text-muted-foreground">
                       {children}
                     </td>
                   ),
@@ -294,7 +294,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="py-16 bg-surface-light border-t border-white/10">
+          <section className="py-16 bg-surface-light border-t border-border">
             <div className="container mx-auto px-4 max-w-6xl">
               <h2 className="text-2xl font-bold text-primary mb-8">Related Articles</h2>
               <div className="grid md:grid-cols-3 gap-6">
@@ -302,7 +302,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="bg-surface rounded-xl p-6 shadow-sm border border-white/10 hover:shadow-md hover:border-accent/50 transition-all"
+                    className="bg-surface rounded-xl p-6 shadow-sm border border-border hover:shadow-md hover:border-accent/50 transition-all"
                   >
                     <span className="text-xs font-medium text-accent mb-2 block">
                       {related.category}

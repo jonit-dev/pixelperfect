@@ -30,7 +30,7 @@ const BatchProgressIndicator: React.FC<{ batchProgress?: IBatchProgress | null }
   if (!batchProgress || batchProgress.total <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 pb-2 border-b border-white/10">
+    <div className="flex items-center justify-center gap-2 pb-2 border-b border-border">
       <span className="text-xs font-semibold text-accent bg-accent/10 px-2 py-1 rounded-full">
         Image {batchProgress.current} of {batchProgress.total}
       </span>
@@ -267,7 +267,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
           {/* Waiting for next batch item overlay */}
           {isWaitingForNextBatchItem && (
             <div className="absolute inset-0 bg-surface/80 backdrop-blur-sm flex items-center justify-center rounded-xl z-10">
-              <div className="bg-surface p-6 rounded-xl shadow-2xl border border-white/10 text-center max-w-sm">
+              <div className="bg-surface p-6 rounded-xl shadow-2xl border border-border text-center max-w-sm">
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">
                     Image {batchProgress.current} of {batchProgress.total} complete
@@ -333,7 +333,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   const isEnhancing = activeItem.stage === ProcessingStage.ENHANCING;
 
   return (
-    <div className="relative w-full h-[65vh] min-h-[400px] max-w-5xl mx-auto bg-surface-light rounded-xl border border-white/10 overflow-hidden flex items-center justify-center">
+    <div className="relative w-full h-[65vh] min-h-[400px] max-w-5xl mx-auto bg-surface-light rounded-xl border border-border overflow-hidden flex items-center justify-center">
       <img
         src={activeItem.previewUrl}
         alt={`Preview of ${activeItem.file.name}`}
@@ -348,7 +348,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
           {/* Scanning line animation during analyzing */}
           {activeItem.stage === ProcessingStage.ANALYZING && <ScanningLineAnimation />}
 
-          <div className="w-72 space-y-4 p-6 bg-surface rounded-xl shadow-2xl border border-white/10">
+          <div className="w-72 space-y-4 p-6 bg-surface rounded-xl shadow-2xl border border-border">
             {/* Batch progress indicator */}
             <BatchProgressIndicator batchProgress={batchProgress} />
 

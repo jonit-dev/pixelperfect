@@ -29,15 +29,21 @@ const steps = [
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-32 bg-main border-y border-white/5 relative overflow-hidden">
+    <section
+      id="how-it-works"
+      className="py-32 bg-main border-y border-border relative overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="text-center mb-24">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Workflow</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">
+            Workflow
+          </h2>
           <p className="text-4xl font-black tracking-tight text-white sm:text-5xl mb-6">
             Simple. <span className="gradient-text-primary">Powerful.</span> Professional.
           </p>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto font-light">
-            Transform your workflow in three simple steps. No complex settings, just stunning results.
+            Transform your workflow in three simple steps. No complex settings, just stunning
+            results.
           </p>
         </FadeIn>
 
@@ -48,7 +54,7 @@ const HowItWorks: React.FC = () => {
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
           />
 
           <StaggerContainer
@@ -64,10 +70,11 @@ const HowItWorks: React.FC = () => {
                 >
                   {/* Icon Bubble */}
                   <div className="relative mb-10">
-                    <div
-                      className="flex h-24 w-24 items-center justify-center rounded-[2rem] glass-strong shadow-2xl group-hover:border-secondary/30 transition-all duration-500 z-10 relative bg-white/5"
-                    >
-                      <step.icon className="h-10 w-10 text-accent group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                    <div className="flex h-24 w-24 items-center justify-center rounded-[2rem] glass-strong shadow-2xl group-hover:border-secondary/30 transition-all duration-500 z-10 relative bg-white/5">
+                      <step.icon
+                        className="h-10 w-10 text-accent group-hover:scale-110 transition-transform duration-500"
+                        strokeWidth={1.5}
+                      />
                     </div>
                     {/* Number Badge */}
                     <motion.div
@@ -87,7 +94,9 @@ const HowItWorks: React.FC = () => {
                   </div>
 
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{step.name}</h3>
-                  <p className="text-text-secondary leading-relaxed px-6 font-light">{step.description}</p>
+                  <p className="text-text-secondary leading-relaxed px-6 font-light">
+                    {step.description}
+                  </p>
 
                   {/* Mobile Arrow */}
                   {index < steps.length - 1 && (
@@ -108,7 +117,9 @@ const HowItWorks: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
             </span>
-            <span className="text-sm font-bold text-text-secondary tracking-widest uppercase">System Operational</span>
+            <span className="text-sm font-bold text-text-secondary tracking-widest uppercase">
+              System Operational
+            </span>
             <span className="text-white/10 mx-2">|</span>
             <span className="text-xs text-text-muted font-medium">Global AI Nodes Active</span>
           </div>

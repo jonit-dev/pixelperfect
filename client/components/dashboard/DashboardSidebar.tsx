@@ -105,7 +105,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
       <aside
         className={cn(
           // Base styles
-          'flex flex-col w-64 min-h-screen bg-surface border-r border-white/10',
+          'flex flex-col w-64 min-h-screen bg-surface border-r border-border',
           // Desktop: static positioning
           'hidden md:flex',
           // Mobile: drawer positioning
@@ -127,7 +127,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         )}
 
         {/* Logo/Brand */}
-        <div className="p-6 border-b border-white/10">
+        <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
@@ -137,7 +137,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         </div>
 
         {/* User Info */}
-        <div className="px-4 py-4 border-b border-white/10">
+        <div className="px-4 py-4 border-b border-border">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
               <span className="text-accent font-medium text-sm">
@@ -199,7 +199,7 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
         </nav>
 
         {/* Bottom Navigation */}
-        <div className="px-3 py-4 border-t border-white/10 space-y-1">
+        <div className="px-3 py-4 border-t border-border space-y-1">
           {bottomMenuItems.map(item => {
             const Icon = item.icon;
             const active = isActive(item.href);

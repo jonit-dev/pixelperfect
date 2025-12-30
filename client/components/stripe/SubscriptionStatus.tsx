@@ -123,7 +123,7 @@ export function SubscriptionStatus(): JSX.Element {
         {getStatusBadge(subscription.status)}
       </div>
 
-      <hr className="border-white/10 my-4" />
+      <hr className="border-border my-4" />
 
       <div className="space-y-3">
         <div className="flex justify-between items-center">
