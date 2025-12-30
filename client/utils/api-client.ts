@@ -222,7 +222,7 @@ export const processImage = async (
         config,
         resolvedModel, // Pass the resolved model for server processing
       }),
-      signal: AbortSignal.timeout(TIMEOUTS.API_DEFAULT_TIMEOUT),
+      signal: AbortSignal.timeout(TIMEOUTS.REPLICATE_TIMEOUT),
     });
 
     if (!response.ok) {
