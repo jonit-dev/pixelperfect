@@ -1,8 +1,6 @@
 import type {
   ICheckoutSessionRequest,
   ICheckoutSessionResponse,
-  IPrice,
-  IProduct,
   ISubscription,
   IUserProfile,
 } from '@/shared/types/stripe.types';
@@ -246,58 +244,6 @@ export class StripeService {
     }
 
     return data;
-  }
-
-  /**
-   * Get all available prices with their products
-   * @returns List of prices with product details
-   */
-  static async getAvailablePrices(): Promise<(IPrice & { product: IProduct })[]> {
-    const { data, error } = await supabase
-      .from('prices')
-      .select(
-        `
-        *,
-        product:products(*)
-      `
-      )
-      .eq('active', true)
-      .order('unit_amount', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching prices:', error);
-      return [];
-    }
-
-    return data as (IPrice & { product: IProduct })[];
-  }
-
-  /**
-   * Get prices filtered by type (one_time or recurring)
-   * @param type - The price type to filter by
-   * @returns List of prices of the specified type
-   */
-  static async getPricesByType(
-    type: 'one_time' | 'recurring'
-  ): Promise<(IPrice & { product: IProduct })[]> {
-    const { data, error } = await supabase
-      .from('prices')
-      .select(
-        `
-        *,
-        product:products(*)
-      `
-      )
-      .eq('active', true)
-      .eq('type', type)
-      .order('unit_amount', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching prices:', error);
-      return [];
-    }
-
-    return data as (IPrice & { product: IProduct })[];
   }
 
   /**

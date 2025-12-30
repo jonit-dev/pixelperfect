@@ -81,9 +81,6 @@ export async function resetTestUser(): Promise<{
   // Delete any subscription records
   await supabase.from('subscriptions').delete().eq('user_id', user.id);
 
-  // Delete processing jobs
-  await supabase.from('processing_jobs').delete().eq('user_id', user.id);
-
   // Sign in to get fresh token
   const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
     email: FIXED_TEST_USER.email,
