@@ -3,6 +3,8 @@
  * Contains CSP policies and other security-related settings
  */
 
+import { isDevelopment } from './env';
+
 /**
  * Content Security Policy configuration
  * This policy defines what resources the application can load
@@ -39,9 +41,17 @@ export const CSP_POLICY = {
 
 /**
  * Build CSP header string from policy object
+ * Note: upgrade-insecure-requests is skipped in development to allow HTTP localhost
  */
 export function buildCspHeader(): string {
   return Object.entries(CSP_POLICY)
+    .filter(([directive]) => {
+      // Skip upgrade-insecure-requests in development (breaks HTTP localhost)
+      if (isDevelopment() && directive === 'upgrade-insecure-requests') {
+        return false;
+      }
+      return true;
+    })
     .map(([directive, values]) => {
       if (values.length === 0) {
         return directive;
