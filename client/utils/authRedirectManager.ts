@@ -85,18 +85,15 @@ export function getOAuthRedirectUrl(returnTo?: string): string {
  * This should be called after any auth flow (OAuth, email confirmation, etc.)
  */
 export async function handleAuthRedirect(): Promise<void> {
-  console.log('[authRedirect] handleAuthRedirect called');
   if (typeof window === 'undefined') return;
 
   try {
     // Get any stored intent
     const intent = getAndClearAuthIntent();
-    console.log('[authRedirect] Intent:', intent);
 
     // Handle checkout action from context
     if (intent?.action === 'checkout' && typeof intent.context?.priceId === 'string') {
       try {
-        console.log('[authRedirect] Redirecting to checkout');
         const { StripeService } = await import('@client/services/stripeService');
         await StripeService.redirectToCheckout(intent.context.priceId, {
           successUrl: `${window.location.origin}/success`,
@@ -115,34 +112,28 @@ export async function handleAuthRedirect(): Promise<void> {
         // Validate the URL is safe
         const url = new URL(intent.returnTo, window.location.origin);
         if (url.origin === window.location.origin) {
-          console.log('[authRedirect] Redirecting to returnTo:', intent.returnTo);
           window.location.href = intent.returnTo;
           return;
         }
-      } catch (urlError) {
-        console.error('[authRedirect] Invalid returnTo URL:', urlError);
-        // Fall through to dashboard redirect
+      } catch {
+        // Invalid URL - fall through to dashboard redirect
       }
     }
 
     // Check for pending checkout in the store (backward compatibility)
     try {
-      console.log('[authRedirect] Checking pending checkout...');
       const { useCheckoutStore } = await import('@client/store/checkoutStore');
       if (useCheckoutStore.getState().processPendingCheckout()) {
-        console.log('[authRedirect] Processing pending checkout');
         return;
       }
-    } catch (storeError) {
-      console.error('[authRedirect] Error checking pending checkout:', storeError);
+    } catch {
       // Fall through to dashboard redirect
     }
-  } catch (error) {
-    console.error('[authRedirect] Error in handleAuthRedirect:', error);
+  } catch {
+    // Fall through to dashboard redirect
   }
 
   // Default: redirect to dashboard (always executes if nothing else works)
-  console.log('[authRedirect] Redirecting to /dashboard');
   window.location.href = '/dashboard';
 }
 

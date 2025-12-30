@@ -25,52 +25,15 @@ function AuthCallbackContent() {
 
       // Function to handle successful auth and redirect
       const handleSuccess = async () => {
-        console.log('[auth/callback] handleSuccess called');
-        if (hasRedirected.current) {
-          console.log('[auth/callback] Already redirected, skipping');
-          return;
-        }
+        if (hasRedirected.current) return;
         hasRedirected.current = true;
         setStatus('success');
 
-        try {
-          // Validate the session is properly established by calling getUser()
-          // This ensures tokens are exchanged and cookies are written
-          // Add timeout to prevent hanging indefinitely
-          console.log('[auth/callback] Validating user with getUser()...');
-          const getUserWithTimeout = Promise.race([
-            supabase.auth.getUser(),
-            new Promise<{ data: { user: null }; error: Error }>((_, reject) =>
-              setTimeout(() => reject(new Error('getUser timeout')), 5000)
-            ),
-          ]);
-
-          const {
-            data: { user },
-            error: userError,
-          } = await getUserWithTimeout;
-
-          console.log('[auth/callback] getUser result:', {
-            user: user?.id,
-            error: userError?.message,
-          });
-
-          if (userError || !user) {
-            console.error('[auth/callback] Failed to validate user:', userError);
-            // Don't block redirect - session might still be valid
-            console.warn('[auth/callback] Proceeding with redirect despite validation issue');
-          }
-        } catch (error) {
-          console.error('[auth/callback] Error validating user:', error);
-          // Don't block redirect - proceed anyway
-        }
-
+        // Skip getUser() call - we already have the session from onAuthStateChange
+        // The extra call was causing timeouts during PKCE exchange
         // Give cookies time to propagate before navigation
-        console.log('[auth/callback] Waiting 100ms for cookies...');
-        await new Promise(resolve => setTimeout(resolve, 100));
-        console.log('[auth/callback] Calling handleAuthRedirect...');
+        await new Promise(resolve => setTimeout(resolve, 200));
         await handleAuthRedirect();
-        console.log('[auth/callback] handleAuthRedirect completed');
       };
 
       // Listen for auth state changes
