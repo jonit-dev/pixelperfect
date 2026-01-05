@@ -29,10 +29,13 @@ test.afterAll(async () => {
 test.describe('API: Stripe Webhooks - Signature Validation', () => {
   test('should reject requests without stripe-signature header', async ({ request }) => {
     const webhookClient = new WebhookClient(request);
-    const response = await webhookClient.send({
-      type: 'checkout.session.completed',
-      data: { object: {} },
-    }, null);
+    const response = await webhookClient.send(
+      {
+        type: 'checkout.session.completed',
+        data: { object: {} },
+      },
+      null
+    );
 
     response.expectStatus(400);
   });
@@ -77,7 +80,7 @@ test.describe('API: Stripe Webhooks - Event Processing', () => {
     const response = await webhookClient.send(event);
     // Webhook should return 200 (even if user not found by customer ID)
     response.expectSuccess();
-    const data = await response.json() as { received: boolean };
+    const data = (await response.json()) as { received: boolean };
     expect(data.received).toBe(true);
   });
 
@@ -92,7 +95,7 @@ test.describe('API: Stripe Webhooks - Event Processing', () => {
 
     // Should still return 200 (Stripe expects 2xx to stop retrying)
     response.expectSuccess();
-    const data = await response.json() as { received: boolean };
+    const data = (await response.json()) as { received: boolean };
     expect(data.received).toBe(true);
   });
 
@@ -105,7 +108,7 @@ test.describe('API: Stripe Webhooks - Event Processing', () => {
       userId: testUser.id,
       customerId: `cus_${testUser.id}`,
       subscriptionId: `sub_lifecycle_${Date.now()}`,
-      priceId: 'price_hobby_monthly'
+      priceId: 'price_hobby_monthly',
     });
 
     // Webhook should be received (even if business logic doesn't find user by customer ID)
@@ -116,7 +119,7 @@ test.describe('API: Stripe Webhooks - Event Processing', () => {
       userId: testUser.id,
       customerId: `cus_${testUser.id}`,
       subscriptionId: `sub_lifecycle_${Date.now()}`,
-      priceId: 'price_pro_monthly'
+      priceId: 'price_pro_monthly',
     });
     expect([200, 202]).toContain(response2.status);
   });
@@ -156,7 +159,7 @@ test.describe('API: Stripe Webhooks - Error Handling', () => {
 
     // Should handle gracefully without crashing - returns 200
     response.expectSuccess();
-    const data = await response.json() as { received: boolean };
+    const data = (await response.json()) as { received: boolean };
     expect(data.received).toBe(true);
   });
 
@@ -167,7 +170,7 @@ test.describe('API: Stripe Webhooks - Error Handling', () => {
       id: `evt_malformed_${Date.now()}`,
       object: 'event',
       type: 'customer.subscription.created',
-      data: { object: {} } // Missing required fields
+      data: { object: {} }, // Missing required fields
     };
 
     const response = await webhookClient.sendRawEvent(malformedEvent);
@@ -206,7 +209,7 @@ test.describe('API: Stripe Webhooks - Idempotency', () => {
     const response2 = await webhookClient.sendRawEvent(event);
     expect([200, 202]).toContain(response2.status);
 
-    const data2 = await response2.json() as { received: boolean; skipped?: boolean };
+    const data2 = (await response2.json()) as { received: boolean; skipped?: boolean };
     // Should indicate it was skipped due to duplicate
     expect(data2.received).toBe(true);
     if (data2.skipped !== undefined) {
@@ -222,10 +225,12 @@ test.describe('API: Stripe Webhooks - Idempotency', () => {
     const promises = [];
 
     for (let i = 0; i < concurrentRequests; i++) {
-      promises.push(webhookClient.sendCreditPurchase({
-        userId: testUser.id,
-        creditsAmount: 50
-      }));
+      promises.push(
+        webhookClient.sendCreditPurchase({
+          userId: testUser.id,
+          creditsAmount: 50,
+        })
+      );
     }
 
     const responses = await Promise.all(promises);
@@ -271,11 +276,12 @@ test.describe('API: Stripe Webhooks - Subscription Price Validation', () => {
     const user = await ctx.createUser();
     const webhookClient = new WebhookClient(request);
 
-    // Known valid price IDs from the Stripe config
+    // Known valid price IDs from the subscription.config.ts
     const validPriceIds = [
-      'price_1SZmVVALMLhQocpfb5OwxMAA', // HOBBY_MONTHLY
+      'price_1Q4HMKALMLhQocpfhK9XKp4a', // STARTER_MONTHLY
+      'price_1SZmVyALMLhQocpf0H7n5ls8', // HOBBY_MONTHLY
       'price_1SZmVzALMLhQocpfPyRX2W8D', // PRO_MONTHLY
-      'price_1SZmWPALMLhQocpfJcyUxSfO', // BUSINESS_MONTHLY
+      'price_1SZmVzALMLhQocpfqPk9spg4', // BUSINESS_MONTHLY
     ];
 
     // Test a valid subscription price ID
@@ -289,7 +295,7 @@ test.describe('API: Stripe Webhooks - Subscription Price Validation', () => {
 
       // Should process valid subscription prices
       response.expectSuccess();
-      const data = await response.json() as { received: boolean };
+      const data = (await response.json()) as { received: boolean };
       expect(data.received).toBe(true);
     }
   });

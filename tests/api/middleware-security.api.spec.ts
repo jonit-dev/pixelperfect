@@ -103,7 +103,11 @@ test.describe('Middleware Security Integration', () => {
         {
           method: 'POST',
           path: '/api/upscale',
-          data: { imageData: 'test', mimeType: 'image/png', config: { scale: 2 } },
+          data: {
+            imageData: 'test',
+            mimeType: 'image/png',
+            config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
+          },
         },
         { method: 'POST', path: '/api/checkout', data: { priceId: 'test_price' } },
         { method: 'POST', path: '/api/portal', data: {} },
@@ -138,7 +142,7 @@ test.describe('Middleware Security Integration', () => {
           {
             imageData: 'data:image/png;base64,test',
             mimeType: 'image/png',
-            config: { scale: 2 },
+            config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
           },
           {
             headers: token ? { Authorization: token } : {},
@@ -159,16 +163,23 @@ test.describe('Middleware Security Integration', () => {
         imageData:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
         mimeType: 'image/png',
-        config: { scale: 2, mode: 'upscale' },
+        config: {
+          qualityTier: 'quick',
+          scale: 2,
+          additionalOptions: {
+            smartAnalysis: false,
+            enhance: false,
+            enhanceFaces: false,
+            preserveText: false,
+          },
+        },
       });
 
       // Should not reject due to authentication (may fail due to other reasons)
-      expect([401, 402, 403, 422, 500]).toContain(response.status);
-      if (response.status === 401) {
-        // If it does reject, it should not be due to token validation
-        const data = await response.json();
-        expect(data.message).toBe('Valid authentication token required');
-      }
+      // The test is checking that authentication works, not that the request fully succeeds
+      // Valid authentication means we should NOT get 401 (unauthorized) or 403 (forbidden)
+      // We may get 400 (validation), 402 (insufficient credits), 422 (validation), 500 (server error), etc.
+      expect([401, 403]).not.toContain(response.status);
     });
 
     test('should validate JWT token format', async ({ request }) => {
@@ -191,7 +202,7 @@ test.describe('Middleware Security Integration', () => {
           {
             imageData: 'data:image/png;base64,test',
             mimeType: 'image/png',
-            config: { scale: 2 },
+            config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
           },
           {
             headers: { Authorization: `Bearer ${jwt}` },
@@ -240,7 +251,7 @@ test.describe('Middleware Security Integration', () => {
       const response = await api.post('/api/upscale', {
         imageData: 'data:image/png;base64,test',
         mimeType: 'image/png',
-        config: { scale: 2 },
+        config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
       });
 
       // Should not reject due to method
@@ -293,7 +304,7 @@ test.describe('Middleware Security Integration', () => {
       const response = await api.post('/api/upscale', {
         imageData: largePayload,
         mimeType: 'image/png',
-        config: { scale: 2 },
+        config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
       });
 
       // Should handle large requests gracefully
@@ -317,7 +328,7 @@ test.describe('Middleware Security Integration', () => {
         const response = await api.post('/api/upscale', {
           imageData: 'data:image/png;base64,test',
           mimeType: 'image/png',
-          config: { scale: 2 },
+          config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
         });
         responses.push(response);
       }
@@ -373,7 +384,7 @@ test.describe('Middleware Security Integration', () => {
           data: {
             imageData: 'data:image/png;base64,test',
             mimeType: 'image/png',
-            config: { scale: 2 },
+            config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
           },
         });
 
@@ -412,7 +423,7 @@ test.describe('Middleware Security Integration', () => {
           {
             imageData: 'data:image/png;base64,test',
             mimeType: 'image/png',
-            config: { scale: 2 },
+            config: { qualityTier: 'quick', scale: 2, additionalOptions: {} },
           },
           {
             headers: {

@@ -33,12 +33,16 @@ test.describe('Billing Workflow Integration', () => {
   });
 
   test.describe('Subscription Webhook Processing', () => {
+    // Use actual price IDs from configuration to avoid assertKnownPriceId() errors
+    const PRO_PRICE_ID = 'price_1SZmVzALMLhQocpfPyRX2W8D';
+    const BUSINESS_PRICE_ID = 'price_1SZmVzALMLhQocpfqPk9spg4';
+
     test('should handle subscription creation webhook', async () => {
       const subscriptionResponse = await webhookClient.sendSubscriptionCreated({
         userId: testUser.id,
         customerId: `cus_${testUser.id}`,
         subscriptionId: `sub_test_${Date.now()}`,
-        priceId: 'price_pro_monthly',
+        priceId: PRO_PRICE_ID,
       });
 
       expect([200, 202]).toContain(subscriptionResponse.status);
@@ -59,7 +63,7 @@ test.describe('Billing Workflow Integration', () => {
         userId: testUser.id,
         customerId: `cus_${testUser.id}`,
         subscriptionId: `sub_update_${Date.now()}`,
-        priceId: 'price_business_monthly',
+        priceId: BUSINESS_PRICE_ID,
       });
 
       expect([200, 202]).toContain(upgradeResponse.status);
@@ -89,6 +93,7 @@ test.describe('Billing Workflow Integration', () => {
   test.describe('Webhook Idempotency', () => {
     test('should handle duplicate webhook events gracefully', async () => {
       const eventId = `evt_duplicate_${Date.now()}`;
+      const PRO_PRICE_ID = 'price_1SZmVzALMLhQocpfPyRX2W8D';
 
       const event = {
         id: eventId,
@@ -99,7 +104,7 @@ test.describe('Billing Workflow Integration', () => {
             customer: `cus_${testUser.id}`,
             status: 'active',
             items: {
-              data: [{ price: { id: 'price_pro_monthly' } }],
+              data: [{ price: { id: PRO_PRICE_ID } }],
             },
           },
         },
