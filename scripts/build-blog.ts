@@ -128,7 +128,7 @@ function validateInternalLinks(markdown: string, slug: string, allSlugs: string[
   return errors;
 }
 
-function validateImage(image: string | undefined, slug: string): void {
+async function validateImage(image: string | undefined, slug: string): Promise<void> {
   if (!image) {
     console.warn(`⚠️  [${slug}] Missing featured image`);
     return;
@@ -142,11 +142,27 @@ function validateImage(image: string | undefined, slug: string): void {
         `❌ [${slug}] Featured image not found: ${image}\n   Use an Unsplash URL instead, e.g.: https://images.unsplash.com/photo-XXX?w=1200&h=630&fit=crop&q=80`
       );
     }
+    return;
   }
 
   // Must be Unsplash or local
-  if (!image.startsWith('/') && !image.startsWith('https://images.unsplash.com/')) {
+  if (!image.startsWith('https://images.unsplash.com/')) {
     console.warn(`⚠️  [${slug}] Non-Unsplash external image: ${image}`);
+  }
+
+  // Validate external URLs actually exist (HEAD request for efficiency)
+  try {
+    const response = await fetch(image, { method: 'HEAD' });
+    if (!response.ok) {
+      throw new Error(
+        `❌ [${slug}] Featured image URL returns ${response.status}: ${image}\n   The image may have been removed. Find a new image at https://unsplash.com`
+      );
+    }
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('❌')) {
+      throw error;
+    }
+    console.warn(`⚠️  [${slug}] Could not verify external image (network error): ${image}`);
   }
 }
 
@@ -191,35 +207,37 @@ async function buildBlogData() {
   // Second pass: build posts with validation
   const linkErrors: string[] = [];
 
-  const posts: IBlogPost[] = files
-    .map(filename => {
-      const slug = filename.replace(/\.mdx$/, '');
-      const content = fs.readFileSync(path.join(postsDir, filename), 'utf8');
-      const { data, content: markdown } = matter(content);
+  const postsData = files.map(filename => {
+    const slug = filename.replace(/\.mdx$/, '');
+    const content = fs.readFileSync(path.join(postsDir, filename), 'utf8');
+    const { data, content: markdown } = matter(content);
 
-      // Validate featured image
-      validateImage(data.image, slug);
+    // Validate internal links
+    const errors = validateInternalLinks(markdown, slug, allSlugs);
+    if (errors.length > 0) {
+      linkErrors.push(`[${slug}]`, ...errors.map(e => `  ${e}`));
+    }
 
-      // Validate internal links
-      const errors = validateInternalLinks(markdown, slug, allSlugs);
-      if (errors.length > 0) {
-        linkErrors.push(`[${slug}]`, ...errors.map(e => `  ${e}`));
-      }
+    return {
+      slug,
+      title: data.title || '',
+      description: data.description || '',
+      date: data.date || '',
+      author: data.author || 'MyImageUpscaler Team',
+      category: data.category || 'General',
+      tags: data.tags || [],
+      image: data.image,
+      readingTime: readingTime(markdown).text,
+      content: markdown,
+    };
+  });
 
-      return {
-        slug,
-        title: data.title || '',
-        description: data.description || '',
-        date: data.date || '',
-        author: data.author || 'MyImageUpscaler Team',
-        category: data.category || 'General',
-        tags: data.tags || [],
-        image: data.image,
-        readingTime: readingTime(markdown).text,
-        content: markdown,
-      };
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Validate all featured images in parallel
+  await Promise.all(postsData.map(post => validateImage(post.image, post.slug)));
+
+  const posts: IBlogPost[] = postsData.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   // Report link errors
   if (linkErrors.length > 0) {

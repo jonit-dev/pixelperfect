@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const POSTS_PER_PAGE = 6;
 
 interface IBlogPageProps {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -31,7 +31,8 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-export default function BlogPage({ searchParams }: IBlogPageProps) {
+export default async function BlogPage({ searchParams }: IBlogPageProps) {
+  const params = await searchParams;
   const posts = getAllPosts();
   const [featuredPost, ...otherPosts] = posts;
 
@@ -39,7 +40,7 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
   const shuffledPosts = shuffleArray(otherPosts);
 
   // Calculate pagination
-  const currentPage = Number(searchParams.page) || 1;
+  const currentPage = Number(params.page) || 1;
   const totalPages = Math.ceil(shuffledPosts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
@@ -230,6 +231,7 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
                   {currentPage > 1 ? (
                     <Link
                       href={`/blog?page=${currentPage - 1}`}
+                      scroll={false}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
                     >
                       <ChevronLeft className="w-4 h-4" />
@@ -248,6 +250,7 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
                       <Link
                         key={pageNum}
                         href={`/blog?page=${pageNum}`}
+                        scroll={false}
                         className={`min-w-[2.5rem] h-10 flex items-center justify-center rounded-lg font-medium transition-all ${
                           currentPage === pageNum
                             ? 'bg-accent text-white shadow-md'
@@ -263,6 +266,7 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
                   {currentPage < totalPages ? (
                     <Link
                       href={`/blog?page=${currentPage + 1}`}
+                      scroll={false}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
                     >
                       Next
