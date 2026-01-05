@@ -104,11 +104,26 @@ export class BulkImageResizerPage extends BasePage {
   }
 
   /**
+   * Wait for a specific number of images in the list
+   */
+  async waitForImageCount(count: number, timeout = 10000): Promise<void> {
+    await expect(this.getImageItems()).toHaveCount(count, { timeout });
+  }
+
+  /**
+   * Wait for at least one image to appear in the list
+   */
+  async waitForImagesLoaded(): Promise<void> {
+    await expect(this.getImageItems().first()).toBeVisible({ timeout: 10000 });
+  }
+
+  /**
    * Upload image(s) via the file input
    */
   async uploadImages(filePaths: string[]): Promise<void> {
     await this.fileInput.setInputFiles(filePaths);
-    await this.page.waitForTimeout(1000);
+    // Wait for images to appear in the list
+    await this.waitForImagesLoaded();
   }
 
   /**
@@ -122,12 +137,13 @@ export class BulkImageResizerPage extends BasePage {
    * Add more images after initial upload
    */
   async addMoreImages(filePaths: string[]): Promise<void> {
+    const currentCount = await this.getImageItems().count();
     // Click the "Add More Images" button to trigger the file input
     await this.addMoreButton.click();
-    await this.page.waitForTimeout(100);
     // Set files on the file input
     await this.fileInput.setInputFiles(filePaths);
-    await this.page.waitForTimeout(1000);
+    // Wait for the new images to appear
+    await this.waitForImageCount(currentCount + filePaths.length);
   }
 
   /**
@@ -147,9 +163,11 @@ export class BulkImageResizerPage extends BasePage {
     if (heightExists === 0) {
       await this.setMaintainAspectRatio(false);
       // Wait for the input to appear after state change
-      await this.page.waitForTimeout(200);
+      await expect(this.heightInput).toBeVisible({ timeout: 5000 });
     }
     await this.heightInput.fill(height.toString());
+    // Wait for value to be set
+    await expect(this.heightInput).toHaveValue(height.toString());
   }
 
   /**
@@ -157,6 +175,8 @@ export class BulkImageResizerPage extends BasePage {
    */
   async setFormat(format: IOutputFormat): Promise<void> {
     await this.formatSelect.selectOption(format);
+    // Wait for value to be set
+    await expect(this.formatSelect).toHaveValue(format);
   }
 
   /**
@@ -169,7 +189,8 @@ export class BulkImageResizerPage extends BasePage {
       el.dispatchEvent(new Event('input', { bubbles: true }));
       el.dispatchEvent(new Event('change', { bubbles: true }));
     }, quality);
-    await this.page.waitForTimeout(200);
+    // Wait for value to be set
+    await expect(this.qualitySlider).toHaveValue(quality.toString());
   }
 
   /**
@@ -179,7 +200,12 @@ export class BulkImageResizerPage extends BasePage {
     const isChecked = await this.aspectRatioCheckbox.isChecked();
     if (isChecked !== checked) {
       await this.aspectRatioCheckbox.setChecked(checked);
-      await this.page.waitForTimeout(200);
+      // Wait for checkbox state to change
+      if (checked) {
+        await expect(this.aspectRatioCheckbox).toBeChecked();
+      } else {
+        await expect(this.aspectRatioCheckbox).not.toBeChecked();
+      }
     }
   }
 
@@ -190,7 +216,8 @@ export class BulkImageResizerPage extends BasePage {
     // Ensure aspect ratio checkbox is checked first
     await this.setMaintainAspectRatio(true);
     await this.fitModeSelect.selectOption(mode);
-    await this.page.waitForTimeout(200);
+    // Wait for value to be set
+    await expect(this.fitModeSelect).toHaveValue(mode);
   }
 
   /**
@@ -257,7 +284,6 @@ export class BulkImageResizerPage extends BasePage {
    * Get the number of images in the list
    */
   async getImageCount(): Promise<number> {
-    await this.page.waitForTimeout(500);
     return await this.getImageItems().count();
   }
 
@@ -265,11 +291,18 @@ export class BulkImageResizerPage extends BasePage {
    * Remove an image by its index (0-based)
    */
   async removeImageByIndex(index: number): Promise<void> {
+    const currentCount = await this.getImageCount();
     const item = this.getImageItems().nth(index);
     // Find the remove button (has title="Remove")
     const removeButton = item.locator('button[title="Remove"]');
     await removeButton.click();
-    await this.page.waitForTimeout(500);
+    // Wait for the image count to decrease
+    if (currentCount > 1) {
+      await this.waitForImageCount(currentCount - 1);
+    } else {
+      // If last image, wait for upload area to reappear
+      await this.assertUploadAreaVisible();
+    }
   }
 
   /**
@@ -295,10 +328,6 @@ export class BulkImageResizerPage extends BasePage {
     // First wait for the download button to appear
     // This indicates all images have been processed
     await expect(this.downloadAllButton).toBeVisible({ timeout: 60000 });
-
-    // Wait a bit for the CTA modal to potentially appear
-    // The modal appears right after processing completes
-    await this.page.waitForTimeout(500);
 
     // Close the CTA modal if it's visible
     await this.closeCTAModalIfVisible();

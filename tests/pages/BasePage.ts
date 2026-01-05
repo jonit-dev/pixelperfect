@@ -37,23 +37,18 @@ export class BasePage {
       } catch {
         // If network idle times out, fall back to domcontentloaded
         // This handles cases where protected routes have ongoing API calls
-        try {
-          await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
-        } catch {
-          // If even domcontentloaded fails, just wait a bit and continue
-          await this.wait(1000);
-        }
+        await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {
+          // If domcontentloaded fails too, wait for the body to be visible as a fallback
+          return this.page.locator('body').waitFor({ state: 'visible', timeout: 5000 });
+        });
       }
     } catch (_error) {
       // Handle navigation errors gracefully (e.g., protected routes that redirect)
       console.warn(`Navigation to ${path} had issues, continuing...`);
-      // Try to wait for at least domcontentloaded
-      try {
-        await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
-      } catch {
-        // Last resort - wait a bit for page to stabilize
-        await this.wait(2000);
-      }
+      // Try to wait for at least domcontentloaded or body visible
+      await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {
+        return this.page.locator('body').waitFor({ state: 'visible', timeout: 5000 });
+      });
     }
   }
 
@@ -253,10 +248,18 @@ export class BasePage {
     try {
       // Wait for skeleton loaders to disappear (the loading state in NavBar)
       const skeletonLoaders = this.page.locator('.animate-pulse, [data-testid="auth-skeleton"]');
-      await skeletonLoaders.waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {});
+      const isVisible = await skeletonLoaders.first().isVisible().catch(() => false);
 
-      // Also wait a bit more for state to settle
-      await this.wait(1000);
+      if (isVisible) {
+        // Wait for skeleton to disappear
+        await skeletonLoaders.first().waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {});
+      }
+
+      // Wait for auth buttons to be visible (sign in or user avatar)
+      const authButtons = this.page.locator(
+        'button:has-text("Sign In"), [data-testid="user-menu"], [aria-label="User menu"]'
+      );
+      await authButtons.first().waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
     } catch {
       // If waiting fails, just continue - the auth state might already be settled
     }

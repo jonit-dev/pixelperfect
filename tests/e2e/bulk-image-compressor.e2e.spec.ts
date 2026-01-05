@@ -61,11 +61,8 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Upload image
+      // Upload image (waitForImagesLoaded is called internally)
       await compressorPage.uploadImage(sampleImagePath);
-
-      // Wait for image to be added
-      await page.waitForTimeout(1000);
 
       // Verify upload area is hidden and image is in list
       await compressorPage.assertUploadAreaHidden();
@@ -79,11 +76,8 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Upload multiple images
+      // Upload multiple images (waitForImagesLoaded is called internally)
       await compressorPage.uploadImages([sampleImagePath, sampleImagePath2]);
-
-      // Wait for images to be added
-      await page.waitForTimeout(1000);
 
       // Verify images are in list
       const imageCount = await compressorPage.getImageCount();
@@ -97,13 +91,11 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
 
       // Upload first image
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(500);
 
       const initialCount = await compressorPage.getImageCount();
 
-      // Add more images using the "Add More Images" button
+      // Add more images using the "Add More Images" button (waits for count internally)
       await compressorPage.addMoreImages([sampleImagePath2]);
-      await page.waitForTimeout(500);
 
       const finalCount = await compressorPage.getImageCount();
       expect(finalCount).toBe(initialCount + 1);
@@ -115,7 +107,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Get image info
       const info = await compressorPage.getImageInfo(0);
@@ -136,12 +127,11 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Set quality to different values
+      // Set quality to different values (setQuality waits for value internally)
       const qualities = [50, 75, 95];
 
       for (const quality of qualities) {
         await compressorPage.setQuality(quality);
-        await page.waitForTimeout(200);
 
         const value = await compressorPage.qualitySlider.inputValue();
         expect(parseInt(value)).toBe(quality);
@@ -153,9 +143,8 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Set quality
+      // Set quality (waits for value internally)
       await compressorPage.setQuality(85);
-      await page.waitForTimeout(300);
 
       // Look for quality display in the label (e.g., "Quality: 85%")
       await expect(compressorPage.qualityDisplay).toContainText('85%');
@@ -166,9 +155,8 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Set target size
+      // Set target size (waits for value internally)
       await compressorPage.setTargetSize(500);
-      await page.waitForTimeout(200);
 
       // Verify target size was set
       const value = await compressorPage.targetSizeInput.inputValue();
@@ -182,11 +170,9 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
 
       // Set target size first
       await compressorPage.setTargetSize(500);
-      await page.waitForTimeout(200);
 
       // Clear it
       await compressorPage.setTargetSize(0);
-      await page.waitForTimeout(200);
 
       // Verify it was cleared (empty or 0)
       const value = await compressorPage.targetSizeInput.inputValue();
@@ -198,12 +184,11 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Test all formats
+      // Test all formats (setFormat waits for value internally)
       const formats: Array<'jpeg' | 'png' | 'webp'> = ['jpeg', 'png', 'webp'];
 
       for (const format of formats) {
         await compressorPage.setFormat(format);
-        await page.waitForTimeout(200);
 
         const selectedValue = await compressorPage.formatSelect.inputValue();
         expect(selectedValue).toBe(format);
@@ -232,7 +217,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Compress All button should be visible
       await expect(compressorPage.compressAllButton).toBeVisible();
@@ -244,7 +228,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       // Button should show "Compress 2 Images" or similar
       await expect(page.getByText(/compress 2 images/i)).toBeVisible();
@@ -256,19 +239,16 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Click compress all
       await compressorPage.clickCompressAll();
 
-      // Wait for processing to start or complete
-      await page.waitForTimeout(2000);
+      // Wait for processing to complete (semantic wait)
+      await compressorPage.waitForProcessingComplete();
 
-      // Check for processing indicators or completion
-      const isProcessing = await compressorPage.isProcessing();
+      // Download button should be visible after completion
       const isComplete = await compressorPage.isDownloadAllVisible();
-
-      expect(isProcessing || isComplete).toBe(true);
+      expect(isComplete).toBe(true);
     });
 
     test('Download All as ZIP button appears after processing', async ({ page }) => {
@@ -277,7 +257,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
 
@@ -294,7 +273,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
 
@@ -313,7 +291,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Get image info before compression
       const info = await compressorPage.getImageInfo(0);
@@ -329,7 +306,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForProcessingComplete();
@@ -348,7 +324,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForProcessingComplete();
@@ -367,11 +342,9 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Use a relatively low quality to ensure compression
       await compressorPage.setQuality(50);
-      await page.waitForTimeout(200);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForProcessingComplete();
@@ -394,7 +367,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForSummaryStats();
@@ -419,14 +391,12 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
 
       // Upload two images
       await compressorPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       const initialCount = await compressorPage.getImageCount();
       expect(initialCount).toBeGreaterThanOrEqual(2);
 
-      // Remove first image
+      // Remove first image (waits for count to decrease internally)
       await compressorPage.removeImageByIndex(0);
-      await page.waitForTimeout(500);
 
       const finalCount = await compressorPage.getImageCount();
       expect(finalCount).toBe(initialCount - 1);
@@ -438,7 +408,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       // Verify images are in list
       const initialCount = await compressorPage.getImageCount();
@@ -446,7 +415,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
 
       // Click clear all
       await compressorPage.clickClearAll();
-      await page.waitForTimeout(500);
 
       // Upload area should be visible again
       await compressorPage.assertUploadAreaVisible();
@@ -458,7 +426,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForProcessingComplete();
@@ -481,11 +448,9 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.waitForLoad();
 
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Set a target size (10KB for our small test image)
       await compressorPage.setTargetSize(10);
-      await page.waitForTimeout(200);
 
       await compressorPage.clickCompressAll();
       await compressorPage.waitForProcessingComplete();
@@ -544,7 +509,6 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
 
       // Upload an image to show action buttons
       await compressorPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Check that buttons have text content, aria-label, or title
       const buttons = page.locator('button');
@@ -567,9 +531,8 @@ test.describe('Bulk Image Compressor E2E Tests', () => {
       await compressorPage.goto();
       await compressorPage.waitForLoad();
 
-      // Change quality
+      // Change quality (waits for value internally)
       await compressorPage.setQuality(75);
-      await page.waitForTimeout(300);
 
       // Quality display should show the value in the label
       await expect(compressorPage.qualityDisplay).toContainText('75%');

@@ -10,7 +10,7 @@ import { clientEnv } from '@shared/config/env';
 import interactiveToolsData from '@/app/seo/data/interactive-tools.json';
 import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 
-const BASE_URL = clientEnv.BASE_URL;
+const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 // Interactive tool URL mappings (slug -> path)
 const INTERACTIVE_TOOL_PATHS: Record<string, string> = {

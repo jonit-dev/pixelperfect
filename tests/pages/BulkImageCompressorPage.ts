@@ -124,24 +124,40 @@ export class BulkImageCompressorPage extends BasePage {
   }
 
   /**
+   * Wait for a specific number of images in the list
+   */
+  async waitForImageCount(count: number, timeout = 10000): Promise<void> {
+    await expect(this.getImageItems()).toHaveCount(count, { timeout });
+  }
+
+  /**
+   * Wait for at least one image to appear in the list
+   */
+  async waitForImagesLoaded(): Promise<void> {
+    await expect(this.getImageItems().first()).toBeVisible({ timeout: 10000 });
+  }
+
+  /**
    * Upload image(s) via the file input
    */
   async uploadImages(filePaths: string[]): Promise<void> {
     // Set files directly on the hidden file input
     await this.fileInput.setInputFiles(filePaths);
-    await this.page.waitForTimeout(1000);
+    // Wait for images to appear in the list
+    await this.waitForImagesLoaded();
   }
 
   /**
    * Add more images after initial upload
    */
   async addMoreImages(filePaths: string[]): Promise<void> {
+    const currentCount = await this.getImageItems().count();
     // Click the "Add More Images" button to trigger the file input
     await this.addMoreButton.click();
-    await this.page.waitForTimeout(100);
     // Set files on the file input
     await this.addMoreFileInput.setInputFiles(filePaths);
-    await this.page.waitForTimeout(1000);
+    // Wait for the new images to appear
+    await this.waitForImageCount(currentCount + filePaths.length);
   }
 
   /**
@@ -164,15 +180,18 @@ export class BulkImageCompressorPage extends BasePage {
   async setQuality(quality: number): Promise<void> {
     // Use Playwright's fill method for range inputs, which handles React properly
     await this.qualitySlider.fill(quality.toString());
-    await this.page.waitForTimeout(300);
+    // Wait for the value to be set
+    await expect(this.qualitySlider).toHaveValue(quality.toString());
   }
 
   /**
    * Set target size (0 means no target size)
    */
   async setTargetSize(kb: number): Promise<void> {
-    await this.targetSizeInput.fill(kb === 0 ? '' : kb.toString());
-    await this.page.waitForTimeout(200);
+    const value = kb === 0 ? '' : kb.toString();
+    await this.targetSizeInput.fill(value);
+    // Wait for the value to be set
+    await expect(this.targetSizeInput).toHaveValue(value);
   }
 
   /**
@@ -180,7 +199,8 @@ export class BulkImageCompressorPage extends BasePage {
    */
   async setFormat(format: ICompressorFormat): Promise<void> {
     await this.formatSelect.selectOption(format);
-    await this.page.waitForTimeout(200);
+    // Wait for the value to be set
+    await expect(this.formatSelect).toHaveValue(format);
   }
 
   /**
@@ -237,7 +257,6 @@ export class BulkImageCompressorPage extends BasePage {
    * Get the number of images in the list
    */
   async getImageCount(): Promise<number> {
-    await this.page.waitForTimeout(500);
     return await this.getImageItems().count();
   }
 
@@ -281,21 +300,17 @@ export class BulkImageCompressorPage extends BasePage {
    * Remove an image by its index (0-based)
    */
   async removeImageByIndex(index: number): Promise<void> {
+    const currentCount = await this.getImageCount();
     const item = this.getImageItems().nth(index);
-    // Find the X button (button with no text, before download button)
-    const buttons = item.locator('button');
-    const buttonCount = await buttons.count();
-
-    // The X/remove button should come before the download button
-    // Click the first button that has no visible text (icon button)
-    for (let i = 0; i < buttonCount; i++) {
-      const btn = buttons.nth(i);
-      const text = await btn.textContent();
-      if (!text || text.trim() === '') {
-        await btn.click();
-        await this.page.waitForTimeout(500);
-        return;
-      }
+    // Find the remove button by title
+    const removeButton = item.getByTitle('Remove');
+    await removeButton.click();
+    // Wait for the image count to decrease
+    if (currentCount > 1) {
+      await this.waitForImageCount(currentCount - 1);
+    } else {
+      // If last image, wait for upload area to reappear
+      await this.assertUploadAreaVisible();
     }
   }
 
@@ -316,7 +331,8 @@ export class BulkImageCompressorPage extends BasePage {
         // If close button doesn't work, click outside the modal content
         await modal.click({ position: { x: 10, y: 10 } });
       });
-      await this.page.waitForTimeout(500);
+      // Wait for the modal to disappear
+      await expect(modal).not.toBeVisible({ timeout: 5000 });
     }
   }
 

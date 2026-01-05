@@ -6,7 +6,7 @@
 import { NextResponse } from 'next/server';
 import { clientEnv } from '@shared/config/env';
 
-const BASE_URL = clientEnv.BASE_URL;
+const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 const staticPages = [
   { path: '/', priority: 1.0, changefreq: 'daily' },

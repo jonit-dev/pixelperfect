@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server';
 import { getAllGuides } from '@/lib/seo/data-loader';
 import { clientEnv } from '@shared/config/env';
 
-const BASE_URL = clientEnv.BASE_URL;
+const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 export async function GET() {
   const guides = await getAllGuides();

@@ -136,15 +136,27 @@ export class TestContext {
   /**
    * Cleans up all resources created by this test context
    *
-   * Runs all registered cleanup callbacks and deletes all created users
+   * Runs all registered cleanup callbacks and deletes all created users.
+   * Collects all errors and throws at the end to ensure all cleanup attempts are made.
    */
   async cleanup(): Promise<void> {
-    // Run custom cleanup callbacks first
+    const errors: Error[] = [];
+    const CLEANUP_TIMEOUT_MS = 30000; // 30 second timeout per callback
+
+    // Run custom cleanup callbacks first with timeout
     for (const callback of this.cleanupCallbacks) {
       try {
-        await callback();
+        await Promise.race([
+          callback(),
+          new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error('Cleanup callback timeout')), CLEANUP_TIMEOUT_MS)
+          ),
+        ]);
       } catch (error) {
-        console.warn('Cleanup callback failed:', error);
+        const cleanupError =
+          error instanceof Error ? error : new Error(`Cleanup callback failed: ${String(error)}`);
+        console.warn('Cleanup callback failed:', cleanupError.message);
+        errors.push(cleanupError);
       }
     }
 
@@ -152,12 +164,21 @@ export class TestContext {
     try {
       await this.dataManager.cleanupAllUsers();
     } catch (error) {
-      console.warn('User cleanup failed:', error);
+      const userCleanupError =
+        error instanceof Error ? error : new Error(`User cleanup failed: ${String(error)}`);
+      console.warn('User cleanup failed:', userCleanupError.message);
+      errors.push(userCleanupError);
     }
 
-    // Reset internal state
+    // Reset internal state regardless of errors
     this.users = [];
     this.cleanupCallbacks = [];
+
+    // If any errors occurred, throw an aggregate error
+    if (errors.length > 0) {
+      const errorMessages = errors.map(e => e.message).join('; ');
+      throw new Error(`Cleanup failed with ${errors.length} error(s): ${errorMessages}`);
+    }
   }
 
   /**

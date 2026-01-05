@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server';
 import { getAllPSEOPages } from '@/lib/seo/data-loader';
 import { clientEnv } from '@shared/config/env';
 
-const BASE_URL = clientEnv.BASE_URL;
+const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 interface IImageEntry {
   pageUrl: string;

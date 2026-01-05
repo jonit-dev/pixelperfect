@@ -193,3 +193,14 @@ globalThis.URL.revokeObjectURL = vi.fn();
 
 // Mock HTMLElement methods
 HTMLElement.prototype.scrollIntoView = vi.fn();
+
+// Clear all mocks before each test to prevent cross-test contamination
+import { beforeEach, afterEach } from 'vitest';
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
+afterEach(() => {
+  vi.clearAllMocks();
+});

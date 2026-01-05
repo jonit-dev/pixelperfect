@@ -68,11 +68,8 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.goto();
       await resizerPage.waitForLoad();
 
-      // Upload image
+      // Upload image (waitForImagesLoaded is called internally)
       await resizerPage.uploadImage(sampleImagePath);
-
-      // Wait for image to be added
-      await page.waitForTimeout(1000);
 
       // Verify upload area is hidden and image is in list
       await resizerPage.assertUploadAreaHidden();
@@ -86,11 +83,8 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.goto();
       await resizerPage.waitForLoad();
 
-      // Upload multiple images
+      // Upload multiple images (waitForImagesLoaded is called internally)
       await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
-
-      // Wait for images to be added
-      await page.waitForTimeout(1000);
 
       // Verify images are in list
       const imageCount = await resizerPage.getImageCount();
@@ -104,13 +98,11 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Upload first image
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(500);
 
       const initialCount = await resizerPage.getImageCount();
 
-      // Add more images using the "Add More Images" button
+      // Add more images using the "Add More Images" button (waits for count internally)
       await resizerPage.addMoreImages([sampleImagePath2]);
-      await page.waitForTimeout(500);
 
       const finalCount = await resizerPage.getImageCount();
       expect(finalCount).toBe(initialCount + 1);
@@ -122,7 +114,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Get image info
       const info = await resizerPage.getImageInfo(0);
@@ -145,7 +136,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Set width
       await resizerPage.setWidth(800);
-      await page.waitForTimeout(200);
 
       // Verify width was set
       const widthValue = await resizerPage.widthInput.inputValue();
@@ -154,9 +144,8 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       // Disable aspect ratio first to make height input visible
       await resizerPage.setMaintainAspectRatio(false);
 
-      // Set height
+      // Set height (waits for value internally)
       await resizerPage.setHeight(600);
-      await page.waitForTimeout(200);
 
       // Verify height was set
       const heightValue = await resizerPage.heightInput.inputValue();
@@ -205,12 +194,11 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.goto();
       await resizerPage.waitForLoad();
 
-      // Test all formats
+      // Test all formats (setFormat waits for value internally)
       const formats: Array<'jpeg' | 'png' | 'webp'> = ['jpeg', 'png', 'webp'];
 
       for (const format of formats) {
         await resizerPage.setFormat(format);
-        await page.waitForTimeout(200);
 
         const selectedValue = await resizerPage.formatSelect.inputValue();
         expect(selectedValue).toBe(format);
@@ -222,12 +210,11 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.goto();
       await resizerPage.waitForLoad();
 
-      // Set quality to different values
+      // Set quality to different values (setQuality waits for value internally)
       const qualities = [50, 75, 95];
 
       for (const quality of qualities) {
         await resizerPage.setQuality(quality);
-        await page.waitForTimeout(200);
 
         const value = await resizerPage.qualitySlider.inputValue();
         expect(parseInt(value)).toBe(quality);
@@ -254,15 +241,13 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       // Ensure aspect ratio is checked
       await resizerPage.setMaintainAspectRatio(true);
 
-      // Set to fit
+      // Set to fit (waits for value internally)
       await resizerPage.setFitMode('fit');
-      await page.waitForTimeout(200);
       let fitModeValue = await resizerPage.fitModeSelect.inputValue();
       expect(fitModeValue).toBe('fit');
 
-      // Set to fill
+      // Set to fill (waits for value internally)
       await resizerPage.setFitMode('fill');
-      await page.waitForTimeout(200);
       fitModeValue = await resizerPage.fitModeSelect.inputValue();
       expect(fitModeValue).toBe('fill');
     });
@@ -275,7 +260,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Process All button should be visible
       await expect(resizerPage.processAllButton).toBeVisible();
@@ -287,19 +271,16 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Click process all
       await resizerPage.clickProcessAll();
 
-      // Wait for processing to start or complete
-      await page.waitForTimeout(2000);
+      // Wait for processing to complete (semantic wait)
+      await resizerPage.waitForProcessingComplete();
 
-      // Check for processing indicators or completion
-      const isProcessing = await resizerPage.isProcessing();
+      // Download button should be visible after completion
       const isComplete = await resizerPage.isDownloadAllVisible();
-
-      expect(isProcessing || isComplete).toBe(true);
+      expect(isComplete).toBe(true);
     });
 
     test('Download All as ZIP button appears after processing', async ({ page }) => {
@@ -308,7 +289,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await resizerPage.clickProcessAll();
 
@@ -325,7 +305,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await resizerPage.clickProcessAll();
 
@@ -351,14 +330,12 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Upload two images
       await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       const initialCount = await resizerPage.getImageCount();
       expect(initialCount).toBeGreaterThanOrEqual(2);
 
-      // Remove first image
+      // Remove first image (waits for count to decrease internally)
       await resizerPage.removeImageByIndex(0);
-      await page.waitForTimeout(500);
 
       const finalCount = await resizerPage.getImageCount();
       expect(finalCount).toBe(initialCount - 1);
@@ -370,7 +347,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImages([sampleImagePath, sampleImagePath2]);
-      await page.waitForTimeout(1000);
 
       // Verify images are in list
       const initialCount = await resizerPage.getImageCount();
@@ -378,7 +354,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Click reset
       await resizerPage.clickReset();
-      await page.waitForTimeout(500);
 
       // Upload area should be visible again
       await resizerPage.assertUploadAreaVisible();
@@ -390,7 +365,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
       await resizerPage.waitForLoad();
 
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       await resizerPage.clickProcessAll();
       await resizerPage.waitForProcessingComplete();
@@ -465,7 +439,6 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Upload an image to show action buttons
       await resizerPage.uploadImage(sampleImagePath);
-      await page.waitForTimeout(1000);
 
       // Check that buttons have text content, aria-label, or title
       const buttons = page.locator('button');
@@ -504,11 +477,10 @@ test.describe('Bulk Image Resizer E2E Tests', () => {
 
       // Disable aspect ratio first to avoid delays during timing
       await resizerPage.setMaintainAspectRatio(false);
-      await page.waitForTimeout(300); // Wait for UI to settle
 
       const startTime = Date.now();
 
-      // Update several settings
+      // Update several settings (each waits for value internally)
       await resizerPage.setWidth(1920);
       await resizerPage.setHeight(1080);
       await resizerPage.setQuality(90);
