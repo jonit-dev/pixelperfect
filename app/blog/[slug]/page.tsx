@@ -9,13 +9,15 @@ import {
   Calendar,
   Clock,
   ArrowLeft,
-  Tag,
   User,
   Lightbulb,
   Info,
   AlertTriangle,
+  ArrowRight,
+  Sparkles,
 } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
+import { ReadingProgress } from '@client/components/blog/ReadingProgress';
 
 // Convert MDX Callout components to blockquotes with type markers
 function preprocessContent(content: string): string {
@@ -114,64 +116,72 @@ export default async function BlogPostPage({ params }: IPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <article className="min-h-screen bg-base">
+      <ReadingProgress />
+
+      <article className="min-h-screen bg-main">
         {/* Header */}
-        <header className="py-12 md:py-20">
-          <div className="container mx-auto px-4 max-w-4xl">
+        <header className="relative pt-8 pb-16 md:pt-12 md:pb-24 overflow-hidden">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent pointer-events-none" />
+
+          <div className="container mx-auto px-4 max-w-4xl relative z-10">
             {/* Back Link */}
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8 group"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Blog
             </Link>
 
-            {/* Category */}
-            <div className="mb-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
+            {/* Category & Reading Time */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20">
                 {post.category}
               </span>
-            </div>
-
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
-              {post.title}
-            </h1>
-
-            {/* Description */}
-            <p className="text-xl text-muted-foreground mb-8">{post.description}</p>
-
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground pb-8 border-b border-border">
-              <span className="flex items-center gap-2">
-                <User className="w-5 h-5" />
-                {post.author}
-              </span>
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </span>
-              <span className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
+              <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+                <Clock className="w-4 h-4" />
                 {post.readingTime}
               </span>
             </div>
 
+            {/* Title */}
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-[1.15] tracking-tight">
+              {post.title}
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl">
+              {post.description}
+            </p>
+
+            {/* Author & Date Card */}
+            <div className="flex items-center gap-4 p-4 bg-surface rounded-2xl border border-border w-fit">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center">
+                <User className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="font-medium text-primary">{post.author}</p>
+                <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+              </div>
+            </div>
+
             {/* Tags */}
             {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-6">
+              <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-border">
                 {post.tags.map(tag => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm bg-surface text-muted-foreground"
+                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm bg-surface-light text-muted-foreground border border-border/50 hover:border-accent/30 hover:text-accent transition-colors"
                   >
-                    <Tag className="w-3.5 h-3.5" />
-                    {tag}
+                    #{tag}
                   </span>
                 ))}
               </div>
@@ -179,10 +189,28 @@ export default async function BlogPostPage({ params }: IPageProps) {
           </div>
         </header>
 
+        {/* Cover Image */}
+        {post.image && (
+          <div className="container mx-auto px-4 max-w-4xl mb-12">
+            <div className="relative aspect-[2/1] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                priority
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-main/20 via-transparent to-transparent" />
+            </div>
+          </div>
+        )}
+
         {/* Content */}
-        <div className="pb-16">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="prose prose-lg prose-invert max-w-none">
+        <div className="pb-20">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="prose prose-lg prose-invert max-w-none prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-p:leading-relaxed prose-li:leading-relaxed prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-primary prose-img:rounded-2xl prose-img:shadow-lg">
               <Markdown
                 remarkPlugins={[remarkGfm]}
                 components={{
@@ -294,23 +322,37 @@ export default async function BlogPostPage({ params }: IPageProps) {
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="py-16 bg-surface-light border-t border-border">
+          <section className="py-20 bg-surface border-t border-border">
             <div className="container mx-auto px-4 max-w-6xl">
-              <h2 className="text-2xl font-bold text-primary mb-8">Related Articles</h2>
+              <div className="flex items-center gap-3 mb-10">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-accent" />
+                </div>
+                <h2 className="font-display text-2xl font-bold text-primary">Continue Reading</h2>
+              </div>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPosts.map(related => (
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="bg-surface rounded-xl p-6 shadow-sm border border-border hover:shadow-md hover:border-accent/50 transition-all"
+                    className="group bg-surface-light rounded-2xl p-6 border border-border hover:border-accent/50 hover:-translate-y-1 transition-all duration-300"
                   >
-                    <span className="text-xs font-medium text-accent mb-2 block">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent mb-4">
                       {related.category}
                     </span>
-                    <h3 className="font-semibold text-primary mb-2 line-clamp-2">
+                    <h3 className="font-display font-semibold text-primary mb-3 line-clamp-2 group-hover:text-accent transition-colors leading-snug">
                       {related.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{related.readingTime}</p>
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {related.readingTime}
+                      </span>
+                      <span className="text-accent flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Read
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -319,19 +361,22 @@ export default async function BlogPostPage({ params }: IPageProps) {
         )}
 
         {/* CTA */}
-        <section className="py-16 bg-accent">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent via-secondary to-accent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
+          <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Try AI Image Enhancement?
             </h2>
-            <p className="text-accent-foreground mb-8 text-lg">
+            <p className="text-white/80 mb-8 text-lg max-w-xl mx-auto">
               Upload your image and see the results in seconds. No signup required.
             </p>
             <Link
               href="/upscaler"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-surface text-accent font-semibold rounded-xl hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg transition-all duration-300"
             >
               Try {clientEnv.APP_NAME} Free
+              <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </section>

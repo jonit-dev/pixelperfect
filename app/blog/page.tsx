@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '@server/blog';
-import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
+import { AmbientBackground } from '@client/components/landing/AmbientBackground';
 
 export const metadata: Metadata = {
   title: 'Blog - Image Enhancement Tips & Guides',
@@ -16,114 +18,197 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const posts = getAllPosts();
+  const [featuredPost, ...otherPosts] = posts;
 
   return (
-    <div className="min-h-screen bg-base">
+    <div className="min-h-screen bg-main">
       {/* Hero Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Image Enhancement Blog
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <AmbientBackground variant="subtle" />
+        <div className="container mx-auto px-4 max-w-5xl text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            Tips, Tutorials & Guides
+          </div>
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
+            Image Enhancement
+            <span className="block bg-gradient-to-r from-accent via-secondary to-tertiary bg-clip-text text-transparent">
+              Insights & Expertise
+            </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Expert tips, tutorials, and guides on AI image upscaling, photo restoration, and
-            e-commerce photography optimization.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Master the art of AI image upscaling, photo restoration, and professional photography
+            optimization with our in-depth guides.
           </p>
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
-      <section className="pb-20">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {posts.length === 0 ? (
-            <div className="text-center py-16 bg-surface rounded-2xl shadow-sm border border-border">
-              <p className="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 gap-8">
-              {posts.map(post => (
-                <article
-                  key={post.slug}
-                  className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden hover:shadow-lg transition-shadow duration-300 group"
-                >
-                  {post.image && (
-                    <div className="aspect-video bg-surface-light relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent-light/20" />
-                    </div>
-                  )}
-                  <div className="p-6 md:p-8">
-                    {/* Category Badge */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-surface text-accent">
-                        {post.category}
+      {/* Featured Post */}
+      {featuredPost && (
+        <section className="pb-12">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <Link href={`/blog/${featuredPost.slug}`} className="group block">
+              <article className="relative bg-gradient-to-br from-surface via-surface to-surface-light rounded-3xl border border-border overflow-hidden hover:border-accent/50 transition-all duration-500 hover:shadow-card-hover">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative grid md:grid-cols-5 gap-0">
+                  {/* Cover Image */}
+                  <div className="md:col-span-2 aspect-[4/3] md:aspect-auto min-h-[280px] relative overflow-hidden">
+                    {featuredPost.image ? (
+                      <Image
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-secondary/10 to-tertiary/20 flex items-center justify-center">
+                        <Sparkles className="w-8 h-8 text-accent" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface/20" />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-accent text-white shadow-lg">
+                        Featured
                       </span>
                     </div>
-
-                    {/* Title */}
-                    <h2 className="text-xl md:text-2xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </div>
+                  {/* Content */}
+                  <div className="md:col-span-3 p-8 md:p-10 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
+                        {featuredPost.category}
+                      </span>
+                      <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {featuredPost.readingTime}
+                      </span>
+                    </div>
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-primary mb-4 group-hover:text-accent transition-colors leading-tight">
+                      {featuredPost.title}
                     </h2>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{post.description}</p>
-
-                    {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
-                      <span className="flex items-center gap-1.5">
+                    <p className="text-muted-foreground mb-6 line-clamp-2 text-lg leading-relaxed">
+                      {featuredPost.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground flex items-center gap-1.5">
                         <Calendar className="w-4 h-4" />
-                        {new Date(post.date).toLocaleDateString('en-US', {
+                        {new Date(featuredPost.date).toLocaleDateString('en-US', {
                           year: 'numeric',
-                          month: 'short',
+                          month: 'long',
                           day: 'numeric',
                         })}
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <Clock className="w-4 h-4" />
-                        {post.readingTime}
+                      <span className="inline-flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
+                        Read Article
+                        <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
-
-                    {/* Tags */}
-                    {post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 3).map(tag => (
-                          <span
-                            key={tag}
-                            className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs bg-surface text-muted-foreground"
-                          >
-                            <Tag className="w-3 h-3" />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Read More Link */}
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition-colors group/link"
-                    >
-                      Read More
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
-                </article>
-              ))}
+                </div>
+              </article>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Blog Posts Grid */}
+      <section className="pb-24">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {otherPosts.length === 0 && !featuredPost ? (
+            <div className="text-center py-20 bg-surface rounded-3xl border border-border">
+              <Sparkles className="w-12 h-12 text-accent/50 mx-auto mb-4" />
+              <p className="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
             </div>
-          )}
+          ) : otherPosts.length > 0 ? (
+            <>
+              <h2 className="font-display text-2xl font-bold text-primary mb-8">More Articles</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {otherPosts.map((post, index) => (
+                  <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                    <article
+                      className="h-full bg-surface rounded-2xl border border-border overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      {/* Cover Image */}
+                      <div className="aspect-[16/9] relative overflow-hidden">
+                        {post.image ? (
+                          <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-secondary/5 to-surface-light flex items-center justify-center">
+                            <Sparkles className="w-5 h-5 text-accent opacity-50" />
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+                      </div>
+                      <div className="p-6">
+                        {/* Category & Reading Time */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+                            {post.category}
+                          </span>
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {post.readingTime}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="font-display text-lg font-semibold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2 leading-snug">
+                          {post.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                          {post.description}
+                        </p>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(post.date).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
+                          </span>
+                          <span className="text-sm text-accent font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Read
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            </>
+          ) : null}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-accent">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Enhance Your Images?</h2>
-          <p className="text-accent-foreground mb-8 text-lg">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent via-secondary to-accent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Enhance Your Images?
+          </h2>
+          <p className="text-white/80 mb-8 text-lg max-w-xl mx-auto">
             Try our AI-powered image upscaler and see the difference for yourself.
           </p>
           <Link
             href="/upscaler"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-surface text-accent font-semibold rounded-xl hover:bg-accent-hover transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg transition-all duration-300"
           >
             Try {clientEnv.APP_NAME} Free
             <ArrowRight className="w-5 h-5" />
