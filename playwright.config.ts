@@ -1,24 +1,19 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
-// Load test environment variables
-dotenv.config({ path: '.env.test' });
+// Load test environment variables (quiet: true suppresses dotenv tips)
+dotenv.config({ path: '.env.test', quiet: true });
 
 const isCI = !!process.env.CI;
 
-// Generate random ports for each test run to avoid conflicts with dev server or parallel runs
+// Generate random ports for each test run to avoid conflicts with dev server
 const TEST_PORT = process.env.TEST_PORT || (3100 + Math.floor(Math.random() * 900)).toString();
 const TEST_WRANGLER_PORT =
   process.env.TEST_WRANGLER_PORT || (8800 + Math.floor(Math.random() * 200)).toString();
 
-// Generate unique instance ID to isolate .next directory and prevent lock file conflicts
-// Each parallel test run gets its own build directory
-const TEST_INSTANCE_ID = process.env.TEST_INSTANCE_ID || `${process.pid}-${Date.now()}`;
-
 // Export for use in tests if needed
 process.env.TEST_PORT = TEST_PORT;
 process.env.TEST_WRANGLER_PORT = TEST_WRANGLER_PORT;
-process.env.TEST_INSTANCE_ID = TEST_INSTANCE_ID;
 
 export default defineConfig({
   testDir: './tests',
@@ -26,7 +21,7 @@ export default defineConfig({
   fullyParallel: false, // Disable full parallelization for memory optimization
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
-  workers: 1, // Use more workers locally, fewer in CI to prevent rate limiting
+  workers: process.env.CI ? 2 : 4, // Use more workers locally, fewer in CI to prevent rate limiting
   reporter: [['html'], ['list']],
   use: {
     baseURL: `http://localhost:${TEST_PORT}`,
@@ -105,10 +100,9 @@ export default defineConfig({
   ],
 
   // Automatically start dev server for tests on random ports
-  // This avoids clashing with the regular dev server or parallel test runs
-  // Each test run gets its own .next directory via TEST_INSTANCE_ID to prevent lock file conflicts
+  // This avoids clashing with the regular dev server
   webServer: {
-    command: `TEST_PORT=${TEST_PORT} TEST_WRANGLER_PORT=${TEST_WRANGLER_PORT} TEST_INSTANCE_ID=${TEST_INSTANCE_ID} yarn dev:test`,
+    command: `TEST_PORT=${TEST_PORT} TEST_WRANGLER_PORT=${TEST_WRANGLER_PORT} yarn dev:test`,
     url: `http://localhost:${TEST_PORT}`,
     reuseExistingServer: !isCI,
     timeout: 120000, // 2 minutes to start server
