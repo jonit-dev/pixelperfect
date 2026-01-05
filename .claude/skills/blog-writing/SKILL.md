@@ -43,8 +43,11 @@ image: "/blog/images/post-cover.jpg"  # Optional: OG image
 1. **Hook** (1-2 paragraphs) - Identify problem, connect emotionally
 2. **Context** - Why this matters, statistics if available
 3. **Main Sections** (3-5) - H2 headers, actionable content
+   - Add **contextual Unsplash image** after every 2-3 sections
 4. **Callouts** - Tips, warnings, info boxes
-5. **CTA** - Link to `/upscaler` or `/pricing`
+5. **CTA** - Link to `/pricing`
+
+**Visual rhythm:** Text → Image → Text → Table → Text → Image → CTA
 
 ## Writing Guidelines
 
@@ -113,7 +116,44 @@ For before/after comparisons:
 
 ## Sourcing Images from Public APIs
 
-Use free stock photo APIs to add relevant images to blog posts. Download and save to `/public/blog/images/`.
+Use free stock photo APIs to add relevant images to blog posts. **Every post should have 2-4 images** placed contextually throughout the content.
+
+### Image Placement Strategy (REQUIRED)
+
+**Minimum images per post: 3**
+
+1. **Hero/OG Image** (frontmatter) - Eye-catching, represents the topic
+2. **Mid-post image** (after 2nd or 3rd H2) - Illustrates a key concept
+3. **Supporting image** (before conclusion) - Reinforces the message or shows results
+
+**Contextual relevance rules:**
+
+| Post Topic            | Image Ideas                                          | Unsplash Search Terms                                     |
+| --------------------- | ---------------------------------------------------- | --------------------------------------------------------- |
+| Old photo restoration | Vintage photos, family albums, old cameras           | "vintage photographs", "old family photos", "photo album" |
+| Social media          | Phone with apps, content creation, influencer        | "social media phone", "instagram", "content creator"      |
+| E-commerce            | Product photography, online shopping, packaging      | "product photography", "ecommerce", "online store"        |
+| Printing              | Printer, photo prints, frames                        | "photo printing", "framed photos", "print shop"           |
+| General upscaling     | High-res landscapes, detailed textures, before/after | "high resolution", "detailed photo", "sharp image"        |
+
+**In-content image format:**
+
+```markdown
+## Section About Scanning Old Photos
+
+When scanning vintage photographs, resolution matters more than you might think.
+
+![Stack of vintage family photographs on wooden desk](https://images.unsplash.com/photo-1516981879613-9f5da904015f?w=800&q=80)
+
+The key is to capture as much detail as possible from the original...
+```
+
+**Image placement rules:**
+
+- Place images **after** introducing a concept, not before
+- Use images to **break up long text** sections (every 300-400 words)
+- Match image mood to section content (technical sections → clean/minimal images)
+- Avoid generic stock photos—choose images that add meaning
 
 ### Unsplash API
 
@@ -183,6 +223,51 @@ public/blog/images/
     ├── upscaler-ui.webp
     └── quality-comparison.webp
 ```
+
+### Quick Unsplash Image URLs (Copy-Paste Ready)
+
+Use these directly in markdown with `?w=800&q=80` for in-content images:
+
+```markdown
+# Photography & Cameras
+
+![Vintage camera](https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80)
+![DSLR camera close-up](https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80)
+
+# Old Photos & Nostalgia
+
+![Vintage photo album](https://images.unsplash.com/photo-1516981879613-9f5da904015f?w=800&q=80)
+![Old photographs](https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800&q=80)
+
+# Social Media & Mobile
+
+![Phone with social apps](https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80)
+![Content creator setup](https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80)
+
+# E-commerce & Products
+
+![Product photography setup](https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80)
+![Online shopping](https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80)
+
+# Printing & Frames
+
+![Photo prints spread out](https://images.unsplash.com/photo-1598539912560-e1a1fdc7b8c5?w=800&q=80)
+![Framed photos on wall](https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=800&q=80)
+
+# Quality & Detail
+
+![High-res landscape](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80)
+![Detailed texture](https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80)
+```
+
+### Unsplash Search Tips
+
+| Need                 | Search Terms                        |
+| -------------------- | ----------------------------------- |
+| Hero images          | Add "minimal", "clean background"   |
+| Technical content    | Add "workspace", "desk setup"       |
+| Before/after concept | "transformation", "comparison"      |
+| Action shots         | "working on", "editing", "creating" |
 
 ### Quick Image Download Script
 
@@ -262,7 +347,8 @@ Before publishing:
 - [ ] 3-5 relevant tags included
 - [ ] Primary keyword in first 100 words
 - [ ] 2+ internal links to /pricing or other blog posts
-- [ ] At least one image reference or table
+- [ ] 3+ images: hero (frontmatter) + 2 mid-content Unsplash images
+- [ ] Images are contextually relevant to surrounding content
 - [ ] Callouts used for tips/warnings
 - [ ] CTA at end of post
 - [ ] No broken image paths

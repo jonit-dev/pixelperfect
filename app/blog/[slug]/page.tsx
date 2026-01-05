@@ -276,6 +276,22 @@ export default async function BlogPostPage({ params }: IPageProps) {
                           warning: 'text-amber-400',
                         };
 
+                        // Strip the [!TYPE] marker from the displayed content
+                        const cleanedText = text.replace(/^\[!(TIP|INFO|WARNING)\]\s*/, '');
+                        const cleanedChildren = Array.isArray(children)
+                          ? children.map((child, idx) =>
+                              idx === 0 && child?.props?.children?.[0] === text
+                                ? {
+                                    ...child,
+                                    props: {
+                                      ...child.props,
+                                      children: [cleanedText, ...child.props.children.slice(1)],
+                                    },
+                                  }
+                                : child
+                            )
+                          : children;
+
                         return (
                           <div
                             className={`not-prose my-6 p-4 rounded-lg border-l-4 ${colors[type]}`}
@@ -284,7 +300,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                               <Icon
                                 className={`w-5 h-5 mt-0.5 flex-shrink-0 ${iconColors[type]}`}
                               />
-                              <div className="text-muted-foreground">{children}</div>
+                              <div className="text-muted-foreground">{cleanedChildren}</div>
                             </div>
                           </div>
                         );
@@ -362,7 +378,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
 
         {/* CTA */}
         <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent via-secondary to-accent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-accent via-tertiary to-accent" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
           <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllPosts } from '@server/blog';
-import { Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
 import { AmbientBackground } from '@client/components/landing/AmbientBackground';
 
@@ -16,9 +16,34 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+const POSTS_PER_PAGE = 6;
+
+interface IBlogPageProps {
+  searchParams: { page?: string };
+}
+
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+export default function BlogPage({ searchParams }: IBlogPageProps) {
   const posts = getAllPosts();
   const [featuredPost, ...otherPosts] = posts;
+
+  // Shuffle the other posts
+  const shuffledPosts = shuffleArray(otherPosts);
+
+  // Calculate pagination
+  const currentPage = Number(searchParams.page) || 1;
+  const totalPages = Math.ceil(shuffledPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const displayedPosts = shuffledPosts.slice(startIndex, endIndex);
 
   return (
     <div className="min-h-screen bg-main">
@@ -116,16 +141,23 @@ export default function BlogPage() {
       {/* Blog Posts Grid */}
       <section className="pb-24">
         <div className="container mx-auto px-4 max-w-6xl">
-          {otherPosts.length === 0 && !featuredPost ? (
+          {shuffledPosts.length === 0 && !featuredPost ? (
             <div className="text-center py-20 bg-surface rounded-3xl border border-border">
               <Sparkles className="w-12 h-12 text-accent/50 mx-auto mb-4" />
               <p className="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
             </div>
-          ) : otherPosts.length > 0 ? (
+          ) : shuffledPosts.length > 0 ? (
             <>
-              <h2 className="font-display text-2xl font-bold text-primary mb-8">More Articles</h2>
+              <h2 className="font-display text-2xl font-bold text-primary mb-8">
+                More Articles
+                {totalPages > 1 && (
+                  <span className="text-base font-normal text-muted-foreground ml-2">
+                    Page {currentPage} of {totalPages}
+                  </span>
+                )}
+              </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {otherPosts.map((post, index) => (
+                {displayedPosts.map((post, index) => (
                   <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                     <article
                       className="h-full bg-surface rounded-2xl border border-border overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
@@ -190,6 +222,60 @@ export default function BlogPage() {
                   </Link>
                 ))}
               </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="mt-12 flex items-center justify-center gap-2">
+                  {/* Previous Button */}
+                  {currentPage > 1 ? (
+                    <Link
+                      href={`/blog?page=${currentPage - 1}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      Previous
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 px-4 py-2 text-muted-foreground cursor-not-allowed opacity-50">
+                      <ChevronLeft className="w-4 h-4" />
+                      Previous
+                    </span>
+                  )}
+
+                  {/* Page Numbers */}
+                  <div className="flex items-center gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+                      <Link
+                        key={pageNum}
+                        href={`/blog?page=${pageNum}`}
+                        className={`min-w-[2.5rem] h-10 flex items-center justify-center rounded-lg font-medium transition-all ${
+                          currentPage === pageNum
+                            ? 'bg-accent text-white shadow-md'
+                            : 'bg-surface border border-border hover:border-accent/50 hover:bg-accent/5'
+                        }`}
+                      >
+                        {pageNum}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Next Button */}
+                  {currentPage < totalPages ? (
+                    <Link
+                      href={`/blog?page=${currentPage + 1}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
+                    >
+                      Next
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 px-4 py-2 text-muted-foreground cursor-not-allowed opacity-50">
+                      Next
+                      <ChevronRight className="w-4 h-4" />
+                    </span>
+                  )}
+                </div>
+              )}
             </>
           ) : null}
         </div>
