@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
             {/* Back Link */}
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Blog
@@ -139,19 +139,19 @@ export default async function BlogPostPage({ params }: IPageProps) {
               <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20">
                 {post.category}
               </span>
-              <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+              <span className="text-sm text-text-secondary flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 {post.readingTime}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-[1.15] tracking-tight">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-[1.15] tracking-tight">
               {post.title}
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl">
+            <p className="text-xl text-text-secondary mb-8 leading-relaxed max-w-3xl">
               {post.description}
             </p>
 
@@ -161,8 +161,8 @@ export default async function BlogPostPage({ params }: IPageProps) {
                 <User className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="font-medium text-primary">{post.author}</p>
-                <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                <p className="font-medium text-white">{post.author}</p>
+                <p className="text-sm text-text-secondary flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
                   {new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                 {post.tags.map(tag => (
                   <span
                     key={tag}
-                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm bg-surface-light text-muted-foreground border border-border/50 hover:border-accent/30 hover:text-accent transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm bg-surface-light text-text-secondary border border-border/50 hover:border-accent/30 hover:text-accent transition-colors"
                   >
                     #{tag}
                   </span>
@@ -344,7 +344,7 @@ export default async function BlogPostPage({ params }: IPageProps) {
                 <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-accent" />
                 </div>
-                <h2 className="font-display text-2xl font-bold text-primary">Continue Reading</h2>
+                <h2 className="font-display text-2xl font-bold text-white">Continue Reading</h2>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPosts.map(related => (
@@ -356,10 +356,10 @@ export default async function BlogPostPage({ params }: IPageProps) {
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent mb-4">
                       {related.category}
                     </span>
-                    <h3 className="font-display font-semibold text-primary mb-3 line-clamp-2 group-hover:text-accent transition-colors leading-snug">
+                    <h3 className="font-display font-semibold text-white mb-3 line-clamp-2 group-hover:text-accent transition-colors leading-snug">
                       {related.title}
                     </h3>
-                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <div className="flex items-center justify-between text-sm text-text-secondary">
                       <span className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5" />
                         {related.readingTime}

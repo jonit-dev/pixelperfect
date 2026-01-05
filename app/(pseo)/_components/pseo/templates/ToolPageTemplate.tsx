@@ -15,6 +15,7 @@ import { FAQSection } from '../sections/FAQSection';
 import { FeaturesSection } from '../sections/FeaturesSection';
 import { HeroSection } from '../sections/HeroSection';
 import { HowItWorksSection } from '../sections/HowItWorksSection';
+import { RelatedBlogPostsSection } from '../sections/RelatedBlogPostsSection';
 import { UseCasesSection } from '../sections/UseCasesSection';
 import { BreadcrumbNav } from '../ui/BreadcrumbNav';
 
@@ -102,6 +103,11 @@ export function ToolPageTemplate({ data }: IToolPageTemplateProps): ReactElement
 
           {/* Use Cases */}
           <UseCasesSection useCases={data.useCases} />
+
+          {/* Related Blog Posts */}
+          {data.relatedBlogPosts && data.relatedBlogPosts.length > 0 && (
+            <RelatedBlogPostsSection blogPostSlugs={data.relatedBlogPosts} />
+          )}
 
           {/* FAQ */}
           <FAQSection faqs={data.faq} pageType="tool" slug={data.slug} />

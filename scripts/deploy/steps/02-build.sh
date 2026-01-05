@@ -5,6 +5,9 @@ step_build() {
 
     cd "$PROJECT_ROOT"
 
+    log_info "Building blog data..."
+    npx tsx scripts/build-blog.ts
+
     log_info "OpenNext build..."
     npx opennextjs-cloudflare build
 

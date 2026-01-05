@@ -3,6 +3,28 @@ import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 
+function validateImage(image: string | undefined, slug: string): void {
+  if (!image) {
+    console.warn(`⚠️  [${slug}] Missing featured image`);
+    return;
+  }
+
+  // Local paths must exist
+  if (image.startsWith('/')) {
+    const localPath = path.join(process.cwd(), 'public', image);
+    if (!fs.existsSync(localPath)) {
+      throw new Error(
+        `❌ [${slug}] Featured image not found: ${image}\n   Use an Unsplash URL instead, e.g.: https://images.unsplash.com/photo-XXX?w=1200&h=630&fit=crop&q=80`
+      );
+    }
+  }
+
+  // Must be Unsplash or local
+  if (!image.startsWith('/') && !image.startsWith('https://images.unsplash.com/')) {
+    console.warn(`⚠️  [${slug}] Non-Unsplash external image: ${image}`);
+  }
+}
+
 interface IBlogPost {
   slug: string;
   title: string;
@@ -43,6 +65,9 @@ async function buildBlogData() {
       const slug = filename.replace(/\.mdx$/, '');
       const content = fs.readFileSync(path.join(postsDir, filename), 'utf8');
       const { data, content: markdown } = matter(content);
+
+      // Validate featured image
+      validateImage(data.image, slug);
 
       return {
         slug,

@@ -55,13 +55,13 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
             <Sparkles className="w-4 h-4" />
             Tips, Tutorials & Guides
           </div>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary mb-6 tracking-tight">
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Image Enhancement
             <span className="block bg-gradient-to-r from-accent via-secondary to-tertiary bg-clip-text text-transparent">
               Insights & Expertise
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
             Master the art of AI image upscaling, photo restoration, and professional photography
             optimization with our in-depth guides.
           </p>
@@ -110,14 +110,14 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
                         {featuredPost.readingTime}
                       </span>
                     </div>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-primary mb-4 group-hover:text-accent transition-colors leading-tight">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-accent transition-colors leading-tight">
                       {featuredPost.title}
                     </h2>
-                    <p className="text-muted-foreground mb-6 line-clamp-2 text-lg leading-relaxed">
+                    <p className="text-text-secondary mb-6 line-clamp-2 text-lg leading-relaxed">
                       {featuredPost.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+                      <span className="text-sm text-text-secondary flex items-center gap-1.5">
                         <Calendar className="w-4 h-4" />
                         {new Date(featuredPost.date).toLocaleDateString('en-US', {
                           year: 'numeric',
@@ -144,14 +144,14 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
           {shuffledPosts.length === 0 && !featuredPost ? (
             <div className="text-center py-20 bg-surface rounded-3xl border border-border">
               <Sparkles className="w-12 h-12 text-accent/50 mx-auto mb-4" />
-              <p className="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
+              <p className="text-text-secondary text-lg">No blog posts yet. Check back soon!</p>
             </div>
           ) : shuffledPosts.length > 0 ? (
             <>
-              <h2 className="font-display text-2xl font-bold text-primary mb-8">
+              <h2 className="font-display text-2xl font-bold text-white mb-8">
                 More Articles
                 {totalPages > 1 && (
-                  <span className="text-base font-normal text-muted-foreground ml-2">
+                  <span className="text-base font-normal text-text-secondary ml-2">
                     Page {currentPage} of {totalPages}
                   </span>
                 )}
@@ -194,18 +194,18 @@ export default function BlogPage({ searchParams }: IBlogPageProps) {
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-display text-lg font-semibold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2 leading-snug">
+                        <h3 className="font-display text-lg font-semibold text-white mb-2 group-hover:text-accent transition-colors line-clamp-2 leading-snug">
                           {post.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                        <p className="text-sm text-text-secondary mb-4 line-clamp-2 leading-relaxed">
                           {post.description}
                         </p>
 
                         {/* Footer */}
                         <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                          <span className="text-xs text-muted-foreground">
+                          <span className="text-xs text-text-secondary">
                             {new Date(post.date).toLocaleDateString('en-US', {
                               month: 'short',
                               day: 'numeric',

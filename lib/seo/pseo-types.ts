@@ -35,6 +35,7 @@ export interface IToolPage extends IBasePSEOPage {
   faq: IFAQ[];
   relatedTools: string[];
   relatedGuides: string[];
+  relatedBlogPosts?: string[];
   ctaText: string;
   ctaUrl: string;
   // Interactive tool fields (optional)

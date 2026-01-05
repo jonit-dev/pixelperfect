@@ -89,3 +89,23 @@ export function getAllTags(): string[] {
   const tags = new Set(blogData.posts.flatMap(p => p.tags));
   return Array.from(tags);
 }
+
+/**
+ * Get posts by slugs (for related posts sections)
+ */
+export function getPostsBySlugs(slugs: string[]): IBlogPostMeta[] {
+  return slugs
+    .map(slug => blogData.posts.find(p => p.slug === slug))
+    .filter((post): post is IBlogPost => post !== undefined)
+    .map(post => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      author: post.author,
+      category: post.category,
+      tags: post.tags,
+      image: post.image,
+      readingTime: post.readingTime,
+    }));
+}
