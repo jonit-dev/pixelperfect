@@ -69,11 +69,13 @@ export function buildCspHeader(): string {
  * - Development (HTTP localhost): 'no-referrer-when-downgrade' required for GIS
  * - Production (HTTPS): 'strict-origin-when-cross-origin' for security
  */
-export const getSecurityHeaders = () => ({
+export const getSecurityHeaders = (): Record<string, string> => ({
   'X-Frame-Options': 'DENY',
   'X-Content-Type-Options': 'nosniff',
   'X-XSS-Protection': '1; mode=block',
-  'Referrer-Policy': isDevelopment() ? 'no-referrer-when-downgrade' : 'strict-origin-when-cross-origin',
+  'Referrer-Policy': isDevelopment()
+    ? 'no-referrer-when-downgrade'
+    : 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
 });
 
