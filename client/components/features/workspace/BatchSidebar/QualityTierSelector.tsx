@@ -74,7 +74,7 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled}
         className={`
-          w-full flex items-center justify-between p-3.5 rounded-xl border bg-white/[0.03]
+          w-full flex items-center justify-between p-3.5 rounded-xl border bg-surface
           transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/20
           ${isOpen ? 'border-accent ring-2 ring-accent/20 shadow-lg shadow-accent/5' : 'border-border hover:border-border'}
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
@@ -108,7 +108,7 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
               title={isFreeUser ? 'Paid plans only' : undefined}
               className={`
                 w-full flex items-start p-3 rounded-xl transition-all text-left group
-                ${tier === 'auto' ? 'bg-secondary/20 text-secondary border border-secondary/30' : 'hover:bg-white/5 text-white border border-transparent'}
+                ${tier === 'auto' ? 'bg-secondary/20 text-secondary border border-secondary/30' : 'hover:bg-surface-light text-white border border-transparent'}
                 ${isFreeUser ? 'opacity-60 cursor-pointer' : ''}
               `}
             >
@@ -153,7 +153,7 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
                     title={isLocked ? 'Paid plans only' : undefined}
                     className={`
                       w-full flex items-start p-3 rounded-xl transition-all text-left group
-                      ${isSelected ? 'bg-accent/20 text-accent border border-accent/30' : 'hover:bg-white/5 text-white border border-transparent'}
+                      ${isSelected ? 'bg-accent/20 text-accent border border-accent/30' : 'hover:bg-surface-light text-white border border-transparent'}
                       ${isLocked ? 'opacity-60 cursor-pointer' : ''}
                     `}
                   >
@@ -191,7 +191,7 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
           {isFreeUser && (
             <button
               onClick={() => router.push('/pricing')}
-              className="w-full p-4 bg-gradient-to-r from-secondary/10 to-accent/10 border-t border-border text-text-muted flex items-center justify-between hover:from-secondary/20 hover:to-accent/20 transition-all cursor-pointer group"
+              className="w-full p-4 bg-gradient-to-r from-secondary/30 to-accent/30 border-t border-border text-text-muted flex items-center justify-between hover:from-secondary/40 hover:to-accent/40 transition-all cursor-pointer group"
             >
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-secondary/20 rounded-xl group-hover:scale-110 transition-transform">

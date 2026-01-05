@@ -22,7 +22,8 @@ export const Button: React.FC<IButtonProps> = ({
 
   const variants = {
     primary: 'bg-accent text-white hover:bg-accent-hover focus:ring-accent shadow-sm',
-    secondary: 'bg-surface text-white hover:bg-surface-light focus:ring-accent',
+    secondary:
+      'bg-accent/20 text-accent hover:bg-accent/30 focus:ring-accent border border-accent/30',
     outline:
       'border border-border bg-surface text-text-primary hover:bg-surface-light focus:ring-accent',
     ghost: 'text-text-secondary hover:bg-surface hover:text-text-primary',
