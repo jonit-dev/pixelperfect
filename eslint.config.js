@@ -12,6 +12,7 @@ export default [
   {
     ignores: [
       '.next/**',
+      '.next-test-*/**', // Parallel test instance build directories
       '.open-next/**',
       'node_modules/**',
       'out/**',

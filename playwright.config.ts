@@ -11,9 +11,14 @@ const TEST_PORT = process.env.TEST_PORT || (3100 + Math.floor(Math.random() * 90
 const TEST_WRANGLER_PORT =
   process.env.TEST_WRANGLER_PORT || (8800 + Math.floor(Math.random() * 200)).toString();
 
+// Generate unique instance ID to isolate .next directory and prevent lock file conflicts
+// Each parallel test run gets its own build directory
+const TEST_INSTANCE_ID = process.env.TEST_INSTANCE_ID || `${process.pid}-${Date.now()}`;
+
 // Export for use in tests if needed
 process.env.TEST_PORT = TEST_PORT;
 process.env.TEST_WRANGLER_PORT = TEST_WRANGLER_PORT;
+process.env.TEST_INSTANCE_ID = TEST_INSTANCE_ID;
 
 export default defineConfig({
   testDir: './tests',
@@ -101,8 +106,9 @@ export default defineConfig({
 
   // Automatically start dev server for tests on random ports
   // This avoids clashing with the regular dev server or parallel test runs
+  // Each test run gets its own .next directory via TEST_INSTANCE_ID to prevent lock file conflicts
   webServer: {
-    command: `TEST_PORT=${TEST_PORT} TEST_WRANGLER_PORT=${TEST_WRANGLER_PORT} yarn dev:test`,
+    command: `TEST_PORT=${TEST_PORT} TEST_WRANGLER_PORT=${TEST_WRANGLER_PORT} TEST_INSTANCE_ID=${TEST_INSTANCE_ID} yarn dev:test`,
     url: `http://localhost:${TEST_PORT}`,
     reuseExistingServer: !isCI,
     timeout: 120000, // 2 minutes to start server

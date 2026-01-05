@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  // Use unique distDir for parallel test instances to avoid lock file conflicts
+  // When TEST_INSTANCE_ID is set, each test run gets its own .next directory
+  ...(process.env.TEST_INSTANCE_ID && {
+    distDir: `.next-test-${process.env.TEST_INSTANCE_ID}`,
+  }),
   typescript: {
     // Keep TypeScript checking enabled
     ignoreBuildErrors: false,
