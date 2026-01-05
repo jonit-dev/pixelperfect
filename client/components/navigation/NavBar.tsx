@@ -5,7 +5,8 @@ import { useModalStore } from '@client/store/modalStore';
 import { useUserStore } from '@client/store/userStore';
 import { cn } from '@client/utils/cn';
 import { clientEnv } from '@shared/config/env';
-import { ChevronDown, Menu, X, Zap } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { useRef, useState } from 'react';
 
 export const NavBar = (): JSX.Element => {
@@ -38,15 +39,26 @@ export const NavBar = (): JSX.Element => {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="/"
-          className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-all active:scale-95 flex-shrink-0"
+          className="flex items-center cursor-pointer hover:opacity-90 transition-all active:scale-95 flex-shrink-0"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-secondary text-white shadow-lg shadow-accent/20">
-            <Zap size={22} fill="currentColor" />
-          </div>
-          <span className="hidden xs:inline text-2xl font-black tracking-tight text-white">
-            {clientEnv.APP_NAME}
-            <span className="text-accent">.</span>
-          </span>
+          {/* Compact logo for mobile */}
+          <Image
+            src="/logo/horizontal-logo-compact.png"
+            alt={clientEnv.APP_NAME}
+            width={100}
+            height={40}
+            className="xs:hidden h-8 w-auto drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]"
+            priority
+          />
+          {/* Full logo for desktop */}
+          <Image
+            src="/logo/horizontal-logo-full.png"
+            alt={clientEnv.APP_NAME}
+            width={200}
+            height={40}
+            className="hidden xs:block h-10 w-auto drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]"
+            priority
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">

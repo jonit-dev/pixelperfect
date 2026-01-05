@@ -112,7 +112,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
     '@type': 'Organization',
     name: APP_NAME,
     url: clientEnv.BASE_URL,
-    logo: `${clientEnv.BASE_URL}/og-image.png`,
+    logo: `${clientEnv.BASE_URL}/logo/horizontal-logo-full.png`,
     description: 'AI-powered image upscaling and enhancement platform',
   };
 

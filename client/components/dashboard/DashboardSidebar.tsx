@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -18,7 +19,7 @@ import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { getPlanDisplayName } from '@shared/config/stripe';
 import { useLogger } from '@client/utils/logger';
 import { cn } from '@client/utils/cn';
-import { clientEnv, getAppLogoAbbr } from '@shared/config/env';
+import { clientEnv } from '@shared/config/env';
 
 interface ISidebarItem {
   label: string;
@@ -128,19 +129,23 @@ export const DashboardSidebar: React.FC<IDashboardSidebarProps> = ({ isOpen, onC
 
         {/* Logo/Brand */}
         <div className="p-6 border-b border-border">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
-            </div>
-            <span className="font-semibold text-white">{clientEnv.APP_NAME}</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo/horizontal-logo-compact.png"
+              alt={clientEnv.APP_NAME}
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
         </div>
 
         {/* User Info */}
         <div className="px-4 py-4 border-b border-border">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-              <span className="text-accent font-medium text-sm">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent/30 to-tertiary/30 flex items-center justify-center ring-1 ring-accent/20">
+              <span className="text-accent font-semibold text-sm">
                 {user?.email?.charAt(0).toUpperCase() || 'U'}
               </span>
             </div>

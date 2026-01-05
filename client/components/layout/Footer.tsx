@@ -1,4 +1,5 @@
 import { clientEnv } from '@shared/config/env';
+import Image from 'next/image';
 import Link from 'next/link';
 import { JSX } from 'react';
 
@@ -11,10 +12,15 @@ export const Footer = (): JSX.Element => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-white font-black text-2xl tracking-tighter">
-              {clientEnv.APP_NAME}
-              <span className="text-accent">.</span>
-            </h3>
+            <Link href="/">
+              <Image
+                src="/logo/horizontal-logo-full.png"
+                alt={clientEnv.APP_NAME}
+                width={180}
+                height={45}
+                className="h-10 w-auto"
+              />
+            </Link>
             <p className="text-sm text-text-muted font-medium leading-relaxed max-w-xs">
               AI-powered image upscaling and enhancement for professionals and creators.
               Precision-engineered for 2025.
