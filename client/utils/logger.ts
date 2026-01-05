@@ -20,7 +20,7 @@ export class ClientLogger {
       level,
       message,
       context,
-      source: 'pixelperfect-web',
+      source: 'myimageupscaler-web',
     };
 
     if (isDevelopment()) {

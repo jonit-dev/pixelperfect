@@ -28,7 +28,7 @@ export interface IZipDownloadOptions {
  *
  * @example
  * ```typescript
- * const filename = generateZipFilename(); // "pixelperfect_batch_1704067200000.zip"
+ * const filename = generateZipFilename(); // "myimageupscaler_batch_1704067200000.zip"
  * const customFilename = generateZipFilename('upscale', '4x'); // "upscale_4x_1704067200000.zip"
  * ```
  */

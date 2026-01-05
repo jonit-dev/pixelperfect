@@ -400,13 +400,13 @@ export const keywordPageMappings: IKeywordPageMapping[] = [
     },
   },
   {
-    primaryKeyword: 'pixelperfect vs imgupscaler',
+    primaryKeyword: 'myimageupscaler vs imgupscaler',
     secondaryKeywords: [
       'img upscaler com',
       'imgupscaler alternative',
-      'imgupscaler vs pixelperfect',
+      'imgupscaler vs myimageupscaler',
     ],
-    canonicalUrl: '/compare/pixelperfect-vs-imgupscaler',
+    canonicalUrl: '/compare/myimageupscaler-vs-imgupscaler',
     intent: 'Comparison',
     tier: 2,
     priority: 'P0',
@@ -425,13 +425,13 @@ export const keywordPageMappings: IKeywordPageMapping[] = [
     },
   },
   {
-    primaryKeyword: 'pixelperfect vs clipdrop',
+    primaryKeyword: 'myimageupscaler vs clipdrop',
     secondaryKeywords: [
       'clip drop image upscaler',
       'clipdrop alternative',
-      'clipdrop vs pixelperfect',
+      'clipdrop vs myimageupscaler',
     ],
-    canonicalUrl: '/compare/pixelperfect-vs-clipdrop',
+    canonicalUrl: '/compare/myimageupscaler-vs-clipdrop',
     intent: 'Comparison',
     tier: 3,
     priority: 'P1',

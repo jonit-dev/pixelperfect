@@ -27,7 +27,7 @@ export interface ITestUserData {
  */
 function getUserCacheKey(): string {
   // Uses the same prefix as in the app
-  const prefix = process.env.NEXT_PUBLIC_CACHE_USER_KEY_PREFIX || 'pixelperfect';
+  const prefix = process.env.NEXT_PUBLIC_CACHE_USER_KEY_PREFIX || 'myimageupscaler';
   return `${prefix}_user_cache`;
 }
 

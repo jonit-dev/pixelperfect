@@ -201,7 +201,7 @@ describe('Cloudflare Cron Worker', () => {
       const body = await response.json();
       expect(body).toEqual({
         status: 'ok',
-        worker: 'pixelperfect-cron',
+        worker: 'myimageupscaler-cron',
         timestamp: expect.any(String),
       });
     });

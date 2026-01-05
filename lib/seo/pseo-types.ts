@@ -270,9 +270,9 @@ export interface IComparisonCriteria {
   name: string;
   key: string;
   criterion?: string;
-  pixelperfect?: string;
+  myimageupscaler?: string;
   competitor?: string;
-  winner?: 'pixelperfect' | 'competitor' | 'tie';
+  winner?: 'myimageupscaler' | 'competitor' | 'tie';
 }
 
 export interface IAlternative {

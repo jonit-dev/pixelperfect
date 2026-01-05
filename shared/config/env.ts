@@ -39,20 +39,20 @@ const clientEnvSchema = z.object({
   SALES_EMAIL: z.string().email().default('sales@myimageupscaler.com'),
   TWITTER_HANDLE: z.string().default('myimageupscaler'),
   // App Configuration
-  APP_SLUG: z.string().default('pixelperfect'),
-  DOWNLOAD_PREFIX: z.string().default('pixelperfect'),
-  BATCH_FOLDER_NAME: z.string().default('pixelperfect_batch'),
-  CACHE_USER_KEY_PREFIX: z.string().default('pixelperfect'),
-  WEB_SERVICE_NAME: z.string().default('pixelperfect-web'),
-  CRON_SERVICE_NAME: z.string().default('pixelperfect-cron'),
+  APP_SLUG: z.string().default('myimageupscaler'),
+  DOWNLOAD_PREFIX: z.string().default('myimageupscaler'),
+  BATCH_FOLDER_NAME: z.string().default('myimageupscaler_batch'),
+  CACHE_USER_KEY_PREFIX: z.string().default('myimageupscaler'),
+  WEB_SERVICE_NAME: z.string().default('myimageupscaler-web'),
+  CRON_SERVICE_NAME: z.string().default('myimageupscaler-cron'),
   // GitHub
   GITHUB_USER: z.string().default('joaoferro42'),
-  GITHUB_REPO: z.string().default('pixelperfect'),
+  GITHUB_REPO: z.string().default('myimageupscaler'),
   // Legal
   LAST_UPDATED_DATE: z.string().default('November 26, 2025'),
   // Domains and URLs
   PRIMARY_DOMAIN: z.string().default('myimageupscaler.com'),
-  APP_DOMAIN: z.string().default('pixelperfect.app'),
+  APP_DOMAIN: z.string().default('myimageupscaler.com'),
   // Stripe
   STRIPE_PUBLISHABLE_KEY: z.string().default(''),
   // Stripe Credit Pack Price IDs
@@ -87,20 +87,20 @@ function loadClientEnv(): IClientEnv {
     SALES_EMAIL: process.env.NEXT_PUBLIC_SALES_EMAIL || 'sales@myimageupscaler.com',
     TWITTER_HANDLE: process.env.NEXT_PUBLIC_TWITTER_HANDLE || 'myimageupscaler',
     // App Configuration
-    APP_SLUG: process.env.NEXT_PUBLIC_APP_SLUG || 'pixelperfect',
-    DOWNLOAD_PREFIX: process.env.NEXT_PUBLIC_DOWNLOAD_PREFIX || 'pixelperfect',
-    BATCH_FOLDER_NAME: process.env.NEXT_PUBLIC_BATCH_FOLDER_NAME || 'pixelperfect_batch',
-    CACHE_USER_KEY_PREFIX: process.env.NEXT_PUBLIC_CACHE_USER_KEY_PREFIX || 'pixelperfect',
-    WEB_SERVICE_NAME: process.env.NEXT_PUBLIC_WEB_SERVICE_NAME || 'pixelperfect-web',
-    CRON_SERVICE_NAME: process.env.NEXT_PUBLIC_CRON_SERVICE_NAME || 'pixelperfect-cron',
+    APP_SLUG: process.env.NEXT_PUBLIC_APP_SLUG || 'myimageupscaler',
+    DOWNLOAD_PREFIX: process.env.NEXT_PUBLIC_DOWNLOAD_PREFIX || 'myimageupscaler',
+    BATCH_FOLDER_NAME: process.env.NEXT_PUBLIC_BATCH_FOLDER_NAME || 'myimageupscaler_batch',
+    CACHE_USER_KEY_PREFIX: process.env.NEXT_PUBLIC_CACHE_USER_KEY_PREFIX || 'myimageupscaler',
+    WEB_SERVICE_NAME: process.env.NEXT_PUBLIC_WEB_SERVICE_NAME || 'myimageupscaler-web',
+    CRON_SERVICE_NAME: process.env.NEXT_PUBLIC_CRON_SERVICE_NAME || 'myimageupscaler-cron',
     // GitHub
     GITHUB_USER: process.env.NEXT_PUBLIC_GITHUB_USER || 'joaoferro42',
-    GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO || 'pixelperfect',
+    GITHUB_REPO: process.env.NEXT_PUBLIC_GITHUB_REPO || 'myimageupscaler',
     // Legal
     LAST_UPDATED_DATE: process.env.NEXT_PUBLIC_LAST_UPDATED_DATE || 'November 26, 2025',
     // Domains and URLs
     PRIMARY_DOMAIN: process.env.NEXT_PUBLIC_PRIMARY_DOMAIN || 'myimageupscaler.com',
-    APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN || 'pixelperfect.app',
+    APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN || 'myimageupscaler.com',
     // Stripe
     STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
     // Stripe Credit Pack Price IDs
