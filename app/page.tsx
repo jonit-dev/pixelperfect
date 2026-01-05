@@ -5,13 +5,13 @@ import { JsonLd } from '@client/components/seo/JsonLd';
 import { generateHomepageSchema } from '@lib/seo/schema-generator';
 
 export const metadata: Metadata = {
-  title: `AI Image Upscaler | Enhance & Upscale Photos Online Free`,
+  title: `Fix Blurry Images in Seconds | AI Image Upscaler - Free`,
   description:
-    'Free AI image upscaler and picture enhancer. Upscale images up to 4x, enhance photo quality, and restore details. No signup required for basic features.',
+    'Stop losing clients to pixelated photos. Our AI upscaler reconstructs lost detail and keeps text sharp—no Photoshop skills needed. 10 free credits, results in 30 seconds.',
   openGraph: {
-    title: `AI Image Upscaler | Enhance & Upscale Photos Online Free`,
+    title: `Fix Blurry Images in Seconds | AI Image Upscaler`,
     description:
-      'Free AI image upscaler and picture enhancer. Upscale images up to 4x, enhance photo quality, and restore details.',
+      'Stop losing clients to pixelated photos. AI that reconstructs lost detail and keeps text sharp. Try free.',
     type: 'website',
     url: '/',
   },

@@ -8,29 +8,30 @@ import React from 'react';
 const features = [
   {
     icon: Type,
-    name: 'Text Preservation',
-    description: 'Proprietary technology preserves text, logos, and brand assets during upscaling.',
+    name: 'Text & Logos Stay Sharp',
+    description:
+      'Tired of upscalers that blur your brand name into mush? Our proprietary tech keeps text crisp and logos pixel-perfect—even at 4x scale.',
     color: 'text-accent',
   },
   {
     icon: ImageIcon,
-    name: 'Batch Processing',
+    name: 'Fix Hundreds at Once',
     description:
-      'Upload multiple images at once. Paid tiers support batch processing: Hobby (10 images), Pro (50 images), Business (500 images). Free tier limited to single image.',
+      'Stop wasting hours processing images one by one. Batch upload up to 500 images and let AI handle the tedious work while you focus on what matters.',
     color: 'text-accent',
   },
   {
     icon: Zap,
-    name: 'Multiple Quality Tiers',
+    name: 'From Quick Fix to Ultra Quality',
     description:
-      'Choose from 6 quality tiers: Quick, Face Restore, Auto, HD Upscale, Face Pro, and Ultra - from 1-8 credits per image.',
+      'Need a fast preview or a print-ready masterpiece? Choose from 6 quality tiers to match your deadline and budget—from 1-8 credits per image.',
     color: 'text-accent',
   },
   {
     icon: Cpu,
-    name: 'Smart AI Analysis',
+    name: 'AI That Actually Gets It',
     description:
-      'Premium feature for automatic content detection and optimization (available on Pro tier and above).',
+      'No more guessing which settings to use. Our AI detects faces, text, and product shots automatically—then applies the perfect enhancement for each.',
     color: 'text-accent',
   },
 ];
@@ -48,15 +49,15 @@ const Features: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="mx-auto max-w-2xl lg:text-center mb-16">
           <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">
-            Feature Rich
+            Built for Real Problems
           </h2>
           <p className="text-4xl font-black tracking-tight text-white sm:text-5xl">
-            Everything you need for{' '}
-            <span className="gradient-text-primary">professional results</span>
+            Finally, an upscaler that{' '}
+            <span className="gradient-text-primary">doesn&apos;t destroy your work</span>
           </p>
           <p className="mt-6 text-xl text-text-secondary leading-8 font-light">
-            We combine state-of-the-art generative AI with traditional computer vision to deliver
-            the best of both worlds: creativity and fidelity.
+            Most AI upscalers create a blurry, over-smoothed mess. Ours reconstructs authentic
+            detail—so your images look naturally sharp, not artificially processed.
           </p>
         </FadeIn>
 

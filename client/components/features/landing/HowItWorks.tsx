@@ -10,19 +10,21 @@ const steps = [
     id: 1,
     name: 'Upload',
     description:
-      'Drag & drop your images. We support high-res input up to 64MB on paid tiers (5MB on free tier) via API.',
+      "Drop that blurry image you've been avoiding. No complex settings—just drag, drop, and go.",
     icon: UploadCloud,
   },
   {
     id: 2,
-    name: 'Process',
-    description: 'Our AI reconstructs details, corrects lighting, and sharpens edges instantly.',
+    name: 'AI Enhancement',
+    description:
+      'Watch as AI reconstructs lost detail, sharpens edges, and fixes noise—all while keeping your text readable.',
     icon: Wand2,
   },
   {
     id: 3,
-    name: 'Download',
-    description: 'Get your 4K result. Export in PNG for lossless quality or efficient WebP.',
+    name: 'Download & Use',
+    description:
+      "Get your crisp, professional result in under 30 seconds. Finally, images you're proud to publish.",
     icon: Download,
   },
 ];
@@ -36,14 +38,15 @@ const HowItWorks: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="text-center mb-24">
           <h2 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">
-            Workflow
+            No Learning Curve
           </h2>
           <p className="text-4xl font-black tracking-tight text-white sm:text-5xl mb-6">
-            Simple. <span className="gradient-text-primary">Powerful.</span> Professional.
+            Skip Photoshop.{' '}
+            <span className="gradient-text-primary">Get results in 30 seconds.</span>
           </p>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto font-light">
-            Transform your workflow in three simple steps. No complex settings, just stunning
-            results.
+            You shouldn&apos;t need a design degree to fix a blurry image. Three clicks, zero
+            tutorials, professional quality.
           </p>
         </FadeIn>
 

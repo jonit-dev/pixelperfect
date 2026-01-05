@@ -8,7 +8,6 @@ import { FadeIn } from '@client/components/ui/MotionWrappers';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
-import { clientEnv } from '@shared/config/env';
 import { getSubscriptionConfig } from '@shared/config/subscription.config';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -110,35 +109,29 @@ export function HomePageClient(): JSX.Element {
             variants={heroItemVariants}
             className="text-6xl font-black tracking-tight text-white sm:text-7xl md:text-8xl mb-6 max-w-5xl mx-auto leading-[1.05]"
           >
-            AI Image Upscaler <br className="hidden sm:block" />
-            <span className="gradient-text-primary">& Photo Enhancer</span>
+            Stop Losing Clients to <span className="gradient-text-primary">Blurry Images</span>
           </motion.h1>
 
           <motion.h2
             variants={heroItemVariants}
             className="mx-auto mt-6 max-w-2xl text-2xl sm:text-3xl text-text-secondary leading-relaxed font-semibold"
           >
-            Free AI-Powered Image Enhancement & Upscaling
+            Pixelated photos make your brand look amateur.
+            <br />
+            <span className="text-white">Fix them in seconds.</span>
           </motion.h2>
-
-          <motion.p
-            variants={heroItemVariants}
-            className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary leading-relaxed"
-          >
-            The ultimate picture enhancer for professional photo quality enhancement.
-          </motion.p>
 
           <motion.p
             variants={heroItemVariants}
             className="mx-auto mt-6 max-w-2xl text-xl sm:text-2xl text-text-secondary leading-relaxed font-light"
           >
-            Enhance resolution, remove noise, and restore details in seconds.
-            <br />
-            The only upscaler designed to{' '}
+            Our AI doesn&apos;t just stretch pixels—it{' '}
+            <span className="text-white font-medium">reconstructs lost detail</span> so your images
+            look like they were shot in 4K. The only upscaler that{' '}
             <span className="relative text-white font-bold decoration-secondary underline decoration-2 underline-offset-4">
-              preserve text and logos
+              preserves text and logos
             </span>{' '}
-            perfectly. Use our powerful image enhancer to upscale images with professional quality.
+            without the plastic, over-smoothed look.
           </motion.p>
 
           {/* Hero CTA Buttons */}
@@ -153,7 +146,7 @@ export function HomePageClient(): JSX.Element {
               whileTap={{ scale: 0.98 }}
             >
               <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-              {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
+              {hasTrialEnabled ? 'Fix My Images Free' : 'Upscale My First Image'}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
             <motion.button
@@ -167,7 +160,7 @@ export function HomePageClient(): JSX.Element {
           </motion.div>
 
           <motion.p variants={heroItemVariants} className="mt-4 text-sm text-text-muted">
-            No credit card required &bull; 10 free credits included
+            10 free credits &bull; No credit card required &bull; Results in under 30 seconds
           </motion.p>
 
           {/* Hero Before/After Slider */}
@@ -192,11 +185,11 @@ export function HomePageClient(): JSX.Element {
           <AmbientBackground variant="section" />
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
-              Ready to get started?
+              How much is one pixelated image costing you?
             </h2>
             <p className="text-lg sm:text-xl text-text-secondary mb-10 max-w-2xl mx-auto font-light">
-              Choose from flexible subscription plans or one-time credit packs. Get monthly credits
-              with automatic rollover, or pay as you go.
+              Lost credibility. Missed sales. Wasted hours in Photoshop. For less than a coffee, you
+              can fix images that actually convert.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
@@ -205,7 +198,7 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                View Pricing Plans
+                See What It Costs
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.button
@@ -214,11 +207,11 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
+                {hasTrialEnabled ? 'Try 10 Free Credits' : 'Get 10 Free Credits'}
               </motion.button>
             </div>
             <p className="mt-6 text-sm text-text-muted">
-              10 free credits to get started &bull; No credit card required
+              10 free credits &bull; No credit card &bull; Unused credits roll over
             </p>
           </div>
         </section>
@@ -233,11 +226,13 @@ export function HomePageClient(): JSX.Element {
 
           <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl sm:text-6xl font-black text-white mb-6">
-              Ready to Transform Your Images?
+              Your competitors already look professional.
+              <br />
+              <span className="gradient-text-primary">Isn&apos;t it time you did too?</span>
             </h2>
             <p className="text-xl text-text-secondary mb-12 max-w-2xl mx-auto font-light">
-              Join over 10,000 businesses using {clientEnv.APP_NAME} to enhance their images. Start
-              your free trial today.
+              10,000+ businesses stopped settling for blurry images. In the next 30 seconds, you
+              could be one of them.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.button
@@ -247,7 +242,7 @@ export function HomePageClient(): JSX.Element {
                 whileTap={{ scale: 0.95 }}
               >
                 <Sparkles size={22} className="group-hover:rotate-12 transition-transform" />
-                {hasTrialEnabled ? 'Start Free Trial' : 'Sign Up Free'}
+                {hasTrialEnabled ? 'Fix My Images Now' : 'Start Upscaling Free'}
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.a
@@ -256,11 +251,11 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Pricing
+                Compare Plans
               </motion.a>
             </div>
             <p className="mt-8 text-sm text-text-muted">
-              No credit card required &bull; 10 free credits &bull; Cancel anytime
+              10 free credits &bull; No credit card &bull; See results before you pay
             </p>
           </div>
         </section>
