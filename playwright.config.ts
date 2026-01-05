@@ -26,7 +26,7 @@ export default defineConfig({
   fullyParallel: false, // Disable full parallelization for memory optimization
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
-  workers: process.env.CI ? 2 : 4, // Use more workers locally, fewer in CI to prevent rate limiting
+  workers: 1, // Use more workers locally, fewer in CI to prevent rate limiting
   reporter: [['html'], ['list']],
   use: {
     baseURL: `http://localhost:${TEST_PORT}`,
