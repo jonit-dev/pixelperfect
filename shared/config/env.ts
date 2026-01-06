@@ -163,6 +163,11 @@ const serverEnvSchema = z.object({
   // Stripe
   STRIPE_SECRET_KEY: z.string().default(''),
   STRIPE_WEBHOOK_SECRET: z.string().default(''),
+  // SEO APIs
+  SERPER_DEV: z.string().default(''),
+  SERPER_API_URL: z.string().default('https://google.serper.dev/search'),
+  SERPER_RATE_LIMIT_MS: z.string().default('1000'),
+  PAGESPEED_API_KEY: z.string().default(''),
   // Stripe Price IDs
   STRIPE_STARTER_MONTHLYLY_PRICE_ID: z.string().default('price_1Q4HMKALMLhQocpfhK9XKp4a'),
   STRIPE_HOBBY_MONTHLYLY_PRICE_ID: z.string().default('price_1SZmVyALMLhQocpf0H7n5ls8'),
@@ -247,6 +252,11 @@ function loadServerEnv(): IServerEnv {
     // Stripe
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || '',
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET || '',
+    // SEO APIs
+    SERPER_DEV: process.env.SERPER_DEV || '',
+    SERPER_API_URL: process.env.SERPER_API_URL || 'https://google.serper.dev/search',
+    SERPER_RATE_LIMIT_MS: process.env.SERPER_RATE_LIMIT_MS || '1000',
+    PAGESPEED_API_KEY: process.env.PAGESPEED_API_KEY || '',
     // Stripe Price IDs
     STRIPE_STARTER_MONTHLYLY_PRICE_ID:
       process.env.STRIPE_STARTER_MONTHLYLY_PRICE_ID || 'price_1Q4HMKALMLhQocpfhK9XKp4a',
@@ -314,6 +324,21 @@ function loadServerEnv(): IServerEnv {
  * These values are NEVER sent to the client.
  */
 export const serverEnv = loadServerEnv();
+
+/**
+ * SEO API configuration
+ * Separate export for cleaner imports in SEO-related modules
+ */
+export const seoConfig = {
+  pagespeed: {
+    apiKey: serverEnv.PAGESPEED_API_KEY,
+  },
+  serper: {
+    apiKey: serverEnv.SERPER_DEV,
+    apiUrl: serverEnv.SERPER_API_URL,
+    rateLimitDelayMs: parseInt(serverEnv.SERPER_RATE_LIMIT_MS, 10),
+  },
+} as const;
 
 // =============================================================================
 // Helper functions

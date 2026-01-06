@@ -458,35 +458,76 @@ export function generateAlternativeSchema(alternative: IAlternativePage): object
 
 /**
  * Generate schema for Homepage
- * Combines WebApplication with AggregateRating
+ * Combines WebApplication with AggregateRating + FAQPage
  */
 export function generateHomepageSchema(): Record<string, unknown> {
   const canonicalUrl = BASE_URL;
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: APP_NAME,
-    description:
-      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
-    url: canonicalUrl,
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'Web Browser',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      description: 'Free tier with 10 credits',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '1250',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    author: ORGANIZATION_SCHEMA,
-    publisher: ORGANIZATION_SCHEMA,
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: APP_NAME,
+        description:
+          'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+        url: canonicalUrl,
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'Web Browser',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          description: 'Free tier with 10 credits',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '1250',
+          bestRating: '5',
+          worstRating: '1',
+        },
+        author: ORGANIZATION_SCHEMA,
+        publisher: ORGANIZATION_SCHEMA,
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How do I upscale an image without losing quality?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Our AI-powered upscaler uses advanced neural networks to intelligently enlarge images while preserving details, edges, and text clarity. Unlike traditional bicubic upscaling that creates blurry pixels, our AI reconstructs realistic details based on millions of high-quality image pairs, resulting in sharp, professional-looking 4K upscales.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What is the best AI image upscaler?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'MyImageUpscaler combines web-based convenience, superior text preservation, and affordable pricing to deliver professional-quality results. Unlike desktop software that costs $99+, our online solution delivers comparable quality with no installation, free credits to start, and unique algorithms that keep text sharp—making it the best choice for most users.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How to upscale images for free?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'You can upscale images for free by signing up for an account, which gives you 10 free credits. Each credit processes one image at 2x upscaling. Simply upload your image, select your enhancement level, and download your upscaled result. No credit card required for the free tier.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Is AI upscaling better than traditional upscaling?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, AI upscaling is significantly better than traditional methods. Traditional upscaling uses interpolation to estimate new pixels, resulting in blurry images. AI upscaling uses deep learning trained on millions of images to intelligently reconstruct realistic details, edges, and textures, producing sharp, professional results that are nearly indistinguishable from native high-resolution images.',
+            },
+          },
+        ],
+      },
+    ],
   };
 }
 

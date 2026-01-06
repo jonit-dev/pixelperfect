@@ -1,7 +1,6 @@
 'use client';
 
-import Features from '@client/components/features/landing/Features';
-import HowItWorks from '@client/components/features/landing/HowItWorks';
+import { Suspense, lazy } from 'react';
 import { AmbientBackground } from '@client/components/landing/AmbientBackground';
 import { HeroBeforeAfter } from '@client/components/landing/HeroBeforeAfter';
 import { FadeIn } from '@client/components/ui/MotionWrappers';
@@ -13,6 +12,16 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+
+// Lazy load below-the-fold sections to reduce initial JS bundle
+// These sections will only load when user scrolls near them
+const Features = lazy(() =>
+  import('@client/components/features/landing/Features').then(m => ({ default: m.default }))
+);
+const HowItWorks = lazy(() =>
+  import('@client/components/features/landing/HowItWorks').then(m => ({ default: m.default }))
+);
+const FAQ = lazy(() => import('@client/components/ui/FAQ').then(m => ({ default: m.FAQ })));
 
 // Animation variants for hero section
 const heroContainerVariants = {
@@ -184,9 +193,56 @@ export function HomePageClient(): JSX.Element {
         </motion.div>
       </section>
 
-      {/* Landing Page Sections */}
-      <Features />
-      <HowItWorks />
+      {/* Landing Page Sections - Lazy loaded for performance */}
+      <Suspense fallback={<div className="h-screen" />}>
+        <Features />
+      </Suspense>
+      <Suspense fallback={<div className="h-screen" />}>
+        <HowItWorks />
+      </Suspense>
+
+      {/* FAQ Section - Lazy loaded for performance */}
+      <FadeIn>
+        <section id="faq" className="py-24 relative overflow-hidden">
+          <AmbientBackground variant="section" />
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-text-secondary">
+                Everything you need to know about AI image upscaling
+              </p>
+            </div>
+            <Suspense fallback={<div className="animate-pulse h-64 bg-white/5 rounded-xl" />}>
+              <FAQ
+                items={[
+                  {
+                    question: 'How do I upscale an image without losing quality?',
+                    answer:
+                      'Our AI-powered upscaler uses advanced neural networks to intelligently enlarge images while preserving details, edges, and text clarity. Unlike traditional bicubic upscaling that creates blurry pixels, our AI reconstructs realistic details based on millions of high-quality image pairs, resulting in sharp, professional-looking 4K upscales.',
+                  },
+                  {
+                    question: 'What is the best AI image upscaler?',
+                    answer:
+                      'MyImageUpscaler combines web-based convenience, superior text preservation, and affordable pricing to deliver professional-quality results. Unlike desktop software that costs $99+, our online solution delivers comparable quality with no installation, free credits to start, and unique algorithms that keep text sharp—making it the best choice for most users.',
+                  },
+                  {
+                    question: 'How to upscale images for free?',
+                    answer:
+                      'You can upscale images for free by signing up for an account, which gives you 10 free credits. Each credit processes one image at 2x upscaling. Simply upload your image, select your enhancement level, and download your upscaled result. No credit card required for the free tier.',
+                  },
+                  {
+                    question: 'Is AI upscaling better than traditional upscaling?',
+                    answer:
+                      'Yes, AI upscaling is significantly better than traditional methods. Traditional upscaling uses interpolation to estimate new pixels, resulting in blurry images. AI upscaling uses deep learning trained on millions of images to intelligently reconstruct realistic details, edges, and textures, producing sharp, professional results that are nearly indistinguishable from native high-resolution images.',
+                  },
+                ]}
+              />
+            </Suspense>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* Pricing CTA Section */}
       <FadeIn>

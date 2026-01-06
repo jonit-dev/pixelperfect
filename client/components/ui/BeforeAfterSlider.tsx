@@ -83,6 +83,7 @@ export const BeforeAfterSlider: React.FC<IBeforeAfterSliderProps> = ({
         className="w-full h-full object-cover select-none"
         draggable={false}
         loading="eager"
+        fetchPriority="high"
       />
 
       {/* Before Image (Foreground - Clipped) */}
@@ -96,6 +97,7 @@ export const BeforeAfterSlider: React.FC<IBeforeAfterSliderProps> = ({
           className="w-full h-full object-cover"
           draggable={false}
           loading="eager"
+          fetchPriority="high"
         />
       </div>
 

@@ -131,6 +131,23 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <link rel="preconnect" href="https://js.stripe.com" />
         <link rel="dns-prefetch" href="https://js.stripe.com" />
+
+        {/* Preload hero images for LCP optimization */}
+        <link
+          rel="preload"
+          href="/before-after/women-after.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/before-after/women-before.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={organizationJsonLd} />
       </head>
