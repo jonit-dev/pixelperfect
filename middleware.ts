@@ -14,6 +14,31 @@ import {
 } from '@lib/middleware';
 
 /**
+ * Legacy URL redirects for SEO
+ * Maps old/incorrect URLs to their new canonical locations
+ */
+function handleLegacyRedirects(req: NextRequest): NextResponse | null {
+  const pathname = req.nextUrl.pathname;
+  const trailingSlashRemoved =
+    pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+
+  const redirectMap: Record<string, string> = {
+    '/tools/bulk-image-resizer': '/tools/resize/bulk-image-resizer',
+    '/tools/bulk-image-compressor': '/tools/compress/bulk-image-compressor',
+  };
+
+  const newPathname = redirectMap[trailingSlashRemoved];
+
+  if (newPathname) {
+    const url = req.nextUrl.clone();
+    url.pathname = newPathname;
+    return NextResponse.redirect(url, 301); // Permanent redirect for SEO
+  }
+
+  return null;
+}
+
+/**
  * Check if a route matches any public API route pattern
  * Handles both with and without trailing slashes
  */
@@ -147,6 +172,12 @@ async function handlePageRoute(req: NextRequest, pathname: string): Promise<Next
  */
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   const pathname = req.nextUrl.pathname;
+
+  // Handle legacy redirects for SEO (must be first to take precedence)
+  const legacyRedirect = handleLegacyRedirects(req);
+  if (legacyRedirect) {
+    return legacyRedirect;
+  }
 
   // Route to appropriate handler
   if (pathname.startsWith('/api/')) {

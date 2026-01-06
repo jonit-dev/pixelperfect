@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Inter, DM_Sans } from 'next/font/google';
 import { ClientProviders } from '@client/components/ClientProviders';
+import { AhrefsAnalytics } from '@client/components/analytics/AhrefsAnalytics';
 import { GoogleAnalytics } from '@client/components/analytics/GoogleAnalytics';
 import { Layout } from '@client/components/layout/Layout';
 import { JsonLd } from '@client/components/seo/JsonLd';
@@ -126,6 +127,8 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
         {/* Preconnect to critical third-party origins for faster loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <link rel="preconnect" href="https://js.stripe.com" />
         <link rel="dns-prefetch" href="https://js.stripe.com" />
         <JsonLd data={websiteJsonLd} />
@@ -135,6 +138,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
         className={`${inter.className} bg-base text-foreground antialiased selection:bg-accent/20 selection:text-white`}
       >
         <GoogleAnalytics />
+        <AhrefsAnalytics />
         <ClientProviders>
           <Layout>{children}</Layout>
         </ClientProviders>
