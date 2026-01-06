@@ -73,7 +73,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
             <div className="absolute -top-4 left-0">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-light text-success text-sm font-semibold rounded-full">
                 <Sparkles className="w-4 h-4" />
-                100% Free
+                Free Plan Available
               </span>
             </div>
             <div className="pt-8">

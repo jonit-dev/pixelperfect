@@ -7,7 +7,7 @@ import { generateHomepageSchema } from '@lib/seo/schema-generator';
 export const metadata: Metadata = {
   title: `AI Image Upscaler & Photo Enhancer | Enhance Quality Free Online`,
   description:
-    'Free AI image enhancer that upscales photos to 4K without blur. Enhance image quality online in seconds—keeps text sharp. 10 free credits, no signup.',
+    'Free AI image enhancer that upscales photos to 4K without blur. Enhance image quality online in seconds—keeps text sharp. 10 free credits to start.',
   openGraph: {
     title: `AI Image Upscaler & Photo Quality Enhancer | Free Online`,
     description:

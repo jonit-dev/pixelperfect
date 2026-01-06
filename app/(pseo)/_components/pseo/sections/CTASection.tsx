@@ -105,7 +105,7 @@ export function CTASection({
                 clipRule="evenodd"
               />
             </svg>
-            <span>No signup required</span>
+            <span>Quick signup</span>
           </div>
           <div className="flex items-center gap-2">
             <svg className="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
