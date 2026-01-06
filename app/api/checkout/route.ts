@@ -1,6 +1,7 @@
 import type { ICheckoutSessionRequest } from '@/shared/types/stripe.types';
 import { stripe } from '@server/stripe';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import { trackServerEvent } from '@server/analytics';
 import { clientEnv, serverEnv } from '@shared/config/env';
 import { assertKnownPriceId, resolvePlanOrPack } from '@shared/config/stripe';
 import { getTrialConfig } from '@shared/config/subscription.config';
@@ -440,6 +441,19 @@ export async function POST(request: NextRequest) {
     }
 
     const session = await stripe.checkout.sessions.create(sessionParams);
+
+    // Track checkout started event
+    await trackServerEvent(
+      'checkout_started',
+      {
+        priceId: validatedPriceId,
+        purchaseType,
+        sessionId: session.id,
+        plan: unifiedMetadata?.type === 'plan' ? unifiedMetadata.key : undefined,
+        pack: unifiedMetadata?.type === 'pack' ? unifiedMetadata.key : undefined,
+      },
+      { apiKey: serverEnv.AMPLITUDE_API_KEY, userId: user.id }
+    );
 
     // 8. Return the session data
     return NextResponse.json({

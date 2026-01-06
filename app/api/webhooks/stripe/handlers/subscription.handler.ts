@@ -1,5 +1,7 @@
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import { trackServerEvent } from '@server/analytics';
 import { stripe } from '@server/stripe';
+import { serverEnv } from '@shared/config/env';
 import { getPlanForPriceId, resolvePlanOrPack, assertKnownPriceId } from '@shared/config/stripe';
 import { getTrialConfig } from '@shared/config/subscription.config';
 import { SubscriptionCreditsService } from '@server/services/SubscriptionCredits';
@@ -506,6 +508,21 @@ export class SubscriptionHandler {
         status: subscription.status,
         timestamp: new Date().toISOString(),
       });
+
+      // Track subscription created event for new active/trialing subscriptions
+      if (subscription.status === 'active' || subscription.status === 'trialing') {
+        await trackServerEvent(
+          'subscription_created',
+          {
+            plan: planMetadata.key,
+            amountCents: subscription.items.data[0]?.price.unit_amount || 0,
+            billingInterval: subscription.items.data[0]?.price.recurring?.interval || 'month',
+            status: subscription.status,
+            subscriptionId: subscription.id,
+          },
+          { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+        );
+      }
     }
   }
 
@@ -546,6 +563,18 @@ export class SubscriptionHandler {
 
     const userId = profile.id;
 
+    // Get the price ID for tracking before updating
+    const priceId = subscription.items.data[0]?.price.id;
+    let planKey: string | undefined;
+    if (priceId) {
+      try {
+        const planMetadata = resolvePlanOrPack(priceId);
+        planKey = planMetadata?.type === 'plan' ? planMetadata.key : undefined;
+      } catch {
+        // Ignore resolution errors for tracking
+      }
+    }
+
     // Update subscription status
     const { error: subError } = await supabaseAdmin
       .from('subscriptions')
@@ -571,6 +600,16 @@ export class SubscriptionHandler {
       console.error('Error updating profile subscription status:', profileError);
     } else {
       console.log(`Canceled subscription for user ${userId}`);
+
+      // Track subscription canceled event
+      await trackServerEvent(
+        'subscription_canceled',
+        {
+          plan: planKey,
+          subscriptionId: subscription.id,
+        },
+        { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+      );
     }
   }
 

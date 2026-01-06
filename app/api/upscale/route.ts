@@ -150,10 +150,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const logger = createLogger(req, 'upscale-api');
   const startTime = Date.now();
   let creditCost = 1; // Default, will be updated after validation
+  let userId: string | undefined;
 
   try {
     // 1. Extract authenticated user ID from middleware header
-    const userId = req.headers.get('X-User-Id');
+    userId = req.headers.get('X-User-Id') || undefined;
     if (!userId) {
       logger.warn('Unauthorized request - no user ID');
       const { body, status } = createErrorResponse(
@@ -168,6 +169,18 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const { success: rateLimitOk, remaining, reset } = await upscaleRateLimit.limit(userId);
     if (!rateLimitOk) {
       logger.warn('Upscale rate limit exceeded', { userId });
+
+      // Track rate limit exceeded event
+      await trackServerEvent(
+        'rate_limit_exceeded',
+        {
+          limit: 5,
+          windowMs: 60000,
+          retryAfter: Math.ceil((reset - Date.now()) / 1000),
+        },
+        { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+      );
+
       const retryAfter = Math.ceil((reset - Date.now()) / 1000);
       const { body, status } = createErrorResponse(
         ErrorCodes.RATE_LIMITED,
@@ -659,6 +672,19 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         message: error.message,
         code: error.code,
       });
+
+      // Track processing failed event for Replicate errors
+      if (userId) {
+        await trackServerEvent(
+          'processing_failed',
+          {
+            reason: `replicate_${error.code}`,
+            message: error.message,
+          },
+          { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+        );
+      }
+
       const { body, status } = createErrorResponse(errorCode, error.message, statusCode, {
         replicateCode: error.code,
       });
@@ -674,6 +700,19 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         message: error.message,
         finishReason: error.finishReason,
       });
+
+      // Track processing failed event for AI generation errors
+      if (userId) {
+        await trackServerEvent(
+          'processing_failed',
+          {
+            reason: `ai_generation_${error.finishReason}`,
+            message: error.message,
+          },
+          { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+        );
+      }
+
       const { body, status } = createErrorResponse(errorCode, error.message, statusCode, {
         finishReason: error.finishReason,
       });

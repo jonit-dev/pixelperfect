@@ -1,6 +1,8 @@
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import { trackServerEvent } from '@server/analytics';
 import { stripe } from '@server/stripe';
-import { assertKnownPriceId, getPlanForPriceId } from '@shared/config/stripe';
+import { serverEnv } from '@shared/config/env';
+import { assertKnownPriceId, getPlanForPriceId, resolvePlanOrPack } from '@shared/config/stripe';
 import Stripe from 'stripe';
 
 // Charge interface for accessing invoice property
@@ -21,7 +23,13 @@ export class PaymentHandler {
 
     console.log(`Checkout completed for user ${userId}, mode: ${session.mode}`);
 
+    let purchaseType: 'subscription' | 'credit_pack' | null = null;
+    let planKey: string | undefined;
+    let packKey: string | undefined;
+    let amountCents = session.amount_total || 0;
+
     if (session.mode === 'subscription') {
+      purchaseType = 'subscription';
       // For subscriptions, add initial credits immediately since user lands on success page
       // The subscription will be fully set up by the subscription.created event
       const subscriptionId = session.subscription as string;
@@ -80,6 +88,8 @@ export class PaymentHandler {
                   );
                 }
                 plan = getPlanForPriceId(priceId); // Still use this for the legacy format
+                const planMetadata = resolvePlanOrPack(priceId);
+                planKey = planMetadata?.type === 'plan' ? planMetadata.key : undefined;
               } catch (error) {
                 console.error(
                   `[WEBHOOK_ERROR] Checkout session plan resolution failed: ${priceId}`,
@@ -118,11 +128,28 @@ export class PaymentHandler {
         }
       }
     } else if (session.mode === 'payment') {
+      purchaseType = 'credit_pack';
+      packKey = session.metadata?.pack_key;
       // Handle credit pack purchase
       await this.handleCreditPackPurchase(session, userId);
     } else {
       console.warn(
         `Unexpected checkout mode: ${session.mode} for session ${session.id}. Expected 'subscription' or 'payment'.`
+      );
+    }
+
+    // Track checkout completed event
+    if (purchaseType) {
+      await trackServerEvent(
+        'checkout_completed',
+        {
+          purchaseType,
+          plan: planKey,
+          pack: packKey,
+          amountCents,
+          sessionId: session.id,
+        },
+        { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
       );
     }
   }
@@ -159,6 +186,17 @@ export class PaymentHandler {
       }
 
       console.log(`Added ${credits} purchased credits to user ${userId} (pack: ${packKey})`);
+
+      // Track credit pack purchased event
+      await trackServerEvent(
+        'credit_pack_purchased',
+        {
+          pack: packKey || 'unknown',
+          credits,
+          amountCents: session.amount_total || 0,
+        },
+        { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+      );
     } catch (error) {
       console.error('Failed to process credit purchase:', error);
       throw error; // Re-throw for webhook retry

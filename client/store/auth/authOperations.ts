@@ -1,5 +1,6 @@
 import { AuthProvider } from '@/shared/types/authProviders.types';
 import { loadingStore } from '@client/store/loadingStore';
+import { analytics } from '@client/analytics';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { clearAuthCache, loadAuthCache, saveAuthCache } from './authCache';
 import type { IAuthState, IAuthUser, ISignUpResult } from './types';
@@ -30,6 +31,9 @@ export function createSignInWithEmail(
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
 
+      // Track login event
+      analytics.track('login', { method: 'email' });
+
       if (data.user) {
         const user: IAuthUser = {
           email: data.user.email || '',
@@ -51,6 +55,9 @@ export function createSignUpWithEmail(
 ): (email: string, password: string) => Promise<ISignUpResult> {
   return async (email: string, password: string) => {
     return await withLoading(async () => {
+      // Track signup started
+      analytics.track('signup_started', { method: 'email' });
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -67,6 +74,9 @@ export function createSignUpWithEmail(
 
       // When email confirmation is required, Supabase returns user but no session
       const emailConfirmationRequired = data.user && !data.session;
+
+      // Track signup completed (user created, even if email confirmation pending)
+      analytics.track('signup_completed', { method: 'email' });
 
       return { emailConfirmationRequired };
     });

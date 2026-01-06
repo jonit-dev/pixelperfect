@@ -1,6 +1,7 @@
 import { IBatchItem } from '@/shared/types/coreflow.types';
 import JSZip from 'jszip';
 import { clientEnv } from '@shared/config/env';
+import { analytics } from '@client/analytics';
 
 /**
  * Check if URL is external (Replicate, etc.) or internal (data URL)
@@ -117,6 +118,13 @@ export const downloadSingle = async (
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(blobUrl);
+
+    // Track image download event
+    analytics.track('image_download', {
+      mode,
+      filename: downloadFilename,
+      count: 1,
+    });
   } catch (error) {
     console.error('Download failed:', error);
     const errorMessage = error instanceof Error ? error.message : 'Failed to download image';
@@ -165,4 +173,11 @@ export const downloadBatch = async (queue: IBatchItem[], mode: string): Promise<
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+
+  // Track batch image download event
+  analytics.track('image_download', {
+    mode,
+    filename: `${clientEnv.BATCH_FOLDER_NAME}.zip`,
+    count: completedItems.length,
+  });
 };

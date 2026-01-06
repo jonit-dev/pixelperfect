@@ -1,4 +1,5 @@
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
+import { trackServerEvent } from '@server/analytics';
 import { GoogleGenAI } from '@google/genai';
 import { serverEnv } from '@shared/config/env';
 import type { IUpscaleInput, IUpscaleConfig } from '@shared/validation/upscale.schema';
@@ -220,6 +221,17 @@ export class ImageGenerationService implements IImageProcessor {
 
     // Extract total balance from result (returns array with single row)
     const newBalance = balanceResult?.[0]?.new_total_balance ?? 0;
+
+    // Track credits deducted event
+    await trackServerEvent(
+      'credits_deducted',
+      {
+        amount: creditCost,
+        newBalance,
+        description: `Image processing (${input.config.qualityTier} tier, ${creditCost} credits)`,
+      },
+      { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
+    );
 
     try {
       // Step 2: Generate the image
