@@ -154,7 +154,7 @@ export function ExpirationWarningBanner({
           </p>
           <div className="mt-2">
             <Link
-              href="/upscaler"
+              href="/?signup=1"
               className={`text-sm font-medium inline-flex items-center gap-1 hover:underline ${
                 isUrgent ? 'text-error/70' : isModerate ? 'text-warning/70' : 'text-info/70'
               }`}

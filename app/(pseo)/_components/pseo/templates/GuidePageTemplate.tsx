@@ -96,7 +96,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                 h1={data.h1}
                 intro={data.intro}
                 ctaText="Get Started"
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="guide"
                 slug={data.slug}
               />
@@ -219,7 +219,7 @@ export function GuidePageTemplate({ data }: IGuidePageTemplateProps): ReactEleme
                 title="Ready to put this guide into action?"
                 description="Start enhancing your images with AI technology. No credit card required to get started."
                 ctaText="Try It Free"
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="guide"
                 slug={data.slug}
               />

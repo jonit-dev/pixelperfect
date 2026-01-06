@@ -79,7 +79,7 @@ export default function HelpPage(): JSX.Element {
                   <li>You&apos;ll receive 10 free credits to try the service</li>
                   <li>
                     Navigate to the{' '}
-                    <Link href="/upscaler" className="text-accent hover:underline">
+                    <Link href="/?signup=1" className="text-accent hover:underline">
                       Upscaler
                     </Link>
                   </li>

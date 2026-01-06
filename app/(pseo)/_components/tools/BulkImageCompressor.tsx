@@ -636,7 +636,7 @@ export function BulkImageCompressor(): React.ReactElement {
             {/* CTA Buttons */}
             <div className="space-y-3">
               <Link
-                href="/upscaler/"
+                href="/?signup=1"
                 className="w-full px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors flex items-center justify-center gap-2"
               >
                 <Zap className="w-4 h-4" />

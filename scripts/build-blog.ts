@@ -7,7 +7,7 @@ import readingTime from 'reading-time';
 const VALID_ROUTES = new Set([
   '/',
   '/pricing',
-  '/upscaler',
+  '/?signup=1',
   '/login',
   '/signup',
   '/blog',

@@ -80,7 +80,7 @@ export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactE
                 h1={data.h1}
                 intro={data.intro}
                 ctaText={`Try ${clientEnv.APP_NAME} Free`}
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="comparison"
                 slug={data.slug}
               />
@@ -267,7 +267,7 @@ export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactE
                 title="Ready to try the best?"
                 description={`Experience the difference with ${clientEnv.APP_NAME}'s AI-powered image enhancement. Start free today.`}
                 ctaText={`Try ${clientEnv.APP_NAME} Free`}
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="comparison"
                 slug={data.slug}
               />

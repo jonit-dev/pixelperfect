@@ -10,7 +10,7 @@ const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 const staticPages = [
   { path: '/', priority: 1.0, changefreq: 'daily' },
-  { path: '/upscaler', priority: 0.95, changefreq: 'weekly' },
+  { path: '/', priority: 0.95, changefreq: 'weekly' },
   { path: '/pricing', priority: 0.9, changefreq: 'weekly' },
   { path: '/features', priority: 0.85, changefreq: 'weekly' },
   { path: '/how-it-works', priority: 0.85, changefreq: 'weekly' },

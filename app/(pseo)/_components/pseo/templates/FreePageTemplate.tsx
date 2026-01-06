@@ -81,7 +81,7 @@ export function FreePageTemplate({ data }: IFreePageTemplateProps): ReactElement
                 h1={data.h1}
                 intro={data.intro}
                 ctaText="Start Free"
-                ctaUrl={data.upgradePath || '/upscaler'}
+                ctaUrl={data.upgradePath || '/?signup=1'}
                 pageType="free"
                 slug={data.slug}
               />

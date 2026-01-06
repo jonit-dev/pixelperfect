@@ -165,7 +165,7 @@ export function InteractiveToolPageTemplate({
                 title="Need AI-Powered Enhancement?"
                 description="For advanced upscaling with AI quality enhancement, try our flagship tool."
                 ctaText="Try AI Image Upscaler"
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="tool"
                 slug={data.slug}
               />

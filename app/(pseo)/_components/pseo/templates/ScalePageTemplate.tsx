@@ -80,7 +80,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                 h1={data.h1}
                 intro={data.intro}
                 ctaText={`Upscale to ${data.resolution}`}
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="scale"
                 slug={data.slug}
               />
@@ -185,7 +185,7 @@ export function ScalePageTemplate({ data }: IScalePageTemplateProps): ReactEleme
                 title={`Ready to upscale to ${data.resolution}?`}
                 description="Transform your images to stunning high resolution with AI-powered upscaling. Start free today."
                 ctaText={`Start Upscaling to ${data.resolution}`}
-                ctaUrl="/upscaler"
+                ctaUrl="/?signup=1"
                 pageType="scale"
                 slug={data.slug}
               />

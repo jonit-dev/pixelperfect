@@ -105,7 +105,7 @@ The pSEO system uses a **data-driven, template-based architecture**:
   "relatedTools": ["other-tool-slug"],
   "relatedGuides": ["relevant-guide-slug"],
   "ctaText": "Action Text",
-  "ctaUrl": "/upscaler"
+  "ctaUrl": "/?signup=1"
 }
 ```
 

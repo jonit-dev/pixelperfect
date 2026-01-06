@@ -259,7 +259,7 @@ export function PrintCalculator(): React.ReactElement {
 
             {checkResult.upscaleNeeded && (
               <a
-                href="/upscaler"
+                href="/?signup=1"
                 className="mt-4 block w-full rounded-lg bg-accent-primary py-2 text-center font-medium text-white transition-colors hover:bg-accent-secondary"
               >
                 Upscale {checkResult.upscaleNeeded}x Now
