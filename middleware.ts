@@ -14,6 +14,24 @@ import {
 } from '@lib/middleware';
 
 /**
+ * Handle WWW to non-WWW redirect for SEO consistency
+ * Redirects www.myimageupscaler.com to myimageupscaler.com
+ */
+function handleWWWRedirect(req: NextRequest): NextResponse | null {
+  const hostname = req.nextUrl.hostname;
+
+  // If hostname starts with www., redirect to non-www version
+  if (hostname.startsWith('www.')) {
+    const url = req.nextUrl.clone();
+    url.protocol = req.nextUrl.protocol;
+    url.hostname = hostname.slice(4); // Remove 'www.' prefix
+    return NextResponse.redirect(url, 301); // Permanent redirect for SEO
+  }
+
+  return null;
+}
+
+/**
  * Legacy URL redirects for SEO
  * Maps old/incorrect URLs to their new canonical locations
  */
@@ -173,7 +191,13 @@ async function handlePageRoute(req: NextRequest, pathname: string): Promise<Next
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   const pathname = req.nextUrl.pathname;
 
-  // Handle legacy redirects for SEO (must be first to take precedence)
+  // Handle WWW to non-WWW redirect for SEO (must be first)
+  const wwwRedirect = handleWWWRedirect(req);
+  if (wwwRedirect) {
+    return wwwRedirect;
+  }
+
+  // Handle legacy redirects for SEO
   const legacyRedirect = handleLegacyRedirects(req);
   if (legacyRedirect) {
     return legacyRedirect;
