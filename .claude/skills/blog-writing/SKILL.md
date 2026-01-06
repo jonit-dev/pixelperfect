@@ -326,32 +326,136 @@ download_blog_image "1542567455-cd733f23fbb1" "public/blog/images/my-post/hero.j
   - E-commerce optimization
   - 10 free credits
 
-### CTAs
+### CTAs (Call-to-Action) - CRITICAL FOR ACQUISITION
 
-End with clear call-to-action:
+Strategic CTA placement is essential for converting readers into users. Every blog post MUST include multiple CTAs.
+
+**IMPORTANT: Link Destinations**
+- **There is NO `/upscaler` page** - this route does not exist!
+- CTAs link to `/?signup=1` (homepage with signup prompt)
+- Pricing links go to `/pricing`
+- Tool-specific links go to `/tools/{slug}`
+
+#### CTA Types
+
+Use blockquote-style markers to insert standardized CTAs:
+
+| Marker | Type | Best Use Case |
+|--------|------|---------------|
+| `> [!CTA_TRY]` | Try It | Mid-article, after explaining a concept |
+| `> [!CTA_DEMO]` | Demo | After before/after comparisons or visual examples |
+| `> [!CTA_PRICING]` | Pricing | Near end, for value-conscious readers |
+| `> [!CTA_TOOL:slug]` | Tool-specific | Link to specific tool page (e.g., `> [!CTA_TOOL:upscale-image-2x]`) |
+
+#### CTA Placement Strategy (REQUIRED)
+
+**Minimum CTAs per post: 2**
+
+| Placement | When | CTA Type |
+|-----------|------|----------|
+| After Hook (25% mark) | Reader is engaged, understanding the problem | `[!CTA_TRY]` |
+| Mid-article (50% mark) | After key insight or before/after demo | `[!CTA_DEMO]` |
+| Before Conclusion (75% mark) | Reader has learned, ready to act | `[!CTA_PRICING]` |
+
+**Example placement in article structure:**
 
 ```markdown
----
+## Introduction / Hook
+(Problem statement, emotional connection)
 
+## Why This Matters
+(Context, statistics)
+
+> [!CTA_TRY]
+
+## Main Section 1
+(First key insight)
+
+## Main Section 2
+(Tutorial steps or comparison)
+
+> [!CTA_DEMO]
+
+## Main Section 3
+(Advanced tips)
+
+## Conclusion
+
+> [!CTA_PRICING]
+```
+
+#### CTA Best Practices
+
+1. **Place after value**: Never put a CTA before explaining the benefit
+2. **Match context**: Use `[!CTA_DEMO]` after showing visual results
+3. **Don't over-CTA**: Maximum 3 in-content CTAs (plus bottom page CTA)
+4. **Natural flow**: CTA should feel like a helpful suggestion, not interruption
+
+#### Legacy CTA (Text-only)
+
+For subtle inline CTAs within paragraphs, use markdown links:
+
+```markdown
 Ready to enhance your images? [Try myimageupscaler.com free](/pricing) — 10 credits, no credit card required.
 ```
+
+## Legal Guidelines (CRITICAL)
+
+### Never Do
+- **No fabricated benchmarks** - Never invent test scores, performance metrics, or comparison data
+- **No false competitor claims** - Never make claims about competitor products you cannot prove
+- **No fake reviews/testimonials** - Never create fictional user experiences or quotes
+- **No made-up statistics** - Never invent market data, percentages, or research findings
+
+### Safe Content Types
+1. **Educational content** - Explain concepts, techniques, how things work
+2. **First-party showcases** - Before/after examples using YOUR tool with real images
+3. **Use-case guides** - Practical tutorials for specific workflows (e-commerce, printing, etc.)
+4. **General advice** - Tips that apply regardless of tool used
+5. **Verified facts only** - Only cite statistics from reputable, linkable sources
+
+### If Mentioning Competitors
+- Only state **verifiable public facts** (pricing from their website, features they list)
+- Use phrases like "at time of writing" for pricing/features that may change
+- Never claim their quality is worse without actual documented evidence
+- Prefer generic category references ("many online tools") over naming competitors
+
+### Safe Comparison Approaches
+- Compare YOUR tool's results (before/after) without mentioning competitors
+- Compare approaches/methods generically (e.g., "browser-based vs desktop software")
+- Link to third-party reviews if you need comparison data
+- Use open-source tools (Waifu2x, Real-ESRGAN) for technical comparisons - less legal risk
 
 ## Validation Checklist
 
 Before publishing:
 
+**SEO & Metadata**
 - [ ] Title is 50-60 characters with primary keyword
 - [ ] Description is 150-160 characters with CTA
 - [ ] Date is in YYYY-MM-DD format
 - [ ] Category matches allowed values
 - [ ] 3-5 relevant tags included
 - [ ] Primary keyword in first 100 words
-- [ ] 2+ internal links to /pricing or other blog posts
+
+**Content & Links**
+- [ ] 2+ internal links to /pricing, /?signup=1, or other blog posts
+- [ ] NO links to /upscaler (this page does not exist!)
+- [ ] Callouts used for tips/warnings
+
+**Images**
 - [ ] 3+ images: hero (frontmatter) + 2 mid-content Unsplash images
 - [ ] Images are contextually relevant to surrounding content
-- [ ] Callouts used for tips/warnings
-- [ ] CTA at end of post
 - [ ] No broken image paths
+
+**CTAs (Critical for Acquisition)**
+- [ ] Minimum 2 in-content CTAs using `> [!CTA_*]` markers
+- [ ] First CTA placed after hook/context section (25% mark)
+- [ ] Second CTA placed mid-article after key insight (50% mark)
+- [ ] CTAs placed AFTER providing value, not before
+- [ ] CTA types match content context (DEMO after visuals, TRY after concepts)
+
+**Final**
 - [ ] `yarn verify` passes
 
 ## Existing Posts Reference

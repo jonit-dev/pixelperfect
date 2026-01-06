@@ -5,6 +5,7 @@ import { getAllPosts } from '@server/blog';
 import { Calendar, Clock, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
 import { AmbientBackground } from '@client/components/landing/AmbientBackground';
+import { BlogSearch } from '@client/components/blog/BlogSearch';
 
 export const metadata: Metadata = {
   title: 'Blog - Image Enhancement Tips & Guides',
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 const POSTS_PER_PAGE = 6;
 
 interface IBlogPageProps {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; q?: string }>;
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -33,11 +34,24 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export default async function BlogPage({ searchParams }: IBlogPageProps) {
   const params = await searchParams;
-  const posts = getAllPosts();
-  const [featuredPost, ...otherPosts] = posts;
+  const allPosts = getAllPosts();
+  const searchQuery = params.q?.toLowerCase().trim();
 
-  // Shuffle the other posts
-  const shuffledPosts = shuffleArray(otherPosts);
+  // Filter posts by search query
+  const filteredPosts = searchQuery
+    ? allPosts.filter(
+        post =>
+          post.title.toLowerCase().includes(searchQuery) ||
+          post.description.toLowerCase().includes(searchQuery) ||
+          post.category.toLowerCase().includes(searchQuery) ||
+          post.tags.some(tag => tag.toLowerCase().includes(searchQuery))
+      )
+    : allPosts;
+
+  const [featuredPost, ...otherPosts] = filteredPosts;
+
+  // Shuffle the other posts (only when not searching)
+  const shuffledPosts = searchQuery ? otherPosts : shuffleArray(otherPosts);
 
   // Calculate pagination
   const currentPage = Number(params.page) || 1;
@@ -62,10 +76,11 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
               Insights & Expertise
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-8">
             Master the art of AI image upscaling, photo restoration, and professional photography
             optimization with our in-depth guides.
           </p>
+          <BlogSearch />
         </div>
       </section>
 
@@ -230,7 +245,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
                   {/* Previous Button */}
                   {currentPage > 1 ? (
                     <Link
-                      href={`/blog?page=${currentPage - 1}`}
+                      href={`/blog?page=${currentPage - 1}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`}
                       scroll={false}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
                     >
@@ -249,7 +264,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
                       <Link
                         key={pageNum}
-                        href={`/blog?page=${pageNum}`}
+                        href={`/blog?page=${pageNum}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`}
                         scroll={false}
                         className={`min-w-[2.5rem] h-10 flex items-center justify-center rounded-lg font-medium transition-all ${
                           currentPage === pageNum
@@ -265,7 +280,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
                   {/* Next Button */}
                   {currentPage < totalPages ? (
                     <Link
-                      href={`/blog?page=${currentPage + 1}`}
+                      href={`/blog?page=${currentPage + 1}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`}
                       scroll={false}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all"
                     >
@@ -297,7 +312,7 @@ export default async function BlogPage({ searchParams }: IBlogPageProps) {
             Try our AI-powered image upscaler and see the difference for yourself.
           </p>
           <Link
-            href="/upscaler"
+            href="/?signup=1"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg transition-all duration-300"
           >
             Try {clientEnv.APP_NAME} Free

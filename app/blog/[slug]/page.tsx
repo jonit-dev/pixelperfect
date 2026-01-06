@@ -6,10 +6,8 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@server/blog';
 import {
-  Calendar,
   Clock,
   ArrowLeft,
-  User,
   Lightbulb,
   Info,
   AlertTriangle,
@@ -19,6 +17,7 @@ import {
 import { clientEnv } from '@shared/config/env';
 import { ReadingProgress } from '@client/components/blog/ReadingProgress';
 import { RelatedToolsSection } from '../_components/RelatedToolsSection';
+import { BlogCTA, parseCTAMarker } from '@client/components/blog/BlogCTA';
 
 // Convert MDX Callout components to blockquotes with type markers
 function preprocessContent(content: string): string {
@@ -156,23 +155,15 @@ export default async function BlogPostPage({ params }: IPageProps) {
               {post.description}
             </p>
 
-            {/* Author & Date Card */}
-            <div className="flex items-center gap-4 p-4 bg-surface rounded-2xl border border-border w-fit">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center">
-                <User className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="font-medium text-white">{post.author}</p>
-                <p className="text-sm text-text-secondary flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" />
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
-              </div>
-            </div>
+            {/* Author & Date */}
+            <p className="text-sm text-text-secondary">
+              {clientEnv.APP_NAME} Team &middot;{' '}
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </p>
 
             {/* Tags */}
             {post.tags.length > 0 && (
@@ -253,59 +244,63 @@ export default async function BlogPostPage({ params }: IPageProps) {
                     </pre>
                   ),
                   blockquote: ({ children }) => {
-                    // Check if this is a callout by looking at the first text child
-                    const firstChild = Array.isArray(children) ? children[0] : children;
-                    const text = firstChild?.props?.children?.[0];
+                    // Safely extract text from React children for pattern matching
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const extractText = (node: any): string => {
+                      if (typeof node === 'string') return node;
+                      if (typeof node === 'number') return String(node);
+                      if (!node) return '';
+                      if (Array.isArray(node)) return node.map(extractText).join('');
+                      if (node?.props?.children) return extractText(node.props.children);
+                      return '';
+                    };
+                    const childrenAsString = extractText(children);
 
-                    if (typeof text === 'string') {
-                      const tipMatch = text.match(/^\[!TIP\]\s*/);
-                      const infoMatch = text.match(/^\[!INFO\]\s*/);
-                      const warningMatch = text.match(/^\[!WARNING\]\s*/);
+                    // Check for CTA markers first
+                    const ctaResult = parseCTAMarker(childrenAsString);
+                    if (ctaResult) {
+                      return (
+                        <BlogCTA
+                          type={ctaResult.type}
+                          toolSlug={ctaResult.toolSlug}
+                        />
+                      );
+                    }
 
-                      if (tipMatch || infoMatch || warningMatch) {
-                        const type = tipMatch ? 'tip' : infoMatch ? 'info' : 'warning';
-                        const Icon =
-                          type === 'tip' ? Lightbulb : type === 'info' ? Info : AlertTriangle;
-                        const colors = {
-                          tip: 'border-emerald-500/50 bg-emerald-500/10',
-                          info: 'border-accent/50 bg-accent/10',
-                          warning: 'border-amber-500/50 bg-amber-500/10',
-                        };
-                        const iconColors = {
-                          tip: 'text-emerald-400',
-                          info: 'text-accent',
-                          warning: 'text-amber-400',
-                        };
+                    const tipMatch = childrenAsString.match(/\[!TIP\]\s*/);
+                    const infoMatch = childrenAsString.match(/\[!INFO\]\s*/);
+                    const warningMatch = childrenAsString.match(/\[!WARNING\]\s*/);
 
-                        // Strip the [!TYPE] marker from the displayed content
-                        const cleanedText = text.replace(/^\[!(TIP|INFO|WARNING)\]\s*/, '');
-                        const cleanedChildren = Array.isArray(children)
-                          ? children.map((child, idx) =>
-                              idx === 0 && child?.props?.children?.[0] === text
-                                ? {
-                                    ...child,
-                                    props: {
-                                      ...child.props,
-                                      children: [cleanedText, ...child.props.children.slice(1)],
-                                    },
-                                  }
-                                : child
-                            )
-                          : children;
+                    if (tipMatch || infoMatch || warningMatch) {
+                      const type = tipMatch ? 'tip' : infoMatch ? 'info' : 'warning';
+                      const Icon =
+                        type === 'tip' ? Lightbulb : type === 'info' ? Info : AlertTriangle;
+                      const colors = {
+                        tip: 'border-emerald-500/50 bg-emerald-500/10',
+                        info: 'border-accent/50 bg-accent/10',
+                        warning: 'border-amber-500/50 bg-amber-500/10',
+                      };
+                      const iconColors = {
+                        tip: 'text-emerald-400',
+                        info: 'text-accent',
+                        warning: 'text-amber-400',
+                      };
 
-                        return (
-                          <div
-                            className={`not-prose my-6 p-4 rounded-lg border-l-4 ${colors[type]}`}
-                          >
-                            <div className="flex gap-3">
-                              <Icon
-                                className={`w-5 h-5 mt-0.5 flex-shrink-0 ${iconColors[type]}`}
-                              />
-                              <div className="text-muted-foreground">{cleanedChildren}</div>
-                            </div>
+                      // Strip the marker and render clean text
+                      const cleanedContent = childrenAsString.replace(/\[!(TIP|INFO|WARNING)\]\s*/, '');
+
+                      return (
+                        <div
+                          className={`not-prose my-6 p-4 rounded-lg border-l-4 ${colors[type]}`}
+                        >
+                          <div className="flex gap-3">
+                            <Icon
+                              className={`w-5 h-5 mt-0.5 flex-shrink-0 ${iconColors[type]}`}
+                            />
+                            <div className="text-muted-foreground">{cleanedContent}</div>
                           </div>
-                        );
-                      }
+                        </div>
+                      );
                     }
 
                     return (
@@ -389,10 +384,10 @@ export default async function BlogPostPage({ params }: IPageProps) {
               Ready to Try AI Image Enhancement?
             </h2>
             <p className="text-white/80 mb-8 text-lg max-w-xl mx-auto">
-              Upload your image and see the results in seconds. No signup required.
+              Upload your image and see the results in seconds. Start with 10 free credits.
             </p>
             <Link
-              href="/upscaler"
+              href="/?signup=1"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg transition-all duration-300"
             >
               Try {clientEnv.APP_NAME} Free
