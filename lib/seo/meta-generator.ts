@@ -110,6 +110,27 @@ export const META_PATTERNS: Record<PSEOCategory, IMetaPattern> = {
     titleMaxLength: 60,
     descriptionMaxLength: 160,
   },
+  'device-use': {
+    title: `{Device} {UseCase} Upscaler - Free Online Tool | ${APP_NAME}`,
+    description:
+      'Upscale images on {Device} for {UseCase}. AI-powered enhancement optimized for {Device} workflows. Free to try.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  'format-scale': {
+    title: `{Format} {ScaleFactor} Upscaler - Free Online Tool | ${APP_NAME}`,
+    description:
+      'Upscale {Format} images by {ScaleFactor} with AI. {FormatDescription} Free online tool for {ScaleExpectations}.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
+  'platform-format': {
+    title: `{Platform} {Format} Upscaler - Free Enhancement Tool | ${APP_NAME}`,
+    description:
+      'Enhance {Platform} images in {Format} format. {PlatformDescription} Free online tool for {FormatDescription}.',
+    titleMaxLength: 60,
+    descriptionMaxLength: 160,
+  },
 };
 
 /**

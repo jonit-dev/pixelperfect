@@ -19,6 +19,9 @@ import formatsDataFile from '@/app/seo/data/formats.json';
 import useCasesDataFile from '@/app/seo/data/use-cases.json';
 import alternativesDataFile from '@/app/seo/data/alternatives.json';
 import platformsDataFile from '@/app/seo/data/platforms.json';
+import formatScaleDataFile from '@/app/seo/data/format-scale.json';
+import platformFormatDataFile from '@/app/seo/data/platform-format.json';
+import deviceUseDataFile from '@/app/seo/data/device-use.json';
 import type {
   IToolPage,
   IFormatPage,
@@ -31,6 +34,9 @@ import type {
   IPlatformPage,
   IContentTypePage,
   IAIFeaturePage,
+  IFormatScalePage,
+  IPlatformFormatPage,
+  IDeviceUseCasePage,
   PSEOPage,
   IPSEODataFile,
 } from './pseo-types';
@@ -40,6 +46,9 @@ const toolsData = toolsDataFile as IPSEODataFile<IToolPage>;
 const formatsData = formatsDataFile as unknown as IPSEODataFile<IFormatPage>;
 const useCasesData = useCasesDataFile as unknown as IPSEODataFile<IUseCasePage>;
 const alternativesData = alternativesDataFile as unknown as IPSEODataFile<IAlternativePage>;
+const formatScaleData = formatScaleDataFile as unknown as IPSEODataFile<IFormatScalePage>;
+const platformFormatData = platformFormatDataFile as unknown as IPSEODataFile<IPlatformFormatPage>;
+const deviceUseData = deviceUseDataFile as unknown as IPSEODataFile<IDeviceUseCasePage>;
 
 /**
  * Generate fallback page data from keyword mappings
@@ -377,6 +386,48 @@ export const getAllAIFeaturePages = cache(async (): Promise<IAIFeaturePage[]> =>
   }
 });
 
+// Format × Scale Multiplier Pages
+export const getAllFormatScaleSlugs = cache(async (): Promise<string[]> => {
+  return formatScaleData.pages.map(page => page.slug);
+});
+
+export const getFormatScaleData = cache(async (slug: string): Promise<IFormatScalePage | null> => {
+  const page = formatScaleData.pages.find(p => p.slug === slug);
+  return page || null;
+});
+
+export const getAllFormatScale = cache(async (): Promise<IFormatScalePage[]> => {
+  return formatScaleData.pages;
+});
+
+// Platform × Format Multiplier Pages
+export const getAllPlatformFormatSlugs = cache(async (): Promise<string[]> => {
+  return platformFormatData.pages.map(page => page.slug);
+});
+
+export const getPlatformFormatData = cache(async (slug: string): Promise<IPlatformFormatPage | null> => {
+  const page = platformFormatData.pages.find(p => p.slug === slug);
+  return page || null;
+});
+
+export const getAllPlatformFormat = cache(async (): Promise<IPlatformFormatPage[]> => {
+  return platformFormatData.pages;
+});
+
+// Device × Use Case Multiplier Pages
+export const getAllDeviceUseSlugs = cache(async (): Promise<string[]> => {
+  return deviceUseData.pages.map(page => page.slug);
+});
+
+export const getDeviceUseData = cache(async (slug: string): Promise<IDeviceUseCasePage | null> => {
+  const page = deviceUseData.pages.find(p => p.slug === slug);
+  return page || null;
+});
+
+export const getAllDeviceUse = cache(async (): Promise<IDeviceUseCasePage[]> => {
+  return deviceUseData.pages;
+});
+
 // Aggregate function for sitemap
 export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
   const [
@@ -391,6 +442,9 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     platforms,
     contentPages,
     aiFeatures,
+    formatScalePages,
+    platformFormatPages,
+    deviceUsePages,
   ] = await Promise.all([
     getAllTools(),
     getAllFormats(),
@@ -403,6 +457,9 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     getAllPlatforms(),
     getAllContentPages(),
     getAllAIFeaturePages(),
+    getAllFormatScale(),
+    getAllPlatformFormat(),
+    getAllDeviceUse(),
   ]);
 
   return [
@@ -417,5 +474,8 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     ...platforms,
     ...contentPages,
     ...aiFeatures,
+    ...formatScalePages,
+    ...platformFormatPages,
+    ...deviceUsePages,
   ];
 });
