@@ -15,7 +15,20 @@ for arg in "$@"; do
 done
 
 source "$SCRIPT_DIR/common.sh"
-source "$PROJECT_ROOT/scripts/load-env.sh"
+
+# Cleanup function - removes temporary production secrets
+cleanup_prod_secrets() {
+    local exit_code=$?
+    if [[ -f "$PROJECT_ROOT/.env.api.prod" ]] || [[ -f "$PROJECT_ROOT/.env.client.prod" ]]; then
+        log_info "Cleaning up temporary production secrets..."
+        rm -f "$PROJECT_ROOT/.env.api.prod" "$PROJECT_ROOT/.env.client.prod"
+        log_success "Cleanup complete"
+    fi
+    exit $exit_code
+}
+
+# Set trap for cleanup on any exit (success, failure, or interrupt)
+trap cleanup_prod_secrets EXIT
 
 echo ""
 echo -e "${CYAN}══════════════════════════════════════${NC}"
@@ -24,6 +37,12 @@ echo -e "${CYAN}═════════════════════�
 echo ""
 
 START_TIME=$(date +%s)
+
+# Fetch production secrets from GCloud Secret Manager
+source "$SCRIPT_DIR/steps/00-fetch-secrets.sh" && step_fetch_secrets
+
+# Load production environment variables
+source "$PROJECT_ROOT/scripts/load-env.sh" --prod
 
 # Run tests unless skipped
 if [ "$SKIP_TESTS" = "false" ]; then
