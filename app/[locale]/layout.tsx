@@ -11,6 +11,7 @@ import { Layout } from '@client/components/layout/Layout';
 import { JsonLd } from '@client/components/seo/JsonLd';
 import { SUPPORTED_LOCALES, isValidLocale } from '@/i18n/config';
 import { clientEnv } from '@shared/config/env';
+import { getOpenGraphLocale } from '@/lib/seo/hreflang-generator';
 import '@client/styles/index.css';
 
 const APP_NAME = clientEnv.APP_NAME;
@@ -50,7 +51,7 @@ export async function generateMetadata({
       'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
     openGraph: {
       type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      locale: getOpenGraphLocale(locale as 'en' | 'es' | 'pt' | 'de' | 'fr' | 'it' | 'ja'),
       url: '/',
       siteName: APP_NAME,
     },
@@ -59,6 +60,12 @@ export async function generateMetadata({
       languages: {
         en: '/',
         es: '/es/',
+        pt: '/pt/',
+        de: '/de/',
+        fr: '/fr/',
+        it: '/it/',
+        ja: '/ja/',
+        'x-default': '/',
       },
     },
     icons: {

@@ -193,6 +193,17 @@ function flattenKeys(obj: Record<string, unknown>, prefix = ''): Set<string> {
     if (value && typeof value === 'object' && !Array.isArray(value)) {
       const nestedKeys = flattenKeys(value as Record<string, unknown>, fullKey);
       nestedKeys.forEach(k => keys.add(k));
+    } else if (Array.isArray(value)) {
+      // Handle arrays by checking each element's keys
+      // Add the array key itself
+      keys.add(fullKey);
+      // Then recurse into array elements to check their nested keys
+      value.forEach((item, index) => {
+        if (item && typeof item === 'object' && !Array.isArray(item)) {
+          const itemKeys = flattenKeys(item as Record<string, unknown>, fullKey);
+          itemKeys.forEach(k => keys.add(k));
+        }
+      });
     } else {
       keys.add(fullKey);
     }
@@ -210,6 +221,14 @@ function flattenKeyValues(obj: Record<string, unknown>, prefix = ''): Map<string
     if (value && typeof value === 'object' && !Array.isArray(value)) {
       const nested = flattenKeyValues(value as Record<string, unknown>, fullKey);
       nested.forEach((v, k) => keyValues.set(k, v));
+    } else if (Array.isArray(value)) {
+      // Handle arrays by recursing into each element
+      value.forEach(item => {
+        if (item && typeof item === 'object' && !Array.isArray(item)) {
+          const itemValues = flattenKeyValues(item as Record<string, unknown>, fullKey);
+          itemValues.forEach((v, k) => keyValues.set(k, v));
+        }
+      });
     } else if (typeof value === 'string') {
       keyValues.set(fullKey, value);
     }
