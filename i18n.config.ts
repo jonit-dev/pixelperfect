@@ -26,6 +26,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     help,
     howItWorks,
     blog,
+    stripe,
     defaultCommon,
     defaultDashboard,
     defaultAuth,
@@ -34,6 +35,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     defaultHelp,
     defaultHowItWorks,
     defaultBlog,
+    defaultStripe,
   ] = await Promise.all([
     import(`./locales/${locale}/common.json`),
     import(`./locales/${locale}/dashboard.json`),
@@ -43,6 +45,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./locales/${locale}/help.json`),
     import(`./locales/${locale}/howItWorks.json`),
     import(`./locales/${locale}/blog.json`),
+    import(`./locales/${locale}/stripe.json`),
     // Load default locale (English) as fallback
     import(`./locales/${DEFAULT_LOCALE}/common.json`),
     import(`./locales/${DEFAULT_LOCALE}/dashboard.json`),
@@ -52,6 +55,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./locales/${DEFAULT_LOCALE}/help.json`),
     import(`./locales/${DEFAULT_LOCALE}/howItWorks.json`),
     import(`./locales/${DEFAULT_LOCALE}/blog.json`),
+    import(`./locales/${DEFAULT_LOCALE}/stripe.json`),
   ]);
 
   const defaultMessages = {
@@ -63,6 +67,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     help: defaultHelp.default,
     howItWorks: defaultHowItWorks.default,
     blog: defaultBlog.default,
+    stripe: defaultStripe.default,
   };
 
   return {
@@ -76,6 +81,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       help: help.default,
       howItWorks: howItWorks.default,
       blog: blog.default,
+      stripe: stripe.default,
     },
     getMessageFallback: ({ key, namespace }) => {
       // Try to get the message from default locale (English)

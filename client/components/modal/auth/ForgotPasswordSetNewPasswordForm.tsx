@@ -1,6 +1,7 @@
 import { InputField } from '@client/components/form/InputField';
 import { useUserStore } from '@client/store/userStore';
 import { useToastStore } from '@client/store/toastStore';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -22,20 +23,21 @@ export const ForgotPasswordSetNewPasswordForm: React.FC<IProps> = ({ onClose }) 
   } = useForm<ISetNewPasswordForm>();
   const { updatePassword } = useUserStore();
   const { showToast } = useToastStore();
+  const t = useTranslations('auth.setNewPassword');
 
   const onSubmitHandler = async (data: ISetNewPasswordForm) => {
     try {
       if (data.newPassword !== data.confirmPassword) {
-        showToast({ message: 'Passwords do not match', type: 'error' });
+        showToast({ message: t('passwordsDoNotMatch'), type: 'error' });
         return;
       }
       await updatePassword(data.newPassword);
-      showToast({ message: 'Password updated successfully!', type: 'success' });
+      showToast({ message: t('passwordUpdatedSuccess'), type: 'success' });
       onClose();
     } catch (error) {
       console.error('Error setting new password:', error);
       showToast({
-        message: error instanceof Error ? error.message : 'Failed to update password',
+        message: error instanceof Error ? error.message : t('failedToUpdate'),
         type: 'error',
       });
     }
@@ -43,27 +45,27 @@ export const ForgotPasswordSetNewPasswordForm: React.FC<IProps> = ({ onClose }) 
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-5">
-      <p className="text-center text-muted-foreground text-sm mb-1">Enter your new password</p>
+      <p className="text-center text-muted-foreground text-sm mb-1">{t('enterNewPassword')}</p>
       <InputField
         {...register('newPassword', {
-          required: 'New password is required',
+          required: t('newPasswordRequired'),
           minLength: {
             value: 6,
-            message: 'Password must be at least 6 characters',
+            message: t('passwordMinLength'),
           },
         })}
         type="password"
-        placeholder="New Password"
+        placeholder={t('newPassword')}
         className="w-full"
         error={errors.newPassword?.message}
       />
       <InputField
         {...register('confirmPassword', {
-          required: 'Please confirm your new password',
-          validate: value => value === watch('newPassword') || 'The passwords do not match',
+          required: t('confirmPasswordRequired'),
+          validate: value => value === watch('newPassword') || t('passwordsDoNotMatch'),
         })}
         type="password"
-        placeholder="Confirm New Password"
+        placeholder={t('confirmNewPassword')}
         className="w-full"
         error={errors.confirmPassword?.message}
       />
@@ -71,7 +73,7 @@ export const ForgotPasswordSetNewPasswordForm: React.FC<IProps> = ({ onClose }) 
         type="submit"
         className="w-full px-4 py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98] mt-2 glow-blue"
       >
-        Set New Password
+        {t('setNewPasswordButton')}
       </button>
     </form>
   );
