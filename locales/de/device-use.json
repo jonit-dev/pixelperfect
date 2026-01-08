@@ -1,5 +1,10 @@
 {
   "category": "device-use",
+  "meta": {
+    "totalPages": 20,
+    "lastUpdated": "2026-01-06",
+    "description": "Device × Use Case multiplier pages - combinations of devices with specific use cases for image upscaling"
+  },
   "pages": [
     {
       "slug": "mobile-social-media-upscaler",
@@ -1010,9 +1015,5 @@
       "relatedDevices": ["Desktop-content-creation-Upscaler", "Mobil-content-creation-Upscaler"],
       "relatedUseCases": ["Tablet-digital-art-Upscaler", "Tablet-social-media-Upscaler"]
     }
-  ],
-  "meta": {
-    "totalPages": 17,
-    "lastUpdated": "2025-12-19T00:00:00Z"
-  }
+  ]
 }
