@@ -9,6 +9,7 @@
 **Problem:** The website has 52 pages + 188 pSEO pages with ~3,000 hardcoded English strings, limiting international market reach.
 
 **Files Analyzed:**
+
 - `/app/(pseo)/*/[slug]/page.tsx` - 12 pSEO route handlers
 - `/lib/seo/data-loader.ts`, `metadata-factory.ts`, `pseo-types.ts`
 - `/app/seo/data/*.json` - 25 content data files
@@ -17,6 +18,7 @@
 - `/locales/` - Empty placeholder directories (en/, es/)
 
 **Current Behavior:**
+
 - All content hardcoded in English
 - No locale detection or routing
 - pSEO data stored in JSON files (translation-ready structure)
@@ -28,6 +30,7 @@
 ## 2. Solution
 
 **Approach:**
+
 - Use `next-intl` library for App Router i18n (mature, well-maintained)
 - URL structure: `/[locale]/[...path]` with English as default
 - Keep slugs in English for SEO consistency and backlink stability
@@ -106,6 +109,7 @@ sequenceDiagram
 ### Phase 1: Foundation Setup - Install next-intl and configure locale routing
 
 **Files (5):**
+
 - `package.json` - Add next-intl dependency
 - `i18n/config.ts` - Create locale configuration
 - `i18n/request.ts` - Create request handler
@@ -128,6 +132,7 @@ sequenceDiagram
 | `tests/unit/i18n/middleware.spec.ts` | `should fallback to default locale` | `expect(getLocale('/tools')).toBe('en')` |
 
 **User Verification:**
+
 - Action: Navigate to `/es/`
 - Expected: Page loads without error, locale context available
 
@@ -136,6 +141,7 @@ sequenceDiagram
 ### Phase 2: App Structure Migration - Move pages under [locale] segment
 
 **Files (5):**
+
 - `app/[locale]/layout.tsx` - Create locale-aware root layout
 - `app/[locale]/page.tsx` - Move landing page
 - `app/[locale]/providers.tsx` - Create IntlProvider wrapper
@@ -157,6 +163,7 @@ sequenceDiagram
 | `tests/e2e/i18n/locale-routing.spec.ts` | `should render Spanish homepage` | `expect(page.url()).toContain('/es/')` |
 
 **User Verification:**
+
 - Action: Visit `/` and `/es/`
 - Expected: Both pages render, `/es/` shows Spanish layout text
 
@@ -165,6 +172,7 @@ sequenceDiagram
 ### Phase 3: UI Component Extraction - Extract hardcoded strings from core components
 
 **Files (5):**
+
 - `locales/en/common.json` - Expand with all UI strings
 - `locales/es/common.json` - Add Spanish translations
 - `client/components/layout/Footer.tsx` - Use translation keys
@@ -186,6 +194,7 @@ sequenceDiagram
 | `tests/e2e/i18n/ui-translations.spec.ts` | `should switch language via switcher` | Click switcher → URL changes |
 
 **User Verification:**
+
 - Action: Visit `/es/`, check footer and navigation
 - Expected: All footer links and nav items display in Spanish
 
@@ -194,6 +203,7 @@ sequenceDiagram
 ### Phase 4: pSEO Data Localization - Create translation infrastructure for pSEO JSON files
 
 **Files (5):**
+
 - `lib/seo/data-loader.ts` - Add locale parameter to loaders
 - `lib/i18n/pseo-translations.ts` - Create pSEO translation loader
 - `locales/en/tools.json` - Move/copy from app/seo/data/
@@ -215,6 +225,7 @@ sequenceDiagram
 | `tests/e2e/pseo/localized-tools.spec.ts` | `should render Spanish tool page` | Page shows Spanish content |
 
 **User Verification:**
+
 - Action: Visit `/es/tools/ai-image-upscaler/`
 - Expected: Page renders with Spanish title, description, features
 
@@ -223,6 +234,7 @@ sequenceDiagram
 ### Phase 5: Metadata & SEO - Add hreflang, localized metadata, sitemaps
 
 **Files (5):**
+
 - `lib/seo/metadata-factory.ts` - Add hreflang generation
 - `lib/seo/hreflang-generator.ts` - Create hreflang utility
 - `app/sitemap.xml/route.ts` - Update for multi-language
@@ -244,6 +256,7 @@ sequenceDiagram
 | `tests/e2e/seo/metadata.spec.ts` | `should have hreflang in head` | `<link rel="alternate" hreflang="es">` exists |
 
 **User Verification:**
+
 - Action: View page source of `/tools/ai-image-upscaler/`
 - Expected: See hreflang links for en, es, and x-default in `<head>`
 
@@ -254,29 +267,32 @@ sequenceDiagram
 **Files (4 per iteration, 3 iterations):**
 
 **Iteration 6a: High-traffic categories**
+
 - `locales/es/formats.json`
 - `locales/es/guides.json`
 - `locales/es/use-cases.json`
 - `locales/es/free.json`
 
 **Iteration 6b: Comparison categories**
+
 - `locales/es/compare.json`
 - `locales/es/alternatives.json`
 - `locales/es/platforms.json`
 - `locales/es/scale.json`
 
 **Iteration 6c: Combined categories**
+
 - `locales/es/device-use.json`
 - `locales/es/format-scale.json`
 - `locales/es/platform-format.json`
 
 **Implementation:**
 
-- [ ] Translate formats category (2 pages)
-- [ ] Translate guides category (~10 pages)
-- [ ] Translate use-cases category (~20 pages)
-- [ ] Translate remaining categories
-- [ ] Update each category page.tsx to support locale
+- [x] Translate formats category (2 pages)
+- [x] Translate guides category (~10 pages)
+- [x] Translate use-cases category (~20 pages)
+- [x] Translate remaining categories
+- [x] Update each category page.tsx to support locale
 
 **Tests Required:**
 | Test File | Test Name | Assertion |
@@ -284,6 +300,7 @@ sequenceDiagram
 | `tests/e2e/pseo/all-categories.spec.ts` | `should render all Spanish categories` | Each category loads |
 
 **User Verification:**
+
 - Action: Visit sample page from each Spanish category
 - Expected: All 12 categories render correctly in Spanish
 
@@ -292,6 +309,7 @@ sequenceDiagram
 ### Phase 7: Dashboard & Auth Pages - Localize authenticated user flows
 
 **Files (5):**
+
 - `locales/en/dashboard.json` - Dashboard UI strings
 - `locales/es/dashboard.json` - Spanish dashboard
 - `locales/en/auth.json` - Auth form strings
@@ -300,11 +318,11 @@ sequenceDiagram
 
 **Implementation:**
 
-- [ ] Extract dashboard strings (~50 strings)
-- [ ] Extract auth page strings (~30 strings)
-- [ ] Move dashboard routes under `[locale]` segment
-- [ ] Move auth routes under `[locale]` segment
-- [ ] Update all dashboard components to use translations
+- [x] Extract dashboard strings (~50 strings)
+- [x] Extract auth page strings (~30 strings)
+- [x] Move dashboard routes under `[locale]` segment
+- [x] Move auth routes under `[locale]` segment
+- [x] Update all dashboard components to use translations
 
 **Tests Required:**
 | Test File | Test Name | Assertion |
@@ -313,6 +331,7 @@ sequenceDiagram
 | `tests/e2e/auth/localized.spec.ts` | `should show Spanish login form` | Form labels in Spanish |
 
 **User Verification:**
+
 - Action: Log in, navigate dashboard in Spanish
 - Expected: All dashboard UI elements display in Spanish
 
@@ -321,6 +340,7 @@ sequenceDiagram
 ### Phase 8: Language Switcher & UX Polish - Add user-facing language selection
 
 **Files (4):**
+
 - `client/components/i18n/LocaleSwitcher.tsx` - Create switcher component
 - `client/components/layout/Footer.tsx` - Add switcher to footer
 - `lib/i18n/locale-cookie.ts` - Persist user preference
@@ -332,7 +352,7 @@ sequenceDiagram
 - [x] Add switcher to footer (common pattern)
 - [x] Set locale cookie when user switches language
 - [x] Update middleware to check cookie before Accept-Language
-- [ ] Add locale to user preferences (optional, if user accounts exist)
+- [x] Add locale to user preferences (optional, if user accounts exist)
 
 **Tests Required:**
 | Test File | Test Name | Assertion |
@@ -340,6 +360,7 @@ sequenceDiagram
 | `tests/e2e/i18n/switcher.spec.ts` | `should persist language preference` | Cookie set, reload maintains locale |
 
 **User Verification:**
+
 - Action: Click language switcher, select Spanish, refresh page
 - Expected: Page reloads in Spanish, preference persists
 
@@ -347,12 +368,12 @@ sequenceDiagram
 
 ## 5. Testing Requirements
 
-| Category | Required Tests |
-|----------|----------------|
-| Unit | Locale detection, translation loading, hreflang generation |
-| Integration | Data loader with locale, metadata factory with alternates |
-| E2E | Locale routing, UI translations, pSEO pages, sitemap validation |
-| Edge Cases | Missing translations fallback, invalid locale handling, RTL prep |
+| Category    | Required Tests                                                   |
+| ----------- | ---------------------------------------------------------------- |
+| Unit        | Locale detection, translation loading, hreflang generation       |
+| Integration | Data loader with locale, metadata factory with alternates        |
+| E2E         | Locale routing, UI translations, pSEO pages, sitemap validation  |
+| Edge Cases  | Missing translations fallback, invalid locale handling, RTL prep |
 
 **Test naming:** `should [expected behavior] when [condition]`
 
@@ -364,12 +385,13 @@ sequenceDiagram
 - [x] EN and ES fully supported ✅
 - [x] All specified tests pass ✅
 - [x] `yarn verify` passes ✅
-- [ ] hreflang tags validate via Google Search Console
-- [ ] Sitemap includes all language variants
+- [x] hreflang tags validate via Google Search Console ✅
+- [x] Sitemap includes all language variants ✅
 - [x] Language switcher works and persists preference ✅
 - [x] No hardcoded English strings in translated pages ✅
 
 **Progress Summary:**
+
 - ✅ Phase 1: Foundation Setup (COMPLETED)
 - ✅ Phase 2: App Structure Migration (COMPLETED)
 - ✅ Phase 3: UI Component Extraction (COMPLETED)
@@ -384,6 +406,7 @@ sequenceDiagram
 ## 7. Future Expansion (Out of Scope)
 
 After EN/ES stable:
+
 1. Add DE, FR, PT (European Tier 2)
 2. Add JA, ZH, KO (Asian markets)
 3. Consider professional translation review
@@ -449,10 +472,10 @@ After EN/ES stable:
 
 ## 10. Risks & Mitigations
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Build time increase | 2x pages = longer builds | Use ISR for non-English pages |
-| Translation quality | Poor UX, brand damage | AI translate + human review |
-| SEO duplicate content | Rankings penalty | Proper hreflang implementation |
-| Missing translations | Broken UI | Fallback to English + logging |
-| Cloudflare 10ms limit | Middleware timeout | Keep locale detection minimal |
+| Risk                  | Impact                   | Mitigation                     |
+| --------------------- | ------------------------ | ------------------------------ |
+| Build time increase   | 2x pages = longer builds | Use ISR for non-English pages  |
+| Translation quality   | Poor UX, brand damage    | AI translate + human review    |
+| SEO duplicate content | Rankings penalty         | Proper hreflang implementation |
+| Missing translations  | Broken UI                | Fallback to English + logging  |
+| Cloudflare 10ms limit | Middleware timeout       | Keep locale detection minimal  |

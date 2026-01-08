@@ -1,4 +1,5 @@
 import { AuthProvider } from '@/shared/types/authProviders.types';
+import { LocaleSwitcher } from '@client/components/i18n/LocaleSwitcher';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { useClickOutside } from '@client/hooks/useClickOutside';
 import { useModalStore } from '@client/store/modalStore';
@@ -6,10 +7,9 @@ import { useUserStore } from '@client/store/userStore';
 import { cn } from '@client/utils/cn';
 import { clientEnv } from '@shared/config/env';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { LocaleSwitcher } from '@client/components/i18n/LocaleSwitcher';
 
 export const NavBar = (): JSX.Element => {
   const t = useTranslations('nav');
@@ -17,12 +17,15 @@ export const NavBar = (): JSX.Element => {
   const { isAuthenticated, isLoading, user, signOut } = useUserStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isToolsDropdownOpen, setIsToolsDropdownOpen] = useState(false);
+  const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const toolsDropdownRef = useRef<HTMLDivElement>(null);
+  const resourcesDropdownRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(dropdownRef, () => setIsDropdownOpen(false));
   useClickOutside(toolsDropdownRef, () => setIsToolsDropdownOpen(false));
+  useClickOutside(resourcesDropdownRef, () => setIsResourcesDropdownOpen(false));
 
   const handleAuthClick = () => {
     if (!isAuthenticated) {
@@ -64,39 +67,54 @@ export const NavBar = (): JSX.Element => {
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {isAuthenticated && (
             <a
               href="/dashboard"
-              className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+              className="text-sm font-bold text-text-muted hover:text-white transition-colors"
             >
               {t('dashboard')}
             </a>
           )}
           <a
             href="/features"
-            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+            className="text-sm font-bold text-text-muted hover:text-white transition-colors"
           >
             {t('features')}
           </a>
-          <a
-            href="/how-it-works"
-            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
-          >
-            {t('howItWorks')}
-          </a>
-          <a
-            href="/pricing"
-            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
-          >
-            {t('pricing')}
-          </a>
-          <a
-            href="/blog"
-            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
-          >
-            {t('blog')}
-          </a>
+
+          <div className="relative" ref={resourcesDropdownRef}>
+            <button
+              onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
+              className="flex items-center gap-1.5 text-sm font-bold text-text-muted hover:text-white transition-all group"
+            >
+              {t('resources')}
+              <ChevronDown
+                size={14}
+                className={cn(
+                  'text-text-muted transition-transform group-hover:text-white',
+                  isResourcesDropdownOpen && 'rotate-180'
+                )}
+              />
+            </button>
+            {isResourcesDropdownOpen && (
+              <div className="absolute top-full left-0 mt-4 w-56 glass-dropdown rounded-2xl py-3 z-50 animate-in fade-in zoom-in-95 duration-200">
+                <a
+                  href="/how-it-works"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
+                >
+                  {t('howItWorks')}
+                </a>
+                <a
+                  href="/blog"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white transition-colors"
+                >
+                  {t('blog')}
+                </a>
+              </div>
+            )}
+          </div>
+
           <div className="relative" ref={toolsDropdownRef}>
             <button
               onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
@@ -152,9 +170,17 @@ export const NavBar = (): JSX.Element => {
               </div>
             )}
           </div>
+
+          <a
+            href="/pricing"
+            className="text-sm font-bold text-text-muted hover:text-white transition-colors"
+          >
+            {t('pricing')}
+          </a>
+
           <a
             href="/help"
-            className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+            className="text-sm font-bold text-text-muted hover:text-white transition-colors"
           >
             {t('support')}
           </a>
@@ -191,9 +217,6 @@ export const NavBar = (): JSX.Element => {
             </>
           ) : (
             <>
-              <div className="hidden md:flex items-center">
-                <CreditsDisplay />
-              </div>
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -217,8 +240,8 @@ export const NavBar = (): JSX.Element => {
                 </button>
                 {isDropdownOpen && (
                   <ul className="p-2 shadow-2xl glass-dropdown rounded-2xl w-56 absolute top-full right-0 mt-4 z-50 animate-in fade-in zoom-in-95 duration-200">
-                    <li className="md:hidden">
-                      <div className="pointer-events-none">
+                    <li>
+                      <div className="px-2 py-2 pointer-events-none">
                         <CreditsDisplay />
                       </div>
                     </li>
@@ -295,7 +318,7 @@ export const NavBar = (): JSX.Element => {
           )}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-muted-foreground hover:text-white transition-colors"
+            className="lg:hidden p-2 text-muted-foreground hover:text-white transition-colors"
             aria-label={t('toggleMenu')}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -305,7 +328,7 @@ export const NavBar = (): JSX.Element => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-surface">
+        <div className="lg:hidden border-t border-border bg-surface">
           <nav className="flex flex-col px-4 py-4 space-y-2">
             {isAuthenticated && (
               <a
@@ -321,23 +344,28 @@ export const NavBar = (): JSX.Element => {
             >
               {t('features')}
             </a>
-            <a
-              href="/how-it-works"
-              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
-            >
-              {t('howItWorks')}
-            </a>
+            <div className="py-2">
+              <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                {t('resources')}
+              </p>
+              <a
+                href="/how-it-works"
+                className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
+              >
+                {t('howItWorks')}
+              </a>
+              <a
+                href="/blog"
+                className="block px-4 py-2 text-sm text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
+              >
+                {t('blog')}
+              </a>
+            </div>
             <a
               href="/pricing"
               className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
             >
               {t('pricing')}
-            </a>
-            <a
-              href="/blog"
-              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface/10 hover:text-white rounded-lg transition-colors"
-            >
-              {t('blog')}
             </a>
             <div className="py-2">
               <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">

@@ -5,7 +5,7 @@
 
 'use client';
 
-import { ReactElement, memo } from 'react';
+import { ReactElement, memo, useMemo } from 'react';
 import { marked } from 'marked';
 import createDOMPurify from 'dompurify';
 
@@ -20,18 +20,26 @@ marked.setOptions({
   gfm: true,
 });
 
-const DOMPurify = createDOMPurify(window);
+export const MarkdownRenderer = memo(
+  ({ content, className = '' }: IMarkdownRendererProps): ReactElement => {
+    // Lazily initialize DOMPurify only on client side
+    const DOMPurify = useMemo(() => {
+      if (typeof window !== 'undefined') {
+        return createDOMPurify(window);
+      }
+      return null;
+    }, []);
 
-export const MarkdownRenderer = memo(({ content, className = '' }: IMarkdownRendererProps): ReactElement => {
-  // Parse markdown and sanitize HTML
-  const html = DOMPurify.sanitize(marked.parse(content) as string);
+    // Return empty div during SSR
+    if (!DOMPurify) {
+      return <div className={className} />;
+    }
 
-  return (
-    <div
-      className={className}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
-});
+    // Parse markdown and sanitize HTML
+    const html = DOMPurify.sanitize(marked.parse(content) as string);
+
+    return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+);
 
 MarkdownRenderer.displayName = 'MarkdownRenderer';
