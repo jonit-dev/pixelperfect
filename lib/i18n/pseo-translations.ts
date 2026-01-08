@@ -6,18 +6,18 @@
  */
 
 import type { IToolPage } from '@/lib/seo/pseo-types';
-import formats from '@/locales/es/formats.json';
-import platforms from '@/locales/es/platforms.json';
-import guides from '@/locales/es/guides.json';
-import useCases from '@/locales/es/use-cases.json';
-import free from '@/locales/es/free.json';
-import scale from '@/locales/es/scale.json';
-import compare from '@/locales/es/compare.json';
-import alternatives from '@/locales/es/alternatives.json';
-import formatScale from '@/locales/es/format-scale.json';
-import platformFormat from '@/locales/es/platform-format.json';
-import deviceUse from '@/locales/es/device-use.json';
-import tools from '@/locales/es/tools.json';
+import formats from '@/locales/en/formats.json';
+import platforms from '@/locales/en/platforms.json';
+import guides from '@/locales/en/guides.json';
+import useCases from '@/locales/en/use-cases.json';
+import free from '@/locales/en/free.json';
+import scale from '@/locales/en/scale.json';
+import compare from '@/locales/en/compare.json';
+import alternatives from '@/locales/en/alternatives.json';
+import formatScale from '@/locales/en/format-scale.json';
+import platformFormat from '@/locales/en/platform-format.json';
+import deviceUse from '@/locales/en/device-use.json';
+import tools from '@/locales/en/tools.json';
 
 export interface IPSEORoute {
   slug: string;
@@ -52,8 +52,9 @@ type ICategoryData = {
 
 /**
  * Get all pSEO routes across all categories
+ * Supported locales: en, es, pt, de, fr, it, ja
  */
-export function getAllPSEORoutes(locale: string = 'es'): IPSEORoute[] {
+export function getAllPSEORoutes(locale: string = 'en'): IPSEORoute[] {
   const categories = [
     { name: 'tools', data: tools as ICategoryData },
     { name: 'formats', data: formats as ICategoryData },
@@ -181,17 +182,18 @@ export function getPageBySlug(slug: string): IPSEOPageData | undefined {
 /**
  * Get tool data for a specific slug and locale
  * Used by the tools page template
+ * Supported locales: en, es, pt, de, fr, it, ja
  */
 export async function getToolDataForLocale(
   slug: string,
-  locale: string = 'es'
+  locale: string = 'en'
 ): Promise<IToolPage | null> {
   let toolData: ICategoryData;
-  if (locale === 'es') {
+  if (locale === 'en') {
     toolData = tools as ICategoryData;
   } else {
     // eslint-disable-next-line no-restricted-syntax -- Dynamic import needed for locale-specific files
-    const imported = await import('@/locales/en/tools.json');
+    const imported = await import(`@/locales/${locale}/tools.json`);
     toolData = imported.default || imported;
   }
   const pages = toolData.pages || [];
@@ -202,16 +204,17 @@ export async function getToolDataForLocale(
 /**
  * Get all tool slugs for a locale
  * Used for generateStaticParams
+ * Supported locales: en, es, pt, de, fr, it, ja
  */
 export async function getAllToolSlugsForLocale(
-  locale: string = 'es'
+  locale: string = 'en'
 ): Promise<string[]> {
   let toolData: ICategoryData;
-  if (locale === 'es') {
+  if (locale === 'en') {
     toolData = tools as ICategoryData;
   } else {
     // eslint-disable-next-line no-restricted-syntax -- Dynamic import needed for locale-specific files
-    const imported = await import('@/locales/en/tools.json');
+    const imported = await import(`@/locales/${locale}/tools.json`);
     toolData = imported.default || imported;
   }
   return (toolData.pages || []).map((p: unknown) => (p as { slug: string }).slug);

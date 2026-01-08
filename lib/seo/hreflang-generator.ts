@@ -165,20 +165,60 @@ export function validateHreflangAlternates(alternates: Record<string, string>): 
  * Generate locale-specific OpenGraph locale
  * Converts our locale codes to OpenGraph format
  *
- * @param locale - Our locale code (e.g., 'en', 'es')
- * @returns OpenGraph locale string (e.g., 'en_US', 'es_ES')
+ * @param locale - Our locale code (e.g., 'en', 'es', 'pt')
+ * @returns OpenGraph locale string (e.g., 'en_US', 'es_ES', 'pt_BR')
  *
  * @example
  * ```ts
  * getOpenGraphLocale('en'); // 'en_US'
  * getOpenGraphLocale('es'); // 'es_ES'
+ * getOpenGraphLocale('pt'); // 'pt_BR'
  * ```
  */
 export function getOpenGraphLocale(locale: Locale): string {
   const ogLocaleMap: Record<Locale, string> = {
     en: 'en_US',
     es: 'es_ES',
+    pt: 'pt_BR',
+    de: 'de_DE',
+    fr: 'fr_FR',
+    it: 'it_IT',
+    ja: 'ja_JP',
   };
 
   return ogLocaleMap[locale] || 'en_US';
+}
+
+/**
+ * Generate hreflang links for sitemap XML entries
+ * Returns XHTML link elements for all language alternates
+ *
+ * @param path - The page path without locale prefix (e.g., '/tools/ai-image-upscaler')
+ * @returns Array of XHTML link elements for sitemap
+ *
+ * @example
+ * ```ts
+ * const links = generateSitemapHreflangLinks('/tools/ai-image-upscaler');
+ * // Returns array of <xhtml:link> elements for all 7 locales + x-default
+ * ```
+ */
+export function generateSitemapHreflangLinks(path: string): string[] {
+  const links: string[] = [];
+  const baseUrl = clientEnv.BASE_URL;
+
+  // Generate xhtml:link for each locale
+  for (const locale of SUPPORTED_LOCALES) {
+    const localePath = getLocalizedPath(path, locale);
+    const url = `${baseUrl}${localePath}`;
+    links.push(
+      `    <xhtml:link rel="alternate" hreflang="${locale}" href="${url}"/>`
+    );
+  }
+
+  // Add x-default
+  links.push(
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}"/>`
+  );
+
+  return links;
 }

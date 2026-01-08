@@ -3,7 +3,7 @@
 import { useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useState, useRef } from 'react';
-import { US, ES } from 'country-flag-icons/react/3x2';
+import { US, ES, BR, DE, FR, IT, JP } from 'country-flag-icons/react/3x2';
 import { ChevronDown } from 'lucide-react';
 import { useClickOutside } from '@client/hooks/useClickOutside';
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE, locales, type Locale } from '@/i18n/config';
@@ -12,6 +12,11 @@ import { SUPPORTED_LOCALES, DEFAULT_LOCALE, locales, type Locale } from '@/i18n/
 const FlagComponents = {
   US,
   ES,
+  BR,
+  DE,
+  FR,
+  IT,
+  JP,
 } as const;
 
 /**

@@ -1,13 +1,13 @@
 # pSEO + i18n Integration PRD
 
-`Complexity: 8 → HIGH mode`
+`Complexity: 3 → KISS mode (Auto-redirect only)`
 
 ---
 
 | Field            | Value                                |
 | ---------------- | ------------------------------------ |
 | **Document ID**  | PRD-PSEO-I18N-001                    |
-| **Version**      | 1.0                                  |
+| **Version**      | 1.1                                  |
 | **Status**       | Draft                                |
 | **Created**      | 2026-01-07                           |
 | **Author**       | Development Team                     |
@@ -59,10 +59,12 @@
 
 **Approach:**
 
-- Expand from 2 → 10 languages (Phase 1: 5, Phase 2: +5)
+- Expand from 2 → 7 languages (EN, ES, PT, DE, FR, IT, JA)
 - Implement hybrid localization: translate high-traffic pSEO categories, keep long-tail in English
-- Use Cloudflare's built-in IP geolocation (free, no external API) for auto-detection
-- Client-side locale suggestion (not redirect) to preserve SEO
+- Use Cloudflare's built-in IP geolocation (free, no external API) for **auto-redirect**
+- **KISS**: Always auto-redirect based on geolocation, no cookies, no suggestion UI
+- User can manually switch via language selector (sets cookie to override)
+- If detected locale has no translations → default to English
 - Generate language-specific sitemaps with proper hreflang
 - Audit existing SEO to ensure no harm from changes
 
@@ -77,19 +79,9 @@ flowchart TB
         LC -->|Yes| USE[Use URL Locale]
         LC -->|No| CK{Cookie?}
         CK -->|Yes| USE
-        CK -->|No| AL{Accept-Language?}
-        AL -->|Match| USE2[Use Detected]
-        AL -->|No Match| DEF[Default: en]
-    end
-
-    subgraph GeoDetect["Geolocation (Client-Side)"]
-        PAGE[Page Load] --> HOOK[useGeolocation Hook]
-        HOOK --> GEO{User Country}
-        GEO -->|Match Supported| SUGGEST[Suggest Locale Change]
-        GEO -->|No Match| SILENT[No Action]
-        SUGGEST --> USER{User Decision}
-        USER -->|Accept| SWITCH[Switch Locale + Set Cookie]
-        USER -->|Dismiss| DISMISS[Set Dismissed Cookie]
+        CK -->|No| GEO{CF-IPCountry?}
+        GEO -->|Match Supported| REDIRECT[Redirect to /{locale}/...]
+        GEO -->|No Match| DEF[Default: en]
     end
 
     subgraph PSEO["pSEO Generation"]
@@ -111,22 +103,23 @@ flowchart TB
 
 - [x] Library: Continue with `next-intl` (already integrated)
 - [x] Geolocation: Use Cloudflare `CF-IPCountry` header (free, no external API)
-- [x] Auto-detection: Client-side suggestion only (not redirect) - SEO safe
+- [x] Auto-redirect: **Server-side redirect** in middleware - one redirect is SEO-safe
 - [x] Hybrid strategy: Localize tools, formats, free, guides; keep comparisons/alternatives in English
 - [x] Priority languages: PT, DE, FR, IT, JA (based on search volume + competitor gaps)
 - [x] Sitemap strategy: Separate sitemaps per locale with index file
+- [x] User override: Language selector sets cookie to bypass geo detection
 
 **Data Changes:**
 
 - Add translation files: `/locales/{pt,de,fr,it,ja}/*.json`
 - No database changes (filesystem-based translations)
-- Add geolocation suggestion cookie: `locale_suggestion_dismissed`
+- Add country-to-locale mapping utility (no cookies for geo)
 
 ---
 
 ## 3. Sequence Flow
 
-### Geolocation-Based Locale Suggestion
+### Geolocation-Based Auto-Redirect
 
 ```mermaid
 sequenceDiagram
@@ -134,34 +127,38 @@ sequenceDiagram
     participant CF as Cloudflare
     participant MW as Middleware
     participant P as Page
-    participant H as useGeolocation Hook
-    participant LS as LocaleSuggester
 
     U->>CF: GET /tools/ai-image-upscaler
     CF->>CF: Add CF-IPCountry: BR
     CF->>MW: Forward with geo header
-    MW->>MW: No locale in URL, use default (en)
+    MW->>MW: No locale in URL, no cookie
+    MW->>MW: Map BR → pt (has translations?)
+    MW->>MW: Yes! Redirect to /pt/tools/ai-image-upscaler
+
+    Note over U,P: User sees Portuguese page immediately
+
+    U->>MW: GET /tools/ai-image-upscaler (with manual selector click)
+    MW->>MW: Cookie set to 'en'
     MW->>P: Render English page
+    Note over MW: Cookie overrides geo detection
+```
 
-    P->>H: Initialize hook
-    H->>H: Read CF-IPCountry from cookie/header
-    H->>H: Map BR → pt (Portuguese)
+### Fallback to English
 
-    alt Locale different from current
-        H->>LS: Show suggestion banner
-        LS->>U: "Would you like to view in Portuguese?"
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant CF as Cloudflare
+    participant MW as Middleware
+    participant P as Page
 
-        alt User accepts
-            U->>LS: Click "Yes"
-            LS->>LS: Set locale cookie
-            LS->>U: Redirect to /pt/tools/ai-image-upscaler
-        else User dismisses
-            U->>LS: Click "No thanks"
-            LS->>LS: Set dismissed cookie (30 days)
-        end
-    else Same locale or dismissed
-        H->>H: No action
-    end
+    U->>CF: GET /tools/ai-image-upscaler
+    CF->>CF: Add CF-IPCountry: CN (China)
+    CF->>MW: Forward with geo header
+    MW->>MW: No locale in URL, no cookie
+    MW->>MW: Map CN → zh (not supported)
+    MW->>MW: Fall back to default (en)
+    MW->>P: Render English page
 ```
 
 ### pSEO Page Localization Flow
@@ -198,91 +195,56 @@ sequenceDiagram
 
 ## 4. Execution Phases
 
-### Phase 1: SEO Audit & Infrastructure - Validate current setup and prepare expansion
+### Phase 1: Geolocation Auto-Redirect & Infrastructure - Add geo detection and prepare expansion
 
-**Files (5):**
+**Files (3):**
 
-- `lib/seo/i18n-audit.ts` - Create SEO audit utility
-- `lib/seo/hreflang-generator.ts` - Enhance for new locales
-- `i18n/config.ts` - Add new locale definitions
-- `app/sitemap.xml/route.ts` - Update sitemap index
-- `middleware.ts` - Add CF-IPCountry header reading
+- `lib/i18n/country-locale-map.ts` - Country to locale mapping
+- `middleware.ts` - Add CF-IPCountry-based auto-redirect
+- `i18n/config.ts` - Add new locale definitions (pt, de, fr, it, ja)
 
 **Implementation:**
 
-- [ ] Create SEO audit script to validate current hreflang implementation
-- [ ] Verify all pSEO pages have correct canonical URLs
-- [ ] Check for duplicate content issues between EN/ES
+- [ ] Create country → locale mapping utility (BR→pt, DE→de, FR→fr, JP→ja, IT→it)
+- [ ] Update middleware: add geo detection to `detectLocale()` function
+- [ ] Auto-redirect logic: URL > Cookie > **CF-IPCountry** > Accept-Language > Default
+- [ ] Fallback: if mapped locale not in SUPPORTED_LOCALES, use default
 - [ ] Add PT, DE, FR, IT, JA to SUPPORTED_LOCALES
-- [ ] Update middleware to read CF-IPCountry header
-- [ ] Generate audit report with recommendations
+
+**Middleware Flow:**
+
+```typescript
+function detectLocale(req: NextRequest): Locale {
+  // 1. Check URL path for locale prefix
+  // 2. Check cookie (user manual override)
+  // 3. Check CF-IPCountry header (NEW - auto-redirect)
+  // 4. Check Accept-Language header
+  // 5. Fallback to default (en)
+}
+```
 
 **Tests Required:**
 
-| Test File                            | Test Name                                | Assertion                                            |
-| ------------------------------------ | ---------------------------------------- | ---------------------------------------------------- |
-| `tests/unit/seo/hreflang.spec.ts`    | `should generate hreflang for 7 locales` | `expect(hreflang).toHaveLength(8)` (incl. x-default) |
-| `tests/unit/seo/audit.spec.ts`       | `should detect missing canonicals`       | `expect(issues).toEqual([])` for valid pages         |
-| `tests/unit/i18n/middleware.spec.ts` | `should read CF-IPCountry header`        | `expect(geoCountry).toBe('BR')`                      |
+| Test File                            | Test Name                               | Assertion                                        |
+| ------------------------------------ | --------------------------------------- | ------------------------------------------------ |
+| `tests/unit/i18n/middleware.spec.ts` | `should redirect BR to pt`               | 302 redirect to /pt/...                          |
+| `tests/unit/i18n/middleware.spec.ts` | `should fallback unsupported to en`      | CN (Chinese) → stays on English                  |
+| `tests/unit/i18n/middleware.spec.ts` | `should respect cookie over geo`         | Cookie=en, Geo=BR → stays English                |
 
 **User Verification:**
 
-- Action: Run `yarn seo:audit` and review report
-- Expected: Zero critical issues, all hreflang tags validate
+- Action: Visit site with VPN set to Brazil
+- Expected: Auto-redirect to `/pt/...`
 
 **⛔ CHECKPOINT 1**
 
 ---
 
-### Phase 2: Geolocation Hook & Suggestion UI - Implement non-intrusive locale detection
-
-**Files (5):**
-
-- `client/hooks/useGeolocation.ts` - Create geolocation detection hook
-- `client/components/i18n/LocaleSuggester.tsx` - Create suggestion banner
-- `lib/i18n/country-locale-map.ts` - Country to locale mapping
-- `client/components/layout/Layout.tsx` - Integrate LocaleSuggester
-- `middleware.ts` - Pass geo data to client via cookie
-
-**Implementation:**
-
-- [ ] Create `useGeolocation` hook that reads CF-IPCountry from cookie
-- [ ] Build country → locale mapping (BR→pt, DE→de, FR→fr, JP→ja, IT→it)
-- [ ] Create dismissible `LocaleSuggester` banner component
-- [ ] Store user preference in `locale_preference` cookie
-- [ ] Store dismissal in `locale_suggestion_dismissed` cookie (30 days)
-- [ ] Ensure suggestion never appears if user explicitly chose locale
-
-**SEO Safety Measures:**
-
-- [ ] Suggestion is client-side only (no server redirect)
-- [ ] Googlebot receives default locale without redirection
-- [ ] Banner uses `role="alert"` for accessibility
-- [ ] No JavaScript required for base page functionality
-
-**Tests Required:**
-
-| Test File                                  | Test Name                                | Assertion                              |
-| ------------------------------------------ | ---------------------------------------- | -------------------------------------- |
-| `tests/unit/hooks/useGeolocation.spec.ts`  | `should detect country from cookie`      | `expect(country).toBe('BR')`           |
-| `tests/unit/hooks/useGeolocation.spec.ts`  | `should map country to locale`           | `expect(suggestedLocale).toBe('pt')`   |
-| `tests/e2e/i18n/locale-suggestion.spec.ts` | `should show suggestion for new visitor` | Banner visible for non-matching locale |
-| `tests/e2e/i18n/locale-suggestion.spec.ts` | `should not show after dismissal`        | Banner hidden after dismiss click      |
-
-**User Verification:**
-
-- Action: Visit site with VPN set to Germany, no locale cookie
-- Expected: See "View in German?" suggestion banner
-
-**⛔ CHECKPOINT 2**
-
----
-
-### Phase 3: Priority Language Translations (PT, DE, FR) - Translate core pSEO categories
+### Phase 2: Priority Language Translations (PT, DE, FR) - Translate core pSEO categories
 
 **Files (5 per language, 3 languages = phased):**
 
-**Phase 3a: Portuguese (PT)**
+**Phase 2a: Portuguese (PT)**
 
 - `locales/pt/common.json` - UI strings
 - `locales/pt/tools.json` - Tool pages (10 pages)
@@ -290,11 +252,11 @@ sequenceDiagram
 - `locales/pt/free.json` - Free tool pages (5 pages)
 - `locales/pt/guides.json` - Guide pages (8 pages)
 
-**Phase 3b: German (DE)**
+**Phase 2b: German (DE)**
 
 - `locales/de/common.json`, `tools.json`, `formats.json`, `free.json`, `guides.json`
 
-**Phase 3c: French (FR)**
+**Phase 2c: French (FR)**
 
 - `locales/fr/common.json`, `tools.json`, `formats.json`, `free.json`, `guides.json`
 
@@ -334,11 +296,11 @@ sequenceDiagram
 - Action: Visit `/pt/tools/ai-image-upscaler`
 - Expected: Full Portuguese content, proper hreflang tags
 
-**⛔ CHECKPOINT 3**
+**⛔ CHECKPOINT 2**
 
 ---
 
-### Phase 4: Additional Languages (IT, JA) - Extend to Italian and Japanese
+### Phase 3: Additional Languages (IT, JA) - Extend to Italian and Japanese
 
 **Files (5 per language):**
 
@@ -372,11 +334,11 @@ sequenceDiagram
 - Action: Visit `/ja/tools/ai-image-upscaler`
 - Expected: Full Japanese content with proper character rendering
 
-**⛔ CHECKPOINT 4**
+**⛔ CHECKPOINT 3**
 
 ---
 
-### Phase 5: Sitemap & SEO Infrastructure - Generate multi-language sitemaps
+### Phase 4: Sitemap & SEO Infrastructure - Generate multi-language sitemaps
 
 **Files (4):**
 
@@ -426,11 +388,11 @@ sequenceDiagram
 - Action: Submit sitemap to Google Search Console
 - Expected: All URLs indexed, no hreflang errors
 
-**⛔ CHECKPOINT 5**
+**⛔ CHECKPOINT 4**
 
 ---
 
-### Phase 6: Non-Localized Page Handling - Handle English-only pSEO gracefully
+### Phase 5: Non-Localized Page Handling - Handle English-only pSEO gracefully
 
 **Files (4):**
 
@@ -470,11 +432,11 @@ sequenceDiagram
 - Action: Visit `/pt/compare/myimageupscaler-vs-topaz`
 - Expected: English content with Portuguese banner explaining
 
-**⛔ CHECKPOINT 6**
+**⛔ CHECKPOINT 5**
 
 ---
 
-### Phase 7: Final SEO Audit & Validation - Comprehensive SEO health check
+### Phase 6: Final SEO Audit & Validation - Comprehensive SEO health check
 
 **Files (3):**
 
@@ -522,12 +484,12 @@ sequenceDiagram
 
 ## 5. Testing Requirements
 
-| Category    | Required Tests                                                                     |
-| ----------- | ---------------------------------------------------------------------------------- |
-| Unit        | Geolocation hook, country mapping, hreflang generation, data loader with locale    |
-| Integration | Middleware geo detection, sitemap generation, translation loading                  |
-| E2E         | Locale suggestion flow, pSEO page rendering, SEO validation, sitemap accessibility |
-| SEO         | hreflang validation, canonical checks, duplicate content detection                 |
+| Category    | Required Tests                                                                |
+| ----------- | ----------------------------------------------------------------------------- |
+| Unit        | Country mapping, hreflang generation, data loader with locale                  |
+| Integration | Middleware geo detection + redirect, sitemap generation, translation loading  |
+| E2E         | pSEO page rendering, SEO validation, sitemap accessibility                     |
+| SEO         | hreflang validation, canonical checks, duplicate content detection             |
 
 **Test naming:** `should [expected behavior] when [condition]`
 
@@ -535,9 +497,9 @@ sequenceDiagram
 
 ## 6. Acceptance Criteria
 
-- [ ] All 7 phases complete
+- [ ] All 6 phases complete
 - [ ] 7 languages supported (EN, ES, PT, DE, FR, IT, JA)
-- [ ] Geolocation suggestion works without harming SEO
+- [ ] Geolocation auto-redirect works without harming SEO
 - [ ] 33+ localized pSEO pages per new language (tools, formats, free, guides)
 - [ ] All sitemaps valid and submitted to GSC
 - [ ] Zero hreflang errors in GSC
@@ -551,25 +513,32 @@ sequenceDiagram
 
 ### What This Implementation Does NOT Do (Intentionally)
 
-| Anti-Pattern                | Why Avoided                                             |
-| --------------------------- | ------------------------------------------------------- |
-| Server-side geo redirect    | Blocks Googlebot, causes cloaking concerns              |
-| IP-based content variation  | Different content for same URL = duplicate content risk |
-| Auto-switch without consent | Poor UX, can trap users in wrong language               |
-| Translate all pSEO pages    | Quality suffers, thin content risk                      |
-| Remove English versions     | Lose backlinks, lose established rankings               |
+| Anti-Pattern                | Why Avoided                                              |
+| --------------------------- | -------------------------------------------------------- |
+| IP-based content variation  | Different content for same URL = duplicate content risk   |
+| Translate all pSEO pages    | Quality suffers, thin content risk                        |
+| Remove English versions     | Lose backlinks, lose established rankings                 |
+| Multiple redirect chains    | Hurts SEO, confuses crawlers                             |
 
 ### What This Implementation Does (Best Practices)
 
-| Best Practice               | Implementation                                    |
-| --------------------------- | ------------------------------------------------- |
-| Client-side suggestion only | useGeolocation hook, dismissible banner           |
-| Consistent URL structure    | `/[locale]/[category]/[slug]` for all languages   |
-| hreflang on every page      | Including x-default pointing to English           |
-| Locale in sitemap           | Separate sitemaps per locale with `<xhtml:link>`  |
-| Canonical self-reference    | Each locale page is its own canonical             |
-| Graceful fallback           | Non-localized pages show English with info banner |
-| Cookie-based persistence    | User choice remembered, not forced                |
+| Best Practice               | Implementation                                           |
+| --------------------------- | ------------------------------------------------------- |
+| Server-side geo redirect    | One redirect is SEO-safe, Googlebot gets consistent view |
+| Consistent URL structure    | `/[locale]/[category]/[slug]` for all languages         |
+| hreflang on every page      | Including x-default pointing to English                  |
+| Locale in sitemap           | Separate sitemaps per locale with `<xhtml:link>`         |
+| Canonical self-reference    | Each locale page is its own canonical                    |
+| Graceful fallback           | Non-localized pages show English with info banner        |
+| Cookie-based override        | User can manually switch, bypasses geo detection          |
+
+### Why Auto-Redirect Is SEO-Safe
+
+1. **Single redirect**: Google allows one redirect. Our middleware does ONE geo-based redirect.
+2. **Consistent for Googlebot**: Googlebot crawls from US IP → gets English → consistent every time.
+3. **hreflang in place**: Each page has hreflang pointing to all language variants.
+4. **Canonical self-reference**: Each locale version canonicals to itself.
+5. **User override available**: Language selector sets cookie, user can switch anytime.
 
 ---
 
@@ -581,7 +550,7 @@ sequenceDiagram
 | hreflang misconfiguration  | Low         | High   | Automated validation in CI, GSC monitoring            |
 | Indexing delays            | Medium      | Medium | Submit sitemaps immediately, use IndexNow             |
 | Core Web Vitals regression | Low         | Medium | Pre-launch performance testing per locale             |
-| Geo-detection inaccuracy   | Low         | Low    | Cloudflare's accuracy is 95%+, suggestion is optional |
+| Geo-detection inaccuracy   | Low         | Low    | Cloudflare's accuracy is 95%+, user can override      |
 | Duplicate content flags    | Low         | High   | Proper hreflang, unique meta per locale               |
 | Build time increase        | High        | Low    | ISR for non-EN pages, parallel sitemap generation     |
 
@@ -592,72 +561,55 @@ sequenceDiagram
 ### Cloudflare Geolocation Integration
 
 ```typescript
-// middleware.ts - Reading CF-IPCountry
-export function middleware(request: NextRequest) {
-  // Cloudflare automatically adds this header
-  const country = request.headers.get('CF-IPCountry') || 'US';
+// middleware.ts - Geolocation-based auto-redirect
+import { getLocaleFromCountry } from '@lib/i18n/country-locale-map';
+import { isValidLocale, DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 
-  // Pass to client via cookie (for useGeolocation hook)
-  const response = NextResponse.next();
-  response.cookies.set('cf_country', country, {
-    httpOnly: false, // Client-readable
-    secure: true,
-    sameSite: 'lax',
-    maxAge: 60 * 60, // 1 hour
-  });
+function detectLocale(req: NextRequest): Locale {
+  const pathname = req.nextUrl.pathname;
+  const segments = pathname.split('/').filter(Boolean);
 
-  return response;
-}
-```
+  // 1. Check URL path for locale prefix
+  if (segments.length > 0 && isValidLocale(segments[0])) {
+    return segments[0] as Locale;
+  }
 
-### useGeolocation Hook
+  // 2. Check cookie (user manual override via language selector)
+  const cookieLocale = req.cookies.get('locale')?.value;
+  if (cookieLocale && isValidLocale(cookieLocale)) {
+    return cookieLocale;
+  }
 
-```typescript
-// client/hooks/useGeolocation.ts
-const COUNTRY_TO_LOCALE: Record<string, Locale> = {
-  BR: 'pt',
-  PT: 'pt',
-  DE: 'de',
-  AT: 'de',
-  CH: 'de',
-  FR: 'fr',
-  BE: 'fr',
-  IT: 'it',
-  JP: 'ja',
-  ES: 'es',
-  MX: 'es',
-  AR: 'es',
-  CO: 'es',
-  // ... more mappings
-};
-
-export function useGeolocation() {
-  const [suggestedLocale, setSuggestedLocale] = useState<Locale | null>(null);
-  const currentLocale = useLocale();
-  const dismissed = getCookie('locale_suggestion_dismissed');
-
-  useEffect(() => {
-    if (dismissed) return;
-
-    const country = getCookie('cf_country');
-    const mapped = COUNTRY_TO_LOCALE[country];
-
-    if (mapped && mapped !== currentLocale) {
-      setSuggestedLocale(mapped);
+  // 3. Check CF-IPCountry header (geolocation auto-redirect)
+  const country = req.headers.get('CF-IPCountry');
+  if (country) {
+    const geoLocale = getLocaleFromCountry(country);
+    if (geoLocale && isValidLocale(geoLocale)) {
+      return geoLocale;
     }
-  }, [currentLocale]);
+  }
 
-  return {
-    suggestedLocale,
-    dismiss: () => {
-      setCookie('locale_suggestion_dismissed', 'true', { days: 30 });
-      setSuggestedLocale(null);
-    },
-    accept: () => {
-      setCookie('locale', suggestedLocale, { days: 365 });
-      window.location.href = `/${suggestedLocale}${window.location.pathname}`;
-    },
-  };
+  // 4. Check Accept-Language header
+  const acceptLanguage = req.headers.get('Accept-Language');
+  if (acceptLanguage) {
+    const preferredLocales = acceptLanguage
+      .split(',')
+      .map(lang => {
+        const [locale, qValue] = lang.trim().split(';q=');
+        const quality = qValue ? parseFloat(qValue) : 1;
+        return { locale: locale.split('-')[0], quality };
+      })
+      .sort((a, b) => b.quality - a.quality);
+
+    for (const { locale } of preferredLocales) {
+      if (isValidLocale(locale)) {
+        return locale as Locale;
+      }
+    }
+  }
+
+  // 5. Fallback to default
+  return DEFAULT_LOCALE;
 }
 ```
 
@@ -713,7 +665,6 @@ No new dependencies required. Uses:
 | Localized pSEO Pages          | 188      | 350     | 500     | 600     |
 | International Organic Traffic | 15%      | 25%     | 40%     | 50%     |
 | hreflang Errors (GSC)         | 0        | 0       | 0       | 0       |
-| Geo-suggestion Acceptance     | N/A      | 15%     | 20%     | 25%     |
 | Non-EN Conversions            | 10%      | 15%     | 25%     | 35%     |
 
 ---
@@ -812,6 +763,7 @@ Key competitors analyzed:
 
 ## Document Changelog
 
-| Version | Date       | Author           | Changes              |
-| ------- | ---------- | ---------------- | -------------------- |
-| 1.0     | 2026-01-07 | Development Team | Initial PRD creation |
+| Version | Date       | Author           | Changes                                      |
+| ------- | ---------- | ---------------- | -------------------------------------------- |
+| 1.1     | 2026-01-07 | Development Team | Simplified to KISS approach: auto-redirect only, no suggestion UI |
+| 1.0     | 2026-01-07 | Development Team | Initial PRD creation                        |

@@ -13,6 +13,7 @@ import {
   handlePageAuth,
 } from '@lib/middleware';
 import { DEFAULT_LOCALE, isValidLocale, LOCALE_COOKIE, type Locale } from '@/i18n/config';
+import { getLocaleFromCountry } from '@lib/i18n/country-locale-map';
 
 /**
  * Handle WWW to non-WWW redirect for SEO consistency
@@ -34,24 +35,41 @@ function handleWWWRedirect(req: NextRequest): NextResponse | null {
 
 /**
  * Detect and validate locale from request
- * Priority: URL path > Cookie > Accept-Language header > Default
+ *
+ * Priority order:
+ * 1. URL path prefix (highest - explicit user navigation)
+ * 2. Cookie (manual language selector override)
+ * 3. CF-IPCountry header (Cloudflare geolocation - auto-redirect)
+ * 4. Accept-Language header (browser preference)
+ * 5. Default locale (fallback)
  */
 function detectLocale(req: NextRequest): Locale {
   const pathname = req.nextUrl.pathname;
   const segments = pathname.split('/').filter(Boolean);
 
-  // 1. Check URL path for locale prefix
+  // 1. Check URL path for locale prefix (explicit user navigation)
   if (segments.length > 0 && isValidLocale(segments[0])) {
     return segments[0] as Locale;
   }
 
-  // 2. Check cookie
+  // 2. Check cookie (manual language selector override)
   const cookieLocale = req.cookies.get(LOCALE_COOKIE)?.value;
   if (cookieLocale && isValidLocale(cookieLocale)) {
     return cookieLocale;
   }
 
-  // 3. Check Accept-Language header
+  // 3. Check CF-IPCountry header (Cloudflare geolocation - auto-redirect)
+  // Cloudflare adds this header automatically on all requests
+  const country = req.headers.get('CF-IPCountry');
+  if (country) {
+    const geoLocale = getLocaleFromCountry(country);
+    // Only use geo-detected locale if it's supported
+    if (geoLocale && isValidLocale(geoLocale)) {
+      return geoLocale;
+    }
+  }
+
+  // 4. Check Accept-Language header (browser preference)
   const acceptLanguage = req.headers.get('Accept-Language');
   if (acceptLanguage) {
     const preferredLocales = acceptLanguage
@@ -70,7 +88,7 @@ function detectLocale(req: NextRequest): Locale {
     }
   }
 
-  // 4. Fallback to default
+  // 5. Fallback to default
   return DEFAULT_LOCALE;
 }
 

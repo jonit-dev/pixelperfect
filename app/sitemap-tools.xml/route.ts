@@ -1,12 +1,14 @@
 /**
- * Tools Sitemap Route
+ * Tools Sitemap Route - English (en)
  * Based on PRD-PSEO-04 Section 1.3: Category Sitemap Implementation
+ * Phase 4: Added hreflang links for all 7 languages
  * Includes both static tools and interactive tools (resize, convert, compress)
  */
 
 import { NextResponse } from 'next/server';
 import { getAllTools } from '@/lib/seo/data-loader';
 import { clientEnv } from '@shared/config/env';
+import { generateSitemapHreflangLinks, getSitemapResponseHeaders } from '@/lib/seo/sitemap-generator';
 import interactiveToolsData from '@/app/seo/data/interactive-tools.json';
 import type { IToolPage, IPSEODataFile } from '@/lib/seo/pseo-types';
 
@@ -38,39 +40,47 @@ export async function GET() {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>${BASE_URL}/tools</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+${generateSitemapHreflangLinks('/tools').join('\n')}
   </url>
 ${staticTools
   .map(
-    tool => `  <url>
+    tool => {
+      const hreflangLinks = generateSitemapHreflangLinks(`/tools/${tool.slug}`).join('\n');
+      return `  <url>
     <loc>${BASE_URL}/tools/${tool.slug}</loc>
     <lastmod>${tool.lastUpdated}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>${
-      tool.ogImage
-        ? `
+    <priority>0.9</priority>
+${hreflangLinks}${
+        tool.ogImage
+          ? `
     <image:image>
       <image:loc>${tool.ogImage}</image:loc>
       <image:title>${tool.title}</image:title>
     </image:image>`
-        : ''
+          : ''
+      }
+  </url>`;
     }
-  </url>`
   )
   .join('\n')}
 ${interactiveTools
   .map(tool => {
     const path = INTERACTIVE_TOOL_PATHS[tool.slug] || `/tools/${tool.slug}`;
+    const hreflangLinks = generateSitemapHreflangLinks(path).join('\n');
     return `  <url>
     <loc>${BASE_URL}${path}</loc>
     <lastmod>${tool.lastUpdated}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>${
+    <priority>0.9</priority>
+${hreflangLinks}${
       tool.ogImage
         ? `
     <image:image>
@@ -84,10 +94,5 @@ ${interactiveTools
   .join('\n')}
 </urlset>`;
 
-  return new NextResponse(xml, {
-    headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
-    },
-  });
+  return new NextResponse(xml, { headers: getSitemapResponseHeaders() });
 }

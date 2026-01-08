@@ -5,7 +5,13 @@
  * This config is used by middleware, request handlers, and throughout the app.
  */
 
-export const SUPPORTED_LOCALES = ['en', 'es'] as const;
+/**
+ * Supported locales for internationalization
+ *
+ * Current support: EN, ES, PT, DE, FR, IT, JA (7 languages)
+ * Default: English (en)
+ */
+export const SUPPORTED_LOCALES = ['en', 'es', 'pt', 'de', 'fr', 'it', 'ja'] as const;
 export const DEFAULT_LOCALE = 'en' as const;
 
 /**
@@ -22,6 +28,11 @@ export type Locale = (typeof SUPPORTED_LOCALES)[number];
 export const locales = {
   en: { label: 'English', country: 'US' },
   es: { label: 'Español', country: 'ES' },
+  pt: { label: 'Português', country: 'BR' },
+  de: { label: 'Deutsch', country: 'DE' },
+  fr: { label: 'Français', country: 'FR' },
+  it: { label: 'Italiano', country: 'IT' },
+  ja: { label: '日本語', country: 'JP' },
 } as const satisfies Record<Locale, { label: string; country: string }>;
 
 /**

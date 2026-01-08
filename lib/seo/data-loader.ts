@@ -7,6 +7,8 @@
 import { cache } from 'react';
 import { keywordPageMappings } from './keyword-mappings';
 import { clientEnv } from '@shared/config/env';
+import { Locale } from '@/i18n/config';
+import { isCategoryLocalized } from './localization-config';
 
 const APP_NAME = clientEnv.APP_NAME;
 
@@ -479,3 +481,307 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     ...deviceUsePages,
   ];
 });
+
+// ============================================================================
+// LOCALIZATION SUPPORT
+// ============================================================================
+
+/**
+ * Result type for localized data loading
+ */
+export interface ILocalizedDataResult<T> {
+  data: T | null;
+  hasTranslation: boolean;
+  isLocalizedCategory: boolean;
+}
+
+/**
+ * Load tool data with localization check
+ * Returns null for non-English locales if category is not localized
+ */
+export const getToolDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IToolPage>> => {
+    const isLocalized = isCategoryLocalized('tools', locale);
+
+    // For English or localized categories, try to load translated data
+    if (locale === 'en' || isLocalized) {
+      const data = await getToolData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    // For non-localized categories in non-English locales, return null
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load format data with localization check
+ */
+export const getFormatDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IFormatPage>> => {
+    const isLocalized = isCategoryLocalized('formats', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getFormatData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load comparison data with localization check
+ */
+export const getComparisonDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IComparisonPage>> => {
+    const isLocalized = isCategoryLocalized('compare', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getComparisonData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load alternative data with localization check
+ */
+export const getAlternativeDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IAlternativePage>> => {
+    const isLocalized = isCategoryLocalized('alternatives', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getAlternativeData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load platform data with localization check
+ */
+export const getPlatformDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IPlatformPage>> => {
+    const isLocalized = isCategoryLocalized('platforms', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getPlatformData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load guide data with localization check
+ */
+export const getGuideDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IGuidePage>> => {
+    const isLocalized = isCategoryLocalized('guides', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getGuideData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load use case data with localization check
+ */
+export const getUseCaseDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IUseCasePage>> => {
+    const isLocalized = isCategoryLocalized('use-cases', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getUseCaseData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load scale data with localization check
+ */
+export const getScaleDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IScalePage>> => {
+    const isLocalized = isCategoryLocalized('scale', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getScaleData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load free tool data with localization check
+ */
+export const getFreeDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IFreePage>> => {
+    const isLocalized = isCategoryLocalized('free', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getFreeData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load format-scale data with localization check
+ */
+export const getFormatScaleDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IFormatScalePage>> => {
+    const isLocalized = isCategoryLocalized('format-scale', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getFormatScaleData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load platform-format data with localization check
+ */
+export const getPlatformFormatDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IPlatformFormatPage>> => {
+    const isLocalized = isCategoryLocalized('platform-format', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getPlatformFormatData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);
+
+/**
+ * Load device-use data with localization check
+ */
+export const getDeviceUseDataWithLocale = cache(
+  async (slug: string, locale: Locale = 'en'): Promise<ILocalizedDataResult<IDeviceUseCasePage>> => {
+    const isLocalized = isCategoryLocalized('device-use', locale);
+
+    if (locale === 'en' || isLocalized) {
+      const data = await getDeviceUseData(slug);
+      return {
+        data,
+        hasTranslation: data !== null,
+        isLocalizedCategory: isLocalized,
+      };
+    }
+
+    return {
+      data: null,
+      hasTranslation: false,
+      isLocalizedCategory: false,
+    };
+  }
+);

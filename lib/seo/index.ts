@@ -135,3 +135,34 @@ export {
   validateHreflangAlternates,
   getOpenGraphLocale,
 } from './hreflang-generator';
+
+// Localization Config (Phase 5)
+export {
+  LOCALIZED_CATEGORIES,
+  ENGLISH_ONLY_CATEGORIES,
+  ALL_CATEGORIES,
+  isCategoryLocalized,
+  isCategoryEnglishOnly,
+  getEnglishOnlyCategories,
+  getLocalizedCategories,
+  shouldShowEnglishOnlyBanner,
+  getEnglishPath,
+  LOCALIZATION_STATUS,
+} from './localization-config';
+
+// Localized Data Loaders (Phase 5)
+export type { ILocalizedDataResult } from './data-loader';
+export {
+  getToolDataWithLocale,
+  getFormatDataWithLocale,
+  getComparisonDataWithLocale,
+  getAlternativeDataWithLocale,
+  getPlatformDataWithLocale,
+  getGuideDataWithLocale,
+  getUseCaseDataWithLocale,
+  getScaleDataWithLocale,
+  getFreeDataWithLocale,
+  getFormatScaleDataWithLocale,
+  getPlatformFormatDataWithLocale,
+  getDeviceUseDataWithLocale,
+} from './data-loader';

@@ -37,6 +37,11 @@ function getLanguageCode(locale: Locale): string {
   const languageMap: Record<Locale, string> = {
     en: 'en',
     es: 'es',
+    pt: 'pt',
+    de: 'de',
+    fr: 'fr',
+    it: 'it',
+    ja: 'ja',
   };
 
   return languageMap[locale] || 'en';
