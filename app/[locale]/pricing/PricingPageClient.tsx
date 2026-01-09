@@ -238,20 +238,26 @@ export default function PricingPageClient() {
 
         {/* Page Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+          <h1
+            className="text-4xl md:text-5xl font-bold text-text-primary mb-4"
+            data-testid="pricing-page-title"
+          >
             {t('page.title')}
           </h1>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">{t('page.subtitle')}</p>
         </div>
 
         {/* Subscription Plans Section */}
-        <div className="mb-16">
+        <div className="mb-16" data-testid="subscription-plans-section">
           <h2 className="text-3xl font-bold text-center text-text-primary mb-8">
             {t('subscription.title')}
           </h2>
           <p className="text-center text-text-secondary mb-8">{t('subscription.subtitle')}</p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
+            data-testid="pricing-grid"
+          >
             {loading ? (
               // Show skeleton loading cards while fetching subscription data
               <>

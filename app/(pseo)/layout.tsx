@@ -58,8 +58,8 @@ export async function generateMetadata(): Promise<Metadata> {
       url: '/',
       siteName: clientEnv.APP_NAME,
     },
-    // Note: alternates are intentionally NOT set here
-    // Each individual page sets its own hreflang alternates via generateMetadata()
+    // Note: alternates are NOT set here to avoid overriding page-level metadata
+    // Each individual page sets its own alternates with full URLs via generateMetadata()
   };
 }
 

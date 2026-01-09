@@ -72,10 +72,10 @@ export function generateMetadata(
       creator: `@${TWITTER_HANDLE}`,
     },
 
-    // Canonical & Alternates with hreflang
+    // Canonical only - hreflang links are rendered via HreflangLinks component
+    // which hoists them to <head> more reliably than the metadata API
     alternates: {
       canonical: canonicalUrl,
-      languages: hreflangAlternates,
     },
 
     // Robots

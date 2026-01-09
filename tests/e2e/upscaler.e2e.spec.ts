@@ -130,8 +130,8 @@ test.describe('Upscaler E2E Tests', () => {
       // Check for feature badges - use more specific selectors
       await expect(page.getByText('5MB free limit')).toBeVisible();
       await expect(page.getByText('No Watermark')).toBeVisible();
-      // Look for "Batch" text - it could be "Batch Upgrade Required" or "Batch Up to X images"
-      await expect(page.getByText(/Batch/i)).toBeVisible();
+      // Target only the "Batch" badge with text-accent class, not other text containing "batch"
+      await expect(page.locator('.text-accent').filter({ hasText: /Batch/i })).toBeVisible();
     });
   });
 

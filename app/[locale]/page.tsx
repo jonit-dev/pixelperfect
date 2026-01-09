@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { HomePageClient } from '@client/components/pages/HomePageClient';
 import { JsonLd } from '@client/components/seo/JsonLd';
-import { HreflangLinks } from '@client/components/seo/HreflangLinks';
 import { generateHomepageSchema } from '@lib/seo/schema-generator';
-import { getCanonicalUrl, getOpenGraphLocale } from '@/lib/seo/hreflang-generator';
+import { getCanonicalUrl, getOpenGraphLocale, generateHreflangAlternates } from '@/lib/seo/hreflang-generator';
 import { clientEnv } from '@shared/config/env';
 import type { Locale } from '@/i18n/config';
 
@@ -20,6 +19,7 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
 
   const canonicalUrl = getCanonicalUrl('/');
   const ogLocale = getOpenGraphLocale(locale);
+  const hreflangAlternates = generateHreflangAlternates('/');
 
   return {
     title,
@@ -48,8 +48,7 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
     },
     alternates: {
       canonical: canonicalUrl,
-      // NOTE: hreflang links are rendered via HreflangLinks component in the page body
-      // to maintain consistency with pSEO pages
+      languages: hreflangAlternates,
     },
   };
 }
@@ -60,8 +59,6 @@ export default async function LocaleHomePage({ params }: ILocaleHomePageProps) {
 
   return (
     <>
-      {/* Hreflang links for SEO - rendered via component for consistency with pSEO pages */}
-      <HreflangLinks path="/" />
       <JsonLd data={homepageSchema} />
       <Suspense
         fallback={

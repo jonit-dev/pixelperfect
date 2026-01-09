@@ -11,6 +11,7 @@ import { LocalizedPageTemplate } from '@/app/[locale]/(pseo)/_components/pseo/te
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { generateToolSchema } from '@/lib/seo';
 import { HreflangLinks } from '@client/components/seo/HreflangLinks';
+import { SeoMetaTags } from '@client/components/seo/SeoMetaTags';
 import type { Locale } from '@/i18n/config';
 
 interface IToolPageProps {
@@ -59,6 +60,8 @@ export default async function ToolPage({ params }: IToolPageProps) {
 
   return (
     <>
+      {/* SEO meta tags - canonical and og:locale */}
+      <SeoMetaTags path={path} locale={locale} />
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />

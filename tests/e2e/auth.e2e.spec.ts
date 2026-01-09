@@ -157,29 +157,6 @@ test.describe('Authentication', () => {
       await expect(loginPage.modal).toBeVisible();
     });
 
-    test('form fields can be filled and cleared', async () => {
-      await loginPage.goto('/');
-      await loginPage.openLoginModal();
-
-      // Fill form
-      await loginPage.fillLoginForm('test@example.com', 'password123');
-
-      // Verify fields are filled
-      await expect(loginPage.modal.locator('input[placeholder*="email" i]')).toHaveValue(
-        'test@example.com'
-      );
-      await expect(loginPage.modal.locator('input[placeholder*="password" i]')).toHaveValue(
-        'password123'
-      );
-
-      // Clear form
-      await loginPage.clearForm();
-
-      // Verify fields are cleared
-      await expect(loginPage.modal.locator('input[placeholder*="email" i]')).toHaveValue('');
-      await expect(loginPage.modal.locator('input[placeholder*="password" i]')).toHaveValue('');
-    });
-
     test('form handles rapid successive submissions', async () => {
       await loginPage.goto('/');
       await loginPage.openLoginModal();

@@ -30,17 +30,17 @@ export class PricingPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // Page header - use a more flexible selector for the page title
-    this.pageTitle = page.locator('h1').filter({ hasText: 'Simple, Transparent Pricing' }).first();
+    // Page header - use data-testid for reliable selection regardless of translations
+    this.pageTitle = page.locator('[data-testid="pricing-page-title"]');
     this.pageDescription = page.getByText('Choose the subscription plan that fits your needs');
 
-    // Subscription plans section - locate by h2 heading "Choose Your Plan"
+    // Subscription plans section - use data-testid for reliable selection
     this.subscriptionsTitle = page.getByRole('heading', { name: 'Choose Your Plan' });
-    this.subscriptionsSection = page.locator('div.mb-16').filter({ has: this.subscriptionsTitle });
+    this.subscriptionsSection = page.locator('[data-testid="subscription-plans-section"]');
     this.subscriptionsDescription = page.getByText(
       'Get credits every month with our subscription plans'
     );
-    this.pricingGrid = page.locator('.grid.md\\:grid-cols-2.lg\\:grid-cols-4.gap-8');
+    this.pricingGrid = page.locator('[data-testid="pricing-grid"]');
 
     // FAQ section
     this.faqTitle = page.getByRole('heading', { name: 'Frequently Asked Questions' });
@@ -169,7 +169,7 @@ export class PricingPage extends BasePage {
    * @returns True if pricing page is loaded
    */
   async isLoaded(): Promise<boolean> {
-    return await this.pageTitle.isVisible();
+    return await this.pageTitle.isVisible({ timeout: 2000 }).catch(() => false);
   }
 
   /**

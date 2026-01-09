@@ -6,7 +6,8 @@ import { InteractiveToolPageTemplate } from '@/app/(pseo)/_components/pseo/templ
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { generateToolSchema } from '@/lib/seo';
 import { HreflangLinks } from '@client/components/seo/HreflangLinks';
-import { getCanonicalUrl, getOpenGraphLocale } from '@/lib/seo/hreflang-generator';
+import { SeoMetaTags } from '@client/components/seo/SeoMetaTags';
+import { getCanonicalUrl } from '@/lib/seo/hreflang-generator';
 import { clientEnv } from '@shared/config/env';
 
 interface IToolPageProps {
@@ -19,7 +20,9 @@ export async function generateStaticParams() {
   return slugs.map(slug => ({ slug }));
 }
 
-// Generate metadata using factory (but WITHOUT alternates to avoid duplicate hreflang links)
+// Generate metadata using factory
+// NOTE: canonical and og:locale are rendered via SeoMetaTags component to ensure they appear in <head>
+// NOTE: hreflang links are rendered via HreflangLinks component to ensure they appear in <head>
 export async function generateMetadata({ params }: IToolPageProps): Promise<Metadata> {
   const { slug } = await params;
   const tool = await getToolData(slug);
@@ -28,7 +31,6 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
 
   const path = `/tools/${slug}`;
   const canonicalUrl = getCanonicalUrl(path);
-  const ogLocale = getOpenGraphLocale('en');
 
   return {
     title: tool.metaTitle,
@@ -39,7 +41,7 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
       type: 'website',
       url: canonicalUrl,
       siteName: clientEnv.APP_NAME,
-      locale: ogLocale,
+      // NOTE: og:locale is rendered via SeoMetaTags component
     },
     twitter: {
       card: 'summary_large_image',
@@ -47,11 +49,8 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
       description: tool.metaDescription,
       creator: `@${clientEnv.TWITTER_HANDLE}`,
     },
-    alternates: {
-      canonical: canonicalUrl,
-      // NOTE: We don't set languages here because we use HreflangLinks component instead
-      // This avoids the issue where Next.js renders hrefLang (capital L) instead of hreflang
-    },
+    // NOTE: canonical is rendered via SeoMetaTags component
+    // NOTE: hreflang links are rendered via HreflangLinks component
     robots: {
       index: true,
       follow: true,
@@ -75,6 +74,8 @@ export default async function ToolPage({ params }: IToolPageProps) {
 
   return (
     <>
+      {/* SEO meta tags - canonical and og:locale */}
+      <SeoMetaTags path={path} locale="en" />
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
