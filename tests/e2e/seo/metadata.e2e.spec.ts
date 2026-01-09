@@ -125,36 +125,70 @@ test.describe('JSON-LD Schema with inLanguage', () => {
   test('should have inLanguage property in JSON-LD schema', async ({ page }) => {
     await page.goto('/tools/ai-image-upscaler/');
 
-    // Find the JSON-LD script tag
-    const schemaScript = page.locator('head script[type="application/ld+json"]');
-    const schemaContent = await schemaScript.textContent();
+    // Find all JSON-LD script tags (there may be multiple: WebSite, Organization, SoftwareApplication)
+    const schemaScripts = page.locator('script[type="application/ld+json"]');
 
-    expect(schemaContent).toBeDefined();
+    // Get the count and content of all schemas
+    const count = await schemaScripts.count();
+    expect(count).toBeGreaterThan(0);
 
-    // Parse the JSON
-    const schema = JSON.parse(schemaContent || '{}');
+    // Find the schema that contains SoftwareApplication
+    let foundSoftwareApp = false;
+    for (let i = 0; i < count; i++) {
+      const content = await schemaScripts.nth(i).textContent();
+      if (!content) continue;
 
-    // Find SoftwareApplication in the graph
-    const softwareApp = schema['@graph']?.find(
-      (item: { '@type'?: string }) => item['@type'] === 'SoftwareApplication'
-    );
+      const schema = JSON.parse(content);
 
-    expect(softwareApp).toBeDefined();
-    expect(softwareApp.inLanguage).toBe('en');
+      // Check if this schema has @graph with SoftwareApplication
+      if (schema['@graph']) {
+        const softwareApp = schema['@graph'].find(
+          (item: { '@type'?: string }) => item['@type'] === 'SoftwareApplication'
+        );
+
+        if (softwareApp) {
+          foundSoftwareApp = true;
+          expect(softwareApp.inLanguage).toBe('en');
+          break;
+        }
+      }
+    }
+
+    expect(foundSoftwareApp).toBe(true);
   });
 
   test('should have Spanish inLanguage on Spanish pages', async ({ page }) => {
     await page.goto('/es/tools/ai-image-upscaler/');
 
-    const schemaScript = page.locator('head script[type="application/ld+json"]');
-    const schemaContent = await schemaScript.textContent();
-    const schema = JSON.parse(schemaContent || '{}');
+    const schemaScripts = page.locator('script[type="application/ld+json"]');
 
-    const softwareApp = schema['@graph']?.find(
-      (item: { '@type'?: string }) => item['@type'] === 'SoftwareApplication'
-    );
+    // Get the count and content of all schemas
+    const count = await schemaScripts.count();
+    expect(count).toBeGreaterThan(0);
 
-    expect(softwareApp.inLanguage).toBe('es');
+    // Find the schema that contains SoftwareApplication
+    let foundSoftwareApp = false;
+    for (let i = 0; i < count; i++) {
+      const content = await schemaScripts.nth(i).textContent();
+      if (!content) continue;
+
+      const schema = JSON.parse(content);
+
+      // Check if this schema has @graph with SoftwareApplication
+      if (schema['@graph']) {
+        const softwareApp = schema['@graph'].find(
+          (item: { '@type'?: string }) => item['@type'] === 'SoftwareApplication'
+        );
+
+        if (softwareApp) {
+          foundSoftwareApp = true;
+          expect(softwareApp.inLanguage).toBe('es');
+          break;
+        }
+      }
+    }
+
+    expect(foundSoftwareApp).toBe(true);
   });
 });
 

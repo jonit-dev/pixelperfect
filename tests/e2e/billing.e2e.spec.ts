@@ -309,6 +309,8 @@ test.describe('Billing E2E Tests', () => {
 
     test.beforeEach(async ({ page }) => {
       pricingPage = new PricingPage(page);
+      // Reset viewport to default desktop size before each test
+      await page.setViewportSize({ width: 1280, height: 720 });
     });
 
     test('should display Starter tier with correct pricing and features', async ({ page }) => {
@@ -496,7 +498,7 @@ test.describe('Billing E2E Tests', () => {
       await pricingPage.screenshot('starter-tier-mobile');
     });
 
-    test('should maintain visual consistency with other tiers', async () => {
+    test('should maintain visual consistency with other tiers', async ({ page }) => {
       // goto() already calls waitForLoad() which waits for the pricing cards to be visible
       await pricingPage.goto();
 

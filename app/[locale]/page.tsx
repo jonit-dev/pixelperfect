@@ -2,12 +2,9 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { HomePageClient } from '@client/components/pages/HomePageClient';
 import { JsonLd } from '@client/components/seo/JsonLd';
+import { HreflangLinks } from '@client/components/seo/HreflangLinks';
 import { generateHomepageSchema } from '@lib/seo/schema-generator';
-import {
-  generateHreflangAlternates,
-  getCanonicalUrl,
-  getOpenGraphLocale,
-} from '@/lib/seo/hreflang-generator';
+import { getCanonicalUrl, getOpenGraphLocale } from '@/lib/seo/hreflang-generator';
 import { clientEnv } from '@shared/config/env';
 import type { Locale } from '@/i18n/config';
 
@@ -22,7 +19,6 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
     'Professional AI image enhancer that upscales photos to 4K with stunning quality. Enhance image quality, remove blur, and restore details in seconds.';
 
   const canonicalUrl = getCanonicalUrl('/');
-  const hreflangAlternates = generateHreflangAlternates('/');
   const ogLocale = getOpenGraphLocale(locale);
 
   return {
@@ -52,7 +48,8 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: hreflangAlternates,
+      // NOTE: hreflang links are rendered via HreflangLinks component in the page body
+      // to maintain consistency with pSEO pages
     },
   };
 }
@@ -63,6 +60,8 @@ export default async function LocaleHomePage({ params }: ILocaleHomePageProps) {
 
   return (
     <>
+      {/* Hreflang links for SEO - rendered via component for consistency with pSEO pages */}
+      <HreflangLinks path="/" />
       <JsonLd data={homepageSchema} />
       <Suspense
         fallback={

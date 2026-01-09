@@ -4,7 +4,6 @@
  * Renders JSON-LD structured data in the page head
  */
 
-import Script from 'next/script';
 import { ReactElement } from 'react';
 
 interface ISchemaMarkupProps {
@@ -13,11 +12,10 @@ interface ISchemaMarkupProps {
 
 export function SchemaMarkup({ schema }: ISchemaMarkupProps): ReactElement {
   return (
-    <Script
+    <script
       id="schema-markup"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      strategy="afterInteractive"
     />
   );
 }

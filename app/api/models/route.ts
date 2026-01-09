@@ -87,7 +87,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       qualityScore: model.qualityScore,
       processingTime: `~${Math.round(model.processingTimeMs / 1000)}s`,
       available: true,
-      tierRestriction: model.tierRestriction || null,
+      requiresTier: model.tierRestriction || undefined,
     }));
 
     // Add unavailable models with tier restrictions

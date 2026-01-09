@@ -89,11 +89,12 @@ export class UpscalerPage extends BasePage {
    * Wait for the page to load
    */
   async waitForLoad(): Promise<void> {
-    await expect(this.pageTitle).toBeVisible({ timeout: 15000 });
-    // The workspace element might have different classes in empty vs active state
-    // Use a more flexible selector that works for both states
+    // Wait for the heading first with a longer timeout
+    await this.page.waitForSelector('h1', { timeout: 15000 });
+
+    // Wait for the workspace container to be visible
     const workspaceSelector = this.page.locator('.bg-surface.rounded-2xl, .bg-main.rounded-3xl');
-    await expect(workspaceSelector.first()).toBeVisible();
+    await expect(workspaceSelector.first()).toBeVisible({ timeout: 15000 });
   }
 
   /**

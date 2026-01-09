@@ -7,7 +7,9 @@ import { ClientProviders } from '@client/components/ClientProviders';
 import { AhrefsAnalytics } from '@client/components/analytics/AhrefsAnalytics';
 import { GoogleAnalytics } from '@client/components/analytics/GoogleAnalytics';
 import { Layout } from '@client/components/layout/Layout';
+import { JsonLd } from '@client/components/seo/JsonLd';
 import { DEFAULT_LOCALE } from '@/i18n/config';
+import { getOpenGraphLocale } from '@/lib/seo/hreflang-generator';
 import { clientEnv } from '@shared/config/env';
 import '@client/styles/index.css';
 
@@ -36,23 +38,28 @@ interface IPSEOLayoutProps {
  * and serve as the default English versions for SEO purposes.
  *
  * Provides proper HTML structure with metadata for search engines.
+ *
+ * Note: alternates are NOT set here to avoid overriding page-level metadata.
+ * Each page sets its own alternates with proper hreflang links via the
+ * metadata factory (lib/seo/metadata-factory.ts).
  */
 export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(clientEnv.BASE_URL),
-    alternates: {
-      canonical: '/',
-      languages: {
-        en: '/',
-        es: '/es/',
-        pt: '/pt/',
-        de: '/de/',
-        fr: '/fr/',
-        it: '/it/',
-        ja: '/ja/',
-        'x-default': '/',
-      },
+    title: {
+      default: `${clientEnv.APP_NAME} - Image Upscaling & Enhancement`,
+      template: `%s | ${clientEnv.APP_NAME}`,
     },
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+    openGraph: {
+      type: 'website',
+      locale: getOpenGraphLocale(DEFAULT_LOCALE),
+      url: '/',
+      siteName: clientEnv.APP_NAME,
+    },
+    // Note: alternates are intentionally NOT set here
+    // Each individual page sets its own hreflang alternates via generateMetadata()
   };
 }
 
@@ -63,6 +70,28 @@ export default async function PSEOLayout({ children }: IPSEOLayoutProps) {
   // Get messages for the default locale
   const messages = await getMessages();
 
+  const APP_NAME = clientEnv.APP_NAME;
+  const BASE_URL = clientEnv.BASE_URL;
+
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: APP_NAME,
+    url: BASE_URL,
+    inLanguage: DEFAULT_LOCALE,
+    description:
+      'Transform your images with cutting-edge AI. Upscale, enhance, and restore details with professional quality.',
+  };
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: APP_NAME,
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo/horizontal-logo-full.png`,
+    description: 'AI-powered image upscaling and enhancement platform',
+  };
+
   return (
     <html
       lang="en"
@@ -72,6 +101,8 @@ export default async function PSEOLayout({ children }: IPSEOLayoutProps) {
       <body
         className={`${inter.className} bg-base text-foreground antialiased selection:bg-accent/20 selection:text-white`}
       >
+        <JsonLd data={websiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
         <NextIntlClientProvider locale={DEFAULT_LOCALE} messages={messages}>
           <GoogleAnalytics />
           <AhrefsAnalytics />

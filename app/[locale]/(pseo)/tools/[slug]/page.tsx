@@ -10,6 +10,7 @@ import { InteractiveToolPageTemplate } from '@/app/(pseo)/_components/pseo/templ
 import { LocalizedPageTemplate } from '@/app/[locale]/(pseo)/_components/pseo/templates/LocalizedPageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { generateToolSchema } from '@/lib/seo';
+import { HreflangLinks } from '@client/components/seo/HreflangLinks';
 import type { Locale } from '@/i18n/config';
 
 interface IToolPageProps {
@@ -51,12 +52,15 @@ export default async function ToolPage({ params }: IToolPageProps) {
   }
 
   const schema = generateToolSchema(result.data, locale);
+  const path = `/tools/${slug}`;
 
   // Use InteractiveToolPageTemplate for tools with embedded functionality
   const Template = result.data.isInteractive ? InteractiveToolPageTemplate : ToolPageTemplate;
 
   return (
     <>
+      {/* Hreflang links for multi-language SEO */}
+      <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
       <Template data={result.data} />
     </>
