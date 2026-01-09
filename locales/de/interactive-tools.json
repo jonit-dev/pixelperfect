@@ -1805,7 +1805,7 @@
       "relatedGuides": [
         "webp-format-guide"
       ],
-      "ctaText": "Convert WebP to PNG Free",
+      "ctaText": "Kostenlos WebP in PNG konvertieren",
       "ctaUrl": "/tools/convert/webp-to-png"
     },
     {
@@ -2199,7 +2199,7 @@
         {
           "step": 1,
           "title": "Mehrere Bilder hochladen",
-          "description": "Wählen Sie bis zu 20 Bilder aus oder ziehen Sie sie herüber. Unterstützt JPEG, PNG, WebP bis zu 25MB each. Die Verarbeitung bleibt in Ihrem Browser."
+          "description": "Wählen Sie bis zu 20 Bilder aus oder ziehen Sie sie herüber. Unterstützt JPEG, PNG, WebP bis zu 25MB jeweils. Die Verarbeitung bleibt in Ihrem Browser."
         },
         {
           "step": 2,
@@ -2219,36 +2219,36 @@
       ],
       "faq": [
         {
-          "question": "How many images can I compress at once?",
-          "answer": "You can compress up to 20 images at once. This limit ensures optimal browser while providing efficient batch processing."
+          "question": "Wie viele Bilder kann ich gleichzeitig komprimieren?",
+          "answer": "Sie können bis zu 20 Bilder gleichzeitig komprimieren. Diese Begrenzung sorgt für optimale Browser-Leistung und effiziente Batch-Verarbeitung."
         },
         {
-          "question": "What's the difference between quality and target size modes?",
-          "answer": "quality mode (1-100%) gives you direct control over compression level. Target size mode automatically finds the quality to achieve a specific file size in KB. Use target size when you need files under a certAIn limit."
+          "question": "Was ist der Unterschied zwischen Qualitäts- und Zielgrößen-Modi?",
+          "answer": "Qualitätsmodus (1-100%) gibt Ihnen direkte Kontrolle über das Komprimierungsniveau. Zielgrößen-Modus findet automatisch die Qualität, um eine bestimmte Dateigröße in KB zu erreichen. Verwenden Sie Zielgröße, wenn Sie Dateien unter einer bestimmten Grenze benötigen."
         },
         {
-          "question": "Will compression reduce image quality?",
-          "answer": "Compression involves a trade-off between file size and quality. At 70-80% quality, most people cannot see the difference. Target size mode automatically finds the quality for your size requirement."
+          "question": "Wird die Komprimierung die Bildqualität reduzieren?",
+          "answer": "Komprimierung beinhaltet einen Kompromiss zwischen Dateigröße und Qualität. Bei 70-80% Qualität können die meisten Leute den Unterschied nicht sehen. Der Zielgrößen-Modus findet automatisch die Qualität für Ihre Größenanforderung."
         },
         {
-          "question": "What's the format for compression?",
-          "answer": "WebP offers the compression (25-35% smaller than JPEG) with excellent quality. JPEG is for photos and has universal browser support. PNG is lossless but creates larger files."
+          "question": "Was ist das Format für die Komprimierung?",
+          "answer": "WebP bietet die beste Komprimierung (25-35% kleiner als JPEG) mit ausgezeichneter Qualität. JPEG ist für Fotos und hat universelle Browser-Unterstützung. PNG ist verlustfrei, erstellt aber größere Dateien."
         },
         {
-          "question": "Are my images uploaded to your servers?",
-          "answer": "No! All compression happens directly in your browser using Canvas API technology. Your images never leave your device, ensuring complete privacy."
+          "question": "Werden meine Bilder auf Ihre Server hochgeladen?",
+          "answer": "Nein! Alle Komprimierung erfolgt direkt in Ihrem Browser mit Canvas-API-Technologie. Ihre Bilder verlassen nie Ihr Gerät, was vollständige Datenschutzgarantie sicherstellt."
         },
         {
-          "question": "How does the target size mode work?",
-          "answer": "Target size mode uses binary search to automatically find the highest quality setting that achieves your target file size. It tests multiple quality levels until it finds the optimal balance."
+          "question": "Wie funktioniert der Zielgrößen-Modus?",
+          "answer": "Der Zielgrößen-Modus verwendet binäre Suche, um automatisch die höchste Qualitätseinstellung zu finden, die Ihre Zieldateigröße erreicht. Er testet mehrere Qualitätsstufen, bis er das optimale Gleichgewicht findet."
         },
         {
-          "question": "Can I mix different image formats?",
-          "answer": "Yes! You can upload JPEG, PNG, and WebP images together. They'll all be converted to your chosen output format during compression."
+          "question": "Kann ich verschiedene Bildformate mischen?",
+          "answer": "Ja! Sie können JPEG-, PNG- und WebP-Bilder zusammen hochladen. Sie werden alle während der Komprimierung in Ihr gewähltes Ausgabeformat konvertiert."
         },
         {
-          "question": "Is there a file size limit?",
-          "answer": "Each image can be up to 25MB. This limit is based on browser memory, not server restrictions (since we don't upload to servers)."
+          "question": "Gibt es eine Dateigrößenbeschränkung?",
+          "answer": "Jedes Bild kann bis zu 25MB groß sein. Diese Begrenzung basiert auf Browserspeicher, nicht auf Servereinschränkungen (da wir nicht auf Server hochladen)."
         }
       ],
       "relatedTools": [
