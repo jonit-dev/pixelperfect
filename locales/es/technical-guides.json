@@ -1,0 +1,130 @@
+{
+  "category": "technical-guides",
+  "pages": [
+    {
+      "slug": "ai-upscaling-technical-guide",
+      "title": "Escalado de Imágenes con IA: Guía Técnica Completa",
+      "metaTitle": "Guía Técnica de Escalado con IA 2025 - Cómo Funciona, Mejores Prácticas",
+      "metaDescription": "Guía técnica completa de escalado de imágenes con IA. Aprende cómo las redes neuronales escalan imágenes, especificaciones técnicas, y mejores prácticas para resultados óptimos.",
+      "h1": "Escalado de Imágenes con IA: Análisis Técnico Profundo",
+      "intro": "Entender la tecnología detrás del escalado de imágenes con IA ayuda a lograr mejores resultados. Esta guía completa cubre los aspectos técnicos, algoritmos, y técnicas de optimización.",
+      "primaryKeyword": "ai upscaling technical guide",
+      "secondaryKeywords": [
+        "neural network upscaling",
+        "image super resolution",
+        "ai upscaling algorithms"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "technical-guides",
+      "difficulty": "Intermedio",
+      "technicalLevel": "Completo",
+      "prerequisites": [
+        "Comprensión básica de resolución de imágenes y píxeles",
+        "Familiaridad con formatos de archivo de imagen",
+        "Interés en conceptos de aprendizaje automático"
+      ],
+      "sections": [
+        {
+          "title": "Cómo Funciona el Escalado con IA",
+          "content": "El escalado con IA usa modelos de aprendizaje profundo entrenados en millones de pares de imágenes para predecir inteligentemente y generar información de píxeles faltante al aumentar la resolución de la imagen.",
+          "subsections": [
+            {
+              "name": "Arquitectura de Red Neuronal",
+              "description": "La mayoría de sistemas de escalado con IA usan redes neuronales convolucionales (CNNs) o redes generativas adversarias (GANs) para analizar contenido de imagen y generar detalles realistas."
+            },
+            {
+              "name": "Proceso de Entrenamiento",
+              "description": "Los modelos se entrenan en conjuntos de datos masivos de imágenes de alta resolución, aprendiendo a reconocer patrones, texturas, y estructuras que pueden reconstruirse de manera realista."
+            }
+          ]
+        },
+        {
+          "title": "Algoritmos de Escalado",
+          "content": "Diferentes modelos de IA usan varios enfoques para el escalado de imágenes, cada uno con fortalezas y aplicaciones únicas.",
+          "subsections": [
+            {
+              "name": "SRCNN (Super-Resolution CNN)",
+              "description": "Enfoque pionero que usa redes convolucionales profundas para super-resolución de imágenes."
+            },
+            {
+              "name": "ESRGAN (Enhanced Super-Resolution GAN)",
+              "description": "Enfoque basado en GAN avanzado que logra generación superior de detalles y resultados naturales."
+            },
+            {
+              "name": "Real-ESRGAN",
+              "description": "Versión optimizada entrenada en imágenes del mundo real, proporcionando mejores resultados para aplicaciones prácticas."
+            }
+          ]
+        }
+      ],
+      "technicalSpecs": {
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "WebP", "BMP"],
+        "maxUpscaleFactor": "La mayoría de sistemas soportan escalado 2x, 4x, y algunos hasta 8x",
+        "processingTime": "Varía de segundos a minutos dependiendo del tamaño de imagen y complejidad del modelo",
+        "memoryRequirements": "Depende del tamaño de imagen y modelo, típicamente 2-8GB de RAM"
+      },
+      "bestPractices": [
+        "Comienza con imágenes de origen de la más alta calidad posible",
+        "Elige factores de escalado apropiados basados en el uso previsto",
+        "Considera el tipo de contenido al seleccionar modelos de escalado",
+        "Prueba diferentes enfoques para resultados óptimos",
+        "Ten consciencia de artefactos potenciales y limitaciones"
+      ],
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre escalado con IA e interpolación tradicional?",
+          "answer": "La interpolación tradicional (bilineal, bicúbica) simplemente promedia píxeles cercanos, creando resultados borrosos. El escalado con IA usa patrones aprendidos para generar detalles realistas y nítidos."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["image-resolution-guide", "neural-network-basics"]
+    },
+    {
+      "slug": "image-resolution-explained",
+      "title": "Resolución de Imagen Explicada: Guía Completa",
+      "metaTitle": "Guía de Resolución de Imagen 2025 - DPI, PPI, e Impresión vs Digital",
+      "metaDescription": "Guía completa de resolución de imagen. Entiende DPI, PPI, requisitos de impresión, estándares digitales, y cómo la resolución afecta la calidad de imagen.",
+      "h1": "Resolución de Imagen: Guía Técnica Completa",
+      "intro": "La resolución de imagen determina la calidad de imagen en diferentes aplicaciones. Entender conceptos de resolución ayuda a crear y optimizar imágenes para cualquier caso de uso.",
+      "primaryKeyword": "image resolution guide",
+      "secondaryKeywords": [
+        "dpi vs ppi",
+        "print resolution",
+        "digital image resolution",
+        "image quality standards"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "technical-guides",
+      "difficulty": "Principiante",
+      "technicalLevel": "Fundamental",
+      "sections": [
+        {
+          "title": "Entendiendo lo Básico de Resolución",
+          "content": "La resolución se refiere al detalle que mantiene una imagen, típicamente expresado en píxeles para imágenes digitales o puntos por pulgada para impresión.",
+          "subsections": [
+            {
+              "name": "Píxeles y Dimensiones",
+              "description": "Las imágenes digitales están compuestas de píxeles organizados en una cuadrícula. La resolución es el número total de píxeles (ancho × alto)."
+            },
+            {
+              "name": "DPI vs PPI",
+              "description": "DPI (Puntos Por Pulgada) se refiere a salida impresa, mientras que PPI (Píxeles Por Pulgada) se refiere a densidad de visualización digital."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "¿Puedo aumentar la resolución después de que se crea una imagen?",
+          "answer": "Puedes aumentar las dimensiones de píxeles, pero no puedes agregar detalles nuevos. El escalado con IA puede ayudar, pero siempre es mejor comenzar con resolución adecuada."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "image-resolution-calculator"],
+      "relatedPages": ["print-production-guide", "digital-image-optimization"]
+    }
+  ],
+  "meta": {
+    "totalPages": 10,
+    "lastUpdated": "2025-12-19T00:00:00Z"
+  }
+}

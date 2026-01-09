@@ -1,0 +1,142 @@
+{
+  "category": "camera-raw",
+  "pages": [
+    {
+      "slug": "upscale-nef-images",
+      "title": "Escalar Imágenes NEF",
+      "metaTitle": "Escalado de Imágenes RAW NEF | Mejora de Nikon D850, Z9, Z7",
+      "metaDescription": "Escalado de NEF avanzado con IA para fotógrafos Nikon. Mejora archivos RAW de D850, Z9, Z7, Z6 con retención superior de detalles. Integración de flujo de trabajo profesional con la ciencia de color de Nikon.",
+      "h1": "Escalado Profesional de Imágenes RAW NEF",
+      "intro": "Eleva tus archivos RAW NEF de Nikon a niveles extraordinarios de detalle y claridad con tecnología de escalado de IA de vanguardia. Nuestros algoritmos sofisticados están meticulosamente diseñados para entender y mejorar las características únicas del sensor, la ciencia de color y la estructura de metadatos de Nikon. Ya sea que fotografíes con el Z9 insignia, el querido D850, o cualquier cámara Nikon intermedia, nuestro escalador entrega resultados excepcionales que mantienen el auténtico aspecto Nikon mientras expanden significativamente tus posibilidades creativas.",
+      "primaryKeyword": "upscale nef images",
+      "secondaryKeywords": [
+        "nef upscaler",
+        "nikon raw upscaler",
+        "enhance nef files",
+        "nef image enhancement",
+        "nikon raw image processing",
+        "d850 upscaling",
+        "z9 raw enhancement",
+        "nikon z series upscaler",
+        "professional nikon processing"
+      ],
+      "lastUpdated": "2025-01-19",
+      "cameraBrand": "Nikon",
+      "cameraModels": {
+        "professional": ["Z9", "Z8", "Z7 II", "Z7", "Z6 II", "Z6", "Z5", "Zf"],
+        "dslr": ["D850", "D780", "D750", "D610", "D500", "D7500", "D5600", "D3500"],
+        "legacy": ["D4", "D3X", "D3S", "D700", "D300", "D200"]
+      },
+      "formatSpecs": {
+        "fullForm": "Formato Electrónico Nikon",
+        "bitDepth": {
+          "standard": "12-bit",
+          "high": "14-bit (comprimido sin pérdida)",
+          "uncompressed": "14-bit (sin comprimir)",
+          "note": "14-bit proporciona 16,384 niveles tonales por canal vs 4,096 en 12-bit"
+        },
+        "compression": {
+          "lossless": "NEF comprimido (reducción de tamaño promedio del 20-30%)",
+          "uncompressed": "Máxima calidad, archivos 40-60% más grandes",
+          "lossy": "Opción Small RAW en modelos más nuevos (no recomendado para escalado)"
+        },
+        "fileSize": {
+          "12bit_compressed": "20-35MB típico",
+          "14bit_compressed": "25-45MB típico",
+          "14bit_uncompressed": "45-80MB típico",
+          "high_resolution": "Z9 45.7MP: 60-120MB"
+        },
+        "versions": [
+          "NEF (Original) - Formato DSLR",
+          "NEF+ - Incluye JPEG incrustado",
+          "RAW de Alta Eficiencia - Formato comprimido de serie Z",
+          "RAW de Alta Eficiencia* - Compresión con pérdida (evitar para escalado)"
+        ]
+      },
+      "technicalDetails": {
+        "sensorTechnology": {
+          "fullFrame": "Sensores de formato FX (35.9x23.9mm) en modelos profesionales",
+          "apsC": "Sensores de formato DX (23.5x15.6mm) en modelos de entusiasta/entrada",
+          "expeed": "Procesadores EXPEED 6/7 con reducción avanzada de ruido",
+          "backsideIllumination": "Sensores BSI en serie Z para mejor rendimiento en poca luz"
+        },
+        "colorScience": {
+          "pictureControl": "Plano, Neutro, Vívido, Monocromo, Retrato, Paisaje",
+          "whiteBalance": "Auto, Incandescente, Fluorescente, Luz Solar Directa, Flash, Nublado, Sombra, Temperatura de Color",
+          "activeDLighting": "Preserva luces y sombras en escenas de alto contraste",
+          "hlDynamicRange": "Medición ponderada a luces para preservar detalles de altas luces"
+        },
+        "metadata": {
+          "lensData": "Información completa del lente incluyendo longitud focal, apertura y correcciones",
+          "vrData": "Datos de Reducción de Vibración y efectividad",
+          "afData": "Selección de punto de enfoque automático y datos de seguimiento",
+          "gps": "Coordenadas GPS integradas donde estén disponibles"
+        }
+      },
+      "workflowOptimization": {
+        "preCapture": [
+          "Fotografía en 14-bit sin comprimir para máximo potencial de escalado",
+          "Usa Control de Imagen Plano para máximo rango dinámico",
+          "Activa ISO automático con velocidad de obturación mínima para exposición óptima",
+          "Fotografía RAW + JPEG para vistas previas rápidas manteniendo calidad RAW"
+        ],
+        "captureTechniques": {
+          "landscape": "Usa f/8-f/11 para máxima nitidez, en trípode",
+          "portrait": "Aperturas amplias con iluminación adecuada para mejores tonos de piel",
+          "wildlife": "Velocidades de obturación rápidas con seguimiento AF continuo",
+          "lowlight": "Aumenta ISO manteniendo niveles aceptables de ruido"
+        },
+        "postProcessing": [
+          "Edición inicial en Nikon NX Studio o Lightroom Classic",
+          "Aplica correcciones de lente antes del escalado",
+          "Reducción de ruido según sea necesario antes de la mejora",
+          "Escalado con IA antes del afilado final y afilado de salida"
+        ],
+        "bestPractices": [
+          "Mantén archivos NEF originales como maestros",
+          "Crea carpetas separadas para versiones escaladas",
+          "Usa convenciones de nomenclatura consistentes para eficiencia del flujo de trabajo",
+          "Procesa por lotes imágenes similares para resultados consistentes"
+        ]
+      },
+      "description": "Especializado en archivos RAW NEF de Nikon, nuestro escalador de IA comprende las características únicas del sensor de Nikon y la ciencia del color, entregando mejoras excepcionales que preservan el auténtico aspecto Nikon.",
+      "benefits": [
+        "Preservación perfecta del color de Nikon",
+        "Retención superior de detalles en archivos RAW de alta resolución",
+        "Optimizado específicamente para sensores FX y DX",
+        "Mantiene metadatos y datos del lente",
+        "Procesamiento por lotes para grandes sesiones fotográficas"
+      ],
+      "useCases": [
+        "Fotografía de paisajes de Nikon a gran formato",
+        "Retrato profesional mejorado de NEF",
+        "Fotografía de vida silvestre con crop y escalado",
+        "Arquitectura y detalles finos de Nikon",
+        "Restauración de archivos NEF antiguos",
+        "Producción de galerías de arte de alta resolución"
+      ],
+      "recommendedFor": [
+        "Fotógrafos profesionales de Nikon",
+        "Entusiastas de la serie Z",
+        "Usuarios de DSLR Nikon",
+        "Estudios de fotografía comercial",
+        "Fotógrafos de paisajes y naturaleza"
+      ],
+      "outputFormats": ["TIFF", "JPEG", "PNG"],
+      "technicalSpecs": {
+        "maxInput": "Hasta 120MB para archivos NEF del Z9",
+        "outputResolution": "Hasta 8K con mejora de IA",
+        "colorDepth": "Soporta entrada/salida de 16-bit",
+        "preservation": "Metadatos EXIF completos preservados"
+      },
+      "ctaText": "Escalar tus Imágenes NEF",
+      "ctaUrl": "/camera-raw/upscale-nef-images"
+    }
+  ],
+  "meta": {
+    "category": "Formatos de Cámara RAW",
+    "description": "Soluciones especializadas de escalado RAW para todos los principales fabricantes de cámaras",
+    "totalPages": 8,
+    "lastUpdated": "2025-01-19"
+  }
+}

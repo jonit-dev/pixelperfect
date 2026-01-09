@@ -1,0 +1,372 @@
+{
+  "category": "scale",
+  "pages": [
+    {
+      "slug": "iphone-wallpaper-sizes",
+      "title": "Tamanhos de Papel de Parede do iPhone",
+      "metaTitle": "Dimensões de Papel de Parede do iPhone - Todos os Modelos | Guia de Tamanho",
+      "metaDescription": "Dimensões exatas de papel de parede para todos os modelos de iPhone. iPhone 15, 14, 13, SE e mais antigos. Dimensões em pixel prontas para copiar e colar.",
+      "h1": "Guia de Tamanho de Papel de Parede do iPhone",
+      "intro": "Encontre as dimensões exatas de papel de parede para o seu modelo de iPhone. Todos os tamanhos consideram o recorte e a Dynamic Island.",
+      "primaryKeyword": "tamanho de papel de parede iphone",
+      "secondaryKeywords": [
+        "dimensões de papel de parede iphone",
+        "tamanho de papel de parede iphone 15",
+        "tamanho de tela de bloqueio iphone"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "iPhone",
+      "quickReference": {
+        "mostCommon": "1290x2796px",
+        "note": "Se não tiver certeza, use 1290x2796px - funciona bem na maioria dos iPhones modernos quando recortado."
+      },
+      "dimensions": [
+        {
+          "model": "iPhone 15 Pro Max / 16 Pro Max",
+          "width": 1290,
+          "height": 2796,
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island na parte superior"
+        },
+        {
+          "model": "iPhone 15 Pro / 16 Pro",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island na parte superior"
+        },
+        {
+          "model": "iPhone 15 Plus / 14 Plus",
+          "width": 1284,
+          "height": 2778,
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island na parte superior"
+        },
+        {
+          "model": "iPhone 15 / 14",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island (15) / Recorte (14)"
+        },
+        {
+          "model": "iPhone 13 / 13 Pro",
+          "width": 1170,
+          "height": 2532,
+          "aspectRatio": "19.5:9",
+          "notes": "Recorte na parte superior"
+        },
+        {
+          "model": "iPhone 13 Mini / 12 Mini",
+          "width": 1080,
+          "height": 2340,
+          "aspectRatio": "19.5:9",
+          "notes": "Recorte na parte superior"
+        },
+        {
+          "model": "iPhone SE (3ª/2ª geração)",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "Sem recorte, botão home"
+        },
+        {
+          "model": "iPhone 11 / XR",
+          "width": 828,
+          "height": 1792,
+          "aspectRatio": "19.5:9",
+          "notes": "Recorte na parte superior"
+        },
+        {
+          "model": "iPhone 8 / 7 / 6",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "Sem recorte, botão home"
+        },
+        {
+          "model": "iPhone 8 Plus / 7 Plus",
+          "width": 1080,
+          "height": 1920,
+          "aspectRatio": "16:9",
+          "notes": "Sem recorte, botão home"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Considere o recorte/Dynamic Island",
+          "description": "Não coloque conteúdo importante na parte superior do seu papel de parede. Os primeiros 50-100 pixels podem ser cobertos pelo recorte ou Dynamic Island."
+        },
+        {
+          "title": "Tela de bloqueio vs tela inicial",
+          "description": "O iOS usa a mesma imagem para ambas, mas o relógio e os widgets podem cobrir partes. Mantenha os pontos focais centralizados."
+        },
+        {
+          "title": "O efeito paralaxe adiciona recorte",
+          "description": "O zoom de perspectiva do iOS recorta cerca de 10% em cada borda. Desative-o nas Configurações ou adicione margem extra à sua imagem."
+        }
+      ],
+      "upscalingGuide": {
+        "scenario": "Quer usar uma imagem 640x960 como papel de parede do iPhone 15",
+        "target": "1290x2796px",
+        "steps": [
+          "Amplie 4x para 2560x3840px",
+          "Recorte para proporção 19.5:9 (1290x2796 ou use o tamanho ampliado)",
+          "Se a qualidade for boa, recorte diretamente; se não, amplie novamente"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Qual tamanho de papel de parede para iPhone 15?",
+          "answer": "1179x2556 pixels para iPhone 15 e 15 Pro, 1290x2796 para 15 Pro Max, 1284x2778 para 15 Plus."
+        },
+        {
+          "question": "Posso usar o mesmo papel de parede para todos os iPhones?",
+          "answer": "Crie em 1290x2796 (tamanho Pro Max maior) e o iOS recortará apropriadamente para telas menores."
+        },
+        {
+          "question": "Por que meu papel de parede parece borrado?",
+          "answer": "Sua imagem é resolução baixa demais. As telas do iPhone são muito nítidas (460 PPI nos modelos Pro). Amplie sua imagem para corresponder às dimensões acima."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["android-wallpaper-sizes"]
+    },
+    {
+      "slug": "android-wallpaper-sizes",
+      "title": "Tamanhos de Papel de Parede Android",
+      "metaTitle": "Dimensões de Papel de Parede Android - Samsung, Pixel, Mais | Guia de Tamanho",
+      "metaDescription": "Dimensões de papel de parede para telefones Android populares. Samsung Galaxy, Google Pixel, OnePlus e mais com dimensões exatas em pixels.",
+      "h1": "Guia de Tamanho de Papel de Parede Android",
+      "intro": "Os tamanhos de papel de parede Android variam por fabricante e modelo. Aqui estão dimensões para os dispositivos mais populares.",
+      "primaryKeyword": "tamanho de papel de parede android",
+      "secondaryKeywords": [
+        "tamanho de papel de parede samsung",
+        "dimensões de papel de parede pixel",
+        "tamanho de fundo de telefone android"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "Android",
+      "quickReference": {
+        "mostCommon": "1440x3200px",
+        "note": "Este tamanho funciona para a maioria dos telefones Android premium. O Android escala bem."
+      },
+      "dimensionsByBrand": [
+        {
+          "brand": "Samsung Galaxy S Series",
+          "models": [
+            { "model": "Galaxy S24 Ultra", "width": 1440, "height": 3120, "aspectRatio": "19.5:9" },
+            { "model": "Galaxy S24+", "width": 1440, "height": 3120, "aspectRatio": "19.5:9" },
+            { "model": "Galaxy S24", "width": 1080, "height": 2340, "aspectRatio": "19.5:9" },
+            { "model": "Galaxy S23 Ultra", "width": 1440, "height": 3088, "aspectRatio": "19.3:9" },
+            { "model": "Galaxy S23", "width": 1080, "height": 2340, "aspectRatio": "19.5:9" }
+          ]
+        },
+        {
+          "brand": "Google Pixel",
+          "models": [
+            { "model": "Pixel 9 Pro XL", "width": 1344, "height": 2992, "aspectRatio": "20:9" },
+            { "model": "Pixel 9 Pro", "width": 1280, "height": 2856, "aspectRatio": "20:9" },
+            { "model": "Pixel 9", "width": 1080, "height": 2424, "aspectRatio": "20:9" },
+            { "model": "Pixel 8 Pro", "width": 1344, "height": 2992, "aspectRatio": "20:9" },
+            { "model": "Pixel 8", "width": 1080, "height": 2400, "aspectRatio": "20:9" },
+            { "model": "Pixel 7a", "width": 1080, "height": 2400, "aspectRatio": "20:9" }
+          ]
+        },
+        {
+          "brand": "OnePlus",
+          "models": [
+            { "model": "OnePlus 12", "width": 1440, "height": 3168, "aspectRatio": "19.8:9" },
+            { "model": "OnePlus 11", "width": 1440, "height": 3216, "aspectRatio": "20.1:9" }
+          ]
+        }
+      ],
+      "tips": [
+        {
+          "title": "Papéis de parede de rolagem Android",
+          "description": "Alguns launchers Android suportam papéis de parede de rolagem que são mais largos que a tela. Crie em largura 2x para este efeito."
+        },
+        {
+          "title": "Câmeras com furo",
+          "description": "A maioria dos telefones Android modernos tem câmera furo. Evite colocar conteúdo importante no canto superior esquerdo ou centro superior."
+        },
+        {
+          "title": "Android escala bem",
+          "description": "O Android lida melhor com tamanhos incorretos de papel de parede que o iOS. Uma imagem ligeiramente maior será recortada automaticamente."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Qual tamanho de papel de parede para Samsung Galaxy S24?",
+          "answer": "1080x2340 para Galaxy S24, 1440x3120 para S24+ e S24 Ultra."
+        },
+        {
+          "question": "O Android precisa de dimensões exatas?",
+          "answer": "Não. O Android lida bem com recorte. Use uma imagem maior e o Android deixará você posicionar. 1440x3200 funciona para a maioria dos telefones."
+        },
+        {
+          "question": "E os tablets Android?",
+          "answer": "Tablets variam muito. Verifique a resolução de exibição do seu tablet em Configurações > Sobre o Telefone > Tela. Tamanhos comuns são 2560x1600 e 2800x1752."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes"]
+    },
+    {
+      "slug": "desktop-wallpaper-sizes",
+      "title": "Tamanhos de Papel de Parede Desktop e Monitor",
+      "metaTitle": "Tamanhos de Papel de Parede Desktop - 1080p, 1440p, 4K, Ultrawide | Guia",
+      "metaDescription": "Dimensões de papel de parede de monitor para todas as resoluções. 1080p, 1440p, 4K, 5K, ultrawide e configurações de vários monitores.",
+      "h1": "Guia de Tamanho de Papel de Parede Desktop",
+      "intro": "Encontre o tamanho certo de papel de parede para o seu monitor. Cobre padrão, ultrawide e configurações de vários monitores.",
+      "primaryKeyword": "tamanho de papel de parede desktop",
+      "secondaryKeywords": [
+        "tamanho de papel de parede 4k",
+        "dimensões de papel de parede 1440p",
+        "tamanho de papel de parede ultrawide"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "Desktop",
+      "quickReference": {
+        "mostCommon": "1920x1080px (1080p)",
+        "note": "4K (3840x2160) está se tornando padrão para monitores novos."
+      },
+      "dimensions": [
+        {
+          "resolution": "Full HD (1080p)",
+          "width": 1920,
+          "height": 1080,
+          "aspectRatio": "16:9",
+          "notes": "Mais comum, funciona na maioria dos monitores"
+        },
+        {
+          "resolution": "QHD (1440p)",
+          "width": 2560,
+          "height": 1440,
+          "aspectRatio": "16:9",
+          "notes": "Popular para monitores de jogos"
+        },
+        {
+          "resolution": "4K UHD",
+          "width": 3840,
+          "height": 2160,
+          "aspectRatio": "16:9",
+          "notes": "Padrão moderno para exibições de alta ponta"
+        },
+        {
+          "resolution": "5K",
+          "width": 5120,
+          "height": 2880,
+          "aspectRatio": "16:9",
+          "notes": "Apple Studio Display, iMac 5K"
+        },
+        {
+          "resolution": "8K",
+          "width": 7680,
+          "height": 4320,
+          "aspectRatio": "16:9",
+          "notes": "Raro, apenas exibições de alta ponta"
+        },
+        {
+          "resolution": "Ultrawide (2560)",
+          "width": 2560,
+          "height": 1080,
+          "aspectRatio": "21:9",
+          "notes": "Monitores ultrawide de orçamento"
+        },
+        {
+          "resolution": "Ultrawide (3440)",
+          "width": 3440,
+          "height": 1440,
+          "aspectRatio": "21:9",
+          "notes": "Ultrawide padrão"
+        },
+        {
+          "resolution": "Super Ultrawide",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Samsung Odyssey G9 e similares"
+        },
+        {
+          "resolution": "Dual 1080p (lado a lado)",
+          "width": 3840,
+          "height": 1080,
+          "aspectRatio": "32:9",
+          "notes": "Dois monitores 1080p estendidos"
+        },
+        {
+          "resolution": "Dual 1440p (lado a lado)",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Dois monitores 1440p estendidos"
+        },
+        {
+          "resolution": "Dual 4K (lado a lado)",
+          "width": 7680,
+          "height": 2160,
+          "aspectRatio": "32:9",
+          "notes": "Dois monitores 4K estendidos"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Verifique sua resolução real",
+          "description": "Clique direito no desktop > Configurações de exibição (Windows) ou Preferências do Sistema > Telas (Mac) para ver dimensões exatas."
+        },
+        {
+          "title": "Vários monitores",
+          "description": "Para papéis de parede que abrangem monitores, some as larguras. Dois monitores 1920x1080 = 3840x1080 total."
+        },
+        {
+          "title": "Escala importa",
+          "description": "Um monitor 4K em 150% de escala ainda usa 3840x2160 para papéis de parede. Use resolução completa independentemente da escala."
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "source": "papel de parede 1080p",
+          "target": "4K (3840x2160)",
+          "upscale": "ampliação 2x dá exatamente 4K",
+          "quality": "Bons resultados com ampliação de IA"
+        },
+        {
+          "source": "papel de parede 1440p",
+          "target": "4K (3840x2160)",
+          "upscale": "1.5x - pode precisar recortar após ampliação 2x",
+          "quality": "Resultados excelentes"
+        },
+        {
+          "source": "papel de parede 720p",
+          "target": "4K (3840x2160)",
+          "upscale": "ampliação 3x (1280 → 3840)",
+          "quality": "Aceitável, depende da qualidade da fonte"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Qual é a resolução do meu monitor?",
+          "answer": "Windows: Clique direito no desktop > Configurações de exibição > Resolução. Mac: Menu Apple > Preferências do Sistema > Telas."
+        },
+        {
+          "question": "Papel de parede deve corresponder exatamente ao monitor?",
+          "answer": "Idealmente sim. Maior é OK (será recortado/redimensionado). Menor ficará borrado quando esticado."
+        },
+        {
+          "question": "E as telas retina/HiDPI?",
+          "answer": "Use a resolução real, não a resolução 'parece'. Um iMac 27\" em 'parece 2560x1440' realmente usa 5120x2880 para papéis de parede."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes", "android-wallpaper-sizes"]
+    }
+  ],
+  "meta": {
+    "totalPages": 3,
+    "lastUpdated": "2025-12-19T00:00:00Z"
+  }
+}

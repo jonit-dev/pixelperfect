@@ -1,0 +1,292 @@
+{
+  "category": "bulk-tools",
+  "pages": [
+    {
+      "slug": "bulk-image-resizer",
+      "title": "Redimensionador de Imagens em Lote",
+      "metaTitle": "Redimensionador de Imagens em Lote Gratuito - Redimensione Múltiplas Fotos de Uma Vez | MyImageUpscaler",
+      "metaDescription": "Redimensione múltiplas imagens de uma vez com nosso redimensionador de imagens em lote gratuito. Redimensione fotos em massa para qualquer dimensão. Funciona no seu navegador - não requer upload.",
+      "h1": "Redimensionador de Imagens em Lote Gratuito - Redimensionamento em Massa Instantâneo",
+      "intro": "Redimensione até 20 imagens simultaneamente com controle preciso de dimensões. Mantenha proporções ou defina tamanhos personalizados para todas as suas fotos de uma vez.",
+      "primaryKeyword": "redimensionador de imagens em lote",
+      "secondaryKeywords": [
+        "redimensionamento em lote",
+        "redimensionar fotos em massa",
+        "redimensionar múltiplas imagens",
+        "redimensionador de imagens em lote",
+        "redimensionar imagens em lote"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "bulk-tools",
+      "toolName": "Redimensionador de Imagens em Lote",
+      "toolComponent": "BulkImageResizer",
+      "description": "Process multiple images at once instead of one by one. Perfect for photographers, e-commerce sellers, and anyone managing large photo collections who needs consistent dimensions across batches.",
+      "maxFiles": 20,
+      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "features": [
+        {
+          "title": "Redimensionar Até 20 Imagens",
+          "description": "Processe um lote completo de imagens de uma vez. Não há necessidade de redimensionar arquivos individualmente - economize horas de trabalho repetitivo."
+        },
+        {
+          "title": "Dimensões Uniformes",
+          "description": "Aplique a mesma largura, altura ou porcentagem a todas as imagens. Garanta consistência em catálogos de produtos, galerias ou postagens de mídia social."
+        },
+        {
+          "title": "Bloqueio de Proporção",
+          "description": "Alterne o bloqueio de proporção para evitar distorção. As imagens mantêm suas proporções enquanto são redimensionadas para suas dimensões alvo."
+        },
+        {
+          "title": "Porcentagem ou Pixels",
+          "description": "Escolha dimensões exatas em pixels (como 1920x1080) ou redimensione por porcentagem (50%, 150%, etc.) para opções flexíveis de escala."
+        },
+        {
+          "title": "Baixar como ZIP",
+          "description": "Obtenha todas as imagens redimensionadas em um único download ZIP. Organizado com nomes de arquivo originais preservados para fácil identificação."
+        },
+        {
+          "title": "100% Baseado no Navegador",
+          "description": "Todo o processamento acontece localmente no seu navegador. Suas fotos nunca saem do seu dispositivo - não requer upload de servidor."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Fotos de Produtos de E-commerce",
+          "description": "Redimensione catálogos de produtos inteiros para atender aos requisitos de mercadoplaces. Garanta que cada listagem tenha dimensões consistentes e compatíveis.",
+          "example": "Redimensione 500 fotos de produtos para 1000x1000px para requisitos da Amazon ou eBay em um único lote."
+        },
+        {
+          "title": "Lotes de Mídia Social",
+          "description": "Prepare múltiplos posts para Instagram, Facebook ou Twitter com tamanhos específicos da plataforma.",
+          "example": "Redimensione 15 fotos para 1080x1080px para uma semana de posts do Instagram de uma vez."
+        },
+        {
+          "title": "Galerias de Sites",
+          "description": "Crie tamanhos de miniatura uniformes ou imagens de galeria em resolução completa a partir de arquivos fonte mistos.",
+          "example": "Converta vários tamanhos de fotos em miniaturas de galeria consistentes de 800x600px."
+        },
+        {
+          "title": "Organização de Álbuns de Fotos",
+          "description": "Padronize fotos de família, fotografia de eventos ou coleções de imagens digitalizadas para dimensões consistentes.",
+          "example": "Redimensione um conjunto de fotos de férias para 1920px de largura para exibição consistente."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Economize Horas de Trabalho Manual",
+          "description": "Redimensionar 100 imagens individualmente poderia levar 2-3 horas. Nossa ferramenta em lote processa-as em menos de 2 minutos.",
+          "metric": "60x mais rápido que redimensionamento manual"
+        },
+        {
+          "title": "Resultados Consistentes",
+          "description": "Cada imagem no seu lote recebe exatamente o mesmo tratamento. Sem variação ou erro humano entre arquivos.",
+          "metric": "Consistência perfeita de pixel através de lotes"
+        },
+        {
+          "title": "Privacidade Completa",
+          "description": "As fotos processam no seu navegador. Sem uploads para servidores externos significa que suas imagens permanecem privadas e seguras.",
+          "metric": "Processamento apenas no lado do cliente"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carregar Múltiplas Imagens",
+          "description": "Arraste e solte até 20 imagens de uma vez, ou clique para navegar. Todos os principais formatos suportados."
+        },
+        {
+          "step": 2,
+          "title": "Definir Dimensões Alvo",
+          "description": "Insira sua largura/altura desejada em pixels ou escolha uma porcentagem. Bloqueie a proporção se necessário."
+        },
+        {
+          "step": 3,
+          "title": "Baixar Arquivo ZIP",
+          "description": "Todas as imagens redimensionadas são empacotadas em um arquivo ZIP com nomes de arquivo originais intactos. Baixe e pronto."
+        }
+      ],
+      "faq": [
+        {
+          "question": "O redimensionador de imagens em lote é realmente gratuito?",
+          "answer": "Sim, completamente gratuito sem limites. Redimensione até 20 imagens por vez, quantos lotes forem necessários. Não requer cadastro."
+        },
+        {
+          "question": "O que acontece com minhas imagens originais?",
+          "answer": "Suas imagens originais nunca são modificadas ou enviadas. Todo o processamento cria novas cópias redimensionadas localmente no seu navegador."
+        },
+        {
+          "question": "Posso redimensionar imagens para diferentes tamanhos em um lote?",
+          "answer": "Atualmente, todas as imagens em um lote recebem as mesmas dimensões. Para tamanhos diferentes, execute lotes separados ou use nosso redimensionador de imagens individual."
+        },
+        {
+          "question": "Isso reduzirá a qualidade da imagem?",
+          "answer": "Redimensionar para dimensões menores mantém a qualidade. Ampliar imagens pode causar pixelização - para ampliação significativa, use nosso amplificador de IA em vez disso."
+        },
+        {
+          "question": "Qual é o tamanho máximo de arquivo de imagem?",
+          "answer": "Imagens individuais até 10MB são suportadas. Para arquivos muito grandes, considere redimensionar em lotes menores."
+        },
+        {
+          "question": "Minhas fotos são enviadas para um servidor?",
+          "answer": "Não. Todo o processamento acontece inteiramente no seu navegador usando a API Canvas. Suas fotos nunca saem do seu dispositivo."
+        }
+      ],
+      "limitations": [
+        "Máximo 20 imagens por lote",
+        "Arquivos individuais até 10MB",
+        "Mesmas dimensões aplicadas a todas as imagens no lote",
+        "A velocidade de processamento baseada em navegador depende do seu dispositivo"
+      ],
+      "outputFormat": "zip",
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["ecommerce-image-requirements", "social-media-image-sizes"],
+      "ctaText": "Começar Redimensionamento em Lote",
+      "ctaUrl": "/bulk-tools/bulk-image-resizer"
+    },
+    {
+      "slug": "bulk-image-compressor",
+      "title": "Compressor de Imagens em Lote",
+      "metaTitle": "Compressor de Imagens em Lote Gratuito - Comprimir Múltiplas Imagens | MyImageUpscaler",
+      "metaDescription": "Comprima múltiplas imagens de uma vez. Reduza tamanhos de arquivo em até 80% com nosso compressor de imagens em lote gratuito. Baseado em navegador, não requer upload.",
+      "h1": "Compressor de Imagens em Lote Gratuito - Otimize Múltiplas Fotos",
+      "intro": "Reduza tamanhos de arquivo em lotes de imagens inteiras mantendo qualidade visual. Perfeito para otimização web, economia de armazenamento e uploads mais rápidos.",
+      "primaryKeyword": "compressor de imagens em lote",
+      "secondaryKeywords": [
+        "compressor de imagens em lote",
+        "otimização de imagens em lote",
+        "comprimir múltiplas imagens",
+        "compressão de imagens em massa"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "bulk-tools",
+      "toolName": "Compressor de Imagens em Lote",
+      "toolComponent": "BulkImageCompressor",
+      "description": "Otimize múltiplas imagens simultaneamente para reduzir tamanhos de arquivo sem perda perceptível de qualidade. Ideal para preparar imagens para sites, anexos de e-mail ou armazenamento em nuvem.",
+      "maxFiles": 20,
+      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "features": [
+        {
+          "title": "Comprimir Até 20 Imagens",
+          "description": "Processe lotes inteiros em uma operação. Não mais comprima imagens uma de cada vez."
+        },
+        {
+          "title": "Níveis de Qualidade Ajustáveis",
+          "description": "Escolha entre níveis de compressão predefinidos ou ajuste com um controle deslizante de qualidade personalizado. Visualize a compressão antes de confirmar."
+        },
+        {
+          "title": "Compressão Inteligente",
+          "description": "Nosso algoritmo reduz o tamanho do arquivo enquanto preserva a qualidade visual. Obtenha até 80% de redução com impacto mínimo."
+        },
+        {
+          "title": "Conversão de Formato",
+          "description": "Opcionalmente converta imagens para formatos mais eficientes como WebP durante a compressão para economia adicional."
+        },
+        {
+          "title": "Visualização de Comparação de Tamanho",
+          "description": "Veja tamanhos de arquivo originais vs comprimidos para cada imagem antes de baixar. Saiba exatamente o que você está economizando."
+        },
+        {
+          "title": "Processamento 100% Privado",
+          "description": "Toda a compressão acontece no seu navegador. Suas imagens nunca fazem upload para qualquer servidor."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Otimização de Velocidade do Site",
+          "description": "Reduza tempos de carregamento de página comprimindo todas as imagens do site. Sites mais rápidos classificam melhor e convertem mais visitantes.",
+          "example": "Comprima 50 imagens de produtos de 500KB para 100KB cada, economizando 20MB de peso de página."
+        },
+        {
+          "title": "Preparação de Anexo de E-mail",
+          "description": "Fique abaixo dos limites de tamanho de e-mail comprimindo múltiplas fotos antes de anexar. Envie mais imagens por mensagem.",
+          "example": "Comprima 10 fotos de férias para caber em um limite de e-mail de 25MB em vez de apenas 2-3."
+        },
+        {
+          "title": "Gerenciamento de Armazenamento em Nuvem",
+          "description": "Reduza custos de armazenamento e tempos de upload otimizando imagens antes de fazer backup para serviços de nuvem.",
+          "example": "Comprima um arquivo de fotos antes de fazer upload para Google Drive ou Dropbox para usar menos espaço."
+        },
+        {
+          "title": "Desempenho de E-commerce",
+          "description": "Acelere lojas online otimizando todas as imagens de produtos. Melhor UX significa mais vendas.",
+          "example": "Compressão em lote de todo o catálogo de produtos para carregamentos de página mais rápidos."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Redução Significativa do Tamanho de Arquivo",
+          "description": "Alcance redução de tamanho de arquivo de 50-80% com perda mínima de qualidade. Suas imagens parecem quase idênticas em uma fração do tamanho.",
+          "metric": "Arquivos até 80% menores"
+        },
+        {
+          "title": "Tempos de Carregamento Mais Rápidos",
+          "description": "Imagens menores significam sites mais rápidos, uploads de e-mail mais rápidos e melhores experiências do usuário.",
+          "metric": "Carregamentos 2-5x mais rápidos"
+        },
+        {
+          "title": "Economia de Custos de Armazenamento",
+          "description": "Use menos espaço em disco, largura de banda e armazenamento em nuvem. Pague menos por hospedagem e serviços de armazenamento.",
+          "metric": "Economize gigabytes de armazenamento"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carregue Suas Imagens",
+          "description": "Selecione até 20 imagens do seu dispositivo. Arraste e solte para resultados mais rápidos."
+        },
+        {
+          "step": 2,
+          "title": "Escolha o Nível de Compressão",
+          "description": "Escolha uma predefinição (Baixa, Média, Alta) ou ajuste o controle deslizante de qualidade. Visualize economia de tamanho para cada imagem."
+        },
+        {
+          "step": 3,
+          "title": "Baixar ZIP Otimizado",
+          "description": "Obtenha todas as imagens comprimidas em um único arquivo ZIP. Nomes de arquivo originais são preservados."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quanto posso reduzir os tamanhos de arquivo de imagem?",
+          "answer": "Compressão típica alcança redução de tamanho de arquivo de 50-80%. A economia real depende da imagem original - imagens já comprimidas veem menos benefício que originais não comprimidos."
+        },
+        {
+          "question": "A compressão danificará a qualidade da minha imagem?",
+          "answer": "Nossa compressão é projetada para ser visualmente sem perdas - significando que o arquivo encolhe mas a imagem parece quase idêntica. Para fotos com necessidades pesadas de compressão, alguns artefatos menores podem aparecer em configurações extremas."
+        },
+        {
+          "question": "Posso comprimir PNGs com transparência?",
+          "answer": "Sim, a transparência de PNG é preservada durante a compressão. Note que JPEGs não suportam transparência - eles receberão um fundo sólido."
+        },
+        {
+          "question": "Qual é a diferença entre isso e o amplificador?",
+          "answer": "O compressor reduz o tamanho do arquivo sem alterar dimensões. O amplificador aumenta dimensões e melhora a qualidade. Eles servem propósitos diferentes - use compressor para economizar espaço, amplificador para ampliar."
+        },
+        {
+          "question": "Isso é melhor que Save for Web do Photoshop?",
+          "answer": "Qualidade de compressão similar, mas nossa ferramenta lida com lotes de 20 imagens de uma vez em vez de uma por uma. Além disso, é gratuito e roda inteiramente no seu navegador."
+        },
+        {
+          "question": "Vocês excluem permanentemente minhas imagens?",
+          "answer": "Suas imagens nunca saem do seu navegador em primeiro lugar. Toda a compressão é local e temporária. Nada é armazenado em nenhum servidor."
+        }
+      ],
+      "limitations": [
+        "Máximo 20 imagens por lote",
+        "Arquivos individuais até 10MB",
+        "Imagens muito comprimidas podem mostrar perda de qualidade em configurações extremas",
+        "Velocidade de compressão depende do seu dispositivo e tamanhos de imagem"
+      ],
+      "outputFormat": "zip",
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["ecommerce-image-requirements", "website-optimization-guide"],
+      "ctaText": "Começar Compressão em Lote",
+      "ctaUrl": "/bulk-tools/bulk-image-compressor"
+    }
+  ],
+  "meta": {
+    "totalPages": 2,
+    "lastUpdated": "2025-12-26T00:00:00Z"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "category": "device-specific",
+  "pages": [
+    {
+      "slug": "iphone-wallpaper-sizes",
+      "title": "Tamaños de Fondo de Pantalla de iPhone 2025 - Guía Completa",
+      "metaTitle": "Tamaños de Fondo de iPhone 2025 | Todos los Modelos",
+      "metaDescription": "Guía completa de tamaños de fondo de pantalla para todos los modelos de iPhone. Dimensiones exactas para iPhone 15, 14, 13, SE, y modelos más antiguos.",
+      "h1": "Tamaños de Fondo de Pantalla de iPhone: Guía Completa",
+      "intro": "Encuentra las dimensiones exactas de fondo de pantalla para todos los modelos de iPhone, desde el iPhone 15 Pro Max hasta el iPhone SE. Incluye especificaciones de resolución, consejos de optimización y mejores prácticas.",
+      "primaryKeyword": "iphone wallpaper sizes",
+      "secondaryKeywords": [
+        "iphone 15 wallpaper size",
+        "iphone 14 wallpaper dimensions",
+        "iphone background size",
+        "ios wallpaper resolution"
+      ],
+      "lastUpdated": "2025-01-19T00:00:00Z",
+      "category": "device-specific",
+      "device": "iPhone",
+      "description": "Guía completa de dimensiones de fondo de pantalla para todos los modelos de iPhone, incluyendo especificaciones técnicas de resolución, orientación de pantalla y consejos de optimización.",
+      "models": [
+        {
+          "name": "iPhone 15 Pro Max",
+          "resolution": "2796 x 1290 píxeles",
+          "screenSize": "6.7 pulgadas",
+          "ppi": 460,
+          "aspectRatio": "19.5:9",
+          "note": "Resolución más alta de iPhone"
+        },
+        {
+          "name": "iPhone 15 Pro / 15 Plus",
+          "resolution": "2556 x 1179 píxeles",
+          "screenSize": "6.1 / 6.7 pulgadas",
+          "ppi": 460,
+          "aspectRatio": "19.5:9"
+        },
+        {
+          "name": "iPhone 14 Pro Max",
+          "resolution": "2796 x 1290 píxeles",
+          "screenSize": "6.7 pulgadas",
+          "ppi": 460,
+          "aspectRatio": "19.5:9"
+        },
+        {
+          "name": "iPhone 14 / 13",
+          "resolution": "2532 x 1170 píxeles",
+          "screenSize": "6.1 pulgadas",
+          "ppi": 460,
+          "aspectRatio": "19.5:9"
+        },
+        {
+          "name": "iPhone SE (3ª gen)",
+          "resolution": "1640 x 2340 píxeles",
+          "screenSize": "4.7 pulgadas",
+          "ppi": 326,
+          "aspectRatio": "16:9",
+          "note": "Último iPhone con botón de inicio"
+        }
+      ],
+      "orientationSupport": {
+        "portrait": "Usado principalmente, altura completa",
+        "landscape": "Disponible en iPhones Plus/Max",
+        "lockScreen": "Mismas dimensiones que pantalla de inicio",
+        "homeScreen": "Parallax/efectos de perspectiva activados"
+      },
+      "fileSpecs": {
+        "recommendedFormats": ["HEIC", "JPEG", "PNG"],
+        "colorSpace": "sRGB o P3 amplio",
+        "compression": "JPEG de alta calidad o HEIC",
+        "maxFileSize": "Menos de 5MB para rendimiento óptimo"
+      },
+      "optimizationTips": [
+        "Usa imágenes de alta resolución para pantallas retina",
+        "Evita texto importante cerca de muesca/isla dinámica",
+        "Considera la orientación (retrato vs paisaje)",
+        "Usa espacio de color P3 para colores más vibrantes",
+        "Prueba cómo se ve con iconos de aplicaciones superpuestos",
+        "Ajusta brillo y contraste para visibilidad"
+      ],
+      "commonIssues": [
+        {
+          "issue": "Imagen borrosa o pixelada",
+          "solution": "Usa la resolución exacta o más alta para tu modelo de iPhone"
+        },
+        {
+          "issue": "Corte en muesca o isla dinámica",
+          "solution": "Deja espacio en la parte superior, evita contenido importante allí"
+        },
+        {
+          "issue": "Colores apagados",
+          "solution": "Usa espacio de color P3 y aumenta saturación ligeramente"
+        }
+      ],
+      "creationTips": [
+        "Fotografía con modo retrato para fondos de pantalla personalizados",
+        "Usa aplicaciones de edición para ajustar dimensión exacta",
+        "Considera efectos de profundidad y desenfoque",
+        "Prueba diferentes orientaciones y estilos",
+        "Asegura buena visibilidad con iconos de aplicaciones"
+      ],
+      "faq": [
+        {
+          "question": "¿Puedo usar la misma imagen en diferentes modelos de iPhone?",
+          "answer": "Sí, pero usa la resolución más alta entre tus dispositivos. El sistema escalará automáticamente, pero la calidad será mejor si la imagen coincide con la resolución del dispositivo."
+        },
+        {
+          "question": "¿Importa si uso JPEG o PNG?",
+          "answer": "JPEG es generalmente mejor para fotos (menor tamaño), PNG para gráficos con texto o colores sólidos. HEIC ofrece la mejor calidad/tamaño para dispositivos iOS."
+        }
+      ],
+      "ctaText": "Crear Fondo de iPhone Perfecto",
+      "ctaUrl": "/device-specific/iphone-wallpaper-sizes"
+    }
+  ],
+  "meta": {
+    "totalPages": 3,
+    "lastUpdated": "2025-01-19T00:00:00Z"
+  }
+}

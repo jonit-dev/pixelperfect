@@ -1,0 +1,123 @@
+{
+  "category": "social-media-resize",
+  "pages": [
+    {
+      "slug": "instagram-image-sizes",
+      "title": "Tamaños de Imagen de Instagram 2025 - Guía Completa",
+      "metaTitle": "Tamaños de Imagen de Instagram 2025 | Posts, Stories, Reels",
+      "metaDescription": "Guía completa de tamaños de imagen de Instagram. Dimensiones exactas para posts, stories, reels, IGTV, y carruseles para máxima calidad.",
+      "h1": "Tamaños de Imagen de Instagram: Guía Completa 2025",
+      "intro": "Dimensiones exactas y especificaciones para todos los tipos de contenido de Instagram. Asegura que tus imágenes se vean perfectas en posts, stories, reels, y más con nuestra guía completa.",
+      "primaryKeyword": "instagram image sizes",
+      "secondaryKeywords": [
+        "instagram post size",
+        "instagram story dimensions",
+        "instagram reel size",
+        "instagram photo size guide"
+      ],
+      "lastUpdated": "2025-01-19T00:00:00Z",
+      "category": "social-media-resize",
+      "platform": "Instagram",
+      "description": "Guía completa de dimensiones de imagen para Instagram, cubriendo todos los tipos de contenido con especificaciones exactas, mejores prácticas, y consejos de optimización.",
+      "contentTypes": [
+        {
+          "type": "Posts del Feed (Cuadrados)",
+          "dimensions": "1080 x 1080 píxeles",
+          "aspectRatio": "1:1",
+          "recommended": "Resolución de 1080px con compresión de alta calidad"
+        },
+        {
+          "type": "Posts del Feed (Retrato)",
+          "dimensions": "1080 x 1350 píxeles",
+          "aspectRatio": "4:5",
+          "recommended": "Formato vertical de uso común, máximo alcance"
+        },
+        {
+          "type": "Posts del Feed (Paisaje)",
+          "dimensions": "1080 x 608 píxeles",
+          "aspectRatio": "1.91:1",
+          "recommended": "Formato horizontal, menos común en el feed"
+        },
+        {
+          "type": "Stories",
+          "dimensions": "1080 x 1920 píxeles",
+          "aspectRatio": "9:16",
+          "recommended": "Resolución de 1080x1920, evitar áreas importantes cerca de bordes"
+        },
+        {
+          "type": "Reels",
+          "dimensions": "1080 x 1920 píxeles",
+          "aspectRatio": "9:16",
+          "recommended": "Vídeo vertical de alta calidad, portada 1080x1920"
+        },
+        {
+          "type": "IGTV",
+          "dimensions": "1080 x 1920 píxeles (vertical) o 1920 x 1080 (horizontal)",
+          "aspectRatio": "9:16 o 16:9",
+          "recommended": "Vertical más común, formato de pantalla completa"
+        },
+        {
+          "type": "Carruseles",
+          "dimensions": "1080 x 1080 píxeles (cada diapositiva)",
+          "aspectRatio": "1:1",
+          "recommended": "Misma dimensión para todas las diapositivas"
+        },
+        {
+          "type": "Avatar de Perfil",
+          "dimensions": "320 x 320 píxeles (mínimo), 1080 x 1080 (recomendado)",
+          "aspectRatio": "1:1",
+          "recommended": "Imagen cuadrada de alta calidad, recorte circular"
+        }
+      ],
+      "technicalSpecs": {
+        "acceptedFormats": ["JPG", "PNG"],
+        "colorSpace": "sRGB",
+        "maxFileSize": "30MB para uploads",
+        "compression": "Instagram comprime imágenes; usa alta calidad de origen"
+      },
+      "optimizationTips": [
+        "Usa archivos sRGB para mejor consistencia de color",
+        "Sube en la máxima resolución (1080px de ancho)",
+        "Evita texto importante cerca de bordes en stories",
+        "Usa JPEG de alta calidad para mejor equilibrio calidad/tamaño",
+        "Prueba cómo se ve en ambos móviles iOS y Android",
+        "Considera la relación de aspecto para máximo alcance"
+      ],
+      "commonMistakes": [
+        "Subir resoluciones más bajas que 1080px de ancho",
+        "Usar dimensiones no estándar causando recorte involuntario",
+        "Colocar texto importante donde puede ser cubierto por UI",
+        "Usar espacio de color no sRGB causando colores apagados",
+        "Ignorar las zonas seguras en stories y reels"
+      ],
+      "bestPractices": [
+        "Diseña en 1080x1080 para posts cuadrados",
+        "Usa 4:5 para posts verticales (máximo alcance)",
+        "Deja margen en stories para evitar UI",
+        "Mantén consistencia en carruseles",
+        "Usa imágenes de alta calidad de origen",
+        "Prueba antes de publicar contenido importante"
+      ],
+      "faq": [
+        {
+          "question": "¿Por qué mis imágenes se ven borrosas en Instagram?",
+          "answer": "Instagram comprime imágenes. Para mejores resultados, sube en 1080px de ancho con JPEG de alta calidad, y usa espacio de color sRGB."
+        },
+        {
+          "question": "¿Qué relación de aspecto es mejor para posts de Instagram?",
+          "answer": "4:5 (vertical) generalmente obtiene más alcance que 1:1 (cuadrado). El formato horizontal 1.91:1 es menos común y puede reducir alcance."
+        },
+        {
+          "question": "¿Puedo usar PNG en lugar de JPEG?",
+          "answer": "Sí, pero Instagram convierte todo a JPEG. Sube JPEG de alta calidad para mejor control sobre la compresión final."
+        }
+      ],
+      "ctaText": "Redimensionar para Instagram",
+      "ctaUrl": "/social-media-resize/instagram-image-sizes"
+    }
+  ],
+  "meta": {
+    "totalPages": 10,
+    "lastUpdated": "2025-01-19T00:00:00Z"
+  }
+}

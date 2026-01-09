@@ -1,0 +1,143 @@
+{
+  "category": "format-conversion",
+  "pages": [
+    {
+      "slug": "jpeg-to-png-converter",
+      "title": "Convertidor de JPEG a PNG Gratuito",
+      "metaTitle": "Convertidor de JPEG a PNG Gratuito | Conversión Rápida y Segura",
+      "metaDescription": "Convierte JPEG a PNG gratis con nuestro convertidor en línea. Rápido, seguro, sin pérdida de calidad. Convierte múltiples imágenes a la vez.",
+      "h1": "Convertidor de JPEG a PNG Gratuito",
+      "intro": "Convierte imágenes JPEG al formato PNG sin pérdida de calidad. Perfecto para cuando necesitas transparencia, mejor compresión de gráficos, o edición posterior de la imagen.",
+      "primaryKeyword": "jpeg to png converter",
+      "secondaryKeywords": [
+        "convert jpeg to png",
+        "jpg to png converter",
+        "jpeg to png conversion",
+        "image format converter"
+      ],
+      "lastUpdated": "2025-01-19T00:00:00Z",
+      "category": "format-conversion",
+      "toolName": "JPEG to PNG Converter",
+      "toolComponent": "JpegToPngConverter",
+      "description": "Convierte archivos JPEG al formato PNG sin pérdida, preservando la máxima calidad de imagen. Ideal para gráficos, logotipos, imágenes con texto, y cuando necesitas transparencia.",
+      "maxFiles": 20,
+      "acceptedFormats": ["JPEG", "JPG"],
+      "outputFormat": "PNG",
+      "features": [
+        {
+          "title": "Conversión sin Pérdida",
+          "description": "Convierte JPEG a PNG sin sacrificar calidad de imagen. Cada píxel se preserva con la máxima fidelidad."
+        },
+        {
+          "title": "Soporte de Transparencia",
+          "description": "Opcionalmente agrega transparencia a tus PNG convertidos. Perfecto para crear gráficos y logotipos."
+        },
+        {
+          "title": "Procesamiento por Lotes",
+          "description": "Convierte hasta 20 imágenes JPEG a la vez. Ahorra tiempo convirtiendo múltiples archivos en una operación."
+        },
+        {
+          "title": "Control de Compresión",
+          "description": "Elige el nivel de compresión PNG para equilibrar tamaño de archivo y calidad según tus necesidades."
+        },
+        {
+          "title": "100% Privado",
+          "description": "Toda la conversión ocurre en tu navegador. Tus imágenes nunca se suben a ningún servidor."
+        },
+        {
+          "title": "Preservación de Metadatos",
+          "description": "Opcionalmente preserva metadatos EXIF de las imágenes JPEG originales en los archivos PNG."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Preparación de Gráficos Web",
+          "description": "Convierte JPEG a PNG para gráficos web, logotipos, e imágenes que requieren transparencia o nitidez perfecta.",
+          "example": "Convierte un logotipo JPEG a PNG con transparencia para usar en un sitio web."
+        },
+        {
+          "title": "Archivos de Impresión",
+          "description": "Convierte JPEG a PNG para trabajos de impresión que requieren formato sin pérdida.",
+          "example": "Convierte fotos de productos para materiales de marketing impresos."
+        },
+        {
+          "title": "Edición de Imágenes",
+          "description": "Convierte a PNG antes de editar para preservar la máxima calidad durante múltiples rondas de edición.",
+          "example": "Convierte JPEG a PNG antes de editar en Photoshop para evitar degradación por compresión."
+        },
+        {
+          "title": "Transparencia para Diseño",
+          "description": "Crea versiones PNG con transparencia para superposiciones, marcas de agua, y diseño gráfico.",
+          "example": "Convierte fotos de productos a PNG con fondos transparentes para catálogos."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Calidad de Imagen Perfecta",
+          "description": "La conversión de JPEG a PNG preserva cada píxel sin artefactos de compresión adicionales.",
+          "metric": "Compresión sin pérdida 100%"
+        },
+        {
+          "title": "Versatilidad de Formato",
+          "description": "PNG soporta transparencia, modo de color de 8-bit a 32-bit, y es ideal para muchos casos de uso.",
+          "metric": "Soporte completo de transparencia"
+        },
+        {
+          "title": "Mejor para Edición",
+          "description": "PNG es superior para edición repetida ya que no degrada con cada guardado como JPEG.",
+          "metric": "Sin degradación por compresión"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Sube Imágenes JPEG",
+          "description": "Selecciona hasta 20 archivos JPEG/JPG de tu dispositivo o arrastra y suelta."
+        },
+        {
+          "step": 2,
+          "title": "Elige Opciones",
+          "description": "Selecciona nivel de compresión, transparencia, y opciones de metadatos según sea necesario."
+        },
+        {
+          "step": 3,
+          "title": "Descarga PNGs",
+          "description": "Obtén todos los archivos PNG convertidos, individualmente o como un archivo ZIP."
+        }
+      ],
+      "faq": [
+        {
+          "question": "¿Perderé calidad de imagen al convertir de JPEG a PNG?",
+          "answer": "No, la conversión de JPEG a PNG no perderá calidad. De hecho, PNG puede preservar mejor la imagen para edición futura ya que no tiene artefactos de compresión JPEG."
+        },
+        {
+          "question": "¿Por qué los archivos PNG son más grandes que JPEG?",
+          "answer": "PNG usa compresión sin pérdida mientras que JPEG usa compresión con pérdida. Esto significa que PNG preserva todos los datos de la imagen, resultando en archivos más grandes."
+        },
+        {
+          "question": "¿Puedo agregar transparencia a JPEGs convertidos?",
+          "answer": "Sí, puedes agregar transparencia durante la conversión. El convertidor puede crear áreas transparentes basadas en color blanco o usando máscaras."
+        },
+        {
+          "question": "¿Cuándo debo usar PNG en lugar de JPEG?",
+          "answer": "Usa PNG para gráficos, logotipos, imágenes con texto, cuando necesites transparencia, o para edición posterior. Usa JPEG para fotos y cuando el tamaño de archivo es importante."
+        }
+      ],
+      "limitations": [
+        "Archivos PNG resultantes serán más grandes que JPEGs originales",
+        "Máximo 20 archivos por lote",
+        "Archivos individuales hasta 10MB",
+        "La conversión de JPEG a PNG no puede recuperar detalles perdidos por compresión JPEG original"
+      ],
+      "outputFormat": "png",
+      "relatedTools": ["image-format-converter", "png-to-jpeg-converter"],
+      "relatedGuides": ["image-formats-guide", "web-image-optimization"],
+      "ctaText": "Convertir JPEG a PNG Ahora",
+      "ctaUrl": "/format-conversion/jpeg-to-png-converter"
+    }
+  ],
+  "meta": {
+    "totalPages": 10,
+    "lastUpdated": "2025-01-19T00:00:00Z"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "category": "device-optimization",
+  "pages": [
+    {
+      "slug": "mobile-image-optimization",
+      "title": "Optimización de Imágenes para Móviles: Guía Completa",
+      "metaTitle": "Optimización de Imágenes Móviles 2025 | iOS y Android",
+      "metaDescription": "Guía completa de optimización de imágenes para dispositivos móviles. Aprende formatos, tamaños, y técnicas para iOS, Android, y web móvil.",
+      "h1": "Optimización de Imágenes para Móviles",
+      "intro": "Optimiza imágenes para dispositivos móviles con técnicas profesionales para carga rápida, calidad superior y mejor experiencia de usuario en iOS, Android y web móvil.",
+      "primaryKeyword": "mobile image optimization",
+      "secondaryKeywords": [
+        "ios image optimization",
+        "android image optimization",
+        "mobile web images",
+        "responsive mobile images"
+      ],
+      "lastUpdated": "2025-01-19T00:00:00Z",
+      "category": "device-optimization",
+      "platform": "Mobile",
+      "description": "Optimización profesional de imágenes específicamente para dispositivos móviles, cubriendo iOS, Android y web móvil con técnicas de compresión, formatos modernos y estrategias de carga.",
+      "deviceTypes": [
+        "Teléfonos inteligentes (iOS y Android)",
+        "Tabletas (iPad, tablets Android)",
+        "Dispositivos plegables",
+        "Navegadores móviles"
+      ],
+      "optimizationTechniques": [
+        {
+          "technique": "Formatos Modernos",
+          "description": "Usa WebP y AVIF con fallbacks para mejor compresión"
+        },
+        {
+          "technique": "Tamaños Responsivos",
+          "description": "Sirve diferentes tamaños basados en el dispositivo y densidad de pantalla"
+        },
+        {
+          "technique": "Carga Perezosa",
+          "description": "Carga imágenes a medida que el usuario hace scroll"
+        },
+        {
+          "technique": "Compresión Adaptativa",
+          "description": "Ajusta calidad basado en contenido y velocidad de conexión"
+        }
+      ],
+      "platformSpecs": {
+        "ios": {
+          "formats": ["HEIC", "JPEG", "PNG", "WebP (iOS 14+)"],
+          "resolutions": ["1x", "2x", "3x para diferentes densidades de pantalla"],
+          "recommended": "HEIC para fotos, WebP para web"
+        },
+        "android": {
+          "formats": ["WebP", "JPEG", "PNG", "HEIF"],
+          "resolutions": ["mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"],
+          "recommended": "WebP para todo, PNG para gráficos"
+        },
+        "mobileWeb": {
+          "formats": ["WebP primario", "JPEG fallback", "PNG para transparencia"],
+          "viewport": "Ancho típico de 320-414px",
+          "recommended": "Progressive JPEG con carga perezosa"
+        }
+      },
+      "fileSizeGuidelines": {
+        "thumbnails": "10-50KB",
+        "contentImages": "50-200KB",
+        "heroImages": "200-500KB",
+        "fullScreen": "500KB-1MB"
+      },
+      "bestPractices": [
+        "Usa srcset para diferentes resoluciones de dispositivo",
+        "Implementa carga perezosa para imágenes fuera de pantalla",
+        "Especifica width y height para prevenir cambios de diseño",
+        "Usa formatos modernos con fallbacks apropiados",
+        "Optimiza para conexiones móviles lentas (3G)",
+        "Prueba en dispositivos reales, no solo simuladores"
+      ],
+      "commonMistakes": [
+        "Usar imágenes de escritorio en móviles",
+        "No considerar densidades de pantalla retina/high-DPI",
+        "Olvidar fallbacks para formatos modernos",
+        "Cargar todas las imágenes de inmediato",
+        "No especificar dimensiones causando cambios de diseño"
+      ],
+      "tools": [
+        "MyImageUpscaler para optimización con IA",
+        "Squoosh para compresión manual",
+        "Cloudinary para optimización dinámica",
+        "ImageOptim para compresión local"
+      ],
+      "faq": [
+        {
+          "question": "¿Qué formato de imagen es mejor para móviles?",
+          "answer": "WebP es la mejor opción general con excelente compresión y soporte amplio. HEIC es ideal para iOS, pero JPEG sigue siendo el fallback más compatible."
+        },
+        {
+          "question": "¿Cómo manejo pantallas retina/high-DPI?",
+          "answer": "Usa srcset con múltiples versiones o Sirve imágenes 2x-3x más grandes y deja que el navegador las escale. Considera el ancho de banda vs calidad."
+        }
+      ],
+      "ctaText": "Optimizar tus Imágenes Móviles",
+      "ctaUrl": "/device-optimization/mobile-image-optimization"
+    }
+  ],
+  "meta": {
+    "totalPages": 5,
+    "lastUpdated": "2025-01-19T00:00:00Z"
+  }
+}
