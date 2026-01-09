@@ -687,42 +687,46 @@
           "bestFor": ["Restauração profissional", "Danos complexos", "Controle preciso"]
         },
         {
-          "tool": "AI-Powered Repair",
+          "tool": "Reparação com IA",
           "features": [
-            "Automatic damage detection",
-            "Intelligent reconstruction",
-            "Pattern recognition"
+            "Detecção automática de danos",
+            "Reconstrução inteligente",
+            "Reconhecimento de padrões"
           ],
-          "bestFor": ["Quick repairs", "Complex patterns", "Large damaged areas"]
+          "bestFor": ["Reparações rápidas", "Padrões complexos", "Áreas danificadas grandes"]
         },
         {
-          "tool": "Specialized Restoration Software",
-          "features": ["Dedicated repair tools", "Historical presets", "Batch processing"],
-          "bestFor": ["Vintage photos", "Consistent results", "Workflow efficiency"]
+          "tool": "Software de Restauração Especializado",
+          "features": [
+            "Ferramentas de reparo dedicadas",
+            "Predefinições históricas",
+            "Processamento em lote"
+          ],
+          "bestFor": ["Fotos vintage", "Resultados consistentes", "Eficiência do fluxo de trabalho"]
         }
       ],
       "preventionMethods": [
         {
-          "method": "Proper Storage",
-          "description": "Store photos in appropriate conditions to prevent future damage",
+          "method": "Armazenamento Adequado",
+          "description": "Armazene fotos em condições apropriadas para prevenir danos futuros",
           "guidelines": [
-            "Temperature control",
-            "Humidity management",
-            "UV protection",
-            "Acid-free materials"
+            "Controle de temperatura",
+            "Gerenciamento de umidade",
+            "Proteção UV",
+            "Materiais sem ácido"
           ]
         },
         {
-          "method": "Handling Procedures",
-          "description": "Handle photos carefully to prevent new damage",
-          "guidelines": ["Clean hands", "Support backing", "Avoid bending", "Use cotton gloves"]
+          "method": "Procedimentos de Manuseio",
+          "description": "Manuseie fotos com cuidado para prevenir novos danos",
+          "guidelines": ["Mãos limpas", "Suporte de apoio", "Evite dobrar", "Use luvas de algodão"]
         },
         {
-          "method": "Display Protection",
-          "description": "Protect displayed photos from environmental damage",
+          "method": "Proteção de Exibição",
+          "description": "Proteja fotos exibidas de danos ambientais",
           "guidelines": [
-            "UV-filtering glass",
-            "Proper framing",
+            "Vidro com filtro UV",
+            "Moldura adequada",
             "Avoid direct sunlight",
             "Climate control"
           ]

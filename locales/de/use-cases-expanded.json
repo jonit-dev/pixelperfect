@@ -1,74 +1,63 @@
 {
   "version": "1.0.0",
   "lastUpdated": "2024-12-19T10:00:00Z",
-  "description": "Expanded use cases for professional image enhancement workflows",
+  "description": "Erweiterte Anwendungsfälle für professionelle Bildverbesserungs-Workflows",
   "pages": [
     {
       "slug": "real-estate-photography",
-      "title": "Real Estate Photography Enhancement",
-      "metaTitle": "Real Estate Photography Enhancement | MyImageUpscaler",
-      "metaDescription": "Transform property photos with professional AI enhancement. Increase listing quality, attract more buyers, and sell properties faster with automated real estate photo editing.",
-      "h1": "Real Estate Photography Enhancement",
+      "title": "Immobilienfotografie-Verbesserung",
+      "metaTitle": "Immobilienfotografie-Verbesserung | MyImageUpscaler",
+      "metaDescription": "Verwandeln Sie Immobilienfotos mit professioneller KI-Verbesserung. Erhöhen Sie die Listing-Qualität, ziehen Sie mehr Käufer an und verkaufen Sie Immobilien schneller mit automatisierter Immobilienfotobearbeitung.",
+      "h1": "Immobilienfotografie-Verbesserung",
       "category": "use-cases",
-      "intro": "Professional real estate photography enhancement that transforms ordinary property photos into stunning, market-ready images that attract more buyers and close deals faster.",
-      "primaryKeyword": "enhance real estate photos",
+      "intro": "Professionelle Immobilienfotografie-Verbesserung, die gewöhnliche Immobilienfotos in atemberaubende, marktreife Bilder verwandelt, die mehr Käufer anziehen und Geschäfte schneller abschließen.",
+      "primaryKeyword": "Immobilienfotos verbessern",
       "secondaryKeywords": [
-        "property photo editing",
-        "real estate photo enhancement",
-        "listing photo improvement",
-        "virtual staging photos"
+        "Immobilienfotobearbeitung",
+        "Immobilienfoto-Verbesserung",
+        "Listing-Foto-Verbesserung",
+        "Virtuelles Staging-Fotos"
       ],
-      "description": "Comprehensive enhancement solutions specifically designed for real estate photography, including interior shots, exterior photos, aerial photography, and virtual staging. Our AI-powered tools help real estate professionals create stunning property listings that stand out in competitive markets.",
+      "description": "Umfassende Verbesserungslösungen, speziell entwickelt für Immobilienfotografie, einschließlich Innenaufnahmen, Außenfotos, Luftfotografie und virtuelles Staging. Unsere KI-gestützten Tools helfen Immobilienprofis, atemberaubende Immobilien-Listings zu erstellen, die in wettbewerbsintensiven Märkten herausstechen.",
       "useCases": [
-        "Interior room enhancement for optimal lighting and space perception",
-        "Exterior property photos with sky replacement and landscaping enhancement",
-        "Virtual staging for empty properties and furniture placement",
-        "Aerial photography enhancement for property boundaries and features",
-        "Twilight photography creation from day shots",
-        "HDR processing for challenging lighting situations"
+        "Innenraumverbesserung für optimale Beleuchtung und Raumpreiseption",
+        "Außenimmobilienfotos mit Himmelsersatz und Landschaftsgestaltungsverbesserung",
+        "Virtuelles Staging für leere Immobilien und Möbelplatzierung",
+        "Luftfotografie-Verbesserung für Grundstücksgrenzen und -merkmale",
+        "Dämmerungsfotografie-Erstellung aus Tagesaufnahmen",
+        "HDR-Verarbeitung für herausfordernde Beleuchtungssituationen"
       ],
       "benefits": [
-        "75% increase in listing engagement rates",
-        "40% reduction in time-on-market for enhanced listings",
-        "Professional-grade results without photography expertise",
-        "Consistent quality across entire property portfolios",
-        "Cost-effective alternative to professional photographers",
-        "Automated workflow for bulk property processing"
+        "75% Steigerung der Listing-Engagement-Raten",
+        "40% Reduzierung der Verweildauer auf dem Markt für verbesserte Listings",
+        "Professionelle Ergebnisse ohne Fotografie-Expertise",
+        "Konsistente Qualität über gesamte Immobilienportfolios hinweg",
+        "Kostengünstige Alternative zu professionellen Fotografen",
+        "Automatisierter Workflow für Massenimmobilienverarbeitung"
       ],
       "workflow": [
-        "Upload original property photos (JPEG, RAW, or drone imagery)",
-        "Select enhancement type: Interior, Exterior, Aerial, or Virtual Staging",
-        "Customize settings: brightness, contrast, saturation, sharpness",
-        "Process with AI algorithms trained on real estate photography",
-        "Review and download enhanced images in web-ready formats",
-        "Optional: Apply brand watermark and metadata for MLS compliance"
+        "Ursprüngliche Immobilienfotos hochladen (JPEG, RAW oder Drohnenbilder)",
+        "Verbesserungstyp auswählen: Innen, Außen, Luft oder Virtuelles Staging",
+        "Einstellungen anpassen: Helligkeit, Kontrast, Sättigung, Schärfe",
+        "Verarbeitung mit KI-Algorithmen, trainiert auf Immobilienfotografie",
+        "Überprüfen und herunterladen von verbesserten Bildern in webfertigen Formaten",
+        "Optional: Markenwasserzeichen und Metadaten für MLS-Konformität anwenden"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "TIFF",
-          "RAW",
-          "HEIC",
-          "DNG"
-        ],
-        "maxResolution": "Up to 100MP for professional real estate cameras",
-        "outputFormats": [
-          "JPEG (web-optimized)",
-          "PNG (print-ready)",
-          "TIFF (high-res)"
-        ],
-        "batchProcessing": "Up to 500 property photos per batch",
-        "turnaroundTime": "30-60 seconds per image"
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "RAW", "HEIC", "DNG"],
+        "maxResolution": "Bis zu 100MP für professionelle Immobilienkameras",
+        "outputFormats": ["JPEG (weboptimiert)", "PNG (druckfertig)", "TIFF (hochauflösend)"],
+        "batchProcessing": "Bis zu 500 Immobilienfotos pro Batch",
+        "turnaroundTime": "30-60 Sekunden pro Bild"
       },
       "caseStudies": [
         {
-          "title": "Luxury Real Estate Agency Success",
-          "description": "High-end real estate agency increased listing views by 180% and reduced time-on-market by 45 days after implementing AI enhancement for all property photos.",
-          "metrics": "2.5x ROI within first quarter, 300+ properties enhanced monthly"
+          "title": "Erfolg der Luxus-Immobilienagentur",
+          "description": "High-End-Immobilienagentur erhöhte Listing-Ansichten um 180% und reduzierte die Verweildauer auf dem Markt um 45 Tage nach Implementierung der KI-Verbesserung für alle Immobilienfotos.",
+          "metrics": "2,5-facher ROI im ersten Quartal, 300+ Immobilien monatlich verbessert"
         },
         {
-          "title": "Property Management Company Transformation",
+          "title": "Transformation der Immobilienverwaltungsgesellschaft",
           "description": "Nationwide property management company standardized photo quality across 5000+ listings, resulting in increased tenant applications and higher rental rates.",
           "metrics": "35% increase in qualified leads, consistent brand presentation"
         }
@@ -82,26 +71,10 @@
         "Ensure MLS compliance with enhancement and disclosure requirements"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe Lightroom Classic",
-          "Capture One",
-          "Phase One"
-        ],
-        "aiEnhancement": [
-          "MyImageUpscaler",
-          "Adobe Photoshop Neural Filters",
-          "Topaz Labs"
-        ],
-        "virtualStaging": [
-          "BoxBrownie",
-          "Virtual Staging Solutions",
-          "roOomy"
-        ],
-        "droneProcessing": [
-          "DroneDeploy",
-          "Pix4Dmapper",
-          "DJI Terra"
-        ]
+        "professionalTools": ["Adobe Lightroom Classic", "Capture One", "Phase One"],
+        "aiEnhancement": ["MyImageUpscaler", "Adobe Photoshop Neural Filters", "Topaz Labs"],
+        "virtualStaging": ["BoxBrownie", "Virtual Staging Solutions", "roOomy"],
+        "droneProcessing": ["DroneDeploy", "Pix4Dmapper", "DJI Terra"]
       },
       "fileSizeGuidelines": {
         "webListings": "Under 500KB for fast loading",
@@ -141,159 +114,125 @@
     },
     {
       "slug": "product-photography-enhancement",
-      "title": "Product Photography Enhancement",
-      "metaTitle": "Product Photography Enhancement | MyImageUpscaler",
-      "metaDescription": "professional product photo enhancement for e-commerce. Increase conversion rates with AI-powered background removal, lighting correction, and product image optimization.",
-      "h1": "Product Photography Enhancement",
+      "title": "Produktfotografie-Verbesserung",
+      "metaTitle": "Produktfotografie-Verbesserung | MyImageUpscaler",
+      "metaDescription": "Professionelle Produktfotoverbesserung für E-Commerce. Erhöhen Sie die Konversionsraten mit KI-gestützter Hintergrundentfernung, Beleuchtungskorrektur und Produktbildoptimierung.",
+      "h1": "Produktfotografie-Verbesserung",
       "category": "use-cases",
-      "intro": "Transform ordinary product photos into professional, conversion-optimized images that drive sales and enhance brand perception across all e-commerce platforms.",
-      "primaryKeyword": "product photography enhancement",
+      "intro": "Verwandeln Sie gewöhnliche Produktfotos in professionelle, konventionsoptimierte Bilder, die Verkäufe drives und die Markenwahrnehmung auf allen E-Commerce-Plattformen verbessern.",
+      "primaryKeyword": "Produktfotografie-Verbesserung",
       "secondaryKeywords": [
-        "e-commerce product photos",
-        "product image editing",
-        "background removal",
-        "product photo optimization"
+        "E-Commerce-Produktfotos",
+        "Produktbildbearbeitung",
+        "Hintergrundentfernung",
+        "Produktfoto-Optimierung"
       ],
-      "description": "Comprehensive product photography enhancement solutions designed specifically for e-commerce success. From background removal and lighting correction to color accuracy and detail enhancement, our AI-powered tools ensure your products look their best across all platforms and devices.",
+      "description": "Umfassende Produktfotografie-Verbesserungslösungen, speziell für E-Commerce-Erfolg entwickelt. Von Hintergrundentfernung und Beleuchtungskorrektur bis hin zu Farbgenauigkeit und Detailverbesserung sorgen unsere KI-gestützten Tools dafür, dass Ihre Produkte auf allen Plattformen und Geräten optimal aussehen.",
       "useCases": [
-        "Background removal and replacement for consistent brand presentation",
-        "Lighting correction and shadow enhancement for product depth",
-        "Color accuracy optimization for true-to-life product representation",
-        "Detail enhancement showing textures, materials, and craftsmanship",
-        "Multi-angle product photo optimization for 360° views",
-        "Lifestyle product photo enhancement for social media marketing"
+        "Hintergrundentfernung und -ersatz für konsistente Markenpräsentation",
+        "Beleuchtungskorrektur und Schattenverbesserung für Produkttiefe",
+        "Farbgenauigkeitsoptimierung für realistische Produktdarstellung",
+        "Detailverbesserung, die Texturen, Materialien und Handwerkskunst zeigt",
+        "Mehrwinkel-Produktfotooptimierung für 360°-Ansichten",
+        "Lifestyle-Produktfotoverbesserung für Social-Media-Marketing"
       ],
       "benefits": [
-        "65% increase in conversion rates for enhanced product photos",
-        "85% reduction in product return rates due to accurate representation",
-        "Professional studio quality without expensive equipment",
-        "Consistent brand presentation across all product lines",
-        "Automated workflow for large product catalogs",
-        "Platform-specific optimization (Amazon, Shopify, eBay, social media)"
+        "65% Steigerung der Konversionsraten für verbesserte Produktfotos",
+        "85% Reduzierung der Produktretouren aufgrund genauer Darstellung",
+        "Professionelle Studioqualität ohne teure Ausrüstung",
+        "Konsistente Markenpräsentation über alle Produktlinien hinweg",
+        "Automatisierter Workflow für große Produktkataloge",
+        "Plattformspezifische Optimierung (Amazon, Shopify, eBay, soziale Medien)"
       ],
       "workflow": [
-        "Upload original product photos or packshots",
-        "Select enhancement type: Background removal, Lighting correction, or Complete enhancement",
-        "Choose output specifications: platform requirements, size, format",
-        "Optional: Add brand colors, logo watermark, or custom backgrounds",
-        "Process with AI trained on e-commerce photography best practices",
-        "Download platform-ready images with proper metadata and naming"
+        "Ursprüngliche Produktfotos oder Packshots hochladen",
+        "Verbesserungstyp auswählen: Hintergrundentfernung, Beleuchtungskorrektur oder Vollständige Verbesserung",
+        "Ausgabespezifikationen wählen: Plattformanforderungen, Größe, Format",
+        "Optional: Markenfarben, Logowasserzeichen oder benutzerdefinierte Hintergründe hinzufügen",
+        "Verarbeitung mit KI, trainiert auf E-Commerce-Fotografie-Best-Practices",
+        "Plattformfertige Bilder mit richtigen Metadaten und Namen herunterladen"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "TIFF",
-          "RAW",
-          "HEIC"
-        ],
-        "maxResolution": "Up to 50MP for professional product photography",
-        "outputFormats": [
-          "JPEG (web-optimized)",
-          "PNG (transparent)",
-          "TIFF (print)"
-        ],
-        "batchProcessing": "Up to 1000 product images per batch",
-        "platformSupport": [
-          "Amazon",
-          "Shopify",
-          "eBay",
-          "Etsy",
-          "Walmart",
-          "Social Media"
-        ]
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "RAW", "HEIC"],
+        "maxResolution": "Bis zu 50MP für professionelle Produktfotografie",
+        "outputFormats": ["JPEG (weboptimiert)", "PNG (transparent)", "TIFF (Druck)"],
+        "batchProcessing": "Bis zu 1000 Produktbilder pro Batch",
+        "platformSupport": ["Amazon", "Shopify", "eBay", "Etsy", "Walmart", "Soziale Medien"]
       },
       "caseStudies": [
         {
-          "title": "Fashion E-commerce Brand Success",
-          "description": "Online fashion retailer implemented AI product enhancement across 5000+ SKUs, resulting in 180% increase in conversion rates and 40% reduction in return rates.",
-          "metrics": "3x ROI within 2 months, 99.8% customer satisfaction with product accuracy"
+          "title": "Erfolg der Fashion-E-Commerce-Marke",
+          "description": "Online-Fashion-Einzelhändler implementierte KI-Produktverbesserung über 5000+ SKUs, was zu 180% Steigerung der Konversionsraten und 40% Reduzierung der Retouren führte.",
+          "metrics": "3-facher ROI innerhalb von 2 Monaten, 99,8% Kundenzufriedenheit mit Produktgenauigkeit"
         },
         {
-          "title": "Electronics Marketplace Optimization",
-          "description": "Electronics marketplace enhanced 10000+ product listings with AI optimization, achieving 120% increase in click-through rates and higher average order values.",
-          "metrics": "2.8x ROI, consistent quality across diverse product categories"
+          "title": "Elektronik-Marktplatz-Optimierung",
+          "description": "Elektronik-Marktplatz verbesserte 10000+ Produktlistings mit KI-Optimierung und erreichte 120% Steigerung der Klickraten und höhere durchschnittliche Bestellwerte.",
+          "metrics": "2,8-facher ROI, konsistente Qualität über verschiedene Produktkategorien hinweg"
         }
       ],
       "bestPractices": [
-        "Use consistent lighting and background for all product photos",
-        "Capture multiple angles and details for comprehensive enhancement",
-        "Maintain true-to-life colors - avoid over-saturation",
-        "Follow platform-specific guidelines for image requirements",
-        "Use high-resolution source images for best enhancement results",
-        "Test enhanced images across different devices and platforms"
+        "Verwenden Sie konsistente Beleuchtung und Hintergrund für alle Produktfotos",
+        "Erfassen Sie mehrere Winkel und Details für umfassende Verbesserung",
+        "Erhalten Sie lebensechte Farben - vermeiden Sie Überättigung",
+        "Befolgen Sie plattformspezifische Richtlinien für Bildanforderungen",
+        "Verwenden Sie hochauflösende Quellbilder für beste Verbesserungsergebnisse",
+        "Testen Sie verbesserte Bilder auf verschiedenen Geräten und Plattformen"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe Photoshop",
-          "Capture One",
-          "Phase One"
-        ],
-        "ecommerceTools": [
-          "MyImageUpscaler",
-          "Remove.bg",
-          "Pixelcut",
-          "Canva Pro"
-        ],
-        "platformSpecific": [
-          "Amazon Product Imaging",
-          "Shopify Image Editor",
-          "eBay Photo Services"
-        ],
-        "batchProcessing": [
-          "Adobe Lightroom",
-          "Bridge",
-          "Automated Workflows"
-        ]
+        "professionalTools": ["Adobe Photoshop", "Capture One", "Phase One"],
+        "ecommerceTools": ["MyImageUpscaler", "Remove.bg", "Pixelcut", "Canva Pro"],
+        "platformSpecific": ["Amazon-Produktbildgebung", "Shopify-Bildeditor", "eBay-Fotodienste"],
+        "batchProcessing": ["Adobe Lightroom", "Bridge", "Automatisierte Workflows"]
       },
       "fileSizeGuidelines": {
-        "webOptimized": "100-300KB for fast loading",
-        "highQuality": "500KB-2MB for zoom and detail views",
-        "printCatalogs": "5-10MB for catalog printing",
-        "socialMedia": "500KB-1MB for social media platforms"
+        "webOptimized": "100-300KB für schnelles Laden",
+        "highQuality": "500KB-2MB für Zoom- und Detailansichten",
+        "printCatalogs": "5-10MB für Katalogdruck",
+        "socialMedia": "500KB-1MB für Social-Media-Plattformen"
       },
       "faqs": [
         {
-          "question": "Can AI enhancement replace professional product photography?",
-          "answer": "AI enhancement significantly improves product photos and can achieve professional results, especially for e-commerce. However, for high-end campaigns and large-scale advertising, professional photography combined with AI enhancement delivers optimal results."
+          "question": "Kann die KI-Verbesserung professionelle Produktfotografie ersetzen?",
+          "answer": "Die KI-Verbesserung verbessert Produktfotos erheblich und kann professionelle Ergebnisse erzielen, besonders für E-Commerce. Für High-End-Kampagnen und groß angelegte Werbung liefert jedoch professionelle Fotografie in Kombination mit KI-Verbesserung optimale Ergebnisse."
         },
         {
-          "question": "How do you ensure color accuracy across different devices?",
-          "answer": "Our AI includes advanced color calibration algorithms that optimize for sRGB web standards while maintaining true-to-life product colors. We also provide device-specific optimization for consistent appearance across all platforms."
+          "question": "Wie stellen Sie Farbgenauigkeit auf verschiedenen Geräten sicher?",
+          "answer": "Unsere KI umfasst fortschrittliche Farbkalibrierungsalgorithmen, die für sRGB-Webstandards optimieren, während lebensechte Produktfarben erhalten bleiben. Wir bieten auch gerätespezifische Optimierung für konsistentes Erscheinungsbild auf allen Plattformen."
         },
         {
-          "question": "Can you remove backgrounds automatically?",
-          "answer": "Yes, our AI background removal is 99.9% accurate for most products, including complex items like jewelry, clothing, and transparent objects. Manual refinement options are available for challenging cases."
+          "question": "Können Sie Hintergründe automatisch entfernen?",
+          "answer": "Ja, unsere KI-Hintergrundentfernung ist zu 99,9% genau für die meisten Produkte, einschließlich komplexer Artikel wie Schmuck, Kleidung und transparente Objekte. Manuelle Verfeinerungsoptionen sind für herausfordernde Fälle verfügbar."
         },
         {
-          "question": "What file formats work best for e-commerce platforms?",
-          "answer": "JPEG is best for most e-commerce platforms due to small file size and universal compatibility. PNG is preferred for transparent backgrounds. We optimize each format for the specific platform's requirements."
+          "question": "Welche Dateiformate funktionieren am besten für E-Commerce-Plattformen?",
+          "answer": "JPEG ist am besten für die meisten E-Commerce-Plattformen aufgrund der kleinen Dateigröße und universellen Kompatibilität. PNG wird bevorzugt für transparente Hintergründe. Wir optimieren jedes Format für die spezifischen Plattformanforderungen."
         },
         {
-          "question": "How do you handle reflective and transparent products?",
-          "answer": "Our AI includes specialized algorithms for handling reflective surfaces, glass, and transparent materials. It can reduce glare, enhance clarity, and maintain product transparency while improving overall image quality."
+          "question": "Wie gehen Sie mit reflektierenden und transparenten Produkten um?",
+          "answer": "Unsere KI umfasst spezialisierte Algorithmen für die Handhabung von reflektierenden Oberflächen, Glas und transparenten Materialien. Sie kann Blendung reduzieren, Klarheit verbessern und Produkttransparenz erhalten, während die Gesamtqualität verbessert wird."
         },
         {
-          "question": "Can you maintain brand consistency across enhanced images?",
-          "answer": "Yes, we can apply brand-specific enhancement profiles, color grading, and style guidelines to ensure all product photos maintain consistent brand appearance across your entire catalog."
+          "question": "Können Sie Markenkonsistenz über verbesserte Bilder hinweg aufrechterhalten?",
+          "answer": "Ja, wir können markenspezifische Verbesserungsprofile, Color Grading und Stilrichtlinien anwenden, um sicherzustellen, dass alle Produktfotos ein konsistentes Markenerscheinungsbild über Ihren gesamten Katalog hinweg beibehalten."
         }
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
-      "ctaText": "Enhance Your Product Photos",
+      "ctaText": "Verbessern Sie Ihre Produktfotos",
       "ctaUrl": "/?signup=1"
     },
     {
       "slug": "medical-scientific-imaging",
-      "title": "Medical & Scientific Image Enhancement",
-      "metaTitle": "Medical & Scientific Image Enhancement | MyImageUpscaler",
-      "metaDescription": "professional medical and scientific image enhancement with AI. Improve X-ray, MRI, CT scans, microscopy images, and research photography for better analysis and diagnosis.",
-      "h1": "Medical & Scientific Image Enhancement",
+      "title": "Medizinische & wissenschaftliche Bildverbesserung",
+      "metaTitle": "Medizinische & wissenschaftliche Bildverbesserung | MyImageUpscaler",
+      "metaDescription": "Professionelle medizinische und wissenschaftliche Bildverbesserung mit KI. Verbessern Sie Röntgenbilder, MRT, CT-Scans, Mikroskopiebilder und Forschungsfotografie für bessere Analyse und Diagnose.",
+      "h1": "Medizinische & wissenschaftliche Bildverbesserung",
       "category": "use-cases",
-      "intro": "Advanced AI-powered image enhancement specifically designed for medical and scientific applications, improving clarity, contrast, and detAIl while mAIntAIning diagnostic accuracy and research integrity.",
-      "primaryKeyword": "medical scientific image enhancement",
+      "intro": "Fortschrittliche KI-gestützte Bildverbesserung, speziell für medizinische und wissenschaftliche Anwendungen entwickelt, verbessert Klarheit, Kontrast und Details unter Beibehaltung der diagnostischen Genauigkeit und Forschungsintegrität.",
+      "primaryKeyword": "medizinische wissenschaftliche Bildverbesserung",
       "secondaryKeywords": [
-        "medical image processing",
-        "scientific imaging",
+        "medizinische Bildverarbeitung",
+        "wissenschaftliche Bildgebung",
         "research photo enhancement",
         "medical diagnosis images"
       ],
@@ -323,27 +262,11 @@
         "Export in appropriate formats for publications, presentations, or analysis"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "DICOM",
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "RAW",
-          "BMP"
-        ],
+        "supportedFormats": ["DICOM", "JPEG", "TIFF", "PNG", "RAW", "BMP"],
         "maxResolution": "Unlimited for medical imaging and scientific photography",
-        "outputFormats": [
-          "TIFF (high-res)",
-          "JPEG (presentation)",
-          "PNG (web)",
-          "DICOM (medical)"
-        ],
+        "outputFormats": ["TIFF (high-res)", "JPEG (presentation)", "PNG (web)", "DICOM (medical)"],
         "batchProcessing": "Up to 1000 images for research datasets",
-        "compliance": [
-          "HIPAA compliant",
-          "FDA registered",
-          "ISO 13485 certified"
-        ]
+        "compliance": ["HIPAA compliant", "FDA registered", "ISO 13485 certified"]
       },
       "caseStudies": [
         {
@@ -366,28 +289,10 @@
         "Document enhancement parameters for research reproducibility"
       ],
       "softwareRecommendations": {
-        "medicalImaging": [
-          "ImageJ",
-          "3D Slicer",
-          "OsiriX",
-          "RadiAnt DICOM Viewer"
-        ],
-        "microscopy": [
-          "Fiji",
-          "CellProfiler",
-          "Imaris",
-          "NIS-Elements"
-        ],
-        "scientificImaging": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "GIMP"
-        ],
-        "researchTools": [
-          "MATLAB",
-          "Python (OpenCV, scikit-image)",
-          "R (imager package)"
-        ]
+        "medicalImaging": ["ImageJ", "3D Slicer", "OsiriX", "RadiAnt DICOM Viewer"],
+        "microscopy": ["Fiji", "CellProfiler", "Imaris", "NIS-Elements"],
+        "scientificImaging": ["MyImageUpscaler", "Adobe Photoshop", "GIMP"],
+        "researchTools": ["MATLAB", "Python (OpenCV, scikit-image)", "R (imager package)"]
       },
       "fileSizeGuidelines": {
         "medicalImaging": "Original size for diagnostic accuracy",
@@ -466,14 +371,7 @@
         "Download presentation-ready images with proper scaling and metadata"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "RAW",
-          "PNG",
-          "DNG",
-          "HEIC"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "RAW", "PNG", "DNG", "HEIC"],
         "maxResolution": "Up to 100MP for professional architectural cameras",
         "outputFormats": [
           "JPEG (presentation)",
@@ -482,11 +380,7 @@
           "PDF (documentation)"
         ],
         "batchProcessing": "Up to 500 construction progress photos per batch",
-        "specializedFeatures": [
-          "Perspective correction",
-          "HDR processing",
-          "Detail enhancement"
-        ]
+        "specializedFeatures": ["Perspective correction", "HDR processing", "Detail enhancement"]
       },
       "caseStudies": [
         {
@@ -509,28 +403,10 @@
         "Ensure accurate color representation for materials and finishes"
       ],
       "softwareRecommendations": {
-        "architecturalTools": [
-          "AutoCAD",
-          "Revit",
-          "SketchUp",
-          "Lumion"
-        ],
-        "photography": [
-          "Adobe Lightroom",
-          "Capture One",
-          "Phase One"
-        ],
-        "enhancement": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "Topaz Labs"
-        ],
-        "projectManagement": [
-          "Procore",
-          "PlanGrid",
-          "BIM 360",
-          "CoConstruct"
-        ]
+        "architecturalTools": ["AutoCAD", "Revit", "SketchUp", "Lumion"],
+        "photography": ["Adobe Lightroom", "Capture One", "Phase One"],
+        "enhancement": ["MyImageUpscaler", "Adobe Photoshop", "Topaz Labs"],
+        "projectManagement": ["Procore", "PlanGrid", "BIM 360", "CoConstruct"]
       },
       "fileSizeGuidelines": {
         "portfolioPrint": "10-20MB for high-quality portfolio printing",
@@ -609,33 +485,11 @@
         "Download print-ready files with proper color profiles and metadata"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "RAW",
-          "PSD",
-          "HEIC"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "PNG", "RAW", "PSD", "HEIC"],
         "maxResolution": "Unlimited for print applications",
-        "outputFormats": [
-          "TIFF (CMYK)",
-          "PDF (print-ready)",
-          "JPEG (RGB)",
-          "PSD (layered)"
-        ],
-        "colorSpaces": [
-          "CMYK",
-          "RGB",
-          "Grayscale",
-          "Spot colors"
-        ],
-        "printStandards": [
-          "ISO 12647",
-          "GRACoL",
-          "SWOP",
-          "FOGRA"
-        ]
+        "outputFormats": ["TIFF (CMYK)", "PDF (print-ready)", "JPEG (RGB)", "PSD (layered)"],
+        "colorSpaces": ["CMYK", "RGB", "Grayscale", "Spot colors"],
+        "printStandards": ["ISO 12647", "GRACoL", "SWOP", "FOGRA"]
       },
       "caseStudies": [
         {
@@ -658,26 +512,10 @@
         "Consider paper type and printing method in enhancement decisions"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe InDesign",
-          "Adobe Photoshop",
-          "QuarkXPress"
-        ],
-        "prepressTools": [
-          "Adobe Acrobat Pro",
-          "Preflight Tools",
-          "Color Management Software"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Topaz Labs",
-          "ON1 Resize"
-        ],
-        "colorManagement": [
-          "X-Rite i1Profiler",
-          "Datacolor Spyder",
-          "Pantone Color Manager"
-        ]
+        "professionalTools": ["Adobe InDesign", "Adobe Photoshop", "QuarkXPress"],
+        "prepressTools": ["Adobe Acrobat Pro", "Preflight Tools", "Color Management Software"],
+        "enhancementTools": ["MyImageUpscaler", "Topaz Labs", "ON1 Resize"],
+        "colorManagement": ["X-Rite i1Profiler", "Datacolor Spyder", "Pantone Color Manager"]
       },
       "fileSizeGuidelines": {
         "standardPrint": "10-50MB for high-quality print reproduction",
@@ -756,13 +594,7 @@
         "Download platform-ready files with proper specifications"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "HEIC",
-          "WebP",
-          "AVIF"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "HEIC", "WebP", "AVIF"],
         "platformSupport": [
           "Instagram",
           "TikTok",
@@ -772,17 +604,9 @@
           "LinkedIn",
           "Pinterest"
         ],
-        "outputFormats": [
-          "Platform-optimized JPEG",
-          "PNG with transparency",
-          "WebP for web"
-        ],
+        "outputFormats": ["Platform-optimized JPEG", "PNG with transparency", "WebP for web"],
         "batchProcessing": "Up to 100 content pieces per batch",
-        "performanceOptimization": [
-          "Fast loading",
-          "Mobile-first",
-          "High engagement"
-        ]
+        "performanceOptimization": ["Fast loading", "Mobile-first", "High engagement"]
       },
       "caseStudies": [
         {
@@ -805,27 +629,10 @@
         "Stay current with platform trends and algorithm preferences"
       ],
       "softwareRecommendations": {
-        "contentCreation": [
-          "Canva Pro",
-          "Adobe Creative Suite",
-          "Figma"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "VSCO",
-          "Adobe Lightroom Mobile"
-        ],
-        "videoEditing": [
-          "CapCut",
-          "Adobe Premiere Pro",
-          "Final Cut Pro"
-        ],
-        "socialManagement": [
-          "Buffer",
-          "Hootsuite",
-          "Later",
-          "Planoly"
-        ]
+        "contentCreation": ["Canva Pro", "Adobe Creative Suite", "Figma"],
+        "enhancementTools": ["MyImageUpscaler", "VSCO", "Adobe Lightroom Mobile"],
+        "videoEditing": ["CapCut", "Adobe Premiere Pro", "Final Cut Pro"],
+        "socialManagement": ["Buffer", "Hootsuite", "Later", "Planoly"]
       },
       "fileSizeGuidelines": {
         "instagramFeed": "500KB-2MB for optimal loading and quality",
@@ -904,34 +711,11 @@
         "Download optimized images with responsive variants and metadata"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "WebP",
-          "AVIF",
-          "HEIC",
-          "GIF"
-        ],
-        "outputFormats": [
-          "Modern WebP/AVIF",
-          "Fallback JPEG/PNG",
-          "Responsive srcset"
-        ],
-        "optimizationTargets": [
-          "Core Web Vitals",
-          "Lighthouse scores",
-          "Mobile performance"
-        ],
-        "responsiveSupport": [
-          "Multi-device",
-          "Multi-resolution",
-          "Art direction"
-        ],
-        "webStandards": [
-          "W3C",
-          "Google PageSpeed",
-          "GTmetrix optimization"
-        ]
+        "supportedFormats": ["JPEG", "PNG", "WebP", "AVIF", "HEIC", "GIF"],
+        "outputFormats": ["Modern WebP/AVIF", "Fallback JPEG/PNG", "Responsive srcset"],
+        "optimizationTargets": ["Core Web Vitals", "Lighthouse scores", "Mobile performance"],
+        "responsiveSupport": ["Multi-device", "Multi-resolution", "Art direction"],
+        "webStandards": ["W3C", "Google PageSpeed", "GTmetrix optimization"]
       },
       "caseStudies": [
         {
@@ -954,28 +738,10 @@
         "Test performance across different devices and network conditions"
       ],
       "softwareRecommendations": {
-        "designTools": [
-          "Figma",
-          "Sketch",
-          "Adobe XD",
-          "Framer"
-        ],
-        "developmentTools": [
-          "VS Code",
-          "Sublime Text",
-          "WebStorm"
-        ],
-        "optimizationTools": [
-          "MyImageUpscaler",
-          "ImageOptim",
-          "TinyPNG",
-          "Cloudinary"
-        ],
-        "performanceTools": [
-          "Google PageSpeed Insights",
-          "GTmetrix",
-          "WebPageTest"
-        ]
+        "designTools": ["Figma", "Sketch", "Adobe XD", "Framer"],
+        "developmentTools": ["VS Code", "Sublime Text", "WebStorm"],
+        "optimizationTools": ["MyImageUpscaler", "ImageOptim", "TinyPNG", "Cloudinary"],
+        "performanceTools": ["Google PageSpeed Insights", "GTmetrix", "WebPageTest"]
       },
       "fileSizeGuidelines": {
         "heroImages": "500KB-2MB for high-quality hero sections",
@@ -1054,13 +820,7 @@
         "Download platform-ready creatives with proper specifications"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "GIF",
-          "WebP",
-          "HTML5"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "GIF", "WebP", "HTML5"],
         "marketingChannels": [
           "Google Ads",
           "Facebook Ads",
@@ -1068,21 +828,9 @@
           "Email Marketing",
           "Display Networks"
         ],
-        "adFormats": [
-          "Banner ads",
-          "Social ads",
-          "Email creatives",
-          "Landing page images"
-        ],
-        "performanceOptimization": [
-          "CTR focus",
-          "Conversion optimization",
-          "Brand consistency"
-        ],
-        "testingSupport": [
-          "A/B testing variations",
-          "Multivariate testing support"
-        ]
+        "adFormats": ["Banner ads", "Social ads", "Email creatives", "Landing page images"],
+        "performanceOptimization": ["CTR focus", "Conversion optimization", "Brand consistency"],
+        "testingSupport": ["A/B testing variations", "Multivariate testing support"]
       },
       "caseStudies": [
         {
@@ -1105,27 +853,10 @@
         "Track performance metrics and iterate based on results"
       ],
       "softwareRecommendations": {
-        "marketingPlatforms": [
-          "Google Ads",
-          "Facebook Ads Manager",
-          "LinkedIn Campaign Manager"
-        ],
-        "designTools": [
-          "Canva Pro",
-          "Adobe Creative Suite",
-          "Figma"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Adobe Stock",
-          "Unsplash+"
-        ],
-        "analyticsTools": [
-          "Google Analytics",
-          "Hotjar",
-          "Crazy Egg",
-          "Optimizely"
-        ]
+        "marketingPlatforms": ["Google Ads", "Facebook Ads Manager", "LinkedIn Campaign Manager"],
+        "designTools": ["Canva Pro", "Adobe Creative Suite", "Figma"],
+        "enhancementTools": ["MyImageUpscaler", "Adobe Stock", "Unsplash+"],
+        "analyticsTools": ["Google Analytics", "Hotjar", "Crazy Egg", "Optimizely"]
       },
       "fileSizeGuidelines": {
         "displayAds": "150KB-500KB for fast loading display ads",
@@ -1204,14 +935,7 @@
         "Download high-resolution restored images for archiving and printing"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "BMP",
-          "GIF",
-          "Scanned documents"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "PNG", "BMP", "GIF", "Scanned documents"],
         "damageTypes": [
           "Tears",
           "Scratches",
@@ -1220,17 +944,8 @@
           "Color shifts",
           "Mold damage"
         ],
-        "outputFormats": [
-          "TIFF (archival)",
-          "JPEG (sharing)",
-          "PNG (web)",
-          "DNG (professional)"
-        ],
-        "archiveStandards": [
-          "FADGI",
-          "METS",
-          "PREMIS compliance for institutional archiving"
-        ],
+        "outputFormats": ["TIFF (archival)", "JPEG (sharing)", "PNG (web)", "DNG (professional)"],
+        "archiveStandards": ["FADGI", "METS", "PREMIS compliance for institutional archiving"],
         "qualityControl": [
           "Historical accuracy",
           "Authenticity preservation",
@@ -1258,25 +973,10 @@
         "Consider professional consultation for valuable historical photos"
       ],
       "softwareRecommendations": {
-        "restorationTools": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "Topaz Labs",
-          "Skylum"
-        ],
-        "scanningSoftware": [
-          "VueScan",
-          "Epson Scan",
-          "Canon ScanGear"
-        ],
-        "archiveTools": [
-          "Adobe Lightroom",
-          "DAM systems",
-          "Digital archive software"
-        ],
-        "professionalServices": [
-          "Professional restoration services for valuable items"
-        ]
+        "restorationTools": ["MyImageUpscaler", "Adobe Photoshop", "Topaz Labs", "Skylum"],
+        "scanningSoftware": ["VueScan", "Epson Scan", "Canon ScanGear"],
+        "archiveTools": ["Adobe Lightroom", "DAM systems", "Digital archive software"],
+        "professionalServices": ["Professional restoration services for valuable items"]
       },
       "fileSizeGuidelines": {
         "archivalQuality": "20-100MB for archival TIFF files",
@@ -1362,12 +1062,7 @@
           "Midjourney",
           "Leonardo AI"
         ],
-        "outputResolutions": [
-          "4K",
-          "6K",
-          "8K",
-          "Custom large format"
-        ],
+        "outputResolutions": ["4K", "6K", "8K", "Custom large format"],
         "supportedStyles": [
           "Digital art",
           "Photorealistic",
@@ -1375,18 +1070,8 @@
           "Abstract",
           "Character design"
         ],
-        "printStandards": [
-          "Gallery quality",
-          "Commercial printing",
-          "Fine art reproduction"
-        ],
-        "formatSupport": [
-          "PNG",
-          "TIFF",
-          "JPEG",
-          "PSD",
-          "WebP"
-        ]
+        "printStandards": ["Gallery quality", "Commercial printing", "Fine art reproduction"],
+        "formatSupport": ["PNG", "TIFF", "JPEG", "PSD", "WebP"]
       },
       "caseStudies": [
         {
@@ -1409,26 +1094,14 @@
         "Consider copyright and licensing for commercial use"
       ],
       "softwareRecommendations": {
-        "aiGenerators": [
-          "Midjourney",
-          "DALL-E 3",
-          "Stable Diffusion",
-          "Leonardo AI"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Topaz Gigapixel AI",
-          "Adobe Photoshop"
-        ],
+        "aiGenerators": ["Midjourney", "DALL-E 3", "Stable Diffusion", "Leonardo AI"],
+        "enhancementTools": ["MyImageUpscaler", "Topaz Gigapixel AI", "Adobe Photoshop"],
         "printingServices": [
           "Professional art printing",
           "Gallery printing services",
           "Fine art reproduction"
         ],
-        "commercialTools": [
-          "Adobe Creative Suite",
-          "Professional design software"
-        ]
+        "commercialTools": ["Adobe Creative Suite", "Professional design software"]
       },
       "fileSizeGuidelines": {
         "largePrint": "50-200MB for large format art prints",

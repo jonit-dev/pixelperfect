@@ -96,6 +96,84 @@
         {
           "question": "¿Es realmente tan bueno como Gigapixel AI?",
           "answer": "¡Sí! Para el 95% de casos de uso, MyImageUpscaler produce calidad igual o mejor que Gigapixel AI, con velocidades significativamente más rápidas y costos más bajos."
+        },
+        {
+          "question": "¿Puedo probar ambos antes de decidirme?",
+          "answer": "MyImageUpscaler ofrece un Plan Gratis sin compromiso. az GigAPIxel AI no ofrece prueba gratuita, por lo que MyImageUpscaler es la opción más segura."
+        },
+        {
+          "question": "¿Cuál es mejor para fotógrafos?",
+          "answer": "az GigAPIxel AI puede ser preferido por fotógrafos que necesitan acceso offline y controles avanzados, pero muchos profesionales eligen MyImageUpscaler por su velocidad e integración en el flujo de trabajo."
+        }
+      ],
+      "criteria": [
+        {
+          "name": "Precios",
+          "key": "precio"
+        },
+        {
+          "name": "Plan Gratis",
+          "key": "plan_gratis"
+        },
+        {
+          "name": "Velocidad de Procesamiento",
+          "key": "velocidad"
+        },
+        {
+          "name": "Sin Instalación",
+          "key": "sin_instalacion"
+        },
+        {
+          "name": "Soporte RAW",
+          "key": "soporte_raw"
+        },
+        {
+          "name": "Procesamiento por Lotes",
+          "key": "procesamiento_por_lotes"
+        },
+        {
+          "name": "Acceso API",
+          "key": "acceso_api"
+        }
+      ]
+    },
+    {
+      "slug": "myimageupscaler-vs-adobe-photoshop",
+      "title": "MyImageUpscaler vs Adobe Photoshop: Comparación de Ampliación IA 2025",
+      "products": [
+        {
+          "pros": [
+            null,
+            null,
+            "Interfaz simple e intuitiva",
+            "Precios asequibles",
+            "No requiere aprendizaje",
+            "Resultados consistentes"
+          ],
+          "cons": [
+            "Limitado a la función de ampliación",
+            "Requiere internet",
+            "Menos funciones de edición"
+          ]
+        },
+        {
+          "name": "Adobe Photoshop",
+          "pricing": "$22.99/mes Creative Cloud",
+          "tagline": "Edición profesional de imágenes con funciones de ampliación IA",
+          "description": "Software completo de edición de imágenes con amplificación impulsada por IA como una de muchas funciones.",
+          "features": {
+            "price": "$22.99/mes",
+            "speed": "Lento (30-60 segundos)",
+            "learning_curve": "Empinado"
+          },
+          "pros": [
+            "Solución de edición completa",
+            "Características de grado profesional",
+            "Funciona offline",
+            "Soporte extensivo de formatos",
+            "Estándar de la industria",
+            "Integración con otras herramientas de Adobe"
+          ]
         }
       ]
     }

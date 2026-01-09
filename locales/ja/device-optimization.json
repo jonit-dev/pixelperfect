@@ -9,11 +9,7 @@
       "h1": "Mobile Image Optimization: Complete ガイド",
       "intro": "Mobile devices present unique challenges for image optimization due to limited processing power, storage constrAInts, and variable network conditions. This ガイド covers comprehensive strategies for optimizing images on mobile platforms.",
       "primaryKeyword": "モバイル画像最適化",
-      "secondaryKeywords": [
-        "iOS画像最適化",
-        "Android画像最適化",
-        "モバイルアプリパフォーマンス"
-      ],
+      "secondaryKeywords": ["iOS画像最適化", "Android画像最適化", "モバイルアプリパフォーマンス"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
       "platform": "モバイル",
@@ -166,14 +162,8 @@
           "answer": "サイズ images for the actual display area at the device's pixel density. Typically 320-640px width for most mobile 使用例."
         }
       ],
-      "relatedTools": [
-        "mobile-image-optimizer",
-        "device-image-resizer"
-      ],
-      "relatedPages": [
-        "app-performance-optimization",
-        "mobile-development-image-handling"
-      ]
+      "relatedTools": ["mobile-image-optimizer", "device-image-resizer"],
+      "relatedPages": ["app-performance-optimization", "mobile-development-image-handling"]
     },
     {
       "slug": "desktop-image-optimization",
@@ -191,11 +181,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
       "platform": "デスクトップ",
-      "platforms": [
-        "Windows",
-        "macOS",
-        "Linux"
-      ],
+      "platforms": ["Windows", "macOS", "Linux"],
       "advantages": [
         {
           "advantage": "より高い処理能力",
@@ -320,38 +306,22 @@
         {
           "technique": "Multi-threading",
           "description": "Process images using multiple CPU cores",
-          "benefits": [
-            "Faster processing",
-            "Responsive UI",
-            "Better resource utilization"
-          ]
+          "benefits": ["Faster processing", "Responsive UI", "Better resource utilization"]
         },
         {
           "technique": "GPU Acceleration",
           "description": "Offload processing to graphics hardware",
-          "benefits": [
-            "10-100x speedup",
-            "Reduced CPU load",
-            "Better for large images"
-          ]
+          "benefits": ["10-100x speedup", "Reduced CPU load", "Better for large images"]
         },
         {
           "technique": "Memory Optimization",
           "description": "Efficient memory management for large images",
-          "benefits": [
-            "Handle larger files",
-            "Reduce crashes",
-            "Better performance"
-          ]
+          "benefits": ["Handle larger files", "Reduce crashes", "Better performance"]
         },
         {
           "technique": "Caching Strategies",
           "description": "Smart caching of processed images",
-          "benefits": [
-            "Faster subsequent loads",
-            "Reduced processing",
-            "Better responsiveness"
-          ]
+          "benefits": ["Faster subsequent loads", "Reduced processing", "Better responsiveness"]
         }
       ],
       "integrationConsiderations": [
@@ -385,11 +355,7 @@
             "レイヤーサポート",
             "高精度"
           ],
-          "specificRequirements": [
-            "非破壊編集",
-            "メモリ効率",
-            "GPUアクセラレーション"
-          ]
+          "specificRequirements": ["非破壊編集", "メモリ効率", "GPUアクセラレーション"]
         },
         {
           "application": "画像ビューア",
@@ -399,11 +365,7 @@
             "ズームパフォーマンス",
             "ファイルフォーマットサポート"
           ],
-          "specificRequirements": [
-            "キャッシュ管理",
-            "プログレッシブローディング",
-            "メモリ最適化"
-          ]
+          "specificRequirements": ["キャッシュ管理", "プログレッシブローディング", "メモリ最適化"]
         },
         {
           "application": "デザインツール",
@@ -413,11 +375,7 @@
             "カラーマネジメント",
             "エクスポートオプション"
           ],
-          "specificRequirements": [
-            "プロフェッショナルワークフロー",
-            "バッチ処理",
-            "統合機能"
-          ]
+          "specificRequirements": ["プロフェッショナルワークフロー", "バッチ処理", "統合機能"]
         }
       ],
       "bestPractices": [
@@ -441,14 +399,8 @@
           "answer": "PNG for graphics and transparency, TIFF for プロフェッショナル work, JPEG for photographs. Consider WebP for modern applications with fallback support."
         }
       ],
-      "relatedTools": [
-        "desktop-image-processor",
-        "gpu-accelerated-upscaler"
-      ],
-      "relatedPages": [
-        "professional-image-editing",
-        "multi-platform-image-handling"
-      ]
+      "relatedTools": ["desktop-image-processor", "gpu-accelerated-upscaler"],
+      "relatedPages": ["professional-image-editing", "multi-platform-image-handling"]
     },
     {
       "slug": "smart-tv-image-optimization",
@@ -458,21 +410,11 @@
       "h1": "Smart TV Image Optimization: Complete ガイド",
       "intro": "Smart TVs present unique optimization challenges with large 4K/8K displays, HDR content requirements, and streaming-focused user experiences. This ガイド covers comprehensive strategies for TV-optimized image content.",
       "primaryKeyword": "スマートTV画像最適化",
-      "secondaryKeywords": [
-        "4K TV最適化",
-        "HDR画像準備",
-        "スマートTVアプリパフォーマンス"
-      ],
+      "secondaryKeywords": ["4K TV最適化", "HDR画像準備", "スマートTVアプリパフォーマンス"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
       "platform": "Smart TV",
-      "tvStandards": [
-        "4K UHD",
-        "8K UHD",
-        "HDR10",
-        "Dolby Vision",
-        "HLG"
-      ],
+      "tvStandards": ["4K UHD", "8K UHD", "HDR10", "Dolby Vision", "HLG"],
       "uniqueChallenges": [
         {
           "challenge": "Large Display Sizes",
@@ -701,14 +643,8 @@
           "answer": "TVプラットフォームのサポートを確認してください。最新のSmart TVのほとんどはWebPをサポートしていますが、古いまたは互換性のないデバイス用に必ずJPEGフォールバックを提供してください。"
         }
       ],
-      "relatedTools": [
-        "tv-image-optimizer",
-        "hdr-image-converter"
-      ],
-      "relatedPages": [
-        "4k-content-preparation",
-        "smart-tv-app-development"
-      ]
+      "relatedTools": ["tv-image-optimizer", "hdr-image-converter"],
+      "relatedPages": ["4k-content-preparation", "smart-tv-app-development"]
     },
     {
       "slug": "tablet-image-optimization",
@@ -726,12 +662,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
       "platform": "タブレット",
-      "tabletTypes": [
-        "iPad",
-        "iPad Pro",
-        "Androidタブレット",
-        "Windowsタブレット"
-      ],
+      "tabletTypes": ["iPad", "iPad Pro", "Androidタブレット", "Windowsタブレット"],
       "tabletCharacteristics": [
         {
           "characteristic": "大きな画面",
@@ -870,12 +801,7 @@
       "tabletUseCases": [
         {
           "useCase": "Productivity Apps",
-          "optimizationNeeds": [
-            "Document images",
-            "Charts and graphs",
-            "Icons",
-            "UI elements"
-          ],
+          "optimizationNeeds": ["Document images", "Charts and graphs", "Icons", "UI elements"],
           "specificRequirements": [
             "Clear text at any zoom",
             "Professional appearance",
@@ -884,74 +810,54 @@
         },
         {
           "useCase": "Creative Applications",
-          "optimizationNeeds": [
-            "High-resolution images",
-            "Layer support",
-            "Editing capabilities"
-          ],
-          "specificRequirements": [
-            "Precision handling",
-            "Large file support",
-            "Color accuracy"
-          ]
+          "optimizationNeeds": ["High-resolution images", "Layer support", "Editing capabilities"],
+          "specificRequirements": ["Precision handling", "Large file support", "Color accuracy"]
         },
         {
           "useCase": "Educational Content",
           "optimizationNeeds": [
             "Diagrams and illustrations",
-            "Textbook pages",
-            "Interactive elements"
+            "教科書のページ",
+            "インタラクティブ要素"
           ],
-          "specificRequirements": [
-            "Readability",
-            "Zoom support",
-            "Annotation capability"
-          ]
+          "specificRequirements": ["可読性", "ズームサポート", "注釈機能"]
         },
         {
-          "useCase": "Media Consumption",
-          "optimizationNeeds": [
-            "Photo galleries",
-            "Video thumbnails",
-            "Cover art"
-          ],
-          "specificRequirements": [
-            "High quality",
-            "Smooth scrolling",
-            "Quick loading"
-          ]
+          "useCase": "メディア消費",
+          "optimizationNeeds": ["フォトギャラリー", "ビデオサムネイル", "カバーアート"],
+          "specificRequirements": ["高品質", "スムーズなスクロール", "高速読み込み"]
         }
       ],
       "touchOptimization": [
         {
-          "aspect": "Touch Targets",
-          "description": "Larger touch targets appropriate for tablet use",
-          "recommendation": "Minimum 44x44 points for touch targets"
+          "aspect": "タッチターゲット",
+          "description": "タブレット使用に適したより大きなタッチターゲット",
+          "recommendation": "タッチターゲットは最小44x44ポイント"
         },
         {
-          "aspect": "Gesture Support",
-          "description": "Support tablet-specific gestures and interactions",
-          "recommendation": "Pinch to zoom, swipe gestures, multi-touch support"
+          "aspect": "ジェスチャーサポート",
+          "description": "タブレット固有のジェスチャーとインタラクションをサポート",
+          "recommendation": "ピンチしてズーム、スワイプジェスチャー、マルチタッチサポート"
         },
         {
-          "aspect": "Hand Position",
-          "description": "Consider how users hold tablets when designing interactions",
-          "recommendation": "Two-handed use, edge accessibility, reach zones"
+          "aspect": "手の位置",
+          "description": "インタラクションを設計する際、ユーザーがタブレットをどのように持っているかを考慮",
+          "recommendation": "両手使用、エリアのアクセシビリティ、到達ゾーン"
         }
       ],
       "bestPractices": [
-        "Design specifically for tablet screen sizes, don't just scale phone designs",
-        "Provide appropriate image resolutions for different tablet densities",
-        "Optimize for both portrait and landscape orientations",
-        "Implement efficient memory management for larger images",
-        "Consider tablet-specific interaction patterns and use cases"
+        "電話のデザインを拡大縮小するだけでなく、タブレットの画面サイズに特化してデザイン",
+        "さまざまなタブレット密度に適した画像解像度を提供",
+        "縦向きと横向きの両方のオリエンテーションを最適化",
+        "大きな画像用の効率的なメモリ管理を実装",
+        "タブレット固有のインタラクションパターンと使用例を考慮"
       ],
       "commonMistakes": [
-        "Using phone-optimized images that look pixelated on larger tablet screens",
-        "Not supporting both portrait and landscape orientations properly",
-        "Ignoring tablet-specific interaction patterns and gestures",
-        "Using inefficient memory management causing crashes with large images",
-        "Not optimizing for different tablet resolutions and screen densities"
+        "大きなタブレット画面でピクセル化して見える電話最適化画像の使用",
+        "縦向きと横向きの両方のオリエンテーションを適切にサポートしていない",
+        "タブレット固有のインタラクションパターンとジェスチャーを無視",
+        "非効率なメモリ管理を使用し、大きな画像でクラッシュを引き起こす",
+        "さまざまなタブレット解像度と画面密度を最適化していない"
       ],
       "faq": [
         {
@@ -959,65 +865,54 @@
           "answer": "Yes. Tablets have larger screens and often higher 解像度s. Use image 解像度s appropriate for the specific tablet models you're targeting."
         },
         {
-          "question": "How do I handle orientation changes in tablet apps?",
+          "question": "タブレットアプリでオリエンテーションの変更を処理するには？",
           "answer": "Implement responsive layouts that adapt to orientation changes, potentially providing different image crops or layouts for portrAIt vs landscape."
         },
         {
           "question": "What's the optimal image フォーマット for tablets?",
-          "answer": "Use WebP where supported, with JPEG fallbacks. PNG for UI elements and transparency. HEIF on iOS devices with appropriate fallbacks."
+          "answer": "サポートされている場所ではWebPを使用し、JPEGフォールバックを使用します。UI要素と透明度にはPNGを使用します。iOSデバイスでは適切なフォールバック付きでHEIFを使用します。"
         }
       ],
-      "relatedTools": [
-        "tablet-image-optimizer",
-        "responsive-image-generator"
-      ],
-      "relatedPages": [
-        "mobile-tablet-development",
-        "cross-platform-image-handling"
-      ]
+      "relatedTools": ["tablet-image-optimizer", "responsive-image-generator"],
+      "relatedPages": ["mobile-tablet-development", "cross-platform-image-handling"]
     },
     {
       "slug": "wearable-device-image-optimization",
-      "title": "Wearable Device Image Optimization",
-      "metaTitle": "Wearable Device Image Optimization | MyImageUpscaler",
+      "title": "ウェアラブルデバイス画像最適化",
+      "metaTitle": "ウェアラブルデバイス画像最適化 | MyImageUpscaler",
       "metaDescription": "Complete ガイド to wearable image optimization. Learn to optimize images for smartwatches, fitness trackers, and other wearable devices with limited displays and battery.",
       "h1": "Wearable Image Optimization: Complete ガイド",
       "intro": "Wearable devices present extreme optimization challenges with tiny displays, limited processing power, and severe battery constrAInts. This ガイド covers specialized strategies for optimizing images on smartwatches and fitness trackers.",
-      "primaryKeyword": "wearable image optimization",
+      "primaryKeyword": "ウェアラブル画像最適化",
       "secondaryKeywords": [
-        "smartwatch image optimization",
-        "fitness tracker display",
-        "wearable app performance"
+        "スマートウォッチ画像最適化",
+        "フィットネストラッカー表示",
+        "ウェアラブルアプリパフォーマンス"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
-      "platform": "Wearable",
-      "deviceTypes": [
-        "Smartwatches",
-        "Fitness Trackers",
-        "Smart Rings",
-        "AR Glasses"
-      ],
+      "platform": "ウェアラブル",
+      "deviceTypes": ["スマートウォッチ", "フィットネストラッカー", "スマートリング", "ARグラス"],
       "extremeConstraints": [
         {
-          "constraint": "Tiny Displays",
-          "description": "Typically 1-2 inch displays with 240-480px resolution, requiring extremely optimized images."
+          "constraint": "極小ディスプレイ",
+          "description": "通常240-480px解像度の1〜2インチディスプレイで、極めて最適化された画像が必要です。"
         },
         {
-          "constraint": "Severe Battery Limits",
-          "description": "Every byte transferred and processed impacts battery life significantly."
+          "constraint": "深刻なバッテリー制限",
+          "description": "転送および処理されるすべてのバイトがバッテリー寿命に大幅に影響します。"
         },
         {
-          "constraint": "Minimal Processing",
-          "description": "Very limited CPU and GPU capabilities for image processing."
+          "constraint": "最小限の処理",
+          "description": "画像処理のための非常に限られたCPUおよびGPU機能。"
         },
         {
-          "constraint": "Low Memory",
-          "description": "Extremely limited RAM for storing and processing images."
+          "constraint": "低メモリ",
+          "description": "画像の保存と処理のための極限られたRAM。"
         },
         {
-          "constraint": "Slow Networks",
-          "description": "Often use Bluetooth LE with very low bandwidth for data transfer."
+          "constraint": "遅いネットワーク",
+          "description": "データ転送に帯域幅が非常に低いBluetooth LEをよく使用します。"
         }
       ],
       "platformSpecific": [
@@ -1025,19 +920,19 @@
           "platform": "Apple Watch",
           "optimizations": [
             {
-              "technique": "WatchOS Design Guidelines",
-              "description": "Follow Apple's specific wearable design principles",
-              "implementation": "SF Symbols, dynamic type, high contrast modes"
+              "technique": "WatchOSデザインガイドライン",
+              "description": "Appleの特定のウェアラブルデザイン原則に従う",
+              "implementation": "SFシンボル、ダイナミックタイプ、高コントラストモード"
             },
             {
-              "technique": "Complication Images",
-              "description": "Optimize small images for watch face complications",
-              "implementation": "Templates, color requirements, image templates"
+              "technique": "コンプリケーション画像",
+              "description": "ウォッチフェイスコンプリケーション用の小さな画像を最適化",
+              "implementation": "テンプレート、色要件、画像テンプレート"
             },
             {
-              "technique": "Digital Crown Interaction",
-              "description": "Design for scrolling and zoom with Digital Crown",
-              "implementation": "Smooth scrolling, zoomable images, gesture handling"
+              "technique": "デジタルクラウンインタラクション",
+              "description": "デジタルクラウンでのスクロールとズームをデザイン",
+              "implementation": "スムーズなスクロール、ズーム可能な画像、ジェスチャー処理"
             }
           ]
         },
@@ -1045,19 +940,19 @@
           "platform": "Wear OS",
           "optimizations": [
             {
-              "technique": "Wear OS UI Patterns",
-              "description": "Use Google's wearable-specific UI components",
-              "implementation": "WearableRecyclerView, SwipeDismissFrameLayout"
+              "technique": "Wear OS UIパターン",
+              "description": "Googleのウェアラブル固有UIコンポーネントを使用",
+              "implementation": "WearableRecyclerView、SwipeDismissFrameLayout"
             },
             {
-              "technique": "Ambient Mode",
-              "description": "Optimize for always-on display modes",
-              "implementation": "Low-power image versions, burn-in protection"
+              "technique": "アンビエントモード",
+              "description": "常にオンディスプレイモードを最適化",
+              "implementation": "低電力画像バージョン、焼き付き保護"
             },
             {
-              "technique": "Tiles API",
-              "description": "Optimize images for custom watch faces",
-              "implementation": "Tile constraints, resource limits, update strategies"
+              "technique": "タイルAPI",
+              "description": "カスタムウォッチフェイス用の画像を最適化",
+              "implementation": "タイル制約、リソース制限、更新戦略"
             }
           ]
         }
@@ -1066,182 +961,142 @@
         {
           "device": "Apple Watch",
           "specifications": {
-            "Series 9": "45mm (396x484), 41mm (324x394)",
+            "Series 9": "45mm (396x484)、41mm (324x394)",
             "Ultra": "49mm (410x502)",
-            "SE": "44mm (368x448), 40mm (324x394)",
-            "colorDepth": "Always-on Retina LTPO OLED",
-            "optimization": "Use SF Symbols where possible, minimal JPEG compression"
+            "SE": "44mm (368x448)、40mm (324x394)",
+            "colorDepth": "常時オンRetina LTPO OLED",
+            "optimization": "可能な場合はSFシンボルを使用、最小限のJPEG圧縮"
           }
         },
         {
           "device": "Samsung Galaxy Watch",
           "specifications": {
-            "Watch 6": "44mm (432x480), 40mm (396x432)",
+            "Watch 6": "44mm (432x480)、40mm (396x432)",
             "Watch 5 Pro": "45mm (450x450)",
             "colorDepth": "Super AMOLED",
-            "optimization": "Android Wear guidelines, WebP support where available"
+            "optimization": "Android Wearガイドライン、利用可能な場所でのWebPサポート"
           }
         },
         {
-          "device": "Fitness Trackers",
+          "device": "フィットネストラッカー",
           "specifications": {
-            "Fitbit": "Various (240x240 to 336x336)",
-            "Garmin": "Various (176x176 to 280x280)",
-            "colorDepth": "Often limited color or monochrome",
-            "optimization": "Extreme compression, simple graphics, minimal color depth"
+            "Fitbit": " various (240x240 to 336x336)",
+            "Garmin": " various (176x176 to 280x280)",
+            "colorDepth": "多くの場合、色が制限されているかモノクロ",
+            "optimization": "極限的な圧縮、シンプルなグラフィック、最小限の色深度"
           }
         }
       ],
       "ultraOptimization": [
         {
-          "technique": "Vector Graphics",
-          "description": "Use SVG and vector formats where possible",
-          "benefits": [
-            "Infinitely scalable",
-            "Tiny file sizes",
-            "Perfect for simple graphics"
-          ]
+          "technique": "ベクターグラフィック",
+          "description": "可能な場所ではSVGとベクターフォーマットを使用",
+          "benefits": ["無限にスケーラブル", "微小なファイルサイズ", "シンプルなグラフィックに最適"]
         },
         {
-          "technique": "Symbol Systems",
-          "description": "Use platform symbol systems instead of custom images",
-          "implementation": "SF Symbols, Material Icons, custom icon fonts"
+          "technique": "シンボルシステム",
+          "description": "カスタム画像の代わりにプラットフォームシンボルシステムを使用",
+          "implementation": "SFシンボル、マテリアルアイコン、カスタムアイコンフォント"
         },
         {
-          "technique": "Extreme Compression",
-          "description": "Push image compression to absolute limits",
-          "targets": [
-            "Under 1KB for icons",
-            "Under 5KB for photos",
-            "Lossless for simple graphics"
-          ]
+          "technique": "極限圧縮",
+          "description": "画像圧縮を絶対限界まで押し上げる",
+          "targets": ["アイコンは1KB以下", "写真は5KB以下", "シンプルなグラフィックは可逆圧縮"]
         },
         {
-          "technique": "Color Optimization",
-          "description": "Minimize color depth for massive file size reduction",
-          "implementation": "Indexed color, reduced palettes, monochrome where appropriate"
+          "technique": "色の最適化",
+          "description": "大幅なファイルサイズ削減のために色深度を最小化",
+          "implementation": "インデックスカラー、減少されたパレット、適切な場所でのモノクロ"
         }
       ],
       "contentTypes": [
         {
-          "type": "App Icons",
+          "type": "アプリアイコン",
           "optimization": {
-            "size": "40-60px for most wearables",
-            "format": "PNG with transparency or vector icons",
-            "compression": "Lossless for clarity at small sizes"
+            "size": "ほとんどのウェアラブルで40-60px",
+            "format": "透明性付きPNGまたはベクターアイコン",
+            "compression": "小さいサイズでの鮮明さのための可逆圧縮"
           }
         },
         {
-          "type": "Notification Images",
+          "type": "通知画像",
           "optimization": {
-            "size": "Maximum 100px width",
-            "format": "Highly compressed JPEG or PNG",
-            "compression": "Aggressive compression acceptable"
+            "size": "最大100px幅",
+            "format": "高度に圧縮されたJPEGまたはPNG",
+            "compression": "積極的な圧縮は許容可能"
           }
         },
         {
-          "type": "Watch Face Elements",
+          "type": "ウォッチフェイス要素",
           "optimization": {
-            "size": "Depends on watch face design",
-            "format": "Platform-specific requirements",
-            "compression": "Follow platform guidelines strictly"
+            "size": "ウォッチフェイスデザインに依存",
+            "format": "プラットフォーム固有の要件",
+            "compression": "プラットフォームガイドラインを厳密に守る"
           }
         },
         {
-          "type": "Activity Images",
+          "type": "アクティビティ画像",
           "optimization": {
-            "size": "Small thumbnails for fitness activities",
-            "format": "Compressed JPEG with low quality",
-            "compression": "Very high compression acceptable"
+            "size": "フィットネスアクティビティ用の小さなサムネイル",
+            "format": "低品質の圧縮JPEG",
+            "compression": "非常に高い圧縮は許容可能"
           }
         }
       ],
       "batteryOptimization": [
         {
-          "strategy": "Minimal Transfers",
-          "description": "Transfer images only when absolutely necessary",
-          "implementation": "Caching, preloading, offline-first approach"
+          "strategy": "最小限の転送",
+          "description": "絶対に必要な場合にのみ画像を転送",
+          "implementation": "キャッシング、プリローディング、オフラインファーストアプローチ"
         },
         {
-          "strategy": "Efficient Processing",
-          "description": "Minimize image processing to reduce CPU usage",
-          "implementation": "Pre-processed images, simple transformations"
+          "strategy": "効率的な処理",
+          "description": "CPU使用量を減らすために画像処理を最小化",
+          "implementation": "前処理された画像、シンプルな変換"
         },
         {
-          "strategy": "Display Optimization",
-          "description": "Optimize for low-power display modes",
-          "implementation": "Always-on modes, burn-in prevention, reduced refresh"
+          "strategy": "ディスプレイ最適化",
+          "description": "低電力ディスプレイモードを最適化",
+          "implementation": "常時オンモード、焼き付き防止、削減されたリフレッシュ"
         }
       ],
       "networkOptimization": [
         {
-          "technique": "Companion App Caching",
-          "description": "Cache images on phone companion app",
-          "implementation": "Phone-to-watch transfer via Bluetooth/Wi-Fi"
+          "technique": "コンパニオンアプリキャッシング",
+          "description": "電話コンパニオンアプリに画像をキャッシュ",
+          "implementation": "Bluetooth/Wi-Fi経由の電話からウォッチへの転送"
         },
         {
-          "technique": "Progressive Enhancement",
-          "description": "Load basic versions first, enhance when possible",
-          "implementation": "Text-only versions, then images when available"
+          "technique": "プログレッシブエンハンスメント",
+          "description": "最初に基本バージョンを読み込み、可能なときに拡張",
+          "implementation": "テキストのみバージョン、その後利用可能な場合は画像"
         },
         {
-          "technique": "Predictive Loading",
-          "description": "Pre-load likely images during phone charging",
-          "implementation": "Background syncing, smart prediction algorithms"
+          "technique": "予測読み込み",
+          "description": "電話充電中に可能性の高い画像をプリロード",
+          "implementation": "バックグラウンド同期、スマート予測アルゴリズム"
         }
       ],
       "specializedUseCases": [
         {
-          "useCase": "Fitness Tracking",
-          "optimizationNeeds": [
-            "Activity icons",
-            "Achievement badges",
-            "Progress images"
-          ],
-          "specificRequirements": [
-            "Low battery impact",
-            "Quick loading",
-            "Motivational quality"
-          ]
+          "useCase": "フィットネストラッキング",
+          "optimizationNeeds": ["アクティビティアイコン", "実績バッジ", "Progress images"],
+          "specificRequirements": ["Low battery impact", "Quick loading", "Motivational quality"]
         },
         {
           "useCase": "Health Monitoring",
-          "optimizationNeeds": [
-            "Medical icons",
-            "Chart graphics",
-            "Alert indicators"
-          ],
-          "specificRequirements": [
-            "Clear at small sizes",
-            "High contrast",
-            "Reliability"
-          ]
+          "optimizationNeeds": ["Medical icons", "Chart graphics", "Alert indicators"],
+          "specificRequirements": ["Clear at small sizes", "High contrast", "Reliability"]
         },
         {
           "useCase": "Navigation",
-          "optimizationNeeds": [
-            "Map icons",
-            "Direction arrows",
-            "Landmark images"
-          ],
-          "specificRequirements": [
-            "Quick recognition",
-            "Clear meaning",
-            "Low bandwidth"
-          ]
+          "optimizationNeeds": ["Map icons", "Direction arrows", "Landmark images"],
+          "specificRequirements": ["Quick recognition", "Clear meaning", "Low bandwidth"]
         },
         {
           "useCase": "Communication",
-          "optimizationNeeds": [
-            "Contact photos",
-            "Emoji",
-            "Message attachments"
-          ],
-          "specificRequirements": [
-            "Fast loading",
-            "Privacy",
-            "Quick glance reading"
-          ]
+          "optimizationNeeds": ["Contact photos", "Emoji", "Message attachments"],
+          "specificRequirements": ["Fast loading", "Privacy", "Quick glance reading"]
         }
       ],
       "bestPractices": [
@@ -1272,14 +1127,8 @@
           "answer": "Implement companion app caching, load text-only versions first, and use aggressive compression. Pre-load content during phone charging when possible."
         }
       ],
-      "relatedTools": [
-        "wearable-image-optimizer",
-        "icon-compressor"
-      ],
-      "relatedPages": [
-        "wearable-app-development",
-        "low-power-display-optimization"
-      ]
+      "relatedTools": ["wearable-image-optimizer", "icon-compressor"],
+      "relatedPages": ["wearable-app-development", "low-power-display-optimization"]
     }
   ],
   "meta": {

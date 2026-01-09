@@ -157,29 +157,94 @@
         {
           "brand": "Samsung Galaxy S Series",
           "models": [
-            { "model": "Galaxy S24 Ultra", "width": 1440, "height": 3120, "aspectRatio": "19.5:9" },
-            { "model": "Galaxy S24+", "width": 1440, "height": 3120, "aspectRatio": "19.5:9" },
-            { "model": "Galaxy S24", "width": 1080, "height": 2340, "aspectRatio": "19.5:9" },
-            { "model": "Galaxy S23 Ultra", "width": 1440, "height": 3088, "aspectRatio": "19.3:9" },
-            { "model": "Galaxy S23", "width": 1080, "height": 2340, "aspectRatio": "19.5:9" }
+            {
+              "model": "Galaxy S24 Ultra",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24+",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S23 Ultra",
+              "width": 1440,
+              "height": 3088,
+              "aspectRatio": "19.3:9"
+            },
+            {
+              "model": "Galaxy S23",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19.5:9"
+            }
           ]
         },
         {
           "brand": "Google Pixel",
           "models": [
-            { "model": "Pixel 9 Pro XL", "width": 1344, "height": 2992, "aspectRatio": "20:9" },
-            { "model": "Pixel 9 Pro", "width": 1280, "height": 2856, "aspectRatio": "20:9" },
-            { "model": "Pixel 9", "width": 1080, "height": 2424, "aspectRatio": "20:9" },
-            { "model": "Pixel 8 Pro", "width": 1344, "height": 2992, "aspectRatio": "20:9" },
-            { "model": "Pixel 8", "width": 1080, "height": 2400, "aspectRatio": "20:9" },
-            { "model": "Pixel 7a", "width": 1080, "height": 2400, "aspectRatio": "20:9" }
+            {
+              "model": "Pixel 9 Pro XL",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9 Pro",
+              "width": 1280,
+              "height": 2856,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9",
+              "width": 1080,
+              "height": 2424,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8 Pro",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 7a",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            }
           ]
         },
         {
           "brand": "OnePlus",
           "models": [
-            { "model": "OnePlus 12", "width": 1440, "height": 3168, "aspectRatio": "19.8:9" },
-            { "model": "OnePlus 11", "width": 1440, "height": 3216, "aspectRatio": "20.1:9" }
+            {
+              "model": "OnePlus 12",
+              "width": 1440,
+              "height": 3168,
+              "aspectRatio": "19.8:9"
+            },
+            {
+              "model": "OnePlus 11",
+              "width": 1440,
+              "height": 3216,
+              "aspectRatio": "20.1:9"
+            }
           ]
         }
       ],

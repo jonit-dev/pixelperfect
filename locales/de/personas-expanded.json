@@ -201,7 +201,7 @@
           "Adobe RGB für Druck-Workflows",
           "ProPhoto RGB für maximalen Farbraum während der Bearbeitung",
           "CMYK-Konvertierung für spezifische Druckanforderungen"
-        },
+        ],
         "fileSize": {
           "optimization": "Balance zwischen Qualität und praktischen Dateigrößen",
           "archival": "Masterdateien bei maximaler Qualität erhalten",
@@ -2614,13 +2614,7 @@
         }
       ],
       "technicalSpecs": {
-        "outputFormats": [
-          "WebP",
-          "AVIF",
-          "JPEG",
-          "PNG",
-          "GIF"
-        ],
+        "outputFormats": ["WebP", "AVIF", "JPEG", "PNG", "GIF"],
         "optimization": {
           "compression": "Fortschrittliche Komprimierungsalgorithmen für Weboptimierung",
           "resizing": "Intelligentes Resizing mit Content-Aware-Cropping",
