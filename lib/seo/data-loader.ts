@@ -6,7 +6,7 @@
 
 import { cache } from 'react';
 import { keywordPageMappings } from './keyword-mappings';
-import { clientEnv } from '@shared/config/env';
+import { clientEnv, serverEnv } from '@shared/config/env';
 import { Locale } from '@/i18n/config';
 import { isCategoryLocalized } from './localization-config';
 
@@ -67,10 +67,15 @@ async function loadLocalizedPSEOData<T extends PSEOPage>(
 
   try {
     // Dynamic import of locale-specific file
+
     const localizedData = await import(`@/locales/${locale}/${namespace}.json`);
-    return localizedData.default as IPSEODataFile<T>;
-  } catch {
+    return (localizedData.default || localizedData) as IPSEODataFile<T>;
+  } catch (error) {
     // Locale file doesn't exist, fall back to English
+    // Log the error for debugging (only in development)
+    if (serverEnv.ENV === 'development') {
+      console.warn(`Failed to load localized data for ${locale}/${namespace}.json:`, error);
+    }
     return fallbackData;
   }
 }

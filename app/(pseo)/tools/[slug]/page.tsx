@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: IToolPageProps): Promise<Meta
 
   if (!tool) return {};
 
-  return generatePageMetadata(tool, 'tools');
+  return generatePageMetadata(tool, 'tools', 'en');
 }
 
 export default async function ToolPage({ params }: IToolPageProps) {
@@ -34,7 +34,7 @@ export default async function ToolPage({ params }: IToolPageProps) {
     notFound();
   }
 
-  const schema = generateToolSchema(tool);
+  const schema = generateToolSchema(tool, 'en');
 
   // Use InteractiveToolPageTemplate for tools with embedded functionality
   const Template = tool.isInteractive ? InteractiveToolPageTemplate : ToolPageTemplate;

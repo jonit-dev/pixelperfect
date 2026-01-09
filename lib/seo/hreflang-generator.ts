@@ -30,15 +30,18 @@ import type { PSEOCategory } from './url-utils';
 export function generateHreflangAlternates(path: string): Record<string, string> {
   const alternates: Record<string, string> = {};
 
+  // Ensure path has trailing slash for consistency
+  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+
   // Generate URL for each supported locale
   for (const locale of SUPPORTED_LOCALES) {
-    const localePath = getLocalizedPath(path, locale);
+    const localePath = getLocalizedPath(normalizedPath, locale);
     alternates[locale] = `${clientEnv.BASE_URL}${localePath}`;
   }
 
   // Add x-default pointing to the default locale (English)
   // This tells search engines to use the English version for unsupported languages
-  alternates['x-default'] = `${clientEnv.BASE_URL}${path}`;
+  alternates['x-default'] = `${clientEnv.BASE_URL}${normalizedPath}`;
 
   return alternates;
 }
@@ -80,11 +83,11 @@ export function getLocalizedPath(path: string, locale: Locale): string {
     return path;
   }
 
-  // Ensure path starts with /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  // Remove leading slash before adding locale prefix to avoid double slashes
+  const pathWithoutSlash = path.startsWith('/') ? path.slice(1) : path;
 
   // Add locale prefix for non-default locales
-  return `/${locale}${normalizedPath}`;
+  return `/${locale}/${pathWithoutSlash}`;
 }
 
 /**
@@ -122,11 +125,13 @@ export function formatHreflangForMetadata(
  * @example
  * ```ts
  * getCanonicalUrl('/tools/ai-upscaler');
- * // Returns: 'https://myimageupscaler.com/tools/ai-upscaler'
+ * // Returns: 'https://myimageupscaler.com/tools/ai-upscaler/'
  * ```
  */
 export function getCanonicalUrl(path: string): string {
-  return `${clientEnv.BASE_URL}${path}`;
+  // Ensure path has trailing slash for consistency
+  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+  return `${clientEnv.BASE_URL}${normalizedPath}`;
 }
 
 /**
@@ -210,15 +215,11 @@ export function generateSitemapHreflangLinks(path: string): string[] {
   for (const locale of SUPPORTED_LOCALES) {
     const localePath = getLocalizedPath(path, locale);
     const url = `${baseUrl}${localePath}`;
-    links.push(
-      `    <xhtml:link rel="alternate" hreflang="${locale}" href="${url}"/>`
-    );
+    links.push(`    <xhtml:link rel="alternate" hreflang="${locale}" href="${url}"/>`);
   }
 
   // Add x-default
-  links.push(
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}"/>`
-  );
+  links.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}"/>`);
 
   return links;
 }

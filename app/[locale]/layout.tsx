@@ -55,19 +55,8 @@ export async function generateMetadata({
       url: '/',
       siteName: APP_NAME,
     },
-    alternates: {
-      canonical: locale === 'en' ? '/' : `/${locale}/`,
-      languages: {
-        en: '/',
-        es: '/es/',
-        pt: '/pt/',
-        de: '/de/',
-        fr: '/fr/',
-        it: '/it/',
-        ja: '/ja/',
-        'x-default': '/',
-      },
-    },
+    // Note: alternates are NOT set here to avoid overriding page-level metadata
+    // Each page sets its own alternates with proper hreflang links
     icons: {
       icon: [
         { url: '/favicon.ico' },

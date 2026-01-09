@@ -1,9 +1,14 @@
 import type { ReactNode } from 'react';
+import type { Metadata } from 'next';
 import { Inter, DM_Sans } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { ClientProviders } from '@client/components/ClientProviders';
 import { AhrefsAnalytics } from '@client/components/analytics/AhrefsAnalytics';
 import { GoogleAnalytics } from '@client/components/analytics/GoogleAnalytics';
 import { Layout } from '@client/components/layout/Layout';
+import { DEFAULT_LOCALE } from '@/i18n/config';
+import { clientEnv } from '@shared/config/env';
 import '@client/styles/index.css';
 
 const inter = Inter({
@@ -32,44 +37,48 @@ interface IPSEOLayoutProps {
  *
  * Provides proper HTML structure with metadata for search engines.
  */
-export default function PSEOLayout({ children }: IPSEOLayoutProps) {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(clientEnv.BASE_URL),
+    alternates: {
+      canonical: '/',
+      languages: {
+        en: '/',
+        es: '/es/',
+        pt: '/pt/',
+        de: '/de/',
+        fr: '/fr/',
+        it: '/it/',
+        ja: '/ja/',
+        'x-default': '/',
+      },
+    },
+  };
+}
+
+export default async function PSEOLayout({ children }: IPSEOLayoutProps) {
+  // Set the locale to English (default) for pSEO pages
+  setRequestLocale(DEFAULT_LOCALE);
+
+  // Get messages for the default locale
+  const messages = await getMessages();
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${dmSans.variable} bg-base`}
       suppressHydrationWarning
     >
-      <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://analytics.ahrefs.com" />
-        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-        <link rel="preconnect" href="https://js.stripe.com" />
-        <link rel="dns-prefetch" href="https://js.stripe.com" />
-
-        <link
-          rel="preload"
-          href="/before-after/women-after.webp"
-          as="image"
-          type="image/webp"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          href="/before-after/women-before.webp"
-          as="image"
-          type="image/webp"
-          fetchPriority="high"
-        />
-      </head>
       <body
         className={`${inter.className} bg-base text-foreground antialiased selection:bg-accent/20 selection:text-white`}
       >
-        <GoogleAnalytics />
-        <AhrefsAnalytics />
-        <ClientProviders>
-          <Layout>{children}</Layout>
-        </ClientProviders>
+        <NextIntlClientProvider locale={DEFAULT_LOCALE} messages={messages}>
+          <GoogleAnalytics />
+          <AhrefsAnalytics />
+          <ClientProviders>
+            <Layout>{children}</Layout>
+          </ClientProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

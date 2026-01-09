@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { getAllTools } from '@/lib/seo/data-loader';
 import { generateCategoryMetadata } from '@/lib/seo/metadata-factory';
 
-export const metadata = generateCategoryMetadata('tools');
+export async function generateMetadata(): Promise<Metadata> {
+  return generateCategoryMetadata('tools', 'en');
+}
 
 export default async function ToolsHubPage() {
   const tools = await getAllTools();
