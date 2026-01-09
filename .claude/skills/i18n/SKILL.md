@@ -32,12 +32,12 @@ middleware.ts              # Locale detection and routing
 
 ### Key Files
 
-| File | Purpose |
-|------|---------|
-| `i18n/config.ts` | Defines `SUPPORTED_LOCALES`, `DEFAULT_LOCALE`, `isValidLocale()` |
-| `i18n.config.ts` | next-intl server config with `getRequestConfig` |
-| `locales/{locale}/common.json` | Translation strings organized by namespace |
-| `middleware.ts` | Detects locale from URL/cookie/header, handles routing |
+| File                           | Purpose                                                          |
+| ------------------------------ | ---------------------------------------------------------------- |
+| `i18n/config.ts`               | Defines `SUPPORTED_LOCALES`, `DEFAULT_LOCALE`, `isValidLocale()` |
+| `i18n.config.ts`               | next-intl server config with `getRequestConfig`                  |
+| `locales/{locale}/common.json` | Translation strings organized by namespace                       |
+| `middleware.ts`                | Detects locale from URL/cookie/header, handles routing           |
 
 ## Adding New Translation Keys
 
@@ -70,6 +70,7 @@ Edit `locales/es/common.json` (and any other supported locales):
 ### 3. Use in Component
 
 **Client Component:**
+
 ```tsx
 'use client';
 import { useTranslations } from 'next-intl';
@@ -81,6 +82,7 @@ export function MyComponent() {
 ```
 
 **Server Component:**
+
 ```tsx
 import { getTranslations } from 'next-intl/server';
 
@@ -94,14 +96,14 @@ export default async function MyPage() {
 
 Organize translations by feature/area:
 
-| Namespace | Purpose | Example Keys |
-|-----------|---------|--------------|
-| `common` | Shared UI elements | `loading`, `error`, `submit` |
-| `nav` | Navigation items | `features`, `pricing`, `signIn` |
-| `footer` | Footer content | `privacy`, `terms`, `copyright` |
-| `homepage` | Landing page | `heroTitle`, `ctaButton` |
-| `dashboard` | Dashboard UI | `credits`, `history`, `settings` |
-| `auth` | Auth forms | `email`, `password`, `forgotPassword` |
+| Namespace   | Purpose            | Example Keys                          |
+| ----------- | ------------------ | ------------------------------------- |
+| `common`    | Shared UI elements | `loading`, `error`, `submit`          |
+| `nav`       | Navigation items   | `features`, `pricing`, `signIn`       |
+| `footer`    | Footer content     | `privacy`, `terms`, `copyright`       |
+| `homepage`  | Landing page       | `heroTitle`, `ctaButton`              |
+| `dashboard` | Dashboard UI       | `credits`, `history`, `settings`      |
+| `auth`      | Auth forms         | `email`, `password`, `forgotPassword` |
 
 ## Adding a New Language
 
@@ -180,6 +182,7 @@ export function PricingCard() {
 ### After (Translated)
 
 1. Add translations to `locales/en/common.json`:
+
 ```json
 {
   "pricing": {
@@ -191,6 +194,7 @@ export function PricingCard() {
 ```
 
 2. Add to `locales/es/common.json`:
+
 ```json
 {
   "pricing": {
@@ -202,6 +206,7 @@ export function PricingCard() {
 ```
 
 3. Update component:
+
 ```tsx
 'use client';
 import { useTranslations } from 'next-intl';
@@ -229,7 +234,7 @@ export function PricingCard() {
 ```
 
 ```tsx
-t('greeting', { name: 'John' }) // "Hello, John!"
+t('greeting', { name: 'John' }); // "Hello, John!"
 ```
 
 ### Pluralization
@@ -241,17 +246,17 @@ t('greeting', { name: 'John' }) // "Hello, John!"
 ```
 
 ```tsx
-t('credits', { count: 5 }) // "5 credits"
+t('credits', { count: 5 }); // "5 credits"
 ```
 
 ## URL Routing Rules
 
-| URL | Locale | Behavior |
-|-----|--------|----------|
-| `/` | `en` | English (default, no prefix) |
-| `/es/` | `es` | Spanish (explicit prefix) |
-| `/pricing` | `en` | Internally rewritten to `/en/pricing` |
-| `/es/pricing` | `es` | Spanish pricing page |
+| URL           | Locale | Behavior                              |
+| ------------- | ------ | ------------------------------------- |
+| `/`           | `en`   | English (default, no prefix)          |
+| `/es/`        | `es`   | Spanish (explicit prefix)             |
+| `/pricing`    | `en`   | Internally rewritten to `/en/pricing` |
+| `/es/pricing` | `es`   | Spanish pricing page                  |
 
 ## Middleware Locale Detection Priority
 
@@ -281,7 +286,112 @@ t('credits', { count: 5 }) // "5 credits"
 If a key is missing, next-intl shows the key name. Add missing translations or use fallback:
 
 ```tsx
-t('maybeNotExist', { default: 'Fallback text' })
+t('maybeNotExist', { default: 'Fallback text' });
+```
+
+## Checking Translations
+
+### Quick Check
+
+Run the translation checker to verify completeness:
+
+```bash
+yarn i18n:check
+```
+
+This checks all locales for:
+
+- Missing translation files
+- Missing translation keys
+- Untranslated content (values identical to English)
+
+### Script Options
+
+The check script supports various options for targeted checks:
+
+```bash
+# Check specific locale only
+yarn i18n:check --locale de
+
+# Check specific namespace only
+yarn i18n:check --namespace pricing
+
+# Combine filters
+yarn i18n:check --locale de --namespace pricing
+
+# Output as JSON (useful for CI/CD)
+yarn i18n:check --json
+
+# Show verbose output (all checked items, not just missing)
+yarn i18n:check --verbose
+
+# Show debug info (file structure, key counts)
+yarn i18n:check --debug
+
+# Check only missing keys, not files
+yarn i18n:check --keys-only
+
+# Check only missing files, not keys
+yarn i18n:check --files-only
+```
+
+### Understanding the Report
+
+The check report shows:
+
+| Section                  | Description                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| **Missing Files**        | Translation files that don't exist for a locale (e.g., `pt/pricing.json` missing) |
+| **Missing Keys**         | Keys present in English but missing in other locales                              |
+| **Untranslated Content** | Keys where the value matches English exactly (may need translation)               |
+| **Extra Files**          | Files in locale that don't exist in English (warnings)                            |
+| **Extra Keys**           | Keys in locale that don't exist in English (warnings)                             |
+
+### CI/CD Integration
+
+The script exits with error code 1 if issues are found, making it suitable for CI/CD:
+
+```json
+{
+  "scripts": {
+    "i18n:check": "tsx scripts/check-translations.ts",
+    "verify": "npm run tsc && npm run lint && npm run i18n:check"
+  }
+}
+```
+
+### Reference Locale
+
+- **Reference**: English (`en`) is the source of truth
+- All other locales are compared against English
+- Always add new keys to English first, then translate
+
+### Common Workflows
+
+**Before committing translations:**
+
+```bash
+yarn i18n:check
+```
+
+**After adding new translation keys:**
+
+```bash
+# Check all locales for the new keys
+yarn i18n:check --namespace <your-namespace>
+
+# Check specific locale
+yarn i18n:check --locale pt --namespace <your-namespace>
+```
+
+**Debugging translation issues:**
+
+```bash
+# See full file structure and key counts
+yarn i18n:check --debug
+
+# See all checked items
+yarn i18n:check --verbose
 ```
 
 ## Checklist for New Translations
@@ -290,4 +400,5 @@ t('maybeNotExist', { default: 'Fallback text' })
 - [ ] Added translation to all other locale files (`es`, etc.)
 - [ ] Used correct namespace in component
 - [ ] Tested in all supported languages
-- [ ] Ran `yarn verify`
+- [ ] Ran `yarn i18n:check` to verify completeness
+- [ ] Ran `yarn verify` before committing
