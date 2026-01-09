@@ -20,8 +20,18 @@
       "comparisonType": "technical",
       "methodology": {
         "testDataset": "100 imagens diversas (fotografias, texto, gráficos, imagens médicas)",
-        "scaleFactors": ["2x", "4x", "8x"],
-        "metrics": ["PSNR", "SSIM", "LPIPS", "Preferência humana", "Tempo de processamento"],
+        "scaleFactors": [
+          "2x",
+          "4x",
+          "8x"
+        ],
+        "metrics": [
+          "PSNR",
+          "SSIM",
+          "LPIPS",
+          "Preferência humana",
+          "Tempo de processamento"
+        ],
         "hardware": "Processamento em nuvem padronizado vs computação local"
       },
       "comparisonSections": [
@@ -33,32 +43,57 @@
               "method": "Interpolação Bicúbica",
               "avgPSNR": "28.4 dB (2x), 24.1 dB (4x)",
               "avgSSIM": "0.89 (2x), 0.76 (4x)",
-              "strengths": ["Processamento rápido", "Resultados previsíveis", "Sem artefatos"],
-              "weaknesses": ["Bordas suaves", "Perda de detalhe", "Manuseio ruim de texto"],
+              "strengths": [
+                "Processamento rápido",
+                "Resultados previsíveis",
+                "Sem artefatos"
+              ],
+              "weaknesses": [
+                "Bordas suaves",
+                "Perda de detalhe",
+                "Manuseio ruim de texto"
+              ],
               "bestFor": "Aplicações em tempo real, geração de pré-visualização"
             },
             {
               "method": "Reamostragem Lanczos",
               "avgPSNR": "29.1 dB (2x), 25.3 dB (4x)",
               "avgSSIM": "0.91 (2x), 0.79 (4x)",
-              "strengths": ["Mais nítido que o bicúbico", "Bom para imagens naturais"],
-              "weaknesses": ["Artefatos de anelamento", "Computacionalmente mais pesado"],
+              "strengths": [
+                "Mais nítido que o bicúbico",
+                "Bom para imagens naturais"
+              ],
+              "weaknesses": [
+                "Artefatos de anelamento",
+                "Computacionalmente mais pesado"
+              ],
               "bestFor": "Fotografia, preparação para impressão"
             },
             {
               "method": "ESRGAN AI",
               "avgPSNR": "31.2 dB (2x), 27.8 dB (4x)",
               "avgSSIM": "0.94 (2x), 0.88 (4x)",
-              "strengths": ["Excelente reconstrução de detalhes", "Lida bem com texturas"],
-              "weaknesses": ["Pode exagerar na nitidez", "Processamento mais lento"],
+              "strengths": [
+                "Excelente reconstrução de detalhes",
+                "Lida bem com texturas"
+              ],
+              "weaknesses": [
+                "Pode exagerar na nitidez",
+                "Processamento mais lento"
+              ],
               "bestFor": "Fotografia, aprimoramento artístico"
             },
             {
               "method": "Real-ESRGAN",
               "avgPSNR": "30.8 dB (2x), 27.2 dB (4x)",
               "avgSSIM": "0.93 (2x), 0.86 (4x)",
-              "strengths": ["Aprimoramento equilibrado", "Bom com imagens comprimidas"],
-              "weaknesses": ["Requer ajuste cuidadoso"],
+              "strengths": [
+                "Aprimoramento equilibrado",
+                "Bom com imagens comprimidas"
+              ],
+              "weaknesses": [
+                "Requer ajuste cuidadoso"
+              ],
               "bestFor": "Propósito geral, fontes comprimidas"
             }
           ]
@@ -339,17 +374,29 @@
           {
             "condition": "Necessidade de colaboração/uso em equipe",
             "path": "Solução Online",
-            "recommendations": ["MyImageUpscaler Pro", "Let's Enhance", "Adobe Creative Cloud"]
+            "recommendations": [
+              "MyImageUpscaler Pro",
+              "Let's Enhance",
+              "Adobe Creative Cloud"
+            ]
           },
           {
             "condition": "Processamento de milhares de imagens mensalmente",
             "path": "Solução de API em Nuvem",
-            "recommendations": ["MyImageUpscaler API", "Cloudinary AI", "AWS Rekognition"]
+            "recommendations": [
+              "MyImageUpscaler API",
+              "Cloudinary AI",
+              "AWS Rekognition"
+            ]
           },
           {
             "condition": "Orçamento limitado, uso ocasional",
             "path": "Plano gratuito online ou desktop de compra única",
-            "recommendations": ["MyImageUpscaler Free", "GIMP com plugins", "PhotoScape X"]
+            "recommendations": [
+              "MyImageUpscaler Free",
+              "GIMP com plugins",
+              "PhotoScape X"
+            ]
           }
         ]
       },
@@ -393,7 +440,11 @@
         "qualityScores": {
           "freeSolutions": {
             "averageScore": "6,5/10",
-            "topPerformers": ["MyImageUpscaler Free", "BigJPG", "ImgUpscaler"],
+            "topPerformers": [
+              "MyImageUpscaler Free",
+              "BigJPG",
+              "ImgUpscaler"
+            ],
             "commonLimitations": [
               "Limites de resolução (2x-4x)",
               "Marcas d'água",
@@ -403,7 +454,11 @@
           },
           "paidSolutions": {
             "averageScore": "8,7/10",
-            "topPerformers": ["MyImageUpscaler Pro", "Topaz Gigapixel", "Adobe Super Resolution"],
+            "topPerformers": [
+              "MyImageUpscaler Pro",
+              "Topaz Gigapixel",
+              "Adobe Super Resolution"
+            ],
             "advantages": [
               "Fatores de escala mais altos (8x-16x)",
               "Melhores modelos de IA",
@@ -452,7 +507,11 @@
             "✓ Refinamento facial",
             "✓ Configurações personalizadas"
           ],
-          "limitations": ["✗ Alto custo inicial", "✗ Apenas desktop", "✗ Requisitos de hardware"],
+          "limitations": [
+            "✗ Alto custo inicial",
+            "✗ Apenas desktop",
+            "✗ Requisitos de hardware"
+          ],
           "bestFor": "Fotógrafos profissionais, produção de impressão",
           "upgradePath": "Atualizações anuais por $29/ano"
         },
@@ -466,7 +525,11 @@
             "✓ Acesso à API",
             "✓ Processamento em lote"
           ],
-          "limitations": ["✗ Sistema de créditos", "✗ Caro para alto volume", "✗ Requer internet"],
+          "limitations": [
+            "✗ Sistema de créditos",
+            "✗ Caro para alto volume",
+            "✗ Requer internet"
+          ],
           "bestFor": "Usuários de negócios, integração de API",
           "upgradePath": "Níveis superiores para mais créditos"
         },
@@ -660,26 +723,43 @@
                 "Lida com vários tipos de degradação",
                 "Treinamento estável"
               ],
-              "weaknesses": ["Custo computacional mais alto", "Síntese limitada de textura"],
+              "weaknesses": [
+                "Custo computacional mais alto",
+                "Síntese limitada de textura"
+              ],
               "performance": {
                 "psnr": "29,2 dB (2x)",
                 "ssim": "0,88",
                 "processingTime": "1,2s (CPU), 0,3s (GPU)"
               },
-              "bestUseCases": ["Restauração de imagens comprimidas", "Upscaling de propósito geral"]
+              "bestUseCases": [
+                "Restauração de imagens comprimidas",
+                "Upscaling de propósito geral"
+              ]
             },
             {
               "name": "EDSR (Enhanced Deep Super-Resolution)",
               "year": "2017",
               "architecture": "CNN profunda com normalização de lote removida",
-              "strengths": ["PSNR de ponta", "Arquitetura eficiente", "Boa preservação de bordas"],
-              "weaknesses": ["Síntese limitada de textura", "Pode ser excessivamente suave"],
+              "strengths": [
+                "PSNR de ponta",
+                "Arquitetura eficiente",
+                "Boa preservação de bordas"
+              ],
+              "weaknesses": [
+                "Síntese limitada de textura",
+                "Pode ser excessivamente suave"
+              ],
               "performance": {
                 "psnr": "30,8 dB (2x)",
                 "ssim": "0,90",
                 "processingTime": "0,8s (GPU)"
               },
-              "bestUseCases": ["Benchmarking", "Aplicações técnicas", "Trabalhos críticos de PSNR"]
+              "bestUseCases": [
+                "Benchmarking",
+                "Aplicações técnicas",
+                "Trabalhos críticos de PSNR"
+              ]
             }
           ]
         },
@@ -707,7 +787,11 @@
                 "mos": "4,1/5,0",
                 "processingTime": "2,1s (GPU)"
               },
-              "bestUseCases": ["Aprimoramento artístico", "Fotografia", "Foco na qualidade visual"]
+              "bestUseCases": [
+                "Aprimoramento artístico",
+                "Fotografia",
+                "Foco na qualidade visual"
+              ]
             },
             {
               "name": "ESRGAN (Enhanced Super-Resolution GAN)",
@@ -730,7 +814,11 @@
                 "mos": "4,3/5,0",
                 "processingTime": "3,5s (GPU)"
               },
-              "bestUseCases": ["Fotografia", "Restauração de arte", "Conteúdo com muitas texturas"]
+              "bestUseCases": [
+                "Fotografia",
+                "Restauração de arte",
+                "Conteúdo com muitas texturas"
+              ]
             },
             {
               "name": "Real-ESRGAN",
@@ -752,7 +840,11 @@
                 "mos": "4,2/5,0",
                 "processingTime": "2,8s (GPU)"
               },
-              "bestUseCases": ["Imagens para web", "Quadros de vídeo", "Fontes comprimidas"]
+              "bestUseCases": [
+                "Imagens para web",
+                "Quadros de vídeo",
+                "Fontes comprimidas"
+              ]
             }
           ]
         },
@@ -796,7 +888,10 @@
                 "Boa preservação de bordas",
                 "Mecanismos de atenção eficientes"
               ],
-              "weaknesses": ["Arquitetura complexa", "Requer ajuste cuidadoso"],
+              "weaknesses": [
+                "Arquitetura complexa",
+                "Requer ajuste cuidadoso"
+              ],
               "performance": {
                 "psnr": "31,2 dB (2x)",
                 "ssim": "0,91",
@@ -823,7 +918,11 @@
                 "Aprimoramento com aparência natural",
                 "Reduz artefatos"
               ],
-              "bestFor": ["Fotografia de retrato", "Videoconferência", "Mídias sociais"]
+              "bestFor": [
+                "Fotografia de retrato",
+                "Videoconferência",
+                "Mídias sociais"
+              ]
             },
             {
               "name": "Modelos específicos para texto (TATT)",
@@ -833,7 +932,11 @@
                 "Preserva arte de linha",
                 "Reduz artefatos em caracteres"
               ],
-              "bestFor": ["Digitalização de documentos", "Preparação para OCR", "Desenhos técnicos"]
+              "bestFor": [
+                "Digitalização de documentos",
+                "Preparação para OCR",
+                "Desenhos técnicos"
+              ]
             },
             {
               "name": "Modelos de Anime/Mangá",
@@ -843,7 +946,11 @@
                 "Melhor manuseio de cores",
                 "Aprimoramento ciente do estilo"
               ],
-              "bestFor": ["Arte de anime", "Mangá", "Desenhos animados"]
+              "bestFor": [
+                "Arte de anime",
+                "Mangá",
+                "Desenhos animados"
+              ]
             }
           ]
         }
@@ -979,7 +1086,11 @@
             "Processamento paralelo limitado",
             "Sobrecarga de manutenção"
           ],
-          "bestFor": ["Estúdios de fotografia", "Gráficas", "Processamento de dados sensíveis"],
+          "bestFor": [
+            "Estúdios de fotografia",
+            "Gráficas",
+            "Processamento de dados sensíveis"
+          ],
           "setupComplexity": "Médio-Alto",
           "costPerImage": "$0,001-0,01",
           "throughput": "100-500 imagens/hora"
@@ -987,7 +1098,11 @@
         {
           "type": "Integração de API em Nuvem",
           "description": "Acesso programático a serviços de upscaling em nuvem",
-          "tools": ["APIs REST", "SDKs", "Webhooks"],
+          "tools": [
+            "APIs REST",
+            "SDKs",
+            "Webhooks"
+          ],
           "pros": [
             "Processamento escalável",
             "Sem preocupações com hardware",
@@ -1000,7 +1115,11 @@
             "Considerações de privacidade de dados",
             "Limitação de taxa (rate limiting)"
           ],
-          "bestFor": ["Aplicações web", "Plataformas de e-commerce", "Integração SaaS"],
+          "bestFor": [
+            "Aplicações web",
+            "Plataformas de e-commerce",
+            "Integração SaaS"
+          ],
           "setupComplexity": "Médio",
           "costPerImage": "$0,05-0,50",
           "throughput": "1000-10000 imagens/hora"
@@ -1008,7 +1127,11 @@
         {
           "type": "Abordagem Híbrida",
           "description": "Combinação de processamento local e em nuvem para resultados ideais",
-          "tools": ["Sistemas de fila", "Balanceadores de carga", "Roteamento personalizado"],
+          "tools": [
+            "Sistemas de fila",
+            "Balanceadores de carga",
+            "Roteamento personalizado"
+          ],
           "pros": [
             "Custo/desempenho otimizado",
             "Opções de redundância",
@@ -1033,7 +1156,11 @@
         {
           "type": "Soluções Empresariais",
           "description": "Soluções gerenciadas completas com recursos empresariais",
-          "tools": ["Infraestrutura dedicada", "Opções on-premise", "Serviços gerenciados"],
+          "tools": [
+            "Infraestrutura dedicada",
+            "Opções on-premise",
+            "Serviços gerenciados"
+          ],
           "pros": [
             "Gerenciamento de serviço completo",
             "Recursos de conformidade",
@@ -1046,7 +1173,11 @@
             "Implementação mais longa",
             "Aquisição complexa"
           ],
-          "bestFor": ["Empresas Fortune 500", "Agências governamentais", "Organizações de saúde"],
+          "bestFor": [
+            "Empresas Fortune 500",
+            "Agências governamentais",
+            "Organizações de saúde"
+          ],
           "setupComplexity": "Alto",
           "costPerImage": "$0,10-1,00",
           "throughput": "10000+ imagens/hora"
@@ -1121,7 +1252,11 @@
             "name": "Scripting em PowerShell/Bash",
             "setup": "Nativo do SO",
             "complexity": "Baixo",
-            "features": ["Operações de arquivo", "Automação de processos", "Integração"],
+            "features": [
+              "Operações de arquivo",
+              "Automação de processos",
+              "Integração"
+            ],
             "limitation": "Capacidades limitadas de processamento de imagem"
           }
         ],
@@ -1130,21 +1265,33 @@
             "name": "AWS Lambda + API Gateway",
             "setup": "Funções serverless",
             "complexity": "Alto",
-            "features": ["Escalabilidade automática", "Pagamento por uso", "Alta disponibilidade"],
+            "features": [
+              "Escalabilidade automática",
+              "Pagamento por uso",
+              "Alta disponibilidade"
+            ],
             "cost": "$0,20 por 1 milhão de requisições + computação"
           },
           {
             "name": "Google Cloud Functions",
             "setup": "Funções serverless",
             "complexity": "Alto",
-            "features": ["Multi-região", "Serviços integrados", "Segurança"],
+            "features": [
+              "Multi-região",
+              "Serviços integrados",
+              "Segurança"
+            ],
             "cost": "$0,40 por 1 milhão de invocações + computação"
           },
           {
             "name": "Automação Zapier/Make",
             "setup": "Plataforma no-code",
             "complexity": "Baixo",
-            "features": ["Editor visual", "Mais de 3000 integrações", "Configuração rápida"],
+            "features": [
+              "Editor visual",
+              "Mais de 3000 integrações",
+              "Configuração rápida"
+            ],
             "cost": "$20-500/mês baseado no uso"
           }
         ]
@@ -1278,7 +1425,11 @@
       "performanceQuadrants": [
         {
           "quadrant": "Rápido e Baixa Qualidade",
-          "methods": ["Bicúbico", "Vizinho Mais Próximo", "CNN Simples"],
+          "methods": [
+            "Bicúbico",
+            "Vizinho Mais Próximo",
+            "CNN Simples"
+          ],
           "characteristics": {
             "processingTime": "0,1-1 segundo por imagem",
             "quality": "Apenas aprimoramento básico",
@@ -1307,11 +1458,19 @@
         },
         {
           "quadrant": "Rápido e Boa Qualidade",
-          "methods": ["Real-ESRGAN Lite", "EDSR Mobile", "CNN Otimizada"],
+          "methods": [
+            "Real-ESRGAN Lite",
+            "EDSR Mobile",
+            "CNN Otimizada"
+          ],
           "characteristics": {
             "processingTime": "1-5 segundos por imagem",
             "quality": "Melhoria perceptível",
-            "useCases": ["Conteúdo web", "Mídias sociais", "E-commerce"],
+            "useCases": [
+              "Conteúdo web",
+              "Mídias sociais",
+              "E-commerce"
+            ],
             "hardware": "GPU recomendada",
             "cost": "Baixo-Moderado"
           },
@@ -1332,11 +1491,19 @@
         },
         {
           "quadrant": "Lento e Alta Qualidade",
-          "methods": ["ESRGAN", "SwinIR", "HAT"],
+          "methods": [
+            "ESRGAN",
+            "SwinIR",
+            "HAT"
+          ],
           "characteristics": {
             "processingTime": "5-30 segundos por imagem",
             "quality": "Grau profissional",
-            "useCases": ["Produção de impressão", "Fotografia", "Arquivamento"],
+            "useCases": [
+              "Produção de impressão",
+              "Fotografia",
+              "Arquivamento"
+            ],
             "hardware": "GPU dedicada necessária",
             "cost": "Moderado-Alto"
           },
@@ -1365,7 +1532,11 @@
           "characteristics": {
             "processingTime": "30-120+ segundos por imagem",
             "quality": "Estado da arte",
-            "useCases": ["Aplicações críticas", "Imagens médicas", "Restauração de arte"],
+            "useCases": [
+              "Aplicações críticas",
+              "Imagens médicas",
+              "Restauração de arte"
+            ],
             "hardware": "GPU de ponta/Nuvem",
             "cost": "Alto"
           },
@@ -1891,7 +2062,10 @@
             "Tecnologia mais recente"
           ],
           "bestFor": "Requisitos de privacidade máximos",
-          "providers": ["Serviços de conhecimento zero emergentes", "Criptografia homomórfica"]
+          "providers": [
+            "Serviços de conhecimento zero emergentes",
+            "Criptografia homomórfica"
+          ]
         }
       },
       "bestPractices": {

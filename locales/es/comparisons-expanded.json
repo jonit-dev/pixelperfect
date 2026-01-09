@@ -588,6 +588,82 @@
             "scenario": "Profesional (500 imágenes/mes)",
             "freeOption": "No factible",
             "affordablePaid": "$228/año",
+            "premiumOption": "$468/año",
+            "recommendation": "Nivel profesional con acceso a API",
+            "value": "Excelente ROI para trabajo profesional"
+          },
+          {
+            "scenario": "Empresa (5000+ imágenes/mes)",
+            "freeOption": "Imposible",
+            "professionalPaid": "$1000-5000/año",
+            "enterpriseSolution": "Precios personalizados",
+            "recommendation": "Solución empresarial/API",
+            "value": "Esencial para operaciones comerciales"
+          }
+        ]
+      },
+      "upgradeTriggers": [
+        {
+          "trigger": "Requisitos de calidad",
+          "description": "Cuándo las soluciones de pago se vuelven necesarias para el trabajo profesional",
+          "threshold": "Necesidad de escalado >4x o mejora especializada"
+        },
+        {
+          "trigger": "Necesidades de volumen",
+          "description": "Cuándo los límites gratuitos se vuelven restrictivos",
+          "threshold": "Más de 3-5 imágenes diarias"
+        },
+        {
+          "trigger": "Integración en flujo de trabajo",
+          "description": "Cuándo la API o el procesamiento por lotes se vuelve esencial",
+          "threshold": "Procesamiento regular de 50+ imágenes"
+        },
+        {
+          "trigger": "Sensibilidad de tiempo",
+          "description": "Cuándo los retrasos de procesamiento en cola se vuelven problemáticos",
+          "threshold": "Plazos profesionales o trabajo de clientes"
+        }
+      ],
+      "roiCalculator": {
+        "formula": "ROI = (TiempoAhorrado × TarifaPorHora) - CostoSuscripción",
+        "examples": [
+          {
+            "scenario": "Fotógrafo editando 1000 imágenes/mes",
+            "timeSaved": "20 horas/mes",
+            "hourlyRate": "$50",
+            "monthlyValue": "$1000",
+            "subscriptionCost": "$19",
+            "monthlyROI": "$981"
+          },
+          {
+            "scenario": "Imágenes de productos de comercio electrónico (500/mes)",
+            "timeSaved": "10 horas/mes",
+            "hourlyRate": "$30",
+            "monthlyValue": "$300",
+            "subscriptionCost": "$39",
+            "monthlyROI": "$261"
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Los escaladores gratuitos son lo suficientemente buenos?",
+          "answer": "Los escaladores gratuitos funcionan para pruebas y aplicaciones no críticas, pero los profesionales deberían invertir en soluciones de pago para calidad consistente, confiabilidad y características esenciales para el trabajo de clientes."
+        },
+        {
+          "question": "¿Qué escalador de pago ofrece el mejor valor?",
+          "answer": "Para la mayoría de los usuarios, MyImageUpscaler Pro a $19/mes ofrece un excelente valor con calidad comparable a alternativas costosas. Los usuarios intensivos podrían preferir compras únicas como Topaz."
+        },
+        {
+          "question": "¿Puedo empezar con Gratis y actualizar después?",
+          "answer": "Sí, la mayoría de los servicios ofrecen niveles gratuitos. Comience con planes gratuitos para entender sus necesidades, luego actualice cuando las limitaciones afecten su flujo de trabajo."
+        },
+        {
+          "question": "¿Las soluciones de pago siempre dan mejores resultados?",
+          "answer": "Generalmente sí - las soluciones de pago usan mejores modelos de IA, tienen más potencia de procesamiento y ofrecen más control. Sin embargo, los resultados varían según el tipo de imagen y el caso de uso específico."
+        }
+      ]
+    },
     {
       "slug": "ai-models-comparison",
       "title": "Comparativa de Modelos de Escalado con IA: ESRGAN, Real-ESRGAN, SwinIR y Más",
@@ -917,5 +993,6 @@
           "answer": "Para aplicaciones técnicas, prioriza PSNR/SSIM. Para fotografía y contenido visual, la calidad perceptual (puntuaciones MOS) es más importante."
         }
       ]
-    },
-    {
+    }
+  ]
+}

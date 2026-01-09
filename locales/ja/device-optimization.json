@@ -3,36 +3,36 @@
   "pages": [
     {
       "slug": "mobile-device-image-optimization",
-      "title": "Mobile Device Image Optimization",
-      "metaTitle": "Mobile Device Image Optimization | MyImageUpscaler",
+      "title": "モバイルデバイスの画像最適化",
+      "metaTitle": "モバイルデバイスの画像最適化 | MyImageUpscaler",
       "metaDescription": "Complete ガイド to mobile image optimization. Learn to optimize images for iOS and Android devices, improve app パフォーマンス, and reduce data usage.",
       "h1": "Mobile Image Optimization: Complete ガイド",
       "intro": "Mobile devices present unique challenges for image optimization due to limited processing power, storage constrAInts, and variable network conditions. This ガイド covers comprehensive strategies for optimizing images on mobile platforms.",
-      "primaryKeyword": "mobile image optimization",
+      "primaryKeyword": "モバイル画像最適化",
       "secondaryKeywords": [
-        "ios image optimization",
-        "android image optimization",
-        "mobile app performance"
+        "iOS画像最適化",
+        "Android画像最適化",
+        "モバイルアプリパフォーマンス"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
-      "platform": "Mobile",
+      "platform": "モバイル",
       "challenges": [
         {
-          "challenge": "Limited Bandwidth",
-          "description": "Mobile networks vary from slow 3G to fast 5G, requiring adaptive image delivery."
+          "challenge": "帯域幅の制限",
+          "description": "モバイルネットワークは遅い3Gから高速5Gまで様々であり、適応的な画像配信が必要です。"
         },
         {
-          "challenge": "Storage Constraints",
-          "description": "Mobile devices have limited storage space, requiring efficient image caching and compression."
+          "challenge": "ストレージの制約",
+          "description": "モバイルデバイスはストレージ容量が限られているため、効率的な画像キャッシュと圧縮が必要です。"
         },
         {
-          "challenge": "Battery Life",
-          "description": "Image processing and network transfers drain battery, requiring optimization strategies."
+          "challenge": "バッテリー寿命",
+          "description": "画像処理とネットワーク転送はバッテリーを消耗するため、最適化戦略が必要です。"
         },
         {
-          "challenge": "Variable Screen Densities",
-          "description": "Mobile devices range from 1x to 4x pixel density, requiring responsive image strategies."
+          "challenge": "可変画面密度",
+          "description": "モバイルデバイスは1倍から4倍のピクセル密度まで様々であり、レスポンシブ画像戦略が必要です。"
         }
       ],
       "platformSpecific": [
@@ -40,19 +40,19 @@
           "platform": "iOS",
           "optimizations": [
             {
-              "technique": "HEIF/HEIC Support",
-              "description": "Use HEIF format for 50% space savings with same quality",
-              "implementation": "iOS 11+ native support, automatic conversion for older devices"
+              "technique": "HEIF/HEICサポート",
+              "description": "同じ品質で50%のスペースを節約できるHEIF形式を使用",
+              "implementation": "iOS 11以降のネイティブサポート、古いデバイス向けの自動変換"
             },
             {
-              "technique": "App Thinning",
-              "description": "Deliver device-specific image assets",
-              "implementation": "Asset catalogs with @1x, @2x, @3x variants"
+              "technique": "アプリシンニング",
+              "description": "デバイス固有の画像アセットを配信",
+              "implementation": "@1x、@2x、@3xバリアントを含むアセットカタログ"
             },
             {
-              "technique": "Memory Management",
-              "description": "Optimize image loading to prevent memory crashes",
-              "implementation": "Image downsampling, lazy loading, memory pools"
+              "technique": "メモリ管理",
+              "description": "メモリクラッシュを防ぐための画像読み込みの最適化",
+              "implementation": "画像ダウンサンプリング、遅延読み込み、メモリプール"
             }
           ]
         },
@@ -60,42 +60,42 @@
           "platform": "Android",
           "optimizations": [
             {
-              "technique": "WebP Support",
-              "description": "Use WebP format for better compression",
-              "implementation": "Android 4.0+ support, fallback to JPEG for older versions"
+              "technique": "WebPサポート",
+              "description": "より良い圧縮のためにWebP形式を使用",
+              "implementation": "Android 4.0以降サポート、古いバージョンではJPEGにフォールバック"
             },
             {
-              "technique": "Drawable Density Buckets",
-              "description": "Provide multiple resolution variants",
-              "implementation": "mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi folders"
+              "technique": "ドローアブル密度バケット",
+              "description": "複数の解像度バリアントを提供",
+              "implementation": "mdpi、hdpi、xhdpi、xxhdpi、xxxhdpiフォルダー"
             },
             {
-              "technique": "Bitmap Recycling",
-              "description": "Reuse bitmap memory to prevent garbage collection",
-              "implementation": "Bitmap.recycle(), inBitmap options"
+              "technique": "ビットマップリサイクル",
+              "description": "ガベージコレクションを防ぐためにビットマップメモリを再利用",
+              "implementation": "Bitmap.recycle()、inBitmapオプション"
             }
           ]
         }
       ],
       "optimizationStrategies": [
         {
-          "strategy": "Responsive Images",
-          "description": "Serve appropriate image sizes based on device capabilities",
-          "implementation": "Media queries, srcset attributes, device detection"
+          "strategy": "レスポンシブ画像",
+          "description": "デバイスの能力に基づいて適切な画像サイズを配信",
+          "implementation": "メディアクエリ、srcset属性、デバイス検出"
         },
         {
-          "strategy": "Progressive Loading",
-          "description": "Load low-quality placeholders first, then enhance",
-          "implementation": "Progressive JPEG, blur-to-sharp transitions"
+          "strategy": "プログレッシブローディング",
+          "description": "最初に低品質のプレースホルダーを読み込み、その後強化",
+          "implementation": "プログレッシブJPEG、ぼやけから鮮明への移行"
         },
         {
-          "strategy": "Adaptive Compression",
-          "description": "Adjust compression based on network conditions",
-          "implementation": "Network quality APIs, fallback strategies"
+          "strategy": "適応圧縮",
+          "description": "ネットワーク状態に基づいて圧縮を調整",
+          "implementation": "ネットワーク品質API、フォールバック戦略"
         },
         {
-          "strategy": "Smart Caching",
-          "description": "Implement intelligent caching strategies",
+          "strategy": "スマートキャッシュ",
+          "description": "インテリジェントなキャッシュ戦略を実装",
           "implementation": "HTTP caching, in-app caching, cache invalidation"
         }
       ],
@@ -190,7 +190,7 @@
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
-      "platform": "Desktop",
+      "platform": "デスクトップ",
       "platforms": [
         "Windows",
         "macOS",
@@ -198,38 +198,38 @@
       ],
       "advantages": [
         {
-          "advantage": "More Processing Power",
-          "description": "Desktop CPUs can handle more complex image processing operations."
+          "advantage": "より高い処理能力",
+          "description": "デスクトップCPUはより複雑な画像処理操作を処理できます。"
         },
         {
-          "advantage": "Larger Memory",
-          "description": "More RAM allows for larger image buffers and caching strategies."
+          "advantage": "より大きなメモリ",
+          "description": "より多くのRAMにより、大きな画像バッファとキャッシュ戦略が可能になります。"
         },
         {
-          "advantage": "Storage Space",
-          "description": "Abundant storage allows for higher resolution images and better caching."
+          "advantage": "ストレージ容量",
+          "description": "豊富なストレージにより、より高解像度の画像とより良いキャッシュが可能になります。"
         },
         {
-          "advantage": "Display Capabilities",
-          "description": "Higher resolution displays and multiple monitor setups."
+          "advantage": "ディスプレイ機能",
+          "description": "より高解像度のディスプレイとマルチモニターセットアップ。"
         }
       ],
       "desktopChallenges": [
         {
-          "challenge": "High Resolution Displays",
-          "description": "4K and 5K monitors require larger, higher-quality images."
+          "challenge": "高解像度ディスプレイ",
+          "description": "4Kおよび5Kモニターには、より大きく高品質な画像が必要です。"
         },
         {
-          "challenge": "Multiple Windows",
-          "description": "Applications must handle multiple images simultaneously."
+          "challenge": "複数のウィンドウ",
+          "description": "アプリケーションは複数の画像を同時に処理する必要があります。"
         },
         {
-          "challenge": "Professional Workflows",
-          "description": "Desktop users often demand higher quality and more features."
+          "challenge": "プロフェッショナルなワークフロー",
+          "description": "デスクトップユーザーはより高い品質とより多くの機能を求めることがよくあります。"
         },
         {
-          "challenge": "Integration Requirements",
-          "description": "Desktop apps often need to integrate with system file managers and other applications."
+          "challenge": "統合要件",
+          "description": "デスクトップアプリは、システムファイルマネージャーや他のアプリケーションと統合する必要があることがよくあります。"
         }
       ],
       "platformSpecificOptimization": [
@@ -237,19 +237,19 @@
           "platform": "Windows",
           "techniques": [
             {
-              "technique": "Direct2D Acceleration",
-              "description": "Use hardware acceleration for image processing",
-              "implementation": "Direct2D API, GPU acceleration options"
+              "technique": "Direct2Dアクセラレーション",
+              "description": "画像処理にハードウェアアクセラレーションを使用",
+              "implementation": "Direct2D API、GPUアクセラレーションオプション"
             },
             {
-              "technique": "WIC (Windows Imaging Component)",
-              "description": "Leverage Windows' native image processing",
-              "implementation": "WIC codecs, factory methods"
+              "technique": "WIC（Windows Imaging Component）",
+              "description": "Windowsのネイティブ画像処理を活用",
+              "implementation": "WICコーデック、ファクトリメソッド"
             },
             {
-              "technique": "Memory-Mapped Files",
-              "description": "Efficient large image file handling",
-              "implementation": "CreateFileMapping, MapViewOfFile"
+              "technique": "メモリマップトファイル",
+              "description": "効率的な大きな画像ファイル処理",
+              "implementation": "CreateFileMapping、MapViewOfFile"
             }
           ]
         },
@@ -257,19 +257,19 @@
           "platform": "macOS",
           "techniques": [
             {
-              "technique": "Core Image Framework",
-              "description": "Use Apple's optimized image processing",
-              "implementation": "CIContext, CIFilter, GPU acceleration"
+              "technique": "Core Imageフレームワーク",
+              "description": "Appleの最適化された画像処理を使用",
+              "implementation": "CIContext、CIFilter、GPUアクセラレーション"
             },
             {
               "technique": "Metal Performance Shaders",
-              "description": "GPU-accelerated image processing",
-              "implementation": "MPS framework, custom shaders"
+              "description": "GPUアクセラレート画像処理",
+              "implementation": "MPSフレームワーク、カスタムシェーダー"
             },
             {
               "technique": "Grand Central Dispatch",
-              "description": "Parallel image processing",
-              "implementation": "Dispatch queues for concurrent processing"
+              "description": "並列画像処理",
+              "implementation": "同時処理用ディスパッチキュー"
             }
           ]
         },
@@ -278,16 +278,16 @@
           "techniques": [
             {
               "technique": "ImageMagick/GraphicsMagick",
-              "description": "Powerful command-line image processing",
-              "implementation": "System calls, subprocess integration"
+              "description": "強力なコマンドライン画像処理",
+              "implementation": "システムコール、サブプロセス統合"
             },
             {
-              "technique": "OpenGL Acceleration",
-              "description": "GPU-based image processing",
-              "implementation": "OpenGL textures, shaders"
+              "technique": "OpenGLアクセラレーション",
+              "description": "GPUベースの画像処理",
+              "implementation": "OpenGLテクスチャ、シェーダー"
             },
             {
-              "technique": "OpenCV Integration",
+              "technique": "OpenCV統合",
               "description": "Computer vision library for advanced processing",
               "implementation": "OpenCV Python/Cpp bindings"
             }
@@ -363,74 +363,74 @@
         {
           "consideration": "Drag and Drop",
           "description": "Support system drag-and-drop functionality",
-          "implementation": "System drag-and-drop APIs"
+          "implementation": "システムドラッグアンドドロップAPI"
         },
         {
-          "consideration": "Clipboard Integration",
-          "description": "Integrate with system clipboard for image operations",
-          "implementation": "Clipboard APIs, format negotiation"
+          "consideration": "クリップボード統合",
+          "description": "画像操作のためにシステムクリップボードと統合",
+          "implementation": "クリップボードAPI、フォーマットネゴシエーション"
         },
         {
-          "consideration": "Print Support",
-          "description": "Support high-quality printing of images",
-          "implementation": "Print dialogs, color management"
+          "consideration": "印刷サポート",
+          "description": "画像の高品質印刷をサポート",
+          "implementation": "印刷ダイアログ、カラーマネジメント"
         }
       ],
       "desktopApplications": [
         {
-          "application": "Image Editors",
+          "application": "画像エディタ",
           "optimizationNeeds": [
-            "Real-time preview",
-            "Undo/redo",
-            "Layer support",
-            "High precision"
+            "リアルタイムプレビュー",
+            "元に戻す/やり直し",
+            "レイヤーサポート",
+            "高精度"
           ],
           "specificRequirements": [
-            "Non-destructive editing",
-            "Memory efficiency",
-            "GPU acceleration"
+            "非破壊編集",
+            "メモリ効率",
+            "GPUアクセラレーション"
           ]
         },
         {
-          "application": "Image Viewers",
+          "application": "画像ビューア",
           "optimizationNeeds": [
-            "Fast loading",
-            "Smooth scrolling",
-            "Zoom performance",
-            "File format support"
+            "高速読み込み",
+            "スムーズなスクロール",
+            "ズームパフォーマンス",
+            "ファイルフォーマットサポート"
           ],
           "specificRequirements": [
-            "Cache management",
-            "Progressive loading",
-            "Memory optimization"
+            "キャッシュ管理",
+            "プログレッシブローディング",
+            "メモリ最適化"
           ]
         },
         {
-          "application": "Design Tools",
+          "application": "デザインツール",
           "optimizationNeeds": [
-            "Vector/raster hybrid",
-            "High precision",
-            "Color management",
-            "Export options"
+            "ベクター/ラスターハイブリッド",
+            "高精度",
+            "カラーマネジメント",
+            "エクスポートオプション"
           ],
           "specificRequirements": [
-            "Professional workflows",
-            "Batch processing",
-            "Integration capabilities"
+            "プロフェッショナルワークフロー",
+            "バッチ処理",
+            "統合機能"
           ]
         }
       ],
       "bestPractices": [
-        "Leverage platform-specific acceleration APIs",
-        "Implement proper multi-monitor and high-DPI support",
-        "Use appropriate file formats for desktop use (TIFF, PNG, high-quality JPEG)",
-        "Implement efficient memory management for large images",
-        "Provide professional features like color management and batch processing"
+        "プラットフォーム固有のアクセラレーションAPIを活用",
+        "適切なマルチモニターおよび高DPIサポートを実装",
+        "デスクトップ使用に適したファイルフォーマットを使用（TIFF、PNG、高品質JPEG）",
+        "大きな画像用の効率的なメモリ管理を実装",
+        "カラーマネジメントやバッチ処理などのプロフェッショナル機能を提供"
       ],
       "faq": [
         {
-          "question": "Should I use GPU acceleration for all image processing?",
-          "answer": "Use GPU acceleration for large images and complex operations, but CPU may be more efficient for small, simple operations due to overhead."
+          "question": "すべての画像処理にGPUアクセラレーションを使用すべきですか？",
+          "answer": "大きな画像や複雑な操作にはGPUアクセラレーションを使用してくださいが、オーバーヘッドのため小さくて単純な操作にはCPUの方が効率的な場合があります。"
         },
         {
           "question": "How do I handle high-DPI displays on deskトップ?",
@@ -452,16 +452,16 @@
     },
     {
       "slug": "smart-tv-image-optimization",
-      "title": "Smart TV Image Optimization",
-      "metaTitle": "Smart TV Image Optimization | MyImageUpscaler",
+      "title": "スマートTV画像最適化",
+      "metaTitle": "スマートTV画像最適化 | MyImageUpscaler",
       "metaDescription": "Complete ガイド to Smart TV image optimization. Learn to optimize images for 4K/8K TVs, HDR content, streaming apps, and better viewing experience.",
       "h1": "Smart TV Image Optimization: Complete ガイド",
       "intro": "Smart TVs present unique optimization challenges with large 4K/8K displays, HDR content requirements, and streaming-focused user experiences. This ガイド covers comprehensive strategies for TV-optimized image content.",
-      "primaryKeyword": "smart tv image optimization",
+      "primaryKeyword": "スマートTV画像最適化",
       "secondaryKeywords": [
-        "4k tv optimization",
-        "hdr image preparation",
-        "smart tv app performance"
+        "4K TV最適化",
+        "HDR画像準備",
+        "スマートTVアプリパフォーマンス"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
@@ -547,18 +547,18 @@
           "type": "Full-Screen Content",
           "optimization": {
             "resolution": "Native resolution for best quality",
-            "colorManagement": "Proper HDR/SDR handling",
-            "compression": "High-quality for presentation",
-            "format": "JPEG for photos, PNG for graphics"
+            "colorManagement": "適切なHDR/SDR処理",
+            "compression": "プレゼンテーション用高品質",
+            "format": "写真用JPEG、グラフィック用PNG"
           }
         },
         {
-          "type": "Background Images",
+          "type": "背景画像",
           "optimization": {
-            "resolution": "Full resolution, subtle compression",
-            "subtlety": "Don't distract from foreground content",
-            "loading": "Progressive loading for smooth experience",
-            "format": "JPEG with quality 80-90%"
+            "resolution": "フル解像度、微妙な圧縮",
+            "subtlety": "前景のコンテンツから気を散らさない",
+            "loading": "スムーズな体験のためのプログレッシブローディング",
+            "format": "品質80-90%のJPEG"
           }
         }
       ],
@@ -566,126 +566,126 @@
         {
           "standard": "HDR10",
           "requirements": {
-            "metadata": "Static HDR metadata",
-            "colorSpace": "BT.2020 wide color gamut",
+            "metadata": "静的HDRメタデータ",
+            "colorSpace": "BT.2020広色域",
             "transferFunction": "PQ (ST-2084)",
-            "maxBrightness": "1000 nits typical"
+            "maxBrightness": "典型的には1000ニット"
           }
         },
         {
           "standard": "Dolby Vision",
           "requirements": {
-            "metadata": "Dynamic metadata per scene",
-            "colorSpace": "BT.2020 or wider",
-            "transferFunction": "PQ with dynamic adjustment",
-            "maxBrightness": "4000 nits maximum"
+            "metadata": "シーンごとの動的メタデータ",
+            "colorSpace": "BT.2020以上",
+            "transferFunction": "動的調整付きPQ",
+            "maxBrightness": "最大4000ニット"
           }
         },
         {
           "standard": "HLG (Hybrid Log Gamma)",
           "requirements": {
-            "metadata": "No metadata required",
+            "metadata": "メタデータは不要",
             "colorSpace": "BT.2020",
-            "transferFunction": "HLG curve",
-            "useCase": "Broadcast and live content"
+            "transferFunction": "HLGカーブ",
+            "useCase": "放送およびライブコンテンツ"
           }
         }
       ],
       "performanceOptimization": [
         {
-          "technique": "Progressive Loading",
-          "description": "Load images progressively to improve perceived performance",
-          "implementation": "Progressive JPEG, layered loading strategies"
+          "technique": "プログレッシブローディング",
+          "description": "知覚されるパフォーマンスを向上させるために画像を段階的に読み込む",
+          "implementation": "プログレッシブJPEG、階層的な読み込み戦略"
         },
         {
-          "technique": "Adaptive Bitrate",
-          "description": "Adjust image quality based on network conditions",
-          "implementation": "Multiple quality versions, fallback strategies"
+          "technique": "適応ビットレート",
+          "description": "ネットワーク状態に基づいて画像品質を調整",
+          "implementation": "複数の品質バージョン、フォールバック戦略"
         },
         {
-          "technique": "Memory Management",
-          "description": "Efficient memory usage for TV's limited resources",
-          "implementation": "Image pooling, cleanup strategies"
+          "technique": "メモリ管理",
+          "description": "TVの限られたリソースのための効率的なメモリ使用",
+          "implementation": "画像プーリング、クリーンアップ戦略"
         },
         {
-          "technique": "GPU Acceleration",
-          "description": "Use TV's GPU for image processing when available",
-          "implementation": "OpenGL ES, Vulkan, platform-specific APIs"
+          "technique": "GPUアクセラレーション",
+          "description": "利用可能な場合、画像処理にTVのGPUを使用",
+          "implementation": "OpenGL ES、Vulkan、プラットフォーム固有のAPI"
         }
       ],
       "platformSpecific": [
         {
           "platform": "Android TV",
           "optimizations": [
-            "Use Android TV UI patterns and guidelines",
-            "Leverage Leanback library for navigation",
-            "Implement proper focus management for remote control",
-            "Use Android TV-optimized image loading libraries"
+            "Android TV UIパターンとガイドラインを使用",
+            "ナビゲーションにLeanbackライブラリを活用",
+            "リモコン用の適切なフォーカス管理を実装",
+            "Android TV最適化画像読み込みライブラリを使用"
           ]
         },
         {
           "platform": "Samsung Tizen",
           "optimizations": [
-            "Use Tizen TV UI components",
-            "Implement Samsung-specific image optimization",
-            "Leverage Tizen's multimedia capabilities",
-            "Follow Samsung TV design guidelines"
+            "Tizen TV UIコンポーネントを使用",
+            "Samsung固有の画像最適化を実装",
+            "Tizenのマルチメディア機能を活用",
+            "Samsung TVデザインガイドラインに従う"
           ]
         },
         {
           "platform": "LG webOS",
           "optimizations": [
-            "Use webOS TV UI frameworks",
-            "Implement webOS-specific image handling",
-            "Leverage LG's image processing capabilities",
-            "Follow LG TV design guidelines"
+            "webOS TV UIフレームワークを使用",
+            "webOS固有の画像処理を実装",
+            "LGの画像処理機能を活用",
+            "LG TVデザインガイドラインに従う"
           ]
         },
         {
           "platform": "Roku",
           "optimizations": [
-            "Use Roku's SceneGraph framework",
-            "Implement Roku-optimized image formats",
-            "Leverage Roku's hardware capabilities",
-            "Follow Roku design guidelines"
+            "RokuのSceneGraphフレームワークを使用",
+            "Roku最適化画像フォーマットを実装",
+            "Rokuのハードウェア機能を活用",
+            "Rokuデザインガイドラインに従う"
           ]
         }
       ],
       "uiConsiderations": [
         {
-          "aspect": "Focus Management",
-          "description": "Clear visual indicators for focused elements",
-          "bestPractice": "High contrast, larger focus states"
+          "aspect": "フォーカス管理",
+          "description": "フォーカスされた要素の明確な視覚的インジケーター",
+          "bestPractice": "高コントラスト、大きなフォーカス状態"
         },
         {
-          "aspect": "Text Readability",
-          "description": "Large, clear text for 10-foot viewing",
-          "bestPractice": "Minimum 24pt for body text, higher for headers"
+          "aspect": "テキストの可読性",
+          "description": "10フィート視聴用の大きく明確なテキスト",
+          "bestPractice": "本文は最小24pt、見出しはそれ以上"
         },
         {
-          "aspect": "Button Size",
-          "description": "Large touch targets for remote navigation",
-          "bestPractice": "Minimum 48x48dp for interactive elements"
+          "aspect": "ボタンサイズ",
+          "description": "リモートナビゲーション用の大きなタッチターゲット",
+          "bestPractice": "インタラクティブ要素は最小48x48dp"
         },
         {
-          "aspect": "Color Contrast",
-          "description": "High contrast ratios for visibility",
-          "bestPractice": "WCAG AA compliance or better"
+          "aspect": "カラーコントラスト",
+          "description": "視認性のための高コントラスト比",
+          "bestPractice": "WCAG AA準拠以上"
         }
       ],
       "bestPractices": [
-        "Design for 10-foot viewing experience with larger UI elements",
-        "Provide multiple image resolutions for different TV capabilities",
-        "Implement proper HDR/SDR detection and handling",
-        "Use TV-optimized navigation patterns and focus management",
-        "Test on actual TVs, not just emulators, for accurate results"
+        "より大きなUI要素で10フィート視聴体験をデザイン",
+        "様々なTV能力のために複数の画像解像度を提供",
+        "適切なHDR/SDR検出と処理を実装",
+        "TV最適化ナビゲーションパターンとフォーカス管理を使用",
+        "正確な結果のためにエミュレーターだけでなく実際のTVでテスト"
       ],
       "commonMistakes": [
-        "Using mobile-optimized images that look blurry on large screens",
-        "Not implementing proper focus management for remote navigation",
-        "Ignoring HDR requirements and delivering SDR-only content",
-        "Using text that's too small to read from couch distance",
-        "Not testing on actual TV hardware with various panel types"
+        "大きな画面でぼやけて見えるモバイル最適化画像の使用",
+        "リモートナビゲーション用の適切なフォーカス管理を実装していない",
+        "HDR要件を無視し、SDRのみのコンテンツを配信",
+        "ソファからの距離では読めないほど小さいテキストの使用",
+        "様々なパネルタイプの実際のTVハードウェアでテストしていない"
       ],
       "faq": [
         {
@@ -693,12 +693,12 @@
           "answer": "Use 3840x2160 for full-screen content. For UI elements, design at 1080p and let the TV スケール, or provide multiple 解像度s."
         },
         {
-          "question": "How do I handle HDR content optimization?",
+          "question": "HDRコンテンツの最適化を処理するには？",
           "answer": "Create separate SDR and HDR versions of images, use proper color spaces (BT.2020), and include appropriate HDR metadata for the target フォーマット."
         },
         {
-          "question": "Should I use WebP for Smart TV apps?",
-          "answer": "Check TV platform support. Most modern Smart TVs support WebP, but always provide JPEG fallbacks for older or incompatible devices."
+          "question": "Smart TVアプリにWebPを使用すべきですか？",
+          "answer": "TVプラットフォームのサポートを確認してください。最新のSmart TVのほとんどはWebPをサポートしていますが、古いまたは互換性のないデバイス用に必ずJPEGフォールバックを提供してください。"
         }
       ],
       "relatedTools": [
@@ -717,29 +717,29 @@
       "metaDescription": "Complete ガイド to tablet image optimization. Learn to optimize images for iPad and Android tablets, improve app パフォーマンス, and handle different orientations.",
       "h1": "Tablet Image Optimization: パフォーマンス ガイド",
       "intro": "Tablets combine mobile constrAInts with larger displays, creating unique optimization challenges. This ガイド covers comprehensive strategies for optimizing images on iPad and Android tablets.",
-      "primaryKeyword": "tablet image optimization",
+      "primaryKeyword": "タブレット画像最適化",
       "secondaryKeywords": [
-        "ipad image optimization",
-        "android tablet performance",
-        "tablet app development"
+        "iPad画像最適化",
+        "Androidタブレットパフォーマンス",
+        "タブレットアプリ開発"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-optimization",
-      "platform": "Tablet",
+      "platform": "タブレット",
       "tabletTypes": [
         "iPad",
         "iPad Pro",
-        "Android Tablets",
-        "Windows Tablets"
+        "Androidタブレット",
+        "Windowsタブレット"
       ],
       "tabletCharacteristics": [
         {
-          "characteristic": "Larger Screens",
-          "description": "Tablets have 7-13 inch displays requiring higher resolution images than phones."
+          "characteristic": "大きな画面",
+          "description": "タブレットは7〜13インチのディスプレイを持ち、電話よりも高い解像度の画像が必要です。"
         },
         {
-          "characteristic": "Dual Orientation",
-          "description": "Content must work in both portrait and landscape orientations."
+          "characteristic": "デュアルオリエンテーション",
+          "description": "コンテンツは縦向きと横向きの両方で動作する必要があります。"
         },
         {
           "characteristic": "Touch Interface",

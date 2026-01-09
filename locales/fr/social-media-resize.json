@@ -1,27 +1,27 @@
 {
-  "category": "tools",
+  "category": "outils",
   "pages": [
     {
       "slug": "resize-image-for-pinterest",
-      "title": "Resize Image for Pinterest",
+      "title": "Redimensionner une image pour Pinterest",
       "metaTitle": "Pinterest Image Resizer | Gratuit Pin Size Outil",
       "metaDescription": "Perfect Pinterest Image resizer for all pin sizes. Standard pins, story pins, board covers, and video thumbnails. Gratuit En ligne Outil with 2025 Pinterest dimensions and Optimisation.",
       "h1": "Pinterest Image Resizer - Perfect Pin Sizes for 2025",
       "intro": "Create perfect Pinterest pins with our specialized Image resizer. Automatically optimize your Images for Pinterest's 2025 requirements including standard pins, Idea Pins, video content, and board covers with IA-powered Optimisation.",
-      "primaryKeyword": "resize image for pinterest",
+      "primaryKeyword": "redimensionner image pour pinterest",
       "secondaryKeywords": [
-        "pinterest image sizes 2025",
-        "pin dimensions guide",
-        "pinterest resizer tool",
-        "social media image optimization",
-        "pinterest marketing tips",
-        "pinterest video thumbnail size",
-        "pinterest board cover dimensions"
+        "tailles images pinterest 2025",
+        "guide dimensions épingle",
+        "outil redimensionnement pinterest",
+        "optimisation images réseaux sociaux",
+        "conseils marketing pinterest",
+        "taille miniature vidéo pinterest",
+        "dimensions couverture tableau pinterest"
       ],
       "lastUpdated": "2025-01-19",
-      "category": "tools",
-      "toolName": "Pinterest Image Resizer",
-      "description": "Advanced Pinterest image resizing tool with 2025 specifications and marketing optimization features",
+      "category": "outils",
+      "toolName": "Redimensionneur d\"images Pinterest",
+      "description": "Outil avancé de redimensionnement d\"images Pinterest avec spécifications 2025 et fonctionnalités d\"optimisation marketing",
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "platformSpecifications": {
@@ -31,7 +31,7 @@
             "aspectRatio": "2:3",
             "minimum": "600x900 pixels",
             "fileFormat": "JPG, PNG",
-            "maxFileSize": "32MB"
+            "maxFileSize": "32 Mo"
           },
           "squarePins": {
             "recommended": "1000x1000 pixels",
@@ -41,7 +41,7 @@
           "storyPins": {
             "recommended": "1080x1920 pixels",
             "aspectRatio": "9:16",
-            "videoLength": "15-60 seconds",
+            "videoLength": "15-60 secondes",
             "fileFormat": "MP4, JPG, PNG"
           },
           "videoPins": {
@@ -54,7 +54,7 @@
             "recommended": "800x800 pixels",
             "aspectRatio": "1:1",
             "fileFormat": "JPG, PNG",
-            "maxFileSize": "32MB"
+            "maxFileSize": "32 Mo"
           }
         },
         "bestPractices": {
@@ -63,38 +63,38 @@
             "productPhotography": "Clean backgrounds, 1000x1500 or 1000x1000 dimensions, Plusieurs angles, lifestyle context, and consistent lighting.",
             "blogThumbnails": "Vertical Format with compelling headlines, brand colors, and clear value proposition. Use 2:3 aspect ratio.",
             "recipePins": "Step-by-step visuals, final hero shot, ingredient list overlay. 1000x1500 optimal with high food photography Qualité.",
-            "diyProjects": "Before/after comparisons, step-by-step process shots, material lists. Use bright, clear imagery."
+            "diyProjects": "Comparaisons avant/après, photos étape par étape, listes de matériaux. Utilisez des images claires et lumineuses."
           },
           "designGuidelines": {
-            "textOverlays": "Use 60-70 characters max, sans-serif fonts, 24pt minimum size, high contrast backgrounds",
-            "colorPalette": "Limit to 3-4 colors, maintain brand consistency, test contrast ratios for accessibility",
-            "composition": "Rule of thirds, negative space, clear focal point, avoid clutter",
-            "branding": "Consistent logo placement, brand colors, font hierarchy, visual style"
+            "textOverlays": "Utilisez 60-70 caractères maximum, polices sans serif, taille minimale de 12pt, arrière-plans à fort contraste",
+            "colorPalette": "Limitez à 3-4 couleurs, maintenez la cohérence de la marque, testez les ratios de contraste pour l\"accessibilité",
+            "composition": "Règle des tiers, espace négatif, point focal clair, évitez l\"encombrement",
+            "branding": "Placement cohérent du logo, couleurs de marque, hiérarchie des polices, style visuel"
           }
         },
         "engagementOptimization": {
           "thumbnailStrategy": {
-            "faceDetection": "Images with faces get 35% more engagement. Use authentic expressions, eye contact.",
-            "colors": "Red, orange, and pink tones increase click-through by 15%. Use vibrant, saturated colors.",
-            "asymmetry": "Slightly off-center composition performs 20% better than perfectly centered images.",
+            "faceDetection": "Les images avec des visages reçoivent 35% d\"engagement en plus. Utilisez des expressions authentiques et le contact visuel.",
+            "colors": "Les tons rouge, orange et rose augmentent les clics de 15%. Utilisez des couleurs vives et saturées.",
+            "asymmetry": "Une composition légèrement décentrée performe 20% mieux que les images parfaitement centrées.",
             "contrast": "High contrast Images perform better in feeds. Test with grayscale to ensure readability."
           },
           "timing": {
-            "bestPostingTimes": "8-11 PM, 2-4 PM weekends. Peak engagement varies by audience timezone.",
-            "seasonalContent": "Plan 6-8 weeks ahead. Holiday content performs 40% better when posted early.",
+            "bestPostingTimes": "20h-23h, 14h-16h le week-end. L\"engagement maximal varie selon le fuseau horaire de l\"audience.",
+            "seasonalContent": "Prévoyez 6-8 semaines à l\"avance. Le contenu de vacances performe 40% mieux lorsqu\"il est publié tôt.",
             "trendingTopics": "Monitor Pinterest Trends Outil. Create content 1-2 weeks before trend peaks."
           },
           "engagementFactors": {
             "multipleImages": "Pins with 4-5 Images get 2x more saves than single Images.",
             "descriptiveAltText": "Include 3-5 keywords naturally. Describe Image content and user benefit.",
-            "hashtags": "Use 3-5 relevant hashtags. Mix broad (#home decor) and specific (#bohobedroomideas) terms."
+            "hashtags": "Utilisez 3-5 hashtags pertinents. Mélangez termes généraux (#décoration maison) et spécifiques (#ideeschambrebohème)."
           }
         },
         "videoAndDynamicContent": {
           "ideoRequirements": {
             "format": "MP4, MOV, WebM",
-            "frameRate": "24-30 FPS",
-            "bitrate": "8-10 Mbps for 1080p",
+            "frameRate": "24-30 IPS",
+            "bitrate": "8-10 Mbps pour 1080p",
             "audio": "AAC stereo, 128kbps minimum",
             "subtitles": "85% of users watch without sound. Include burn-in captions."
           },
@@ -164,97 +164,97 @@
                   "#9370DB",
                   "#4B0082"
                 ],
-                "usage": "Lifestyle content, fashion, beauty"
+                "usage": "Contenu lifestyle, mode, beauté"
               },
               "palette2": {
-                "name": "Earth Conscious",
+                "name": "Conscience Écologique",
                 "hex": [
                   "#8B7355",
                   "#D2B48C",
                   "#F5DEB3"
                 ],
-                "usage": "Home decor, sustainable products, organic content"
+                "usage": "Décoration maison, produits durables, contenu biologique"
               }
             }
           },
           "contentFormats": {
             "emergingTrends": [
-              "Short-form video integration with interactive polls",
-              "AR try-on experiences linked from pins",
-              "Shoppable video content with product tags",
-              "Mini-course content in Idea Pin format",
-              "User-generated content compilation pins"
+              "Intégration vidéo courte avec sondages interactifs",
+              "Expériences d\"essai virtuel liées depuis les épingles",
+              "Contenu vidéo achetable avec balises produit",
+              "Contenu de mini-cours au format Idea Pin",
+              "Épingles de compilation de contenu généré par les utilisateurs"
             ]
           }
         },
         "analyticsAndPerformance": {
           "keyMetrics": {
             "engagement": {
-              "saves": "Primary success metric. Target 5% save rate per impression.",
-              "clicks": "Link clicks indicate content value. Track conversion rates.",
+              "saves": "Métrique de succès principale. Visez un taux de sauvegarde de 5% par impression.",
+              "clicks": "Les clics sur les liens indiquent la valeur du contenu. Suivez les taux de conversion.",
               "comments": "Qualité engagement. Respond within 24 hours.",
-              "shares": "Viral potential metric. Monitor share velocity."
+              "shares": "Métrique de potentiel viral. Surveillez la vitesse de partage."
             },
             "reach": {
               "impressions": "Total views. Compare to save rate for Qualité assessment.",
-              "audienceGrowth": "Follower count vs. engagement rate.",
-              "demographicInsights": "Age, gender, location data for content targeting.",
-              "devicePerformance": "Mobile vs desktop engagement patterns."
+              "audienceGrowth": "Nombre d\"abonnés vs taux d\"engagement.",
+              "demographicInsights": "Données d\"âge, de genre et de localisation pour le ciblage du contenu.",
+              "devicePerformance": "Modèles d\"engagement mobile vs bureau."
             }
           },
           "optimizationStrategies": {
             "contentPerformance": {
-              "topPerformers": "Analyze top 10 pins monthly. Replicate successful elements.",
-              "underperformers": "Review and update low-performing pins. Improve visuals or refresh content.",
-              "seasonalPatterns": "Identify content that peaks during specific times. Plan annual calendar.",
-              "trendAnalysis": "Track emerging trends in your niche. Create content early in trend cycle."
+              "topPerformers": "Analysez les 10 meilleures épingles mensuellement. Répliquez les éléments réussis.",
+              "underperformers": "Examinez et mettez à jour les épingles faibles. Améliorez les visuels ou rafraîchissez le contenu.",
+              "seasonalPatterns": "Identifiez le contenu qui culmine à des moments spécifiques. Planifiez un calendrier annuel.",
+              "trendAnalysis": "Suivez les tendances émergentes dans votre niche. Créez du contenu tôt dans le cycle de tendance."
             },
             "conversionTracking": {
-              "attribution": "Use Pinterest Tag for website conversion tracking.",
-              "funnelAnalysis": "Pin discovery → save → click → conversion mapping.",
-              "roiMeasurement": "Calculate cost per acquisition vs. customer lifetime value.",
-              "affectTesting": "Test calls-to-action, landing pages, and offers."
+              "attribution": "Utilisez le Pinterest Tag pour le suivi des conversions du site web.",
+              "funnelAnalysis": "Cartographie Découverte d\"épingle → sauvegarde → clic → conversion.",
+              "roiMeasurement": "Calculez le coût d\"acquisition vs la valeur à vie du client.",
+              "affectTesting": "Testez les appels à l\"action, les pages d\"atterrissage et les offres."
             }
           }
         },
         "marketingIntegration": {
           "campaignStrategies": {
             "contentMarketing": {
-              "blogIntegration": "Create unique pins for each blog post. Use different angles and keywords.",
-              "leadGeneration": "Offer downloadable resources in exchange for email capture.",
-              "productLaunches": "Teaser content, countdown pins, launch day announcements.",
-              "seasonalCampaigns": "Holiday-specific content, gift guides, seasonal tips."
+              "blogIntegration": "Créez des épingles uniques pour chaque article de blog. Utilisez différents angles et mots-clés.",
+              "leadGeneration": "Offrez des ressources téléchargeables en échange d\"une capture d\"email.",
+              "productLaunches": "Contenu teaser, épingles compte à rebours, annonces du jour de lancement.",
+              "seasonalCampaigns": "Contenu spécifique aux vacances, guides cadeaux, conseils saisonniers."
             },
             "paidAdvertising": {
-              "promotedPins": "Promote top-performing organic content first.",
-              "targetingOptions": "Demographics, interests, keywords, retargeting, actalike audiences.",
-              "budgetAllocation": "70% awareness, 20% consideration, 10% conversion campaigns.",
-              "creativeTesting": "Test 3-4 variations per campaign. Rotate winners to fresh audiences."
+              "promotedPins": "Promouvez d\"abord le contenu organique le plus performant.",
+              "targetingOptions": "Démographie, intérêts, mots-clés, reciblage, audiences similaires.",
+              "budgetAllocation": "70% notoriété, 20% considération, 10% campagnes de conversion.",
+              "creativeTesting": "Testez 3-4 variantes par campagne. Faites circuler les gagnants vers de nouvelles audiences."
             }
           },
           "multiChannelStrategy": {
             "platformSynergy": {
-              "instagram": "Repurpose Stories as Idea Pins. Cross-promote in Instagram bio.",
-              "youtube": "Create pin bundles from video content. Use video thumbnails as pins.",
+              "instagram": "Réutilisez les Stories comme Idea Pins. Promotion croisée dans la bio Instagram.",
+              "youtube": "Créez des lots d\"épingles à partir du contenu vidéo. Utilisez les miniatures vidéo comme épingles.",
               "blog": "Pin collages from blog posts. Create roundup pins for Plusieurs articles.",
               "email": "Embed pins in newsletters. Pin Images in email signatures."
             },
             "consistentBranding": {
-              "visualIdentity": "Consistent color palette, typography, logo placement across platforms.",
-              "voiceAndTone": "Adapt messaging for each platform while maintaining brand voice.",
-              "contentThemes": "Develop platform-specific content pillars aligned with overall strategy."
+              "visualIdentity": "Palette de couleurs cohérente, typographie, placement du logo sur toutes les plateformes.",
+              "voiceAndTone": "Adaptez le messagerie pour chaque plateforme tout en maintenant la voix de la marque.",
+              "contentThemes": "Développez des piliers de contenu spécifiques à la plateforme alignés sur la stratégie globale."
             }
           }
         }
       },
       "features": [
         {
-          "title": "Pinterest Presets 2025",
+          "title": "Préréglages Pinterest 2025",
           "description": "Updated presets for standard pins (1000x1500), Idea Pins (1080x1920), video thumbnails, and board covers"
         },
         {
           "title": "IA Optimisation",
-          "description": "Smart cropping and composition adjustments based on Pinterest engagement data"
+          "description": "Recadrage intelligent et ajustements de composition basés sur les données d\"engagement Pinterest"
         },
         {
           "title": "Lot Traitement",
@@ -262,7 +262,7 @@
         },
         {
           "title": "Format Conversion",
-          "description": "Convert to optimal formats (JPG for photos, PNG for graphics, WebP for faster loading)"
+          "description": "Conversion aux formats optimaux (JPG pour les photos, PNG pour les graphiques, WebP pour un chargement plus rapide)"
         }
       ],
       "useCases": [
@@ -272,22 +272,22 @@
           "example": "E-commerce brands creating product pins with consistent 1000x1500 Format and optimized file sizes"
         },
         {
-          "title": "Blog post promotion",
-          "description": "Create compelling blog post pins with perfect vertical dimensions and attention-grabbing text overlays",
+          "title": "Promotion d\"articles de blog",
+          "description": "Créez des épingles d\"articles de blog convaincantes avec des dimensions verticales parfaites et des superpositions de texte accrocheuses",
           "example": "Food bloggers converting recipe posts into visually appealing pins with step-by-step thumbnails"
         },
         {
           "title": "Product photography Optimisation",
-          "description": "Prepare product images for Pinterest with proper aspect ratios and white background compliance",
+          "description": "Préparez les images de produits pour Pinterest avec des proportions appropriées et la conformité des arrière-plans blancs",
           "example": "Fashion retailers creating consistent product pins with lifestyle and studio shots"
         },
         {
-          "title": "Infographic creation",
-          "description": "Design and resize infographics for optimal Pinterest sharing and repinning potential",
-          "example": "Marketing agencies creating data-driven infographics optimized for mobile Pinterest browsing"
+          "title": "Création d\"infographies",
+          "description": "Concevez et redimensionnez des infographies pour un partage Pinterest optimal et un potentiel de réépinglage maximal",
+          "example": "Agences de marketing créant des infographies basées sur les données optimisées pour la navigation Pinterest mobile"
         },
         {
-          "title": "Idea Pin production",
+          "title": "Production d\"Idea Pins",
           "description": "Prepare multi-slide content for Pinterest's story format with consistent branding",
           "example": "DIY creators creating step-by-step tutorials with cohesive visual Design"
         }
@@ -408,50 +408,50 @@
           },
           "adCreatives": {
             "imageAds": "1080x1920 pixels (9:16) or 1080x1080 pixels (1:1)",
-            "carouselAds": "1080x1920 per card, 2-35 cards",
-            "sparkAds": "Same as organic content",
+            "carouselAds": "1080x1920 par carte, 2-35 cartes",
+            "sparkAds": "Identique au contenu organique",
             "fileFormat": "JPG, PNG",
-            "maxFileSize": "50MB"
+            "maxFileSize": "50 Mo"
           }
         },
         "bestPractices": {
           "contentTypes": {
             "profileOptimization": {
               "headshots": "High-Résolution Photos, good lighting, clear background, Professionnel appearance",
-              "brandLogos": "Clean vector graphics, readable at small size, brand-consistent colors",
-              "creativeAvatars": "Unique illustrations or designs that reflect brand personality",
-              "consistency": "Match profile picture across all social platforms for brand recognition"
+              "brandLogos": "Graphiques vectoriels propres, lisibles à petite taille, couleurs cohérentes avec la marque",
+              "creativeAvatars": "Illustrations ou designs uniques qui reflètent la personnalité de la marque",
+              "consistency": "Correspondance de la photo de profil sur toutes les plateformes sociales pour la reconnaissance de la marque"
             },
             "videoThumbnails": {
-              "hookFrames": "Choose frames with highest emotional impact or curiosity factor",
+              "hookFrames": "Choisissez des cadres avec le plus fort impact émotionnel ou facteur de curiosité",
               "textOverlays": "Add compelling hook text (3-4 words) in upper third of Image",
-              "faces": "Include human faces when possible - 40% higher engagement",
-              "colorContrast": "Use bright, saturated colors to stand out in feed"
+              "faces": "Incluez des visages humains quand possible - 40% d\"engagement en plus",
+              "colorContrast": "Utilisez des couleurs vives et saturées pour vous démarquer dans le fil"
             },
             "storyContent": {
-              "fullScreenDesign": "Design for mobile first, use entire 9:16 canvas",
-              "safeAreas": "Leave 10% margin on edges for UI elements",
-              "textReadability": "Large fonts, high contrast, minimal text per frame",
+              "fullScreenDesign": "Concevez d\"abord pour mobile, utilisez tout le canevas 9:16",
+              "safeAreas": "Laissez une marge de 10% sur les bords pour les éléments de l\"interface",
+              "textReadability": "Grandes polices, fort contraste, texte minimal par cadre",
               "interactiveElements": "Design space for stickers, polls, and other TikTok Fonctionnalités"
             }
           },
           "designGuidelines": {
-            "visualHierarchy": "Most important element in top third, secondary information below",
+            "visualHierarchy": "Élément le plus important dans le tiers supérieur, informations secondaires en dessous",
             "colorPsychology": {
-              "red": "Urgency, excitement, food content performance",
-              "blue": "Trust, technology, educational content",
-              "yellow": "Happiness, attention-grabbing, youth-oriented content",
-              "green": "Nature, health, sustainability content"
+              "red": "Urgence, excitation, performance du contenu alimentaire",
+              "blue": "Confiance, technologie, contenu éducatif",
+              "yellow": "Bonheur, accrocheur, contenu orienté jeunesse",
+              "green": "Nature, santé, contenu de durabilité"
             },
             "typography": {
               "fontChoices": "Bold sans-serif fonts perform Meilleur",
-              "textPlacement": "Upper or lower third, avoid center where TikTok UI appears",
-              "readability": "Minimum 40pt for main text, high contrast essential",
-              "brandConsistency": "Use consistent fonts across all TikTok content"
+              "textPlacement": "Tiers supérieur ou inférieur, évitez le centre où l\"interface TikTok apparaît",
+              "readability": "Minimum 12pt pour le texte principal, fort contraste essentiel",
+              "brandConsistency": "Utilisez des polices cohérentes sur tout le contenu TikTok"
             },
             "composition": {
-              "ruleOfThirds": "Place key elements at intersection points",
-              "negativeSpace": "Use breathing room around important elements",
+              "ruleOfThirds": "Placez les éléments clés aux points d\"intersection",
+              "negativeSpace": "Utilisez l\"espace de respiration autour des éléments importants",
               "focalPoint": "Single clear focal point per Image",
               "movementDirection": "Design for vertical scrolling, Guide eye downward"
             }
@@ -459,39 +459,39 @@
         },
         "engagementOptimization": {
           "thumbnailStrategy": {
-            "first3Seconds": "85% of engagement decided in first 3 seconds",
-            "emotionalTriggers": "Surprise faces, action shots, dramatic expressions",
-            "curiosityGaps": "Questions, before/after states, partial reveals",
-            "trendingElements": "Use popular filters, effects, or trending audio indicators"
+            "first3Seconds": "85% de l\"engagement décidé dans les 3 premières secondes",
+            "emotionalTriggers": "Expressions de surprise, plans d\"action, expressions dramatiques",
+            "curiosityGaps": "Questions, états avant/après, révélations partielles",
+            "trendingElements": "Utilisez des filtres populaires, des effets ou des indicateurs audio tendance"
           },
           "timingStrategy": {
-            "postingSchedule": "6-10 AM, 7-11 PM for highest engagement. Varies by timezone.",
-            "contentFrequency": "1-3 posts daily for optimal algorithm performance",
-            "trendTiming": "Jump on trends within 24-48 hours of emergence",
-            "seasonalContent": "Plan holiday content 2-3 weeks in advance"
+            "postingSchedule": "6h-10h, 19h-23h pour un engagement maximal. Varie selon le fuseau horaire.",
+            "contentFrequency": "1-3 publications quotidiennes pour une performance optimale de l\"algorithme",
+            "trendTiming": "Saisissez les tendances dans les 24-48 heures de leur émergence",
+            "seasonalContent": "Planifiez le contenu de vacances 2-3 semaines à l\"avance"
           },
           "engagementFactors": {
-            "duetability": "Leave space for duet split screen (right side)",
-            "stitchPotential": "Design content that can be easily stitched or remixed",
-            "commentPrompters": "Include visual elements that encourage comments",
-            "shareability": "Create easily shareable, meme-able content moments"
+            "duetability": "Laissez de l\"espace pour l\"écran partagé du duo (côté droit)",
+            "stitchPotential": "Concevez du contenu qui peut être facilement stitché ou remixé",
+            "commentPrompters": "Incluez des éléments visuels qui encouragent les commentaires",
+            "shareability": "Créez des moments de contenu facilement partageables et méméables"
           }
         },
         "videoAndDynamicContent": {
           "stillImageToVideo": {
             "slideshowCreation": "Convert Images to 15-60 second slideshows with transitions",
             "kenBurnsEffect": "Add subtle zoom/pan to static Images for video feel",
-            "textAnimation": "Animate text overlays for dynamic presentation",
+            "textAnimation": "Animez les superpositions de texte pour une présentation dynamique",
             "syncWithAudio": "Time Image changes with trending audio beats"
           },
           "greenscreenContent": {
-            "backgroundImages": "1080x1920 for green screen backgrounds",
-            "productShowcases": "Lifestyle backgrounds for product demonstrations",
-            "educationalContent": "Infographics and diagrams as backgrounds",
-            "brandConsistency": "Use brand assets as green screen backgrounds"
+            "backgroundImages": "1080x1920 pour les arrière-plans d\"écran vert",
+            "productShowcases": "Arrière-plans lifestyle pour les démonstrations de produits",
+            "educationalContent": "Infographies et diagrammes comme arrière-plans",
+            "brandConsistency": "Utilisez les éléments de marque comme arrière-plans d\"écran vert"
           },
           "interactiveElements": {
-            "stickerPlacement": "Design space for TikTok stickers and effects",
+            "stickerPlacement": "Concevez l\"espace pour les autocollants et effets TikTok",
             "pollCreation": "Background Images for interactive polls",
             "qaSessions": "Professionnel backgrounds for Q&A sessions",
             "linkInBio": "Compelling Images to drive bio link clicks"
@@ -499,21 +499,21 @@
         },
         "technicalOptimization": {
           "compressionSettings": {
-            "jpgOptimization": "90-95% quality for crisp thumbnails",
-            "pngOptimization": "Lossless for graphics with sharp edges",
-            "fileSizeManagement": "Under 5MB for fast loading, prioritize quality",
-            "colorSpace": "sRGB for consistent display across devices"
+            "jpgOptimization": "Qualité 90-95% pour des miniatures nettes",
+            "pngOptimization": "Sans perte pour les graphiques avec des bords nets",
+            "fileSizeManagement": "Moins de 5 Mo pour un chargement rapide, privilégiez la qualité",
+            "colorSpace": "sRGB pour un affichage cohérent sur les appareils"
           },
           "performanceOptimization": {
             "loadingSpeed": "Optimize for Rapide loading on slow connections",
-            "mobileFirst": "Test on various mobile devices and screen sizes",
-            "batteryUsage": "Optimize to minimize battery consumption",
+            "mobileFirst": "Testez sur divers appareils mobiles et tailles d\"écran",
+            "batteryUsage": "Optimisez pour minimiser la consommation de batterie",
             "dataUsage": "Compress without visible Qualité loss"
           },
           "accessibility": {
-            "altText": "Descriptive alt text for screen readers",
-            "colorContrast": "WCAG 2.1 AA compliance for text readability",
-            "colorBlindness": "Test with color blindness simulators",
+            "altText": "Texte alternatif descriptif pour les lecteurs d\"écran",
+            "colorContrast": "Conformité WCAG 2.1 AA pour la lisibilité du texte",
+            "colorBlindness": "Testez avec des simulateurs de daltonisme",
             "textAlternatives": "Provide text-based content alternatives"
           }
         },
@@ -618,46 +618,46 @@
           },
           "optimizationStrategies": {
             "contentPerformance": {
-              "hookAnalysis": "A/B test different opening frames and hooks",
-              "lengthOptimization": "Test optimal video lengths by content type",
+              "hookAnalysis": "Test A/B différents cadres d\"ouverture et crochets",
+              "lengthOptimization": "Testez les longueurs vidéo optimales par type de contenu",
               "postingTimes": "Identify Meilleur posting times for specific audience",
               "trendAnalysis": "Track which types of trends perform Meilleur"
             },
             "audienceInsights": {
-              "demographics": "Age, gender, location analysis for content targeting",
-              "behaviorPatterns": "Peak activity times, content preferences",
-              "followerGrowth": "Track growth spikes and correlate with content",
-              "engagementQuality": "Analyze comment sentiment and community health"
+              "demographics": "Analyse d\"âge, de genre et de localisation pour le ciblage du contenu",
+              "behaviorPatterns": "Moments d\"activité de pointe, préférences de contenu",
+              "followerGrowth": "Suivez les pics de croissance et corréléz avec le contenu",
+              "engagementQuality": "Analysez le sentiment des commentaires et la santé de la communauté"
             }
           }
         },
         "marketingIntegration": {
           "campaignStrategies": {
             "organicMarketing": {
-              "influencerCollaboration": "Partner with TikTok creators for authentic promotion",
-              "hashtagChallenges": "Create branded hashtag challenges",
-              "trendJacktion": "Participate in relevant trends authentically",
-              "communityBuilding": "Engage with comments, duets, and community content"
+              "influencerCollaboration": "Partenariats avec les créateurs TikTok pour une promotion authentique",
+              "hashtagChallenges": "Créez des défis de hashtags de marque",
+              "trendJacktion": "Participez aux tendances pertinentes de manière authentique",
+              "communityBuilding": "Engagez avec les commentaires, duos et contenu communautaire"
             },
             "paidAdvertising": {
-              "inFeedAds": "Native-looking ads that blend with organic content",
-              "topView": "Premium placement for maximum visibility",
-              "brandedHashtag": "Sponsored hashtag challenges",
-              "brandedEffects": "Custom AR filters and effects"
+              "inFeedAds": "Publicités d\"aspect natif qui se mélangent au contenu organique",
+              "topView": "Placement premium pour une visibilité maximale",
+              "brandedHashtag": "Défis de hashtags sponsorisés",
+              "brandedEffects": "Filtres et effets AR personnalisés"
             }
           },
           "conversionOptimization": {
             "salesFunnel": {
-              "awareness": "Entertaining content that introduces brand",
-              "consideration": "Educational content showcasing product value",
-              "conversion": "Direct product demonstrations and calls-to-action",
-              "retention": "Community building and customer success stories"
+              "awareness": "Contenu divertissant qui présente la marque",
+              "consideration": "Contenu éducatif présentant la valeur du produit",
+              "conversion": "Démonstrations directes de produits et appels à l\"action",
+              "retention": "Construction de communauté et histoires de succès client"
             },
             "measurement": {
-              "tiktokPixel": "Track website conversions and attribution",
-              "firstPartyData": "Collect first-party data for personalization",
-              "roiAnalysis": "Calculate return on ad spend",
-              "customerJourney": "Map TikTok touchpoints in customer journey"
+              "tiktokPixel": "Suivez les conversions du site web et l\"attribution",
+              "firstPartyData": "Collectez des données first-party pour la personnalisation",
+              "roiAnalysis": "Calculez le retour sur dépenses publicitaires",
+              "customerJourney": "Cartographiez les points de contact TikTok dans le parcours client"
             }
           }
         }
@@ -665,18 +665,18 @@
       "features": [
         {
           "title": "TikTok Profile Optimisation",
-          "description": "Create perfect 200x200 profile pictures with circular crop awareness and brand consistency"
+          "description": "Créez des photos de profil 200x200 parfaites avec conscience du recadrage circulaire et cohérence de marque"
         },
         {
           "title": "Video Thumbnail Generator",
           "description": "Generate compelling thumbnails from video frames with text overlays and trend alignment"
         },
         {
-          "title": "Ad Creative Templates",
-          "description": "Pre-sized templates for TikTok ads with placement awareness for UI elements"
+          "title": "Modèles de Publicités Créatives",
+          "description": "Modèles pré-dimensionnés pour les publicités TikTok avec conscience du placement pour les éléments de l\"interface"
         },
         {
-          "title": "Cross-Platform Adaptation",
+          "title": "Adaptation Multi-Plateforme",
           "description": "Convert content between TikTok and other platforms while maintaining optimal engagement"
         }
       ],
@@ -684,17 +684,17 @@
         {
           "title": "TikTok profile Optimisation",
           "description": "Create professional profile pictures that stand out in the TikTok ecosystem and align with brand identity",
-          "example": "Influencers optimizing their profile pictures for recognition in duets and stitches"
+          "example": "Influenceurs optimisant leurs photos de profil pour la reconnaissance dans les duos et stitches"
         },
         {
           "title": "Video thumbnail creation",
           "description": "Generate attention-grabbing thumbnails that increase video views and engagement rates",
-          "example": "Content creators selecting the perfect frame and adding compelling text overlays"
+          "example": "Créateurs de contenu sélectionnant le cadre parfait et ajoutant des superpositions de texte convaincantes"
         },
         {
-          "title": "TikTok advertising preparation",
-          "description": "Prepare ad creatives that meet TikTok's specifications and perform well in the feed",
-          "example": "Brands creating in-feed ads that blend seamlessly with organic content"
+          "title": "Préparation publicitaire TikTok",
+          "description": "Préparez des créatifs publicitaires qui répondent aux spécifications TikTok et performent bien dans le fil",
+          "example": "Marques créant des publicités in-feed qui se mélangent parfaitement au contenu organique"
         },
         {
           "title": "Réseaux sociaux campaign assets",
@@ -702,8 +702,8 @@
           "example": "Marketing agencies developing multi-part campaigns with consistent visual identity"
         },
         {
-          "title": "Content repurposing",
-          "description": "Adapt existing content for TikTok's vertical format and engagement patterns",
+          "title": "Réutilisation de contenu",
+          "description": "Adaptez le contenu existant au format vertical TikTok et aux modèles d\"engagement",
           "example": "YouTube creators converting horizontal content to TikTok-friendly vertical Format"
         }
       ],
@@ -722,7 +722,7 @@
         },
         {
           "question": "How do I optimize Images for TikTok Stories?",
-          "answer": "Design for full-screen 1080x1920 pixels, leave 10% margins for UI elements, use large readable text, and include space for interactive stickers and polls."
+          "answer": "Concevez pour plein écran 1080x1920 pixels, laissez des marges de 10% pour les éléments de l\"interface, utilisez du texte lisible et grand, et incluez de l\"espace pour les autocollants et sondages interactifs."
         },
         {
           "question": "What are the current TikTok Image trends for 2025?",
@@ -731,27 +731,27 @@
       ],
       "benefits": [
         {
-          "title": "2025 TikTok Compliance",
-          "description": "All specifications updated for current TikTok requirements and algorithm preferences"
+          "title": "Conformité TikTok 2025",
+          "description": "Toutes les spécifications mises à jour pour les exigences TikTok actuelles et les préférences de l\"algorithme"
         },
         {
           "title": "Engagement-Focused Optimisation",
           "description": "AI-powered optimization based on TikTok engagement patterns and best practices"
         },
         {
-          "title": "Cross-Platform Compatibility",
-          "description": "Easily adapt content between TikTok and other social media platforms"
+          "title": "Compatibilité Multi-Plateforme",
+          "description": "Adaptez facilement le contenu entre TikTok et d\"autres plateformes de médias sociaux"
         },
         {
-          "title": "Trend Awareness",
-          "description": "Built-in trend analysis and recommendations for optimal content timing"
+          "title": "Conscience des Tendances",
+          "description": "Analyse des tendances intégrée et recommandations pour un timing optimal du contenu"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
           "title": "Télécharger or Create",
-          "description": "Upload existing images or use AI-powered templates designed for TikTok"
+          "description": "Téléchargez des images existantes ou utilisez des modèles alimentés par l\"IA conçus pour TikTok"
         },
         {
           "step": 2,
@@ -760,8 +760,8 @@
         },
         {
           "step": 3,
-          "title": "Optimize & Export",
-          "description": "Apply engagement optimization and export TikTok-ready content instantly"
+          "title": "Optimiser et Exporter",
+          "description": "Appliquez l\"optimisation de l\"engagement et exportez le contenu prêt TikTok instantanément"
         }
       ],
       "relatedTools": [
@@ -772,7 +772,7 @@
         "how-to-upscale-images-without-losing-quality",
         "tiktok-marketing-strategy-guide"
       ],
-      "ctaText": "Create TikTok-Optimized Content Now",
+      "ctaText": "Créez du Contenu Optimisé TikTok Maintenant",
       "ctaUrl": "/?signup=1"
     },
     {
