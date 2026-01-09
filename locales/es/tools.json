@@ -15,7 +15,8 @@
         "escalar imagen online",
         "escalador 4k",
         "ampliar imagen",
-        "ampliador de fotos"
+        "ampliador de fotos",
+        "ampliador de imágenes con IA"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "herramientas",
@@ -49,10 +50,18 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB (5MB en nivel gratuito)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "maxUpscale": "8x",
         "processingTime": "30-60 segundos típico",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "qualitySettings": "Calidad JPEG ajustable 1-100%"
       },
       "useCases": [
@@ -151,8 +160,13 @@
           "answer": "Sí, conservas todos los derechos sobre tus imágenes escaladas. Úsalas para cualquier propósito: personal, comercial, impresión o web."
         }
       ],
-      "relatedTools": ["ai-photo-enhancer"],
-      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
+      "relatedTools": [
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "print-size-guide",
+        "ecommerce-image-requirements"
+      ],
       "relatedBlogPosts": [
         "image-resolution-for-printing-complete-guide",
         "social-media-image-sizes-guide-2025",
@@ -177,7 +191,9 @@
         "mejorar foto ia",
         "corregir foto borrosa",
         "mejorador de calidad de foto",
-        "mejorador de imagenes"
+        "mejorador de imagenes",
+        "mejorador de fotos",
+        "mejorador de claridad de imagen"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "herramientas",
@@ -211,9 +227,17 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB (5MB en nivel gratuito)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "processingTime": "20-45 segundos típico",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "preservesExif": "Opcional - mantener o eliminar metadatos"
       },
       "useCases": [
@@ -312,8 +336,13 @@
           "answer": "Absolutamente. Las fotos de teléfono a menudo tienen ruido de sensores pequeños y pueden beneficiarse significativamente de la mejora."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"],
-      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ],
+      "relatedGuides": [
+        "photo-restoration-tips",
+        "before-after-workflow"
+      ],
       "relatedBlogPosts": [
         "restore-old-photos-ai-enhancement-guide",
         "fix-blurry-photos-ai-methods-guide",
@@ -336,6 +365,7 @@
         "eliminador de fondo",
         "quitar fondo",
         "fondo transparente",
+        "recortar imagen",
         "recortar imagen"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
@@ -343,7 +373,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Eliminador de Fondos IA",
       "description": "Transforma cualquier imagen con eliminación de fondo profesional. Nuestra IA usa segmentación avanzada para detectar sujetos con precisión píxel-perfecta, manejando bordes complejos como cabello y piel con los que las herramientas tradicionales luchan.",
       "features": [
@@ -450,7 +484,10 @@
           "answer": "Dado que el procesamiento ocurre en tu navegador, el límite depende de la memoria de tu dispositivo. La mayoría de dispositivos manejan imágenes hasta 4096x4096 píxeles sin problemas."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
       "relatedGuides": [],
       "ctaText": "Eliminar Fondo Gratis",
       "ctaUrl": "/tools/ai-background-remover"
@@ -467,14 +504,19 @@
         "quitar fondo online",
         "quitar fondo gratis",
         "eliminador de fondo",
-        "quitar fondo de imagen"
+        "quitar fondo de imagen",
+        "borrador de fondo"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
       "category": "herramientas",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Herramienta Quitar Fondo",
       "description": "La forma más rápida de quitar el fondo de cualquier imagen. Sube tu foto y obtén un fondo transparente en segundos. Perfecto para ediciones rápidas y procesamiento por lotes.",
       "features": [
@@ -546,7 +588,10 @@
           "answer": "Imágenes JPEG, PNG y WebP hasta 10MB."
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-image-upscaler"
+      ],
       "relatedGuides": [],
       "ctaText": "Quitar Fondo Ahora",
       "ctaUrl": "/tools/remove-bg"
@@ -563,14 +608,19 @@
         "hacer fondo transparente",
         "fondo transparente",
         "creador png transparente",
-        "fondo claro"
+        "fondo claro",
+        "creador de imágenes transparentes"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
       "category": "herramientas",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Creador de Fondo Transparente",
       "description": "Convierte cualquier imagen en un PNG transparente. Nuestra IA elimina el fondo y crea imágenes limpias y transparentes listas para usar en diseños, sitios web y presentaciones.",
       "features": [
@@ -642,7 +692,10 @@
           "answer": "Sí, la IA maneja formas complejas, cabello y detalles finos mientras crea bordes limpios y transparentes."
         }
       ],
-      "relatedTools": ["ai-background-remover", "remove-bg"],
+      "relatedTools": [
+        "ai-background-remover",
+        "remove-bg"
+      ],
       "relatedGuides": [],
       "ctaText": "Hacer Transparente",
       "ctaUrl": "/tools/transparent-background-maker"
@@ -667,7 +720,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Herramienta de Recorte de Imagen",
       "description": "Recortes de imagen profesionales sin Photoshop. Herramienta con IA que recorta con precisión sujetos de fotos, manejando bordes complejos como cabello y piel automáticamente.",
       "features": [
@@ -739,7 +796,10 @@
           "answer": "Para la mayoría de tareas de recorte, nuestra IA produce resultados comparables al trabajo manual de Photoshop pero en segundos en lugar de minutos u horas."
         }
       ],
-      "relatedTools": ["ai-background-remover", "transparent-background-maker"],
+      "relatedTools": [
+        "ai-background-remover",
+        "transparent-background-maker"
+      ],
       "relatedGuides": [],
       "ctaText": "Recortar Ahora",
       "ctaUrl": "/tools/image-cutout-tool"

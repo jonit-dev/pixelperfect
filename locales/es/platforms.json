@@ -111,13 +111,20 @@
           "answer": "Nuestro escalador puede reducir ciertos artefactos de compresión y mejorar la claridad general, pero no alterará fundamentalmente o 'corregirá' las elecciones de generación IA originales."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler", "dalle-upscaler", "canva-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": [
+        "dalle-upscaler",
+        "stable-diffusion-upscaler",
+        "canva-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
       "ogImage": "/og-images/midjourney-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
     {
-      "slug": "stable-diffusion-upscaler",
+      "slug": "dalle-upscaler",
       "title": "Escalador de Stable Diffusion - Mejora Imágenes SD a Calidad de Impresión",
       "metaTitle": "Escalador de Stable Diffusion Gratis | Mejora SD a 4K/8K",
       "metaDescription": "Escala imágenes de Stable Diffusion preservando detalles de IA. Corrige artefactos, mejora claridad y prepara para impresión. Funciona con SDXL, SD 1.5, modelos de anime.",
@@ -131,7 +138,7 @@
         "mejorar imagenes ia",
         "stable diffusion 4k"
       ],
-      "platformName": "Stable Diffusion",
+      "platformName": "DALL-E",
       "platformType": "ai-generator",
       "description": "Escalado avanzado para salidas de Stable Diffusion, soportando SD 1.5, SDXL y modelos de checkpoint personalizados.",
       "benefits": [
@@ -226,13 +233,19 @@
           "answer": "Nuestro escalador se enfoca en salida de calidad de impresión y reducción de artefactos, complementando el escalado interno de SD. Muchos artistas usan ambos."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "dalle-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
-      "ogImage": "/og-images/stable-diffusion-upscaler.png",
+      "relatedPlatforms": [
+        "midjourney-upscaler",
+        "leonardo-ai-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
+      "ogImage": "/og-images/dalle-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
     {
-      "slug": "dalle-upscaler",
+      "slug": "stable-diffusion-upscaler",
       "title": "Escalador de DALL-E - Mejora Imágenes de OpenAI a Ultra HD",
       "metaTitle": "Escalador de DALL-E Gratis | Mejora Imágenes de DALL-E 2 y 3",
       "metaDescription": "Escala imágenes de DALL-E a resolución 4K/8K. Corrige compresión, mejora detalles y prepara para impresión. Funciona con salidas de DALL-E 2 y DALL-E 3.",
@@ -246,7 +259,7 @@
         "escalador dall-e 3",
         "mejorar imagenes openai"
       ],
-      "platformName": "DALL-E",
+      "platformName": "Stable Diffusion",
       "platformType": "ai-generator",
       "description": "Escalado profesional para imágenes de DALL-E 2 y DALL-E 3, optimizado para el estilo artístico único de OpenAI.",
       "benefits": [
@@ -341,9 +354,15 @@
           "answer": "Sí, las imágenes escaladas mantienen los mismos derechos de uso que la generación original de DALL-E según los términos de OpenAI."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
-      "ogImage": "/og-images/dalle-upscaler.png",
+      "relatedPlatforms": [
+        "midjourney-upscaler",
+        "leonardo-ai-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
+      "ogImage": "/og-images/stable-diffusion-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
     {
@@ -456,8 +475,14 @@
           "answer": "Para exportaciones estáticas, sí. Para diseños animados, exporta cada cuadro individualmente, luego reensambla después de escalar."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler", "midjourney-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": [
+        "photoshop-upscaler",
+        "midjourney-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "bulk-image-upscaler"
+      ],
       "ogImage": "/og-images/canva-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
@@ -571,8 +596,14 @@
           "answer": "Sí, las imágenes escaladas son excelentes para pósters, banners, arte de pared y otras aplicaciones de gran formato."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "relatedPlatforms": [
+        "canva-upscaler",
+        "stable-diffusion-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
       "ogImage": "/og-images/photoshop-upscaler.png",
       "lastUpdated": "2026-01-06"
     }

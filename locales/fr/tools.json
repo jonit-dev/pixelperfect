@@ -50,10 +50,18 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64 Mo (5 Mo sur le niveau gratuit)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "maxUpscale": "8x",
         "processingTime": "30-60 secondes typiquement",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "qualitySettings": "Qualité JPEG réglable de 1 à 100 %"
       },
       "useCases": [
@@ -152,8 +160,13 @@
           "answer": "Oui, vous conservez tous les droits sur vos images agrandies. Utilisez-les pour n'importe quel but - personnel, commercial, impression ou web."
         }
       ],
-      "relatedTools": ["ai-photo-enhancer"],
-      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
+      "relatedTools": [
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "print-size-guide",
+        "ecommerce-image-requirements"
+      ],
       "relatedBlogPosts": [
         "image-resolution-for-printing-complete-guide",
         "social-media-image-sizes-guide-2025",
@@ -214,9 +227,17 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64 Mo (5 Mo sur le niveau gratuit)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "processingTime": "20-45 secondes typiquement",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "preservesExif": "Optionnel - garder ou supprimer les métadonnées"
       },
       "useCases": [
@@ -315,8 +336,13 @@
           "answer": "Absolument. Les photos de téléphone ont souvent du bruit dû aux petits capteurs et peuvent bénéficier considérablement de l'amélioration."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"],
-      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ],
+      "relatedGuides": [
+        "photo-restoration-tips",
+        "before-after-workflow"
+      ],
       "relatedBlogPosts": [
         "restore-old-photos-ai-enhancement-guide",
         "fix-blurry-photos-ai-methods-guide",
@@ -347,7 +373,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Suppresseur d'arrière-plan IA",
       "description": "Transformez n'importe quelle image avec une suppression d'arrière-plan professionnelle. Notre IA utilise une segmentation avancée pour détecter les sujets avec une précision parfaite au pixel, gérant les bords complexes comme les cheveux et la fourrure que les outils traditionnels peinent à gérer.",
       "features": [
@@ -454,7 +484,10 @@
           "answer": "Puisque le traitement se produit dans votre navigateur, la limite dépend de la mémoire de votre appareil. La plupart des appareils gèrent les images jusqu'à 4096x4096 pixels en douceur."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
       "relatedGuides": [],
       "ctaText": "Supprimer l'arrière-plan gratuitement",
       "ctaUrl": "/tools/ai-background-remover"
@@ -479,7 +512,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Outil Supprimer BG",
       "description": "Le moyen le plus rapide de supprimer BG de n'importe quelle image. Téléchargez votre photo et obtenez un arrière-plan transparent en quelques secondes. Parfait pour les modifications rapides et le traitement par lots.",
       "features": [
@@ -551,7 +588,10 @@
           "answer": "Images JPEG, PNG et WebP jusqu'à 10 Mo."
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-image-upscaler"
+      ],
       "relatedGuides": [],
       "ctaText": "Supprimer BG maintenant",
       "ctaUrl": "/tools/remove-bg"
@@ -576,7 +616,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Créateur d'arrière-plan transparent",
       "description": "Transformez n'importe quelle image en un PNG transparent. Notre IA supprime l'arrière-plan et crée des images transparentes propres prêtes à être utilisées dans des designs, des sites web et des présentations.",
       "features": [
@@ -648,7 +692,10 @@
           "answer": "Oui, l'IA gère les formes complexes, les cheveux et les fins détails tout en créant des bords transparents propres."
         }
       ],
-      "relatedTools": ["ai-background-remover", "remove-bg"],
+      "relatedTools": [
+        "ai-background-remover",
+        "remove-bg"
+      ],
       "relatedGuides": [],
       "ctaText": "Rendre transparent",
       "ctaUrl": "/tools/transparent-background-maker"
@@ -673,7 +720,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Outil de découpage d'image",
       "description": "Découpes d'image professionnelles sans Photoshop. Outil alimenté par l'IA qui découpe précisément les sujets des photos, gérant automatiquement les bords complexes comme les cheveux et la fourrure.",
       "features": [
@@ -745,7 +796,10 @@
           "answer": "Pour la plupart des tâches de découpage, notre IA produit des résultats comparables au travail manuel Photoshop mais en quelques secondes au lieu de minutes ou d'heures."
         }
       ],
-      "relatedTools": ["ai-background-remover", "transparent-background-maker"],
+      "relatedTools": [
+        "ai-background-remover",
+        "transparent-background-maker"
+      ],
       "relatedGuides": [],
       "ctaText": "Découper maintenant",
       "ctaUrl": "/tools/image-cutout-tool"

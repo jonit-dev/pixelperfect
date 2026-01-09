@@ -1,5 +1,5 @@
 {
-  "category": "formats",
+  "category": "形式",
   "meta": {
     "totalPages": 10,
     "lastUpdated": "2025-12-19T00:00:00Z"
@@ -20,7 +20,7 @@
         "jpeg画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "JPEG",
       "extension": "jpeg",
       "description": "JPEG（Joint Photographic Experts Group）は、写真とWeb画像で最も広く使用されている画像フォーマットです。当社のAIアップスケーラーは、圧縮効率を維持しながらJPEGを向上することに特化しています。",
@@ -104,8 +104,14 @@
           "answer": "はい、当社のAIは高度に圧縮されたJPEGで機能できますが、結果は圧縮レベルによって異なります。一般に、品質の悪い元画像でも大幅な改善が見られます。"
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-png-images",
@@ -122,7 +128,7 @@
         "png画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "PNG",
       "extension": "png",
       "description": "PNG（Portable Network Graphics）は非可逆圧縮と透明性をサポートしています。ロゴ、グラフィック、透明背景が必要な画像に最適です。",
@@ -206,8 +212,14 @@
           "answer": "はい！当社のAIは、PNGのテキストとグラフィックを処理するように特別に訓練されており、高倍率でも鮮明で読みやすいテキストを保持します。"
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-webp-images",
@@ -224,7 +236,7 @@
         "webp解像度ブースター"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "WebP",
       "extension": "webp",
       "description": "WebPは、優れた圧縮と品質を提供するGoogleの最新画像フォーマットです。非可逆と非可逆圧縮の両方をサポートし、Web最適化に最適です。",
@@ -308,8 +320,14 @@
           "answer": "WebPの高度な圧縮は実際にアップスケール中の品質保持に役立ちます。当社のAIは非可逆および非可逆WebP画像の両方で効果的に機能できます。"
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-heic-images",
@@ -327,7 +345,7 @@
         "ios写真向上ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "HEIC",
       "extension": "heic",
       "description": "HEIC（High Efficiency Image Container）は、iOSとmacOSデバイス向けのAppleの最新画像フォーマットです。優れた圧縮を提供しながら優れた品質を維持し、iPhone写真に最適です。",
@@ -415,8 +433,14 @@
           "answer": "当社のAIはメイン画像の向上に焦点を当てています。Live Photosで最高の結果を得るには、向上した画像が静止写真コンポーネントで優れた品質を保持します。"
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-raw-images",
@@ -434,7 +458,7 @@
         "プロフェッショナル写真アップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "RAW",
       "extension": "raw",
       "description": "RAWフォーマットには、カメラセンサーからの未処理の画像データが直接含まれています。プロフェッショナル写真とハイエンドアップスケーリングに最大の品質と編集の柔軟性を提供します。",
@@ -518,7 +542,10 @@
           "answer": "もちろんです。RAWファイルの追加データと当社のAIアップスケーリングの組み合わせは、特に大判印刷で例外的な印刷品質を生成します。"
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-tiff-images"],
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-tiff-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "professional-photo-upscaling-guide"
@@ -540,7 +567,7 @@
         "印刷写真アップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "TIFF",
       "extension": "tiff",
       "description": "TIFF（Tagged Image File Format）は、プロフェッショナル印刷、出版、アーカイブで広く使用されている非可逆フォーマットです。優れた品質保持で複数のレイヤーとページをサポートします。",
@@ -624,8 +651,14 @@
           "answer": "可能ですが、TIFFファイルは通常Web使用には大きすぎます。Webデプロイメントのためにアップスケール後にJPEGまたはPNGに変換することをお勧めします。"
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "print-preparation-guide"]
+      "relatedFormats": [
+        "upscale-raw-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "print-preparation-guide"
+      ]
     },
     {
       "slug": "upscale-bmp-images",
@@ -642,7 +675,7 @@
         "bmp画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "BMP",
       "extension": "bmp",
       "description": "BMP（Bitmap）は非圧縮のラスター画像フォーマットです。非可逆品質を提供しますがファイルサイズは大きくなります。Windowsアプリケーションとレガシーシステムで一般的に使用されます。",
@@ -726,8 +759,14 @@
           "answer": "はい。BMPは非圧縮であるため、当社のAIはすべての元の画像データを扱うことができ、優れたアップスケール結果を生成できます。"
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "format-selection-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "format-selection-guide"
+      ]
     },
     {
       "slug": "upscale-svg-images",
@@ -744,7 +783,7 @@
         "svg画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "SVG",
       "extension": "svg",
       "description": "SVG（Scalable Vector Graphics）は、品質を損なうことなく無限にスケールできるベクターフォーマットです。当社のツールは、特定の使用例に最適化された高解像度ラスター画像にSVGを変換します。",
@@ -828,8 +867,14 @@
           "answer": "透明性サポートにはPNG、写真にはJPEG、またはWeb最適化にはWebP。コンテンツと使用例に基づいて選択してください。"
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "vector-to-raster-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "vector-to-raster-guide"
+      ]
     },
     {
       "slug": "upscale-gif-images",
@@ -846,7 +891,7 @@
         "gif画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "GIF",
       "extension": "gif",
       "description": "GIF（Graphics Interchange Format）は256色でアニメーションと透明性をサポートしています。色の制限がありますが、ミーム、シンプルなアニメーション、Webグラフィックで広く使用されています。",
@@ -930,7 +975,10 @@
           "answer": "GIFフォーマットは設計によって256色に制限されています。当社のAIはこれらの制限内で最適な品質を生成するように機能します。"
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "animation-optimization-guide"
@@ -951,7 +999,7 @@
         "avif画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "formats",
+      "category": "形式",
       "formatName": "AVIF",
       "extension": "avif",
       "description": "AVIF（AV1 Image Format）は、AV1ビデオコーデックに基づく最新の画像フォーマットです。JPEG、PNG、WebPよりも優れた圧縮と品質を提供し、Web画像の将来を表しています。",
@@ -1035,7 +1083,10 @@
           "answer": "はい、適切なフォールバックで。AVIFは、古いブラウザ用のJPEGまたはWebPフォールバックとペアにすると、最新のWebアプリケーションに本番対応です。"
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-jpeg-images"],
+      "relatedFormats": [
+        "upscale-webp-images",
+        "upscale-jpeg-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "next-gen-image-formats-guide"

@@ -22,7 +22,11 @@
       "toolComponent": "BulkImageResizer",
       "description": "Procesa múltiples imágenes a la vez en lugar de una por una. Perfecto para fotógrafos, vendedores de comercio electrónico y cualquiera que gestione grandes colecciones de fotos que necesite dimensiones consistentes en lotes.",
       "maxFiles": 20,
-      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "acceptedFormats": [
+        "JPEG",
+        "PNG",
+        "WebP"
+      ],
       "features": [
         {
           "title": "Redimensiona hasta 20 Imágenes",
@@ -138,8 +142,14 @@
         "La velocidad de procesamiento basada en navegador depende de tu dispositivo"
       ],
       "outputFormat": "zip",
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
-      "relatedGuides": ["ecommerce-image-requirements", "social-media-image-sizes"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "ecommerce-image-requirements",
+        "social-media-image-sizes"
+      ],
       "ctaText": "Comenzar Redimensionamiento por Lotes",
       "ctaUrl": "/bulk-tools/bulk-image-resizer"
     },
@@ -163,7 +173,11 @@
       "toolComponent": "BulkImageCompressor",
       "description": "Optimiza múltiples imágenes simultáneamente para reducir tamaños de archivo sin pérdida notable de calidad. Ideal para preparar imágenes para sitios web, adjuntos de correo electrónico o almacenamiento en la nube.",
       "maxFiles": 20,
-      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "acceptedFormats": [
+        "JPEG",
+        "PNG",
+        "WebP"
+      ],
       "features": [
         {
           "title": "Comprime hasta 20 Imágenes",
@@ -279,8 +293,14 @@
         "La velocidad de compresión depende de tu dispositivo y tamaños de imagen"
       ],
       "outputFormat": "zip",
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
-      "relatedGuides": ["ecommerce-image-requirements", "website-optimization-guide"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "ecommerce-image-requirements",
+        "website-optimization-guide"
+      ],
       "ctaText": "Comenzar Compresión por Lotes",
       "ctaUrl": "/bulk-tools/bulk-image-compressor"
     }

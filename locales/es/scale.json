@@ -73,8 +73,12 @@
           "answer": "Típicamente 45-90 segundos dependiendo del tamaño de la imagen fuente. Las imágenes fuente más grandes tardan ligeramente más en procesarse a resolución 4K."
         }
       ],
-      "relatedScale": ["upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-hd",
@@ -148,8 +152,12 @@
           "answer": "¡Sí! 1080p proporciona suficiente resolución para impresiones hasta aproximadamente 16x9 pulgadas a alta calidad (300 PPP). Para impresiones más grandes, considera escalar a 4K en su lugar."
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-8k",
@@ -224,8 +232,12 @@
           "answer": "¡Sí! Las imágenes 8K se reducirán automáticamente para ajustarse a cualquier pantalla mientras mantienen una excelente calidad. Siempre tener contenido fuente de mayor resolución proporciona mejores resultados al mostrarse en pantallas más pequeñas."
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-1080p",
@@ -300,8 +312,13 @@
           "answer": "1080p tiene 2.25 veces más píxeles que 720p (1280x720), resultando en imágenes significativamente más nítidas y detalladas, especialmente en pantallas más grandes."
         }
       ],
-      "relatedScale": ["upscale-to-4k", "upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k",
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "4k-image-upscaler",
@@ -376,8 +393,12 @@
           "answer": "Nuestro escalador 4K con IA preserva detalles finos, texto y texturas mejor que los métodos tradicionales de escalado bicúbico o vecino más cercano, proporcionando resultados de apariencia más natural."
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "photo-enhancer-hd",
@@ -456,8 +477,12 @@
           "answer": "Actualmente, nuestro mejorador HD aplica automáticamente todas las mejoras para obtener los mejores resultados. Esto asegura calidad óptima sin requerir conocimiento técnico de los usuarios."
         }
       ],
-      "relatedScale": ["upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ai-upscaler-2x",
@@ -531,8 +556,12 @@
           "answer": "El escalado 2X es excelente para preparar imágenes para tamaños de impresión moderados. Proporciona suficiente aumento de resolución para impresiones de calidad a tamaños estándar."
         }
       ],
-      "relatedScale": ["ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ai-upscaler-4x",
@@ -606,8 +635,13 @@
           "answer": "Típicamente 30-60 segundos dependiendo del tamaño y contenido de tu imagen. La IA necesita tiempo para generar inteligentemente nuevos detalles para la resolución más grande."
         }
       ],
-      "relatedScale": ["ai-upscaler-2x", "upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-2x",
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "image-upscaler-4k",
@@ -681,8 +715,12 @@
           "answer": "Elige 4K si apuntas a pantallas 4K, impresiones grandes, portafolios profesionales o quieres máxima calidad. Para contenido solo web, HD (1080p) podría ser suficiente."
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "hd-upscaler",
@@ -756,8 +794,13 @@
           "answer": "HD crea imágenes que son lo suficientemente grandes para calidad pero lo suficientemente pequeñas para uso web eficiente, proporcionando un equilibrio excelente entre calidad y tamaño de archivo."
         }
       ],
-      "relatedScale": ["upscale-to-hd", "upscale-to-1080p"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd",
+        "upscale-to-1080p"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "image-upscaler-8k",
@@ -831,8 +874,12 @@
           "answer": "¡Sí! Las imágenes 8K se reducirán automáticamente para ajustarse a tu pantalla mientras mantienen excelente calidad. Tener fuente 8K asegura que tus imágenes se vean geniales en cualquier dispositivo."
         }
       ],
-      "relatedScale": ["upscale-to-8k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-8k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "resolution-enhancer",
@@ -882,7 +929,14 @@
         }
       ],
       "technicalSpecs": {
-        "resolutionOptions": ["HD", "Full HD", "2K", "4K", "8K", "Personalizado"],
+        "resolutionOptions": [
+          "HD",
+          "Full HD",
+          "2K",
+          "4K",
+          "8K",
+          "Personalizado"
+        ],
         "maxUpscaling": "Hasta 8x resolución original",
         "qualityEnhancement": "Generación de detalles basada en IA",
         "flexibility": "Resolución de salida seleccionable por usuario",
@@ -906,8 +960,13 @@
           "answer": "Elige basado en tu caso de uso: HD (720p) para web, Full HD (1080p) para uso estándar, 4K para trabajo profesional y 8K para calidad máxima o impresiones grandes."
         }
       ],
-      "relatedScale": ["ai-upscaler-2x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-2x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "2k-upscaler",
@@ -982,8 +1041,13 @@
           "answer": "¡Sí! La resolución 2K proporciona excelente calidad de impresión hasta 22x12 pulgadas a 300 PPP, haciéndola adecuada para la mayoría de necesidades de impresión profesional."
         }
       ],
-      "relatedScale": ["upscale-to-hd", "upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd",
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ultra-hd-upscaler",
@@ -1057,8 +1121,13 @@
           "answer": "Ultra HD (4K) proporciona excelente calidad para la mayoría de usos profesionales. 8K ofrece 4 veces más píxeles pero se necesita principalmente para aplicaciones especializadas como cine o impresiones extremadamente grandes."
         }
       ],
-      "relatedScale": ["upscale-to-4k", "upscale-to-8k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k",
+        "upscale-to-8k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "pixel-boost-upscaler",
@@ -1109,7 +1178,12 @@
       ],
       "technicalSpecs": {
         "enhancementMethod": "Análisis de píxeles con IA",
-        "boostLevels": ["2x", "4x", "8x", "Personalizado"],
+        "boostLevels": [
+          "2x",
+          "4x",
+          "8x",
+          "Personalizado"
+        ],
         "detailGeneration": "Creación inteligente de texturas",
         "qualityImprovement": "Mejora multifactor",
         "processingSpeed": "Optimizado para velocidad"
@@ -1132,8 +1206,13 @@
           "answer": "El impulso de píxeles puede mejorar la resolución hasta 8x mientras mejora significativamente la calidad, claridad y detalle de la imagen. La mejora exacta depende de tu calidad de imagen fuente."
         }
       ],
-      "relatedScale": ["resolution-enhancer", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "resolution-enhancer",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-8x",
@@ -1211,8 +1290,13 @@
           "answer": "¡Absolutamente! El escalado 8X es excelente para impresión de gran formato. Incluso fotos pequeñas pueden ampliarse a tamaño de póster o banner manteniendo calidad profesional."
         }
       ],
-      "relatedScale": ["upscale-16x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-16x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-16x",
@@ -1290,8 +1374,13 @@
           "answer": "Nuestra IA está optimizada para escalado extremo, pero los resultados dependen de la calidad fuente. Para mejores resultados con 16X, comienza con la imagen fuente de más alta calidad disponible."
         }
       ],
-      "relatedScale": ["upscale-8x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-8x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     }
   ],
   "meta": {

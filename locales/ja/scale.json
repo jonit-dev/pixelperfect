@@ -1,5 +1,5 @@
 {
-  "category": "scale",
+  "category": "スケール",
   "pages": [
     {
       "slug": "upscale-to-4k",
@@ -16,7 +16,7 @@
         "4k解像度にアップスケール"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "4K",
       "dimensions": {
         "width": 3840,
@@ -73,8 +73,12 @@
           "answer": "通常、ソース画像サイズに応じて45-90秒です。大きなソース画像は4K解像度への処理に少し時間がかかります。"
         }
       ],
-      "relatedScale": ["upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-hd",
@@ -91,7 +95,7 @@
         "フルhdアップスケーラー"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "フルHD（1080p）",
       "dimensions": {
         "width": 1920,
@@ -148,8 +152,12 @@
           "answer": "はい！1080pは高品質で最大約16x9インチの印刷に十分な解像度を提供します。より大きな印刷には、代わりに4Kへの拡張を検討してください。"
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-8k",
@@ -167,7 +175,7 @@
         "ウルトラhdアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "8K UHD",
       "dimensions": {
         "width": 7680,
@@ -224,8 +232,12 @@
           "answer": "はい、8K画像はより低い解像度画面で自動的に縮小されます。ただし、ファイルサイズと処理時間を考慮してください。"
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-to-1080p",
@@ -243,7 +255,7 @@
         "1920x1080アップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "フルHD（1080p）",
       "dimensions": {
         "width": 1920,
@@ -300,8 +312,13 @@
           "answer": "1080pは720p（1280x720）の2.25倍多くのピクセルを持っており、特に大きな画面で著しく鮮明で詳細な画像をもたらします。"
         }
       ],
-      "relatedScale": ["upscale-to-4k", "upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k",
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "4k-image-upscaler",
@@ -319,7 +336,7 @@
         "プロフェッショナル4kアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "4K UHD",
       "dimensions": {
         "width": 3840,
@@ -376,8 +393,12 @@
           "answer": "私たちのAI搭載4Kアップスケーラーは、従来のバイキュービックまたは最近傍アップスケーリング手法よりも微細な詳細、テキスト、テクスチャをより良く保持し、より自然に見える結果を提供します。"
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "photo-enhancer-hd",
@@ -395,7 +416,7 @@
         "自動フォトエンハンサー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "HD（720p+）",
       "dimensions": {
         "width": 1280,
@@ -429,7 +450,12 @@
       "technicalSpecs": {
         "minResolution": "任意の解像度から強化",
         "targetResolution": "720p HD以上",
-        "enhancementTypes": ["ノイズ削減", "シャープ化", "色補正", "解像度向上"],
+        "enhancementTypes": [
+          "ノイズ削減",
+          "シャープ化",
+          "色補正",
+          "解像度向上"
+        ],
         "supportedFormats": "JPEG、PNG、WebP",
         "processingTime": "10-30秒"
       },
@@ -451,8 +477,12 @@
           "answer": "現在、私たちのHDエンハンサーは最高の結果のためにすべての改善を自動的に適用します。これにより、ユーザーからの技術的知識を必要とせずに最適な品質が保証されます。"
         }
       ],
-      "relatedScale": ["upscale-to-hd"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ai-upscaler-2x",
@@ -470,7 +500,7 @@
         "適度なアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "2倍強化",
       "dimensions": {
         "width": "可変",
@@ -526,8 +556,12 @@
           "answer": "2倍アップスケーリングは適度な印刷サイズの画像準備に優れています。標準サイズでの高品質印刷に十分な解像度向上を提供します。"
         }
       ],
-      "relatedScale": ["ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ai-upscaler-4x",
@@ -601,8 +635,13 @@
           "answer": "通常、画像サイズとコンテンツに応じて30-60秒です。AIはより大きな解像度のために新しい詳細をインテリジェントに生成する時間が必要です。"
         }
       ],
-      "relatedScale": ["ai-upscaler-2x", "upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-2x",
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "image-upscaler-4k",
@@ -620,7 +659,7 @@
         "プロフェッショナル4kエンハンスメント"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "4K UHD",
       "dimensions": {
         "width": 3840,
@@ -676,8 +715,12 @@
           "answer": "4Kディスプレイ、大判印刷、プロフェッショナルポートフォリオをターゲットにする場合、または最大品質を希望する場合は4Kを選択してください。Webのみのコンテンツの場合、HD（1080p）で十分な場合があります。"
         }
       ],
-      "relatedScale": ["upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "hd-upscaler",
@@ -695,7 +738,7 @@
         "ハイデフィニションアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "HD（720p）",
       "dimensions": {
         "width": 1280,
@@ -751,8 +794,13 @@
           "answer": "HDは品質には十分大きいですが、効率的なWeb使用には十分小さい画像を作成し、品質とファイルサイズの優れたバランスを提供します。"
         }
       ],
-      "relatedScale": ["upscale-to-hd", "upscale-to-1080p"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd",
+        "upscale-to-1080p"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "image-upscaler-8k",
@@ -770,7 +818,7 @@
         "最大解像度ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "8K UHD",
       "dimensions": {
         "width": 7680,
@@ -826,8 +874,12 @@
           "answer": "はい！8K画像は優れた品質を維持しながらディスプレイに合わせて自動的に縮小されます。8Kソースにより、画像が任意のデバイスで素晴らしい見た目になることが保証されます。"
         }
       ],
-      "relatedScale": ["upscale-to-8k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-8k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "resolution-enhancer",
@@ -845,7 +897,7 @@
         "解像度アップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "可変",
       "dimensions": {
         "width": "ユーザー選択可能",
@@ -877,7 +929,14 @@
         }
       ],
       "technicalSpecs": {
-        "resolutionOptions": ["HD", "Full HD", "2K", "4K", "8K", "カスタム"],
+        "resolutionOptions": [
+          "HD",
+          "Full HD",
+          "2K",
+          "4K",
+          "8K",
+          "カスタム"
+        ],
         "maxUpscaling": "元の解像度から最大8倍",
         "qualityEnhancement": "AIベースの詳細生成",
         "flexibility": "ユーザー選択可能な出力解像度",
@@ -901,8 +960,13 @@
           "answer": "ユースケースに基づいて選択してください：WebにはHD（720p）、標準使用にはフルHD（1080p）、プロフェッショナルワークには4K、最大品質または大判印刷には8K。"
         }
       ],
-      "relatedScale": ["ai-upscaler-2x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "ai-upscaler-2x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "2k-upscaler",
@@ -920,7 +984,7 @@
         "qhdアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "2K QHD",
       "dimensions": {
         "width": 2560,
@@ -977,8 +1041,13 @@
           "answer": "はい！2K解像度は300 DPIで最大22x12インチまで優れた印刷品質を提供し、ほとんどのプロフェッショナル印刷ニーズに適しています。"
         }
       ],
-      "relatedScale": ["upscale-to-hd", "upscale-to-4k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-hd",
+        "upscale-to-4k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "ultra-hd-upscaler",
@@ -996,7 +1065,7 @@
         "ハイエンド解像度ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "ウルトラHD",
       "dimensions": {
         "width": 3840,
@@ -1052,8 +1121,13 @@
           "answer": "ウルトラHD（4K）はほとんどのプロフェッショナル使用に優れた品質を提供します。8Kは4倍多くのピクセルを提供しますが、主に映画や特大印刷などの特殊なアプリケーションに必要です。"
         }
       ],
-      "relatedScale": ["upscale-to-4k", "upscale-to-8k"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-to-4k",
+        "upscale-to-8k"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "pixel-boost-upscaler",
@@ -1104,7 +1178,12 @@
       ],
       "technicalSpecs": {
         "enhancementMethod": "AI搭載ピクセル分析",
-        "boostLevels": ["2倍", "4倍", "8倍", "カスタム"],
+        "boostLevels": [
+          "2倍",
+          "4倍",
+          "8倍",
+          "カスタム"
+        ],
         "detailGeneration": "インテリジェントテクスチャ作成",
         "qualityImprovement": "マルチファクター強化",
         "processingSpeed": "速度最適化"
@@ -1127,8 +1206,13 @@
           "answer": "ピクセルブーストは解像度を最大8倍向上させながら、画像品質、鮮明度、詳細を大幅に強化できます。正確な改善はソース画像品質に依存します。"
         }
       ],
-      "relatedScale": ["resolution-enhancer", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "resolution-enhancer",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-8x",
@@ -1146,7 +1230,7 @@
         "極端なアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "8倍強化",
       "dimensions": {
         "width": "可変",
@@ -1210,8 +1294,13 @@
           "answer": "大判印刷、プロフェッショナルディスプレイ、最高品質を必要とするプロジェクトには8倍を選択してください。一般的なWeb使用には4倍または1080pで十分な場合があります。"
         }
       ],
-      "relatedScale": ["upscale-16x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-16x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "upscale-16x",
@@ -1229,7 +1318,7 @@
         "ウルトラアップスケーラー"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "scale",
+      "category": "スケール",
       "resolution": "16倍強化",
       "dimensions": {
         "width": "可変",
@@ -1293,8 +1382,13 @@
           "answer": "16倍アップスケーリングは、法医学的画像分析、歴史的写真の修復、特大プロジェクト、科学研究、または元の解像度が非常に小さい専門的な画像処理に使用されます。"
         }
       ],
-      "relatedScale": ["upscale-8x", "ai-upscaler-4x"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedScale": [
+        "upscale-8x",
+        "ai-upscaler-4x"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     }
   ]
 }

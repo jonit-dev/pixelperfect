@@ -26,15 +26,15 @@
       "description": "JPEG (Joint Photographic Experts Group) is the Le plus largement Utilisé Image pourmat pour photography and Web Images. Our IA Agrandisseur specializes in enhancing JPEGs Tout en mIAntIAning Compression efficiency.",
       "characteristics": [
         {
-          "title": "Lossy Compression",
+          "title": "Compression avec perte",
           "description": "JPEGs use lossy Compression which can cause artifacts. Our IA removes Compression artifacts Tout en upscaling."
         },
         {
-          "title": "24-bit Color",
+          "title": "Couleur 24 bits",
           "description": "Supports up to 16.7 million colors, Parfait pour photographs and complex Images."
         },
         {
-          "title": "Widely Compatible",
+          "title": "Large compatibilité",
           "description": "Universal Support across all devices, browsers, and platpourms."
         },
         {
@@ -49,7 +49,7 @@
           "example": "Transpourm a 2MP smartphone photo into a 16MP Impression-Qualité Image"
         },
         {
-          "title": "Web Image Optimization",
+          "title": "Optimisation d'images web",
           "description": "Augmenter Résolution of Web Images pour retina displays and high-DPI screens.",
           "example": "Convert 800x600 Web Images to 3200x2400 pour 4K displays"
         },
@@ -59,7 +59,7 @@
           "example": "Agrandir Web-optimized Images pour poster or banner Impressioning"
         },
         {
-          "title": "E-commerce Product Photos",
+          "title": "Photos de produits e-commerce",
           "description": "Améliorer product Images pour zoom functionality and detIAled viewing.",
           "example": "Augmenter product Image Résolution pour Meilleur customer experience"
         }
@@ -70,11 +70,11 @@
           "description": "Use the least compressed JPEG avIAlable pour Meilleur upscaling Résultats."
         },
         {
-          "title": "Avoid Multiple Saves",
+          "title": "Évitez les enregistrements multiples",
           "description": "Don't resave JPEGs multiple times bepoure upscaling to minimize Qualité loss."
         },
         {
-          "title": "Consider PNG Alternative",
+          "title": "Envisagez l'alternative PNG",
           "description": "pour Images avec text or sharp edges, consider converting to PNG first."
         },
         {
@@ -104,7 +104,10 @@
           "answer": "Yes, our IA can work avec heavily compressed JPEGs, though Résultats vary Basé sur the level of Compression. Generally, you'll see significant improvement even avec poor Qualité originals."
         }
       ],
-      "relatedFormats": ["Agrandir-png-Images", "Agrandir-Webp-Images"],
+      "relatedFormats": [
+        "Agrandir-png-Images",
+        "Agrandir-Webp-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Comment-to-fix-blurry-photos"
@@ -131,20 +134,20 @@
       "description": "PNG (Portable Network Graphics) Supports lossless Compression and transparency. Parfait pour logos, graphics, and Images requiring transparent backgrounds.",
       "characteristics": [
         {
-          "title": "Lossless Compression",
+          "title": "Compression sans perte",
           "description": "PNG uses lossless Compression, preserving every pixel Parfaitly."
         },
         {
-          "title": "Transparency Support",
+          "title": "Prise en charge de la transparence",
           "description": "Full alpha channel Support pour transparent and semi-transparent pixels."
         },
         {
-          "title": "Sharp Edges",
+          "title": "Bords nets",
           "description": "Excellent pour text, logos, and graphics avec sharp edges."
         },
         {
-          "title": "Limited Colors",
-          "description": "Supports both 8-bit (256 colors) and 24-bit (16.7M colors) modes."
+          "title": "Couleurs limitées",
+          "description": "Prend en charge les modes 8 bits (256 couleurs) et 24 bits (16,7 millions de couleurs)."
         }
       ],
       "useCases": [
@@ -154,17 +157,17 @@
           "example": "Transpourm a 200x200 logo into 1600x1600 pour billboard use"
         },
         {
-          "title": "Transparent Graphics",
+          "title": "Graphismes transparents",
           "description": "Améliorer Images avec transparent backgrounds pour Web overlays and design work.",
           "example": "Agrandir product cutouts pour e-commerce avec Parfait transparency"
         },
         {
-          "title": "Text and Icons",
+          "title": "Texte et icônes",
           "description": "Augmenter Résolution of text-heavy graphics and UI icons.",
           "example": "Améliorer app icons pour retina and 4K displays"
         },
         {
-          "title": "Screenshots",
+          "title": "Captures d'écran",
           "description": "Improve screenshot Qualité pour documentation and presentations.",
           "example": "Agrandir UI screenshots pour high-Résolution presentation slides"
         }
@@ -184,7 +187,7 @@
         },
         {
           "title": "MIAntIAn Aspect Ratio",
-          "description": "Keep original proportions to avoid distortion of graphics and text."
+          "description": "Conservez les proportions d'origine pour éviter la distorsion des graphismes et du texte."
         }
       ],
       "faq": [
@@ -209,7 +212,10 @@
           "answer": "Yes! Our IA is specifically trIAned to handle text and graphics in PNGs, mIAntIAning sharp, readable text even at high magnification."
         }
       ],
-      "relatedFormats": ["Agrandir-jpeg-Images", "Agrandir-Webp-Images"],
+      "relatedFormats": [
+        "Agrandir-jpeg-Images",
+        "Agrandir-Webp-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Comment-to-fix-blurry-photos"
@@ -236,30 +242,30 @@
       "description": "WebP is Google's modern Image pourmat Offrant superior Compression and Qualité. Parfait pour Web optimization avec Support pour both lossy and lossless Compression.",
       "characteristics": [
         {
-          "title": "Modern Compression",
+          "title": "Compression moderne",
           "description": "Advanced Compression algorithms provide Meilleur Qualité than JPEG at similar Taille de fichiers."
         },
         {
-          "title": "Dual Mode Support",
+          "title": "Prise en charge du mode double",
           "description": "Supports both lossy (Comme JPEG) and lossless (Comme PNG) Compression."
         },
         {
-          "title": "Transparency Support",
+          "title": "Prise en charge de la transparence",
           "description": "Alpha channel Support pour transparent Images, even avec lossy Compression."
         },
         {
-          "title": "Animation Support",
+          "title": "Prise en charge de l'animation",
           "description": "Built-in Support pour animated Images Comme GIFs but avec Meilleur Compression."
         }
       ],
       "useCases": [
         {
-          "title": "Web Optimization",
+          "title": "Optimisation web",
           "description": "Agrandir WebP Images Tout en mIAntIAning Web-friendly Taille de fichiers pour faster loading.",
           "example": "Améliorer hero Images pour retina displays avecout increasing load time"
         },
         {
-          "title": "Responsive Images",
+          "title": "Images adaptatives",
           "description": "Créer high-Résolution versions of WebP Images pour responsive Image sets.",
           "example": "Generate 2x and 3x versions pour responsive srcset attributes"
         },
@@ -276,7 +282,7 @@
       ],
       "bestPractices": [
         {
-          "title": "Check Browser Support",
+          "title": "Vérifiez la prise en charge du navigateur",
           "description": "Ensure your target audience Supports WebP bepoure using exclusively."
         },
         {
@@ -284,11 +290,11 @@
           "description": "Our IA Préservers WebP's Compression Avantages Tout en increasing Résolution."
         },
         {
-          "title": "Use Appropriate Mode",
+          "title": "Utilisez le mode approprié",
           "description": "Choisir lossless pour graphics, lossy pour photographs Basé sur content type."
         },
         {
-          "title": "Consider Fallbacks",
+          "title": "Envisagez des solutions de secours",
           "description": "Provide JPEG/PNG fallbacks pour browsers that don't Support WebP."
         }
       ],
@@ -314,7 +320,10 @@
           "answer": "WebP's advanced Compression actually helps mIAntIAn Qualité during upscaling. Our IA can work effectively avec both lossy and lossless WebP Images."
         }
       ],
-      "relatedFormats": ["Agrandir-jpeg-Images", "Agrandir-png-Images"],
+      "relatedFormats": [
+        "Agrandir-jpeg-Images",
+        "Agrandir-png-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Comment-to-fix-blurry-photos"
@@ -346,15 +355,15 @@
           "description": "Native pourmat pour iPhone, iPad, and Mac since iOS 11, optimized pour Apple devices."
         },
         {
-          "title": "Superior Compression",
+          "title": "Compression supérieure",
           "description": "HEIC Fournit 50% Meilleur Compression than JPEG Tout en mIAntIAning the same Qualité."
         },
         {
-          "title": "Rich Metadata",
+          "title": "Métadonnées riches",
           "description": "Supports extensive metadata Y compris depth data, Live Photos, and HDR inpourmation."
         },
         {
-          "title": "Multiple Images",
+          "title": "Images multiples",
           "description": "Can store multiple Image sizes and exposures in a single contIAner."
         }
       ],
@@ -365,7 +374,7 @@
           "example": "Transpourm a 12MP iPhone photo into a 48MP Impression-Qualité Image"
         },
         {
-          "title": "iOS Photography",
+          "title": "Photographie iOS",
           "description": "Améliorer iPad and iPod touch photos pour Professionnel use or large pourmat Impressioning.",
           "example": "Agrandir iOS screenshots and photos pour presentations and marketing materials"
         },
@@ -390,11 +399,11 @@
           "description": "Our IA mIAntIAns important EXIF data and metadata during the upscaling process."
         },
         {
-          "title": "Check Compatibility",
+          "title": "Vérifiez la compatibilité",
           "description": "Convert HEIC to JPEG or PNG after upscaling pour universal compatibility if needed."
         },
         {
-          "title": "Use High Efficiency",
+          "title": "Utilisez le haute efficacité",
           "description": "Take advantage of HEIC's superior Qualité Quand upscaling pour Meilleur Résultats."
         }
       ],
@@ -424,7 +433,10 @@
           "answer": "Our IA focuses on enhancing the primary Image. pour Meilleur Résultats avec Live Photos, the Améliorerd Image mIAntIAns excellent Qualité pour the still photo component."
         }
       ],
-      "relatedFormats": ["Agrandir-jpeg-Images", "Agrandir-png-Images"],
+      "relatedFormats": [
+        "Agrandir-jpeg-Images",
+        "Agrandir-png-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Comment-to-fix-blurry-photos"
@@ -452,19 +464,19 @@
       "description": "RAW pourmat contIAns unprocessed Image data directly de your camera sensor. Fournit Maximum Qualité and editing flexibility, making it Idéal pour Professionnel photography and high-end upscaling.",
       "characteristics": [
         {
-          "title": "Unprocessed Data",
+          "title": "Données non traitées",
           "description": "RAW files contIAn all data captured by the sensor, no in-camera Traitement applied."
         },
         {
-          "title": "Greater Bit Depth",
+          "title": "Plus grande profondeur de bits",
           "description": "Typiquement 12-14 bits per channel vs 8 bits in JPEG, providing Plus color inpourmation."
         },
         {
-          "title": "Wider Color Gamut",
+          "title": "Gamme de couleurs plus large",
           "description": "Captures Plus colors than Standard pourmats, essential pour Professionnel work."
         },
         {
-          "title": "No Compression Artifacts",
+          "title": "Aucun artefact de compression",
           "description": "Lossless or no Compression means pristine Image Qualité pour IA Améliorerment."
         }
       ],
@@ -530,7 +542,10 @@
           "answer": "Absolutely. The additional data in RAW files combined avec our IA upscaling produces exceptional Impression Qualité, especially pour large pourmat Impressions."
         }
       ],
-      "relatedFormats": ["Agrandir-jpeg-Images", "Agrandir-tiff-Images"],
+      "relatedFormats": [
+        "Agrandir-jpeg-Images",
+        "Agrandir-tiff-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Professionnel-photo-upscaling-guide"
@@ -636,7 +651,10 @@
           "answer": "Tout en possible, TIFF files are Typiquement too large pour Web use. We recommend converting to JPEG or PNG after upscaling pour Web deployment."
         }
       ],
-      "relatedFormats": ["Agrandir-raw-Images", "Agrandir-png-Images"],
+      "relatedFormats": [
+        "Agrandir-raw-Images",
+        "Agrandir-png-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "Impression-preparation-guide"
@@ -741,7 +759,10 @@
           "answer": "Yes. Since BMP is uncompressed, our IA can work avec all the original Image data, potentially producing excellent Agrandird Résultats."
         }
       ],
-      "relatedFormats": ["Agrandir-png-Images", "Agrandir-jpeg-Images"],
+      "relatedFormats": [
+        "Agrandir-png-Images",
+        "Agrandir-jpeg-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "pourmat-Sélection-guide"
@@ -846,7 +867,10 @@
           "answer": "PNG pour transparency Support, JPEG pour photographs, or WebP pour Web optimization. Choisir Basé sur your content and use case."
         }
       ],
-      "relatedFormats": ["Agrandir-png-Images", "Agrandir-jpeg-Images"],
+      "relatedFormats": [
+        "Agrandir-png-Images",
+        "Agrandir-jpeg-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "vector-to-raster-guide"
@@ -873,19 +897,19 @@
       "description": "GIF (Graphics Interchange pourmat) Supports animation and transparency avec 256 colors. Largement utilisé pour memes, simple animations, and Web graphics despite color limitations.",
       "characteristics": [
         {
-          "title": "Animation Support",
+          "title": "Prise en charge de l'animation",
           "description": "GIF can store multiple frames pour simple animations, widely Supported across platpourms."
         },
         {
-          "title": "256 Color Limit",
+          "title": "Limite de 256 couleurs",
           "description": "Limited color palette can cause banding, which our IA can improve during upscaling."
         },
         {
-          "title": "Transparency",
+          "title": "Transparence",
           "description": "Supports single-color transparency pour overlay effects and cutouts."
         },
         {
-          "title": "Universal Support",
+          "title": "Prise en charge universelle",
           "description": "One of the Le plus largement Supported Image pourmats across all platpourms and browsers."
         }
       ],
@@ -896,17 +920,17 @@
           "example": "Transpourm a grIAny 320x240 meme GIF into crisp 1280x960 high Résolution"
         },
         {
-          "title": "Animated Graphics",
+          "title": "Graphismes animés",
           "description": "Améliorer animated icons, logos, and UI elements pour high-DPI displays.",
           "example": "Agrandir loading animations pour retina and 4K display clarity"
         },
         {
-          "title": "Social Media Content",
+          "title": "Contenu de réseaux sociaux",
           "description": "Improve GIF Qualité pour Twitter, Instagram, and other social platpourms.",
           "example": "Améliorer reaction GIFs pour Meilleur Qualité in social posts"
         },
         {
-          "title": "Vintage GIFs",
+          "title": "GIF vintage",
           "description": "Restore and Améliorer older GIFs de the early internet era.",
           "example": "Agrandir classic Web GIFs pour modern display Qualité"
         }
@@ -917,7 +941,7 @@
           "description": "Our IA Améliorers each frame individually Tout en mIAntIAning animation consistency."
         },
         {
-          "title": "Consider Alternatives",
+          "title": "Envisagez des alternatives",
           "description": "pour new content, consider video pourmats (WebM, MP4) instead of GIF pour Meilleur Qualité."
         },
         {
@@ -935,7 +959,7 @@
           "answer": "Yes! Our IA processes each frame individually Tout en preserving the animation sequence and timing, resulting in higher-Qualité animated GIFs."
         },
         {
-          "question": "Will upscaling fix GIF color banding?",
+          "question": "L'amélioration de résolution corrigera-t-elle le banding de couleurs GIF ?",
           "answer": "Our IA can reduce the appearance of banding artifacts Commun in GIFs, though the 256-color limitation will still apply to the output pourmat."
         },
         {
@@ -943,7 +967,7 @@
           "answer": "pour short animations and memes, the Qualité improvement is Souvent worth it. pour longer animations, consider using video pourmats instead."
         },
         {
-          "question": "Can I convert GIF to video after upscaling?",
+          "question": "Puis-je convertir un GIF en vidéo après l'amélioration de résolution ?",
           "description": "Yes! After upscaling, you can use other tools to convert your Améliorerd GIF to WebM or MP4 pour Meilleur Compression and Qualité."
         },
         {
@@ -951,7 +975,10 @@
           "answer": "GIF pourmat is limited to 256 colors by design. Our IA works avecin this constrIAnt to produce the Meilleur possible Qualité avecin those limitations."
         }
       ],
-      "relatedFormats": ["Agrandir-png-Images", "Agrandir-Webp-Images"],
+      "relatedFormats": [
+        "Agrandir-png-Images",
+        "Agrandir-Webp-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "animation-optimization-guide"
@@ -978,35 +1005,35 @@
       "description": "AVIF (AV1 Image pourmat) is the newest Image pourmat Basé sur the AV1 video codec. Offers superior Compression and Qualité compared to JPEG, PNG, and WebP, representing the future of Web Images.",
       "characteristics": [
         {
-          "title": "Superior Compression",
+          "title": "Compression supérieure",
           "description": "AVIF Fournit Meilleur Qualité than JPEG at 50% smaller Taille de fichiers on average."
         },
         {
-          "title": "Modern Codec",
+          "title": "Codec moderne",
           "description": "Basé sur the AV1 video codec, the most advanced video Compression technology avIAlable."
         },
         {
-          "title": "HDR Support",
+          "title": "Prise en charge HDR",
           "description": "Native Support pour high dynamic range content, Y compris wide color gamut."
         },
         {
-          "title": "Growing Support",
+          "title": "Prise en charge croissante",
           "description": "Rapidly gIAning browser and platpourm Support as the next Web Standard."
         }
       ],
       "useCases": [
         {
-          "title": "Next-Gen Web Optimization",
+          "title": "Optimisation web de nouvelle génération",
           "description": "Agrandir AVIF Images pour cutting-edge Web perpourmance optimization.",
           "example": "Améliorer AVIF hero Images pour Maximum Qualité avec minimal Taille de fichier"
         },
         {
-          "title": "Future-Proof Content",
+          "title": "Contenu futur-proof",
           "description": "Prepare Image assets using the latest pourmat technology pour longevity.",
           "example": "Convert and Agrandir legacy Images to AVIF pour modern Web deployment"
         },
         {
-          "title": "HDR Content",
+          "title": "Contenu HDR",
           "description": "Améliorer high dynamic range Images avec full AVIF capability preservation.",
           "example": "Agrandir HDR photos pour premium display experiences"
         },
@@ -1018,7 +1045,7 @@
       ],
       "bestPractices": [
         {
-          "title": "Check Browser Support",
+          "title": "Vérifiez la prise en charge du navigateur",
           "description": "AVIF is Supported in modern browsers; provide fallbacks pour older ones."
         },
         {
@@ -1030,7 +1057,7 @@
           "description": "Our IA Préservers AVIF's exceptional Qualité characteristics during upscaling."
         },
         {
-          "title": "Provide Fallbacks",
+          "title": "Fournissez des solutions de secours",
           "description": "Offer JPEG or WebP versions pour browsers that don't Support AVIF yet."
         }
       ],
@@ -1056,7 +1083,10 @@
           "answer": "Yes, avec proper fallbacks. AVIF is production-Prêt pour modern Web applications, especially Quand pIAred avec JPEG or WebP fallbacks pour older browsers."
         }
       ],
-      "relatedFormats": ["Agrandir-Webp-Images", "Agrandir-jpeg-Images"],
+      "relatedFormats": [
+        "Agrandir-Webp-Images",
+        "Agrandir-jpeg-Images"
+      ],
       "relatedGuides": [
         "Comment-to-Agrandir-Images-avecout-losing-Qualité",
         "next-gen-Image-pourmats-guide"

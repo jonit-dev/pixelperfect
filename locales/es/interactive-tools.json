@@ -85,69 +85,69 @@
         },
         {
           "title": "Rapidez Relámpago",
-          "description": "Instant processing with no wAIting in queues or upload delays. Resize hundreds of images in minutes.",
-          "metric": "< 1 second per image"
+          "description": "Procesamiento instantáneo sin esperas en colas ni retrasos en la carga. Redimensiona cientos de imágenes en minutos.",
+          "metric": "Menos de 1 segundo por imagen"
         },
         {
-          "title": "Perfect quality Control",
-          "description": "Adjust quality settings from 1-100% to find the perfect balance between file size and visual fidelity.",
-          "metric": "User-controlled quality"
+          "title": "Control Perfecto de Calidad",
+          "description": "Ajusta la configuración de calidad del 1-100% para encontrar el equilibrio perfecto entre el tamaño del archivo y la fidelidad visual.",
+          "metric": "Calidad controlada por el usuario"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
-          "title": "Upload Your Image",
-          "description": "Drag and drop your image or click to browse. Supports JPEG, PNG, and WebP up to 25MB. Processing stays in your browser."
+          "title": "Sube Tu Imagen",
+          "description": "Arrastra y suelta tu imagen o haz clic para navegar. Admite JPEG, PNG y WebP hasta 25MB. El procesamiento se realiza en tu navegador."
         },
         {
           "step": 2,
-          "title": "Choose dimensions",
-          "description": "Select a social media preset or enter custom width and height. Toggle aspect ratio lock to mAIntAIn proportions."
+          "title": "Elige las Dimensiones",
+          "description": "Selecciona un preestablecido de redes sociales o ingresa ancho y alto personalizados. Activa el bloqueo de relación de aspecto para mantener las proporciones."
         },
         {
           "step": 3,
-          "title": "Adjust Settings",
-          "description": "Pick your output format (JPEG, PNG, WebP) and adjust quality slider. Preview new dimensions before processing."
+          "title": "Ajusta la Configuración",
+          "description": "Elige tu formato de salida (JPEG, PNG, WebP) y ajusta el deslizador de calidad. Previsualiza las nuevas dimensiones antes del procesamiento."
         },
         {
           "step": 4,
-          "title": "Download Resized Image",
-          "description": "Click 'Process Image' and instantly download your resized photo. No watermarks, ."
+          "title": "Descarga la Imagen Redimensionada",
+          "description": "Haz clic en Process Image y descarga instantáneamente tu foto redimensionada. Sin marcas de agua."
         }
       ],
       "faq": [
         {
-          "question": "Is this image resizer really Free?",
-          "answer": "Yes! Our image resizer is 100% Free with no hidden fees, watermarks, or account requirements. You can resize unlimited images."
+          "question": "¿Es realmente gratis este redimensionador de imágenes?",
+          "answer": "¡Sí! Nuestro redimensionador de imágenes es 100% gratuito sin tarifas ocultas, marcas de agua ni requisitos de cuenta. Puedes redimensionar imágenes ilimitadas."
         },
         {
-          "question": "Are my images uploaded to your servers?",
-          "answer": "No! All image processing happens directly in your browser using Canvas API technology. Your images never leave your device, ensuring complete privacy."
+          "question": "¿Se cargan mis imágenes en sus servidores?",
+          "answer": "¡No! Todo el procesamiento de imágenes ocurre directamente en tu navegador utilizando la tecnología Canvas API. Tus imágenes nunca abandonan tu dispositivo, garantizando total privacidad."
         },
         {
-          "question": "What's the maximum file size I can resize?",
-          "answer": "You can resize images up to 25MB. This limit is based on browser memory, not our servers (since we don't use servers for processing)."
+          "question": "¿Cuál es el tamaño máximo de archivo que puedo redimensionar?",
+          "answer": "Puedes redimensionar imágenes de hasta 25MB. Este límite se basa en la memoria del navegador, no en nuestros servidores (ya que no usamos servidores para el procesamiento)."
         },
         {
-          "question": "Can I resize images for Instagram?",
-          "answer": "Absolutely! We have presets for Instagram Posts (1080x1080), Instagram Stories (1080x1920), and all major social media platforms."
+          "question": "¿Puedo redimensionar imágenes para Instagram?",
+          "answer": "¡Absolutamente! Tenemos preestablecidos para Publicaciones de Instagram (1080x1080), Historias de Instagram (1080x1920) y todas las principales plataformas de redes sociales."
         },
         {
-          "question": "Will resizing reduce image quality?",
-          "answer": "When you downsize images (make them smaller), quality remAIns excellent. Upsizing can introduce softness - for AI-powered upscaling with quality enhancement, try our AIimageupscaler."
+          "question": "¿El redimensionamiento reducirá la calidad de la imagen?",
+          "answer": "Cuando reduces el tamaño de las imágenes (las haces más pequeñas), la calidad se mantiene excelente. El aumento puede introducir suavidad - para el escalamiento con potenciación de calidad impulsado por IA, prueba nuestro AIimageupscaler."
         },
         {
-          "question": "What formats can I export?",
-          "answer": "You can export as JPEG ( for photos), PNG ( for graphics with transparency), or WebP ( for web optimization)."
+          "question": "¿En qué formatos puedo exportar?",
+          "answer": "Puedes exportar como JPEG (para fotos), PNG (para gráficos con transparencia) o WebP (para optimización web)."
         },
         {
-          "question": "How do I mAIntAIn aspect ratio when resizing?",
-          "answer": "Enable the 'MAIntAIn aspect ratio' toggle. When active, changing width automatically adjusts height proportionally (and vice versa)."
+          "question": "¿Cómo mantengo la relación de aspecto al redimensionar?",
+          "answer": "Activa el interruptor Mantener relación de aspecto. Cuando está activo, cambiar el ancho ajusta automáticamente la altura proporcionalmente (y viceversa)."
         },
         {
-          "question": "Can I batch resize multiple images?",
-          "answer": "Currently, you can resize one image at a time. For batch processing and advanced AI enhancement, check out our premium AIimageupscaler."
+          "question": "¿Puedo redimensionar por lotes múltiples imágenes?",
+          "answer": "Actualmente, puedes redimensionar una imagen a la vez. Para el procesamiento por lotes y la mejora avanzada con IA, consulta nuestro AIimageupscaler premium."
         }
       ],
       "relatedTools": [
@@ -159,20 +159,20 @@
         "how-to-resize-images-for-social-media",
         "image-resolution-guide"
       ],
-      "ctaText": "Try Free Image Resizer",
+      "ctaText": "Prueba Redimensionador de Imágenes Gratis",
       "ctaUrl": "/tools/resize/image-resizer"
     },
     {
       "slug": "resize-image-for-instagram",
-      "title": "Instagram Image Resizer",
-      "metaTitle": "Instagram Image Resizer | MyImageUpscaler",
-      "metaDescription": "Resize images for Instagram instantly. Get perfect dimensions for posts (1080x1080), stories (1080x1920), and reels. Free, No upload required.",
-      "h1": "Free Instagram Image Resizer - Perfect sizes Instantly",
-      "intro": "Resize your images to perfect Instagram dimensions. Posts, stories, reels - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "instagram photo resizer",
+      "title": "Redimensionador de Imágenes de Instagram",
+      "metaTitle": "Redimensionador de Imágenes de Instagram | MyImageUpscaler",
+      "metaDescription": "Redimensiona imágenes para Instagram al instante. Obtén dimensiones perfectas para publicaciones (1080x1080), historias (1080x1920) y reels. Gratis, No se requiere carga.",
+      "h1": "Redimensionador de Imágenes de Instagram Gratis - Tamaños Perfectos al Instante",
+      "intro": "Redimensiona tus imágenes a dimensiones perfectas de Instagram. Publicaciones, historias, reels - todos los tamaños optimizados en un clic. Funciona en tu navegador.",
+      "primaryKeyword": "redimensionador de fotos de instagram",
       "secondaryKeywords": [
-        "instagram image size",
-        "instagram post size",
+        "tamaño de imagen de instagram",
+        "tamaño de publicación de instagram",
         "instagram story size",
         "resize for instagram",
         "instagram photo size"
@@ -246,57 +246,57 @@
         {
           "title": "Perfect dimensions",
           "description": "Always get the exact sizes Instagram recommends for display.",
-          "metric": "Pixel-perfect"
+          "metric": "Píxel perfecto"
         },
         {
-          "title": "No Cropping Surprises",
-          "description": "Preview exactly how your image will appear before posting.",
-          "metric": "WYSIWYG"
+          "title": "Sin Sorpresas de Recorte",
+          "description": "Previsualiza exactamente cómo se verá tu imagen antes de publicar.",
+          "metric": "Lo que ves es lo que obtienes"
         },
         {
-          "title": "Fast Workflow",
-          "description": "Resize multiple images quickly with preset dimensions.",
-          "metric": "< 1 second"
+          "title": "Flujo de Trabajo Rápido",
+          "description": "Redimensiona múltiples imágenes rápidamente con dimensiones preestablecidas.",
+          "metric": "Menos de 1 segundo"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
-          "title": "Upload Your Image",
-          "description": "Drag and drop or select your image file."
+          "title": "Sube Tu Imagen",
+          "description": "Arrastra y suelta o selecciona tu archivo de imagen."
         },
         {
           "step": 2,
-          "title": "Choose Instagram format",
-          "description": "Select Post (1080x1080) or Story (1080x1920) from presets."
+          "title": "Elige Formato de Instagram",
+          "description": "Selecciona Publicación (1080x1080) o Historia (1080x1920) de los preestablecidos."
         },
         {
           "step": 3,
-          "title": "Adjust if Needed",
-          "description": "Fine-tune quality and format settings."
+          "title": "Ajusta si es Necesario",
+          "description": "Ajusta finamente la calidad y la configuración de formato."
         },
         {
           "step": 4,
-          "title": "Download",
-          "description": "Get your Instagram-ready image instantly."
+          "title": "Descargar",
+          "description": "Obtén tu imagen lista para Instagram al instante."
         }
       ],
       "faq": [
         {
-          "question": "What size should Instagram posts be?",
-          "answer": "Instagram posts are at 1080x1080 pixels (square), 1080x1350 (portrAIt), or 1080x566 (landscape). Square posts at 1080x1080 get the most consistent display."
+          "question": "¿Qué tamaño deberían tener las publicaciones de Instagram?",
+          "answer": "Las publicaciones de Instagram son de 1080x1080 píxeles (cuadrado), 1080x1350 (retrato) o 1080x566 (paisaje). Las publicaciones cuadradas de 1080x1080 obtienen la visualización más consistente."
         },
         {
-          "question": "What size are Instagram Stories?",
-          "answer": "Instagram Stories should be 1080x1920 pixels (9:16 aspect ratio) to fill the entire screen without cropping."
+          "question": "¿Qué tamaño tienen las Historias de Instagram?",
+          "answer": "Las Historias de Instagram deben ser de 1080x1920 píxeles (relación de aspecto 9:16) para llenar toda la pantalla sin recortes."
         },
         {
-          "question": "Will resizing reduce my image quality?",
-          "answer": "Our tool uses high-quality algorithms to minimize quality loss. For results, start with images larger than your target size."
+          "question": "¿El redimensionamiento reducirá la calidad de mi imagen?",
+          "answer": "Nuestra herramienta utiliza algoritmos de alta calidad para minimizar la pérdida de calidad. Para obtener mejores resultados, comienza con imágenes más grandes que tu tamaño objetivo."
         },
         {
-          "question": "Can I resize for Instagram Reels?",
-          "answer": "Yes! Instagram Reels use the same 1080x1920 (9:16) dimensions as Stories."
+          "question": "¿Puedo redimensionar para Instagram Reels?",
+          "answer": "¡Sí! Los Instagram Reels usan las mismas dimensiones de 1080x1920 (9:16) que las Historias."
         }
       ],
       "relatedTools": [
@@ -307,28 +307,28 @@
       "relatedGuides": [
         "how-to-resize-images-for-social-media"
       ],
-      "ctaText": "Resize for Instagram Free",
+      "ctaText": "Redimensionar para Instagram Gratis",
       "ctaUrl": "/tools/resize/resize-image-for-instagram"
     },
     {
       "slug": "resize-image-for-youtube",
-      "title": "YouTube ThumbnAIl Resizer",
-      "metaTitle": "YouTube ThumbnAIl Resizer | MyImageUpscaler",
-      "metaDescription": "Resize images for YouTube thumbnAIls instantly. Get perfect 1280x720 dimensions for maximum click-through rates. Free, No upload required.",
-      "h1": "Free YouTube ThumbnAIl Resizer - Perfect size Instantly",
-      "intro": "Create perfect YouTube thumbnAIls at 1280x720 pixels. The ideal size for maximum visibility and click-through rates. Works in your browser.",
-      "primaryKeyword": "youtube thumbnail size",
+      "title": "Redimensionador de Miniaturas de YouTube",
+      "metaTitle": "Redimensionador de Miniaturas de YouTube | MyImageUpscaler",
+      "metaDescription": "Redimensiona imágenes para miniaturas de YouTube al instante. Obtén dimensiones perfectas de 1280x720 para máximas tasas de clics. Gratis, No se requiere carga.",
+      "h1": "Redimensionador de Miniaturas de YouTube Gratis - Tamaño Perfecto al Instante",
+      "intro": "Crea miniaturas perfectas de YouTube a 1280x720 píxeles. El tamaño ideal para máxima visibilidad y tasas de clics. Funciona en tu navegador.",
+      "primaryKeyword": "tamaño de miniatura de youtube",
       "secondaryKeywords": [
-        "youtube thumbnail resizer",
-        "resize for youtube",
-        "youtube image size",
-        "youtube thumbnail dimensions",
-        "1280x720 resizer"
+        "redimensionador de miniaturas de youtube",
+        "redimensionar para youtube",
+        "tamaño de imagen de youtube",
+        "dimensiones de miniatura de youtube",
+        "redimensionador 1280x720"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "tools",
-      "toolName": "YouTube Thumbnail Resizer",
-      "description": "Resize images to YouTube's recommended 1280x720 thumbnail size for maximum visibility and engagement.",
+      "toolName": "Redimensionador de Miniaturas de YouTube",
+      "description": "Redimensiona imágenes al tamaño de miniatura recomendado de YouTube de 1280x720 para máxima visibilidad y participación.",
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "toolConfig": {
@@ -420,31 +420,31 @@
         },
         {
           "step": 3,
-          "title": "Adjust quality",
-          "description": "Set JPEG quality to balance size and clarity."
+          "title": "Ajustar Calidad",
+          "description": "Establece la calidad JPEG para equilibrar el tamaño y la claridad."
         },
         {
           "step": 4,
-          "title": "Download ThumbnAIl",
-          "description": "Get your YouTube-ready thumbnAIl instantly."
+          "title": "Descargar Miniatura",
+          "description": "Obtén tu miniatura lista para YouTube al instante."
         }
       ],
       "faq": [
         {
-          "question": "What size should YouTube thumbnAIls be?",
-          "answer": "YouTube recommends 1280x720 pixels with a 16:9 aspect ratio. Minimum width is 640 pixels, and the file must be under 2MB."
+          "question": "¿Qué tamaño deberían tener las miniaturas de YouTube?",
+          "answer": "YouTube recomienda 1280x720 píxeles con una relación de aspecto 16:9. El ancho mínimo es de 640 píxeles y el archivo debe pesar menos de 2MB."
         },
         {
-          "question": "What format is for YouTube thumbnAIls?",
-          "answer": "YouTube accepts JPG, GIF, and PNG. JPEG is recommended for photos as it provides good quality at smaller file sizes."
+          "question": "¿Qué formato es para las miniaturas de YouTube?",
+          "answer": "YouTube acepta JPG, GIF y PNG. Se recomienda JPEG para fotos ya que proporciona buena calidad con tamaños de archivo más pequeños."
         },
         {
-          "question": "Why is 1280x720 the recommended size?",
-          "answer": "1280x720 is the minimum that displays well across all devices while matching YouTube's 16:9 player aspect ratio."
+          "question": "¿Por qué 1280x720 es el tamaño recomendado?",
+          "answer": "1280x720 es el mínimo que se muestra bien en todos los dispositivos mientras coincide con la relación de aspecto del reproductor de YouTube de 16:9."
         },
         {
-          "question": "Will my thumbnAIl look good on all devices?",
-          "answer": "Yes! 1280x720 thumbnAIls scale perfectly to all screen sizes, from mobile phones to 4K TVs."
+          "question": "¿Mi miniatura se verá bien en todos los dispositivos?",
+          "answer": "¡Sí! Las miniaturas de 1280x720 se escalan perfectamente a todos los tamaños de pantalla, desde teléfonos móviles hasta televisores 4K."
         }
       ],
       "relatedTools": [
@@ -455,28 +455,28 @@
       "relatedGuides": [
         "youtube-thumbnail-best-practices"
       ],
-      "ctaText": "Resize for YouTube Free",
+      "ctaText": "Redimensionar para YouTube Gratis",
       "ctaUrl": "/tools/resize/resize-image-for-youtube"
     },
     {
       "slug": "resize-image-for-facebook",
-      "title": "Facebook Image Resizer",
-      "metaTitle": "Facebook Image Resizer | MyImageUpscaler",
-      "metaDescription": "Resize images for Facebook instantly. Get perfect dimensions for posts (1200x630), covers (820x312), and profile pictures. Free, No upload required.",
-      "h1": "Free Facebook Image Resizer - Perfect sizes Instantly",
-      "intro": "Resize your images to perfect Facebook dimensions. Posts, covers, profile pictures - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "facebook photo resizer",
+      "title": "Redimensionador de Imágenes de Facebook",
+      "metaTitle": "Redimensionador de Imágenes de Facebook | MyImageUpscaler",
+      "metaDescription": "Redimensiona imágenes para Facebook al instante. Obtén dimensiones perfectas para publicaciones (1200x630), portadas (820x312) y fotos de perfil. Gratis, No se requiere carga.",
+      "h1": "Redimensionador de Imágenes de Facebook Gratis - Tamaños Perfectos al Instante",
+      "intro": "Redimensiona tus imágenes a dimensiones perfectas de Facebook. Publicaciones, portadas, fotos de perfil - todos los tamaños optimizados en un clic. Funciona en tu navegador.",
+      "primaryKeyword": "redimensionador de fotos de facebook",
       "secondaryKeywords": [
-        "facebook image size",
-        "facebook post size",
-        "facebook cover size",
-        "resize for facebook",
-        "facebook photo size"
+        "tamaño de imagen de facebook",
+        "tamaño de publicación de facebook",
+        "tamaño de portada de facebook",
+        "redimensionar para facebook",
+        "tamaño de foto de facebook"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "tools",
-      "toolName": "Facebook Image Resizer",
-      "description": "Instantly resize images to Facebook's recommended dimensions. Supports posts, cover photos, and profile pictures.",
+      "toolName": "Redimensionador de Imágenes de Facebook",
+      "description": "Redimensiona imágenes instantáneamente a las dimensiones recomendadas de Facebook. Admite publicaciones, fotos de portada y fotos de perfil.",
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "toolConfig": {
@@ -492,27 +492,27 @@
       ],
       "features": [
         {
-          "title": "Facebook Post (1200x630)",
-          "description": "Optimal size for link previews and shared images."
+          "title": "Publicación de Facebook (1200x630)",
+          "description": "Tamaño óptimo para vistas previas de enlaces e imágenes compartidas."
         },
         {
-          "title": "Cover Photo (820x312)",
-          "description": "Perfect dimensions for your page or profile cover."
+          "title": "Foto de Portada (820x312)",
+          "description": "Dimensiones perfectas para la portada de tu página o perfil."
         },
         {
-          "title": "Link Preview Optimized",
-          "description": "Images sized for maximum impact in the news feed."
+          "title": "Vista Previa de Enlaces Optimizada",
+          "description": "Imágenes dimensionadas para máximo impacto en el feed de noticias."
         },
         {
-          "title": "OG Image Ready",
-          "description": "Perfect for Open Graph meta images on your website."
+          "title": "Lista para Imagen OG",
+          "description": "Perfecta para imágenes meta Open Graph en tu sitio web."
         },
         {
-          "title": "Image Processing Tool",
-          "description": "Export at 2x for retina displays if needed."
+          "title": "Herramienta de Procesamiento de Imágenes",
+          "description": "Exporta a 2x para pantallas retina si es necesario."
         },
         {
-          "title": "privacy First",
+          "title": "Privacidad Primero",
           "description": "All processing happens locally - images never uploaded."
         }
       ],

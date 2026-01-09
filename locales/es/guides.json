@@ -82,8 +82,14 @@
           "answer": "Sí, significativamente mejor. El escalado con IA usa redes neuronales para generar inteligentemente nuevos detalles, mientras que la interpolación bicúbica solo suaviza entre píxeles existentes. IA produce resultados más nítidos y detallados con menos artefactos."
         }
       ],
-      "relatedGuides": ["how-to-upsize-images", "webp-format-guide", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "how-to-upsize-images",
+        "webp-format-guide",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "webp-format-guide",
@@ -167,8 +173,14 @@
           "answer": "Para uso web, mayormente sí. Convierta imágenes JPEG y PNG a WebP para mejor rendimiento. Sin embargo, mantenga originales como respaldo, y no convierta archivos RAW o imágenes destinadas a impresión."
         }
       ],
-      "relatedGuides": ["avif-next-gen-format", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler", "format-converter"]
+      "relatedGuides": [
+        "avif-next-gen-format",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "format-converter"
+      ]
     },
     {
       "slug": "heic-format-guide",
@@ -252,8 +264,13 @@
           "answer": "Convertir HEIC a PNG es sin pérdida y preserva calidad completa. Convertir a JPEG introduce alguna pérdida de calidad (especialmente en conversión 16-bit a 8-bit), pero usar 90-95% de calidad minimiza diferencias visibles."
         }
       ],
-      "relatedGuides": ["raw-photography-guide", "tiff-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "raw-photography-guide",
+        "tiff-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "raw-photography-guide",
@@ -337,8 +354,13 @@
           "answer": "No necesariamente. Adobe Lightroom es el estándar de la industria, pero opciones gratuitas como RawTherapee o software de fabricante de cámara funcionan bien. Elija basándose en sus necesidades y presupuesto."
         }
       ],
-      "relatedGuides": ["tiff-format-guide", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "tiff-format-guide",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "tiff-format-guide",
@@ -422,8 +444,13 @@
           "answer": "La mayoría de imprentas prefieren TIFF, pero muchas ahora aceptan JPEG de alta calidad o archivos nativos de InDesign/Illustrator. Siempre verifique con su impresora su formato preferido y especificaciones."
         }
       ],
-      "relatedGuides": ["raw-photography-guide", "print-resolution-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "raw-photography-guide",
+        "print-resolution-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "bmp-format-guide",
@@ -507,8 +534,13 @@
           "answer": "Absolutamente no. Use PNG para gráficos sin pérdida, JPEG para fotos, o WebP para uso web moderno. BMP no tiene ventajas sobre estos formatos."
         }
       ],
-      "relatedGuides": ["svg-vector-guide", "tiff-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "svg-vector-guide",
+        "tiff-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "svg-vector-guide",
@@ -592,8 +624,13 @@
           "answer": "Puede convertir gráficos PNG simples (logotipos, iconos) a SVG usando herramientas de vectorización como Image Trace de Adobe Illustrator. Sin embargo, las fotografías no se convierten bien a SVG - es mejor dejarlas como imágenes rasterizadas."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "bmp-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "bmp-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "gif-animation-guide",
@@ -603,7 +640,12 @@
       "h1": "Formato GIF Explicado: Entendiendo Gráficos y Animaciones",
       "intro": "GIF (Graphics Interchange Format) es mejor conocido por animaciones pero tiene limitaciones para imágenes estáticas. Aprenda cuándo es apropiado GIF, alternativas modernas y cómo trabajar efectivamente con archivos GIF.",
       "primaryKeyword": "formato gif",
-      "secondaryKeywords": ["gif vs png", "animación gif", "escalar gif", "imágenes animadas"],
+      "secondaryKeywords": [
+        "gif vs png",
+        "animación gif",
+        "escalar gif",
+        "imágenes animadas"
+      ],
       "lastUpdated": "2025-12-26T00:00:00Z",
       "category": "guides",
       "guideType": "explainer",
@@ -672,8 +714,13 @@
           "answer": "No muerto, pero desactualizado. GIF todavía se usa para animaciones simples y compatibilidad universal. Sin embargo, WebP y MP4 son superiores para la mayoría de casos de uso. Use GIF solo cuando específicamente necesite su amplia compatibilidad."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "avif-next-gen-format"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "avif-next-gen-format"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "avif-next-gen-format",
@@ -758,8 +805,13 @@
           "answer": "Sí, AVIF soporta transparencia alfa de 8-bit, justo como PNG y WebP. Esto lo hace adecuado para logotipos, iconos y gráficos que necesitan fondos transparentes."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "gif-animation-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "gif-animation-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     }
   ],
   "meta": {

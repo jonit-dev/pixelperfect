@@ -1,5 +1,5 @@
 {
-  "category": "formats",
+  "category": "Formate",
   "meta": {
     "totalPages": 10,
     "lastUpdated": "2026-01-08",
@@ -15,8 +15,8 @@
       "intro": "Verwandeln Sie komprimierte JPEG-Bilder in hochauflösende Meisterwerke mit unserer KI-gestützten Upscaling-Technologie. Bewahren Sie die Qualität bei gleichzeitiger Erhöhung der Größe um bis zu 8x.",
       "primaryKeyword": "jpeg bilder skalieren",
       "secondaryKeywords": [
-        "jpeg upscaler",
-        "jpg upscaler",
+        "JPEG-Upscaler",
+        "JPG-Upscaler",
         "jpeg qualität verbessern",
         "jpeg bild vergrößerer"
       ],
@@ -105,8 +105,14 @@
           "answer": "Ja, unsere KI kann mit stark komprimierten JPEGs arbeiten, obwohl Ergebnisse je nach Kompressionsgrad variieren. Im Allgemeinen sehen Sie signifikante Verbesserung sogar bei schlechter Qualität Originalen."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-png-images",
@@ -117,7 +123,7 @@
       "intro": "Verbessern Sie PNG-Bilder mit perfekter Transparenzerhaltung. Unsere KI erhält scharfe Kanten und transparente Hintergründe bei gleichzeitiger Erhöhung der Auflösung um bis zu 8x.",
       "primaryKeyword": "png bilder skalieren",
       "secondaryKeywords": [
-        "png upscaler",
+        "PNG-Upscaler",
         "transparentes bild upscaler",
         "png qualität verbessern",
         "png bild vergrößerer"
@@ -207,8 +213,14 @@
           "answer": "Ja! Unsere KI ist speziell trainiert, um Text und Grafiken in PNGs zu handhaben und hält scharfen, lesbaren Text sogar bei hoher Vergrößerung."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-webp-images",
@@ -219,7 +231,7 @@
       "intro": "Verbessern Sie moderne WebP-Bilder mit unserem fortschrittlichen KI-Upscaler. Genießen Sie die Vorteile von WebPs Effizienz mit erhöhter Auflösung für bessere Anzeigqualität.",
       "primaryKeyword": "webp bilder skalieren",
       "secondaryKeywords": [
-        "webp upscaler",
+        "WebP-Upscaler",
         "webp qualität verbessern",
         "webp bild vergrößerer",
         "webp auflösungsbooster"
@@ -309,8 +321,14 @@
           "answer": "WebPs fortschrittliche Kompression hilft tatsächlich, die Qualität während des Upscalings zu erhalten. Unsere KI kann effektiv sowohl mit verlustbehafteten als auch verlustfreien WebP-Bildern arbeiten."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-heic-images",
@@ -321,7 +339,7 @@
       "intro": "Verwandeln Sie Ihre iPhone- und iOS-HEIC-Fotos in atemberaubende hochauflösende Bilder. Unser KI-Upscaler funktioniert perfekt mit Apples HEIC-Format für Qualitätsverbesserung.",
       "primaryKeyword": "heic bilder skalieren",
       "secondaryKeywords": [
-        "heic upscaler",
+        "HEIC-Upscaler",
         "iphone foto upscaler",
         "heic qualität verbessern",
         "heic bild vergrößerer",
@@ -416,8 +434,14 @@
           "answer": "Unsere KI konzentriert sich auf die Verbesserung des Hauptbildes. Für beste Ergebnisse mit Live Photos behält das verbesserte Bild ausgezeichnete Qualität für das Standbild-Komponente bei."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-raw-images",
@@ -428,7 +452,7 @@
       "intro": "Verwandeln Sie Ihre professionellen RAW-Fotos in atemberaubende hochauflösende Bilder. Unser KI-Upscaler bewahrt die außergewöhnliche Qualität und Details von RAW-Formatdateien bei gleichzeitiger Erhöhung der Auflösung um bis zu 8x.",
       "primaryKeyword": "raw bilder skalieren",
       "secondaryKeywords": [
-        "raw upscaler",
+        "RAW-Upscaler",
         "dslr foto upscaler",
         "raw qualität verbessern",
         "raw bild vergrößerer",
@@ -519,7 +543,10 @@
           "answer": "Absolut. Die zusätzlichen Daten in RAW-Dateien kombiniert mit unserem KI-Upscaling produzieren außergewöhnliche Druckqualität, besonders für Großformatdrucke."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-tiff-images"],
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-tiff-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "professional-photo-upscaling-guide"
@@ -534,7 +561,7 @@
       "intro": "Verbessern Sie TIFF-Bilder unter Beibehaltung ihrer verlustfreien Qualität. Unser KI-Upscaler bewahrt jedes Detail Ihrer TIFF-Dateien bei gleichzeitiger Erhöhung der Auflösung für Druck- und Archivzwecke.",
       "primaryKeyword": "tiff bilder skalieren",
       "secondaryKeywords": [
-        "tiff upscaler",
+        "TIFF-Upscaler",
         "verlustfreier bild upscaler",
         "tiff qualität verbessern",
         "tiff bild vergrößerer",
@@ -625,8 +652,14 @@
           "answer": "Während möglich, sind TIFF-Dateien typischerweise zu groß für Webnutzung. Wir empfehlen die Konvertierung in JPEG oder PNG nach dem Upscaling für Web-Bereitstellung."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "print-preparation-guide"]
+      "relatedFormats": [
+        "upscale-raw-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "print-preparation-guide"
+      ]
     },
     {
       "slug": "upscale-bmp-images",
@@ -637,8 +670,8 @@
       "intro": "Verbessern Sie Ihre BMP-(Bitmap)-Bilder mit fortschrittlicher KI-Upscaling-Technologie. Erhöhen Sie die Auflösung unter Beibehaltung der verlustfreien Qualitätseigenschaften des Bitmap-Formats.",
       "primaryKeyword": "bmp bilder skalieren",
       "secondaryKeywords": [
-        "bmp upscaler",
-        "bitmap upscaler",
+        "BMP-Upscaler",
+        "Bitmap-Upscaler",
         "bmp qualität verbessern",
         "bmp bild vergrößerer"
       ],
@@ -727,8 +760,14 @@
           "answer": "Ja. Da BMP unkomprimiert ist, kann unsere KI mit allen ursprünglichen Bilddaten arbeiten und potenziell ausgezeichnete skalierte Ergebnisse produzieren."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "format-selection-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "format-selection-guide"
+      ]
     },
     {
       "slug": "upscale-svg-images",
@@ -739,7 +778,7 @@
       "intro": "Konvertieren Sie Ihre SVG-(Scalable Vector Graphics) in atemberaubende hochauflösende Rasterbilder. Perfekt für Drucken von Vektordesigns in jeder Größe ohne Qualitätsverlust.",
       "primaryKeyword": "svg bilder skalieren",
       "secondaryKeywords": [
-        "svg upscaler",
+        "SVG-Upscaler",
         "vektor-zu-raster-konverter",
         "svg zu hoher auflösung",
         "svg bild vergrößerer"
@@ -829,8 +868,14 @@
           "answer": "PNG für Transparenzunterstützung, JPEG für Fotos oder WebP für Weboptimierung. Wählen Sie basierend auf Ihrem Inhalt und Anwendungsfall."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "vector-to-raster-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "vector-to-raster-guide"
+      ]
     },
     {
       "slug": "upscale-gif-images",
@@ -841,7 +886,7 @@
       "intro": "Verbessern Sie sowohl animierte als auch statische GIF-Bilder mit unserem KI-Upscaler. Erhöhen Sie die Auflösung unter Beibehaltung von Animationsframes und Transparenz für bessere Qualitätsanzeige.",
       "primaryKeyword": "gif bilder skalieren",
       "secondaryKeywords": [
-        "gif upscaler",
+        "GIF-Upscaler",
         "animierter gif upscaler",
         "gif qualität verbessern",
         "gif bild vergrößerer"
@@ -931,7 +976,10 @@
           "answer": "GIF-Format ist per Design auf 256 Farben begrenzt. Unsere KI arbeitet innerhalb dieser Einschränkung, um die bestmögliche Qualität innerhalb dieser Grenzen zu produzieren."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "animation-optimization-guide"
@@ -946,7 +994,7 @@
       "intro": "Verbessern Sie modernste AVIF-Bilder mit unserem fortschrittlichen KI-Upscaler. Unterstützen Sie die neueste Bildformettechnologie bei gleichzeitiger Erhöhung der Auflösung für optimale Anzeigqualität.",
       "primaryKeyword": "avif bilder skalieren",
       "secondaryKeywords": [
-        "avif upscaler",
+        "AVIF-Upscaler",
         "av1 bild upscaler",
         "avif qualität verbessern",
         "avif bild vergrößerer"
@@ -1036,7 +1084,10 @@
           "answer": "Ja, mit angemessenen Fallbacks. AVIF ist produktionsbereit für moderne Webanwendungen, besonders wenn es mit JPEG- oder WebP-Fallbacks für ältere Browser gepaart wird."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-jpeg-images"],
+      "relatedFormats": [
+        "upscale-webp-images",
+        "upscale-jpeg-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "next-gen-image-formats-guide"

@@ -1,5 +1,5 @@
 {
-  "category": "personas",
+  "category": "Personas",
   "pages": [
     {
       "slug": "Fotografen",
@@ -2068,10 +2068,10 @@
           "ProfileMaker - Benutzerdefinierte ICC-Profil-Erstellung"
         ],
         "workflow": [
-          "Efi Fiery - Digital printing workflow management",
-          "ColorGate - Professional color management and proofing",
-          "Onyx Graphics - Large format printing workflow",
-          "Caldera - Rip software for professional printing"
+          "Efi Fiery - Digitaler Druck-Workflow-Management",
+          "ColorGate - Professionelles Farbmanagement und Proofing",
+          "Onyx Graphics - Großformatdruck-Workflow",
+          "Caldera - RIP-Software für professionellen Druck"
         ]
       },
       "industryBestPractices": {
@@ -2240,7 +2240,7 @@
       ],
       "lastUpdated": "2025-01-19",
       "persona": "Inhaber kleiner Unternehmen",
-      "industry": "Small Business",
+      "industry": "Kleinunternehmen",
       "audience": "Inhaber kleiner Unternehmen, lokale Geschäfte, Dienstleister, Unternehmer",
       "painPoints": [
         "Begrenztes Budget für professionelle Fotografie",
@@ -2614,7 +2614,13 @@
         }
       ],
       "technicalSpecs": {
-        "outputFormats": ["WebP", "AVIF", "JPEG", "PNG", "GIF"],
+        "outputFormats": [
+          "WebP",
+          "AVIF",
+          "JPEG",
+          "PNG",
+          "GIF"
+        ],
         "optimization": {
           "compression": "Fortschrittliche Komprimierungsalgorithmen für Weboptimierung",
           "resizing": "Intelligentes Resizing mit Content-Aware-Cropping",

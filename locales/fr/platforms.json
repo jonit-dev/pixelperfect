@@ -111,8 +111,15 @@
           "answer": "Notre agrandisseur peut reduire certains artefacts de compression et ameliorer la clarte globale, mais il ne modifiera pas fondamentalement ou ne 'corrigera' pas les choix de generation IA originaux."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler", "dalle-upscaler", "canva-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler",
+        "dalle-upscaler",
+        "canva-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "bulk-image-upscaler"
+      ],
       "ogImage": "/og-images/midjourney-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
@@ -226,8 +233,14 @@
           "answer": "Notre agrandisseur se concentre sur la sortie qualite impression et la reduction des artefacts, complementant l'agrandissement interne de SD. Beaucoup d'artistes utilisent les deux."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "dalle-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": [
+        "midjourney-upscaler",
+        "dalle-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "bulk-image-upscaler"
+      ],
       "ogImage": "/og-images/stable-diffusion-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
@@ -341,8 +354,14 @@
           "answer": "Oui, les images agrandies conservent les memes droits d'utilisation que la generation DALL-E originale selon les conditions d'OpenAI."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "relatedPlatforms": [
+        "midjourney-upscaler",
+        "stable-diffusion-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
       "ogImage": "/og-images/dalle-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
@@ -456,8 +475,14 @@
           "answer": "Pour les exports statiques, oui. Pour les designs animes, exportez chaque frame individuellement, puis reassemblez apres agrandissement."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler", "midjourney-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": [
+        "photoshop-upscaler",
+        "midjourney-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "bulk-image-upscaler"
+      ],
       "ogImage": "/og-images/canva-upscaler.png",
       "lastUpdated": "2026-01-06"
     },
@@ -571,8 +596,14 @@
           "answer": "Oui, les images agrandies sont excellentes pour les affiches, bannieres, art mural et autres applications grand format."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "relatedPlatforms": [
+        "canva-upscaler",
+        "stable-diffusion-upscaler"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "photo-enhancer"
+      ],
       "ogImage": "/og-images/photoshop-upscaler.png",
       "lastUpdated": "2026-01-06"
     }

@@ -1,28 +1,32 @@
 {
-  "category": "bulk-tools",
+  "category": "strumenti-batch",
   "pages": [
     {
-      "slug": "bulk-image-resizer",
+      "slug": "ridimensionatore-immagini-batch",
       "title": "Ridimensionatore Immagini in Bulk",
       "metaTitle": "Ridimensionatore Immagini in Bulk Gratuito - Ridimensiona Più Foto contemporaneamente | MyImageUpscaler",
       "metaDescription": "Ridimensiona più immagini contemporaneamente con il nostro ridimensionatore di immagini in bulk gratuito. Ridimensiona foto in massa a qualsiasi dimensione. Funziona nel browser - non richiede upload.",
       "h1": "Ridimensionatore Immagini in Bulk Gratuito - Ridimensiona Foto in Massa Instantaneamente",
       "intro": "Ridimensiona fino a 20 immagini contemporaneamente con controllo preciso delle dimensioni. Mantieni le proporzioni o imposta dimensioni personalizzate per tutte le tue foto contemporaneamente.",
-      "primaryKeyword": "bulk image resizer",
+      "primaryKeyword": "ridimensionatore immagini batch",
       "secondaryKeywords": [
-        "bulk resize",
-        "mass resize photos",
-        "resize multiple images",
-        "bulk picture resizer",
-        "batch resize images"
+        "ridimensionamento batch",
+        "ridimensionare foto in massa",
+        "ridimensionare più immagini",
+        "ridimensionatore immagini batch",
+        "ridimensionare immagini in batch"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "bulk-tools",
+      "category": "strumenti-batch",
       "toolName": "Ridimensionatore Immagini in Bulk",
       "toolComponent": "BulkImageResizer",
       "description": "Elabora più immagini contemporaneamente invece di una alla volta. Perfetto per fotografi, venditori e-commerce e chiunque gestisca grandi collezioni di foto che necessita dimensioni coerenti tra i lotti.",
       "maxFiles": 20,
-      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "acceptedFormats": [
+        "JPEG",
+        "PNG",
+        "WebP"
+      ],
       "features": [
         {
           "title": "Ridimensiona fino a 20 Immagini",
@@ -138,32 +142,42 @@
         "La velocità di elaborazione basata su browser dipende dal tuo dispositivo"
       ],
       "outputFormat": "zip",
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
-      "relatedGuides": ["ecommerce-image-requirements", "social-media-image-sizes"],
+      "relatedTools": [
+        "aumento-risoluzione-immagine-ai",
+        "miglioratore-foto-ai"
+      ],
+      "relatedGuides": [
+        "requisiti-immagini-ecommerce",
+        "dimensioni-immagini-social-media"
+      ],
       "ctaText": "Inizia Ridimensionamento in Bulk",
-      "ctaUrl": "/bulk-tools/bulk-image-resizer"
+      "ctaUrl": "/strumenti-batch/ridimensionatore-immagini-batch"
     },
     {
-      "slug": "bulk-image-compressor",
+      "slug": "compressore-immagini-batch",
       "title": "Compressore Immagini in Bulk",
       "metaTitle": "Compressore Immagini in Bulk Gratuito - Comprimi Più Immagini | MyImageUpscaler",
       "metaDescription": "Comprimi più immagini contemporaneamente. Riduci le dimensioni dei file fino all'80% con il nostro compressore di immagini in bulk gratuito. Basato su browser, non richiede upload.",
       "h1": "Compressore Immagini in Bulk Gratuito - Ottimizza Più Foto",
       "intro": "Riduci le dimensioni dei file attraverso interi lotti di immagini mantenendo la qualità visiva. Perfetto per l'ottimizzazione web, risparmio di archiviazione e caricamenti più veloci.",
-      "primaryKeyword": "bulk image compressor",
+      "primaryKeyword": "compressore immagini batch",
       "secondaryKeywords": [
-        "batch image compressor",
-        "bulk image optimization",
-        "compress multiple images",
-        "mass image compression"
+        "compressore immagini batch",
+        "ottimizzazione immagini batch",
+        "comprimere più immagini",
+        "compressione immagini di massa"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "bulk-tools",
+      "category": "strumenti-batch",
       "toolName": "Compressore Immagini in Bulk",
       "toolComponent": "BulkImageCompressor",
       "description": "Ottimizza più immagini simultaneamente per ridurre le dimensioni dei file senza perdita di qualità percettibile. Ideale per preparare immagini per siti web, allegati email o archiviazione cloud.",
       "maxFiles": 20,
-      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "acceptedFormats": [
+        "JPEG",
+        "PNG",
+        "WebP"
+      ],
       "features": [
         {
           "title": "Comprimi fino a 20 Immagini",
@@ -279,10 +293,16 @@
         "La velocità di compressione dipende dal tuo dispositivo e dalle dimensioni delle immagini"
       ],
       "outputFormat": "zip",
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
-      "relatedGuides": ["ecommerce-image-requirements", "website-optimization-guide"],
+      "relatedTools": [
+        "aumento-risoluzione-immagine-ai",
+        "miglioratore-foto-ai"
+      ],
+      "relatedGuides": [
+        "requisiti-immagini-ecommerce",
+        "guida-ottimizzazione-sito-web"
+      ],
       "ctaText": "Inizia Compressione in Bulk",
-      "ctaUrl": "/bulk-tools/bulk-image-compressor"
+      "ctaUrl": "/strumenti-batch/compressore-immagini-batch"
     }
   ],
   "meta": {

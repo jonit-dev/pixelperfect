@@ -1,5 +1,5 @@
 {
-  "category": "tools",
+  "category": "ツール",
   "pages": [
     {
       "slug": "ai-image-upscaler",
@@ -19,7 +19,7 @@
         "ai画像拡大ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "toolName": "AI画像アップスケーラー",
       "description": "低解像度の画像を高画質のビジュアルに変換します。ボケを作る従来のリサイジングとは異なり、当社のAIはアップスケール中にディテールを再構築します。",
       "features": [
@@ -50,10 +50,18 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB（無料ティアでは5MB）",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "maxUpscale": "8倍",
         "processingTime": "通常30〜60秒",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "qualitySettings": "JPEG品質1〜100%調整可能"
       },
       "useCases": [
@@ -152,8 +160,13 @@
           "answer": "はい、アップスケールされた画像の完全な権利を保持します。個人的、商用的、印刷、Webなど、あらゆる目的で使用できます。"
         }
       ],
-      "relatedTools": ["ai-photo-enhancer"],
-      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
+      "relatedTools": [
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "print-size-guide",
+        "ecommerce-image-requirements"
+      ],
       "relatedBlogPosts": [
         "image-resolution-for-printing-complete-guide",
         "social-media-image-sizes-guide-2025",
@@ -183,7 +196,7 @@
         "画像鮮明度向上ツール"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "toolName": "AI写真向上ツール",
       "description": "同じ解像度で写真の画質を向上します。アップスケールする前の問題修正に最適、または現在のサイズでより良い画質が必要な場合。",
       "features": [
@@ -214,9 +227,17 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB（無料ティアでは5MB）",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "processingTime": "通常20〜45秒",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "preservesExif": "オプション - メタデータを保持または削除"
       },
       "useCases": [
@@ -315,8 +336,13 @@
           "answer": "もちろんです。電話の写真は小さなセンサーからのノイズを含むことが多く、向上で大幅にメリットを受けられます。"
         }
       ],
-      "relatedTools": ["ai-image-upscaler"],
-      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ],
+      "relatedGuides": [
+        "photo-restoration-tips",
+        "before-after-workflow"
+      ],
       "relatedBlogPosts": [
         "restore-old-photos-ai-enhancement-guide",
         "fix-blurry-photos-ai-methods-guide",
@@ -343,11 +369,15 @@
         "画像切り抜き"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "AI背景削除ツール",
       "description": "プロフェッショナルな背景削除で任意の画像を変換します。当社のAIは高度なセグメンテーションを使用して、ピクセル完璧な精度で被写体を検出し、従来のツールが苦手とする髪や毛皮のような複雑なエッジを処理します。",
       "features": [
@@ -454,7 +484,10 @@
           "answer": "ブラウザで処理が行われるため、制限はデバイスのメモリに依存します。ほとんどのデバイスは4096x4096ピクセルまでの画像をスムーズに処理できます。"
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
       "relatedGuides": [],
       "ctaText": "背景を無料で削除",
       "ctaUrl": "/tools/ai-background-remover"
@@ -475,11 +508,15 @@
         "背景消去ツール"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "背景削除ツール",
       "description": "任意の画像から背景を削除する最速の方法。写真をアップロードして数秒で透明背景を取得します。クイック編集と一括処理に最適です。",
       "features": [
@@ -551,7 +588,10 @@
           "answer": "最大10MBのJPEG、PNG、WebP画像。"
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-image-upscaler"
+      ],
       "relatedGuides": [],
       "ctaText": "今すぐ背景削除",
       "ctaUrl": "/tools/remove-bg"
@@ -572,11 +612,15 @@
         "透明画像クリエイター"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "透明背景メーカー",
       "description": "任意の画像を透明PNGに変換します。当社のAIは背景を削除し、デザイン、Webサイト、プレゼンテーションで使用可能なクリーンな透明画像を作成します。",
       "features": [
@@ -648,7 +692,10 @@
           "answer": "はい、AIは複雑な形状、髪、微細なディテールを処理し、クリーンな透明なエッジを作成します。"
         }
       ],
-      "relatedTools": ["ai-background-remover", "remove-bg"],
+      "relatedTools": [
+        "ai-background-remover",
+        "remove-bg"
+      ],
       "relatedGuides": [],
       "ctaText": "透明にする",
       "ctaUrl": "/tools/transparent-background-maker"
@@ -669,11 +716,15 @@
         "写真から人を切り抜き"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "tools",
+      "category": "ツール",
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "画像切り抜きツール",
       "description": "Photoshopなしでプロフェッショナルな画像カットアウト。AI搭載ツールで、髪や毛皮のような複雑なエッジを自動的に処理しながら、写真から被写体を正確に切り抜きます。",
       "features": [
@@ -745,7 +796,10 @@
           "answer": "ほとんどのカットアウトタスクについて、当社のAIは数秒で手動のPhotoshop作業に匹敵する結果を生成しますが、数分や数時間ではなく。"
         }
       ],
-      "relatedTools": ["ai-background-remover", "transparent-background-maker"],
+      "relatedTools": [
+        "ai-background-remover",
+        "transparent-background-maker"
+      ],
       "relatedGuides": [],
       "ctaText": "今すぐ切り抜き",
       "ctaUrl": "/tools/image-cutout-tool"

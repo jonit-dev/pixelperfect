@@ -50,10 +50,18 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB (5MB auf kostenloser Stufe)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "maxUpscale": "8x",
         "processingTime": "30-60 Sekunden typisch",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "qualitySettings": "Anpassbare JPEG-Qualität 1-100%"
       },
       "useCases": [
@@ -152,8 +160,13 @@
           "answer": "Ja, Sie behalten alle Rechte an Ihren skalierten Bildern. Verwenden Sie sie für jeden Zweck – persönlich, kommerziell, Druck oder Web."
         }
       ],
-      "relatedTools": ["ai-photo-enhancer"],
-      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
+      "relatedTools": [
+        "ai-photo-enhancer"
+      ],
+      "relatedGuides": [
+        "print-size-guide",
+        "ecommerce-image-requirements"
+      ],
       "relatedBlogPosts": [
         "image-resolution-for-printing-complete-guide",
         "social-media-image-sizes-guide-2025",
@@ -214,9 +227,17 @@
       ],
       "technicalSpecs": {
         "maxInputSize": "64MB (5MB auf kostenloser Stufe)",
-        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "supportedFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "processingTime": "20-45 Sekunden typisch",
-        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "outputFormats": [
+          "JPEG",
+          "PNG",
+          "WebP"
+        ],
         "preservesExif": "Optional – Metadaten behalten oder entfernen"
       },
       "useCases": [
@@ -315,8 +336,13 @@
           "answer": "Absolut. Handys haben oft Rauschen durch kleine Sensoren und können erheblich von Verbesserung profitieren."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"],
-      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ],
+      "relatedGuides": [
+        "photo-restoration-tips",
+        "before-after-workflow"
+      ],
       "relatedBlogPosts": [
         "restore-old-photos-ai-enhancement-guide",
         "fix-blurry-photos-ai-methods-guide",
@@ -347,7 +373,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "KI-Hintergrundentferner",
       "description": "Verwandeln Sie jedes Bild mit professioneller Hintergrundentfernung. Unsere KI verwendet fortschrittliche Segmentierung, um Motive mit pixelgenauer Präzision zu erkennen und komplexe Kanten wie Haar und Pelz zu handhaben, mit denen herkömmliche Probleme haben.",
       "features": [
@@ -454,7 +484,10 @@
           "answer": "Da die Verarbeitung in Ihrem Browser erfolgt, hängt die Grenze vom Speicher Ihres Geräts ab. Die meisten Geräte verarbeiten Bilder bis zu 4096x4096 Pixeln reibungslos."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ],
       "relatedGuides": [],
       "ctaText": "Hintergrund kostenlos entfernen",
       "ctaUrl": "/tools/ai-background-remover"
@@ -479,7 +512,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "HG Entfernen Tool",
       "description": "Der schnellste Weg, um HG von jedem Bild zu entfernen. Laden Sie Ihr Foto hoch und erhalten Sie einen transparenten Hintergrund in Sekunden. Perfekt für schnelle Bearbeitungen und Massenverarbeitung.",
       "features": [
@@ -551,7 +588,10 @@
           "answer": "JPEG-, PNG- und WebP-Bilder bis zu 10MB."
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-image-upscaler"
+      ],
       "relatedGuides": [],
       "ctaText": "HG Jetzt Entfernen",
       "ctaUrl": "/tools/remove-bg"
@@ -576,7 +616,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Transparenter Hintergrund Maker",
       "description": "Verwandeln Sie jedes Bild in ein transparentes PNG. Unsere KI entfernt den Hintergrund und erstellt saubere transparente Bilder bereit für die Verwendung in Designs, Websites und Präsentationen.",
       "features": [
@@ -648,7 +692,10 @@
           "answer": "Ja, die KI handhabt komplexe Formen, Haar und feine Details während der Erstellung sauberer transparenter Kanten."
         }
       ],
-      "relatedTools": ["ai-background-remover", "remove-bg"],
+      "relatedTools": [
+        "ai-background-remover",
+        "remove-bg"
+      ],
       "relatedGuides": [],
       "ctaText": "Transparent Machen",
       "ctaUrl": "/tools/transparent-background-maker"
@@ -673,7 +720,11 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "toolName": "Bild-Ausschneide-Tool",
       "description": "Professionelle Bildausschnitte ohne Photoshop. KI-gestütztes Tool, das Motive aus Fotos präzise ausschneidet und komplexe Kanten wie Haar und Pelz automatisch handhabt.",
       "features": [
@@ -745,7 +796,10 @@
           "answer": "Für die meisten Ausschneide-Aufgaben erzeugt unsere KI vergleichbare Ergebnisse mit manueller Photoshop-Arbeit, aber in Sekunden statt Minuten oder Stunden."
         }
       ],
-      "relatedTools": ["ai-background-remover", "transparent-background-maker"],
+      "relatedTools": [
+        "ai-background-remover",
+        "transparent-background-maker"
+      ],
       "relatedGuides": [],
       "ctaText": "Jetzt Ausschneiden",
       "ctaUrl": "/tools/image-cutout-tool"

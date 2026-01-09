@@ -127,7 +127,7 @@
           "name": "Upscale.media",
           "type": "Basado en web",
           "pricing": "Gratis | $9/mes Pro",
-          "rating": 4.0,
+          "rating": 4,
           "tagline": "Opción simple y gratuita",
           "description": "Escalador web básico con nivel gratuito generoso. Bueno para uso ocasional, características limitadas.",
           "bestFor": [
@@ -178,7 +178,11 @@
                 "score": "Bueno",
                 "notes": "Fuerte en fotos de productos"
               },
-              { "product": "Upscale.media", "score": "Adecuado", "notes": "Básico pero funcional" }
+              {
+                "product": "Upscale.media",
+                "score": "Adecuado",
+                "notes": "Básico pero funcional"
+              }
             ]
           },
           {
@@ -200,15 +204,27 @@
                 "score": "Moderado",
                 "notes": "No especializado para texto"
               },
-              { "product": "Upscale.media", "score": "Básico", "notes": "El texto puede borroso" }
+              {
+                "product": "Upscale.media",
+                "score": "Básico",
+                "notes": "El texto puede borroso"
+              }
             ]
           },
           {
             "name": "Facilidad de Uso",
             "description": "Qué tan simple es obtener buenos resultados",
             "rankings": [
-              { "product": "MyImageUpscaler", "score": "Excelente", "notes": "Cargar y listo" },
-              { "product": "Upscale.media", "score": "Excelente", "notes": "Muy simple" },
+              {
+                "product": "MyImageUpscaler",
+                "score": "Excelente",
+                "notes": "Cargar y listo"
+              },
+              {
+                "product": "Upscale.media",
+                "score": "Excelente",
+                "notes": "Muy simple"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Muy Bueno",
@@ -235,7 +251,11 @@
                 "score": "Muy Bueno",
                 "notes": "Buen nivel gratuito, suscripción razonable"
               },
-              { "product": "Upscale.media", "score": "Bueno", "notes": "Nivel gratuito generoso" },
+              {
+                "product": "Upscale.media",
+                "score": "Bueno",
+                "notes": "Nivel gratuito generoso"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Moderado",
@@ -252,8 +272,16 @@
                 "score": "Rápido",
                 "notes": "Procesamiento en GPU en la nube"
               },
-              { "product": "Upscale.media", "score": "Rápido", "notes": "Procesamiento rápido" },
-              { "product": "Let's Enhance", "score": "Moderado", "notes": "Puede ser más lento" },
+              {
+                "product": "Upscale.media",
+                "score": "Rápido",
+                "notes": "Procesamiento rápido"
+              },
+              {
+                "product": "Let's Enhance",
+                "score": "Moderado",
+                "notes": "Puede ser más lento"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Variable",
@@ -312,7 +340,10 @@
       "h1": "MyImageUpscaler vs Topaz Gigapixel AI",
       "intro": "Dos enfoques diferentes para el escalado con IA: conveniencia basada en web vs poder de escritorio. Aquí cuándo usar cada uno.",
       "primaryKeyword": "myimageupscaler vs topaz",
-      "secondaryKeywords": ["alternativa topaz gigapixel", "escalador web vs escritorio"],
+      "secondaryKeywords": [
+        "alternativa topaz gigapixel",
+        "escalador web vs escritorio"
+      ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "compare",
       "comparisonType": "versus",

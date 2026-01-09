@@ -104,8 +104,14 @@
           "answer": "Sí, nuestra IA puede trabajar con JPEGs muy comprimidos, aunque los resultados varían según el nivel de compresión. Generalmente, verás una mejora significativa incluso con originales de mala calidad."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-png-images",
@@ -206,8 +212,14 @@
           "answer": "¡Sí! Nuestra IA está específicamente entrenada para manejar texto y gráficos en PNGs, manteniendo texto nítido y legible incluso en alta magnificación."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-webp-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-webp-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-webp-images",
@@ -308,8 +320,14 @@
           "answer": "La compresión avanzada de WebP en realidad ayuda a mantener la calidad durante el escalado. Nuestra IA puede funcionar eficazmente con imágenes WebP tanto con pérdida como sin pérdida."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-heic-images",
@@ -415,8 +433,14 @@
           "answer": "Nuestra IA se enfoca en mejorar la imagen primaria. Para mejores resultados con Live Photos, la imagen mejorada mantiene excelente calidad para el componente de foto fija."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "how-to-fix-blurry-photos"]
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "how-to-fix-blurry-photos"
+      ]
     },
     {
       "slug": "upscale-raw-images",
@@ -518,7 +542,10 @@
           "answer": "Absolutamente. Los datos adicionales en archivos RAW combinados con nuestro escalado IA produce calidad de impresión excepcional, especialmente para impresiones de gran formato."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-tiff-images"],
+      "relatedFormats": [
+        "upscale-jpeg-images",
+        "upscale-tiff-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "professional-photo-upscaling-guide"
@@ -624,8 +651,14 @@
           "answer": "Aunque es posible, los archivos TIFF son típicamente demasiado grandes para uso web. Recomendamos convertir a JPEG o PNG después de escalar para despliegue web."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-png-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "print-preparation-guide"]
+      "relatedFormats": [
+        "upscale-raw-images",
+        "upscale-png-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "print-preparation-guide"
+      ]
     },
     {
       "slug": "upscale-bmp-images",
@@ -726,8 +759,14 @@
           "answer": "Sí. Dado que BMP es no comprimido, nuestra IA puede trabajar con todos los datos de imagen originales, potencialmente produciendo excelentes resultados escalados."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "format-selection-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "format-selection-guide"
+      ]
     },
     {
       "slug": "upscale-svg-images",
@@ -828,8 +867,14 @@
           "answer": "PNG para soporte de transparencia, JPEG para fotografías, o WebP para optimización web. Elige basado en tu contenido y caso de uso."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedGuides": ["how-to-upscale-images-without-losing-quality", "vector-to-raster-guide"]
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-jpeg-images"
+      ],
+      "relatedGuides": [
+        "how-to-upscale-images-without-losing-quality",
+        "vector-to-raster-guide"
+      ]
     },
     {
       "slug": "upscale-gif-images",
@@ -930,7 +975,10 @@
           "answer": "El formato GIF está limitado a 256 colores por diseño. Nuestra IA trabaja dentro de esta restricción para producir la mejor calidad posible dentro de esas limitaciones."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
+      "relatedFormats": [
+        "upscale-png-images",
+        "upscale-webp-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "animation-optimization-guide"
@@ -1035,7 +1083,10 @@
           "answer": "Sí, con alternativas apropiadas. AVIF está listo para producción para aplicaciones web modernas, especialmente cuando se empareja con alternativas JPEG o WebP para navegadores más antiguos."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-jpeg-images"],
+      "relatedFormats": [
+        "upscale-webp-images",
+        "upscale-jpeg-images"
+      ],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "next-gen-image-formats-guide"
