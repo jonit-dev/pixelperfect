@@ -498,53 +498,77 @@
         },
         {
           "title": "コンポジット",
-          "description": "マルチレイヤーPhotoshopファイルを優秀に処理"
+          "description": "複雑なマルチレイヤーコンポジットと写真操作を処理"
         }
       ],
       "integration": [
-        "Photoshop内蔵アップスケーラーの前に使用",
-        "RAWファイルから直接機能",
-        "すべてのPhotoshopエクスポート形式をサポート",
-        "レイヤー効果を保存",
-        "Photoshopワークフローに統合"
+        "TIFFまたはPNGでPhotoshopからエクスポートしてロスレス品質を実現",
+        "スマートオブジェクトとレイヤー効果を持つ画像をサポート",
+        "RGBとCMYKカラーモードの両方で動作",
+        "16ビットおよび32ビット/チャンネル画像を処理",
+        "Photoshop Generative Fill出力と互換性"
       ],
       "useCases": [
         {
-          "title": "プロ写真編集",
-          "description": "Photoshopワークフロー中に画像を拡張。"
+          "title": "印刷プロジェクト",
+          "description": "大判印刷と展示用のPhotoshopアートワークを拡張。"
         },
         {
-          "title": "グラフィックデザイン",
-          "description": "デザイン資産とプロジェクトを強化。"
+          "title": "写真操作",
+          "description": "高解像度出力用の複雑な写真コンポジットと操作を強化。"
         },
         {
           "title": "デジタルアート",
-          "description": "Photoshopで作成されたアートワークを印刷品質に強化。"
+          "description": "ポートフォリオと印刷用のデジタルペイントアートワークを拡張。"
         },
         {
-          "title": "印刷準備",
-          "description": "印刷用最終出力を準備。"
+          "title": "レタッチ",
+          "description": "プロフェッショナルポートフォリオとクライアント納品用のレタッチ写真を強化。"
+        },
+        {
+          "title": "テクスチャ作成",
+          "description": "Photoshopオリジナルからゲームと映画用の高解像度テクスチャを作成。"
         }
       ],
       "workflowSteps": [
-        "Photoshopで画像を編集",
-        "最高品質でエクスポート（PNG/TIFF推奨）",
-        "アップスケーラーにアップロード",
-        "ターゲット解像度を選択",
-        "強化画像をダウンロード"
+        "レイヤーをフラット化してPhotoshopで編集作業を完了",
+        "File > Export Asを使用してエクスポート - 最高品質のためにTIFFまたはPNGを選択",
+        "Photoshop最適化アップスケーラーにアップロード",
+        "出力ニーズに基づいてターゲット解像度を選択",
+        "強化ウルトラHD Photoshop画像をダウンロード"
       ],
       "faq": [
         {
-          "question": "Photoshopでいつアップスケーラーを使うべきですか？",
-          "answer": "最適結果のために、編集前にアップスケーラーを使用してください。"
+          "question": "Photoshopからエクスポートする最適な形式は？",
+          "answer": "TIFF（非圧縮）またはPNGが理想的です。JPEG圧縮は避けてください。アーティファクトが増幅されます。"
         },
         {
-          "question": "PSDレイヤーを直接拡張できますか？",
-          "answer": "レイヤーをフラット化してから拡張してください。"
+          "question": "レイヤーPSDファイルを拡張できますか？",
+          "answer": "各レイヤーを個別にフラット化してエクスポートし、個別に拡張してください。レイヤーは強化後に関係を維持します。"
         },
         {
-          "question": "Photoshop内蔵アップスケーラーより良いですか？",
-          "answer": "より高度なAI詳細強化を提供します。"
+          "question": "スマートオブジェクトで機能しますか？",
+          "answer": "はい、ただし最適結果のために拡張前にスマートオブジェクトを最高解像度でラスター化してください。"
+        },
+        {
+          "question": "16ビットまたは32ビット画像を拡張できますか？",
+          "answer": "はい、私たちのアップスケーラーはPhotoshopからの高ビット深度画像をサポートし、トーン範囲と色精度を保存します。"
+        },
+        {
+          "question": "CMYK画像は？",
+          "answer": "はい、印刷用CMYK画像を拡張できます。プロセス全体で色精度が保存されます。"
+        },
+        {
+          "question": "Photoshop Generative Fill結果を拡張できますか？",
+          "answer": "もちろんです。Gen Fill出力はシームレスな強化のために私たちのアップスケーラーで優秀に動作します。"
+        },
+        {
+          "question": "レイヤー効果は保存されますか？",
+          "answer": "レイヤー効果はエクスポート前に画像にベイク（フラット化）される必要がありますが、その視覚的結果は拡張出力で保存されます。"
+        },
+        {
+          "question": "大判印刷用に拡張できますか？",
+          "answer": "はい、拡張画像はポスター、バナー、ウォールアート、その他大判アプリケーションに優秀です。"
         }
       ],
       "relatedPlatforms": ["canva-upscaler", "lightroom-upscaler"],
@@ -555,7 +579,6 @@
   ],
   "meta": {
     "totalPages": 5,
-    "lastUpdated": "2026-01-06",
-    "description": "AIプラットフォーム固有のアップスケーリングページ（Midjourney、Stable Diffusion、DALL-E、Canva、Photoshop）"
+    "lastUpdated": "2026-01-06"
   }
 }

@@ -115,10 +115,470 @@
       "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
       "ogImage": "/og-images/midjourney-upscaler.png",
       "lastUpdated": "2026-01-06"
+    },
+    {
+      "slug": "stable-diffusion-upscaler",
+      "title": "Escalador de Stable Diffusion - Mejora Imágenes SD a Calidad de Impresión",
+      "metaTitle": "Escalador de Stable Diffusion Gratis | Mejora SD a 4K/8K",
+      "metaDescription": "Escala imágenes de Stable Diffusion preservando detalles de IA. Corrige artefactos, mejora claridad y prepara para impresión. Funciona con SDXL, SD 1.5, modelos de anime.",
+      "h1": "Escalador de Stable Diffusion - Mejora de Imágenes IA de Calidad de Impresión",
+      "intro": "Stable Diffusion produce imágenes increíbles generadas por IA, pero la resolución predeterminada de 512x512 o 1024x1024 no es suficiente para impresión profesional o pantallas de alta calidad. Nuestro escalador especializado mejora tus imágenes SD y SDXL a 4K y más allá preservando los detalles intrincados y el estilo que hacen únicas las salidas de Stable Diffusion.",
+      "primaryKeyword": "establecer diffusion upscaler",
+      "secondaryKeywords": [
+        "escalar stable diffusion",
+        "escalador sd",
+        "escalador sdxl",
+        "mejorar imagenes ia",
+        "stable diffusion 4k"
+      ],
+      "platformName": "Stable Diffusion",
+      "platformType": "ai-generator",
+      "description": "Escalado avanzado para salidas de Stable Diffusion, soportando SD 1.5, SDXL y modelos de checkpoint personalizados.",
+      "benefits": [
+        {
+          "title": "Preserva Estilo de Modelo",
+          "description": "Mantiene las características específicas de diferentes modelos SD y checkpoints"
+        },
+        {
+          "title": "Corrige Pixelación",
+          "description": "Elimina pixelación de generaciones de baja resolución mejorando detalles"
+        },
+        {
+          "title": "Mejora Detalles Finos",
+          "description": "Afina texturas, detalles de piel y elementos intrincados en generaciones SD"
+        },
+        {
+          "title": "Soporta Todas las Resoluciones",
+          "description": "Funciona con 512x512 SD 1.5, 1024x1024 SDXL y salidas de resolución personalizada"
+        },
+        {
+          "title": "Procesamiento por Lotes",
+          "description": "Escala múltiples generaciones SD a la vez para flujos de trabajo eficientes"
+        }
+      ],
+      "integration": [
+        "Funciona con salidas de Automatic1111, ComfyUI y WebUI",
+        "Soporta resolución nativa 1024x1024 de SDXL",
+        "Compatible con todos los checkpoints de modelo SD",
+        "Maneja salidas img2img y txt2img igualmente bien",
+        "Preserva resultados de pase de High-Res Fix"
+      ],
+      "useCases": [
+        {
+          "title": "Imprimir Arte SD",
+          "description": "Crea impresiones de calidad de galería desde tus generaciones de Stable Diffusion"
+        },
+        {
+          "title": "Creación de Texturas",
+          "description": "Genera texturas de alta resolución para assets de juegos y modelado 3D"
+        },
+        {
+          "title": "Mejora de Stock",
+          "description": "Escala imágenes SD para envíos y ventas de fotos de stock"
+        },
+        {
+          "title": "Visualización de Productos",
+          "description": "Mejora mockups de productos y visualizaciones para materiales de marketing"
+        },
+        {
+          "title": "Portafolios de Arte Digital",
+          "description": "Crea piezas de portafolio profesional desde generaciones SD"
+        }
+      ],
+      "workflowSteps": [
+        "Genera tu imagen en Stable Diffusion usando tu modelo y configuraciones preferidas",
+        "Usa Hi-Res Fix o configuraciones de mayor resolución para mejor calidad inicial",
+        "Guarda la salida en formato PNG sin compresión",
+        "Sube a nuestro escalador y selecciona tu resolución objetivo",
+        "Descarga tu imagen SD mejorada de alta resolución"
+      ],
+      "faq": [
+        {
+          "question": "¿Qué resolución debería generar en Stable Diffusion?",
+          "answer": "Para mejores resultados de escalado, usa 1024x1024 nativo de SDXL, o habilita Hi-Res Fix en SD 1.5. Mayor resolución inicial produce mejores resultados escalados."
+        },
+        {
+          "question": "¿Puedo escalar imágenes de checkpoints SD específicos?",
+          "answer": "¡Sí! Nuestro escalador funciona con imágenes de cualquier checkpoint SD o LoRA, preservando las características de estilo único de cada modelo."
+        },
+        {
+          "question": "¿Esto funciona con imágenes SDXL?",
+          "answer": "Absolutamente. La resolución nativa 1024x1024 de SDXL es un excelente punto de partida, y nuestro escalador puede mejorarla aún más a 4K y más allá."
+        },
+        {
+          "question": "¿El escalado añadirá detalle a mis imágenes SD?",
+          "answer": "Nuestro escalador mejora detalles existentes y afina la imagen, pero no 'alucina' nuevos detalles que no estaban en la generación original."
+        },
+        {
+          "question": "¿Puedo escalar imágenes de estilo anime de Stable Diffusion?",
+          "answer": "Sí, nuestro escalador funciona excelentemente con modelos y checkpoints de estilo anime, preservando calidad de línea y técnicas de cel-shading."
+        },
+        {
+          "question": "¿Qué pasa con las salidas img2img?",
+          "answer": "Las salidas img2img funcionan genial con nuestro escalador. Solo asegúrate de guardar en la configuración de más alta calidad disponible."
+        },
+        {
+          "question": "¿Puedo usar esto con salidas de ControlNet?",
+          "answer": "Sí, las imágenes de ControlNet escalan bien. La guía estructural de ControlNet se preserva en la salida escalada."
+        },
+        {
+          "question": "¿Cómo se compara esto con el escalador integrado de SD?",
+          "answer": "Nuestro escalador se enfoca en salida de calidad de impresión y reducción de artefactos, complementando el escalado interno de SD. Muchos artistas usan ambos."
+        }
+      ],
+      "relatedPlatforms": ["midjourney-upscaler", "dalle-upscaler"],
+      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "ogImage": "/og-images/stable-diffusion-upscaler.png",
+      "lastUpdated": "2026-01-06"
+    },
+    {
+      "slug": "dalle-upscaler",
+      "title": "Escalador de DALL-E - Mejora Imágenes de OpenAI a Ultra HD",
+      "metaTitle": "Escalador de DALL-E Gratis | Mejora Imágenes de DALL-E 2 y 3",
+      "metaDescription": "Escala imágenes de DALL-E a resolución 4K/8K. Corrige compresión, mejora detalles y prepara para impresión. Funciona con salidas de DALL-E 2 y DALL-E 3.",
+      "h1": "Escalador de DALL-E - Mejora Ultra HD para Imágenes de OpenAI",
+      "intro": "DALL-E crea imágenes impresionantes generadas por IA, pero la resolución puede no satisfacer tus necesidades para proyectos profesionales, impresión o pantallas de alta calidad. Nuestro escalador especializado de DALL-E mejora tus imágenes a 4K y más allá preservando el estilo distintivo de OpenAI y los detalles que hacen única cada generación.",
+      "primaryKeyword": "escalador de dalle",
+      "secondaryKeywords": [
+        "escalar dalle",
+        "mejorador de imagenes dalle",
+        "escalador dall-e 2",
+        "escalador dall-e 3",
+        "mejorar imagenes openai"
+      ],
+      "platformName": "DALL-E",
+      "platformType": "ai-generator",
+      "description": "Escalado profesional para imágenes de DALL-E 2 y DALL-E 3, optimizado para el estilo artístico único de OpenAI.",
+      "benefits": [
+        {
+          "title": "Preserva Estilo DALL-E",
+          "description": "Mantiene el estilo artístico distintivo y paleta de colores de OpenAI"
+        },
+        {
+          "title": "Mejora Fotorrealismo",
+          "description": "Mejora el realismo en generaciones fotorrealistas de DALL-E"
+        },
+        {
+          "title": "Corrige Compresión",
+          "description": "Reduce artefactos de compresión de descargas de interfaz ChatGPT"
+        },
+        {
+          "title": "Mejora de Texto",
+          "description": "Mantiene texto renderizado nítido y legible después de escalar"
+        },
+        {
+          "title": "Listo para Imprimir",
+          "description": "Crea resolución adecuada para aplicaciones de impresión profesional"
+        }
+      ],
+      "integration": [
+        "Funciona con imágenes de DALL-E 2 (1024x1024) y DALL-E 3",
+        "Optimizado para descargas de interfaz ChatGPT",
+        "Soporta salidas cuadradas y rectangulares de DALL-E",
+        "Maneja el mejorado renderizado de detalle y textura de DALL-E 3",
+        "Procesa por lotes múltiples generaciones eficientemente"
+      ],
+      "useCases": [
+        {
+          "title": "Imprimir Arte DALL-E",
+          "description": "Crea impresiones de alta calidad desde tus generaciones de DALL-E"
+        },
+        {
+          "title": "Materiales de Marketing",
+          "description": "Mejora imágenes de DALL-E para folletos, presentaciones y anuncios"
+        },
+        {
+          "title": "Gráficos Web",
+          "description": "Crea imágenes hero de alta resolución y gráficos de sitios web"
+        },
+        {
+          "title": "Ilustraciones de Libros",
+          "description": "Escala ilustraciones de DALL-E para publicaciones impresas y digitales"
+        },
+        {
+          "title": "Mockups de Productos",
+          "description": "Mejora conceptos de productos de DALL-E para presentaciones y prototipado"
+        }
+      ],
+      "workflowSteps": [
+        "Genera tu imagen usando DALL-E vía ChatGPT o la API",
+        "Descarga la imagen en la más alta calidad disponible",
+        "Sube a nuestro escalador especializado de DALL-E",
+        "Selecciona tu resolución objetivo (4K recomendado para la mayoría de usos)",
+        "Descarga tu imagen DALL-E mejorada ultra-HD"
+      ],
+      "faq": [
+        {
+          "question": "¿Esto funciona con imágenes de DALL-E 3?",
+          "answer": "¡Sí! Nuestro escalador está optimizado tanto para DALL-E 2 como DALL-E 3, mejorando el renderizado de detalle y textura mejorado en salidas de DALL-E 3."
+        },
+        {
+          "question": "¿Cuál es la mejor manera de exportar desde DALL-E?",
+          "answer": "Descarga imágenes directamente desde ChatGPT en formato PNG cuando esté disponible. Evita tomar capturas de pantalla, ya que reducen la calidad."
+        },
+        {
+          "question": "¿Puedo escalar imágenes rectangulares de DALL-E?",
+          "answer": "Sí, soportamos tanto el formato cuadrado clásico como las salidas rectangulares de DALL-E 3."
+        },
+        {
+          "question": "¿El escalado mejorará el renderizado de texto de DALL-E?",
+          "answer": "Escalar afina el texto existente, haciéndolo más claro, pero no corregirá errores ortográficos que estaban en la generación original."
+        },
+        {
+          "question": "¿Puedo imprimir imágenes escaladas de DALL-E?",
+          "answer": "Sí, las imágenes escaladas a 4K son excelentes para imprimir. Recomendamos probar una impresión pequeña primero para asegurar que la calidad cumpla tus estándares."
+        },
+        {
+          "question": "¿Esto funciona con DALL-E vía ChatGPT?",
+          "answer": "Absolutamente. Las imágenes generadas a través de la integración DALL-E de ChatGPT funcionan perfectamente con nuestro escalador."
+        },
+        {
+          "question": "¿Qué pasa con las variaciones de edición de DALL-E?",
+          "answer": "Todas las variaciones y ediciones de DALL-E se pueden escalar. Cada variación se trata como una imagen independiente."
+        },
+        {
+          "question": "¿Puedo escalar imágenes de DALL-E para uso comercial?",
+          "answer": "Sí, las imágenes escaladas mantienen los mismos derechos de uso que la generación original de DALL-E según los términos de OpenAI."
+        }
+      ],
+      "relatedPlatforms": ["midjourney-upscaler", "stable-diffusion-upscaler"],
+      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "ogImage": "/og-images/dalle-upscaler.png",
+      "lastUpdated": "2026-01-06"
+    },
+    {
+      "slug": "canva-upscaler",
+      "title": "Escalador de Canva - Mejora Diseños de Canva a Calidad de Impresión",
+      "metaTitle": "Escalador de Canva Gratis | Mejora Imágenes de Canva a 4K/8K",
+      "metaDescription": "Escala diseños de Canva sin pérdida de calidad. Perfecto para impresión, presentaciones y uso profesional. Mejora texto, gráficos y fotos.",
+      "h1": "Escalador de Canva - Mejora Profesional para Diseños de Canva",
+      "intro": "Canva hace el diseño fácil, pero sus límites de resolución de descarga pueden ser frustrantes para impresión profesional, pantallas grandes o presentaciones de alta calidad. Nuestro escalador especializado de Canva mejora tus diseños a 4K y más allá preservando claridad de texto, nitidez de gráficos vectoriales y calidad de imagen que hace que tus diseños destaquen.",
+      "primaryKeyword": "escalador de canva",
+      "secondaryKeywords": [
+        "escalar diseño de canva",
+        "mejorador de imagenes de canva",
+        "mejorar resolucion de canva",
+        "escalador 4k de canva",
+        "mejorar exportaciones de canva"
+      ],
+      "platformName": "Canva",
+      "platformType": "design-tool",
+      "description": "Escalado especializado para diseños de Canva, preservando claridad de texto, gráficos e imágenes para salida profesional.",
+      "benefits": [
+        {
+          "title": "Preserva Claridad de Texto",
+          "description": "Mantiene elementos de texto de Canva nítidos y legibles en cualquier resolución"
+        },
+        {
+          "title": "Mejora Gráficos",
+          "description": "Mantiene calidad similar a vectores de formas, iconos y elementos de diseño"
+        },
+        {
+          "title": "Soporta Fotos",
+          "description": "Mejora tanto elementos de diseño como fotos incrustadas en la misma imagen"
+        },
+        {
+          "title": "Calidad de Impresión",
+          "description": "Crea salida de alta resolución adecuada para impresión profesional"
+        },
+        {
+          "title": "Mantiene Colores de Marca",
+          "description": "Preserva reproducción de color precisa para salidas consistentes con la marca"
+        }
+      ],
+      "integration": [
+        "Descarga desde Canva en formato PNG para mejor calidad",
+        "Soporta todas las resoluciones de descarga de Canva Pro",
+        "Funciona con descargas estándar y premium",
+        "Maneja correctamente varias relaciones de aspecto de Canva",
+        "Compatible con exportaciones de diseño animadas"
+      ],
+      "useCases": [
+        {
+          "title": "Imprimir Materiales de Marketing",
+          "description": "Escala folletos, volantes y pósters para impresión profesional"
+        },
+        {
+          "title": "Mejora de Presentaciones",
+          "description": "Crea diapositivas de alta resolución para presentaciones en lugares grandes"
+        },
+        {
+          "title": "Gráficos de Redes Sociales",
+          "description": "Mejora diseños para múltiples plataformas y tamaños de pantalla"
+        },
+        {
+          "title": "Materiales de Marca",
+          "description": "Escala logotipos, tarjetas de presentación y assets de marca para varios usos"
+        },
+        {
+          "title": "Diseño de Mercancía",
+          "description": "Prepara diseños de Canva para productos de impresión bajo demanda"
+        }
+      ],
+      "workflowSteps": [
+        "Completa tu diseño en Canva con todos los elementos finalizados",
+        "Descarga como PNG (máxima calidad disponible - usa Pro si es necesario)",
+        "Sube a nuestro escalador optimizado para Canva",
+        "Selecciona tu resolución objetivo basado en uso previsto",
+        "Descarga tu diseño de Canva mejorado de alta resolución"
+      ],
+      "faq": [
+        {
+          "question": "¿Por qué necesito escalar diseños de Canva?",
+          "answer": "El nivel gratuito de Canva tiene límites de resolución, e incluso las descargas Pro pueden no ser suficientes para impresión de gran formato o pantallas de ultra alta resolución."
+        },
+        {
+          "question": "¿El texto se mantendrá nítido al escalar?",
+          "answer": "Sí, nuestro escalador está específicamente optimizado para mantener claridad de texto en diseños de Canva, manteniendo fuentes nítidas y legibles."
+        },
+        {
+          "question": "¿Puedo escalar diseños con fotos incrustadas?",
+          "answer": "Sí, tanto los elementos de diseño como cualquier foto incrustada se mejoran. Los diseños complejos con contenido mixto funcionan bien."
+        },
+        {
+          "question": "¿Cuál es el mejor formato para descargar desde Canva?",
+          "answer": "El formato PNG proporciona la más alta calidad. Evita descargar como JPEG si planeas escalar, ya que los artefactos de compresión se amplificarán."
+        },
+        {
+          "question": "¿Puedo escalar para impresión de gran formato?",
+          "answer": "Sí, los diseños escalados a 4K-8K funcionan bien para pósters, banners y otras aplicaciones de impresión de gran formato."
+        },
+        {
+          "question": "¿Esto funciona con descargas de Canva Pro?",
+          "answer": "Sí, y el punto de partida de mayor resolución de Pro producirá resultados escalados aún mejores."
+        },
+        {
+          "question": "¿Los colores se mantendrán precisos?",
+          "answer": "Nuestro escalador mantiene precisión de color, importante para materiales de marca y diseños con requisitos de color específicos."
+        },
+        {
+          "question": "¿Puedo escalar diseños animados de Canva?",
+          "answer": "Para exportaciones estáticas, sí. Para diseños animados, exporta cada cuadro individualmente, luego reensambla después de escalar."
+        }
+      ],
+      "relatedPlatforms": ["photoshop-upscaler", "midjourney-upscaler"],
+      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "ogImage": "/og-images/canva-upscaler.png",
+      "lastUpdated": "2026-01-06"
+    },
+    {
+      "slug": "photoshop-upscaler",
+      "title": "Escalador de Photoshop - Mejora Exportaciones PSD a Ultra HD",
+      "metaTitle": "Escalador de Photoshop Gratis | Mejora Imágenes PSD a 4K/8K",
+      "metaDescription": "Escala exportaciones de Photoshop y capas PSD. Mejora ediciones detalladas, composiciones y arte a calidad de impresión. Preserva efectos de capa y filtros.",
+      "h1": "Escalador de Photoshop - Mejora Ultra HD para Adobe Photoshop",
+      "intro": "Adobe Photoshop es el estándar de la industria para edición de imágenes, pero exportar a resolución suficiente para impresión de gran formato o pantallas de ultra alta resolución puede ser challenging. Nuestro escalador especializado de Photoshop mejora tus imágenes exportadas y arte a 4K y más allá preservando los detalles intrincados, efectos de capa y calidad profesional que define la salida de Photoshop.",
+      "primaryKeyword": "escalador de photoshop",
+      "secondaryKeywords": [
+        "escalar imagenes de photoshop",
+        "mejorador de imagenes de photoshop",
+        "mejorar exportaciones psd",
+        "escalador de adobe photoshop",
+        "escalador 4k de photoshop"
+      ],
+      "platformName": "Photoshop",
+      "platformType": "photo-editor",
+      "description": "Escalado profesional para exportaciones de Photoshop y arte, optimizado para ediciones complejas y composiciones en capas.",
+      "benefits": [
+        {
+          "title": "Preserva Calidad de Edición",
+          "description": "Mantiene la calidad de ediciones complejas y ajustes de Photoshop"
+        },
+        {
+          "title": "Mejora Detalles",
+          "description": "Afina detalles finos que crea la edición de Photoshop"
+        },
+        {
+          "title": "Soporta Todos los Formatos",
+          "description": "Funciona con exportaciones PSD, PNG, TIFF y otros formatos de Photoshop"
+        },
+        {
+          "title": "Listo para Imprimir",
+          "description": "Crea resolución adecuada para aplicaciones de impresión profesional"
+        },
+        {
+          "title": "Composiciones",
+          "description": "Maneja composiciones multicapa complejas y manipulaciones de fotos"
+        }
+      ],
+      "integration": [
+        "Exporta desde Photoshop en TIFF o PNG para calidad sin pérdida",
+        "Soporta imágenes con objetos inteligentes y efectos de capa",
+        "Funciona con modos de color RGB y CMYK",
+        "Maneja imágenes de 16 y 32 bits por canal",
+        "Compatible con salidas de Relleno Generativo de Photoshop"
+      ],
+      "useCases": [
+        {
+          "title": "Proyectos de Impresión",
+          "description": "Escala arte de Photoshop para impresión de gran formato y exhibiciones"
+        },
+        {
+          "title": "Manipulación de Fotos",
+          "description": "Mejora composiciones de fotos complejas y manipulaciones para salida de alta resolución"
+        },
+        {
+          "title": "Arte Digital",
+          "description": "Escala arte pintado digitalmente para portafolio e impresión"
+        },
+        {
+          "title": "Retoque",
+          "description": "Mejora fotos retocadas para portafolio profesional y entrega a clientes"
+        },
+        {
+          "title": "Creación de Texturas",
+          "description": "Crea texturas de alta resolución para juegos y cine desde originales de Photoshop"
+        }
+      ],
+      "workflowSteps": [
+        "Completa tu trabajo de edición en Photoshop con capas aplanadas",
+        "Exporta usando Archivo > Exportar Como - elige TIFF o PNG para mejor calidad",
+        "Sube a nuestro escalador optimizado para Photoshop",
+        "Selecciona resolución objetivo basado en tus necesidades de salida",
+        "Descarga tu imagen de Photoshop mejorada ultra-HD"
+      ],
+      "faq": [
+        {
+          "question": "¿Cuál es el mejor formato para exportar desde Photoshop?",
+          "answer": "TIFF (sin compresión) o PNG son ideales. Evita compresión JPEG si planeas escalar, ya que los artefactos se amplificarán."
+        },
+        {
+          "question": "¿Puedo escalar archivos PSD en capas?",
+          "answer": "Exporta versiones aplanadas de cada capa por separado, luego escala individualmente. Las capas mantienen su relación después de la mejora."
+        },
+        {
+          "question": "¿Esto funciona con objetos inteligentes?",
+          "answer": "Sí, pero asegúrate de que los objetos inteligentes estén rasterizados a la más alta resolución antes de escalar para mejores resultados."
+        },
+        {
+          "question": "¿Puedo escalar imágenes de 16 o 32 bits?",
+          "answer": "Sí, nuestro escalador soporta imágenes de alta profundidad de bits desde Photoshop, preservando rango tonal y precisión de color."
+        },
+        {
+          "question": "¿Qué pasa con imágenes CMYK?",
+          "answer": "Sí, las imágenes CMYK para impresión se pueden escalar. La precisión de color se preserva durante todo el proceso."
+        },
+        {
+          "question": "¿Puedo escalar resultados de Relleno Generativo de Photoshop?",
+          "answer": "Absolutamente. Las salidas de Relleno Generativo funcionan genial con nuestro escalador para mejora perfecta."
+        },
+        {
+          "question": "¿Se conservarán los efectos de capa?",
+          "answer": "Los efectos de capa deben hornearse en la imagen (aplanarse) antes de exportar, pero sus resultados visuales se preservan en la salida escalada."
+        },
+        {
+          "question": "¿Puedo escalar para impresión de gran formato?",
+          "answer": "Sí, las imágenes escaladas son excelentes para pósters, banners, arte de pared y otras aplicaciones de gran formato."
+        }
+      ],
+      "relatedPlatforms": ["canva-upscaler", "stable-diffusion-upscaler"],
+      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "ogImage": "/og-images/photoshop-upscaler.png",
+      "lastUpdated": "2026-01-06"
     }
   ],
   "meta": {
-    "totalPages": 6,
+    "totalPages": 5,
     "lastUpdated": "2026-01-08"
   }
 }

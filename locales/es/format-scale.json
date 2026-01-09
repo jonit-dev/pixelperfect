@@ -114,7 +114,9 @@
           "question": "¿Cuánto tiempo toma escalar un JPEG a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-2x", "jpeg-upscale-4x"]
     },
     {
       "slug": "jpeg-upscale-4x",
@@ -224,7 +226,9 @@
           "question": "¿Cuánto tiempo toma escalar un JPEG a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-4x", "jpeg-upscale-2x", "jpeg-upscale-8x"]
     },
     {
       "slug": "jpeg-upscale-8x",
@@ -334,7 +338,9 @@
           "question": "¿Cuánto tiempo toma escalar un JPEG a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
+      "relatedScales": ["upscale-8x", "jpeg-upscale-4x", "jpeg-upscale-16x"]
     },
     {
       "slug": "jpeg-upscale-16x",
@@ -444,7 +450,9 @@
           "question": "¿Cuánto tiempo toma escalar un JPEG a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
+      "relatedScales": ["upscale-16x", "jpeg-upscale-8x"]
     },
     {
       "slug": "png-upscale-2x",
@@ -554,7 +562,9 @@
           "question": "¿Cuánto tiempo toma escalar un PNG a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
+      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x"]
     },
     {
       "slug": "png-upscale-4x",
@@ -664,7 +674,9 @@
           "question": "¿Cuánto tiempo toma escalar un PNG a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-png-images", "upscale-tiff-images"],
+      "relatedScales": ["ai-upscaler-4x", "png-upscale-2x", "png-upscale-8x"]
     },
     {
       "slug": "png-upscale-8x",
@@ -774,7 +786,9 @@
           "question": "¿Cuánto tiempo toma escalar un PNG a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-png-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-8x", "png-upscale-4x", "png-upscale-16x"]
     },
     {
       "slug": "png-upscale-16x",
@@ -884,7 +898,9 @@
           "question": "¿Cuánto tiempo toma escalar un PNG a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-png-images", "upscale-svg-images"],
+      "relatedScales": ["upscale-16x", "png-upscale-8x"]
     },
     {
       "slug": "webp-upscale-2x",
@@ -994,7 +1010,9 @@
           "question": "¿Cuánto tiempo toma escalar un WebP a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-webp-images", "upscale-jpeg-images"],
+      "relatedScales": ["ai-upscaler-2x", "webp-upscale-4x"]
     },
     {
       "slug": "webp-upscale-4x",
@@ -1104,7 +1122,9 @@
           "question": "¿Cuánto tiempo toma escalar un WebP a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-4x", "webp-upscale-2x", "webp-upscale-8x"]
     },
     {
       "slug": "webp-upscale-8x",
@@ -1214,7 +1234,9 @@
           "question": "¿Cuánto tiempo toma escalar un WebP a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
+      "relatedScales": ["upscale-8x", "webp-upscale-4x"]
     },
     {
       "slug": "webp-upscale-16x",
@@ -1319,7 +1341,9 @@
           "question": "¿Cuánto tiempo toma escalar un WebP a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
+      "relatedScales": ["upscale-16x", "webp-upscale-8x"]
     },
     {
       "slug": "heic-upscale-2x",
@@ -1424,7 +1448,9 @@
           "question": "¿Cuánto tiempo toma escalar un HEIC a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-heic-images", "upscale-jpeg-images"],
+      "relatedScales": ["ai-upscaler-2x", "heic-upscale-4x"]
     },
     {
       "slug": "heic-upscale-4x",
@@ -1529,7 +1555,9 @@
           "question": "¿Cuánto tiempo toma escalar un HEIC a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-heic-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-4x", "heic-upscale-2x", "heic-upscale-8x"]
     },
     {
       "slug": "heic-upscale-8x",
@@ -1629,7 +1657,9 @@
           "question": "¿Cuánto tiempo toma escalar un HEIC a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-heic-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-8x", "heic-upscale-4x"]
     },
     {
       "slug": "raw-upscale-2x",
@@ -1734,7 +1764,9 @@
           "question": "¿Cuánto tiempo toma escalar un RAW a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
+      "relatedScales": ["ai-upscaler-2x", "raw-upscale-4x"]
     },
     {
       "slug": "raw-upscale-4x",
@@ -1839,7 +1871,9 @@
           "question": "¿Cuánto tiempo toma escalar un RAW a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
+      "relatedScales": ["ai-upscaler-4x", "raw-upscale-2x", "raw-upscale-8x"]
     },
     {
       "slug": "raw-upscale-8x",
@@ -1944,7 +1978,9 @@
           "question": "¿Cuánto tiempo toma escalar un RAW a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-8x", "raw-upscale-4x", "raw-upscale-16x"]
     },
     {
       "slug": "raw-upscale-16x",
@@ -2049,7 +2085,9 @@
           "question": "¿Cuánto tiempo toma escalar un RAW a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-16x", "raw-upscale-8x"]
     },
     {
       "slug": "heic-upscale-16x",
@@ -2149,7 +2187,9 @@
           "question": "¿Cuánto tiempo toma escalar un HEIC a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-heic-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-16x", "heic-upscale-8x"]
     },
     {
       "slug": "tiff-upscale-2x",
@@ -2259,7 +2299,9 @@
           "question": "¿Cuánto tiempo toma escalar un TIFF a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-tiff-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-2x", "tiff-upscale-4x"]
     },
     {
       "slug": "tiff-upscale-4x",
@@ -2369,7 +2411,9 @@
           "question": "¿Cuánto tiempo toma escalar un TIFF a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
+      "relatedScales": ["ai-upscaler-4x", "tiff-upscale-2x", "tiff-upscale-8x"]
     },
     {
       "slug": "tiff-upscale-8x",
@@ -2474,7 +2518,9 @@
           "question": "¿Cuánto tiempo toma escalar un TIFF a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
+      "relatedScales": ["upscale-8x", "tiff-upscale-4x", "tiff-upscale-16x"]
     },
     {
       "slug": "tiff-upscale-16x",
@@ -2574,7 +2620,9 @@
           "question": "¿Cuánto tiempo toma escalar un TIFF a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
+      "relatedScales": ["upscale-16x", "tiff-upscale-8x"]
     },
     {
       "slug": "bmp-upscale-2x",
@@ -2679,7 +2727,9 @@
           "question": "¿Cuánto tiempo toma escalar un BMP a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-bmp-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-2x", "bmp-upscale-4x"]
     },
     {
       "slug": "bmp-upscale-4x",
@@ -2784,7 +2834,9 @@
           "question": "¿Cuánto tiempo toma escalar un BMP a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
+      "relatedScales": ["ai-upscaler-4x", "bmp-upscale-2x", "bmp-upscale-8x"]
     },
     {
       "slug": "bmp-upscale-8x",
@@ -2884,7 +2936,9 @@
           "question": "¿Cuánto tiempo toma escalar un BMP a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-8x", "bmp-upscale-4x", "bmp-upscale-16x"]
     },
     {
       "slug": "bmp-upscale-16x",
@@ -2979,7 +3033,9 @@
           "question": "¿Cuánto tiempo toma escalar un BMP a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
+      "relatedScales": ["upscale-16x", "bmp-upscale-8x"]
     },
     {
       "slug": "avif-upscale-2x",
@@ -3084,7 +3140,9 @@
           "question": "¿Cuánto tiempo toma escalar un AVIF a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
+      "relatedScales": ["ai-upscaler-2x", "avif-upscale-4x"]
     },
     {
       "slug": "avif-upscale-4x",
@@ -3189,7 +3247,9 @@
           "question": "¿Cuánto tiempo toma escalar un AVIF a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
+      "relatedScales": ["ai-upscaler-4x", "avif-upscale-2x", "avif-upscale-8x"]
     },
     {
       "slug": "avif-upscale-8x",
@@ -3289,7 +3349,9 @@
           "question": "¿Cuánto tiempo toma escalar un AVIF a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
+      "relatedScales": ["upscale-8x", "avif-upscale-4x", "avif-upscale-16x"]
     },
     {
       "slug": "avif-upscale-16x",
@@ -3384,7 +3446,9 @@
           "question": "¿Cuánto tiempo toma escalar un AVIF a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
+      "relatedScales": ["upscale-16x", "avif-upscale-8x"]
     },
     {
       "slug": "gif-upscale-2x",
@@ -3489,7 +3553,9 @@
           "question": "¿Cuánto tiempo toma escalar un GIF a 2X?",
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-2x", "gif-upscale-4x"]
     },
     {
       "slug": "gif-upscale-4x",
@@ -3594,7 +3660,9 @@
           "question": "¿Cuánto tiempo toma escalar un GIF a 4X?",
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
+      "relatedScales": ["ai-upscaler-4x", "gif-upscale-2x", "gif-upscale-8x"]
     },
     {
       "slug": "gif-upscale-8x",
@@ -3694,7 +3762,9 @@
           "question": "¿Cuánto tiempo toma escalar un GIF a 8X?",
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
+      "relatedScales": ["upscale-8x", "gif-upscale-4x", "gif-upscale-16x"]
     },
     {
       "slug": "gif-upscale-16x",
@@ -3789,7 +3859,9 @@
           "question": "¿Cuánto tiempo toma escalar un GIF a 16X?",
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
-      ]
+      ],
+      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
+      "relatedScales": ["upscale-16x", "gif-upscale-8x"]
     }
   ]
 }

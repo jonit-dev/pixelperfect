@@ -518,12 +518,7 @@
       "h1": "SVG Format Explained: Vector Images vs Raster Graphics",
       "intro": "SVG (Scalable Vector Graphics) is fundamentally different from raster formats like JPEG and PNG. Learn how SVG works, when to use it, and why traditional upscaling doesn't apply to vector graphics.",
       "primaryKeyword": "svg format",
-      "secondaryKeywords": [
-        "svg vs png",
-        "vector graphics",
-        "scalable images",
-        "svg upscaling"
-      ],
+      "secondaryKeywords": ["svg vs png", "vector graphics", "scalable images", "svg upscaling"],
       "lastUpdated": "2025-12-26T00:00:00Z",
       "category": "guides",
       "guideType": "explainer",
@@ -603,12 +598,7 @@
       "h1": "GIF Format Explained: Understanding Graphics and Animations",
       "intro": "GIF (Graphics Interchange Format) is best known for animations but has limitations for static images. Learn when GIF is appropriate, modern alternatives, and how to work with GIF files effectively.",
       "primaryKeyword": "gif format",
-      "secondaryKeywords": [
-        "gif vs png",
-        "gif animation",
-        "upscale gif",
-        "animated images"
-      ],
+      "secondaryKeywords": ["gif vs png", "gif animation", "upscale gif", "animated images"],
       "lastUpdated": "2025-12-26T00:00:00Z",
       "category": "guides",
       "guideType": "explainer",
@@ -724,7 +714,7 @@
         {
           "step": 5,
           "title": "AVIF for Web Performance",
-      "content": "AVIF provides significant web performance benefits.\n\n**Performance Improvements:**\n- **70% smaller files**: Faster page loads\n- **Less bandwidth**: Lower data costs and hosting\n- **Better caching**: More content fits in browser cache\n- **Faster rendering**: Smaller files decode faster\n- **Better user experience**: Especially on mobile and slow connections\n\n**Real-World Impact:**\nE-commerce site example:\n- **Before**: 50MB of product images (JPEG)\n- **After AVIF**: 15MB of product images (AVIF)\n- **Result**: 70% faster page load, 70% less bandwidth\n\n**Implementation Strategy:**\n1. **Audit current images**: Identify largest files\n2. **Convert to AVIF**: Start with high-traffic pages\n3. **Implement progressive enhancement**: AVIF → WebP → JPEG\n4. **Monitor metrics**: Track load times, bandwidth usage\n5. **Measure impact**: Compare before/after performance\n\n**CDN Considerations:**\nMany CDNs now support AVIF:\n- **Cloudinary**: Automatic format conversion\n- **CloudFront**: AVIF support added\n- **Cloudflare**: Automatic AVIF delivery\n- **Imgix**: AVIF generation on-the-fly\n\nConfigure your CDN to:\n- Serve AVIF to supported browsers\n- Provide WebP/JPEG fallbacks\n- Cache all format variants\n- Monitor format delivery statistics"
+          "content": "AVIF provides significant web performance benefits.\n\n**Performance Improvements:**\n- **70% smaller files**: Faster page loads\n- **Less bandwidth**: Lower data costs and hosting\n- **Better caching**: More content fits in browser cache\n- **Faster rendering**: Smaller files decode faster\n- **Better user experience**: Especially on mobile and slow connections\n\n**Real-World Impact:**\nE-commerce site example:\n- **Before**: 50MB of product images (JPEG)\n- **After AVIF**: 15MB of product images (AVIF)\n- **Result**: 70% faster page load, 70% less bandwidth\n\n**Implementation Strategy:**\n1. **Audit current images**: Identify largest files\n2. **Convert to AVIF**: Start with high-traffic pages\n3. **Implement progressive enhancement**: AVIF → WebP → JPEG\n4. **Monitor metrics**: Track load times, bandwidth usage\n5. **Measure impact**: Compare before/after performance\n\n**CDN Considerations:**\nMany CDNs now support AVIF:\n- **Cloudinary**: Automatic format conversion\n- **CloudFront**: AVIF support added\n- **Cloudflare**: Automatic AVIF delivery\n- **Imgix**: AVIF generation on-the-fly\n\nConfigure your CDN to:\n- Serve AVIF to supported browsers\n- Provide WebP/JPEG fallbacks\n- Cache all format variants\n- Monitor format delivery statistics"
         },
         {
           "step": 6,
@@ -768,7 +758,7 @@
     }
   ],
   "meta": {
-    "totalPages": 10,
+    "totalPages": 9,
     "lastUpdated": "2025-12-26T00:00:00Z"
   }
 }

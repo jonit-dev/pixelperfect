@@ -212,7 +212,7 @@
         }
       ],
       "relatedFormats": ["upscale-jpeg-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-4x", "jpeg-upscale-2x"]
+      "relatedScales": ["ai-upscaler-4x", "jpeg-upscale-2x", "jpeg-upscale-8x"]
     },
     {
       "slug": "png-upscale-2x",
@@ -309,10 +309,14 @@
         {
           "question": "2倍はロゴに十分ですか？",
           "answer": "多くのWeb用途に2倍は十分ですが、大きな印刷やディスプレイには4倍を検討してください。"
+        },
+        {
+          "question": "8倍に拡大したJPEGは印刷できますか？",
+          "answer": "もちろんです！8倍のアップスケーリングは大型印刷に最適です。小さなJPEGでも、プロフェッショナルな品質を保ちながらポスターやバナーサイズに拡大できます。"
         }
       ],
       "relatedFormats": ["upscale-png-images", "upscale-webp-images"],
-      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x"]
+      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x", "jpeg-upscale-16x"]
     },
     {
       "slug": "webp-upscale-2x",
@@ -404,6 +408,10 @@
         {
           "question": "WebPを印刷できますか？",
           "answer": "WebPは主にWeb形式です。印刷にはPNGまたはTIFFの使用を推奨します。"
+        },
+        {
+          "question": "16倍JPEGのアップスケーリングにはどのくらい時間がかかりますか？",
+          "answer": "16倍のアップスケーリングは、JPEGソースからAIによる強化で256倍多くのピクセルを生成する計算量が多いため、通常2〜5分かかります。"
         }
       ],
       "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
@@ -615,7 +623,7 @@
         }
       ],
       "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "jpeg-upscale-8x"]
+      "relatedScales": ["upscale-16x", "jpeg-upscale-8x", "png-upscale-8x"]
     },
     {
       "slug": "png-upscale-4x",
