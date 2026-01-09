@@ -130,12 +130,8 @@
           "answer": "Your image is too low . iPhone displays are very sharp (460 PPI on Pro modellos). ampliamento your image to match the dimensioni above."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedPages": [
-        "android-wallpaper-sizes"
-      ]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["android-wallpaper-sizes"]
     },
     {
       "slug": "android-wallpaper-sizes",
@@ -280,12 +276,8 @@
           "answer": "Tablets vary widely. Check your tablet's display in Settings > About Phone > Display. Common sizes are 2560x1600 and 2800x1752."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedPages": [
-        "iphone-wallpaper-sizes"
-      ]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes"]
     },
     {
       "slug": "desktop-wallpaper-sizes",
@@ -405,19 +397,22 @@
           "source": "1080p wallpaper",
           "target": "4K (3840x2160)",
           "ampliamento": "2x ampliamento gives exactly 4K",
-          "quality": "Good results con AI ampliamento"
+          "quality": "Good results con AI ampliamento",
+          "upscale": "2x upscaling gives exactly 4K"
         },
         {
           "source": "1440p wallpaper",
           "target": "4K (3840x2160)",
           "ampliamento": "1.5x - may need crop after ampliamento 2x",
-          "quality": "Excellent results"
+          "quality": "Excellent results",
+          "upscale": "1.5x - may need crop after upscaling 2x"
         },
         {
           "source": "720p wallpaper",
           "target": "4K (3840x2160)",
           "ampliamento": "3x ampliamento (1280 → 3840)",
-          "quality": "Acceptable, depends on source quality"
+          "quality": "Acceptable, depends on source quality",
+          "upscale": "3x upscaling (1280 → 3840)"
         }
       ],
       "faq": [
@@ -434,13 +429,8 @@
           "answer": "Usa the actual , not the 'looks like' . A 27\" iMac at 'looks like 2560x1440' actually uses 5120x2880 for wallpapers."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedPages": [
-        "iphone-wallpaper-sizes",
-        "android-wallpaper-sizes"
-      ]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes", "android-wallpaper-sizes"]
     }
   ],
   "meta": {

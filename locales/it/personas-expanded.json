@@ -149,6 +149,12 @@
           "Include usage rights and printing recommendations",
           "Maintain consistent color management throughout workflow",
           "Archive Padroneggia files in appropriate formats for future Usa"
+        ],
+        "enhancement": [
+          "Apply upscaling early in the workflow before detailed retouching",
+          "Maintain original files and work on copies for non-destructive editing",
+          "Use appropriate resolution settings for intended output medium",
+          "Test enhancement on sample images before processing entire sets"
         ]
       },
       "caseStudies": [
@@ -205,7 +211,8 @@
         "fileSize": {
           "ottimizzazione": "Balance quality with practical file sizes",
           "archival": "Preserve Padroneggia files at maximum quality",
-          "delivery": "Compress appropriately for delivery method"
+          "delivery": "Compress appropriately for delivery method",
+          "optimization": "Balance quality with practical file sizes"
         }
       },
       "automationWorkflows": {
@@ -2614,13 +2621,7 @@
         }
       ],
       "technicalSpecs": {
-        "outputFormats": [
-          "WebP",
-          "Avif",
-          "Jpeg",
-          "Png",
-          "Gif"
-        ],
+        "outputFormats": ["WebP", "Avif", "Jpeg", "Png", "Gif"],
         "ottimizzazione": {
           "compression": "Advanced compression algorithms for web ottimizzazione",
           "resizing": "Smart resizing with content-aware cropping",
@@ -2631,6 +2632,12 @@
           "fileSizes": "Optimized file sizes for fast loading",
           "loading": "Lazy load and progressive miglioramento support",
           "cdn": "CDN-optimized output with global edge caching"
+        },
+        "optimization": {
+          "compression": "Advanced compression algorithms for web optimization",
+          "resizing": "Smart resizing with content-aware cropping",
+          "colorSpace": "sRGB optimization for consistent web display",
+          "metadata": "SEO-friendly metadata and structured data generation"
         }
       },
       "faq": [

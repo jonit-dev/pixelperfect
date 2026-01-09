@@ -1,5 +1,5 @@
 {
-  "category": "photo-restoration",
+  "category": "写真修復",
   "pages": [
     {
       "slug": "old-photo-restoration-guide",
@@ -8,183 +8,128 @@
       "metaDescription": "Complete ガイド to old photo restoration. Learn to restore damaged, faded, and torn vintage photos with AI and traditional techniques. Step-by-step instructions.",
       "h1": "Old Photo Restoration: Complete ガイド",
       "intro": "Restoring old photographs preserves precious memories and family history. This comprehensive ガイド covers both traditional and AI-powered techniques for bringing damaged vintage photos back to life.",
-      "primaryKeyword": "old photo restoration",
-      "secondaryKeywords": [
-        "vintage photo repair",
-        "damaged photo restoration",
-        "family photo restoration"
-      ],
+      "primaryKeyword": "古い写真の修復",
+      "secondaryKeywords": ["ヴィンテージ写真の修復", "損傷した写真の修復", "家族写真の修復"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
-      "difficulty": "Intermediate",
-      "photoTypes": [
-        "Faded Photos",
-        "Torn Photos",
-        "Scratched Photos",
-        "Water Damaged",
-        "Creased Photos"
-      ],
+      "difficulty": "中級者",
+      "photoTypes": ["色あせた写真", "破れた写真", "傷ついた写真", "水損", "折り目のある写真"],
       "restorationProcess": [
         {
           "step": 1,
-          "name": "Assessment and Scanning",
-          "description": "Evaluate damage and create high-quality digital copies",
-          "details": "Inspect for tears, fading, stains, and physical damage. Scan at 300-600 DPI for best results."
+          "name": "評価とスキャン",
+          "description": "損傷を評価し、高品質のデジタルコピーを作成",
+          "details": "破れ、色あせ、染み、物理的損傷を検査。最高の結果のために300-600 DPIでスキャン。"
         },
         {
           "step": 2,
-          "name": "Digital Cleanup",
-          "description": "Remove dust, scratches, and basic imperfections",
-          "details": "Use healing brush tools and dust removal filters to clean up surface damage."
+          "name": "デジタルクリーニング",
+          "description": "ほこり、傷、基本的な不完全さを除去",
+          "details": "修復ブラシツールとほこり除去フィルターを使用して表面の損傷をクリーンアップ。"
         },
         {
           "step": 3,
-          "name": "Color Correction",
-          "description": "Restore faded colors and correct color casts",
-          "details": "Adjust levels, curves, and color balance to bring back natural colors."
+          "name": "色補正",
+          "description": "色あせた色を復元し、色かぶりを補正",
+          "details": "自然な色を取り戻すためにレベル、トーンカーブ、カラーバランスを調整。"
         },
         {
           "step": 4,
-          "name": "Damage Repair",
-          "description": "Fix tears, stains, and major damage",
-          "details": "Use cloning, content-aware fill, and reconstruction techniques."
+          "name": "損傷修復",
+          "description": "破れ、染み、重大な損傷を修正",
+          "details": "クローニング、コンテンツ-aware填充、再構成技法を使用。"
         },
         {
           "step": 5,
-          "name": "Enhancement and Final Touches",
-          "description": "Sharpen details and apply final improvements",
-          "details": "Subtle sharpening, noise reduction, and final adjustments."
+          "name": "強化と最終仕上げ",
+          "description": "詳細をシャープにし、最終的な改善を適用",
+          "details": "繊細なシャープ化、ノイズ低減、最終調整。"
         }
       ],
       "commonDamageTypes": [
         {
-          "damage": "Fading and Color Loss",
-          "causes": [
-            "UV exposure",
-            "Age",
-            "Chemical degradation",
-            "Poor storage"
-          ],
-          "restoration": "Color correction, levels adjustment, contrast enhancement"
+          "damage": "色あせと色の喪失",
+          "causes": ["UV露出", "経年劣化", "化学的劣化", "不適切な保管"],
+          "restoration": "色補正、レベル調整、コントラスト強調"
         },
         {
-          "damage": "Physical Tears and Rips",
-          "causes": [
-            "Handling",
-            "Age",
-            "Accidents",
-            "Poor storage"
-          ],
-          "restoration": "Content-aware fill, cloning, manual reconstruction"
+          "damage": "物理的な破れと裂け目",
+          "causes": ["取り扱い", "経年劣化", "事故", "不適切な保管"],
+          "restoration": "コンテンツ-aware填充、クローニング、手動再構成"
         },
         {
-          "damage": "Scratches and Abrasions",
-          "causes": [
-            "Dirt",
-            "Cleaning attempts",
-            "Handling",
-            "Storage"
-          ],
-          "restoration": "Healing brushes, scratch removal filters, careful cloning"
+          "damage": "傷と擦過傷",
+          "causes": ["汚れ", "清掃の試み", "取り扱い", "保管"],
+          "restoration": "修復ブラシ、傷除去フィルター、慎重なクローニング"
         },
         {
-          "damage": "Water Stains",
-          "causes": [
-            "Floods",
-            "Humidity",
-            "Spills",
-            "Water damage"
-          ],
-          "restoration": "Color correction, stain removal, selective editing"
+          "damage": "水染み",
+          "causes": ["洪水", "湿度", "こぼれ", "水損"],
+          "restoration": "色補正、染み除去、選択的編集"
         },
         {
-          "damage": "Mold and Mildew",
-          "causes": [
-            "High humidity",
-            "Poor ventilation",
-            "Water damage"
-          ],
-          "restoration": "Careful cleaning, color correction, damage reconstruction"
+          "damage": "カビと黴",
+          "causes": ["高湿度", "不適切な換気", "水損"],
+          "restoration": "慎重な清掃、色補正、損傷再構成"
         }
       ],
       "aiRestorationTools": [
         {
-          "tool": "AI-Powered Auto-Enhancement",
-          "description": "Automatically detect and correct common photo issues",
-          "features": [
-            "Color restoration",
-            "Scratch removal",
-            "Damage detection",
-            "Quality enhancement"
-          ]
+          "tool": "AI搭載自動強化",
+          "description": "一般的な写真の問題を自動的に検出して補正",
+          "features": ["色の復元", "傷の除去", "損傷検出", "品質向上"]
         },
         {
-          "tool": "Neural Network Restoration",
-          "description": "Deep learning models trained on vintage photo restoration",
-          "features": [
-            "Intelligent reconstruction",
-            "Pattern recognition",
-            "Context-aware repair"
-          ]
+          "tool": "ニューラルネットワーク修復",
+          "description": "ヴィンテージ写真修復で訓練された深層学習モデル",
+          "features": ["インテリジェントな再構成", "パターン認識", "コンテキスト-aware修復"]
         },
         {
-          "tool": "AI Colorization",
-          "description": "Add realistic colors to black and white photographs",
-          "features": [
-            "Historical accuracy",
-            "Natural color palettes",
-            "User control"
-          ]
+          "tool": "AIカラー化",
+          "description": "白黒写真にリアルな色を追加",
+          "features": ["歴史的正確性", "自然なカラーパレット", "ユーザーコントロール"]
         },
         {
-          "tool": "Automated Damage Detection",
-          "description": "AI identifies and categorizes different types of damage",
-          "features": [
-            "Damage classification",
-            "Repair suggestions",
-            "Priority assessment"
-          ]
+          "tool": "自動損傷検出",
+          "description": "AIが様々なタイプの損傷を識別して分類",
+          "features": ["損傷分類", "修復提案", "優先度評価"]
         }
       ],
       "traditionalTechniques": [
         {
-          "technique": "Cloning and Healing",
-          "description": "Manually copy good areas to cover damaged sections",
-          "useCase": "Small to medium damage, texture preservation"
+          "technique": "クローニングと修復",
+          "description": "損傷した部分を覆うために良好な領域を手動でコピー",
+          "useCase": "小〜中程度の損傷、テクスチャ保持"
         },
         {
-          "technique": "Content-Aware Fill",
-          "description": "Intelligently fill damaged areas based on surrounding content",
-          "useCase": "Complex backgrounds, natural scenes, irregular damage"
+          "technique": "コンテンツ-aware填充",
+          "description": "周囲のコンテンツに基づいて損傷した領域をインテリジェントに填充",
+          "useCase": "複雑な背景、自然なシーン、不規則な損傷"
         },
         {
-          "technique": "Frequency Separation",
-          "description": "Separate texture and color for precise restoration",
-          "useCase": "Skin tones, complex textures, subtle improvements"
+          "technique": "周波数分離",
+          "description": "精密な修復のためにテクスチャと色を分離",
+          "useCase": "肌色、複雑なテクスチャ、繊細な改善"
         },
         {
-          "technique": "Layer Masking",
-          "description": "Apply corrections selectively to specific areas",
-          "useCase": "Targeted repairs, gradual transitions, precise control"
+          "technique": "レイヤーマスキング",
+          "description": "特定の領域に選択的に補正を適用",
+          "useCase": "ターゲットを絞った修復、段階的な移行、精密なコントロール"
         }
       ],
       "equipmentNeeded": [
         {
-          "equipment": "Flatbed Scanner",
-          "specifications": "300-600 DPI, 48-bit color, transparency adapter optional",
-          "purpose": "High-quality digitization of original photos"
+          "equipment": "フラットベッドスキャナー",
+          "specifications": "300-600 DPI、48ビットカラー、オプションの透過アダプター",
+          "purpose": "オリジナル写真の高品質デジタル化"
         },
         {
-          "equipment": "Photo Editing Software",
-          "options": [
-            "Adobe Photoshop",
-            "Affinity Photo",
-            "GIMP (free)"
-          ],
-          "purpose": "Digital restoration work and editing"
+          "equipment": "写真編集ソフトウェア",
+          "options": ["Adobe Photoshop", "Affinity Photo", "GIMP（無料）"],
+          "purpose": "デジタル修復作業と編集"
         },
         {
-          "equipment": "Graphics Tablet",
+          "equipment": "グラフィックタブレット",
           "specifications": "Pressure-sensitive, medium size",
           "purpose": "Precise control for detailed restoration work"
         },
@@ -222,14 +167,8 @@
           "answer": "Colorization is optional and depends on your goals. It can make photos more engaging but may lose historical authenticity. Consider keeping both versions."
         }
       ],
-      "relatedTools": [
-        "ai-photo-restorer",
-        "old-photo-enhancer"
-      ],
-      "relatedPages": [
-        "vintage-photo-colorization",
-        "family-photo-preservation"
-      ]
+      "relatedTools": ["ai-photo-restorer", "old-photo-enhancer"],
+      "relatedPages": ["vintage-photo-colorization", "family-photo-preservation"]
     },
     {
       "slug": "vintage-photo-colorization",
@@ -276,11 +215,7 @@
         {
           "consideration": "Natural vs. Artificial Lighting",
           "description": "Account for lighting conditions when applying colors",
-          "effects": [
-            "Warm indoor lighting",
-            "Cool daylight",
-            "Mixed lighting conditions"
-          ]
+          "effects": ["Warm indoor lighting", "Cool daylight", "Mixed lighting conditions"]
         }
       ],
       "aiColorizationTools": [
@@ -292,39 +227,19 @@
             "Natural color palettes",
             "Historical learning"
           ],
-          "bestFor": [
-            "Quick results",
-            "Natural scenes",
-            "General colorization"
-          ]
+          "bestFor": ["Quick results", "Natural scenes", "General colorization"]
         },
         {
           "tool": "GAN-Based Colorization",
           "description": "Generative adversarial networks for realistic color generation",
-          "features": [
-            "Highly realistic results",
-            "Texture awareness",
-            "Context understanding"
-          ],
-          "bestFor": [
-            "Professional results",
-            "Complex scenes",
-            "High-quality output"
-          ]
+          "features": ["Highly realistic results", "Texture awareness", "Context understanding"],
+          "bestFor": ["Professional results", "Complex scenes", "High-quality output"]
         },
         {
           "tool": "Reference-Based Colorization",
           "description": "Use reference images to guide color choices",
-          "features": [
-            "User control",
-            "Reference matching",
-            "Color consistency"
-          ],
-          "bestFor": [
-            "Historical accuracy",
-            "Specific requirements",
-            "Artistic control"
-          ]
+          "features": ["User control", "Reference matching", "Color consistency"],
+          "bestFor": ["Historical accuracy", "Specific requirements", "Artistic control"]
         }
       ],
       "manualColorizationProcess": [
@@ -332,11 +247,7 @@
           "step": 1,
           "name": "Research and Planning",
           "description": "Research historical colors and plan color scheme",
-          "actions": [
-            "Study era-appropriate colors",
-            "Find reference images",
-            "Plan color palette"
-          ]
+          "actions": ["Study era-appropriate colors", "Find reference images", "Plan color palette"]
         },
         {
           "step": 2,
@@ -370,202 +281,123 @@
         },
         {
           "step": 5,
-          "name": "Environmental Colors",
-          "description": "Colorize background and environmental elements",
-          "actions": [
-            "Natural elements",
-            "Architecture",
-            "Lighting effects"
-          ]
+          "name": "環境の色",
+          "description": "背景と環境要素に色を付ける",
+          "actions": ["自然要素", "建築", "照明効果"]
         },
         {
           "step": 6,
-          "name": "Integration and Blending",
-          "description": "Blend colors naturally and adjust overall harmony",
-          "actions": [
-            "Adjust color harmony",
-            "Add lighting effects",
-            "Fine-tune saturation"
-          ]
+          "name": "統合とブレンド",
+          "description": "色を自然にブレンドし、全体的な調和を調整",
+          "actions": ["色の調和を調整", "照明効果を追加", "彩度を微調整"]
         }
       ],
       "colorizationChallenges": [
         {
-          "challenge": "Skin Tones",
-          "difficulties": [
-            "Historical variations",
-            "Lighting conditions",
-            "Age effects",
-            "Ethnic accuracy"
-          ],
-          "solutions": [
-            "Reference photos",
-            "Multiple color layers",
-            "Subtle variations"
-          ]
+          "challenge": "肌色",
+          "difficulties": ["歴史的変動", "照明条件", "経年による影響", "民族的正確性"],
+          "solutions": ["参照写真", "複数のカラーレイヤー", "繊細な変化"]
         },
         {
-          "challenge": "Clothing Colors",
-          "difficulties": [
-            "Unknown original colors",
-            "Period accuracy",
-            "Fabric materials",
-            "Social status indicators"
-          ],
-          "solutions": [
-            "Historical research",
-            "Reference fashion",
-            "Probable color choices"
-          ]
+          "challenge": "衣服の色",
+          "difficulties": ["元の色が不明", "時代の正確性", "布地素材", "社会的地位の指標"],
+          "solutions": ["歴史的調査", "ファッションの参考", "妥当な色の選択"]
         },
         {
-          "challenge": "Environmental Colors",
-          "difficulties": [
-            "Natural elements",
-            "Architecture",
-            "Unknown locations",
-            "Lighting effects"
-          ],
-          "solutions": [
-            "Location research",
-            "Natural color palettes",
-            "Lighting consistency"
-          ]
+          "challenge": "環境の色",
+          "difficulties": ["自然要素", "建築", "不明な場所", "照明効果"],
+          "solutions": ["場所の調査", "自然なカラーパレット", "照明の一貫性"]
         }
       ],
       "technicalTechniques": [
         {
-          "technique": "Color Fill Layers",
-          "description": "Use separate layers for each color category",
-          "benefits": [
-            "Easy adjustments",
-            "Non-destructive editing",
-            "Fine control"
-          ]
+          "technique": "カラーフィルレイヤー",
+          "description": "各色カテゴリーに別々のレイヤーを使用",
+          "benefits": ["簡単な調整", "非破壊編集", "精密なコントロール"]
         },
         {
-          "technique": "Gradient Mapping",
-          "description": "Map grayscale values to color gradients",
-          "benefits": [
-            "Natural transitions",
-            "Consistent colors",
-            "Quick results"
-          ]
+          "technique": "グラデーションマッピング",
+          "description": "グレースケール値をカラーグラデーションにマッピング",
+          "benefits": ["自然な移行", "一貫した色", "迅速な結果"]
         },
         {
-          "technique": "Blending Modes",
-          "description": "Use various blending modes for natural color integration",
-          "benefits": [
-            "Realistic mixing",
-            "Texture preservation",
-            "Subtle effects"
-          ]
+          "technique": "ブレンドモード",
+          "description": "自然な色統合のために様々なブレンドモードを使用",
+          "benefits": ["リアルな混合", "テクスチャ保持", "繊細な効果"]
         },
         {
-          "technique": "Masking Techniques",
-          "description": "Precisely control where colors are applied",
-          "benefits": [
-            "Sharp edges",
-            "Selective coloring",
-            "Detailed control"
-          ]
+          "technique": "マスキング技法",
+          "description": "色を適用する場所を精密にコントロール",
+          "benefits": ["鮮明なエッジ", "選択的な着色", "詳細なコントロール"]
         }
       ],
       "historicalPeriods": [
         {
-          "period": "Victorian Era (1837-1901)",
-          "characteristics": [
-            "Sepia tones",
-            "Formal clothing",
-            "Dark rich colors",
-            "Natural dyes"
-          ],
+          "period": "ヴィクトリア朝（1837-1901）",
+          "characteristics": ["セピア調", "フォーマルな衣服", "暗く豊かな色", "自然染料"],
+          "commonColors": ["茶色", "暗赤色", "濃い青色", "土色調"]
+        },
+        {
+          "period": "20世紀初頭（1900-1920）",
+          "characteristics": ["カラー写真の始まり", "アールヌーボーの影響", "産業色"],
           "commonColors": [
-            "Browns",
-            "Dark reds",
-            "Deep blues",
-            "Earthy tones"
+            "抑制された色調",
+            "登場した合成染料",
+            "産業灰色",
+            "柔らかいパステルカラー"
           ]
         },
         {
-          "period": "Early 20th Century (1900-1920)",
-          "characteristics": [
-            "Beginning of color photography",
-            "Art nouveau influences",
-            "Industrial colors"
-          ],
+          "period": "1920年代〜1940年代",
+          "characteristics": ["アールデコの大胆さ", "経済的制約", "ハリウッドの影響"],
           "commonColors": [
-            "Muted tones",
-            "Emerging synthetic dyes",
-            "Industrial grays",
-            "Soft pastels"
+            "大胆なコントラスト",
+            "モノクロの優雅さ",
+            "登場したカラーフィルム",
+            "戦時中の退屈な色"
           ]
         },
         {
-          "period": "1920s-1940s",
-          "characteristics": [
-            "Art deco boldness",
-            "Economic constraints",
-            "Hollywood influence"
-          ],
+          "period": "1950年代〜1970年代",
+          "characteristics": ["ミッドセンチュリーモダン", "鮮やかな色", "ポップカルチャーの影響"],
           "commonColors": [
-            "Bold contrasts",
-            "Monochrome elegance",
-            "Emerging color films",
-            "War-time drabness"
-          ]
-        },
-        {
-          "period": "1950s-1970s",
-          "characteristics": [
-            "Mid-century modern",
-            "Vibrant colors",
-            "Pop culture influence"
-          ],
-          "commonColors": [
-            "Bright primaries",
-            "Pastel trends",
-            "Earth tones revival",
-            "Psychedelic colors"
+            "明るい原色",
+            "パステルトレンド",
+            "アーストーンの復活",
+            "サイケデリックカラー"
           ]
         }
       ],
       "bestPractices": [
-        "Research historical accuracy for the photo's time period",
-        "Use reference photos from the same era when possible",
-        "Start with AI colorization, then refine manually for best results",
-        "Preserve the original black and white version",
-        "Consider the photo's context and social setting"
+        "写真の時代の歴史的正確性を調査する",
+        "可能な場合は同時代の参照写真を使用する",
+        "最高の結果のためにAIカラー化から始めて、手動で修正する",
+        "オリジナルの白黒バージョンを保持する",
+        "写真の文脈と社会的設定を考慮する"
       ],
       "commonMistakes": [
-        "Using modern, anachronistic colors",
-        "Over-saturating colors for dramatic effect",
-        "Not considering lighting and environmental conditions",
-        "Ignoring historical context and social status indicators",
-        "Making all colors equally vibrant without considering age and wear"
+        "現代的で時代錯誤の色を使用する",
+        "劇的な効果のために彩度を上げすぎる",
+        "照明と環境条件を考慮しない",
+        "歴史的文脈と社会的地位の指標を無視する",
+        "経年と摩耗を考慮せずにすべての色を等しく鮮やかにする"
       ],
       "faq": [
         {
-          "question": "Can AI colorization be historically accurate?",
+          "question": "AIカラー化は歴史的に正確ですか？",
           "answer": "AI colorization has improved dramatically but may not always be historically accurate. Use it as a 開始ing point, then research and adjust for historical accuracy."
         },
         {
-          "question": "Should I colorize every old photo I find?",
-          "answer": "Not necessarily. Some photos may be more powerful in black and white. Consider the photo's emotional impact and historical significance before colorizing."
+          "question": "見つけた古い写真すべてをカラー化すべきですか？",
+          "answer": "必ずしもそうではありません。一部の写真は白黒の方が力強い場合があります。カラー化する前に、写真の感情的な影響と歴史的意義を考慮してください。"
         },
         {
           "question": "How do I know what colors to use for clothing?",
           "answer": "Research fashion from the specific era, consider social status and occasion, and look for similar period photographs with known colors."
         }
       ],
-      "relatedTools": [
-        "ai-photo-colorizer",
-        "vintage-photo-editor"
-      ],
-      "relatedPages": [
-        "old-photo-restoration",
-        "historical-photo-preservation"
-      ]
+      "relatedTools": ["ai-photo-colorizer", "vintage-photo-editor"],
+      "relatedPages": ["old-photo-restoration", "historical-photo-preservation"]
     },
     {
       "slug": "damaged-photo-repair",
@@ -595,47 +427,27 @@
         {
           "phase": "Assessment",
           "description": "Thoroughly evaluate damage type and severity",
-          "actions": [
-            "Document all damage",
-            "Prioritize repairs",
-            "Plan restoration approach"
-          ]
+          "actions": ["Document all damage", "Prioritize repairs", "Plan restoration approach"]
         },
         {
           "phase": "Stabilization",
           "description": "Stabilize the photo and prevent further damage",
-          "actions": [
-            "Gentle cleaning",
-            "Flattening",
-            "Environmental control"
-          ]
+          "actions": ["Gentle cleaning", "Flattening", "Environmental control"]
         },
         {
           "phase": "Digitization",
           "description": "Create high-quality digital copies for repair work",
-          "actions": [
-            "High-resolution scanning",
-            "Multiple passes",
-            "Format selection"
-          ]
+          "actions": ["High-resolution scanning", "Multiple passes", "Format selection"]
         },
         {
           "phase": "Digital Repair",
           "description": "Repair damage using digital tools and techniques",
-          "actions": [
-            "Structural repairs",
-            "Color correction",
-            "Detail restoration"
-          ]
+          "actions": ["Structural repairs", "Color correction", "Detail restoration"]
         },
         {
           "phase": "Enhancement",
           "description": "Enhance and finalize the restored image",
-          "actions": [
-            "Sharpening",
-            "Color balance",
-            "Final adjustments"
-          ]
+          "actions": ["Sharpening", "Color balance", "Final adjustments"]
         }
       ],
       "specificRepairTechniques": [
@@ -645,12 +457,7 @@
             {
               "method": "Digital Reconstruction",
               "description": "Reconstruct missing areas using surrounding content",
-              "steps": [
-                "Align pieces",
-                "Clone matching areas",
-                "Blend edges",
-                "Rebuild details"
-              ]
+              "steps": ["Align pieces", "Clone matching areas", "Blend edges", "Rebuild details"]
             },
             {
               "method": "Content-Aware Fill",
@@ -665,12 +472,7 @@
             {
               "method": "Layered Assembly",
               "description": "Digitally assemble torn pieces like a puzzle",
-              "steps": [
-                "Separate pieces",
-                "Align edges",
-                "Blend seams",
-                "Smooth transitions"
-              ]
+              "steps": ["Separate pieces", "Align edges", "Blend seams", "Smooth transitions"]
             }
           ]
         },
@@ -738,43 +540,43 @@
               "steps": [
                 "Rebuild surface texture",
                 "Add appropriate grain",
-                "Match original finish",
-                "Blend naturally"
+                "オリジナルの仕上がりに合わせる",
+                "自然にブレンド"
               ]
             }
           ]
         },
         {
-          "damage": "Fading and Color Loss",
+          "damage": "色あせと色の喪失",
           "techniques": [
             {
-              "method": "Levels Adjustment",
-              "description": "Restore contrast and tonal range",
+              "method": "レベル調整",
+              "description": "コントラストとトーンレンジを復元",
               "steps": [
-                "Analyze histogram",
-                "Adjust black/white points",
-                "Fine-tune midtones",
-                "Check clipping"
+                "ヒストグラムを分析",
+                "黒/白ポイントを調整",
+                "中間調を微調整",
+                "クリッピングをチェック"
               ]
             },
             {
-              "method": "Color Balance",
-              "description": "Correct color casts and restore natural colors",
+              "method": "カラーバランス",
+              "description": "色かぶりを補正し自然な色を復元",
               "steps": [
-                "Identify color casts",
-                "Adjust color channels",
-                "Fine-tune balance",
-                "Preserve skin tones"
+                "色かぶりを識別",
+                "カラーチャンネルを調整",
+                "バランスを微調整",
+                "肌色を保持"
               ]
             },
             {
-              "method": "Selective Enhancement",
-              "description": "Target specific areas for color restoration",
+              "method": "選択的強化",
+              "description": "色復元のために特定の領域をターゲット",
               "steps": [
-                "Create adjustment masks",
-                "Apply local corrections",
-                "Blend edges",
-                "Review results"
+                "調整マスクを作成",
+                "ローカル補正を適用",
+                "エッジをブレンド",
+                "結果をレビュー"
               ]
             }
           ]
@@ -782,124 +584,84 @@
       ],
       "advancedRepairTools": [
         {
-          "tool": "Photoshop Restoration Tools",
-          "features": [
-            "Content-Aware Fill",
-            "Healing Brushes",
-            "Clone Stamp",
-            "Patch Tool"
-          ],
-          "bestFor": [
-            "Professional restoration",
-            "Complex damage",
-            "Precise control"
-          ]
+          "tool": "Photoshop修復ツール",
+          "features": ["コンテンツ-aware填充", "修復ブラシ", "クローンスタンプ", "パッチツール"],
+          "bestFor": ["プロフェッショナルな修復", "複雑な損傷", "精密なコントロール"]
         },
         {
-          "tool": "AI-Powered Repair",
-          "features": [
-            "Automatic damage detection",
-            "Intelligent reconstruction",
-            "Pattern recognition"
-          ],
-          "bestFor": [
-            "Quick repairs",
-            "Complex patterns",
-            "Large damaged areas"
-          ]
+          "tool": "AI搭載修復",
+          "features": ["自動損傷検出", "インテリジェントな再構成", "パターン認識"],
+          "bestFor": ["迅速な修復", "複雑なパターン", "広い損傷領域"]
         },
         {
-          "tool": "Specialized Restoration Software",
-          "features": [
-            "Dedicated repair tools",
-            "Historical presets",
-            "Batch processing"
-          ],
-          "bestFor": [
-            "Vintage photos",
-            "Consistent results",
-            "Workflow efficiency"
-          ]
+          "tool": "専用修復ソフトウェア",
+          "features": ["専用修復ツール", "歴史的プリセット", "バッチ処理"],
+          "bestFor": ["ヴィンテージ写真", "一貫性のある結果", "ワークフロー効率"]
         }
       ],
       "preventionMethods": [
         {
-          "method": "Proper Storage",
-          "description": "Store photos in appropriate conditions to prevent future damage",
-          "guidelines": [
-            "Temperature control",
-            "Humidity management",
-            "UV protection",
-            "Acid-free materials"
-          ]
+          "method": "適切な保管",
+          "description": "将来の損傷を防ぐために適切な条件で写真を保管",
+          "guidelines": ["温度管理", "湿度管理", "UV保護", "酸-free素材"]
         },
         {
-          "method": "Handling Procedures",
-          "description": "Handle photos carefully to prevent new damage",
-          "guidelines": [
-            "Clean hands",
-            "Support backing",
-            "Avoid bending",
-            "Use cotton gloves"
-          ]
+          "method": "取り扱い手順",
+          "description": "新しい損傷を防ぐために注意深く写真を取り扱う",
+          "guidelines": ["清潔な手", "サポート裏打ち", "曲げないようにする", "綿手袋を使用"]
         },
         {
-          "method": "Display Protection",
-          "description": "Protect displayed photos from environmental damage",
-          "guidelines": [
-            "UV-filtering glass",
-            "Proper framing",
-            "Avoid direct sunlight",
-            "Climate control"
-          ]
+          "method": "ディスプレイ保護",
+          "description": "環境による損傷から展示された写真を保護",
+          "guidelines": ["UVフィルターガラス", "適切なフレーミング", "直射日光を避ける", "気候管理"]
         }
       ],
       "professionalTips": [
         {
-          "tip": "Work Non-Destructively",
-          "description": "Always use layers and adjustment layers for reversibility"
+          "tip": "非破壊的に作業する",
+          "description": "常に可逆性のためにレイヤーと調整レイヤーを使用"
         },
         {
-          "tip": "Maintain Authenticity",
-          "description": "Preserve the photo's original character and age indicators"
+          "tip": "真正性を維持する",
+          "description": "写真のオリジナルの特徴と経年指標を保持"
         },
         {
-          "tip": "Document Changes",
-          "description": "Keep before/after comparisons and document restoration steps"
+          "tip": "変更を文書化する",
+          "description": "ビフォーアフターの比較を保持し、修復手順を文書化"
         },
         {
-          "tip": "Use Reference Images",
-          "description": "Find similar photos for reference when reconstructing damaged areas"
+          "tip": "参照画像を使用する",
+          "description": "損傷領域を再構成する際に参照のために類似の写真を見つける"
         }
       ],
       "bestPractices": [
-        "Assess damage thoroughly before beginning repairs",
-        "Use the gentlest effective repair method",
-        "Work from large areas to small details",
-        "Regularly step back to assess overall progress",
-        "Maintain historical accuracy and authenticity"
+        "修復を開始する前に損傷を徹底的に評価する",
+        "最も穏やかな有効な修復方法を使用する",
+        "広い領域から小さな詳細へと作業する",
+        "全体的な進捗を評価するために定期的に一歩下がって見る",
+        "歴史的正確性と真正性を維持する"
       ],
       "commonChallenges": [
         {
-          "challenge": "Large Missing Areas",
-          "solution": "Use multiple reference sources and reconstruction techniques"
+          "challenge": "広範な欠落領域",
+          "solution": "複数の参照ソースと再構成技法を使用"
         },
         {
-          "challenge": "Complex Patterns",
-          "solution": "Use content-aware tools and manual reconstruction for accuracy"
+          "challenge": "複雑なパターン",
+          "solution": "正確性のためにコンテンツ-awareツールと手動再構成を使用"
         },
         {
-          "challenge": "Color Restoration",
-          "solution": "Combine automatic tools with manual fine-tuning for natural results"
+          "challenge": "色の復元",
+          "solution": "自然な結果のために自動ツールと手動微調整を組み合わせる"
         },
         {
-          "challenge": "Texture Matching",
-          "solution": "Use frequency separation and careful blending for texture consistency"
+          "challenge": "テクスチャマッチング",
+          "solution": "テクスチャの一貫性のために周波数分離と慎重なブレンドを使用"
         }
       ],
       "faq": [
         {
-          "question": "Can severely damaged photos be fully restored?",
+          "question": "深刻に損傷した写真は完全に修復できますか？",
           "answer": "While some damage may be permanent, most photos can be significantly improved. Modern AI ツール have expanded restoration possibilities dramatically."
         },
         {
@@ -911,37 +673,22 @@
           "answer": "Minor damage can often be repAIred at home with practice. For valuable or severely damaged photos, consider プロフェッショナル restoration to avoid further damage."
         }
       ],
-      "relatedTools": [
-        "photo-damage-repairer",
-        "professional-restoration-suite"
-      ],
-      "relatedPages": [
-        "old-photo-restoration",
-        "photo-conservation-methods"
-      ]
+      "relatedTools": ["photo-damage-repairer", "professional-restoration-suite"],
+      "relatedPages": ["old-photo-restoration", "photo-conservation-methods"]
     },
     {
       "slug": "photo-conservation-methods",
-      "title": "Photo Conservation: Preservation Methods",
-      "metaTitle": "Photo Conservation: Preservation Methods | MyImageUpscaler",
+      "title": "写真保存：保存方法",
+      "metaTitle": "写真保存：保存方法 | MyImageUpscaler",
       "metaDescription": "Complete ガイド to photo conservation. Learn proper photo storage, preservation methods, environmental control, and archival techniques to protect photographs for future generations.",
       "h1": "Photo Conservation: Complete Preservation ガイド",
       "intro": "Proper photo conservation protects precious memories for future generations. This comprehensive ガイド covers archival-品質 storage methods, environmental control, and preservation techniques for both physical and digital photographs.",
-      "primaryKeyword": "photo conservation",
-      "secondaryKeywords": [
-        "photo preservation methods",
-        "archival photo storage",
-        "photograph conservation"
-      ],
+      "primaryKeyword": "写真保存",
+      "secondaryKeywords": ["写真保存方法", "アーカイブ写真保管", "写真保存"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
-      "focus": "Prevention and long-term preservation",
-      "conservationTypes": [
-        "Physical Conservation",
-        "Digital Preservation",
-        "Environmental Control",
-        "Handling Procedures"
-      ],
+      "focus": "予防と長期保存",
+      "conservationTypes": ["物理的保存", "デジタル保存", "環境管理", "Handling Procedures"],
       "physicalConservation": [
         {
           "aspect": "Storage Materials",
@@ -967,12 +714,7 @@
             "light": "No direct sunlight, minimal UV exposure",
             "airQuality": "Clean, filtered air, no pollutants"
           },
-          "monitoring": [
-            "Hygrometers",
-            "Thermometers",
-            "Light meters",
-            "Regular inspections"
-          ]
+          "monitoring": ["Hygrometers", "Thermometers", "Light meters", "Regular inspections"]
         },
         {
           "aspect": "Display Considerations",
@@ -1038,46 +780,18 @@
       "conservationSupplies": [
         {
           "supply": "Archival Sleeves",
-          "types": [
-            "Polypropylene",
-            "Polyester",
-            "Polyethylene"
-          ],
-          "features": [
-            "Acid-free",
-            "No PVC",
-            "Static-free",
-            "Chemically stable"
-          ]
+          "types": ["Polypropylene", "Polyester", "Polyethylene"],
+          "features": ["Acid-free", "No PVC", "Static-free", "Chemically stable"]
         },
         {
           "supply": "Storage Boxes",
-          "types": [
-            "Conservation boxes",
-            "Archival corrugated",
-            "Metal enclosures"
-          ],
-          "features": [
-            "Acid-free",
-            "pH-neutral",
-            "Light-tight",
-            "Moisture resistant"
-          ]
+          "types": ["Conservation boxes", "Archival corrugated", "Metal enclosures"],
+          "features": ["Acid-free", "pH-neutral", "Light-tight", "Moisture resistant"]
         },
         {
           "supply": "Monitoring Equipment",
-          "types": [
-            "Hygrometers",
-            "Thermometers",
-            "Light meters",
-            "pH testing strips"
-          ],
-          "features": [
-            "Calibrated accuracy",
-            "Data logging",
-            "Alarm functions",
-            "Portability"
-          ]
+          "types": ["Hygrometers", "Thermometers", "Light meters", "pH testing strips"],
+          "features": ["Calibrated accuracy", "Data logging", "Alarm functions", "Portability"]
         }
       ],
       "conservationLevels": [
@@ -1107,116 +821,62 @@
           "requirements": [
             "Conservator consultation",
             "Custom enclosures",
-            "Climate control systems",
-            "Professional documentation"
+            "気候管理システム",
+            "プロフェッショナルな文書化"
           ]
         }
       ],
       "threatAssessment": [
         {
-          "threat": "Environmental",
-          "risks": [
-            "Temperature fluctuations",
-            "High humidity",
-            "Light exposure",
-            "Air pollution"
-          ],
-          "mitigation": [
-            "Climate control",
-            "UV protection",
-            "Air filtration",
-            "Regular monitoring"
-          ]
+          "threat": "環境",
+          "risks": ["温度変動", "高湿度", "光暴露", "大気汚染"],
+          "mitigation": ["気候管理", "UV保護", "空気ろ過", "定期的な監視"]
         },
         {
-          "threat": "Biological",
-          "risks": [
-            "Mold growth",
-            "Insect damage",
-            "Bacterial growth"
-          ],
-          "mitigation": [
-            "Humidity control",
-            "Regular inspection",
-            "Clean storage",
-            "Prompt treatment"
-          ]
+          "threat": "生物",
+          "risks": ["カビの成長", "虫害", "細菌の成長"],
+          "mitigation": ["湿度管理", "定期的な検査", "清潔な保管", "迅速な処理"]
         },
         {
-          "threat": "Mechanical",
-          "risks": [
-            "Physical damage",
-            "Handling stress",
-            "Improper storage",
-            "Accidents"
-          ],
-          "mitigation": [
-            "Proper handling",
-            "Supportive storage",
-            "Protective enclosures",
-            "Careful access"
-          ]
+          "threat": "機械的",
+          "risks": ["物理的損傷", "取り扱いストレス", "不適切な保管", "事故"],
+          "mitigation": ["適切な取り扱い", "支持的保管", "保護用エンクロージャー", "慎重なアクセス"]
         },
         {
-          "threat": "Chemical",
-          "risks": [
-            "Acid migration",
-            "Pollutants",
-            "Improper materials",
-            "Deterioration"
-          ],
-          "mitigation": [
-            "Archival materials",
-            "Isolation from pollutants",
-            "Regular testing",
-            "Material selection"
-          ]
+          "threat": "化学的",
+          "risks": ["酸の移行", "汚染物質", "不適切な素材", "劣化"],
+          "mitigation": ["アーカイブ素材", "汚染物質からの隔離", "定期的なテスト", "素材の選択"]
         }
       ],
       "conservationSchedule": [
         {
-          "frequency": "Daily",
-          "tasks": [
-            "Monitor environmental conditions",
-            "Check for immediate threats"
-          ]
+          "frequency": "毎日",
+          "tasks": ["環境条件を監視", "即時の脅威をチェック"]
         },
         {
-          "frequency": "Monthly",
-          "tasks": [
-            "Visual inspection",
-            "Environmental data review",
-            "Clean storage areas"
-          ]
+          "frequency": "毎月",
+          "tasks": ["視覚的検査", "環境データのレビュー", "保管エリアの清掃"]
         },
         {
-          "frequency": "Quarterly",
-          "tasks": [
-            "Detailed photo inspection",
-            "Backup verification",
-            "Supply condition check"
-          ]
+          "frequency": "四半期ごと",
+          "tasks": ["詳細な写真検査", "バックアップ検証", "サプライ状態チェック"]
         },
         {
-          "frequency": "Annually",
-          "tasks": [
-            "Professional assessment",
-            "Comprehensive inventory",
-            "Long-term planning review"
-          ]
+          "frequency": "毎年",
+          "tasks": ["プロフェッショナルな評価", "包括的なインベントリー", "長期計画のレビュー"]
         }
       ],
       "professionalResources": [
         {
-          "resource": "Conservation Organizations",
+          "resource": "保存組織",
           "examples": [
             "American Institute for Conservation",
             "Society of American Archivists",
-            "Photo Conservators Group"
+            "写真保存専門家グループ"
           ]
         },
         {
-          "resource": "Suppliers",
+          "resource": "サプライヤー",
           "examples": [
             "Gaylord Archival",
             "Light Impressions",
@@ -1225,44 +885,38 @@
           ]
         },
         {
-          "resource": "Educational Resources",
+          "resource": "教育リソース",
           "examples": [
-            "Conservation workshops",
-            "Online courses",
-            "Publications",
-            "Professional networks"
+            "保存ワークショップ",
+            "オンラインコース",
+            "出版物",
+            "プロフェッショナルネットワーク"
           ]
         }
       ],
       "bestPractices": [
-        "Establish conservation standards based on photo value and importance",
-        "Implement monitoring systems for environmental conditions",
-        "Create detailed documentation and inventories",
-        "Plan for long-term digital preservation",
-        "Regularly review and update conservation procedures"
+        "写真の価値と重要性に基づいて保存基準を確立する",
+        "環境条件のために監視システムを実装する",
+        "詳細な文書とインベントリーを作成する",
+        "長期デジタル保存を計画する",
+        "定期的に保存手順をレビューして更新する"
       ],
       "faq": [
         {
-          "question": "How long can properly conserved photos last?",
-          "answer": "With proper conservation, modern photographs can last 100-200+ years. Historical photos can be preserved for many more decades with appropriate care."
+          "question": "適切に保存された写真はどれくらい持ちますか？",
+          "answer": "適切な保存により、現代の写真は100〜200年以上持続できます。歴史的写真は適切なケアでさらに数十年間保存できます。"
         },
         {
-          "question": "What's the biggest threat to photo collections?",
-          "answer": "Environmental factors, especially temperature and humidity fluctuations, are typically the biggest threats. Improper storage materials and handling are also significant risks."
+          "question": "写真コレクションの最大の脅威は何ですか？",
+          "answer": "環境要因、特に温度と湿度の変動は、通常、最大の脅威です。不適切な保管素材と取り扱いも重大なリスクです。"
         },
         {
-          "question": "Should I digitize all my photos for conservation?",
-          "answer": "Digitization is essential for digital preservation but doesn't replace physical conservation. Use both approaches for comprehensive protection."
+          "question": "保存のためにすべての写真をデジタル化すべきですか？",
+          "answer": "デジタル化はデジタル保存に不可欠ですが、物理的保存には代わりません。包括的な保護のために両方のアプローチを使用してください。"
         }
       ],
-      "relatedTools": [
-        "photo-conservation-tracker",
-        "archival-storage-manager"
-      ],
-      "relatedPages": [
-        "old-photo-restoration",
-        "museum-quality-preservation"
-      ]
+      "relatedTools": ["photo-conservation-tracker", "archival-storage-manager"],
+      "relatedPages": ["old-photo-restoration", "museum-quality-preservation"]
     },
     {
       "slug": "family-photo-preservation",
@@ -1271,33 +925,24 @@
       "metaDescription": "Complete ガイド to family photo preservation. Learn to organize, restore, digitize, and preserve family photos and photo albums for future generations.",
       "h1": "Family Photo Preservation: Complete ガイド",
       "intro": "Family photos capture irreplaceable memories and connections to our past. This comprehensive ガイド helps you preserve, organize, and share your family's photographic heritage for future generations.",
-      "primaryKeyword": "family photo preservation",
-      "secondaryKeywords": [
-        "family photo organization",
-        "photo album preservation",
-        "family history photos"
-      ],
+      "primaryKeyword": "家族写真の保存",
+      "secondaryKeywords": ["家族写真の整理", "フォトアルバムの保存", "家族史の写真"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
-      "focus": "Family heritage and genealogy",
+      "focus": "家族の遺産と系図",
       "preservationStages": [
         {
-          "stage": "Collection and Assessment",
-          "description": "Gather and evaluate all family photos",
-          "actions": [
-            "Locate all photos",
-            "Assess condition",
-            "Identify people",
-            "Date and context"
-          ]
+          "stage": "収集と評価",
+          "description": "すべての家族写真を集めて評価する",
+          "actions": ["すべての写真を特定", "状態を評価", "人物を識別", "日付と文脈"]
         },
         {
-          "stage": "Organization and Documentation",
-          "description": "Systematically organize and document the collection",
+          "stage": "整理と文書化",
+          "description": "コレクションを体系的に整理して文書化する",
           "actions": [
-            "Create inventory",
-            "Label photos",
-            "Record stories",
+            "インベントリーを作成",
+            "写真にラベルを付ける",
+            "ストーリーを記録",
             "Family input"
           ]
         },
@@ -1319,57 +964,24 @@
         {
           "stage": "Sharing and Education",
           "description": "Share preserved photos with family members",
-          "actions": [
-            "Family albums",
-            "Digital galleries",
-            "Story telling",
-            "Educational context"
-          ]
+          "actions": ["Family albums", "Digital galleries", "Story telling", "Educational context"]
         }
       ],
       "photoTypes": [
         {
           "type": "19th Century Photos",
-          "characteristics": [
-            "Daguerreotypes",
-            "Tintypes",
-            "Early paper prints",
-            "Hand coloring"
-          ],
-          "challenges": [
-            "Fragile materials",
-            "Unique processes",
-            "Specialized conservation needs"
-          ]
+          "characteristics": ["Daguerreotypes", "Tintypes", "Early paper prints", "Hand coloring"],
+          "challenges": ["Fragile materials", "Unique processes", "Specialized conservation needs"]
         },
         {
           "type": "Early 20th Century",
-          "characteristics": [
-            "Postcards",
-            "Cabinet cards",
-            "Early snapshots",
-            "Albumen prints"
-          ],
-          "challenges": [
-            "Acidic paper",
-            "Fading",
-            "Album damage",
-            "Poor storage"
-          ]
+          "characteristics": ["Postcards", "Cabinet cards", "Early snapshots", "Albumen prints"],
+          "challenges": ["Acidic paper", "Fading", "Album damage", "Poor storage"]
         },
         {
           "type": "Mid-20th Century",
-          "characteristics": [
-            "35mm snapshots",
-            "Color photos",
-            "Instant photos",
-            "Photo albums"
-          ],
-          "challenges": [
-            "Color fading",
-            "Plastic deterioration",
-            "Magnetic album damage"
-          ]
+          "characteristics": ["35mm snapshots", "Color photos", "Instant photos", "Photo albums"],
+          "challenges": ["Color fading", "Plastic deterioration", "Magnetic album damage"]
         },
         {
           "type": "Modern Digital Photos",
@@ -1379,52 +991,32 @@
             "Smartphone photos",
             "Cloud storage"
           ],
-          "challenges": [
-            "Format obsolescence",
-            "Data loss",
-            "Metadata preservation"
-          ]
+          "challenges": ["Format obsolescence", "Data loss", "Metadata preservation"]
         }
       ],
       "organizationMethods": [
         {
           "method": "Chronological Organization",
           "description": "Organize photos by date and time period",
-          "benefits": [
-            "Historical context",
-            "Easy timeline building",
-            "Generation tracking"
-          ],
+          "benefits": ["Historical context", "Easy timeline building", "Generation tracking"],
           "implementation": "Decade-based sorting, major events, family milestones"
         },
         {
           "method": "Family Branch Organization",
           "description": "Organize by family lines and relationships",
-          "benefits": [
-            "Genealogy tracking",
-            "Relationship clarity",
-            "Inheritance patterns"
-          ],
+          "benefits": ["Genealogy tracking", "Relationship clarity", "Inheritance patterns"],
           "implementation": "Family trees, individual branches, group photos"
         },
         {
           "method": "Event-Based Organization",
           "description": "Organize by specific events and occasions",
-          "benefits": [
-            "Story telling",
-            "Event history",
-            "Celebration tracking"
-          ],
+          "benefits": ["Story telling", "Event history", "Celebration tracking"],
           "implementation": "Weddings, holidays, births, graduations, travels"
         },
         {
           "method": "Location-Based Organization",
           "description": "Organize by geographic locations",
-          "benefits": [
-            "Family movements",
-            "Historical geography",
-            "Property history"
-          ],
+          "benefits": ["Family movements", "Historical geography", "Property history"],
           "implementation": "Family homes, vacation spots, significant locations"
         }
       ],
@@ -1432,209 +1024,135 @@
         {
           "element": "People Identification",
           "description": "Identify and document all individuals in photos",
-          "information": [
-            "Full names",
-            "Relationships",
-            "Approximate ages",
-            "Life dates"
-          ]
+          "information": ["Full names", "Relationships", "Approximate ages", "Life dates"]
         },
         {
           "element": "Dating and Context",
           "description": "Determine when and where photos were taken",
-          "information": [
-            "Date or period",
-            "Location",
-            "Occasion",
-            "Photographer"
-          ]
+          "information": ["Date or period", "Location", "Occasion", "Photographer"]
         },
         {
           "element": "Stories and Memories",
           "description": "Record associated stories and family memories",
-          "information": [
-            "Events",
-            "Traditions",
-            "Emotions",
-            "Cultural context"
-          ]
+          "information": ["イベント", "伝統", "感情", "文化的文脈"]
         },
         {
-          "element": "Technical Details",
-          "description": "Document technical and preservation information",
-          "information": [
-            "Photo type",
-            "Condition",
-            "Conservation needs",
-            "Location"
-          ]
+          "element": "技術的詳細",
+          "description": "技術と保存情報を文書化",
+          "information": ["写真タイプ", "状態", "保存ニーズ", "場所"]
         }
       ],
       "digitizationStandards": [
         {
-          "standard": "Resolution",
-          "recommendation": "300-600 DPI for prints, 1200+ DPI for small detailed photos",
-          "reason": "Capture fine details and allow future enlargements"
+          "standard": "解像度",
+          "recommendation": "プリント用300-600 DPI、小さく詳細な写真用1200+ DPI",
+          "reason": "繊細な詳細をキャプチャし、将来の拡大を可能にする"
         },
         {
-          "standard": "Color Depth",
-          "recommendation": "48-bit color for color photos, 16-bit grayscale for B&W",
-          "reason": "Maximum detail capture and editing flexibility"
+          "standard": "色深度",
+          "recommendation": "カラー写真用48ビットカラー、白黒用16ビットグレースケール",
+          "reason": "最大の詳細キャプチャと編集柔軟性"
         },
         {
-          "standard": "File Format",
-          "recommendation": "TIFF for archival masters, JPEG for access copies",
-          "reason": "Preservation quality vs. practical usability"
+          "standard": "ファイル形式",
+          "recommendation": "アーカイブマスター用TIFF、アクセスコピー用JPEG",
+          "reason": "保存品質と実用的な使いやすさ"
         },
         {
-          "standard": "Metadata",
-          "recommendation": "Complete IPTC and EXIF metadata with family information",
-          "reason": "Preserve identification and context within files"
+          "standard": "メタデータ",
+          "recommendation": "家族情報を含む完全なIPTCとEXIFメタデータ",
+          "reason": "ファイル内で識別と文脈を保存"
         }
       ],
       "sharingStrategies": [
         {
-          "strategy": "Family Website",
-          "description": "Create dedicated family photo website",
-          "benefits": [
-            "Centralized access",
-            "Story telling",
-            "Collaborative contributions"
-          ],
-          "tools": [
-            "Dedicated hosting",
-            "Photo galleries",
-            "Family forums"
-          ]
+          "strategy": "家族ウェブサイト",
+          "description": "専用の家族写真ウェブサイトを作成",
+          "benefits": ["集中アクセス", "ストーリーテリング", "協力的貢献"],
+          "tools": ["専用ホスティング", "フォトギャラリー", "家族フォーラム"]
         },
         {
-          "strategy": "Digital Albums",
-          "description": "Create digital photo albums for family members",
-          "benefits": [
-            "Portable sharing",
-            "Printed gifts",
-            "Easy access"
-          ],
-          "tools": [
-            "Photo book services",
-            "Digital frames",
-            "Tablet viewing"
-          ]
+          "strategy": "デジタルアルバム",
+          "description": "家族メンバー用にデジタルフォトアルバムを作成",
+          "benefits": ["ポータブル共有", "印刷されたギフト", "簡単なアクセス"],
+          "tools": ["フォトブックサービス", "デジタルフレーム", "タブレット表示"]
         },
         {
-          "strategy": "Social Media Groups",
-          "description": "Use private social media groups for family sharing",
-          "benefits": [
-            "Easy access",
-            "Mobile friendly",
-            "Interactive discussions"
-          ],
-          "tools": [
-            "Facebook groups",
-            "WhatsApp",
-            "Family apps"
-          ]
+          "strategy": "ソーシャルメディアグループ",
+          "description": "家族共有のためにプライベートソーシャルメディアグループを使用",
+          "benefits": ["簡単なアクセス", "モバイルフレンドリー", "インタラクティブな議論"],
+          "tools": ["Facebookグループ", "WhatsApp", "家族アプリ"]
         },
         {
-          "strategy": "Cloud Sharing",
-          "description": "Share photos through cloud storage services",
-          "benefits": [
-            "Large file support",
-            "Access control",
-            "Automatic backup"
-          ],
-          "tools": [
-            "Google Photos",
-            "Amazon Photos",
-            "Family cloud folders"
-          ]
+          "strategy": "クラウド共有",
+          "description": "クラウドストレージサービスを通じて写真を共有",
+          "benefits": ["大きなファイルサポート", "アクセスコントロール", "自動バックアップ"],
+          "tools": ["Google Photos", "Amazon Photos", "ファミリクラウドフォルダ"]
         }
       ],
       "familyInvolvement": [
         {
-          "activity": "Photo Identification Parties",
-          "description": "Gather family members to identify people and stories",
-          "benefits": [
-            "Collective memory",
-            "Social bonding",
-            "Story sharing"
-          ]
+          "activity": "写真識別パーティー",
+          "description": "人物とストーリーを識別するために家族メンバーを集める",
+          "benefits": ["集合的記憶", "社会的絆", "ストーリー共有"]
         },
         {
-          "activity": "Memory Interviews",
-          "description": "Interview older family members about photo context",
-          "benefits": [
-            "Historical context",
-            "Personal stories",
-            "Oral history preservation"
-          ]
+          "activity": "記憶インタビュー",
+          "description": "写真の文脈について年上の家族メンバーにインタビュー",
+          "benefits": ["歴史的文脈", "個人的なストーリー", "口頭歴史保存"]
         },
         {
-          "activity": "Collaborative Tagging",
-          "description": "Enable family members to add tags and information",
-          "benefits": [
-            "Crowdsourced knowledge",
-            "Engagement",
-            "Shared ownership"
-          ]
+          "activity": "協力的タグ付け",
+          "description": "家族メンバーがタグと情報を追加できるようにする",
+          "benefits": ["クラウドソース知識", "エンゲージメント", "共同所有権"]
         },
         {
-          "activity": "Generational Transfer",
-          "description": "Teach younger family members preservation techniques",
-          "benefits": [
-            "Skill transfer",
-            "Continuity",
-            "Future preservation"
-          ]
+          "activity": "世代間移転",
+          "description": "若い家族メンバーに保存技法を教える",
+          "benefits": ["スキル移転", "継続性", "将来の保存"]
         }
       ],
       "preservationChallenges": [
         {
-          "challenge": "Identifying Unknown People",
-          "solution": "Share with extended family, use genealogy resources, compare with known photos"
+          "challenge": "不明な人物の識別",
+          "solution": "拡大家族と共有し、系図リソースを使用し、既知の写真と比較する"
         },
         {
-          "challenge": "Damaged or Faded Photos",
-          "solution": "Professional restoration services, AI enhancement tools, careful conservation"
+          "challenge": "損傷または色あせた写真",
+          "solution": "プロフェッショナルな修復サービス、AI強化ツール、慎重な保存"
         },
         {
-          "challenge": "Scattered Collections",
-          "solution": "Family outreach, photo sharing networks, centralized digital repository"
+          "challenge": "散在したコレクション",
+          "solution": "家族のアウトリーチ、写真共有ネットワーク、集中デジタルリポジトリ"
         },
         {
-          "challenge": "Technology Obsolescence",
-          "solution": "Multiple format preservation, regular format migration, cloud storage"
+          "challenge": "技術陳腐化",
+          "solution": "複数形式保存、定期的な形式移行、クラウドストレージ"
         }
       ],
       "bestPractices": [
-        "Start preservation projects early before further deterioration",
-        "Involve multiple family members in identification and documentation",
-        "Create both physical and digital preservation systems",
-        "Establish clear organization systems that others can understand",
-        "Plan for long-term preservation and accessibility"
+        "さらなる劣化前に早めに保存プロジェクトを開始する",
+        "識別と文書化に複数の家族メンバーを関与させる",
+        "物理的とデジタルの両方の保存システムを作成する",
+        "他者が理解できる明確な整理システムを確立する",
+        "長期の保存とアクセシビリティを計画する"
       ],
       "faq": [
         {
-          "question": "How do I identify people in old family photos?",
+          "question": "古い家族写真の人物をどのように識別しますか？",
           "answer": "Share with older family members, 比較 with known photos, use family resemblances, check clothing and hAIrstyles for period clues, and consult genealogy resources."
         },
         {
           "question": "What's the 最高 way to share large family photo collections?",
-          "answer": "Use a combination of methods: cloud storage for masters, shared galleries for viewing, and printed albums for special occasions. Consider different family members' tech comfort levels."
+          "answer": "様々な方法を組み合わせて使用します：マスター用クラウドストレージ、表示用共有ギャラリー、特別な機会用印刷アルバム。家族メンバーの技術的快適性を考慮してください。"
         },
         {
-          "question": "How can I get younger family members interested in old photos?",
-          "answer": "Tell compelling stories, connect photos to family history, use technology they're comfortable with, and show how these photos connect to their own identity and heritage."
+          "question": "若い家族メンバーを古い写真に興味を持たせるにはどうすればよいですか？",
+          "answer": "魅力的なストーリーを伝え、写真を家族史に結びつけ、彼らが快適な技術を使用し、これらの写真が自分自身のアイデンティティと遺産にどのように結びついているかを示してください。"
         }
       ],
-      "relatedTools": [
-        "family-photo-organizer",
-        "photo-digitization-service"
-      ],
-      "relatedPages": [
-        "photo-conservation-methods",
-        "genealogy-photo-management"
-      ]
+      "relatedTools": ["family-photo-organizer", "photo-digitization-service"],
+      "relatedPages": ["photo-conservation-methods", "genealogy-photo-management"]
     }
   ],
   "meta": {

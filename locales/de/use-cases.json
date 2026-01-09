@@ -144,11 +144,7 @@
       "h1": "Immobilienangebots-Fotoanforderungen",
       "intro": "Verschiedene Immobilienplattformen haben unterschiedliche Bildspezifikationen. Hier ist, was Sie fuer die wichtigsten Angebotsseiten benoetigen.",
       "primaryKeyword": "immobilienangebots fotos",
-      "secondaryKeywords": [
-        "mls foto anforderungen",
-        "zillow bildgroesse",
-        "immobilienfotografie"
-      ],
+      "secondaryKeywords": ["mls foto anforderungen", "zillow bildgroesse", "immobilienfotografie"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "Anwendungsfaelle",
       "industry": "Immobilien",
@@ -269,61 +265,161 @@
         {
           "platform": "Instagram",
           "imageTypes": [
-            { "type": "Quadratischer Post", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
-            { "type": "Hochformat-Post", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
-            { "type": "Querformat-Post", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
-            { "type": "Story/Reel", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Profilbild", "dimensions": "320x320px", "aspectRatio": "1:1" }
+            {
+              "type": "Quadratischer Post",
+              "dimensions": "1080x1080px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Hochformat-Post",
+              "dimensions": "1080x1350px",
+              "aspectRatio": "4:5"
+            },
+            {
+              "type": "Querformat-Post",
+              "dimensions": "1080x566px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Story/Reel",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "320x320px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Hochformat (4:5) erhaelt mehr Bildschirmflaeche in Feeds. Stories sind 9:16 vertikal."
         },
         {
           "platform": "Facebook",
           "imageTypes": [
-            { "type": "Geteiltes Bild", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
-            { "type": "Quadratischer Post", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
-            { "type": "Titelbild", "dimensions": "820x312px (Desktop)", "aspectRatio": "2.63:1" },
-            { "type": "Profilbild", "dimensions": "170x170px", "aspectRatio": "1:1" },
-            { "type": "Story", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+            {
+              "type": "Geteiltes Bild",
+              "dimensions": "1200x630px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Quadratischer Post",
+              "dimensions": "1200x1200px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Titelbild",
+              "dimensions": "820x312px (Desktop)",
+              "aspectRatio": "2.63:1"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "170x170px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Story",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            }
           ],
           "notes": "Titelbild wird auf Mobilgeraeten anders angezeigt (640x360px sichtbarer Bereich). Wichtige Inhalte zentrieren."
         },
         {
           "platform": "Twitter/X",
           "imageTypes": [
-            { "type": "In-Stream-Bild", "dimensions": "1600x900px", "aspectRatio": "16:9" },
-            { "type": "Einzelbild", "dimensions": "1200x675px", "aspectRatio": "16:9" },
-            { "type": "Zwei Bilder", "dimensions": "700x800px jeweils", "aspectRatio": "7:8" },
-            { "type": "Profilbild", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Header", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+            {
+              "type": "In-Stream-Bild",
+              "dimensions": "1600x900px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Einzelbild",
+              "dimensions": "1200x675px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Zwei Bilder",
+              "dimensions": "700x800px jeweils",
+              "aspectRatio": "7:8"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Header",
+              "dimensions": "1500x500px",
+              "aspectRatio": "3:1"
+            }
           ],
           "notes": "16:9 Bilder werden in der Timeline am besten angezeigt. Quadratische Bilder werden zugeschnitten."
         },
         {
           "platform": "LinkedIn",
           "imageTypes": [
-            { "type": "Geteiltes Bild", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
-            { "type": "Firmen-Cover", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
-            { "type": "Profilbild", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Hintergrund", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+            {
+              "type": "Geteiltes Bild",
+              "dimensions": "1200x627px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Firmen-Cover",
+              "dimensions": "1128x191px",
+              "aspectRatio": "5.9:1"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Hintergrund",
+              "dimensions": "1584x396px",
+              "aspectRatio": "4:1"
+            }
           ],
           "notes": "Professionelle Fotos funktionieren besser. Vermeiden Sie Filter und starke Effekte."
         },
         {
           "platform": "TikTok",
           "imageTypes": [
-            { "type": "Video/Foto", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Profilbild", "dimensions": "200x200px", "aspectRatio": "1:1" }
+            {
+              "type": "Video/Foto",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "200x200px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Vertikal 9:16 ist erforderlich. Horizontale Inhalte werden mit Letterbox versehen."
         },
         {
           "platform": "Pinterest",
           "imageTypes": [
-            { "type": "Standard-Pin", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
-            { "type": "Langer Pin", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
-            { "type": "Quadratischer Pin", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
-            { "type": "Profilbild", "dimensions": "165x165px", "aspectRatio": "1:1" }
+            {
+              "type": "Standard-Pin",
+              "dimensions": "1000x1500px",
+              "aspectRatio": "2:3"
+            },
+            {
+              "type": "Langer Pin",
+              "dimensions": "1000x2100px",
+              "aspectRatio": "1:2.1"
+            },
+            {
+              "type": "Quadratischer Pin",
+              "dimensions": "1000x1000px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Profilbild",
+              "dimensions": "165x165px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "2:3 vertikale Pins funktionieren am besten. Hoehe Pins erhalten mehr Sichtbarkeit im Feed."
         }
@@ -396,7 +492,11 @@
             "dpi": "300 DPI",
             "use": "Fotos, Kunstdrucke, Magazine"
           },
-          { "quality": "Standarddrucke", "dpi": "240-300 DPI", "use": "Heimdruck, Schnappschuesse" },
+          {
+            "quality": "Standarddrucke",
+            "dpi": "240-300 DPI",
+            "use": "Heimdruck, Schnappschuesse"
+          },
           {
             "quality": "Grossformat (Betrachtungsabstand 1m+)",
             "dpi": "150-200 DPI",

@@ -269,69 +269,161 @@
         {
           "platform": "Instagram",
           "imageTypes": [
-            { "type": "Publicación Cuadrada", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
-            { "type": "Publicación Vertical", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
+            {
+              "type": "Publicación Cuadrada",
+              "dimensions": "1080x1080px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Publicación Vertical",
+              "dimensions": "1080x1350px",
+              "aspectRatio": "4:5"
+            },
             {
               "type": "Publicación Horizontal",
               "dimensions": "1080x566px",
               "aspectRatio": "1.91:1"
             },
-            { "type": "Story/Reel", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Foto de Perfil", "dimensions": "320x320px", "aspectRatio": "1:1" }
+            {
+              "type": "Story/Reel",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "320x320px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Vertical (4:5) obtiene más espacio en pantalla en los feeds. Los Stories son 9:16 vertical."
         },
         {
           "platform": "Facebook",
           "imageTypes": [
-            { "type": "Imagen Compartida", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
-            { "type": "Publicación Cuadrada", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
+            {
+              "type": "Imagen Compartida",
+              "dimensions": "1200x630px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Publicación Cuadrada",
+              "dimensions": "1200x1200px",
+              "aspectRatio": "1:1"
+            },
             {
               "type": "Foto de Portada",
               "dimensions": "820x312px (escritorio)",
               "aspectRatio": "2.63:1"
             },
-            { "type": "Foto de Perfil", "dimensions": "170x170px", "aspectRatio": "1:1" },
-            { "type": "Story", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "170x170px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Story",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            }
           ],
           "notes": "La foto de portada se muestra diferente en móvil (640x360px área visible). Centra el contenido importante."
         },
         {
           "platform": "Twitter/X",
           "imageTypes": [
-            { "type": "Imagen en Flujo", "dimensions": "1600x900px", "aspectRatio": "16:9" },
-            { "type": "Imagen Individual", "dimensions": "1200x675px", "aspectRatio": "16:9" },
-            { "type": "Dos Imágenes", "dimensions": "700x800px cada una", "aspectRatio": "7:8" },
-            { "type": "Foto de Perfil", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Encabezado", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+            {
+              "type": "Imagen en Flujo",
+              "dimensions": "1600x900px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Imagen Individual",
+              "dimensions": "1200x675px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Dos Imágenes",
+              "dimensions": "700x800px cada una",
+              "aspectRatio": "7:8"
+            },
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Encabezado",
+              "dimensions": "1500x500px",
+              "aspectRatio": "3:1"
+            }
           ],
           "notes": "Las imágenes 16:9 se muestran mejor en la línea de tiempo. Las imágenes cuadradas se recortan."
         },
         {
           "platform": "LinkedIn",
           "imageTypes": [
-            { "type": "Imagen Compartida", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
-            { "type": "Portada de Empresa", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
-            { "type": "Foto de Perfil", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Fondo", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+            {
+              "type": "Imagen Compartida",
+              "dimensions": "1200x627px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Portada de Empresa",
+              "dimensions": "1128x191px",
+              "aspectRatio": "5.9:1"
+            },
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Fondo",
+              "dimensions": "1584x396px",
+              "aspectRatio": "4:1"
+            }
           ],
           "notes": "Las fotos profesionales funcionan mejor. Evita filtros y efectos pesados."
         },
         {
           "platform": "TikTok",
           "imageTypes": [
-            { "type": "Video/Foto", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Foto de Perfil", "dimensions": "200x200px", "aspectRatio": "1:1" }
+            {
+              "type": "Video/Foto",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "200x200px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Se requiere vertical 9:16. El contenido horizontal se enmarca con barras negras."
         },
         {
           "platform": "Pinterest",
           "imageTypes": [
-            { "type": "Pin Estándar", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
-            { "type": "Pin Largo", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
-            { "type": "Pin Cuadrado", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
-            { "type": "Foto de Perfil", "dimensions": "165x165px", "aspectRatio": "1:1" }
+            {
+              "type": "Pin Estándar",
+              "dimensions": "1000x1500px",
+              "aspectRatio": "2:3"
+            },
+            {
+              "type": "Pin Largo",
+              "dimensions": "1000x2100px",
+              "aspectRatio": "1:2.1"
+            },
+            {
+              "type": "Pin Cuadrado",
+              "dimensions": "1000x1000px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Foto de Perfil",
+              "dimensions": "165x165px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Los pines verticales 2:3 funcionan mejor. Los pines más altos obtienen más visibilidad en el feed."
         }

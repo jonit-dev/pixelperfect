@@ -1,8 +1,8 @@
 {
-  "category": "use-cases",
+  "category": "casi-duso",
   "pages": [
     {
-      "slug": "ecommerce-product-photos",
+      "slug": "foto-prodotti-ecommerce",
       "title": "Foto Prodotti E-commerce",
       "metaTitle": "Requisiti Foto Prodotti E-commerce per Piattaforma | MyImageUpscaler",
       "metaDescription": "Requisiti immagine esatti per Amazon, eBay, Etsy, Shopify. Scopri dimensioni minime, rapporti di aspetto e come upscalare foto prodotti per soddisfare standard piattaforma.",
@@ -16,7 +16,7 @@
         "dimensioni foto etsy"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "E-commerce",
       "description": "Requisiti di immagine specifici per principali piattaforme e-commerce con guida su come soddisfarli.",
       "platformRequirements": [
@@ -137,7 +137,7 @@
       "relatedGuides": ["background-removal-guide"]
     },
     {
-      "slug": "real-estate-listings",
+      "slug": "annunci-immobiliari",
       "title": "Linee Guida Foto Real Estate",
       "metaTitle": "Requisiti Foto Real Estate per Piattaforma | MLS, Zillow, Realtor.com",
       "metaDescription": "Requisiti immagine per MLS, Zillow, Realtor.com e Redfin. Scopri dimensioni ottimali, rapporti di aspetto e come preparare foto di inserzione.",
@@ -150,8 +150,8 @@
         "fotografia real estate"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "use-cases",
-      "industry": "Real Estate",
+      "category": "casi-duso",
+      "industry": "Immobiliare",
       "description": "Requisiti di immagine specifici per piattaforme di inserzione real estate con guida su come soddisfarli.",
       "platformRequirements": [
         {
@@ -248,7 +248,7 @@
       "relatedGuides": ["interior-photography-tips"]
     },
     {
-      "slug": "social-media-images",
+      "slug": "immagini-social-media",
       "title": "Dimensioni Immagini Social Media",
       "metaTitle": "Guida Dimensione Immagini Social Media 2025 | Instagram, Facebook, Twitter, LinkedIn",
       "metaDescription": "Guida completa alle dimensioni delle immagini social media. Dimensioni ottimali per Instagram, Facebook, Twitter, LinkedIn, TikTok e Pinterest con dimensioni pixel esatte.",
@@ -262,72 +262,168 @@
         "dimensioni immagine linkedin"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "Social Media",
       "description": "Riferimento completo per dimensioni immagini social media con requisiti specifici piattaforma.",
       "platformRequirements": [
         {
           "platform": "Instagram",
           "imageTypes": [
-            { "type": "Post Quadrato", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
-            { "type": "Post Ritratto", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
-            { "type": "Post Paesaggio", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
-            { "type": "Storia/Reel", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Foto Profilo", "dimensions": "320x320px", "aspectRatio": "1:1" }
+            {
+              "type": "Post Quadrato",
+              "dimensions": "1080x1080px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Post Ritratto",
+              "dimensions": "1080x1350px",
+              "aspectRatio": "4:5"
+            },
+            {
+              "type": "Post Paesaggio",
+              "dimensions": "1080x566px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Storia/Reel",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Foto Profilo",
+              "dimensions": "320x320px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Il ritratto (4:5) occupa più spazio nel feed. Le storie sono 9:16 verticale."
         },
         {
           "platform": "Facebook",
           "imageTypes": [
-            { "type": "Immagine Condivisa", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
-            { "type": "Post Quadrato", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
+            {
+              "type": "Immagine Condivisa",
+              "dimensions": "1200x630px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Post Quadrato",
+              "dimensions": "1200x1200px",
+              "aspectRatio": "1:1"
+            },
             {
               "type": "Foto Copertina",
               "dimensions": "820x312px (desktop)",
               "aspectRatio": "2.63:1"
             },
-            { "type": "Foto Profilo", "dimensions": "170x170px", "aspectRatio": "1:1" },
-            { "type": "Storia", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+            {
+              "type": "Foto Profilo",
+              "dimensions": "170x170px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Storia",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            }
           ],
           "notes": "La foto copertina visualizza diversamente su mobile (area visibile 640x360px). Centra il contenuto importante."
         },
         {
           "platform": "Twitter/X",
           "imageTypes": [
-            { "type": "Immagine Nel Flusso", "dimensions": "1600x900px", "aspectRatio": "16:9" },
-            { "type": "Immagine Singola", "dimensions": "1200x675px", "aspectRatio": "16:9" },
-            { "type": "Due Immagini", "dimensions": "700x800px ciascuna", "aspectRatio": "7:8" },
-            { "type": "Foto Profilo", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Intestazione", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+            {
+              "type": "Immagine Nel Flusso",
+              "dimensions": "1600x900px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Immagine Singola",
+              "dimensions": "1200x675px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Due Immagini",
+              "dimensions": "700x800px ciascuna",
+              "aspectRatio": "7:8"
+            },
+            {
+              "type": "Foto Profilo",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Intestazione",
+              "dimensions": "1500x500px",
+              "aspectRatio": "3:1"
+            }
           ],
           "notes": "Le immagini 16:9 visualizzano meglio nella timeline. Le immagini quadrate vengono ritagliate."
         },
         {
           "platform": "LinkedIn",
           "imageTypes": [
-            { "type": "Immagine Condivisa", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
-            { "type": "Copertina Azienda", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
-            { "type": "Foto Profilo", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Sfondo", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+            {
+              "type": "Immagine Condivisa",
+              "dimensions": "1200x627px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Copertina Azienda",
+              "dimensions": "1128x191px",
+              "aspectRatio": "5.9:1"
+            },
+            {
+              "type": "Foto Profilo",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Sfondo",
+              "dimensions": "1584x396px",
+              "aspectRatio": "4:1"
+            }
           ],
           "notes": "Le foto professionali funzionano meglio. Evita filtri ed effetti pesanti."
         },
         {
           "platform": "TikTok",
           "imageTypes": [
-            { "type": "Video/Foto", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Foto Profilo", "dimensions": "200x200px", "aspectRatio": "1:1" }
+            {
+              "type": "Video/Foto",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Foto Profilo",
+              "dimensions": "200x200px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Verticale 9:16 è richiesto. Il contenuto orizzontale viene letterboxato."
         },
         {
           "platform": "Pinterest",
           "imageTypes": [
-            { "type": "Pin Standard", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
-            { "type": "Pin Lungo", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
-            { "type": "Pin Quadrato", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
-            { "type": "Foto Profilo", "dimensions": "165x165px", "aspectRatio": "1:1" }
+            {
+              "type": "Pin Standard",
+              "dimensions": "1000x1500px",
+              "aspectRatio": "2:3"
+            },
+            {
+              "type": "Pin Lungo",
+              "dimensions": "1000x2100px",
+              "aspectRatio": "1:2.1"
+            },
+            {
+              "type": "Pin Quadrato",
+              "dimensions": "1000x1000px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Foto Profilo",
+              "dimensions": "165x165px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "I pin verticali 2:3 funzionano meglio. I pin più alti ottengono più visibilità nel feed."
         }
@@ -388,7 +484,7 @@
         "dimensione immagine 300 dpi"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "Fotografia e Stampa",
       "description": "Guida completa alla preparazione di immagini per stampa con requisiti DPI e calcoli dimensione.",
       "dpiExplanation": {
@@ -552,7 +648,7 @@
         "miglioramento foto vintage"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "Ripristino Foto",
       "description": "Guida passo-passo al ripristino di foto vecchie e danneggiate con aspettative realistiche.",
       "scanningGuide": {
@@ -704,7 +800,7 @@
         "fotografia prodotti fba"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "E-commerce",
       "description": "Guida completa alla preparazione di immagini prodotti per inserzioni Amazon, inclusi requisiti dimensione, standard sfondo bianco e flusso di lavoro upscaling AI.",
       "platformRequirements": [
@@ -830,8 +926,8 @@
         "editing fotografia real estate"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "use-cases",
-      "industry": "Real Estate",
+      "category": "casi-duso",
+      "industry": "Immobiliare",
       "description": "Guida completa al miglioramento di foto real estate per MLS, Zillow e altre piattaforme di inserzione proprietà usando strumenti AI.",
       "platformRequirements": [
         {
@@ -984,7 +1080,7 @@
         "anime wallpaper upscale"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "Arte Digitale & Intrattenimento",
       "description": "Guida specializzata all'upscaling di immagini anime, arte manga e illustrazioni in stile giapponese usando tecnologia AI ottimizzata per contenuti disegnati.",
       "contentTypes": [
@@ -1145,7 +1241,7 @@
         "upscaler illustrazione"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "description": "Upscaling specializzato per immagini cartoni animati, fumetti occidentali e contenuti illustrati usando tecnologia AI ottimizzata per opere d'arte disegnate con colori piatti e linee pulite.",
       "imageTypes": [
         {
@@ -1243,7 +1339,7 @@
         "miglioramento dettagli viso"
       ],
       "lastUpdated": "2025-12-26T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "description": "Miglioramento ritratti professionale usando modelli AI specializzati per ricostruzione e miglioramento caratteristiche facciali. Perfetto per headshot, foto social media e ritratti professionali.",
       "supportedTiers": {
         "faceRestore": {
@@ -1349,7 +1445,7 @@
         "rimozionatore sfondo immagine prodotto"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "E-commerce",
       "description": "Preparazione foto prodotto professionale per marketplace online. Rimuovi sfondi occupati e crea sfondi bianchi puliti che soddisfano requisiti Amazon, eBay ed Etsy.",
       "challenges": [
@@ -1428,7 +1524,7 @@
         "rimozione sfondo foto profilo"
       ],
       "lastUpdated": "2026-01-06T00:00:00Z",
-      "category": "use-cases",
+      "category": "casi-duso",
       "industry": "Professionale & Personale",
       "description": "Preparazione ritratti e headshot professionale con rimozione sfondo AI. Perfetto per profili LinkedIn, CV, foto ID e branding professionale.",
       "challenges": [

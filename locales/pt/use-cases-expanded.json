@@ -44,14 +44,7 @@
         "Opcional: Aplique marca d'água da marca e metadados para conformidade com o MLS"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "TIFF",
-          "RAW",
-          "HEIC",
-          "DNG"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "RAW", "HEIC", "DNG"],
         "maxResolution": "Até 100MP para câmeras imobiliárias profissionais",
         "outputFormats": [
           "JPEG (otimizado para web)",
@@ -82,26 +75,10 @@
         "Garanta a conformidade com o MLS em relação aos requisitos de aprimoramento e divulgação"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe Lightroom Classic",
-          "Capture One",
-          "Phase One"
-        ],
-        "aiEnhancement": [
-          "MyImageUpscaler",
-          "Adobe Photoshop Neural Filters",
-          "Topaz Labs"
-        ],
-        "virtualStaging": [
-          "BoxBrownie",
-          "Virtual Staging Solutions",
-          "roOomy"
-        ],
-        "droneProcessing": [
-          "DroneDeploy",
-          "Pix4Dmapper",
-          "DJI Terra"
-        ]
+        "professionalTools": ["Adobe Lightroom Classic", "Capture One", "Phase One"],
+        "aiEnhancement": ["MyImageUpscaler", "Adobe Photoshop Neural Filters", "Topaz Labs"],
+        "virtualStaging": ["BoxBrownie", "Virtual Staging Solutions", "roOomy"],
+        "droneProcessing": ["DroneDeploy", "Pix4Dmapper", "DJI Terra"]
       },
       "fileSizeGuidelines": {
         "webListings": "Abaixo de 500KB para carregamento rápido",
@@ -180,28 +157,11 @@
         "Baixe imagens prontas para a plataforma com metadados e nomes adequados"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "TIFF",
-          "RAW",
-          "HEIC"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "RAW", "HEIC"],
         "maxResolution": "Até 50MP para fotografia de produto profissional",
-        "outputFormats": [
-          "JPEG (otimizado para web)",
-          "PNG (transparente)",
-          "TIFF (impressão)"
-        ],
+        "outputFormats": ["JPEG (otimizado para web)", "PNG (transparente)", "TIFF (impressão)"],
         "batchProcessing": "Até 1.000 imagens de produtos por lote",
-        "platformSupport": [
-          "Amazon",
-          "Shopify",
-          "eBay",
-          "Etsy",
-          "Walmart",
-          "Redes Sociais"
-        ]
+        "platformSupport": ["Amazon", "Shopify", "eBay", "Etsy", "Walmart", "Redes Sociais"]
       },
       "caseStudies": [
         {
@@ -224,27 +184,14 @@
         "Teste as imagens aprimoradas em diferentes dispositivos e plataformas"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe Photoshop",
-          "Capture One",
-          "Phase One"
-        ],
-        "ecommerceTools": [
-          "MyImageUpscaler",
-          "Remove.bg",
-          "Pixelcut",
-          "Canva Pro"
-        ],
+        "professionalTools": ["Adobe Photoshop", "Capture One", "Phase One"],
+        "ecommerceTools": ["MyImageUpscaler", "Remove.bg", "Pixelcut", "Canva Pro"],
         "platformSpecific": [
           "Amazon Product Imaging",
           "Shopify Image Editor",
           "eBay Photo Services"
         ],
-        "batchProcessing": [
-          "Adobe Lightroom",
-          "Bridge",
-          "Fluxos de Trabalho Automatizados"
-        ]
+        "batchProcessing": ["Adobe Lightroom", "Bridge", "Fluxos de Trabalho Automatizados"]
       },
       "fileSizeGuidelines": {
         "webOptimized": "100-300KB para carregamento rápido",
@@ -323,14 +270,7 @@
         "Exporte em formatos apropriados para publicações, apresentações ou análises"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "DICOM",
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "RAW",
-          "BMP"
-        ],
+        "supportedFormats": ["DICOM", "JPEG", "TIFF", "PNG", "RAW", "BMP"],
         "maxResolution": "Ilimitada para imagens médicas e fotografia científica",
         "outputFormats": [
           "TIFF (alta resolução)",
@@ -339,11 +279,7 @@
           "DICOM (médico)"
         ],
         "batchProcessing": "Até 1.000 imagens para conjuntos de dados de pesquisa",
-        "compliance": [
-          "Compatível com HIPAA",
-          "Registrado no FDA",
-          "Certificado ISO 13485"
-        ]
+        "compliance": ["Compatível com HIPAA", "Registrado no FDA", "Certificado ISO 13485"]
       },
       "caseStudies": [
         {
@@ -366,28 +302,10 @@
         "Documente os parâmetros de aprimoramento para reprodutibilidade da pesquisa"
       ],
       "softwareRecommendations": {
-        "medicalImaging": [
-          "ImageJ",
-          "3D Slicer",
-          "OsiriX",
-          "RadiAnt DICOM Viewer"
-        ],
-        "microscopy": [
-          "Fiji",
-          "CellProfiler",
-          "Imaris",
-          "NIS-Elements"
-        ],
-        "scientificImaging": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "GIMP"
-        ],
-        "researchTools": [
-          "MATLAB",
-          "Python (OpenCV, scikit-image)",
-          "R (pacote imager)"
-        ]
+        "medicalImaging": ["ImageJ", "3D Slicer", "OsiriX", "RadiAnt DICOM Viewer"],
+        "microscopy": ["Fiji", "CellProfiler", "Imaris", "NIS-Elements"],
+        "scientificImaging": ["MyImageUpscaler", "Adobe Photoshop", "GIMP"],
+        "researchTools": ["MATLAB", "Python (OpenCV, scikit-image)", "R (pacote imager)"]
       },
       "fileSizeGuidelines": {
         "medicalImaging": "Tamanho original para precisão diagnóstica",
@@ -466,14 +384,7 @@
         "Baixe imagens prontas para apresentação com escala e metadados adequados"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "RAW",
-          "PNG",
-          "DNG",
-          "HEIC"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "RAW", "PNG", "DNG", "HEIC"],
         "maxResolution": "Até 100MP para câmeras arquitetônicas profissionais",
         "outputFormats": [
           "JPEG (apresentação)",
@@ -509,28 +420,10 @@
         "Garanta uma representação de cores precisa para materiais e acabamentos"
       ],
       "softwareRecommendations": {
-        "architecturalTools": [
-          "AutoCAD",
-          "Revit",
-          "SketchUp",
-          "Lumion"
-        ],
-        "photography": [
-          "Adobe Lightroom",
-          "Capture One",
-          "Phase One"
-        ],
-        "enhancement": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "Topaz Labs"
-        ],
-        "projectManagement": [
-          "Procore",
-          "PlanGrid",
-          "BIM 360",
-          "CoConstruct"
-        ]
+        "architecturalTools": ["AutoCAD", "Revit", "SketchUp", "Lumion"],
+        "photography": ["Adobe Lightroom", "Capture One", "Phase One"],
+        "enhancement": ["MyImageUpscaler", "Adobe Photoshop", "Topaz Labs"],
+        "projectManagement": ["Procore", "PlanGrid", "BIM 360", "CoConstruct"]
       },
       "fileSizeGuidelines": {
         "portfolioPrint": "10-20MB para impressão de portfólio de alta qualidade",
@@ -609,14 +502,7 @@
         "Baixe arquivos prontos para impressão com perfis de cores e metadados adequados"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "RAW",
-          "PSD",
-          "HEIC"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "PNG", "RAW", "PSD", "HEIC"],
         "maxResolution": "Ilimitada para aplicações de impressão",
         "outputFormats": [
           "TIFF (CMYK)",
@@ -624,18 +510,8 @@
           "JPEG (RGB)",
           "PSD (camadas)"
         ],
-        "colorSpaces": [
-          "CMYK",
-          "RGB",
-          "Tons de cinza",
-          "Cores especiais (Spot)"
-        ],
-        "printStandards": [
-          "ISO 12647",
-          "GRACoL",
-          "SWOP",
-          "FOGRA"
-        ]
+        "colorSpaces": ["CMYK", "RGB", "Tons de cinza", "Cores especiais (Spot)"],
+        "printStandards": ["ISO 12647", "GRACoL", "SWOP", "FOGRA"]
       },
       "caseStudies": [
         {
@@ -658,26 +534,14 @@
         "Considere o tipo de papel e o método de impressão nas decisões de aprimoramento"
       ],
       "softwareRecommendations": {
-        "professionalTools": [
-          "Adobe InDesign",
-          "Adobe Photoshop",
-          "QuarkXPress"
-        ],
+        "professionalTools": ["Adobe InDesign", "Adobe Photoshop", "QuarkXPress"],
         "prepressTools": [
           "Adobe Acrobat Pro",
           "Ferramentas de Preflight",
           "Softwares de Gerenciamento de Cores"
         ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Topaz Labs",
-          "ON1 Resize"
-        ],
-        "colorManagement": [
-          "X-Rite i1Profiler",
-          "Datacolor Spyder",
-          "Pantone Color Manager"
-        ]
+        "enhancementTools": ["MyImageUpscaler", "Topaz Labs", "ON1 Resize"],
+        "colorManagement": ["X-Rite i1Profiler", "Datacolor Spyder", "Pantone Color Manager"]
       },
       "fileSizeGuidelines": {
         "standardPrint": "10-50MB para reprodução de impressão de alta qualidade",
@@ -756,13 +620,7 @@
         "Baixe arquivos prontos para a plataforma com as especificações adequadas"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "HEIC",
-          "WebP",
-          "AVIF"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "HEIC", "WebP", "AVIF"],
         "platformSupport": [
           "Instagram",
           "TikTok",
@@ -778,11 +636,7 @@
           "WebP para web"
         ],
         "batchProcessing": "Até 100 peças de conteúdo por lote",
-        "performanceOptimization": [
-          "Carregamento rápido",
-          "Mobile-first",
-          "Alto engajamento"
-        ]
+        "performanceOptimization": ["Carregamento rápido", "Mobile-first", "Alto engajamento"]
       },
       "caseStudies": [
         {
@@ -805,27 +659,10 @@
         "Mantenha-se atualizado com as tendências das plataformas e preferências dos algoritmos"
       ],
       "softwareRecommendations": {
-        "contentCreation": [
-          "Canva Pro",
-          "Adobe Creative Suite",
-          "Figma"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "VSCO",
-          "Adobe Lightroom Mobile"
-        ],
-        "videoEditing": [
-          "CapCut",
-          "Adobe Premiere Pro",
-          "Final Cut Pro"
-        ],
-        "socialManagement": [
-          "Buffer",
-          "Hootsuite",
-          "Later",
-          "Planoly"
-        ]
+        "contentCreation": ["Canva Pro", "Adobe Creative Suite", "Figma"],
+        "enhancementTools": ["MyImageUpscaler", "VSCO", "Adobe Lightroom Mobile"],
+        "videoEditing": ["CapCut", "Adobe Premiere Pro", "Final Cut Pro"],
+        "socialManagement": ["Buffer", "Hootsuite", "Later", "Planoly"]
       },
       "fileSizeGuidelines": {
         "instagramFeed": "500KB-2MB para carregamento e qualidade ideais",
@@ -904,34 +741,11 @@
         "Baixe imagens otimizadas com variantes responsivas e metadados"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "WebP",
-          "AVIF",
-          "HEIC",
-          "GIF"
-        ],
-        "outputFormats": [
-          "WebP/AVIF modernos",
-          "Fallback JPEG/PNG",
-          "srcset responsivo"
-        ],
-        "optimizationTargets": [
-          "Core Web Vitals",
-          "Pontuações do Lighthouse",
-          "Desempenho mobile"
-        ],
-        "responsiveSupport": [
-          "Multi-dispositivo",
-          "Multi-resolução",
-          "Direção de arte"
-        ],
-        "webStandards": [
-          "W3C",
-          "Google PageSpeed",
-          "Otimização do GTmetrix"
-        ]
+        "supportedFormats": ["JPEG", "PNG", "WebP", "AVIF", "HEIC", "GIF"],
+        "outputFormats": ["WebP/AVIF modernos", "Fallback JPEG/PNG", "srcset responsivo"],
+        "optimizationTargets": ["Core Web Vitals", "Pontuações do Lighthouse", "Desempenho mobile"],
+        "responsiveSupport": ["Multi-dispositivo", "Multi-resolução", "Direção de arte"],
+        "webStandards": ["W3C", "Google PageSpeed", "Otimização do GTmetrix"]
       },
       "caseStudies": [
         {
@@ -954,28 +768,10 @@
         "Teste o desempenho em diferentes dispositivos e condições de rede"
       ],
       "softwareRecommendations": {
-        "designTools": [
-          "Figma",
-          "Sketch",
-          "Adobe XD",
-          "Framer"
-        ],
-        "developmentTools": [
-          "VS Code",
-          "Sublime Text",
-          "WebStorm"
-        ],
-        "optimizationTools": [
-          "MyImageUpscaler",
-          "ImageOptim",
-          "TinyPNG",
-          "Cloudinary"
-        ],
-        "performanceTools": [
-          "Google PageSpeed Insights",
-          "GTmetrix",
-          "WebPageTest"
-        ]
+        "designTools": ["Figma", "Sketch", "Adobe XD", "Framer"],
+        "developmentTools": ["VS Code", "Sublime Text", "WebStorm"],
+        "optimizationTools": ["MyImageUpscaler", "ImageOptim", "TinyPNG", "Cloudinary"],
+        "performanceTools": ["Google PageSpeed Insights", "GTmetrix", "WebPageTest"]
       },
       "fileSizeGuidelines": {
         "heroImages": "500KB-2MB para seções hero de alta qualidade",
@@ -1054,13 +850,7 @@
         "Baixe criativos prontos para a plataforma com as especificações adequadas"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "GIF",
-          "WebP",
-          "HTML5"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "GIF", "WebP", "HTML5"],
         "marketingChannels": [
           "Google Ads",
           "Facebook Ads",
@@ -1079,10 +869,7 @@
           "Otimização de conversão",
           "Consistência da marca"
         ],
-        "testingSupport": [
-          "Variações de teste A/B",
-          "Suporte a teste multivariado"
-        ]
+        "testingSupport": ["Variações de teste A/B", "Suporte a teste multivariado"]
       },
       "caseStudies": [
         {
@@ -1105,27 +892,10 @@
         "Acompanhe as métricas de desempenho e itere com base nos resultados"
       ],
       "softwareRecommendations": {
-        "marketingPlatforms": [
-          "Google Ads",
-          "Facebook Ads Manager",
-          "LinkedIn Campaign Manager"
-        ],
-        "designTools": [
-          "Canva Pro",
-          "Adobe Creative Suite",
-          "Figma"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Adobe Stock",
-          "Unsplash+"
-        ],
-        "analyticsTools": [
-          "Google Analytics",
-          "Hotjar",
-          "Crazy Egg",
-          "Optimizely"
-        ]
+        "marketingPlatforms": ["Google Ads", "Facebook Ads Manager", "LinkedIn Campaign Manager"],
+        "designTools": ["Canva Pro", "Adobe Creative Suite", "Figma"],
+        "enhancementTools": ["MyImageUpscaler", "Adobe Stock", "Unsplash+"],
+        "analyticsTools": ["Google Analytics", "Hotjar", "Crazy Egg", "Optimizely"]
       },
       "fileSizeGuidelines": {
         "displayAds": "150KB-500KB para anúncios de display de carregamento rápido",
@@ -1204,14 +974,7 @@
         "Baixe imagens restauradas em alta resolução para arquivamento e impressão"
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "TIFF",
-          "PNG",
-          "BMP",
-          "GIF",
-          "Documentos digitalizados"
-        ],
+        "supportedFormats": ["JPEG", "TIFF", "PNG", "BMP", "GIF", "Documentos digitalizados"],
         "damageTypes": [
           "Rasgos",
           "Arranhões",
@@ -1227,7 +990,9 @@
           "DNG (profissional)"
         ],
         "archiveStandards": [
-          "Conformidade com FADGI, METS, PREMIS para arquivamento institucional"
+          "Conformidade com FADGI, METS, PREMIS para arquivamento institucional",
+          "METS",
+          "PREMIS compliance for institutional archiving"
         ],
         "qualityControl": [
           "Precisão histórica",
@@ -1256,25 +1021,10 @@
         "Considere consulta profissional para fotos históricas valiosas"
       ],
       "softwareRecommendations": {
-        "restorationTools": [
-          "MyImageUpscaler",
-          "Adobe Photoshop",
-          "Topaz Labs",
-          "Skylum"
-        ],
-        "scanningSoftware": [
-          "VueScan",
-          "Epson Scan",
-          "Canon ScanGear"
-        ],
-        "archiveTools": [
-          "Adobe Lightroom",
-          "Sistemas DAM",
-          "Software de arquivo digital"
-        ],
-        "professionalServices": [
-          "Serviços de restauração profissional para itens valiosos"
-        ]
+        "restorationTools": ["MyImageUpscaler", "Adobe Photoshop", "Topaz Labs", "Skylum"],
+        "scanningSoftware": ["VueScan", "Epson Scan", "Canon ScanGear"],
+        "archiveTools": ["Adobe Lightroom", "Sistemas DAM", "Software de arquivo digital"],
+        "professionalServices": ["Serviços de restauração profissional para itens valiosos"]
       },
       "fileSizeGuidelines": {
         "archivalQuality": "20-100MB para arquivos TIFF de arquivamento",
@@ -1357,14 +1107,10 @@
           "Midjourney",
           "DALL-E",
           "Stable Diffusion",
+          "Leonardo AI",
           "Leonardo AI"
         ],
-        "outputResolutions": [
-          "4K",
-          "6K",
-          "8K",
-          "Grande formato personalizado"
-        ],
+        "outputResolutions": ["4K", "6K", "8K", "Grande formato personalizado"],
         "supportedStyles": [
           "Arte digital",
           "Fotorrealista",
@@ -1377,13 +1123,7 @@
           "Impressão comercial",
           "Reprodução de belas artes"
         ],
-        "formatSupport": [
-          "PNG",
-          "TIFF",
-          "JPEG",
-          "PSD",
-          "WebP"
-        ]
+        "formatSupport": ["PNG", "TIFF", "JPEG", "PSD", "WebP"]
       },
       "caseStudies": [
         {
@@ -1406,26 +1146,14 @@
         "Considere os direitos autorais e licenciamento para uso comercial"
       ],
       "softwareRecommendations": {
-        "aiGenerators": [
-          "Midjourney",
-          "DALL-E 3",
-          "Stable Diffusion",
-          "Leonardo AI"
-        ],
-        "enhancementTools": [
-          "MyImageUpscaler",
-          "Topaz Gigapixel AI",
-          "Adobe Photoshop"
-        ],
+        "aiGenerators": ["Midjourney", "DALL-E 3", "Stable Diffusion", "Leonardo AI"],
+        "enhancementTools": ["MyImageUpscaler", "Topaz Gigapixel AI", "Adobe Photoshop"],
         "printingServices": [
           "Impressão de arte profissional",
           "Serviços de impressão para galeria",
           "Reprodução de belas artes"
         ],
-        "commercialTools": [
-          "Adobe Creative Suite",
-          "Software de design profissional"
-        ]
+        "commercialTools": ["Adobe Creative Suite", "Software de design profissional"]
       },
       "fileSizeGuidelines": {
         "largePrint": "50-200MB para impressões de arte em grande formato",

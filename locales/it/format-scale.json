@@ -212,7 +212,7 @@
         }
       ],
       "relatedFormats": ["upscale-jpeg-images", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "jpeg-upscale-2x"]
+      "relatedScales": ["ai-upscaler-4x", "jpeg-upscale-2x", "jpeg-upscale-8x"]
     },
     {
       "slug": "png-upscale-2x",
@@ -316,7 +316,7 @@
         }
       ],
       "relatedFormats": ["upscale-png-immagini", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x"]
+      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x", "jpeg-upscale-16x"]
     },
     {
       "slug": "png-upscale-4x",
@@ -628,7 +628,7 @@
         }
       ],
       "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "jpeg-upscale-8x"]
+      "relatedScales": ["upscale-16x", "jpeg-upscale-8x", "png-upscale-8x"]
     },
     {
       "slug": "png-upscale-8x",

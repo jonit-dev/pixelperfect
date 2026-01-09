@@ -166,14 +166,8 @@
           "answer": "Size images for the actual display area at the device's pixel density. Typically 320-640px larghezza for most mobile Usa cases."
         }
       ],
-      "relatedTools": [
-        "mobile-image-optimizer",
-        "device-image-resizer"
-      ],
-      "relatedPages": [
-        "app-performance-ottimizzazione",
-        "mobile-development-image-handling"
-      ]
+      "relatedTools": ["mobile-image-optimizer", "device-image-resizer"],
+      "relatedPages": ["app-performance-ottimizzazione", "mobile-development-image-handling"]
     },
     {
       "slug": "desktop-image-ottimizzazione",
@@ -191,11 +185,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-ottimizzazione",
       "platform": "Desktop",
-      "platforms": [
-        "Windows",
-        "macOS",
-        "Linux"
-      ],
+      "platforms": ["Windows", "macOS", "Linux"],
       "advantages": [
         {
           "advantage": "More Processing Power",
@@ -320,38 +310,22 @@
         {
           "technique": "Multi-threading",
           "description": "Process images using multiple CPU cores",
-          "benefits": [
-            "Faster processing",
-            "Responsive UI",
-            "Better resource utilization"
-          ]
+          "benefits": ["Faster processing", "Responsive UI", "Better resource utilization"]
         },
         {
           "technique": "GPU Acceleration",
           "description": "Offload processing to graphics hardware",
-          "benefits": [
-            "10-100x speedup",
-            "Reduced CPU load",
-            "Better for large images"
-          ]
+          "benefits": ["10-100x speedup", "Reduced CPU load", "Better for large images"]
         },
         {
           "technique": "Memory ottimizzazione",
           "description": "Efficient memory management for large images",
-          "benefits": [
-            "Handle larger files",
-            "Reduce crashes",
-            "Better performance"
-          ]
+          "benefits": ["Handle larger files", "Reduce crashes", "Better performance"]
         },
         {
           "technique": "Caching Strategies",
           "description": "Smart caching of processed images",
-          "benefits": [
-            "Faster subsequent loads",
-            "Reduced processing",
-            "Better responsiveness"
-          ]
+          "benefits": ["Faster subsequent loads", "Reduced processing", "Better responsiveness"]
         }
       ],
       "integrationConsiderations": [
@@ -441,14 +415,8 @@
           "answer": "PNG for graphics and transparency, TIFF for professional work, JPEG for photographs. Consider WebP for modern applications with fallback support."
         }
       ],
-      "relatedTools": [
-        "desktop-image-processor",
-        "gpu-accelerated-upscaler"
-      ],
-      "relatedPages": [
-        "professional-image-editing",
-        "multi-platform-image-handling"
-      ]
+      "relatedTools": ["desktop-image-processor", "gpu-accelerated-upscaler"],
+      "relatedPages": ["professional-image-editing", "multi-platform-image-handling"]
     },
     {
       "slug": "smart-tv-image-ottimizzazione",
@@ -466,13 +434,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-ottimizzazione",
       "platform": "Smart TV",
-      "tvStandards": [
-        "4K UHD",
-        "8K UHD",
-        "HDR10",
-        "Dolby Vision",
-        "HLG"
-      ],
+      "tvStandards": ["4K UHD", "8K UHD", "HDR10", "Dolby Vision", "HLG"],
       "uniqueChallenges": [
         {
           "challenge": "Large Display Sizes",
@@ -532,6 +494,12 @@
             "textSize": "Larger, more readable text",
             "contrast": "High contrast for readability",
             "format": "PNG with transparency for UI elements"
+          },
+          "optimization": {
+            "resolution": "Design for 10-foot viewing experience",
+            "textSize": "Larger, more readable text",
+            "contrast": "High contrast for readability",
+            "format": "PNG with transparency for UI elements"
           }
         },
         {
@@ -541,6 +509,12 @@
             "compression": "Balance quality and load speed",
             "aspectRatio": "Maintain proper aspect ratios",
             "format": "WebP or JPEG with ottimizzazione"
+          },
+          "optimization": {
+            "resolution": "High-quality thumbnails for preview",
+            "compression": "Balance quality and load speed",
+            "aspectRatio": "Maintain proper aspect ratios",
+            "format": "WebP or JPEG with optimization"
           }
         },
         {
@@ -550,12 +524,24 @@
             "colorManagement": "Proper HDR/SDR handling",
             "compression": "High-quality for presentation",
             "format": "JPEG for photos, PNG for graphics"
+          },
+          "optimization": {
+            "resolution": "Native resolution for best quality",
+            "colorManagement": "Proper HDR/SDR handling",
+            "compression": "High-quality for presentation",
+            "format": "JPEG for photos, PNG for graphics"
           }
         },
         {
           "type": "Background Images",
           "ottimizzazione": {
             "resolution": "Full risoluzione, subtle compression",
+            "subtlety": "Don't distract from foreground content",
+            "loading": "Progressive loading for smooth experience",
+            "format": "JPEG with quality 80-90%"
+          },
+          "optimization": {
+            "resolution": "Full resolution, subtle compression",
             "subtlety": "Don't distract from foreground content",
             "loading": "Progressive loading for smooth experience",
             "format": "JPEG with quality 80-90%"
@@ -701,14 +687,8 @@
           "answer": "Check TV platform support. Most modern Smart TVs support WebP, but always provide JPEG fallbacks for older or incompatible devices."
         }
       ],
-      "relatedTools": [
-        "tv-image-optimizer",
-        "hdr-image-converter"
-      ],
-      "relatedPages": [
-        "4k-content-preparation",
-        "smart-tv-app-development"
-      ]
+      "relatedTools": ["tv-image-optimizer", "hdr-image-converter"],
+      "relatedPages": ["4k-content-preparation", "smart-tv-app-development"]
     },
     {
       "slug": "tablet-image-ottimizzazione",
@@ -726,12 +706,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-ottimizzazione",
       "platform": "Tablet",
-      "tabletTypes": [
-        "iPad",
-        "iPad Pro",
-        "Android Tablets",
-        "Windows Tablets"
-      ],
+      "tabletTypes": ["iPad", "iPad Pro", "Android Tablets", "Windows Tablets"],
       "tabletCharacteristics": [
         {
           "characteristic": "Larger Screens",
@@ -805,22 +780,26 @@
         {
           "tablet": "iPad Mini (7.9-8.3\")",
           "resolution": "2266x1488 (326 PPI)",
-          "ottimizzazione": "Usa @2x and @3x assets, ottimizza for smaller tablet size"
+          "ottimizzazione": "Usa @2x and @3x assets, ottimizza for smaller tablet size",
+          "optimization": "Use @2x and @3x assets, optimize for smaller tablet size"
         },
         {
           "tablet": "iPad (10.2-10.9\")",
           "resolution": "2360x1640 (264 PPI)",
-          "ottimizzazione": "Balance image quality and file size for mid-range tablets"
+          "ottimizzazione": "Balance image quality and file size for mid-range tablets",
+          "optimization": "Balance image quality and file size for mid-range tablets"
         },
         {
           "tablet": "iPad Pro (11-12.9\")",
           "resolution": "2732x2048 (264 PPI)",
-          "ottimizzazione": "High-risoluzione images for professional Usa cases"
+          "ottimizzazione": "High-risoluzione images for professional Usa cases",
+          "optimization": "High-resolution images for professional use cases"
         },
         {
           "tablet": "Android Tablets (7-13\")",
           "resolution": "1920x1200 to 2560x1600 (200-350 PPI)",
-          "ottimizzazione": "Multiple density support, wide device range ottimizzazione"
+          "ottimizzazione": "Multiple density support, wide device range ottimizzazione",
+          "optimization": "Multiple density support, wide device range optimization"
         }
       ],
       "orientationHandling": [
@@ -870,12 +849,7 @@
       "tabletUseCases": [
         {
           "useCase": "Productivity Apps",
-          "optimizationNeeds": [
-            "Document images",
-            "Charts and graphs",
-            "Icons",
-            "UI elements"
-          ],
+          "optimizationNeeds": ["Document images", "Charts and graphs", "Icons", "UI elements"],
           "specificRequirements": [
             "Clear text at any zoom",
             "Professional appearance",
@@ -884,16 +858,8 @@
         },
         {
           "useCase": "Creative Applications",
-          "optimizationNeeds": [
-            "High-risoluzione images",
-            "Layer support",
-            "Editing capabilities"
-          ],
-          "specificRequirements": [
-            "Precision handling",
-            "Large file support",
-            "Color accuracy"
-          ]
+          "optimizationNeeds": ["High-risoluzione images", "Layer support", "Editing capabilities"],
+          "specificRequirements": ["Precision handling", "Large file support", "Color accuracy"]
         },
         {
           "useCase": "Educational Content",
@@ -902,24 +868,12 @@
             "Textbook pages",
             "Interactive elements"
           ],
-          "specificRequirements": [
-            "Readability",
-            "Zoom support",
-            "Annotation capability"
-          ]
+          "specificRequirements": ["Readability", "Zoom support", "Annotation capability"]
         },
         {
           "useCase": "Media Consumption",
-          "optimizationNeeds": [
-            "Photo galleries",
-            "Video thumbnails",
-            "Cover art"
-          ],
-          "specificRequirements": [
-            "High quality",
-            "Smooth scrolling",
-            "Quick loading"
-          ]
+          "optimizationNeeds": ["Photo galleries", "Video thumbnails", "Cover art"],
+          "specificRequirements": ["High quality", "Smooth scrolling", "Quick loading"]
         }
       ],
       "touchOptimization": [
@@ -967,14 +921,8 @@
           "answer": "Usa WebP where supported, with JPEG fallbacks. PNG for UI elements and transparency. HEIF on iOS devices with appropriate fallbacks."
         }
       ],
-      "relatedTools": [
-        "tablet-image-optimizer",
-        "responsive-image-generator"
-      ],
-      "relatedPages": [
-        "mobile-tablet-development",
-        "cross-platform-image-handling"
-      ]
+      "relatedTools": ["tablet-image-optimizer", "responsive-image-generator"],
+      "relatedPages": ["mobile-tablet-development", "cross-platform-image-handling"]
     },
     {
       "slug": "wearable-device-image-ottimizzazione",
@@ -992,12 +940,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "device-ottimizzazione",
       "platform": "Wearable",
-      "deviceTypes": [
-        "Smartwatches",
-        "Fitness Trackers",
-        "Smart Rings",
-        "AR Glasses"
-      ],
+      "deviceTypes": ["Smartwatches", "Fitness Trackers", "Smart Rings", "AR Glasses"],
       "extremeConstraints": [
         {
           "constraint": "Tiny Displays",
@@ -1070,7 +1013,8 @@
             "Ultra": "49mm (410x502)",
             "SE": "44mm (368x448), 40mm (324x394)",
             "colorDepth": "Always-on Retina LTPO OLED",
-            "ottimizzazione": "Usa SF Symbols where possible, minimal JPEG compression"
+            "ottimizzazione": "Usa SF Symbols where possible, minimal JPEG compression",
+            "optimization": "Use SF Symbols where possible, minimal JPEG compression"
           }
         },
         {
@@ -1079,7 +1023,8 @@
             "Watch 6": "44mm (432x480), 40mm (396x432)",
             "Watch 5 Pro": "45mm (450x450)",
             "colorDepth": "Super AMOLED",
-            "ottimizzazione": "Android Wear guidelines, WebP support where available"
+            "ottimizzazione": "Android Wear guidelines, WebP support where available",
+            "optimization": "Android Wear guidelines, WebP support where available"
           }
         },
         {
@@ -1088,7 +1033,8 @@
             "Fitbit": "Various (240x240 to 336x336)",
             "Garmin": "Various (176x176 to 280x280)",
             "colorDepth": "Often limited color or monochrome",
-            "ottimizzazione": "Extreme compression, simple graphics, minimal color depth"
+            "ottimizzazione": "Extreme compression, simple graphics, minimal color depth",
+            "optimization": "Extreme compression, simple graphics, minimal color depth"
           }
         }
       ],
@@ -1096,11 +1042,7 @@
         {
           "technique": "Vector Graphics",
           "description": "Usa SVG and vector formats where possible",
-          "benefits": [
-            "Infinitely scalable",
-            "Tiny file sizes",
-            "Perfetto per simple graphics"
-          ]
+          "benefits": ["Infinitely scalable", "Tiny file sizes", "Perfetto per simple graphics"]
         },
         {
           "technique": "Symbol Systems",
@@ -1110,11 +1052,7 @@
         {
           "technique": "Extreme Compression",
           "description": "Push image compression to absolute limits",
-          "targets": [
-            "Under 1KB for icons",
-            "Under 5KB for photos",
-            "Lossless for simple graphics"
-          ]
+          "targets": ["Under 1KB for icons", "Under 5KB for photos", "Lossless for simple graphics"]
         },
         {
           "technique": "Color ottimizzazione",
@@ -1129,12 +1067,22 @@
             "size": "40-60px for most wearables",
             "format": "PNG with transparency or vector icons",
             "compression": "Lossless for clarity at small sizes"
+          },
+          "optimization": {
+            "size": "40-60px for most wearables",
+            "format": "PNG with transparency or vector icons",
+            "compression": "Lossless for clarity at small sizes"
           }
         },
         {
           "type": "Notification Images",
           "ottimizzazione": {
             "size": "Maximum 100px larghezza",
+            "format": "Highly compressed JPEG or PNG",
+            "compression": "Aggressive compression acceptable"
+          },
+          "optimization": {
+            "size": "Maximum 100px width",
             "format": "Highly compressed JPEG or PNG",
             "compression": "Aggressive compression acceptable"
           }
@@ -1145,11 +1093,21 @@
             "size": "Depends on watch face design",
             "format": "Platform-specific requirements",
             "compression": "Follow platform guidelines strictly"
+          },
+          "optimization": {
+            "size": "Depends on watch face design",
+            "format": "Platform-specific requirements",
+            "compression": "Follow platform guidelines strictly"
           }
         },
         {
           "type": "Activity Images",
           "ottimizzazione": {
+            "size": "Small thumbnails for fitness activities",
+            "format": "Compressed JPEG with low quality",
+            "compression": "Very high compression acceptable"
+          },
+          "optimization": {
             "size": "Small thumbnails for fitness activities",
             "format": "Compressed JPEG with low quality",
             "compression": "Very high compression acceptable"
@@ -1193,55 +1151,23 @@
       "specializedUseCases": [
         {
           "useCase": "Fitness Tracking",
-          "optimizationNeeds": [
-            "Activity icons",
-            "Achievement badges",
-            "Progress images"
-          ],
-          "specificRequirements": [
-            "Low battery impact",
-            "Quick loading",
-            "Motivational quality"
-          ]
+          "optimizationNeeds": ["Activity icons", "Achievement badges", "Progress images"],
+          "specificRequirements": ["Low battery impact", "Quick loading", "Motivational quality"]
         },
         {
           "useCase": "Health Monitoring",
-          "optimizationNeeds": [
-            "Medical icons",
-            "Chart graphics",
-            "Alert indicators"
-          ],
-          "specificRequirements": [
-            "Clear at small sizes",
-            "High contrast",
-            "Reliability"
-          ]
+          "optimizationNeeds": ["Medical icons", "Chart graphics", "Alert indicators"],
+          "specificRequirements": ["Clear at small sizes", "High contrast", "Reliability"]
         },
         {
           "useCase": "Navigation",
-          "optimizationNeeds": [
-            "Map icons",
-            "Direction arrows",
-            "Landmark images"
-          ],
-          "specificRequirements": [
-            "Quick recognition",
-            "Clear meaning",
-            "Low bandlarghezza"
-          ]
+          "optimizationNeeds": ["Map icons", "Direction arrows", "Landmark images"],
+          "specificRequirements": ["Quick recognition", "Clear meaning", "Low bandlarghezza"]
         },
         {
           "useCase": "Communication",
-          "optimizationNeeds": [
-            "Contact photos",
-            "Emoji",
-            "Message attachments"
-          ],
-          "specificRequirements": [
-            "Fast loading",
-            "Privacy",
-            "Quick glance reading"
-          ]
+          "optimizationNeeds": ["Contact photos", "Emoji", "Message attachments"],
+          "specificRequirements": ["Fast loading", "Privacy", "Quick glance reading"]
         }
       ],
       "bestPractices": [
@@ -1272,14 +1198,8 @@
           "answer": "Implement companion app caching, load text-only versions first, and Usa aggressive compression. Pre-load content during phone charging when possible."
         }
       ],
-      "relatedTools": [
-        "wearable-image-optimizer",
-        "icon-compressor"
-      ],
-      "relatedPages": [
-        "wearable-app-development",
-        "low-power-display-ottimizzazione"
-      ]
+      "relatedTools": ["wearable-image-optimizer", "icon-compressor"],
+      "relatedPages": ["wearable-app-development", "low-power-display-ottimizzazione"]
     }
   ],
   "meta": {

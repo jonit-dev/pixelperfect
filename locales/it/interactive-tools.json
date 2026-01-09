@@ -24,11 +24,7 @@
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "Ridimensionamento Istantaneo nel Browser",
@@ -134,51 +130,44 @@
           "answer": "Assolutamente! Abbiamo preset per Post Instagram (1080x1080), Storie Instagram (1080x1920) e tutte le principali piattaforme di social media."
         },
         {
-          "question": "Will resizing reduce image quality?",
+          "question": "Il ridimensionamento ridurrà la qualità dell'immagine?",
           "answer": "When you downsize images (Crea/Fai them smaller), quality remAIns excellent. Upsizing can introduce softness - for AI-powered ampliamento with quality miglioramento, Prova our AIimageupscaler."
         },
         {
-          "question": "What formats can I export?",
+          "question": "Quali formati posso esportare?",
           "answer": "You can export as JPEG ( for photos), PNG ( for graphics with transparency), or WebP ( for web ottimizzazione)."
         },
         {
-          "question": "How do I mAIntAIn aspect ratio when resizing?",
+          "question": "Come mantengo il rapporto di aspetto durante il ridimensionamento?",
           "answer": "Enable the 'MAIntAIn aspect ratio' toggle. When active, changing larghezza automatically adjusts altezza proportionally (and vice versa)."
         },
         {
-          "question": "Can I batch resize multiple images?",
+          "question": "Posso ridimensionare in batch più immagini?",
           "answer": "Currently, you can resize one image at a time. For batch processing and advanced AI miglioramento, check out our premium AIimageupscaler."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "image-compressor",
-        "png-to-jpg"
-      ],
-      "relatedGuides": [
-        "how-to-resize-images-for-social-media",
-        "image-risoluzione-guide"
-      ],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "compressore-immagini", "png-to-jpg"],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media", "image-risoluzione-guide"],
       "ctaText": "Prova Free Ridimensionatore Immagini",
-      "ctaUrl": "/tools/resize/image-resizer"
+      "ctaUrl": "/tools/resize/ridimensionatore-immagini"
     },
     {
-      "slug": "resize-image-for-instagram",
+      "slug": "ridimensionare-immagine-per-instagram",
       "title": "Instagram Ridimensionatore Immagini",
       "metaTitle": "Instagram Ridimensionatore Immagini | MyImageUpscaler",
       "metaDescription": "Resize images for Instagram instantly. Ottieni perfect dimensioni for posts (1080x1080), stories (1080x1920), and reels. Free, No upload required.",
       "h1": "Free Instagram Ridimensionatore Immagini - Perfect sizes Instantly",
       "intro": "Resize your images to perfect Instagram dimensioni. Posts, stories, reels - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "instagram photo resizer",
+      "primaryKeyword": "ridimensionatore foto instagram",
       "secondaryKeywords": [
-        "instagram image size",
-        "instagram post size",
-        "instagram story size",
-        "resize for instagram",
-        "instagram photo size"
+        "dimensione immagine instagram",
+        "dimensione post instagram",
+        "dimensione storia instagram",
+        "ridimensionare per instagram",
+        "dimensione foto instagram"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
+      "category": "strumenti",
       "toolName": "Instagram Ridimensionatore Immagini",
       "description": "Instantly resize images to Instagram's recommended dimensioni. Supports posts (1080x1080), stories (1080x1920), and all Instagram formats.",
       "isInteractive": true,
@@ -189,56 +178,52 @@
         "presetFilter": "instagram"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
-          "title": "Instagram Post (1080x1080)",
+          "title": "Post Instagram (1080x1080)",
           "description": "Square format Perfetto per feed posts with maximum engagement."
         },
         {
-          "title": "Instagram Story (1080x1920)",
-          "description": "Vertical format for stories that fills the entire screen."
+          "title": "Storia Instagram (1080x1920)",
+          "description": "Formato verticale per le storie che riempie l'intero schermo."
         },
         {
-          "title": "One-Click Presets",
+          "title": "Preset con un Clic",
           "description": "Select Instagram dimensioni instantly without manual calculations."
         },
         {
-          "title": "quality Preservation",
-          "description": "Resize without losing image quality using advanced algorithms."
+          "title": "Preservazione Qualità",
+          "description": "Ridimensiona senza perdere la qualità dell'immagine utilizzando algoritmi avanzati."
         },
         {
-          "title": "Multiple formats",
-          "description": "Export as JPEG, PNG, or WebP depending on your needs."
+          "title": "Formati multipli",
+          "description": "Esporta come JPEG, PNG o WebP in base alle tue esigenze."
         },
         {
-          "title": "Browser-Based",
-          "description": "No upload required - your images stay private on your device."
+          "title": "Basato su Browser",
+          "description": "Nessun caricamento richiesto - le tue immagini rimangono private sul tuo dispositivo."
         }
       ],
       "useCases": [
         {
-          "title": "Feed Posts",
+          "title": "Post nel Feed",
           "description": "Crea perfect square images for your Instagram feed.",
-          "example": "Resize landscape photos to 1080x1080 square format"
+          "example": "Ridimensiona foto orizzontali al formato quadrato 1080x1080"
         },
         {
-          "title": "Stories",
+          "title": "Storie",
           "description": "ottimizza images for Instagram Stories full-screen display.",
-          "example": "Convert horizontal photos to vertical 1080x1920"
+          "example": "Converti foto orizzontali in verticale 1080x1920"
         },
         {
-          "title": "Carousel Posts",
+          "title": "Post Carosello",
           "description": "Prepare multiple images with consistent dimensioni.",
-          "example": "Resize a photo series to matching 1080x1080 squares"
+          "example": "Ridimensiona una serie di foto in quadrati corrispondenti 1080x1080"
         },
         {
-          "title": "Profile Content",
-          "description": "Ensure your content looks on any device.",
+          "title": "Contenuto del Profilo",
+          "description": "Assicurati che il tuo contenuto abbia un bell'aspetto su qualsiasi dispositivo.",
           "example": "ottimizza product photos for Instagram shop"
         }
       ],
@@ -246,11 +231,11 @@
         {
           "title": "Perfect dimensioni",
           "description": "Always Ottieni the exact sizes Instagram recommends for display.",
-          "metric": "Pixel-perfect"
+          "metric": "Pixel-perfetto"
         },
         {
-          "title": "No Cropping Surprises",
-          "description": "Preview exactly how your image will appear before posting.",
+          "title": "Nessuna Sorpresa di Ritaglio",
+          "description": "Anteprima esatta di come apparirà la tua immagine prima della pubblicazione.",
           "metric": "WYSIWYG"
         },
         {
@@ -304,9 +289,7 @@
         "ridimensionare-immagine-per-facebook",
         "compressore-immagini"
       ],
-      "relatedGuides": [
-        "come-ridimensionare-immagini-per-social-media"
-      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
       "ctaText": "Ridimensiona for Instagram Gratuito",
       "ctaUrl": "/tools/resize/ridimensionare-immagine-per-instagram"
     },
@@ -337,11 +320,7 @@
         "presetFilter": "youtube"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "1280x720 Perfetto",
@@ -439,39 +418,37 @@
           "answer": "YouTube accetta JPG, GIF e PNG. JPEG è raccomandato per le foto in quanto fornisce una buona qualità con dimensioni del file più piccole."
         },
         {
-          "question": "Why is 1280x720 the recommended size?",
-          "answer": "1280x720 is the minimum that displays well across all devices while matching YouTube's 16:9 player aspect ratio."
+          "question": "Perché 1280x720 è la dimensione raccomandata?",
+          "answer": "1280x720 è il minimo che viene visualizzato bene su tutti i dispositivi corrispondendo al rapporto di aspetto 16:9 del player YouTube."
         },
         {
-          "question": "Will my thumbnAIl look good on all devices?",
-          "answer": "Yes! 1280x720 thumbnAIls scale perfectly to all screen sizes, from mobile phones to 4K TVs."
+          "question": "La mia miniatura avrà un buon aspetto su tutti i dispositivi?",
+          "answer": "Sì! Le miniature 1280x720 si adattano perfettamente a tutte le dimensioni dello schermo, dai telefoni mobili alle TV 4K."
         }
       ],
       "relatedTools": [
-        "image-resizer",
-        "resize-image-for-instagram",
-        "image-compressor"
+        "ridimensionatore-immagini",
+        "ridimensionare-immagine-per-instagram",
+        "compressore-immagini"
       ],
-      "relatedGuides": [
-        "youtube-thumbnail-best-practices"
-      ],
+      "relatedGuides": ["migliori-pratiche-miniature-youtube"],
       "ctaText": "Ridimensiona for YouTube Gratuito",
-      "ctaUrl": "/tools/resize/resize-image-for-youtube"
+      "ctaUrl": "/tools/resize/ridimensionare-immagine-per-youtube"
     },
     {
-      "slug": "resize-image-for-facebook",
+      "slug": "ridimensionare-immagine-per-facebook",
       "title": "Facebook Ridimensionatore Immagini",
       "metaTitle": "Facebook Ridimensionatore Immagini | MyImageUpscaler",
       "metaDescription": "Resize images for Facebook instantly. Ottieni perfect dimensioni for posts (1200x630), covers (820x312), and profile pictures. Free, No upload required.",
       "h1": "Free Facebook Ridimensionatore Immagini - Perfect sizes Instantly",
       "intro": "Resize your images to perfect Facebook dimensioni. Posts, covers, profile pictures - all optimized sizes in one click. Works in your browser.",
-      "primaryKeyword": "facebook photo resizer",
+      "primaryKeyword": "ridimensionatore foto facebook",
       "secondaryKeywords": [
-        "facebook image size",
-        "facebook post size",
-        "facebook cover size",
-        "resize for facebook",
-        "facebook photo size"
+        "dimensione immagine facebook",
+        "dimensione post facebook",
+        "dimensione copertina facebook",
+        "ridimensionare per facebook",
+        "dimensione foto facebook"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "Strumenti",
@@ -485,14 +462,10 @@
         "presetFilter": "facebook"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
-          "title": "Facebook Post (1200x630)",
+          "title": "Post Facebook (1200x630)",
           "description": "Ottimale size for link previews and shared images."
         },
         {
@@ -500,7 +473,7 @@
           "description": "Perfect dimensioni for your page or profile cover."
         },
         {
-          "title": "Link Preview Optimized",
+          "title": "Ottimizzato per Anteprima Link",
           "description": "Immagini sized for maximum impact in the news feed."
         },
         {
@@ -512,59 +485,59 @@
           "description": "Esporta at 2x for retina displays if needed."
         },
         {
-          "title": "privacy First",
-          "description": "All processing happens locally - images never uploaded."
+          "title": "Privacy Prima",
+          "description": "Tutta l'elaborazione avviene localmente - le immagini non vengono mai caricate."
         }
       ],
       "useCases": [
         {
-          "title": "Social Sharing",
+          "title": "Condivisione Social",
           "description": "Crea perfectly sized images for Facebook posts.",
-          "example": "Resize blog images for Facebook sharing"
+          "example": "Ridimensiona immagini del blog per la condivisione su Facebook"
         },
         {
-          "title": "Cover Photos",
-          "description": "Design cover photos that display correctly on all devices.",
+          "title": "Foto di Copertina",
+          "description": "Progetta foto di copertina che vengono visualizzate correttamente su tutti i dispositivi.",
           "example": "Crea a Facebook page cover at 820x312"
         },
         {
-          "title": "Ad Creative",
-          "description": "Prepare images for Facebook advertising campAIgns.",
-          "example": "Resize product photos for Facebook ads"
+          "title": "Creatività Pubblicitaria",
+          "description": "Prepara immagini per le campagne pubblicitarie di Facebook.",
+          "example": "Ridimensiona foto dei prodotti per gli annunci Facebook"
         },
         {
-          "title": "Event Images",
+          "title": "Immagini di Eventi",
           "description": "Crea event cover images at the right dimensioni.",
-          "example": "Design an event banner that fits perfectly"
+          "example": "Progetta un banner evento che si adatta perfettamente"
         }
       ],
       "benefits": [
         {
-          "title": "No Cropping",
-          "description": "Images display exactly as intended without auto-cropping.",
-          "metric": "Pixel-perfect"
+          "title": "Nessun Ritaglio",
+          "description": "Le immagini vengono visualizzate esattamente come previsto senza ritagli automatici.",
+          "metric": "Pixel-perfetto"
         },
         {
-          "title": "Better Engagement",
+          "title": "Migliore Coinvolgimento",
           "description": "Properly sized images Ottieni more likes and shares.",
-          "metric": "Higher engagement"
+          "metric": "Coinvolgimento più elevato"
         },
         {
-          "title": "Image Processing Tool",
-          "description": "Consistent sizing makes your page look polished.",
-          "metric": "Brand consistency"
+          "title": "Strumento di Elaborazione Immagini",
+          "description": "Dimensionamenti coerenti rendono la tua pagina curata e professionale.",
+          "metric": "Coerenza del brand"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
-          "title": "Upload Your Image",
-          "description": "Select the image you want to resize for Facebook."
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona l'immagine che desideri ridimensionare per Facebook."
         },
         {
           "step": 2,
           "title": "Scegli Facebook format",
-          "description": "Select Post (1200x630) or Cover (820x312) size."
+          "description": "Seleziona la dimensione Post (1200x630) o Copertina (820x312)."
         },
         {
           "step": 3,
@@ -600,9 +573,7 @@
         "ridimensionare-immagine-per-instagram",
         "ridimensionare-immagine-per-twitter"
       ],
-      "relatedGuides": [
-        "come-ridimensionare-immagini-per-social-media"
-      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
       "ctaText": "Ridimensiona for Facebook Gratuito",
       "ctaUrl": "/tools/resize/ridimensionare-immagine-per-facebook"
     },
@@ -633,11 +604,7 @@
         "presetFilter": "twitter"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "Post Twitter (1200x675)",
@@ -746,28 +713,26 @@
       "relatedTools": [
         "ridimensionatore-immagini",
         "ridimensionare-immagine-per-linkedin",
-        "resize-image-for-facebook"
+        "ridimensionare-immagine-per-facebook"
       ],
-      "relatedGuides": [
-        "how-to-resize-images-for-social-media"
-      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
       "ctaText": "Ridimensiona for Twitter Gratuito",
-      "ctaUrl": "/tools/resize/resize-image-for-twitter"
+      "ctaUrl": "/tools/resize/ridimensionare-immagine-per-twitter"
     },
     {
-      "slug": "resize-image-for-linkedin",
+      "slug": "ridimensionare-immagine-per-linkedin",
       "title": "LinkedIn Ridimensionatore Immagini",
       "metaTitle": "LinkedIn Ridimensionatore Immagini | MyImageUpscaler",
       "metaDescription": "Resize images for LinkedIn instantly. Ottieni perfect dimensioni for posts (1200x627) and banners (1584x396). Free, No upload required.",
       "h1": "Free LinkedIn Ridimensionatore Immagini - Perfect sizes Instantly",
       "intro": "Resize your images to perfect LinkedIn dimensioni. Posts and banners Ottimizzato per engagement. Works in your browser.",
-      "primaryKeyword": "linkedin photo resizer",
+      "primaryKeyword": "ridimensionatore foto linkedin",
       "secondaryKeywords": [
-        "linkedin image size",
-        "linkedin post size",
-        "linkedin banner size",
-        "resize for linkedin",
-        "linkedin photo size"
+        "dimensione immagine linkedin",
+        "dimensione post linkedin",
+        "dimensione banner linkedin",
+        "ridimensionare per linkedin",
+        "dimensione foto linkedin"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "Strumenti",
@@ -781,19 +746,15 @@
         "presetFilter": "linkedin"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
-          "title": "LinkedIn Post (1200x627)",
+          "title": "Post LinkedIn (1200x627)",
           "description": "Optimal dimensioni for feed posts and articles."
         },
         {
           "title": "Banner Immagine (1584x396)",
-          "description": "Perfect size for profile and company page banners."
+          "description": "Dimensione perfetta per banner di profilo e pagina aziendale."
         },
         {
           "title": "Immagine Elaborazione Strumento",
@@ -801,15 +762,15 @@
         },
         {
           "title": "Article Immagini",
-          "description": "sized for LinkedIn article featured images."
+          "description": "dimensionato per immagini in evidenza degli articoli LinkedIn."
         },
         {
           "title": "Company Pagina Pronto",
           "description": "Perfetto per company page cover images."
         },
         {
-          "title": "privacy Focused",
-          "description": "All processing happens locally on your device."
+          "title": "Privacy Focalizzata",
+          "description": "Tutta l'elaborazione avviene localmente sul tuo dispositivo."
         }
       ],
       "useCases": [
@@ -819,13 +780,13 @@
           "example": "Ridimensiona infographics to 1200x627 for posts"
         },
         {
-          "title": "Profile Banners",
+          "title": "Banner del Profilo",
           "description": "Design banners that represent your marca.",
           "example": "Crea a personal marca banner at 1584x396"
         },
         {
           "title": "Company Paginas",
-          "description": "MAIntAIn consistent imagery across company content.",
+          "description": "Mantieni immagini coerenti su tutti i contenuti aziendali.",
           "example": "Ridimensiona team photos for company updates"
         },
         {
@@ -837,69 +798,67 @@
       "benefits": [
         {
           "title": "Immagine Elaborazione Strumento",
-          "description": "Properly sized images convey ism.",
-          "metric": "First impressions"
+          "description": "Immagini delle dimensioni appropriate trasmettono professionalismo.",
+          "metric": "Prime impressioni"
         },
         {
-          "title": "Maximum Visibility",
+          "title": "Massima Visibilità",
           "description": "Immagini display fully without cropping in the feed.",
-          "metric": "Full display"
+          "metric": "Visualizzazione completa"
         },
         {
-          "title": "Brand Consistency",
-          "description": "Consistent sizing across all LinkedIn content.",
+          "title": "Coerenza del Brand",
+          "description": "Dimensionamento coerente su tutti i contenuti LinkedIn.",
           "metric": "Unified marca"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
-          "title": "Upload Your Image",
-          "description": "Select the image you want to resize for LinkedIn."
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona l'immagine che desideri ridimensionare per LinkedIn."
         },
         {
           "step": 2,
           "title": "Scegli format",
-          "description": "Select Post (1200x627) or Banner (1584x396)."
+          "description": "Seleziona Post (1200x627) o Banner (1584x396)."
         },
         {
           "step": 3,
-          "title": "Adjust Settings",
-          "description": "Fine-tune quality for output."
+          "title": "Regola Impostazioni",
+          "description": "Regola con precisione la qualità per l'output."
         },
         {
           "step": 4,
-          "title": "Download",
+          "title": "Scarica",
           "description": "Ottieni your LinkedIn-ready image instantly."
         }
       ],
       "faq": [
         {
-          "question": "What size should LinkedIn posts be?",
-          "answer": "LinkedIn recommends 1200x627 pixels for shared images. This size displays well in the feed and mAIntAIns quality across devices."
+          "question": "Qual dovrebbe essere la dimensione dei post LinkedIn?",
+          "answer": "LinkedIn raccomanda 1200x627 pixel per le immagini condivise. Questa dimensione si visualizza bene nel feed e mantiene la qualità su tutti i dispositivi."
         },
         {
-          "question": "What size is a LinkedIn banner?",
-          "answer": "LinkedIn profile banners should be 1584x396 pixels. Company page banners are the same size."
+          "question": "Qual è la dimensione di un banner LinkedIn?",
+          "answer": "I banner del profilo LinkedIn dovrebbero essere 1584x396 pixel. I banner delle pagine aziendali hanno la stessa dimensione."
         },
         {
-          "question": "What format is for LinkedIn?",
+          "question": "Qual è il formato per LinkedIn?",
           "answer": "PNG or JPEG both work well. Usa PNG for graphics with text, JPEG for photographs. LinkedIn accepts files up to 8MB."
         },
         {
-          "question": "Why do my LinkedIn images look blurry?",
+          "question": "Perché le mie immagini LinkedIn sembrano sfocate?",
           "answer": "LinkedIn compresses images. Inizia with high-quality images at exact dimensioni and export at 90%+ quality to minimize compression."
         }
       ],
       "relatedTools": [
-        "image-resizer",
-        "resize-image-for-twitter",
-        "resize-image-for-facebook"
+        "ridimensionatore-immagini",
+        "ridimensionare-immagine-per-twitter",
+        "ridimensionare-immagine-per-facebook"
       ],
-      "relatedGuides": [
-        "how-to-resize-images-for-social-media"
-      ],
-      "ctaText": "Resize for LinkedIn Free",
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
+      "ctaText": "Ridimensiona per LinkedIn Gratis",
       "ctaUrl": "/tools/resize/ridimensionare-immagine-per-linkedin"
     },
     {
@@ -925,11 +884,7 @@
       "isInteractive": true,
       "toolComponent": "BulkImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "Process Up to 20 Immagini",
@@ -1056,10 +1011,7 @@
         "compressore-immagini",
         "aumento-risoluzione-immagine-ai"
       ],
-      "relatedGuides": [
-        "come-ridimensionare-immagini-per-social-media",
-        "image-risoluzione-guide"
-      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media", "image-risoluzione-guide"],
       "ctaText": "Prova Bulk Ridimensionatore Immagini Free",
       "ctaUrl": "/tools/resize/ridimensionatore-immagini-batch"
     },
@@ -1086,19 +1038,15 @@
       "isInteractive": true,
       "toolComponent": "ImmagineCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
-          "title": "Smart Compression Algorithm",
+          "title": "Algoritmo di Compressione Intelligente",
           "description": "Avanzato canvas-based compression that finds the perfect balance between file size and visual quality automatically."
         },
         {
           "title": "Real-Tempo Preview",
-          "description": "See compression results instantly before downloading. Adjust quality slider and watch file size change in real-time."
+          "description": "Vedi i risultati della compressione istantaneamente prima di scaricare. Regola lo slider di qualità e guarda la dimensione del file cambiare in tempo reale."
         },
         {
           "title": "Up to 80% Piccoloer File",
@@ -1106,10 +1054,10 @@
         },
         {
           "title": "Multipli format Supporto",
-          "description": "Compress JPEG, PNG, or WebP images. Convert to WebP for compression with modern browser support."
+          "description": "Comprimi immagini JPEG, PNG o WebP. Converti in WebP per la migliore compressione con supporto browser moderno."
         },
         {
-          "title": "Dimension Control",
+          "title": "Controllo Dimensioni",
           "description": "Optionally resize images while compressing to further reduce file size. Set maximum larghezza and altezza constrAInts."
         },
         {
@@ -1120,40 +1068,40 @@
       "useCases": [
         {
           "title": "Website Speed ottimizzazione",
-          "description": "Reduce image file sizes for faster page loading times and better SEO rankings.",
-          "example": "Compress hero images from 5MB to under 500KB without visible quality loss"
+          "description": "Riduci le dimensioni dei file immagine per tempi di caricamento più rapidi e migliori classifiche SEO.",
+          "example": "Comprimi immagini hero da 5MB a meno di 500KB senza perdita visibile di qualità"
         },
         {
-          "title": "EmAIl Attachments",
-          "description": "Shrink images to fit emAIl size limits while keeping them viewable and .",
-          "example": "Reduce a 10MB photo album to 2MB for easy emAIl sharing"
+          "title": "Allegati Email",
+          "description": "Riduci le immagini per adattarle ai limiti di dimensione dell'email mantenendole visibili.",
+          "example": "Riduci un album fotografico da 10MB a 2MB per facile condivisione via email"
         },
         {
           "title": "Social Media Caricamentos",
-          "description": "Compress images before uploading to social platforms for faster uploads and less data usage.",
-          "example": "Prepare dozens of photos for Instagram without hitting upload size limits"
+          "description": "Comprimi le immagini prima di caricarle sulle piattaforme social per caricamenti più rapidi e minor consumo di dati.",
+          "example": "Prepara dozzine di foto per Instagram senza raggiungere i limiti di dimensione di caricamento"
         },
         {
-          "title": "Cloud Storage Savings",
+          "title": "Risparmio Storage Cloud",
           "description": "Salva/Risparmia cloud storage space by compressing photo libraries before backup.",
-          "example": "Compress 1000 vacation photos from 20GB to 4GB"
+          "example": "Comprimi 1000 foto delle vacanze da 20GB a 4GB"
         }
       ],
       "benefits": [
         {
           "title": "Immagine Elaborazione Strumento",
           "description": "Piccoloer images mean faster loading times, better user experience, and improved Google rankings.",
-          "metric": "Up to 3x faster loads"
+          "metric": "Caricamenti fino a 3x più veloci"
         },
         {
           "title": "Salva/Risparmia Bandlarghezza & Storage",
           "description": "Reduced file sizes Salva/Risparmia bandlarghezza costs and extend cloud storage capacity significantly.",
-          "metric": "80% file size reduction"
+          "metric": "Riduzione dimensione file dell'80%"
         },
         {
-          "title": "MAIntAIn Visual quality",
-          "description": "Smart compression algorithms preserve image quality while aggressively reducing file size.",
-          "metric": "Minimal quality loss"
+          "title": "Mantieni Qualità Visiva",
+          "description": "Gli algoritmi di compressione intelligenti preservano la qualità dell'immagine riducendo aggressivamente la dimensione del file.",
+          "metric": "Perdita di qualità minima"
         }
       ],
       "howItWorks": [
@@ -1164,7 +1112,7 @@
         },
         {
           "step": 2,
-          "title": "Adjust Compression Level",
+          "title": "Regola Livello di Compressione",
           "description": "Usa the quality slider to balance file size vs visual quality. See real-time file size estimates."
         },
         {
@@ -1180,23 +1128,23 @@
       ],
       "faq": [
         {
-          "question": "How much can I compress an image?",
+          "question": "Quanto posso comprimere un'immagine?",
           "answer": "Typically, you can reduce file sizes by 60-80% without noticeable quality loss. Results vary based on the image content and your quality settings. Foto compress better than graphics with lots of detAIl."
         },
         {
-          "question": "Will compression reduce image quality?",
-          "answer": "Compression involves a trade-off between file size and quality. At 70-80% quality settings, most people cannot see the difference. Our tool lets you preview and adjust the quality level before downloading."
+          "question": "La compressione ridurrà la qualità dell'immagine?",
+          "answer": "La compressione comporta un compromesso tra dimensione del file e qualità. Con impostazioni di qualità del 70-80%, la maggior parte delle persone non nota la differenza. Il nostro strumento ti permette di anteprima e regolare il livello di qualità prima di scaricare."
         },
         {
-          "question": "What's the format for compression?",
-          "answer": "WebP offers the compression with great quality, but isn't universally supported. JPEG is for photos and has excellent browser support. PNG is lossless but creates larger files."
+          "question": "Qual è il formato per la compressione?",
+          "answer": "WebP offre la migliore compressione con ottima qualità, ma non è supportato universalmente. JPEG è ideale per le foto e ha un eccellente supporto del browser. PNG è senza perdita ma crea file più grandi."
         },
         {
-          "question": "Is there a file size limit?",
-          "answer": "You can compress images up to 25MB. This limit is based on browser memory, not server restrictions (since we don't upload to servers)."
+          "question": "C'è un limite di dimensione del file?",
+          "answer": "Puoi comprimere immagini fino a 25MB. Questo limite è basato sulla memoria del browser, non su restrizioni del server (poiché non carichiamo sui server)."
         },
         {
-          "question": "Can I batch compress multiple images?",
+          "question": "Posso comprimere più immagini in batch?",
           "answer": "Currently, you can compress one image at a time. For batch processing and advanced caratteristiche, check out our premium AIimageupscaler which includes compression."
         },
         {
@@ -1205,30 +1153,27 @@
         }
       ],
       "relatedTools": [
-        "image-resizer",
+        "ridimensionatore-immagini",
         "png-to-jpg",
-        "ai-image-upscaler"
+        "aumento-risoluzione-immagine-ai"
       ],
-      "relatedGuides": [
-        "image-ottimizzazione-guide",
-        "web-performance-images"
-      ],
+      "relatedGuides": ["image-ottimizzazione-guide", "prestazioni-web-immagini"],
       "ctaText": "Prova Free Image Compressor",
-      "ctaUrl": "/tools/compress/image-compressor"
+      "ctaUrl": "/tools/compress/compressore-immagini"
     },
     {
       "slug": "png-to-jpg",
-      "title": "PNG to JPG Converter",
-      "metaTitle": "PNG to JPG Converter | MyImageUpscaler",
+      "title": "Convertitore da PNG a JPG",
+      "metaTitle": "Convertitore da PNG a JPG | MyImageUpscaler",
       "metaDescription": "Convert PNG to JPG Online Gratuito. Fast, secure conversion in your browser. No upload required. Handle transparency with custom background colors.",
-      "h1": "Free PNG to JPG Converter - Convert Images Instantly",
+      "h1": "Convertitore Gratuito da PNG a JPG - Converti Immagini Istantaneamente",
       "intro": "Convert PNG images to JPG format in seconds. Our Gratuito online converter works entirely in your browser with No upload required. Perfetto per reducing file sizes and ensuring compatibility.",
-      "primaryKeyword": "png to jpg",
+      "primaryKeyword": "png in jpg",
       "secondaryKeywords": [
-        "convert png to jpg",
-        "png to jpeg",
-        "png to jpg converter",
-        "png to jpg online",
+        "convertire png in jpg",
+        "png in jpeg",
+        "convertitore png in jpg",
+        "png in jpg online",
         "convertire png in jpeg"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
@@ -1239,14 +1184,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": [
-          "image/png"
-        ]
+        "acceptedInputFormats": ["image/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/png"
-      ],
+      "acceptedFormats": ["image/png"],
       "features": [
         {
           "title": "Gestione Trasparenza",
@@ -1356,17 +1297,10 @@
           "answer": "For web and social media, 80-85% is perfect. For printing or Usa, 90-95%. For maximum file size reduction, 70-75% still looks good."
         }
       ],
-      "relatedTools": [
-        "compressore-immagini",
-        "ridimensionatore-immagini",
-        "jpg-to-png"
-      ],
-      "relatedGuides": [
-        "guida-png-vs-jpg",
-        "when-to-Usa-jpg"
-      ],
+      "relatedTools": ["compressore-immagini", "ridimensionatore-immagini", "jpg-to-png"],
+      "relatedGuides": ["guida-png-vs-jpg", "when-to-Usa-jpg"],
       "ctaText": "Convert PNG to JPG Gratuito",
-      "ctaUrl": "/tools/convert/png-to-jpg"
+      "ctaUrl": "/strumenti/convert/png-to-jpg"
     },
     {
       "slug": "jpg-to-png",
@@ -1378,35 +1312,31 @@
       "primaryKeyword": "jpg in png",
       "secondaryKeywords": [
         "convertire jpg in png",
-        "jpeg to png",
-        "jpg to png converter",
-        "jpg to png online",
-        "convert jpeg to png"
+        "jpeg in png",
+        "convertitore jpg in png",
+        "jpg in png online",
+        "convertire jpeg in png"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "Strumenti",
-      "toolName": "JPG to PNG Converter",
+      "toolName": "Convertitore da JPG a PNG",
       "description": "Convert JPG/JPEG images to PNG format for lossless quality and transparency support. Ideale per graphics, logos, and images that need editing.",
       "isInteractive": true,
       "toolComponent": "FormatoConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": [
-          "image/jpeg"
-        ]
+        "acceptedInputFormats": ["image/jpeg"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg"
-      ],
+      "acceptedFormats": ["image/jpeg"],
       "features": [
         {
-          "title": "Lossless Conversion",
-          "description": "PNG format preserves all image detAIl without additional compression artifacts."
+          "title": "Conversione Senza Perdita",
+          "description": "Il formato PNG preserva tutti i dettagli dell'immagine senza artefatti di compressione aggiuntivi."
         },
         {
           "title": "Transparency Pronto",
-          "description": "PNG supports transparency - edit your converted image and add transparent backgrounds."
+          "description": "PNG supporta la trasparenza - modifica la tua immagine convertita e aggiungi sfondi trasparenti."
         },
         {
           "title": "Perfetto per Graphics",
@@ -1414,10 +1344,10 @@
         },
         {
           "title": "Istantaneo Elaborazione",
-          "description": "Convert in under a second. All processing happens locally in your browser."
+          "description": "Converti in meno di un secondo. Tutta l'elaborazione avviene localmente nel tuo browser."
         },
         {
-          "title": "No quality Loss",
+          "title": "Nessuna Perdita di Qualità",
           "description": "Converting to PNG preserves your current image quality - it won't migliora JPG artifacts but won't add new ones."
         },
         {
@@ -1427,41 +1357,41 @@
       ],
       "useCases": [
         {
-          "title": "Graphic Design",
+          "title": "Design Grafico",
           "description": "Convert photos for Usa in design software where PNG format is preferred.",
           "example": "Prepare product images for Fotohop editing"
         },
         {
-          "title": "Logo Creation",
-          "description": "Convert base images before adding transparency for logo work.",
-          "example": "Convert a JPG headshot to add a transparent background"
+          "title": "Creazione Logo",
+          "description": "Converti immagini di base prima di aggiungere trasparenza per il lavoro sui loghi.",
+          "example": "Converti un ritratto JPG per aggiungere uno sfondo trasparente"
         },
         {
-          "title": "Web Graphics",
-          "description": "Convert images that need to overlay other content or have transparency.",
-          "example": "Prepare images for web banners with transparent edges"
+          "title": "Grafici per il Web",
+          "description": "Converti immagini che devono sovrapporre altri contenuti o avere trasparenza.",
+          "example": "Prepara immagini per banner web con bordi trasparenti"
         },
         {
-          "title": "Archival",
-          "description": "Convert important images to lossless PNG for long-term storage.",
-          "example": "Archive family photos in lossless format"
+          "title": "Archiviazione",
+          "description": "Converti immagini importanti in PNG senza perdita per l'archiviazione a lungo termine.",
+          "example": "Archivia foto di famiglia in formato senza perdita"
         }
       ],
       "benefits": [
         {
-          "title": "Lossless format",
-          "description": "PNG doesn't add compression artifacts, preserving your image quality.",
-          "metric": "Zero added artifacts"
+          "title": "Formato senza perdita",
+          "description": "PNG non aggiunge artefatti di compressione, preservando la qualità della tua immagine.",
+          "metric": "Zero artefatti aggiunti"
         },
         {
           "title": "Modifica-Friendly",
-          "description": "PNG is the preferred format for further editing and manipulation.",
-          "metric": "Industry standard"
+          "description": "PNG è il formato preferito per ulteriori modifiche e manipolazioni.",
+          "metric": "Standard industriale"
         },
         {
           "title": "Transparency Supporto",
-          "description": "PNG supports alpha channels for transparent backgrounds.",
-          "metric": "Full alpha support"
+          "description": "PNG supporta canali alfa per sfondi trasparenti.",
+          "metric": "Supporto alfa completo"
         }
       ],
       "howItWorks": [
@@ -1472,12 +1402,12 @@
         },
         {
           "step": 2,
-          "title": "Preview Conversion",
-          "description": "See your image and the estimated output file size."
+          "title": "Anteprima Conversione",
+          "description": "Vedi la tua immagine e la dimensione stimata del file di output."
         },
         {
           "step": 3,
-          "title": "Convert to PNG",
+          "title": "Converti in PNG",
           "description": "Clicca convert to process your image instantly in browser."
         },
         {
@@ -1488,7 +1418,7 @@
       ],
       "faq": [
         {
-          "question": "Why convert JPG to PNG?",
+          "question": "Perché convertire JPG in PNG?",
           "answer": "PNG offers lossless quality and transparency support. It's Ideale per graphics, logos, images that need editing, or when you need to preserve exact image quality without additional compression."
         },
         {
@@ -1496,24 +1426,18 @@
           "answer": "Converting won't migliora existing JPEG compression artifacts, but it will prevent any additional quality loss. The image will look the same but in a lossless format."
         },
         {
-          "question": "Will the file size increase?",
-          "answer": "Yes, PNG files are typically larger than JPG because PNG is lossless. Expect 2-5x larger files for photographs. This is the trade-off for lossless quality."
+          "question": "La dimensione del file aumenterà?",
+          "answer": "Sì, i file PNG sono tipicamente più grandi dei JPG perché PNG è senza perdita. Prevedi file 2-5x più grandi per le fotografie. Questo è il compromesso per la qualità senza perdita."
         },
         {
-          "question": "Can I add transparency after converting?",
+          "question": "Posso aggiungere trasparenza dopo la conversione?",
           "answer": "Yes! Once in PNG format, you can Usa image editing software to remove backgrounds and add transparency. JPG doesn't support transparency."
         }
       ],
-      "relatedTools": [
-        "png-to-jpg",
-        "image-compressor",
-        "webp-to-png"
-      ],
-      "relatedGuides": [
-        "png-vs-jpg-guide"
-      ],
+      "relatedTools": ["png-to-jpg", "compressore-immagini", "webp-to-png"],
+      "relatedGuides": ["guida-png-vs-jpg"],
       "ctaText": "Convert JPG to PNG Gratuito",
-      "ctaUrl": "/tools/convert/jpg-to-png"
+      "ctaUrl": "/strumenti/convert/jpg-to-png"
     },
     {
       "slug": "webp-to-jpg",
@@ -1538,14 +1462,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": [
-          "image/webp"
-        ]
+        "acceptedInputFormats": ["image/webp"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/webp"],
       "features": [
         {
           "title": "Compatibilità Universale",
@@ -1651,67 +1571,57 @@
           "answer": "La conversione di WebP animate catturerà il primo fotogramma come JPG statico. Per immagini animate, considera invece il formato GIF."
         }
       ],
-      "relatedTools": [
-        "webp-to-png",
-        "jpg-to-webp",
-        "image-compressor"
-      ],
-      "relatedGuides": [
-        "webp-format-guide"
-      ],
+      "relatedTools": ["webp-to-png", "jpg-to-webp", "compressore-immagini"],
+      "relatedGuides": ["guida-formato-webp"],
       "ctaText": "Convert WebP to JPG Gratuito",
-      "ctaUrl": "/tools/convert/webp-to-jpg"
+      "ctaUrl": "/strumenti/convert/webp-to-jpg"
     },
     {
       "slug": "webp-to-png",
-      "title": "WebP to PNG Converter",
+      "title": "Convertitore da WebP a PNG",
       "metaTitle": "WebP to PNG Converter | MyImmagineUpscaler",
       "metaDescription": "Convert WebP to PNG Online Gratuito. Preserve transparency, Ottieni lossless quality. Fast browser-based conversion with No upload required.",
       "h1": "Gratuito WebP to PNG Converter - Convert Immagini Istantaneoly",
       "intro": "Convert WebP images to PNG format. Preserve transparency and Ottieni lossless quality Perfetto per editing. Works entirely in your browser.",
-      "primaryKeyword": "webp to png",
+      "primaryKeyword": "webp in png",
       "secondaryKeywords": [
-        "convert webp to png",
-        "webp to png converter",
-        "webp to png online",
-        "webp png converter"
+        "convertire webp in png",
+        "convertitore webp in png",
+        "webp in png online",
+        "convertitore webp png"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "Strumenti",
-      "toolName": "WebP to PNG Converter",
+      "toolName": "Convertitore da WebP a PNG",
       "description": "Convert WebP images to PNG format while preserving transparency. Perfetto per editing and universal software compatibility.",
       "isInteractive": true,
       "toolComponent": "FormatoConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": [
-          "image/webp"
-        ]
+        "acceptedInputFormats": ["image/webp"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/webp"],
       "features": [
         {
-          "title": "Preserve Transparency",
-          "description": "PNG mAIntAIns alpha channel transparency from your WebP images."
+          "title": "Preserva Trasparenza",
+          "description": "PNG mantiene la trasparenza del canale alfa dalle tue immagini WebP."
         },
         {
-          "title": "Lossless quality",
-          "description": "PNG format preserves all image detAIl without compression artifacts."
+          "title": "Qualità senza perdita",
+          "description": "Il formato PNG preserva tutti i dettagli dell'immagine senza artefatti di compressione."
         },
         {
           "title": "Modifica-Friendly Output",
-          "description": "PNG is the preferred format for image editing software."
+          "description": "Il PNG è il formato preferito per il software di editing di immagini."
         },
         {
           "title": "Istantaneo Conversion",
-          "description": "Convert in under a second with browser-based processing."
+          "description": "Converti in meno di un secondo con l'elaborazione basata su browser."
         },
         {
-          "title": "Software Compatibility",
-          "description": "PNG works with older software that doesn't support WebP."
+          "title": "Compatibilità Software",
+          "description": "Il PNG funziona con software più vecchi che non supportano WebP."
         },
         {
           "title": "100% Privato",
@@ -1720,40 +1630,40 @@
       ],
       "useCases": [
         {
-          "title": "Design Work",
+          "title": "Lavoro di Design",
           "description": "Convert WebP images for Usa in design software that prefers PNG.",
-          "example": "Open web-saved images in Adobe Illustrator"
+          "example": "Apri immagini salvate sul web in Adobe Illustrator"
         },
         {
-          "title": "Preserve Transparency",
-          "description": "Keep transparent backgrounds when converting from WebP.",
-          "example": "Convert logo with transparency for editing"
+          "title": "Preserva la Trasparenza",
+          "description": "Mantieni sfondi trasparenti quando converti da WebP.",
+          "example": "Converti logo con trasparenza per l'editing"
         },
         {
-          "title": "Archival",
-          "description": "Convert to lossless PNG for long-term image storage.",
-          "example": "Archive important images without quality loss"
+          "title": "Archiviazione",
+          "description": "Converti in PNG senza perdita per l'archiviazione a lungo termine delle immagini.",
+          "example": "Archivia immagini importanti senza perdita di qualità"
         },
         {
-          "title": "Software Compatibility",
+          "title": "Compatibilità Software",
           "description": "Usa PNG when your software doesn't support WebP format.",
-          "example": "Open WebP in older image editors"
+          "example": "Apri WebP in editor di immagini più vecchi"
         }
       ],
       "benefits": [
         {
-          "title": "Keeps Transparency",
-          "description": "Unlike JPG, PNG preserves any transparency from your WebP.",
-          "metric": "Full alpha support"
+          "title": "Mantiene la Trasparenza",
+          "description": "A differenza del JPG, il PNG preserva qualsiasi trasparenza dal tuo WebP.",
+          "metric": "Supporto alpha completo"
         },
         {
-          "title": "Lossless format",
-          "description": "PNG doesn't add compression artifacts to your images.",
-          "metric": "Zero quality loss"
+          "title": "Formato senza perdita",
+          "description": "Il PNG non aggiunge artefatti di compressione alle tue immagini.",
+          "metric": "Perdita di qualità zero"
         },
         {
           "title": "Universal Supporto",
-          "description": "PNG works with virtually all software and platforms.",
+          "description": "Il PNG funziona praticamente con tutti i software e le piattaforme.",
           "metric": "Ampia compatibilità"
         }
       ],
@@ -1797,16 +1707,10 @@
           "answer": "Usa PNG if you need transparency or lossless quality for editing. Usa JPG for smaller files and universal compatibility when transparency isn't needed."
         }
       ],
-      "relatedTools": [
-        "webp-to-jpg",
-        "png-to-webp",
-        "compressore-immagini"
-      ],
-      "relatedGuides": [
-        "guida-formato-webp"
-      ],
+      "relatedTools": ["webp-to-jpg", "png-to-webp", "compressore-immagini"],
+      "relatedGuides": ["guida-formato-webp"],
       "ctaText": "Converti WebP in PNG Gratis",
-      "ctaUrl": "/tools/convert/webp-to-png"
+      "ctaUrl": "/strumenti/convert/webp-to-png"
     },
     {
       "slug": "jpg-to-webp",
@@ -1831,14 +1735,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": [
-          "image/jpeg"
-        ]
+        "acceptedInputFormats": ["image/jpeg"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg"
-      ],
+      "acceptedFormats": ["image/jpeg"],
       "features": [
         {
           "title": "Compressione Superiore",
@@ -1944,17 +1844,10 @@
           "answer": "For web Usa, yes! WebP is Ideale per websites. For emAIl, printing, or older software, JPG may be more compatible."
         }
       ],
-      "relatedTools": [
-        "png-to-webp",
-        "webp-to-jpg",
-        "image-compressor"
-      ],
-      "relatedGuides": [
-        "webp-format-guide",
-        "web-performance-images"
-      ],
+      "relatedTools": ["png-to-webp", "webp-to-jpg", "image-compressor"],
+      "relatedGuides": ["guida-formato-webp", "prestazioni-web-immagini"],
       "ctaText": "Convert JPG to WebP Free",
-      "ctaUrl": "/tools/convert/jpg-to-webp"
+      "ctaUrl": "/strumenti/convert/jpg-to-webp"
     },
     {
       "slug": "png-to-webp",
@@ -1971,21 +1864,17 @@
         "png webp converter"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
-      "category": "tools",
-      "toolName": "PNG to WebP Converter",
+      "category": "strumenti",
+      "toolName": "Convertitore da PNG a WebP",
       "description": "Convert PNG images to WebP format for superior web performance while preserving transparency. Ottieni smaller files with modern compression.",
       "isInteractive": true,
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": [
-          "image/png"
-        ]
+        "acceptedInputFormats": ["image/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/png"
-      ],
+      "acceptedFormats": ["image/png"],
       "features": [
         {
           "title": "Preserva Trasparenza",
@@ -2091,17 +1980,10 @@
           "answer": "Yes! Usa our WebP to PNG converter if you need the PNG format for compatibility or editing in software that doesn't support WebP."
         }
       ],
-      "relatedTools": [
-        "jpg-to-webp",
-        "webp-to-png",
-        "compressore-immagini"
-      ],
-      "relatedGuides": [
-        "guida-formato-webp",
-        "prestazioni-web-immagini"
-      ],
+      "relatedTools": ["jpg-to-webp", "webp-to-png", "compressore-immagini"],
+      "relatedGuides": ["guida-formato-webp", "prestazioni-web-immagini"],
       "ctaText": "Converti PNG in WebP Gratis",
-      "ctaUrl": "/tools/convert/png-to-webp"
+      "ctaUrl": "/strumenti/convert/png-to-webp"
     },
     {
       "slug": "compressore-immagini-batch",
@@ -2125,11 +2007,7 @@
       "isInteractive": true,
       "toolComponent": "BulkImageCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-      ],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "Comprimi Fino a 20 Immagini",
@@ -2251,15 +2129,8 @@
           "answer": "Ogni immagine può essere fino a 25MB. Questo limite è basato sulla memoria del browser, non su restrizioni del server (poiché non carichiamo sui server)."
         }
       ],
-      "relatedTools": [
-        "compressore-immagini",
-        "ridimensionatore-immagini",
-        "jpg-to-webp"
-      ],
-      "relatedGuides": [
-        "image-ottimizzazione-guide",
-        "prestazioni-web-immagini"
-      ],
+      "relatedTools": ["compressore-immagini", "ridimensionatore-immagini", "jpg-to-webp"],
+      "relatedGuides": ["image-ottimizzazione-guide", "prestazioni-web-immagini"],
       "ctaText": "Prova Free Bulk Compressor",
       "ctaUrl": "/tools/compress/compressore-immagini-batch"
     }

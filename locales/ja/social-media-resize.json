@@ -82,175 +82,167 @@
           "timing": {
             "bestPostingTimes": "20-23時、14-16時週末。ピークエンゲージメントはオーディエンスのタイムゾーンによって異なります。",
             "seasonalContent": "6-8週間先を計画します。ホリデーコンテンツは早期に投稿した場合に40%良いパフォーマンスを発揮します。",
-            "trendingTopics": "Monitor Pinterest Trends tool. Create content 1-2 weeks before trend peaks."
+            "trendingTopics": "Pinterestトレンドツールを監視します。トレンドのピークの1〜2週間前にコンテンツを作成します。"
           },
           "engagementFactors": {
-            "multipleImages": "Pins with 4-5 images get 2x more saves than single images.",
-            "descriptiveAltText": "Include 3-5 keywords naturally. Describe image content and user benefit.",
-            "hashtags": "Use 3-5 relevant hashtags. Mix broad (#home decor) and specific (#bohobedroomideas) terms."
+            "multipleImages": "4〜5枚の画像を含むピンは、単一の画像の2倍の保存を得ます。",
+            "descriptiveAltText": "3〜5つのキーワードを自然に含めます。画像の内容とユーザーのメリットを説明します。",
+            "hashtags": "3〜5つの関連するハッシュタグを使用します。広範な用語（#home decor）と特定の用語（#bohobedroomideas）を組み合わせます。"
           }
         },
         "videoAndDynamicContent": {
           "ideoRequirements": {
             "format": "MP4, MOV, WebM",
             "frameRate": "24-30 FPS",
-            "bitrate": "8-10 Mbps for 1080p",
-            "audio": "AAC stereo, 128kbps minimum",
-            "subtitles": "85% of users watch without sound. Include burn-in captions."
+            "bitrate": "1080pで8-10 Mbps",
+            "audio": "AACステレオ、最低128kbps",
+            "subtitles": "85%のユーザーは音なしで視聴します。焼き付けキャプションを含めます。"
           },
           "ideaPins": {
-            "slides": "3-20 slides per Idea Pin",
-            "duration": "2 seconds minimum per slide",
-            "coverImage": "High-quality thumbnail with clear title",
-            "storytelling": "Narrative arc, clear progression, value in each slide"
+            "slides": "アイデアピンあたり3〜20枚のスライド",
+            "duration": "スライドあたり最低2秒",
+            "coverImage": "明確なタイトル付きの高品質なサムネイル",
+            "storytelling": "ナラティブアーク、明確な進行、各スライドの価値"
           },
           "videoOptimization": {
-            "thumbnailGeneration": "Create custom thumbnails from video. Use most engaging frame.",
-            "editing": "Keep cuts quick, add text overlays, include brand elements.",
-            "length": "15-30 seconds optimal. First 3 seconds crucial for retention."
+            "thumbnailGeneration": "ビデオからカスタムサムネイルを作成します。最も魅力的なフレームを使用します。",
+            "editing": "カットを素早く保ち、テキストオーバーレイを追加し、ブランド要素を含めます。",
+            "length": "最適15〜30秒。保持には最初の3秒が重要です。"
           }
         },
         "technicalOptimization": {
           "compression": {
-            "jpgSettings": "80-85% quality, progressive encoding, sRGB color space",
-            "pngSettings": "Lossless compression for graphics, reduce color palette where possible",
-            "fileSize": "Target < 1MB for pins, < 5MB for video thumbnails. Use WebP for 25% smaller files."
+            "jpgSettings": "80〜85%の品質、プログレッシブエンコーディング、sRGBカラースペース",
+            "pngSettings": "グラフィックの可逆圧縮、可能な限りカラーパレットを削減",
+            "fileSize": "ピンは<1MB、ビデオサムネイルは<5MBを目標にします。WebPを使用して25%小さいファイルにします。"
           },
           "loadingPerformance": {
-            "lazyLoad": "Pinterest automatically lazy loads. Optimize for initial viewport.",
-            "preload": "Critical above-fold content. Prioritize hero images.",
-            "cdn": "Pinterest's CDN optimizes, but start with well-optimized files."
+            "lazyLoad": "Pinterestは自動的に遅延ロードします。最初のビューポート用に最適化します。",
+            "preload": "クリティカルなフォールド以上のコンテンツ。ヒーロー画像を優先します。",
+            "cdn": "PinterestのCDNは最適化されますが、適切に最適化されたファイルから始めます。"
           }
         },
         "contentStrategy": {
           "planningWorkflows": {
-            "batchCreation": "Create 30-60 pins monthly. Use templates for consistency.",
-            "contentPillars": "Develop 5-7 core content themes. Maintain 80/20 value to promotion ratio.",
-            "scheduling": "Use Pinterest Planner API. Space posts 2-4 hours apart.",
-            "testing": "A/B test formats weekly. Document results in content calendar."
+            "batchCreation": "月に30〜60個のピンを作成します。一貫性のためにテンプレートを使用します。",
+            "contentPillars": "5〜7つのコアコンテンツテーマを開発します。80/20の価値とプロモーションの比率を維持します。",
+            "scheduling": "Pinterest Planner APIを使用します。投稿を2〜4時間間隔で空けます。",
+            "testing": "毎週形式をA/Bテストします。コンテンツカレンダーで結果を文書化します。"
           },
           "platformIntegration": {
-            "crossPosting": "Repurpose Instagram Reels as Pinterest Video Pins. Tailor to platform differences.",
-            "websiteIntegration": "Add Pin It buttons. Enable Rich Pins for automatic sync.",
-            "analytics": "Track Pin stats, audience insights, and conversion metrics through Pinterest Analytics.",
-            "influencerCollaboration": "Brand guidelines for consistent pin creation. Provide approved assets."
+            "crossPosting": "InstagramリールをPinterestビデオピンとして再利用します。プラットフォームの違いに合わせて調整します。",
+            "websiteIntegration": "Pin Itボタンを追加します。自動同期のためリッチピンを有効にします。",
+            "analytics": "Pinterestアナリティクスを通じてピン統計、オーディエンスインサイト、コンバージョン指標を追跡します。",
+            "influencerCollaboration": "一貫したピン作成のためのブランドガイドライン。承認されたアセットを提供します。"
           }
         },
         "designTrends2025": {
           "visualStyles": {
             "aestheticMovements": [
               {
-                "trend": "Authentic imperfection",
-                "description": "Slightly unpolished, user-generated content style. Real-life scenarios."
+                "trend": "本物の不完全さ",
+                "description": "少し未完成で、ユーザー生成コンテンツスタイル。実生活のシナリオ。"
               },
               {
-                "trend": "Bold typography",
-                "description": "Oversized text, mixed fonts, kinetic typography in video content."
+                "trend": "大胆なタイポグラフィ",
+                "description": "特大のテキスト、ミックスフォント、ビデオコンテンツのキネティックタイポグラフィ。"
               },
               {
-                "trend": "Sustainable aesthetic",
-                "description": "Earth tones, natural materials, eco-friendly context in product shots."
+                "trend": "持続可能な美学",
+                "description": "アーストーン、自然素材、商品ショットのエコフレンドリーなコンテキスト。"
               },
               {
-                "trend": "90s nostalgia",
-                "description": "Film grain, vintage filters, retro color grading, analog textures."
+                "trend": "90年代ノスタルジア",
+                "description": "フィルムグレイン、ヴィンテージフィルター、レトロなカラーグレーディング、アナログテクスチャ。"
               }
             ],
             "colorTrends": {
               "palette1": {
-                "name": "Digital Lavender",
-                "hex": [
-                  "#E0B0FF",
-                  "#9370DB",
-                  "#4B0082"
-                ],
-                "usage": "Lifestyle content, fashion, beauty"
+                "name": "デジタルラベンダー",
+                "hex": ["#E0B0FF", "#9370DB", "#4B0082"],
+                "usage": "ライフスタイルコンテンツ、ファッション、ビューティー"
               },
               "palette2": {
-                "name": "Earth Conscious",
-                "hex": [
-                  "#8B7355",
-                  "#D2B48C",
-                  "#F5DEB3"
-                ],
-                "usage": "Home decor, sustainable products, organic content"
+                "name": "アース・コンシャス",
+                "hex": ["#8B7355", "#D2B48C", "#F5DEB3"],
+                "usage": "ホームデコ、持続可能な製品、オーガニックコンテンツ"
               }
             }
           },
           "contentFormats": {
             "emergingTrends": [
-              "Short-form video integration with interactive polls",
-              "AR try-on experiences linked from pins",
-              "Shoppable video content with product tags",
-              "Mini-course content in Idea Pin format",
-              "User-generated content compilation pins"
+              "インタラクティブな投票付きのショートフォームビデオ統合",
+              "ピンからリンクされたAR試着体験",
+              "商品タグ付きのショッパブルビデオコンテンツ",
+              "アイデアピン形式のミニコースコンテンツ",
+              "ユーザー生成コンテンツのコンピレーションピン"
             ]
           }
         },
         "analyticsAndPerformance": {
           "keyMetrics": {
             "engagement": {
-              "saves": "Primary success metric. Target 5% save rate per impression.",
-              "clicks": "Link clicks indicate content value. Track conversion rates.",
-              "comments": "Quality engagement. Respond within 24 hours.",
-              "shares": "Viral potential metric. Monitor share velocity."
+              "saves": "主要な成功指標。インプレッションあたり5%の保存率を目標にします。",
+              "clicks": "リンククリックはコンテンツの価値を示します。コンバージョン率を追跡します。",
+              "comments": "質の高いエンゲージメント。24時間以内に返信します。",
+              "shares": "バイラルの可能性の指標。共有の速度を監視します。"
             },
             "reach": {
-              "impressions": "Total views. Compare to save rate for quality assessment.",
-              "audienceGrowth": "Follower count vs. engagement rate.",
-              "demographicInsights": "Age, gender, location data for content targeting.",
-              "devicePerformance": "Mobile vs desktop engagement patterns."
+              "impressions": "総ビュー数。品質評価のために保存率と比較します。",
+              "audienceGrowth": "フォロワー数とエンゲージメント率。",
+              "demographicInsights": "コンテンツターゲティングのための年齢、性別、位置データ。",
+              "devicePerformance": "モバイルとデスクトップのエンゲージメントパターン。"
             }
           },
           "optimizationStrategies": {
             "contentPerformance": {
-              "topPerformers": "Analyze top 10 pins monthly. Replicate successful elements.",
-              "underperformers": "Review and update low-performing pins. Improve visuals or refresh content.",
-              "seasonalPatterns": "Identify content that peaks during specific times. Plan annual calendar.",
-              "trendAnalysis": "Track emerging trends in your niche. Create content early in trend cycle."
+              "topPerformers": "毎月上位10個のピンを分析します。成功した要素を複製します。",
+              "underperformers": "パフォーマンスの低いピンを確認して更新します。ビジュアルを改善するかコンテンツをリフレッシュします。",
+              "seasonalPatterns": "特定の時間にピークするコンテンツを特定します。年間カレンダーを計画します。",
+              "trendAnalysis": "ニッチの新しいトレンドを追跡します。トレンドサイクルの早い段階でコンテンツを作成します。"
             },
             "conversionTracking": {
-              "attribution": "Use Pinterest Tag for website conversion tracking.",
-              "funnelAnalysis": "Pin discovery → save → click → conversion mapping.",
-              "roiMeasurement": "Calculate cost per acquisition vs. customer lifetime value.",
-              "affectTesting": "Test calls-to-action, landing pages, and offers."
+              "attribution": "ウェブサイトコンバージョントラッキングにPinterestタグを使用します。",
+              "funnelAnalysis": "ピン発見→保存→クリック→コンバージョンマッピング。",
+              "roiMeasurement": "獲得単価と顧客生涯価値を計算します。",
+              "affectTesting": "コールトゥアクション、ランディングページ、オファーをテストします。"
             }
           }
         },
         "marketingIntegration": {
           "campaignStrategies": {
             "contentMarketing": {
-              "blogIntegration": "Create unique pins for each blog post. Use different angles and keywords.",
-              "leadGeneration": "Offer downloadable resources in exchange for email capture.",
-              "productLaunches": "Teaser content, countdown pins, launch day announcements.",
-              "seasonalCampaigns": "Holiday-specific content, gift guides, seasonal tips."
+              "blogIntegration": "各ブログ投稿の一意のピンを作成します。さまざまな角度とキーワードを使用します。",
+              "leadGeneration": "メールキャプチャと引き換えにダウンロード可能なリソースを提供します。",
+              "productLaunches": "ティーザーコンテンツ、カウントダウンピン、発売日のアナウンス。",
+              "seasonalCampaigns": "休日特有のコンテンツ、ギフトガイド、季節のヒント。"
             },
             "paidAdvertising": {
-              "promotedPins": "Promote top-performing organic content first.",
-              "targetingOptions": "Demographics, interests, keywords, retargeting, actalike audiences.",
-              "budgetAllocation": "70% awareness, 20% consideration, 10% conversion campaigns.",
-              "creativeTesting": "Test 3-4 variations per campaign. Rotate winners to fresh audiences."
+              "promotedPins": "最初にパフォーマンスの高いオーガニックコンテンツをプロモートします。",
+              "targetingOptions": "デモグラフィック、興味、キーワード、リターゲティング、類似オーディエンス。",
+              "budgetAllocation": "70%認知、20%検討、10%コンバージョンキャンペーン。",
+              "creativeTesting": "キャンペーンあたり3〜4つのバリエーションをテストします。勝者を新しいオーディエンスにローテーションします。"
             }
           },
           "multiChannelStrategy": {
             "platformSynergy": {
-              "instagram": "Repurpose Stories as Idea Pins. Cross-promote in Instagram bio.",
-              "youtube": "Create pin bundles from video content. Use video thumbnails as pins.",
-              "blog": "Pin collages from blog posts. Create roundup pins for multiple articles.",
-              "email": "Embed pins in newsletters. Pin images in email signatures."
+              "instagram": "ストーリーをアイデアピンとして再利用します。Instagramバイオでクロスプロモーションします。",
+              "youtube": "ビデオコンテンツからピンバンドルを作成します。ビデオサムネイルをピンとして使用します。",
+              "blog": "ブログ投稿からのピンコラージュ。複数の記事のラウンドアップピンを作成します。",
+              "email": "ニュースレターにピンを埋め込みます。メール署名にピン画像を含めます。"
             },
             "consistentBranding": {
-              "visualIdentity": "Consistent color palette, typography, logo placement across platforms.",
-              "voiceAndTone": "Adapt messaging for each platform while maintaining brand voice.",
-              "contentThemes": "Develop platform-specific content pillars aligned with overall strategy."
+              "visualIdentity": "プラットフォーム間で一貫したカラーパレット、タイポグラフィ、ロゴ配置。",
+              "voiceAndTone": "ブランドボイスを維持しながら、各プラットフォームにメッセージを適応させます。",
+              "contentThemes": "全体的な戦略に合わせたプラットフォーム固有のコンテンツピラーを開発します。"
             }
           }
         }
       },
       "features": [
         {
-          "title": "Pinterest Presets 2025",
-          "description": "Updated presets for standard pins (1000x1500), Idea Pins (1080x1920), video thumbnAIls, and board covers"
+          "title": "Pinterestプリセット2025",
+          "description": "標準ピン（1000x1500）、アイデアピン（1080x1920）、ビデオサムネイル、ボードカバー用の更新されたプリセット"
         },
         {
           "title": "AI Optimization",
@@ -349,10 +341,7 @@
           "description": "Apply AI optimization and download perfectly サイズd, platform-ready content"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "social-media-scheduler"
-      ],
+      "relatedTools": ["ai-image-upscaler", "social-media-scheduler"],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "pinterest-marketing-strategy-guide"
@@ -440,110 +429,110 @@
             "colorPsychology": {
               "red": "Urgency, excitement, food content performance",
               "blue": "Trust, technology, educational content",
-              "yellow": "Happiness, attention-grabbing, youth-oriented content",
-              "green": "Nature, health, sustainability content"
+              "yellow": "幸福、注目を引く、若者向けコンテンツ",
+              "green": "自然、健康、持続可能性コンテンツ"
             },
             "typography": {
-              "fontChoices": "Bold sans-serif fonts perform best",
-              "textPlacement": "Upper or lower third, avoid center where TikTok UI appears",
-              "readability": "Minimum 40pt for main text, high contrast essential",
-              "brandConsistency": "Use consistent fonts across all TikTok content"
+              "fontChoices": "太いサンセリフフォントが最適",
+              "textPlacement": "上または下三分の一、TikTok UIが表示される中央は避ける",
+              "readability": "メインテキストは最小40pt、高コントラストが必須",
+              "brandConsistency": "すべてのTikTokコンテンツで一貫したフォントを使用"
             },
             "composition": {
-              "ruleOfThirds": "Place key elements at intersection points",
-              "negativeSpace": "Use breathing room around important elements",
-              "focalPoint": "Single clear focal point per image",
-              "movementDirection": "Design for vertical scrolling, guide eye downward"
+              "ruleOfThirds": "重要な要素を交点に配置",
+              "negativeSpace": "重要な要素の周りに呼吸空間を使用",
+              "focalPoint": "画像ごとに単一の明確な焦点",
+              "movementDirection": "垂直スクロール向けにデザイン、視線を下へ誘導"
             }
           }
         },
         "engagementOptimization": {
           "thumbnailStrategy": {
-            "first3Seconds": "85% of engagement decided in first 3 seconds",
-            "emotionalTriggers": "Surprise faces, action shots, dramatic expressions",
-            "curiosityGaps": "Questions, before/after states, partial reveals",
-            "trendingElements": "Use popular filters, effects, or trending audio indicators"
+            "first3Seconds": "最初の3秒で85%のエンゲージメントが決定",
+            "emotionalTriggers": "驚きの表情、アクションショット、劇的な表現",
+            "curiosityGaps": "質問、ビフォーアフターの状態、部分的な明示",
+            "trendingElements": "人気のフィルター、エフェクト、トレンドオーディオ指標を使用"
           },
           "timingStrategy": {
-            "postingSchedule": "6-10 AM, 7-11 PM for highest engagement. Varies by timezone.",
-            "contentFrequency": "1-3 posts daily for optimal algorithm performance",
-            "trendTiming": "Jump on trends within 24-48 hours of emergence",
-            "seasonalContent": "Plan holiday content 2-3 weeks in advance"
+            "postingSchedule": "最高のエンゲージメントのために午前6-10時、午後7-11時。タイムゾーンにより異なる。",
+            "contentFrequency": "最適なアルゴリズムパフォーマンスのために1日1-3回投稿",
+            "trendTiming": "出現から24〜48時間以内にトレンドに乗る",
+            "seasonalContent": "休日のコンテンツを2〜3週間前に計画"
           },
           "engagementFactors": {
-            "duetability": "Leave space for duet split screen (right side)",
-            "stitchPotential": "Design content that can be easily stitched or remixed",
-            "commentPrompters": "Include visual elements that encourage comments",
-            "shareability": "Create easily shareable, meme-able content moments"
+            "duetability": "デュエット分割画面用のスペースを残す（右側）",
+            "stitchPotential": "容易にステッチまたはリミックスできるコンテンツをデザイン",
+            "commentPrompters": "コメントを促す視覚的要素を含める",
+            "shareability": "容易に共有でき、ミーム可能なコンテンツ瞬間を作成"
           }
         },
         "videoAndDynamicContent": {
           "stillImageToVideo": {
-            "slideshowCreation": "Convert images to 15-60 second slideshows with transitions",
-            "kenBurnsEffect": "Add subtle zoom/pan to static images for video feel",
-            "textAnimation": "Animate text overlays for dynamic presentation",
-            "syncWithAudio": "Time image changes with trending audio beats"
+            "slideshowCreation": "トランジション付きで画像を15〜60秒のスライドショーに変換",
+            "kenBurnsEffect": "静的画像に微妙なズーム/パンを追加してビデオ感を出す",
+            "textAnimation": "動的プレゼンテーションのためにテキストオーバーレイをアニメーション化",
+            "syncWithAudio": "トレンドオーディオビートに合わせて画像の変更をタイミング"
           },
           "greenscreenContent": {
-            "backgroundImages": "1080x1920 for green screen backgrounds",
-            "productShowcases": "Lifestyle backgrounds for product demonstrations",
-            "educationalContent": "Infographics and diagrams as backgrounds",
-            "brandConsistency": "Use brand assets as green screen backgrounds"
+            "backgroundImages": "グリーンスクリーン背景用1080x1920",
+            "productShowcases": "製品デモンストレーション用ライフスタイル背景",
+            "educationalContent": "背景としてのインフォグラフィックと図表",
+            "brandConsistency": "グリーンスクリーン背景としてブランドアセットを使用"
           },
           "interactiveElements": {
-            "stickerPlacement": "Design space for TikTok stickers and effects",
-            "pollCreation": "Background images for interactive polls",
-            "qaSessions": "Professional backgrounds for Q&A sessions",
-            "linkInBio": "Compelling images to drive bio link clicks"
+            "stickerPlacement": "TikTokステッカーとエフェクト用のスペースをデザイン",
+            "pollCreation": "インタラクティブ投票用の背景画像",
+            "qaSessions": "Q&Aセッション用のプロフェッショナル背景",
+            "linkInBio": "バイオリンククリックを促す説得力のある画像"
           }
         },
         "technicalOptimization": {
           "compressionSettings": {
-            "jpgOptimization": "90-95% quality for crisp thumbnails",
-            "pngOptimization": "Lossless for graphics with sharp edges",
-            "fileSizeManagement": "Under 5MB for fast loading, prioritize quality",
-            "colorSpace": "sRGB for consistent display across devices"
+            "jpgOptimization": "鮮明なサムネイル用に90-95%の品質",
+            "pngOptimization": "鮮明なエッジを持つグラフィック用に可逆",
+            "fileSizeManagement": "高速ロードのために5MB未満、品質を優先",
+            "colorSpace": "デバイス間で一貫した表示のためにsRGB"
           },
           "performanceOptimization": {
-            "loadingSpeed": "Optimize for fast loading on slow connections",
-            "mobileFirst": "Test on various mobile devices and screen sizes",
-            "batteryUsage": "Optimize to minimize battery consumption",
-            "dataUsage": "Compress without visible quality loss"
+            "loadingSpeed": "遅い接続での高速ロード用に最適化",
+            "mobileFirst": "様々なモバイルデバイスと画面サイズでテスト",
+            "batteryUsage": "バッテリー消費を最小限に抑えるために最適化",
+            "dataUsage": "目に見える品質劣化なしで圧縮"
           },
           "accessibility": {
-            "altText": "Descriptive alt text for screen readers",
-            "colorContrast": "WCAG 2.1 AA compliance for text readability",
-            "colorBlindness": "Test with color blindness simulators",
-            "textAlternatives": "Provide text-based content alternatives"
+            "altText": "スクリーンリーダー用の記述的なaltテキスト",
+            "colorContrast": "テキスト可読性のためにWCAG 2.1 AA準拠",
+            "colorBlindness": "色覚シミュレーターでテスト",
+            "textAlternatives": "テキストベースのコンテンツ代替を提供"
           }
         },
         "contentStrategy": {
           "planningWorkflows": {
             "contentPillars": {
-              "entertainment": "Trending challenges, humor, viral content",
-              "education": "How-to guides, tips, industry insights",
-              "inspiration": "Motivational content, success stories",
-              "community": "Behind-the-scenes, user-generated content"
+              "entertainment": "トレンドチャレンジ、ユーモア、バイラルコンテンツ",
+              "education": "ハウツーガイド、ヒント、業界インサイト",
+              "inspiration": "モチベーショナルコンテンツ、成功事例",
+              "community": "舞台裏、ユーザー生成コンテンツ"
             },
             "batchCreation": {
-              "themeDays": "Motivation Monday, Tutorial Tuesday, etc.",
-              "contentSeries": "Multi-part educational series",
-              "seasonalCampaigns": "Holiday-specific content themes",
-              "trendCalendars": "Plan content around predicted trends"
+              "themeDays": "モチベーション月曜日、チュートリアル火曜日など",
+              "contentSeries": "マルチパート教育シリーズ",
+              "seasonalCampaigns": "休日特有のコンテンツテーマ",
+              "trendCalendars": "予測されるトレンドの周りにコンテンツを計画"
             }
           },
           "platformIntegration": {
             "crossPlatformStrategy": {
-              "instagram": "Adapt TikTok content for Instagram Reels",
-              "youtube": "Create TikTok-friendly YouTube Shorts thumbnails",
-              "twitter": "Convert to Twitter-friendly formats",
-              "linkedin": "Professional version of popular TikTok content"
+              "instagram": "Instagram Reels用にTikTokコンテンツを適応",
+              "youtube": "TikTokフレンドリーYouTube Shortsサムネイルを作成",
+              "twitter": "Twitterフレンドリー形式に変換",
+              "linkedin": "人気TikTokコンテンツのプロフェッショナル版"
             },
             "websiteIntegration": {
-              "tiktokPixel": "Track conversions from TikTok traffic",
-              "embedOptions": "Embed TikToks on website",
-              "ctaOptimization": "Optimize profile bio and website links",
-              "userGeneratedContent": "Encourage and feature customer TikToks"
+              "tiktokPixel": "TikTokトラフィックからのコンバージョンを追跡",
+              "embedOptions": "WebサイトにTikTokを埋め込む",
+              "ctaOptimization": "プロフィールバイオとWebサイトリンクを最適化",
+              "userGeneratedContent": "顧客TikTokを奨励し、特集する"
             }
           }
         },
@@ -551,77 +540,67 @@
           "visualStyles": {
             "aestheticMovements": [
               {
-                "trend": "Y2K Revival",
-                "description": "Early 2000s aesthetics, flip phone filters, digital cameras effects"
+                "trend": "Y2Kリバイバル",
+                "description": "2000年代初頭の美学、携帯電話フィルター、デジタルカメラエフェクト"
               },
               {
-                "trend": "Cottagecore Reimagined",
-                "description": "Modern interpretation of rural life, sustainability focus"
+                "trend": "コテージュコアの再構築",
+                "description": "田舎の生活の現代的解釈、持続可能性重視"
               },
               {
-                "trend": "Dark Academia",
-                "description": "Literary, intellectual aesthetic, vintage libraries, classical elements"
+                "trend": "ダークアカデミア",
+                "description": "文学的、知的な美学、ヴィンテージライブラリ、古典的要素"
               },
               {
-                "trend": "Cyberpunk Pop",
-                "description": "Neon colors, glitch effects, futuristic elements with pop culture"
+                "trend": "サイバーパンクポップ",
+                "description": "ネオンカラー、グリッチエフェクト、ポップカルチャーを持つ未来的要素"
               }
             ],
             "colorTrends": {
               "palette1": {
-                "name": "Neon Dreams",
-                "hex": [
-                  "#FF006E",
-                  "#FB5607",
-                  "#FFBE0B",
-                  "#8338EC"
-                ],
-                "usage": "Entertainment, fashion, youth-oriented content"
+                "name": "ネオンドリーム",
+                "hex": ["#FF006E", "#FB5607", "#FFBE0B", "#8338EC"],
+                "usage": "エンターテイメント、ファッション、若者向けコンテンツ"
               },
               "palette2": {
-                "name": "Minimalist Earth",
-                "hex": [
-                  "#2D6A4F",
-                  "#40916C",
-                  "#74C69D",
-                  "#D8F3DC"
-                ],
-                "usage": "Wellness, sustainability, educational content"
+                "name": "ミニマリストアース",
+                "hex": ["#2D6A4F", "#40916C", "#74C69D", "#D8F3DC"],
+                "usage": "ウェルネス、持続可能性、教育コンテンツ"
               }
             }
           },
           "contentFormats": {
             "emergingTrends": [
-              "AI-generated art and effects integration",
-              "Augmented reality filters and try-on experiences",
-              "Interactive mini-games and challenges",
-              "Live shopping integration with product showcases",
-              "Educational micro-learning content"
+              "AI生成アートとエフェクト統合",
+              "拡張現実フィルターと試着体験",
+              "インタラクティブなミニゲームとチャレンジ",
+              "商品ショーケースと統合したライブショッピング",
+              "教育マイクロラーニングコンテンツ"
             ]
           }
         },
         "analyticsAndPerformance": {
           "keyMetrics": {
             "engagement": {
-              "views": "Total video views, track velocity and peak times",
-              "likes": "Quick engagement indicator, baseline metric",
-              "comments": "Quality engagement, community building metric",
-              "shares": "Viral potential, content amplification measure",
-              "saves": "Content value indicator, future reference intent"
+              "views": "総ビデオ視聴数、速度とピーク時間を追跡",
+              "likes": "迅速なエンゲージメント指標、ベースラインメトリック",
+              "comments": "質の高いエンゲージメント、コミュニティ構築メトリック",
+              "shares": "バイラルポテンシャル、コンテンツ拡大測定",
+              "saves": "コンテンツ価値指標、将来の参照意図"
             },
             "reach": {
-              "forYouPage": "FYP impressions, algorithm performance",
-              "hashtagPerformance": "Track hashtag effectiveness and trending potential",
-              "soundUsage": "Original audio adoption by other creators",
-              "duetAndStitch": "Remix and collaboration metrics"
+              "forYouPage": "FYPインプレッション、アルゴリズムパフォーマンス",
+              "hashtagPerformance": "ハッシュタグの有効性とトレンドポテンシャルを追跡",
+              "soundUsage": "他のクリエイターによるオリジナルオーディオの採用",
+              "duetAndStitch": "リミックスとコラボレーションメトリック"
             }
           },
           "optimizationStrategies": {
             "contentPerformance": {
-              "hookAnalysis": "A/B test different opening frames and hooks",
-              "lengthOptimization": "Test optimal video lengths by content type",
-              "postingTimes": "Identify best posting times for specific audience",
-              "trendAnalysis": "Track which types of trends perform best"
+              "hookAnalysis": "異なるオープニングフレームとフックをA/Bテスト",
+              "lengthOptimization": "コンテンツタイプごとに最適なビデオ長さをテスト",
+              "postingTimes": "特定のオーディエンスに最適な投稿時間を特定",
+              "trendAnalysis": "どのタイプのトレンドが最も良く機能するかを追跡"
             },
             "audienceInsights": {
               "demographics": "Age, gender, location analysis for content targeting",
@@ -764,10 +743,7 @@
           "description": "Apply engagement optimization and export TikTok-ready content instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "video-thumbnail-generator"
-      ],
+      "relatedTools": ["ai-image-upscaler", "video-thumbnail-generator"],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "tiktok-marketing-strategy-guide"
@@ -820,175 +796,175 @@
             "coverPhoto": "1080x1920 pixels",
             "duration": "15-90 seconds optimal",
             "fileFormat": "MP4, MOV for video; JPG, PNG for covers",
-            "audioIntegration": "Licensed music and original audio"
+            "audioIntegration": "ライセンス済み音楽とオリジナル音声"
           },
           "instagramCarousels": {
-            "dimensions": "1080x1080 pixels (recommended)",
-            "multipleAspects": "Supports 1:1, 4:5, or 1.91:1 within same carousel",
-            "maxImages": "10 images or videos per carousel",
-            "fileFormat": "JPG, PNG",
-            "consistency": "Maintain consistent aspect ratio for best results"
+            "dimensions": "1080x1080ピクセル（推奨）",
+            "multipleAspects": "同じカルーセル内で1:1、4:5、または1.91:1をサポート",
+            "maxImages": "カルーセルあたり10枚の画像またはビデオ",
+            "fileFormat": "JPG、PNG",
+            "consistency": "最適な結果を得るために一貫したアスペクト比を維持"
           },
           "profilePictures": {
-            "uploadSize": "320x320 pixels minimum",
-            "displaySize": "110x110 pixels (profile), 40x40 (thumbnail)",
-            "aspectRatio": "1:1 (square)",
-            "fileFormat": "JPG, PNG",
-            "cropType": "Circular crop on display"
+            "uploadSize": "320x320ピクセル以上",
+            "displaySize": "110x110ピクセル（プロフィール）、40x40（サムネイル）",
+            "aspectRatio": "1:1（正方形）",
+            "fileFormat": "JPG、PNG",
+            "cropType": "表示時に円形トリミング"
           }
         },
         "bestPractices": {
           "contentTypes": {
             "productPhotography": {
-              "dimensions": "1080x1080 for grid consistency",
-              "background": "White or brand-consistent backgrounds",
-              "lighting": "Natural lighting preferred, consistent across products",
-              "angles": "Multiple angles in carousels for comprehensive view"
+              "dimensions": "グリッドの一貫性のために1080x1080",
+              "background": "白またはブランドに一貫した背景",
+              "lighting": "自然光が推奨されます。製品間で一貫性を保つ",
+              "angles": "包括的なビューのためにカルーセルで複数の角度"
             },
             "lifestyleContent": {
-              "storytelling": "Use portrait 1080x1350 for better storytelling",
-              "composition": "Rule of thirds, negative space for text overlays",
-              "colorConsistency": "Maintain brand palette across posts",
-              "humanElement": "Include people when possible - 38% higher engagement"
+              "storytelling": "より良いストーリーテリングのためにポートレート1080x1350を使用",
+              "composition": "三分割法、テキストオーバーレイのためのネガティブスペース",
+              "colorConsistency": "投稿全体でブランドパレットを維持",
+              "humanElement": "可能な限り人物を含める - エンゲージメントが38%向上"
             },
             "educationalContent": {
-              "infographics": "1080x1350 portrait format for detailed information",
-              "textReadability": "Large fonts, high contrast, minimal text per image",
-              "carousels": "Break down complex information into multiple slides",
-              "branding": "Include logo and brand colors consistently"
+              "infographics": "詳細な情報のための1080x1350ポートレート形式",
+              "textReadability": "大きなフォント、高いコントラスト、画像あたりの最小限のテキスト",
+              "carousels": "複雑な情報を複数のスライドに分解",
+              "branding": "ロゴとブランドカラーを一貫して含める"
             },
             "behindTheScenes": {
-              "authenticity": "Slightly unpolished, genuine moments perform well",
-              "storyFormat": "Use Stories for real-time updates",
-              "consistency": "Maintain visual style while being authentic",
-              "engagement": "Ask questions, encourage interaction"
+              "authenticity": "少し未完成の、 genuineな瞬間が良く機能します",
+              "storyFormat": "リアルタイム更新のためにストーリーを使用",
+              "consistency": "本物でありながらビジュアルスタイルを維持",
+              "engagement": "質問をし、相互作用を促進する"
             }
           },
           "designGuidelines": {
             "gridPlanning": {
-              "visualCohesion": "Plan how posts look together in grid view",
-              "colorSchemes": "Use consistent color palettes across posts",
-              "thematicRows": "Create visual patterns across rows or columns",
-              "brandConsistency": "Maintain recognizable visual elements"
+              "visualCohesion": "グリッドビューで投稿が一緒にどのように見えるかを計画",
+              "colorSchemes": "投稿全体で一貫したカラーパレットを使用",
+              "thematicRows": "行または列全体でビジュアルパターンを作成",
+              "brandConsistency": "認識可能なビジュアル要素を維持"
             },
             "textOverlayDesign": {
-              "readability": "Minimum 44pt for mobile readability",
-              "fontChoice": "Clean sans-serif fonts (Helvetica, Arial, Proxima Nova)",
-              "contrast": "4.5:1 contrast ratio minimum for accessibility",
-              "placement": "Avoid bottom 20% where Instagram UI appears"
+              "readability": "モバイルでの可読性のために最低44pt",
+              "fontChoice": "クリーンなサンセリフフォント（Helvetica、Arial、Proxima Nova）",
+              "contrast": "アクセシビリティのための最低4.5:1のコントラスト比",
+              "placement": "Instagram UIが表示される下部20%を回避"
             },
             "compositionRules": {
-              "safeZones": "Leave 10% margin on all sides for UI elements",
-              "focalPoints": "Single clear focal point per image",
-              "balance": "Balance visual weight across composition",
-              "movement": "Guide viewer's eye through intentional composition"
+              "safeZones": "UI要素のためにすべての側に10%のマージンを残す",
+              "focalPoints": "画像あたり1つの明確な焦点",
+              "balance": "構成全体でビジュアルの重みをバランス",
+              "movement": "意図的な構成を通じて視聴者の目を導く"
             }
           }
         },
         "engagementOptimization": {
           "visualPsychology": {
             "colorImpact": {
-              "red": "Increases urgency and attention, 20% higher CTR",
-              "blue": "Builds trust and professionalism",
-              "yellow": "Creates optimism and happiness",
-              "green": "Associated with growth and health",
-              "purple": "Luxury and creativity perception"
+              "red": "緊急感と注意を高め、CTRが20%向上",
+              "blue": "信頼と専門性を構築",
+              "yellow": "楽観性と幸福を創出",
+              "green": "成長と健康に関連付けられます",
+              "purple": "贅沢さと創造性の認識"
             },
-            "faceRecognition": "Faces increase engagement by 35-40%",
-            "eyeContact": "Direct eye contact increases connection and trust",
-            "emotions": "Genuine emotions outperform posed expressions",
-            "composition": "Asymmetrical compositions create visual interest"
+            "faceRecognition": "顔はエンゲージメントを35-40%増加させます",
+            "eyeContact": "直接的なアイコンタクトはつながりと信頼を高めます",
+            "emotions": "genuineな感情はポーズ表情よりも優れています",
+            "composition": "非対称の構成はビジュアルの興味を生み出します"
           },
           "timingStrategy": {
             "bestPostingTimes": {
-              "general": "Monday-Friday 11 AM-2 PM, Tuesday 2 PM (peak)",
-              "weekends": "Saturday 9-11 AM, Sunday 7-9 PM",
-              "timezone": "Post when 60% of audience is active",
-              "consistency": "Post at same times daily for algorithm favor"
+              "general": "月曜日-金曜日午前11時-午後2時、火曜日午後2時（ピーク）",
+              "weekends": "土曜日午前9-11時、日曜日午後7-9時",
+              "timezone": "視聴者の60%がアクティブなときに投稿",
+              "consistency": "アルゴリズムの好意のために毎日同じ時間に投稿"
             },
             "contentFrequency": {
-              "minimum": "3-5 posts per week for algorithm visibility",
-              "optimal": "1-2 posts daily for maximum reach",
-              "stories": "5-10 daily stories for engagement",
-              "reels": "2-3 reels weekly for growth"
+              "minimum": "アルゴリズムの可視性のために週3-5回の投稿",
+              "optimal": "最大リーチのために1日1-2回の投稿",
+              "stories": "エンゲージメントのために1日5-10個のストーリー",
+              "reels": "成長のために週2-3個のリール"
             }
           },
           "engagementFactors": {
             "hashtags": {
-              "usage": "15-30 hashtags per post (max allowed)",
-              "mix": "Broad, niche, and hyper-specific hashtags",
-              "placement": "First comment vs caption testing",
-              "trending": "Include 2-3 trending hashtags in your niche"
+              "usage": "投稿あたり15-30個のハッシュタグ（許可された最大数）",
+              "mix": "広範、ニッチ、超特定のハッシュタグ",
+              "placement": "最初のコメントとキャプションのテスト",
+              "trending": "ニッチ内で2-3つのトレンドハッシュタグを含める"
             },
             "captionLength": {
-              "optimal": "125-150 characters for maximum engagement",
-              "longForm": "Over 2000 characters for storytelling (Instagram favors)",
-              "callToAction": "Always include clear CTA in caption",
-              "questions": "End captions with questions to encourage comments"
+              "optimal": "最大エンゲージメントのために125-150文字",
+              "longForm": "ストーリーテリングのために2000文字以上（Instagramが好む）",
+              "callToAction": "常にキャプションに明確なCTAを含める",
+              "questions": "コメントを促すために質問でキャプションを終える"
             }
           }
         },
         "videoAndDynamicContent": {
           "reelsOptimization": {
-            "first3Seconds": "Critical for viewer retention - 70% determine watch time",
-            "audioStrategy": "Use trending audio for 85% higher reach",
-            "textCaptions": "85% of Reels watched without sound",
-            "looping": "Create seamless loops for higher engagement"
+            "first3Seconds": "視聴者維持率に重要 - 70%が視聴時間を決定",
+            "audioStrategy": "85%高いリーチのためにトレンドオーディオを使用",
+            "textCaptions": "85%のリールが音なしで視聴されています",
+            "looping": "より高いエンゲージメントのためにシームレスなループを作成"
           },
           "storiesEngagement": {
-            "interactiveElements": "Polls, quizzes, sliders, Q&A stickers",
-            "linkStickers": "Available for accounts with 10,000+ followers",
-            "highlights": "Organize stories into thematic highlights",
-            "frequency": "5-10 stories daily for algorithm preference"
+            "interactiveElements": "投票、クイズ、スライダー、Q&Aステッカー",
+            "linkStickers": "10,000人以上のフォロワーを持つアカウントで利用可能",
+            "highlights": "ストーリーをテーマ別ハイライトに整理",
+            "frequency": "アルゴリズムの好意のために1日5-10個のストーリー"
           },
           "igtvContent": {
-            "coverPhotos": "High-quality thumbnails attract 40% more views",
-            "titles": "Clear, compelling titles under 50 characters",
-            "descriptions": "Detailed descriptions with keywords",
-            "chaptering": "Use chapters for long-form content"
+            "coverPhotos": "高品質のサムネイルは40%多くの視聴を惹きつけます",
+            "titles": "50文字未満の明確で魅力的なタイトル",
+            "descriptions": "キーワードを含む詳細な説明",
+            "chaptering": "長尺コンテンツにチャプターを使用"
           }
         },
         "technicalOptimization": {
           "compressionSettings": {
-            "jpgQuality": "95-100% before upload, Instagram compresses anyway",
-            "pngUsage": "Only for graphics with sharp edges or transparency",
-            "fileSize": "Under 30MB for posts, under 4MB for Stories",
-            "colorSpace": "sRGB for consistent color display"
+            "jpgQuality": "アップロード前に95-100%、Instagramはとにかく圧縮します",
+            "pngUsage": "鋭いエッジまたは透明度を持つグラフィックのみ",
+            "fileSize": "投稿は30MB以下、ストーリーは4MB以下",
+            "colorSpace": "一貫した色表示のためのsRGB"
           },
           "loadingPerformance": {
-            "aboveFold": "Optimize first image in carousel for quick loading",
-            "progressiveLoading": "Instagram automatically handles progressive loading",
-            "mobileOptimization": "Prioritize mobile loading speeds",
-            "batchUpload": "Avoid uploading too many high-res images simultaneously"
+            "aboveFold": "迅速な読み込みのためにカルーセルの最初の画像を最適化",
+            "progressiveLoading": "Instagramは自動的にプログレッシブローディングを処理",
+            "mobileOptimization": "モバイル読み込み速度を優先",
+            "batchUpload": "多数の高解像度画像を同時にアップロードしないようにする"
           },
           "accessibility": {
-            "altText": "Write descriptive alt text for all images",
-            "colorContrast": "WCAG 2.1 AA compliance minimum",
-            "textSize": "Large text for screen reader compatibility",
-            "imageDescriptions": "Include detailed descriptions in captions"
+            "altText": "すべての画像に説明的な代替テキストを記述",
+            "colorContrast": "WCAG 2.1 AAコンプライアンス最低限",
+            "textSize": "スクリーンリーダー互換性のための大きなテキスト",
+            "imageDescriptions": "キャプションに詳細な説明を含める"
           }
         },
         "contentStrategy": {
           "planningWorkflows": {
             "contentPillars": {
-              "educational": "Tips, tutorials, industry insights (25% of content)",
-              "entertainment": "Humor, memes, lighthearted content (25% of content)",
-              "inspiration": "Motivational quotes, success stories (25% of content)",
-              "promotion": "Product showcases, announcements (25% of content)"
+              "educational": "ヒント、チュートリアル、業界の洞察（コンテンツの25%）",
+              "entertainment": "ユーモア、ミーム、軽いコンテンツ（コンテンツの25%）",
+              "inspiration": "モチベーショナルクオート、成功事例（コンテンツの25%）",
+              "promotion": "製品ショーケース、発表（コンテンツの25%）"
             },
             "batchCreation": {
-              "monthlyPlanning": "Plan content calendar monthly with themes",
-              "photoshootPlanning": "Batch photoshoots for consistent visual style",
-              "templateCreation": "Create templates for recurring content types",
-              "schedulingTools": "Use Meta Business Suite for scheduling"
+              "monthlyPlanning": "テーマで月次コンテンツカレンダーを計画",
+              "photoshootPlanning": "一貫したビジュアルスタイルのためにバッチフォトシュート",
+              "templateCreation": "定期的なコンテンツタイプのテンプレートを作成",
+              "schedulingTools": "スケジューリングにMeta Business Suiteを使用"
             }
           },
           "platformIntegration": {
             "crossPlatformStrategy": {
-              "facebook": "Share Instagram posts to Facebook with platform-specific adaptations",
-              "twitter": "Share Instagram content with proper formatting for Twitter",
-              "pinterest": "Create Pinterest-specific versions of Instagram content",
-              "tiktok": "Adapt Instagram Reels for TikTok with platform differences"
+              "facebook": "プラットフォーム固有の適応でInstagram投稿をFacebookと共有",
+              "twitter": "Twitter用の適切なフォーマットでInstagramコンテンツを共有",
+              "pinterest": "InstagramコンテンツのPinterest固有バージョンを作成",
+              "tiktok": "プラットフォームの違いでInstagram ReelsをTikTokに適応"
             },
             "websiteIntegration": {
               "instagramEmbeds": "Embed Instagram posts on website for social proof",
@@ -1021,22 +997,12 @@
             "colorTrends": {
               "palette1": {
                 "name": "Muted Vibrance",
-                "hex": [
-                  "#FF6B6B",
-                  "#4ECDC4",
-                  "#45B7D1",
-                  "#F7DC6F"
-                ],
+                "hex": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#F7DC6F"],
                 "usage": "Lifestyle, fashion, creative content"
               },
               "palette2": {
                 "name": "Natural Harmony",
-                "hex": [
-                  "#8B7355",
-                  "#A0522D",
-                  "#D2B48C",
-                  "#F5DEB3"
-                ],
+                "hex": ["#8B7355", "#A0522D", "#D2B48C", "#F5DEB3"],
                 "usage": "Wellness, organic, sustainable content"
               }
             }
@@ -1216,10 +1182,7 @@
           "description": "Apply engagement optimization and export Instagram-ready content"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "instagram-grid-planner"
-      ],
+      "relatedTools": ["ai-image-upscaler", "instagram-grid-planner"],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "instagram-marketing-strategy-guide"
@@ -1228,164 +1191,164 @@
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "resize-image-for-youtube",
+      "slug": "youtube用画像サイズ変更",
       "title": "Reサイズ Image for YouTube",
       "metaTitle": "Reサイズ Image for YouTube | MyImageUpscaler",
       "metaDescription": "Perfect YouTube image reサイズr for thumbnAIls, channel banners, profile pictures, YouTube Shorts, and video watermarks. 無料 オンライン tool with 2025 YouTube specifications and CTR optimization.",
       "h1": "YouTube Image Reサイズr - Complete YouTube Graphics for 2025",
       "intro": "Create stunning YouTube visuals with our comprehensive image reサイズr. Perfect for video thumbnAIls, channel banners, profile pictures, YouTube Shorts, end screens, and video watermarks with 2025 specifications and CTR optimization.",
-      "primaryKeyword": "resize image for youtube",
+      "primaryKeyword": "youtube用画像サイズ変更",
       "secondaryKeywords": [
-        "youtube thumbnail size 2025",
-        "youtube banner dimensions guide",
-        "youtube channel art specs",
-        "youtube shorts thumbnail size",
-        "video thumbnail optimization",
-        "youtube watermark size",
-        "youtube end screen template"
+        "youtubeサムネイルサイズ2025",
+        "youtubeバナーディメンションガイド",
+        "youtubeチャンネルアート仕様",
+        "youtubeショートサムネイルサイズ",
+        "ビデオサムネイル最適化",
+        "youtube透かしサイズ",
+        "youtubeエンド画面テンプレート"
       ],
       "lastUpdated": "2025-01-19",
-      "category": "tools",
-      "toolName": "YouTube Image Resizer",
-      "description": "Comprehensive YouTube image resizing tool for all content types with engagement optimization",
+      "category": "ツール",
+      "toolName": "YouTube画像サイズ変更ツール",
+      "description": "エンゲージメント最適化付きのすべてのコンテンツタイプ向けの包括的なYouTube画像サイズ変更ツール",
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "platformSpecifications": {
         "currentRequirements": {
           "videoThumbnails": {
-            "recommended": "1280x720 pixels (16:9 ratio)",
-            "minimum": "640x360 pixels",
-            "maximum": "1920x1080 pixels",
-            "fileFormat": "JPG, PNG, GIF, BMP",
+            "recommended": "1280x720ピクセル（16:9比率）",
+            "minimum": "640x360ピクセル",
+            "maximum": "1920x1080ピクセル",
+            "fileFormat": "JPG、PNG、GIF、BMP",
             "maxFileSize": "2MB",
-            "aspectRatio": "16:9 recommended (supports various ratios)"
+            "aspectRatio": "16:9推奨（様々な比率をサポート）"
           },
           "channelBanners": {
-            "recommended": "2560x1440 pixels",
-            "safeZoneDesktop": "1546x423 pixels (center)",
-            "safeZoneMobile": "1546x423 pixels (center)",
-            "safeZoneTV": "1235x676 pixels (center)",
-            "fileFormat": "JPG, PNG, BMP, GIF",
+            "recommended": "2560x1440ピクセル",
+            "safeZoneDesktop": "1546x423ピクセル（中央）",
+            "safeZoneMobile": "1546x423ピクセル（中央）",
+            "safeZoneTV": "1235x676ピクセル（中央）",
+            "fileFormat": "JPG、PNG、BMP、GIF",
             "maxFileSize": "6MB",
-            "minimumSafe": "2560x423 pixels"
+            "minimumSafe": "2560x423ピクセル"
           },
           "profilePictures": {
-            "recommended": "800x800 pixels",
-            "displaySize": "98x98 pixels (desktop), 64x64 pixels (mobile)",
-            "aspectRatio": "1:1 (square)",
-            "fileFormat": "JPG, PNG, BMP, GIF",
+            "recommended": "800x800ピクセル",
+            "displaySize": "98x98ピクセル（デスクトップ）、64x64ピクセル（モバイル）",
+            "aspectRatio": "1:1（正方形）",
+            "fileFormat": "JPG、PNG、BMP、GIF",
             "maxFileSize": "4MB",
-            "cropType": "Circular crop on display"
+            "cropType": "表示時に円形トリミング"
           },
           "youtubeShorts": {
-            "videoDimensions": "1080x1920 pixels (9:16 ratio)",
-            "thumbnailSize": "1080x1920 pixels",
-            "duration": "60 seconds maximum",
-            "fileFormat": "MP4, MOV, WEBM for video; JPG, PNG for thumbnails",
-            "aspectRatio": "9:16 vertical required"
+            "videoDimensions": "1080x1920ピクセル（9:16比率）",
+            "thumbnailSize": "1080x1920ピクセル",
+            "duration": "最大60秒",
+            "fileFormat": "ビデオ用はMP4、MOV、WEBM、サムネイル用はJPG、PNG",
+            "aspectRatio": "9:16縦向き必須"
           },
           "endScreens": {
-            "dimensions": "1920x1080 pixels (16:9 ratio)",
-            "safeZone": "85% of frame (center area with 10% margin)",
-            "elementSize": "Maximum 300x300 pixels per element",
-            "maxElements": "4 elements maximum",
-            "duration": "5-20 seconds before video end"
+            "dimensions": "1920x1080ピクセル（16:9比率）",
+            "safeZone": "フレームの85%（10%マージンの中央エリア）",
+            "elementSize": "要素あたり最大300x300ピクセル",
+            "maxElements": "最大4要素",
+            "duration": "ビデオ終了前5-20秒"
           },
           "videoWatermarks": {
-            "size": "150x150 pixels minimum, 190x190 maximum",
-            "position": "Bottom right corner (fixed position)",
-            "opacity": "50-75% transparency",
-            "display": "Customizable start/end times",
-            "fileFormat": "PNG with transparency recommended"
+            "size": "150x150ピクセル以上、190x190以下",
+            "position": "右下隅（固定位置）",
+            "opacity": "50-75%の透明度",
+            "display": "カスタマイズ可能な開始/終了時間",
+            "fileFormat": "透明度付きPNG推奨"
           }
         },
         "bestPractices": {
           "thumbnailOptimization": {
             "designPrinciples": {
-              "highContrast": "Use bright, contrasting colors to stand out in suggested videos",
-              "largeText": "Bold, readable text (minimum 60pt for 1280x720)",
-              "facialRecognition": "Include faces with strong emotions for 30-40% higher CTR",
-              "brandConsistency": "Maintain consistent style across channel thumbnails"
+              "highContrast": "推奨ビデオで目立つために明るい対照的な色を使用",
+              "largeText": "大胆で読みやすいテキスト（1280x720の場合は最低60pt）",
+              "facialRecognition": "30-40%高いCTRのために強い感情を持つ顔を含める",
+              "brandConsistency": "チャンネルサムネイル全体で一貫したスタイルを維持"
             },
             "colorPsychology": {
-              "red": "Increases urgency and attention, 20% higher click-through",
-              "yellow": "Creates excitement and optimism, stands out in feeds",
-              "blue": "Builds trust and authority for educational content",
-              "orange": "Combines energy of red and happiness of yellow",
-              "green": "Associated with growth, health, and financial content"
+              "red": "緊急感と注意を高め、クリックスルー率が20%向上",
+              "yellow": "興奮と楽観性を創出し、フィードで目立つ",
+              "blue": "教育的コンテンツのために信頼と権威を構築",
+              "orange": "赤のエネルギーと黄色の幸福を組み合わせたもの",
+              "green": "成長、健康、および金融コンテンツに関連付けられます"
             },
             "compositionRules": {
-              "ruleOfThirds": "Place key elements at intersection points",
-              "negativeSpace": "Use breathing room around important elements",
-              "visualHierarchy": "Most important element should be largest and brightest",
-              "emotionalAppeal": "Show authentic emotions, not stock photography"
+              "ruleOfThirds": "交点に重要な要素を配置",
+              "negativeSpace": "重要な要素の周りに余裕を持たせる",
+              "visualHierarchy": "最も重要な要素が最大かつ最も明るいべき",
+              "emotionalAppeal": "genuineな感情を表示し、ストックフォトではない"
             }
           },
           "bannerDesign": {
             "responsiveDesign": {
-              "desktopView": "Center content works across all devices",
-              "mobileOptimization": "Text readable on small screens",
-              "tvCompatibility": "Avoid small details that get lost on large screens",
-              "criticalContent": "Keep important text and logos in central safe zone"
+              "desktopView": "中央のコンテンツはすべてのデバイスで機能",
+              "mobileOptimization": "小さな画面で読めるテキスト",
+              "tvCompatibility": "大きな画面で失われる小さな詳細を回避",
+              "criticalContent": "重要なテキストとロゴを中央のセーフゾーンに保持"
             },
             "brandElements": {
-              "logoPlacement": "Prominent but not overwhelming brand placement",
-              "taglineInclusion": "Clear value proposition or channel mission",
-              "uploadSchedule": "Include upload schedule when relevant",
-              "socialLinks": "Visual hints about social media presence"
+              "logoPlacement": "際立つが圧倒されないブランド配置",
+              "taglineInclusion": "明確な価値提案またはチャンネルミッション",
+              "uploadSchedule": "関連する場合はアップロードスケジュールを含める",
+              "socialLinks": "ソーシャルメディアプレゼンスに関する視覚的ヒント"
             },
             "technicalRequirements": {
-              "qualityMaintenance": "High-resolution source files for crisp display",
-              "fileOptimization": "Compress without visible quality loss",
-              "colorSpace": "sRGB for consistent color display",
-              "testing": "Preview on multiple devices before publishing"
+              "qualityMaintenance": "鮮明な表示のために高解像度ソースファイル",
+              "fileOptimization": "目に見える品質損失なしで圧縮",
+              "colorSpace": "一貫した色表示のためのsRGB",
+              "testing": "公開前に複数のデバイスでプレビュー"
             }
           },
           "contentTypes": {
             "educationalContent": {
-              "thumbnailStyle": "Clean, professional with clear topic indication",
-              "textUsage": "Minimal text focusing on learning outcome",
-              "visuals": "Screenshots, diagrams, or professional presentation",
-              "consistency": "Template-based approach for series content"
+              "thumbnailStyle": "明確なトピック指示を備えたクリーンでプロフェッショナル",
+              "textUsage": "学習成果に焦点を当てた最小限のテキスト",
+              "visuals": "スクリーンショット、図、またはプロフェッショナルなプレゼンテーション",
+              "consistency": "シリーズコンテンツのテンプレートベースのアプローチ"
             },
             "entertainmentContent": {
-              "thumbnailStyle": "High energy, dramatic expressions, vibrant colors",
-              "emotionalHooks": "Use strongest emotional moments from content",
-              "composition": "Dynamic angles and unconventional cropping",
-              "brandPersonality": "Reflect channel's unique personality"
+              "thumbnailStyle": "高エネルギー、劇的な表情、鮮やかな色",
+              "emotionalHooks": "コンテンツから最も強い感情的瞬間を使用",
+              "composition": "動的な角度と非従来型のトリミング",
+              "brandPersonality": "チャンネルの独自の個性を反映"
             },
             "tutorialContent": {
-              "thumbnailStyle": "Before/after comparisons or step-by-step previews",
-              "valueProposition": "Clear indication of what viewers will learn",
-              "visualElements": "Include finished product or end result",
-              "textElements": "Problem-solution format with clear benefits"
+              "thumbnailStyle": "ビフォーアフターの比較またはステップバイステップのプレビュー",
+              "valueProposition": "視聴者が学ぶことの明確な指示",
+              "visualElements": "完成品または最終結果を含める",
+              "textElements": "明確なメリットを備えた問題解決フォーマット"
             },
             "reviewContent": {
-              "thumbnailStyle": "Product focus with rating or verdict indicators",
-              "authenticity": "Real product shots, not stock photography",
-              "comparisonElements": "Include multiple products when applicable",
-              "honestIndicators": "Visual cues about review authenticity"
+              "thumbnailStyle": "評価または判定指標を備えた製品フォーカス",
+              "authenticity": "実際の製品ショット、ストックフォトではない",
+              "comparisonElements": "該当する場合は複数の製品を含める",
+              "honestIndicators": "レビューの真正性に関する視覚的キュー"
             }
           }
         },
         "engagementOptimization": {
           "clickThroughRate": {
             "thumbnailTesting": {
-              "a/bTesting": "Test different thumbnail styles with target audience",
-              "heatMaps": "Use eye-tracking studies to optimize element placement",
-              "competitorAnalysis": "Study successful thumbnails in your niche",
-              "seasonalAdaptation": "Adjust colors and themes for seasonal relevance"
+              "a/bTesting": "ターゲット視聴者で異なるサムネイルスタイルをテスト",
+              "heatMaps": "要素配置を最適化するためにアイオントラッキング研究を使用",
+              "competitorAnalysis": "ニッチで成功したサムネイルを研究",
+              "seasonalAdaptation": "季節の関連性のために色とテーマを調整"
             },
             "psychologicalTriggers": {
-              "curiosityGaps": "Create questions that thumbnails partially answer",
-              "emotionalConnection": "Use faces showing genuine emotions",
-              "valuePromise": "Clearly communicate viewer benefit",
-              "urgencyIndicators": "Use time-sensitive elements when appropriate"
+              "curiosityGaps": "サムネイルが部分的に答える質問を作成",
+              "emotionalConnection": "genuineな感情を示す顔を使用",
+              "valuePromise": "視聴者のメリットを明確に伝達",
+              "urgencyIndicators": "適切な場合は時間敏感な要素を使用"
             },
             "technicalOptimization": {
-              "fileSize": "Balance quality with fast loading speeds",
-              "colorAccuracy": "Ensure colors look good on all devices",
-              "mobileFirst": "Optimize for mobile viewing (70% of YouTube traffic)",
+              "fileSize": "品質と高速読み込み速度のバランス",
+              "colorAccuracy": "すべてのデバイスで色が良く見えることを確認",
+              "mobileFirst": "モバイル視聴のために最適化（YouTubeトラフィックの70%）",
               "testDevices": "Verify appearance on phones, tablets, and desktop"
             }
           },
@@ -1565,225 +1528,212 @@
             "colorTrends": {
               "palette1": {
                 "name": "Vibrant Energy",
-                "hex": [
-                  "#FF6B6B",
-                  "#4ECDC4",
-                  "#45B7D1",
-                  "#FFA07A"
-                ],
-                "usage": "Entertainment, gaming, high-energy content"
+                "hex": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#FFA07A"],
+                "usage": "エンターテイメント、ゲーム、高エネルギーコンテンツ"
               },
               "palette2": {
-                "name": "Professional Trust",
-                "hex": [
-                  "#2C3E50",
-                  "#34495E",
-                  "#95A5A6",
-                  "#ECF0F1"
-                ],
-                "usage": "Educational, business, authoritative content"
+                "name": "プロフェッショナルトラスト",
+                "hex": ["#2C3E50", "#34495E", "#95A5A6", "#ECF0F1"],
+                "usage": "教育的、ビジネス、権威あるコンテンツ"
               }
             }
           },
           "contentFormats": {
             "emergingTrends": [
-              "AI-generated thumbnails and art elements",
-              "Interactive thumbnail elements with hover effects",
-              "Animated thumbnails for platform experimentation",
-              "Personalized thumbnail variations for different audience segments",
-              "AR-enhanced thumbnails for immersive experiences"
+              "AI生成サムネイルとアート要素",
+              "ホバー効果を備えたインタラクティブなサムネイル要素",
+              "プラットフォーム実験のためのアニメーションサムネイル",
+              "異なる視聴者セグメント向けのパーソナライズされたサムネイル variations",
+              "没入感のある体験のためのAR強化サムネイル"
             ]
           }
         },
         "analyticsAndPerformance": {
           "keyMetrics": {
             "engagementMetrics": {
-              "clickThroughRate": "Primary success metric, aim for 5-10% average",
-              "watchTime": "Thumbnail quality affects initial watch time decisions",
-              "sessionDuration": "Thumbnails that keep viewers on platform longer",
-              "viewerRetention": "Accurate thumbnails improve retention rates",
-              "conversionRate": "Thumbnail impact on subscribe and other actions"
+              "clickThroughRate": "主要な成功指標、平均5-10%を目指す",
+              "watchTime": "サムネイル品質は初期の視聴時間決定に影響する",
+              "sessionDuration": "視聴者をプラットフォームに長く留めるサムネイル",
+              "viewerRetention": "正確なサムネイルは保持率を改善する",
+              "conversionRate": "登録およびその他のアクションに対するサムネイルの影響"
             },
             "performanceAnalysis": {
-              "thumbnailComparison": "A/B test different thumbnail styles systematically",
-              "timeBasedAnalysis": "Track performance changes over different posting times",
-              "audienceSegmentation": "Analyze thumbnail performance by audience demographics",
-              "competitorBenchmarking": "Compare performance against similar channels"
+              "thumbnailComparison": "異なるサムネイルスタイルを体系的にA/Bテスト",
+              "timeBasedAnalysis": "異なる投稿時間のパフォーマンス変化を追跡",
+              "audienceSegmentation": "視聴者人口統計別にサムネイルパフォーマンスを分析",
+              "competitorBenchmarking": "類似チャンネルと比較してパフォーマンスを比較"
             }
           },
           "optimizationStrategies": {
             "continuousImprovement": {
-              "monthlyAnalysis": "Review thumbnail performance metrics monthly",
-              "patternIdentification": "Identify successful design patterns and elements",
-              "audienceFeedback": "Gather audience feedback on thumbnail preferences",
-              "trendAdaptation": "Adapt successful thumbnails to current trends"
+              "monthlyAnalysis": "月次でサムネイルパフォーマンス指標をレビュー",
+              "patternIdentification": "成功したデザインパターンと要素を特定",
+              "audienceFeedback": "サムネイルの好みに関する視聴者フィードバックを収集",
+              "trendAdaptation": "成功したサムネイルを現在のトレンドに適応"
             },
             "testingProtocols": {
-              "controlledTesting": "Test one variable at a time for clear results",
-              "statisticalSignificance": "Ensure sufficient sample size for reliable results",
-              "longTermTracking": "Monitor long-term impact of thumbnail changes",
-              "seasonalAdjustments": "Account for seasonal variations in engagement"
+              "controlledTesting": "明確な結果のために一度に1つの変数をテスト",
+              "statisticalSignificance": "信頼できる結果のために十分なサンプルサイズを確保",
+              "longTermTracking": "サムネイル変更の長期的影響を監視",
+              "seasonalAdjustments": "エンゲージメントの季節的変動を考慮"
             }
           }
         },
         "marketingIntegration": {
           "campaignStrategies": {
             "channelGrowth": {
-              "thumbnailConsistency": "Build recognizable brand through consistent thumbnail style",
-              "seriesBranding": "Create series-specific thumbnail templates",
-              "collaborationPreparation": "Prepare collaboration thumbnails with both creators featured",
-              "milestoneCelebration": "Create special thumbnails for channel milestones"
+              "thumbnailConsistency": "一貫したサムネイルスタイルで認識可能なブランドを構築",
+              "seriesBranding": "シリーズ固有のサムネイルテンプレートを作成",
+              "collaborationPreparation": "両方のクリエイターが登場するコラボサムネイルを準備",
+              "milestoneCelebration": "チャンネルマイルストーンの特別なサムネイルを作成"
             },
             "monetization": {
-              "sponsorIntegration": "Integrate sponsor branding tastefully in thumbnails",
-              "affiliateMarketing": "Create thumbnails for affiliate product reviews",
-              "merchandisePromotion": "Design thumbnails featuring channel merchandise",
-              "courseLaunch": "Create promotional thumbnails for educational courses"
+              "sponsorIntegration": "サムネイルにスポンサーブランディングを上品に統合",
+              "affiliateMarketing": "アフィリエイト製品レビューのサムネイルを作成",
+              "merchandisePromotion": "チャンネルマーチャンダイズを特徴とするサムネイルをデザイン",
+              "courseLaunch": "教育コースのプロモーションサムネイルを作成"
             }
           },
           "crossPlatformMarketing": {
             "contentRepurposing": {
-              "multiPlatformAdaptation": "Adapt successful thumbnails for other platforms",
-              "platformSpecificOptimization": "Optimize for each platform's unique requirements",
-              "brandConsistency": "Maintain brand identity across all adaptations",
-              "audienceSegmentation": "Create platform-specific variations for different audiences"
+              "multiPlatformAdaptation": "他のプラットフォーム用に成功したサムネイルを適応",
+              "platformSpecificOptimization": "各プラットフォームの固有の要件に最適化",
+              "brandConsistency": "すべての適応でブランドアイデンティティを維持",
+              "audienceSegmentation": "異なる視聴者向けにプラットフォーム固有の variations を作成"
             },
             "collaborativeMarketing": {
-              "creatorCollaborations": "Coordinate thumbnail styles with collaboration partners",
-              "brandPartnerships": "Create co-branded thumbnails for sponsored content",
-              "communityFeatures": "Feature community-generated content in thumbnails",
-              "eventPromotion": "Create promotional thumbnails for live events and premieres"
+              "creatorCollaborations": "コラボレーションパートナーとサムネイルスタイルを調整",
+              "brandPartnerships": "スポンサーコンテンツのコブランドサムネイルを作成",
+              "communityFeatures": "サムネイルにコミュニティ生成コンテンツを特集",
+              "eventPromotion": "ライブイベントと初公開のプロモーションサムネイルを作成"
             }
           }
         }
       },
       "features": [
         {
-          "title": "Complete YouTube Graphics",
-          "description": "All YouTube image types including thumbnAIls, banners, profile pictures, Shorts, end screens, and watermarks"
+          "title": "完全なYouTubeグラフィック",
+          "description": "サムネイル、バナー、プロフィール写真、ショート、エンド画面、透かしを含むすべてのYouTube画像タイプ"
         },
         {
-          "title": "CTR Optimization",
-          "description": "AI-powered suggestions for maximizing click-through rates and viewer engagement"
+          "title": "CTR最適化",
+          "description": "クリックスルー率と視聴者エンゲージメントを最大化するためのAI搭載提案"
         },
         {
-          "title": "Responsive Preview",
+          "title": "レスポンシブプレビュー",
           "description": "Preview how your images will look on deskトップ, mobile, and TV screens"
         },
         {
-          "title": "Brand Templates",
-          "description": "Create consistent brand templates for different content types and series"
+          "title": "ブランドテンプレート",
+          "description": "異なるコンテンツタイプとシリーズ向けの一貫したブランドテンプレートを作成"
         }
       ],
       "useCases": [
         {
-          "title": "YouTube channel branding",
-          "description": "Create cohesive visual identity across thumbnAIls, banners, and profile elements",
+          "title": "YouTubeチャンネルブランディング",
+          "description": "サムネイル、バナー、プロフィール要素全体で包括的なビジュアルアイデンティティを作成",
           "example": "Educational channels establishing authority with プロフェッショナル, consistent branding"
         },
         {
-          "title": "Video thumbnAIl optimization",
-          "description": "Maximize click-through rates with psychologically optimized thumbnAIl designs",
-          "example": "EntertAInment channels creating high-energy, emotionally engaging thumbnAIls"
+          "title": "ビデオサムネイル最適化",
+          "description": "心理的に最適化されたサムネイルデザインでクリックスルー率を最大化",
+          "example": "エンターテイメントチャンネルが高エネルギーで感情的に魅力的なサムネイルを作成"
         },
         {
-          "title": "YouTube Shorts preparation",
-          "description": "Optimize vertical content for mobile-first viewing and algorithm preference",
+          "title": "YouTubeショート準備",
+          "description": "モバイルファースト視聴とアルゴリズム好意のために縦向きコンテンツを最適化",
           "example": "Creators adapting horizontal content for Shorts フォーマット with proper cropping"
         },
         {
-          "title": "Content creation workflows",
-          "description": "Streamline content production with batch thumbnAIl creation and template systems",
-          "example": "High-volume channels creating efficient thumbnAIl production workflows"
+          "title": "コンテンツ作成ワークフロー",
+          "description": "バッチサムネイル作成とテンプレートシステムでコンテンツ生産を合理化",
+          "example": "高ボリュームチャンネルが効率的なサムネイル生産ワークフローを作成"
         },
         {
-          "title": "Brand consistency across platforms",
+          "title": "プラットフォーム全体でのブランド一貫性",
           "description": "MAIntAIn visual identity while adapting content for different platforms and フォーマットs",
-          "example": "Multi-platform creators ensuring brand recognition across YouTube, Instagram, and TikTok"
+          "example": "YouTube、Instagram、TikTok全体でブランド認識を確保するマルチプラットフォームクリエイター"
         }
       ],
       "faq": [
         {
           "question": "What's the 最高 サイズ for YouTube thumbnAIls in 2025?",
-          "answer": "YouTube thumbnAIls should be 1280x720 pixels (16:9 aspect ratio) with a minimum of 640x360 pixels. Use high-contrast colors, large readable text (minimum 60pt), and include faces with emotions for 30-40% higher CTR."
+          "answer": "YouTubeサムネイルは1280x720ピクセル（16:9アスペクト比）で、最低640x360ピクセルである必要があります。高コントラストの色、大きな読みやすいテキスト（最低60pt）、および30-40%高いCTRのために感情を持つ顔を含めます。"
         },
         {
-          "question": "How do I optimize YouTube channel banners for all devices?",
+          "question": "すべてのデバイスでYouTubeチャンネルバナーを最適化するには？",
           "answer": "Create banners at 2560x1440 pixels with critical content in the center safe zone (1546x423 pixels). Test on mobile, deskトップ, and TV as YouTube displays different portions on each device."
         },
         {
-          "question": "What are YouTube Shorts thumbnAIl requirements?",
+          "question": "YouTubeショートサムネイルの要件は何ですか？",
           "answer": "YouTube Shorts thumbnAIls should be 1080x1920 pixels (9:16 vertical フォーマット). Create scroll-sトップping first frames, use full-screen impact, and optimize for mobile viewing where 70% of YouTube traffic occurs."
         },
         {
-          "question": "How do I create effective YouTube end screens?",
-          "answer": "Design end screens at 1920x1080 pixels with elements in the safe zone (85% of frame with 10% margins). Maximum 4 elements, each 300x300 pixels, positioned 20-30 seconds before video end."
+          "question": "効果的なYouTubeエンド画面を作成するには？",
+          "answer": "1920x1080ピクセルでエンド画面をデザインし、要素をセーフゾーン（10%マージンのフレームの85%）に配置します。最大4要素、各300x300ピクセル、ビデオ終了の20-30秒前に配置します。"
         },
         {
-          "question": "What are current YouTube thumbnAIl trends for 2025?",
-          "answer": "Current trends include minimalist impact design (clean with bold elements), authentic connection (real, unfiltered moments), digital innovation (AR effects and futuristic elements), and nostalgic modern (retro styles with contemporary twists)."
+          "question": "2025年の現在のYouTubeサムネイルトレンドは何ですか？",
+          "answer": "現在のトレンドには、ミニマリストインパクトデザイン（大胆な要素でクリーン）、authentic connection（リアルで未フィルターの瞬間）、digital innovation（AR効果と未来的要素）、nostalgic modern（現代的なひねりを加えたレトロスタイル）が含まれます。"
         }
       ],
       "benefits": [
         {
-          "title": "2025 YouTube Compliance",
-          "description": "All specifications updated for current YouTube requirements and algorithm preferences"
+          "title": "2025年YouTubeコンプライアンス",
+          "description": "現在のYouTube要件とアルゴリズム好意に更新されたすべての仕様"
         },
         {
-          "title": "CTR Maximization",
-          "description": "AI-powered optimization for maximum click-through rates and viewer engagement"
+          "title": "CTR最大化",
+          "description": "最大のクリックスルー率と視聴者エンゲージメントのためのAI搭載最適化"
         },
         {
-          "title": "Multi-Device Preview",
+          "title": "マルチデバイスプレビュー",
           "description": "Preview how your graphics will appear on deskトップ, mobile, and TV screens"
         },
         {
-          "title": "Brand Consistency",
-          "description": "MAIntAIn cohesive visual identity across all channel elements"
+          "title": "ブランド一貫性",
+          "description": "すべてのチャンネル要素で包括的なビジュアルアイデンティティを維持"
         }
       ],
       "howItWorks": [
         {
           "step": 1,
-          "title": "Choose Content Type",
-          "description": "Select from thumbnAIls, banners, profile pictures, Shorts, or other YouTube graphics"
+          "title": "コンテンツタイプを選択",
+          "description": "サムネイル、バナー、プロフィール写真、ショート、またはその他のYouTubeグラフィックから選択"
         },
         {
           "step": 2,
-          "title": "Optimize Design",
-          "description": "Apply AI-powered optimization for engagement and platform requirements"
+          "title": "デザインを最適化",
+          "description": "エンゲージメントとプラットフォーム要件のためにAI搭載最適化を適用"
         },
         {
           "step": 3,
-          "title": "Preview & Download",
-          "description": "Preview on multiple devices and export YouTube-ready graphics"
+          "title": "プレビューとダウンロード",
+          "description": "複数のデバイスでプレビューし、YouTube対応グラフィックをエクスポート"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "video-thumbnail-generator"
-      ],
+      "relatedTools": ["ai-image-upscaler", "video-thumbnail-generator"],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "youtube-channel-growth-guide"
       ],
-      "ctaText": "Create Perfect YouTube Graphics Now",
+      "ctaText": "今すぐ完璧なYouTubeグラフィックを作成",
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "resize-image-for-facebook",
+      "slug": "facebook用画像サイズ変更",
       "title": "Reサイズ Image for Facebook",
       "metaTitle": "Reサイズ Image for Facebook | MyImageUpscaler",
       "metaDescription": "Perfect Facebook image reサイズr for posts, cover photos, Stories, Marketplace, and ads. 無料 オンライン tool with 2025 Facebook specifications, engagement optimization, and marketing 機能.",
       "h1": "Facebook Image Reサイズr - Complete Facebook Graphics for 2025",
       "intro": "Optimize your Facebook content with our comprehensive image reサイズr. Perfect for posts, cover photos, profile pictures, Stories, Marketplace listings, Facebook ads, and event covers with 2025 specifications and engagement optimization.",
-      "primaryKeyword": "resize image for facebook",
+      "primaryKeyword": "facebook用画像サイズ変更",
       "secondaryKeywords": [
-        "facebook image sizes 2025",
-        "facebook cover photo dimensions",
-        "facebook post size guide",
-        "facebook marketplace photo specs",
-        "facebook ad image requirements",
+        "facebook画像サイズ2025",
+        "facebookカバー写真ディメンション",
+        "facebook投稿サイズガイド",
+        "facebookマーケットプレイス写真仕様",
+        "facebook広告画像要件",
         "facebook story dimensions",
         "social media image optimization"
       ],
@@ -1922,134 +1872,134 @@
           },
           "timingStrategy": {
             "optimalPostingTimes": {
-              "weekdays": "1-4 PM for highest engagement",
-              "weekends": "12-3 PM for weekend engagement",
-              "evenings": "8-11 PM for mobile engagement",
-              "audienceSpecific": "Post when 60% of audience is active"
+              "weekdays": "最高のエンゲージメントのために午後1-4時",
+              "weekends": "週末エンゲージメントのために午後12-3時",
+              "evenings": "モバイルエンゲージメントのために午後8-11時",
+              "audienceSpecific": "視聴者の60%がアクティブなときに投稿"
             },
             "contentFrequency": {
-              "businessPages": "3-5 posts per week optimal",
-              "personalProfiles": "1-2 posts per day maximum",
-              "peakTimes": "Post during industry-specific peak hours",
-              "consistency": "Maintain consistent posting schedule"
+              "businessPages": "週3-5回の投稿が最適",
+              "personalProfiles": "1日1-2回の投稿が最大",
+              "peakTimes": "業界固有のピーク時間中に投稿",
+              "consistency": "一貫した投稿スケジュールを維持"
             }
           },
           "engagementFactors": {
             "visualQuality": {
-              "highResolution": "Clear, sharp images increase perceived value",
-              "professionalLighting": "Well-lit photos appear more trustworthy",
-              "composition": "Professional composition increases engagement",
-              "editing": "Subtle editing improves image quality without appearing fake"
+              "highResolution": "明確で鮮明な画像は知覚価値を高める",
+              "professionalLighting": "よく照明された写真はより信頼性が高い",
+              "composition": "プロフェッショナルな構成はエンゲージメントを高める",
+              "editing": "微妙な編集は画像品質を改善し、偽のように見えない"
             },
             "contentRelevance": {
-              "audienceValue": "Provide genuine value to your target audience",
-              "problemSolving": "Show solutions to audience problems",
-              "entertainment": "Create entertaining or inspiring content",
-              "education": "Share valuable knowledge and insights"
+              "audienceValue": "ターゲット視聴者に真の価値を提供",
+              "problemSolving": "視聴者の問題の解決策を示す",
+              "entertainment": "楽しいまたはインスピレーショナルなコンテンツを作成",
+              "education": "価値ある知識と洞察を共有"
             }
           }
         },
         "videoAndDynamicContent": {
           "facebookStories": {
             "engagementFeatures": {
-              "interactiveStickers": "Polls, questions, quizzes for engagement",
-              "swipeUpLinks": "Available for verified accounts with 10,000+ followers",
-              "musicIntegration": "Use licensed music for enhanced storytelling",
-              "filtersAndEffects": "Platform-native effects for authenticity"
+              "interactiveStickers": "エンゲージメントのための投票、質問、クイズ",
+              "swipeUpLinks": "10,000人以上のフォロワーを持つ検証済みアカウントで利用可能",
+              "musicIntegration": "拡張されたストーリーテリングのためにライセンス音楽を使用",
+              "filtersAndEffects": "真正性のためのプラットフォームネイティブ効果"
             },
             "designStrategy": {
-              "fullScreenImpact": "Use entire 9:16 canvas effectively",
-              "firstFrame": "Create compelling first frame for thumb-stop effect",
-              "textOverlays": "Large, readable text for sound-off viewing",
-              "brandConsistency": "Maintain brand elements across Stories"
+              "fullScreenImpact": "9:16キャンバス全体を効果的に使用",
+              "firstFrame": "サムストップ効果のために魅力的な最初のフレームを作成",
+              "textOverlays": "サウンドオフ視聴のために大きな読みやすいテキスト",
+              "brandConsistency": "ストーリー全体でブランド要素を維持"
             }
           },
           "facebookWatch": {
             "videoThumbnails": {
-              "optimalSize": "1280x720 pixels (16:9 ratio)",
-              "compellingFrames": "Select most engaging frames from video",
-              "textOverlays": "Add compelling titles and hooks",
-              "brandElements": "Include consistent branding in thumbnails"
+              "optimalSize": "1280x720ピクセル（16:9比率）",
+              "compellingFrames": "ビデオから最も魅力的なフレームを選択",
+              "textOverlays": "魅力的なタイトルとフックを追加",
+              "brandElements": "サムネイルに一貫したブランディングを含める"
             },
             "coverImages": {
-              "playlistCovers": "1640x924 pixels for playlist covers",
-              "showCovers": "1640x924 pixels for Facebook Watch show covers",
-              "episodeThumbnails": "1280x720 pixels for individual episodes",
-              "brandConsistency": "Maintain visual style across all content"
+              "playlistCovers": "プレイリストカバーのために1640x924ピクセル",
+              "showCovers": "Facebook Watch showカバーのために1640x924ピクセル",
+              "episodeThumbnails": "個々のエピソードのために1280x720ピクセル",
+              "brandConsistency": "すべてのコンテンツでビジュアルスタイルを維持"
             }
           }
         },
         "technicalOptimization": {
           "compressionSettings": {
             "jpgOptimization": {
-              "qualitySettings": "80-85% quality for optimal balance",
-              "progressiveLoading": "Enable progressive JPEG for faster loading",
-              "colorOptimization": "Optimize for web color display",
-              "fileSizeBalance": "Target under 1MB for posts, under 4MB for covers"
+              "qualitySettings": "最適なバランスのために80-85%の品質",
+              "progressiveLoading": "より高速な読み込みのためにプログレッシブJPEGを有効にする",
+              "colorOptimization": "Webカラー表示のために最適化",
+              "fileSizeBalance": "投稿は1MB以下、カバーは4MB以下を目指す"
             },
             "pngUsage": {
-              "graphicsAndText": "Use PNG for graphics with sharp edges or text",
-              "transparency": "Properly handle alpha channels",
-              "compression": "Lossless compression for quality maintenance",
-              "fileSize": "Larger file sizes but higher quality for graphics"
+              "graphicsAndText": "鋭いエッジまたはテキストを備えたグラフィックにはPNGを使用",
+              "transparency": "アルファチャンネルを適切に処理",
+              "compression": "品質維持のために可逆圧縮",
+              "fileSize": "グラフィックのためのより大きなファイルサイズしかしより高い品質"
             }
           },
           "loadingPerformance": {
             "mobileOptimization": {
-              "fileSizePriority": "Prioritize faster loading on mobile",
-              "aboveFold": "Optimize first image in posts for quick loading",
-              "progressiveDisplay": "Use formats that load progressively",
-              "connectionSpeed": "Consider slow connection users"
+              "fileSizePriority": "モバイルでのより高速な読み込みを優先",
+              "aboveFold": "迅速な読み込みのために投稿の最初の画像を最適化",
+              "progressiveDisplay": "プログレッシブに読み込むフォーマットを使用",
+              "connectionSpeed": "遅い接続ユーザーを考慮"
             },
             "qualityMaintenance": {
-              "highResolution": "Ensure sharp display on high-DPI screens",
-              "colorAccuracy": "Maintain consistent color across devices",
-              "compressionBalance": "Find optimal compression without quality loss",
-              "testing": "Test across various devices and connections"
+              "highResolution": "高DPI画面で鮮明な表示を確保",
+              "colorAccuracy": "デバイス全体で一貫した色を維持",
+              "compressionBalance": "品質損失なしの最適な圧縮を見つける",
+              "testing": "様々なデバイスと接続でテスト"
             }
           },
           "accessibility": {
             "imageDescriptions": {
-              "altText": "Write descriptive alt text for all images",
-              "contextRelevance": "Include relevant information about image content",
-              "brandElements": "Describe important brand elements in images",
-              "callToAction": "Include CTAs in image descriptions when appropriate"
+              "altText": "すべての画像に説明的な代替テキストを記述",
+              "contextRelevance": "画像コンテンツに関する関連情報を含める",
+              "brandElements": "画像の重要なブランド要素を説明",
+              "callToAction": "適切な場合は画像の説明にCTAを含める"
             },
             "colorContrast": {
-              "wcagCompliance": "Maintain 4.5:1 contrast ratio for text",
-              "colorBlindness": "Test with color blindness simulators",
-              "readability": "Ensure text remains readable on all backgrounds",
-              "alternatives": "Use patterns and shapes in addition to color"
+              "wcagCompliance": "テキストのために4.5:1のコントラスト比を維持",
+              "colorBlindness": "色盲シミュレーターでテスト",
+              "readability": "すべての背景でテキストが読みやすいことを確認",
+              "alternatives": "色に加えてパターンと形を使用"
             }
           }
         },
         "contentStrategy": {
           "planningWorkflows": {
             "contentCalendars": {
-              "monthlyPlanning": "Plan content themes 2-3 months in advance",
-              "seasonalContent": "Prepare seasonal and holiday content early",
-              "campaignCoordination": "Align with marketing campaigns and promotions",
-              "flexibility": "Leave room for timely content and trends"
+              "monthlyPlanning": "2-3ヶ月前にコンテンツテーマを計画",
+              "seasonalContent": "季節および休日のコンテンツを早めに準備",
+              "campaignCoordination": "マーケティングキャンペーンおよびプロモーションと調整",
+              "flexibility": "タイムリーなコンテンツとトレンドのための余地を残す"
             },
             "batchCreation": {
-              "photoshootPlanning": "Plan photoshoots for multiple content types",
-              "templateCreation": "Create templates for recurring content formats",
-              "consistentStyle": "Maintain consistent style across batch content",
-              "efficiency": "Streamline workflow for maximum productivity"
+              "photoshootPlanning": "複数のコンテンツタイプのフォトシュートを計画",
+              "templateCreation": "定期的なコンテンツフォーマットのテンプレートを作成",
+              "consistentStyle": "バッチコンテンツ全体で一貫したスタイルを維持",
+              "efficiency": "最大の生産性のためにワークフローを合理化"
             }
           },
           "platformIntegration": {
             "crossPlatformStrategy": {
-              "instagramSharing": "Optimize for Facebook-to-Instagram sharing",
-              "twitterIntegration": "Create Twitter-friendly versions of Facebook content",
-              "linkedinAdaptation": "Adapt business content for LinkedIn professional audience",
-              "pinterestIntegration": "Create Pinterest-optimized versions of visual content"
+              "instagramSharing": "FacebookからInstagramへの共有のために最適化",
+              "twitterIntegration": "FacebookコンテンツのTwitter友好バージョンを作成",
+              "linkedinAdaptation": "LinkedInプロフェッショナル視聴者向けにビジネスコンテンツを適応",
+              "pinterestIntegration": "ビジュアルコンテンツのPinterest最適化バージョンを作成"
             },
             "websiteIntegration": {
-              "socialProof": "Embed Facebook posts on website for social proof",
-              "blogIntegration": "Share blog content with optimized images",
-              "emailMarketing": "Use Facebook content in email campaigns",
-              "facebookPixel": "Track website interactions from Facebook traffic"
+              "socialProof": "ソーシャルプルーフのためにウェブサイトにFacebook投稿を埋め込む",
+              "blogIntegration": "最適化された画像でブログコンテンツを共有",
+              "emailMarketing": "メールキャンペーンでFacebookコンテンツを使用",
+              "facebookPixel": "Facebookトラフィックからのウェブサイトインタラクションを追跡"
             }
           }
         },
@@ -2057,61 +2007,51 @@
           "visualStyles": {
             "aestheticMovements": [
               {
-                "trend": "Authentic Connection",
-                "description": "Real, unpolished moments that build genuine community connection. User-generated content style."
+                "trend": "authentic connection",
+                "description": "genuineなコミュニティ接続を構築するリアルで未完成の瞬間。ユーザー生成コンテンツスタイル。"
               },
               {
-                "trend": "Minimalist Professionalism",
-                "description": "Clean, professional design with ample white space and purposeful use of color."
+                "trend": "ミニマリストプロフェッショナリズム",
+                "description": "十分な空白と意図的な色使用を備えたクリーンでプロフェッショナルなデザイン。"
               },
               {
-                "trend": "Bold Expression",
-                "description": "Vibrant colors, bold typography, and confident visual statements for brand personality."
+                "trend": "大胆な表現",
+                "description": "ブランド個性のための鮮やかな色、大胆なタイポグラフィ、自信のあるビジュアルステートメント。"
               },
               {
-                "trend": "Sustainable Visuals",
-                "description": "Earth tones, natural materials, eco-friendly contexts in all brand photography."
+                "trend": "持続可能なビジュアル",
+                "description": "すべてのブランド写真でアーストーン、自然素材、エコフレンドリーなコンテキスト。"
               }
             ],
             "colorTrends": {
               "palette1": {
-                "name": "Digital Blue",
-                "hex": [
-                  "#4267B2",
-                  "#1877F2",
-                  "#8B9DC3",
-                  "#DFE3EE"
-                ],
-                "usage": "Professional content, technology, business services"
+                "name": "デジタルブルー",
+                "hex": ["#4267B2", "#1877F2", "#8B9DC3", "#DFE3EE"],
+                "usage": "プロフェッショナルコンテンツ、テクノロジー、ビジネスサービス"
               },
               "palette2": {
-                "name": "Warm Connection",
-                "hex": [
-                  "#FF6B6B",
-                  "#F7DC6F",
-                  "#82E0AA",
-                  "#85C1E2"
-                ],
-                "usage": "Community building, lifestyle, relationship-focused content"
+                "name": "温かい接続",
+                "hex": ["#FF6B6B", "#F7DC6F", "#82E0AA", "#85C1E2"],
+                "usage": "コミュニティ構築、ライフスタイル、関係重視のコンテンツ"
               }
             }
           },
           "contentFormats": {
             "emergingTrends": [
-              "Interactive carousel posts with educational content",
-              "Augmented reality filters and try-on experiences",
-              "Live shopping integration with product showcases",
-              "Community-driven content and user-generated features",
-              "Mini-series content for binge-worthy engagement"
+              "教育的コンテンツを備えたインタラクティブなカルーセル投稿",
+              "拡張現実フィルターと試着体験",
+              "製品ショーケースを備えたライブショッピング統合",
+              "コミュニティ駆動型コンテンツとユーザー生成機能",
+              "見応えのあるエンゲージメントのためのミニシリーズコンテンツ"
             ]
           }
         },
         "analyticsAndPerformance": {
           "keyMetrics": {
             "engagementMetrics": {
-              "likes": "Basic engagement indicator, track growth over time",
-              "comments": "Quality engagement, responds within 1 hour optimal",
-              "shares": "Content amplification and viral potential",
+              "likes": "基本的なエンゲージメント指標、時間の経過による成長を追跡",
+              "comments": "質の高いエンゲージメント、1時間以内の返信が最適",
+              "shares": "コンテンツ拡散とウイルス的潜在能力",
               "clicks": "Link clicks indicate content value and interest",
               "reach": "Unique accounts that saw your content",
               "impressions": "Total times content was displayed"
@@ -2271,10 +2211,7 @@
           "description": "Preview on multiple devices and export Facebook-ready content"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "facebook-ad-creator"
-      ],
+      "relatedTools": ["ai-image-upscaler", "facebook-ad-creator"],
       "relatedGuides": [
         "how-to-upscale-images-without-losing-quality",
         "facebook-marketing-strategy-guide"
@@ -2393,12 +2330,8 @@
           "description": "Get your optimized image instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedGuides": [
-        "how-to-upscale-images-without-losing-quality"
-      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["how-to-upscale-images-without-losing-quality"],
       "ctaText": "開始 Resizing",
       "ctaUrl": "/?signup=1"
     },
@@ -2513,12 +2446,8 @@
           "description": "Get your optimized image instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedGuides": [
-        "how-to-upscale-images-without-losing-quality"
-      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["how-to-upscale-images-without-losing-quality"],
       "ctaText": "開始 Resizing",
       "ctaUrl": "/?signup=1"
     },
@@ -2633,12 +2562,8 @@
           "description": "Get your optimized image instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedGuides": [
-        "how-to-upscale-images-without-losing-quality"
-      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["how-to-upscale-images-without-losing-quality"],
       "ctaText": "開始 Resizing",
       "ctaUrl": "/?signup=1"
     },
@@ -2753,12 +2678,8 @@
           "description": "Get your optimized image instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedGuides": [
-        "how-to-upscale-images-without-losing-quality"
-      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["how-to-upscale-images-without-losing-quality"],
       "ctaText": "開始 Resizing",
       "ctaUrl": "/?signup=1"
     },
@@ -2873,12 +2794,8 @@
           "description": "Get your optimized image instantly"
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedGuides": [
-        "how-to-upscale-images-without-losing-quality"
-      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["how-to-upscale-images-without-losing-quality"],
       "ctaText": "開始 Resizing",
       "ctaUrl": "/?signup=1"
     }

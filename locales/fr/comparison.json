@@ -130,7 +130,11 @@
           "rating": 4,
           "tagline": "Option simple et gratuite",
           "description": "Logiciel d'agrandissement web basique avec version gratuite généreuse. Bon pour un usage occasionnel, fonctionnalités limitées.",
-          "bestFor": ["Utilisateurs occasionnels", "Agrandissements rapides", "Utilisateurs soucieux de leur budget"],
+          "bestFor": [
+            "Utilisateurs occasionnels",
+            "Agrandissements rapides",
+            "Utilisateurs soucieux de leur budget"
+          ],
           "features": {
             "maxUpscale": "4x",
             "batchProcessing": "Non",
@@ -139,7 +143,12 @@
             "watermark": "Non",
             "freeTier": "Illimité (résolution limitée)"
           },
-          "pros": ["Version gratuite généreuse", "Simple à utiliser", "Pas de filigrane", "Traitement rapide"],
+          "pros": [
+            "Version gratuite généreuse",
+            "Simple à utiliser",
+            "Pas de filigrane",
+            "Traitement rapide"
+          ],
           "cons": [
             "Agrandissement maximal plus faible (4x)",
             "Pas de traitement par lot",

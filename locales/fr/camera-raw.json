@@ -3,54 +3,29 @@
   "pages": [
     {
       "slug": "upscale-nef-images",
-      "title": "Upscale NEF Images",
+      "title": "Améliorer la résolution des images NEF",
       "metaTitle": "NEF RAW Image Upscaling | Nikon D850, Z9, Z7 Amélioration",
       "metaDescription": "Advanced IA-powered NEF upscaling for Nikon photographers. Enhance RAW files from D850, Z9, Z7, Z6 with superior detail retention. Professionnel workflow integration with Nikon's color science.",
       "h1": "Professionnel NEF RAW Image Upscaling",
       "intro": "Elevate your Nikon NEF RAW files to extraordinary levels of detail and clarity with cutting-edge IA upscaling technology. Our sophisticated algorithms are meticulously engineered to understand and enhance Nikon's unique sensor characteristics, color science, and metadata structure. Whether you're shooting with the flagship Z9, the beloved D850, or any Nikon camera in between, our Agrandisseur delivers exceptional results that maintain the authentic Nikon look while significantly expanding your creative possibilities.",
-      "primaryKeyword": "upscale nef images",
+      "primaryKeyword": "améliorer la résolution des images nef",
       "secondaryKeywords": [
-        "nef upscaler",
-        "nikon raw upscaler",
-        "enhance nef files",
-        "nef image enhancement",
-        "nikon raw image processing",
-        "d850 upscaling",
-        "z9 raw enhancement",
-        "nikon z series upscaler",
-        "professional nikon processing"
+        "améliorateur nef",
+        "améliorateur nikon raw",
+        "améliorer les fichiers nef",
+        "amélioration d'image nef",
+        "traitement d'image raw nikon",
+        "amélioration d850",
+        "amélioration raw z9",
+        "améliorateur nikon z series",
+        "traitement nikon professionnel"
       ],
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Nikon",
       "cameraModels": {
-        "professional": [
-          "Z9",
-          "Z8",
-          "Z7 II",
-          "Z7",
-          "Z6 II",
-          "Z6",
-          "Z5",
-          "Zf"
-        ],
-        "dslr": [
-          "D850",
-          "D780",
-          "D750",
-          "D610",
-          "D500",
-          "D7500",
-          "D5600",
-          "D3500"
-        ],
-        "legacy": [
-          "D4",
-          "D3X",
-          "D3S",
-          "D700",
-          "D300",
-          "D200"
-        ]
+        "professional": ["Z9", "Z8", "Z7 II", "Z7", "Z6 II", "Z6", "Z5", "Zf"],
+        "dslr": ["D850", "D780", "D750", "D610", "D500", "D7500", "D5600", "D3500"],
+        "legacy": ["D4", "D3X", "D3S", "D700", "D300", "D200"]
       },
       "formatSpecs": {
         "fullForm": "Nikon Electronic Format",
@@ -288,7 +263,49 @@
           "question": "What's the file size increase after upscaling NEF files?",
           "answer": "Upscaling typically increases file size by 4-8 times depending on the output resolution and format. A 45MP NEF file upscaling to 180MP will be approximately 4 times larger in uncompressed formats. Using efficient output formats like DNG or high-quality JPEG can help manage file sizes while maintaining image quality."
         }
-      ]
+      ],
+      "category": "camera-raw",
+      "toolName": "Convertisseur CR2 en JPG",
+      "description": "Convertissez les fichiers RAW CR2 de Canon en JPG pour facilement partager, éditer et imprimer vos photos. Parfait pour les photographes qui doivent rapidement convertir leurs fichiers RAW.",
+      "benefits": [
+        {
+          "title": "Conversion rapide",
+          "description": "Convertissez les fichiers CR2 en JPG en quelques secondes",
+          "metric": "Conversion éclair"
+        },
+        {
+          "title": "Partage facile",
+          "description": "Les fichiers JPG peuvent être facilement partagés sur toutes les plateformes",
+          "metric": "Compatibilité universelle"
+        },
+        {
+          "title": "Qualité contrôlée",
+          "description": "Contrôlez le niveau de qualité JPG",
+          "metric": "Qualité ajustable"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Télécharger le fichier CR2",
+          "description": "Sélectionnez votre fichier RAW CR2 depuis votre appareil"
+        },
+        {
+          "title": "Choisir la qualité",
+          "description": "Sélectionnez le niveau de qualité JPG souhaité"
+        },
+        {
+          "title": "Télécharger JPG",
+          "description": "Téléchargez votre fichier JPG converti"
+        }
+      ],
+      "limitations": [
+        "Ne peut convertir que les fichiers CR2",
+        "Perte de qualité selon le niveau de compression",
+        "Les métadonnées peuvent être partiellement perdues"
+      ],
+      "relatedTools": ["image-format-converter", "raw-to-jpg"],
+      "ctaText": "Convertir CR2 en JPG",
+      "ctaUrl": "/camera-raw/cr2-to-jpg"
     },
     {
       "slug": "upscale-cr2-images",
@@ -322,31 +339,9 @@
           "5D Mark IV",
           "EOS R"
         ],
-        "enthusiastFullFrame": [
-          "EOS RP",
-          "EOS R8",
-          "6D Mark II",
-          "6D",
-          "5D Mark III"
-        ],
-        "apsCPro": [
-          "EOS R7",
-          "EOS R10",
-          "90D",
-          "80D",
-          "7D Mark II",
-          "7D Mark III"
-        ],
-        "entryLevel": [
-          "EOS R50",
-          "EOS R100",
-          "850D",
-          "250D",
-          "200D II",
-          "1500D",
-          "1300D",
-          "1200D"
-        ]
+        "enthusiastFullFrame": ["EOS RP", "EOS R8", "6D Mark II", "6D", "5D Mark III"],
+        "apsCPro": ["EOS R7", "EOS R10", "90D", "80D", "7D Mark II", "7D Mark III"],
+        "entryLevel": ["EOS R50", "EOS R100", "850D", "250D", "200D II", "1500D", "1300D", "1200D"]
       },
       "formatSpecs": {
         "fullForm": "Canon Raw version 2",
@@ -640,28 +635,9 @@
           "A7R V",
           "A7R III"
         ],
-        "professionalHybrid": [
-          "FX3",
-          "FX6",
-          "FX9",
-          "A7S III",
-          "A7S II"
-        ],
-        "enthusiastFullFrame": [
-          "A7C",
-          "A7C II",
-          "A7 IV",
-          "A7 III",
-          "A7 II"
-        ],
-        "apsC": [
-          "A6700",
-          "A6600",
-          "A6400",
-          "A6300",
-          "ZV-E10",
-          "ZV-E1"
-        ]
+        "professionalHybrid": ["FX3", "FX6", "FX9", "A7S III", "A7S II"],
+        "enthusiastFullFrame": ["A7C", "A7C II", "A7 IV", "A7 III", "A7 II"],
+        "apsC": ["A6700", "A6600", "A6400", "A6300", "ZV-E10", "ZV-E1"]
       },
       "formatSpecs": {
         "fullForm": "Sony Alpha Raw",
@@ -945,29 +921,10 @@
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Fujifilm",
       "cameraModels": {
-        "medium_format": [
-          "GFX100 II",
-          "GFX100S",
-          "GFX50S II",
-          "GFX50R"
-        ],
-        "professional": [
-          "X-T5",
-          "X-H2",
-          "X-H2S",
-          "X-Pro3"
-        ],
-        "enthusiast": [
-          "X-S10",
-          "X-T4",
-          "X-E4",
-          "X30"
-        ],
-        "compact": [
-          "X100V",
-          "X100F",
-          "X70"
-        ]
+        "medium_format": ["GFX100 II", "GFX100S", "GFX50S II", "GFX50R"],
+        "professional": ["X-T5", "X-H2", "X-H2S", "X-Pro3"],
+        "enthusiast": ["X-S10", "X-T4", "X-E4", "X30"],
+        "compact": ["X100V", "X100F", "X70"]
       },
       "formatSpecs": {
         "fullForm": "Fujifilm RAF",
@@ -1061,22 +1018,9 @@
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Olympus",
       "cameraModels": {
-        "professional": [
-          "OM-1",
-          "E-M1X",
-          "E-M1 Mark III",
-          "E-M1 Mark II"
-        ],
-        "enthusiast": [
-          "E-M5 Mark III",
-          "E-M10 Mark IV",
-          "OM-5"
-        ],
-        "compact": [
-          "Tough TG-6",
-          "Stylus 1",
-          "PEN-F"
-        ]
+        "professional": ["OM-1", "E-M1X", "E-M1 Mark III", "E-M1 Mark II"],
+        "enthusiast": ["E-M5 Mark III", "E-M10 Mark IV", "OM-5"],
+        "compact": ["Tough TG-6", "Stylus 1", "PEN-F"]
       },
       "formatSpecs": {
         "fullForm": "Olympus RAW Format",
@@ -1169,30 +1113,10 @@
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Panasonic",
       "cameraModels": {
-        "full_frame": [
-          "S1R",
-          "S1",
-          "S1H",
-          "S5 II",
-          "S5"
-        ],
-        "video_focused": [
-          "GH6",
-          "GH5 II",
-          "GH5S",
-          "BS1H"
-        ],
-        "enthusiast": [
-          "G9 II",
-          "G9",
-          "G95",
-          "G90"
-        ],
-        "compact": [
-          "LX100 II",
-          "TZ100",
-          "ZS200"
-        ]
+        "full_frame": ["S1R", "S1", "S1H", "S5 II", "S5"],
+        "video_focused": ["GH6", "GH5 II", "GH5S", "BS1H"],
+        "enthusiast": ["G9 II", "G9", "G95", "G90"],
+        "compact": ["LX100 II", "TZ100", "ZS200"]
       },
       "formatSpecs": {
         "fullForm": "Panasonic RAW Version 2",
@@ -1286,26 +1210,10 @@
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Leica",
       "cameraModels": {
-        "m_system": [
-          "M11",
-          "M10-P",
-          "M10 Monochrom",
-          "M-E"
-        ],
-        "q_system": [
-          "Q3",
-          "Q2 Monochrom",
-          "Q-P"
-        ],
-        "sl_system": [
-          "SL3",
-          "SL2-S",
-          "SL2"
-        ],
-        "cl_system": [
-          "CL",
-          "TL2"
-        ]
+        "m_system": ["M11", "M10-P", "M10 Monochrom", "M-E"],
+        "q_system": ["Q3", "Q2 Monochrom", "Q-P"],
+        "sl_system": ["SL3", "SL2-S", "SL2"],
+        "cl_system": ["CL", "TL2"]
       },
       "formatSpecs": {
         "fullForm": "Leica Numérique Negative",
@@ -1401,22 +1309,9 @@
       "lastUpdated": "2025-01-19",
       "cameraBrand": "Hasselblad",
       "cameraModels": {
-        "x_system": [
-          "X2D 100C",
-          "X1D II 50C",
-          "X1D II 50C"
-        ],
-        "h_system": [
-          "H6D-400c MS",
-          "H6D-100c",
-          "H6D-50c",
-          "H6D-400c"
-        ],
-        "legacy": [
-          "X1D-50c",
-          "H5D-50c",
-          "H5D-200c"
-        ]
+        "x_system": ["X2D 100C", "X1D II 50C", "X1D II 50C"],
+        "h_system": ["H6D-400c MS", "H6D-100c", "H6D-50c", "H6D-400c"],
+        "legacy": ["X1D-50c", "H5D-50c", "H5D-200c"]
       },
       "formatSpecs": {
         "fullForm": "Hasselblad 3FR Format",

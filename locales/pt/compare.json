@@ -127,7 +127,7 @@
           "name": "Upscale.media",
           "type": "Baseado na web",
           "pricing": "Grátis | $9/mês Pro",
-          "rating": 4.0,
+          "rating": 4,
           "tagline": "Opção simples e gratuita",
           "description": "Ampliador web básico com nível gratuito generoso. Bom para uso ocasional, recursos limitados.",
           "bestFor": [
@@ -173,8 +173,16 @@
                 "score": "Muito Bom",
                 "notes": "Excelente para a maioria dos casos de uso"
               },
-              { "product": "Let's Enhance", "score": "Bom", "notes": "Forte em fotos de produtos" },
-              { "product": "Upscale.media", "score": "Adequado", "notes": "Básico mas funcional" }
+              {
+                "product": "Let's Enhance",
+                "score": "Bom",
+                "notes": "Forte em fotos de produtos"
+              },
+              {
+                "product": "Upscale.media",
+                "score": "Adequado",
+                "notes": "Básico mas funcional"
+              }
             ]
           },
           {
@@ -196,7 +204,11 @@
                 "score": "Moderado",
                 "notes": "Não especializado para texto"
               },
-              { "product": "Upscale.media", "score": "Básico", "notes": "Texto pode ficar borrado" }
+              {
+                "product": "Upscale.media",
+                "score": "Básico",
+                "notes": "Texto pode ficar borrado"
+              }
             ]
           },
           {
@@ -208,7 +220,11 @@
                 "score": "Excelente",
                 "notes": "Fazer upload e pronto"
               },
-              { "product": "Upscale.media", "score": "Excelente", "notes": "Muito simples" },
+              {
+                "product": "Upscale.media",
+                "score": "Excelente",
+                "notes": "Muito simples"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Muito Bom",
@@ -235,7 +251,11 @@
                 "score": "Muito Bom",
                 "notes": "Bom nível gratuito, assinatura razoável"
               },
-              { "product": "Upscale.media", "score": "Bom", "notes": "Nível gratuito generoso" },
+              {
+                "product": "Upscale.media",
+                "score": "Bom",
+                "notes": "Nível gratuito generoso"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Moderado",
@@ -252,8 +272,16 @@
                 "score": "Rápido",
                 "notes": "Processamento em GPU na nuvem"
               },
-              { "product": "Upscale.media", "score": "Rápido", "notes": "Processamento rápido" },
-              { "product": "Let's Enhance", "score": "Moderado", "notes": "Pode ser mais lento" },
+              {
+                "product": "Upscale.media",
+                "score": "Rápido",
+                "notes": "Processamento rápido"
+              },
+              {
+                "product": "Let's Enhance",
+                "score": "Moderado",
+                "notes": "Pode ser mais lento"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Varia",

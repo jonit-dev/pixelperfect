@@ -325,7 +325,11 @@
         {
           "technique": "Caching-Strategien",
           "description": "Intelligentes Caching verarbeiteter Bilder",
-          "benefits": ["Schnellere nachfolgende Ladevorgänge", "Reduzierte Verarbeitung", "Bessere Reaktionsfähigkeit"]
+          "benefits": [
+            "Schnellere nachfolgende Ladevorgänge",
+            "Reduzierte Verarbeitung",
+            "Bessere Reaktionsfähigkeit"
+          ]
         }
       ],
       "integrationConsiderations": [
@@ -817,7 +821,12 @@
       "tabletUseCases": [
         {
           "useCase": "Produktivitäts-Apps",
-          "optimizationNeeds": ["Dokumentbilder", "Diagramme und Grafiken", "Symbole", "UI-Elemente"],
+          "optimizationNeeds": [
+            "Dokumentbilder",
+            "Diagramme und Grafiken",
+            "Symbole",
+            "UI-Elemente"
+          ],
           "specificRequirements": [
             "Klarer Text bei jedem Zoom",
             "Professionelles Erscheinungsbild",
@@ -826,7 +835,11 @@
         },
         {
           "useCase": "Kreative Anwendungen",
-          "optimizationNeeds": ["Hochauflösende Bilder", "Ebenen-Support", "Bearbeitungsfähigkeiten"],
+          "optimizationNeeds": [
+            "Hochauflösende Bilder",
+            "Ebenen-Support",
+            "Bearbeitungsfähigkeiten"
+          ],
           "specificRequirements": ["Präzisionshandhabung", "Große Datei-Support", "Farbgenauigkeit"]
         },
         {
@@ -1007,7 +1020,11 @@
         {
           "technique": "Vektorgrafiken",
           "description": "SVG- und Vektorformate wo möglich verwenden",
-          "benefits": ["Unendlich skalierbar", "Winzige Dateigrößen", "Perfekt für einfache Grafiken"]
+          "benefits": [
+            "Unendlich skalierbar",
+            "Winzige Dateigrößen",
+            "Perfekt für einfache Grafiken"
+          ]
         },
         {
           "technique": "Symbol-Systeme",
@@ -1017,7 +1034,11 @@
         {
           "technique": "Extreme Komprimierung",
           "description": "Bildkomprimierung an absolute Grenzen treiben",
-          "targets": ["Unter 1KB für Symbole", "Unter 5KB für Fotos", "Verlustfrei für einfache Grafiken"]
+          "targets": [
+            "Unter 1KB für Symbole",
+            "Unter 5KB für Fotos",
+            "Verlustfrei für einfache Grafiken"
+          ]
         },
         {
           "technique": "Farboptimierung",
@@ -1097,7 +1118,11 @@
         {
           "useCase": "Fitness-Tracking",
           "optimizationNeeds": ["Aktivitätssymbole", "Erfolgsabzeichen", "Fortschrittsbilder"],
-          "specificRequirements": ["Geringe Akku-Auswirkung", "Schnelles Laden", "Motivierende Qualität"]
+          "specificRequirements": [
+            "Geringe Akku-Auswirkung",
+            "Schnelles Laden",
+            "Motivierende Qualität"
+          ]
         },
         {
           "useCase": "Gesundheitsüberwachung",

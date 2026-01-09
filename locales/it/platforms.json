@@ -1,8 +1,8 @@
 {
-  "category": "platforms",
+  "category": "piattaforme",
   "pages": [
     {
-      "slug": "midjourney-upscaler",
+      "slug": "upscale-midjourney",
       "title": "Upscaler Midjourney - Migliora Immagini AI a Qualità 4K",
       "metaTitle": "Upscaler Midjourney Gratuito | Migliora Immagini MJ a 4K Online",
       "metaDescription": "Upscala immagini Midjourney a 4K senza perdere qualità. Upscaler AI gratuito che preserva dettagli, corregge artefatti e migliora chiarezza del testo. Funziona con tutte le versioni MJ.",
@@ -17,7 +17,7 @@
         "migliora arte ai"
       ],
       "platformName": "Midjourney",
-      "platformType": "ai-generator",
+      "platformType": "generatore-ai",
       "description": "Upscaling specializzato per immagini generate da Midjourney AI, migliorando la risoluzione preservando lo stile artistico ei dettagli.",
       "benefits": [
         {
@@ -111,13 +111,13 @@
           "answer": "Il nostro upscaler può ridurre certi artefatti di compressione e migliorare la chiarezza generale, ma non altererà fundamentalmente o 'correggerà' le scelte di generazione AI originale."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler", "dalle-upscaler", "canva-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": ["upscale-stable-diffusion", "upscale-dalle", "upscale-canva"],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "aumento-risoluzione-immagini-batch"],
       "ogImage": "/og-images/midjourney-upscaler.png",
       "lastUpdated": "2026-01-08"
     },
     {
-      "slug": "stable-diffusion-upscaler",
+      "slug": "upscale-stable-diffusion",
       "title": "Upscaler Stable Diffusion - Migliora Immagini SD a Qualità Stampa",
       "metaTitle": "Upscaler Stable Diffusion Gratuito | Migliora SD a 4K/8K",
       "metaDescription": "Upscala immagini Stable Diffusion preservando dettagli AI. Correggi artefatti, migliora chiarezza, prepara per stampa. Funziona con SDXL, SD 1.5, modelli anime.",
@@ -132,7 +132,7 @@
         "stable diffusion 4k"
       ],
       "platformName": "Stable Diffusion",
-      "platformType": "ai-generator",
+      "platformType": "generatore-ai",
       "description": "Upscaling avanzato per output Stable Diffusion, supportando SD 1.5, SDXL e modelli checkpoint personalizzati.",
       "benefits": [
         {
@@ -226,13 +226,13 @@
           "answer": "Il nostro upscaler si concentra su output qualità stampa e riduzione artefatti, completando l'upscaling interno di SD. Molti artisti usano entrambi."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "dalle-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": ["upscale-midjourney", "upscale-dalle"],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "aumento-risoluzione-immagini-batch"],
       "ogImage": "/og-images/stable-diffusion-upscaler.png",
       "lastUpdated": "2026-01-08"
     },
     {
-      "slug": "dalle-upscaler",
+      "slug": "upscale-dalle",
       "title": "Upscaler DALL-E - Migliora Immagini OpenAI a Ultra HD",
       "metaTitle": "Upscaler DALL-E Gratuito | Migliora Immagini DALL-E 2 e 3",
       "metaDescription": "Upscala immagini DALL-E a risoluzione 4K/8K. Correggi compressione, migliora dettagli, prepara per stampa. Funziona con output DALL-E 2 e DALL-E 3.",
@@ -247,7 +247,7 @@
         "migliora immagini openai"
       ],
       "platformName": "DALL-E",
-      "platformType": "ai-generator",
+      "platformType": "generatore-ai",
       "description": "Upscaling professionale per immagini DALL-E 2 e DALL-E 3, ottimizzato per lo stile artistico unico di OpenAI.",
       "benefits": [
         {
@@ -341,13 +341,13 @@
           "answer": "Sì, le immagini upscaled mantengono gli stessi diritti d'uso della generazione DALL-E originale secondo i termini di OpenAI."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "relatedPlatforms": ["upscale-midjourney", "upscale-stable-diffusion"],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "miglioratore-foto"],
       "ogImage": "/og-images/dalle-upscaler.png",
       "lastUpdated": "2026-01-08"
     },
     {
-      "slug": "canva-upscaler",
+      "slug": "upscale-canva",
       "title": "Upscaler Canva - Migliora Design Canva a Qualità Stampa",
       "metaTitle": "Upscaler Canva Gratuito | Migliora Immagini Canva a 4K/8K",
       "metaDescription": "Upscala design Canva senza perdita di qualità. Perfetto per stampa, presentazioni e uso professionale. Migliora testo, grafiche e foto.",
@@ -362,7 +362,7 @@
         "migliora esportazioni canva"
       ],
       "platformName": "Canva",
-      "platformType": "design-tool",
+      "platformType": "strumento-design",
       "description": "Upscaling specializzato per design Canva, preservando chiarezza del testo, grafiche e immagini per output professionale.",
       "benefits": [
         {
@@ -456,13 +456,13 @@
           "answer": "Per esportazioni statiche, sì. Per design animati, esporta ogni fotogramma individualmente, poi riassembla dopo l'upscaling."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler", "midjourney-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "bulk-image-upscaler"],
+      "relatedPlatforms": ["upscale-photoshop", "upscale-midjourney"],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "aumento-risoluzione-immagini-batch"],
       "ogImage": "/og-images/canva-upscaler.png",
       "lastUpdated": "2026-01-08"
     },
     {
-      "slug": "photoshop-upscaler",
+      "slug": "upscale-photoshop",
       "title": "Upscaler Photoshop - Migliora Esportazioni PSD a Ultra HD",
       "metaTitle": "Upscaler Photoshop Gratuito | Migliora Immagini PSD a 4K/8K",
       "metaDescription": "Upscala esportazioni Photoshop e livelli PSD. Migliora modifiche dettagliate, compositing e artwork a qualità stampa. Preserva effetti livello e filtri.",
@@ -477,7 +477,7 @@
         "upscaler photoshop 4k"
       ],
       "platformName": "Photoshop",
-      "platformType": "photo-editor",
+      "platformType": "editor-foto",
       "description": "Upscaling professionale per esportazioni Photoshop e artwork, ottimizzato per modifiche complesse e composizioni stratificate.",
       "benefits": [
         {
@@ -571,8 +571,8 @@
           "answer": "Sì, le immagini upscaled sono eccellenti per poster, banner, arte da parete e altre applicazioni grande formato."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler", "stable-diffusion-upscaler"],
-      "relatedTools": ["ai-image-upscaler", "photo-enhancer"],
+      "relatedPlatforms": ["upscale-canva", "upscale-stable-diffusion"],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "miglioratore-foto"],
       "ogImage": "/og-images/photoshop-upscaler.png",
       "lastUpdated": "2026-01-08"
     }

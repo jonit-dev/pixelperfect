@@ -130,7 +130,61 @@
         "preservation": "Metadatos EXIF completos preservados"
       },
       "ctaText": "Escalar tus Imágenes NEF",
-      "ctaUrl": "/camera-raw/upscale-nef-images"
+      "ctaUrl": "/camera-raw/upscale-nef-images",
+      "category": "camera-raw",
+      "toolName": "CR2 to JPG Converter",
+      "features": [
+        {
+          "title": "CR2 zu JPG Konvertierung",
+          "description": "Wandeln Sie Canon RAW-Dateien schnell in JPG um"
+        },
+        {
+          "title": "Qualitätserhalt",
+          "description": "Behalten Sie die Bildqualität während der Konvertierung bei"
+        },
+        {
+          "title": "Stapelverarbeitung",
+          "description": "Konvertieren Sie mehrere CR2-Dateien gleichzeitig"
+        },
+        {
+          "title": "Einfach zu bedienen",
+          "description": "Keine technischen Kenntnisse erforderlich"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "CR2-Datei hochladen",
+          "description": "Wählen Sie Ihre CR2 RAW-Datei von Ihrem Gerät aus"
+        },
+        {
+          "title": "Qualität wählen",
+          "description": "Wählen Sie die gewünschte JPG-Qualitätsstufe"
+        },
+        {
+          "title": "JPG herunterladen",
+          "description": "Laden Sie Ihre konvertierte JPG-Datei herunter"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Was ist eine CR2-Datei?",
+          "answer": "CR2 ist Canon proprietäres RAW-Format, das alle Bilddaten von der Kamera speichert und maximale Flexibilität bei der Bearbeitung bietet."
+        },
+        {
+          "question": "Verliere ich Qualität bei der Konvertierung?",
+          "answer": "JPG ist ein komprimiertes Format, aber Sie können die Qualitätseinstellungen wählen, um die Balance zwischen Dateigröße und Bildqualität zu steuern."
+        },
+        {
+          "question": "Kann ich mehrere CR2-Dateien gleichzeitig konvertieren?",
+          "answer": "Ja, unser Tool unterstützt die Stapelverarbeitung für die gleichzeitige Konvertierung mehrerer Dateien."
+        }
+      ],
+      "limitations": [
+        "Kann nur CR2-Dateien konvertieren",
+        "Qualitätsverlust je nach Komprimierungsgrad",
+        "Metadaten können teilweise verloren gehen"
+      ],
+      "relatedTools": ["image-format-converter", "raw-to-jpg"]
     }
   ],
   "meta": {

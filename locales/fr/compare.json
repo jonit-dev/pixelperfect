@@ -127,10 +127,14 @@
           "name": "Upscale.media",
           "type": "En ligne",
           "pricing": "Gratuit | 9$/mois Pro",
-          "rating": 4.0,
+          "rating": 4,
           "tagline": "Option simple et gratuite",
           "description": "Outil d'agrandissement web basique avec un niveau gratuit genereux. Bon pour une utilisation occasionnelle, fonctionnalites limitees.",
-          "bestFor": ["Utilisateurs occasionnels", "Agrandissements rapides", "Utilisateurs soucieux du budget"],
+          "bestFor": [
+            "Utilisateurs occasionnels",
+            "Agrandissements rapides",
+            "Utilisateurs soucieux du budget"
+          ],
           "features": {
             "maxUpscale": "4x",
             "batchProcessing": "Non",
@@ -139,7 +143,12 @@
             "watermark": "Non",
             "freeTier": "Illimite (resolution limitee)"
           },
-          "pros": ["Niveau gratuit genereux", "Simple a utiliser", "Pas de filigrane", "Traitement rapide"],
+          "pros": [
+            "Niveau gratuit genereux",
+            "Simple a utiliser",
+            "Pas de filigrane",
+            "Traitement rapide"
+          ],
           "cons": [
             "Agrandissement max plus faible (4x)",
             "Pas de traitement par lots",
@@ -164,8 +173,16 @@
                 "score": "Tres bon",
                 "notes": "Excellent pour la plupart des usages"
               },
-              { "product": "Let's Enhance", "score": "Bon", "notes": "Performant sur les photos de produits" },
-              { "product": "Upscale.media", "score": "Adequat", "notes": "Basique mais fonctionnel" }
+              {
+                "product": "Let's Enhance",
+                "score": "Bon",
+                "notes": "Performant sur les photos de produits"
+              },
+              {
+                "product": "Upscale.media",
+                "score": "Adequat",
+                "notes": "Basique mais fonctionnel"
+              }
             ]
           },
           {
@@ -177,21 +194,37 @@
                 "score": "Tres bon",
                 "notes": "Entrainement specialise pour le texte"
               },
-              { "product": "Let's Enhance", "score": "Bon", "notes": "Correct sur les etiquettes de produits" },
+              {
+                "product": "Let's Enhance",
+                "score": "Bon",
+                "notes": "Correct sur les etiquettes de produits"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Modere",
                 "notes": "Non specialise pour le texte"
               },
-              { "product": "Upscale.media", "score": "Basique", "notes": "Le texte peut devenir flou" }
+              {
+                "product": "Upscale.media",
+                "score": "Basique",
+                "notes": "Le texte peut devenir flou"
+              }
             ]
           },
           {
             "name": "Facilite d'utilisation",
             "description": "Simplicite pour obtenir de bons resultats",
             "rankings": [
-              { "product": "MyImageUpscaler", "score": "Excellent", "notes": "Telecharger et c'est fait" },
-              { "product": "Upscale.media", "score": "Excellent", "notes": "Tres simple" },
+              {
+                "product": "MyImageUpscaler",
+                "score": "Excellent",
+                "notes": "Telecharger et c'est fait"
+              },
+              {
+                "product": "Upscale.media",
+                "score": "Excellent",
+                "notes": "Tres simple"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Tres bon",
@@ -218,7 +251,11 @@
                 "score": "Tres bon",
                 "notes": "Bon niveau gratuit, abonnement raisonnable"
               },
-              { "product": "Upscale.media", "score": "Bon", "notes": "Niveau gratuit genereux" },
+              {
+                "product": "Upscale.media",
+                "score": "Bon",
+                "notes": "Niveau gratuit genereux"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Modere",
@@ -230,9 +267,21 @@
             "name": "Vitesse",
             "description": "Temps de traitement des images",
             "rankings": [
-              { "product": "MyImageUpscaler", "score": "Rapide", "notes": "Traitement GPU cloud" },
-              { "product": "Upscale.media", "score": "Rapide", "notes": "Traitement rapide" },
-              { "product": "Let's Enhance", "score": "Modere", "notes": "Peut etre plus lent" },
+              {
+                "product": "MyImageUpscaler",
+                "score": "Rapide",
+                "notes": "Traitement GPU cloud"
+              },
+              {
+                "product": "Upscale.media",
+                "score": "Rapide",
+                "notes": "Traitement rapide"
+              },
+              {
+                "product": "Let's Enhance",
+                "score": "Modere",
+                "notes": "Peut etre plus lent"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Variable",

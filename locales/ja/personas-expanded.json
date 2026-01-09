@@ -21,28 +21,28 @@
       "industry": "写真撮影",
       "audience": "プロフェッショナルフォトグラファー、写真スタジオ、写真エディター",
       "painPoints": [
-        "Limited resolution from camera sensors",
-        "Need for large format printing",
-        "Time-consuming manual editing",
-        "Maintaining image quality during enlargement",
-        "Meeting client demands for high-resolution images"
+        "カメラセンサーからの解像度が限られている",
+        "大判プリンティングの必要性",
+        "時間のかかる手動編集",
+        "拡大中の画質維持",
+        "高解像度画像のクライアント要求に対応"
       ],
       "solutions": [
         {
-          "title": "RAW File Enhancement",
-          "description": "Process camera RAW files with AI while preserving original quality and color data"
+          "title": "RAWファイル強化",
+          "description": "元の品質とカラーデータを保持しながら、AIでカメラRAWファイルを処理します"
         },
         {
-          "title": "Print-Ready Output",
-          "description": "Generate high-resolution images suitable for large format printing and exhibitions"
+          "title": "印刷対応出力",
+          "description": "大判プリンティングと展示に適した高解像度画像を生成します"
         },
         {
-          "title": "Batch Processing",
-          "description": "Process entire photoshoots efficiently with bulk enhancement capabilities"
+          "title": "バッチ処理",
+          "description": "一括強化機能で写真撮影全体を効率的に処理します"
         },
         {
-          "title": "Quality Preservation",
-          "description": "Maintain the artistic vision and color accuracy of your photography"
+          "title": "品質保持",
+          "description": "写真の芸術的ビジョンと色の正確さを維持します"
         }
       ],
       "features": [
@@ -51,11 +51,11 @@
           "description": "Enhance images directly from CR2, NEF, ARW, and other プロフェッショナル RAW フォーマットs"
         },
         {
-          "title": "Print Optimization",
+          "title": "印刷最適化",
           "description": "Create images optimized for various print サイズs and media types"
         },
         {
-          "title": "Color Accuracy",
+          "title": "色の正確さ",
           "description": "MAIntAIn プロフェッショナル color profiles and skin tones during enhancement"
         },
         {
@@ -72,103 +72,103 @@
       ],
       "workflows": {
         "preShoot": [
-          "Camera setup and resolution planning for intended output sizes",
-          "Understanding client requirements for print vs digital delivery",
-          "Testing shooting conditions and lighting setups",
-          "Selecting appropriate lenses and equipment for optimal capture quality"
+          "意図した出力サイズのためのカメラセットアップと解像度計画",
+          "印刷とデジタル配信のためのクライアント要件を理解する",
+          "撮影条件とライティングセットアップのテスト",
+          "最適なキャプチャ品質のための適切なレンズと機材の選択"
         ],
         "postShoot": [
-          "RAW file import and initial culling in Lightroom/Capture One",
-          "Basic exposure and color correction adjustments",
-          "AI upscaling as part of pre-editing workflow for large format printing",
-          "Detailed retouching and creative enhancement in Photoshop",
-          "Final output preparation for client delivery"
+          "Lightroom/Capture OneでのRAWファイルインポートと初期キュリング",
+          "基本的な露出と色補正調整",
+          "大判印刷のためのプリ編集ワークフローの一部としてのAIアップスケーリング",
+          "Photoshopでの詳細なレタッチングとクリエイティブ強化",
+          "クライアント配信のための最終出力準備"
         ],
         "delivery": [
-          "Creating multiple resolution versions for different use cases",
-          "Web gallery preparation with optimized file sizes",
-          "Print lab preparation with specific color profiles",
-          "Client delivery through professional platforms or custom galleries"
+          "さまざまなユースケース向けの複数の解像度バージョンの作成",
+          "最適化されたファイルサイズでのウェブギャラリー準備",
+          "特定のカラープロファイルでの印刷ラボ準備",
+          "プロフェッショナルなプラットフォームまたはカスタムギャラリーを通じたクライアント配信"
         ]
       },
       "professionalChallenges": {
         "technical": [
-          "Maintaining image quality during significant enlargement",
-          "Preserving natural skin tones and texture during enhancement",
-          "Balancing enhancement with authentic image appearance",
-          "Meeting specific technical requirements for different output media"
+          "大幅な拡大中の画質維持",
+          "強化中の自然な肌の色調とテクスチャの保持",
+          "本物の画像の見た目との強化のバランス",
+          "さまざまな出力メディアの特定の技術要件への対応"
         ],
         "business": [
-          "Competing with photographers using higher-end equipment",
-          "Justifying enhancement costs to clients",
-          "Delivering consistent quality across large shoots",
-          "Managing client expectations for enhanced images"
+          "より高品質な機器を使用する写真家との競争",
+          "クライアントへの強化コストの正当化",
+          "大規模な撮影での一貫した品質の提供",
+          "強化された画像のクライアント期待の管理"
         ],
         "creative": [
-          "Maintaining artistic vision during technical enhancement",
-          "Avoiding over-processing that appears unnatural",
-          "Preserving the photographer's unique style",
-          "Balancing technical perfection with artistic intent"
+          "技術的強化中の芸術的ビジョンの維持",
+          "不自然に見える過度な処理の回避",
+          "写真家の独自のスタイルの保持",
+          "技術的完璧さと芸術的意図のバランス"
         ]
       },
       "softwareRecommendations": {
         "editingSuite": [
-          "Adobe Lightroom Classic - RAW processing and catalog management",
-          "Capture One - Professional RAW processing with superior color tools",
-          "Adobe Photoshop - Advanced retouching and compositing",
-          "DxO PhotoLab - Exceptional noise reduction and optical corrections"
+          "Adobe Lightroom Classic - RAW処理とカタログ管理",
+          "Capture One - 優れたカラーツールを備えたプロフェッショナルRAW処理",
+          "Adobe Photoshop - 高度なレタッチングとコンポジティング",
+          "DxO PhotoLab - 例外なノイズリダクションと光学補正"
         ],
         "specializedTools": [
-          "Topaz Gigapixel AI - Dedicated upscaling with AI enhancement",
-          "ON1 Resize AI - Professional image enlargement",
-          "Perfect Resize - Gallery-proven enlargement technology",
-          "Alien Skin Exposure - Film emulation and creative effects"
+          "Topaz Gigapixel AI - AI強化を備えた専用アップスケーリング",
+          "ON1 Resize AI - プロフェッショナル画像拡大",
+          "Perfect Resize - ギャラリーで実証された拡大技術",
+          "Alien Skin Exposure - フィルムエミュレーションとクリエイティブ効果"
         ],
         "workflowTools": [
-          "Photo Mechanic - Fast culling and metadata management",
-          "Imaging Edge Desktop - Sony camera workflow optimization",
+          "Photo Mechanic - 高速キュリングとメタデータ管理",
+          "Imaging Edge Desktop - Sonyカメラワークフロー最適化",
           "Canon DPP - Canon's proprietary RAW processing",
           "Nikon NX Studio - Nikon's official workflow software"
         ]
       },
       "industryBestPractices": {
         "capture": [
-          "Always shoot in RAW format for maximum editing flexibility",
-          "Use optimal aperture settings for sharpness and depth of field",
-          "Employ proper lighting techniques to minimize post-processing needs",
-          "Understand your camera's sensor characteristics and limitations"
+          "最大の編集柔軟性のために常にRAW形式で撮影します",
+          "シャープネスと被写界深度のために最適な絞り設定を使用します",
+          "ポスト処理の必要性を最小限に抑えるための適切なライティング技術を採用します",
+          "カメラのセンサー特性と制限を理解します"
         ],
         "enhancement": [
-          "Apply upscaling early in the workflow before detailed retouching",
-          "Maintain original files and work on copies for non-destructive editing",
-          "Use appropriate resolution settings for intended output medium",
-          "Test enhancement on sample images before processing entire sets"
+          "詳細なレタッチングの前にワークフローの早い段階でアップスケーリングを適用します",
+          "元のファイルを保持し、非破壊編集のためにコピーで作業します",
+          "意図した出力メディアに適した解像度設定を使用します",
+          "セット全体を処理する前にサンプル画像で強化をテストします"
         ],
         "delivery": [
-          "Provide clients with appropriate resolution versions",
-          "Include usage rights and printing recommendations",
-          "Maintain consistent color management throughout workflow",
-          "Archive master files in appropriate formats for future use"
+          "クライアントに適切な解像度バージョンを提供します",
+          "使用権と印刷推奨事項を含めます",
+          "ワークフロー全体で一貫したカラーマネジメントを維持します",
+          "将来の使用のために適切な形式でマスターファイルをアーカイブします"
         ]
       },
       "caseStudies": [
         {
-          "title": "Wedding Photography Large Format Exhibition",
-          "scenario": "Wedding photographer needed to create 40x60 inch prints for gallery exhibition from 24MP camera files",
-          "solution": "Used AI upscaling combined with careful post-processing to achieve gallery-quality prints",
-          "results": "Successfully exhibited 20 prints with excellent detail preservation and client satisfaction"
+          "title": "ウェディング写真大判展示",
+          "scenario": "ウェディング写真家が24MPカメラファイルから40x60インチのプリントを作成する必要がありました",
+          "solution": "慎重なポスト処理と組み合わせてAIアップスケーリングを使用し、ギャラリー品質のプリントを実現しました",
+          "results": "優れたディテール保持とクライアント満足度で20枚のプリントを正常に展示しました"
         },
         {
-          "title": "Corporate Headshot Campaign Consistency",
-          "scenario": "Studio photographer needed consistent quality for 200+ executive headshots shot over multiple days",
-          "solution": "Standardized enhancement workflow with batch processing for consistent results",
-          "results": "Delivered uniform quality across entire campaign with minimal manual intervention"
+          "title": "企業の肖像写真キャンペーンの一貫性",
+          "scenario": "スタジオ写真家が複数日にわたって撮影された200以上の幹部肖像写真の一貫した品質が必要でした",
+          "solution": "一貫した結果のためのバッチ処理で標準化された強化ワークフロー",
+          "results": "最小限の手動介入でキャンペーン全体で均一な品質を提供しました"
         },
         {
-          "title": "Architectural Photography Portfolio Upgrade",
-          "scenario": "Architectural photographer needed to upgrade historic 12MP files for modern high-resolution displays",
-          "solution": "Applied AI enhancement to legacy images for new portfolio presentations",
-          "results": "Successfully repurposed existing work for contemporary high-resolution requirements"
+          "title": "建築写真ポートフォリオアップグレード",
+          "scenario": "建築写真家が最新の高解像度ディスプレイ向けに歴史的な12MPファイルをアップグレードする必要がありました",
+          "solution": "新しいポートフォリオプレゼンテーションのためにレガシー画像にAI強化を適用しました",
+          "results": "既存の作品を現代の高解像度要件に正常に再利用しました"
         }
       ],
       "fileFormats": {
@@ -191,10 +191,10 @@
       },
       "qualityStandards": {
         "resolution": {
-          "web": "72-150 PPI for digital displays",
-          "print": "300 PPI standard for quality printing",
-          "largeFormat": "150-200 PPI for large format printing",
-          "exhibition": "200-300+ PPI for gallery-quality prints"
+          "web": "デジタルディスプレイ用72-150 PPI",
+          "print": "高品質印刷用300 PPI標準",
+          "largeFormat": "大判印刷用150-200 PPI",
+          "exhibition": "ギャラリー品質プリント用200-300+ PPI"
         },
         "colorSpace": [
           "sRGB for web and digital delivery",
@@ -203,43 +203,43 @@
           "CMYK conversion for specific printing requirements"
         ],
         "fileSize": {
-          "optimization": "Balance quality with practical file sizes",
-          "archival": "Preserve master files at maximum quality",
-          "delivery": "Compress appropriately for delivery method"
+          "optimization": "品質と実用的なファイルサイズのバランス",
+          "archival": "最大品質でマスターファイルを保存します",
+          "delivery": "配信方法に適して圧縮します"
         }
       },
       "automationWorkflows": {
         "batchProcessing": [
-          "Set up standardized enhancement presets for consistent results",
-          "Use batch processing for large photo shoots",
-          "Create automated workflows for common output requirements",
-          "Implement quality control checks within automated workflows"
+          "一貫した結果のために標準化された強化プリセットをセットアップします",
+          "大規模な写真撮影にはバッチ処理を使用します",
+          "一般的な出力要件のために自動化されたワークフローを作成します",
+          "自動化されたワークフロー内で品質管理チェックを実装します"
         ],
         "integration": [
-          "Integrate with existing Lightroom and Photoshop workflows",
-          "Use scripting for repetitive enhancement tasks",
-          "Set up watched folders for automatic enhancement processing",
-          "Create custom export presets for different delivery scenarios"
+          "既存のLightroomおよびPhotoshopワークフローと統合します",
+          "反復的な強化タスクにはスクリプトを使用します",
+          "自動強化処理のために監視フォルダをセットアップします",
+          "さまざまな配信シナリオのためにカスタムエクスポートプリセットを作成します"
         ]
       },
       "collaborationTips": {
         "clientCommunication": [
-          "Educate clients about enhancement capabilities and limitations",
-          "Provide before/after examples to set realistic expectations",
-          "Discuss intended use cases to determine appropriate enhancement levels",
-          "Include enhancement services in proposals and pricing"
+          "強化機能と制限についてクライアントに教育します",
+          "現実的な期待を設定するために前後の例を提供します",
+          "適切な強化レベルを決定するために意図された使用例について話し合います",
+          "提案と価格設定に強化サービスを含めます"
         ],
         "teamCoordination": [
-          "Standardize enhancement settings across team members",
-          "Create style guides for consistent enhancement approaches",
-          "Document workflows for training new team members",
-          "Implement quality assurance processes for client deliverables"
+          "チームメンバー間で強化設定を標準化します",
+          "一貫した強化アプローチのためのスタイルガイドを作成します",
+          "新しいチームメンバーのトレーニングのためのワークフローを文書化します",
+          "クライアント納品物の品質保証プロセスを実装します"
         ]
       },
       "futureTrends": {
         "technology": [
-          "AI-powered selective enhancement for specific image areas",
-          "Real-time enhancement preview during shooting",
+          "特定の画像領域のためのAI搭載選択的強化",
+          "撮影中のリアルタイム強化プレビュー",
           "Integration with cloud-based collaborative workflows",
           "Mobile-first enhancement solutions for on-the-go processing"
         ],
@@ -2614,13 +2614,7 @@
         }
       ],
       "technicalSpecs": {
-        "outputFormats": [
-          "WebP",
-          "AVIF",
-          "JPEG",
-          "PNG",
-          "GIF"
-        ],
+        "outputFormats": ["WebP", "AVIF", "JPEG", "PNG", "GIF"],
         "optimization": {
           "compression": "Advanced compression algorithms for web optimization",
           "resizing": "Smart resizing with content-aware cropping",

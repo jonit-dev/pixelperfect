@@ -230,7 +230,11 @@
       "technicalSpecs": {
         "supportedFormats": ["PNG", "JPEG", "JPG"],
         "maxFileSize": "50MB",
-        "outputOptions": ["Hochwertiges JPEG", "Web-optimiertes JPEG", "Ausgewogene Qualität/Größe"],
+        "outputOptions": [
+          "Hochwertiges JPEG",
+          "Web-optimiertes JPEG",
+          "Ausgewogene Qualität/Größe"
+        ],
         "colorSpace": "sRGB, Adobe RGB, Graustufen-Unterstützung",
         "batchLimit": "20 Dateien pro Konvertierung"
       },

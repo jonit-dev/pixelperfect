@@ -101,22 +101,22 @@
           "key": "no_installation"
         },
         {
-          "name": "RAW Support",
+          "name": "RAWサポート",
           "key": "raw_support"
         },
         {
-          "name": "Batch Processing",
+          "name": "バッチ処理",
           "key": "batch_processing"
         },
         {
-          "name": "API Access",
+          "name": "APIアクセス",
           "key": "api_access"
         }
       ],
       "verdict": {
-        "summary": "MyImageUpscaler wins for most users due to its accessibility, speed, and affordable pricing. Topaz Gigapixel AI is better for professionals who need advanced controls and offline access.",
+        "summary": "MyImageUpscalerは、アクセシビリティ、速度、そして手頃な価格設定により、ほとんどのユーザーにとって最適な選択肢です。Topaz Gigapixel AIは、高度な制御とオフラインアクセスを必要とするプロフェッショナルに適しています。",
         "winner": "MyImageUpscaler",
-        "reason": "Better value for money, faster processing, and more accessible for everyday users while maintaining excellent quality."
+        "reason": "コストパフォーマンスが良く、処理速度が速く、優れた品質を維持しながら日常的なユーザーにとってよりアクセシブルです。"
       },
       "faq": [
         {
@@ -128,7 +128,7 @@
           "answer": "Yes! For 95% of 使用例, MyImageUpスケールr produces 品質 equal to or better than GigAPIxel AI, with significantly faster speeds and lower costs."
         },
         {
-          "question": "Can I try both before deciding?",
+          "question": "決定する前に両方試せますか？",
           "answer": "MyImageUpスケールr offers a 無料 tier with no commitment. トップaz GigAPIxel AI doesn't offer a 無料 trial, making MyImageUpスケールr the safer choice."
         },
         {
@@ -156,52 +156,48 @@
       "products": [
         {
           "name": "MyImageUpscaler",
-          "pricing": "Free tier, $9.99/month Pro",
+          "pricing": "無料枠、プロ版月額$9.99",
           "rating": 4.8,
-          "tagline": "Dedicated AI upscaling optimized for speed and quality",
-          "description": "Specialized AI upscaler focused solely on delivering the best image enhancement results with minimal effort.",
+          "tagline": "速度と品質に最適化された専用AIアップスケーリング",
+          "description": "最小限の労力で最高の画像強化結果を提供することに専念した専門AIアップスケーラー。",
           "isRecommended": true,
           "features": {
-            "price": "$9.99/month",
+            "price": "月額$9.99",
             "free_tier": true,
             "specialized_tool": true,
-            "speed": "Instant (5-15 seconds)",
-            "learning_curve": "None",
+            "speed": "瞬時（5-15秒）",
+            "learning_curve": "なし",
             "batch_processing": true,
             "web_based": true
           },
           "pros": [
-            "Specialized for upscaling only",
-            "Much faster processing",
-            "Simple, intuitive interface",
-            "Affordable pricing",
-            "No learning required",
-            "Consistent results"
+            "アップスケーリングのみに特化",
+            "はるかに高速な処理",
+            "シンプルで直感的なインターフェース",
+            "手頃な価格設定",
+            "学習不要",
+            "一貫した結果"
           ],
-          "cons": [
-            "Limited to upscaling function",
-            "Requires internet",
-            "Fewer editing features"
-          ]
+          "cons": ["アップスケーリング機能に限定", "インターネットが必要", "編集機能が少ない"]
         },
         {
           "name": "Adobe Photoshop",
-          "pricing": "$22.99/month Creative Cloud",
+          "pricing": "Creative Cloud月額$22.99",
           "rating": 4.7,
-          "tagline": "Professional image editing with AI upscaling features",
-          "description": "Comprehensive image editing software with AI-powered upscaling as one of many features.",
+          "tagline": "AIアップスケーリング機能を備えたプロフェッショナル画像編集",
+          "description": "多くの機能の1つとしてAI搭載アップスケーリングを備えた包括的な画像編集ソフトウェア。",
           "isRecommended": false,
           "features": {
-            "price": "$22.99/month",
+            "price": "月額$22.99",
             "free_tier": false,
             "specialized_tool": false,
-            "speed": "Slow (30-60 seconds)",
-            "learning_curve": "Steep",
+            "speed": "遅い（30-60秒）",
+            "learning_curve": "急",
             "batch_processing": true,
             "web_based": false
           },
           "pros": [
-            "Complete editing solution",
+            "完全な編集ソリューション",
             "プロフェッショナルグレードの機能",
             "オフラインで動作",
             "広い形式サポート",
@@ -312,10 +308,7 @@
             "API access for developers",
             "More consistent results"
           ],
-          "cons": [
-            "Newer service (established 2024)",
-            "Fewer language options"
-          ]
+          "cons": ["Newer service (established 2024)", "Fewer language options"]
         },
         {
           "name": "VanceAI",
@@ -335,56 +328,56 @@
           },
           "pros": [
             "Multiple AI tools",
-            "Established platform",
-            "Supports many languages",
-            "Various output formats",
-            "API integration available",
-            "Regular updates"
+            "確立されたプラットフォーム",
+            "多くの言語をサポート",
+            "様々な出力形式",
+            "API統合が利用可能",
+            "定期的な更新"
           ],
           "cons": [
-            "Very limited free tier",
-            "Credit-based system",
-            "Slower processing",
-            "Variable quality results",
-            "Less customer support",
-            "Can be expensive with heavy use"
+            "非常に限られた無料枠",
+            "クレジットベースのシステム",
+            "処理速度が遅い",
+            "品質の結果がまちまち",
+            "カスタマーサポートが少ない",
+            "頻繁に使用すると高額になる可能性あり"
           ]
         }
       ],
       "criteria": [
         {
-          "name": "Free Credits",
+          "name": "無料クレジット",
           "key": "free_credits"
         },
         {
-          "name": "Processing Speed",
+          "name": "処理速度",
           "key": "processing_speed"
         },
         {
-          "name": "Image Quality",
+          "name": "画像品質",
           "key": "image_quality"
         },
         {
-          "name": "Customer Support",
+          "name": "カスタマーサポート",
           "key": "customer_support"
         },
         {
-          "name": "API Access",
+          "name": "APIアクセス",
           "key": "api_access"
         },
         {
-          "name": "Pro Features",
+          "name": "プロ機能",
           "key": "pro_features"
         },
         {
-          "name": "Price",
+          "name": "価格",
           "key": "price"
         }
       ],
       "verdict": {
-        "summary": "MyImageUpscaler clearly wins with its unlimited free tier, superior quality, faster processing, and better customer support. VanceAI's limited free tier makes it difficult to thoroughly test before committing.",
+        "summary": "MyImageUpscalerは、無制限の無料枠、優れた品質、より高速な処理、そしてより良いカスタマーサポートで明らかに勝利しています。VanceAIの限られた無料枠では、コミットする前に十分にテストするのが困難です。",
         "winner": "MyImageUpscaler",
-        "reason": "Unlimited free tier, better quality results, faster processing, and more transparent pricing make it the superior choice."
+        "reason": "無制限の無料枠、より良い品質の結果、より高速な処理、そしてより透明な価格設定により、優れた選択肢となります。"
       },
       "faq": [
         {
@@ -396,7 +389,7 @@
           "answer": "MyImageUpスケールr generally produces higher 品質, more consistent results, especially at higher スケール factors and with challenging image types."
         },
         {
-          "question": "Is VanceAI worth the money?",
+          "question": "VanceAIはお金に値しますか？",
           "answer": "While VanceAI offers multiple ツール, the credit-based system and limited 無料 tier make it less cost-effective than MyImageUpスケールr for dedicated upscaling needs."
         },
         {
@@ -424,32 +417,29 @@
       "products": [
         {
           "name": "MyImageUpscaler",
-          "pricing": "Free tier, $9.99/month Pro",
+          "pricing": "無料枠、プロ版月額$9.99",
           "rating": 4.8,
-          "tagline": "Modern AI upscaling for all image types",
-          "description": "State-of-the-art AI upscaler using the latest neural network technology for universal image enhancement.",
+          "tagline": "すべての画像タイプ向けの最新AIアップスケーリング",
+          "description": "普遍的な画像強化のために最新のニューラルネットワーク技術を使用した最先端のAIアップスケーラー。",
           "isRecommended": true,
           "features": {
-            "price": "$9.99/month",
+            "price": "月額$9.99",
             "free_tier": true,
             "modern_ai": true,
             "universal_support": true,
-            "processing_speed": "Fast",
-            "ease_of_use": "Very easy",
+            "processing_speed": "高速",
+            "ease_of_use": "非常に簡単",
             "customer_support": "24/7"
           },
           "pros": [
-            "Works with all image types",
-            "Modern AI technology",
-            "Much faster processing",
-            "User-friendly interface",
-            "Excellent for photos and art",
+            "すべての画像タイプで動作",
+            "最新のAI技術",
+            "はるかに高速な処理",
+            "ユーザーフレンドリーなインターフェース",
+            "写真とアートに最適",
             "Regular updates"
           ],
-          "cons": [
-            "Requires internet connection",
-            "Newer technology"
-          ]
+          "cons": ["Requires internet connection", "Newer technology"]
         },
         {
           "name": "Waifu2x",
@@ -507,26 +497,26 @@
           "key": "ease_of_use"
         },
         {
-          "name": "Customer Support",
+          "name": "カスタマーサポート",
           "key": "customer_support"
         },
         {
-          "name": "Free Tier",
+          "name": "無料枠",
           "key": "free_tier"
         }
       ],
       "verdict": {
-        "summary": "Waifu2x excels specifically for anime images, but MyImageUpscaler offers better quality, speed, and versatility for all image types including photos and general artwork.",
+        "summary": "Waifu2xは特にアニメ画像に優れていますが、MyImageUpscalerは写真や一般的なアートワークを含むすべての画像タイプに対して、より良い品質、速度、多様性を提供します。",
         "winner": "MyImageUpscaler",
-        "reason": "While both are free, MyImageUpscaler provides superior results for most use cases with much better user experience and broader applicability."
+        "reason": "両方とも無料ですが、MyImageUpscalerは、より良いユーザー体験とより広い適用性で、ほとんどの使用ケースにおいて優れた結果を提供します。"
       },
       "faq": [
         {
-          "question": "Which is better for anime images?",
+          "question": "アニメ画像にはどちらが良いですか？",
           "answer": "WAIfu2x was specifically designed for anime and can be excellent for that niche. However, MyImageUpスケールr also performs very well with anime while being more versatile."
         },
         {
-          "question": "Is WAIfu2x still relevant in 2025?",
+          "question": "2025年でもWAIfu2xは依然として関連がありますか？",
           "answer": "WAIfu2x is showing its age. Modern AI upスケールrs like MyImageUpスケールr generally produce better results with much faster processing times."
         },
         {
@@ -558,13 +548,13 @@
       "products": [
         {
           "name": "MyImageUpscaler",
-          "pricing": "Free tier, $9.99/month Pro",
+          "pricing": "無料枠、プロ版月額$9.99",
           "rating": 4.8,
-          "tagline": "Professional AI upscaling with accessible pricing",
-          "description": "Professional-grade AI upscaler offering enterprise quality at consumer-friendly pricing with excellent customer support.",
+          "tagline": "手頃な価格設定でのプロフェッショナルAIアップスケーリング",
+          "description": "優れたカスタマーサポートと消費者に優しい価格設定でエンタープライズ品質を提供するプロフェッショナルグレードのAIアップスケーラー。",
           "isRecommended": true,
           "features": {
-            "price": "$9.99/month",
+            "price": "月額$9.99",
             "professional_quality": true,
             "free_tier": true,
             "api_access": true,
@@ -573,90 +563,87 @@
             "unlimited_processing": true
           },
           "pros": [
-            "Much more affordable",
-            "Unlimited free processing",
-            "Better customer support",
-            "Faster processing",
-            "Easy API integration",
-            "No hidden costs"
+            "はるかに手頃",
+            "無制限の無料処理",
+            "より良いカスタマーサポート",
+            "より高速な処理",
+            "簡単なAPI統合",
+            "隠れたコストなし"
           ],
-          "cons": [
-            "Newer platform",
-            "Fewer enterprise features"
-          ]
+          "cons": ["新しいプラットフォーム", "エンタープライズ機能が少ない"]
         },
         {
           "name": "Let's Enhance",
-          "pricing": "$11/month Basic, $34/month Pro",
+          "pricing": "ベーシック月額$11、プロ版月額$34",
           "rating": 4.3,
-          "tagline": "Professional image enhancement for business",
-          "description": "Established professional image enhancement platform with extensive business features and enterprise solutions.",
+          "tagline": "ビジネス向けプロフェッショナル画像強化",
+          "description": "包括的なビジネス機能とエンタープライズソリューションを備えた確立されたプロフェッショナル画像強化プラットフォーム。",
           "isRecommended": false,
           "features": {
-            "price": "$34/month Pro",
+            "price": "プロ版月額$34",
             "professional_quality": true,
-            "free_tier": "Limited",
+            "free_tier": "制限あり",
             "api_access": true,
             "batch_processing": true,
-            "customer_support": "Business hours",
+            "customer_support": "営業時間内",
             "unlimited_processing": false
           },
           "pros": [
-            "Long-standing platform",
-            "Enterprise features",
-            "Multiple enhancement tools",
-            "White-label options",
-            "Professional services",
-            "Detailed analytics"
+            "長年のプラットフォーム",
+            "エンタープライズ機能",
+            "複数の強化ツール",
+            "ホワイトラベルオプション",
+            "プロフェッショナルサービス",
+            "詳細な分析"
           ],
           "cons": [
-            "Much more expensive",
-            "Limited free trial",
-            "Slower processing",
-            "Complex pricing tiers",
-            "Less transparent costs",
-            "Require contract for best features"
+            "はるかに高価",
+            "制限された無料試用版",
+            "処理速度が遅い",
+            "複雑な価格階層",
+            "コストが透明性に欠ける",
+            "最高機能には契約が必要"
           ]
         }
       ],
       "criteria": [
         {
-          "name": "Price",
+          "name": "価格",
           "key": "price"
         },
         {
-          "name": "Free Tier",
+          "name": "無料枠",
           "key": "free_tier"
         },
         {
-          "name": "Professional Quality",
+          "name": "プロフェッショナル品質",
           "key": "professional_quality"
         },
         {
-          "name": "Customer Support",
+          "name": "カスタマーサポート",
           "key": "customer_support"
         },
         {
-          "name": "API Access",
+          "name": "APIアクセス",
           "key": "api_access"
         },
         {
-          "name": "Unlimited Processing",
+          "name": "無制限処理",
           "key": "unlimited_processing"
         },
         {
-          "name": "Batch Processing",
+          "name": "バッチ処理",
           "key": "batch_processing"
         }
       ],
       "verdict": {
-        "summary": "MyImageUpscaler provides superior value with comparable quality at significantly lower prices. Let's Enhance may be suitable for large enterprises needing specific enterprise features, but MyImageUpscaler wins for most professional users.",
+        "summary": "MyImageUpscalerは、著しく低い価格で同等の品質を提供し、優れた価値を提供します。Let's Enhanceは特定のエンタープライズ機能を必要とする大企業には適しているかもしれませんが、ほとんどのプロフェッショナルユーザーにはMyImageUpscalerが勝ります。",
         "winner": "MyImageUpscaler",
-        "reason": "Delivers equal or better quality at 70% lower cost with better support and more flexible usage terms."
+        "reason": "より良いサポートとより柔軟な使用条件で、70%低いコストで同等以上の品質を提供します。"
       },
       "faq": [
         {
-          "question": "Is Let's Enhance worth the higher price?",
+          "question": "Let's Enhanceは高い価格に値しますか？",
           "answer": "For most users, no. MyImageUpスケールr provides equal or better 品質 at a much lower price point with better support and unlimited usage."
         },
         {
@@ -664,12 +651,12 @@
           "answer": "Both produce excellent 品質, but MyImageUpスケールr's unlimited processing and better pricing make it more practical for プロフェッショナル workflows."
         },
         {
-          "question": "Can I try both before deciding?",
+          "question": "決定する前に両方試せますか？",
           "answer": "MyImageUpスケールr offers unlimited 無料 processing for thorough testing. Let's Enhance has limited 無料 credits, making 比較 difficult."
         },
         {
           "question": "What enterprise 機能 does Let's Enhance offer?",
-          "answer": "Let's Enhance offers white-labeling, dedicated support, and enterprise contracts that may be valuable for very large organizations."
+          "answer": "Let's Enhanceは、非常に大規模な組織には価値のあるホワイトラベル、専用サポート、エンタープライズ契約を提供しています。"
         }
       ]
     },
@@ -692,37 +679,35 @@
       "products": [
         {
           "name": "MyImageUpscaler",
-          "pricing": "Free tier, $9.99/month Pro",
+          "pricing": "無料枠、プロ版月額$9.99",
           "rating": 4.8,
-          "tagline": "Premium AI upscaling with unlimited free access",
-          "description": "Advanced AI upscaler offering professional quality with generous free tier and affordable premium features.",
+          "tagline": "無制限の無料アクセス付きプレミアムAIアップスケーリング",
+          "description": "寛大な無料枠と手頃なプレミアム機能を備えたプロフェッショナル品質を提供する高度なAIアップスケーラー。",
           "isRecommended": true,
           "features": {
-            "price": "$9.99/month",
-            "free_limit": "Unlimited",
+            "price": "月額$9.99",
+            "free_limit": "無制限",
             "max_filesize": "50MB",
-            "processing_speed": "Fast",
-            "quality": "Excellent",
+            "processing_speed": "高速",
+            "quality": "優秀",
             "customer_support": "24/7"
           },
           "pros": [
-            "Unlimited free processing",
-            "Higher quality results",
-            "Faster processing speeds",
-            "Better customer support",
-            "More file size flexibility",
-            "Consistent performance"
+            "無制限の無料処理",
+            "より高品質な結果",
+            "より高速な処理速度",
+            "より良いカスタマーサポート",
+            "より柔軟なファイルサイズ",
+            "一貫したパフォーマンス"
           ],
-          "cons": [
-            "Newer service (though proven technology)"
-          ]
+          "cons": ["新しいサービス（ただし実証済みの技術）"]
         },
         {
           "name": "BigJPG",
-          "pricing": "Free 5 images/day, $6/month Basic",
+          "pricing": "無料1日5枚、ベーシック月額$6",
           "rating": 4,
-          "tagline": "Simple online JPG upscaling service",
-          "description": "Basic online JPG upscaler with limited free usage and affordable premium options for casual users.",
+          "tagline": "シンプルなオンラインJPGアップスケーリングサービス",
+          "description": "カジュアルユーザー向けの制限された無料使用と手頃なプレミアムオプションを備えた基本的なオンラインJPGアップスケーラー。",
           "isRecommended": false,
           "features": {
             "price": "$6/month",
@@ -843,9 +828,7 @@
             "Faster processing times",
             "Professional-grade results"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "SmartMagnify",
@@ -973,10 +956,7 @@
             "No app installation required",
             "Better for professional use"
           ],
-          "cons": [
-            "Requires internet connection",
-            "Not as convenient for quick mobile edits"
-          ]
+          "cons": ["Requires internet connection", "Not as convenient for quick mobile edits"]
         },
         {
           "name": "PhotoEnhancer",
@@ -1105,9 +1085,7 @@
             "Supports all file formats",
             "Fast processing"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "waifu2x",
@@ -1154,12 +1132,7 @@
             "max_resolution": "Limited",
             "customer_support": "Email"
           },
-          "pros": [
-            "Simple interface",
-            "No registration needed",
-            "Focused on JPG",
-            "No watermarks"
-          ],
+          "pros": ["Simple interface", "No registration needed", "Focused on JPG", "No watermarks"],
           "cons": [
             "Very limited free usage",
             "Basic quality only",
@@ -1262,9 +1235,7 @@
             "Better customer support",
             "More consistent results"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "Upscay",
@@ -1391,10 +1362,7 @@
             "Automatic improvements and updates",
             "Excellent customer support"
           ],
-          "cons": [
-            "Requires internet connection",
-            "Proprietary technology (less customizable)"
-          ]
+          "cons": ["Requires internet connection", "Proprietary technology (less customizable)"]
         },
         {
           "name": "Real-ESRGAN",
@@ -1523,10 +1491,7 @@
             "No watermarks or restrictions",
             "Better for large format printing"
           ],
-          "cons": [
-            "Requires internet connection",
-            "Focused only on upscaling"
-          ]
+          "cons": ["Requires internet connection", "Focused only on upscaling"]
         },
         {
           "name": "Remini",
@@ -1655,10 +1620,7 @@
             "Excellent customer support",
             "No software installation"
           ],
-          "cons": [
-            "Focused only on upscaling",
-            "Requires internet connection"
-          ]
+          "cons": ["Focused only on upscaling", "Requires internet connection"]
         },
         {
           "name": "Fotor",
@@ -1787,10 +1749,7 @@
             "Simple, intuitive interface",
             "Consistent high-quality results"
           ],
-          "cons": [
-            "Requires internet connection",
-            "Registration required"
-          ]
+          "cons": ["Requires internet connection", "Registration required"]
         },
         {
           "name": "Photoshop Express",
@@ -1919,10 +1878,7 @@
             "No learning curve",
             "Excellent customer support"
           ],
-          "cons": [
-            "Focused only on upscaling",
-            "Requires internet connection"
-          ]
+          "cons": ["Focused only on upscaling", "Requires internet connection"]
         },
         {
           "name": "Pixlr",
@@ -2051,10 +2007,7 @@
             "No watermarks",
             "Excellent customer support"
           ],
-          "cons": [
-            "Focused only on upscaling",
-            "No design tools"
-          ]
+          "cons": ["Focused only on upscaling", "No design tools"]
         },
         {
           "name": "Canva",
@@ -2183,9 +2136,7 @@
             "Simple interface",
             "Consistent results"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "Topaz Gigapixel AI",
@@ -2339,9 +2290,7 @@
             "More file size flexibility",
             "Consistent performance"
           ],
-          "cons": [
-            "Newer service (though proven technology)"
-          ]
+          "cons": ["Newer service (though proven technology)"]
         },
         {
           "name": "Upscale.media",
@@ -2469,9 +2418,7 @@
             "Simple interface",
             "Consistent results"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "Topaz Gigapixel AI",
@@ -2625,9 +2572,7 @@
             "Supports all file formats",
             "Fast processing"
           ],
-          "cons": [
-            "Requires internet connection"
-          ]
+          "cons": ["Requires internet connection"]
         },
         {
           "name": "PhotoEnhancer",
@@ -2782,9 +2727,7 @@
             "Flexible pricing from $9/month",
             "8K output support on Ultra tier"
           ],
-          "cons": [
-            "Batch processing requires paid subscription"
-          ]
+          "cons": ["Batch processing requires paid subscription"]
         },
         {
           "name": "Icons8 Smart Upscaler",
@@ -2910,9 +2853,7 @@
             "8K output support",
             "More affordable pricing"
           ],
-          "cons": [
-            "Focused on upscaling (not a full editing suite)"
-          ]
+          "cons": ["Focused on upscaling (not a full editing suite)"]
         },
         {
           "name": "Clipdrop",

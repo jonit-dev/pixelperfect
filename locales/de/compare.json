@@ -127,7 +127,7 @@
           "name": "Upscale.media",
           "type": "Webbasiert",
           "pricing": "Kostenlos | 9 €/Monat Pro",
-          "rating": 4.0,
+          "rating": 4,
           "tagline": "Einfache und kostenlose Option",
           "description": "Basis-Web-Upscaler mit großzügiger kostenloser Stufe. Gut für gelegentliche Nutzung, begrenzte Funktionen.",
           "bestFor": ["Gelegentliche Benutzer", "Schnelle Upscaling", "Budgetbewusste Benutzer"],
@@ -169,7 +169,11 @@
                 "score": "Sehr gut",
                 "notes": "Ausgezeichnet für die meisten Anwendungsfälle"
               },
-              { "product": "Let's Enhance", "score": "Gut", "notes": "Stark bei Produktfotos" },
+              {
+                "product": "Let's Enhance",
+                "score": "Gut",
+                "notes": "Stark bei Produktfotos"
+              },
               {
                 "product": "Upscale.media",
                 "score": "Ausreichend",
@@ -186,7 +190,11 @@
                 "score": "Sehr gut",
                 "notes": "Spezialisiertes Training für Text"
               },
-              { "product": "Let's Enhance", "score": "Gut", "notes": "Gut bei Produktlabels" },
+              {
+                "product": "Let's Enhance",
+                "score": "Gut",
+                "notes": "Gut bei Produktlabels"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Mäßig",
@@ -208,7 +216,11 @@
                 "score": "Ausgezeichnet",
                 "notes": "Hochladen und fertig"
               },
-              { "product": "Upscale.media", "score": "Ausgezeichnet", "notes": "Sehr einfach" },
+              {
+                "product": "Upscale.media",
+                "score": "Ausgezeichnet",
+                "notes": "Sehr einfach"
+              },
               {
                 "product": "Let's Enhance",
                 "score": "Sehr gut",
@@ -256,8 +268,16 @@
                 "score": "Schnell",
                 "notes": "Cloud-GPU-Verarbeitung"
               },
-              { "product": "Upscale.media", "score": "Schnell", "notes": "Schnelle Verarbeitung" },
-              { "product": "Let's Enhance", "score": "Mäßig", "notes": "Kann langsamer sein" },
+              {
+                "product": "Upscale.media",
+                "score": "Schnell",
+                "notes": "Schnelle Verarbeitung"
+              },
+              {
+                "product": "Let's Enhance",
+                "score": "Mäßig",
+                "notes": "Kann langsamer sein"
+              },
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "Variiert",

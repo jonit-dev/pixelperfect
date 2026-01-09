@@ -107,10 +107,344 @@
         {
           "question": "¿Importa si uso JPEG o PNG?",
           "answer": "JPEG es generalmente mejor para fotos (menor tamaño), PNG para gráficos con texto o colores sólidos. HEIC ofrece la mejor calidad/tamaño para dispositivos iOS."
+        },
+        {
+          "question": "Why does my wallpaper look blurry?",
+          "answer": "Your image is too low . iPhone displays are very sharp (460 PPI on Pro models). Upscale your image to match the dimensions above."
         }
       ],
       "ctaText": "Crear Fondo de iPhone Perfecto",
-      "ctaUrl": "/device-specific/iphone-wallpaper-sizes"
+      "ctaUrl": "/device-specific/iphone-wallpaper-sizes",
+      "deviceFamily": "iPhone",
+      "quickReference": {
+        "mostCommon": "1290x2796px",
+        "note": "If unsure, use 1290x2796px - it works well on most modern iPhones when cropped."
+      },
+      "dimensions": [
+        {
+          "model": "iPhone 15 Pro Max / 16 Pro Max",
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island at top"
+        },
+        {
+          "model": "iPhone 15 Pro / 16 Pro",
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island at top"
+        },
+        {
+          "model": "iPhone 15 Plus / 14 Plus",
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island at top"
+        },
+        {
+          "model": "iPhone 15 / 14",
+          "aspectRatio": "19.5:9",
+          "notes": "Dynamic Island (15) / Notch (14)"
+        },
+        {
+          "model": "iPhone 13 / 13 Pro",
+          "aspectRatio": "19.5:9",
+          "notes": "Notch at top"
+        },
+        {
+          "model": "iPhone 13 Mini / 12 Mini",
+          "aspectRatio": "19.5:9",
+          "notes": "Notch at top"
+        },
+        {
+          "model": "iPhone SE (3rd/2nd gen)",
+          "aspectRatio": "16:9",
+          "notes": "No notch, home button"
+        },
+        {
+          "model": "iPhone 11 / XR",
+          "aspectRatio": "19.5:9",
+          "notes": "Notch at top"
+        },
+        {
+          "model": "iPhone 8 / 7 / 6",
+          "aspectRatio": "16:9",
+          "notes": "No notch, home button"
+        },
+        {
+          "model": "iPhone 8 Plus / 7 Plus",
+          "aspectRatio": "16:9",
+          "notes": "No notch, home button"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Account for the notch/Dynamic Island",
+          "description": "Don't put important content at the very top of your wallpaper. The top 50-100 pixels may be covered by the notch or Dynamic Island."
+        },
+        {
+          "title": "Lock screen vs home screen",
+          "description": "iOS uses the same image size for both, but clock and widgets may cover parts. Keep focal points centered."
+        },
+        {
+          "title": "Parallax effect adds cropping",
+          "description": "iOS perspective zoom crops about 10% on each edge. Either disable it in Settings, or add extra margin to your image."
+        }
+      ],
+      "upscalingGuide": {
+        "scenario": "Want to use a 640x960 image as iPhone 15 wallpaper",
+        "target": "1290x2796px",
+        "steps": [
+          "Upscale 4x to 2560x3840px",
+          "Crop to 19.5:9 aspect ratio (1290x2796 or use the upscaled size)",
+          "If quality is good, crop directly; if not, upscale again"
+        ]
+      },
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["android-wallpaper-sizes"]
+    },
+    {
+      "slug": "android-wallpaper-sizes",
+      "title": "Android Wallpaper sizes",
+      "metaTitle": "Android Wallpaper sizes | MyImageUpscaler",
+      "metaDescription": "Wallpaper dimensions for popular Android phones. Samsung Galaxy, Google Pixel, OnePlus and more with exact pixel dimensions.",
+      "h1": "Android Wallpaper size guide",
+      "intro": "Android wallpaper sizes vary by manufacturer and model. Here are dimensions for the most popular devices.",
+      "primaryKeyword": "android wallpaper size",
+      "secondaryKeywords": [
+        "samsung wallpaper size",
+        "pixel wallpaper dimensions",
+        "android phone background size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "Android",
+      "quickReference": {
+        "mostCommon": "1440x3200px",
+        "note": "This size works for most flagship Android phones. Android scales well."
+      },
+      "dimensionsByBrand": [
+        {
+          "brand": "Samsung Galaxy S Series",
+          "models": [
+            {
+              "model": "Galaxy S24 Ultra",
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24+",
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24",
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S23 Ultra",
+              "aspectRatio": "19.3:9"
+            },
+            {
+              "model": "Galaxy S23",
+              "aspectRatio": "19.5:9"
+            }
+          ]
+        },
+        {
+          "brand": "Google Pixel",
+          "models": [
+            {
+              "model": "Pixel 9 Pro XL",
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9 Pro",
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9",
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8 Pro",
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8",
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 7a",
+              "aspectRatio": "20:9"
+            }
+          ]
+        },
+        {
+          "brand": "OnePlus",
+          "models": [
+            {
+              "model": "OnePlus 12",
+              "aspectRatio": "19.8:9"
+            },
+            {
+              "model": "OnePlus 11",
+              "aspectRatio": "20.1:9"
+            }
+          ]
+        }
+      ],
+      "tips": [
+        {
+          "title": "Android scrolling wallpapers",
+          "description": "Some Android launchers support scrolling wallpapers that are wider than the screen. Create at 2x width for this effect."
+        },
+        {
+          "title": "Hole-punch cameras",
+          "description": "Most modern Android phones have a punch-hole camera. Avoid putting important content in the top-left or top-center."
+        },
+        {
+          "title": "Android scales well",
+          "description": "Android handles mismatched wallpaper sizes better than iOS. A slightly larger image will be cropped automatically."
+        }
+      ],
+      "faq": [
+        {
+          "question": "What size wallpaper for Samsung Galaxy S24?",
+          "answer": "1080x2340 for Galaxy S24, 1440x3120 for S24+ and S24 Ultra."
+        },
+        {
+          "question": "Does Android need exact dimensions?",
+          "answer": "No. Android handles cropping well. Use a larger image and Android will let you position it. 1440x3200 works for most phones."
+        },
+        {
+          "question": "What about Android tablets?",
+          "answer": "Tablets vary widely. Check your tablet's display in Settings > About Phone > Display. Common sizes are 2560x1600 and 2800x1752."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes"]
+    },
+    {
+      "slug": "desktop-wallpaper-sizes",
+      "title": "Desk & Monitor Wallpaper sizes",
+      "metaTitle": "Desk & Monitor Wallpaper sizes | MyImageUpscaler",
+      "metaDescription": "Monitor wallpaper dimensions for all s. 1080p, 1440p, 4K, 5K, ultRAWide and multi-monitor setups.",
+      "h1": "Desk Wallpaper size guide",
+      "intro": "Find the right wallpaper size for your monitor. Covers standard, ultRAWide, and multi-monitor setups.",
+      "primaryKeyword": "desktop wallpaper size",
+      "secondaryKeywords": [
+        "4k wallpaper size",
+        "1440p wallpaper dimensions",
+        "ultrawide wallpaper size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "Desktop",
+      "quickReference": {
+        "mostCommon": "1920x1080px (1080p)",
+        "note": "4K (3840x2160) is becoming standard for new monitors."
+      },
+      "dimensions": [
+        {
+          "resolution": "Full HD (1080p)",
+          "aspectRatio": "16:9",
+          "notes": "Most common, works on most monitors"
+        },
+        {
+          "resolution": "QHD (1440p)",
+          "aspectRatio": "16:9",
+          "notes": "Popular for gaming monitors"
+        },
+        {
+          "resolution": "4K UHD",
+          "aspectRatio": "16:9",
+          "notes": "Modern standard for high-end displays"
+        },
+        {
+          "resolution": "5K",
+          "aspectRatio": "16:9",
+          "notes": "Apple Studio Display, iMac 5K"
+        },
+        {
+          "resolution": "8K",
+          "aspectRatio": "16:9",
+          "notes": "Rare, high-end displays only"
+        },
+        {
+          "resolution": "Ultrawide (2560)",
+          "aspectRatio": "21:9",
+          "notes": "Budget ultrawide monitors"
+        },
+        {
+          "resolution": "Ultrawide (3440)",
+          "aspectRatio": "21:9",
+          "notes": "Standard ultrawide"
+        },
+        {
+          "resolution": "Super Ultrawide",
+          "aspectRatio": "32:9",
+          "notes": "Samsung Odyssey G9 and similar"
+        },
+        {
+          "resolution": "Dual 1080p (side by side)",
+          "aspectRatio": "32:9",
+          "notes": "Two 1080p monitors spanning"
+        },
+        {
+          "resolution": "Dual 1440p (side by side)",
+          "aspectRatio": "32:9",
+          "notes": "Two 1440p monitors spanning"
+        },
+        {
+          "resolution": "Dual 4K (side by side)",
+          "aspectRatio": "32:9",
+          "notes": "Two 4K monitors spanning"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Check your actual resolution",
+          "description": "Right-click desktop > Display settings (Windows) or System Preferences > Displays (Mac) to see exact dimensions."
+        },
+        {
+          "title": "Multi-monitor spanning",
+          "description": "For wallpapers that span monitors, add the widths together. Two 1920x1080 monitors = 3840x1080 total."
+        },
+        {
+          "title": "Scaling matters",
+          "description": "A 4K monitor at 150% scaling still uses 3840x2160 for wallpapers. Use full resolution regardless of scaling."
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "source": "1080p wallpaper",
+          "target": "4K (3840x2160)",
+          "upscale": "2x upscaling gives exactly 4K",
+          "quality": "Good results with AI upscaling"
+        },
+        {
+          "source": "1440p wallpaper",
+          "target": "4K (3840x2160)",
+          "upscale": "1.5x - may need crop after upscaling 2x",
+          "quality": "Excellent results"
+        },
+        {
+          "source": "720p wallpaper",
+          "target": "4K (3840x2160)",
+          "upscale": "3x upscaling (1280 → 3840)",
+          "quality": "Acceptable, depends on source quality"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is my monitor?",
+          "answer": "Windows: Right-click desk > Display settings > . Mac: Apple menu > System Preferences > Displays."
+        },
+        {
+          "question": "Should wallpaper match monitor exactly?",
+          "answer": "Ideally yes. Larger is OK (will be cropped/scaled). Smaller will look blurry when stretched."
+        },
+        {
+          "question": "What about retina/HiDPI displays?",
+          "answer": "Use the actual , not the 'looks like' . A 27\" iMac at 'looks like 2560x1440' actually uses 5120x2880 for wallpapers."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes", "android-wallpaper-sizes"]
     }
   ],
   "meta": {

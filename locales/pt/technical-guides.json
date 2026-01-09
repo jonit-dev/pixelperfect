@@ -94,13 +94,7 @@
         }
       ],
       "technicalSpecs": {
-        "supportedFormats": [
-          "JPEG",
-          "PNG",
-          "TIFF",
-          "WebP",
-          "BMP"
-        ],
+        "supportedFormats": ["JPEG", "PNG", "TIFF", "WebP", "BMP"],
         "maxUpscaleFactor": "A maioria dos sistemas suporta upscaling de 2x, 4x e alguns até 8x",
         "processingTime": "Varia de segundos a minutos, dependendo do tamanho da imagem e da complexidade do modelo",
         "memoryRequirements": "Depende do tamanho da imagem e do modelo, normalmente 2-8 GB de RAM"
@@ -140,13 +134,8 @@
           "answer": "Considere o seu caso de uso pretendido. 2x é bom para melhoria moderada, 4x para aprimoramento significativo e 8x para upscaling drástico quando a qualidade é menos crítica."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler"
-      ],
-      "relatedPages": [
-        "image-resolution-guide",
-        "neural-network-basics"
-      ]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["image-resolution-guide", "neural-network-basics"]
     },
     {
       "slug": "image-resolution-explained",
@@ -301,14 +290,8 @@
           "answer": "Verifique as dimensões dos pixels e compare com os requisitos de saída pretendidos. Calculadoras online podem ajudar a determinar se a resolução é adequada."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "image-resolution-calculator"
-      ],
-      "relatedPages": [
-        "print-production-guide",
-        "digital-image-optimization"
-      ]
+      "relatedTools": ["ai-image-upscaler", "image-resolution-calculator"],
+      "relatedPages": ["print-production-guide", "digital-image-optimization"]
     },
     {
       "slug": "image-formats-comparison",
@@ -514,14 +497,8 @@
           "answer": "A conversão de sem perdas para sem perdas preserva a qualidade, mas a conversão de com perdas para qualquer formato não restaurará os dados perdidos."
         }
       ],
-      "relatedTools": [
-        "image-format-converter",
-        "image-optimizer"
-      ],
-      "relatedPages": [
-        "image-compression-guide",
-        "web-optimization-techniques"
-      ]
+      "relatedTools": ["image-format-converter", "image-optimizer"],
+      "relatedPages": ["image-compression-guide", "web-optimization-techniques"]
     },
     {
       "slug": "batch-image-processing-guide",
@@ -715,14 +692,8 @@
           "answer": "Implemente o pré-processamento para categorizar as imagens e aplique as operações apropriadas para cada tipo."
         }
       ],
-      "relatedTools": [
-        "batch-image-upscaler",
-        "image-processor"
-      ],
-      "relatedPages": [
-        "automation-workflows",
-        "image-optimization-strategies"
-      ]
+      "relatedTools": ["batch-image-upscaler", "image-processor"],
+      "relatedPages": ["automation-workflows", "image-optimization-strategies"]
     },
     {
       "slug": "color-theory-for-image-enhancement",
@@ -801,48 +772,26 @@
         {
           "model": "RGB",
           "use": "Digital displays, imagens web",
-          "advantages": [
-            "Intuitivo para trabalho digital",
-            "Amplo suporte de dispositivos"
-          ],
-          "limitations": [
-            "Gama limitada em comparação com a visão humana"
-          ]
+          "advantages": ["Intuitivo para trabalho digital", "Amplo suporte de dispositivos"],
+          "limitations": ["Gama limitada em comparação com a visão humana"]
         },
         {
           "model": "CMYK",
           "use": "Produção de impressão",
-          "advantages": [
-            "Reprodução de impressão precisa",
-            "Padrão da indústria"
-          ],
-          "limitations": [
-            "Gama menor que RGB",
-            "Não é ideal para exibição em tela"
-          ]
+          "advantages": ["Reprodução de impressão precisa", "Padrão da indústria"],
+          "limitations": ["Gama menor que RGB", "Não é ideal para exibição em tela"]
         },
         {
           "model": "HSL/HSV",
           "use": "Seleção e manipulação de cores",
-          "advantages": [
-            "Intuitivo para humanos",
-            "Ajuste de cores fácil"
-          ],
-          "limitations": [
-            "Não é perceptualmente uniforme"
-          ]
+          "advantages": ["Intuitivo para humanos", "Ajuste de cores fácil"],
+          "limitations": ["Não é perceptualmente uniforme"]
         },
         {
           "model": "LAB",
           "use": "Correção de cor profissional",
-          "advantages": [
-            "Perceptualmente uniforme",
-            "Separa a luminosidade da cor"
-          ],
-          "limitations": [
-            "Menos intuitivo",
-            "Suporte limitado de software"
-          ]
+          "advantages": ["Perceptualmente uniforme", "Separa a luminosidade da cor"],
+          "limitations": ["Menos intuitivo", "Suporte limitado de software"]
         }
       ],
       "correctionWorkflow": [
@@ -929,14 +878,8 @@
           "answer": "Use 16 bits para edições de cores extensas para evitar banding, 8 bits para ajustes menores ou preparação final da saída."
         }
       ],
-      "relatedTools": [
-        "color-correction-tool",
-        "image-enhancer"
-      ],
-      "relatedPages": [
-        "professional-photo-editing",
-        "color-calibration-guide"
-      ]
+      "relatedTools": ["color-correction-tool", "image-enhancer"],
+      "relatedPages": ["professional-photo-editing", "color-calibration-guide"]
     },
     {
       "slug": "image-compression-techniques",
@@ -1046,10 +989,7 @@
         {
           "strategy": "Carregamento Progressivo",
           "description": "Carregar primeiro a versão de baixa qualidade e aprimorar progressivamente",
-          "benefits": [
-            "Carregamento percebido mais rápido",
-            "Melhor experiência do usuário"
-          ]
+          "benefits": ["Carregamento percebido mais rápido", "Melhor experiência do usuário"]
         },
         {
           "strategy": "Compressão Adaptativa",
@@ -1062,18 +1002,12 @@
         {
           "strategy": "Corte Inteligente (Smart Cropping)",
           "description": "Focar a compressão em regiões importantes da imagem",
-          "benefits": [
-            "Melhor qualidade percebida",
-            "Uso eficiente de recursos"
-          ]
+          "benefits": ["Melhor qualidade percebida", "Uso eficiente de recursos"]
         },
         {
           "strategy": "Seleção de Formato",
           "description": "Escolher o formato ideal com base nas características da imagem",
-          "benefits": [
-            "Melhor eficiência de compressão",
-            "Qualidade aprimorada"
-          ]
+          "benefits": ["Melhor eficiência de compressão", "Qualidade aprimorada"]
         }
       ],
       "technicalMetrics": [
@@ -1102,28 +1036,19 @@
         {
           "application": "Imagens para Web",
           "strategy": "Compressão agressiva com foco na qualidade em áreas importantes",
-          "formats": [
-            "WebP",
-            "JPEG com carregamento progressivo"
-          ],
+          "formats": ["WebP", "JPEG com carregamento progressivo"],
           "targetSize": "Abaixo de 500KB para a maioria das imagens web"
         },
         {
           "application": "Apps Móveis",
           "strategy": "Compressão equilibrada considerando largura de banda e armazenamento",
-          "formats": [
-            "WebP",
-            "HEIC no iOS"
-          ],
+          "formats": ["WebP", "HEIC no iOS"],
           "targetSize": "Otimizado para os recursos do dispositivo"
         },
         {
           "application": "Anexos de E-mail",
           "strategy": "Compressão forte para atender aos limites de tamanho",
-          "formats": [
-            "JPEG",
-            "PNG para gráficos"
-          ],
+          "formats": ["JPEG", "PNG para gráficos"],
           "targetSize": "Abaixo de 5MB no total para a maioria dos provedores de e-mail"
         }
       ],
@@ -1148,14 +1073,8 @@
           "answer": "A compressão sem perdas oferece redução de tamanho sem perda de qualidade, mas as taxas são tipicamente de 2:1 a 5:1, comparadas a 10:1+ para a compressão com perdas."
         }
       ],
-      "relatedTools": [
-        "image-optimizer",
-        "image-compressor"
-      ],
-      "relatedPages": [
-        "web-performance-optimization",
-        "image-format-guide"
-      ]
+      "relatedTools": ["image-optimizer", "image-compressor"],
+      "relatedPages": ["web-performance-optimization", "image-format-guide"]
     },
     {
       "slug": "neural-networks-image-processing",
@@ -1235,37 +1154,25 @@
           "name": "U-Net",
           "type": "CNN Encoder-Decoder",
           "use": "Segmentação de imagem, remoção de ruído, restauração",
-          "advantages": [
-            "Preserva informações espaciais",
-            "Treinamento eficiente"
-          ]
+          "advantages": ["Preserva informações espaciais", "Treinamento eficiente"]
         },
         {
           "name": "ResNet",
           "type": "CNN profunda com conexões de salto (skip connections)",
           "use": "Classificação, extração de características",
-          "advantages": [
-            "Resolve o gradiente vanishing",
-            "Redes muito profundas"
-          ]
+          "advantages": ["Resolve o gradiente vanishing", "Redes muito profundas"]
         },
         {
           "name": "StyleGAN",
           "type": "GAN progressiva",
           "use": "Geração de imagens de alta qualidade, transferência de estilo",
-          "advantages": [
-            "Qualidade excepcional",
-            "Controle de estilo"
-          ]
+          "advantages": ["Qualidade excepcional", "Controle de estilo"]
         },
         {
           "name": "EfficientNet",
           "type": "CNN de escalonamento composto",
           "use": "Classificação de imagem eficiente",
-          "advantages": [
-            "Desempenho ideal",
-            "Eficiente em recursos"
-          ]
+          "advantages": ["Desempenho ideal", "Eficiente em recursos"]
         }
       ],
       "trainingProcess": [
@@ -1290,11 +1197,7 @@
         {
           "phase": "Loop de Treinamento",
           "description": "Otimização iterativa dos parâmetros da rede",
-          "considerations": [
-            "Taxa de aprendizado",
-            "Tamanho do lote (batch size)",
-            "Regularização"
-          ]
+          "considerations": ["Taxa de aprendizado", "Tamanho do lote (batch size)", "Regularização"]
         },
         {
           "phase": "Validação",
@@ -1310,58 +1213,26 @@
         {
           "task": "Super-Resolução",
           "description": "Aumentar a resolução da imagem e a densidade de detalhes",
-          "networks": [
-            "SRCNN",
-            "ESRGAN",
-            "Real-ESRGAN"
-          ],
-          "applications": [
-            "Upscaling de imagem",
-            "Aprimoramento",
-            "Restauração"
-          ]
+          "networks": ["SRCNN", "ESRGAN", "Real-ESRGAN"],
+          "applications": ["Upscaling de imagem", "Aprimoramento", "Restauração"]
         },
         {
           "task": "Remoção de Ruído (Denoising)",
           "description": "Remover ruído preservando os detalhes",
-          "networks": [
-            "DnCNN",
-            "FFDNet",
-            "CBDNet"
-          ],
-          "applications": [
-            "Aprimoramento em baixa luz",
-            "Imagens médicas",
-            "Fotografia"
-          ]
+          "networks": ["DnCNN", "FFDNet", "CBDNet"],
+          "applications": ["Aprimoramento em baixa luz", "Imagens médicas", "Fotografia"]
         },
         {
           "task": "Inpainting",
           "description": "Preenchimento de regiões de imagem ausentes ou danificadas",
-          "networks": [
-            "Context Encoders",
-            "Partial Convolutions",
-            "CoModGAN"
-          ],
-          "applications": [
-            "Restauração de fotos",
-            "Remoção de objetos",
-            "Reparo de danos"
-          ]
+          "networks": ["Context Encoders", "Partial Convolutions", "CoModGAN"],
+          "applications": ["Restauração de fotos", "Remoção de objetos", "Reparo de danos"]
         },
         {
           "task": "Transferência de Estilo (Style Transfer)",
           "description": "Aplicar estilos artísticos às imagens",
-          "networks": [
-            "Neural Style Transfer",
-            "AdaIN",
-            "CycleGAN"
-          ],
-          "applications": [
-            "Geração de arte",
-            "Aplicações de filtro",
-            "Ferramentas criativas"
-          ]
+          "networks": ["Neural Style Transfer", "AdaIN", "CycleGAN"],
+          "applications": ["Geração de arte", "Aplicações de filtro", "Ferramentas criativas"]
         }
       ],
       "technicalConsiderations": [
@@ -1421,14 +1292,8 @@
           "answer": "Sim, com a otimização adequada e seleção de modelo. Arquiteturas eficientes e aceleração de hardware permitem o processamento em tempo real para muitas aplicações."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "neural-network-trainer"
-      ],
-      "relatedPages": [
-        "deep-learning-basics",
-        "computer-vision-applications"
-      ]
+      "relatedTools": ["ai-image-upscaler", "neural-network-trainer"],
+      "relatedPages": ["deep-learning-basics", "computer-vision-applications"]
     },
     {
       "slug": "web-optimization-images",
@@ -1508,11 +1373,7 @@
           "step": 1,
           "name": "Otimização da Fonte",
           "description": "Comece com imagens de fonte de alta qualidade, comprima adequadamente",
-          "tools": [
-            "Adobe Photoshop",
-            "Squoosh",
-            "ImageOptim"
-          ]
+          "tools": ["Adobe Photoshop", "Squoosh", "ImageOptim"]
         },
         {
           "step": 2,
@@ -1528,31 +1389,19 @@
           "step": 3,
           "name": "Preparação Responsiva",
           "description": "Crie vários tamanhos para dispositivos diferentes",
-          "breakpoints": [
-            "Mobile: 320-768px",
-            "Tablet: 768-1024px",
-            "Desktop: 1024px+"
-          ]
+          "breakpoints": ["Mobile: 320-768px", "Tablet: 768-1024px", "Desktop: 1024px+"]
         },
         {
           "step": 4,
           "name": "Implementação",
           "description": "Implementar estratégias de carregamento e otimização",
-          "techniques": [
-            "Lazy loading",
-            "Atributos srcset",
-            "Elemento picture"
-          ]
+          "techniques": ["Lazy loading", "Atributos srcset", "Elemento picture"]
         },
         {
           "step": 5,
           "name": "Monitoramento",
           "description": "Acompanhar o desempenho e a eficácia da otimização",
-          "metrics": [
-            "Tempo de carregamento",
-            "Tamanho do arquivo",
-            "Core Web Vitals"
-          ]
+          "metrics": ["Tempo de carregamento", "Tamanho do arquivo", "Core Web Vitals"]
         }
       ],
       "responsiveImageTechniques": [
@@ -1580,28 +1429,19 @@
           "strategy": "Lazy Loading Nativo",
           "implementation": "Atributo loading=\"lazy\" em elementos img",
           "browserSupport": "Chrome, Firefox, Edge, Safari 15.4+",
-          "benefits": [
-            "Implementação simples",
-            "Otimizado pelo navegador"
-          ]
+          "benefits": ["Implementação simples", "Otimizado pelo navegador"]
         },
         {
           "strategy": "Intersection Observer",
           "implementation": "API JavaScript para detecção de viewport",
           "browserSupport": "Navegadores modernos",
-          "benefits": [
-            "Customizável",
-            "Melhor controle"
-          ]
+          "benefits": ["Customizável", "Melhor controle"]
         },
         {
           "strategy": "Aprimoramento Progressivo",
           "implementation": "Espaços reservados de baixa qualidade com aprimoramento gradual",
           "browserSupport": "Universal",
-          "benefits": [
-            "Melhor desempenho percebido",
-            "Experiência mais suave"
-          ]
+          "benefits": ["Melhor desempenho percebido", "Experiência mais suave"]
         }
       ],
       "performanceMetrics": [
@@ -1636,21 +1476,13 @@
           "tool": "ImageOptim",
           "type": "Desktop",
           "bestFor": "Usuários de Mac, processamento em lote",
-          "features": [
-            "Otimização automática",
-            "Arrastar e soltar",
-            "Múltiplos formatos"
-          ]
+          "features": ["Otimização automática", "Arrastar e soltar", "Múltiplos formatos"]
         },
         {
           "tool": "Cloudinary",
           "type": "Serviço em nuvem",
           "bestFor": "Otimização dinâmica, entrega via CDN",
-          "features": [
-            "Otimização automática",
-            "Transformação em tempo real",
-            "Integração com CDN"
-          ]
+          "features": ["Otimização automática", "Transformação em tempo real", "Integração com CDN"]
         }
       ],
       "bestPractices": [
@@ -1681,14 +1513,8 @@
           "answer": "Não para imagens acima da dobra, que devem ser carregadas imediatamente. Use o lazy loading para imagens que aparecem abaixo da janela de visualização inicial."
         }
       ],
-      "relatedTools": [
-        "image-optimizer",
-        "web-performance-analyzer"
-      ],
-      "relatedPages": [
-        "core-web-vitals-guide",
-        "website-speed-optimization"
-      ]
+      "relatedTools": ["image-optimizer", "web-performance-analyzer"],
+      "relatedPages": ["core-web-vitals-guide", "website-speed-optimization"]
     },
     {
       "slug": "professional-photo-editing-workflows",
@@ -1768,76 +1594,49 @@
           "step": 1,
           "name": "Importar e Organizar",
           "description": "Importar arquivos, aplicar metadados, organizar em pastas",
-          "tools": [
-            "Lightroom",
-            "Bridge",
-            "Capture One"
-          ],
+          "tools": ["Lightroom", "Bridge", "Capture One"],
           "duration": "5-10 minutos por lote"
         },
         {
           "step": 2,
           "name": "Seleção Inicial (Culling)",
           "description": "Revisar e selecionar as melhores imagens, marcar as rejeitadas",
-          "tools": [
-            "Lightroom",
-            "Photo Mechanic"
-          ],
+          "tools": ["Lightroom", "Photo Mechanic"],
           "duration": "1-2 minutos por imagem"
         },
         {
           "step": 3,
           "name": "Desenvolvimento RAW",
           "description": "Exposição, equilíbrio de branco, correções de lente",
-          "tools": [
-            "Lightroom",
-            "Capture One",
-            "Camera Raw"
-          ],
+          "tools": ["Lightroom", "Capture One", "Camera Raw"],
           "duration": "2-5 minutos por imagem"
         },
         {
           "step": 4,
           "name": "Ajustes Globais",
           "description": "Tom, contraste, cor, ajustes de claridade",
-          "tools": [
-            "Lightroom",
-            "Photoshop",
-            "Capture One"
-          ],
+          "tools": ["Lightroom", "Photoshop", "Capture One"],
           "duration": "3-8 minutos por imagem"
         },
         {
           "step": 5,
           "name": "Edição Seletiva",
           "description": "Máscaras, gradientes, ajustes locais",
-          "tools": [
-            "Photoshop",
-            "Lightroom",
-            "Capture One"
-          ],
+          "tools": ["Photoshop", "Lightroom", "Capture One"],
           "duration": "5-15 minutos por imagem"
         },
         {
           "step": 6,
           "name": "Retoque",
           "description": "Remoção de manchas, suavização de pele, detalhamento",
-          "tools": [
-            "Photoshop",
-            "Lightroom",
-            "Software de retoque"
-          ],
+          "tools": ["Photoshop", "Lightroom", "Software de retoque"],
           "duration": "10-30 minutos por imagem"
         },
         {
           "step": 7,
           "name": "Saída Final",
           "description": "Nitidez, configurações de exportação, preparação do arquivo",
-          "tools": [
-            "Lightroom",
-            "Photoshop",
-            "Software de exportação"
-          ],
+          "tools": ["Lightroom", "Photoshop", "Software de exportação"],
           "duration": "2-5 minutos por imagem"
         }
       ],
@@ -1845,64 +1644,39 @@
         {
           "technique": "Máscara de Camada (Layer Masking)",
           "description": "Edição seletiva não destrutiva usando máscaras",
-          "applications": [
-            "Ajustes seletivos",
-            "Composições",
-            "Correções locais"
-          ]
+          "applications": ["Ajustes seletivos", "Composições", "Correções locais"]
         },
         {
           "technique": "Camadas de Ajuste (Adjustment Layers)",
           "description": "Edições não destrutivas usando camadas de ajuste separadas",
-          "applications": [
-            "Gradação de cor (color grading)",
-            "Ajustes de tom",
-            "Efeitos especiais"
-          ]
+          "applications": ["Gradação de cor (color grading)", "Ajustes de tom", "Efeitos especiais"]
         },
         {
           "technique": "Separação de Frequência (Frequency Separation)",
           "description": "Separar textura e tom para controle preciso",
-          "applications": [
-            "Retoque de pele",
-            "Aprimoramento de detalhes",
-            "Redução de ruído"
-          ]
+          "applications": ["Retoque de pele", "Aprimoramento de detalhes", "Redução de ruído"]
         },
         {
           "technique": "Dodge and Burn (Clarear e Escurecer)",
           "description": "Clareamento e escurecimento seletivo de áreas da imagem",
-          "applications": [
-            "Aprimoramento de retrato",
-            "Drama em paisagens",
-            "Contraste local"
-          ]
+          "applications": ["Aprimoramento de retrato", "Drama em paisagens", "Contraste local"]
         }
       ],
       "qualityControl": [
         {
           "check": "Precisão de Cor",
           "method": "Comparar com referências neutras, verificar tons de pele",
-          "tools": [
-            "Monitor calibrado em cor",
-            "Imagens de referência"
-          ]
+          "tools": ["Monitor calibrado em cor", "Imagens de referência"]
         },
         {
           "check": "Qualidade Técnica",
           "method": "Aumentar o zoom para 100%, verificar se há artefatos e ruído",
-          "tools": [
-            "Revisão no nível do pixel",
-            "Análise de ruído"
-          ]
+          "tools": ["Revisão no nível do pixel", "Análise de ruído"]
         },
         {
           "check": "Preparação para Impressão",
           "method": "Prova digital (soft proofing), impressões de teste, validação de perfil de cor",
-          "tools": [
-            "Software de soft proofing",
-            "Impressões de teste"
-          ]
+          "tools": ["Software de soft proofing", "Impressões de teste"]
         }
       ],
       "outputOptimization": [
@@ -1928,32 +1702,17 @@
       "professionalTools": [
         {
           "category": "Processamento RAW",
-          "tools": [
-            "Adobe Lightroom",
-            "Capture One",
-            "DxO PhotoLab",
-            "RAW Power"
-          ],
+          "tools": ["Adobe Lightroom", "Capture One", "DxO PhotoLab", "RAW Power"],
           "selection": "Baseado em preferências de fluxo de trabalho, suporte de câmera e necessidades de recursos"
         },
         {
           "category": "Edição de Pixel",
-          "tools": [
-            "Adobe Photoshop",
-            "Affinity Photo",
-            "Capture One",
-            "ON1"
-          ],
+          "tools": ["Adobe Photoshop", "Affinity Photo", "Capture One", "ON1"],
           "selection": "Baseado em complexidade, necessidades de integração e orçamento"
         },
         {
           "category": "Especializada",
-          "tools": [
-            "DxO Nik Collection",
-            "Topaz Labs",
-            "Skylum",
-            "Luminar"
-          ],
+          "tools": ["DxO Nik Collection", "Topaz Labs", "Skylum", "Luminar"],
           "selection": "Baseado em necessidades específicas de retoque e aprimoramento"
         }
       ],
@@ -1985,14 +1744,8 @@
           "answer": "Use o Lightroom para gerenciamento do fluxo de trabalho e ajustes globais, o Photoshop para retoques complexos e composições. A maioria dos profissionais usa ambos."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "photo-editor"
-      ],
-      "relatedPages": [
-        "color-correction-guide",
-        "photo-retouching-techniques"
-      ]
+      "relatedTools": ["ai-image-upscaler", "photo-editor"],
+      "relatedPages": ["color-correction-guide", "photo-retouching-techniques"]
     },
     {
       "slug": "image-scaling-algorithms",
@@ -2074,45 +1827,24 @@
           "complexity": "Muito Baixa",
           "speed": "Mais Rápido",
           "quality": "Ruim (pixelado)",
-          "bestFor": [
-            "Pixel art",
-            "Prévias rápidas",
-            "Aplicações em tempo real"
-          ],
-          "artifacts": [
-            "Pixelização",
-            "Serrilhado (Aliasing)"
-          ]
+          "bestFor": ["Pixel art", "Prévias rápidas", "Aplicações em tempo real"],
+          "artifacts": ["Pixelização", "Serrilhado (Aliasing)"]
         },
         {
           "algorithm": "Bilinear",
           "complexity": "Baixa",
           "speed": "Rápido",
           "quality": "Regular (suave mas desfocado)",
-          "bestFor": [
-            "Uso geral",
-            "Tempo real",
-            "Restrição de memória"
-          ],
-          "artifacts": [
-            "Desfoque",
-            "Perda de detalhes"
-          ]
+          "bestFor": ["Uso geral", "Tempo real", "Restrição de memória"],
+          "artifacts": ["Desfoque", "Perda de detalhes"]
         },
         {
           "algorithm": "Bicúbica",
           "complexity": "Média",
           "speed": "Médio",
           "quality": "Boa (nítida com alguns artefatos)",
-          "bestFor": [
-            "Fotografias",
-            "Propósito geral",
-            "Impressão de qualidade"
-          ],
-          "artifacts": [
-            "Ringing (Halo)",
-            "Halos de nitidez"
-          ]
+          "bestFor": ["Fotografias", "Propósito geral", "Impressão de qualidade"],
+          "artifacts": ["Ringing (Halo)", "Halos de nitidez"]
         },
         {
           "algorithm": "Lanczos",
@@ -2124,25 +1856,15 @@
             "Trabalho profissional",
             "Aplicações críticas"
           ],
-          "artifacts": [
-            "Ringing menor",
-            "Leve overshoot"
-          ]
+          "artifacts": ["Ringing menor", "Leve overshoot"]
         },
         {
           "algorithm": "IA/Redes Neurais",
           "complexity": "Muito Alta",
           "speed": "Muito Lento",
           "quality": "Excepcional (geração inteligente de detalhes)",
-          "bestFor": [
-            "Upscaling significativo",
-            "Qualidade crítica",
-            "Aprimoramento profissional"
-          ],
-          "artifacts": [
-            "Potenciais detalhes não realistas",
-            "Dependente do estilo"
-          ]
+          "bestFor": ["Upscaling significativo", "Qualidade crítica", "Aprimoramento profissional"],
+          "artifacts": ["Potenciais detalhes não realistas", "Dependente do estilo"]
         }
       ],
       "mathematicalFoundations": [
@@ -2159,11 +1881,7 @@
         {
           "concept": "Splines",
           "description": "Funções polinomiais por partes para interpolação suave",
-          "types": [
-            "Linear",
-            "Cúbica",
-            "B-spline"
-          ]
+          "types": ["Linear", "Cúbica", "B-spline"]
         }
       ],
       "practicalApplications": [
@@ -2282,14 +2000,8 @@
           "answer": "Os métodos de IA se destacam em upscaling significativo, mas podem ser exagerados para pequenos ajustes. Eles também são mais lentos e consomem mais recursos."
         }
       ],
-      "relatedTools": [
-        "ai-image-upscaler",
-        "image-rescaler"
-      ],
-      "relatedPages": [
-        "image-resolution-guide",
-        "interpolation-methods-comparison"
-      ]
+      "relatedTools": ["ai-image-upscaler", "image-rescaler"],
+      "relatedPages": ["image-resolution-guide", "interpolation-methods-comparison"]
     }
   ],
   "meta": {
