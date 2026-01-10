@@ -1,0 +1,758 @@
+{
+  "category": "tools",
+  "pages": [
+    {
+      "slug": "ai-image-upscaler",
+      "title": "Agrandisseur d'images IA",
+      "metaTitle": "Agrandisseur d'images IA - Agrandir les images à 4K sans perte de qualité | MyImageUpscaler",
+      "metaDescription": "Agrandissez les images jusqu'à 8x avec l'IA. Outil gratuit en ligne qui préserve le texte et les logos. Sans filigrane. Parfait pour l'e-commerce, l'impression et les réseaux sociaux.",
+      "h1": "Agrandisseur d'images IA",
+      "intro": "Augmentez la résolution de l'image jusqu'à 8x tout en préservant la netteté. Notre IA ajoute des détails réalistes au lieu de simplement étirer les pixels.",
+      "primaryKeyword": "agrandisseur d'images ia",
+      "secondaryKeywords": [
+        "agrandisseur d'image",
+        "agrandir image ia",
+        "agrandir image en ligne",
+        "agrandisseur image 4k",
+        "agrandisseur d'image",
+        "agrandisseur de photo",
+        "agrandisseur d'image ia"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "tools",
+      "toolName": "Agrandisseur d'images IA",
+      "description": "Transformez des images de faible résolution en visuels de haute qualité. Contrairement au redimensionnement traditionnel qui crée du flou, notre IA reconstruit les détails lors de l'agrandissement.",
+      "features": [
+        {
+          "title": "Agrandissement jusqu'à 8x",
+          "description": "Augmentez les dimensions de l'image de 2x à 8x. Une image de 500px devient 4000px à 8x."
+        },
+        {
+          "title": "Préservation du texte et des logos",
+          "description": "Entraîné spécifiquement pour garder le texte lisible et les logos nets - essentiel pour les images produits et les documents."
+        },
+        {
+          "title": "Traitement par lots",
+          "description": "Traitez jusqu'à 50 images à la fois sur les plans Pro. Traitement individuel sur le niveau gratuit."
+        },
+        {
+          "title": "Sans filigrane",
+          "description": "Toutes les sorties sont propres, même sur le niveau gratuit. Vos images, à votre manière."
+        },
+        {
+          "title": "Formats multiples",
+          "description": "Téléchargez JPEG, PNG ou WebP. Téléchargez dans n'importe quel format avec des paramètres de qualité."
+        },
+        {
+          "title": "Traitement rapide",
+          "description": "La plupart des images sont traitées en 30-60 secondes grâce à l'infrastructure cloud GPU."
+        }
+      ],
+      "technicalSpecs": {
+        "maxInputSize": "64 Mo (5 Mo sur le niveau gratuit)",
+        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "maxUpscale": "8x",
+        "processingTime": "30-60 secondes typiquement",
+        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "qualitySettings": "Qualité JPEG réglable de 1 à 100 %"
+      },
+      "useCases": [
+        {
+          "title": "Photos de produits e-commerce",
+          "description": "Répondez aux exigences d'images des places de marché. Amazon nécessite un minimum de 1000x1000px, eBay recommande 1600px.",
+          "example": "Agrandissez une image fournisseur de 400x400px à 1600x1600px pour votre annonce."
+        },
+        {
+          "title": "Préparation pour l'impression",
+          "description": "L'impression nécessite 300 DPI. Une impression 8x10 pouces nécessite 2400x3000 pixels.",
+          "example": "Transformez une image web de 600x750px en un fichier prêt pour l'impression de 2400x3000px."
+        },
+        {
+          "title": "Réseaux sociaux",
+          "description": "Instagram recommande 1080x1080px pour les publications, 1080x1920px pour les stories.",
+          "example": "Agrandissez de vieilles photos avant de les publier - elles auront une apparence plus nette même après compression."
+        },
+        {
+          "title": "Images hero de sites web",
+          "description": "Les images hero pleine largeur nécessitent une largeur de 1920px+ pour les écrans retina.",
+          "example": "Agrandissez une photo de stock à une largeur de 3840px pour un affichage net sur les moniteurs 4K."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Génération réelle de détails",
+          "description": "L'IA ajoute des détails plausibles plutôt que de simplement interpoler les pixels. Les bords restent nets, les textures semblent naturelles.",
+          "metric": "Réseau neuronal entraîné sur des millions de paires d'images"
+        },
+        {
+          "title": "Préserve ce qui compte",
+          "description": "Le texte, les logos et les fins détails restent nets. La plupart des agrandisseurs floutent ces éléments.",
+          "metric": "Entraînement spécialisé pour la préservation du texte"
+        },
+        {
+          "title": "Aucune compétence technique nécessaire",
+          "description": "Téléchargez, sélectionnez l'échelle, téléchargez. Pas de Photoshop ni de connaissances techniques requises.",
+          "metric": "Processus en 3 étapes"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Téléchargez votre image",
+          "description": "Glissez-déposez ou cliquez pour parcourir. Supporte JPEG, PNG, WebP jusqu'à 64 Mo."
+        },
+        {
+          "step": 2,
+          "title": "Sélectionnez le facteur d'échelle",
+          "description": "Choisissez 2x, 4x ou 8x. L'aperçu montre les dimensions de sortie estimées."
+        },
+        {
+          "step": 3,
+          "title": "Téléchargez le résultat",
+          "description": "Prévisualisez votre image agrandie, puis téléchargez dans votre format préféré."
+        }
+      ],
+      "commonQuestions": [
+        {
+          "question": "En quoi est-ce différent de la Taille d'image de Photoshop ?",
+          "answer": "La mise à l'échelle bicubique de Photoshop interpole simplement entre les pixels, créant du flou. Notre IA génère réellement de nouveaux détails basés sur des modèles appris de millions d'images. Le résultat est des bords plus nets et des textures plus réalistes."
+        },
+        {
+          "question": "Quel est le maximum que je peux agrandir ?",
+          "answer": "8x est le maximum en une seule passe. Vous pouvez télécharger le résultat 8x et agrandir à nouveau pour une résolution encore plus élevée, bien que la qualité puisse se dégrader avec un agrandissement extrême."
+        },
+        {
+          "question": "L'agrandissement corrigera-t-il une photo floue ?",
+          "answer": "L'agrandissement augmente la résolution mais n'éliminera pas le flou existant. Pour les photos floues, utilisez d'abord notre améliorateur de photo pour affiner, puis agrandissez. La combinaison fonctionne bien."
+        },
+        {
+          "question": "Combien d'images puis-je agrandir gratuitement ?",
+          "answer": "10 images par mois sur le niveau gratuit, sans filigrane. Les plans payants commencent à 9 $/mois pour des limites plus élevées."
+        },
+        {
+          "question": "Mes images sont-elles stockées sur vos serveurs ?",
+          "answer": "Les images sont automatiquement supprimées dans l'heure qui suit le traitement. Nous n'utilisons pas vos images pour l'entraînement ni ne les partageons avec des tiers."
+        }
+      ],
+      "faq": [
+        {
+          "question": "L'agrandisseur d'images IA est-il gratuit ?",
+          "answer": "Oui, 10 crédits gratuits par mois sans filigrane. Chaque agrandissement utilise 1 crédit. Les plans payants commencent à 9 $/mois pour plus de crédits."
+        },
+        {
+          "question": "Quels formats sont supportés ?",
+          "answer": "Téléchargez JPEG, PNG ou WebP. Téléchargez dans n'importe lequel de ces formats. La taille de fichier maximale est de 64 Mo (5 Mo sur le niveau gratuit)."
+        },
+        {
+          "question": "Combien de temps prend l'agrandissement ?",
+          "answer": "30-60 secondes pour la plupart des images. Les images plus grandes ou l'agrandissement 8x peuvent prendre un peu plus de temps."
+        },
+        {
+          "question": "Puis-je agrandir des images pour un usage commercial ?",
+          "answer": "Oui, vous conservez tous les droits sur vos images agrandies. Utilisez-les pour n'importe quel but - personnel, commercial, impression ou web."
+        }
+      ],
+      "relatedTools": ["ai-photo-enhancer"],
+      "relatedGuides": ["print-size-guide", "ecommerce-image-requirements"],
+      "relatedBlogPosts": [
+        "image-resolution-for-printing-complete-guide",
+        "social-media-image-sizes-guide-2025",
+        "ai-image-enhancement-ecommerce-guide",
+        "how-to-upscale-images-without-losing-quality",
+        "stable-diffusion-upscaling-complete-guide",
+        "upscale-midjourney-images-4k-8k-print-guide"
+      ],
+      "ctaText": "Agrandir une image gratuitement",
+      "ctaUrl": "/?signup=1"
+    },
+    {
+      "slug": "ai-photo-enhancer",
+      "title": "Améliorateur de photos IA",
+      "metaTitle": "Améliorateur de photos IA - Corriger les photos floues, restaurer les vieilles images | MyImageUpscaler",
+      "metaDescription": "Améliorez la qualité des photos avec l'IA. Corrigez le flou, améliorez les couleurs, réduisez le bruit, restaurez de vieilles photos. Outil en ligne gratuit avec résultats d'apparence naturelle.",
+      "h1": "Améliorateur de photos IA",
+      "intro": "Améliorez la qualité des photo sans changer les dimensions. Corrigez le flou, améliorez les couleurs, réduisez le bruit et restaurez de vieilles ou endommagées photos.",
+      "primaryKeyword": "améliorateur de photos ia",
+      "secondaryKeywords": [
+        "améliorateur de photo",
+        "amélioration ia photo",
+        "corriger photo floue",
+        "améliorateur de qualité photo",
+        "améliorateur d'image",
+        "améliorateur d'image",
+        "améliorateur de netteté d'image"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "tools",
+      "toolName": "Améliorateur de photos IA",
+      "description": "Améliorez la qualité des photo tout en gardant la même résolution. Idéal pour corriger les problèmes avant l'agrandissement, ou quand vous avez juste besoin d'une meilleure qualité à la taille actuelle.",
+      "features": [
+        {
+          "title": "Réduction de flou et affinement",
+          "description": "Réduisez le flou de mouvement et le manque de netteté. Fonctionne mieux sur les images modérément floues - le flou sévère a des limites physiques."
+        },
+        {
+          "title": "Réduction du bruit",
+          "description": "Éliminez le grain des photos à faible luminosité ou à ISO élevée tout en préservant les détails."
+        },
+        {
+          "title": "Correction des couleurs",
+          "description": "Ajustement automatique de la balance des blancs, de l'exposition et du contraste. Corrige les dominantes de couleur de l'éclairage intérieur."
+        },
+        {
+          "title": "Amélioration des visages",
+          "description": "Détectez et améliorez automatiquement les visages avec une gestion appropriée des tons de peau."
+        },
+        {
+          "title": "Restauration de vieilles photos",
+          "description": "Réduisez les rayures, corrigez la décoloration et restaurez les couleurs des photos vintage."
+        },
+        {
+          "title": "Aperçu avant/après",
+          "description": "Comparez les versions originales et améliorées côte à côte avant de télécharger."
+        }
+      ],
+      "technicalSpecs": {
+        "maxInputSize": "64 Mo (5 Mo sur le niveau gratuit)",
+        "supportedFormats": ["JPEG", "PNG", "WebP"],
+        "processingTime": "20-45 secondes typiquement",
+        "outputFormats": ["JPEG", "PNG", "WebP"],
+        "preservesExif": "Optionnel - garder ou supprimer les métadonnées"
+      },
+      "useCases": [
+        {
+          "title": "Restauration de vieilles photos",
+          "description": "Restaurez des photos de famille numérisées des années 60-90. Corrigez la décoloration, les rayures et les changements de couleur.",
+          "example": "Restaurez la photo de mariage des grands-parents pour un cadeau d'anniversaire."
+        },
+        {
+          "title": "Corrections de photos à faible luminosité",
+          "description": "Réduisez le bruit des photos de téléphone prises dans des restaurants tamisés ou des événements de soirée.",
+          "example": "Nettoyez des photos de fête granulées du mode nuit de votre téléphone."
+        },
+        {
+          "title": "Amélioration de portraits",
+          "description": "Améliorez les portraits avec détection de visage pour des tons de peau naturels et de la netteté.",
+          "example": "Améliorez une photo de profil LinkedIn prise avec un appareil photo."
+        },
+        {
+          "title": "Préparation avant agrandissement",
+          "description": "Améliorez la qualité avant l'agrandissement pour de meilleurs résultats. Corrigez les problèmes à la taille originale d'abord.",
+          "example": "Affinez une photo floue, puis agrandissez-la 4x pour l'impression."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Résultats naturels",
+          "description": "Évite l'apparence 'HDR' surtraitée. Les améliorations semblent provenir d'un meilleur appareil photo, pas d'un filtre.",
+          "metric": "Entraîné sur la photographie professionnelle"
+        },
+        {
+          "title": "Détection automatique",
+          "description": "L'IA identifie ce qui ne va pas - flou, bruit, problèmes de couleur - et applique les corrections appropriées.",
+          "metric": "Analyse multi-modèle"
+        },
+        {
+          "title": "Préserve le caractère",
+          "description": "Les vieilles photos gardent leur aspect vintage. Nous réduisons les dommages, pas le caractère.",
+          "metric": "Amélioration contextuelle"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Téléchargez votre photo",
+          "description": "Glissez-déposez ou parcourez. Fonctionne avec les photos de n'importe quelle époque ou source."
+        },
+        {
+          "step": 2,
+          "title": "Analyse IA",
+          "description": "Notre IA scanne pour le flou, le bruit, les problèmes de couleur et les dommages. Différents problèmes obtiennent différents traitements."
+        },
+        {
+          "step": 3,
+          "title": "Examinez et téléchargez",
+          "description": "Utilisez le curseur avant/après pour comparer, puis téléchargez votre photo améliorée."
+        }
+      ],
+      "commonQuestions": [
+        {
+          "question": "Pouvez-vous corriger des photos sévèrement floues ?",
+          "answer": "Nous pouvons améliorer considérablement les photos modérément floues. Le flou sévère (comme un fort flou de mouvement ou complètement hors focus) a des limites physiques - le détail original n'a tout simplement pas été capturé. Vous verrez une amélioration, mais n'attendez pas la perfection."
+        },
+        {
+          "question": "Quelle est la différence entre ceci et l'agrandisseur ?",
+          "answer": "L'améliorateur de photos améliore la qualité à la même résolution (affinement, couleur, bruit). L'agrandisseur augmente les dimensions. Pour de meilleurs résultats sur les images de faible qualité : améliorez d'abord, puis agrandissez."
+        },
+        {
+          "question": "Mes photos améliorées auront-elles un air surtraité ?",
+          "answer": "Non. Nous nous entraînons spécifiquement à éviter l'apparence 'HDR' artificielle ou suraffinée. Les résultats semblent qu'un meilleur appareil photo a été utilisé, pas comme si un filtre a été appliqué."
+        },
+        {
+          "question": "Pouvez-vous restaurer de très vieilles ou endommagées photos ?",
+          "answer": "Oui, bien que les résultats varient avec la gravité des dommages. Nous pouvons réduire (pas éliminer) les rayures, corriger la décoloration et restaurer les couleurs. Les dommages sévères comme les sections déchirées ne peuvent pas être reconstruits."
+        },
+        {
+          "question": "L'amélioration fonctionne-t-elle sur les captures d'écran ?",
+          "answer": "Oui, particulièrement pour la netteté du texte et la réduction du bruit. Pour les captures d'écran avec du texte, cet outil peut améliorer la lisibilité."
+        }
+      ],
+      "faq": [
+        {
+          "question": "L'améliorateur de photos est-il gratuit ?",
+          "answer": "Oui, 10 améliorations gratuites par mois sans filigrane. Les plans payants offrent plus de crédits."
+        },
+        {
+          "question": "Quels types de photos fonctionnent le mieux ?",
+          "answer": "Les photos avec des problèmes modérés voient la meilleure amélioration. Les photos légèrement floues, bruyantes ou décolorées s'améliorent bien. Les photos sévèrement endommagées s'amélioreront mais ont des limites."
+        },
+        {
+          "question": "Puis-je améliorer et agrandir ensemble ?",
+          "answer": "Oui, mais exécutez-les séparément pour de meilleurs résultats. Améliorez d'abord pour corriger les problèmes de qualité, puis agrandissez l'image améliorée."
+        },
+        {
+          "question": "Cela fonctionne-t-il sur les photos de téléphone ?",
+          "answer": "Absolument. Les photos de téléphone ont souvent du bruit dû aux petits capteurs et peuvent bénéficier considérablement de l'amélioration."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["photo-restoration-tips", "before-after-workflow"],
+      "relatedBlogPosts": [
+        "restore-old-photos-ai-enhancement-guide",
+        "fix-blurry-photos-ai-methods-guide",
+        "real-estate-photo-enhancement-guide",
+        "how-to-upscale-images-without-losing-quality"
+      ],
+      "ctaText": "Améliorer une photo gratuitement",
+      "ctaUrl": "/?signup=1"
+    },
+    {
+      "slug": "ai-background-remover",
+      "title": "Suppresseur d'arrière-plan IA",
+      "metaTitle": "Suppresseur d'arrière-plan IA - Supprimez les arrière-plans d'images instantanément | MyImageUpscaler",
+      "metaDescription": "Supprimez les arrière-plans des images instantanément avec l'IA. Outil en ligne gratuit pour les photos de produits, portraits et graphiques. Sans filigrane, sortie PNG transparente.",
+      "h1": "Suppresseur d'arrière-plan IA",
+      "intro": "Supprimez les arrière-plans de n'importe quelle image en quelques secondes. Notre IA détecte précisément les sujets et crée des découpes propres avec des arrière-plans transparents.",
+      "primaryKeyword": "suppresseur d'arrière-plan ia",
+      "secondaryKeywords": [
+        "supprimer arrière-plan",
+        "suppresseur d'arrière-plan",
+        "supprimer bg",
+        "suppresseur bg",
+        "arrière-plan transparent",
+        "découper image"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "tools",
+      "isInteractive": true,
+      "toolComponent": "BackgroundRemover",
+      "maxFileSizeMB": 10,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "toolName": "Suppresseur d'arrière-plan IA",
+      "description": "Transformez n'importe quelle image avec une suppression d'arrière-plan professionnelle. Notre IA utilise une segmentation avancée pour détecter les sujets avec une précision parfaite au pixel, gérant les bords complexes comme les cheveux et la fourrure que les outils traditionnels peinent à gérer.",
+      "features": [
+        {
+          "title": "Détection IA instantanée",
+          "description": "Des réseaux neuronaux avancés identifient automatiquement les sujets. Aucune sélection manuelle ou tracé requis."
+        },
+        {
+          "title": "Détection des cheveux et bords fins",
+          "description": "L'IA gère les bords complexes comme les cheveux, la fourrure et les objets transparents que les outils traditionnels manquent."
+        },
+        {
+          "title": "Sortie PNG transparente",
+          "description": "Téléchargez des images avec des arrière-plans transparents prêtes pour n'importe quel projet de conception ou plateforme."
+        },
+        {
+          "title": "Traitement par lots",
+          "description": "Supprimez les arrière-plans de plusieurs images à la fois. Parfait pour les catalogues e-commerce et la photographie de produits."
+        },
+        {
+          "title": "Sans filigrane",
+          "description": "Toutes les sorties sont propres et prêtes à l'emploi, même sur le niveau gratuit."
+        },
+        {
+          "title": "Traitement basé sur le navigateur",
+          "description": "Les images sont traitées localement dans votre navigateur pour la confidentialité. Aucun téléchargement sur des serveurs externes."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Photos de produits e-commerce",
+          "description": "Créez des images de produits professionnelles avec des arrière-plans blancs ou transparents pour Amazon, eBay, Etsy et Shopify.",
+          "example": "Supprimez les arrière-plans occupés des prises de vue produits et remplacez avec du blanc pur pour la conformité des places de marché."
+        },
+        {
+          "title": "Édition de portraits et photos de profil",
+          "description": "Créez des photos de profil professionnelles en supprimant les arrière-plans distrayants des portraits.",
+          "example": "Transformez une photo décontractée en une photo de profil professionnelle prête pour LinkedIn."
+        },
+        {
+          "title": "Conception graphique",
+          "description": "Extrayez des sujets pour une utilisation dans des affiches, des graphiques de réseaux sociaux, des supports marketing et des présentations.",
+          "example": "Découpez une personne d'une photo pour la placer dans un arrière-plan conçu sur mesure."
+        },
+        {
+          "title": "Compositage photo",
+          "description": "Combinez des sujets de différentes photos ou placez-les dans de nouvelles scènes.",
+          "example": "Extrayez un produit et placez-le dans un cadre de vie pour les campagnes marketing."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Bords parfaits au pixel près",
+          "description": "L'IA produit des découpes propres sans halos ni bords rugueux qui affligent les outils de sélection manuels.",
+          "metric": "Modèle de segmentation avancé"
+        },
+        {
+          "title": "Gère les sujets complexes",
+          "description": "Les cheveux, la fourrure, les objets transparents et les détails complexes sont préservés avec une précision remarquable.",
+          "metric": "Entraîné sur des millions d'images"
+        },
+        {
+          "title": "Traitement prioritaire de la confidentialité",
+          "description": "Les images sont traitées dans votre navigateur en utilisant WebAssembly. Vos photos ne quittent jamais votre appareil.",
+          "metric": "Traitement 100 % côté client"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Téléchargez votre image",
+          "description": "Glissez-déposez ou cliquez pour parcourir. Supporte les formats JPEG, PNG et WebP."
+        },
+        {
+          "step": 2,
+          "title": "L'IA traite localement",
+          "description": "Notre modèle IA fonctionne dans votre navigateur, détectant et isolant le sujet avec précision."
+        },
+        {
+          "step": 3,
+          "title": "Téléchargez le résultat",
+          "description": "Prévisualisez votre image avec un arrière-plan transparent et téléchargez en tant que PNG."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Le suppresseur d'arrière-plan est-il gratuit ?",
+          "answer": "Oui, supprimez les arrière-plans des images gratuitement sans filigrane. L'outil fonctionne entièrement dans votre navigateur sans limites d'utilisation."
+        },
+        {
+          "question": "Comment fonctionne le traitement local ?",
+          "answer": "Le modèle IA fonctionne directement dans votre navigateur web en utilisant la technologie WebAssembly. Vos images sont traitées sur votre appareil et ne sont jamais téléchargées sur nos serveurs, garantissant une confidentialité complète."
+        },
+        {
+          "question": "Quels formats de sortie sont disponibles ?",
+          "answer": "Les images sont exportées sous forme de fichiers PNG avec des arrière-plans transparents. PNG préserve la transparence pour une utilisation dans les logiciels de conception, les sites web et les matériaux d'impression."
+        },
+        {
+          "question": "Peut-il gérer les cheveux et la fourrure ?",
+          "answer": "Oui, notre IA est spécifiquement entraînée pour gérer les fins détails comme les cheveux, la fourrure et les objets semi-transparents. Elle produit des bords propres sans l'effet de halo courant dans les outils traditionnels."
+        },
+        {
+          "question": "Y a-t-il une limite de taille de fichier ?",
+          "answer": "Puisque le traitement se produit dans votre navigateur, la limite dépend de la mémoire de votre appareil. La plupart des appareils gèrent les images jusqu'à 4096x4096 pixels en douceur."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": [],
+      "ctaText": "Supprimer l'arrière-plan gratuitement",
+      "ctaUrl": "/tools/ai-background-remover"
+    },
+    {
+      "slug": "remove-bg",
+      "title": "Supprimer BG - Suppresseur d'arrière-plan rapide",
+      "metaTitle": "Supprimer BG en ligne gratuitement - Outil de suppression d'arrière-plan instantané",
+      "metaDescription": "Supprimez BG de n'importe quelle photo en quelques secondes. Outil en ligne gratuit pour supprimer instantanément les arrière-plans. Aucune inscription requise, fonctionne dans votre navigateur.",
+      "h1": "Supprimer BG instantanément",
+      "intro": "Supprimez BG des photos en un clic. Notre outil alimenté par l'IA détecte instantanément les sujets et supprime les arrière-plans, vous donnant des images transparentes propres.",
+      "primaryKeyword": "supprimer bg",
+      "secondaryKeywords": [
+        "supprimer bg en ligne",
+        "supprimer bg gratuitement",
+        "suppresseur bg",
+        "supprimer arrière-plan en ligne",
+        "gomme d'arrière-plan"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "tools",
+      "isInteractive": true,
+      "toolComponent": "BackgroundRemover",
+      "maxFileSizeMB": 10,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "toolName": "Outil Supprimer BG",
+      "description": "Le moyen le plus rapide de supprimer BG de n'importe quelle image. Téléchargez votre photo et obtenez un arrière-plan transparent en quelques secondes. Parfait pour les modifications rapides et le traitement par lots.",
+      "features": [
+        {
+          "title": "Suppression de BG en un clic",
+          "description": "Téléchargez et supprimez instantanément l'arrière-plan. Aucune sélection manuelle nécessaire."
+        },
+        {
+          "title": "Détection intelligente des bords",
+          "description": "L'IA détecte automatiquement les bords, y compris les cheveux et les fins détails."
+        },
+        {
+          "title": "Téléchargement instantané",
+          "description": "Obtenez votre PNG transparent immédiatement après le traitement."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Modifications rapides pour les réseaux sociaux",
+          "description": "Supprimez les arrière-plans des photos pour Instagram, TikTok et d'autres plateformes sociales.",
+          "example": "Créez des autocollants transparents et des photos de profil en quelques secondes."
+        },
+        {
+          "title": "Photographie de produits",
+          "description": "Nettoyez les photos de produits pour les boutiques en ligne et les places de marché.",
+          "example": "Supprimez les arrière-plans encombrés des prises de vue produits."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Ultra-rapide",
+          "description": "Supprimez les arrière-plans en moins de 5 secondes avec le traitement IA.",
+          "metric": "< 5 secondes"
+        },
+        {
+          "title": "Aucun compte nécessaire",
+          "description": "Commencez à supprimer les arrière-plans immédiatement sans inscription.",
+          "metric": "Zéro friction"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Télécharger l'image",
+          "description": "Déposez votre image ou cliquez pour télécharger."
+        },
+        {
+          "step": 2,
+          "title": "Suppression automatique de BG",
+          "description": "L'IA supprime automatiquement l'arrière-plan."
+        },
+        {
+          "step": 3,
+          "title": "Télécharger",
+          "description": "Sauvegardez votre PNG transparent."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Supprimer BG est-il gratuit ?",
+          "answer": "Oui, entièrement gratuit sans filigrane. Traitez un nombre illimité d'images dans votre navigateur."
+        },
+        {
+          "question": "Dois-je créer un compte ?",
+          "answer": "Aucun compte requis. Téléchargez simplement et supprimez les arrière-plans instantanément."
+        },
+        {
+          "question": "Quels types de fichiers sont supportés ?",
+          "answer": "Images JPEG, PNG et WebP jusqu'à 10 Mo."
+        }
+      ],
+      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedGuides": [],
+      "ctaText": "Supprimer BG maintenant",
+      "ctaUrl": "/tools/remove-bg"
+    },
+    {
+      "slug": "transparent-background-maker",
+      "title": "Créateur d'arrière-plan transparent",
+      "metaTitle": "Créateur d'arrière-plan transparent - Créer un PNG avec un arrière-plan transparent",
+      "metaDescription": "Créez des arrière-plans transparents pour n'importe quelle image. Outil en ligne gratuit pour créer des images PNG avec des arrière-plans transparents pour les logos, graphiques et photos.",
+      "h1": "Créateur d'arrière-plan transparent",
+      "intro": "Créez des arrière-plans transparents pour n'importe quelle image instantanément. Parfait pour les logos, les photos de produits et les graphiques qui doivent se superposer à différents arrière-plans.",
+      "primaryKeyword": "créateur d'arrière-plan transparent",
+      "secondaryKeywords": [
+        "rendre l'arrière-plan transparent",
+        "arrière-plan transparent",
+        "créateur png transparent",
+        "arrière-plan clair",
+        "créateur d'image transparente"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "tools",
+      "isInteractive": true,
+      "toolComponent": "BackgroundRemover",
+      "maxFileSizeMB": 10,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "toolName": "Créateur d'arrière-plan transparent",
+      "description": "Transformez n'importe quelle image en un PNG transparent. Notre IA supprime l'arrière-plan et crée des images transparentes propres prêtes à être utilisées dans des designs, des sites web et des présentations.",
+      "features": [
+        {
+          "title": "PNG avec transparence",
+          "description": "Sortie de fichiers PNG de haute qualité avec une transparence complète du canal alpha."
+        },
+        {
+          "title": "Parfait pour les logos",
+          "description": "Créez des versions transparentes de logos et graphiques pour n'importe quel arrière-plan."
+        },
+        {
+          "title": "Bords propres",
+          "description": "L'IA produit des bords lisses et professionnels sans halos."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Transparence de logo",
+          "description": "Convertissez les logos en PNG transparents pour une utilisation sur les sites web et les supports marketing.",
+          "example": "Faites fonctionner votre logo sur n'importe quel arrière-plan coloré."
+        },
+        {
+          "title": "Conception graphique",
+          "description": "Créez des actifs transparents pour des projets de conception et des compositions.",
+          "example": "Extrayez des éléments pour une utilisation dans Photoshop, Canva ou Figma."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Qualité professionnelle",
+          "description": "PNG transparents prêts pour l'export avec des canaux alpha propres.",
+          "metric": "Sortie PNG 32 bits"
+        },
+        {
+          "title": "Préserve les détails",
+          "description": "Les formes complexes et les fins détails sont préservés avec précision.",
+          "metric": "Bords parfaits au pixel près"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Téléchargez votre image",
+          "description": "Téléchargez n'importe quelle image avec un arrière-plan que vous voulez supprimer."
+        },
+        {
+          "step": 2,
+          "title": "L'IA crée la transparence",
+          "description": "Notre IA détecte le sujet et rend l'arrière-plan transparent."
+        },
+        {
+          "step": 3,
+          "title": "Téléchargez le PNG transparent",
+          "description": "Obtenez votre image avec un arrière-plan transparent sous forme de fichier PNG."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quel est le format de sortie ?",
+          "answer": "Toutes les images sont exportées sous forme de fichiers PNG qui supportent la transparence. C'est le format standard pour les images transparentes."
+        },
+        {
+          "question": "Puis-je rendre un logo transparent ?",
+          "answer": "Oui, téléchargez votre logo et l'outil supprimera l'arrière-plan, ne laissant que le logo avec transparence."
+        },
+        {
+          "question": "Cela fonctionnera-t-il avec des formes complexes ?",
+          "answer": "Oui, l'IA gère les formes complexes, les cheveux et les fins détails tout en créant des bords transparents propres."
+        }
+      ],
+      "relatedTools": ["ai-background-remover", "remove-bg"],
+      "relatedGuides": [],
+      "ctaText": "Rendre transparent",
+      "ctaUrl": "/tools/transparent-background-maker"
+    },
+    {
+      "slug": "image-cutout-tool",
+      "title": "Outil de découpage d'image - Découper des objets des photos",
+      "metaTitle": "Outil de découpage d'image - Découper n'importe quel objet des photos gratuitement",
+      "metaDescription": "Découpez des objets et des personnes des photos instantanément. Outil de découpage alimenté par l'IA gratuit pour des sélections précises. Aucune compétence Photoshop requise.",
+      "h1": "Outil de découpage d'image",
+      "intro": "Découpez n'importe quoi de vos photos avec précision. Notre IA détecte et extrait automatiquement les sujets, personnes, produits et objets de n'importe quelle image.",
+      "primaryKeyword": "outil de découpage d'image",
+      "secondaryKeywords": [
+        "découper image",
+        "découpage photo",
+        "créateur de découpage",
+        "extraire objet de l'image",
+        "découper personne de la photo"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "tools",
+      "isInteractive": true,
+      "toolComponent": "BackgroundRemover",
+      "maxFileSizeMB": 10,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "toolName": "Outil de découpage d'image",
+      "description": "Découpes d'image professionnelles sans Photoshop. Outil alimenté par l'IA qui découpe précisément les sujets des photos, gérant automatiquement les bords complexes comme les cheveux et la fourrure.",
+      "features": [
+        {
+          "title": "Découpes IA de précision",
+          "description": "L'IA avancée crée des découpes parfaites au pixel près de n'importe quel sujet."
+        },
+        {
+          "title": "Détection de cheveux et fourrure",
+          "description": "Gère les découpes les plus difficiles, y compris les cheveux et la fourrure animale."
+        },
+        {
+          "title": "Aucune compétence requise",
+          "description": "Obtenez des découpes de qualité Photoshop sans aucun travail manuel."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Découper des personnes",
+          "description": "Extrayez des personnes des photos pour des composites, des collages et des designs.",
+          "example": "Découpez une personne pour la placer sur un arrière-plan différent."
+        },
+        {
+          "title": "Découpes de produits",
+          "description": "Créez des découpes de produits propres pour l'e-commerce et les catalogues.",
+          "example": "Extrayez des produits de photos de style de vie pour des prises de vue sur fond blanc."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Qualité Photoshop",
+          "description": "Découpes de qualité professionnelle qui rivalisent avec le travail manuel Photoshop.",
+          "metric": "Précision alimentée par l'IA"
+        },
+        {
+          "title": "Résultats instantanés",
+          "description": "Obtenez des découpes parfaites en quelques secondes au lieu d'heures.",
+          "metric": "< 10 secondes"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Télécharger la photo",
+          "description": "Téléchargez l'image contenant le sujet que vous voulez découper."
+        },
+        {
+          "step": 2,
+          "title": "L'IA découpe le sujet",
+          "description": "Notre IA identifie et découpe précisément le sujet principal."
+        },
+        {
+          "step": 3,
+          "title": "Télécharger la découpe",
+          "description": "Téléchargez votre découpe en tant que PNG transparent."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Puis-je découper plusieurs objets ?",
+          "answer": "L'outil détecte et découpe automatiquement le sujet principal de votre image. Pour plusieurs objets, traitez chacun séparément."
+        },
+        {
+          "question": "Quelle est la précision des découpes ?",
+          "answer": "Notre IA produit des découpes hautement précises, gérant même les bords difficiles comme les cheveux, la fourrure et les objets semi-transparents."
+        },
+        {
+          "question": "Est-ce mieux que Photoshop ?",
+          "answer": "Pour la plupart des tâches de découpage, notre IA produit des résultats comparables au travail manuel Photoshop mais en quelques secondes au lieu de minutes ou d'heures."
+        }
+      ],
+      "relatedTools": ["ai-background-remover", "transparent-background-maker"],
+      "relatedGuides": [],
+      "ctaText": "Découper maintenant",
+      "ctaUrl": "/tools/image-cutout-tool"
+    }
+  ],
+  "meta": {
+    "totalPages": 6,
+    "lastUpdated": "2026-01-06T00:00:00Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "page": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Abonnementplan, der zu Ihren Bedürfnissen passt. Erhalten Sie monatliche Guthaben mit automatischer Übertragung."
+  },
+  "subscription": {
+    "title": "Wählen Sie Ihren Plan",
+    "subtitle": "Erhalten Sie jeden Monat Guthaben mit unseren Abonnementplänen. Jederzeit kündbar."
+  },
+  "currentBalance": {
+    "title": "Ihr aktuelles Guthaben",
+    "credits": "Guthaben",
+    "activeSubscription": "Aktives Abonnement"
+  },
+  "scheduledChange": {
+    "title": "Geplante Planänderung",
+    "cancel": "Abbrechen",
+    "on": "am"
+  },
+  "configurationWarning": "Stripe-Preis-IDs sind nicht konfiguriert. Fügen Sie sie Ihrer .env-Datei hinzu, um Käufe zu aktivieren.",
+  "creditPacks": {
+    "title": "Guthaben ohne Abonnement benötigt?",
+    "subtitle": "Einmalige Guthaben-Pakete, die niemals verfallen. Perfekt für gelegentliche Projekte.",
+    "valueComparison": "Wertvergleich:",
+    "valueComparisonText": "Abonnements bieten 11-58% günstigere Guthaben für regelmäßige Nutzer",
+    "comparePlans": "Abonnementpläne vergleichen"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "creditsUsedFor": {
+      "question": "Wofür werden Guthaben verwendet?",
+      "answer": "Guthaben werden für Bildverarbeitungsaktionen verwendet. Jedes verarbeitete Bild verbraucht eine bestimmte Anzahl an Guthaben, basierend auf dem Upscaling-Faktor und den verwendeten Funktionen."
+    },
+    "creditsExpire": {
+      "question": "Verfallen Guthaben?",
+      "answer": "Abonnement-Guthaben werden monatlich bis zum maximalen Limit Ihres Plans übertragen, solange Ihr Abonnement aktiv ist."
+    },
+    "batchProcessing": {
+      "question": "Was ist Batch-Verarbeitung?",
+      "answer": "Die Batch-Verarbeitung ermöglicht Ihnen, mehrere Bilder gleichzeitig hochzuladen und zu verarbeiten. Kostenlose Nutzer können 1 Bild gleichzeitig verarbeiten, während kostenpflichtige Pläne die Batch-Verarbeitung von bis zu 10, 50 oder 500 Bildern gleichzeitig unterstützen, je nach Plan."
+    },
+    "cancelSubscription": {
+      "question": "Kann ich mein Abonnement jederzeit kündigen?",
+      "answer": "Ja! Sie können Ihr Abonnement jederzeit kündigen. Sie haben bis zum Ende Ihres Abrechnungszeitraums weiterhin Zugriff, und alle verbleibenden Guthaben verbleiben in Ihrem Konto."
+    },
+    "paymentMethods": {
+      "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+      "answer": "Wir akzeptieren alle gängigen Kreditkarten (Visa, Mastercard, American Express) und verschiedene andere Zahlungsmethoden über Stripe."
+    },
+    "freePlan": {
+      "question": "Gibt es einen kostenlosen Plan?",
+      "answer": "Ja! Kostenlose Nutzer erhalten anfängliche Guthaben, um den Service zu testen. However erfordert die Batch-Verarbeitung und erweiterte Funktionen ein kostenpflichtiges Abonnement. Kostenlose Nutzer können ein Bild gleichzeitig verarbeiten."
+    }
+  },
+  "customPlan": {
+    "title": "Benötigen Sie einen benutzerdefinierten Plan?",
+    "description": "Kontaktieren Sie uns für Enterprise-Preise, Mengenrabatte oder benutzerdefinierte Integrationsanforderungen.",
+    "contactSales": "Vertrieb kontaktieren"
+  }
+}

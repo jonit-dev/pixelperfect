@@ -6,6 +6,7 @@ import { IAdminUserProfile } from '@/shared/types/admin.types';
 import { Coins, CreditCard, Eye, MoreVertical, Shield, ShieldOff, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface IUserActionsDropdownProps {
   user: IAdminUserProfile;
@@ -16,6 +17,7 @@ export function UserActionsDropdown({
   user,
   onUpdate,
 }: IUserActionsDropdownProps): React.ReactElement {
+  const t = useTranslations();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<
@@ -41,34 +43,40 @@ export function UserActionsDropdown({
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-1.5 rounded-lg hover:bg-surface-light transition-colors text-muted-foreground hover:text-muted-foreground"
-          aria-label="User actions"
+          aria-label={t('admin.aria.userActions')}
         >
           <MoreVertical className="h-4 w-4" />
         </button>
 
         {isOpen && (
           <div className="absolute right-0 mt-1 w-56 bg-surface rounded-lg shadow-lg border border-border py-1 z-20">
-            <DropdownItem icon={Eye} label="View Details" onClick={() => handleAction('view')} />
+            <DropdownItem
+              icon={Eye}
+              label={t('admin.users.viewDetails')}
+              onClick={() => handleAction('view')}
+            />
             <DropdownDivider />
             <DropdownItem
               icon={user.role === 'admin' ? ShieldOff : Shield}
-              label={user.role === 'admin' ? 'Remove Admin' : 'Make Admin'}
+              label={
+                user.role === 'admin' ? t('admin.users.removeAdmin') : t('admin.users.makeAdmin')
+              }
               onClick={() => handleAction('role')}
             />
             <DropdownItem
               icon={Coins}
-              label="Adjust Credits"
+              label={t('admin.users.adjustCredits')}
               onClick={() => handleAction('credits')}
             />
             <DropdownItem
               icon={CreditCard}
-              label="Change Subscription"
+              label={t('admin.users.changeSubscription')}
               onClick={() => handleAction('subscription')}
             />
             <DropdownDivider />
             <DropdownItem
               icon={Trash2}
-              label="Delete User"
+              label={t('admin.users.deleteUser')}
               onClick={() => handleAction('delete')}
               variant="danger"
             />
@@ -133,6 +141,7 @@ interface IModalProps {
 }
 
 function CreditAdjustmentModal({ user, onClose, onSuccess }: IModalProps) {
+  const t = useTranslations('admin');
   const totalBalance =
     (user.subscription_credits_balance ?? 0) + (user.purchased_credits_balance ?? 0);
   const [newBalance, setNewBalance] = useState(totalBalance.toString());
@@ -155,22 +164,26 @@ function CreditAdjustmentModal({ user, onClose, onSuccess }: IModalProps) {
       onSuccess();
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to set credits');
+      setError(err instanceof Error ? err.message : t('failedToSetCredits'));
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Modal title="Set Credits" onClose={onClose}>
+    <Modal title={t('setCredits')} onClose={onClose}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-muted-foreground">User</label>
+          <label className="block text-sm font-medium text-muted-foreground">
+            {t('fields.user')}
+          </label>
           <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-muted-foreground">Credits Balance</label>
+          <label className="block text-sm font-medium text-muted-foreground">
+            {t('creditsBalance')}
+          </label>
           <input
             type="number"
             min="0"
@@ -180,14 +193,14 @@ function CreditAdjustmentModal({ user, onClose, onSuccess }: IModalProps) {
             required
           />
           <p className="mt-1 text-sm text-muted-foreground">
-            Current:{' '}
+            {t('current')}{' '}
             {(user.subscription_credits_balance ?? 0) + (user.purchased_credits_balance ?? 0)}
           </p>
         </div>
 
         {error && <p className="text-sm text-error">{error}</p>}
 
-        <ModalActions onClose={onClose} submitLabel="Save" submitting={submitting} />
+        <ModalActions onClose={onClose} submitLabel={t('save')} submitting={submitting} />
       </form>
     </Modal>
   );
@@ -210,6 +223,7 @@ interface IStripeSubData {
 }
 
 function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
+  const t = useTranslations('admin');
   const [loading, setLoading] = useState(true);
   const [stripeData, setStripeData] = useState<IStripeSubData | null>(null);
   const [selectedPlan, setSelectedPlan] = useState('');
@@ -230,13 +244,13 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
         );
         setSelectedPlan(current?.id || '');
       } catch {
-        setError('Failed to load subscription data');
+        setError(t('failedToLoad'));
       } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, [user.id, user.subscription_tier]);
+  }, [user.id, user.subscription_tier, t]);
 
   const hasActiveStripeSubscription =
     stripeData?.stripeSubscription && stripeData.stripeSubscription.status === 'active';
@@ -267,7 +281,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
       onSuccess();
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update subscription');
+      setError(err instanceof Error ? err.message : t('failedToUpdate'));
     } finally {
       setSubmitting(false);
     }
@@ -284,22 +298,22 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
       if (hasActiveStripeSubscription) {
         return {
           type: 'warning',
-          text: 'This will cancel the Stripe subscription immediately. User will lose access.',
+          text: t('immediatelyCancel'),
         };
       }
-      return { type: 'info', text: 'This will remove subscription access from the user profile.' };
+      return { type: 'info', text: t('removeAccess') };
     }
 
     if (hasActiveStripeSubscription) {
       return {
         type: 'info',
-        text: `This will change the Stripe subscription to ${selectedPlanName}. Billing will be prorated.`,
+        text: t('changeToPlan', { planName: selectedPlanName }),
       };
     }
 
     return {
       type: 'warning',
-      text: `This will grant ${selectedPlanName} access WITHOUT creating a Stripe subscription. Use for comps or testing only.`,
+      text: t('grantAccessWithoutStripe', { planName: selectedPlanName }),
     };
   };
 
@@ -307,37 +321,39 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
 
   if (loading) {
     return (
-      <Modal title="Manage Subscription" onClose={onClose}>
-        <p className="text-sm text-muted-foreground">Loading...</p>
+      <Modal title={t('manageSubscription')} onClose={onClose}>
+        <p className="text-sm text-muted-foreground">{t('loading')}</p>
       </Modal>
     );
   }
 
   return (
-    <Modal title="Manage Subscription" onClose={onClose}>
+    <Modal title={t('manageSubscription')} onClose={onClose}>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-muted-foreground">User</label>
+          <label className="block text-sm font-medium text-muted-foreground">
+            {t('fields.user')}
+          </label>
           <p className="mt-1 text-sm text-primary">{user.email}</p>
         </div>
 
         {/* Current State */}
         <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Profile Tier:</span>
-            <span className="font-medium">{user.subscription_tier || 'Free'}</span>
+            <span className="text-muted-foreground">{t('profileTier')}</span>
+            <span className="font-medium">{user.subscription_tier || t('free')}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Stripe Status:</span>
+            <span className="text-muted-foreground">{t('stripeStatus')}</span>
             <span
               className={`font-medium ${hasActiveStripeSubscription ? 'text-success' : 'text-muted-foreground'}`}
             >
-              {stripeData?.stripeSubscription?.status || 'No subscription'}
+              {stripeData?.stripeSubscription?.status || t('noSubscription')}
             </span>
           </div>
           {stripeData?.stripeSubscription?.current_period_end && (
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Renews:</span>
+              <span className="text-muted-foreground">{t('renews')}</span>
               <span className="font-medium">
                 {new Date(
                   stripeData.stripeSubscription.current_period_end * 1000
@@ -349,7 +365,9 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
 
         {/* Plan Selection */}
         <div>
-          <label className="block text-sm font-medium text-muted-foreground mb-2">Change To</label>
+          <label className="block text-sm font-medium text-muted-foreground mb-2">
+            {t('changeTo')}
+          </label>
           <div className="space-y-2">
             {PLANS.map(plan => (
               <label
@@ -398,7 +416,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
             onClick={onClose}
             className="px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-light rounded-lg transition-colors"
           >
-            Cancel
+            {t('cancel')}
           </button>
           <button
             type="button"
@@ -406,7 +424,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
             disabled={submitting || !hasChanged}
             className="px-4 py-2 text-sm font-medium text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors disabled:opacity-50"
           >
-            {submitting ? 'Saving...' : 'Save'}
+            {submitting ? t('saving') : t('save')}
           </button>
         </div>
       </div>
@@ -415,6 +433,7 @@ function SubscriptionModal({ user, onClose, onSuccess }: IModalProps) {
 }
 
 function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
+  const t = useTranslations();
   const newRole = user.role === 'admin' ? 'user' : 'admin';
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -439,7 +458,9 @@ function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
 
   return (
     <Modal
-      title={newRole === 'admin' ? 'Grant Admin Access' : 'Remove Admin Access'}
+      title={
+        newRole === 'admin' ? t('admin.users.grantAdminTitle') : t('admin.users.removeAdminTitle')
+      }
       onClose={onClose}
     >
       <div className="space-y-4">
@@ -468,7 +489,11 @@ function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
 
         <ModalActions
           onClose={onClose}
-          submitLabel={newRole === 'admin' ? 'Grant Admin' : 'Remove Admin'}
+          submitLabel={
+            newRole === 'admin'
+              ? t('admin.users.grantAdminButton')
+              : t('admin.users.removeAdminButton')
+          }
           submitting={submitting}
           onSubmit={handleConfirm}
           variant={newRole === 'user' ? 'danger' : 'primary'}
@@ -479,6 +504,7 @@ function RoleChangeModal({ user, onClose, onSuccess }: IModalProps) {
 }
 
 function DeleteUserModal({ user, onClose, onSuccess }: IModalProps) {
+  const t = useTranslations('admin');
   const [confirmEmail, setConfirmEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -497,25 +523,24 @@ function DeleteUserModal({ user, onClose, onSuccess }: IModalProps) {
       onSuccess();
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to delete user');
+      setError(err instanceof Error ? err.message : t('failedToDelete'));
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Modal title="Delete User" onClose={onClose}>
+    <Modal title={t('deleteUserTitle')} onClose={onClose}>
       <div className="space-y-4">
         <div className="p-3 bg-error/10 border border-error/20 rounded-lg">
           <p className="text-sm text-error">
-            <strong>Warning:</strong> This action is irreversible. All user data including credits,
-            subscriptions, and transaction history will be permanently deleted.
+            <strong>{t('warning')}</strong> {t('irreversible')}
           </p>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-muted-foreground">
-            Type <span className="font-mono text-error">{user.email}</span> to confirm
+            {t('typeEmailToConfirm', { email: user.email })}
           </label>
           <input
             type="text"
@@ -530,7 +555,7 @@ function DeleteUserModal({ user, onClose, onSuccess }: IModalProps) {
 
         <ModalActions
           onClose={onClose}
-          submitLabel="Delete User"
+          submitLabel={t('deleteUserButton')}
           submitting={submitting}
           onSubmit={handleDelete}
           variant="danger"
@@ -584,6 +609,7 @@ function ModalActions({
   variant = 'primary',
   disabled,
 }: IModalActionsProps) {
+  const t = useTranslations('admin');
   const buttonClass =
     variant === 'danger'
       ? 'bg-error hover:bg-error/90 focus:ring-error'
@@ -596,7 +622,7 @@ function ModalActions({
         onClick={onClose}
         className="px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-light rounded-lg transition-colors"
       >
-        Cancel
+        {t('cancel')}
       </button>
       {onSubmit ? (
         <button
@@ -605,7 +631,7 @@ function ModalActions({
           disabled={submitting || disabled}
           className={`px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 ${buttonClass}`}
         >
-          {submitting ? 'Processing...' : submitLabel}
+          {submitting ? t('processing') : submitLabel}
         </button>
       ) : (
         <button
@@ -613,7 +639,7 @@ function ModalActions({
           disabled={submitting || disabled}
           className={`px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 ${buttonClass}`}
         >
-          {submitting ? 'Processing...' : submitLabel}
+          {submitting ? t('processing') : submitLabel}
         </button>
       )}
     </div>

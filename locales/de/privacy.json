@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "title": "Datenschutzrichtlinie",
+    "description": "Erfahren Sie, wie {{APP_NAME}} Ihre persönlichen Informationen und hochgeladenen Bilder sammelt, nutzt und schützt."
+  },
+  "lastUpdated": "Zuletzt aktualisiert: {{date}}",
+  "title": "Datenschutzrichtlinie",
+  "viewTerms": "Nutzungsbedingungen anzeigen",
+  "introduction": {
+    "title": "1. Einleitung",
+    "paragraph1": "Willkommen bei {{APP_NAME}} (\"wir\", \"unser\" oder \"uns\"). Wir sind verpflichtet, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Informationen zu gewährleisten. Diese Datenschutzrichtlinie erklärt, wie wir Informationen sammeln, nutzen, offenlegen und schützen, wenn Sie unseren KI-gestützten Bildskalierungs- und -verbesserungsdienst nutzen.",
+    "paragraph2": "Durch die Nutzung von {{APP_NAME}} stimmen Sie der Sammlung und Nutzung von Informationen gemäß dieser Richtlinie zu."
+  },
+  "collection": {
+    "title": "2. Informationen, die wir sammeln",
+    "account": {
+      "title": "2.1 Konto-Informationen",
+      "intro": "Wenn Sie ein Konto erstellen, sammeln wir:",
+      "items": [
+        "E-Mail-Adresse",
+        "Name (falls angegeben)",
+        "Passwort (sicher mit industrieüblichem Hashing gespeichert)",
+        "Authentifizierungsdaten von Drittanbietern (Google), wenn Sie sich mit OAuth anmelden"
+      ]
+    },
+    "images": {
+      "title": "2.2 Hochgeladene Bilder",
+      "intro": "Wenn Sie unseren Service nutzen, laden Sie Bilder zur Verarbeitung hoch. Wir:",
+      "items": [
+        "Verarbeiten Ihre Bilder mit KI-Technologie, um sie zu verbessern oder zu skalieren",
+        "Speichern Ihre Original- oder verarbeiteten Bilder nicht dauerhaft auf unseren Servern, nachdem die Verarbeitung abgeschlossen ist",
+        "Verwenden Ihre Bilder nicht, um KI-Modelle zu trainieren oder für andere Zwecke als die Erbringung der angeforderten Dienstleistung"
+      ]
+    },
+    "payment": {
+      "title": "2.3 Zahlungsinformationen",
+      "description": "Wir nutzen Stripe zur Zahlungsabwicklung. Wir speichern keine vollständigen Kreditkartendetails auf unseren Servern. Stripe übernimmt die gesamte Zahlungsabwicklung und speichert Zahlungsinformationen gemäß ihrer",
+      "privacyPolicyLink": "Datenschutzerklärung"
+    },
+    "usage": {
+      "title": "2.4 Nutzungsdaten",
+      "intro": "Wir sammeln automatisch:",
+      "items": [
+        "IP-Adresse",
+        "Browsertyp und -version",
+        "Besuchte Seiten und verbrachte Zeit",
+        "Geräteinformationen",
+        "Verweisende Website",
+        "Verarbeitungsverlauf (Anzahl der verarbeiteten Bilder, verwendete Guthaben)"
+      ]
+    }
+  },
+  "usage": {
+    "title": "3. Wie wir Ihre Informationen nutzen",
+    "intro": "Wir nutzen die gesammelten Informationen, um:",
+    "items": [
+      "Unsere bereitzustellen, zu warten und zu verbessern",
+      "Ihre Bildverbesserungsanfragen zu verarbeiten",
+      "Ihr Konto und Guthaben-Saldo zu verwalten",
+      "Zahlungen zu verarbeiten und Transaktionsbelege zu senden",
+      "Service-bezogene Kommunikation zu senden (Passwort-Resets, Kontobenachrichtigungen)",
+      "Auf Support-Anfragen zu antworten",
+      "Nutzungsmuster zur Verbesserung unseres Service zu analysieren",
+      "Betrug oder Missbrauch zu erkennen und zu verhindern"
+    ]
+  },
+  "sharing": {
+    "title": "4. Datenteilung und Offenlegung",
+    "intro": "Wir verkaufen Ihre persönlichen Informationen nicht. Wir können Ihre Informationen teilen mit:",
+    "providers": [
+      {
+        "label": "Dienstleister:",
+        "description": "Drittanbieter-Dienste, die uns beim Betrieb unserer Plattform helfen (z. B. Stripe für Zahlungen, Supabase für Authentifizierung, Google für KI-Verarbeitung)"
+      },
+      {
+        "label": "Gesetzliche Anforderungen:",
+        "description": "Wenn gesetzlich vorgeschrieben, durch Gerichtsbeschluss oder Regierungsbehörde"
+      },
+      {
+        "label": "Geschäftsübertragungen:",
+        "description": "Im Zusammenhang mit einer Fusion, Übernahme oder dem Verkauf von Vermögenswerten"
+      }
+    ]
+  },
+  "security": {
+    "title": "5. Datensicherheit",
+    "intro": "Wir implementieren branchenübliche Sicherheitsmaßnahmen zum Schutz Ihrer Daten:",
+    "measures": [
+      "HTTPS-Verschlüsselung für alle Datenübertragungen",
+      "Sicheres Passwort-Hashing",
+      "Regelmäßige Sicherheitsaudits",
+      "Zugangskontrollen und Authentifizierung",
+      "Zeilenebene-Sicherheit für Datenbankzugriff"
+    ],
+    "disclaimer": "Obwohl wir bestrebt sind, Ihre Informationen zu schützen, ist keine Übertragungsmethode über das Internet zu 100% sicher. Wir können keine absolute Sicherheit garantieren."
+  },
+  "retention": {
+    "title": "6. Datenaufbewahrung",
+    "paragraph1": "Wir speichern Ihre Konto-Informationen, solange Ihr Konto aktiv ist. Sie können jederzeit die Löschung Ihres Kontos und der damit verbundenen Daten beantragen.",
+    "paragraph2": "Hochgeladene Bilder werden in Echtzeit verarbeitet und nicht dauerhaft gespeichert. Transaktionsdatensätze werden zu rechtlichen und buchhalterischen Zwecken aufbewahrt."
+  },
+  "rights": {
+    "title": "7. Ihre Rechte",
+    "intro": "Je nach Ihrem Standort haben Sie möglicherweise folgende Rechte:",
+    "rightsList": [
+      {
+        "label": "Zugang:",
+        "description": "Eine Kopie der persönlichen Daten anfordern, die wir über Sie speichern"
+      },
+      {
+        "label": "Korrektur:",
+        "description": "Korrektur ungenauer Daten beantragen"
+      },
+      {
+        "label": "Löschung:",
+        "description": "Löschung Ihrer persönlichen Daten beantragen"
+      },
+      {
+        "label": "Übertragbarkeit:",
+        "description": "Eine Kopie Ihrer Daten in einem tragbaren Format beantragen"
+      },
+      {
+        "label": "Widerspruch:",
+        "description": "Widerspruch gegen bestimmte Verarbeitung Ihrer Daten einlegen"
+      }
+    ],
+    "contact": "Um diese Rechte auszuüben, kontaktieren Sie uns bitte unter",
+    "email": "{{PRIVACY_EMAIL}}"
+  },
+  "cookies": {
+    "title": "8. Cookies und Tracking",
+    "intro": "Wir verwenden Cookies und ähnliche Technologien, um:",
+    "uses": [
+      "Ihre Sitzung und Authentifizierung aufrechtzuerhalten",
+      "Ihre Präferenzen zu merken",
+      "Nutzungsmuster zu analysieren (über Google Analytics und Amplitude)",
+      "Unseren Service zu verbessern"
+    ],
+    "control": "Sie können Cookies über Ihre Browsereinstellungen steuern, aber das Deaktivieren kann die Service-Funktionalität beeinträchtigen."
+  },
+  "children": {
+    "title": "9. Kinderschutz",
+    "description": "Unser Service ist nicht für Kinder unter 13 Jahren bestimmt. Wir sammeln nicht wissentlich persönliche Informationen von Kindern unter 13 Jahren. Wenn Sie glauben, dass wir Informationen von einem Kind unter 13 Jahren gesammelt haben, kontaktieren Sie uns bitte sofort."
+  },
+  "international": {
+    "title": "10. Internationale Datenübertragungen",
+    "description": "Ihre Informationen können in Länder übertragen und verarbeitet werden, die nicht Ihr Wohnsitzland sind. Diese Länder können unterschiedliche Datenschutzgesetze haben. Durch die Nutzung unseres Service stimmen Sie solchen Übertragungen zu. Wir stellen sicher, dass angemessene Sicherheitsvorkehrungen zum Schutz Ihrer Daten getroffen werden."
+  },
+  "changes": {
+    "title": "11. Änderungen an dieser Richtlinie",
+    "description": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren. Die fortgesetzte Nutzung des Service nach Änderungen stellt die Annahme der aktualisierten Richtlinie dar."
+  },
+  "contact": {
+    "title": "12. Kontaktieren Sie uns",
+    "intro": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenpraktiken haben, kontaktieren Sie uns bitte:",
+    "emailLabel": "E-Mail:",
+    "email": "{{PRIVACY_EMAIL}}"
+  },
+  "nav": {
+    "blog": "Blog"
+  }
+}

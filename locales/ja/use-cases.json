@@ -1,0 +1,1496 @@
+{
+  "category": "use-cases",
+  "pages": [
+    {
+      "slug": "ecommerce-product-photos",
+      "title": "Eコマース商品写真",
+      "metaTitle": "プラットフォーム別Eコマース商品写真要件 | MyImageUpscaler",
+      "metaDescription": "Amazon、eBay、Etsy、Shopifyの正確な画像要件。最小サイズ、アスペクト比、プラットフォーム基準を満たす方法で商品写真を拡張する方法を学ぶ。",
+      "h1": "Eコマース商品写真要件",
+      "intro": "すべてのマーケットプレイスには特定の画像要件があります。各プラットフォームに必要なものと到達方法を正確に紹介します。",
+      "primaryKeyword": "ecommerce product photos",
+      "secondaryKeywords": [
+        "product image requirements",
+        "amazon photo size",
+        "ebay image requirements",
+        "etsy photo dimensions"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Eコマース",
+      "description": "主要Eコマースプラットフォームの特定画像要件と、それらを満たす方法のガイダンス。",
+      "platformRequirements": [
+        {
+          "platform": "Amazon",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px（ズーム用）",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1推奨",
+          "format": "JPEG、PNG、GIF、TIFF",
+          "background": "メイン画像用純粋な白（RGB 255,255,255）",
+          "notes": "商品はフレームの85%を満たす必要があります。メイン画像に透かし、ロゴ、テキストなし。"
+        },
+        {
+          "platform": "eBay",
+          "minimumSize": "500x500px",
+          "recommendedSize": "1600x1600px",
+          "maxFileSize": "12MB",
+          "aspectRatio": "1:1推奨",
+          "format": "JPEG、PNG、GIF、TIFF、BMP",
+          "background": "白または薄い灰色推奨",
+          "notes": "リストあたり最大24枚の画像。境界、透かし、プロモーションテキストなし。"
+        },
+        {
+          "platform": "Etsy",
+          "minimumSize": "短辺2000px",
+          "recommendedSize": "2700x2025px",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3推奨",
+          "format": "JPEG、PNG、GIF",
+          "background": "選択可 - ライフスタイルショットは良好に機能",
+          "notes": "最初の画像はサムネイル。ショップアイコン用5:4比率。"
+        },
+        {
+          "platform": "Shopify",
+          "minimumSize": "最小なし",
+          "recommendedSize": "2048x2048px",
+          "maxFileSize": "20MB",
+          "aspectRatio": "一貫性のために1:1",
+          "format": "JPEG、PNG、GIF、HEIC、WebP",
+          "background": "テーマ依存",
+          "notes": "商品間で一貫したサイジングは外観を向上。自動WebP変換。"
+        },
+        {
+          "platform": "WooCommerce",
+          "minimumSize": "テーマ依存",
+          "recommendedSize": "最小1200x1200px",
+          "maxFileSize": "サーバー依存",
+          "aspectRatio": "テーマ設定で設定",
+          "format": "JPEG、PNG、GIF、WebP",
+          "background": "テーマ依存",
+          "notes": "サムネイルサイズ変更後に画像再生成を有効にしてください。"
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "サプライヤー画像が小さすぎる",
+          "solution": "少なくとも2000x2000pxに拡張。ほとんどのサプライヤー画像は500-800px - ズーム機能に3-4倍拡張。",
+          "howTo": "アップスケーラーにアップロード、4倍を選択、ダウンロード。500px画像は2000pxになります。"
+        },
+        {
+          "problem": "画像の背景色が間違っている",
+          "solution": "Amazonは純粋な白（255,255,255）を必要とします。拡張前に背景除去ツールを使用。",
+          "howTo": "最初に背景を除去、白背景を追加、必要に応じて拡張。"
+        },
+        {
+          "problem": "商品がフレームを十分に満たしていない",
+          "solution": "拡張前に商品を中央に配置して画像をクロップ。その後最小サイズに拡張。",
+          "howTo": "最小マージンで商品にクロップ、その後2000pxに到達するために2-4倍拡張。"
+        },
+        {
+          "problem": "拡張後画像がぼやけている",
+          "solution": "AIアップスケーラーは鮮明さを保存しますが、非常に低品質ソースには限界があります。利用可能な最高品質ソースを使用。",
+          "howTo": "サプライヤーにより高い解像度を依頼、または拡張前に強化。"
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "ソース画像サイズを確認",
+          "description": "画像を右クリック、プロパティ/寸法を確認。現在のサイズをメモ。"
+        },
+        {
+          "step": 2,
+          "title": "必要な拡張係数を計算",
+          "description": "ソースが500pxで2000px必要な場合、それは4倍拡張です。"
+        },
+        {
+          "step": 3,
+          "title": "画像を拡張",
+          "description": "アップスケーラーにアップロード、適切な係数を選択、結果をダウンロード。"
+        },
+        {
+          "step": 4,
+          "title": "出力を確認",
+          "description": "最終寸法がプラットフォーム要件を満たすことを確認。テキスト/ロゴが鮮明であることを確認。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Amazon商品画像にはどの解像度が必要ですか？",
+          "answer": "Amazonは最小1000x1000pxを必要としますが、2000x2000px以上を推奨してズーム機能を有効にします。ズーム機能は1500px以上の画像でホバーすると有効になります。"
+        },
+        {
+          "question": "すべてのプラットフォームで同じ画像を使用できますか？",
+          "answer": "はい、最も厳しい要件に準備すれば。純粋な白背景で2000x2000px画像を作成すれば、これらはクロップでAmazon、eBay、Etsyで動作します。"
+        },
+        {
+          "question": "拡張画像はAmazonの品質チェックを通過しますか？",
+          "answer": "AI拡張画像は、ソースが極端に低品質でなければ通常通過します。300px未満の画像を拡張するのは避けてください。代わりにサプライヤーにより良いソース画像を依頼してください。"
+        },
+        {
+          "question": "異なるアスペクト比をどのように処理しますか？",
+          "answer": "ほとんどのプラットフォームは1:1（正方形）を好みます。商品が長方形の場合、白いスペースを追加して正方形にするか、合うようにクロップしてください。Amazonのメイン画像は正方形でなければなりません。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["background-removal-guide"]
+    },
+    {
+      "slug": "real-estate-listings",
+      "title": "不動産リスティング写真ガイドライン",
+      "metaTitle": "プラットフォーム別不動産写真要件 | MLS、Zillow、Realtor.com",
+      "metaDescription": "MLS、Zillow、Realtor.com、Redfinの画像要件。最適なサイズ、アスペクト比、リスティング写真を準備する方法を学ぶ。",
+      "h1": "不動産リスティング写真要件",
+      "intro": "異なる不動産プラットフォームには異なる画像仕様があります。主要リスティングサイトに必要なものを紹介します。",
+      "primaryKeyword": "real estate listing photos",
+      "secondaryKeywords": [
+        "mls photo requirements",
+        "zillow image size",
+        "real estate photography"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "不動産",
+      "description": "不動産リスティングプラットフォームの特定画像要件と、それらを満たす方法のガイダンス。",
+      "platformRequirements": [
+        {
+          "platform": "MLS（地域により変動）",
+          "minimumSize": "典型的な最小640x480px",
+          "recommendedSize": "2048x1536px以上",
+          "maxFileSize": "5-15MB（変動）",
+          "aspectRatio": "4:3が最も一般的",
+          "format": "JPEG",
+          "notes": "要件は地域MLSにより変動。地元のMLSガイドラインを確認してください。ほとんどは最大50枚の写真を受け付けます。"
+        },
+        {
+          "platform": "Zillow",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px",
+          "maxFileSize": "50MB",
+          "aspectRatio": "4:3推奨",
+          "format": "JPEG、PNG",
+          "notes": "最大200枚の写真。最初の写真は検索結果に表示されます - 重要です。"
+        },
+        {
+          "platform": "Realtor.com",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2560x1920px",
+          "maxFileSize": "100MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "MLSから同期。より高解像度画像は検索ランキングで優先されます。"
+        },
+        {
+          "platform": "Redfin",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px以上",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "リスティングで写真品質を強調。HDR写真は良好に機能します。"
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "電話写真が暗すぎる",
+          "solution": "写真強化ツールで露出と影を向上。インテリアショットに最適。",
+          "howTo": "写真強化ツールにアップロード、AI自動補正露出に任せ、必要に応じて拡張。"
+        },
+        {
+          "problem": "広角レンズ歪み",
+          "solution": "歪み補正は拡張前に行うべき。ほとんどの編集アプリにレンズ補正があります。",
+          "howTo": "最初にLightroom/Photosアプリでレンズ補正を適用、その後補正画像を拡張。"
+        },
+        {
+          "problem": "古い電話からの画像が小さすぎる",
+          "solution": "2-3年前の電話には2倍、古い電話には3-4倍拡張して現在の基準に到達。",
+          "howTo": "1080x810px画像は2倍拡張で2160x1620pxになり、Zillowの推奨サイズを超えます。"
+        }
+      ],
+      "photographyTips": [
+        {
+          "tip": "ゴールデンアワーに撮影",
+          "description": "早朝または夕方の光が最も魅力的です。厳しい昼下がりの影を避けてください。"
+        },
+        {
+          "tip": "インテリアに三脚を使用",
+          "description": "より長い露出で明るいインテリアを鮮明に。低光部屋に必須。"
+        },
+        {
+          "tip": "最初に外観をキャプチャ",
+          "description": "外観写真は朝の光で最も機能します。撮影を外側から開始するようにスケジュール。"
+        },
+        {
+          "tip": "撮影前に部屋をステージング",
+          "description": "雑物、個人アイテム、邪魔なオブジェクトを除去。少ないほど多い。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Zillowに最適な写真サイズは？",
+          "answer": "Zillowは最小2048x1536pxを推奨します。より大きな画像（最大50MB）は大きな画面とモバイルピンチツーズームで良好に表示されます。"
+        },
+        {
+          "question": "不動産写真にHDRを使用すべきですか？",
+          "answer": "HDRは窓が明るいが部屋が暗いインテリアショットに役立ちます。自然に見えるHDRを使用し、過度に処理されたスタイルは避けてください。"
+        },
+        {
+          "question": "リスティングには何枚の写真が必要ですか？",
+          "answer": "最適な物件には25-50枚の写真が推奨されます。外観、すべての部屋、主要な機能、近所のコンテキストを含めてください。"
+        },
+        {
+          "question": "古い電話で撮影した写真を拡張できますか？",
+          "answer": "はい、品質はソースに依存します。iPhone 6時代の写真（2-3MP）は4-6MPに合理的に拡張できます。非常に古い写真には限界があります。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["interior-photography-tips"]
+    },
+    {
+      "slug": "social-media-images",
+      "title": "ソーシャルメディア画像サイズ",
+      "metaTitle": "2025年ソーシャルメディア画像サイズガイド | Instagram、Facebook、Twitter、LinkedIn",
+      "metaDescription": "ソーシャルメディア画像寸法の完全ガイド。Instagram、Facebook、Twitter、LinkedIn、TikTok、Pinterestの最適なサイズと正確なピクセル寸法。",
+      "h1": "ソーシャルメディア画像サイズガイド",
+      "intro": "すべてのプラットフォームで異なる最適な画像サイズがあります。2025年の各プラットフォームの正確な寸法を紹介します。",
+      "primaryKeyword": "social media image size",
+      "secondaryKeywords": [
+        "instagram image size",
+        "facebook photo dimensions",
+        "twitter image size",
+        "linkedin image dimensions"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "ソーシャルメディア",
+      "description": "プラットフォーム固有要件を備えたソーシャルメディア画像寸法の完全リファレンス。",
+      "platformRequirements": [
+        {
+          "platform": "Instagram",
+          "imageTypes": [
+            { "type": "正方形投稿", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
+            { "type": "縦長投稿", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
+            { "type": "横長投稿", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
+            { "type": "ストーリー/リール", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
+            { "type": "プロフィール画像", "dimensions": "320x320px", "aspectRatio": "1:1" }
+          ],
+          "notes": "縦長（4:5）はフィードでより多くの画面スペースを得ます。ストーリーは9:16垂直です。"
+        },
+        {
+          "platform": "Facebook",
+          "imageTypes": [
+            { "type": "共有画像", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
+            { "type": "正方形投稿", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
+            {
+              "type": "カバー写真",
+              "dimensions": "820x312px（デスクトップ）",
+              "aspectRatio": "2.63:1"
+            },
+            { "type": "プロフィール画像", "dimensions": "170x170px", "aspectRatio": "1:1" },
+            { "type": "ストーリー", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+          ],
+          "notes": "カバー写真はモバイルで異なって表示（640x360px可視領域）。重要なコンテンツを中央に配置してください。"
+        },
+        {
+          "platform": "Twitter/X",
+          "imageTypes": [
+            { "type": "インストリーム画像", "dimensions": "1600x900px", "aspectRatio": "16:9" },
+            { "type": "単一画像", "dimensions": "1200x675px", "aspectRatio": "16:9" },
+            { "type": "二つの画像", "dimensions": "それぞれ700x800px", "aspectRatio": "7:8" },
+            { "type": "プロフィール画像", "dimensions": "400x400px", "aspectRatio": "1:1" },
+            { "type": "ヘッダー", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+          ],
+          "notes": "16:9画像がタイムラインで最適に表示。正方形画像はクロップされます。"
+        },
+        {
+          "platform": "LinkedIn",
+          "imageTypes": [
+            { "type": "共有画像", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
+            { "type": "会社カバー", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
+            { "type": "プロフィール画像", "dimensions": "400x400px", "aspectRatio": "1:1" },
+            { "type": "背景", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+          ],
+          "notes": "プロの写真はより良く機能します。フィルターと重い効果は避けてください。"
+        },
+        {
+          "platform": "TikTok",
+          "imageTypes": [
+            { "type": "ビデオ/写真", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
+            { "type": "プロフィール画像", "dimensions": "200x200px", "aspectRatio": "1:1" }
+          ],
+          "notes": "垂直9:16必須。水平コンテンツはレターボックスされます。"
+        },
+        {
+          "platform": "Pinterest",
+          "imageTypes": [
+            { "type": "標準ピン", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
+            { "type": "長いピン", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
+            { "type": "正方形ピン", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
+            { "type": "プロフィール画像", "dimensions": "165x165px", "aspectRatio": "1:1" }
+          ],
+          "notes": "2:3垂直ピンが最適に機能します。より高いピンはフィードでより多くの可視性を得ます。"
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "scenario": "Instagram用古い写真",
+          "source": "640x480px横長写真",
+          "target": "1080x1080px正方形投稿",
+          "solution": "2倍拡張して1280x960pxにし、その後正方形960x960pxにクロップ、1080x1080pxに拡張"
+        },
+        {
+          "scenario": "Twitter用スクリーンショット",
+          "source": "750x500pxスクリーンショット",
+          "target": "タイムライン用1600x900px",
+          "solution": "2倍拡張して1500x1000pxにし、パディングを追加するか16:9アスペクト比にクロップ"
+        },
+        {
+          "scenario": "Pinterest用商品写真",
+          "source": "800x800px商品ショット",
+          "target": "1000x1500px垂直ピン",
+          "solution": "1200x1200pxに拡張し、2:3比率のために上下に垂直スペースを追加"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Instagram投稿に最適なサイズは？",
+          "answer": "1080x1350px（4:5縦長）は最もフィードスペースを占有します。1080x1080px（正方形）も標準です。横長は避けてください - フィードで小さく見えます。"
+        },
+        {
+          "question": "画像がInstagramでぼやけて見えるのはなぜですか？",
+          "answer": "Instagramは画像を圧縮します。再サンプリングを避けるために正確に1080px幅でアップロードしてください。より高解像度画像はダウンスケールされ、鮮明さを失う可能性があります。"
+        },
+        {
+          "question": "ソーシャルメディア用に画像を拡張すべきですか？",
+          "answer": "ソースがプラットフォーム最小値を下回る場合は拡張してください。ただし、プラットフォーム推奨を超えて拡張しないでください - 4000px画像はとにかく1080pxに圧縮されます。"
+        },
+        {
+          "question": "どの形式を使うべきですか？",
+          "answer": "写真にはJPEG（より小さいファイル、十分な品質）。テキストまたは透明度を持つグラフィックにはPNG。すべてのプラットフォームは両方を受け付けます。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": ["image-compression-guide"]
+    },
+    {
+      "slug": "print-preparation",
+      "title": "印刷サイズガイド",
+      "metaTitle": "印刷用画像解像度ガイド | DPI計算機とサイズチャート",
+      "metaDescription": "任意の印刷サイズの正確なピクセル寸法を計算。DPI要件、用紙サイズ、プロ印刷用画像を準備する方法。",
+      "h1": "印刷解像度ガイド",
+      "intro": "印刷は画面ディスプレイより高い解像度を必要とします。異なる印刷サイズに必要なものを正確に紹介します。",
+      "primaryKeyword": "image resolution for printing",
+      "secondaryKeywords": [
+        "print dpi requirements",
+        "photo print size",
+        "pixels to inches",
+        "300 dpi image size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "写真と印刷",
+      "description": "DPI要件とサイズ計算を備えた印刷用画像準備の完全ガイド。",
+      "dpiExplanation": {
+        "title": "DPIの理解",
+        "content": "DPI（1インチあたりのドット数）は印刷品質を決定します。標準写真印刷には300 DPIが必要です。より低いDPIは可視的なピクセルになります。より高いDPIは可視的な利点はありませんがファイルサイズを増加させます。",
+        "recommendations": [
+          {
+            "quality": "プロ印刷",
+            "dpi": "300 DPI",
+            "use": "写真、アートプリント、雑誌"
+          },
+          { "quality": "標準印刷", "dpi": "240-300 DPI", "use": "家庭印刷、スナップショット" },
+          {
+            "quality": "大判（視聴距離3フィート以上）",
+            "dpi": "150-200 DPI",
+            "use": "ポスター、バナー"
+          },
+          {
+            "quality": "ビルボード（視聴距離10フィート以上）",
+            "dpi": "50-100 DPI",
+            "use": "大きな屋外ディスプレイ"
+          }
+        ]
+      },
+      "printSizeChart": [
+        {
+          "size": "4x6インチ",
+          "pixels300dpi": "1200x1800",
+          "pixels240dpi": "960x1440",
+          "megapixels": "2.2 MP"
+        },
+        {
+          "size": "5x7インチ",
+          "pixels300dpi": "1500x2100",
+          "pixels240dpi": "1200x1680",
+          "megapixels": "3.2 MP"
+        },
+        {
+          "size": "8x10インチ",
+          "pixels300dpi": "2400x3000",
+          "pixels240dpi": "1920x2400",
+          "megapixels": "7.2 MP"
+        },
+        {
+          "size": "11x14インチ",
+          "pixels300dpi": "3300x4200",
+          "pixels240dpi": "2640x3360",
+          "megapixels": "13.9 MP"
+        },
+        {
+          "size": "16x20インチ",
+          "pixels300dpi": "4800x6000",
+          "pixels240dpi": "3840x4800",
+          "megapixels": "28.8 MP"
+        },
+        {
+          "size": "20x24インチ",
+          "pixels300dpi": "6000x7200",
+          "pixels240dpi": "4800x5760",
+          "megapixels": "43.2 MP"
+        },
+        {
+          "size": "24x36インチ",
+          "pixels300dpi": "7200x10800",
+          "pixels240dpi": "5760x8640",
+          "megapixels": "77.8 MP"
+        },
+        {
+          "size": "A4（8.27x11.69インチ）",
+          "pixels300dpi": "2480x3508",
+          "pixels240dpi": "1984x2806",
+          "megapixels": "8.7 MP"
+        },
+        {
+          "size": "A3（11.69x16.54インチ）",
+          "pixels300dpi": "3508x4961",
+          "pixels240dpi": "2806x3969",
+          "megapixels": "17.4 MP"
+        }
+      ],
+      "calculationFormula": {
+        "title": "必要ピクセルを計算",
+        "formula": "ピクセル = 印刷サイズ（インチ）× DPI",
+        "example": "300 DPIでの8x10インチ印刷の場合：8×300 = 2400ピクセル幅、10×300 = 3000ピクセル高さ"
+      },
+      "upscalingForPrint": [
+        {
+          "scenario": "8x10印刷用スマートフォン写真",
+          "source": "4032x3024px（12MP iPhone）",
+          "requirement": "300 DPIで2400x3000px",
+          "solution": "すでに十分 - 拡張不要。4:5アスペクト比にクロップ。"
+        },
+        {
+          "scenario": "8x10印刷用Web画像",
+          "source": "800x600px Web画像",
+          "requirement": "300 DPIで2400x3000px",
+          "solution": "4倍拡張して3200x2400pxにし、2400x3000pxにクロップまたはキャンバススペースを追加。"
+        },
+        {
+          "scenario": "ポスター用Instagram写真",
+          "source": "1080x1080px",
+          "requirement": "24x24ポスター用300 DPIで7200x7200px",
+          "solution": "8倍拡張して8640x8640pxに。品質は限定的 - 大判には150 DPIを検討。"
+        }
+      ],
+      "printingTips": [
+        {
+          "tip": "消費者印刷用sRGBカラープロファイルを使用",
+          "description": "ほとんどの消費者プリンターと印刷サービスはsRGBを期待します。必要に応じてAdobe RGBから変換してください。"
+        },
+        {
+          "tip": "エッジツーエッジ印刷用にブラッドを追加",
+          "description": "フルブリードプロ印刷用に各エッジに0.125インチ（300 DPIで37.5ピクセル）を追加してください。"
+        },
+        {
+          "tip": "実際のサイズで画面上でプルーフ",
+          "description": "印刷前に100%ズームで表示して、可視的なピクセルまたはアーティファクトを確認してください。"
+        },
+        {
+          "tip": "TIFFまたは高品質JPEGとして保存",
+          "description": "TIFFは可逆losslessです。JPEGを使用する場合、圧縮アーティファクトを避けるために95-100%品質でエクスポートしてください。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "印刷にはどの解像度が必要ですか？",
+          "answer": "16x20インチまでの写真印刷には300 DPIが標準です。距離から見る大判印刷（ポスター、バナー）には、150-200 DPIが許容されます。"
+        },
+        {
+          "question": "小さな画像を大きな印刷に拡張できますか？",
+          "answer": "AIアップスケーリングは2-4倍の拡大でうまく機能します。それ以上は、品質はソースに依存します。1000px画像は合理的に4000px（300 DPIで8x10）印刷になります。"
+        },
+        {
+          "question": "印刷がピクセル化して見えるのはなぜですか？",
+          "answer": "解像度が不足しています。ソース画像が300 DPIで印刷サイズに十分なピクセルを持っているか確認してください。上記のチャートで確認してください。"
+        },
+        {
+          "question": "私の画像の最大印刷サイズは何ですか？",
+          "answer": "フル品質の最大サイズについては、ピクセル寸法を300で割ってください。3000x2000px画像は300 DPIで10x6.7インチ、または150 DPIで20x13.3インチで印刷できます。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "old-photo-restoration",
+      "title": "古い写真の修復",
+      "metaTitle": "古い写真を修復する方法 | スキャンと強化ガイド",
+      "metaDescription": "古い写真やダメージを受けた写真を修復する完全ガイド。スキャンのヒント、強化ワークフロー、写真修復の現実的な期待。",
+      "h1": "古い写真の修復ガイド",
+      "intro": "古い写真の修復には複数のステップが含まれます：適切なスキャン、強化、そして可能なことについての現実的な期待。",
+      "primaryKeyword": "restore old photos",
+      "secondaryKeywords": [
+        "restore old photos",
+        "fix damaged photos",
+        "photo restoration",
+        "vintage photo enhancement"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "use-cases",
+      "industry": "写真修復",
+      "description": "現実的な期待を持った古い写真やダメージを受けた写真を修復するためのステップバイステップガイド。",
+      "scanningGuide": {
+        "title": "古い写真のスキャン",
+        "steps": [
+          {
+            "step": 1,
+            "title": "スキャナーベッドを清掃する",
+            "description": "ガラス上の埃や指紋はスキャンに表示されます。マイクロファイバー clothを使用してください。"
+          },
+          {
+            "step": 2,
+            "title": "写真を慎重に扱う",
+            "description": "古い写真は壊れやすいです。利用可能な場合は綿手袋を使用してください。曲がった写真を無理に平らにしないでください。"
+          },
+          {
+            "step": 3,
+            "title": "最低600 DPIでスキャンする",
+            "description": "より高い解像度は作業できる詳細を提供します。深刻にダメージを受けた写真には1200 DPI。"
+          },
+          {
+            "step": 4,
+            "title": "TIFFとしてスキャン、JPEGではない",
+            "description": "TIFFは可逆 losslessですべての詳細を保存します。編集後にのみJPEGに変換してください。"
+          },
+          {
+            "step": 5,
+            "title": "白黒でもカラーでスキャン",
+            "description": "カラースキャンは修復に役立つ微妙なトーンをキャプチャします。"
+          }
+        ]
+      },
+      "damageTypes": [
+        {
+          "type": "退色/黄変",
+          "description": "色が時間とともにシフトまたは退色しました",
+          "canFix": "はい - AIは元のカラーバランスと彩度を復元できます",
+          "limitations": "深刻に退色した画像は回復する詳細が不足する可能性があります"
+        },
+        {
+          "type": "傷や折り目",
+          "description": "線やマークとして visibleな物理的ダメージ",
+          "canFix": "部分的 - AIは視認性を低下できますが、完全には除去できません",
+          "limitations": "顔を通る深い傷や折り目は困難です"
+        },
+        {
+          "type": "ブラー/ピントが甘い",
+          "description": "画像が鮮明さを欠いているか、ピントが合っていませんでした",
+          "canFix": "部分的 - 適度なブラーは改善できます",
+          "limitations": "深刻なブラーは完全に修正できません - 詳細がキャプチャされませんでした"
+        },
+        {
+          "type": "欠落したセクション/破れ",
+          "description": "写真の一部が破れているか欠落しています",
+          "canFix": "いいえ - AIは欠落した画像データを再構築できません",
+          "limitations": "プロによる手動レタッチングが必要です"
+        },
+        {
+          "type": "水ダメージ/汚れ",
+          "description": "水分やこぼれによる変色",
+          "canFix": "部分的 - カラー補正は役立ちますが、テクスチャの損失は永続的です",
+          "limitations": "エマルジョンが持ち上がった領域は回復できません"
+        }
+      ],
+      "restorationWorkflow": [
+        {
+          "step": 1,
+          "title": "高解像度でスキャン",
+          "description": "600+ DPIをTIFFで。これがマスターファイルです - オリジナルを編集しないでください。"
+        },
+        {
+          "step": 2,
+          "title": "作業コピーを作成",
+          "description": "スキャンを複製してください。コピーで作業し、オリジナルは未触のままにします。"
+        },
+        {
+          "step": 3,
+          "title": "クロップしてまっすぐにする",
+          "description": "ボーダー、スキャナーのアーティファクトを除去します。写真が斜めにスキャンされた場合はまっすぐにしてください。"
+        },
+        {
+          "step": 4,
+          "title": "フォトエンハンサーを通す",
+          "description": "AI強化はカラーを改善し、ノイズを低下させ、詳細を鮮明にします。"
+        },
+        {
+          "step": 5,
+          "title": "必要に応じて拡張",
+          "description": "より大きな寸法が必要な場合は、最高品質のために強化後に拡張してください。"
+        },
+        {
+          "step": 6,
+          "title": "適切にエクスポート",
+          "description": "アーカイブ用はTIFF、共有と印刷用は高品質JPEG。"
+        }
+      ],
+      "realisticExpectations": {
+        "title": "AI修復でできることとできないこと",
+        "canDo": [
+          "カラーバランスを改善し、黄変を除去",
+          "小さな傷の視認性を低下",
+          "ソフトフォーカスを鮮明にし、apparent詳細を追加",
+          "ノイズとフィルム粒状を低下",
+          "印刷用に解像度を向上"
+        ],
+        "cannotDo": [
+          "欠落したまたは破れたセクションを再構築",
+          "完全にピントが合っていない画像を修正",
+          "深い傷や折れ目を完全に除去",
+          "決してキャプチャされなかった詳細を追加",
+          "完全に破壊された写真を修復"
+        ]
+      },
+      "faq": [
+        {
+          "question": "破れた写真を修復できますか？",
+          "answer": "AIは欠落したセクションを再構築できません。破れた写真の場合、セクションを一緒にスキャンし、手動で揃えてから、手作業でレタッチングする必要があります。AIはその後、結合された結果を強化できます。"
+        },
+        {
+          "question": "古い写真はどの解像度でスキャンすべきですか？",
+          "answer": "標準写真には最低600 DPI。微細な詳細を持つ小さなプリントや写真には1200 DPI。より高い方が良い - 後でダウンスケールできます。"
+        },
+        {
+          "question": "白黒写真にカラーを修復すべきですか？",
+          "answer": "それはカラー化であり、異なるプロセスです。私たちのツールは既存のコンテンツを強化します - B&Wにカラーを追加しません。カラー化AIは別のカテゴリーです。"
+        },
+        {
+          "question": "どの程度の改善を期待できますか？",
+          "answer": "適度にダメージを受けた写真は大幅な改善を見るでしょう。深刻にダメージを受けた写真は見た目は良くなりますが、完璧にはなりません。非常に古い写真（1900年代以前）には固有の限界があります。"
+        }
+      ],
+      "relatedTools": ["ai-photo-enhancer", "ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "amazon-product-photos",
+      "title": "Amazon商品写真のアップスケーリング",
+      "metaTitle": "Amazonリスティング用の商品写真をアップスケール | MyImageUpscaler",
+      "metaDescription": "AIアップスケーリングでAmazonの2000x2000px画像要件を満たします。サプライヤー写真をズーム対応商品画像に変換。無料ツール、透かしなし。",
+      "h1": "Amazon用に商品写真をアップスケール",
+      "intro": "Amazonは最小1000x1000px画像を必要とし、ズームには2000x2000pxを推奨しています。サプライヤー写真をこれらの要件に満たすようにアップスケールする方法はこちらです。",
+      "primaryKeyword": "upscale product photos amazon",
+      "secondaryKeywords": [
+        "amazon product image size",
+        "amazon listing photos",
+        "amazon image requirements 2025",
+        "upscale supplier photos",
+        "amazon zoom image size",
+        "fba product photography"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Eコマース",
+      "description": "サイズ要件、白背景基準、AIアップスケーリングワークフローを含む、Amazonリスティング用の商品画像を準備するための完全ガイド。",
+      "platformRequirements": [
+        {
+          "platform": "Amazonメイン画像",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px（ズーム用）",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1（正方形）",
+          "format": "JPEG、PNG、GIF、TIFF",
+          "background": "純粋な白（RGB 255,255,255）",
+          "notes": "商品はフレームの85%を満たす必要があります。テキスト、ロゴ、透かし、境界線なし。"
+        },
+        {
+          "platform": "Amazon追加画像",
+          "minimumSize": "1000x1000px",
+          "recommendedSize": "2000x2000px",
+          "maxFileSize": "10MB",
+          "aspectRatio": "1:1推奨",
+          "format": "JPEG、PNG、GIF、TIFF",
+          "background": "任意（ライフスタイルショット許可）",
+          "notes": "使用中の商品、パッケージ、サイズ比較、インフォグラフィックを表示できます。"
+        },
+        {
+          "platform": "Amazon A+コンテンツ",
+          "minimumSize": "モジュールにより変動",
+          "recommendedSize": "最大970px幅",
+          "maxFileSize": "画像あたり2MB",
+          "aspectRatio": "様々（モジュール依存）",
+          "format": "JPEG、PNG",
+          "background": "テーマ適切",
+          "notes": "より高解像度画像はデスクトップとモバイルA+モジュールで良好に表示されます。"
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "サプライヤー画像が500-800pxのみ",
+          "solution": "AIアップスケーリングを使用して3-4倍拡大します。500px画像はズーム機能で2000pxになります。",
+          "howTo": "サプライヤー画像をアップロード、4倍アップスケールを選択、2000x2000px以上でダウンロード。"
+        },
+        {
+          "problem": "1000px最小値を満たさないため画像が拒否されました",
+          "solution": "最初にアップスケール、その後必要に応じて正方形1:1比率にクロップ。",
+          "howTo": "最低1200pxにアップスケール、その後1000x1000pxまたは2000x2000px正方形にクロップ。"
+        },
+        {
+          "problem": "リスティングでズーム機能が動作しない",
+          "solution": "Amazonズームには最長辺で1500px最小が必要、2000px+を推奨。",
+          "howTo": "ズームが動作するようにすべての商品画像を2000x2000pxにアップスケールしてください。"
+        },
+        {
+          "problem": "アップスケーリング後の商品詳細がぼやけて見える",
+          "solution": "AIアップスケーリングは従来のサイズ変更とは異なり、テキストと微細な詳細を保存します。",
+          "howTo": "商品写真とテキスト保存に特別に訓練されたAIアップスケーラーを使用してください。"
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "ソース画像品質を監査",
+          "description": "オリジナルの寸法を確認してください。300px未満の画像はAmazon用にうまくアップスケールできない場合があります。"
+        },
+        {
+          "step": 2,
+          "title": "背景を除去または置換",
+          "description": "メイン画像の場合、アップスケーリング前に純粋な白背景（255,255,255）を確認してください。"
+        },
+        {
+          "step": 3,
+          "title": "AIアップスケーラーにアップロード",
+          "description": "500px画像には4倍アップスケール、1000px画像には2000pxターゲットに到達するために2倍を選択してください。"
+        },
+        {
+          "step": 4,
+          "title": "1:1比率にクロップ",
+          "description": "最終画像が商品がフレームの85%を満たす正方形であることを確認してください。"
+        },
+        {
+          "step": 5,
+          "title": "ファイルサイズと形式を確認",
+          "description": "10MB未満のJPEGとして保存してください。最高のサイズ/品質バランスのために85-95%品質を使用してください。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Amazonは商品写真にどの画像サイズを必要としますか？",
+          "answer": "Amazonは最小1000x1000pxを必要としますが、2000x2000px以上を強く推奨しています。ズーム機能は最長辺で1500px以上の画像でのみ有効になり、2000px+が最高の顧客エクスペリエンスを提供します。"
+        },
+        {
+          "question": "ドロップシッピングサプライヤー写真をAmazon用にアップスケールできますか？",
+          "answer": "はい、AIアップスケーリングは通常500-800pxのサプライヤー写真でうまく機能します。Amazonの2000px推奨に到達するために3-4倍アップスケールしてください。画像を商業的に使用する権利があることを確認してください。"
+        },
+        {
+          "question": "アップスケールされた画像はAmazonの品質チェックを通過しますか？",
+          "answer": "AIアップスケール画像は、ソースが極端に低品質でなければ、通常、Amazonの自動チェックを通過します。最高の結果には300px以上のソース画像に焦点を当ててください。商品詳細とテキストはアップスケーリングプロセスを通して鮮明に保たれます。"
+        },
+        {
+          "question": "なぜ私のAmazon画像にはズームがないのですか？",
+          "answer": "Amazonのズーム機能には、最長辺で1500px以上の画像が必要で、2000px+が推奨されています。すべての顧客にズームが動作するように、画像を2000x2000pxにアップスケールしてください。"
+        },
+        {
+          "question": "Amazon商品画像に最適な形式は何ですか？",
+          "answer": "JPEGはファイルサイズが小さいため、ほとんどの商品写真に推奨されます。85-95%品質設定を使用してください。透明度が必要な場合にのみPNGが良いです（ただし、Amazonメイン画像にはとにかく白背景が必要です）。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "real-estate-photo-enhancement",
+      "title": "不動産写真の強化",
+      "metaTitle": "AIで不動産写真を強化 | プロパティリスティング画像",
+      "metaDescription": "AI強化でプロパティ写真を変換します。照明を修正し、解像度をアップスケールし、リスティングを目立たせます。エージェントとカメラマンによって使用されます。",
+      "h1": "AI不動産写真強化",
+      "intro": "プロフェッショナルな見た目のリスティング写真は物件をより早く販売します。MLS基準を満たし、競合他社よりも目立つようにプロパティ画像を強化してアップスケールしてください。",
+      "primaryKeyword": "real estate photography enhancement",
+      "secondaryKeywords": [
+        "property photo editing",
+        "real estate image enhancement",
+        "listing photo enhancement",
+        "mls photo quality",
+        "property listing images",
+        "real estate photography editing"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "不動産",
+      "description": "AIツールを使用して、MLS、Zillow、およびその他のプロパティリスティングプラットフォーム用の不動産写真を強化するための包括的なガイド。",
+      "platformRequirements": [
+        {
+          "platform": "MLS（ほとんどのシステム）",
+          "minimumSize": "640x480px",
+          "recommendedSize": "2048x1536px以上",
+          "maxFileSize": "10-15MB変動",
+          "aspectRatio": "4:3が最も一般的",
+          "format": "JPEG",
+          "notes": "より高品質な写真はより多くのビューを得ます。多くのMLSシステムが現在HD画像をサポートしています。"
+        },
+        {
+          "platform": "Zillow",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px+",
+          "maxFileSize": "50MB",
+          "aspectRatio": "4:3推奨",
+          "format": "JPEG、PNG",
+          "notes": "最初の写真が重要 - 検索結果に表示されます。高解像度画像はより良いランクになります。"
+        },
+        {
+          "platform": "Realtor.com",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2560x1920px",
+          "maxFileSize": "100MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "より高解像度画像は検索結果で優先配置を受け取ります。"
+        },
+        {
+          "platform": "Redfin",
+          "minimumSize": "1024x768px",
+          "recommendedSize": "2048x1536px+",
+          "maxFileSize": "20MB",
+          "aspectRatio": "4:3",
+          "format": "JPEG",
+          "notes": "品質の高い写真は直接リスティングビューとお問い合わせに影響します。"
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "インテリア写真が暗すぎる",
+          "solution": "AI強化は露出を自動的に修正し、シャドウ詳細を引き出します。",
+          "howTo": "フォトエンハンサーにアップロード、AIに自動修正させ、解像度が不十分な場合はアップスケールしてください。"
+        },
+        {
+          "problem": "古い電話写真は解像度を欠いている",
+          "solution": "現代の基準を満たすために2-3倍アップスケールしてください。1200px写真は2400-3600pxになります。",
+          "howTo": "AIアップスケーラーにアップロード、2倍または3倍を選択、出力がプラットフォーム要件を満たすことを確認してください。"
+        },
+        {
+          "problem": "明るい外観からの窓の飛び越し",
+          "solution": "AI強化はいくつかの窓詳細を回復し、インテリア/エクステリア露出をバランスできます。",
+          "howTo": "最初にエンハンサーを通し、その後補正された画像をアップスケールしてください。"
+        },
+        {
+          "problem": "以前のエージェントからの写真は低品質",
+          "solution": "新しいプロ写真をスケジュールしながら、既存の写真を強化してアップスケールしてください。",
+          "howTo": "すぐに改善するためにエンハンサーとアップスケーラーでバッチを処理してください。"
+        }
+      ],
+      "photographyTips": [
+        {
+          "tip": "エクステリアにはゴールデンアワーに撮影",
+          "description": "早朝または夕方は厳しい影なしで魅力的な自然光を提供します。"
+        },
+        {
+          "tip": "すべてのインテリアライトを点灯",
+          "description": "昼の撮影中でも、インテリアライトは温かさを加え、スペースを魅力的に感じさせます。"
+        },
+        {
+          "tip": "一貫した結果には三脚を使用",
+          "description": "三脚はより明るいインテリアにより長い露出を可能にし、水平な地平線を保証します。"
+        },
+        {
+          "tip": "最大スペースのためにコーナーから撮影",
+          "description": "部屋のコーナーから撮影すると2つの壁が表示され、スペースがより大きく見えます。"
+        },
+        {
+          "tip": "撮影前にステージング",
+          "description": "個人アイテムを除去し、トイレの蓋を閉じ、トラフィックフローを表示するように家具を配置してください。"
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "既存の写真品質を評価",
+          "description": "解像度、露出、構図を確認してください。強化が必要な画像と再撮影を識別してください。"
+        },
+        {
+          "step": 2,
+          "title": "最初にAI強化を実行",
+          "description": "アップスケーリング前に露出、カラーバランス、鮮明さを修正するためにフォトエンハンサーにアップロードしてください。"
+        },
+        {
+          "step": 3,
+          "title": "ターゲット解像度にアップスケール",
+          "description": "リスティングサイトでの最適な表示のために強化された写真を2048px以上に拡大してください。"
+        },
+        {
+          "step": 4,
+          "title": "正しい形式でエクスポート",
+          "description": "85-95%品質のJPEGとして保存してください。ほとんどのMLSシステムはJPEG形式を必要とします。"
+        },
+        {
+          "step": 5,
+          "title": "戦略的に写真を注文",
+          "description": "最高のエクステリアショットでリードし、その後主要な部屋を配置します。最初の写真が検索結果に表示されます。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "AI強化はプロの不動産写真に取って代わることができますか？",
+          "answer": "AI強化は既存の写真を劇的に改善しますが、高価値リスティングのためのプロ写真には取って代わりません。良い写真を改善するため、またはプロの撮影をスケジュールしながら一時的なソリューションとして強化を使用してください。"
+        },
+        {
+          "question": "不動産写真はどの解像度であるべきですか？",
+          "answer": "最小2048x1536pxを目指してください。これは、デスクトップとモバイルの両方で鮮明な画像を提供しながら、Zillow、MLS、およびRealtor.comの要件を満たします。より高い解像度（2560px+）は一部のプラットフォームで検索ランキングを改善できます。"
+        },
+        {
+          "question": "暗いインテリア写真を修正するにはどうすればよいですか？",
+          "answer": "AIフォトエンハンサーは露出を自動的に修正し、シャドウを明るくします。暗いインテリアショットをアップロードし、AIに分析と修正させ、改善されたバージョンをダウンロードしてください。最高の結果には、アップスケーリング前に強化してください。"
+        },
+        {
+          "question": "強化された写真は偽物または過度に処理されたように見えますか？",
+          "answer": "品質AI強化は自然に見える結果を生成します。買い手が信頼しない過度に飽和し、HDR重視の見た目を作成するツールは避けてください。私たちのエンハンサーは劇的な効果よりもリアルな修正を優先します。"
+        },
+        {
+          "question": "不動産リスティングには何枚の写真が必要ですか？",
+          "answer": "ほとんどの物件には25-50枚の写真が最適です。エクステリア、すべてのメインルーム、主要な機能（キッチン、バスルーム、クローゼット）、およびユニークなセリングポイントを含めてください。品質は数量よりも重要です - 25枚の素晴らしい写真は50枚の平凡な写真に勝ります。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "anime-image-upscaler",
+      "title": "アニメ画像アップスケーラー",
+      "metaTitle": "アニメ画像アップスケーラーオンライン - アニメ＆マンガアートをアップスケール | MyImageUpscaler",
+      "metaDescription": "アーティファクトなしでアニメ画像、マンガパネル、イラストをアップスケール。AIはクリーンな線と平面的な色を保存します。アニメファンのための無料オンラインツール。",
+      "h1": "アニメ画像アップスケーラーオンライン",
+      "intro": "アニメスタイルを定義するクリーンな線と鮮やかな色を保存しながら、お気に入りのアニメスクリーンショット、マンガスキャン、デジタルアートをアップスケールしてください。",
+      "primaryKeyword": "anime image upscaler",
+      "secondaryKeywords": [
+        "upscale anime",
+        "anime upscaler online",
+        "manga upscaler",
+        "anime screenshot upscale",
+        "waifu upscaler",
+        "anime wallpaper upscale"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "industry": "デジタルアート＆エンターテイメント",
+      "description": "描かれたコンテンツに最適化されたAI技術を使用して、アニメ画像、マンガアート、日本風のイラストをアップスケールするための専門的なガイド。",
+      "contentTypes": [
+        {
+          "type": "アニメスクリーンショット",
+          "description": "アニメシリーズや映画からのキャプチャ",
+          "bestScaleFactor": "2倍-4倍",
+          "notes": "ほとんどの現代アニメで良好に機能します。古いアニメ（2000年以前）はより多くのアーティファクトを示す場合があります。"
+        },
+        {
+          "type": "マンガスキャン",
+          "description": "スキャンされたマンガページとパネル",
+          "bestScaleFactor": "2倍-4倍",
+          "notes": "線画とスクリーントーンを保存します。アップスケーリング前に埃/傷を除去してください。"
+        },
+        {
+          "type": "デジタルアニメアート",
+          "description": "ファンアート、イラスト、デジタル画",
+          "bestScaleFactor": "2倍-4倍",
+          "notes": "クリーンなデジタルアートで優秀な結果。平面的な色と鮮明なエッジを保存します。"
+        },
+        {
+          "type": "アニメ壁紙",
+          "description": "デスクトップとモバイル壁紙",
+          "bestScaleFactor": "2倍-4倍",
+          "notes": "画面解像度に合わせてアップスケールしてください。4Kモニターには3840px+幅が必要です。"
+        },
+        {
+          "type": "ゲームCG",
+          "description": "ビジュアルノベルとゲームアートワーク",
+          "bestScaleFactor": "2倍-4倍",
+          "notes": "古いVN CGは often4倍アップスケーリングが必要です。現代のゲームは通常2倍で十分です。"
+        }
+      ],
+      "commonProblems": [
+        {
+          "problem": "アップスケーリングが不要なテクスチャやノイズを追加",
+          "solution": "汎用ツールよりもアニメで訓練されたAIアップスケーラーは、平面的な色領域をより良く保存します。",
+          "howTo": "イラストとアートワークに最適化された設定でAIアップスケーラーを使用してください。"
+        },
+        {
+          "problem": "線画がぼやけたり二重になったりする",
+          "solution": "品質の高いアニメアップスケーリングは、ゴーストやブラーなしで鮮明な線を維持します。",
+          "howTo": "最初に2倍アップスケールで開始してください。品質が良好であれば、より高解像度のために結果を再度アップスケールしてください。"
+        },
+        {
+          "problem": "JPEGアーティファクトがアップスケーリング後により目立つ",
+          "solution": "AIアップスケーリングは拡大中にJPEGアーティファクトを低下できます。利用可能な最高品質ソースを使用してください。",
+          "howTo": "可能であればPNGソースを見つけてください。JPEGの場合、アップスケーリング前に強化が役立ちます。"
+        },
+        {
+          "problem": "小さな画像が4倍でピクセル化される",
+          "solution": "非常に小さなソース（200px未満）には限界があります。漸進的にアップスケールしてください：2倍、その後もう一度2倍。",
+          "howTo": "最初に2倍でアップロード、結果をダウンロード、その後別の2倍のために結果をアップロードしてください。"
+        }
+      ],
+      "targetResolutions": [
+        {
+          "use": "電話壁紙",
+          "resolution": "1080x2400px（現代電話）",
+          "source": "540x1200px最小",
+          "scaleFactor": "2倍"
+        },
+        {
+          "use": "デスクトップ壁紙（1080p）",
+          "resolution": "1920x1080px",
+          "source": "960x540px最小",
+          "scaleFactor": "2倍"
+        },
+        {
+          "use": "デスクトップ壁紙（1440p）",
+          "resolution": "2560x1440px",
+          "source": "4倍で640x360px、2倍で1280x720px",
+          "scaleFactor": "2倍-4倍"
+        },
+        {
+          "use": "デスクトップ壁紙（4K）",
+          "resolution": "3840x2160px",
+          "source": "4倍で960x540px、2倍で1920x1080px",
+          "scaleFactor": "2倍-4倍"
+        },
+        {
+          "use": "印刷（ポスター）",
+          "resolution": "印刷サイズで300 DPI",
+          "source": "計算：印刷インチ x 300",
+          "scaleFactor": "ソースにより変動"
+        }
+      ],
+      "workflow": [
+        {
+          "step": 1,
+          "title": "最高品質ソースを見つける",
+          "description": "可能な場合はPNGバージョンを探してください。より高いソース品質はより良いアップスケール結果を意味します。"
+        },
+        {
+          "step": 2,
+          "title": "現在の解像度を確認",
+          "description": "画像を右クリックし、プロパティを表示してください。必要なスケール係数を計算するために寸法をメモしてください。"
+        },
+        {
+          "step": 3,
+          "title": "必要なスケール係数を計算",
+          "description": "960pxソースから4K壁紙（3840px幅）の場合、4倍アップスケーリングが必要です。"
+        },
+        {
+          "step": 4,
+          "title": "アップロードしてアップスケール",
+          "description": "適切なスケール係数を選択してください。アニメの場合、2倍と4倍が通常最適に機能します。"
+        },
+        {
+          "step": 5,
+          "title": "レビューしてエクスポート",
+          "description": "アーティファクトについて結果を確認してください。さらなる圧縮なしで品質を保存するためにPNGとしてダウンロードしてください。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "アニメ画像に最適なアップスケーラーは何ですか？",
+          "answer": "AIアップスケーラーはアニメに最適です。なぜなら、描かれたコンテンツの特性 - 平面的な色、クリーンな線、特定の陰影スタイル - を理解しているからです。従来のアップスケーリングはアニメをぼやけた見た目にしますが、AIは鮮明な美観を維持します。"
+        },
+        {
+          "question": "古いアニメスクリーンショットを4Kにアップスケールできますか？",
+          "answer": "はい、結果はソース品質によって異なります。現代アニメ（2010年以降）は優れてアップスケールされます。古いアニメ（1990-2000年代）はいくつかのマイナーアーティファクトで良好に機能します。非常に古いアニメ（1980年代）は可視的な限界を示す場合があります。2倍で開始して品質を評価してください。"
+        },
+        {
+          "question": "詳細を失わずにマンガをアップスケールするにはどうすればよいですか？",
+          "answer": "AIアップスケーリングはマンガを定義する線画とスクリーントーンを保存します。最高の結果には：自分でデジタル化する場合は600+ DPIでスキャンし、アップスケーリング前に埃/傷を清掃し、2倍-4倍スケール係数を使用してください。PNG形式はJPEGよりも品質を良く保存します。"
+        },
+        {
+          "question": "アップスケーリングはアニメ画像からJPEGアーティファクトを除去しますか？",
+          "answer": "AIアップスケーリングは拡大中にJPEG圧縮アーティファクトを低下できます。ただし、強く圧縮されたソースは依然としていくつかのアーティファクトを示します。最高の結果には、利用可能な最高品質ソースを見つけてください - PNGが推奨され、高品質JPEGも許容できます。"
+        },
+        {
+          "question": "アニメ壁紙はどの解像度であるべきですか？",
+          "answer": "画面に合わせてください：1080pディスプレイには1920x1080、1440pには2560x1440、4Kには3840x2160。電話壁紙は通常、現代デバイスに1080x2400が必要です。ソースをこれらのターゲット解像度にアップスケールしてください。"
+        },
+        {
+          "question": "無料のアニメアップスケーラーはありますか？",
+          "answer": "はい、私たちのAIアップスケーラーは透かしなしで無料でアニメ画像を処理します。支払いなしでアニメスクリーンショット、マンガパネル、デジタルアートを4倍までアップスケールできます。プレミアムプランはバッチ処理とより高いファイルサイズ制限を提供します。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "cartoon-image-upscaler",
+      "title": "漫画画像アップスケーラー",
+      "metaTitle": "漫画画像アップスケーラーオンライン - 漫画＆コミックを強化 | MyImageUpscaler",
+      "metaDescription": "AIで漫画画像、コミック、イラストをアップスケール。クリーンな線、鮮やかな色を保存。無料オンライン漫画アップスケーラー。",
+      "h1": "漫画画像アップスケーラーオンライン",
+      "intro": "漫画やコミックアートスタイルを定義するクリーンな線と平面的な色を保存しながら、お気に入りの漫画スクリーンショット、コミックパネル、イラストを強化してください。",
+      "primaryKeyword": "cartoon image upscaler",
+      "secondaryKeywords": [
+        "cartoon upscaler",
+        "upscale cartoons",
+        "comic image upscaler",
+        "cartoon enlargement",
+        "illustration upscaler"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "description": "平面的な色とクリーンな線を持つ描かれたアートワークに最適化されたAI技術を使用して、漫画画像、西洋コミック、イラストコンテンツの専門的なアップスケーリング。",
+      "imageTypes": [
+        {
+          "type": "西洋漫画",
+          "description": "西洋スタジオからのアニメーションシリーズと映画",
+          "examples": "Disney、Warner Bros、Cartoon Networkコンテンツ",
+          "notes": "ほとんどの現代アニメーションコンテンツで良好に機能します"
+        },
+        {
+          "type": "デジタルコミック",
+          "description": "デジタルで作成されたコミックブックとグラフィックノベル",
+          "examples": "ウェブコミック、デジタルファーストリリース、インディーコミック",
+          "notes": "クリーンなデジタルソースで優秀な結果"
+        },
+        {
+          "type": "漫画イラスト",
+          "description": "カスタムアートワークとキャラクターデザイン",
+          "examples": "OCアート、ファンアート、委託イラスト",
+          "notes": "アーティストスタイルとカラーチョイスを保存します"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "クリーンな線の保存",
+          "description": "AIは従来のアップスケーリングで一般的なブラーやゴーストなしで鮮明なアウトラインを維持します。"
+        },
+        {
+          "title": "平面的な色領域",
+          "description": "固有色ブロックはバンディングやアーティファクトなしで滑らかなままです。"
+        },
+        {
+          "title": "スタイルの一貫性",
+          "description": "アップスケールされた画像は元の芸術スタイルと外観を維持します。"
+        }
+      ],
+      "commonIssues": [
+        {
+          "issue": "ぼやけた線",
+          "solution": "様々なアートスタイルで訓練されたAIアップスケーラーは、標準アップスケーリングよりも鮮明なエッジをより良く維持します。"
+        },
+        {
+          "issue": "色の滲み",
+          "solution": "品質AIアップスケーリングは色の境界を尊重し、隣接する領域間の滲みを防ぎます。"
+        },
+        {
+          "issue": "高スケールでのアーティファクト",
+          "solution": "必要に応じて最初に2倍で漸進的にアップスケールしてください。非常に高いスケール係数（8倍）は限界を示す場合があります。"
+        }
+      ],
+      "bestPractices": [
+        "利用可能な最高品質ソースで開始",
+        "品質を保存するためにPNG形式を使用",
+        "アップスケーリング前にスキャンされたコミックから埃/傷を清掃",
+        "適切なスケール係数を選択 - 2倍と4倍が通常最適に機能",
+        "過度なアップスケーリングを避ける - 8倍は減少する見返りを示す場合があります"
+      ],
+      "faq": [
+        {
+          "question": "漫画画像に最適なアップスケーラーは何ですか？",
+          "answer": "AIアップスケーラーは漫画でうまく機能します。なぜなら、描かれたコンテンツの特性 - 平面的な色、クリーンな線、特定の陰影スタイル - を理解しているからです。私たちのAIアップスケーラーは様々な漫画やコミックアートスタイルを効果的に処理します。"
+        },
+        {
+          "question": "古いコミックブックパネルをアップスケールできますか？",
+          "answer": "はい！AIアップスケーリングはコミックブックパネルでうまく機能します。印刷からスキャンされたか、デジタルソースのどちらでも。スキャンの場合の最高の結果には、最初に埃と傷を清掃し、2倍でアップスケーリングを開始してください。"
+        },
+        {
+          "question": "アップスケーリングはアートスタイルを損ないますか？",
+          "answer": "いいえ、私たちのAIアップスケーラーは線品質、カラーチョイス、全体的な外観を含む芸術スタイルを保存するように設計されています。強化はアーティストの意図を変えずに詳細を追加します。"
+        },
+        {
+          "question": "漫画壁紙の最大解像度は何ですか？",
+          "answer": "ニーズに応じて4K（3840x2160）以上にアップスケールできます。現代ディスプレイでは、1920x1080（1080p）、2560x1440（1440p）、または3840x2160（4K）が一般的なターゲットです。"
+        },
+        {
+          "question": "無料の漫画アップスケーラーはありますか？",
+          "answer": "はい！私たちのAIアップスケーラーは無料ティアで漫画やコミック画像を処理します。透かしなしで漫画、コミック、イラストをアップスケールできます。プレミアムプランはコレクション全体のバッチ処理を提供します。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "portrait-photo-upscaler",
+      "title": "ポートレート写真アップスケーラー",
+      "metaTitle": "ポートレート写真アップスケーラー - AI顔面強化 | MyImageUpscaler",
+      "metaDescription": "AI顔面強化でポートレート写真をアップスケール。顔の詳細、肌のテクスチャ、全体的な品質を改善。無料オンラインポートレートアップスケーラー。",
+      "h1": "ポートレート写真アップスケーラー - AI顔面強化",
+      "intro": "専門的なAI顔面強化技術でポートレート写真を変換してください。自然な外観を維持しながら、顔の特徴、肌のテクスチャ、全体的な画像品質を改善します。",
+      "primaryKeyword": "portrait photo upscaler",
+      "secondaryKeywords": [
+        "portrait enhancer",
+        "face upscaler",
+        "portrait enhancement",
+        "photo enlarger",
+        "face detail enhancement"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "use-cases",
+      "description": "顔の特徴再構築と改善に特化したAIモデルを使用したプロフェッショナルポートレート強化。ヘッドショット、ソーシャルメディア写真、プロフェッショナルポートレートに最適。",
+      "supportedTiers": {
+        "faceRestore": {
+          "name": "フェイスレストア",
+          "credits": 2,
+          "model": "GFPGAN",
+          "description": "顔の特徴再構築を備えたフォトレストア"
+        },
+        "facePro": {
+          "name": "フェイスプロ",
+          "credits": 6,
+          "model": "Flux-2-Pro",
+          "description": "高度な顔面詳細改善を備えたプレミアムポートレート強化"
+        },
+        "ultra": {
+          "name": "ウルトラ品質",
+          "credits": 8,
+          "model": "Nano Banana Pro",
+          "description": "プロフェッショナルポートレートの最大4K/8K品質"
+        }
+      },
+      "useCases": [
+        {
+          "title": "プロフェッショナルヘッドショット",
+          "description": "改善された顔面鮮明度と詳細でLinkedIn、ポートフォリオ、ビジネスヘッドショットを強化してください。",
+          "recommendedTier": "フェイスプロ",
+          "example": "基本ヘッドショットを高解像度プロ品質にアップスケール"
+        },
+        {
+          "title": "ソーシャルメディアポートレート",
+          "description": "Instagram、Facebook、Twitter、デーティングアプリ用のプロフィール写真を改善してください。",
+          "recommendedTier": "フェイスレストア",
+          "example": "より良い顔の特徴と肌のテクスチャでセルフィー品質を強化"
+        },
+        {
+          "title": "古いフォトレストア",
+          "description": "老化またはダメージを受けたポートレート写真を修復して強化してください。",
+          "recommendedTier": "フェイスレストア",
+          "example": "顔面再構築でヴィンテージファミリーフォトに新しい命を与える"
+        },
+        {
+          "title": "印刷準備",
+          "description": "ラージフォーマット印刷用のポートレート写真を準備してください。",
+          "recommendedTier": "ウルトラ",
+          "example": "最大品質でポスターまたはキャンバス印刷用にアップスケール"
+        }
+      ],
+      "features": {
+        "faceEnhancement": "顔の特徴再構築のための高度なAIモデル（GFPGAN、Flux-2-Pro）",
+        "skinTexture": "プラスチック外観なしの自然な肌のテクスチャ改善",
+        "detailPreservation": "目、唇、および他の特徴は自然な外観を維持",
+        "resolution": "ウルトラ品質ティアで最大8K出力をサポート",
+        "batchProcessing": "複数のポートレートにはプロティアで利用可能"
+      },
+      "bestPractices": [
+        "一般改善にはフェイスレストアで開始",
+        "プロフェッショナルヘッドショットと重要なポートレートにはフェイスプロを使用",
+        "ラージフォーマット印刷ニーズにはウルトラティアを選択",
+        "最高の結果にはソース写真で良好な照明を確保",
+        "非常に低品質ソースの極端なアップスケーリング（8倍）を避ける"
+      ],
+      "faq": [
+        {
+          "question": "フェイスレストアとフェイスプロの違いは何ですか？",
+          "answer": "フェイスレストア（2クレジット）は、顔の特徴再構築を備えたフォトレストアにGFPGANを使用します。フェイスプロ（6クレジット）は、高度な詳細改善を備えたプレミアムポートレート強化にFlux-2-Proを使用します。フェイスプロはプロフェッショナルポートレートに優秀な結果を提供します。"
+        },
+        {
+          "question": "ポートレートアップスケーラーはぼやけた顔を修正できますか？",
+          "answer": "はい！私たちの顔面強化モデルは、ぼやけたまたは低品質の写真から顔の詳細を再構築することに特化しています。結果はソース品質によって異なりますが、適度にぼやけた画像では大幅な改善が典型的です。"
+        },
+        {
+          "question": "私のポートレートは不自然またはプラスチックのように見えますか？",
+          "answer": "私たちのAIモデルは自然な外観を維持するように設計されています。肌のテクスチャと特徴はリアルな特性を保存しながら強化されます。微妙な結果には、フェイスプロよりもフェイスレストアが推奨されます。"
+        },
+        {
+          "question": "ポートレート写真はどの解像度にアップスケールできますか？",
+          "answer": "ウルトラ品質ティアで、ポートレートは4Kまたは8K解像度（最大8192x8192px）にアップスケールできます。これはラージフォーマット印刷またはプロ使用に理想的です。"
+        },
+        {
+          "question": "無料のポートレートアップスケーラーはありますか？",
+          "answer": "はい！無料ティアにはフェイスレストア品質（2クレジット = 1画像）とクイック品質（1クレジット = 1画像）が含まれています。透かしなしでポートレート写真を強化できます。頻繁な使用には、有料ティアはより多くのクレジットとバッチ処理を提供します。"
+        },
+        {
+          "question": "複数のポートレートを一度にアップスケールできますか？",
+          "answer": "バッチ処理は有料ティアで利用可能です（スターター：5画像、ホビー：10画像、プロ：50画像、ビジネス：バッチあたり500画像）。無料ティアは単一画像のみを処理します。"
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "product-photo-background-removal",
+      "title": "商品写真背景除去",
+      "metaTitle": "商品写真から背景を除去 | Eコマース画像",
+      "metaDescription": "Amazon、eBay、Etsy、Shopify用の商品写真から背景を除去します。マーケットプレイス要件を満たす白背景を作成します。無料AIツール。",
+      "h1": "Eコマース用商品写真背景除去",
+      "intro": "マーケットプレイス要件を満たすクリーンな白背景でプロフェッショナルな商品画像を作成してください。私たちのAIは複雑な背景を除去しながら商品詳細を保存します。",
+      "primaryKeyword": "product photo background removal",
+      "secondaryKeywords": [
+        "remove background product photo",
+        "ecommerce background removal",
+        "amazon white background",
+        "product image background remover"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "use-cases",
+      "industry": "Eコマース",
+      "description": "オンラインマーケットプレイス用のプロフェッショナル商品写真準備。忙しい背景を除去し、Amazon、eBay、およびEtsy要件を満たすクリーンな白背景を作成します。",
+      "challenges": [
+        "マーケットプレイス要件は純粋な白（255,255,255）背景を必要とします",
+        "商品の影と反射はきれいに保存または除去する必要があります",
+        "穴や透明部分を持つ複雑な商品形状は困難です",
+        "商品カタログ全体にわたる一貫した背景が不可欠です"
+      ],
+      "solutions": [
+        {
+          "problem": "忙しいまたは散らかった背景が商品から気を散らす",
+          "solution": "AIは背景を瞬時に除去し、純粋な白に置き換えます",
+          "tool": "ai-background-remover"
+        },
+        {
+          "problem": "大規模カタログの手動編集は時間がかかる",
+          "solution": "バッチ処理は一度に複数の画像から背景を除去します",
+          "tool": "ai-background-remover"
+        },
+        {
+          "problem": "複雑な商品エッジは非プロフェッショナルに見える",
+          "solution": "AIは微細な詳細を保存し、クリーンでプロフェッショナルなエッジを作成します",
+          "tool": "ai-background-remover"
+        }
+      ],
+      "results": [
+        {
+          "metric": "処理時間",
+          "improvement": "90% faster",
+          "description": "手動編集で数分かかるところを数秒で背景を除去"
+        },
+        {
+          "metric": "マーケットプレイス準拠",
+          "improvement": "100%",
+          "description": "純粋な白背景はAmazonとeBayの要件を満たします"
+        },
+        {
+          "metric": "コスト削減",
+          "improvement": "Free",
+          "description": "無制限の背景除去にサブスクリプション費用なし"
+        }
+      ],
+      "faq": [
+        {
+          "question": "これはAmazon準拠の白背景を作成しますか？",
+          "answer": "はい、私たちの背景除去ツールはAmazonのメイン画像要件を満たす純粋な白（RGB 255,255,255）背景を作成します。商品はプロフェッショナルなマーケットプレイス外観のためにきれいに分離されます。"
+        },
+        {
+          "question": "複雑な形状を持つ商品を処理できますか？",
+          "answer": "AIは穴、透明部分、複雑なエッジを持つ商品を含む複雑な形状を処理できます。結果は商品と背景の間の鮮明なコントラストで最適です。"
+        },
+        {
+          "question": "多くの商品写真を一度に処理するにはどうすればよいですか？",
+          "answer": "無料ツールは一度に1枚の画像を処理しますが、カタログをすばやく循環できます。一括操作には、自動化されたワークフロー用にAPIアクセスが利用可能です。"
+        },
+        {
+          "question": "商品の影を保存しますか？",
+          "answer": "AIは影を含む背景を完全に除去します。自然な影を持つ商品写真の場合、洗練された見た目のために除去後に微妙なドロップ影を追加したい場合があります。"
+        }
+      ],
+      "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
+      "relatedGuides": []
+    },
+    {
+      "slug": "portrait-background-removal",
+      "title": "ポートレート背景除去",
+      "metaTitle": "ポートレート写真から背景を除去 | ヘッドショット編集",
+      "metaDescription": "AIでポートレートやヘッドショットから背景を除去します。髪の詳細保存を備えたプロフェッショナル結果。LinkedIn、履歴書などのための無料オンラインツール。",
+      "h1": "ポートレート背景除去 - プロフェッショナルヘッドショット",
+      "intro": "気を散らす背景を除去することで、カジュアルな写真をプロフェッショナルなヘッドショットに変換してください。私たちのAIは複雑な髪の詳細を保存し、クリーンなカットアウトを作成します。",
+      "primaryKeyword": "portrait background removal",
+      "secondaryKeywords": [
+        "remove background portrait",
+        "headshot background remover",
+        "linkedin photo background",
+        "profile picture background removal"
+      ],
+      "lastUpdated": "2026-01-06T00:00:00Z",
+      "category": "use-cases",
+      "industry": "プロフェッショナル＆個人",
+      "description": "AI背景除去を備えたプロフェッショナルポートレートおよびヘッドショット準備。LinkedInプロフィール、履歴書、ID写真、プロフェッショナルブランディングに最適。",
+      "challenges": [
+        "髪と微細なエッジはきれいに切り出すのが特に困難です",
+        "プロフェッショナルフォト編集ソフトウェアは急な学習曲線があります",
+        "シンプルなヘッドショットのカメラマンや編集者の雇用は高価です",
+        "チーム写真にわたる一貫した背景スタイルにはスキルが必要です"
+      ],
+      "solutions": [
+        {
+          "problem": "髪は従来の選択ツールで乱雑なエッジを作成",
+          "solution": "微細な髪の詳細とふわふわしたエッジを処理するように特別に訓練されたAI",
+          "tool": "ai-background-remover"
+        },
+        {
+          "problem": "プロフェッショナルヘッドショットが必要ですがカジュアルな写真しかない",
+          "solution": "カジュアルな背景を除去し、プロフェッショナルな見た目のためにソリッドカラーに置換",
+          "tool": "ai-background-remover"
+        },
+        {
+          "problem": "チーム写真に一貫性のない背景がある",
+          "solution": "すべての背景を除去し、チーム全体に一貫したスタイルを適用",
+          "tool": "ai-background-remover"
+        }
+      ],
+      "results": [
+        {
+          "metric": "髪の詳細保存",
+          "improvement": "優秀",
+          "description": "AIはハロー効果なしでふわふわした髪、カール、微細なストランドを処理します"
+        },
+        {
+          "metric": "プロフェッショナルヘッドショットへの時間",
+          "improvement": "30秒未満",
+          "description": "任意のポートレートを瞬時にプロ品質に変換"
+        },
+        {
+          "metric": "コスト",
+          "improvement": "Free vs $50-200",
+          "description": "コストなしのプロフェッショナルヘッドショット編集"
+        }
+      ],
+      "faq": [
+        {
+          "question": "カールまたはくせ毛を処理できますか？",
+          "answer": "はい、私たちのAIはカール、くせ毛、ふわふわした髪を含むすべての髪型を処理するように特別に訓練されています。モデルは微細なストランドを検出し、従来のツールで一般的なハロー効果なしで自然に見えるエッジを保存します。"
+        },
+        {
+          "question": "LinkedInプロフィール写真に使用できますか？",
+          "answer": "絶対に。現在の背景を除去し、透明のままにするか、ソリッドなプロフェッショナルカラーを追加してください。結果はLinkedInに最適なクリーンでプロフェッショナルなヘッドショットです。"
+        },
+        {
+          "question": "眼鏡と反射はどうですか？",
+          "answer": "AIは眼鏡をうまく処理し、フレームとレンズを保存します。眼鏡の強い反射はいくつかのエッジアーティファクトを示す場合がありますが、ほとんどの眼鏡はきれいに処理されます。"
+        },
+        {
+          "question": "これはIDまたはパスポート写真に適していますか？",
+          "answer": "はい、背景を除去し、準拠した白または青背景を追加できます。公式ID写真には背景色以外に特定の照明と構成要件がある場合があることに注意してください。"
+        }
+      ],
+      "relatedTools": ["ai-background-remover", "ai-photo-enhancer"],
+      "relatedGuides": []
+    }
+  ],
+  "meta": {
+    "totalPages": 12,
+    "lastUpdated": "2026-01-08T00:00:00Z"
+  }
+}

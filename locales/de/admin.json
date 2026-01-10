@@ -1,0 +1,135 @@
+{
+  "aria": {
+    "userActions": "Benutzeraktionen"
+  },
+  "users": {
+    "viewDetails": "Details anzeigen",
+    "removeAdmin": "Admin entfernen",
+    "makeAdmin": "Zum Admin machen",
+    "adjustCredits": "Gutschriften anpassen",
+    "changeSubscription": "Abonnement ändern",
+    "deleteUser": "Benutzer löschen",
+    "grantAdminTitle": "Admin-Zugriff gewähren",
+    "removeAdminTitle": "Admin-Zugriff entfernen",
+    "grantAdminButton": "Admin gewähren",
+    "removeAdminButton": "Admin entfernen",
+    "deleteUserTitle": "Benutzer löschen",
+    "deleteUserButton": "Benutzer löschen",
+    "title": "Benutzer",
+    "searchPlaceholder": "Nach E-Mail suchen...",
+    "table": {
+      "email": "E-Mail",
+      "role": "Rolle",
+      "credits": "Guthaben",
+      "subscription": "Abonnement",
+      "joined": "Beigetreten",
+      "actions": "Aktionen",
+      "free": "Kostenlos"
+    },
+    "loading": "Wird geladen...",
+    "noUsersFound": "Keine Benutzer gefunden",
+    "error": "Fehler beim Laden der Benutzer",
+    "pagination": {
+      "showing": "Zeige {from} bis {to} von {total}",
+      "pageOf": "Seite {current} von {total}"
+    }
+  },
+  "admin": {
+    "setCredits": "Guthaben festlegen",
+    "current": "Aktuell:",
+    "creditsBalance": "Guthabenkontostand",
+    "free": "Kostenlos",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "processing": "Verarbeitung...",
+    "cancel": "Abbrechen",
+    "failedToLoad": "Fehler beim Laden der Abonnementdaten",
+    "failedToUpdate": "Fehler beim Aktualisieren des Abonnements",
+    "failedToDelete": "Fehler beim Löschen des Benutzers",
+    "failedToSetCredits": "Fehler beim Festlegen des Guthabens",
+    "failedToUpdateRole": "Fehler beim Aktualisieren der Rolle",
+    "immediatelyCancel": "Dies wird das Stripe-Abonnement sofort kündigen. Der Benutzer verliert den Zugang.",
+    "removeAccess": "Dies entfernt den Abonnementzugang aus dem Benutzerprofil.",
+    "changeToPlan": "Dies ändert das Stripe-Abonnement in {planName}. Die Abrechnung wird anteilig berechnet.",
+    "grantAccessWithoutStripe": "Dies gewährt {planName}-Zugang OHNE Erstellung eines Stripe-Abonnements. Nur für Komplementärleistungen oder Tests verwenden.",
+    "warning": "Warnung:",
+    "irreversible": "Diese Aktion ist irreversibel. Alle Benutzerdaten einschließlich Guthaben, Abonnements und Transaktionshistorie werden dauerhaft gelöscht.",
+    "typeEmailToConfirm": "Typ <span class=\"font-mono text-error\">{email}</span> zum Bestätigen",
+    "profileTier": "Profilstufe:",
+    "stripeStatus": "Stripe-Status:",
+    "noSubscription": "Kein Abonnement",
+    "renews": "Verlängert:",
+    "changeTo": "Ändern in",
+    "manageSubscription": "Abonnement verwalten"
+  },
+  "userDetail": {
+    "title": "Benutzerdetails",
+    "backToUsers": "Zurück zu Benutzern",
+    "loading": "Benutzerdetails werden geladen...",
+    "error": "Fehler beim Laden des Benutzers",
+    "userNotFound": "Benutzer nicht gefunden",
+    "profile": "Profil",
+    "credits": "Guthaben",
+    "subscription": {
+      "status": "Status",
+      "tier": "Stufe",
+      "periodEnd": "Periodenende",
+      "subscriptionId": "Abonnement-ID",
+      "unknown": "Unbekannt",
+      "noActiveSubscription": "Kein aktives Abonnement"
+    },
+    "fields": {
+      "email": "E-Mail",
+      "userId": "Benutzer-ID",
+      "stripeCustomerId": "Stripe-Kunden-ID",
+      "notConnected": "Nicht verbunden",
+      "role": "Rolle",
+      "user": "Benutzer",
+      "admin": "Administrator",
+      "joined": "Beigetreten"
+    },
+    "adjustCredits": {
+      "title": "Guthaben anpassen",
+      "amount": "Betrag (positiv zum Hinzufügen, negativ zum Entfernen)",
+      "amountPlaceholder": "z. B. 50 oder -20",
+      "reason": "Grund",
+      "reasonPlaceholder": "z. B. Kundendienst-Kompensation",
+      "currentBalance": "Aktuell: {current}",
+      "newBalance": "Neu: {new}",
+      "previewBalance": "Aktuell: {current} → Neu: {new}",
+      "cancel": "Abbrechen",
+      "saving": "Wird gespeichert...",
+      "adjustCredits": "Guthaben anpassen",
+      "error": "Fehler beim Anpassen des Guthabens"
+    },
+    "recentTransactions": {
+      "title": "Letzte Transaktionen",
+      "noTransactions": "Keine Transaktionen"
+    },
+    "errors": {
+      "failedToLoadUser": "Fehler beim Laden des Benutzers",
+      "failedToUpdateRole": "Fehler beim Aktualisieren der Rolle",
+      "anErrorOccurred": "Ein Fehler ist aufgetreten"
+    }
+  },
+  "dashboard": {
+    "stats": {
+      "activeSubscriptions": "Aktive Abonnements",
+      "creditsIssued": "Guthaben erteilt",
+      "creditsUsed": "Guthaben verwendet",
+      "totalUsers": "Gesamtbenutzer"
+    },
+    "quickActions": "Schnellaktionen",
+    "manageUsers": "Benutzer verwalten",
+    "manageUsersDescription": "Benutzerkonten anzeigen und bearbeiten",
+    "manageSubscriptions": "Abonnements verwalten",
+    "manageSubscriptionsDescription": "Abonnements anzeigen und ändern (Demnächst verfügbar)",
+    "creditOperations": "Guthabenoperationen",
+    "creditOperationsDescription": "Benutzerguthaben anpassen (Verfügbar in Benutzerdetails)",
+    "recentActivity": "Letzte Aktivitäten",
+    "activityFeedComingSoon": "Der Aktivitätsfeed wird in einer zukünftigen Version implementiert.",
+    "loadingStats": "Statistiken werden geladen...",
+    "errorLoadingStats": "Fehler beim Laden der Statistiken",
+    "title": "Admin-Dashboard"
+  }
+}

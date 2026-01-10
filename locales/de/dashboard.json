@@ -1,0 +1,137 @@
+{
+  "title": "Armaturenbrett",
+  "subtitle": "Laden Sie Bilder hoch und verbessern Sie diese mit KI-gestütztem Upscaling",
+  "sidebar": {
+    "dashboard": "Armaturenbrett",
+    "billing": "Abrechnung",
+    "settings": "Einstellungen",
+    "admin": "Administrator",
+    "helpSupport": "Hilfe & Support",
+    "signOut": "Abmelden",
+    "closeMenu": "Menü schließen",
+    "plan": "Plan"
+  },
+  "history": {
+    "title": "Verlauf",
+    "subtitle": "Zeigen Sie Ihre zuvor verarbeiteten Bilder an",
+    "recentUploads": "Letzte Uploads",
+    "yourHistory": "Ihr Bildverarbeitungsverlauf",
+    "noImages": "Noch keine Bilder verarbeitet",
+    "willAppearHere": "Ihre verarbeiteten Bilder erscheinen hier"
+  },
+  "billing": {
+    "title": "Abrechnung",
+    "subtitle": "Verwalten Sie Ihr Abonnement und Ihre Zahlungsmethoden",
+    "refresh": "Aktualisieren",
+    "currentPlan": "Aktueller Plan",
+    "freePlan": "Kostenloser Plan",
+    "creditsBalance": "Credits-Guthaben",
+    "changePlan": "Plan ändern",
+    "choosePlan": "Plan wählen",
+    "cancelSubscription": "Abonnement kündigen",
+    "trialEnds": "Testphase endet",
+    "currentPeriodEnds": "Aktuelle Periode endet",
+    "trialActive": "Testphase aktiv: Ihre Testphase endet am {date}. Ihre Karte wird nach Ende der Testphase mit dem regulären Abo-Preis belastet.",
+    "subscriptionCanceled": "Ihr Abonnement wird am Ende der aktuellen Periode gekündigt.",
+    "scheduledPlanChange": "Geplante Planänderung",
+    "keepBenefitsUntil": "Sie behalten alle {plan}-Vorteile bis dahin.",
+    "changeOrCancel": "Diesen ändern oder kündigen",
+    "buyCredits": "Credits kaufen",
+    "buyCreditsSubtitle": "Einmalige Credit-Pakete, die niemals ablaufen",
+    "tip": "Tipp:",
+    "subscriptionBetterValue": "Abos bieten ein besseres Preis-Leistungs-Verhältnis (bis zu 58% günstiger pro Credit)",
+    "subscribeBetterValue": "Abonnieren Sie für besseren Wert - erhalten Sie bis zu 58% günstigere Credits",
+    "paymentMethods": "Zahlungsmethoden",
+    "paymentMethodsSubtitle": "Verwalten Sie Ihre Zahlungsmethoden und Abonnements",
+    "managePortal": "Verwalten Sie Ihre Zahlungsmethoden, zeigen Sie Rechnungen an und aktualisieren Sie Ihr Abonnement über das Stripe-Kundenportal.",
+    "manageSubscription": "Abonnement verwalten",
+    "opening": "Öffnen...",
+    "noPaymentMethods": "Noch keine Zahlungsmethoden hinzugefügt",
+    "choosePlanToSetup": "Wählen Sie einen Abo-Plan, um eine Zahlungsmethode einzurichten.",
+    "viewPricing": "Preise anzeigen",
+    "billingHistory": "Abrechnungshistorie",
+    "billingHistorySubtitle": "Zeigen Sie Ihre vergangenen Rechnungen und Quittungen an",
+    "viewInvoices": "Rechnungen anzeigen",
+    "viewInvoicesPortal": "Zeigen Sie Ihre Rechnungen an und laden Sie diese aus dem Stripe-Kundenportal herunter.",
+    "noBillingHistory": "Noch keine Abrechnungshistorie",
+    "loading": "Abrechnungsinformationen werden geladen...",
+    "error": "Laden der Abrechnungsinformationen fehlgeschlagen",
+    "tryAgain": "Erneut versuchen",
+    "trialActiveStrong": "Testphase aktiv:",
+    "trialEndsText": "Ihre Testphase endet am {date}. Nach Ende der Testphase wird die reguläre Abopreises von Ihrer Karte abgebucht.",
+    "planChangesOn": "Ihr Plan ändert sich am {date}.",
+    "errors": {
+      "failedToOpenPortal": "Fehler beim Öffnen des Abonnement-Portals",
+      "failedToCancelSubscription": "Fehler beim Kündigen des Abonnements"
+    },
+    "success": {
+      "subscriptionCanceled": "Abonnement erfolgreich gekündigt. Der Zugang bleibt bis zum Ende des Abrechnungszeitraums bestehen."
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Verwalten Sie Ihre Kontoeinstellungen",
+    "profile": "Profil",
+    "profileSubtitle": "Ihre Kontoinformationen",
+    "email": "E-Mail",
+    "displayName": "Anzeigename",
+    "notSet": "Nicht festgelegt",
+    "security": "Sicherheit",
+    "securitySubtitle": "Passwort und Authentifizierung",
+    "changePassword": "Passwort ändern",
+    "passwordDescription": "Ändern Sie Ihr Kontopasswort",
+    "notifications": "Benachrichtigungen",
+    "notificationsSubtitle": "E-Mail- und Benachrichtigungseinstellungen",
+    "productUpdates": "Produktupdates",
+    "productUpdatesDescription": "Neuigkeiten über Produkt- und Feature-Updates",
+    "marketingEmails": "Marketing-E-Mails",
+    "marketingEmailsDescription": "Werbeaktionen und Sonderangebote"
+  },
+  "support": {
+    "title": "Hilfe & Support",
+    "subtitle": "Hilfe zu {appName}",
+    "documentation": "Dokumentation",
+    "documentationDescription": "Erfahren Sie, wie Sie {appName} mit unseren umfassenden Anleitungen verwenden",
+    "browseDocs": "Dokumentation durchsuchen",
+    "faq": "Häufig gestellte Fragen",
+    "faqDescription": "Finden Sie Antworten auf häufig gestellte Fragen",
+    "viewFaq": "FAQ anzeigen",
+    "contactSupport": "Support kontaktieren",
+    "contactSupportSubtitle": "Kontaktieren Sie unser Team",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Wobei brauchen Sie Hilfe?",
+    "message": "Nachricht",
+    "messagePlaceholder": "Beschreiben Sie Ihr Problem oder Ihre Frage...",
+    "sendMessage": "Nachricht senden"
+  },
+  "admin": {
+    "title": "Admin-Dashboard",
+    "stats": {
+      "totalUsers": "Gesamtbenutzer",
+      "activeSubscriptions": "Aktive Abonnements",
+      "creditsIssued": "Credits ausgegeben",
+      "creditsUsed": "Credits verwendet"
+    },
+    "quickActions": "Schnellaktionen",
+    "manageUsers": "Benutzer verwalten",
+    "manageUsersDescription": "Benutzerkonten anzeigen und bearbeiten",
+    "manageSubscriptions": "Abonnements verwalten",
+    "manageSubscriptionsDescription": "Abonnements anzeigen und ändern (Demnächst verfügbar)",
+    "creditOperations": "Credit-Operationen",
+    "creditOperationsDescription": "Benutzer-Credits anpassen (Verfügbar in Benutzerdetails)",
+    "recentActivity": "Letzte Aktivitäten",
+    "activityFeedComingSoon": "Der Aktivitäts-Feed wird in einer zukünftigen Version implementiert.",
+    "loadingStats": "Statistiken werden geladen...",
+    "errorLoadingStats": "Fehler beim Laden der Statistiken"
+  },
+  "loading": "Laden...",
+  "planUnavailable": "Plan nicht verfügbar",
+  "userDetail": {
+    "subscription": {
+      "status": "Status"
+    },
+    "fields": {
+      "admin": "Admin"
+    }
+  }
+}

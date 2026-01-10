@@ -1,6 +1,7 @@
 /**
  * SEO Module - Programmatic SEO Infrastructure
  * Centralized exports for keyword management, mapping, tracking, and routing
+ * Phase 5: Added hreflang generator exports
  */
 
 // Types
@@ -123,3 +124,45 @@ export {
 
 // Metadata Factory
 export { generateMetadata, generateCategoryMetadata } from './metadata-factory';
+
+// Hreflang Generator (Phase 5)
+export {
+  generateHreflangAlternates,
+  generatePSEOHreflangAlternates,
+  getLocalizedPath,
+  formatHreflangForMetadata,
+  getCanonicalUrl as getHreflangCanonicalUrl,
+  validateHreflangAlternates,
+  getOpenGraphLocale,
+} from './hreflang-generator';
+
+// Localization Config (Phase 5)
+export {
+  LOCALIZED_CATEGORIES,
+  ENGLISH_ONLY_CATEGORIES,
+  ALL_CATEGORIES,
+  isCategoryLocalized,
+  isCategoryEnglishOnly,
+  getEnglishOnlyCategories,
+  getLocalizedCategories,
+  shouldShowEnglishOnlyBanner,
+  getEnglishPath,
+  LOCALIZATION_STATUS,
+} from './localization-config';
+
+// Localized Data Loaders (Phase 5)
+export type { ILocalizedDataResult } from './data-loader';
+export {
+  getToolDataWithLocale,
+  getFormatDataWithLocale,
+  getComparisonDataWithLocale,
+  getAlternativeDataWithLocale,
+  getPlatformDataWithLocale,
+  getGuideDataWithLocale,
+  getUseCaseDataWithLocale,
+  getScaleDataWithLocale,
+  getFreeDataWithLocale,
+  getFormatScaleDataWithLocale,
+  getPlatformFormatDataWithLocale,
+  getDeviceUseDataWithLocale,
+} from './data-loader';

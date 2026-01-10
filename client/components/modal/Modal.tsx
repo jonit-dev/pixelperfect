@@ -1,6 +1,7 @@
 'use client';
 
 import React, { forwardRef, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface IModalProps {
   title: string;
@@ -27,6 +28,7 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
     },
     ref
   ) => {
+    const t = useTranslations();
     const [isAnimating, setIsAnimating] = useState(false);
     const [shouldRender, setShouldRender] = useState(isOpen);
 
@@ -106,7 +108,7 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
               <button
                 className="absolute right-4 top-4 text-muted-foreground hover:text-foreground transition-all duration-200 rounded-lg p-1.5 hover:bg-muted/50 active:scale-95"
                 onClick={onClose}
-                aria-label="Close modal"
+                aria-label={t('modal.aria.close')}
               >
                 <svg
                   className="w-5 h-5"
@@ -130,9 +132,9 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
               <button
                 className="w-full px-4 py-2.5 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all duration-200 active:scale-98 hover:shadow-sm"
                 onClick={onClose}
-                aria-label="Close modal"
+                aria-label={t('modal.aria.close')}
               >
-                Close
+                {t('modal.closeButton')}
               </button>
             </div>
           )}

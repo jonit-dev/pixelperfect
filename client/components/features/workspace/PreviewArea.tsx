@@ -3,6 +3,21 @@ import ImageComparison from '@client/components/features/image-processing/ImageC
 import { Button } from '@client/components/ui/Button';
 import { AlertTriangle, Check, Layers, Loader2 } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
+
+export interface IBatchProgress {
+  current: number;
+  total: number;
+}
+
+export interface IPreviewAreaProps {
+  activeItem: IBatchItem | null;
+  onDownload: (url: string, filename: string) => void;
+  onRetry: (item: IBatchItem) => void;
+  selectedModel?: string;
+  batchProgress?: IBatchProgress | null;
+  isProcessingBatch?: boolean;
+}
 
 // Extracted Components
 const ScanningLineAnimation: React.FC = () => (
@@ -108,11 +123,12 @@ const ProcessingDots: React.FC = () => (
 );
 
 const StageDescription: React.FC<{ stage: ProcessingStage }> = ({ stage }) => {
+  const t = useTranslations('workspace');
   const descriptions: Record<ProcessingStage, string> = {
-    [ProcessingStage.PREPARING]: 'Encoding and validating your image',
-    [ProcessingStage.ANALYZING]: 'AI is analyzing image quality',
-    [ProcessingStage.ENHANCING]: 'AI model is enhancing your image',
-    [ProcessingStage.FINALIZING]: 'Preparing your enhanced image',
+    [ProcessingStage.PREPARING]: t('previewArea.stages.preparing'),
+    [ProcessingStage.ANALYZING]: t('previewArea.stages.analyzing'),
+    [ProcessingStage.ENHANCING]: t('previewArea.stages.enhancing'),
+    [ProcessingStage.FINALIZING]: t('previewArea.stages.finalizing'),
   };
 
   return <p className="text-xs text-muted-foreground text-center">{descriptions[stage]}</p>;
@@ -121,20 +137,23 @@ const StageDescription: React.FC<{ stage: ProcessingStage }> = ({ stage }) => {
 const ErrorOverlay: React.FC<{
   item: IBatchItem;
   onRetry: (item: IBatchItem) => void;
-}> = ({ item, onRetry }) => (
-  <div className="absolute inset-0 bg-surface/50 backdrop-blur-sm flex items-center justify-center">
-    <div className="bg-surface p-6 rounded-xl shadow-xl border border-error/20 text-center max-w-md">
-      <div className="w-12 h-12 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-4 text-error">
-        <AlertTriangle size={24} />
+}> = ({ item, onRetry }) => {
+  const t = useTranslations('workspace');
+  return (
+    <div className="absolute inset-0 bg-surface/50 backdrop-blur-sm flex items-center justify-center">
+      <div className="bg-surface p-6 rounded-xl shadow-xl border border-error/20 text-center max-w-md">
+        <div className="w-12 h-12 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-4 text-error">
+          <AlertTriangle size={24} />
+        </div>
+        <h3 className="text-lg font-semibold text-white mb-2">{t('previewArea.errors.title')}</h3>
+        <p className="text-muted-foreground mb-4">{item.error}</p>
+        <Button size="sm" onClick={() => onRetry(item)}>
+          {t('previewArea.errors.tryAgain')}
+        </Button>
       </div>
-      <h3 className="text-lg font-semibold text-white mb-2">Processing Failed</h3>
-      <p className="text-muted-foreground mb-4">{item.error}</p>
-      <Button size="sm" onClick={() => onRetry(item)}>
-        Try Again
-      </Button>
     </div>
-  </div>
-);
+  );
+};
 
 // Estimated processing times by model (in seconds)
 const MODEL_PROCESSING_TIMES: Record<string, number> = {
@@ -146,27 +165,6 @@ const MODEL_PROCESSING_TIMES: Record<string, number> = {
   auto: 35, // Average
 };
 
-const STAGE_MESSAGES: Record<ProcessingStage, string> = {
-  [ProcessingStage.PREPARING]: 'Preparing image...',
-  [ProcessingStage.ANALYZING]: 'Analyzing image...',
-  [ProcessingStage.ENHANCING]: 'Enhancing image...',
-  [ProcessingStage.FINALIZING]: 'Finalizing...',
-};
-
-interface IBatchProgress {
-  current: number;
-  total: number;
-}
-
-interface IPreviewAreaProps {
-  activeItem: IBatchItem | null;
-  onDownload: (url: string, filename: string) => void;
-  onRetry: (item: IBatchItem) => void;
-  selectedModel?: string; // For time estimation
-  batchProgress?: IBatchProgress | null;
-  isProcessingBatch?: boolean;
-}
-
 export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   activeItem,
   onDownload,
@@ -175,6 +173,16 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
   batchProgress,
   isProcessingBatch = false,
 }) => {
+  const t = useTranslations('workspace');
+
+  // Stage messages - defined inside component to access t
+  const STAGE_MESSAGES: Record<ProcessingStage, string> = {
+    [ProcessingStage.PREPARING]: t('previewArea.statusMessages.preparing'),
+    [ProcessingStage.ANALYZING]: t('previewArea.statusMessages.analyzing'),
+    [ProcessingStage.ENHANCING]: t('previewArea.statusMessages.enhancing'),
+    [ProcessingStage.FINALIZING]: t('previewArea.statusMessages.finalizing'),
+  };
+
   // Interpolated progress for smooth animation
   const [displayProgress, setDisplayProgress] = useState(0);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -234,7 +242,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
     return (
       <div className="text-muted-foreground flex flex-col items-center">
         <Layers size={48} className="mb-4 opacity-50" />
-        <p>Select an image from the queue below</p>
+        <p>{t('previewArea.emptyState.title')}</p>
       </div>
     );
   }
@@ -253,7 +261,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
           <div>
             <h3 className="text-sm font-medium text-white">{activeItem.file.name}</h3>
             <span className="text-xs text-green-400 flex items-center gap-1">
-              <Check size={12} /> Processing Complete
+              <Check size={12} /> {t('previewArea.completed.title')}
             </span>
           </div>
         </div>
@@ -270,13 +278,18 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
               <div className="bg-surface p-6 rounded-xl shadow-2xl border border-border text-center max-w-sm">
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">
-                    Image {batchProgress.current} of {batchProgress.total} complete
+                    {t('previewArea.batch.imageXofYcomplete', {
+                      current: batchProgress.current,
+                      total: batchProgress.total,
+                    })}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <Loader2 size={20} className="text-accent animate-spin" />
-                  <span className="text-sm font-medium text-white">Preparing next image...</span>
+                  <span className="text-sm font-medium text-white">
+                    {t('previewArea.batch.preparingNext')}
+                  </span>
                 </div>
 
                 {/* Processing indicator dots */}
@@ -317,7 +330,7 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
                 </div>
 
                 <p className="text-xs text-muted-foreground mt-4">
-                  Rate limiting pause to ensure reliable processing
+                  {t('previewArea.batch.rateLimitingPause')}
                 </p>
               </div>
             </div>
@@ -329,7 +342,9 @@ export const PreviewArea: React.FC<IPreviewAreaProps> = ({
 
   const estimatedTotalTime = MODEL_PROCESSING_TIMES[selectedModel] || 30;
   const estimatedRemaining = Math.max(0, estimatedTotalTime - elapsedSeconds);
-  const stageMessage = activeItem.stage ? STAGE_MESSAGES[activeItem.stage] : 'Processing...';
+  const stageMessage = activeItem.stage
+    ? STAGE_MESSAGES[activeItem.stage]
+    : t('previewArea.statusMessages.processing');
   const isEnhancing = activeItem.stage === ProcessingStage.ENHANCING;
 
   return (

@@ -1,0 +1,2135 @@
+{
+  "category": "Strumenti",
+  "pages": [
+    {
+      "slug": "ridimensionatore-immagini",
+      "title": "Strumenti Immagine Interattivi",
+      "metaTitle": "Strumenti Immagine Interattivi | Strumenti Online Gratuiti",
+      "metaDescription": "Scopri nostri strumenti immagine interattivi. Strumenti basati su AI per upscaling, compressione, conversione e ottimizzazione immagini online.",
+      "h1": "Strumenti Immagine Interattivi",
+      "intro": "Sperimenta futuro elaborazione immagini con nostri strumenti interattivi AI. Nessuna installazione richiesta, lavora direttamente nel browser.",
+      "primaryKeyword": "ridimensionatore immagini",
+      "secondaryKeywords": [
+        "ridimensionare immagini online",
+        "ridimensionatore immagini online",
+        "ridimensionare immagine",
+        "strumento ridimensionamento immagini",
+        "ridimensionare foto online",
+        "ridimensionatore immagini"
+      ],
+      "lastUpdated": "2024-12-19T10:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Immagini",
+      "description": "Raccolta di strumenti immagine interattivi potenti che usano tecnologia AI per eseguire upscaling, compressione, conversione formato e ottimizzazione direttamente nel tuo browser.",
+      "isInteractive": true,
+      "toolComponent": "ImageResizer",
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Ridimensionamento Istantaneo nel Browser",
+          "description": "Tutta l'elaborazione avviene localmente nel tuo browser. Le tue immagini non lasciano mai il tuo dispositivo, garantendo una privacy completa e risultati istantanei."
+        },
+        {
+          "title": "Preset Social Media",
+          "description": "Ridimensiona con un clic alle dimensioni perfette per Instagram, Facebook, Twitter, LinkedIn e YouTube. Non dovrai più indovinare le dimensioni."
+        },
+        {
+          "title": "Dimensioni Personalizzate",
+          "description": "Inserisci dimensioni pixel esatte o lascia che il nostro calcolatore intelligente di proporzioni mantenga automaticamente le proporzioni perfette."
+        },
+        {
+          "title": "Formati di Output Multipli",
+          "description": "Esporta come JPEG, PNG o WebP con impostazioni di qualità regolabili. Perfetto per l'ottimizzazione web o download di alta qualità."
+        },
+        {
+          "title": "Flusso di Lavoro Batch-Ready",
+          "description": "Salva le impostazioni preset e ridimensiona rapidamente più immagini con risultati coerenti ogni volta."
+        },
+        {
+          "title": "Nessun Watermark Mai",
+          "description": "Completamente gratuito senza watermark, requisiti di registrazione o costi nascosti. Risultati professionali disponibili per tutti."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Post Social Media",
+          "description": "Ridimensiona immagini alle specifiche esatte per post Instagram (1080x1080), Storie (1080x1920), copertine Facebook e altro.",
+          "example": "Trasforma una foto 4000x3000 in dimensioni Instagram perfette con un clic"
+        },
+        {
+          "title": "Ottimizzazione Sito Web",
+          "description": "Riduci le dimensioni del file immagine per un caricamento più rapido delle pagine mantenendo la qualità visiva per il tuo sito web o blog.",
+          "example": "Ridimensiona le immagini hero a 1920x1080 per le prestazioni web ottimali"
+        },
+        {
+          "title": "Allegati Email",
+          "description": "Riduci immagini di grandi dimensioni a dimensioni adatte alle email senza sacrificare troppa qualità.",
+          "example": "Riduci una foto da 10MB a meno di 1MB per una facile condivisione via email"
+        },
+        {
+          "title": "Immagini del Profilo",
+          "description": "Crea avatar e foto profilo perfettamente dimensionate per qualsiasi piattaforma con le nostre dimensioni preset.",
+          "example": "Ridimensiona ritratti a 400x400 per LinkedIn o Discord"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "100% Privato e Sicuro",
+          "description": "Le immagini non lasciano mai il tuo browser. Nessun caricamento sui server significa che le tue foto rimangono completamente private.",
+          "metric": "Zero caricamenti sul server"
+        },
+        {
+          "title": "Velocità Fulminea",
+          "description": "Elaborazione istantanea senza attese in code o ritardi di caricamento. Ridimensiona centinaia di immagini in pochi minuti.",
+          "metric": "Meno di 1 secondo per immagine"
+        },
+        {
+          "title": "Controllo Perfetto della Qualità",
+          "description": "Regola le impostazioni di qualità dall'1-100% per trovare l'equilibrio perfetto tra dimensione del file e fedeltà visiva.",
+          "metric": "Qualità controllata dall'utente"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carica la Tua Immagine",
+          "description": "Trascina e rilascia la tua immagine o clicca per sfogliare. Supporta JPEG, PNG e WebP fino a 25MB. L'elaborazione rimane nel tuo browser."
+        },
+        {
+          "step": 2,
+          "title": "Scegli le Dimensioni",
+          "description": "Seleziona un preset social media o inserisci larghezza e altezza personalizzate. Attiva il blocco delle proporzioni per mantenere le proporzioni."
+        },
+        {
+          "step": 3,
+          "title": "Regola le Impostazioni",
+          "description": "Scegli il tuo formato di output (JPEG, PNG, WebP) e regola lo slider di qualità. Anteprima le nuove dimensioni prima dell'elaborazione."
+        },
+        {
+          "step": 4,
+          "title": "Scarica l'Immagine Ridimensionata",
+          "description": "Clicca su 'Elabora Immagine' e scarica istantaneamente la tua foto ridimensionata. Nessun watermark, nessuna registrazione richiesta."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Questo ridimensionatore di immagini è davvero gratuito?",
+          "answer": "Sì! Il nostro ridimensionatore di immagini è gratuito al 100% senza costi nascosti, watermark o requisiti di account. Puoi ridimensionare immagini illimitate."
+        },
+        {
+          "question": "Le mie immagini vengono caricate sui vostri server?",
+          "answer": "No! Tutta l'elaborazione delle immagini avviene direttamente nel tuo browser utilizzando la tecnologia Canvas API. Le tue immagini non lasciano mai il tuo dispositivo, garantendo una privacy completa."
+        },
+        {
+          "question": "Qual è la dimensione massima del file che posso ridimensionare?",
+          "answer": "Puoi ridimensionare immagini fino a 25MB. Questo limite si basa sulla memoria del browser, non sui nostri server (poiché non utilizziamo server per l'elaborazione)."
+        },
+        {
+          "question": "Posso ridimensionare le immagini per Instagram?",
+          "answer": "Assolutamente! Abbiamo preset per Post Instagram (1080x1080), Storie Instagram (1080x1920) e tutte le principali piattaforme di social media."
+        },
+        {
+          "question": "Il ridimensionamento ridurrà la qualità dell'immagine?",
+          "answer": "Quando riduci le dimensioni delle immagini (le rendi più piccole), la qualità rimane eccellente. L'aumento delle dimensioni può introdurre morbidezza: per l'upscaling potenziato dall'AI con miglioramento della qualità, prova il nostro AI Image Upscaler."
+        },
+        {
+          "question": "Quali formati posso esportare?",
+          "answer": "Puoi esportare come JPEG (ideale per foto), PNG (ideale per grafica con trasparenza) o WebP (ideale per l'ottimizzazione web)."
+        },
+        {
+          "question": "Come mantengo il rapporto di aspetto durante il ridimensionamento?",
+          "answer": "Attiva l'interruttore 'Mantieni rapporto di aspetto'. Quando attivo, la modifica della larghezza regola automaticamente l'altezza in proporzione (e viceversa)."
+        },
+        {
+          "question": "Posso ridimensionare in batch più immagini?",
+          "answer": "Attualmente puoi ridimensionare un'immagine alla volta. Per l'elaborazione batch e il miglioramento AI avanzato, scopri il nostro premium AI Image Upscaler."
+        }
+      ],
+      "relatedTools": ["aumento-risoluzione-immagine-ai", "compressore-immagini", "png-a-jpg"],
+      "relatedGuides": [
+        "come-ridimensionare-immagini-per-social-media",
+        "guida-risoluzione-immagini"
+      ],
+      "ctaText": "Prova il Ridimensionatore Immagini Gratuito",
+      "ctaUrl": "/?signup=1"
+    },
+    {
+      "slug": "ridimensionare-immagine-per-instagram",
+      "title": "Ridimensionatore Immagini Instagram",
+      "metaTitle": "Ridimensionatore Immagini Instagram Gratuito - Dimensioni Perfette per Post e Storie | MyImageUpscaler",
+      "metaDescription": "Ridimensiona immagini per Instagram istantaneamente. Ottieni dimensioni perfette per post (1080x1080), storie (1080x1920) e reel. Gratuito, nessun caricamento richiesto.",
+      "h1": "Ridimensionatore Immagini Instagram Gratuito - Dimensioni Perfette Istantaneamente",
+      "intro": "Ridimensiona le tue immagini alle dimensioni perfette di Instagram. Post, storie, reel: tutte le dimensioni ottimizzate con un clic. Funziona nel tuo browser.",
+      "primaryKeyword": "ridimensionatore foto instagram",
+      "secondaryKeywords": [
+        "dimensione immagine instagram",
+        "dimensione post instagram",
+        "dimensione storia instagram",
+        "ridimensionare per instagram",
+        "dimensione foto instagram"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Immagini Instagram",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni raccomandate da Instagram. Supporta post (1080x1080), storie (1080x1920) e tutti i formati Instagram.",
+      "isInteractive": true,
+      "toolComponent": "ImageResizer",
+      "toolConfig": {
+        "defaultWidth": 1080,
+        "defaultHeight": 1080,
+        "presetFilter": "instagram"
+      },
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Post Instagram (1080x1080)",
+          "description": "Formato quadrato perfetto per i post del feed con massimo coinvolgimento."
+        },
+        {
+          "title": "Storia Instagram (1080x1920)",
+          "description": "Formato verticale per le storie che riempie l'intero schermo."
+        },
+        {
+          "title": "Preset con un Clic",
+          "description": "Seleziona le dimensioni Instagram istantaneamente senza calcoli manuali."
+        },
+        {
+          "title": "Preservazione della Qualità",
+          "description": "Ridimensiona senza perdere la qualità dell'immagine utilizzando algoritmi avanzati."
+        },
+        {
+          "title": "Formati Multipli",
+          "description": "Esporta come JPEG, PNG o WebP in base alle tue esigenze."
+        },
+        {
+          "title": "Basato sul Browser",
+          "description": "Nessun caricamento richiesto: le tue immagini rimangono private sul tuo dispositivo."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Post nel Feed",
+          "description": "Crea immagini quadrate perfette per il tuo feed Instagram.",
+          "example": "Ridimensiona foto orizzontali al formato quadrato 1080x1080"
+        },
+        {
+          "title": "Storie",
+          "description": "Ottimizza immagini per la visualizzazione a schermo intero delle Storie Instagram.",
+          "example": "Converti foto orizzontali in verticale 1080x1920"
+        },
+        {
+          "title": "Post Carosello",
+          "description": "Prepara più immagini con dimensioni coerenti.",
+          "example": "Ridimensiona una serie di foto in quadrati corrispondenti 1080x1080"
+        },
+        {
+          "title": "Contenuto del Profilo",
+          "description": "Assicurati che il tuo contenuto appaia professionale su qualsiasi dispositivo.",
+          "example": "Ottimizza foto di prodotti per Instagram Shop"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Dimensioni Perfette",
+          "description": "Ottieni sempre le dimensioni esatte che Instagram raccomanda per la migliore visualizzazione.",
+          "metric": "Pixel-perfetto"
+        },
+        {
+          "title": "Nessuna Sorpresa di Ritaglio",
+          "description": "Anteprima esatta di come apparirà la tua immagine prima della pubblicazione.",
+          "metric": "WYSIWYG"
+        },
+        {
+          "title": "Flusso di Lavoro Veloce",
+          "description": "Ridimensiona più immagini rapidamente con dimensioni preset.",
+          "metric": "Meno di 1 secondo"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carica la Tua Immagine",
+          "description": "Trascina e rilascia o seleziona il tuo file immagine."
+        },
+        {
+          "step": 2,
+          "title": "Scegli il Formato Instagram",
+          "description": "Seleziona Post (1080x1080) o Storia (1080x1920) dai preset."
+        },
+        {
+          "step": 3,
+          "title": "Regola se Necessario",
+          "description": "Regola con precisione le impostazioni di qualità e formato."
+        },
+        {
+          "step": 4,
+          "title": "Scarica",
+          "description": "Ottieni la tua immagine pronta per Instagram istantaneamente."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quali dovrebbero essere le dimensioni dei post Instagram?",
+          "answer": "I post Instagram sono migliori a 1080x1080 pixel (quadrato), 1080x1350 (ritratto) o 1080x566 (paesaggio). I post quadrati a 1080x1080 ottengono la visualizzazione più coerente."
+        },
+        {
+          "question": "Quali sono le dimensioni delle Storie Instagram?",
+          "answer": "Le Storie Instagram dovrebbero essere 1080x1920 pixel (rapporto di aspetto 9:16) per riempire l'intero schermo senza ritagli."
+        },
+        {
+          "question": "Il ridimensionamento ridurrà la qualità della mia immagine?",
+          "answer": "Il nostro strumento utilizza algoritmi di alta qualità per minimizzare la perdita di qualità. Per i migliori risultati, inizia con immagini più grandi della tua dimensione target."
+        },
+        {
+          "question": "Posso ridimensionare per Instagram Reels?",
+          "answer": "Sì! Instagram Reels utilizza le stesse dimensioni 1080x1920 (9:16) delle Storie."
+        }
+      ],
+      "relatedTools": [
+        "ridimensionatore-immagini",
+        "ridimensionare-immagine-per-facebook",
+        "compressore-immagini"
+      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
+      "ctaText": "Ridimensiona per Instagram Gratis",
+      "ctaUrl": "/tools/resize/ridimensionare-immagine-per-instagram"
+    },
+    {
+      "slug": "ridimensionare-immagine-per-youtube",
+      "title": "Ridimensionatore Miniature YouTube",
+      "metaTitle": "Ridimensionatore Miniature YouTube Gratuito - Dimensione Perfetta 1280x720 | MyImageUpscaler",
+      "metaDescription": "Ridimensiona immagini per miniature YouTube istantaneamente. Ottieni dimensioni perfette 1280x720 per massimizzare i tassi di clic. Gratuito, nessun caricamento richiesto.",
+      "h1": "Ridimensionatore Miniature YouTube Gratuito - Dimensione Perfetta Istantaneamente",
+      "intro": "Crea miniature YouTube perfette a 1280x720 pixel. La dimensione ideale per massimizzare la visibilità e i tassi di clic. Funziona nel tuo browser.",
+      "primaryKeyword": "dimensione miniatura youtube",
+      "secondaryKeywords": [
+        "ridimensionatore miniatura youtube",
+        "ridimensionare per youtube",
+        "dimensione immagine youtube",
+        "dimensioni miniatura youtube",
+        "ridimensionatore 1280x720"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Miniature YouTube",
+      "description": "Ridimensiona immagini alla dimensione miniatura 1280x720 raccomandata da YouTube per massimizzare la visibilità e il coinvolgimento.",
+      "isInteractive": true,
+      "toolComponent": "ImageResizer",
+      "toolConfig": {
+        "defaultWidth": 1280,
+        "defaultHeight": 720,
+        "presetFilter": "youtube"
+      },
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "1280x720 Perfetto",
+          "description": "Dimensione miniatura raccomandata da YouTube per tutti i dispositivi."
+        },
+        {
+          "title": "Rapporto di Aspetto 16:9",
+          "description": "Corrisponde perfettamente al rapporto di aspetto del player YouTube."
+        },
+        {
+          "title": "Output di Alta Qualità",
+          "description": "Esporta alla qualità massima per miniature nitide."
+        },
+        {
+          "title": "Ottimizzazione JPEG",
+          "description": "YouTube raccomanda JPEG: noi ottimizziamo per questo."
+        },
+        {
+          "title": "Sotto i 2MB Garantito",
+          "description": "Ottimizza automaticamente per rispettare il limite di dimensione file di YouTube."
+        },
+        {
+          "title": "Elaborazione Istantanea",
+          "description": "Ridimensiona miniature in meno di un secondo."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Miniature Video",
+          "description": "Crea miniature accattivanti che generano clic.",
+          "example": "Ridimensiona uno screenshot 4K a 1280x720 perfetto"
+        },
+        {
+          "title": "Branding del Canale",
+          "description": "Mantieni dimensioni miniature coerenti su tutti i video.",
+          "example": "Ridimensiona in batch miniature per una serie di video"
+        },
+        {
+          "title": "Test A/B",
+          "description": "Crea rapidamente più versioni di miniature da testare.",
+          "example": "Ridimensiona diverse immagini per confrontare le prestazioni"
+        },
+        {
+          "title": "Aggiornamento Miniature",
+          "description": "Aggiorna miniature video vecchie con immagini correttamente dimensionate.",
+          "example": "Riesporta miniature alle dimensioni corrette"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "CTR Più Alto",
+          "description": "Le miniature correttamente dimensionate si visualizzano meglio e ottengono più clic.",
+          "metric": "Fino al 30% di clic in più"
+        },
+        {
+          "title": "Tutti i Dispositivi",
+          "description": "1280x720 si visualizza perfettamente su desktop, mobile e TV.",
+          "metric": "Compatibilità universale"
+        },
+        {
+          "title": "Conforme a YouTube",
+          "description": "Soddisfa automaticamente tutti i requisiti delle miniature YouTube.",
+          "metric": "100% conforme"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona qualsiasi immagine desideri come miniatura."
+        },
+        {
+          "step": 2,
+          "title": "Autoridimensiona a 1280x720",
+          "description": "L'immagine viene impostata automaticamente alle dimensioni YouTube."
+        },
+        {
+          "step": 3,
+          "title": "Regola la Qualità",
+          "description": "Imposta la qualità JPEG per bilanciare dimensione e chiarezza."
+        },
+        {
+          "step": 4,
+          "title": "Scarica la Miniatura",
+          "description": "Ottieni la tua miniatura pronta per YouTube istantaneamente."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quali dovrebbero essere le dimensioni delle miniature YouTube?",
+          "answer": "YouTube raccomanda 1280x720 pixel con rapporto di aspetto 16:9. La larghezza minima è 640 pixel e il file deve essere inferiore a 2MB."
+        },
+        {
+          "question": "Qual è il formato migliore per le miniature YouTube?",
+          "answer": "YouTube accetta JPG, GIF e PNG. JPEG è raccomandato per le foto in quanto fornisce una buona qualità con dimensioni file più piccole."
+        },
+        {
+          "question": "Perché 1280x720 è la dimensione raccomandata?",
+          "answer": "1280x720 è la risoluzione minima che si visualizza bene su tutti i dispositivi corrispondendo al rapporto di aspetto 16:9 del player YouTube."
+        },
+        {
+          "question": "La mia miniatura avrà un buon aspetto su tutti i dispositivi?",
+          "answer": "Sì! Le miniature 1280x720 si adattano perfettamente a tutte le dimensioni dello schermo, dai telefoni cellulari alle TV 4K."
+        }
+      ],
+      "relatedTools": [
+        "ridimensionatore-immagini",
+        "ridimensionare-immagine-per-instagram",
+        "compressore-immagini"
+      ],
+      "relatedGuides": ["migliori-pratiche-miniature-youtube"],
+      "ctaText": "Ridimensiona per YouTube Gratis",
+      "ctaUrl": "/tools/resize/ridimensionare-immagine-per-youtube"
+    },
+    {
+      "slug": "ridimensionare-immagine-per-facebook",
+      "title": "Ridimensionatore Immagini Facebook",
+      "metaTitle": "Ridimensionatore Immagini Facebook Gratuito - Dimensioni Perfette per Post e Copertine | MyImageUpscaler",
+      "metaDescription": "Ridimensiona immagini per Facebook istantaneamente. Ottieni dimensioni perfette per post (1200x630), copertine (820x312) e foto profilo. Gratuito, nessun caricamento richiesto.",
+      "h1": "Ridimensionatore Immagini Facebook Gratuito - Dimensioni Perfette Istantaneamente",
+      "intro": "Ridimensiona le tue immagini alle dimensioni perfette di Facebook. Post, copertine, foto profilo: tutte le dimensioni ottimizzate con un clic. Funziona nel tuo browser.",
+      "primaryKeyword": "ridimensionatore foto facebook",
+      "secondaryKeywords": [
+        "dimensione immagine facebook",
+        "dimensione post facebook",
+        "dimensione copertina facebook",
+        "ridimensionare per facebook",
+        "dimensione foto facebook"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Immagini Facebook",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni raccomandate da Facebook. Supporta post, foto di copertina e foto profilo.",
+      "isInteractive": true,
+      "toolComponent": "ImageResizer",
+      "toolConfig": {
+        "defaultWidth": 1200,
+        "defaultHeight": 630,
+        "presetFilter": "facebook"
+      },
+      "maxFileSizeMB": 25,
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Post Facebook (1200x630)",
+          "description": "Dimensione ottimale per anteprime link e immagini condivise."
+        },
+        {
+          "title": "Foto Copertina (820x312)",
+          "description": "Dimensioni perfette per la copertina della tua pagina o profilo."
+        },
+        {
+          "title": "Ottimizzato per Anteprima Link",
+          "description": "Immagini dimensionate per massimo impatto nel news feed."
+        },
+        {
+          "title": "Pronto per Immagine OG",
+          "description": "Perfetto per meta immagini Open Graph sul tuo sito web."
+        },
+        {
+          "title": "Alta Risoluzione",
+          "description": "Esporta a 2x per display retina se necessario."
+        },
+        {
+          "title": "Privacy Prima",
+          "description": "Tutta l'elaborazione avviene localmente: le immagini non vengono mai caricate."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Condivisione Social",
+          "description": "Crea immagini perfettamente dimensionate per i post Facebook.",
+          "example": "Ridimensiona immagini del blog per la condivisione su Facebook"
+        },
+        {
+          "title": "Foto di Copertina",
+          "description": "Progetta foto di copertina che si visualizzano correttamente su tutti i dispositivi.",
+          "example": "Crea una copertina pagina Facebook a 820x312"
+        },
+        {
+          "title": "Creatività Pubblicitaria",
+          "description": "Prepara immagini per le campagne pubblicitarie di Facebook.",
+          "example": "Ridimensiona foto prodotti per gli annunci Facebook"
+        },
+        {
+          "title": "Immagini Eventi",
+          "description": "Crea immagini di copertina evento alle dimensioni giuste.",
+          "example": "Progetta un banner evento che si adatta perfettamente"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Nessun Ritaglio",
+          "description": "Le immagini si visualizzano esattamente come previsto senza ritagli automatici.",
+          "metric": "Pixel-perfetto"
+        },
+        {
+          "title": "Migliore Coinvolgimento",
+          "description": "Le immagini correttamente dimensionate ottengono più mi piace e condivisioni.",
+          "metric": "Coinvolgimento più elevato"
+        },
+        {
+          "title": "Aspetto Professionale",
+          "description": "Dimensionamenti coerenti rendono la tua pagina curata e professionale.",
+          "metric": "Coerenza del brand"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona l'immagine che desideri ridimensionare per Facebook."
+        },
+        {
+          "step": 2,
+          "title": "Scegli il Formato Facebook",
+          "description": "Seleziona la dimensione Post (1200x630) o Copertina (820x312)."
+        },
+        {
+          "step": 3,
+          "title": "Regola le Impostazioni",
+          "description": "Regola con precisione la qualità e il formato di output."
+        },
+        {
+          "step": 4,
+          "title": "Scarica",
+          "description": "Ottieni la tua immagine ottimizzata per Facebook istantaneamente."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quali dovrebbero essere le dimensioni dei post Facebook?",
+          "answer": "Facebook raccomanda 1200x630 pixel per le immagini condivise e le anteprime dei link. Questa dimensione si visualizza bene nel news feed su tutti i dispositivi."
+        },
+        {
+          "question": "Qual è la dimensione di una foto di copertina Facebook?",
+          "answer": "Le foto di copertina Facebook dovrebbero essere 820x312 pixel per le pagine, o 851x315 per i profili personali. La visualizzazione mobile potrebbe ritagliare leggermente in modo diverso."
+        },
+        {
+          "question": "Qual è il formato migliore per le immagini Facebook?",
+          "answer": "JPEG è migliore per le foto, PNG per la grafica con testo o trasparenza. Facebook comprime le immagini, quindi inizia con alta qualità."
+        },
+        {
+          "question": "Perché le mie immagini sembrano sfocate su Facebook?",
+          "answer": "Facebook comprime le immagini caricate. Usa il nostro strumento per ridimensionare alle dimensioni esatte ed esporta ad alta qualità per minimizzare gli artefatti di compressione."
+        }
+      ],
+      "relatedTools": [
+        "ridimensionatore-immagini",
+        "ridimensionare-immagine-per-instagram",
+        "ridimensionare-immagine-per-twitter"
+      ],
+      "relatedGuides": ["come-ridimensionare-immagini-per-social-media"],
+      "ctaText": "Ridimensiona per Facebook Gratis",
+      "ctaUrl": "/tools/resize/ridimensionare-immagine-per-facebook"
+    },
+    {
+      "slug": "resize-image-for-twitter",
+      "title": "Ridimensionatore immagini per Twitter/X",
+      "metaTitle": "Ridimensionatore immagini per Twitter/X | MyImageUpscaler",
+      "metaDescription": "Ridimensiona le immagini per Twitter/X istantaneamente. Ottieni dimensioni perfette per i tweet (1200x675) e le intestazioni (1500x500). Gratuito, non richiede caricamento.",
+      "h1": "Ridimensionatore gratuito di immagini per Twitter/X - Dimensioni perfette istantaneamente",
+      "intro": "Ridimensiona le tue immagini alle dimensioni perfette per Twitter/X. Post e intestazioni ottimizzati per il massimo coinvolgimento. Funziona nel tuo browser.",
+      "primaryKeyword": "ridimensionatore foto twitter",
+      "secondaryKeywords": [
+        "dimensione immagine twitter",
+        "dimensione post twitter",
+        "dimensione intestazione twitter",
+        "ridimensiona per twitter",
+        "x image size"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "tools",
+      "toolName": "Ridimensionatore Immagini Twitter/X",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni consigliate di Twitter/X. Supporta tweet (1200x675) e immagini header (1500x500).",
+      "toolComponent": "ImageResizer",
+      "toolConfig": {
+        "presetFilter": "twitter",
+        "defaultWidth": 1200,
+        "defaultHeight": 675
+      },
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Post Twitter (1200x675)",
+          "description": "Proporzioni 16:9 per la massima visibilità nel feed."
+        },
+        {
+          "title": "Immagine intestazione (1500x500)",
+          "description": "Dimensioni perfette per l'intestazione del tuo profilo."
+        },
+        {
+          "title": "Ottimizzato per schede",
+          "description": "Ideale per le immagini meta Twitter Card sui siti web."
+        },
+        {
+          "title": "Nessun ritaglio",
+          "description": "Le immagini vengono visualizzate esattamente come previsto."
+        },
+        {
+          "title": "Esportazione rapida",
+          "description": "Ridimensiona e scarica in meno di un secondo."
+        },
+        {
+          "title": "Controllo qualità",
+          "description": "Regola la compressione per bilanciare qualità e dimensione del file."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Immagini tweet",
+          "description": "Crea immagini coinvolgenti che vengono visualizzate perfettamente nei tweet.",
+          "example": "Ridimensiona le foto a 1200x675 per i post Twitter"
+        },
+        {
+          "title": "Intestazioni profilo",
+          "description": "Progetta intestazioni che appaiono ottime su tutte le dimensioni dello schermo.",
+          "example": "Crea un'intestazione brandizzata a 1500x500"
+        },
+        {
+          "title": "Twitter Cards",
+          "description": "Ottimizza le immagini per le anteprime Twitter Card dei siti web.",
+          "example": "Prepara immagini OG per la condivisione di post del blog"
+        },
+        {
+          "title": "Immagini Thread",
+          "description": "Dimensionamento coerente per thread con più immagini.",
+          "example": "Ridimensiona una serie di immagini per un thread Twitter"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Visualizzazione Completa",
+          "description": "Le immagini vengono mostrate completamente senza essere ritagliate nel feed.",
+          "metric": "Nessun ritaglio"
+        },
+        {
+          "title": "Più Coinvolgimento",
+          "description": "Le immagini dimensionate correttamente ottengono più retweet e like.",
+          "metric": "Coinvolgimento più elevato"
+        },
+        {
+          "title": "Strumento di Elaborazione Immagini",
+          "description": "Dimensioni di immagine coerenti rafforzano la presenza del tuo brand.",
+          "metric": "Coerenza del brand"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona limmagine che desideri ridimensionare per Twitter.",
+          "step": 1
+        },
+        {
+          "title": "Scegli formato",
+          "description": "Seleziona Tweet (1200x675) o Header (1500x500).",
+          "step": 2
+        },
+        {
+          "title": "Regola qualità",
+          "description": "Imposta qualità di output e preferenze di formato.",
+          "step": 3
+        },
+        {
+          "title": "Scarica",
+          "description": "Ottieni la tua immagine pronta per Twitter istantaneamente.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quali dovrebbero essere le dimensioni delle immagini Twitter?",
+          "answer": "Twitter raccomanda 1200x675 pixel (proporzioni 16:9) per le immagini singole nei tweet. Questa dimensione viene visualizzata senza ritagli sulla maggior parte dei dispositivi."
+        },
+        {
+          "question": "Quali sono le dimensioni di un'intestazione Twitter?",
+          "answer": "Le intestazioni Twitter dovrebbero essere 1500x500 pixel. Nota che parti dell'intestazione potrebbero essere coperte dalla tua foto profilo."
+        },
+        {
+          "question": "Twitter comprime le immagini?",
+          "answer": "Sì, Twitter comprime le immagini. Usa esportazioni di alta qualità (90%+) e dimensioni esatte per ridurre al minimo gli artefatti di compressione."
+        },
+        {
+          "question": "Qual è la dimensione massima dell'immagine su Twitter?",
+          "answer": "Twitter permette immagini fino a 5MB per le foto. I GIF possono essere fino a 15MB. Il nostro strumento ti aiuta a rimanere entro questi limiti."
+        }
+      ],
+      "relatedTools": ["image-resizer", "resize-image-for-linkedin", "resize-image-for-facebook"],
+      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "ctaText": "Ridimensiona per Twitter gratuitamente",
+      "ctaUrl": "/tools/resize/resize-image-for-twitter",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "resize-image-for-linkedin",
+      "title": "Ridimensionatore immagini per LinkedIn",
+      "metaTitle": "Ridimensionatore immagini per LinkedIn | MyImageUpscaler",
+      "metaDescription": "Ridimensiona le immagini per LinkedIn istantaneamente. Ottieni dimensioni perfette per i post (1200x627) e i banner (1584x396). Gratuito, non richiede caricamento.",
+      "h1": "Ridimensionatore Immagini LinkedIn Gratuito - Dimensioni Perfette Istantaneamente",
+      "intro": "Ridimensiona le tue immagini alle dimensioni perfette per LinkedIn. Post e banner ottimizzati per l\"engagement. Funziona nel tuo browser.",
+      "primaryKeyword": "linkedin photo resizer",
+      "secondaryKeywords": [
+        "linkedin image size",
+        "linkedin post size",
+        "linkedin banner size",
+        "resize for linkedin",
+        "linkedin photo size"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "tools",
+      "toolName": "Ridimensionatore Immagini LinkedIn",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni consigliate di LinkedIn. Supporta post (1200x627) e immagini banner (1584x396).",
+      "toolComponent": "ImageResizer",
+      "toolConfig": {
+        "presetFilter": "linkedin",
+        "defaultWidth": 1200,
+        "defaultHeight": 627
+      },
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Post LinkedIn (1200x627)",
+          "description": "Dimensioni ottimali per i post del feed e gli articoli."
+        },
+        {
+          "title": "Immagine banner (1584x396)",
+          "description": "Dimensione perfetta per i banner del profilo e della pagina aziendale."
+        },
+        {
+          "title": "Strumento di elaborazione immagini",
+          "description": "Alta qualità per un aspetto professionale."
+        },
+        {
+          "title": "Immagini articoli",
+          "description": "Dimensionate per le immagini in evidenza degli articoli LinkedIn."
+        },
+        {
+          "title": "Pronto per pagine aziendali",
+          "description": "Perfetto per le immagini di copertina delle pagine aziendali."
+        },
+        {
+          "title": "Focus sulla privacy",
+          "description": "Tutta l'elaborazione avviene localmente sul tuo dispositivo."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Immagini post",
+          "description": "Crea immagini per i post LinkedIn.",
+          "example": "Ridimensiona le infografiche a 1200x627 per i post"
+        },
+        {
+          "title": "Banner profilo",
+          "description": "Progetta banner che rappresentano il tuo brand.",
+          "example": "Crea un banner personale del brand a 1584x396"
+        },
+        {
+          "title": "Pagine Aziendali",
+          "description": "Mantieni unimmagin coerente attraverso i contenuti aziendali.",
+          "example": "Ridimensiona foto del team per aggiornamenti aziendali"
+        },
+        {
+          "title": "Funzionalità articoli",
+          "description": "Crea immagini in primo piano accattivanti per articoli LinkedIn.",
+          "example": "Progetta intestazioni di articoli a dimensioni ottimali"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Strumento di Elaborazione Immagini",
+          "description": "Le immagini dimensionate correttamente trasmettono professionalismo.",
+          "metric": "Prime impressioni"
+        },
+        {
+          "title": "Massima Visibilità",
+          "description": "Le immagini vengono visualizzate completamente senza ritagli nel feed.",
+          "metric": "Visualizzazione completa"
+        },
+        {
+          "title": "Coerenza del Brand",
+          "description": "Dimensionamento coerente attraverso tutti i contenuti LinkedIn.",
+          "metric": "Brand unificato"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona l'immagine che desideri ridimensionare per LinkedIn.",
+          "step": 1
+        },
+        {
+          "title": "Scegli formato",
+          "description": "Seleziona Post (1200x627) o Banner (1584x396).",
+          "step": 2
+        },
+        {
+          "title": "Regola impostazioni",
+          "description": "Regola con precisione la qualità dell'output.",
+          "step": 3
+        },
+        {
+          "title": "Scarica",
+          "description": "Ottieni la tua immagine pronta per LinkedIn istantaneamente.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quali dovrebbero essere le dimensioni dei post LinkedIn?",
+          "answer": "LinkedIn raccomanda 1200x627 pixel per le immagini condivise. Questa dimensione viene visualizzata bene nel feed e mantiene la qualità su tutti i dispositivi."
+        },
+        {
+          "question": "Quali sono le dimensioni di un banner LinkedIn?",
+          "answer": "I banner del profilo LinkedIn dovrebbero essere 1584x396 pixel. I banner delle pagine aziendali hanno le stesse dimensioni."
+        },
+        {
+          "question": "Qual è il formato migliore per LinkedIn?",
+          "answer": "PNG o JPEG funzionano entrambi bene. Usa PNG per la grafica con testo, JPEG per le fotografie. LinkedIn accetta file fino a 8MB."
+        },
+        {
+          "question": "Perché le mie immagini LinkedIn sembrano sfocate?",
+          "answer": "LinkedIn comprime le immagini. Inizia con immagini di alta qualità alle dimensioni esatte ed esporta con qualità 90%+ per ridurre al minimo la compressione."
+        }
+      ],
+      "relatedTools": ["image-resizer", "resize-image-for-twitter", "resize-image-for-facebook"],
+      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "ctaText": "Ridimensiona per LinkedIn gratuitamente",
+      "ctaUrl": "/tools/resize/resize-image-for-linkedin",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "bulk-image-resizer",
+      "title": "Ridimensionatore Immagini in Blocco",
+      "metaTitle": "Ridimensionatore Immagini in Blocco | MyImageUpscaler",
+      "metaDescription": "Ridimensiona più immagini contemporaneamente con il nostro Ridimensionatore Immagini in Blocco Gratuito. Ridimensiona massivamente foto a qualsiasi dimensione. Funziona nel tuo browser - Nessun upload richiesto.",
+      "h1": "Ridimensionatore Immagini in Blocco Gratuito - Ridimensiona Massivamente Foto Istantaneamente",
+      "intro": "Ridimensiona più immagini alle stesse dimensioni istantaneamente. Il nostro Ridimensionatore Immagini in Blocco Gratuito elabora fino a 20 foto contemporaneamente, interamente nel tuo browser. Nessun upload, nessuna registrazione, nessuna attesa.",
+      "primaryKeyword": "batch image resizer",
+      "secondaryKeywords": [
+        "bulk resize",
+        "mass resize photos",
+        "resize multiple images",
+        "bulk picture resizer",
+        "batch resize images",
+        "resize in bulk"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "tools",
+      "toolName": "Ridimensionatore immagini in blocco",
+      "description": "Strumento professionale di ridimensionamento immagini in blocco che funziona interamente nel tuo browser. Ridimensiona fino a 20 immagini contemporaneamente a dimensioni esatte, con opzioni per mantenere le proporzioni o riempire i limiti. Scarica tutte le immagini ridimensionate come comodo file ZIP.",
+      "toolComponent": "BulkImageResizer",
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Elabora fino a 20 immagini",
+          "description": "Ridimensiona più foto in un singolo lotto. Non c'è bisogno di elaborare le immagini una alla volta - risparmia ore di lavoro."
+        },
+        {
+          "title": "Applica le stesse dimensioni a tutte",
+          "description": "Imposta la larghezza e l'altezza di destinazione una volta e tutte le immagini vengono ridimensionate in modo coerente. Perfetto per l'uniformità della galleria."
+        },
+        {
+          "title": "Mantieni proporzioni",
+          "description": "Opzione per preservare le proporzioni di ogni immagine o riempire le dimensioni esatte con ritaglio intelligente."
+        },
+        {
+          "title": "Scarica come file ZIP",
+          "description": "Ottieni tutte le immagini ridimensionate in un singolo download ZIP. Mantiene i tuoi file organizzati e risparmia tempo di download."
+        },
+        {
+          "title": "Formati di output multipli",
+          "description": "Esporta il lotto come JPEG, PNG o WebP con impostazioni di qualità regolabili. Perfetto per qualsiasi caso d'uso."
+        },
+        {
+          "title": "100% basato sul browser",
+          "description": "Tutta l'elaborazione avviene localmente utilizzando Canvas API. Le tue foto non lasciano mai il tuo dispositivo - completa privacy."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Foto prodotti e-commerce",
+          "description": "Ridimensiona tutte le immagini dei prodotti a dimensioni coerenti per il tuo negozio online.",
+          "example": "Ridimensiona 100 foto prodotti a 1000x1000 per inserzioni Amazon"
+        },
+        {
+          "title": "Gallerie Social Media",
+          "description": "Prepara più immagini per una pubblicazione social coerente attraverso le piattaforme.",
+          "example": "Ridimensiona in blocco 20 foto di viaggio per il feed Instagram"
+        },
+        {
+          "title": "Ottimizzazione Immagini Sito Web",
+          "description": "Ridimensiona più immagini a dimensioni standard per il tuo sito web o blog.",
+          "example": "Ridimensiona 50 intestazioni di blog a 1920x600 per un layout coerente"
+        },
+        {
+          "title": "Preparazione Portfolio",
+          "description": "Crea dimensioni di miniature uniformi da una collezione di immagini del portfolio.",
+          "example": "Ridimensiona 30 pezzi del portfolio a 400x300 per miniature della galleria"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Risparmio di Tempo Massiccio",
+          "description": "Ridimensiona centinaia di immagini in pochi secondi invece di ore.",
+          "metric": "Risparmia ore"
+        },
+        {
+          "title": "Coerenza Professionale",
+          "description": "Dimensioni uniformi per tutte le immagini per un aspetto professionale.",
+          "metric": "Aspetto professionale"
+        },
+        {
+          "title": "Massima Efficienza",
+          "description": "Elaborazione automatizzata senza compromettere la qualità.",
+          "metric": "Automatizzato"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica Immagini Multiple",
+          "description": "Seleziona o trascina fino a 25 immagini da ridimensionare.",
+          "step": 1
+        },
+        {
+          "title": "Imposta Dimensioni",
+          "description": "Inserisci larghezza e altezza desiderate o scegli preset popolari.",
+          "step": 2
+        },
+        {
+          "title": "Elabora in Blocco",
+          "description": "Fai clic su elabora e tutte le immagini verranno ridimensionate.",
+          "step": 3
+        },
+        {
+          "title": "Elabora e scarica",
+          "description": "Fai clic su 'Elabora tutto' e scarica tutte le immagini ridimensionate come singolo file ZIP.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quante immagini posso ridimensionare contemporaneamente?",
+          "answer": "Puoi elaborare fino a 20 immagini in un singolo lotto. Questo limite garantisce prestazioni ottimali del browser fornendo comunque un risparmio di tempo significativo."
+        },
+        {
+          "question": "Il Ridimensionatore immagini in blocco è davvero gratuito?",
+          "answer": "Sì! Il nostro Ridimensionatore immagini in blocco è gratuito al 100% con lotti illimitati. Nessuna filigrana, nessun costo nascosto."
+        },
+        {
+          "question": "Le mie immagini vengono caricate sui vostri server?",
+          "answer": "No! Tutta l'elaborazione delle immagini avviene direttamente nel tuo browser utilizzando Canvas API. Le tue immagini non lasciano mai il tuo dispositivo, garantendo una privacy completa."
+        },
+        {
+          "question": "Qual è la differenza tra le modalità 'adatta' e 'riempi'?",
+          "answer": "La modalità adatta ridimensiona le immagini per adattarsi alle tue dimensioni mantenendo le proporzioni (le immagini potrebbero essere più piccole della destinazione). La modalità riempi ritaglia le immagini per riempire le dimensioni esatte, il che potrebbe rimuovere parte del contenuto dai bordi."
+        },
+        {
+          "question": "Tutte le mie immagini avranno la stessa dimensione?",
+          "answer": "Quando \"Mantieni rapporto daspetto\" è abilitato con modalità \"adatta\", le immagini saranno proporzionali ma potrebbero avere diverse dimensioni finali. Per dimensionamento uniforme esatto, usa modalità \"riempi\" o deseleziona rapporto daspetto."
+        },
+        {
+          "question": "Posso scaricare le immagini individualmente?",
+          "answer": "Sì! Dopo lelaborazione, puoi scaricare ogni immagine individualmente o scaricarle tutte contemporaneamente come file ZIP per comodità."
+        },
+        {
+          "question": "In quali formati posso convertire?",
+          "answer": "Puoi produrre immagini ridimensionate come JPEG (per foto), PNG (per grafici) o WebP (per ottimizzazione web)."
+        },
+        {
+          "question": "Posso rimuovere unimmagine dal lotto?",
+          "answer": "Sì! Puoi rimuovere immagini individuali dal lotto prima o dopo lelaborazione facendo clic sul pulsante X accanto a ogni immagine."
+        }
+      ],
+      "relatedTools": ["image-resizer", "image-compressor", "ai-image-upscaler"],
+      "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
+      "ctaText": "Prova Ridimensionatore Immagini in Blocco Gratis",
+      "ctaUrl": "/tools/resize/bulk-image-resizer",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "image-compressor",
+      "title": "Compressore Immagini",
+      "metaTitle": "Compressore Immagini | MyImageUpscaler",
+      "metaDescription": "Comprimi immagini online gratuitamente. Riduci le dimensioni del file fino all\"80% mantenendo la qualità. Funziona nel tuo browser - Nessun upload richiesto. Supporto JPEG, PNG, WebP.",
+      "h1": "Compressore Immagini Online Gratuito - Riduci Dimensioni File Istantaneamente",
+      "intro": "Comprimi le tue immagini senza perdere qualità. Il nostro compressore online gratuito riduce le dimensioni del file fino all\"80% utilizzando tecnologia browser avanzata. Perfetto per l\"ottimizzazione web, email e archiviazione.",
+      "primaryKeyword": "compressore immagini",
+      "secondaryKeywords": [
+        "comprimi immagini online",
+        "compressore immagini online",
+        "comprimi immagine",
+        "strumento compressione immagini",
+        "riduci dimensione immagine",
+        "compressore foto"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Immagini Instagram",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni consigliate di Instagram. Supporta post (1080x1080), storie (1080x1920) e reel (1080x1920).",
+      "toolComponent": "ImageCompressor",
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Algoritmo di compressione intelligente",
+          "description": "Compressione avanzata basata su canvas che trova automaticamente il perfetto equilibrio tra dimensione del file e qualità visiva."
+        },
+        {
+          "title": "Anteprima in tempo reale",
+          "description": "Vedi i risultati della compressione istantaneamente prima del download. Regola il cursore della qualità e guarda la dimensione del file cambiare in tempo reale."
+        },
+        {
+          "title": "File fino all'80% più piccoli",
+          "description": "Riduci drammaticamente le dimensioni file immagini senza perdita di qualità percettibile. Perfetto per siti web più veloci e allegati email."
+        },
+        {
+          "title": "Supporto Formati Multipli",
+          "description": "Comprimi immagini JPEG, PNG o WebP. Converti in WebP per compressione con supporto browser moderno."
+        },
+        {
+          "title": "Controllo Dimensioni",
+          "description": "Opzionalmente ridimensiona immagini durante la compressione per ridurre ulteriormente la dimensione file. Imposta vincoli massimi di larghezza e altezza."
+        },
+        {
+          "title": "100% Privato",
+          "description": "Tutta la compressione avviene localmente nel tuo browser. Le immagini non lasciano mai il tuo dispositivo - privacy completa garantita."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Post Feed",
+          "description": "Prepara foto quadrate perfette per il feed di Instagram.",
+          "example": "Ridimensiona 50 foto a 1080x1080 per un feed coerente"
+        },
+        {
+          "title": "Instagram Stories",
+          "description": "Crea storie verticali che riempiono lintero schermo.",
+          "example": "Ridimensiona foto orizzontali a 1080x1920 per storie"
+        },
+        {
+          "title": "Reel Cover",
+          "description": "Crea miniature accattivanti per i tuoi Instagram Reel.",
+          "example": "Ridimensiona miniature a 1080x1920 per copertine reel"
+        },
+        {
+          "title": "Carosello Instagram",
+          "description": "Immagini quadrate uniformi per post carosello multipli.",
+          "example": "Ridimensiona 10 foto a 1080x1080 per un post carosello"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Multi-Formato Instagram",
+          "description": "Supporta tutti i formati Instagram con le specifiche 2025.",
+          "metric": "Feed, Storie, Reel"
+        },
+        {
+          "title": "Nessun Ritaglio",
+          "description": "Le immagini vengono visualizzate completamente senza bordi o spazi vuoti.",
+          "metric": "Adattamento perfetto"
+        },
+        {
+          "title": "Qualità Conservata",
+          "description": "Algoritmo di upscaling AI che migliora la qualità durante il ridimensionamento.",
+          "metric": "Miglioramento AI"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica la Tua Immagine",
+          "description": "Seleziona limmagine che desideri ridimensionare per Instagram.",
+          "step": 1
+        },
+        {
+          "title": "Scegli Format",
+          "description": "Seleziona Post (1080x1080), Storia (1080x1920) o Reel (1080x1920).",
+          "step": 2
+        },
+        {
+          "title": "Ridimensiona",
+          "description": "LAI garantirrà che limmagine si adatti perfettamente al formato scelto.",
+          "step": 3
+        },
+        {
+          "title": "Scarica immagine compressa",
+          "description": "Fai clic su comprimi e scarica la tua immagine ottimizzata. Vedi rapporto di compressione esatto e dimensioni file.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quanto posso comprimere unimmagine?",
+          "answer": "Tipicamente, puoi ridurre le dimensioni file del 60-80% senza perdita di qualità percettibile. I risultati variano in base al contenuto dellimmagine e alle tue impostazioni qualità. Le foto comprimono meglio dei grafici con molti dettagli."
+        },
+        {
+          "question": "La compressione ridurrà la qualità dellimmagine?",
+          "answer": "La compressione implica un compromesso tra dimensione file e qualità. Con impostazioni qualità 70-80%, la maggior parte delle persone non vede la differenza. Il nostro strumento ti permette di anteprima e regolare il livello qualità prima di scaricare."
+        },
+        {
+          "question": "Qual è il formato per la compressione?",
+          "answer": "WebP offre la compressione con ottima qualità, ma non è supportato universalmente. JPEG è per foto e ha eccellente supporto browser. PNG è lossless ma crea file più grandi."
+        },
+        {
+          "question": "Esiste un limite di dimensione file?",
+          "answer": "Puoi comprimere immagini fino a 25MB. Questo limite è basato sulla memoria browser, non restrizioni server (poiché non cariciamo sui server)."
+        },
+        {
+          "question": "Posso comprimere più immagini in blocco?",
+          "answer": "Attualmente, puoi comprimere unimmagine alla volta. Per elaborazione in blocco e funzionalità avanzate, dai unocchiata al nostro premium MyImageUpscaler che include la compressione."
+        },
+        {
+          "question": "Quale impostazione qualità dovrei usare?",
+          "answer": "Per uso web, 70-80% è ottimale. Per stampa o uso professionale, 85-95%. Per massima compressione (come email), 60-70% funziona bene."
+        }
+      ],
+      "relatedTools": ["image-resizer", "png-to-jpg", "ai-image-upscaler"],
+      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "ctaText": "Prova Compressore Immagini Gratis",
+      "ctaUrl": "/tools/compress/image-compressor",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "png-to-jpg",
+      "title": "Convertitore da PNG a JPG",
+      "metaTitle": "Convertitore da PNG a JPG | MyImageUpscaler",
+      "metaDescription": "Converti PNG in JPG online gratuitamente. Conversione veloce e sicura nel tuo browser. Non richiede caricamento. Gestisci la trasparenza con colori di sfondo personalizzati.",
+      "h1": "Convertitore gratuito da PNG a JPG - Converti immagini istantaneamente",
+      "intro": "Converti immagini PNG in formato JPG in pochi secondi. Il nostro convertitore online gratuito funziona interamente nel tuo browser senza richiedere caricamento. Perfetto per ridurre le dimensioni dei file e garantire la compatibilità.",
+      "primaryKeyword": "png a jpg",
+      "secondaryKeywords": [
+        "converti png in jpg",
+        "png a jpeg",
+        "convertitore png a jpg",
+        "png a jpg online",
+        "converti png in jpeg"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Ridimensionatore Immagini Facebook",
+      "description": "Ridimensiona istantaneamente le immagini alle dimensioni consigliate di Facebook. Supporta post (1200x630), copertine (820x312) e storie (1080x1920).",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "jpeg",
+        "acceptedInputFormats": ["image/png"]
+      },
+      "acceptedFormats": ["image/png"],
+      "features": [
+        {
+          "title": "Gestione Trasparenza",
+          "description": "Scegli colori di sfondo personalizzati per aree PNG trasparenti. Bianco, nero o qualsiasi colore di cui hai bisogno."
+        },
+        {
+          "title": "Controllo Qualità",
+          "description": "Regola la qualità di compressione JPEG da 1-100%. Qualità più alta significa file più grandi ma visualizzazioni migliori."
+        },
+        {
+          "title": "Conversione Istantanea",
+          "description": "Converti PNG in JPG in meno di un secondo. Nessuna attesa, nessuna coda, tutto lelaborazione avviene nel tuo browser."
+        },
+        {
+          "title": "Informazioni Formato",
+          "description": "Vedi i cambiamenti delle dimensioni file prima e dopo la conversione. Capisci i compromessi tra PNG e JPG."
+        },
+        {
+          "title": "Compatibilità Universale",
+          "description": "Il formato JPG funziona ovunque - social media, email, vecchi software e tutti i dispositivi."
+        },
+        {
+          "title": "Privato e Sicuro",
+          "description": "Le immagini non lasciano mai il tuo browser. Completa privacy con elaborazione lato client."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Post Facebook",
+          "description": "I file PNG sono molto più grandi di JPG. Converti per ridurre le dimensioni del file del 70% o più.",
+          "example": "Converti uno screenshot PNG da 5MB in un JPG da 600KB per email"
+        },
+        {
+          "title": "Caricamenti social media",
+          "description": "Molte piattaforme preferiscono il formato JPG per le foto. Converti i PNG per caricamenti più rapidi e migliore compatibilità.",
+          "example": "Converti foto Instagram da PNG a JPG per dimensioni ottimali"
+        },
+        {
+          "title": "Ottimizzazione sito web",
+          "description": "I file JPG caricano più velocemente dei PNG per le fotografie, migliorando le prestazioni del sito web.",
+          "example": "Converti foto prodotti da PNG a JPG per migliorare la velocità della pagina"
+        },
+        {
+          "title": "Stampa",
+          "description": "La maggior parte dei servizi di stampa preferisce il formato JPG. Converti grafici e foto per la stampa.",
+          "example": "Prepara immagini per la stampa fotografica a CVS, Walgreens, ecc."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Riduzione massiva della dimensione del file",
+          "description": "I file JPG sono tipicamente più piccoli del 70-90% rispetto ai PNG per fotografie e immagini complesse.",
+          "metric": "Fino al 90% più piccoli"
+        },
+        {
+          "title": "Migliore compatibilità",
+          "description": "JPG funziona ovunque - tutti i dispositivi, software e piattaforme lo supportano completamente.",
+          "metric": "100% compatibile"
+        },
+        {
+          "title": "Pieno controllo",
+          "description": "Scegli il colore di sfondo per la trasparenza e regola la qualità per il perfetto equilibrio.",
+          "metric": "Le tue impostazioni"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica immagine PNG",
+          "description": "Seleziona o trascina il tuo file PNG. Supporta PNG trasparenti e tutte le variazioni PNG.",
+          "step": 1
+        },
+        {
+          "title": "Scegli Colore di Sfondo",
+          "description": "Se il tuo PNG ha trasparenza, seleziona un colore di sfondo (bianco, nero o personalizzato). JPG non supporta la trasparenza.",
+          "step": 2
+        },
+        {
+          "title": "Regola Qualità",
+          "description": "Imposta livello qualità JPG (80-90% raccomandato). Qualità più alta = file più grandi ma visualizzazioni migliori.",
+          "step": 3
+        },
+        {
+          "title": "Scarica JPG",
+          "description": "Converti e scarica il tuo file JPG. Vedi il confronto delle dimensioni file prima di scaricare.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire PNG in JPG?",
+          "answer": "I file JPG sono molto più piccoli di PNG per foto e immagini complesse. PNG è per grafici con trasparenza o testo, mentre JPG è migliore per fotografie, riducendo le dimensioni del file del 70-90%."
+        },
+        {
+          "question": "Cosa succede agli sfondi trasparenti?",
+          "answer": "JPG non supporta la trasparenza. Il nostro strumento ti permette di scegliere un colore di sfondo (bianco, nero o personalizzato) per riempire aree trasparenti. Questo ti dà pieno controllo sullaspetto finale."
+        },
+        {
+          "question": "Perderò qualità convertendo PNG in JPG?",
+          "answer": "PNG è lossless, mentre JPG usa la compressione. Con impostazioni qualità 85-95%, la perdita di qualità è minima e solitamente impercettibile. Il risparmio delle dimensioni del file vale il piccolo compromesso di qualità per la maggior parte degli usi."
+        },
+        {
+          "question": "Posso convertire JPG di nuovo in PNG?",
+          "answer": "Sì! Il nostro convertitore di formato gestisce anche la conversione da JPG a PNG. Tuttavia, convertire JPG in PNG non recupererà la trasparenza o migliorerà la qualità - cambia solo il formato."
+        },
+        {
+          "question": "Quale impostazione qualità dovrei usare?",
+          "answer": "Per web e social media, 80-85% è perfetto. Per stampa o uso professionale, 90-95%. Per massima riduzione delle dimensioni file, 70-75% appare ancora buono."
+        }
+      ],
+      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-png"],
+      "relatedGuides": ["png-vs-jpg-guide", "when-to-use-jpg"],
+      "ctaText": "Converti PNG in JPG gratuitamente",
+      "ctaUrl": "/tools/convert/png-to-jpg",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "jpg-to-png",
+      "title": "Convertitore da JPG a PNG",
+      "metaTitle": "Convertitore da JPG a PNG | MyImageUpscaler",
+      "metaDescription": "Converti JPG in PNG online gratuitamente. Aggiungi supporto trasparenza, ottieni qualità senza perdita. Conversione veloce basata sul browser senza caricamento richiesto.",
+      "h1": "Convertitore gratuito da JPG a PNG - Converti immagini istantaneamente",
+      "intro": "Converti immagini JPG in formato PNG in pochi secondi. Perfetto per aggiungere supporto trasparenza o preservare la qualità. Il nostro convertitore gratuito funziona interamente nel tuo browser.",
+      "primaryKeyword": "jpg a png",
+      "secondaryKeywords": [
+        "converti jpg in png",
+        "jpeg a png",
+        "convertitore jpg a png",
+        "jpg a png online",
+        "converti jpeg in png"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Convertitore PNG in WebP",
+      "description": "Converti istantaneamente immagini PNG in formato WebP moderno. Riduci le dimensioni del file fino al 34% mantenendo la trasparenza. Supporta immagini multiple, anteprima dal vivo e download ZIP.",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "png",
+        "acceptedInputFormats": ["image/jpeg"]
+      },
+      "acceptedFormats": ["image/jpeg"],
+      "features": [
+        {
+          "title": "Conversione con Trasparenza",
+          "description": "WebP supporta completamente il canale alfa. Le aree trasparenti PNG vengono preservate perfettamente."
+        },
+        {
+          "title": "Riduzione 34% File",
+          "description": "WebP riduce le dimensioni file fino al 34% rispetto a PNG mantenendo la stessa qualità visiva."
+        },
+        {
+          "title": "Conversione Istantanea",
+          "description": "Converti in meno di un secondo con elaborazione basata sul browser."
+        },
+        {
+          "title": "Ottimizzato per Web",
+          "description": "WebP è progettato per prestazioni web ottimali."
+        },
+        {
+          "title": "Nessuna Perdita di Qualità",
+          "description": "Convertire in PNG preserva la tua qualità immagine attuale - non migliorerà gli artefatti JPG ma non ne aggiungerà di nuovi."
+        },
+        {
+          "title": "100% Privato",
+          "description": "Le immagini non lasciano mai il tuo dispositivo. Privacy completa con elaborazione basata sul browser."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Design grafico",
+          "description": "Converti foto per l'uso in software di design dove il formato PNG è preferito.",
+          "example": "Prepara immagini prodotti per editing in Photoshop"
+        },
+        {
+          "title": "Creazione loghi",
+          "description": "Converti immagini base prima di aggiungere trasparenza per lavori di loghi.",
+          "example": "Converti un ritratto JPG per aggiungere uno sfondo trasparente"
+        },
+        {
+          "title": "Grafica web",
+          "description": "Converti immagini che devono sovrapporre altri contenuti o avere trasparenza.",
+          "example": "Prepara immagini per banner web con bordi trasparenti"
+        },
+        {
+          "title": "E-commerce",
+          "description": "Converti immagini importanti in PNG senza perdita per archiviazione a lungo termine.",
+          "example": "Archivia foto familiari in formato senza perdita"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Formato senza perdita",
+          "description": "PNG non aggiunge artefatti di compressione, preservando la qualità dell'immagine.",
+          "metric": "Zero artefatti aggiunti"
+        },
+        {
+          "title": "Adatto all'editing",
+          "description": "PNG è il formato preferito per ulteriore editing e manipolazione.",
+          "metric": "Standard industriale"
+        },
+        {
+          "title": "Standard Moderno",
+          "description": "WebP è supportato da tutti i browser moderni.",
+          "metric": "Supporto browser 95%+"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica Immagine PNG",
+          "description": "Seleziona o trascina il tuo file PNG. La trasparenza verrà preservata.",
+          "step": 1
+        },
+        {
+          "title": "Regola qualità",
+          "description": "Imposta qualità WebP o scegli modalità lossless per qualità perfetta.",
+          "step": 2
+        },
+        {
+          "title": "Converti in WebP",
+          "description": "Fai clic su converti per elaborare istantaneamente la tua immagine.",
+          "step": 3
+        },
+        {
+          "title": "Scarica WebP",
+          "description": "Scarica il tuo file WebP ottimizzato con trasparenza intatta.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire PNG in WebP?",
+          "answer": "WebP offre file 26% più piccoli di PNG supportando allo stesso tempo la trasparenza. Questo significa siti web più veloci senza perdere la capacità di avere sfondi trasparenti."
+        },
+        {
+          "question": "La trasparenza verrà preservata?",
+          "answer": "Sì! WebP supporta completamente la trasparenza del canale alfa. Qualsiasi area trasparente nel tuo PNG verrà preservata nelloutput WebP."
+        },
+        {
+          "question": "WebP è migliore di PNG?",
+          "answer": "Per uso web, sì. WebP offre file più piccoli con lo stesso supporto della trasparenza. Per massima compatibilità con software più vecchi, PNG è ancora utile."
+        },
+        {
+          "question": "Posso riconvertire in PNG?",
+          "answer": "Sì! Usa il nostro convertitore WebP in PNG se hai bisogno del formato PNG per compatibilità o modifica in software che non supporta WebP."
+        }
+      ],
+      "relatedTools": ["png-to-jpg", "image-compressor", "webp-to-png"],
+      "relatedGuides": ["png-vs-jpg-guide"],
+      "ctaText": "Converti JPG in PNG gratuitamente",
+      "ctaUrl": "/tools/convert/jpg-to-png",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "webp-to-jpg",
+      "title": "Convertitore da WebP a JPG",
+      "metaTitle": "Convertitore da WebP a JPG | MyImageUpscaler",
+      "metaDescription": "Converti WebP in JPG online gratuitamente. Compatibilità universale per qualsiasi dispositivo. Conversione veloce basata sul browser senza caricamento richiesto.",
+      "h1": "Convertitore gratuito da WebP a JPG - Converti immagini istantaneamente",
+      "intro": "Converti immagini WebP in formato JPG universalmente compatibile. Perfetto per condividere immagini con software o dispositivi più vecchi che non supportano WebP.",
+      "primaryKeyword": "webp a jpg",
+      "secondaryKeywords": [
+        "converti webp in jpg",
+        "webp a jpeg",
+        "convertitore webp a jpg",
+        "webp a jpg online",
+        "converti webp in jpeg"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Convertitore WebP in PNG",
+      "description": "Converti istantaneamente immagini WebP in PNG. Sblocca la compatibilità con software vecchi e strumenti di modifica. Supporta trasparenza, conversione multipla e download ZIP.",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "jpeg",
+        "acceptedInputFormats": ["image/webp"]
+      },
+      "acceptedFormats": ["image/webp"],
+      "features": [
+        {
+          "title": "Massima Compatibilità",
+          "description": "PNG funziona con ogni software, editor e piattaforma. Mai problemi di compatibilità."
+        },
+        {
+          "title": "Trasparenza Perfetta",
+          "description": "Il canale alfa WebP viene convertito perfettamente in trasparenza PNG."
+        },
+        {
+          "title": "Qualità Lossless",
+          "description": "PNG è lossless - nessuna perdita di qualità dalla conversione."
+        },
+        {
+          "title": "Gestione Trasparenza",
+          "description": "Scegli colore di sfondo per immagini WebP con trasparenza."
+        },
+        {
+          "title": "Nessun caricamento richiesto",
+          "description": "Tutta lelaborazione avviene nel tuo browser - le immagini rimangono private."
+        },
+        {
+          "title": "Flusso di Lavoro Pronto per Lotti",
+          "description": "Conversione rapida per più immagini una alla volta."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Allegati email",
+          "description": "WebP non è sempre visualizzabile nei client email - converti in JPG per compatibilità.",
+          "example": "Converti immagini web scaricate per condivisione email"
+        },
+        {
+          "title": "Software più vecchi",
+          "description": "Molti programmi non supportano WebP. Converti per compatibilità con strumenti più vecchi.",
+          "example": "Apri immagini WebP in versioni più vecchie di Photoshop"
+        },
+        {
+          "title": "Social media",
+          "description": "Alcune piattaforme gestiscono JPG meglio di WebP. Converti per caricamenti affidabili.",
+          "example": "Prepara immagini salvate dal web per la pubblicazione su Facebook"
+        },
+        {
+          "title": "Stampa",
+          "description": "I servizi di stampa tipicamente preferiscono JPG. Converti immagini WebP per la stampa.",
+          "example": "Prepara immagini del sito web per la stampa fisica"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Compatibilità Software",
+          "description": "Usa WebP con Photoshop, GIMP, e vecchi software che non supportano WebP.",
+          "metric": "Funziona ovunque"
+        },
+        {
+          "title": "Qualità Lossless",
+          "description": "Nessuna perdita di qualità durante la conversione. PNG preserva tutti i dettagli.",
+          "metric": "Qualità perfetta"
+        },
+        {
+          "title": "Pronto per la stampa",
+          "description": "JPG è accettato da tutti i servizi di stampa e laboratori fotografici.",
+          "metric": "Compatibile con stampa"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica Immagine WebP",
+          "description": "Seleziona o trascina il tuo file WebP. Trasparenza e animazioni verranno gestite.",
+          "step": 1
+        },
+        {
+          "title": "Converti in PNG",
+          "description": "Fai clic per convertire e scaricare istantaneamente il tuo PNG.",
+          "step": 2
+        },
+        {
+          "title": "Regola Qualità",
+          "description": "Imposta livello qualità JPG (80-90% raccomandato per la maggior parte degli usi).",
+          "step": 3
+        },
+        {
+          "title": "Scarica JPG",
+          "description": "Converti e scarica il tuo file JPG universalmente compatibile.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire WebP in JPG?",
+          "answer": "WebP è un formato moderno non supportato ovunque. JPG funziona su tutti i dispositivi, in tutti i client email e con tutti i software - è lo standard universale."
+        },
+        {
+          "question": "Cosa succede alla trasparenza WebP?",
+          "answer": "JPG non supporta la trasparenza. Il nostro strumento ti permette di scegliere un colore di sfondo (bianco, nero o personalizzato) per riempire aree trasparenti."
+        },
+        {
+          "question": "La dimensione file aumenterà?",
+          "answer": "Sì, JPG è solitamente più grande di WebP per la stessa qualità. Converti in JPG quando hai bisogno di compatibilità universale, non per ridurre le dimensioni."
+        },
+        {
+          "question": "Posso convertire WebP animati?",
+          "answer": "Convertire WebP animati catturerà il primo fotogramma come JPG statico. Per immagini animate, considera invece il formato GIF."
+        }
+      ],
+      "relatedTools": ["webp-to-png", "jpg-to-webp", "image-compressor"],
+      "relatedGuides": ["webp-format-guide"],
+      "ctaText": "Converti WebP in JPG gratuitamente",
+      "ctaUrl": "/tools/convert/webp-to-jpg",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "webp-to-png",
+      "title": "Convertitore da WebP a PNG",
+      "metaTitle": "Convertitore da WebP a PNG | MyImageUpscaler",
+      "metaDescription": "Converti WebP in PNG online gratuitamente. Preserva trasparenza, ottieni qualità senza perdita. Conversione veloce basata sul browser senza caricamento richiesto.",
+      "h1": "Convertitore gratuito da WebP a PNG - Converti immagini istantaneamente",
+      "intro": "Converti immagini WebP in formato PNG. Preserva trasparenza e ottieni qualità senza perdita perfetta per editing. Funziona interamente nel tuo browser.",
+      "primaryKeyword": "webp a png",
+      "secondaryKeywords": [
+        "converti webp in png",
+        "convertitore webp a png",
+        "webp a png online",
+        "convertitore webp png"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Convertitore JPG in WebP",
+      "description": "Converti immagini JPG in formato WebP moderno. Riduci le dimensioni file fino al 34% mantenendo la qualità visiva. Perfetto per ottimizzazione web e social media.",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "png",
+        "acceptedInputFormats": ["image/webp"]
+      },
+      "acceptedFormats": ["image/webp"],
+      "features": [
+        {
+          "title": "Riduzione 34% Dimensioni",
+          "description": "WebP crea file 34% più piccoli di JPG con la stessa qualità visiva."
+        },
+        {
+          "title": "Qualità Regolabile",
+          "description": "Controlla il compromesso tra dimensione file e qualità con impostazioni 1-100%."
+        },
+        {
+          "title": "Elaborazione Rapida",
+          "description": "Conversione istantanea direttamente nel tuo browser. Nessun caricamento su server."
+        },
+        {
+          "title": "Conversione Istantanea",
+          "description": "Converti in meno di un secondo con elaborazione basata sul browser."
+        },
+        {
+          "title": "Compatibilità Software",
+          "description": "PNG funziona con vecchi software che non supportano WebP."
+        },
+        {
+          "title": "100% Privato",
+          "description": "Le immagini non lasciano mai il tuo browser - privacy completa garantita."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Lavori di design",
+          "description": "Converti immagini WebP per l'uso in software di design che preferisce PNG.",
+          "example": "Apri immagini salvate dal web in Adobe Illustrator"
+        },
+        {
+          "title": "Preserva trasparenza",
+          "description": "Mantieni sfondi trasparenti durante la conversione da WebP.",
+          "example": "Converti logo con trasparenza per editing"
+        },
+        {
+          "title": "Archiviazione",
+          "description": "Converti in PNG senza perdita per archiviazione immagini a lungo termine.",
+          "example": "Archivia immagini importanti senza perdita di qualità"
+        },
+        {
+          "title": "Compatibilità software",
+          "description": "Usa PNG quando il tuo software non supporta il formato WebP.",
+          "example": "Apri WebP in editor di immagini più vecchi"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Siti Web Più Veloci",
+          "description": "File più piccoli significano caricamenti più rapidi e migliore esperienza utente.",
+          "metric": "Caricamento 34% più veloce"
+        },
+        {
+          "title": "Qualità Visiva Identica",
+          "description": "Stessa qualità visiva di JPG ma con dimensioni file molto più piccole.",
+          "metric": "Indistinguibile da JPG"
+        },
+        {
+          "title": "Supporto universale",
+          "description": "PNG funziona con virtualmente tutti i software e piattaforme.",
+          "metric": "Ampia compatibilità"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica JPG",
+          "description": "Seleziona o trascina il tuo file JPG.",
+          "step": 1
+        },
+        {
+          "title": "Regola Qualità",
+          "description": "Imposta qualità WebP (80-90% raccomandato).",
+          "step": 2
+        },
+        {
+          "title": "Converti in WebP",
+          "description": "Fai clic per convertire e scaricare il tuo file WebP ottimizzato.",
+          "step": 3
+        },
+        {
+          "title": "Scarica PNG",
+          "description": "Scarica il tuo PNG lossless con trasparenza intatta.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire WebP in PNG?",
+          "answer": "PNG offre migliore compatibilità software di WebP preservando allo stesso tempo la trasparenza. È ideale per editing, vecchi software, o quando hai bisogno di un formato lossless."
+        },
+        {
+          "question": "La trasparenza verrà preservata?",
+          "answer": "Sì! PNG supporta completamente la trasparenza. Qualsiasi area trasparente nel tuo WebP verrà preservata nelloutput PNG."
+        },
+        {
+          "question": "La dimensione file aumenterà?",
+          "answer": "Di solito, sì. I file PNG sono tipicamente più grandi di WebP poiché PNG non comprime in modo efficiente. Questo è il compromesso per una più ampia compatibilità."
+        },
+        {
+          "question": "Qual è migliore: PNG o JPG da WebP?",
+          "answer": "Usa PNG se hai bisogno di trasparenza o qualità lossless per editing. Usa JPG per file più piccoli e compatibilità universale quando la trasparenza non è necessaria."
+        }
+      ],
+      "relatedTools": ["webp-to-jpg", "png-to-webp", "image-compressor"],
+      "relatedGuides": ["webp-format-guide"],
+      "ctaText": "Converti WebP in PNG gratuitamente",
+      "ctaUrl": "/tools/convert/webp-to-png",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "jpg-to-webp",
+      "title": "Convertitore da JPG a WebP",
+      "metaTitle": "Convertitore da JPG a WebP | MyImageUpscaler",
+      "metaDescription": "Converti JPG in WebP online gratuitamente. Ottieni file più piccoli del 25-35% con compressione moderna. Conversione veloce basata sul browser senza caricamento richiesto.",
+      "h1": "Convertitore gratuito da JPG a WebP - Ottimizza immagini istantaneamente",
+      "intro": "Converti immagini JPG in formato WebP per file più piccoli del 25-35% a parità di qualità. Perfetto per ottimizzazione web. Funziona interamente nel tuo browser.",
+      "primaryKeyword": "jpg a webp",
+      "secondaryKeywords": [
+        "converti jpg in webp",
+        "jpeg a webp",
+        "convertitore jpg a webp",
+        "jpg a webp online",
+        "converti jpeg in webp"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Convertitore WebP in JPG",
+      "description": "Converti immagini WebP in JPG per massima compatibilità. Sblocca luso su tutti i dispositivi, piattaforme e social media. Conversione rapida con qualità regolabile.",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "webp",
+        "acceptedInputFormats": ["image/jpeg"]
+      },
+      "acceptedFormats": ["image/jpeg"],
+      "features": [
+        {
+          "title": "Compatibilità Universale",
+          "description": "JPG funziona ovunque - ogni dispositivo, piattaforma e social media."
+        },
+        {
+          "title": "Compressione Intelligente",
+          "description": "Algoritmo intelligente che mantiene la qualità visiva riducendo le dimensioni."
+        },
+        {
+          "title": "Scegli Sfondo",
+          "description": "Se WebP ha trasparenza, scegli il colore di sfondo per loutput JPG."
+        },
+        {
+          "title": "Conversione Istantanea",
+          "description": "Converti in meno di un secondo con elaborazione basata sul browser."
+        },
+        {
+          "title": "Formato Moderno",
+          "description": "WebP è supportato da tutti i browser moderni e piattaforme."
+        },
+        {
+          "title": "100% Privato",
+          "description": "Le immagini non lasciano mai il tuo browser - privacy completa garantita."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Ottimizzazione sito web",
+          "description": "Converti immagini in WebP per tempi di caricamento pagina più rapidi.",
+          "example": "Ottimizza immagini hero per caricamento 30% più veloce"
+        },
+        {
+          "title": "Risparmio larghezza di banda",
+          "description": "Riduci costi di larghezza di banda con file immagine più piccoli.",
+          "example": "Risparmia 25-35% sui costi di larghezza di banda CDN"
+        },
+        {
+          "title": "Strumento di elaborazione immagini",
+          "description": "File più piccoli significano caricamenti più rapidi sui dispositivi mobili.",
+          "example": "Migliora punteggi velocità pagina mobile"
+        },
+        {
+          "title": "Miglioramento SEO",
+          "description": "Tempi di caricamento più rapidi migliorano le classifiche nei motori di ricerca.",
+          "example": "Aumenta Core Web Vitals con immagini ottimizzate"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Funziona Ovunque",
+          "description": "Usa WebP su piattaforme che non supportano ancora il formato WebP.",
+          "metric": "25-35% più piccoli"
+        },
+        {
+          "title": "File Compatti",
+          "description": "JPG offre file piccoli perfetti per condivisione e archiviazione.",
+          "metric": "Condivisibile ovunque"
+        },
+        {
+          "title": "Standard moderno",
+          "description": "WebP è supportato da Chrome, Firefox, Safari e Edge.",
+          "metric": "Supporto browser 95%+"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica WebP",
+          "description": "Seleziona o trascina il tuo file WebP. Trasparenza gestita automaticamente.",
+          "step": 1
+        },
+        {
+          "title": "Scegli Sfondo",
+          "description": "Per WebP trasparenti, seleziona bianco, nero o colore personalizzato.",
+          "step": 2
+        },
+        {
+          "title": "Regola Qualità",
+          "description": "Imposta qualità JPG (80-90% raccomandato).",
+          "step": 3
+        },
+        {
+          "title": "Converti e Scarica",
+          "description": "Scarica il tuo file WebP ottimizzato pronto per il web.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire JPG in WebP?",
+          "answer": "WebP offre file 25-35% più piccoli di JPG alla stessa qualità visiva. Questo significa caricamenti sito web più rapidi, costi di larghezza di banda inferiori e migliore esperienza utente."
+        },
+        {
+          "question": "WebP è supportato ovunque?",
+          "answer": "WebP è supportato da tutti i browser moderni (Chrome, Firefox, Safari, Edge) coprendo oltre il 95% degli utenti. Per browser più vecchi, considera servire JPG come fallback."
+        },
+        {
+          "question": "Di quanto saranno più piccoli i miei file?",
+          "answer": "Tipicamente, i file WebP sono 25-35% più piccoli di file JPG equivalenti. Un JPG di 1MB potrebbe diventare 650-750KB come WebP con qualità visiva identica."
+        },
+        {
+          "question": "Dovrei usare WebP per tutte le mie immagini?",
+          "answer": "Per uso web, sì! WebP è ideale per siti web. Per email, stampa, o vecchi software, JPG potrebbe essere più compatibile."
+        }
+      ],
+      "relatedTools": ["png-to-webp", "webp-to-jpg", "image-compressor"],
+      "relatedGuides": ["webp-format-guide", "web-performance-images"],
+      "ctaText": "Converti JPG in WebP gratuitamente",
+      "ctaUrl": "/tools/convert/jpg-to-webp",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "png-to-webp",
+      "title": "Convertitore da PNG a WebP",
+      "metaTitle": "Convertitore da PNG a WebP | MyImageUpscaler",
+      "metaDescription": "Converti PNG in WebP online gratuitamente. Ottieni file più piccoli del 26% mantenendo la trasparenza. Conversione veloce basata sul browser senza caricamento richiesto.",
+      "h1": "Convertitore gratuito da PNG a WebP - Ottimizza immagini istantaneamente",
+      "intro": "Converti immagini PNG in formato WebP per file più piccoli preservando la trasparenza. Perfetto per ottimizzazione web. Funziona interamente nel tuo browser.",
+      "primaryKeyword": "png a webp",
+      "secondaryKeywords": [
+        "converti png in webp",
+        "convertitore png a webp",
+        "png a webp online",
+        "convertitore png webp"
+      ],
+      "lastUpdated": "2025-12-10T00:00:00Z",
+      "category": "strumenti",
+      "toolName": "Convertitore JPG in PNG",
+      "description": "Converti immagini JPG in formato PNG lossless. Perfetto per editing professionale, grafici e immagini che richiedono qualità massima senza perdite.",
+      "toolComponent": "FormatConverter",
+      "toolConfig": {
+        "defaultTargetFormat": "webp",
+        "acceptedInputFormats": ["image/png"]
+      },
+      "acceptedFormats": ["image/png"],
+      "features": [
+        {
+          "title": "Qualità Lossless",
+          "description": "PNG non perde mai qualità. Ideale per editing professionale e archiviazione."
+        },
+        {
+          "title": "Supporto Trasparenza",
+          "description": "Aggiungi trasparenza alle tue JPG (sfondo bianco predefinito)."
+        },
+        {
+          "title": "Massima Qualità",
+          "description": "Nessuna compressione lossy - solo pixel puri e perfetti."
+        },
+        {
+          "title": "Conversione Istantanea",
+          "description": "Converti in meno di un secondo con elaborazione basata sul browser."
+        },
+        {
+          "title": "Ottimizzato per Web",
+          "description": "WebP è progettato per prestazioni web ottimali."
+        },
+        {
+          "title": "100% privato",
+          "description": "Le immagini non lasciano mai il tuo browser - privacy completa garantita."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Grafica siti web",
+          "description": "Converti loghi e grafica con trasparenza per uso web.",
+          "example": "Ottimizza loghi trasparenti per caricamento più veloce"
+        },
+        {
+          "title": "Sviluppo web",
+          "description": "Usa WebP per punteggi migliori e esperienza utente superiore.",
+          "example": "Migliora punteggi Lighthouse con immagini ottimizzate"
+        },
+        {
+          "title": "Sviluppo app",
+          "description": "Immagini più piccoli significano bundle app più piccoli.",
+          "example": "Riduci dimensione app con asset WebP"
+        },
+        {
+          "title": "E-commerce",
+          "description": "Immagini prodotti più veloci migliorano le conversioni.",
+          "example": "Accelera tempi di caricamento pagina prodotti"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Qualità Professionale",
+          "description": "Perfetto per design professionale, stampa e lavori grafici.",
+          "metric": "Qualità archivio"
+        },
+        {
+          "title": "Modifica Senza Perdita",
+          "description": "Apri, modifica, salva - nessuna degradazione della qualità mai.",
+          "metric": "Nessuna perdita generazionale"
+        },
+        {
+          "title": "Standard Moderno",
+          "description": "WebP è supportato da tutti i browser moderni.",
+          "metric": "Supporto browser 95%+"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica JPG",
+          "description": "Seleziona o trascina il tuo file JPG.",
+          "step": 1
+        },
+        {
+          "title": "Converti in PNG",
+          "description": "Fai clic per convertire istantaneamente in PNG lossless.",
+          "step": 2
+        },
+        {
+          "title": "Scarica PNG",
+          "description": "Scarica il tuo file PNG con qualità massima.",
+          "step": 3
+        },
+        {
+          "title": "Scarica WebP",
+          "description": "Scarica il tuo file WebP ottimizzato con trasparenza intatta.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Perché convertire PNG in WebP?",
+          "answer": "WebP offre file 26% più piccoli di PNG supportando allo stesso tempo la trasparenza. Questo significa siti web più veloci senza perdere la capacità di avere sfondi trasparenti."
+        },
+        {
+          "question": "La trasparenza verrà preservata?",
+          "answer": "Sì! WebP supporta completamente la trasparenza del canale alfa. Qualsiasi area trasparente nel tuo PNG verrà preservata nelloutput WebP."
+        },
+        {
+          "question": "WebP è migliore di PNG?",
+          "answer": "Per uso web, sì. WebP offre file più piccoli con lo stesso supporto della trasparenza. Per massima compatibilità con vecchi software, PNG è ancora utile."
+        },
+        {
+          "question": "Posso riconvertire in PNG?",
+          "answer": "Sì! Usa il nostro convertitore WebP in PNG se hai bisogno del formato PNG per compatibilità o modifica in software che non supporta WebP."
+        }
+      ],
+      "relatedTools": ["jpg-to-webp", "webp-to-png", "image-compressor"],
+      "relatedGuides": ["webp-format-guide", "web-performance-images"],
+      "ctaText": "Converti PNG in WebP gratuitamente",
+      "ctaUrl": "/tools/convert/png-to-webp",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    },
+    {
+      "slug": "bulk-image-compressor",
+      "title": "Compressore immagini in blocco",
+      "metaTitle": "Compressore immagini in blocco | MyImageUpscaler",
+      "metaDescription": "Comprimi più immagini contemporaneamente con il nostro Compressore immagini in blocco gratuito. Riduci le dimensioni dei file fino all'80% con controllo qualità. Basato sul browser, non richiede caricamento.",
+      "h1": "Compressore gratuito immagini in blocco - Ottimizza più foto",
+      "intro": "Comprimi più immagini contemporaneamente senza perdere qualità. Il nostro compressore in blocco gratuito riduce le dimensioni dei file fino all'80% usando tecnologia browser avanzata. Scarica come ZIP.",
+      "primaryKeyword": "compressore immagini in blocco",
+      "secondaryKeywords": [
+        "compressore immagini batch",
+        "ottimizzazione immagini in blocco",
+        "comprimi più immagini",
+        "compressione immagini massiccia",
+        "comprimi foto in blocco"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "tools",
+      "toolName": "Compressore Immagini in Blocco",
+      "description": "Strumento professionale di compressione immagini in blocco che funziona interamente nel tuo browser. Comprimi fino a 20 immagini contemporaneamente fino all80% mantenendo la qualità visiva. Supporta formati JPEG, PNG e WebP con anteprime reali e download ZIP.",
+      "toolComponent": "BulkImageCompressor",
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "features": [
+        {
+          "title": "Comprimi Fino a 20 Immagini",
+          "description": "Carica e comprimi più immagini contemporaneamente. Perfetto per lotti fotografici, asset siti web o contenuti social media."
+        },
+        {
+          "title": "Modalità Qualità o Dimensione Target",
+          "description": "Scegli compressione basata sulla qualità (1-100%) o imposta una dimensione file target in KB. Lo strumento trova automaticamente le impostazioni ottimali."
+        },
+        {
+          "title": "Tracciamento Progresso Real-Time",
+          "description": "Vedi barre di progresso individuali, dimensioni file prima e dopo e rapporti di compressione per ogni immagine durante l'elaborazione."
+        },
+        {
+          "title": "Scarica come ZIP",
+          "description": "Scarica tutte le immagini compresse contemporaneamente come comodo file ZIP. Ogni file è nominato con suffisso '-compressed'."
+        },
+        {
+          "title": "Conversione formato",
+          "description": "Converti immagini in JPEG, PNG o WebP durante la compressione. WebP offre il miglior rapporto di compressione."
+        },
+        {
+          "title": "100% privato",
+          "description": "Tutta la compressione avviene localmente nel tuo browser. Le immagini non lasciano mai il tuo dispositivo - privacy completa garantita."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Ottimizzazione velocità siti web",
+          "description": "Comprimi intere librerie di immagini per siti web. Riduci significativamente i tempi di caricamento pagina con elaborazione in blocco.",
+          "example": "Comprimi 100 foto prodotti da 50MB a 10MB per sito e-commerce"
+        },
+        {
+          "title": "Contenuti social media",
+          "description": "Prepara più foto per Instagram, Facebook o altre piattaforme con tempi di caricamento più rapidi.",
+          "example": "Comprimi in blocco foto vacanze per condivisione social media"
+        },
+        {
+          "title": "Allegati email",
+          "description": "Invia più foto via email senza raggiungere i limiti di dimensione allegati.",
+          "example": "Comprimi album foto da 20MB a 4MB per email"
+        },
+        {
+          "title": "Risparmio spazio archiviazione cloud",
+          "description": "Comprimi backup foto prima di caricare sull'archiviazione cloud per risparmiare spazio e costi.",
+          "example": "Comprimi 500 foto vacanze da 10GB a 2GB prima del backup"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Risparmio tempo massiccio",
+          "description": "Comprimi fino a 20 immagini contemporaneamente invece di elaborarle individualmente.",
+          "metric": "Flusso di lavoro 20x più veloce"
+        },
+        {
+          "title": "Qualità Coerente",
+          "description": "Applica le stesse impostazioni di compressione a tutte le immagini per risultati uniformi attraverso il tuo progetto.",
+          "metric": "Qualità uniforme"
+        },
+        {
+          "title": "Fino all80% Riduzione Dimensioni",
+          "description": "Riduci drammaticamente le dimensioni file immagini senza perdita di qualità percepibile usando compressione intelligente.",
+          "metric": "File 80% più piccoli"
+        }
+      ],
+      "howItWorks": [
+        {
+          "title": "Carica Immagini Multiple",
+          "description": "Seleziona o trascina fino a 20 immagini. Supporta JPEG, PNG, WebP fino a 25MB ciascuna. Lelaborazione rimane nel tuo browser.",
+          "step": 1
+        },
+        {
+          "title": "Scegli Modalità Compressione",
+          "description": "Imposta un livello qualità (1-100%) o inserisci una dimensione file target in KB. Seleziona formato output (JPEG, PNG, WebP).",
+          "step": 2
+        },
+        {
+          "title": "Comprimi Tutte le Immagini",
+          "description": "Fai clic su comprimi e guarda mentre ogni immagine viene elaborata. Vedi progresso real-time e risultati di compressione.",
+          "step": 3
+        },
+        {
+          "title": "Scarica Risultati",
+          "description": "Scarica immagini individualmente o ottieni tutte le immagini compresse come singolo file ZIP. Vedi spazio totale risparmiato.",
+          "step": 4
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quante immagini posso comprimere contemporaneamente?",
+          "answer": "Puoi comprimere fino a 20 immagini contemporaneamente. Questo limite garantisce prestazioni browser ottimali fornendo elaborazione in blocco efficiente."
+        },
+        {
+          "question": "Qual è la differenza tra modalità qualità e dimensione target?",
+          "answer": "La modalità qualità (1-100%) ti dà controllo diretto sul livello di compressione. La modalità dimensione target trova automaticamente la qualità per raggiungere una specifica dimensione file in KB. Usa dimensione target quando hai bisogno di file sotto un certo limite."
+        },
+        {
+          "question": "La compressione ridurrà la qualità dell'immagine?",
+          "answer": "La compressione comporta un compromesso tra dimensione del file e qualità. Al 70-80% di qualità, la maggior parte delle persone non nota la differenza. La modalità dimensione di destinazione trova automaticamente la qualità per il tuo requisito di dimensione."
+        },
+        {
+          "question": "Qual è il formato migliore per la compressione?",
+          "answer": "WebP offre la migliore compressione (25-35% più piccolo di JPEG) con eccellente qualità. JPEG è ideale per le foto e ha supporto universale del browser. PNG è senza perdita ma crea file più grandi."
+        },
+        {
+          "question": "Le mie immagini vengono caricate sui vostri server?",
+          "answer": "No! Tutta la compressione avviene direttamente nel tuo browser utilizzando tecnologia Canvas API. Le tue immagini non lasciano mai il tuo dispositivo, garantendo una privacy completa."
+        },
+        {
+          "question": "Come funziona la modalità dimensione di destinazione?",
+          "answer": "La modalità dimensione di destinazione usa ricerca binaria per trovare automaticamente l'impostazione di qualità più alta che raggiunge la dimensione del file di destinazione. Testa più livelli di qualità fino a trovare l'equilibrio ottimale."
+        },
+        {
+          "question": "Posso mescolare diversi formati di immagine?",
+          "answer": "Sì! Puoi caricare insieme immagini JPEG, PNG e WebP. Verranno tutte convertite nel formato di output scelto durante la compressione."
+        },
+        {
+          "question": "C'è un limite di dimensione del file?",
+          "answer": "Ogni immagine può essere fino a 25MB. Questo limite è basato sulla memoria del browser, non restrizioni del server (poiché non carichiamo sui server)."
+        }
+      ],
+      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-webp"],
+      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "ctaText": "Prova compressore in blocco gratuito",
+      "ctaUrl": "/tools/compress/bulk-image-compressor",
+      "isInteractive": true,
+      "maxFileSizeMB": 25
+    }
+  ],
+  "meta": {
+    "lastUpdated": "2025-12-26T00:00:00Z",
+    "totalPages": 10
+  },
+  "nav": {
+    "interactiveTools": "Strumenti Interattivi",
+    "allTools": "Tutti Gli Strumenti",
+    "newTools": "Nuovi Strumenti",
+    "popularTools": "Strumenti Popolari"
+  }
+}

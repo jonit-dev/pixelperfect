@@ -23,9 +23,10 @@ import { FadeIn } from '@/app/(pseo)/_components/ui/MotionWrappers';
 
 interface IToolPageTemplateProps {
   data: IToolPage;
+  locale?: string;
 }
 
-export function ToolPageTemplate({ data }: IToolPageTemplateProps): ReactElement {
+export function ToolPageTemplate({ data, locale }: IToolPageTemplateProps): ReactElement {
   // Look up tier from keyword mappings
   const pageMapping = getPageMappingByUrl(`/tools/${data.slug}`);
   const tier = pageMapping?.tier;
@@ -63,9 +64,12 @@ export function ToolPageTemplate({ data }: IToolPageTemplateProps): ReactElement
         <div className="pt-6 pb-4">
           <BreadcrumbNav
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Tools', href: '/tools' },
-              { label: data.title, href: `/tools/${data.slug}` },
+              { label: 'Home', href: locale ? `/${locale}` : '/' },
+              { label: 'Tools', href: locale ? `/${locale}/tools` : '/tools' },
+              {
+                label: data.title,
+                href: locale ? `/${locale}/tools/${data.slug}` : `/tools/${data.slug}`,
+              },
             ]}
           />
         </div>

@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "Términos de Servicio",
+    "description": "Lee los términos y condiciones para usar los servicios de mejora y aumento de escala de imágenes de {{APP_NAME}}."
+  },
+  "lastUpdated": "Última actualización: {{date}}",
+  "title": "Términos de Servicio",
+  "viewPrivacy": "Ver Política de Privacidad",
+  "acceptance": {
+    "title": "1. Aceptación de los Términos",
+    "paragraph1": "Al acceder o usar {{APP_NAME}} (\"Servicio\"), acepta estar sujeto a estos Términos de Servicio (\"Términos\"). Si no acepta estos Términos, no puede usar el Servicio.",
+    "paragraph2": "Nos reservamos el derecho de modificar estos Términos en cualquier momento. El uso continuado del Servicio después de los cambios constituye la aceptación de los Términos modificados."
+  },
+  "description": {
+    "title": "2. Descripción del Servicio",
+    "intro": "{{APP_NAME}} proporciona servicios de mejora y aumento de escala de imágenes con IA. El Servicio permite a los usuarios:",
+    "features": [
+      "Subir imágenes para mejora con IA",
+      "Aumentar la escala de imágenes a resoluciones más altas (2x, 4x)",
+      "Mejorar la calidad de la imagen preservando texto y logotipos",
+      "Descargar imágenes procesadas"
+    ]
+  },
+  "registration": {
+    "title": "3. Registro de Cuenta",
+    "intro": "Para usar ciertas funciones, debe:",
+    "requirements": [
+      "Crear una cuenta con información precisa",
+      "Mantener la seguridad de sus credenciales de cuenta",
+      "Notificarnos inmediatamente sobre acceso no autorizado",
+      "Tener al menos 13 años (o la edad mínima en su jurisdicción)"
+    ],
+    "responsibility": "Usted es responsable de todas las actividades bajo su cuenta."
+  },
+  "credits": {
+    "title": "4. Créditos y Pagos",
+    "system": {
+      "title": "4.1 Sistema de Créditos",
+      "description": "El Servicio opera con un sistema basado en créditos. Cada acción de procesamiento de imagen consume créditos basados en el tipo de operación y el tamaño de la imagen."
+    },
+    "free": {
+      "title": "4.2 Créditos Gratuitos",
+      "description": "Los nuevos usuarios reciben 10 créditos gratuitos al registrarse. Los créditos gratuitos están sujetos a nuestros Términos estándar y pueden modificarse o discontinuarse en cualquier momento."
+    },
+    "subscription": {
+      "title": "4.3 Créditos de Suscripción",
+      "features": [
+        "Los créditos de suscripción se renuevan mensualmente y se acumulan (hasta 6× su asignación mensual de créditos)",
+        "Los créditos solo están disponibles mientras su suscripción esté activa",
+        "Todas las suscripciones se procesan a través de Stripe",
+        "Los precios están en USD a menos que se indique lo contrario"
+      ]
+    },
+    "refunds": {
+      "title": "4.4 Reembolsos",
+      "intro": "Debido a la naturaleza de los servicios digitales, generalmente no se proporcionan reembolsos por créditos usados. Sin embargo, podemos emitir reembolsos a nuestra discreción por:",
+      "reasons": [
+        "Fallos técnicos que resulten en pérdida de créditos",
+        "Cargos duplicados",
+        "Indisponibilidad del servicio"
+      ],
+      "contact": "Para solicitudes de reembolso, contacte a",
+      "email": "{{SUPPORT_EMAIL}}"
+    }
+  },
+  "subscriptions": {
+    "title": "5. Suscripciones",
+    "terms": [
+      "Las suscripciones se renuevan automáticamente al final de cada período de facturación",
+      "Puede cancelar en cualquier momento a través de su cuenta o portal de Stripe",
+      "La cancelación entra en vigor al final del período de facturación actual",
+      "Sin reembolsos prorrateados para períodos de facturación parciales",
+      "Podemos cambiar los precios de suscripción con 30 días de aviso; el uso continuado constituye aceptación"
+    ]
+  },
+  "acceptableUse": {
+    "title": "6. Uso Aceptable",
+    "intro": "Acepta NO usar el Servicio para:",
+    "prohibitions": [
+      "Procesar contenido ilegal, dañino u ofensivo",
+      "Procesar imágenes que no tiene derecho a usar",
+      "Generar o mejorar contenido que represente a menores de manera inapropiada",
+      "Crear deepfakes o contenido engañoso con la intención de engañar",
+      "Violar los derechos de propiedad intelectual de otros",
+      "Intentar realizar ingeniería inversa o explotar el Servicio",
+      "Usar sistemas automatizados para abusar del Servicio",
+      "Eludir límites de uso o medidas de seguridad",
+      "Revender o redistribuir el Servicio sin autorización"
+    ],
+    "consequence": "La violación de estos términos puede resultar en la terminación inmediata de la cuenta sin reembolso."
+  },
+  "intellectualProperty": {
+    "title": "7. Propiedad Intelectual",
+    "yourContent": {
+      "title": "7.1 Su Contenido",
+      "description": "Usted conserva todos los derechos de las imágenes que carga. Al usar el Servicio, nos otorga una licencia limitada para procesar sus imágenes únicamente para proporcionar el servicio solicitado."
+    },
+    "ourService": {
+      "title": "7.2 Nuestro Servicio",
+      "description": "{{APP_NAME}}, incluyendo su tecnología, marca y contenido, está protegido por las leyes de propiedad intelectual. No puede copiar, modificar, distribuir o crear obras derivadas sin nuestro permiso por escrito."
+    }
+  },
+  "availability": {
+    "title": "8. Disponibilidad del Servicio",
+    "intro": "Nos esforzamos por una alta disponibilidad, pero:",
+    "limitations": [
+      "El Servicio se proporciona \"tal cual\" sin garantías",
+      "Podemos realizar mantenimiento con o sin aviso",
+      "Los tiempos de procesamiento pueden variar según la demanda",
+      "Nos reservamos el derecho de modificar o discontinuar funciones"
+    ]
+  },
+  "limitation": {
+    "title": "9. Limitación de Responsabilidad",
+    "intro": "HASTA LA MÁXIMA EXTENSIÓN PERMITIDA POR LA LEY, {{APP_NAME}} NO SERÁ RESPONSABLE POR:",
+    "exclusions": [
+      "Daños indirectos, incidentales, especiales o consecuentes",
+      "Pérdida de ganancias, datos u oportunidades comerciales",
+      "Interrupciones del servicio o pérdida de datos",
+      "Acciones de terceros"
+    ],
+    "cap": "Nuestra responsabilidad total no excederá la cantidad que nos pagó en los 12 meses previos a la reclamación."
+  },
+  "disclaimer": {
+    "title": "10. Exención de Garantías",
+    "intro": "EL SERVICIO SE PROPORCIONA \"TAL CUAL\" Y \"SEGÚN DISPONIBILIDAD\" SIN GARANTÍAS DE NINGÚN TIPO, EXPRESAS O IMPLÍCITAS, INCLUYENDO PERO NO LIMITADO A:",
+    "exclusions": [
+      "Comerciabilidad",
+      "Idoneidad para un propósito particular",
+      "No infracción",
+      "Precisión o fiabilidad de los resultados"
+    ],
+    "caveat": "Las mejoras generadas por IA pueden no cumplir siempre las expectativas. Los resultados dependen de la calidad de la imagen de entrada y otros factores."
+  },
+  "indemnification": {
+    "title": "11. Indemnización",
+    "description": "Acepta indemnizar y mantener indemne a {{APP_NAME}} y sus oficiales, directores, empleados y agentes de cualquier reclamación, daño, pérdida o gasto que surja de su uso del Servicio, violación de estos Términos, o infracción de cualquier derecho de terceros."
+  },
+  "termination": {
+    "title": "12. Terminación",
+    "intro": "Podemos suspender o terminar su cuenta en cualquier momento por:",
+    "reasons": [
+      "Violación de estos Términos",
+      "Actividad fraudulenta o ilegal",
+      "Falta de pago",
+      "Inactividad prolongada",
+      "Cualquier otra razón a nuestra entera discreción"
+    ],
+    "consequence": "Tras la terminación, su derecho a usar el Servicio cesa inmediatamente. Los créditos no utilizados se forfechan a menos que la ley lo requiera de otra manera."
+  },
+  "governingLaw": {
+    "title": "13. Ley Aplicable",
+    "description": "Estos Términos se regirán por las leyes de la jurisdicción en la que operamos, sin tener en cuenta las disposiciones de conflicto de leyes. Cualquier disputa se resolverá en los tribunales de esa jurisdicción."
+  },
+  "severability": {
+    "title": "14. Separabilidad",
+    "description": "Si cualquier disposición de estos Términos se encuentra inaplicable, las disposiciones restantes permanecerán en pleno vigor y efecto."
+  },
+  "contact": {
+    "title": "15. Contacto",
+    "intro": "Para preguntas sobre estos Términos:",
+    "emailLabel": "Correo electrónico:",
+    "email": "{{LEGAL_EMAIL}}"
+  }
+}

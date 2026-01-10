@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AlertCircle, Sparkles, Zap, ArrowRight, Loader2 } from 'lucide-react';
 import { Modal } from '@client/components/ui/Modal';
+import { useTranslations } from 'next-intl';
 import { compressImage, formatBytes } from '@client/utils/image-compression';
 import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
 
@@ -14,6 +15,7 @@ const WarningBanner: React.FC<{ fileSize: number; currentLimit: number; isPaidLi
   currentLimit,
   isPaidLimit,
 }) => {
+  const t = useTranslations('workspace');
   const limitMB = currentLimit / (1024 * 1024);
   const fileSizeMB = fileSize / (1024 * 1024);
   const excessMB = fileSizeMB - limitMB;
@@ -23,12 +25,13 @@ const WarningBanner: React.FC<{ fileSize: number; currentLimit: number; isPaidLi
       <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
       <div className="flex-1">
         <p className="text-sm font-medium text-amber-900">
-          Your image is <span className="font-bold">{formatBytes(fileSize)}</span>, which exceeds
-          the{' '}
+          {t('oversizedImage.yourImageIs')}{' '}
+          <span className="font-bold">{formatBytes(fileSize)}</span>,{' '}
+          {t('oversizedImage.whichExceeds')}{' '}
           <span className="font-bold">
             {formatBytes(currentLimit)} {isPaidLimit ? 'Pro' : 'free tier'}
           </span>{' '}
-          limit by <span className="font-bold">{excessMB.toFixed(1)}MB</span>.
+          {t('oversizedImage.limitBy')} <span className="font-bold">{excessMB.toFixed(1)}MB</span>.
         </p>
       </div>
     </div>
@@ -79,59 +82,63 @@ const ResizeButton: React.FC<{
   isCompressing: boolean;
   currentLimit: number;
   progress: number;
-}> = ({ onClick, isCompressing, currentLimit, progress }) => (
-  <button
-    onClick={onClick}
-    disabled={isCompressing}
-    className="w-full flex flex-col p-4 bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border-2 border-blue-200 hover:border-blue-300 rounded-xl transition-all group disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden relative"
-  >
-    <div className="flex items-center justify-between w-full">
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-blue-600 rounded-lg text-white group-hover:scale-110 transition-transform">
-          {isCompressing ? <Loader2 size={20} className="animate-spin" /> : <Zap size={20} />}
+}> = ({ onClick, isCompressing, currentLimit, progress }) => {
+  const t = useTranslations('workspace');
+  return (
+    <button
+      onClick={onClick}
+      disabled={isCompressing}
+      className="w-full flex flex-col p-4 bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border-2 border-blue-200 hover:border-blue-300 rounded-xl transition-all group disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden relative"
+    >
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-blue-600 rounded-lg text-white group-hover:scale-110 transition-transform">
+            {isCompressing ? <Loader2 size={20} className="animate-spin" /> : <Zap size={20} />}
+          </div>
+          <div className="text-left">
+            <p className="font-bold text-primary">
+              {isCompressing ? (
+                <span className="inline-flex items-center gap-2">
+                  {t('oversizedImage.compressing')}
+                  <CompressingDots />
+                </span>
+              ) : (
+                t('oversizedImage.resizeAndContinue')
+              )}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {isCompressing
+                ? t('oversizedImage.optimizingQuality')
+                : `${t('oversizedImage.automaticallyCompress')}${formatBytes(currentLimit)}${t('oversizedImage.limitBy')}`}
+            </p>
+          </div>
         </div>
-        <div className="text-left">
-          <p className="font-bold text-primary">
-            {isCompressing ? (
-              <span className="inline-flex items-center gap-2">
-                Compressing
-                <CompressingDots />
-              </span>
-            ) : (
-              'Resize & Continue'
-            )}
-          </p>
-          <p className="text-sm text-muted-foreground">
-            {isCompressing
-              ? 'Optimizing quality while reducing file size...'
-              : `Automatically compress to fit under ${formatBytes(currentLimit)} and proceed`}
-          </p>
-        </div>
+        {!isCompressing && (
+          <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
+        )}
       </div>
-      {!isCompressing && (
-        <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
-      )}
-    </div>
 
-    {/* Progress Bar */}
-    {isCompressing && (
-      <div className="w-full mt-3">
-        <div className="flex justify-between text-xs text-muted-foreground mb-1">
-          <span>Processing image...</span>
-          <span>{Math.round(progress)}%</span>
+      {/* Progress Bar */}
+      {isCompressing && (
+        <div className="w-full mt-3">
+          <div className="flex justify-between text-xs text-muted-foreground mb-1">
+            <span>{t('oversizedImage.processingImage')}</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
+          <div className="w-full h-2 bg-surface-light rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-100 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
-        <div className="w-full h-2 bg-surface-light rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-100 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
-    )}
-  </button>
-);
+      )}
+    </button>
+  );
+};
 
 const UpgradeOption: React.FC<{ isPaidLimit: boolean }> = ({ isPaidLimit }) => {
+  const t = useTranslations('workspace');
   if (isPaidLimit) return null;
 
   return (
@@ -145,9 +152,9 @@ const UpgradeOption: React.FC<{ isPaidLimit: boolean }> = ({ isPaidLimit }) => {
             <Sparkles size={20} />
           </div>
           <div className="text-left">
-            <p className="font-bold text-primary">Upgrade to Pro</p>
+            <p className="font-bold text-primary">{t('oversizedImage.upgradeToPro')}</p>
             <p className="text-sm text-muted-foreground">
-              Upload images up to 64MB with full resolution
+              {t('oversizedImage.upgradeToProDescription')}
             </p>
           </div>
         </div>
@@ -176,6 +183,7 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
   currentIndex = 0,
   totalCount = 1,
 }) => {
+  const t = useTranslations('workspace');
   const [isCompressing, setIsCompressing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
@@ -250,7 +258,7 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
       onResizeAndContinue(resizedFile);
     } catch (err) {
       console.error('Compression error:', err);
-      setError('Failed to compress image. Please try a smaller file or upgrade to Pro.');
+      setError(t('oversizedImage.processingFailed'));
     } finally {
       setIsCompressing(false);
     }
@@ -260,8 +268,8 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
 
   const showMultipleIndicator = totalCount > 1;
   const modalTitle = showMultipleIndicator
-    ? `Image Too Large (${currentIndex + 1} of ${totalCount})`
-    : 'Image Too Large';
+    ? `${t('oversizedImage.imageTooLarge')} (${currentIndex + 1} of ${totalCount})`
+    : t('oversizedImage.imageTooLarge');
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" title={modalTitle}>
@@ -294,18 +302,20 @@ export const OversizedImageModal: React.FC<IOversizedImageModalProps> = ({
             disabled={isCompressing}
             className="w-full p-4 border-2 border-border hover:border-border hover:bg-surface rounded-xl transition-all text-muted-foreground font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {showMultipleIndicator ? 'Skip This Image' : 'Use a Different Image'}
+            {showMultipleIndicator
+              ? t('oversizedImage.skipThisImage')
+              : t('oversizedImage.useDifferentImage')}
           </button>
         </div>
 
         {/* Info Footer */}
         <div className="p-4 bg-surface rounded-xl text-xs text-muted-foreground">
-          <p className="font-medium mb-2">💡 What happens when you resize?</p>
+          <p className="font-medium mb-2">{t('oversizedImage.whatHappens')}</p>
           <ul className="space-y-1 ml-4 list-disc">
-            <li>Image is compressed to fit under the size limit</li>
-            <li>Quality is automatically optimized for best results</li>
-            <li>Processing happens instantly in your browser</li>
-            <li>Original aspect ratio is maintained</li>
+            <li>{t('oversizedImage.imageCompressed')}</li>
+            <li>{t('oversizedImage.qualityOptimized')}</li>
+            <li>{t('oversizedImage.processingInstantly')}</li>
+            <li>{t('oversizedImage.aspectRatioMaintained')}</li>
           </ul>
         </div>
       </div>

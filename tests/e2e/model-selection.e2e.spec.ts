@@ -113,15 +113,24 @@ test.describe('E2E: Model Selection UI', () => {
       { timeout: 10000 }
     );
 
-    // Look for enhancement options section
-    await expect(page.getByText('Additional Enhancements')).toBeVisible();
+    // Look for enhancement options section header
+    const additionalEnhancementsHeader = page.getByText('Additional Enhancements');
+    await expect(additionalEnhancementsHeader).toBeVisible({ timeout: 10000 });
 
     // The "Additional Enhancements" section is collapsed by default
     // We need to click it to expand and see the options
-    await page.getByText('Additional Enhancements').click();
+    await additionalEnhancementsHeader.click();
 
-    // Wait for the content to expand
-    await page.waitForTimeout(300);
+    // Wait for the content to expand - check for the actual options to appear
+    // The collapsible content has a transition, so wait for the content to be visible
+    await page.waitForFunction(
+      () => {
+        const enhanceImageCheckbox = document.querySelector('input#enhance-image');
+        return enhanceImageCheckbox !== null && enhanceImageCheckbox.offsetParent !== null;
+      },
+      {},
+      { timeout: 5000 }
+    );
 
     // Check for enhancement options using the new UI
     await expect(page.getByText('Enhance Image')).toBeVisible();
@@ -147,14 +156,19 @@ test.describe('E2E: Model Selection UI', () => {
       { timeout: 10000 }
     );
 
-    // Check for upscale factor section
-    await expect(page.getByText('Upscale Factor')).toBeVisible();
+    // Check for upscale factor section label
+    await expect(page.getByText('Upscale Factor')).toBeVisible({ timeout: 10000 });
 
-    // Look for scale buttons - they are rendered as buttons with the text inside
-    // Use getByText which is more reliable than getByRole for these buttons
-    await expect(page.getByText('2x')).toBeVisible();
-    await expect(page.getByText('4x')).toBeVisible();
-    await expect(page.getByText('8x')).toBeVisible();
+    // Look for scale buttons - they are rendered as buttons by ToggleButtonGroup
+    // The buttons contain the scale text (2x, 4x, 8x)
+    // We need to verify these buttons are visible and clickable
+    const twoXButton = page.locator('button').filter({ hasText: '2x' }).first();
+    const fourXButton = page.locator('button').filter({ hasText: '4x' }).first();
+    const eightXButton = page.locator('button').filter({ hasText: '8x' }).first();
+
+    await expect(twoXButton).toBeVisible({ timeout: 5000 });
+    await expect(fourXButton).toBeVisible({ timeout: 5000 });
+    await expect(eightXButton).toBeVisible({ timeout: 5000 });
   });
 
   test('should show processing options', async ({ page }) => {
@@ -177,10 +191,18 @@ test.describe('E2E: Model Selection UI', () => {
 
     // The Additional Enhancements section is collapsed by default
     // We need to expand it first
-    await page.getByText('Additional Enhancements').click();
+    const additionalEnhancementsHeader = page.getByText('Additional Enhancements');
+    await additionalEnhancementsHeader.click();
 
-    // Wait for the content to expand
-    await page.waitForTimeout(300);
+    // Wait for the content to expand - check for the actual options to appear
+    await page.waitForFunction(
+      () => {
+        const enhanceImageCheckbox = document.querySelector('input#enhance-image');
+        return enhanceImageCheckbox !== null && enhanceImageCheckbox.offsetParent !== null;
+      },
+      {},
+      { timeout: 5000 }
+    );
 
     // Check for processing options in the Additional Enhancements section
     await expect(page.getByText('Preserve Text')).toBeVisible();

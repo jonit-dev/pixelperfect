@@ -1,0 +1,171 @@
+{
+  "batchLimit": {
+    "serverEnforcedTitle": "Batch Processing Limit Reached",
+    "clientEnforcedTitle": "Batch Limit Reached",
+    "serverEnforcedMessage": "You've reached the processing limit for your plan. You processed <currentCount>{currentCountValue}</currentCount> images, but your plan allows a maximum of <limit>{limitValue}</limit> images per hour.",
+    "clientEnforcedMessage": "You tried to add {attempted} image{plural, plural, one {} other {s}}, but your plan allows a maximum of {limit} image{limitPlural, plural, one {} other {s}} in the queue.",
+    "freeUserMessage": "Free users can process 1 image at a time. Upgrade to unlock higher batch limits and process multiple images.",
+    "securityMessage": "This is a security measure to prevent abuse. The limit will reset in approximately 1 hour. Upgrade your plan for higher limits.",
+    "upgradeButton": "Upgrade Plan",
+    "addPartialButton": "Add {availableSlots} {count, plural, one {image} other {images}}",
+    "cancelButton": "Cancel"
+  },
+  "queue": {
+    "title": "Processing Queue",
+    "limitReached": "Limit Reached",
+    "addMore": "Add More",
+    "aria": {
+      "removeImage": "Remove image"
+    }
+  },
+  "aria": {
+    "dismissError": "Dismiss error"
+  },
+  "customInstructions": {
+    "title": "Custom Instructions",
+    "description": "Custom AI Instructions",
+    "subtitle": "Tell the AI exactly how to process your image. Be specific about what you want to enhance, preserve, or change.",
+    "yourInstructions": "Your Instructions",
+    "quickTemplates": "Quick Templates",
+    "loadTemplate": "Load Template",
+    "templateLoaded": "Template loaded!",
+    "templateLoadedDescription": "A sample template has been loaded above. Feel free to modify it or replace it with your own instructions.",
+    "cancel": "Cancel",
+    "saveInstructions": "Save Instructions",
+    "placeholderPrompt": "Tell the AI exactly how to process your image...",
+    "generalEnhancement": "General Enhancement",
+    "photoRestoration": "Photo Restoration",
+    "productPhotography": "Product Photography",
+    "portraitEnhancement": "Portrait Enhancement",
+    "characterLimit": "characters",
+    "pleaseReduceTo": "Please reduce to",
+    "characterLimitExceeded": "Character limit exceeded"
+  },
+  "oversizedImage": {
+    "yourImageIs": "Your image is",
+    "whichExceeds": "which exceeds the",
+    "limitBy": "limit by",
+    "imageTooLarge": "Image Too Large",
+    "imageTooLargeMultiple": "Image Too Large",
+    "processingFailed": "Processing failed. Please try a smaller file or upgrade to Pro.",
+    "compressing": "Compressing",
+    "optimizingQuality": "Optimizing quality while reducing file size...",
+    "resizeAndContinue": "Resize & Continue",
+    "automaticallyCompress": "Automatically compress to fit under",
+    "processingImage": "Processing image...",
+    "upgradeToPro": "Upgrade to Pro",
+    "upgradeToProDescription": "Upload images up to 64MB with full resolution",
+    "skipThisImage": "Skip This Image",
+    "useDifferentImage": "Use a Different Image",
+    "whatHappens": "What happens when you resize?",
+    "imageCompressed": "Image is compressed to fit under the size limit",
+    "qualityOptimized": "Quality is automatically optimized for best results",
+    "processingInstantly": "Processing happens instantly in your browser",
+    "aspectRatioMaintained": "Original aspect ratio is maintained"
+  },
+  "previewArea": {
+    "stages": {
+      "preparing": "Encoding and validating your image",
+      "analyzing": "AI is analyzing image quality",
+      "enhancing": "AI model is enhancing your image",
+      "finalizing": "Preparing your enhanced image"
+    },
+    "errors": {
+      "title": "Processing Failed",
+      "tryAgain": "Try Again"
+    },
+    "statusMessages": {
+      "preparing": "Preparing image...",
+      "analyzing": "Analyzing image...",
+      "enhancing": "Enhancing image...",
+      "finalizing": "Finalizing...",
+      "processing": "Processing..."
+    },
+    "emptyState": {
+      "title": "Select an image from the queue below"
+    },
+    "completed": {
+      "title": "Processing Complete"
+    },
+    "batch": {
+      "imageXofYcomplete": "Image {current} of {total} complete",
+      "preparingNext": "Preparing next image...",
+      "rateLimitingPause": "Rate limiting pause to ensure reliable processing"
+    },
+    "remainingTime": "~{remaining}s remaining"
+  },
+  "workspace": {
+    "features": {
+      "freeLimit": "5MB free limit",
+      "noWatermark": "No Watermark",
+      "batch": "Batch",
+      "upgradeRequired": "Upgrade Required",
+      "upToImages": "Up to {count} images"
+    },
+    "errors": {
+      "title": "Processing Error",
+      "insufficientCredits": "Insufficient Credits",
+      "requestTimeout": "Request Timeout",
+      "serverError": "Server Error",
+      "unknownError": "Unknown error occurred",
+      "downloadFailed": "Failed to download image"
+    },
+    "downloadError": {
+      "title": "Download Failed"
+    },
+    "mobileTabs": {
+      "settings": "Settings",
+      "preview": "Preview",
+      "queue": "Queue"
+    },
+    "processingStatus": {
+      "processingXofY": "Processing {current}/{total}...",
+      "processing": "Processing...",
+      "allProcessed": "All Processed",
+      "processAll": "Process All ({count})"
+    }
+  },
+  "enhancementOptions": {
+    "smartAIAnalysis": "Smart AI Analysis",
+    "smartAIAnalysisUpgrade": "Upgrade to let AI detect content type and optimize settings automatically.",
+    "smartAIAnalysisPaid": "AI automatically detects image content and optimizes parameters for best results.",
+    "smartAnalysisActive": "Smart Analysis Active",
+    "smartAnalysisActiveDescription": "AI will automatically select the best enhancements for your image.",
+    "additionalEnhancements": "Additional Enhancements",
+    "enhanceImage": "Enhance Image",
+    "enhanceFaces": "Enhance Faces",
+    "preserveText": "Preserve Text",
+    "customInstructions": "Custom Instructions",
+    "enhancementLabels": {
+      "clarity": "Clarity",
+      "color": "Color",
+      "lighting": "Lighting",
+      "denoise": "Denoise",
+      "artifacts": "Artifacts",
+      "details": "Details"
+    }
+  },
+  "imageComparison": {
+    "enhanced": "Enhanced",
+    "toggleZoom": "Toggle Zoom",
+    "downloadResult": "Download Result",
+    "download": "Download",
+    "original": "Original",
+    "enhancedLabel": "Enhanced"
+  },
+  "upgradeSuccessBanner": {
+    "title": "Great work!",
+    "image": "image",
+    "images": "images",
+    "subtitle": "Upgrade to Professional for 1000 credits/month and save up to 58%",
+    "seePlans": "See Plans",
+    "maybeLater": "Maybe later"
+  },
+  "dropzone": {
+    "dropToUpload": "Drop to upload",
+    "clickOrDragImages": "Click or drag images",
+    "supportForFormats": "Support for JPG, PNG, and WEBP",
+    "freeLimitText": "Up to 5MB per file • 1 image at a time • Upgrade for batch processing",
+    "paidLimitText": "Up to 10MB per file • Batch processing available"
+  }
+}

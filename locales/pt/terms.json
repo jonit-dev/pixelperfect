@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "title": "Termos de Serviço",
+    "description": "Leia os termos e condições para usar os serviços de aumento de escala e melhoria de imagens da {{APP_NAME}}."
+  },
+  "lastUpdated": "Última atualização: {{date}}",
+  "title": "Termos de Serviço",
+  "viewPrivacy": "Ver Política de Privacidade",
+  "acceptance": {
+    "title": "1. Aceitação dos Termos",
+    "paragraph1": "Ao acessar ou usar {{APP_NAME}} (\"Serviço\"), você concorda em ficar vinculado a estes Termos de Serviço (\"Termos\"). Se você não concordar com estes Termos, não poderá usar o Serviço.",
+    "paragraph2": "Reservamo-nos o direito de modificar estes Termos a qualquer momento. O uso contínuo do Serviço após alterações constitui aceitação dos Termos modificados."
+  },
+  "description": {
+    "title": "2. Descrição do Serviço",
+    "intro": "{{APP_NAME}} fornece serviços de aumento de escala e melhoria de imagens com IA. O Serviço permite que os usuários:",
+    "features": [
+      "Façam upload de imagens para melhoria com IA",
+      "Aumentem a escala de imagens para resoluções mais altas (2x, 4x)",
+      "Melhorem a qualidade da imagem preservando texto e logotipos",
+      "Baixem imagens processadas"
+    ]
+  },
+  "registration": {
+    "title": "3. Registro da Conta",
+    "intro": "Para usar certos recursos, você deve:",
+    "requirements": [
+      "Criar uma conta com informações precisas",
+      "Manter a segurança das credenciais da sua conta",
+      "Notificar-nos imediatamente sobre acesso não autorizado",
+      "Ter pelo menos 13 anos (ou a idade mínima na sua jurisdição)"
+    ],
+    "responsibility": "Você é responsável por todas as atividades sob sua conta."
+  },
+  "credits": {
+    "title": "4. Créditos e Pagamentos",
+    "system": {
+      "title": "4.1 Sistema de Créditos",
+      "description": "O Serviço opera em um sistema baseado em créditos. Cada ação de processamento de imagem consome créditos baseados no tipo de operação e tamanho da imagem."
+    },
+    "free": {
+      "title": "4.2 Créditos Gratuitos",
+      "description": "Novos usuários recebem 10 créditos gratuitos upon registro. Créditos gratuitos estão sujeitos aos nossos Termos padrão e podem ser modificados ou descontinuados a qualquer momento."
+    },
+    "subscription": {
+      "title": "4.3 Créditos de Assinatura",
+      "features": [
+        "Créditos de assinatura renovam mensalmente e rolam (até 6× sua alocação mensal de créditos)",
+        "Créditos só estão disponíveis enquanto sua assinatura estiver ativa",
+        "Todas as assinaturas são processadas através do Stripe",
+        "Preços estão em USD salvo indicação em contrário"
+      ]
+    },
+    "refunds": {
+      "title": "4.4 Reembolsos",
+      "intro": "Devido à natureza dos serviços digitais, reembolsos geralmente não são fornecidos para créditos usados. No entanto, podemos emitir reembolsos a nosso critério para:",
+      "reasons": [
+        "Falhas técnicas que resultam em perda de créditos",
+        "Cobranças duplicadas",
+        "Indisponibilidade do serviço"
+      ],
+      "contact": "Para pedidos de reembolso, entre em contato com",
+      "email": "{{SUPPORT_EMAIL}}"
+    }
+  },
+  "subscriptions": {
+    "title": "5. Assinaturas",
+    "terms": [
+      "Assinaturas renovam automaticamente no final de cada período de cobrança",
+      "Você pode cancelar a qualquer momento através das configurações da conta ou portal Stripe",
+      "O cancelamento entra em vigor no final do período de cobrança atual",
+      "Sem reembolsos prorrateados para períodos de cobrança parciais",
+      "Podemos alterar preços de assinatura com 30 dias de aviso; uso contínuo constitui aceitação"
+    ]
+  },
+  "acceptableUse": {
+    "title": "6. Uso Aceitável",
+    "intro": "Você concorda em NÃO usar o Serviço para:",
+    "prohibitions": [
+      "Processar conteúdo ilegal, nocivo ou ofensivo",
+      "Processar imagens que você não tem direitos de usar",
+      "Gerar ou melhorar conteúdo retratando menores de forma inadequada",
+      "Criar deepfakes ou conteúdo enganoso destinado a enganar",
+      "Violar direitos de propriedade intelectual de outros",
+      "Tentar fazer engenharia reversa ou explorar o Serviço",
+      "Usar sistemas automatizados para abusar do Serviço",
+      "Contornar limites de uso ou medidas de segurança",
+      "Revender ou redistribuir o Serviço sem autorização"
+    ],
+    "consequence": "A violação destes termos pode resultar em rescisão imediata da conta sem reembolso."
+  },
+  "intellectualProperty": {
+    "title": "7. Propriedade Intelectual",
+    "yourContent": {
+      "title": "7.1 Seu Conteúdo",
+      "description": "Você retém todos os direitos das imagens que faz upload. Ao usar o Serviço, você nos concede uma licença limitada para processar suas imagens exclusivamente para fornecer o serviço solicitado."
+    },
+    "ourService": {
+      "title": "7.2 Nosso Serviço",
+      "description": "{{APP_NAME}}, incluindo sua tecnologia, marca e conteúdo, é protegido por leis de propriedade intelectual. Você não pode copiar, modificar, distribuir ou criar obras derivadas sem nossa permissão por escrito."
+    }
+  },
+  "availability": {
+    "title": "8. Disponibilidade do Serviço",
+    "intro": "Nos esforçamos para alta disponibilidade mas:",
+    "limitations": [
+      "O Serviço é fornecido \"como está\" sem garantias",
+      "Podemos realizar manutenção com ou sem aviso prévio",
+      "Tempos de processamento podem variar com base na demanda",
+      "Reservamo-nos o direito de modificar ou descontinuar recursos"
+    ]
+  },
+  "limitation": {
+    "title": "9. Limitação de Responsabilidade",
+    "intro": "NA MÁXIMA EXTENSÃO PERMITIDA POR LEI, {{APP_NAME}} NÃO SERÁ RESPONSÁVEL POR:",
+    "exclusions": [
+      "Danos indiretos, incidentais, especiais ou consequenciais",
+      "Perda de lucros, dados ou oportunidades de negócios",
+      "Interrupções de serviço ou perda de dados",
+      "Ações de terceiros"
+    ],
+    "cap": "Nossa responsabilidade total não excederá o valor que você nos pagou nos 12 meses anteriores à reivindicação."
+  },
+  "disclaimer": {
+    "title": "10. Isenção de Garantias",
+    "intro": "O SERVIÇO É FORNECIDO \"COMO ESTÁ\" E \"CONFORME DISPONIBILIDADE\" SEM GARANTIAS DE QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS, INCLUINDO MAS NÃO LIMITADO A:",
+    "exclusions": [
+      "Comerciabilidade",
+      "Adequação a um propósito particular",
+      "Não violação",
+      "Precisão ou confiabilidade dos resultados"
+    ],
+    "caveat": "Melhorias geradas por IA podem não sempre atender às expectativas. Resultados dependem da qualidade da imagem de entrada e outros fatores."
+  },
+  "indemnification": {
+    "title": "11. Indenização",
+    "description": "Você concorda em indenizar e isentar {{APP_NAME}} e seus oficiais, diretores, funcionários e agentes de quaisquer reivindicações, danos, perdas ou despesas decorrentes do seu uso do Serviço, violação destes Termos, ou infração de quaisquer direitos de terceiros."
+  },
+  "termination": {
+    "title": "12. Rescisão",
+    "intro": "Podemos suspender ou rescindir sua conta a qualquer momento por:",
+    "reasons": [
+      "Violação destes Termos",
+      "Atividade fraudulenta ou ilegal",
+      "Não pagamento",
+      "Inatividade prolongada",
+      "Qualquer outro motivo a nosso exclusivo critério"
+    ],
+    "consequence": "Na rescisão, seu direito de usar o Serviço cessa imediatamente. Créditos não utilizados são forfeitos salvo se exigido por lei."
+  },
+  "governingLaw": {
+    "title": "13. Lei Aplicável",
+    "description": "Estes Termos serão regidos pelas leis da jurisdição na qual operamos, sem considerar disposições de conflito de leis. Quaisquer disputas serão resolvidas nos tribunais dessa jurisdição."
+  },
+  "severability": {
+    "title": "14. Separabilidade",
+    "description": "Se qualquer disposição destes Termos for considerada inexequível, as disposições restantes permanecerão em pleno vigor e efeito."
+  },
+  "contact": {
+    "title": "15. Contato",
+    "intro": "Para perguntas sobre estes Termos:",
+    "emailLabel": "E-mail:",
+    "email": "{{LEGAL_EMAIL}}"
+  },
+  "nav": {
+    "blog": "Blog"
+  }
+}

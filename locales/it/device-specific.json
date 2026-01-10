@@ -1,0 +1,447 @@
+{
+  "category": "scala",
+  "pages": [
+    {
+      "slug": "dimensioni-sfondo-iphone",
+      "title": "Dimensioni Sfondi iPhone",
+      "metaTitle": "Dimensioni Sfondi iPhone | MyImageUpscaler",
+      "metaDescription": "dimensioni esatte dello sfondo per ogni modello iPhone. iPhone 15, 14, 13, SE e precedenti. dimensioni in pixel pronte per copiare e incollare.",
+      "h1": "Guida Dimensioni Sfondo iPhone",
+      "intro": "Trova le dimensioni esatte dello sfondo per il tuo modello iPhone. Tutte le dimensioni tengono conto del notch e Dynamic Island.",
+      "primaryKeyword": "dimensione sfondo iphone",
+      "secondaryKeywords": [
+        "iphone wallpaper dimensioni",
+        "dimensione sfondo iphone 15",
+        "dimensione schermata di blocco iphone"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scala",
+      "deviceFamily": "iPhone",
+      "quickReference": {
+        "mostCommon": "1290x2796px",
+        "note": "Se non sei sicuro, usa 1290x2796px - funziona bene sulla maggior parte degli iPhone moderni quando ritagliato."
+      },
+      "dimensions": [
+        {
+          "model": "iPhone 15 Pro Max / 16 Pro Max",
+          "width": 1290,
+          "height": 2796,
+          "aspectRatio": "19,5:9",
+          "notes": "Dynamic Island in alto",
+          "screenDimensions": "1290 x 2796"
+        },
+        {
+          "model": "iPhone 15 Pro / 16 Pro",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19,5:9",
+          "notes": "Dynamic Island in alto"
+        },
+        {
+          "model": "iPhone 15 Plus / 14 Plus",
+          "width": 1284,
+          "height": 2778,
+          "aspectRatio": "19,5:9",
+          "notes": "Dynamic Island in alto"
+        },
+        {
+          "model": "iPhone 15 / 14",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19,5:9",
+          "notes": "Dynamic Island (15) / Notch (14)"
+        },
+        {
+          "model": "iPhone 13 / 13 Pro",
+          "width": 1170,
+          "height": 2532,
+          "aspectRatio": "19,5:9",
+          "notes": "Notch in alto"
+        },
+        {
+          "model": "iPhone 13 Mini / 12 Mini",
+          "width": 1080,
+          "height": 2340,
+          "aspectRatio": "19,5:9",
+          "notes": "Notch in alto"
+        },
+        {
+          "model": "iPhone SE (3a/2a gen)",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "Nessun notch, tasto home"
+        },
+        {
+          "model": "iPhone 11 / XR",
+          "width": 828,
+          "height": 1792,
+          "aspectRatio": "19,5:9",
+          "notes": "Notch in alto"
+        },
+        {
+          "model": "iPhone 8 / 7 / 6",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "Nessun notch, tasto home"
+        },
+        {
+          "model": "iPhone 8 Plus / 7 Plus",
+          "width": 1080,
+          "height": 1920,
+          "aspectRatio": "16:9",
+          "notes": "Nessun notch, tasto home"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Tieni conto del notch/Dynamic Island",
+          "description": "Non mettere contenuti importanti nella parte superiore del tuo sfondo. I primi 50-100 pixel potrebbero essere coperti dal notch o Dynamic Island."
+        },
+        {
+          "title": "Schermata di blocco vs schermata iniziale",
+          "description": "iOS utilizza la stessa dimensione di immagine per entrambi, ma l'orologio e i widget potrebbero coprire parti. Mantieni i punti focali centrati."
+        },
+        {
+          "title": "L effetto parallasse aggiunge il ritaglio",
+          "description": "Lo zoom prospettico di iOS ritaglia circa il 10% su ogni bordo. Disabilitalo nelle Impostazioni, o aggiungi margine extra alla tua immagine."
+        }
+      ],
+      "upscalingGuide": {
+        "scenario": "Want to Usa a 640x960 image as iPhone 15 wallpaper",
+        "target": "1290x2796px",
+        "steps": [
+          "ampliamento 4x to 2560x3840px",
+          "Crop to 19.5:9 aspect ratio (1290x2796 or Usa the upscaled size)",
+          "If quality is good, crop directly; if not, ampliamento again"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Che dimensione sfondo per iPhone 15?",
+          "answer": "1179x2556 pixel per iPhone 15 e 15 Pro, 1290x2796 per 15 Pro Max, 1284x2778 per 15 Plus."
+        },
+        {
+          "question": "Posso usare lo stesso sfondo per tutti gli iPhone?",
+          "answer": "Crea at 1290x2796 (largest Pro Max size) and iOS will crop it appropriately for smaller screens."
+        },
+        {
+          "question": "Perché il mio sfondo sembra sfocato?",
+          "answer": "Your image is too low . iPhone displays are very sharp (460 PPI on Pro modellos). ampliamento your image to match the dimensioni above."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["android-wallpaper-sizes"]
+    },
+    {
+      "slug": "dimensioni-sfondo-android",
+      "title": "Dimensioni sfondo Android",
+      "metaTitle": "Dimensioni Sfondi Android | MyImageUpscaler",
+      "metaDescription": "dimensioni sfondo per smartphone Android popolari. Samsung Galaxy, Google Pixel, OnePlus e altro with exact pixel dimensioni.",
+      "h1": "Guida Dimensioni Sfondo Android",
+      "intro": "Le dimensioni sfondo Android variano per produttore e modello. Ecco le dimensioni per i dispositivi più popolari.",
+      "primaryKeyword": "dimensione sfondo android",
+      "secondaryKeywords": [
+        "dimensione sfondo samsung",
+        "pixel wallpaper dimensioni",
+        "dimensione sfondo telefono android"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scala",
+      "deviceFamily": "Android",
+      "quickReference": {
+        "mostCommon": "1440x3120px",
+        "note": "Questa dimensione funziona per la maggior parte degli Android flagship. Android scala bene."
+      },
+      "dimensionsByBrand": [
+        {
+          "brand": "Samsung Galaxy S Series",
+          "models": [
+            {
+              "model": "Galaxy S24 Ultra",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24+",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S23 Ultra",
+              "width": 1440,
+              "height": 3088,
+              "aspectRatio": "19.3:9"
+            },
+            {
+              "model": "Galaxy S23",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19,5:9"
+            }
+          ]
+        },
+        {
+          "brand": "Google Pixel",
+          "models": [
+            {
+              "model": "Pixel 9 Pro XL",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9 Pro",
+              "width": 1280,
+              "height": 2856,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9",
+              "width": 1080,
+              "height": 2424,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8 Pro",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 7a",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            }
+          ]
+        },
+        {
+          "brand": "OnePlus",
+          "models": [
+            {
+              "model": "OnePlus 12",
+              "width": 1440,
+              "height": 3168,
+              "aspectRatio": "19,8:9"
+            },
+            {
+              "model": "OnePlus 11",
+              "width": 1440,
+              "height": 3216,
+              "aspectRatio": "20,1:9"
+            }
+          ]
+        }
+      ],
+      "tips": [
+        {
+          "title": "Sfondi Android con scorrimento",
+          "description": "Some Android launchers support scrolling wallpapers that are wider than the screen. Crea at 2x larghezza for this effect."
+        },
+        {
+          "title": "Fotocamere con foro",
+          "description": "La maggior parte dei telefoni Android moderni ha una fotocamera con foro. Evita di inserire contenuti importanti in alto a sinistra o al centro in alto."
+        },
+        {
+          "title": "Android scala bene",
+          "description": "Android gestisce meglio le dimensioni dello sfondo non corrispondenti rispetto a iOS. Un immagine leggermente piu grande verr ritagliata automaticamente."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Che dimensione sfondo per Samsung Galaxy S24?",
+          "answer": "1080x2340 per Galaxy S24, 1440x3120 per S24+ e S24 Ultra."
+        },
+        {
+          "question": "Android ha bisogno di dimensioni esatte?",
+          "answer": "No. Android handles cropping well. Usa a larger image and Android will let you position it. 1440x3200 works for most phones."
+        },
+        {
+          "question": "E i tablet Android?",
+          "answer": "I tablet variano notevolmente. Controlla il display del tablet in Impostazioni > Info telefono > Display. Le dimensioni comuni sono 2560x1600 e 2800x1752."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes"],
+      "dimensions": [
+        {
+          "model": "Samsung Galaxy S24 Ultra",
+          "aspectRatio": "20:9"
+        }
+      ]
+    },
+    {
+      "slug": "desktop-wallpaper-sizes",
+      "title": "Dimensioni sfondo desktop e monitor",
+      "metaTitle": "Dimensioni sfondo desktop e monitor | MyImageUpscaler",
+      "metaDescription": "Monitor wallpaper dimensioni for all s. 1080p, 1440p, 4K, 5K, ultRAWide and multi-monitor setups.",
+      "h1": "Guida dimensioni sfondo desktop",
+      "intro": "Trova la dimensione sfondo giusta per il tuo monitor. Covers standard, ultRAWide, and multi-monitor setups.",
+      "primaryKeyword": "dimensione sfondo desktop",
+      "secondaryKeywords": [
+        "dimensione sfondo 4k",
+        "1440p wallpaper dimensioni",
+        "dimensione sfondo ultrawide"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scala",
+      "deviceFamily": "Desktop",
+      "quickReference": {
+        "mostCommon": "1920x1080px (1080p)",
+        "note": "4K (3840x2160) sta diventando standard per i nuovi monitor."
+      },
+      "dimensions": [
+        {
+          "resolution": "Full HD (1080p)",
+          "width": 1920,
+          "height": 1080,
+          "aspectRatio": "16:9",
+          "notes": "Più comune, funziona sulla maggior parte dei monitor"
+        },
+        {
+          "resolution": "QHD (1440p)",
+          "width": 2560,
+          "height": 1440,
+          "aspectRatio": "16:9",
+          "notes": "Popolare per monitor gaming"
+        },
+        {
+          "resolution": "4K UHD",
+          "width": 3840,
+          "height": 2160,
+          "aspectRatio": "16:9",
+          "notes": "Standard moderno per display高端"
+        },
+        {
+          "resolution": "5K",
+          "width": 5120,
+          "height": 2880,
+          "aspectRatio": "16:9",
+          "notes": "Apple Studio Display, iMac 5K"
+        },
+        {
+          "resolution": "8K",
+          "width": 7680,
+          "height": 4320,
+          "aspectRatio": "16:9",
+          "notes": "Raro, solo display di fascia alta"
+        },
+        {
+          "resolution": "Ultrawide (2560)",
+          "width": 2560,
+          "height": 1080,
+          "aspectRatio": "21:9",
+          "notes": "Monitor ultrawide economici"
+        },
+        {
+          "resolution": "Ultrawide (3440)",
+          "width": 3440,
+          "height": 1440,
+          "aspectRatio": "21:9",
+          "notes": "Ultrawide standard"
+        },
+        {
+          "resolution": "Super Ultrawide",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Samsung Odyssey G9 e simili"
+        },
+        {
+          "resolution": "Dual 1080p (affiancati)",
+          "width": 3840,
+          "height": 1080,
+          "aspectRatio": "32:9",
+          "notes": "Due monitor 1080p affiancati"
+        },
+        {
+          "resolution": "Dual 1440p (affiancati)",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Due monitor 1440p affiancati"
+        },
+        {
+          "resolution": "Dual 4K (affiancati)",
+          "width": 7680,
+          "height": 2160,
+          "aspectRatio": "32:9",
+          "notes": "Due monitor 4K affiancati"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Check your actual risoluzione",
+          "description": "Right-click desktop > Display settings (Windows) or System Preferences > Displays (Mac) to see exact dimensioni."
+        },
+        {
+          "title": "Estensione multi-monitor",
+          "description": "For wallpapers that span monitors, add the larghezzas together. Two 1920x1080 monitors = 3840x1080 total."
+        },
+        {
+          "title": "La scalatura conta",
+          "description": "A 4K monitor at 150% scaling still uses 3840x2160 for wallpapers. Usa full risoluzione regardless of scaling."
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "source": "sfondo 1080p",
+          "target": "4K (3840x2160)",
+          "ampliamento": "2x ampliamento gives exactly 4K",
+          "quality": "Good results con AI ampliamento",
+          "upscale": "upscaling 2x dà esattamente 4K"
+        },
+        {
+          "source": "sfondo 1440p",
+          "target": "4K (3840x2160)",
+          "ampliamento": "1.5x - may need crop after ampliamento 2x",
+          "quality": "Risultati eccellenti",
+          "upscale": "1,5x - potrebbe richiedere ritaglio dopo upscaling 2x"
+        },
+        {
+          "source": "sfondo 720p",
+          "target": "4K (3840x2160)",
+          "ampliamento": "3x ampliamento (1280 → 3840)",
+          "quality": "Accettabile, dipende dalla qualita della sorgente",
+          "upscale": "upscaling 3x (1280 → 3840)"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Qual e il mio monitor?",
+          "answer": "Windows: clic destro desktop > Impostazioni display > . Mac: menu Apple > Preferenze di Sistema > Display."
+        },
+        {
+          "question": "Lo sfondo deve corrispondere esattamente al monitor?",
+          "answer": "Idealmente si. Piu grande va bene (verra ritagliato/ridimensionato). Piu piccolo sembrera sfocato quando viene esteso."
+        },
+        {
+          "question": "Per display retina/HiDPI?",
+          "answer": "Usa the actual , not the 'looks like' . A 27\" iMac at 'looks like 2560x1440' actually uses 5120x2880 for wallpapers."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes", "android-wallpaper-sizes"]
+    }
+  ],
+  "meta": {
+    "totalPages": 3,
+    "lastUpdated": "2025-12-19T00:00:00Z"
+  }
+}

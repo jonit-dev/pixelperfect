@@ -1,0 +1,526 @@
+{
+  "category": "拡大",
+  "pages": [
+    {
+      "slug": "iphone-wallpaper-sizes",
+      "title": "iPhone壁紙サイズ",
+      "metaTitle": "iPhone壁紙サイズ | MyImageUpscaler",
+      "metaDescription": "すべてのiPhoneモデルの正確な壁紙サイズ。iPhone 15、14、13、SEおよび旧モデル。コピー＆ペースト対応のピクセルサイズ。",
+      "h1": "iPhone壁紙サイズガイド",
+      "intro": "iPhoneモデルに最適な壁紙サイズを見つけましょう。すべてのサイズはノッチとダイナミックアイランドを考慮しています。",
+      "primaryKeyword": "iPhone壁紙サイズ",
+      "secondaryKeywords": ["iPhone壁紙寸法", "iPhone 15壁紙サイズ", "iPhoneロック画面サイズ"],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "拡大",
+      "deviceFamily": "iPhone",
+      "quickReference": {
+        "mostCommon": "1290x2796px",
+        "note": "確実でない場合は1290x2796pxを使用してください。ほとんどの最新iPhoneでトリミングするとうまく機能します。"
+      },
+      "dimensions": [
+        {
+          "model": "iPhone 15 Pro Max / 16 Pro Max",
+          "width": 1290,
+          "height": 2796,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にダイナミックアイランド"
+        },
+        {
+          "model": "iPhone 15 Pro / 16 Pro",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にダイナミックアイランド"
+        },
+        {
+          "model": "iPhone 15 Plus / 14 Plus",
+          "width": 1284,
+          "height": 2778,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にダイナミックアイランド"
+        },
+        {
+          "model": "iPhone 15 / 14",
+          "width": 1179,
+          "height": 2556,
+          "aspectRatio": "19.5:9",
+          "notes": "ダイナミックアイランド（15）/ノッチ（14）"
+        },
+        {
+          "model": "iPhone 13 / 13 Pro",
+          "width": 1170,
+          "height": 2532,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にノッチ"
+        },
+        {
+          "model": "iPhone 13 Mini / 12 Mini",
+          "width": 1080,
+          "height": 2340,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にノッチ"
+        },
+        {
+          "model": "iPhone SE (3rd/2nd gen)",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "No notch, home button"
+        },
+        {
+          "model": "iPhone 11 / XR",
+          "width": 828,
+          "height": 1792,
+          "aspectRatio": "19.5:9",
+          "notes": "上部にノッチ"
+        },
+        {
+          "model": "iPhone 8 / 7 / 6",
+          "width": 750,
+          "height": 1334,
+          "aspectRatio": "16:9",
+          "notes": "ノッチなし、ホームボタンあり"
+        },
+        {
+          "model": "iPhone 8 Plus / 7 Plus",
+          "width": 1080,
+          "height": 1920,
+          "aspectRatio": "16:9",
+          "notes": "ノッチなし、ホームボタンあり"
+        }
+      ],
+      "tips": [
+        {
+          "title": "ノッチ/ダイナミックアイランドを考慮する",
+          "description": "壁紙の最上部に重要なコンテンツを配置しないでください。上部50〜100ピクセルはノッチまたはダイナミックアイランドに覆われる可能性があります。"
+        },
+        {
+          "title": "ロック画面とホーム画面",
+          "description": "iOSは両方で同じ画像サイズを使用しますが、時計とウィジェットが一部を覆う可能性があります。焦点を中央に保ってください。"
+        },
+        {
+          "title": "視差効果によりクロッピングが追加される",
+          "description": "iOSのパースペクティブズームは各辺で約10％クロップされます。設定で無効にするか、画像に余白を追加してください。"
+        }
+      ],
+      "upscalingGuide": {
+        "scenario": "640x960画像をiPhone 15の壁紙として使用したいと考えています",
+        "target": "1290x2796px",
+        "steps": [
+          "4倍にアップスケール、2560x3840px",
+          "19.5:9アスペクト比にクロップ (1290x2796、またはアップスケールサイズを使用)",
+          "品質が良い場合は直接クロップ、そうでない場合は再度アップスケール"
+        ],
+        "notes": "iPhone 15および15 Proは1179x2556ピクセル、15 Pro Maxは1290x2796、15 Plusは1284x2778です。"
+      },
+      "faq": [
+        {
+          "question": "すべてのiPhoneに同じ壁紙を使用できますか？",
+          "answer": "iPhone 15と15 Proは1179x2556ピクセル、15 Pro Maxは1290x2796、15 Plusは1284x2778。"
+        },
+        {
+          "question": "私の壁紙がぼやけて見えるのはなぜですか？",
+          "answer": "Create at 1290x2796 (largest Pro Max サイズ) and iOS will crop it appropriately for smaller screens."
+        },
+        {
+          "question": "壁紙がぼやけて見えるのはなぜですか？",
+          "answer": "Your image is too low 解像度. iPhone displays are very sharp (460 PPI on Pro models). Upスケール your image to match the 寸法 above."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["android-wallpaper-sizes"],
+      "devicesList": [
+        {
+          "device": "iPhone",
+          "dimensions": "1290x2796px",
+          "note": "不確かな場合は、1290x2796px を使用してください - ほとんどの最新の iPhone では適切にトリミングされた場合に機能します。"
+        },
+        {
+          "device": "iPhone 15 Pro Max / 16 Pro Max",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のダイナミックアイランド"
+        },
+        {
+          "device": "iPhone 15 Pro / 16 Pro",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のダイナミックアイランド"
+        },
+        {
+          "device": "iPhone 15 Plus / 14 Plus",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のダイナミックアイランド"
+        },
+        {
+          "device": "iPhone 15 / 14",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "ダイナミックアイランド (15) / ノッチ (14)"
+        },
+        {
+          "device": "iPhone 13 / 13 Pro",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のノッチ"
+        },
+        {
+          "device": "iPhone 13 Mini / 12 Mini",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のノッチ"
+        },
+        {
+          "device": "iPhone SE (3rd/2nd gen)",
+          "aspectRatio": "16:9",
+          "specialFeatures": "ノッチなし、ホームボタン"
+        },
+        {
+          "device": "iPhone 11 / XR",
+          "aspectRatio": "19.5:9",
+          "specialFeatures": "上部のノッチ"
+        },
+        {
+          "device": "iPhone 8 / 7 / 6",
+          "aspectRatio": "16:9",
+          "specialFeatures": "ノッチなし、ホームボタン"
+        },
+        {
+          "device": "iPhone 8 Plus / 7 Plus",
+          "aspectRatio": "16:9",
+          "specialFeatures": "ノッチなし、ホームボタン"
+        }
+      ],
+      "designTips": [
+        {
+          "title": "ノッチ/ダイナミックアイランドを考慮",
+          "description": "重要なコンテンツを壁紙の最上部に配置しないでください。上部の50～100ピクセルはノッチまたはダイナミックアイランドで覆われる可能性があります。"
+        },
+        {
+          "title": "ロック画面対ホーム画面",
+          "description": "iOSは両方に同じ画像サイズを使用しますが、時計とウィジェットが一部をカバーする可能性があります。フォーカルポイントを中央に保ってください。"
+        },
+        {
+          "title": "視差効果がクロップを追加",
+          "description": "iOS の遠近ズームは各端で約 10% クロップされます。設定で無効にするか、画像に余白を追加してください。"
+        }
+      ]
+    },
+    {
+      "slug": "image-upscaler-android-requirements",
+      "title": "Androidで画像をアップスケール",
+      "metaTitle": "Android Wallpaper サイズs | MyImageUpscaler",
+      "metaDescription": "Wallpaper 寸法 for popular Android phones. Samsung Galaxy, Google Pixel, OnePlus and more with exact pixel 寸法.",
+      "h1": "Android Wallpaper サイズ ガイド",
+      "intro": "複数のAndroidデバイスで画像をアップスケールしましょう。",
+      "primaryKeyword": "android wallpaper size",
+      "secondaryKeywords": [
+        "samsung wallpaper size",
+        "pixel wallpaper dimensions",
+        "android phone background size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "scale",
+      "deviceFamily": "Android",
+      "quickReference": {
+        "mostCommon": "1440x3200px",
+        "note": "This size works for most flagship Android phones. Android scales well."
+      },
+      "dimensionsByBrand": [
+        {
+          "brand": "Samsung Galaxy S Series",
+          "models": [
+            {
+              "model": "Galaxy S24 Ultra",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24+",
+              "width": 1440,
+              "height": 3120,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S24",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19.5:9"
+            },
+            {
+              "model": "Galaxy S23 Ultra",
+              "width": 1440,
+              "height": 3088,
+              "aspectRatio": "19.3:9"
+            },
+            {
+              "model": "Galaxy S23",
+              "width": 1080,
+              "height": 2340,
+              "aspectRatio": "19.5:9"
+            }
+          ]
+        },
+        {
+          "brand": "Google Pixel",
+          "models": [
+            {
+              "model": "Pixel 9 Pro XL",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9 Pro",
+              "width": 1280,
+              "height": 2856,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 9",
+              "width": 1080,
+              "height": 2424,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8 Pro",
+              "width": 1344,
+              "height": 2992,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 8",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            },
+            {
+              "model": "Pixel 7a",
+              "width": 1080,
+              "height": 2400,
+              "aspectRatio": "20:9"
+            }
+          ]
+        },
+        {
+          "brand": "OnePlus",
+          "models": [
+            {
+              "model": "OnePlus 12",
+              "width": 1440,
+              "height": 3168,
+              "aspectRatio": "19.8:9"
+            },
+            {
+              "model": "OnePlus 11",
+              "width": 1440,
+              "height": 3216,
+              "aspectRatio": "20.1:9"
+            }
+          ]
+        }
+      ],
+      "tips": [
+        {
+          "title": "Androidスクロール壁紙",
+          "description": "一部のAndroidランチャーは画面より広いスクロール壁紙をサポートしています。この効果のために幅2倍で作成してください。"
+        },
+        {
+          "title": "ホールパンチカメラ",
+          "description": "ほとんどの最新Android携帯はパンチホールカメラがあります。左上または上中央に重要なコンテンツを配置しないでください。"
+        },
+        {
+          "title": "Androidはよくスケールされる",
+          "description": "AndroidはiOSよりもサイズが合わない壁紙をより良く処理します。少し大きな画像は自動的にクロップされます。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What サイズ wallpaper for Samsung Galaxy S24?",
+          "answer": "Galaxy S24は1080x2340、S24+とS24 Ultraは1440x3120。"
+        },
+        {
+          "question": "Does Android need exact 寸法?",
+          "answer": "いいえ。Androidはクロッピングをよく処理します。より大きな画像を使用すると、Androidが位置を調整できます。1440x3200はほとんどの携帯で機能します。"
+        },
+        {
+          "question": "Androidタブレットはどうですか？",
+          "answer": "Tablets vary widely. Check your tablet's display 解像度 in Settings > About Phone > Display. Common サイズs are 2560x1600 and 2800x1752."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes"],
+      "devicesList": [
+        {
+          "device": "Android",
+          "dimensions": "1440x3200px",
+          "note": "このサイズはほとんどのフラッグシップAndroidスマートフォンに対応します。Androidはよくスケールされます。"
+        },
+        {
+          "manufacturer": "Samsung Galaxy Sシリーズ",
+          "models": ["Galaxy S24 Ultra"]
+        }
+      ],
+      "description": "Android携帯電話でMyImageUpscalerを使用して画像をアップスケールするためのガイド。",
+      "content": [
+        {
+          "title": "最小Android要件",
+          "description": "Androidバージョン9.0以降"
+        },
+        {
+          "title": "推奨Androidデバイス"
+        }
+      ]
+    },
+    {
+      "slug": "desktop-wallpaper-sizes",
+      "title": "Deskトップ & Monitor Wallpaper サイズs",
+      "metaTitle": "Deskトップ & Monitor Wallpaper サイズs | MyImageUpscaler",
+      "metaDescription": "Monitor wallpaper 寸法 for all 解像度s. 1080p, 1440p, 4K, 5K, ultRAWide and multi-monitor setups.",
+      "h1": "Deskトップ Wallpaper サイズ ガイド",
+      "intro": "Find the right wallpaper サイズ for your monitor. Covers standard, ultRAWide, and multi-monitor setups.",
+      "primaryKeyword": "desktop wallpaper size",
+      "secondaryKeywords": [
+        "4k wallpaper size",
+        "1440p wallpaper dimensions",
+        "ultrawide wallpaper size"
+      ],
+      "lastUpdated": "2025-12-19T00:00:00Z",
+      "category": "拡大",
+      "deviceFamily": "デスクトップ",
+      "quickReference": {
+        "mostCommon": "1920x1080px (1080p)",
+        "note": "4K (3840x2160) は新しいモニターの標準になりつつあります。"
+      },
+      "dimensions": [
+        {
+          "resolution": "フルHD (1080p)",
+          "width": 1920,
+          "height": 1080,
+          "aspectRatio": "16:9",
+          "notes": "最も一般的で、ほとんどのモニターで動作"
+        },
+        {
+          "resolution": "QHD (1440p)",
+          "width": 2560,
+          "height": 1440,
+          "aspectRatio": "16:9",
+          "notes": "ゲーミングモニターで人気"
+        },
+        {
+          "resolution": "4K UHD",
+          "width": 3840,
+          "height": 2160,
+          "aspectRatio": "16:9",
+          "notes": "ハイエンドディスプレイの最新基準"
+        },
+        {
+          "resolution": "5K",
+          "width": 5120,
+          "height": 2880,
+          "aspectRatio": "16:9",
+          "notes": "Apple Studio Display、iMac 5K"
+        },
+        {
+          "resolution": "8K",
+          "width": 7680,
+          "height": 4320,
+          "aspectRatio": "16:9",
+          "notes": "希少、ハイエンドディスプレイのみ"
+        },
+        {
+          "resolution": "ウルトラワイド (2560)",
+          "width": 2560,
+          "height": 1080,
+          "aspectRatio": "21:9",
+          "notes": "低価格ウルトラワイドモニター"
+        },
+        {
+          "resolution": "ウルトラワイド (3440)",
+          "width": 3440,
+          "height": 1440,
+          "aspectRatio": "21:9",
+          "notes": "標準ウルトラワイド"
+        },
+        {
+          "resolution": "スーパーウルトラワイド",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Samsung Odyssey G9 and similar"
+        },
+        {
+          "resolution": "Dual 1080p (side by side)",
+          "width": 3840,
+          "height": 1080,
+          "aspectRatio": "32:9",
+          "notes": "Two 1080p monitors spanning"
+        },
+        {
+          "resolution": "Dual 1440p (side by side)",
+          "width": 5120,
+          "height": 1440,
+          "aspectRatio": "32:9",
+          "notes": "Two 1440p monitors spanning"
+        },
+        {
+          "resolution": "Dual 4K (side by side)",
+          "width": 7680,
+          "height": 2160,
+          "aspectRatio": "32:9",
+          "notes": "Two 4K monitors spanning"
+        }
+      ],
+      "tips": [
+        {
+          "title": "Check your actual resolution",
+          "description": "Right-click desktop > Display settings (Windows) or System Preferences > Displays (Mac) to see exact dimensions."
+        },
+        {
+          "title": "Multi-monitor spanning",
+          "description": "For wallpapers that span monitors, add the widths together. Two 1920x1080 monitors = 3840x1080 total."
+        },
+        {
+          "title": "Scaling matters",
+          "description": "A 4K monitor at 150% scaling still uses 3840x2160 for wallpapers. Use full resolution regardless of scaling."
+        }
+      ],
+      "upscalingGuide": [
+        {
+          "source": "1080p wallpaper",
+          "target": "4K (3840x2160)",
+          "upscale": "2x upscaling gives exactly 4K",
+          "quality": "Good results with AI upscaling"
+        },
+        {
+          "source": "1440p wallpaper",
+          "target": "4K (3840x2160)",
+          "upscale": "1.5x - may need crop after upscaling 2x",
+          "quality": "優れた結果"
+        },
+        {
+          "source": "720p壁紙",
+          "target": "4K (3840x2160)",
+          "upscale": "3倍アップスケール (1280 → 3840)",
+          "quality": "許容可能、ソース品質に依存"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What 解像度 is my monitor?",
+          "answer": "Windows: Right-click deskトップ > Display settings > 解像度. Mac: Apple menu > System Preferences > Displays."
+        },
+        {
+          "question": "壁紙はモニターと正確に一致する必要がありますか？",
+          "answer": "Ideally yes. Larger is OK (will be cropped/スケールd). Smaller will look blurry when stretched."
+        },
+        {
+          "question": "Retina/HiDPIディスプレイはどうですか？",
+          "answer": "Use the actual 解像度, not the 'looks like' 解像度. A 27\" iMac at 'looks like 2560x1440' actually uses 5120x2880 for wallpapers."
+        }
+      ],
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": ["iphone-wallpaper-sizes", "android-wallpaper-sizes"]
+    }
+  ],
+  "meta": {
+    "totalPages": 3,
+    "lastUpdated": "2025-12-19T00:00:00Z"
+  }
+}

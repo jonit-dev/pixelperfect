@@ -3,6 +3,7 @@
 import React, { useCallback, useState, useMemo, useEffect } from 'react';
 import { AlertCircle, FileUp, UploadCloud, X, Trash2 } from 'lucide-react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { formatBytes } from '@client/utils/image-compression';
 import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
 
@@ -35,6 +36,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
   showClearAll = true,
   compact = false,
 }) => {
+  const t = useTranslations('toolsUi.dropzone');
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<IFileWithPreview[]>([]);
@@ -72,7 +74,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
       if (!isValidType) {
         return {
           valid: false,
-          error: `Invalid file type: ${file.type}. Allowed: ${accept.join(', ')}`,
+          error: t('errors.invalidType', { type: file.type, types: accept.join(', ') }),
         };
       }
 
@@ -80,13 +82,17 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
       if (file.size > currentLimit) {
         return {
           valid: false,
-          error: `File too large: ${file.name} (${formatBytes(file.size)} > ${formatBytes(currentLimit)})`,
+          error: t('errors.fileTooLarge', {
+            name: file.name,
+            size: formatBytes(file.size),
+            limit: formatBytes(currentLimit),
+          }),
         };
       }
 
       return { valid: true };
     },
-    [accept, currentLimit]
+    [accept, currentLimit, t]
   );
 
   const handleFilesReceived = useCallback(
@@ -98,7 +104,11 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
       // Check if adding files would exceed maxFiles
       if (selectedFiles.length + fileArray.length > maxFiles) {
         setError(
-          `Maximum ${maxFiles} files allowed. You have ${selectedFiles.length}, trying to add ${fileArray.length}.`
+          t('errors.maxFiles', {
+            n: maxFiles,
+            count: selectedFiles.length,
+            attempted: fileArray.length,
+          })
         );
         return;
       }
@@ -135,7 +145,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
         onFilesSelected(newFiles.map(f => f.file));
       }
     },
-    [selectedFiles, maxFiles, validateFile, onFilesSelected]
+    [selectedFiles, maxFiles, validateFile, onFilesSelected, t]
   );
 
   const handleDrop = useCallback(
@@ -243,12 +253,12 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
               <h3
                 className={`font-bold text-white transition-colors ${isDragging ? 'text-accent' : 'group-hover:text-accent'} text-xl`}
               >
-                {isDragging ? 'Drop to upload' : 'Click or drag images'}
+                {isDragging ? t('dropToUpload') : t('clickOrDrag')}
               </h3>
               <p className="text-muted-foreground text-sm font-medium leading-relaxed">
-                Support for JPG, PNG, WEBP, and HEIC
+                {t('supportedFormats')}
                 <span className="block text-xs text-muted-foreground mt-1 font-normal">
-                  Up to {formatBytes(currentLimit)} per file • Max {maxFiles} files at a time
+                  {t('limits', { size: formatBytes(currentLimit), n: maxFiles })}
                 </span>
               </p>
             </div>
@@ -256,7 +266,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
 
           {selectedFiles.length > 0 && !compact && (
             <div className="text-sm font-medium text-accent mt-2">
-              {selectedFiles.length} {selectedFiles.length === 1 ? 'file' : 'files'} selected
+              {t('selectedCount', { n: selectedFiles.length })}
             </div>
           )}
         </div>
@@ -277,7 +287,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-semibold text-white">
-              Selected Files ({selectedFiles.length})
+              {t('selectedTitle', { n: selectedFiles.length })}
             </h4>
             {showClearAll && selectedFiles.length > 1 && (
               <button
@@ -286,7 +296,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
                 className="text-xs font-medium text-accent hover:text-accent-hover disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-accent/10 transition-colors"
               >
                 <Trash2 size={14} />
-                Clear All
+                {t('clearAll')}
               </button>
             )}
           </div>
@@ -317,7 +327,7 @@ export const MultiFileDropzone: React.FC<IMultiFileDropzoneProps> = ({
                   onClick={() => handleRemoveFile(id)}
                   disabled={disabled}
                   className="absolute top-2 right-2 p-1.5 bg-red-500/80 hover:bg-red-500 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
-                  title="Remove file"
+                  title={t('removeFile')}
                 >
                   <X size={16} />
                 </button>

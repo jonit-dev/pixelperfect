@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPlatformData, getAllPlatformSlugs } from '@/lib/seo/data-loader';
-import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { PlatformPageTemplate } from '@/app/(pseo)/_components/pseo/templates/PlatformPageTemplate';
+import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
+import { HreflangLinks } from '@client/components/seo/HreflangLinks';
+import { SeoMetaTags } from '@client/components/seo/SeoMetaTags';
+import { getCanonicalUrl } from '@/lib/seo/hreflang-generator';
+import { clientEnv } from '@shared/config/env';
 
 interface IPlatformPageProps {
   params: Promise<{ slug: string }>;
@@ -18,7 +23,30 @@ export async function generateMetadata({ params }: IPlatformPageProps): Promise<
 
   if (!platform) return {};
 
-  return generatePageMetadata(platform, 'platforms');
+  const path = `/platforms/${slug}`;
+  const canonicalUrl = getCanonicalUrl(path);
+
+  return {
+    title: platform.metaTitle,
+    description: platform.metaDescription,
+    openGraph: {
+      title: platform.metaTitle,
+      description: platform.metaDescription,
+      type: 'website',
+      url: canonicalUrl,
+      siteName: clientEnv.APP_NAME,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: platform.metaTitle,
+      description: platform.metaDescription,
+      creator: `@${clientEnv.TWITTER_HANDLE}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 }
 
 export default async function PlatformPage({ params }: IPlatformPageProps) {
@@ -29,13 +57,30 @@ export default async function PlatformPage({ params }: IPlatformPageProps) {
     notFound();
   }
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: platform.metaTitle,
+    description: platform.metaDescription,
+    url: `${clientEnv.BASE_URL}/platforms/${slug}`,
+    inLanguage: 'en',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: clientEnv.APP_NAME,
+      url: clientEnv.BASE_URL,
+    },
+  };
+
+  const path = `/platforms/${slug}`;
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-6">{platform.h1}</h1>
-      <p className="text-xl text-gray-600 mb-8">{platform.intro}</p>
-      <div className="bg-surface-light p-8 rounded-lg">
-        <p className="text-gray-700">Platform content coming soon...</p>
-      </div>
-    </div>
+    <>
+      {/* SEO meta tags - canonical and og:locale */}
+      <SeoMetaTags path={path} locale="en" />
+      {/* Hreflang links for multi-language SEO */}
+      <HreflangLinks path={path} />
+      <SchemaMarkup schema={schema} />
+      <PlatformPageTemplate data={platform} locale="en" />
+    </>
   );
 }

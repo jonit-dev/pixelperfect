@@ -2,12 +2,19 @@
  * Metadata Factory Module
  * Based on PRD-PSEO-04 Section 3.2: Metadata Generation
  * Centralized factory for generating Next.js Metadata objects
+ * Phase 5: Added hreflang alternates for multi-language SEO
  */
 
 import { Metadata } from 'next';
 import type { PSEOPage } from './pseo-types';
 import type { PSEOCategory } from './url-utils';
 import { clientEnv } from '@shared/config/env';
+import {
+  generateHreflangAlternates,
+  getCanonicalUrl,
+  getOpenGraphLocale,
+} from './hreflang-generator';
+import type { Locale } from '../../i18n/config';
 
 const BASE_URL = clientEnv.BASE_URL;
 const APP_NAME = clientEnv.APP_NAME;
@@ -16,9 +23,20 @@ const TWITTER_HANDLE = clientEnv.TWITTER_HANDLE;
 /**
  * Generate complete Next.js Metadata object for pSEO pages
  * Includes all recommended meta tags, OpenGraph, Twitter, and robots config
+ * Phase 5: Added hreflang alternates for multi-language SEO
+ *
+ * @param page - The pSEO page data
+ * @param category - The page category
+ * @param locale - The locale for this page instance (default: 'en')
  */
-export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metadata {
-  const canonicalUrl = `${BASE_URL}/${category}/${page.slug}`;
+export function generateMetadata(
+  page: PSEOPage,
+  category: PSEOCategory,
+  locale: Locale = 'en'
+): Metadata {
+  const path = `/${category}/${page.slug}`;
+  const canonicalUrl = getCanonicalUrl(path);
+  const ogLocale = getOpenGraphLocale(locale);
 
   return {
     title: page.metaTitle,
@@ -31,7 +49,7 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
       type: 'website',
       url: canonicalUrl,
       siteName: APP_NAME,
-      locale: 'en_US',
+      locale: ogLocale,
       ...(page.ogImage && {
         images: [
           {
@@ -53,7 +71,8 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
       creator: `@${TWITTER_HANDLE}`,
     },
 
-    // Canonical & Alternates
+    // Canonical only - hreflang links are rendered via HreflangLinks component
+    // which hoists them to <head> more reliably than the metadata API
     alternates: {
       canonical: canonicalUrl,
     },
@@ -80,9 +99,16 @@ export function generateMetadata(page: PSEOPage, category: PSEOCategory): Metada
 
 /**
  * Generate metadata for category hub pages
+ * Phase 5: Added hreflang alternates for multi-language SEO
+ *
+ * @param category - The category
+ * @param locale - The locale for this page instance (default: 'en')
  */
-export function generateCategoryMetadata(category: PSEOCategory): Metadata {
-  const canonicalUrl = `${BASE_URL}/${category}`;
+export function generateCategoryMetadata(category: PSEOCategory, locale: Locale = 'en'): Metadata {
+  const path = `/${category}`;
+  const canonicalUrl = getCanonicalUrl(path);
+  const hreflangAlternates = generateHreflangAlternates(path);
+  const ogLocale = getOpenGraphLocale(locale);
 
   const categoryTitles: Record<PSEOCategory, string> = {
     tools: `AI Image Tools - Upscaler, Enhancer & More | ${APP_NAME}`,
@@ -97,6 +123,9 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
     platforms: `Platform-Specific Image Enhancement | ${APP_NAME}`,
     content: `Image Content & Assets | ${APP_NAME}`,
     'ai-features': `AI-Powered Image Features | ${APP_NAME}`,
+    'device-use': `Device-Specific Image Enhancement | ${APP_NAME}`,
+    'format-scale': `Format & Scale Enhancement Tools | ${APP_NAME}`,
+    'platform-format': `Platform & Format Tools | ${APP_NAME}`,
   };
 
   const categoryDescriptions: Record<PSEOCategory, string> = {
@@ -119,6 +148,12 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       'Enhance images from your favorite AI platforms. Upscale Midjourney, Stable Diffusion, DALL-E exports and more.',
     content: `Comprehensive image content and asset library. Tutorials, examples, and resources for image enhancement at ${APP_NAME}.`,
     'ai-features': `Advanced AI-powered features for intelligent image enhancement. Automation, smart detection, and professional results.`,
+    'device-use':
+      'Device-specific image enhancement solutions. Mobile, tablet, and desktop optimized tools for any workflow.',
+    'format-scale':
+      'Combined format and scale enhancement. Resize images to specific dimensions while converting formats.',
+    'platform-format':
+      'Platform and format combinations. Export from AI platforms in your preferred image format.',
   };
 
   return {
@@ -131,7 +166,7 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
       type: 'website',
       url: canonicalUrl,
       siteName: APP_NAME,
-      locale: 'en_US',
+      locale: ogLocale,
     },
 
     twitter: {
@@ -143,6 +178,7 @@ export function generateCategoryMetadata(category: PSEOCategory): Metadata {
 
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflangAlternates,
     },
 
     robots: {

@@ -6,6 +6,7 @@ import { clientEnv } from '@shared/config/env';
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
 import { loadStripe, type StripeEmbeddedCheckoutOptions } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface ICheckoutModalProps {
   priceId: string;
@@ -48,13 +49,15 @@ const stripePromise = getStripePromise();
  * ```
  */
 export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalProps): JSX.Element {
+  const t = useTranslations('stripe.checkout');
+
   // Check if Stripe is properly configured
   useEffect(() => {
     if (!stripePromise) {
-      setError('Stripe is not properly configured. Please contact support.');
+      setError(t('notConfigured'));
       setLoading(false);
     }
-  }, []);
+  }, [t]);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -124,7 +127,7 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 text-muted-foreground hover:text-muted-foreground transition-colors bg-surface rounded-full shadow-md"
-          aria-label="Close"
+          aria-label={t('close')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +151,7 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
             <div className="flex items-center justify-center py-20">
               <div className="flex flex-col items-center gap-4">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
-                <p className="text-muted-foreground">Loading checkout...</p>
+                <p className="text-muted-foreground">{t('loading')}</p>
               </div>
             </div>
           )}
@@ -156,13 +159,13 @@ export function CheckoutModal({ priceId, onClose, onSuccess }: ICheckoutModalPro
           {error && (
             <div className="p-8">
               <div className="bg-error/10 border border-error/20 rounded-lg p-4">
-                <h3 className="text-error font-semibold mb-2">Error</h3>
+                <h3 className="text-error font-semibold mb-2">{t('error')}</h3>
                 <p className="text-error/80">{error}</p>
                 <button
                   onClick={onClose}
                   className="mt-4 px-4 py-2 bg-error text-white rounded-lg hover:bg-error/80 transition-colors"
                 >
-                  Close
+                  {t('close')}
                 </button>
               </div>
             </div>

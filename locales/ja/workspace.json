@@ -1,0 +1,171 @@
+{
+  "batchLimit": {
+    "serverEnforcedTitle": "バッチ処理の制限に達しました",
+    "clientEnforcedTitle": "バッチ制限に達しました",
+    "serverEnforcedMessage": "プランの処理制限に達しました。{currentCount}枚の画像を処理しましたが、プランでは1時間あたり最大{limit}枚までとなっています。",
+    "clientEnforcedMessage": "{attempted}枚の画像を追加しようとしましたが、プランではキュー内で最大{limit}枚までとなっています。",
+    "freeUserMessage": "無料ユーザーは一度に1枚の画像を処理できます。より高いバッチ制限を解除して複数の画像を処理するにはアップグレードしてください。",
+    "securityMessage": "これは不正利用を防ぐためのセキュリティ対策です。制限は約1時間後にリセットされます。より高い制限についてはプランをアップグレードしてください。",
+    "upgradeButton": "プランをアップグレード",
+    "addPartialButton": "{availableSlots}枚の画像を追加",
+    "cancelButton": "キャンセル"
+  },
+  "queue": {
+    "title": "処理キュー",
+    "limitReached": "制限に達しました",
+    "addMore": "さらに追加",
+    "aria": {
+      "removeImage": "画像を削除"
+    }
+  },
+  "aria": {
+    "dismissError": "エラーを閉じる"
+  },
+  "customInstructions": {
+    "title": "カスタム指示",
+    "description": "カスタムAI指示",
+    "subtitle": "AIに画像を処理する方法を正確に指示してください。強化、維持、または変更したいことを具体的に指定してください。",
+    "yourInstructions": "あなたの指示",
+    "quickTemplates": "クイックテンプレート",
+    "loadTemplate": "テンプレートを読み込み",
+    "templateLoaded": "テンプレートが読み込まれました！",
+    "templateLoadedDescription": "サンプルテンプレートが上に読み込まれました。自由に修正したり、自分の指示に置き換えたりしてください。",
+    "cancel": "キャンセル",
+    "saveInstructions": "指示を保存",
+    "placeholderPrompt": "AIに画像を処理する方法を正確に指示してください...",
+    "generalEnhancement": "全般的な強化",
+    "photoRestoration": "写真修復",
+    "productPhotography": "製品写真",
+    "portraitEnhancement": "ポートレート強化",
+    "characterLimit": "文字",
+    "pleaseReduceTo": "に減らしてください",
+    "characterLimitExceeded": "文字数制限を超えています"
+  },
+  "oversizedImage": {
+    "yourImageIs": "あなたの画像は",
+    "whichExceeds": "を超えています",
+    "limitBy": "制限を",
+    "imageTooLarge": "画像が大きすぎます",
+    "imageTooLargeMultiple": "画像が大きすぎます",
+    "processingFailed": "処理に失敗しました。より小さいファイルを試すか、Proにアップグレードしてください。",
+    "compressing": "圧縮中",
+    "optimizingQuality": "品質を最適化しながらサイズを減少中...",
+    "resizeAndContinue": "サイズ変更して続行",
+    "automaticallyCompress": "自動的に圧縮して",
+    "processingImage": "画像を処理中...",
+    "upgradeToPro": "Proにアップグレード",
+    "upgradeToProDescription": "フル解像度で最大64MBの画像をアップロード",
+    "skipThisImage": "この画像をスキップ",
+    "useDifferentImage": "別の画像を使用",
+    "whatHappens": "サイズ変更時の動作は？",
+    "imageCompressed": "画像はサイズ制限内に収まるように圧縮されます",
+    "qualityOptimized": "品質は最適な結果のために自動的に最適化されます",
+    "processingInstantly": "処理はあなたのブラウザで瞬時に実行されます",
+    "aspectRatioMaintained": "元のアスペクト比が維持されます"
+  },
+  "previewArea": {
+    "stages": {
+      "preparing": "画像をエンコードして検証中",
+      "analyzing": "AIが画像品質を分析中",
+      "enhancing": "AIモデルが画像を強化中",
+      "finalizing": "強化された画像を準備中"
+    },
+    "errors": {
+      "title": "処理に失敗しました",
+      "tryAgain": "再試行"
+    },
+    "statusMessages": {
+      "preparing": "画像を準備中...",
+      "analyzing": "画像を分析中...",
+      "enhancing": "画像を強化中...",
+      "finalizing": "完了中...",
+      "processing": "処理中..."
+    },
+    "emptyState": {
+      "title": "下のキューから画像を選択してください"
+    },
+    "completed": {
+      "title": "処理が完了しました"
+    },
+    "batch": {
+      "imageXofYcomplete": "画像{current}/{total}が完了しました",
+      "preparingNext": "次の画像を準備中...",
+      "rateLimitingPause": "信頼できる処理のためのレート制限の一時停止"
+    },
+    "remainingTime": "残り{remaining}秒"
+  },
+  "workspace": {
+    "features": {
+      "freeLimit": "無料制限5MB",
+      "noWatermark": "透かしなし",
+      "batch": "バッチ",
+      "upgradeRequired": "アップグレードが必要",
+      "upToImages": "最大{count}枚"
+    },
+    "errors": {
+      "title": "処理エラー",
+      "insufficientCredits": "クレジット不足",
+      "requestTimeout": "リクエストタイムアウト",
+      "serverError": "サーバーエラー",
+      "unknownError": "不明なエラーが発生しました",
+      "downloadFailed": "画像のダウンロードに失敗しました"
+    },
+    "downloadError": {
+      "title": "ダウンロードに失敗しました"
+    },
+    "mobileTabs": {
+      "settings": "設定",
+      "preview": "プレビュー",
+      "queue": "キュー"
+    },
+    "processingStatus": {
+      "processingXofY": "{current}/{total}を処理中...",
+      "processing": "処理中...",
+      "allProcessed": "すべて処理完了",
+      "processAll": "すべて処理({count})"
+    }
+  },
+  "enhancementOptions": {
+    "smartAIAnalysis": "スマートAI分析",
+    "smartAIAnalysisUpgrade": "アップグレードして、AIがコンテンツタイプを検出し、設定を自動的に最適化できるようにしてください。",
+    "smartAIAnalysisPaid": "AIが画像コンテンツを自動的に検出し、最適な結果のためにパラメータを最適化します。",
+    "smartAnalysisActive": "スマート分析がアクティブ",
+    "smartAnalysisActiveDescription": "AIがあなたの画像の最適な強化を自動的に選択します。",
+    "additionalEnhancements": "追加の強化",
+    "enhanceImage": "画像を強化",
+    "enhanceFaces": "顔を強化",
+    "preserveText": "テキストを保持",
+    "customInstructions": "カスタム指示",
+    "enhancementLabels": {
+      "clarity": "明確さ",
+      "color": "色",
+      "lighting": "照明",
+      "denoise": "ノイズ除去",
+      "artifacts": "アーティファクト",
+      "details": "詳細"
+    }
+  },
+  "imageComparison": {
+    "enhanced": "強化済み",
+    "toggleZoom": "ズームの切り替え",
+    "downloadResult": "結果をダウンロード",
+    "download": "ダウンロード",
+    "original": "オリジナル",
+    "enhancedLabel": "強化済み"
+  },
+  "upgradeSuccessBanner": {
+    "title": "素晴らしいお仕事です！",
+    "image": "画像",
+    "images": "画像",
+    "subtitle": "プロフェッショナルプランにアップグレードして、月1000クレジットで最大58%節約",
+    "seePlans": "プランを表示",
+    "maybeLater": "また今度"
+  },
+  "dropzone": {
+    "dropToUpload": "ドロップしてアップロード",
+    "clickOrDragImages": "クリックまたは画像をドラッグ",
+    "supportForFormats": "JPG、PNG、WEBPをサポート",
+    "freeLimitText": "ファイルあたり最大5MB • 一度に1枚 • バッチ処理のためにアップグレード",
+    "paidLimitText": "ファイルあたり最大10MB • バッチ処理利用可能"
+  }
+}

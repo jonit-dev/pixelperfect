@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-// import { useRouter } from 'next/navigation'; // Temporarily commented - not used
+import { useTranslations } from 'next-intl';
 import { AlertCircle, X } from 'lucide-react';
 
 export interface IInsufficientCreditsModalProps {
@@ -21,6 +21,7 @@ export function InsufficientCreditsModal({
   onBuyCredits,
   onViewPlans,
 }: IInsufficientCreditsModalProps): JSX.Element | null {
+  const t = useTranslations('stripe.insufficientCredits');
   const deficit = requiredCredits - currentBalance;
   const costPerCredit = 2; // Approximate based on medium pack ($14.99 / 200 credits)
   const maxImagesWithCurrentBalance = Math.floor(currentBalance / costPerCredit);
@@ -49,10 +50,10 @@ export function InsufficientCreditsModal({
               <AlertCircle className="h-6 w-6 text-warning dark:text-warning/80" />
             </div>
             <h2 className="mb-2 text-2xl font-bold text-primary dark:text-gray-100">
-              Not Enough Credits
+              {t('title')}
             </h2>
             <p className="text-muted-foreground dark:text-gray-400">
-              This batch requires {requiredCredits} credits. You have {currentBalance}.
+              {t('description', { requiredCredits, currentBalance })}
             </p>
           </div>
 
@@ -62,13 +63,13 @@ export function InsufficientCreditsModal({
               onClick={onBuyCredits}
               className="w-full rounded-lg bg-accent px-6 py-3 font-medium text-white transition-colors hover:bg-accent-hover"
             >
-              Buy {deficit}+ Credits
+              {t('buyCredits', { deficit })}
             </button>
             <button
               onClick={onViewPlans}
               className="w-full rounded-lg border border-border bg-surface px-6 py-3 font-medium text-muted-foreground transition-colors hover:bg-surface dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
             >
-              View Plans (Save up to 58%)
+              {t('viewPlans')}
             </button>
           </div>
 
@@ -76,9 +77,10 @@ export function InsufficientCreditsModal({
           {maxImagesWithCurrentBalance > 0 && (
             <div className="rounded-lg border border-border bg-surface p-4 dark:border-gray-700 dark:bg-gray-900">
               <p className="text-sm text-muted-foreground dark:text-gray-400">
-                Or reduce batch size to {maxImagesWithCurrentBalance}{' '}
-                {maxImagesWithCurrentBalance === 1 ? 'image' : 'images'} to process with your
-                current balance
+                {t('reduceBatch', {
+                  count: maxImagesWithCurrentBalance,
+                  image: maxImagesWithCurrentBalance === 1 ? t('image') : t('images'),
+                })}
               </p>
             </div>
           )}

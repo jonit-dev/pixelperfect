@@ -1,0 +1,60 @@
+{
+  "page": {
+    "title": "Prezzi Semplici e Trasparenti",
+    "subtitle": "Scegli piano abbonamento adatto alle tue esigenze. Ottieni crediti mensili con rollover automatico."
+  },
+  "subscription": {
+    "title": "Scegli Tuo Piano",
+    "subtitle": "Ottieni crediti ogni mese con nostri piani abbonamento. Cancella in qualsiasi momento."
+  },
+  "currentBalance": {
+    "title": "Tuo saldo attuale",
+    "credits": "crediti",
+    "activeSubscription": "abbonamento attivo"
+  },
+  "scheduledChange": {
+    "title": "Cambio Piano Programmato",
+    "cancel": "Annulla",
+    "on": "il"
+  },
+  "configurationWarning": "Stripe Price IDs non sono configurati. Aggiungili al tuo file .env per abilitare acquisti.",
+  "creditPacks": {
+    "title": "Ti Servono Crediti Senza Abbonamento?",
+    "subtitle": "Pacchetti crediti una tantum che non scadono mai. Perfetto per progetti occasionali.",
+    "valueComparison": "Confronto Valore:",
+    "valueComparisonText": "Gli abbonamenti offrono crediti 11-58% più economici per utenti regolari",
+    "comparePlans": "Confronta piani abbonamento"
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "creditsUsedFor": {
+      "question": "A cosa servono i crediti?",
+      "answer": "I crediti sono usati per azioni elaborazione immagini. Ogni immagine elaborata consuma un certo numero di crediti basato su fattore upscaling e funzionalità usate."
+    },
+    "creditsExpire": {
+      "question": "I crediti scadono?",
+      "answer": "I crediti abbonamento si accumulano mese per mese fino a limite massimo tuo piano finché abbonamento è attivo."
+    },
+    "batchProcessing": {
+      "question": "Cos'è elaborazione batch?",
+      "answer": "Elaborazione batch permette di caricare ed elaborare più immagini contemporaneamente. Utenti gratuiti possono elaborare 1 immagine alla volta, mentre piani a pagamento supportano elaborazione batch fino a 10, 50 o 500 immagini simultaneamente a seconda tuo piano."
+    },
+    "cancelSubscription": {
+      "question": "Posso cancellare abbonamento in qualsiasi momento?",
+      "answer": "Sì! Puoi cancellare abbonamento in qualsiasi momento. Continuerai ad avere accesso fino alla fine tuo periodo fatturazione e eventuali crediti rimanenti rimarranno account."
+    },
+    "paymentMethods": {
+      "question": "Quali metodi pagamento accettate?",
+      "answer": "Accettiamo tutte principali carte di credito (Visa, Mastercard, American Express) e vari altri metodi pagamento tramite Stripe."
+    },
+    "freePlan": {
+      "question": "C'è un piano gratuito?",
+      "answer": "Sì! Utenti gratuiti ricevono crediti iniziali per provare servizio. Tuttavia, elaborazione batch e funzionalità avanzate richiedono abbonamento a pagamento. Utenti gratuiti possono elaborare un'immagine alla volta."
+    }
+  },
+  "customPlan": {
+    "title": "Ti serve un piano personalizzato?",
+    "description": "Contattaci per pricing enterprise, sconti bulk o requisiti integrazione personalizzata.",
+    "contactSales": "Contatta Vendite"
+  }
+}

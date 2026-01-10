@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getUseCaseData, getAllUseCaseSlugs } from '@/lib/seo/data-loader';
-import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { UseCasePageTemplate } from '@/app/(pseo)/_components/pseo/templates/UseCasePageTemplate';
+import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
+import { HreflangLinks } from '@client/components/seo/HreflangLinks';
+import { SeoMetaTags } from '@client/components/seo/SeoMetaTags';
+import { getCanonicalUrl } from '@/lib/seo/hreflang-generator';
+import { clientEnv } from '@shared/config/env';
 
 interface IUseCasePageProps {
   params: Promise<{ slug: string }>;
@@ -18,7 +23,30 @@ export async function generateMetadata({ params }: IUseCasePageProps): Promise<M
 
   if (!useCase) return {};
 
-  return generatePageMetadata(useCase, 'use-cases');
+  const path = `/use-cases/${slug}`;
+  const canonicalUrl = getCanonicalUrl(path);
+
+  return {
+    title: useCase.metaTitle,
+    description: useCase.metaDescription,
+    openGraph: {
+      title: useCase.metaTitle,
+      description: useCase.metaDescription,
+      type: 'website',
+      url: canonicalUrl,
+      siteName: clientEnv.APP_NAME,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: useCase.metaTitle,
+      description: useCase.metaDescription,
+      creator: `@${clientEnv.TWITTER_HANDLE}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 }
 
 export default async function UseCasePage({ params }: IUseCasePageProps) {
@@ -29,13 +57,30 @@ export default async function UseCasePage({ params }: IUseCasePageProps) {
     notFound();
   }
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: useCase.metaTitle,
+    description: useCase.metaDescription,
+    url: `${clientEnv.BASE_URL}/use-cases/${slug}`,
+    inLanguage: 'en',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: clientEnv.APP_NAME,
+      url: clientEnv.BASE_URL,
+    },
+  };
+
+  const path = `/use-cases/${slug}`;
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-6">{useCase.h1}</h1>
-      <p className="text-xl text-gray-600 mb-8">{useCase.intro}</p>
-      <div className="bg-surface-light p-8 rounded-lg">
-        <p className="text-gray-700">Use case content coming soon...</p>
-      </div>
-    </div>
+    <>
+      {/* SEO meta tags - canonical and og:locale */}
+      <SeoMetaTags path={path} locale="en" />
+      {/* Hreflang links for multi-language SEO */}
+      <HreflangLinks path={path} />
+      <SchemaMarkup schema={schema} />
+      <UseCasePageTemplate data={useCase} locale="en" />
+    </>
   );
 }

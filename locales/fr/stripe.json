@@ -1,0 +1,81 @@
+{
+  "checkout": {
+    "loading": "Chargement du paiement...",
+    "error": "Erreur",
+    "close": "Fermer",
+    "notConfigured": "Stripe n'est pas correctement configuré. Veuillez contacter le support."
+  },
+  "outOfCredits": {
+    "title": "Vous n'avez plus de crédits",
+    "description": "Achetez des crédits pour continuer à traiter des images, ou abonnez-vous pour une meilleure valeur.",
+    "buyCredits": "Acheter des crédits",
+    "subscribe": "S'abonner (meilleure valeur)",
+    "subscribeNote": "Abonnez-vous pour des crédits jusqu'à 58 % moins chers",
+    "subscribeCta": "Obtenez des crédits mensuels avec report automatique, plus 11 à 58 % d'économie par crédit.",
+    "viewPlans": "Voir les plans d'abonnement",
+    "notNow": "Pas maintenant"
+  },
+  "insufficientCredits": {
+    "title": "Crédits insuffisants",
+    "description": "Ce lot nécessite {requiredCredits} crédits. Vous avez {currentBalance}.",
+    "buyCredits": "Acheter {deficit}+ crédits",
+    "viewPlans": "Voir les plans (économisez jusqu'à 58 %)",
+    "reduceBatch": "Ou réduisez la taille du lot à {count} {image} pour traiter avec votre solde actuel",
+    "image": "image",
+    "images": "images"
+  },
+  "cancelSubscription": {
+    "title": "Annuler l'abonnement",
+    "info": "Votre plan {planName} restera actif jusqu'au {formattedEndDate}.",
+    "keepAccess": "Vous ne serez plus débité, mais vous conserverez un accès complet aux avantages de votre abonnement jusqu'à la fin de votre période de facturation actuelle.",
+    "helpUsImprove": "Aidez-nous à nous améliorer (facultatif)",
+    "keepSubscription": "Conserver l'abonnement",
+    "continue": "Continuer",
+    "confirmationTitle": "Êtes-vous sûr ?",
+    "confirmationText": "Votre abonnement sera annulé et vous ne serez plus débité après le {formattedEndDate}.",
+    "goBack": "Retour",
+    "canceling": "Annulation...",
+    "yesCancel": "Oui, annuler l'abonnement",
+    "reasons": {
+      "tooExpensive": "Trop cher",
+      "notUsingEnough": "Utilisation insuffisante",
+      "missingFeatures": "Fonctionnalités manquantes",
+      "switchingCompetitor": "Changement pour un concurrent",
+      "technicalIssues": "Problèmes techniques",
+      "other": "Autre"
+    },
+    "otherPlaceholder": "Veuillez nous dire pourquoi vous annulez..."
+  },
+  "planChange": {
+    "changePlan": "Changer de plan",
+    "selectPlan": "Sélectionner un plan",
+    "calculating": "Calcul des changements de plan...",
+    "currentPlan": "Plan actuel",
+    "newPlan": "Nouveau plan",
+    "immediately": "Immédiatement",
+    "nextBilling": "Prochain cycle de facturation",
+    "scheduledDowngrade": "Rétrogradation planifiée",
+    "scheduledText": "Votre plan passera à {newPlan} le {effectiveDate}.",
+    "keepBenefits": "Vous conserverez les avantages de votre plan actuel {currentPlan} jusqu'alors. Aucun remboursement ou frais supplémentaire.",
+    "cancel": "Annuler",
+    "confirmUpgrade": "Confirmer la mise à niveau",
+    "scheduleDowngrade": "Planifier la rétrogradation",
+    "processing": "Traitement...",
+    "failedToPreview": "Échec de l'aperçu du changement d'abonnement",
+    "failedToChange": "Échec du changement d'abonnement"
+  },
+  "banner": {
+    "aria": {
+      "dismiss": "Rejeter"
+    },
+    "expirationUrgent": "Crédits expirant bientôt!",
+    "expirationModerate": "Crédits vont expirer",
+    "expirationText": "Vos {creditCount} crédit{creditPlural, plural, one {} other {s}} expireront le {formattedDate}{timeRemainder}. Utilisez-les avant qu'ils ne disparaissent!",
+    "timeRemainder": {
+      "today": " (aujourd'hui)",
+      "tomorrow": " (demain)",
+      "days": " (dans {days} jours)"
+    },
+    "startUpscaling": "Commencer l'agrandissement maintenant"
+  }
+}

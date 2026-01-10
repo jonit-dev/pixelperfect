@@ -1,5 +1,6 @@
 import { Check, X } from 'lucide-react';
 import React, { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface IPasswordStrengthIndicatorProps {
   password: string;
@@ -17,7 +18,7 @@ interface IRequirement {
   met: boolean;
 }
 
-const calculateStrength = (password: string): IStrengthResult => {
+const calculateStrength = (password: string, t: (key: string) => string): IStrengthResult => {
   if (!password) {
     return { score: 0, label: '', color: '', bgColor: 'bg-surface-light' };
   }
@@ -39,31 +40,47 @@ const calculateStrength = (password: string): IStrengthResult => {
   const normalizedScore = Math.min(4, Math.floor(score / 1.75));
 
   const strengthLevels: IStrengthResult[] = [
-    { score: 0, label: 'Too weak', color: 'text-error', bgColor: 'bg-error' },
-    { score: 1, label: 'Weak', color: 'text-warning', bgColor: 'bg-warning' },
-    { score: 2, label: 'Fair', color: 'text-yellow-400', bgColor: 'bg-yellow-500' },
-    { score: 3, label: 'Good', color: 'text-lime-400', bgColor: 'bg-lime-500' },
-    { score: 4, label: 'Strong', color: 'text-success', bgColor: 'bg-success' },
+    { score: 0, label: t('password.strength.tooWeak'), color: 'text-error', bgColor: 'bg-error' },
+    { score: 1, label: t('password.strength.weak'), color: 'text-warning', bgColor: 'bg-warning' },
+    {
+      score: 2,
+      label: t('password.strength.fair'),
+      color: 'text-yellow-400',
+      bgColor: 'bg-yellow-500',
+    },
+    {
+      score: 3,
+      label: t('password.strength.good'),
+      color: 'text-lime-400',
+      bgColor: 'bg-lime-500',
+    },
+    {
+      score: 4,
+      label: t('password.strength.strong'),
+      color: 'text-success',
+      bgColor: 'bg-success',
+    },
   ];
 
   return strengthLevels[normalizedScore];
 };
 
-const getRequirements = (password: string): IRequirement[] => {
+const getRequirements = (password: string, t: (key: string) => string): IRequirement[] => {
   return [
-    { label: 'At least 6 characters', met: password.length >= 6 },
-    { label: 'Uppercase letter (A-Z)', met: /[A-Z]/.test(password) },
-    { label: 'Lowercase letter (a-z)', met: /[a-z]/.test(password) },
-    { label: 'Number (0-9)', met: /[0-9]/.test(password) },
-    { label: 'Special character (!@#$...)', met: /[^a-zA-Z0-9]/.test(password) },
+    { label: t('password.requirements.minLength'), met: password.length >= 6 },
+    { label: t('password.requirements.uppercase'), met: /[A-Z]/.test(password) },
+    { label: t('password.requirements.lowercase'), met: /[a-z]/.test(password) },
+    { label: t('password.requirements.number'), met: /[0-9]/.test(password) },
+    { label: t('password.requirements.specialChar'), met: /[^a-zA-Z0-9]/.test(password) },
   ];
 };
 
 export const PasswordStrengthIndicator: React.FC<IPasswordStrengthIndicatorProps> = ({
   password,
 }) => {
-  const strength = useMemo(() => calculateStrength(password), [password]);
-  const requirements = useMemo(() => getRequirements(password), [password]);
+  const t = useTranslations('auth');
+  const strength = useMemo(() => calculateStrength(password, t), [password, t]);
+  const requirements = useMemo(() => getRequirements(password, t), [password, t]);
 
   if (!password) return null;
 
@@ -82,7 +99,8 @@ export const PasswordStrengthIndicator: React.FC<IPasswordStrengthIndicatorProps
       <div className="flex items-center justify-between">
         <p className={`text-xs font-medium ${strength.color}`}>{strength.label}</p>
         <p className="text-xs text-text-muted">
-          {requirements.filter(r => r.met).length}/{requirements.length} requirements
+          {requirements.filter(r => r.met).length}/{requirements.length}{' '}
+          {t('password.requirements.label')}
         </p>
       </div>
       <div className="grid grid-cols-2 gap-x-2 gap-y-0.5">

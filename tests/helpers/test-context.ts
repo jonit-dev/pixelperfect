@@ -215,6 +215,39 @@ export class TestContext {
   }
 
   /**
+   * Sets up Stripe customer ID for webhook tests
+   * This enables webhooks to properly look up users by stripe_customer_id
+   *
+   * @param userId - User ID to set up
+   * @param customerId - Optional Stripe customer ID (defaults to cus_${userId})
+   */
+  async setupStripeCustomer(userId: string, customerId?: string): Promise<void> {
+    const stripeCustomerId = customerId || `cus_${userId}`;
+    const isTestMode = process.env.ENV === 'test';
+
+    if (isTestMode) {
+      // In test mode, update the test mode profile
+      const existingProfile = (this.dataManager as any).testModeProfiles?.get(userId);
+      if (existingProfile) {
+        existingProfile.stripe_customer_id = stripeCustomerId;
+        existingProfile.updated_at = new Date().toISOString();
+        (this.dataManager as any).testModeProfiles.set(userId, existingProfile);
+      }
+      return;
+    }
+
+    // In production mode, update the database
+    const { error } = await this.supabaseAdmin
+      .from('profiles')
+      .update({ stripe_customer_id: stripeCustomerId })
+      .eq('id', userId);
+
+    if (error) {
+      throw new Error(`Failed to set stripe_customer_id: ${error.message}`);
+    }
+  }
+
+  /**
    * Generates a UUID v4 for test users
    *
    * @returns A valid UUID string

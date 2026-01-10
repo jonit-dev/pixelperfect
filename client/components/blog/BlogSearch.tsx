@@ -3,8 +3,10 @@
 import { Search, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export function BlogSearch(): JSX.Element {
+  const t = useTranslations('blog.search');
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -31,7 +33,7 @@ export function BlogSearch(): JSX.Element {
         type="text"
         value={query}
         onChange={e => setQuery(e.target.value)}
-        placeholder="Search articles..."
+        placeholder={t('placeholder')}
         className="w-full pl-10 pr-10 py-2.5 bg-surface/50 border border-border/50 rounded-full text-sm text-white placeholder:text-text-secondary focus:outline-none focus:border-accent/50 focus:bg-surface transition-all"
       />
       {query && (

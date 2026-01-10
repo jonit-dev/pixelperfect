@@ -1,0 +1,176 @@
+{
+  "batchLimit": {
+    "serverEnforcedTitle": "Limite de Processamento em Lote Atingido",
+    "clientEnforcedTitle": "Limite de Lote Atingido",
+    "serverEnforcedMessage": "Você atingiu o limite de processamento do seu plano. Você processou {currentCount} imagens, mas seu plano permite um máximo de {limit} imagens por hora.",
+    "clientEnforcedMessage": "Você tentou adicionar {attempted} imagem{plural, plural, one {} other {s}}, mas seu plano permite um máximo de {limit} imagem{limitPlural, plural, one {} other {s}} na fila.",
+    "freeUserMessage": "Usuários gratuitos podem processar 1 imagem por vez. Faça upgrade para desbloquear limites de lote mais altos e processar múltiplas imagens.",
+    "securityMessage": "Esta é uma medida de segurança para prevenir abuso. O limite será redefinido em aproximadamente 1 hora. Faça upgrade do seu plano para limites maiores.",
+    "upgradeButton": "Fazer Upgrade do Plano",
+    "addPartialButton": "Adicionar {availableSlots} {count, plural, one {imagem} other {imagens}}",
+    "cancelButton": "Cancelar"
+  },
+  "queue": {
+    "title": "Fila de Processamento",
+    "limitReached": "Limite Atingido",
+    "addMore": "Adicionar Mais",
+    "aria": {
+      "removeImage": "Remover imagem"
+    }
+  },
+  "aria": {
+    "dismissError": "Descartar erro"
+  },
+  "customInstructions": {
+    "title": "Instruções Personalizadas",
+    "description": "Instruções de IA Personalizadas",
+    "subtitle": "Diga exatamente à IA como processar sua imagem. Se específico sobre o que você quer melhorar, preservar ou alterar.",
+    "yourInstructions": "Suas instruções",
+    "quickTemplates": "Modelos Rápidos",
+    "loadTemplate": "Carregar Modelo",
+    "templateLoaded": "Modelo carregado!",
+    "templateLoadedDescription": "Um modelo de exemplo foi carregado acima. Sinta-se à vontade para modificá-lo ou substituí-lo por suas próprias instruções.",
+    "cancel": "Cancelar",
+    "saveInstructions": "Salvar instruções",
+    "placeholderPrompt": "Diga exatamente à IA como processar sua imagem...",
+    "generalEnhancement": "Melhoria Geral",
+    "photoRestoration": "Restauração de Fotos",
+    "productPhotography": "Fotografia de Produtos",
+    "portraitEnhancement": "Melhoria de Retrato",
+    "characterLimit": "caracteres",
+    "pleaseReduceTo": "Por favor reduza para",
+    "characterLimitExceeded": "Limite de caracteres excedido"
+  },
+  "oversizedImage": {
+    "yourImageIs": "Sua imagem é",
+    "whichExceeds": "que excede o",
+    "limitBy": "limite de",
+    "imageTooLarge": "Imagem Grande Demais",
+    "imageTooLargeMultiple": "Imagem Grande Demais",
+    "processingFailed": "Processamento falhou. Por favor, tente com um arquivo menor ou faça upgrade para Pro.",
+    "compressing": "Comprimindo",
+    "optimizingQuality": "Otimizando qualidade enquanto reduz o tamanho...",
+    "resizeAndContinue": "Redimensionar e Continuar",
+    "automaticallyCompress": "Comprimir automaticamente para caber sob",
+    "processingImage": "Processando imagem...",
+    "upgradeToPro": "Fazer Upgrade para Pro",
+    "upgradeToProDescription": "Envie imagens até 64MB com resolução completa",
+    "skipThisImage": "Pular Esta Imagem",
+    "useDifferentImage": "Usar Uma Imagem Diferente",
+    "whatHappens": "O que acontece quando você redimensiona?",
+    "imageCompressed": "A imagem é comprimida para caber sob o limite de tamanho",
+    "qualityOptimized": "A qualidade é automaticamente otimizada para os melhores resultados",
+    "processingInstantly": "O processamento acontece instantaneamente no seu navegador",
+    "aspectRatioMaintained": "A proporção original é mantida"
+  },
+  "previewArea": {
+    "stages": {
+      "preparing": "Codificando e validando sua imagem",
+      "analyzing": "A IA está analisando a qualidade da imagem",
+      "enhancing": "O modelo de IA está melhorando sua imagem",
+      "finalizing": "Preparando sua imagem melhorada"
+    },
+    "errors": {
+      "title": "Processamento Falhou",
+      "tryAgain": "Tentar Novamente"
+    },
+    "statusMessages": {
+      "preparing": "Preparando imagem...",
+      "analyzing": "Analisando imagem...",
+      "enhancing": "Melhorando imagem...",
+      "finalizing": "Finalizando...",
+      "processing": "Processando..."
+    },
+    "emptyState": {
+      "title": "Selecione uma imagem da fila abaixo"
+    },
+    "completed": {
+      "title": "Processamento Concluído"
+    },
+    "batch": {
+      "imageXofYcomplete": "Imagem {current} de {total} concluída",
+      "preparingNext": "Preparando próxima imagem...",
+      "rateLimitingPause": "Pausa de limitação de taxa para garantir processamento confiável"
+    },
+    "remainingTime": "~{remaining}s restantes"
+  },
+  "workspace": {
+    "features": {
+      "freeLimit": "Limite gratuito de 5MB",
+      "noWatermark": "Sem Marca D'água",
+      "batch": "Lote",
+      "upgradeRequired": "Upgrade Necessário",
+      "upToImages": "Até {count} imagens"
+    },
+    "errors": {
+      "title": "Erro de Processamento",
+      "insufficientCredits": "Créditos Insuficientes",
+      "requestTimeout": "Tempo Limite Esgotado",
+      "serverError": "Erro do Servidor",
+      "unknownError": "Ocorreu um erro desconhecido",
+      "downloadFailed": "Falha ao baixar imagem"
+    },
+    "downloadError": {
+      "title": "Download Falhou"
+    },
+    "mobileTabs": {
+      "settings": "Configurações",
+      "preview": "Visualizar",
+      "queue": "Fila"
+    },
+    "processingStatus": {
+      "processingXofY": "Processando {current}/{total}...",
+      "processing": "Processando...",
+      "allProcessed": "Todos Processados",
+      "processAll": "Processar Todos ({count})"
+    }
+  },
+  "enhancementOptions": {
+    "smartAIAnalysis": "Análise Inteligente de IA",
+    "smartAIAnalysisUpgrade": "Faça upgrade para permitir que a IA detecte o tipo de conteúdo e otimize configurações automaticamente.",
+    "smartAIAnalysisPaid": "A IA detecta automaticamente o conteúdo da imagem e otimiza parâmetros para os melhores resultados.",
+    "smartAnalysisActive": "Análise Inteligente Ativa",
+    "smartAnalysisActiveDescription": "A IA selecionará automaticamente as melhores melhorias para sua imagem.",
+    "additionalEnhancements": "Melhorias Adicionais",
+    "enhanceImage": "Melhorar Imagem",
+    "enhanceFaces": "Melhorar Rostos",
+    "preserveText": "Preservar Texto",
+    "customInstructions": "Instruções Personalizadas",
+    "enhancementLabels": {
+      "clarity": "Clareza",
+      "color": "Cor",
+      "lighting": "Iluminação",
+      "denoise": "Redução de Ruído",
+      "artifacts": "Artefatos",
+      "details": "Detalhes"
+    }
+  },
+  "imageComparison": {
+    "enhanced": "Melhorada",
+    "toggleZoom": "Alternar Zoom",
+    "downloadResult": "Baixar Resultado",
+    "download": "Baixar",
+    "original": "Original",
+    "enhancedLabel": "Melhorada"
+  },
+  "upgradeSuccessBanner": {
+    "title": "Ótimo trabalho!",
+    "image": "imagem",
+    "images": "imagens",
+    "subtitle": "Faça upgrade para Profissional para 1000 créditos/mês e economize até 58%",
+    "seePlans": "Ver Planos",
+    "maybeLater": "Talvez mais tarde"
+  },
+  "dropzone": {
+    "dropToUpload": "Solte para enviar",
+    "clickOrDragImages": "Clique ou arraste imagens",
+    "supportForFormats": "Suporte para JPG, PNG e WEBP",
+    "freeLimitText": "Até 5MB por arquivo • 1 imagem por vez • Faça upgrade para processamento em lote",
+    "paidLimitText": "Até 10MB por arquivo • Processamento em lote disponível"
+  },
+  "userDetail": {
+    "subscription": {
+      "status": "Status"
+    }
+  }
+}

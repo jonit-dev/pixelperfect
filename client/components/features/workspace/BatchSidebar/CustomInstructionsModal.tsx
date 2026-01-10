@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Lightbulb } from 'lucide-react';
 import { Modal } from '@client/components/ui/Modal';
+import { useTranslations } from 'next-intl';
 
 export interface ICustomInstructionsModalProps {
   isOpen: boolean;
@@ -17,8 +18,9 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
   onClose,
   instructions,
   onSave,
-  placeholderPrompt = 'Tell the AI exactly how to process your image...',
+  placeholderPrompt,
 }) => {
+  const t = useTranslations('workspace');
   const [currentInstructions, setCurrentInstructions] = useState(instructions);
   const [isTemplateMode, setIsTemplateMode] = useState(false);
 
@@ -58,22 +60,22 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
   // Sample templates for demonstration
   const sampleTemplates = [
     {
-      title: 'General Enhancement',
+      title: t('customInstructions.generalEnhancement'),
       prompt:
         'Enhance this image while preserving the original style and mood. Focus on improving clarity and reducing noise.',
     },
     {
-      title: 'Photo Restoration',
+      title: t('customInstructions.photoRestoration'),
       prompt:
         'Restore this old photo. Fix damage, improve colors, and enhance faces while maintaining the vintage feel.',
     },
     {
-      title: 'Product Photography',
+      title: t('customInstructions.productPhotography'),
       prompt:
         'Make this product photo look professional. Remove background distractions and enhance product details.',
     },
     {
-      title: 'Portrait Enhancement',
+      title: t('customInstructions.portraitEnhancement'),
       prompt:
         'Improve this portrait. Focus on skin smoothing while maintaining natural texture and enhancing eyes.',
     },
@@ -83,7 +85,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Custom Instructions"
+      title={t('customInstructions.title')}
       size="lg"
       showCloseButton={true}
     >
@@ -92,11 +94,8 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
         <div className="flex items-start gap-3 p-3 bg-accent/10 border border-accent/20 rounded-lg">
           <Lightbulb className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
           <div className="text-sm text-primary">
-            <p className="font-medium mb-1">Custom AI Instructions</p>
-            <p className="text-muted-foreground">
-              Tell the AI exactly how to process your image. Be specific about what you want to
-              enhance, preserve, or change.
-            </p>
+            <p className="font-medium mb-1">{t('customInstructions.description')}</p>
+            <p className="text-muted-foreground">{t('customInstructions.subtitle')}</p>
           </div>
         </div>
 
@@ -106,13 +105,13 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
             htmlFor="custom-instructions-textarea"
             className="block text-sm font-medium text-muted-foreground mb-2"
           >
-            Your Instructions
+            {t('customInstructions.yourInstructions')}
           </label>
           <textarea
             id="custom-instructions-textarea"
             value={currentInstructions}
             onChange={e => setCurrentInstructions(e.target.value)}
-            placeholder={placeholderPrompt}
+            placeholder={placeholderPrompt || t('customInstructions.placeholderPrompt')}
             className={`
               w-full min-h-[200px] p-3 rounded-lg border border-border text-sm
               focus:ring-2 focus:ring-accent focus:border-accent
@@ -125,38 +124,46 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
           {/* Character count */}
           <div className="flex items-center justify-between mt-2">
             <span className={`text-xs ${isOverLimit ? 'text-error' : 'text-muted-foreground'}`}>
-              {characterCount} / {maxCharacters} characters
+              {characterCount} / {maxCharacters} {t('customInstructions.characterLimit')}
               {isOverLimit && (
                 <span className="ml-2 text-error font-medium">
-                  (Please reduce to {maxCharacters} characters)
+                  ({t('customInstructions.pleaseReduceTo')} {maxCharacters}{' '}
+                  {t('customInstructions.characterLimit')})
                 </span>
               )}
             </span>
 
-            {isOverLimit && <span className="text-xs text-error">Character limit exceeded</span>}
+            {isOverLimit && (
+              <span className="text-xs text-error">
+                {t('customInstructions.characterLimitExceeded')}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Template Section */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-muted-foreground">Quick Templates</span>
+            <span className="text-sm font-medium text-muted-foreground">
+              {t('customInstructions.quickTemplates')}
+            </span>
             <button
               type="button"
               onClick={handleLoadTemplate}
               className="flex items-center gap-2 text-xs text-accent hover:text-accent-hover font-medium"
             >
               <Download className="h-3 w-3" />
-              Load Template
+              {t('customInstructions.loadTemplate')}
             </button>
           </div>
 
           {isTemplateMode && (
             <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-              <p className="text-xs font-medium text-amber-800 mb-2">Template loaded!</p>
+              <p className="text-xs font-medium text-amber-800 mb-2">
+                {t('customInstructions.templateLoaded')}
+              </p>
               <p className="text-xs text-amber-700">
-                A sample template has been loaded above. Feel free to modify it or replace it with
-                your own instructions.
+                {t('customInstructions.templateLoadedDescription')}
               </p>
             </div>
           )}
@@ -186,7 +193,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
             onClick={onClose}
             className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-surface-light rounded-lg transition-colors"
           >
-            Cancel
+            {t('customInstructions.cancel')}
           </button>
           <button
             type="button"
@@ -201,7 +208,7 @@ export const CustomInstructionsModal: React.FC<ICustomInstructionsModalProps> = 
               }
             `}
           >
-            Save Instructions
+            {t('customInstructions.saveInstructions')}
           </button>
         </div>
       </div>

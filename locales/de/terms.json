@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "title": "Nutzungsbedingungen",
+    "description": "Lesen Sie die Geschäftsbedingungen für die Nutzung der Bildskalierungs- und -verbesserungsdienste von {{APP_NAME}}."
+  },
+  "lastUpdated": "Zuletzt aktualisiert: {{date}}",
+  "title": "Nutzungsbedingungen",
+  "viewPrivacy": "Datenschutzrichtlinie anzeigen",
+  "acceptance": {
+    "title": "1. Annahme der Bedingungen",
+    "paragraph1": "Durch den Zugang zu oder die Nutzung von {{APP_NAME}} (\"Service\") stimmen Sie zu, an diese Nutzungsbedingungen (\"Bedingungen\") gebunden zu sein. Wenn Sie diesen Bedingungen nicht zustimmen, dürfen Sie den Service nicht nutzen.",
+    "paragraph2": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Die fortgesetzte Nutzung des Service nach Änderungen stellt die Annahme der geänderten Bedingungen dar."
+  },
+  "description": {
+    "title": "2. Beschreibung des Service",
+    "intro": "{{APP_NAME}} bietet KI-gestützte Bildskalierungs- und -verbesserungsdienste an. Der Service ermöglicht Benutzern:",
+    "features": [
+      "Bilder zum KI-gestützten Enhancen hochzuladen",
+      "Bilder auf höhere Auflösungen zu skalieren (2x, 4x)",
+      "Die Bildqualität unter Beibehaltung von Text und Logos zu verbessern",
+      "Verarbeitete Bilder herunterzuladen"
+    ]
+  },
+  "registration": {
+    "title": "3. Konto-Registrierung",
+    "intro": "Um bestimmte Funktionen zu nutzen, müssen Sie:",
+    "requirements": [
+      "Ein Konto mit genauen Informationen erstellen",
+      "Die Sicherheit Ihrer Konto-Zugangsdaten aufrechterhalten",
+      "Uns sofort über unbefugten Zugriff informieren",
+      "Mindestens 13 Jahre alt sein (oder das Mindestalter in Ihrer Gerichtsbarkeit)"
+    ],
+    "responsibility": "Sie sind verantwortlich für alle Aktivitäten unter Ihrem Konto."
+  },
+  "credits": {
+    "title": "4. Guthaben und Zahlungen",
+    "system": {
+      "title": "4.1 Guthaben-System",
+      "description": "Der Service arbeitet auf der Grundlage eines Guthaben-Systems. Jede Bildverarbeitungsaktion verbraucht Guthaben basierend auf dem Vorgangstyp und der Bildgröße."
+    },
+    "free": {
+      "title": "4.2 Kostenlose Guthaben",
+      "description": "Neue Benutzer erhalten 10 kostenlose Guthaben bei der Registrierung. Kostenlose Guthaben unterliegen unseren Standardbedingungen und können jederzeit geändert oder eingestellt werden."
+    },
+    "subscription": {
+      "title": "4.3 Abonnement-Guthaben",
+      "features": [
+        "Abonnement-Guthaben werden monatlich erneuert und aufgehoben (bis zu 6× Ihrer monatlichen Guthaben-Zuteilung)",
+        "Guthaben sind nur verfügbar, während Ihr Abonnement aktiv ist",
+        "Alle Abonnements werden über Stripe verarbeitet",
+        "Preise sind in USD, sofern nicht anders angegeben"
+      ]
+    },
+    "refunds": {
+      "title": "4.4 Rückerstattungen",
+      "intro": "Aufgrund der Art von digitalen Dienstleistungen werden für verwendete Guthaben im Allgemeinen keine Rückerstattungen gewährt. Wir können jedoch nach unserem Ermessen Rückerstattungen für folgende Gründe gewähren:",
+      "reasons": [
+        "Technische Ausfälle, die zum Verlust von Guthaben führen",
+        "Doppelte Abbuchungen",
+        "Service-Unverfügbarkeit"
+      ],
+      "contact": "Für Rückerstattungsanträge kontaktieren Sie",
+      "email": "{{SUPPORT_EMAIL}}"
+    }
+  },
+  "subscriptions": {
+    "title": "5. Abonnements",
+    "terms": [
+      "Abonnements werden am Ende jedes Abrechnungszeitraums automatisch verlängert",
+      "Sie können jederzeit über Ihre Kontoeinstellungen oder das Stripe-Portal kündigen",
+      "Die Kündigung wird am Ende des aktuellen Abrechnungszeitraums wirksam",
+      "Keine anteiligen Rückerstattungen für teilweise Abrechnungszeiträume",
+      "Wir können Abonnement-Preise mit einer Frist von 30 Tagen ändern; die fortgesetzte Nutzung stellt eine Annahme dar"
+    ]
+  },
+  "acceptableUse": {
+    "title": "6. Zulässige Nutzung",
+    "intro": "Sie verpflichten sich, den Service NICHT zu nutzen, um:",
+    "prohibitions": [
+      "Illegale, schädliche oder anstößige Inhalte zu verarbeiten",
+      "Bilder zu verarbeiten, an denen Sie keine Nutzungsrechte haben",
+      "Inhalte zu generieren oder zu verbessern, die Minderjährige auf unangemessene Weise darstellen",
+      "Deepfakes oder irreführende Inhalte zu erstellen, die dazu bestimmt sind, zu täuschen",
+      "Die geistigen Eigentumsrechte anderer zu verletzen",
+      "Zu versuchen, den Service reverse zu engineern oder auszunutzen",
+      "Automatisierte Systeme zu missbrauchen, um den Service zu missbrauchen",
+      "Nutzungsgrenzen oder Sicherheitsmaßnahmen zu umgehen",
+      "Den Service ohne Genehmigung weiterzuverkaufen oder zu verteilen"
+    ],
+    "consequence": "Eine Verletzung dieser Bedingungen kann zur sofortigen Kündigung des Kontos ohne Rückerstattung führen."
+  },
+  "intellectualProperty": {
+    "title": "7. Geistiges Eigentum",
+    "yourContent": {
+      "title": "7.1 Ihre Inhalte",
+      "description": "Sie behalten alle Rechte an Bildern, die Sie hochladen. Durch die Nutzung des Services gewähren Sie uns eine begrenzte Lizenz, Ihre Bilder ausschließlich zur Erbringung der angeforderten Dienstleistung zu verarbeiten."
+    },
+    "ourService": {
+      "title": "7.2 Unser Service",
+      "description": "{{APP_NAME}}, einschließlich seiner Technologie, Marke und Inhalte, ist durch Gesetze zum geistigen Eigentum geschützt. Sie dürfen nicht kopieren, modifizieren, verbreiten oder abgeleitete Werke erstellen ohne unsere schriftliche Genehmigung."
+    }
+  },
+  "availability": {
+    "title": "8. Verfügbarkeit des Service",
+    "intro": "Wir streben eine hohe Verfügbarkeit an, aber:",
+    "limitations": [
+      "Der Service wird \"wie besehen\" ohne Garantien bereitgestellt",
+      "Wir können Wartungsarbeiten mit oder ohne Ankündigung durchführen",
+      "Verarbeitungszeiten können je nach Nachfrage variieren",
+      "Wir behalten uns das Recht vor, Funktionen zu ändern oder einzustellen"
+    ]
+  },
+  "limitation": {
+    "title": "9. Haftungsbeschränkung",
+    "intro": "IM MAXIMALUMFANG, DER NACH GESETZ ZULÄSSIG IST, HAFTET {{APP_NAME}} NICHT FÜR:",
+    "exclusions": [
+      "Indirekte, zufällige, besondere oder Folgeschäden",
+      "Verlust von Gewinnen, Daten oder Geschäftsmöglichkeiten",
+      "Serviceunterbrechungen oder Datenverlust",
+      "Handlungen Dritter"
+    ],
+    "cap": "Unsere gesamthaftung darf den Betrag nicht überschreiten, den Sie in den 12 Monaten vor der Geltendmachung an uns gezahlt haben."
+  },
+  "disclaimer": {
+    "title": "10. Haftungsausschluss",
+    "intro": "DER SERVICE WIRD \"WIE BESEHEN\" UND \"VERFÜGBAR\" OHNE JEGLICHE GARANTIE, AUSDRÜCKLICH ODER IMPLIZIERT, GEWÄHRT, EINSCHLIESSLICH ABER NICHT BESCHRÄNKT AUF:",
+    "exclusions": [
+      "Handelbarkeit",
+      "Eignung für einen bestimmten Zweck",
+      "Nichtverletzung",
+      "Genauigkeit oder Zuverlässigkeit der Ergebnisse"
+    ],
+    "caveat": "KI-generierte Verbesserungen erfüllen möglicherweise nicht immer die Erwartungen. Die Ergebnisse hängen von der Qualität des Eingabebildes und anderen Faktoren ab."
+  },
+  "indemnification": {
+    "title": "11. Schadloshaltung",
+    "description": "Sie verpflichten sich, {{APP_NAME}} und seine leitenden Angestellten, Direktoren, Mitarbeiter und Agenten von allen Ansprüchen, Schäden, Verlusten oder Aufwendungen schadlos zu halten, die aus Ihrer Nutzung des Service, der Verletzung dieser Bedingungen oder der Verletzung von Rechten Dritter resultieren."
+  },
+  "termination": {
+    "title": "12. Kündigung",
+    "intro": "Wir können Ihr Konto jederzeit aus folgenden Gründen sperren oder kündigen:",
+    "reasons": [
+      "Verletzung dieser Bedingungen",
+      "Betrügerische oder illegale Aktivitäten",
+      "Nichtzahlung",
+      "Verlängerte Inaktivität",
+      "Jeder andere Grund in unserem alleinigen Ermessen"
+    ],
+    "consequence": "Bei Kündigung endet Ihr Recht zur Nutzung des Service sofort. Nicht verwendete Guthaben verfallen, es sei denn, das Gesetz sieht etwas anderes vor."
+  },
+  "governingLaw": {
+    "title": "13. Geltendes Recht",
+    "description": "Diese Bedingungen unterliegen den Gesetzen der Gerichtsbarkeit, in der wir tätig sind, ohne Berücksichtigung von Kollisionsrecht. Streitigkeiten werden in den Gerichten dieser Gerichtsbarkeit gelöst."
+  },
+  "severability": {
+    "title": "14. Salvatorische Klausel",
+    "description": "Sollte eine Bestimmung dieser Bedingungen als undurchsetzbar erwiesen werden, bleiben die übrigen Bestimmungen in vollem Umfang in Kraft."
+  },
+  "contact": {
+    "title": "15. Kontakt",
+    "intro": "Für Fragen zu diesen Bedingungen:",
+    "emailLabel": "E-Mail:",
+    "email": "{{LEGAL_EMAIL}}"
+  },
+  "nav": {
+    "blog": "Blog"
+  }
+}

@@ -12,7 +12,9 @@ interface ILayoutProps {
 
 export const Layout = ({ children }: ILayoutProps): JSX.Element => {
   const pathname = usePathname();
-  const isDashboard = pathname?.startsWith('/dashboard');
+  // Check for dashboard routes with or without locale prefix (e.g., /dashboard or /en/dashboard)
+  const segments = pathname?.split('/').filter(Boolean);
+  const isDashboard = segments?.[0] === 'dashboard' || segments?.[1] === 'dashboard';
 
   // Dashboard has its own layout, so skip the main wrapper
   if (isDashboard) {

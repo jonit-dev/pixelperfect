@@ -55,10 +55,15 @@ export interface IPSEOPageViewProperties extends IPageViewProperties {
     | 'comparison'
     | 'guide'
     | 'useCase'
+    | 'use-case'
     | 'alternative'
     | 'format'
     | 'scale'
-    | 'free';
+    | 'free'
+    | 'platform'
+    | 'format-scale'
+    | 'platform-format'
+    | 'device-use';
   slug: string;
   primaryKeyword?: string;
   tier?: number;
@@ -70,10 +75,15 @@ export interface IPSEOInteractionProperties {
     | 'comparison'
     | 'guide'
     | 'useCase'
+    | 'use-case'
     | 'alternative'
     | 'format'
     | 'scale'
-    | 'free';
+    | 'free'
+    | 'platform'
+    | 'format-scale'
+    | 'platform-format'
+    | 'device-use';
   slug: string;
   elementType: 'cta' | 'faq' | 'feature' | 'benefit' | 'usecase' | 'internal_link';
   elementId?: string;
@@ -85,10 +95,15 @@ export interface IPSEOScrollProperties {
     | 'comparison'
     | 'guide'
     | 'useCase'
+    | 'use-case'
     | 'alternative'
     | 'format'
     | 'scale'
-    | 'free';
+    | 'free'
+    | 'platform'
+    | 'format-scale'
+    | 'platform-format'
+    | 'device-use';
   slug: string;
   depth: 25 | 50 | 75 | 100;
   timeToDepthMs: number;

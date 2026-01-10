@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDeviceUseData, getAllDeviceUseSlugs } from '@/lib/seo/data-loader';
-import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { DeviceUsePageTemplate } from '@/app/(pseo)/_components/pseo/templates/DeviceUsePageTemplate';
+import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
+import { HreflangLinks } from '@client/components/seo/HreflangLinks';
+import { SeoMetaTags } from '@client/components/seo/SeoMetaTags';
+import { getCanonicalUrl } from '@/lib/seo/hreflang-generator';
+import { clientEnv } from '@shared/config/env';
 
 interface IDeviceUsePageProps {
   params: Promise<{ slug: string }>;
@@ -18,7 +23,30 @@ export async function generateMetadata({ params }: IDeviceUsePageProps): Promise
 
   if (!deviceUse) return {};
 
-  return generatePageMetadata(deviceUse, 'device-use');
+  const path = `/device-use/${slug}`;
+  const canonicalUrl = getCanonicalUrl(path);
+
+  return {
+    title: deviceUse.metaTitle,
+    description: deviceUse.metaDescription,
+    openGraph: {
+      title: deviceUse.metaTitle,
+      description: deviceUse.metaDescription,
+      type: 'website',
+      url: canonicalUrl,
+      siteName: clientEnv.APP_NAME,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: deviceUse.metaTitle,
+      description: deviceUse.metaDescription,
+      creator: `@${clientEnv.TWITTER_HANDLE}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 }
 
 export default async function DeviceUsePage({ params }: IDeviceUsePageProps) {
@@ -29,13 +57,30 @@ export default async function DeviceUsePage({ params }: IDeviceUsePageProps) {
     notFound();
   }
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: deviceUse.metaTitle,
+    description: deviceUse.metaDescription,
+    url: `${clientEnv.BASE_URL}/device-use/${slug}`,
+    inLanguage: 'en',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: clientEnv.APP_NAME,
+      url: clientEnv.BASE_URL,
+    },
+  };
+
+  const path = `/device-use/${slug}`;
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-6">{deviceUse.h1}</h1>
-      <p className="text-xl text-gray-600 mb-8">{deviceUse.intro}</p>
-      <div className="bg-surface-light p-8 rounded-lg">
-        <p className="text-gray-700">Device × Use Case content coming soon...</p>
-      </div>
-    </div>
+    <>
+      {/* SEO meta tags - canonical and og:locale */}
+      <SeoMetaTags path={path} locale="en" />
+      {/* Hreflang links for multi-language SEO */}
+      <HreflangLinks path={path} />
+      <SchemaMarkup schema={schema} />
+      <DeviceUsePageTemplate data={deviceUse} locale="en" />
+    </>
   );
 }

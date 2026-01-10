@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "Terms of Service",
+    "description": "Read the terms and conditions for using {{APP_NAME}} image upscaling and enhancement services."
+  },
+  "lastUpdated": "Last updated: {{date}}",
+  "title": "Terms of Service",
+  "viewPrivacy": "View Privacy Policy",
+  "acceptance": {
+    "title": "1. Acceptance of Terms",
+    "paragraph1": "By accessing or using {{APP_NAME}} (\"Service\"), you agree to be bound by these Terms of Service (\"Terms\"). If you do not agree to these Terms, you may not use the Service.",
+    "paragraph2": "We reserve the right to modify these Terms at any time. Continued use of the Service after changes constitutes acceptance of the modified Terms."
+  },
+  "description": {
+    "title": "2. Description of Service",
+    "intro": "{{APP_NAME}} provides AI-powered image upscaling and enhancement services. The Service allows users to:",
+    "features": [
+      "Upload images for AI-powered enhancement",
+      "Upscale images to higher resolutions (2x, 4x)",
+      "Improve image quality while preserving text and logos",
+      "Download processed images"
+    ]
+  },
+  "registration": {
+    "title": "3. Account Registration",
+    "intro": "To use certain features, you must:",
+    "requirements": [
+      "Create an account with accurate information",
+      "Maintain the security of your account credentials",
+      "Notify us immediately of unauthorized access",
+      "Be at least 13 years old (or the minimum age in your jurisdiction)"
+    ],
+    "responsibility": "You are responsible for all activities under your account."
+  },
+  "credits": {
+    "title": "4. Credits and Payments",
+    "system": {
+      "title": "4.1 Credit System",
+      "description": "The Service operates on a credit-based system. Each image processing action consumes credits based on the operation type and image size."
+    },
+    "free": {
+      "title": "4.2 Free Credits",
+      "description": "New users receive 10 free credits upon registration. Free credits are subject to our standard Terms and may be modified or discontinued at any time."
+    },
+    "subscription": {
+      "title": "4.3 Subscription Credits",
+      "features": [
+        "Subscription credits renew monthly and roll over (up to 6× your monthly credit allowance)",
+        "Credits are only available while your subscription is active",
+        "All subscriptions are processed through Stripe",
+        "Prices are in USD unless otherwise stated"
+      ]
+    },
+    "refunds": {
+      "title": "4.4 Refunds",
+      "intro": "Due to the nature of digital services, refunds are generally not provided for used credits. However, we may issue refunds at our discretion for:",
+      "reasons": [
+        "Technical failures that result in lost credits",
+        "Duplicate charges",
+        "Service unavailability"
+      ],
+      "contact": "For refund requests, contact",
+      "email": "{{SUPPORT_EMAIL}}"
+    }
+  },
+  "subscriptions": {
+    "title": "5. Subscriptions",
+    "terms": [
+      "Subscriptions automatically renew at the end of each billing period",
+      "You may cancel at any time through your account settings or Stripe portal",
+      "Cancellation takes effect at the end of the current billing period",
+      "No prorated refunds for partial billing periods",
+      "We may change subscription prices with 30 days notice; continued use constitutes acceptance"
+    ]
+  },
+  "acceptableUse": {
+    "title": "6. Acceptable Use",
+    "intro": "You agree NOT to use the Service to:",
+    "prohibitions": [
+      "Process illegal, harmful, or offensive content",
+      "Process images you do not have rights to use",
+      "Generate or enhance content depicting minors in inappropriate ways",
+      "Create deepfakes or misleading content intended to deceive",
+      "Violate intellectual property rights of others",
+      "Attempt to reverse-engineer or exploit the Service",
+      "Use automated systems to abuse the Service",
+      "Circumvent usage limits or security measures",
+      "Resell or redistribute the Service without authorization"
+    ],
+    "consequence": "Violation of these terms may result in immediate account termination without refund."
+  },
+  "intellectualProperty": {
+    "title": "7. Intellectual Property",
+    "yourContent": {
+      "title": "7.1 Your Content",
+      "description": "You retain all rights to images you upload. By using the Service, you grant us a limited license to process your images solely for providing the requested service."
+    },
+    "ourService": {
+      "title": "7.2 Our Service",
+      "description": "{{APP_NAME}}, including its technology, branding, and content, is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission."
+    }
+  },
+  "availability": {
+    "title": "8. Service Availability",
+    "intro": "We strive for high availability but:",
+    "limitations": [
+      "The Service is provided \"as is\" without guarantees",
+      "We may perform maintenance with or without notice",
+      "Processing times may vary based on demand",
+      "We reserve the right to modify or discontinue features"
+    ]
+  },
+  "limitation": {
+    "title": "9. Limitation of Liability",
+    "intro": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, {{APP_NAME}} SHALL NOT BE LIABLE FOR:",
+    "exclusions": [
+      "Indirect, incidental, special, or consequential damages",
+      "Loss of profits, data, or business opportunities",
+      "Service interruptions or data loss",
+      "Actions of third parties"
+    ],
+    "cap": "Our total liability shall not exceed the amount you paid us in the 12 months preceding the claim."
+  },
+  "disclaimer": {
+    "title": "10. Disclaimer of Warranties",
+    "intro": "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:",
+    "exclusions": [
+      "Merchantability",
+      "Fitness for a particular purpose",
+      "Non-infringement",
+      "Accuracy or reliability of results"
+    ],
+    "caveat": "AI-generated enhancements may not always meet expectations. Results depend on input image quality and other factors."
+  },
+  "indemnification": {
+    "title": "11. Indemnification",
+    "description": "You agree to indemnify and hold harmless {{APP_NAME}} and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the Service, violation of these Terms, or infringement of any third-party rights."
+  },
+  "termination": {
+    "title": "12. Termination",
+    "intro": "We may suspend or terminate your account at any time for:",
+    "reasons": [
+      "Violation of these Terms",
+      "Fraudulent or illegal activity",
+      "Non-payment",
+      "Extended inactivity",
+      "Any other reason at our sole discretion"
+    ],
+    "consequence": "Upon termination, your right to use the Service ceases immediately. Unused credits are forfeited unless otherwise required by law."
+  },
+  "governingLaw": {
+    "title": "13. Governing Law",
+    "description": "These Terms shall be governed by the laws of the jurisdiction in which we operate, without regard to conflict of law provisions. Any disputes shall be resolved in the courts of that jurisdiction."
+  },
+  "severability": {
+    "title": "14. Severability",
+    "description": "If any provision of these Terms is found unenforceable, the remaining provisions shall remain in full force and effect."
+  },
+  "contact": {
+    "title": "15. Contact",
+    "intro": "For questions about these Terms:",
+    "emailLabel": "Email:",
+    "email": "{{LEGAL_EMAIL}}"
+  }
+}

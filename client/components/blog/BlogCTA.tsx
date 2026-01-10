@@ -15,6 +15,7 @@ import { ArrowRight, Zap, Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactElement } from 'react';
+import { useTranslations } from 'next-intl';
 
 export type BlogCTAType = 'try' | 'demo' | 'pricing' | 'tool';
 
@@ -30,44 +31,12 @@ interface IBlogCTAProps {
   toolName?: string;
 }
 
-const CTA_CONTENT: Record<
-  BlogCTAType,
-  { title: string; description: string; buttonText: string; href: string }
-> = {
-  try: {
-    title: 'Try It Yourself',
-    description:
-      'Upload your image and see the AI enhancement in action. Start with 10 free credits.',
-    buttonText: 'Try Free Now',
-    href: '/?signup=1',
-  },
-  demo: {
-    title: 'See the Difference',
-    description:
-      'Experience crystal-clear upscaling that preserves text, logos, and fine details.',
-    buttonText: 'Upload Your Image',
-    href: '/?signup=1',
-  },
-  pricing: {
-    title: 'Ready to Transform Your Images?',
-    description:
-      'Start with 10 free credits. No credit card required. Cancel anytime.',
-    buttonText: 'View Pricing',
-    href: '/pricing',
-  },
-  tool: {
-    title: 'Upscale Your Images Now',
-    description: 'AI-powered enhancement in 30 seconds. Keep text sharp.',
-    buttonText: 'Try Free',
-    href: '/?signup=1',
-  },
+const CTA_HREF: Record<BlogCTAType, string> = {
+  try: '/?signup=1',
+  demo: '/?signup=1',
+  pricing: '/pricing',
+  tool: '/?signup=1',
 };
-
-const TRUST_INDICATORS = [
-  '10 free credits',
-  'Quick signup',
-  'Instant results',
-];
 
 export function BlogCTA({
   type,
@@ -76,21 +45,45 @@ export function BlogCTA({
   toolSlug,
   toolName,
 }: IBlogCTAProps): ReactElement {
-  const content = CTA_CONTENT[type];
-  const displayTitle = title || content.title;
-  const displayDescription = description || content.description;
-  const href = toolSlug ? `/tools/${toolSlug}` : content.href;
-  const buttonText = toolName ? `Try ${toolName} Free` : content.buttonText;
+  const t = useTranslations('blog.cta');
+  const trustIndicators = t.raw('trustIndicators') as string[];
+
+  const displayTitle = title || t(`${type}.title`);
+  const displayDescription = description || t(`${type}.description`);
+  const href = toolSlug ? `/tools/${toolSlug}` : CTA_HREF[type];
+  const buttonText = toolName ? `Try ${toolName} Free` : t(`${type}.button`);
 
   if (type === 'try' || type === 'tool') {
-    return <InlineCTA title={displayTitle} description={displayDescription} buttonText={buttonText} href={href} />;
+    return (
+      <InlineCTA
+        title={displayTitle}
+        description={displayDescription}
+        buttonText={buttonText}
+        href={href}
+      />
+    );
   }
 
   if (type === 'demo') {
-    return <DemoCTA title={displayTitle} description={displayDescription} buttonText={buttonText} href={href} />;
+    return (
+      <DemoCTA
+        title={displayTitle}
+        description={displayDescription}
+        buttonText={buttonText}
+        href={href}
+      />
+    );
   }
 
-  return <FullCTA title={displayTitle} description={displayDescription} buttonText={buttonText} href={href} />;
+  return (
+    <FullCTA
+      title={displayTitle}
+      description={displayDescription}
+      buttonText={buttonText}
+      href={href}
+      trustIndicators={trustIndicators}
+    />
+  );
 }
 
 /** Inline CTA - Compact with logo, fits within content flow */
@@ -153,6 +146,8 @@ function DemoCTA({
   buttonText: string;
   href: string;
 }): ReactElement {
+  const t = useTranslations('blog.cta.demo');
+
   return (
     <div className="not-prose my-10 rounded-2xl overflow-hidden border border-border bg-surface">
       <div className="p-6 sm:p-8">
@@ -175,15 +170,15 @@ function DemoCTA({
         <div className="flex flex-wrap gap-4 mb-6">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Check className="w-4 h-4 text-success" />
-            <span>2x - 4x upscaling</span>
+            <span>{t('feature2x4x')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Check className="w-4 h-4 text-success" />
-            <span>Text preservation</span>
+            <span>{t('featureText')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Check className="w-4 h-4 text-success" />
-            <span>30 second processing</span>
+            <span>{t('featureSpeed')}</span>
           </div>
         </div>
 
@@ -206,11 +201,13 @@ function FullCTA({
   description,
   buttonText,
   href,
+  trustIndicators,
 }: {
   title: string;
   description: string;
   buttonText: string;
   href: string;
+  trustIndicators: string[];
 }): ReactElement {
   return (
     <div className="not-prose my-12 rounded-2xl overflow-hidden relative">
@@ -233,9 +230,7 @@ function FullCTA({
         </div>
 
         <div className="text-center">
-          <h3 className="font-bold text-white text-2xl sm:text-3xl mb-4">
-            {title}
-          </h3>
+          <h3 className="font-bold text-white text-2xl sm:text-3xl mb-4">{title}</h3>
           <p className="text-white/80 mb-8 max-w-lg mx-auto">{description}</p>
 
           <Link
@@ -249,7 +244,7 @@ function FullCTA({
 
           {/* Trust indicators */}
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-white/70">
-            {TRUST_INDICATORS.map(indicator => (
+            {trustIndicators.map(indicator => (
               <div key={indicator} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-white/80" />
                 <span>{indicator}</span>
@@ -266,9 +261,7 @@ function FullCTA({
  * Parses CTA markers from markdown content and returns the CTA type.
  * Markers: [!CTA_TRY], [!CTA_DEMO], [!CTA_PRICING], [!CTA_TOOL:slug]
  */
-export function parseCTAMarker(
-  text: string
-): { type: BlogCTAType; toolSlug?: string } | null {
+export function parseCTAMarker(text: string): { type: BlogCTAType; toolSlug?: string } | null {
   const trimmed = text.trim();
 
   if (trimmed.match(/^\[!CTA_TRY\]$/)) return { type: 'try' };

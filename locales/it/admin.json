@@ -1,0 +1,135 @@
+{
+  "aria": {
+    "userActions": "Azioni utente"
+  },
+  "users": {
+    "title": "Utenti",
+    "searchPlaceholder": "Cerca per email...",
+    "table": {
+      "email": "E-mail",
+      "role": "Ruolo",
+      "credits": "Crediti",
+      "subscription": "Abbonamento",
+      "joined": "Iscritto il",
+      "actions": "Azioni",
+      "free": "Gratuito"
+    },
+    "loading": "Caricamento...",
+    "noUsersFound": "Nessun utente trovato",
+    "error": "Impossibile caricare gli utenti",
+    "viewDetails": "Visualizza dettagli",
+    "removeAdmin": "Rimuovi amministratore",
+    "makeAdmin": "Rendi amministratore",
+    "adjustCredits": "Modifica crediti",
+    "changeSubscription": "Cambia abbonamento",
+    "deleteUser": "Elimina utente",
+    "grantAdminTitle": "Concedi accesso amministratore",
+    "removeAdminTitle": "Rimuovi accesso amministratore",
+    "grantAdminButton": "Concedi admin",
+    "removeAdminButton": "Rimuovi admin",
+    "deleteUserTitle": "Elimina utente",
+    "deleteUserButton": "Elimina utente",
+    "pagination": {
+      "showing": "Visualizzazione da {from} a {to} di {total}",
+      "pageOf": "Pagina {current} di {total}"
+    }
+  },
+  "admin": {
+    "setCredits": "Imposta crediti",
+    "current": "Attuale:",
+    "creditsBalance": "Saldo crediti",
+    "free": "Gratuito",
+    "save": "Salva",
+    "saving": "Salvataggio...",
+    "processing": "Elaborazione...",
+    "cancel": "Annulla",
+    "failedToLoad": "Impossibile caricare i dati dell'abbonamento",
+    "failedToUpdate": "Impossibile aggiornare l'abbonamento",
+    "failedToDelete": "Impossibile eliminare l'utente",
+    "failedToSetCredits": "Impossibile impostare i crediti",
+    "failedToUpdateRole": "Impossibile aggiornare il ruolo",
+    "immediatelyCancel": "Questo annullerà l\"abbonamento Stripe immediatamente. L\"utente perderà l\"accesso.",
+    "removeAccess": "Questo rimuoverà l\"accesso all\"abbonamento dal profilo utente.",
+    "changeToPlan": "Questo cambierà l\"abbonamento Stripe in {planName}. La fatturazione sarà proporzionata.",
+    "grantAccessWithoutStripe": "Questo concederà l\"accesso {planName} SENZA creare un abbonamento Stripe. Usare solo per omaggi o test.",
+    "warning": "Attenzione:",
+    "irreversible": "Questa azione è irreversibile. Tutti i dati utente inclusi crediti, abbonamenti e cronologia delle transazioni verranno eliminati permanentemente.",
+    "typeEmailToConfirm": "Digita <span class=\"font-mono text-error\">{email}</span> per confermare",
+    "profileTier": "Livello profilo:",
+    "stripeStatus": "Stato Stripe:",
+    "noSubscription": "Nessun abbonamento",
+    "renews": "Si rinnova:",
+    "changeTo": "Cambia in",
+    "manageSubscription": "Gestisci abbonamento"
+  },
+  "userDetail": {
+    "title": "Dettagli utente",
+    "backToUsers": "Torna agli utenti",
+    "loading": "Caricamento dettagli utente...",
+    "error": "Impossibile caricare l\"utente",
+    "userNotFound": "Utente non trovato",
+    "profile": "Profilo",
+    "credits": "Crediti",
+    "subscription": {
+      "status": "Stato",
+      "tier": "Livello",
+      "periodEnd": "Fine periodo",
+      "subscriptionId": "ID abbonamento",
+      "unknown": "Sconosciuto",
+      "noActiveSubscription": "Nessun abbonamento attivo"
+    },
+    "fields": {
+      "email": "E-mail",
+      "userId": "ID utente",
+      "stripeCustomerId": "ID cliente Stripe",
+      "notConnected": "Non connesso",
+      "role": "Ruolo",
+      "user": "Utente",
+      "admin": "Amministratore",
+      "joined": "Iscritto il"
+    },
+    "adjustCredits": {
+      "title": "Modifica crediti",
+      "amount": "Importo (positivo per aggiungere, negativo per rimuovere)",
+      "amountPlaceholder": "es., 50 o -20",
+      "reason": "Motivo",
+      "reasonPlaceholder": "es., Compensazione assistenza clienti",
+      "currentBalance": "Attuale: {current}",
+      "newBalance": "Nuovo: {new}",
+      "previewBalance": "Attuale: {current} → Nuovo: {new}",
+      "cancel": "Annulla",
+      "saving": "Salvataggio...",
+      "adjustCredits": "Modifica crediti",
+      "error": "Impossibile modificare i crediti"
+    },
+    "recentTransactions": {
+      "title": "Transazioni recenti",
+      "noTransactions": "Nessuna transazione"
+    },
+    "errors": {
+      "failedToLoadUser": "Impossibile caricare l\"utente",
+      "failedToUpdateRole": "Impossibile aggiornare il ruolo",
+      "anErrorOccurred": "Si è verificato un errore"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard amministratore",
+    "stats": {
+      "totalUsers": "Utenti totali",
+      "activeSubscriptions": "Abbonamenti attivi",
+      "creditsIssued": "Crediti emessi",
+      "creditsUsed": "Crediti utilizzati"
+    },
+    "quickActions": "Azioni rapide",
+    "manageUsers": "Gestisci utenti",
+    "manageUsersDescription": "Visualizza e modifica gli account utente",
+    "manageSubscriptions": "Gestisci abbonamenti",
+    "manageSubscriptionsDescription": "Visualizza e modifica gli abbonamenti (Prossimamente)",
+    "creditOperations": "Operazioni crediti",
+    "creditOperationsDescription": "Modifica i crediti utente (Disponibile nei dettagli utente)",
+    "recentActivity": "Attività recente",
+    "activityFeedComingSoon": "Il feed di attività sarà implementato in una futura iterazione.",
+    "loadingStats": "Caricamento statistiche...",
+    "errorLoadingStats": "Errore nel caricamento delle statistiche"
+  }
+}

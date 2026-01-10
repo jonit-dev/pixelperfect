@@ -19,12 +19,14 @@ import { cn } from '@client/utils/cn';
 import { downloadSingle } from '@client/utils/download';
 import { CheckCircle2, Image, Layers, List, Loader2, Settings, Wand2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { BatchLimitModal } from './BatchLimitModal';
 import { UpgradeSuccessBanner } from './UpgradeSuccessBanner';
 
 type MobileTab = 'upload' | 'preview' | 'queue';
 
 const Workspace: React.FC = () => {
+  const t = useTranslations('workspace');
   // Hook managing all queue state
   const {
     queue,
@@ -86,17 +88,17 @@ const Workspace: React.FC = () => {
 
     errorItems.forEach(item => {
       if (item.error && !globalErrors.some(error => error.id === item.id)) {
-        let errorTitle = 'Processing Error';
+        let errorTitle = t('workspace.errors.title');
 
         if (item.error?.toLowerCase().includes('insufficient credits')) {
-          errorTitle = 'Insufficient Credits';
+          errorTitle = t('workspace.errors.insufficientCredits');
         } else if (item.error?.toLowerCase().includes('timeout')) {
-          errorTitle = 'Request Timeout';
+          errorTitle = t('workspace.errors.requestTimeout');
         } else if (
           item.error?.toLowerCase().includes('server error') ||
           item.error?.toLowerCase().includes('ai service')
         ) {
-          errorTitle = 'Server Error';
+          errorTitle = t('workspace.errors.serverError');
         }
 
         setGlobalErrors(prev => [
@@ -133,7 +135,8 @@ const Workspace: React.FC = () => {
       setDownloadError(null);
       await downloadSingle(url, filename, config.qualityTier);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to download image';
+      const errorMessage =
+        error instanceof Error ? error.message : t('workspace.downloadError.title');
       setDownloadError(errorMessage);
       console.error('Download error:', error);
     }
@@ -161,14 +164,18 @@ const Workspace: React.FC = () => {
             <Dropzone onFilesSelected={addFiles} />
             <div className="mt-8 flex justify-center gap-8 text-text-muted flex-wrap">
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-secondary" /> 5MB free limit
+                <CheckCircle2 size={16} className="text-secondary" />{' '}
+                {t('workspace.features.freeLimit')}
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-secondary" /> No Watermark
+                <CheckCircle2 size={16} className="text-secondary" />{' '}
+                {t('workspace.features.noWatermark')}
               </div>
               <div className="flex items-center gap-2 text-accent">
-                <Layers size={16} /> Batch{' '}
-                {batchLimit === 1 ? 'Upgrade Required' : `Up to ${batchLimit} images`}
+                <Layers size={16} /> {t('workspace.features.batch')}{' '}
+                {batchLimit === 1
+                  ? t('workspace.features.upgradeRequired')
+                  : t('workspace.features.upToImages', { count: batchLimit })}
               </div>
             </div>
           </div>

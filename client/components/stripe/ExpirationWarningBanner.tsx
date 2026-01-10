@@ -6,6 +6,7 @@ import { getPlanByPriceId, shouldSendExpirationWarning } from '@shared/config/su
 import { differenceInDays, format } from 'date-fns';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface IExpirationWarningBannerProps {
   /**
@@ -28,6 +29,7 @@ interface IExpirationWarningBannerProps {
 export function ExpirationWarningBanner({
   warningDays = 7,
 }: IExpirationWarningBannerProps): JSX.Element | null {
+  const t = useTranslations();
   const [profile, setProfile] = useState<IUserProfile | null>(null);
   const [subscription, setSubscription] = useState<ISubscription | null>(null);
   const [loading, setLoading] = useState(true);
@@ -133,7 +135,7 @@ export function ExpirationWarningBanner({
               isUrgent ? 'text-error' : isModerate ? 'text-warning' : 'text-info'
             }`}
           >
-            {isUrgent ? 'Credits Expiring Soon!' : 'Credits Will Expire'}
+            {isUrgent ? t('stripe.banner.expirationUrgent') : t('stripe.banner.expirationModerate')}
           </h3>
           <p
             className={`text-sm ${
@@ -146,10 +148,10 @@ export function ExpirationWarningBanner({
             </strong>{' '}
             will expire on <strong>{formattedDate}</strong>
             {daysUntilExpiration === 0
-              ? ' (today)'
+              ? ` ${t('stripe.banner.timeRemainder.today')}`
               : daysUntilExpiration === 1
-                ? ' (tomorrow)'
-                : ` (in ${daysUntilExpiration} days)`}
+                ? ` ${t('stripe.banner.timeRemainder.tomorrow')}`
+                : ` ${t('stripe.banner.timeRemainder.days', { days: daysUntilExpiration })}`}
             . Use them before they&apos;re gone!
           </p>
           <div className="mt-2">
@@ -159,7 +161,7 @@ export function ExpirationWarningBanner({
                 isUrgent ? 'text-error/70' : isModerate ? 'text-warning/70' : 'text-info/70'
               }`}
             >
-              Start upscaling now
+              {t('stripe.banner.startUpscaling')}
               <svg
                 className="h-4 w-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +188,7 @@ export function ExpirationWarningBanner({
             }
           }}
           className="flex-shrink-0 text-muted-foreground hover:text-muted-foreground transition-colors"
-          aria-label="Dismiss"
+          aria-label={t('stripe.banner.aria.dismiss')}
         >
           <svg
             className="h-5 w-5"

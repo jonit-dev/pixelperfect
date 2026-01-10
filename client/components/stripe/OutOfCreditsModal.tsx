@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { CreditPackSelector } from './CreditPackSelector';
 import { AlertCircle, X } from 'lucide-react';
 
@@ -16,6 +17,7 @@ export function OutOfCreditsModal({
   onPurchaseComplete,
 }: IOutOfCreditsModalProps): JSX.Element | null {
   const [showSubscriptionCTA, setShowSubscriptionCTA] = useState(false);
+  const t = useTranslations('stripe.outOfCredits');
 
   if (!isOpen) return null;
 
@@ -31,6 +33,7 @@ export function OutOfCreditsModal({
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-muted-foreground hover:text-muted-foreground transition-colors"
+            aria-label={t('notNow')}
           >
             <X size={24} />
           </button>
@@ -40,10 +43,8 @@ export function OutOfCreditsModal({
             <div className="mx-auto w-12 h-12 bg-warning/10 rounded-full flex items-center justify-center mb-4">
               <AlertCircle className="h-6 w-6 text-warning" />
             </div>
-            <h2 className="text-2xl font-bold text-primary mb-2">You&apos;re Out of Credits</h2>
-            <p className="text-muted-foreground">
-              Purchase credits to continue processing images, or subscribe for better value.
-            </p>
+            <h2 className="text-2xl font-bold text-primary mb-2">{t('title')}</h2>
+            <p className="text-muted-foreground">{t('description')}</p>
           </div>
 
           {/* Tabs: One-Time vs Subscription */}
@@ -56,7 +57,7 @@ export function OutOfCreditsModal({
                   : 'bg-surface-light text-muted-foreground hover:bg-surface-light'
               }`}
             >
-              Buy Credits
+              {t('buyCredits')}
             </button>
             <button
               onClick={() => setShowSubscriptionCTA(true)}
@@ -66,7 +67,7 @@ export function OutOfCreditsModal({
                   : 'bg-surface-light text-muted-foreground hover:bg-surface-light'
               }`}
             >
-              Subscribe (Best Value)
+              {t('subscribe')}
             </button>
           </div>
 
@@ -83,19 +84,17 @@ export function OutOfCreditsModal({
               />
 
               <div className="mt-4 text-center text-sm text-muted-foreground">
-                Subscribe for up to 58% cheaper credits
+                {t('subscribeNote')}
               </div>
             </>
           ) : (
             <div className="text-center py-8">
-              <p className="text-muted-foreground mb-6">
-                Get monthly credits with automatic rollover, plus 11-58% cheaper per-credit pricing.
-              </p>
+              <p className="text-muted-foreground mb-6">{t('subscribeCta')}</p>
               <a
                 href="/pricing"
                 className="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-colors"
               >
-                View Subscription Plans
+                {t('viewPlans')}
               </a>
             </div>
           )}
@@ -106,7 +105,7 @@ export function OutOfCreditsModal({
               onClick={onClose}
               className="text-sm text-muted-foreground hover:text-muted-foreground transition-colors"
             >
-              Not now
+              {t('notNow')}
             </button>
           </div>
         </div>

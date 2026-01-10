@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { TrendingUp, TrendingDown, Calendar, Info } from 'lucide-react';
 import { StripeService } from '@client/services/stripeService';
 import { getPlanForPriceId } from '@shared/config/stripe';
@@ -61,6 +62,7 @@ export function PlanChangeModal({
   onComplete,
 }: IPlanChangeModalProps): JSX.Element {
   const router = useRouter();
+  const t = useTranslations('stripe.planChange');
   const [preview, setPreview] = useState<IPreviewData | null>(null);
   const [loading, setLoading] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -76,14 +78,13 @@ export function PlanChangeModal({
       const previewData = await StripeService.previewSubscriptionChange(targetPriceId);
       setPreview(previewData);
     } catch (err: unknown) {
-      const errorMessage =
-        err instanceof Error ? err.message : 'Failed to preview subscription change';
+      const errorMessage = t('failedToPreview');
       setError(errorMessage);
       console.error('Preview error:', err);
     } finally {
       setLoading(false);
     }
-  }, [targetPriceId]);
+  }, [targetPriceId, t]);
 
   useEffect(() => {
     if (isOpen && targetPriceId) {
@@ -118,7 +119,7 @@ export function PlanChangeModal({
       onComplete?.();
       router.push(`/subscription/confirmed?${params.toString()}`);
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to change subscription';
+      const errorMessage = t('failedToChange');
       setError(errorMessage);
       console.error('Change error:', err);
     } finally {
@@ -135,7 +136,7 @@ export function PlanChangeModal({
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-surface rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <ModalHeader
-          title={currentPlan ? 'Change Plan' : 'Select Plan'}
+          title={currentPlan ? t('changePlan') : t('selectPlan')}
           icon={Icon}
           iconClassName={isUpgrade ? 'text-success' : 'text-warning'}
           onClose={onClose}
@@ -143,7 +144,7 @@ export function PlanChangeModal({
         />
 
         <div className="p-6">
-          {loading && <LoadingSpinner message="Calculating plan changes..." />}
+          {loading && <LoadingSpinner message={t('calculating')} />}
 
           {error && <ErrorAlert message={error} className="mb-6" />}
 
@@ -153,7 +154,7 @@ export function PlanChangeModal({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {preview.current_plan && (
                   <PlanComparisonCard
-                    title="Current Plan"
+                    title={t('currentPlan')}
                     name={preview.current_plan.name}
                     creditsPerMonth={preview.current_plan.credits_per_month}
                     variant="current"
@@ -161,16 +162,16 @@ export function PlanChangeModal({
                 )}
 
                 <PlanComparisonCard
-                  title="New Plan"
+                  title={t('newPlan')}
                   name={preview.new_plan.name}
                   creditsPerMonth={preview.new_plan.credits_per_month}
                   variant={isUpgrade ? 'upgrade' : 'downgrade'}
                   effectiveText={
                     preview.effective_immediately
-                      ? 'Immediately'
+                      ? t('immediately')
                       : preview.effective_date
                         ? formatDate(preview.effective_date)
-                        : 'Next billing cycle'
+                        : t('nextBilling')
                   }
                 />
               </div>
@@ -186,16 +187,19 @@ export function PlanChangeModal({
                   <div className="flex items-start gap-3">
                     <Calendar className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
                     <div>
-                      <h3 className="font-medium text-primary mb-1">Scheduled Downgrade</h3>
+                      <h3 className="font-medium text-primary mb-1">{t('scheduledDowngrade')}</h3>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Your plan will change to <strong>{preview.new_plan.name}</strong> on{' '}
-                        <strong>{formatDate(preview.effective_date)}</strong>.
+                        {t('scheduledText', {
+                          newPlan: preview.new_plan.name,
+                          effectiveDate: formatDate(preview.effective_date),
+                        })}
                       </p>
                       <div className="flex items-start gap-2 text-sm text-muted-foreground bg-surface/50 rounded p-2">
                         <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
                         <span>
-                          You&apos;ll keep your current {preview.current_plan?.name} plan benefits
-                          until then. No refund or additional charges.
+                          {t('keepBenefits', {
+                            currentPlan: preview.current_plan?.name || '',
+                          })}
                         </span>
                       </div>
                     </div>
@@ -210,7 +214,7 @@ export function PlanChangeModal({
                   className="px-6 py-2 text-muted-foreground bg-surface-light hover:bg-surface-light rounded-lg transition-colors"
                   disabled={changing}
                 >
-                  Cancel
+                  {t('cancel')}
                 </button>
                 <button
                   onClick={handleConfirmChange}
@@ -220,10 +224,10 @@ export function PlanChangeModal({
                   disabled={changing}
                 >
                   {changing
-                    ? 'Processing...'
+                    ? t('processing')
                     : isUpgrade
-                      ? 'Confirm Upgrade'
-                      : 'Schedule Downgrade'}
+                      ? t('confirmUpgrade')
+                      : t('scheduleDowngrade')}
                 </button>
               </div>
             </>

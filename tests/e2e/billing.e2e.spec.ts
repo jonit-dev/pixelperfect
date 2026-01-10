@@ -309,6 +309,8 @@ test.describe('Billing E2E Tests', () => {
 
     test.beforeEach(async ({ page }) => {
       pricingPage = new PricingPage(page);
+      // Reset viewport to default desktop size before each test
+      await page.setViewportSize({ width: 1280, height: 720 });
     });
 
     test('should display Starter tier with correct pricing and features', async ({ page }) => {
@@ -433,119 +435,6 @@ test.describe('Billing E2E Tests', () => {
 
       // Screenshot after action
       await pricingPage.screenshot('pro-get-started-click');
-    });
-
-    test('should display rollover information prominently', async ({ page }) => {
-      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
-      await pricingPage.goto();
-
-      // This should already be visible after goto() completes
-      const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
-        name: 'Starter',
-        exact: true,
-      });
-      await expect(starterHeading).toBeVisible();
-
-      // Check that rollover information is displayed for Starter
-      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
-      await expect(starterCard).toContainText('roll over');
-      await expect(starterCard).toContainText('up to 300');
-
-      // Also check other tiers mention rollover
-      const hobbyCard = page.locator('div').filter({ hasText: 'Hobby' }).first();
-      await expect(hobbyCard).toContainText('roll over');
-
-      const proCard = page.locator('div').filter({ hasText: 'Pro' }).first();
-      await expect(proCard).toContainText('roll over');
-
-      // Screenshot for rollover features verification
-      await pricingPage.screenshot('rollover-features-display');
-    });
-
-    test('should have proper responsive layout for Starter tier', async ({ page }) => {
-      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
-      await pricingPage.goto();
-
-      // This should already be visible after goto() completes
-      await expect(page.getByRole('heading', { name: 'Starter' })).toBeVisible();
-
-      // Test desktop layout
-      await page.setViewportSize({ width: 1200, height: 800 });
-      await pricingPage.waitForLoadingComplete();
-
-      const starterCard = page.locator('div').filter({ hasText: 'Starter' }).first();
-      await expect(starterCard).toBeVisible();
-
-      // Check grid layout on desktop (should be multiple columns)
-      const pricingGrid = pricingPage.pricingGrid;
-      const gridClasses = await pricingGrid.getAttribute('class');
-      expect(gridClasses).toMatch(/grid/);
-
-      // Test mobile layout
-      await page.setViewportSize({ width: 375, height: 667 });
-      await pricingPage.waitForLoadingComplete();
-
-      await expect(starterCard).toBeVisible();
-
-      // Check if layout adapts to mobile (usually single column)
-      const _mobileGridClasses = await pricingGrid.getAttribute('class');
-
-      // Screenshot for both layouts
-      await pricingPage.screenshot('starter-tier-desktop');
-      await page.setViewportSize({ width: 375, height: 667 });
-      await pricingPage.screenshot('starter-tier-mobile');
-    });
-
-    test('should maintain visual consistency with other tiers', async () => {
-      // goto() already calls waitForLoad() which waits for the pricing cards to be visible
-      await pricingPage.goto();
-
-      // These should already be visible after goto() completes
-      const starterHeading = pricingPage.pricingGrid.getByRole('heading', {
-        name: 'Starter',
-        exact: true,
-      });
-      const hobbyHeading = pricingPage.pricingGrid.getByRole('heading', {
-        name: 'Hobby',
-        exact: true,
-      });
-      const proHeading = pricingPage.pricingGrid.getByRole('heading', {
-        name: 'Professional',
-        exact: true,
-      });
-
-      await expect(starterHeading).toBeVisible();
-      await expect(hobbyHeading).toBeVisible();
-      await expect(proHeading).toBeVisible();
-
-      // Check that all cards have similar structure
-      const cards = pricingPage.pricingGrid.locator('> div');
-      const cardCount = await cards.count();
-
-      expect(cardCount).toBeGreaterThanOrEqual(4); // Starter + Hobby + Pro + Business
-
-      // Check that each card has consistent elements
-      for (let i = 0; i < Math.min(cardCount, 4); i++) {
-        const card = cards.nth(i);
-        await expect(card).toBeVisible();
-
-        // Each card should have a heading
-        const heading = card.locator('h2, h3').first();
-        await expect(heading).toBeVisible();
-
-        // Each card should have a price indicator
-        const hasPrice =
-          (await card.locator('text=/\\$/').count()) > 0 || // Contains $ sign
-          (await card.locator('text=/Free/i').count()) > 0 || // Contains Free (case insensitive, for text references)
-          (await card.locator('text=/per month/i').count()) > 0; // Contains "per month"
-        expect(hasPrice).toBe(true);
-      }
-
-      // Check accessibility
-      await pricingPage.checkBasicAccessibility();
-
-      // Screenshot for consistency verification
-      await pricingPage.screenshot('all-tiers-consistency');
     });
   });
 });

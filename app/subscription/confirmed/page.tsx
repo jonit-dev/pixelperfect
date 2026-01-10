@@ -6,6 +6,7 @@ import { CheckCircle, Calendar, CreditCard, ArrowRight, Sparkles } from 'lucide-
 import Link from 'next/link';
 import { getPlanByPriceId } from '@shared/config/subscription.utils';
 import { resolvePlanOrPack } from '@shared/config/stripe';
+import { useTranslations } from 'next-intl';
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
@@ -25,6 +26,7 @@ function formatCurrency(cents: number): string {
 }
 
 function SubscriptionConfirmedContent() {
+  const t = useTranslations('subscription');
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -78,12 +80,10 @@ function SubscriptionConfirmedContent() {
             <CheckCircle className={`w-8 h-8 ${isDowngrade ? 'text-warning' : 'text-success'}`} />
           </div>
           <h1 className="text-2xl font-bold text-primary mb-2">
-            {isDowngrade ? 'Downgrade Scheduled' : 'Upgrade Complete!'}
+            {isDowngrade ? t('confirmed.downgradeScheduled') : t('confirmed.upgradeComplete')}
           </h1>
           <p className="text-muted-foreground">
-            {isDowngrade
-              ? 'Your plan change has been scheduled successfully.'
-              : 'Your plan has been upgraded successfully.'}
+            {isDowngrade ? t('confirmed.downgradeSuccess') : t('confirmed.upgradeSuccess')}
           </p>
         </div>
 
@@ -94,14 +94,16 @@ function SubscriptionConfirmedContent() {
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
-                  {isDowngrade ? 'Current Plan' : 'Previous Plan'}
+                  {isDowngrade ? t('confirmed.currentPlan') : t('confirmed.previousPlan')}
                 </p>
                 <p className="font-semibold text-muted-foreground">
                   {resolvedOldPlan?.name || oldPlan?.name || 'N/A'}
                 </p>
                 {(resolvedOldPlan || oldPlan) && (
                   <p className="text-sm text-muted-foreground">
-                    {resolvedOldPlan?.creditsPerCycle || oldPlan?.creditsPerCycle} credits/mo
+                    {t('confirmed.creditsPerMonth', {
+                      credits: resolvedOldPlan?.creditsPerCycle || oldPlan?.creditsPerCycle || 0,
+                    })}
                   </p>
                 )}
               </div>
@@ -110,13 +112,15 @@ function SubscriptionConfirmedContent() {
 
               <div className="text-center flex-1">
                 <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
-                  {isDowngrade ? 'Scheduled Plan' : 'New Plan'}
+                  {isDowngrade ? t('confirmed.scheduledPlan') : t('confirmed.newPlan')}
                 </p>
                 <p className={`font-semibold ${isDowngrade ? 'text-warning' : 'text-success'}`}>
                   {resolvedNewPlan?.name || newPlan?.name}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle} credits/mo
+                  {t('confirmed.creditsPerMonth', {
+                    credits: resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle,
+                  })}
                 </p>
               </div>
             </div>
@@ -131,10 +135,15 @@ function SubscriptionConfirmedContent() {
                   <Calendar className="w-5 h-5 text-warning mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-primary">
-                      Keep using {resolvedOldPlan?.name || oldPlan?.name || 'Current Plan'} until
+                      {t('confirmed.keepUsingUntil', {
+                        planName:
+                          resolvedOldPlan?.name || oldPlan?.name || t('confirmed.currentPlan'),
+                      })}
                     </p>
                     <p className="text-lg font-semibold text-warning">
-                      {effectiveDate ? formatDate(effectiveDate) : 'End of billing period'}
+                      {effectiveDate
+                        ? formatDate(effectiveDate)
+                        : t('confirmed.endOfBillingPeriod')}
                     </p>
                   </div>
                 </div>
@@ -142,27 +151,31 @@ function SubscriptionConfirmedContent() {
                 <div className="flex items-start gap-3 p-4 bg-surface rounded-lg">
                   <CreditCard className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-primary">No charges today</p>
+                    <p className="font-medium text-primary">{t('confirmed.noChargesToday')}</p>
                     <p className="text-sm text-muted-foreground">
-                      Your next bill will be {formatCurrency(newPlan?.priceInCents || 0)}/month for
-                      the {resolvedNewPlan?.name || newPlan?.name} plan.
+                      {t('confirmed.nextBillWillBe', {
+                        amount: formatCurrency(newPlan?.priceInCents || 0),
+                        planName: resolvedNewPlan?.name || newPlan?.name,
+                      })}
                     </p>
                   </div>
                 </div>
 
                 <div className="text-sm text-muted-foreground bg-accent/10 p-4 rounded-lg">
-                  <p className="font-medium text-primary mb-1">What happens next?</p>
+                  <p className="font-medium text-primary mb-1">{t('confirmed.whatHappensNext')}</p>
                   <ul className="space-y-1 list-disc list-inside">
                     <li>
-                      Continue using all {resolvedOldPlan?.name || oldPlan?.name || 'Current'}{' '}
-                      features until the change date
+                      {t('confirmed.continueUsingFeatures', {
+                        planName:
+                          resolvedOldPlan?.name || oldPlan?.name || t('confirmed.currentPlan'),
+                      })}
                     </li>
                     <li>
-                      Your credits will reset to{' '}
-                      {resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0} on the
-                      change date
+                      {t('confirmed.creditsWillReset', {
+                        credits: resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0,
+                      })}
                     </li>
-                    <li>You can cancel this change anytime before it takes effect</li>
+                    <li>{t('confirmed.cancelChangeAnytime')}</li>
                   </ul>
                 </div>
               </>
@@ -172,11 +185,11 @@ function SubscriptionConfirmedContent() {
                 <div className="flex items-start gap-3 p-4 bg-success/20 rounded-lg">
                   <Sparkles className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-primary">Your new plan is active now!</p>
+                    <p className="font-medium text-primary">{t('confirmed.newPlanActive')}</p>
                     <p className="text-sm text-muted-foreground">
-                      You now have access to{' '}
-                      {resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0} credits
-                      per month.
+                      {t('confirmed.accessToCredits', {
+                        credits: resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0,
+                      })}
                     </p>
                   </div>
                 </div>
@@ -185,25 +198,30 @@ function SubscriptionConfirmedContent() {
                   <div className="flex items-start gap-3 p-4 bg-surface rounded-lg">
                     <CreditCard className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-primary">Prorated charge</p>
+                      <p className="font-medium text-primary">{t('confirmed.proratedCharge')}</p>
                       <p className="text-sm text-muted-foreground">
                         {Number(prorationAmount) > 0
-                          ? `You were charged ${formatCurrency(Number(prorationAmount))} for the remainder of this billing period.`
-                          : `You received a ${formatCurrency(Math.abs(Number(prorationAmount)))} credit for unused time.`}
+                          ? t('confirmed.chargedForRemainder', {
+                              amount: formatCurrency(Number(prorationAmount)),
+                            })
+                          : t('confirmed.creditForUnusedTime', {
+                              amount: formatCurrency(Math.abs(Number(prorationAmount))),
+                            })}
                       </p>
                     </div>
                   </div>
                 )}
 
                 <div className="text-sm text-muted-foreground bg-accent/10 p-4 rounded-lg">
-                  <p className="font-medium text-primary mb-1">What&apos;s included?</p>
+                  <p className="font-medium text-primary mb-1">{t('confirmed.whatsIncluded')}</p>
                   <ul className="space-y-1 list-disc list-inside">
                     <li>
-                      {resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0} credits
-                      per month
+                      {t('confirmed.creditsPerMonthIncluded', {
+                        credits: resolvedNewPlan?.creditsPerCycle || newPlan?.creditsPerCycle || 0,
+                      })}
                     </li>
-                    <li>Credits refresh at the start of each billing cycle</li>
-                    <li>Unused credits don&apos;t roll over</li>
+                    <li>{t('confirmed.creditsRefreshStart')}</li>
+                    <li>{t('confirmed.unusedCreditsDontRollover')}</li>
                   </ul>
                 </div>
               </>
@@ -217,13 +235,13 @@ function SubscriptionConfirmedContent() {
                 href="/dashboard"
                 className="flex-1 px-4 py-2.5 bg-accent text-white text-center font-medium rounded-lg hover:bg-accent-hover transition-colors"
               >
-                Go to Dashboard
+                {t('confirmed.goToDashboard')}
               </Link>
               <Link
                 href="/pricing"
                 className="flex-1 px-4 py-2.5 bg-surface text-muted-foreground text-center font-medium rounded-lg border border-border hover:bg-surface transition-colors"
               >
-                View Plans
+                {t('confirmed.viewPlans')}
               </Link>
             </div>
           </div>
@@ -231,9 +249,9 @@ function SubscriptionConfirmedContent() {
 
         {/* Help Link */}
         <p className="text-center text-sm text-muted-foreground mt-6">
-          Questions?{' '}
+          {t('confirmed.questions')}{' '}
           <Link href="/help" className="text-accent hover:text-accent-hover">
-            Contact support
+            {t('confirmed.contactSupport')}
           </Link>
         </p>
       </div>
@@ -242,11 +260,12 @@ function SubscriptionConfirmedContent() {
 }
 
 function LoadingFallback() {
+  const t = useTranslations('common');
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-        <p className="text-muted-foreground">Loading...</p>
+        <p className="text-muted-foreground">{t('loading')}</p>
       </div>
     </div>
   );

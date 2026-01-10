@@ -1,0 +1,275 @@
+{
+  "dropzone": {
+    "dropToUpload": "Arraste para fazer upload",
+    "clickOrDrag": "Clique ou arraste imagens",
+    "supportedFormats": "Suporte para JPG, PNG, WEBP e HEIC",
+    "limits": "Até {size} por arquivo • Máximo {n} arquivos por vez",
+    "selectedCount": "{n} arquivo(s) selecionado(s)",
+    "selectedTitle": "Arquivos Selecionados ({n})",
+    "clearAll": "Limpar Tudo",
+    "removeFile": "Remover arquivo",
+    "errors": {
+      "invalidType": "Tipo de arquivo inválido: {type}. Permitidos: {types}",
+      "fileTooLarge": "Arquivo muito grande: {name} ({size} > {limit})",
+      "maxFiles": "Máximo de {n} arquivos permitidos. Você tem {count}, tentando adicionar {attempted}."
+    }
+  },
+  "common": {
+    "width": "Largura",
+    "height": "Altura",
+    "quality": "Qualidade",
+    "format": "Formato",
+    "outputFormat": "Formato de Saída",
+    "pixels": "pixels",
+    "inches": "polegadas",
+    "auto": "Automático",
+    "processing": "Processando...",
+    "download": "Baixar",
+    "remove": "Remover",
+    "cancel": "Cancelar",
+    "retry": "Tentar Novamente",
+    "reset": "Redefinir",
+    "clear": "Limpar",
+    "select": "Selecionar",
+    "choosePreset": "Escolha uma predefinição...",
+    "maintainAspectRatio": "Manter proporção",
+    "originalSize": "Tamanho Original",
+    "newSize": "Novo Tamanho",
+    "originalImage": "Imagem Original",
+    "preview": "Visualização",
+    "settings": "Configurações"
+  },
+  "printCalculator": {
+    "dpiOptions": {
+      "72": "72 DPI (apenas tela)",
+      "150": "150 DPI (formato grande / pôsteres)",
+      "240": "240 DPI (impressões padrão)",
+      "300": "300 DPI (qualidade profissional)"
+    },
+    "quality": {
+      "excellent": "Sua imagem tem resolução suficiente para este tamanho de impressão.",
+      "good": "Impressão de boa qualidade. A maioria das pessoas não notará que não é 300 DPI.",
+      "acceptable": "Aceitável para visualização a distância de um braço. Considere aumentar para visualização de perto.",
+      "poor": "Resolução muito baixa. Recomenda-se aumentar antes de imprimir."
+    },
+    "commonSizes": {
+      "4x6": "4x6 polegadas",
+      "5x7": "5x7 polegadas",
+      "8x10": "8x10 polegadas",
+      "11x14": "11x14 polegadas",
+      "16x20": "16x20 polegadas",
+      "20x24": "20x24 polegadas",
+      "24x36": "24x36 polegadas (pôster)",
+      "a4": "A4 (8,27x11,69)",
+      "a3": "A3 (11,69x16,54)"
+    },
+    "upscaleNow": "Aumentar {factor}x Agora",
+    "title": "Calculadora de Tamanho de Impressão",
+    "modes": {
+      "check": "Verificar Minha Imagem",
+      "calculate": "Calcular Pixels Necessários"
+    },
+    "imageDimensions": "Dimensões da sua imagem (pixels)",
+    "desiredPrintSize": "Tamanho de impressão desejado",
+    "targetDPI": "DPI Alvo",
+    "customSize": "Personalizado",
+    "printSize": "Tamanho da impressão (polegadas)",
+    "printQuality": "Qualidade de Impressão",
+    "requiredImageSize": "Tamanho de Imagem Necessário",
+    "pixelsNeeded": "Pixels necessários em {dpi} DPI",
+    "yourImage": "Sua imagem",
+    "upscaleNeeded": "Ampliação necessária",
+    "formula": "Fórmula: {width}\" x {dpi} DPI = {result}px de largura",
+    "megapixelsNeeded": "{mp} megapixels necessários"
+  },
+  "bulkCompressor": {
+    "title": "Compressor de Imagens em Lote",
+    "description": "Comprima várias imagens de uma vez. Todo o processamento acontece no seu navegador.",
+    "dropImages": "Solte as imagens aqui ou clique para carregar",
+    "uploadLimit": "Carregue até 20 imagens de uma vez (JPEG, PNG, WebP)",
+    "tips": {
+      "title": "Dicas:",
+      "web": "70-80% de qualidade é ideal para uso na web",
+      "webp": "O formato WebP oferece melhor compactação com suporte de navegadores modernos",
+      "target": "Defina um tamanho alvo (KB) para encontrar automaticamente a melhor qualidade"
+    },
+    "success": {
+      "title": "Imagens Comprimidas com Sucesso!",
+      "saved": "Você economizou {ratio}% em {count} imagem{plural}.",
+      "downloadBelow": "Baixe seus arquivos abaixo ou experimente nossas ferramentas premium.",
+      "needHigherResolution": "Precisa de maior resolução?",
+      "upscalerDescription": "Nosso amplificador com IA pode aumentar a resolução em até 4x enquanto melhora detalhes e nitidez."
+    },
+    "errors": {
+      "failedToCompress": "Falha ao comprimir imagem",
+      "compressionFailed": "Falha na compactação"
+    },
+    "selectImages": "Selecionar Imagens",
+    "addMore": "Adicionar Mais Imagens",
+    "quality": "Qualidade",
+    "targetSize": "Tamanho Alvo (KB, opcional)",
+    "leaveEmpty": "Deixe em branco para compactação baseada em qualidade",
+    "qualityHints": {
+      "low": "Qualidade mais baixa, arquivos menores",
+      "balanced": "Qualidade e tamanho equilibrados",
+      "high": "Qualidade mais alta, arquivos maiores"
+    },
+    "formatOptions": {
+      "jpeg": "JPEG (melhor para fotos)",
+      "webp": "WebP (melhor compactação)",
+      "png": "PNG (sem perdas)"
+    },
+    "compressing": "Comprimindo...",
+    "compressImages": "Comprimir {count} Imagem{plural}",
+    "processing": "Processando {processed}/{total}...",
+    "downloadAll": "Baixar Tudo como ZIP",
+    "clearAll": "Limpar Tudo",
+    "images": "Imagens",
+    "original": "Original",
+    "avgReduction": "Redução Média",
+    "compressed": "Comprimido"
+  },
+  "bulkResizer": {
+    "title": "Redimensionador de Imagens em Lote",
+    "description": "Redimensione várias imagens de uma vez com nosso redimensionador de imagens em lote gratuito. Todo o processamento acontece no seu navegador.",
+    "resizeSettings": "Configurações de Redimensionamento",
+    "widthPx": "Largura (px)",
+    "heightPx": "Altura (px)",
+    "autoKeepsAspect": "Automático (mantém proporção)",
+    "fitMode": "Modo de Ajuste",
+    "fitModes": {
+      "fit": "Ajustar (dentro dos limites)",
+      "fill": "Preencher (pode cortar)"
+    },
+    "qualityPercentage": "Qualidade: {quality}%",
+    "dragDrop": "Arraste e Solte Imagens Aqui",
+    "orClickBrowse": "ou clique para navegar • Até {max} imagens de uma vez",
+    "supportsFormats": "Suporta formatos JPEG, PNG e WebP",
+    "addMore": "+ Adicionar Mais Imagens",
+    "processAll": "Processar Todas ({count})",
+    "downloadAll": "Baixar Tudo como ZIP",
+    "retry": "Tentar Novamente",
+    "process": "Processar",
+    "autoCalculated": "(calculado automaticamente)",
+    "newDimensions": "Novas dimensões",
+    "downloadThis": "Baixar esta imagem",
+    "processing": "Processando...",
+    "info": "Todo o processamento acontece no seu navegador usando a API Canvas. Suas imagens nunca são enviadas para nossos servidores.",
+    "success": {
+      "title": "Imagens Redimensionadas com Sucesso!",
+      "resized": "Suas {count} imagem{plural} {has} sido redimensionadas e prontas para baixar.",
+      "wantEnhance": "Quer melhorar a qualidade também?",
+      "upscalerDescription": "Nosso amplificador com IA pode aumentar a resolução em até 4x enquanto melhora os detalhes, perfeito para impressão ou telas grandes."
+    },
+    "maxFilesError": "Você só pode processar até {max} imagens de uma vez."
+  },
+  "compressor": {
+    "description": "Compressor de imagens online gratuito - reduza o tamanho do arquivo sem perder qualidade",
+    "originalImage": "Imagem Original",
+    "compressionPreview": "Visualização da Compactação",
+    "qualitySetting": "Configuração de Qualidade",
+    "smaller": "{ratio}% menor",
+    "compressionQuality": "Qualidade da Compactação",
+    "smallerFile": "Arquivo menor (qualidade mais baixa)",
+    "largerFile": "Arquivo maior (qualidade mais alta)",
+    "maxWidth": "Largura Máxima (px)",
+    "maxHeight": "Altura Máxima (px)",
+    "outputFormat": "Formato de Saída",
+    "formatOptions": {
+      "jpeg": "JPEG (melhor para fotos)",
+      "webp": "WebP (melhor compactação)",
+      "png": "PNG (sem perdas)"
+    },
+    "reduction": "Redução",
+    "compressedSize": "Tamanho Compactado",
+    "compressionTips": "Dicas de Compactação:",
+    "tipWeb": "Para uso na web, 70-80% de qualidade geralmente é ideal",
+    "tipWebp": "O formato WebP oferece a melhor compactação com ótima qualidade",
+    "tipFormats": "JPEG funciona melhor para fotos, PNG para gráficos com transparência",
+    "title": "Comprima Sua Imagem"
+  },
+  "resizer": {
+    "presets": {
+      "linkedinPost": "Post do LinkedIn (1200x627)",
+      "linkedinBanner": "Banner do LinkedIn (1584x396)",
+      "pinterestPin": "Pin do Pinterest (1000x1500)",
+      "4k": "4K (3840x2160)",
+      "fullHd": "Full HD (1920x1080)",
+      "hd": "HD (1280x720)",
+      "instagramPost": "Post do Instagram (1080x1080)",
+      "instagramStory": "Story do Instagram (1080x1920)",
+      "facebookPost": "Post do Facebook (1200x630)",
+      "facebookCover": "Capa do Facebook (820x312)",
+      "twitterPost": "Post do Twitter (1200x675)",
+      "twitterHeader": "Cabeçalho do Twitter (1500x500)",
+      "youtubeThumbnail": "Miniatura do YouTube (1280x720)"
+    },
+    "title": "Redimensione Sua Imagem",
+    "description": "Redimensionador de imagens online gratuito - redimensione imagens para qualquer dimensão instantaneamente",
+    "originalImage": "Imagem Original",
+    "previewNewSize": "Visualização (Novo Tamanho)",
+    "newDimensions": "Novas dimensões",
+    "presetSizes": "Tamanhos Predefinidos",
+    "outputFormat": "Formato de Saída",
+    "widthPx": "Largura (px)",
+    "heightPx": "Altura (px)",
+    "qualityPercentage": "Qualidade: {quality}%",
+    "autoCalculated": "(calculado automaticamente)",
+    "maintainAspectRatio": "Manter proporção",
+    "original": "Original:"
+  },
+  "formatConverter": {
+    "title": "Converter Formato de Imagem",
+    "description": "Conversor de formato de imagem online gratuito - converta entre JPEG, PNG e WebP",
+    "targetFormat": "Formato Alvo",
+    "selectFormat": "Selecione o formato de saída",
+    "quality": "Qualidade",
+    "backgroundColor": "Cor de Fundo",
+    "backgroundColorHelp": "Usado ao converter imagens transparentes para JPEG",
+    "originalImage": "Imagem Original",
+    "convertedPreview": "Visualização Convertida",
+    "sourceFormat": "Formato de Origem",
+    "targetFormatLabel": "Formato Alvo",
+    "conversionPreview": "Visualização da Conversão",
+    "fileSize": "Tamanho do Arquivo",
+    "smallerBy": "{ratio}% menor",
+    "largerBy": "{ratio}% maior",
+    "sameSize": "Mesmo tamanho",
+    "formatInfo": {
+      "jpeg": "Melhor para fotos, arquivos menores",
+      "png": "Sem perdas, suporta transparência",
+      "webp": "Formato moderno, melhor compactação"
+    },
+    "tips": {
+      "title": "Dicas de Conversão:",
+      "photos": "Use JPEG para fotos para minimizar o tamanho do arquivo",
+      "graphics": "Use PNG para gráficos com transparência",
+      "webp": "WebP oferece a melhor compactação para sites modernos"
+    },
+    "presets": {
+      "jpgToPng": "Converter JPG para PNG",
+      "pngToJpg": "Converter PNG para JPG",
+      "webpToJpg": "Converter WebP para JPG",
+      "anyToWebp": "Converter para WebP"
+    }
+  },
+  "shared": {
+    "continue": "Continuar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "done": "Concluído",
+    "loading": "Carregando...",
+    "saving": "Salvando...",
+    "downloadMyFiles": "Baixar Meus Arquivos",
+    "tryAiUpscalerFree": "Experimentar Amplificador com IA Grátis",
+    "freeCredits": "10 créditos gratuitos",
+    "noSignupRequired": "Não requer cadastro",
+    "uploadImages": "Carregar Imagens",
+    "processing": "Processando...",
+    "complete": "Completo",
+    "error": "Erro",
+    "success": "Sucesso",
+    "tryAgain": "Tentar Novamente",
+    "close": "Fechar"
+  }
+}

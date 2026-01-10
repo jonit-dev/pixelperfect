@@ -1,0 +1,136 @@
+{
+  "aria": {
+    "userActions": "User actions"
+  },
+  "users": {
+    "title": "Users",
+    "searchPlaceholder": "Search by email...",
+    "table": {
+      "email": "Email",
+      "role": "Role",
+      "credits": "Credits",
+      "subscription": "Subscription",
+      "joined": "Joined",
+      "actions": "Actions",
+      "free": "Free"
+    },
+    "loading": "Loading...",
+    "noUsersFound": "No users found",
+    "error": "Failed to load users",
+    "viewDetails": "View Details",
+    "removeAdmin": "Remove Admin",
+    "makeAdmin": "Make Admin",
+    "adjustCredits": "Adjust Credits",
+    "changeSubscription": "Change Subscription",
+    "deleteUser": "Delete User",
+    "grantAdminTitle": "Grant Admin Access",
+    "removeAdminTitle": "Remove Admin Access",
+    "grantAdminButton": "Grant Admin",
+    "removeAdminButton": "Remove Admin",
+    "deleteUserTitle": "Delete User",
+    "deleteUserButton": "Delete User",
+    "pagination": {
+      "showing": "Showing {from} to {to} of {total}",
+      "pageOf": "Page {current} of {total}"
+    }
+  },
+  "admin": {
+    "setCredits": "Set Credits",
+    "current": "Current:",
+    "creditsBalance": "Credits Balance",
+    "free": "Free",
+    "save": "Save",
+    "saving": "Saving...",
+    "processing": "Processing...",
+    "cancel": "Cancel",
+    "failedToLoad": "Failed to load subscription data",
+    "failedToUpdate": "Failed to update subscription",
+    "failedToDelete": "Failed to delete user",
+    "failedToSetCredits": "Failed to set credits",
+    "failedToUpdateRole": "Failed to update role",
+    "immediatelyCancel": "This will cancel the Stripe subscription immediately. User will lose access.",
+    "removeAccess": "This will remove subscription access from the user profile.",
+    "changeToPlan": "This will change the Stripe subscription to {planName}. Billing will be prorated.",
+    "grantAccessWithoutStripe": "This will grant {planName} access WITHOUT creating a Stripe subscription. Use for comps or testing only.",
+    "warning": "Warning:",
+    "irreversible": "This action is irreversible. All user data including credits, subscriptions, and transaction history will be permanently deleted.",
+    "typeEmailToConfirm": "Type <span class=\"font-mono text-error\">{email}</span> to confirm",
+    "profileTier": "Profile Tier:",
+    "stripeStatus": "Stripe Status:",
+    "noSubscription": "No subscription",
+    "renews": "Renews:",
+    "changeTo": "Change To",
+    "manageSubscription": "Manage Subscription"
+  },
+  "userDetail": {
+    "title": "User Details",
+    "backToUsers": "Back to users",
+    "loading": "Loading user details...",
+    "error": "Failed to load user",
+    "userNotFound": "User not found",
+    "profile": "Profile",
+    "credits": "Credits",
+    "subscription": "Subscription",
+    "fields": {
+      "email": "Email",
+      "userId": "User ID",
+      "stripeCustomerId": "Stripe Customer ID",
+      "notConnected": "Not connected",
+      "role": "Role",
+      "user": "User",
+      "admin": "Admin",
+      "joined": "Joined"
+    },
+    "adjustCredits": {
+      "title": "Adjust Credits",
+      "amount": "Amount (positive to add, negative to remove)",
+      "amountPlaceholder": "e.g., 50 or -20",
+      "reason": "Reason",
+      "reasonPlaceholder": "e.g., Customer support compensation",
+      "currentBalance": "Current: {current}",
+      "newBalance": "New: {new}",
+      "previewBalance": "Current: {current} → New: {new}",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "adjustCredits": "Adjust Credits",
+      "error": "Failed to adjust credits"
+    },
+    "recentTransactions": {
+      "title": "Recent Transactions",
+      "noTransactions": "No transactions"
+    },
+    "subscription": {
+      "status": "Status",
+      "tier": "Tier",
+      "periodEnd": "Period End",
+      "subscriptionId": "Subscription ID",
+      "unknown": "Unknown",
+      "noActiveSubscription": "No active subscription"
+    },
+    "errors": {
+      "failedToLoadUser": "Failed to load user",
+      "failedToUpdateRole": "Failed to update role",
+      "anErrorOccurred": "An error occurred"
+    }
+  },
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "stats": {
+      "totalUsers": "Total Users",
+      "activeSubscriptions": "Active Subscriptions",
+      "creditsIssued": "Credits Issued",
+      "creditsUsed": "Credits Used"
+    },
+    "quickActions": "Quick Actions",
+    "manageUsers": "Manage Users",
+    "manageUsersDescription": "View and edit user accounts",
+    "manageSubscriptions": "Manage Subscriptions",
+    "manageSubscriptionsDescription": "View and modify subscriptions (Coming soon)",
+    "creditOperations": "Credit Operations",
+    "creditOperationsDescription": "Adjust user credits (Available in user detail)",
+    "recentActivity": "Recent Activity",
+    "activityFeedComingSoon": "Activity feed will be implemented in a future iteration.",
+    "loadingStats": "Loading stats...",
+    "errorLoadingStats": "Error loading stats"
+  }
+}

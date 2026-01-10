@@ -1,0 +1,293 @@
+{
+  "category": "Bulk-Tools",
+  "pages": [
+    {
+      "slug": "bulk-image-resizer",
+      "title": "Batch-Bildgrößenänderer",
+      "metaTitle": "Kostenloser Batch-Bildgrößenänderer - Mehrere Fotos auf einmal skalieren | MyImageUpscaler",
+      "metaDescription": "Skalieren Sie mehrere Bilder gleichzeitig mit unserem kostenlosen Batch-Bildgrößenänderer. Massen-Skalierung von Fotos in jede Dimension. Funktioniert in Ihrem Browser - kein Upload erforderlich.",
+      "h1": "Kostenloser Batch-Bildgrößenänderer - Massen-Skalierung von Fotos sofort",
+      "intro": "Skalieren Sie bis zu 20 Bilder gleichzeitig mit präziser Dimensionskontrolle. Behalten Sie das Seitenverhältnis bei oder setzen Sie benutzerdefinierte Größen für alle Ihre Fotos auf einmal.",
+      "primaryKeyword": "bulk image resizer",
+      "secondaryKeywords": [
+        "Bilder in Bulk ändern",
+        "Fotos in Masse ändern",
+        "mehrere Bilder ändern",
+        "Bilder-Massenänderung",
+        "Batch-Bildgrößenänderung"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "bulk-tools",
+      "toolName": "Bulk Image Resizer",
+      "toolComponent": "BulkImageResizer",
+      "description": "Verarbeiten Sie mehrere Bilder auf einmal statt nacheinander. Perfekt für Fotografen, E-Commerce-Verkäufer und jeden, der große Fotosammlungen verwaltet.",
+      "maxFiles": 20,
+      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "features": [
+        {
+          "title": "Bis zu 20 Bilder skalieren",
+          "description": "Verarbeiten Sie einen gesamten Batch von Bildern auf einmal. Keine Notwendigkeit, Bilder einzeln zu skalieren - sparen Sie Stunden voll repetitiver Arbeit."
+        },
+        {
+          "title": "Gleichbleibende Dimensionen",
+          "description": "Wenden Sie dieselbe Breite, Höhe oder Prozentzahl auf alle Bilder an. Stellen Sie Konsistenz über Produktkataloge, Galerien oder Social-Media-Beiträge sicher."
+        },
+        {
+          "title": "Seitenverhältnis sperren",
+          "description": "Verhindern Sie Verzerrung durch Sperren der Sperre. Bilder behalten ihre Proportionen bei der Skalierung zu Ihren Zieldimensionen bei."
+        },
+        {
+          "title": "Prozent oder Pixel",
+          "description": "Wählen Sie exakte Pixel-Dimensionen (wie 1920x1080) oder skalieren Sie prozent (50%, 150%, etc.) für flexible Skalierungsoptionen."
+        },
+        {
+          "title": "Als ZIP herunterladen",
+          "description": "Laden Sie alle skalierten Bilder als einzelne ZIP-Datei herunter. Organisiert mit ursprünglichen Dateinamen zur einfachen Identifikation."
+        },
+        {
+          "title": "100% browser-basiert",
+          "description": "Alle Verarbeitung erfolgt lokal in Ihrem Browser. Ihre Fotos verlassen nie Ihr Gerät - keine Server-Uploads erforderlich."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "E-commerce-Produktfotos",
+          "description": "Skalieren Sie gesamte Produktkataloge auf Marktplatzanforderungen",
+          "example": "Skalieren Sie 500 Produktfotos auf 1000x1000px für Amazon- oder eBay-Anforderungen in einem Batch."
+        },
+        {
+          "title": "Social-Media-Batches",
+          "description": "Bereiten Sie mehrere Beiträge für Instagram, Facebook oder Twitter mit plattformspezifischen Größen",
+          "example": "Skalieren Sie 15 Fotos auf 1080x1080px für eine Woche Instagram-Beiträge auf einmal."
+        },
+        {
+          "title": "Website-Galerien",
+          "description": "Erstellen Sie einheitliche Thumbnail-Größen oder vollständige Auflösungen für gemischte Quelldateien",
+          "example": "Konvertieren Sie verschiedene Fotogrößen zu einheitlichen 800x600px Galerie-Thumbnails."
+        },
+        {
+          "title": "Fotoalbum-Organisation",
+          "description": "Standardisieren Sie Familienfotos, Eventfotografie oder gescannte Bildsammlungen auf konsistente Dimensionen",
+          "example": "Skalieren Sie einen Urlaubs-Fotosatz auf 1920px Breite für konsistente Anzeige."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Stunden manueller Arbeit sparen",
+          "description": "Das manuelle Skalieren von 100 Bildern könnte 2-3 Stunden dauern. Unser Batch-Tool verarbeitet sie in unter 2 Minuten.",
+          "metric": "60x schneller als manuelles Skalieren"
+        },
+        {
+          "title": "Konsistente Ergebnisse",
+          "description": "Jedes Bild in Ihrem Batch erhält exakt die gleiche Behandlung. Keine Variationen oder menschliche Fehler zwischen Dateien.",
+          "metric": "Pixelgenaue Konsistenz über Batches"
+        },
+        {
+          "title": "Vollständige Privatsphäre",
+          "description": "Fotos werden in Ihrem Browser verarbeitet. Keine Uploads zu externen Servern bedeutet, dass Ihre Bilder privat und sicher bleiben.",
+          "metric": "Nur clientseitige Verarbeitung"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Laden Sie mehrere Bilder hoch",
+          "description": "Ziehen Sie bis zu 20 Bilder gleichzeitig auf oder klicken Sie zum Durchsuchen. Alle wichtigen Formate werden unterstützt."
+        },
+        {
+          "step": 2,
+          "title": "Zieldimensionen festlegen",
+          "description": "Geben Sie Ihre gewünschte Breite/Höhe in Pixel oder prozent ein. Sperren Sie das Seitenverhältnis wenn nötig."
+        },
+        {
+          "step": 3,
+          "title": "ZIP-Datei herunterladen",
+          "description": "Alle skalierten Bilder werden als ZIP-Datei heruntergeladen. Originaldateinamen bleiben erhalten."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Ist der Batch-Bildgrößenänderer wirklich kostenlos?",
+          "answer": "Ja, völlig kostenlos ohne Limits. Skalieren Sie bis zu 20 Bilder gleichzeitig, so viele Batches wie nötig. Keine Anmeldung erforderlich."
+        },
+        {
+          "question": "Was passiert mit meinen Originalbildern?",
+          "answer": "Ihre Originalbilder werden niemals verändert oder hochgeladen. Alle Verarbeitung erstellt neue skalierte Kopien lokal in Ihrem Browser."
+        },
+        {
+          "question": "Kann ich Bilder in einem Batch in verschiedene Größen skalieren?",
+          "answer": "Derzeit erhalten alle Bilder in einem Batch dieselben Dimensionen. Für verschiedene Größen führen Sie getrennte Batches durch oder nutzen Sie unseren Einzelbildgrößenänderer."
+        },
+        {
+          "question": "Wird dies die Bildqualität beeinträchtigen?",
+          "answer": "Das Skalieren zu kleineren Dimensionen erhält die Qualität bei. Vergrößern von Bildern kann zu Pixellierung führen - Für signifikante Vergrößerungen nutzen Sie unseren AI-Upscaler stattdessen."
+        },
+        {
+          "question": "Was ist die maximale Bilddateigröße?",
+          "answer": "Einzelne Bilder bis zu 10MB werden unterstützt. Für sehr große Dateien sollten Sie in kleineren Batches skalieren."
+        },
+        {
+          "question": "Laden meine Fotos auf einen Server hoch?",
+          "answer": "Nein. Alle Verarbeitung erfolgt vollständig in Ihrem Browser unter Verwendung der Canvas-API. Ihre Fotos verlassen nie Ihr Gerät."
+        }
+      ],
+      "limitations": [
+        "Maximum 20 Bilder pro Batch",
+        "Einzelne Dateien bis 10 MB",
+        "Gleiche Dimensionen für alle Bilder im Batch",
+        "Browser-basierte Verarbeitungsgeschwindigkeit hängt von Ihrem Gerät ab"
+      ],
+      "outputFormat": "zip",
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["ecommerce-image-requirements", "social-media-image-sizes"],
+      "ctaText": "Batch-Skalierung starten",
+      "ctaUrl": "/bulk-tools/bulk-image-resizer"
+    },
+    {
+      "slug": "bulk-image-compressor",
+      "title": "Batch-Bildkomprimierung",
+      "metaTitle": "Kostenloser Batch-Bildkomprimierer - Mehrere Bilder gleichzeitig komprimieren | MyImageUpscaler",
+      "metaDescription": "Komprimieren Sie mehrere Bilder gleichzeitig. Reduzieren Sie Dateigrößen um bis zu 80% mit unserem kostenlosen Batch-Bildkomprimierer. Browser-basiert, kein Upload erforderlich.",
+      "h1": "Kostenloser Batch-Bildkomprimierer - Mehrere Fotos optimieren",
+      "intro": "Reduzieren Sie Dateigrößen über gesamte Bildbatches hinweg bei visueller Qualität. Perfekt für Web-Optimierung, Speicherersparnis und schnellere Uploads.",
+      "primaryKeyword": "bulk image compressor",
+      "secondaryKeywords": [
+        "Bilder komprimieren",
+        "Fotos schrumpfen",
+        "Dateigröße reduzieren",
+        "Batch-Bildkomprimierung",
+        "Bilder-Massenoptimierung"
+      ],
+      "lastUpdated": "2025-12-26T00:00:00Z",
+      "category": "bulk-tools",
+      "toolName": "Bulk Image Compressor",
+      "toolComponent": "BulkImageCompressor",
+      "description": "Optimieren Sie mehrere Bilder gleichzeitig, um Dateigrößen ohne spürbaren Qualitätsverlust zu reduzieren. Ideal für Web-Optimierung, E-Mail-Anhänge und Cloud-Speicher.",
+      "maxFiles": 20,
+      "acceptedFormats": ["JPEG", "PNG", "WebP"],
+      "features": [
+        {
+          "title": "Bis zu 20 Bilder komprimieren",
+          "description": "Verarbeiten Sie gesamte Batches in einem Vorgang. Keine Einzelkomprimierung mehr."
+        },
+        {
+          "title": "Einstellbare Qualitätsstufen",
+          "description": "Wählen Sie aus Komprimierungsstufen oder fine-tunen mit einem benutzerdefinierten Qualitätsschieber. Vorschau der Komprimierung vor dem Download."
+        },
+        {
+          "title": "Intelligente Komprimierung",
+          "description": "Unser Algorithmus reduziert die Dateigröße unter Erhalt der visueller Qualität. Bis zu 80% Reduzierung mit minimalem Einfluss."
+        },
+        {
+          "title": "Formatkonvertierung",
+          "description": "Optional können Sie Bilder während der Komprimierung in effizientere Formate wie WebP konvertieren."
+        },
+        {
+          "title": "Größenvergleich-Vorschau",
+          "description": "Sehen Sie Original vs. komprimierte Dateigrößen für jedes Bild vor dem Download. Wissen Sie genau, was Sie sparen."
+        },
+        {
+          "title": "100% private Verarbeitung",
+          "description": "Alle Komprimierung findet in Ihrem Browser statt. Ihre Bilder werden niemals auf einen Server hochgeladen."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Website-Geschwindigkeit",
+          "description": "Reduzieren Sie Bilder für schnellere Ladezeiten Ihrer Website",
+          "example": "Komprimieren Sie 50 Produktbilder von 500KB auf 100KB jedes, um 20MB Seitengewicht zu sparen."
+        },
+        {
+          "title": "E-Mail-Anhang vorbereiten",
+          "description": "Unterschreiten Sie E-Mail-Größenlimits durch Komprimierung mehrerer Fotos vor dem Anhängen",
+          "example": "Komprimieren Sie 10 Urlaubsfotos, damit sie in eine 25MB E-Mail-Limit passen, anstatt nur 2-3."
+        },
+        {
+          "title": "Cloud-Speicherverwaltung",
+          "description": "Reduzieren Sie Speicherplatzkosten und Upload-Zeiten durch Optimierung von Bildern vor dem Backup in Cloud-Speicher",
+          "example": "Komprimieren Sie ein Fotoarchiv vor dem Upload zu Google Drive oder Dropbox, um weniger Speicherplatz zu nutzen."
+        },
+        {
+          "title": "E-Commerce-Leistung",
+          "description": "Beschleunigen Sie Ihren Online-Shop durch Optimierung aller Produktbilder",
+          "example": "Komprimieren Sie Ihren gesamten Produktkatalog für schnellere Seitenaufw."
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Signifikante Dateigrößenreduzierung",
+          "description": "Erzielen Sie eine 50-80%ige Dateigrößenreduzierung mit minimalem Qualitätsverlust. Ihre Bilder sehen nahezu identisch aus, aber zu einem Bruchteil der Größe.",
+          "metric": "Bis zu 80% kleinere Dateien"
+        },
+        {
+          "title": "Schnellere Ladezeiten",
+          "description": "Kleinere Bilder bedeuten schnellere Websites, schnellere E-Mail-Uploads und bessere Nutzererfahrungen.",
+          "metric": "2-5x schnellere Ladezeiten"
+        },
+        {
+          "title": "Speicherkostensenkung",
+          "description": "Nutzen Sie weniger Festplattenspeicher, Bandbreite und Cloud-Speicher. Zahlen Sie weniger für Hosting und Speicherdienste.",
+          "metric": "Gigabytes Speicher sparen"
+        }
+      ],
+      "howItWorks": [
+        {
+          "step": 1,
+          "title": "Laden Sie Ihre Bilder hoch",
+          "description": "Wählen Sie bis zu 20 Bilder von Ihrem Gerät aus. Drag and Drop für schnellste Ergebnisse."
+        },
+        {
+          "step": 2,
+          "title": "Wählen Sie Komprimierungsstufe",
+          "description": "Wählen Sie eine Voreinstellung (Niedrig, Mittel, Hoch) oder justieren Sie den Qualitätsschieber. Vorschau der Größeneinsparung für jedes Bild."
+        },
+        {
+          "step": 3,
+          "title": "Laden Sie optimierte ZIP herunter",
+          "description": "Erhalten Sie alle komprimierten Bilder in einer einzigen ZIP-Datei. Originaldateinamen bleiben erhalten."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Wie viel kann ich Bilddateigrößen reduzieren?",
+          "answer": "Typischerweise erreicht die Komprimierung 50-80%ige Dateigrößenreduzierung. Die tatsächliche Einsparungen hängen vom ursprünglichen Bild ab - bereits komprimierte Bilder profitieren weniger von unkomprimierten Ursprungsbildern."
+        },
+        {
+          "question": "Wird die Komprimierung meine Bildqualität beeinträchtigen?",
+          "answer": "Unsere Komprimierung ist visuell verlustfrei - das bedeutet, die Datei wird kleiner, das Bild sieht fast identisch aus. Bei Fotos mit starkem Komprimierungsbedarf können bei extremen Einstellungen leichte Artefakte auftreten."
+        },
+        {
+          "question": "Kann ich PNGs mit Transparenz komprimieren?",
+          "answer": "Ja, PNG-Transparenz wird während der Komprimierung beibehalten. Beachten Sie jedoch, dass JPEGs keine Transparenz unterstützen - sie erhalten einen einfarbigen Hintergrund."
+        },
+        {
+          "question": "Was ist der Unterschied zwischen diesem Tool und dem Upscaler?",
+          "answer": "Der Komprimierer reduziert Dateigröße ohne Änderung der Dimensionen. Der Upscaler erhöht Dimensionen und verbessert die Qualität. Sie haben unterschiedliche Zwecke - nutzen Sie den Komprimierer, um Speicherplatz zu sparen, den Upscaler zum Vergrößern."
+        },
+        {
+          "question": "Ist dies besser als Photoshops 'Speichern für Web'?",
+          "answer": "Ähnliche Qualitätskompression, aber unser Tool verarbeitet Batches von 20 Bildern auf einmal statt einzeln. Außerdem ist es kostenlos und läuft vollständig in Ihrem Browser."
+        },
+        {
+          "question": "Löschen Sie meine Bilder dauerhaft?",
+          "answer": "Ihre Bilder verlassen Ihren Browser in erster Linie nicht. Alle Komprimierung ist lokal und temporär. Nichts wird auf einem Server gespeichert."
+        }
+      ],
+      "limitations": [
+        "Maximum 20 Bilder pro Batch",
+        "Einzelne Dateien bis zu 10MB",
+        "Sehr komprimierte Bilder können bei extremen Einstellungen Qualitätsverluste aufweisen",
+        "Komprimierungsgeschwindigkeit hängt von Ihrem Gerät und den Bildgrößen ab"
+      ],
+      "outputFormat": "zip",
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
+      "relatedGuides": ["web-optimization-guide", "image-compression-best-practices"],
+      "ctaText": "Batch-Komprimierung starten",
+      "ctaUrl": "/bulk-tools/bulk-image-compressor"
+    }
+  ],
+  "meta": {
+    "totalPages": 2,
+    "lastUpdated": "2025-12-26T00:00:00Z"
+  }
+}

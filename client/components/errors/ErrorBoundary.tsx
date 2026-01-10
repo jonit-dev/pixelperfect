@@ -3,6 +3,7 @@
 import React, { Component, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { serverEnv } from '@shared/config/env';
+import { useTranslations } from 'next-intl';
 
 // Extend Window interface for baselime monitoring
 interface IBaselimeLogger {
@@ -28,8 +29,11 @@ interface IErrorBoundaryState {
  * Error Boundary component that catches React errors and displays a fallback UI
  * Prevents blank pages when components crash
  */
-export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> {
-  constructor(props: IErrorBoundaryProps) {
+class ErrorBoundaryInner extends Component<
+  IErrorBoundaryProps & { t: ReturnType<typeof useTranslations> },
+  IErrorBoundaryState
+> {
+  constructor(props: IErrorBoundaryProps & { t: ReturnType<typeof useTranslations> }) {
     super(props);
     this.state = {
       hasError: false,
@@ -88,15 +92,15 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
             </div>
 
             <div className="mt-6 text-center">
-              <h1 className="text-2xl font-bold text-text-primary">Something went wrong</h1>
-              <p className="mt-2 text-text-secondary">
-                We encountered an unexpected error. Please try refreshing the page.
-              </p>
+              <h1 className="text-2xl font-bold text-text-primary">
+                {this.props.t('errors.boundary.title')}
+              </h1>
+              <p className="mt-2 text-text-secondary">{this.props.t('errors.boundary.message')}</p>
 
               {serverEnv.ENV === 'development' && this.state.error && (
                 <details className="mt-4 text-left">
                   <summary className="cursor-pointer text-sm text-text-secondary hover:text-text-muted">
-                    Error details (dev only)
+                    {this.props.t('errors.boundary.detailsLabel')}
                   </summary>
                   <div className="mt-2 p-3 bg-surface-light rounded text-xs font-mono overflow-auto max-h-48">
                     <p className="font-bold text-error">{this.state.error.toString()}</p>
@@ -116,14 +120,14 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
                 className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Try Again
+                {this.props.t('errors.boundary.retryButton')}
               </button>
               <a
                 href="/"
                 className="flex-1 inline-flex items-center justify-center px-4 py-2 border border-border rounded-lg shadow-sm text-sm font-medium text-text-secondary bg-surface hover:bg-surface focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
               >
                 <Home className="h-4 w-4 mr-2" />
-                Go Home
+                {this.props.t('errors.boundary.homeButton')}
               </a>
             </div>
           </div>
@@ -133,4 +137,9 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
 
     return this.props.children;
   }
+}
+
+export function ErrorBoundary(props: IErrorBoundaryProps): JSX.Element {
+  const t = useTranslations();
+  return <ErrorBoundaryInner {...props} t={t} />;
 }

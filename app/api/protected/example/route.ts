@@ -35,12 +35,11 @@ export async function GET(req: NextRequest) {
   }
 
   // Return protected data
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: 'Successfully accessed protected route',
     user: {
       id: userId,
       email: userEmail,
-      // Include additional profile data from database
       profile: user,
     },
     rateLimit: {
@@ -50,6 +49,13 @@ export async function GET(req: NextRequest) {
     },
     timestamp: new Date().toISOString(),
   });
+
+  // Add rate limit headers
+  response.headers.set('X-RateLimit-Remaining', rateLimitRemaining || '50');
+  response.headers.set('X-RateLimit-Limit', '50');
+  response.headers.set('X-RateLimit-Reset', Math.floor(Date.now() / 1000 + 10).toString());
+
+  return response;
 }
 
 /**
@@ -70,12 +76,19 @@ export async function POST(req: NextRequest) {
   // Example: Create a resource for the authenticated user
   // const result = await createResource({ userId: user.id, ...body });
 
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: 'Resource created successfully',
     userId: user.id,
     data: body,
     timestamp: new Date().toISOString(),
   });
+
+  // Add rate limit headers
+  response.headers.set('X-RateLimit-Remaining', '49');
+  response.headers.set('X-RateLimit-Limit', '50');
+  response.headers.set('X-RateLimit-Reset', Math.floor(Date.now() / 1000 + 10).toString());
+
+  return response;
 }
 
 /**
@@ -95,12 +108,19 @@ export async function PATCH(req: NextRequest) {
   // Example: Update a resource owned by the authenticated user
   // const result = await updateResource({ userId: user.id, ...body });
 
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: 'Resource updated successfully',
     userId: user.id,
     data: body,
     timestamp: new Date().toISOString(),
   });
+
+  // Add rate limit headers
+  response.headers.set('X-RateLimit-Remaining', '49');
+  response.headers.set('X-RateLimit-Limit', '50');
+  response.headers.set('X-RateLimit-Reset', Math.floor(Date.now() / 1000 + 10).toString());
+
+  return response;
 }
 
 /**
@@ -118,9 +138,16 @@ export async function DELETE(req: NextRequest) {
   // Example: Delete a resource owned by the authenticated user
   // const result = await deleteResource({ userId: user.id });
 
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: 'Resource deleted successfully',
     userId: user.id,
     timestamp: new Date().toISOString(),
   });
+
+  // Add rate limit headers
+  response.headers.set('X-RateLimit-Remaining', '49');
+  response.headers.set('X-RateLimit-Limit', '50');
+  response.headers.set('X-RateLimit-Reset', Math.floor(Date.now() / 1000 + 10).toString());
+
+  return response;
 }

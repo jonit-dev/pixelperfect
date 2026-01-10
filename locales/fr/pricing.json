@@ -1,0 +1,60 @@
+{
+  "page": {
+    "title": "Tarification simple et transparente",
+    "subtitle": "Choisissez le plan d'abonnement qui correspond à vos besoins. Obtenez des crédits mensuels avec report automatique."
+  },
+  "subscription": {
+    "title": "Choisissez votre plan",
+    "subtitle": "Obtenez des crédits chaque mois avec nos plans d'abonnement. Annulez à tout moment."
+  },
+  "currentBalance": {
+    "title": "Votre solde actuel",
+    "credits": "crédits",
+    "activeSubscription": "Abonnement actif"
+  },
+  "scheduledChange": {
+    "title": "Changement de plan prévu",
+    "cancel": "Annuler",
+    "on": "le"
+  },
+  "configurationWarning": "Les IDs de prix Stripe ne sont pas configurés. Ajoutez-les à votre fichier .env pour activer les achats.",
+  "creditPacks": {
+    "title": "Besoin de crédits sans abonnement ?",
+    "subtitle": "Packs de crédits à usage unique qui n'expirent jamais. Parfaits pour les projets occasionnels.",
+    "valueComparison": "Comparaison de la valeur :",
+    "valueComparisonText": "Les abonnements offrent des crédits 11 à 58 % moins chers pour les utilisateurs réguliers",
+    "comparePlans": "Comparer les plans d'abonnement"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "creditsUsedFor": {
+      "question": "À quoi servent les crédits ?",
+      "answer": "Les crédits sont utilisés pour les actions de traitement d'images. Chaque image traitée consomme un certain nombre de crédits en fonction du facteur d'agrandissement et des fonctionnalités utilisées."
+    },
+    "creditsExpire": {
+      "question": "Les crédits expirent-ils ?",
+      "answer": "Les crédits d'abonnement sont reportés mois par mois jusqu'à la limite maximale de votre plan tant que votre abonnement reste actif."
+    },
+    "batchProcessing": {
+      "question": "Qu'est-ce que le traitement par lots ?",
+      "answer": "Le traitement par lots vous permet de télécharger et de traiter plusieurs images à la fois. Les utilisateurs gratuits peuvent traiter une image à la fois, tandis que les plans payants prennent en charge le traitement par lots de 10, 50 ou 500 images simultanément selon votre plan."
+    },
+    "cancelSubscription": {
+      "question": "Puis-je annuler mon abonnement à tout moment ?",
+      "answer": "Oui ! Vous pouvez annuler votre abonnement à tout moment. Vous continuerez à avoir accès jusqu'à la fin de votre période de facturation, et tous les crédits restants resteront dans votre compte."
+    },
+    "paymentMethods": {
+      "question": "Quelles méthodes de paiement acceptez-vous ?",
+      "answer": "Nous acceptons toutes les cartes de crédit majeures (Visa, Mastercard, American Express) et diverses autres méthodes de paiement via Stripe."
+    },
+    "freePlan": {
+      "question": "Y a-t-il un plan gratuit ?",
+      "answer": "Oui ! Les utilisateurs gratuits reçoivent des crédits initiaux pour essayer le service. Cependant, le traitement par lots et les fonctionnalités avancées nécessitent un abonnement payant. Les utilisateurs gratuits peuvent traiter une image à la fois."
+    }
+  },
+  "customPlan": {
+    "title": "Besoin d'un plan personnalisé ?",
+    "description": "Contactez-nous pour les tarifs entreprise, les remises en gros ou les besoins d'intégration personnalisée.",
+    "contactSales": "Contacter les ventes"
+  }
+}

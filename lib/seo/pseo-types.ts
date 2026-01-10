@@ -66,14 +66,24 @@ export interface IToolConfig {
 /**
  * Format page data structure
  */
+export interface IFormatCharacteristic {
+  title: string;
+  description: string;
+}
+
+export interface IFormatBestPractice {
+  title: string;
+  description: string;
+}
+
 export interface IFormatPage extends IBasePSEOPage {
   category: 'formats';
   formatName: string;
   extension: string;
   description: string;
-  characteristics: string[];
+  characteristics: IFormatCharacteristic[];
   useCases: IUseCase[];
-  bestPractices: string[];
+  bestPractices: IFormatBestPractice[];
   faq: IFAQ[];
   relatedFormats: string[];
   relatedGuides: string[];

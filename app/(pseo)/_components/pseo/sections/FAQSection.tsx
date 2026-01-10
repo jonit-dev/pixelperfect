@@ -19,10 +19,15 @@ interface IFAQSectionProps {
     | 'comparison'
     | 'guide'
     | 'useCase'
+    | 'use-case'
     | 'alternative'
     | 'format'
     | 'scale'
-    | 'free';
+    | 'free'
+    | 'platform'
+    | 'format-scale'
+    | 'platform-format'
+    | 'device-use';
   slug?: string;
 }
 

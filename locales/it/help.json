@@ -1,0 +1,157 @@
+{
+  "page": {
+    "title": "Aiuto e FAQ",
+    "subtitle": "Trova risposte a domande comuni su uso {appName}"
+  },
+  "quickLinks": {
+    "gettingStarted": "Per Iniziare",
+    "gettingStartedDesc": "Impara come usare il servizio",
+    "creditsBilling": "Crediti e Fatturazione",
+    "creditsBillingDesc": "Capisci prezzi e pagamenti",
+    "technicalSupport": "Supporto Tecnico",
+    "technicalSupportDesc": "Risolvi problemi"
+  },
+  "gettingStarted": {
+    "title": "Per Iniziare",
+    "faqs": {
+      "howToStart": {
+        "question": "Come iniziare a usare {appName}?",
+        "answerIntro": "Per iniziare:",
+        "answerStep1": "Crea un account",
+        "answerStep2": "usando email o Google",
+        "answerStep3": "Riceverai 10 crediti gratuiti per provare il servizio",
+        "answerStep4": "Naviga allo",
+        "answerStep5": "Upscaler",
+        "answerStep6": "Carica un'immagine (formato JPG, PNG o WEBP)",
+        "answerStep7": "Scegli fattore upscaling (2x o 4x)",
+        "answerStep8": "Clicca \"Migliora Immagine\" e attendi elaborazione",
+        "answerStep9": "Scarica immagine migliorata"
+      },
+      "supportedFormats": {
+        "question": "Quali formati immagine sono supportati?",
+        "answerIntro": "Attualmente supportiamo i seguenti formati immagine:",
+        "format1": "JPG/JPEG - Formato più comune per foto",
+        "format2": "PNG - Meglio per immagini con trasparenza o testo",
+        "format3": "WEBP - Formato moderno con buona compressione",
+        "maxFileSize": "Dimensione massima file per livello gratuito:",
+        "maxFileSizeValue": "5MB"
+      },
+      "upscaleDifference": {
+        "question": "Qual è differenza tra upscaling 2x e 4x?",
+        "2xIntro": "Upscaling 2X:",
+        "2xDesc": "Raddoppia larghezza e altezza immagine (4x pixel totali). Meglio per miglioramenti qualità moderati.",
+        "4xIntro": "Upscaling 4X:",
+        "4xDesc": "Quadruplica larghezza e altezza (16x pixel totali). Meglio per ingrandimenti significativi o immagini sorgente molto piccole.",
+        "example": "Esempio: Un'immagine 500x500px diventa 1000x1000px a 2x, o 2000x2000px a 4x."
+      },
+      "processingTime": {
+        "question": "Quanto tempo richiede elaborazione immagine?",
+        "answer": "L'elaborazione richiede tipicamente 30-60 secondi a seconda dimensione immagine e carico server attuale. Vedrai indicatore progress mentre immagine viene migliorata."
+      }
+    }
+  },
+  "creditsBilling": {
+    "title": "Crediti e Fatturazione",
+    "faqs": {
+      "whatAreCredits": {
+        "question": "Cosa sono i crediti?",
+        "answerPart1": "I crediti sono valuta usata per elaborare immagini. Ogni miglioramento immagine consuma 1 credito, indipendentemente da fattore upscaling.",
+        "answerPart2": "Nuovi utenti ricevono",
+        "answerPart3": "10 crediti gratuiti",
+        "answerPart4": "per provare il servizio."
+      },
+      "purchaseCredits": {
+        "question": "Come acquisto più crediti?",
+        "answerIntro": "Visita il nostro",
+        "pricingPage": "pagina Prezzi",
+        "answerMid": "per scegliere dai nostri piani abbonamento:",
+        "plan1": "Hobby: 200 crediti/mese per $19/mese",
+        "plan2": "Professionale: 1000 crediti/mese per $49/mese",
+        "plan3": "Business: 5000 crediti/mese per $149/mese"
+      },
+      "creditsExpire": {
+        "question": "I crediti scadono?",
+        "answer": "I crediti abbonamento si accumulano mese per mese fino a 6× tua concessione mensile crediti, finché abbonamento rimane attivo. Per esempio, piano Hobby può accumulare fino a 1.200 crediti (6 × 200)."
+      },
+      "cancelSubscription": {
+        "question": "Posso cancellare abbonamento?",
+        "answerIntro": "Sì! Puoi cancellare in qualsiasi momento tramite:",
+        "option1": "Tuo",
+        "option2": "Dashboard Fatturazione",
+        "option3": "Portale clienti Stripe",
+        "answerOutro": "Continuerai ad avere accesso fino alla fine periodo fatturazione e eventuali crediti rimanenti rimarranno account."
+      },
+      "paymentMethods": {
+        "question": "Quali metodi di pagamento accettate?",
+        "answer": "Accettiamo tutte principali carte di credito (Visa, Mastercard, American Express) e vari altri metodi pagamento tramite Stripe, nostro processatore pagamenti sicuro."
+      },
+      "refunds": {
+        "question": "Posso ottenere rimborso?",
+        "answerIntro": "A causa natura servizi digitali, rimborsi generalmente non sono forniti per crediti usati. Tuttavia, possiamo emettere rimborsi a nostra discrezione per:",
+        "reason1": "Fallimenti tecnici che risultano in crediti persi",
+        "reason2": "Addebiti duplicati",
+        "reason3": "Indisponibilità servizio",
+        "contactSupport": "per assistenza."
+      }
+    }
+  },
+  "technicalSupport": {
+    "title": "Supporto Tecnico",
+    "faqs": {
+      "failedProcessing": {
+        "question": "Elaborazione immagine fallita. Cosa devo fare?",
+        "answerIntro": "Se elaborazione fallisce:",
+        "step1": "Il tuo credito dovrebbe essere rimborsato automaticamente",
+        "step2": "Verifica che immagine soddisfi requisiti (formato, dimensione)",
+        "step3": "Prova immagine diversa per escludere corruzione file",
+        "step4": "Svuota cache browser e riprova",
+        "step5": "Se problema persiste, contatta"
+      },
+      "qualityIssues": {
+        "question": "Qualità non è quella aspettata. Perché?",
+        "answerIntro": "Miglioramento AI funziona meglio con certi tipi immagini:",
+        "result1": "Migliori risultati: Foto con soggetti chiari, immagini prodotto, foto immobiliari",
+        "result2": "Buoni risultati: Grafica con testo, loghi, illustrazioni",
+        "result3": "Risultati variabili: Immagini molto bassa risoluzione, immagini pesantemente compresse, arte astratta",
+        "answerOutro": "Qualità immagine sorgente influenza notevolmente risultato finale. Iniziare con sorgente più alta qualità produrrà miglioramenti migliori."
+      },
+      "dataPrivacy": {
+        "question": "I miei dati sono sicuri e privati?",
+        "answerIntro": "Sì! Prendiamo privacy seriamente:",
+        "point1": "Immagini sono elaborate in tempo reale e non memorizzate permanentemente",
+        "point2": "Non usiamo tue immagini per addestrare modelli AI",
+        "point3": "Tutta trasmissione dati è crittografata con HTTPS",
+        "point4": "Conformiamo a regolazioni protezione dati",
+        "answerOutro": "Leggi nostra completa",
+        "privacyPolicy": "Privacy Policy",
+        "answerEnd": "per dettagli."
+      },
+      "commercialUse": {
+        "question": "Posso usare immagini migliorate commercialmente?",
+        "answer": "Sì! Mantieni tutti diritti alle tue immagini. Non rivendichiamo alcuna proprietà delle tue immagini caricate o migliorate. Tuttavia, devi avere diritto legale di usare immagine originale che carichi. Non siamo responsabili per violazioni copyright relative alle tue immagini sorgente."
+      },
+      "browserSupport": {
+        "question": "Quali browser sono supportati?",
+        "answerIntro": "funziona meglio su browser moderni:",
+        "browser1": "Chrome/Edge (ultime 2 versioni)",
+        "browser2": "Firefox (ultime 2 versioni)",
+        "browser3": "Safari (ultime 2 versioni)",
+        "jsNote": "JavaScript deve essere abilitato per servizio funzionare."
+      }
+    }
+  },
+  "cta": {
+    "title": "Hai ancora bisogno di aiuto?",
+    "description": "Non trovi risposta che cerchi? Il nostro team supporto qui per aiutare.",
+    "emailSupport": "Supporto Email",
+    "viewPricing": "Visualizza Prezzi"
+  },
+  "relatedLinks": {
+    "privacy": "Privacy Policy",
+    "terms": "Termini di Servizio",
+    "blog": "Blog"
+  },
+  "nav": {
+    "blog": "Blog"
+  }
+}

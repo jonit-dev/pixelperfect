@@ -1,0 +1,135 @@
+{
+  "aria": {
+    "userActions": "ユーザーアクション"
+  },
+  "users": {
+    "title": "ユーザー",
+    "searchPlaceholder": "メールアドレスで検索...",
+    "table": {
+      "email": "メールアドレス",
+      "role": "ロール",
+      "credits": "クレジット",
+      "subscription": "サブスクリプション",
+      "joined": "登録日",
+      "actions": "アクション",
+      "free": "無料"
+    },
+    "loading": "読み込み中...",
+    "noUsersFound": "ユーザーが見つかりません",
+    "error": "ユーザーの読み込みに失敗しました",
+    "viewDetails": "詳細を見る",
+    "removeAdmin": "管理者権限を削除",
+    "makeAdmin": "管理者にする",
+    "adjustCredits": "クレジットを調整",
+    "changeSubscription": "サブスクリプションを変更",
+    "deleteUser": "ユーザーを削除",
+    "grantAdminTitle": "管理者アクセスを付与",
+    "removeAdminTitle": "管理者アクセスを削除",
+    "grantAdminButton": "管理者を付与",
+    "removeAdminButton": "管理者を削除",
+    "deleteUserTitle": "ユーザーを削除",
+    "deleteUserButton": "ユーザーを削除",
+    "pagination": {
+      "showing": "{total}件中{from}件から{to}件を表示",
+      "pageOf": "{total}ページ中{current}ページ目"
+    }
+  },
+  "admin": {
+    "setCredits": "クレジットを設定",
+    "current": "現在:",
+    "creditsBalance": "クレジット残高",
+    "free": "無料",
+    "save": "保存",
+    "saving": "保存中...",
+    "processing": "処理中...",
+    "cancel": "キャンセル",
+    "failedToLoad": "サブスクリプションデータの読み込みに失敗しました",
+    "failedToUpdate": "サブスクリプションの更新に失敗しました",
+    "failedToDelete": "ユーザーの削除に失敗しました",
+    "failedToSetCredits": "クレジットの設定に失敗しました",
+    "failedToUpdateRole": "ロールの更新に失敗しました",
+    "immediatelyCancel": "これによりStripeサブスクリプションが即座にキャンセルされます。ユーザーはアクセス権を失います。",
+    "removeAccess": "これによりユーザープロファイルからサブスクリプションアクセスが削除されます。",
+    "changeToPlan": "これによりStripeサブスクリプションが{planName}に変更されます。請求は按分されます。",
+    "grantAccessWithoutStripe": "これによりStripeサブスクリプションを作成せずに{planName}アクセスを付与します。テスト用または補償用のみ使用してください。",
+    "warning": "警告:",
+    "irreversible": "この操作は元に戻すことができません。クレジット、サブスクリプション、取引履歴を含むすべてのユーザーデータが永久に削除されます。",
+    "typeEmailToConfirm": "確認のため<span class=\"font-mono text-error\">{email}</span>を入力してください",
+    "profileTier": "プロファイルティア:",
+    "stripeStatus": "Stripeステータス:",
+    "noSubscription": "サブスクリプションなし",
+    "renews": "更新日:",
+    "changeTo": "変更先",
+    "manageSubscription": "サブスクリプションを管理"
+  },
+  "userDetail": {
+    "title": "ユーザー詳細",
+    "backToUsers": "ユーザー一覧に戻る",
+    "loading": "ユーザー詳細を読み込み中...",
+    "error": "ユーザーの読み込みに失敗しました",
+    "userNotFound": "ユーザーが見つかりません",
+    "profile": "プロフィール",
+    "credits": "クレジット",
+    "subscription": {
+      "status": "ステータス",
+      "tier": "ティア",
+      "periodEnd": "期間終了日",
+      "subscriptionId": "サブスクリプションID",
+      "unknown": "不明",
+      "noActiveSubscription": "有効なサブスクリプションがありません"
+    },
+    "fields": {
+      "email": "メールアドレス",
+      "userId": "ユーザーID",
+      "stripeCustomerId": "Stripe顧客ID",
+      "notConnected": "未接続",
+      "role": "ロール",
+      "user": "ユーザー",
+      "admin": "管理者",
+      "joined": "登録日"
+    },
+    "adjustCredits": {
+      "title": "クレジットを調整",
+      "amount": "金額（追加は正の数、削除は負の数）",
+      "amountPlaceholder": "例: 50 または -20",
+      "reason": "理由",
+      "reasonPlaceholder": "例: カスタマーサポートによる補償",
+      "currentBalance": "現在: {current}",
+      "newBalance": "新しい残高: {new}",
+      "previewBalance": "現在: {current} → 新しい残高: {new}",
+      "cancel": "キャンセル",
+      "saving": "保存中...",
+      "adjustCredits": "クレジットを調整",
+      "error": "クレジットの調整に失敗しました"
+    },
+    "recentTransactions": {
+      "title": "最近の取引",
+      "noTransactions": "取引がありません"
+    },
+    "errors": {
+      "failedToLoadUser": "ユーザーの読み込みに失敗しました",
+      "failedToUpdateRole": "ロールの更新に失敗しました",
+      "anErrorOccurred": "エラーが発生しました"
+    }
+  },
+  "dashboard": {
+    "title": "管理ダッシュボード",
+    "stats": {
+      "totalUsers": "総ユーザー数",
+      "activeSubscriptions": "有効なサブスクリプション",
+      "creditsIssued": "発行されたクレジット",
+      "creditsUsed": "使用されたクレジット"
+    },
+    "quickActions": "クイックアクション",
+    "manageUsers": "ユーザーを管理",
+    "manageUsersDescription": "ユーザーアカウントを表示・編集",
+    "manageSubscriptions": "サブスクリプションを管理",
+    "manageSubscriptionsDescription": "サブスクリプションを表示・変更（近日公開）",
+    "creditOperations": "クレジット操作",
+    "creditOperationsDescription": "ユーザーのクレジットを調整（ユーザー詳細で利用可能）",
+    "recentActivity": "最近のアクティビティ",
+    "activityFeedComingSoon": "アクティビティフィードは将来のバージョンで実装される予定です。",
+    "loadingStats": "統計を読み込み中...",
+    "errorLoadingStats": "統計の読み込みエラー"
+  }
+}

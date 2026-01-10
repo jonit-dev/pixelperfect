@@ -1,0 +1,174 @@
+{
+  "batchLimit": {
+    "serverEnforcedTitle": "Batch-Verarbeitungslimit erreicht",
+    "clientEnforcedTitle": "Batch-Limit erreicht",
+    "serverEnforcedMessage": "Sie haben das Verarbeitungslimit für Ihren Plan erreicht. Sie haben {currentCount} Bilder verarbeitet, aber Ihr Plan erlaubt maximal {limit} Bilder pro Stunde.",
+    "clientEnforcedMessage": "Sie haben versucht, {attempted} Bild{plural, plural, one {} other {er}} hinzuzufügen, aber Ihr Plan erlaubt maximal {limit} Bild{limitPlural, plural, one {} other {er}} in der Warteschlange.",
+    "freeUserMessage": "Kostenlose Nutzer können 1 Bild gleichzeitig verarbeiten. Führen Sie ein Upgrade durch, um höhere Batch-Limits freizuschalten und mehrere Bilder zu verarbeiten.",
+    "securityMessage": "Dies ist eine Sicherheitsmaßnahme gegen Missbrauch. Das Limit wird in etwa 1 Stunde zurückgesetzt. Führen Sie ein Upgrade durch für höhere Limits.",
+    "upgradeButton": "Plan upgraden",
+    "addPartialButton": "{availableSlots} {count, plural, one {Bild} other {Bilder}} hinzufügen",
+    "cancelButton": "Abbrechen"
+  },
+  "queue": {
+    "title": "Verarbeitungswarteschlange",
+    "limitReached": "Limit erreicht",
+    "addMore": "Mehr hinzufügen",
+    "aria": {
+      "removeImage": "Bild entfernen"
+    }
+  },
+  "aria": {
+    "dismissError": "Fehler schließen"
+  },
+  "customInstructions": {
+    "title": "Benutzerdefinierte Anweisungen",
+    "description": "KI-Benutzeranweisungen",
+    "subtitle": "Sagen Sie der KI genau, wie Ihr Bild verarbeitet werden soll. Seien Sie spezifisch, was Sie verbessern, bewahren oder ändern möchten.",
+    "yourInstructions": "Ihre Anweisungen",
+    "quickTemplates": "Schnellvorlagen",
+    "loadTemplate": "Vorlage laden",
+    "templateLoaded": "Vorlage geladen!",
+    "templateLoadedDescription": "Eine Beispielsvorlage wurde oben geladen. Sie können diese gerne anpassen oder durch Ihre eigenen Anweisungen ersetzen.",
+    "cancel": "Abbrechen",
+    "saveInstructions": "Anweisungen speichern",
+    "placeholderPrompt": "Sagen Sie der KI genau, wie Ihr Bild verarbeitet werden soll...",
+    "generalEnhancement": "Allgemeine Verbesserung",
+    "photoRestoration": "Foto-Restaurierung",
+    "productPhotography": "Produktfotografie",
+    "portraitEnhancement": "Porträtverbesserung",
+    "characterLimit": "Zeichen",
+    "pleaseReduceTo": "Bitte reduzieren auf",
+    "characterLimitExceeded": "Zeichenlimit überschritten"
+  },
+  "oversizedImage": {
+    "yourImageIs": "Ihr Bild ist",
+    "whichExceeds": "was das",
+    "limitBy": "Limit um",
+    "imageTooLarge": "Bild zu groß",
+    "imageTooLargeMultiple": "Bild zu groß",
+    "processingFailed": "Verarbeitung fehlgeschlagen. Bitte versuchen Sie es mit einer kleineren Datei oder führen Sie ein Upgrade auf Pro durch.",
+    "compressing": "Komprimiere",
+    "optimizingQuality": "Optimiere Qualität während Größenreduktion...",
+    "resizeAndContinue": "Größe anpassen und fortfahren",
+    "automaticallyCompress": "Automatisch komprimieren, um unter zu passen",
+    "processingImage": "Verarbeite Bild...",
+    "upgradeToPro": "Upgrade auf Pro",
+    "upgradeToProDescription": "Bis zu 64MB Bilder mit voller Auflösung hochladen",
+    "skipThisImage": "Dieses Bild überspringen",
+    "useDifferentImage": "Ein anderes Bild verwenden",
+    "whatHappens": "Was passiert, wenn Sie die Größe anpassen?",
+    "imageCompressed": "Das Bild wird komprimiert, um unter die Größenbegrenzung zu passen",
+    "qualityOptimized": "Die Qualität wird automatisch für die besten Ergebnisse optimiert",
+    "processingInstantly": "Die Verarbeitung erfolgt sofort in Ihrem Browser",
+    "aspectRatioMaintained": "Das ursprüngliche Seitenverhältnis wird beibehalten"
+  },
+  "previewArea": {
+    "stages": {
+      "preparing": "Bild wird kodiert und validiert",
+      "analyzing": "KI analysiert Bildqualität",
+      "enhancing": "KI-Verbessert Ihr Bild",
+      "finalizing": "Verbessertes Bild wird vorbereitet"
+    },
+    "errors": {
+      "title": "Verarbeitung fehlgeschlagen",
+      "tryAgain": "Erneut versuchen"
+    },
+    "statusMessages": {
+      "preparing": "Bild wird vorbereitet...",
+      "analyzing": "Bild wird analysiert...",
+      "enhancing": "Bild wird verbessert...",
+      "finalizing": "Wird abgeschlossen...",
+      "processing": "Verarbeitung..."
+    },
+    "emptyState": {
+      "title": "Wählen Sie ein Bild aus der Warteschlange unten aus"
+    },
+    "completed": {
+      "title": "Verarbeitung abgeschlossen"
+    },
+    "batch": {
+      "imageXofYcomplete": "Bild {current} von {total} abgeschlossen",
+      "preparingNext": "Nächstes Bild wird vorbereitet...",
+      "rateLimitingPause": "Rate Limiting-Pause für zuverlässige Verarbeitung"
+    },
+    "remainingTime": "~{remaining}s verbleibend"
+  },
+  "workspace": {
+    "features": {
+      "freeLimit": "5MB kostenlose Grenze",
+      "noWatermark": "Kein Wasserzeichen",
+      "batch": "Stapelverarbeitung",
+      "upgradeRequired": "Upgrade erforderlich",
+      "upToImages": "Bis zu {count} Bilder"
+    },
+    "errors": {
+      "title": "Verarbeitungsfehler",
+      "insufficientCredits": "Unzureichende Credits",
+      "requestTimeout": "Anfrage abgelaufen",
+      "serverError": "Serverfehler",
+      "unknownError": "Unbekannter Fehler ist aufgetreten",
+      "downloadFailed": "Bild konnte nicht heruntergeladen werden"
+    },
+    "downloadError": {
+      "title": "Download fehlgeschlagen"
+    },
+    "mobileTabs": {
+      "settings": "Einstellungen",
+      "preview": "Vorschau",
+      "queue": "Warteschlange"
+    },
+    "processingStatus": {
+      "processingXofY": "Verarbeite {current}/{total}...",
+      "processing": "Verarbeite...",
+      "allProcessed": "Alle verarbeitet",
+      "processAll": "Alle verarbeiten ({count})"
+    }
+  },
+  "enhancementOptions": {
+    "smartAIAnalysis": "KI-Intelligente Analyse",
+    "smartAIAnalysisUpgrade": "Upgrade durchführen, damit KI Inhaltsart erkennt und Einstellungen automatisch optimiert.",
+    "smartAIAnalysisPaid": "KI erkennt automatisch Bildinhalt und optimiert Parameter für beste Ergebnisse.",
+    "smartAnalysisActive": "KI-Intelligente Analyse aktiv",
+    "smartAnalysisActiveDescription": "Die KI wählt automatisch die besten Verbesserungen für Ihr Bild aus.",
+    "additionalEnhancements": "Zusätzliche Verbesserungen",
+    "enhanceImage": "Bild verbessern",
+    "enhanceFaces": "Gesichter verbessern",
+    "preserveText": "Text erhalten",
+    "customInstructions": "Benutzerdefinierte Anweisungen",
+    "enhancementLabels": {
+      "clarity": "Schärfe",
+      "color": "Farbe",
+      "lighting": "Beleuchtung",
+      "denoise": "Entrauschen",
+      "artifacts": "Artefakte",
+      "details": "Details"
+    }
+  },
+  "imageComparison": {
+    "enhanced": "Verbessert",
+    "toggleZoom": "Zoom umschalten",
+    "downloadResult": "Ergebnis herunterladen",
+    "download": "Herunterladen",
+    "original": "Original",
+    "enhancedLabel": "Verbessert"
+  },
+  "upgradeSuccessBanner": {
+    "title": "Gute Arbeit!",
+    "image": "Bild",
+    "images": "Bilder",
+    "subtitle": "Upgrade auf Professional für 1000 Credits/Monat und sparen Sie bis zu 58%",
+    "seePlans": "Pläne anzeigen",
+    "maybeLater": "Vielleicht später"
+  },
+  "dropzone": {
+    "dropToUpload": "Zum Hochladen ablegen",
+    "clickOrDragImages": "Klicken oder Bilder ziehen",
+    "supportForFormats": "Unterstützung für JPG, PNG und WEBP",
+    "freeLimitText": "Bis zu 5MB pro Datei • 1 Bild gleichzeitig • Upgrade für Batch-Verarbeitung",
+    "paidLimitText": "Bis zu 10MB pro Datei • Batch-Verarbeitung verfügbar"
+  },
+  "nav": {
+    "blog": "Blog"
+  }
+}

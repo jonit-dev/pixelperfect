@@ -3,6 +3,7 @@ import { Dropzone } from '@client/components/features/image-processing/Dropzone'
 import { cn } from '@client/utils/cn';
 import { AlertTriangle, Check, Loader2, Plus, X } from 'lucide-react';
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 interface IQueueStripProps {
   queue: IBatchItem[];
@@ -23,6 +24,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
   onAddFiles,
   batchLimit,
 }) => {
+  const t = useTranslations('workspace.queue');
   return (
     <div
       className={cn(
@@ -33,7 +35,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
     >
       {/* Header - Mobile only */}
       <div className="md:hidden flex items-center justify-between mb-2">
-        <h3 className="font-semibold text-white">Processing Queue</h3>
+        <h3 className="font-semibold text-white">{t('title')}</h3>
         <span className="text-sm text-muted-foreground">
           {queue.length}{' '}
           {batchLimit !== undefined && `/ ${batchLimit === Infinity ? '∞' : batchLimit}`} items
@@ -78,8 +80,8 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
               )}
             >
               {batchLimit !== undefined && queue.length >= batchLimit
-                ? 'Limit Reached'
-                : 'Add More'}
+                ? t('limitReached')
+                : t('addMore')}
             </span>
           </div>
         </Dropzone>
@@ -147,7 +149,7 @@ export const QueueStrip: React.FC<IQueueStripProps> = ({
                       onRemove(item.id);
                     }}
                     className="p-2 -mr-1 text-muted-foreground hover:text-error active:text-error active:bg-error/20 rounded-lg transition-colors touch-manipulation"
-                    aria-label="Remove image"
+                    aria-label={t('aria.removeImage')}
                   >
                     <X size={18} />
                   </button>

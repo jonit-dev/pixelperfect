@@ -1,5 +1,8 @@
+'use client';
+
 import { AlertCircle, FileUp, UploadCloud } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useUserData } from '@client/store/userStore';
 import { processFiles } from '@client/utils/file-validation';
 import { OversizedImageModal } from './OversizedImageModal';
@@ -20,6 +23,7 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
   children,
   className = '',
 }) => {
+  const t = useTranslations('workspace');
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showOversizedModal, setShowOversizedModal] = useState(false);
@@ -196,16 +200,12 @@ export const Dropzone: React.FC<IDropzoneProps> = ({
               <h3
                 className={`font-bold text-white transition-colors ${isDragging ? 'text-accent' : 'group-hover:text-accent'} text-xl`}
               >
-                {isDragging ? 'Drop to upload' : 'Click or drag images'}
+                {isDragging ? t('dropzone.dropToUpload') : t('dropzone.clickOrDragImages')}
               </h3>
               <p className="text-muted-foreground text-sm font-medium leading-relaxed">
-                Support for JPG, PNG, and WEBP
+                {t('dropzone.supportForFormats')}
                 <span className="block text-xs text-muted-foreground mt-1 font-normal">
-                  Up to {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE ? '5MB' : '10MB'} per file
-                  •
-                  {currentLimit === IMAGE_VALIDATION.MAX_SIZE_FREE
-                    ? ' 1 image at a time • Upgrade for batch processing'
-                    : ' Batch processing available'}
+                  {isPaidUser ? t('dropzone.paidLimitText') : t('dropzone.freeLimitText')}
                 </span>
               </p>
             </div>

@@ -1,10 +1,20 @@
 import { clientEnv } from '@shared/config/env';
+import { DEFAULT_LOCALE } from '@/i18n/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { JSX } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { LocaleSwitcher } from '@client/components/i18n/LocaleSwitcher';
 
 export const Footer = (): JSX.Element => {
+  const t = useTranslations('footer');
+  const locale = useLocale();
   const currentYear = new Date().getFullYear();
+
+  // Helper to generate localized URLs
+  const localizedPath = (path: string) => {
+    return locale === DEFAULT_LOCALE ? path : `/${locale}${path}`;
+  };
 
   return (
     <footer className="bg-main text-text-muted mt-auto border-t border-border">
@@ -22,23 +32,24 @@ export const Footer = (): JSX.Element => {
               />
             </Link>
             <p className="text-sm text-text-muted font-medium leading-relaxed max-w-xs">
-              AI-powered image upscaling and enhancement for professionals and creators.
-              Precision-engineered for 2025.
+              {t('description')}
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">Product</h4>
+            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">
+              {t('product')}
+            </h4>
             <ul className="space-y-4 text-sm font-medium">
               <li>
                 <Link href="/pricing" className="hover:text-accent transition-colors">
-                  Pricing Plans
+                  {t('pricingPlans')}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-accent transition-colors">
-                  Latest Updates
+                <Link href={localizedPath('/blog')} className="hover:text-accent transition-colors">
+                  {t('latestUpdates')}
                 </Link>
               </li>
             </ul>
@@ -46,11 +57,13 @@ export const Footer = (): JSX.Element => {
 
           {/* Support */}
           <div>
-            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">Support</h4>
+            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">
+              {t('support')}
+            </h4>
             <ul className="space-y-4 text-sm font-medium">
               <li>
                 <Link href="/help" className="hover:text-accent transition-colors">
-                  Help Center
+                  {t('helpCenter')}
                 </Link>
               </li>
               <li>
@@ -58,7 +71,7 @@ export const Footer = (): JSX.Element => {
                   href={`mailto:${clientEnv.SUPPORT_EMAIL}`}
                   className="hover:text-accent transition-colors"
                 >
-                  Contact Support
+                  {t('contactSupport')}
                 </a>
               </li>
             </ul>
@@ -66,16 +79,18 @@ export const Footer = (): JSX.Element => {
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">Legal</h4>
+            <h4 className="text-white font-bold mb-6 uppercase text-xs tracking-widest">
+              {t('legal')}
+            </h4>
             <ul className="space-y-4 text-sm font-medium">
               <li>
                 <Link href="/privacy" className="hover:text-accent transition-colors">
-                  Privacy Policy
+                  {t('privacyPolicy')}
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="hover:text-accent transition-colors">
-                  Terms of Service
+                  {t('termsOfService')}
                 </Link>
               </li>
             </ul>
@@ -85,18 +100,21 @@ export const Footer = (): JSX.Element => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs font-medium text-text-muted">
-            © {currentYear} {clientEnv.APP_NAME}. All rights reserved. Precision made for creators.
+            © {currentYear} {clientEnv.APP_NAME}. {t('allRightsReserved')} {t('copyright')}
           </p>
-          <div className="flex gap-8 text-xs font-black uppercase tracking-widest">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms
-            </Link>
-            <Link href="/help" className="hover:text-white transition-colors">
-              Help
-            </Link>
+          <div className="flex items-center gap-6">
+            <LocaleSwitcher />
+            <div className="flex gap-8 text-xs font-black uppercase tracking-widest">
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                {t('privacy')}
+              </Link>
+              <Link href="/terms" className="hover:text-white transition-colors">
+                {t('terms')}
+              </Link>
+              <Link href="/help" className="hover:text-white transition-colors">
+                {t('help')}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

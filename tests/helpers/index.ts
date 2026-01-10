@@ -19,6 +19,18 @@ export {
   type IPresetUserConfig,
 } from './user-factory';
 
+// Credit assertion helpers for billing tests
+export {
+  assertCreditProfile,
+  assertCreditTransaction,
+  assertSubscriptionRecord,
+  getCreditBalance,
+  getCreditTransactions,
+  CREDITS,
+  PRICE_IDS,
+  type ICreditAssertionOptions,
+} from './credit-assertions';
+
 // Auth helpers for E2E tests
 export {
   createTestUser,

@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { AlertTriangle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Modal } from '@client/components/ui/Modal';
 import { Button } from '@client/components/ui/Button';
 import { analytics } from '@client/analytics/analyticsClient';
@@ -26,6 +27,8 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
   onAddPartial,
   serverEnforced = false,
 }) => {
+  const t = useTranslations('workspace.batchLimit');
+  const tCommon = useTranslations('common');
   const router = useRouter();
   const availableSlots = Math.max(0, limit - currentCount);
 
@@ -90,21 +93,26 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
         </div>
 
         <h2 className="text-xl font-bold text-primary mb-2">
-          {serverEnforced ? 'Batch Processing Limit Reached' : 'Batch Limit Reached'}
+          {serverEnforced ? t('serverEnforcedTitle') : t('clientEnforcedTitle')}
         </h2>
 
         {serverEnforced ? (
           <p className="text-muted-foreground">
-            You&apos;ve reached the processing limit for your plan. You processed{' '}
-            <span className="font-semibold">{currentCount}</span> images, but your plan allows a
-            maximum of <span className="font-semibold">{limit}</span> images per hour.
+            {t.rich('serverEnforcedMessage', {
+              currentCount: chunks => <span className="font-semibold">{chunks}</span>,
+              limit: chunks => <span className="font-semibold">{chunks}</span>,
+              currentCountValue: currentCount,
+              limitValue: limit,
+            })}
           </p>
         ) : (
           <p className="text-muted-foreground">
-            You tried to add <span className="font-semibold">{attempted}</span> image
-            {attempted !== 1 ? 's' : ''}, but your plan allows a maximum of{' '}
-            <span className="font-semibold">{limit}</span> image{limit !== 1 ? 's' : ''} in the
-            queue.
+            {t('clientEnforcedMessage', {
+              attempted,
+              plural: attempted,
+              limit,
+              limitPlural: limit,
+            })}
           </p>
         )}
       </div>
@@ -112,37 +120,31 @@ export const BatchLimitModal: React.FC<IBatchLimitModalProps> = ({
       {/* Free User Special Message */}
       {limit === 1 && (
         <div className="bg-surface rounded-lg p-4 mb-6 border border-border">
-          <p className="text-sm text-muted-foreground">
-            Free users can process 1 image at a time. Upgrade to unlock higher batch limits and
-            process multiple images.
-          </p>
+          <p className="text-sm text-muted-foreground">{t('freeUserMessage')}</p>
         </div>
       )}
 
       {/* Server-enforced messaging */}
       {serverEnforced && (
         <div className="bg-amber-50 rounded-lg p-4 mb-6 border border-amber-200">
-          <p className="text-sm text-amber-800">
-            This is a security measure to prevent abuse. The limit will reset in approximately 1
-            hour. Upgrade your plan for higher limits.
-          </p>
+          <p className="text-sm text-amber-800">{t('securityMessage')}</p>
         </div>
       )}
 
       {/* Action Buttons */}
       <div className="space-y-3">
         <Button variant="primary" className="w-full" onClick={handleUpgradeClick}>
-          Upgrade Plan
+          {t('upgradeButton')}
         </Button>
 
         {!serverEnforced && availableSlots > 0 && (
           <Button variant="outline" className="w-full" onClick={handleAddPartial}>
-            Add {availableSlots} {availableSlots === 1 ? 'image' : 'images'}
+            {t('addPartialButton', { availableSlots, count: availableSlots })}
           </Button>
         )}
 
         <Button variant="ghost" className="w-full" onClick={handleClose}>
-          Cancel
+          {tCommon('cancel')}
         </Button>
       </div>
     </Modal>
