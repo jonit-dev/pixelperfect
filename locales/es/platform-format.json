@@ -2,7 +2,7 @@
   "category": "formato-plataforma",
   "pages": [
     {
-      "slug": "midjourney-upscaler-png",
+      "slug": "escalador-midjourney-png",
       "title": "Escalador de Midjourney PNG",
       "metaTitle": "Escalador PNG de Midjourney - Mejora Imágenes MJ | MyImageUpscaler",
       "metaDescription": "Escala imágenes PNG de Midjourney a 4K sin perder calidad. Perfecto para exportación de arte IA con transparencia. Escalador MJ PNG gratis.",
@@ -101,11 +101,11 @@
           "answer": "Comenzando desde la exportación PNG de Midjourney (típicamente 1024x1024 o superior para v5), podemos escalar hasta 8x, logrando resoluciones hasta 8192x8192 píxeles."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-png", "dalle-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "midjourney-upscaler-webp"]
+      "relatedPlatforms": ["escalador-stable-diffusion-png", "escalador-dalle-png"],
+      "relatedFormats": ["escalar-imagenes-png", "escalador-midjourney-webp"]
     },
     {
-      "slug": "midjourney-upscaler-webp",
+      "slug": "escalador-midjourney-webp",
       "title": "Escalador de Midjourney WebP",
       "metaTitle": "Escalador WebP de Midjourney - Mejora Imágenes MI WEBP | MyImageUpscaler",
       "metaDescription": "Escala imágenes WebP de Midjourney con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -205,11 +205,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. WebP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-webp", "dalle-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-webp", "escalador-dalle-webp"],
+      "relatedFormats": ["escalar-imagenes-webp", "escalador-midjourney-png"]
     },
     {
-      "slug": "midjourney-upscaler-jpg",
+      "slug": "escalador-midjourney-jpg",
       "title": "Escalador de Midjourney JPEG",
       "metaTitle": "Escalador JPEG de Midjourney - Mejora Imágenes MI JPEG | MyImageUpscaler",
       "metaDescription": "Escala imágenes JPEG de Midjourney con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -309,11 +309,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. JPEG es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-jpg", "dalle-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpg-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-jpg", "escalador-dalle-jpg"],
+      "relatedFormats": ["upscale-jpg-images", "escalador-midjourney-png"]
     },
     {
-      "slug": "stable-diffusion-upscaler-png",
+      "slug": "escalador-stable-diffusion-png",
       "title": "Escalador de Stable Diffusion PNG",
       "metaTitle": "Escalador PNG de Stable Diffusion - Mejora Imágenes ST PNG | MyImageUpscaler",
       "metaDescription": "Escala imágenes PNG de Stable Diffusion con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -413,11 +413,11 @@
           "answer": "¡Sí! PNG es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-png", "dalle-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "stable-diffusion-upscaler-webp"]
+      "relatedPlatforms": ["escalador-midjourney-png", "escalador-dalle-png"],
+      "relatedFormats": ["escalar-imagenes-png", "escalador-stable-diffusion-webp"]
     },
     {
-      "slug": "stable-diffusion-upscaler-webp",
+      "slug": "escalador-stable-diffusion-webp",
       "title": "Escalador de Stable Diffusion WebP",
       "metaTitle": "Escalador WebP de Stable Diffusion - Mejora Imágenes ST WEBP | MyImageUpscaler",
       "metaDescription": "Escala imágenes WebP de Stable Diffusion con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -517,11 +517,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. WebP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-webp", "dalle-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-webp", "escalador-dalle-webp"],
+      "relatedFormats": ["escalar-imagenes-webp", "escalador-stable-diffusion-png"]
     },
     {
-      "slug": "stable-diffusion-upscaler-jpg",
+      "slug": "escalador-stable-diffusion-jpg",
       "title": "Escalador de Stable Diffusion JPEG",
       "metaTitle": "Escalador JPEG de Stable Diffusion - Mejora Imágenes ST JPEG | MyImageUpscaler",
       "metaDescription": "Escala imágenes JPEG de Stable Diffusion con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -621,11 +621,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. JPEG es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-jpg", "dalle-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpg-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-jpg", "escalador-dalle-jpg"],
+      "relatedFormats": ["upscale-jpg-images", "escalador-stable-diffusion-png"]
     },
     {
-      "slug": "dalle-upscaler-png",
+      "slug": "escalador-dalle-png",
       "title": "Escalador de DALL-E PNG",
       "metaTitle": "Escalador PNG de DALL-E - Mejora Imágenes DA PNG | MyImageUpscaler",
       "metaDescription": "Escala imágenes PNG de DALL-E con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -724,11 +724,11 @@
           "answer": "¡Sí! PNG es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-png", "stable-diffusion-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "dalle-upscaler-webp"]
+      "relatedPlatforms": ["escalador-midjourney-png", "escalador-stable-diffusion-png"],
+      "relatedFormats": ["escalar-imagenes-png", "dalle-upscaler-webp"]
     },
     {
-      "slug": "dalle-upscaler-webp",
+      "slug": "escalador-dalle-webp",
       "title": "Escalador de DALL-E WebP",
       "metaTitle": "Escalador WebP de DALL-E - Mejora Imágenes DA WEBP | MyImageUpscaler",
       "metaDescription": "Escala imágenes WebP de DALL-E con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -828,11 +828,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. WebP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-webp", "stable-diffusion-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-webp", "escalador-stable-diffusion-webp"],
+      "relatedFormats": ["escalar-imagenes-webp", "escalador-dalle-png"]
     },
     {
-      "slug": "dalle-upscaler-jpg",
+      "slug": "escalador-dalle-jpg",
       "title": "Escalador de DALL-E JPEG",
       "metaTitle": "Escalador JPEG de DALL-E - Mejora Imágenes DA JPEG | MyImageUpscaler",
       "metaDescription": "Escala imágenes JPEG de DALL-E con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -931,11 +931,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. JPEG es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-jpg", "stable-diffusion-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpg-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-jpg", "escalador-stable-diffusion-jpg"],
+      "relatedFormats": ["upscale-jpg-images", "escalador-dalle-png"]
     },
     {
-      "slug": "canva-upscaler-png",
+      "slug": "escalador-canva-png",
       "title": "Escalador de Canva PNG",
       "metaTitle": "Escalador PNG de Canva - Mejora Imágenes CA PNG | MyImageUpscaler",
       "metaDescription": "Escala imágenes PNG de Canva con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1034,11 +1034,11 @@
           "answer": "¡Sí! PNG es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-png", "figma-upscaler-png"],
+      "relatedPlatforms": ["escalador-photoshop-png", "escalador-figma-png"],
       "relatedFormats": ["upscale-webp-images", "upscale-jpg-images"]
     },
     {
-      "slug": "canva-upscaler-webp",
+      "slug": "escalador-canva-webp",
       "title": "Escalador de Canva WebP",
       "metaTitle": "Escalador WebP de Canva - Mejora Imágenes CA WEBP | MyImageUpscaler",
       "metaDescription": "Escala imágenes WebP de Canva con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -1138,11 +1138,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. WebP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-webp", "figma-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-webp", "escalador-figma-webp"],
+      "relatedFormats": ["escalar-imagenes-webp", "escalador-canva-png"]
     },
     {
-      "slug": "canva-upscaler-jpg",
+      "slug": "escalador-canva-jpg",
       "title": "Escalador de Canva JPEG",
       "metaTitle": "Escalador JPEG de Canva - Mejora Imágenes CA JPEG | MyImageUpscaler",
       "metaDescription": "Escala imágenes JPEG de Canva con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -1241,11 +1241,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. JPEG es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-jpg", "figma-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-jpg", "escalador-figma-jpg"],
+      "relatedFormats": ["escalar-imagenes-jpeg", "escalador-canva-png"]
     },
     {
-      "slug": "photoshop-upscaler-png",
+      "slug": "escalador-photoshop-png",
       "title": "Escalador de Photoshop PNG",
       "metaTitle": "Escalador PNG de Photoshop - Mejora Imágenes PH PNG | MyImageUpscaler",
       "metaDescription": "Escala imágenes PNG de Photoshop con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1345,11 +1345,11 @@
           "answer": "¡Sí! PNG es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-png", "lightroom-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "photoshop-upscaler-tiff"]
+      "relatedPlatforms": ["escalador-canva-png", "escalador-lightroom-png"],
+      "relatedFormats": ["escalar-imagenes-png", "escalador-photoshop-tiff"]
     },
     {
-      "slug": "photoshop-upscaler-webp",
+      "slug": "escalador-photoshop-webp",
       "title": "Escalador de Photoshop WebP",
       "metaTitle": "Escalador WebP de Photoshop - Mejora Imágenes PH WEBP | MyImageUpscaler",
       "metaDescription": "Escala imágenes WebP de Photoshop con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -1449,11 +1449,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. WebP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-webp", "lightroom-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-webp", "escalador-lightroom-webp"],
+      "relatedFormats": ["escalar-imagenes-webp", "escalador-photoshop-png"]
     },
     {
-      "slug": "photoshop-upscaler-jpg",
+      "slug": "escalador-photoshop-jpg",
       "title": "Escalador de Photoshop JPEG",
       "metaTitle": "Escalador JPEG de Photoshop - Mejora Imágenes PH JPEG | MyImageUpscaler",
       "metaDescription": "Escala imágenes JPEG de Photoshop con IA. Mejora resolución sin perder calidad. Perfecto para web. Gratis.",
@@ -1552,11 +1552,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. JPEG es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-jpg", "lightroom-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-jpg", "escalador-lightroom-jpg"],
+      "relatedFormats": ["escalar-imagenes-jpeg", "escalador-photoshop-png"]
     },
     {
-      "slug": "midjourney-upscaler-heic",
+      "slug": "escalador-midjourney-heic",
       "title": "Escalador de Midjourney HEIC",
       "metaTitle": "Escalador HEIC de Midjourney - Mejora Imágenes MI HEIC | MyImageUpscaler",
       "metaDescription": "Escala imágenes HEIC de Midjourney con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1655,11 +1655,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. HEIC es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-heic", "dalle-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-heic", "escalador-dalle-heic"],
+      "relatedFormats": ["escalar-imagenes-heic", "escalador-midjourney-png"]
     },
     {
-      "slug": "midjourney-upscaler-tiff",
+      "slug": "escalador-midjourney-tiff",
       "title": "Escalador de Midjourney TIFF",
       "metaTitle": "Escalador TIFF de Midjourney - Mejora Imágenes MI TIFF | MyImageUpscaler",
       "metaDescription": "Escala imágenes TIFF de Midjourney con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1758,11 +1758,11 @@
           "answer": "¡Sí! TIFF es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-tiff", "dalle-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-tiff", "escalador-dalle-tiff"],
+      "relatedFormats": ["escalar-imagenes-tiff", "escalador-midjourney-png"]
     },
     {
-      "slug": "stable-diffusion-upscaler-heic",
+      "slug": "escalador-stable-diffusion-heic",
       "title": "Escalador de Stable Diffusion HEIC",
       "metaTitle": "Escalador HEIC de Stable Diffusion - Mejora Imágenes ST HEIC | MyImageUpscaler",
       "metaDescription": "Escala imágenes HEIC de Stable Diffusion con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1861,11 +1861,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. HEIC es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-heic", "dalle-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-heic", "escalador-dalle-heic"],
+      "relatedFormats": ["escalar-imagenes-heic", "escalador-stable-diffusion-png"]
     },
     {
-      "slug": "stable-diffusion-upscaler-tiff",
+      "slug": "escalador-stable-diffusion-tiff",
       "title": "Escalador de Stable Diffusion TIFF",
       "metaTitle": "Escalador TIFF de Stable Diffusion - Mejora Imágenes ST TIFF | MyImageUpscaler",
       "metaDescription": "Escala imágenes TIFF de Stable Diffusion con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -1965,11 +1965,11 @@
           "answer": "¡Sí! TIFF es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-tiff", "dalle-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-tiff", "escalador-dalle-tiff"],
+      "relatedFormats": ["escalar-imagenes-tiff", "escalador-stable-diffusion-png"]
     },
     {
-      "slug": "dalle-upscaler-heic",
+      "slug": "escalador-dalle-heic",
       "title": "Escalador de DALL-E HEIC",
       "metaTitle": "Escalador HEIC de DALL-E - Mejora Imágenes DA HEIC | MyImageUpscaler",
       "metaDescription": "Escala imágenes HEIC de DALL-E con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2068,11 +2068,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. HEIC es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-heic", "stable-diffusion-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-heic", "escalador-stable-diffusion-heic"],
+      "relatedFormats": ["escalar-imagenes-heic", "escalador-dalle-png"]
     },
     {
-      "slug": "dalle-upscaler-tiff",
+      "slug": "escalador-dalle-tiff",
       "title": "Escalador de DALL-E TIFF",
       "metaTitle": "Escalador TIFF de DALL-E - Mejora Imágenes DA TIFF | MyImageUpscaler",
       "metaDescription": "Escala imágenes TIFF de DALL-E con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2171,11 +2171,11 @@
           "answer": "¡Sí! TIFF es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-tiff", "stable-diffusion-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-tiff", "escalador-stable-diffusion-tiff"],
+      "relatedFormats": ["escalar-imagenes-tiff", "escalador-dalle-png"]
     },
     {
-      "slug": "canva-upscaler-heic",
+      "slug": "escalador-canva-heic",
       "title": "Escalador de Canva HEIC",
       "metaTitle": "Escalador HEIC de Canva - Mejora Imágenes CA HEIC | MyImageUpscaler",
       "metaDescription": "Escala imágenes HEIC de Canva con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2274,11 +2274,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. HEIC es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-heic", "figma-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-heic", "escalador-figma-heic"],
+      "relatedFormats": ["escalar-imagenes-heic", "escalador-canva-png"]
     },
     {
-      "slug": "canva-upscaler-tiff",
+      "slug": "escalador-canva-tiff",
       "title": "Escalador de Canva TIFF",
       "metaTitle": "Escalador TIFF de Canva - Mejora Imágenes CA TIFF | MyImageUpscaler",
       "metaDescription": "Escala imágenes TIFF de Canva con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2377,11 +2377,11 @@
           "answer": "¡Sí! TIFF es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-tiff", "figma-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-tiff", "escalador-figma-tiff"],
+      "relatedFormats": ["escalar-imagenes-tiff", "escalador-canva-png"]
     },
     {
-      "slug": "photoshop-upscaler-heic",
+      "slug": "escalador-photoshop-heic",
       "title": "Escalador de Photoshop HEIC",
       "metaTitle": "Escalador HEIC de Photoshop - Mejora Imágenes PH HEIC | MyImageUpscaler",
       "metaDescription": "Escala imágenes HEIC de Photoshop con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2480,11 +2480,11 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. HEIC es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-heic", "lightroom-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-heic", "escalador-lightroom-heic"],
+      "relatedFormats": ["escalar-imagenes-heic", "escalador-photoshop-png"]
     },
     {
-      "slug": "photoshop-upscaler-tiff",
+      "slug": "escalador-photoshop-tiff",
       "title": "Escalador de Photoshop TIFF",
       "metaTitle": "Escalador TIFF de Photoshop - Mejora Imágenes PH TIFF | MyImageUpscaler",
       "metaDescription": "Escala imágenes TIFF de Photoshop con IA. Mejora resolución sin perder calidad. Perfecto para impresión y alta calidad. Gratis.",
@@ -2584,8 +2584,8 @@
           "answer": "¡Sí! TIFF es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-tiff", "lightroom-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-tiff", "escalador-lightroom-tiff"],
+      "relatedFormats": ["escalar-imagenes-tiff", "escalador-photoshop-png"]
     },
     {
       "slug": "figma-upscaler-png",
@@ -2687,8 +2687,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-raw", "dalle-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-raw", "escalador-dalle-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-midjourney-png"]
     },
     {
       "slug": "figma-upscaler-webp",
@@ -2790,8 +2790,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-bmp", "dalle-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": ["escalador-stable-diffusion-bmp", "escalador-dalle-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-midjourney-png"]
     },
     {
       "slug": "figma-upscaler-jpg",
@@ -2893,8 +2893,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-avif", "dalle-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "midjourney-upscaler-webp"]
+      "relatedPlatforms": ["escalador-stable-diffusion-avif", "escalador-dalle-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-midjourney-webp"]
     },
     {
       "slug": "lightroom-upscaler-png",
@@ -2996,8 +2996,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-raw", "dalle-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-raw", "escalador-dalle-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-stable-diffusion-png"]
     },
     {
       "slug": "lightroom-upscaler-webp",
@@ -3099,8 +3099,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-bmp", "dalle-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-bmp", "escalador-dalle-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-stable-diffusion-png"]
     },
     {
       "slug": "lightroom-upscaler-jpg",
@@ -3202,8 +3202,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-avif", "dalle-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "stable-diffusion-upscaler-webp"]
+      "relatedPlatforms": ["escalador-midjourney-avif", "escalador-dalle-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-stable-diffusion-webp"]
     },
     {
       "slug": "lightroom-upscaler-heic",
@@ -3305,8 +3305,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-raw", "stable-diffusion-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-raw", "escalador-stable-diffusion-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-dalle-png"]
     },
     {
       "slug": "lightroom-upscaler-tiff",
@@ -3408,8 +3408,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-bmp", "stable-diffusion-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "dalle-upscaler-png"]
+      "relatedPlatforms": ["escalador-midjourney-bmp", "escalador-stable-diffusion-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-dalle-png"]
     },
     {
       "slug": "gimp-upscaler-png",
@@ -3511,8 +3511,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-avif", "stable-diffusion-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "dalle-upscaler-webp"]
+      "relatedPlatforms": ["escalador-midjourney-avif", "escalador-stable-diffusion-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-dalle-webp"]
     },
     {
       "slug": "gimp-upscaler-webp",
@@ -3614,8 +3614,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-raw", "lightroom-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-raw", "escalador-lightroom-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-canva-png"]
     },
     {
       "slug": "gimp-upscaler-jpg",
@@ -3717,8 +3717,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-bmp", "lightroom-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "canva-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-bmp", "escalador-lightroom-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-canva-png"]
     },
     {
       "slug": "gimp-upscaler-heic",
@@ -3820,8 +3820,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-avif", "lightroom-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "canva-upscaler-webp"]
+      "relatedPlatforms": ["escalador-photoshop-avif", "escalador-lightroom-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-canva-webp"]
     },
     {
       "slug": "gimp-upscaler-tiff",
@@ -3923,8 +3923,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-raw", "lightroom-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-raw", "escalador-lightroom-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-photoshop-png"]
     },
     {
       "slug": "affinity-upscaler-png",
@@ -4026,8 +4026,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-bmp", "lightroom-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": ["escalador-canva-bmp", "escalador-lightroom-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-photoshop-png"]
     },
     {
       "slug": "affinity-upscaler-webp",
@@ -4129,8 +4129,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-avif", "lightroom-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "photoshop-upscaler-webp"]
+      "relatedPlatforms": ["escalador-canva-avif", "escalador-lightroom-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-photoshop-webp"]
     },
     {
       "slug": "affinity-upscaler-jpg",
@@ -4232,8 +4232,8 @@
           "answer": "¡Sí! RAW es ideal para impresión."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-raw", "canva-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "lightroom-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-raw", "escalador-canva-raw"],
+      "relatedFormats": ["escalar-imagenes-raw", "escalador-lightroom-png"]
     },
     {
       "slug": "affinity-upscaler-heic",
@@ -4335,8 +4335,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. BMP es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-bmp", "canva-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "lightroom-upscaler-png"]
+      "relatedPlatforms": ["escalador-photoshop-bmp", "escalador-canva-bmp"],
+      "relatedFormats": ["escalar-imagenes-bmp", "escalador-lightroom-png"]
     },
     {
       "slug": "affinity-upscaler-tiff",
@@ -4438,8 +4438,8 @@
           "answer": "Para impresión profesional, recomendamos PNG o TIFF en su lugar. AVIF es mejor para uso web."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-avif", "canva-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "lightroom-upscaler-webp"]
+      "relatedPlatforms": ["escalador-photoshop-avif", "escalador-canva-avif"],
+      "relatedFormats": ["escalar-imagenes-avif", "escalador-lightroom-webp"]
     }
   ],
   "meta": {

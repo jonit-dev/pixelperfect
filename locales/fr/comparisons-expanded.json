@@ -31,32 +31,32 @@
           "testResults": [
             {
               "method": "Interpolation Bicubique",
-              "avgPSNR": "28.4 dB (2x), 24.1 dB (4x)",
-              "avgSSIM": "0.89 (2x), 0.76 (4x)",
+              "avgPSNR": "28,4 dB (2x), 24,1 dB (4x)",
+              "avgSSIM": "0,89 (2x), 0,76 (4x)",
               "strengths": ["Traitement rapide", "Resultats previsibles", "Pas d artefacts"],
               "weaknesses": ["Bords flous", "Perte de detail", "Mauvaise gestion du texte"],
               "bestFor": "Applications en temps reel, generation d aperçus"
             },
             {
               "method": "Reeglage Lanczos",
-              "avgPSNR": "29.1 dB (2x), 25.3 dB (4x)",
-              "avgSSIM": "0.91 (2x), 0.79 (4x)",
+              "avgPSNR": "29,1 dB (2x), 25,3 dB (4x)",
+              "avgSSIM": "0,91 (2x), 0,79 (4x)",
               "strengths": ["Plus net que le bicubique", "Bon pour les images naturelles"],
               "weaknesses": ["Artefacts de ringing", "Computationnellement plus lourd"],
               "bestFor": "Photography, Impression preparation"
             },
             {
               "method": "ESRGAN IA",
-              "avgPSNR": "31.2 dB (2x), 27.8 dB (4x)",
-              "avgSSIM": "0.94 (2x), 0.88 (4x)",
+              "avgPSNR": "31,2 dB (2x), 27,8 dB (4x)",
+              "avgSSIM": "0,94 (2x), 0,88 (4x)",
               "strengths": ["Excellente reconstruction de détails", "Gère bien les textures"],
               "weaknesses": ["Peut sur-affiner", "Traitement plus lent"],
               "bestFor": "Photography, artistic Amélioration"
             },
             {
               "method": "Real-ESRGAN",
-              "avgPSNR": "30.8 dB (2x), 27.2 dB (4x)",
-              "avgSSIM": "0.93 (2x), 0.86 (4x)",
+              "avgPSNR": "30,8 dB (2x), 27,2 dB (4x)",
+              "avgSSIM": "0,93 (2x), 0,86 (4x)",
               "strengths": ["Amélioration équilibrée", "Bon avec les images compressées"],
               "weaknesses": ["Nécessite un accordage soigneux"],
               "bestFor": "À usage général, sources compressées"
@@ -90,23 +90,23 @@
           "costComparison": [
             {
               "method": "Logiciel Traditionnel",
-              "initialCost": "$0-100",
+              "initialCost": "0-100 $",
               "perImageCost": "$0.0001 (electricite)",
-              "monthlyCost": "$0-5",
+              "monthlyCost": "0-5 $",
               "hiddenCosts": "Depreciation du materiel, intervention manuelle"
             },
             {
               "method": "Desktop IA Software",
-              "initialCost": "$100-500",
+              "initialCost": "100-500 $",
               "perImageCost": "$0.01 (electricite)",
-              "monthlyCost": "$10-50",
+              "monthlyCost": "10-50 $",
               "hiddenCosts": "Mise a niveau materiel GPU, maintenance"
             },
             {
               "method": "Cloud IA Service",
-              "initialCost": "$0",
-              "perImageCost": "$0.05-0.50",
-              "monthlyCost": "$20-200",
+              "initialCost": "0 $",
+              "perImageCost": "0,05-0,50 $",
+              "monthlyCost": "20-200 $",
               "hiddenCosts": "Bande passante, limites du taux API"
             }
           ]
@@ -169,7 +169,7 @@
         "solutions d'agrandissement par lot"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "platform",
+      "comparisonType": "plateforme",
       "comparisonMatrix": [
         {
           "category": "Confidentialité et sécurité",
@@ -184,27 +184,27 @@
               "Exploration de données potentielle par les fournisseurs de services",
               "Dépendance à l'égard des pratiques de sécurité du fournisseur"
             ],
-            "riskLevel": "Medium-High (depends on provider)"
+            "riskLevel": "Moyen-élevé (dépend du fournisseur)"
           },
           "desktop": {
             "pros": [
-              "Complete control over image data",
-              "No data transmission over networks",
-              "Works without internet connection"
+              "Contrôle total des données dimage",
+              "Aucune transmission de données sur les réseaux",
+              "Fonctionne sans connexion Internet"
             ],
             "cons": [
-              "Local security is user's responsibility",
-              "Vulnerable to local malware/attacks",
-              "Physical access risks"
+              "La sécurité locale est la responsabilité de lutilisateur",
+              "Vulnérable aux logiciels malveillants/attaques locaux",
+              "Risques daccès physique"
             ],
-            "riskLevel": "Medium (user-dependent)"
+            "riskLevel": "Moyen (dépendant de lutilisateur)"
           }
         },
         {
-          "category": "Performance & Speed",
+          "category": "Performance et vitesse",
           "online": {
             "pros": [
-              "Access to powerful cloud GPU clusters",
+              "Accès à des clusters GPU cloud puissants",
               "Aucune exigence materielle locale",
               "Traitement parallele pour les lots"
             ],
@@ -261,24 +261,28 @@
               "Mises a jour de modele automatiques",
               "Acces API pour l integration",
               "Stockage cloud et collaboration",
-              "Advanced AI models without local requirements"
+              "Modèles IA avancés sans exigences locales"
             ],
             "cons": [
-              "Limited customization",
-              "Dependence on internet",
-              "Feature availability tied to subscription tier"
+              "Personnalisation limitée",
+              "Dépendance à Internet",
+              "Disponibilité des fonctionnalités liée au niveau dabonnement"
             ],
-            "uniqueFeatures": ["API integration", "Team collaboration", "Automatic updates"]
+            "uniqueFeatures": [
+              "Intégration API",
+              "Collaboration déquipe",
+              "Mises à jour automatiques"
+            ]
           },
           "desktop": {
             "pros": [
-              "Full control over parameters",
-              "Custom model training",
-              "Integration with local workflows",
-              "Offline processing capability"
+              "Contrôle total des paramètres",
+              "Entraînement de modèle personnalisé",
+              "Intégration avec les flux de travail locaux",
+              "Capacité de traitement hors ligne"
             ],
             "cons": [
-              "Manual updates required",
+              "Mises à jour manuelles requises",
               "Fonctionnalités de collaboration limitées",
               "Capacités dépendantes du matériel"
             ],
@@ -336,7 +340,7 @@
           {
             "condition": "Traitement thousands of Images monthly",
             "path": "Solution API cloud",
-            "recommendations": ["MyImageUpscaler API", "Cloudinary IA", "AWS Rekognition"]
+            "recommendations": ["API MyImageUpscaler", "Cloudinary IA", "AWS Rekognition"]
           },
           {
             "condition": "Budget limite, utilisation occasionnelle",
@@ -384,7 +388,7 @@
       "testResults": {
         "qualityScores": {
           "freeSolutions": {
-            "averageScore": "6.5/10",
+            "averageScore": "6,5/10",
             "topPerformers": ["MyImageUpscaler Gratuit", "BigJPG", "ImgUpscaler"],
             "commonLimitations": [
               "Limites de resolution (2x-4x)",
@@ -394,8 +398,8 @@
             ]
           },
           "paidSolutions": {
-            "averageScore": "8.7/10",
-            "topPerformers": ["MyImageUpscaler Pro", "Topaz Gigapixel", "Adobe Super Resolution"],
+            "averageScore": "8,7/10",
+            "topPerformers": ["MyImageUpscaler Pro", "Topaz Gigapixel", "Adobe Super Résolution"],
             "advantages": [
               "Facteurs d'agrandissement plus élevés (8x-16x)",
               "Meilleurs modèles IA",
@@ -406,10 +410,10 @@
         },
         "sampleQualityTest": {
           "dataset": "50 test Images at various resolutions and content types",
-          "freeTierAvgPSNR": "27.2 dB",
-          "paidTierAvgPSNR": "30.8 dB",
-          "freeTierAvgSSIM": "0.82",
-          "paidTierAvgSSIM": "0.91"
+          "freeTierAvgPSNR": "27,2 dB",
+          "paidTierAvgPSNR": "30,8 dB",
+          "freeTierAvgSSIM": "0,82",
+          "paidTierAvgSSIM": "0,91"
         }
       },
       "solutionComparison": [
@@ -489,40 +493,40 @@
           "features": [
             "✓ Standard de l'industrie",
             "✓ Intégration avec Photoshop",
-            "✓ Camera Raw integration",
-            "✓ Advanced controls",
-            "✓ Non-destructive workflow"
+            "✓ Intégration Camera Raw",
+            "✓ Contrôles avancés",
+            "✓ Flux de travail non destructif"
           ],
           "limitations": [
-            "✗ Expensive subscription",
-            "✗ Adobe ecosystem required",
-            "✗ Complex interface"
+            "✗ Abonnement coûteux",
+            "✗ Écosystème Adobe requis",
+            "✗ Interface complexe"
           ],
-          "bestFor": "Creative professionals, Adobe users",
-          "upgradePath": "Full Creative Cloud $52.99/month"
+          "bestFor": "Professionnels créatifs, utilisateurs Adobe",
+          "upgradePath": "Creative Cloud complet 52,99 $/mois"
         }
       ],
       "costAnalysis": {
         "usageScenarios": [
           {
             "scenario": "Casual User (5 Images/month)",
-            "freeOption": "$0/year",
-            "paidOption": "$228/year",
+            "freeOption": "0 $/an",
+            "paidOption": "228 $/an",
             "recommendation": "Gratuit tier sufficient",
-            "savings": "$228/year"
+            "savings": "228 $/an"
           },
           {
             "scenario": "Hobbyist (50 Images/month)",
-            "freeOption": "$0 (with limits)",
-            "affordablePaid": "$228/year",
-            "premiumOption": "$99.99/year",
-            "recommendation": "One-time purchase or mid-tier subscription",
-            "breakEven": "5-6 months vs premium"
+            "freeOption": "0 $ (avec limites)",
+            "affordablePaid": "228 $/an",
+            "premiumOption": "99,99 $/an",
+            "recommendation": "Achat unique ou abonnement de milieu de gamme",
+            "breakEven": "5-6 mois vs premium"
           },
           {
             "scenario": "Professionnel (500 Images/month)",
-            "freeOption": "Not feasible",
-            "affordablePaid": "$228/year",
+            "freeOption": "Non réalisable",
+            "affordablePaid": "228 $/an",
             "premiumOption": "$468/an",
             "recommendation": "Professionnel tier with API access",
             "value": "Excellent ROI for Professionnel work"
@@ -565,18 +569,18 @@
           {
             "scenario": "Photographer editing 1000 Images/month",
             "timeSaved": "20 heures/mois",
-            "hourlyRate": "$50",
-            "monthlyValue": "$1000",
-            "subscriptionCost": "$19",
-            "monthlyROI": "$981"
+            "hourlyRate": "50 $",
+            "monthlyValue": "1000 $",
+            "subscriptionCost": "19 $",
+            "monthlyROI": "981 $"
           },
           {
             "scenario": "E-commerce product Images (500/month)",
             "timeSaved": "10 heures/mois",
-            "hourlyRate": "$30",
-            "monthlyValue": "$300",
-            "subscriptionCost": "$39",
-            "monthlyROI": "$261"
+            "hourlyRate": "30 $",
+            "monthlyValue": "300 $",
+            "subscriptionCost": "39 $",
+            "monthlyROI": "261 $"
           }
         ]
       },
@@ -612,36 +616,40 @@
         "upscaling srcnn",
         "upscaling reseau neuronal",
         "upscaling gan vs cnn",
-        "ai image enhancement models"
+        "modèles damélioration dimage IA"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "technical-models",
+      "comparisonType": "modèles techniques",
       "modelCategories": [
         {
-          "category": "CNN-based Models",
-          "description": "Convolutional Neural Networks pioneered AI upscaling with predictable, reliable enhancement.",
+          "category": "Modèles basés sur CNN",
+          "description": "Les réseaux de neurones convolutifs ont lancé la mise à léchelle IA avec une amélioration prévisible et fiable.",
           "models": [
             {
               "name": "SRCNN (Super-Résolution CNN)",
               "year": "2014",
-              "architecture": "3-layer CNN",
+              "architecture": "CNN à 3 couches",
               "strengths": [
-                "Fast processing",
-                "Predictable results",
-                "Low computational requirements",
-                "Good for mild enhancement"
+                "Traitement rapide",
+                "Résultats prévisibles",
+                "Faibles exigences de calcul",
+                "Bon pour une amélioration légère"
               ],
               "weaknesses": [
-                "Limited detail generation",
-                "Struggles with high scale factors",
-                "Can produce blurry results"
+                "Génération de détails limitée",
+                "Difficulté avec les facteurs déchelle élevés",
+                "Peut produire des résultats flous"
               ],
               "performance": {
-                "psnr": "28.5 dB (2x)",
-                "ssim": "0.85",
-                "processingTime": "0.5s (CPU), 0.1s (GPU)"
+                "psnr": "28,5 dB (2x)",
+                "ssim": "0,85",
+                "processingTime": "0,5 s (CPU), 0,1 s (GPU)"
               },
-              "bestUseCases": ["Real-time applications", "Video upscaling", "Mild enhancement"]
+              "bestUseCases": [
+                "Applications en temps réel",
+                "Mise à léchelle vidéo",
+                "Amélioration légère"
+              ]
             },
             {
               "name": "VDSR (Very Deep Super-Résolution)",
@@ -654,9 +662,9 @@
               ],
               "weaknesses": ["Cout de calcul plus eleve", "Synthese de texture limitee"],
               "performance": {
-                "psnr": "29.2 dB (2x)",
-                "ssim": "0.88",
-                "processingTime": "1.2s (CPU), 0.3s (GPU)"
+                "psnr": "29,2 dB (2x)",
+                "ssim": "0,88",
+                "processingTime": "1,2 s (CPU), 0,3 s (GPU)"
               },
               "bestUseCases": ["Restauration image comprimee", "Upscaling a usage general"]
             },
@@ -671,9 +679,9 @@
               ],
               "weaknesses": ["Generation de texture limitee", "Peut etre excessivement lisse"],
               "performance": {
-                "psnr": "30.8 dB (2x)",
-                "ssim": "0.90",
-                "processingTime": "0.8s (GPU)"
+                "psnr": "30,8 dB (2x)",
+                "ssim": "0,90",
+                "processingTime": "0,8 s (GPU)"
               },
               "bestUseCases": ["Etalonnage", "Applications techniques", "Travail critique en PSNR"]
             }
@@ -686,41 +694,49 @@
             {
               "name": "SRGAN (Super-Résolution GAN)",
               "year": "2017",
-              "architecture": "Generator + Discriminator GAN",
+              "architecture": "GAN Générateur + Discriminateur",
               "strengths": [
                 "Generation de texture realiste",
                 "Meilleure qualite visuelle",
-                "Perceptual loss optimization"
+                "Optimisation des pertes perceptuelles"
               ],
-              "weaknesses": ["Can introduce artifacts", "Unstable training", "Lower PSNR scores"],
+              "weaknesses": [
+                "Peut introduire des artefacts",
+                "Entraînement instable",
+                "Scores PSNR plus faibles"
+              ],
               "performance": {
-                "psnr": "26.8 dB (2x)",
-                "ssim": "0.82",
-                "mos": "4.1/5.0",
-                "processingTime": "2.1s (GPU)"
+                "psnr": "26,8 dB (2x)",
+                "ssim": "0,82",
+                "mos": "4,1/5,0",
+                "processingTime": "2,1 s (GPU)"
               },
-              "bestUseCases": ["Artistic enhancement", "Photography", "Visual quality focus"]
+              "bestUseCases": [
+                "Amélioration artistique",
+                "Photographie",
+                "Focus sur la qualité visuelle"
+              ]
             },
             {
               "name": "ESRGAN (Enhanced Super-Résolution GAN)",
               "year": "2018",
-              "architecture": "Improved SRGAN with Relativistic GAN",
+              "architecture": "SRGAN amélioré avec GAN relativiste",
               "strengths": [
-                "Excellent texture synthesis",
-                "Reduced artifacts vs SRGAN",
-                "Better training stability",
-                "Multiple scale factors"
+                "Synthèse de textures excellente",
+                "Artefacts réduits vs SRGAN",
+                "Meilleure stabilité dentraînement",
+                "Facteurs déchelle multiples"
               ],
               "weaknesses": [
-                "Can over-enhance textures",
-                "Higher computational cost",
-                "Inconsistent results"
+                "Peut sur-améliorer les textures",
+                "Coût de calcul plus élevé",
+                "Résultats incohérents"
               ],
               "performance": {
-                "psnr": "27.5 dB (2x)",
-                "ssim": "0.84",
-                "mos": "4.3/5.0",
-                "processingTime": "3.5s (GPU)"
+                "psnr": "27,5 dB (2x)",
+                "ssim": "0,84",
+                "mos": "4,3/5,0",
+                "processingTime": "3,5 s (GPU)"
               },
               "bestUseCases": ["Photographie", "Restauration d art", "Contenu riche en texture"]
             },
@@ -739,10 +755,10 @@
                 "Peut rencontrer des difficultes avec les sources nettes"
               ],
               "performance": {
-                "psnr": "28.2 dB (2x)",
-                "ssim": "0.86",
-                "mos": "4.2/5.0",
-                "processingTime": "2.8s (GPU)"
+                "psnr": "28,2 dB (2x)",
+                "ssim": "0,86",
+                "mos": "4,2/5,0",
+                "processingTime": "2,8 s (GPU)"
               },
               "bestUseCases": ["Images web", "Cadres video", "Sources comprimees"]
             }
@@ -760,40 +776,40 @@
                 "Comprehension du contexte global",
                 "Excellent avec les motifs complexes",
                 "Gere differents types de degradation",
-                "State-of-the-art performance"
+                "Performance de pointe"
               ],
               "weaknesses": [
-                "High computational requirements",
-                "Slower processing",
-                "Memory intensive"
+                "Exigences de calcul élevées",
+                "Traitement plus lent",
+                "Gourmand en mémoire"
               ],
               "performance": {
-                "psnr": "31.5 dB (2x)",
-                "ssim": "0.92",
-                "mos": "4.5/5.0",
-                "processingTime": "8.2s (GPU)"
+                "psnr": "31,5 dB (2x)",
+                "ssim": "0,92",
+                "mos": "4,5/5,0",
+                "processingTime": "8,2 s (GPU)"
               },
               "bestUseCases": [
-                "Professional photography",
-                "Archival restoration",
-                "Critical applications"
+                "Photographie professionnelle",
+                "Restoration darchives",
+                "Applications critiques"
               ]
             },
             {
-              "name": "HAT (Hybrid Attention Transformer)",
+              "name": "HAT (Transformateur hybride avec attention)",
               "year": "2022",
-              "architecture": "CNN + Transformer hybrid",
+              "architecture": "Hybride CNN + Transformateur",
               "strengths": [
-                "Balanced performance and speed",
-                "Good edge preservation",
-                "Efficient attention mechanisms"
+                "Performance et vitesse équilibrées",
+                "Bonne conservation des bords",
+                "Mécanismes dattention efficaces"
               ],
-              "weaknesses": ["Complex architecture", "Necessite un reglage attentif"],
+              "weaknesses": ["Architecture complexe", "Necessite un reglage attentif"],
               "performance": {
-                "psnr": "31.2 dB (2x)",
-                "ssim": "0.91",
-                "mos": "4.4/5.0",
-                "processingTime": "4.5s (GPU)"
+                "psnr": "31,2 dB (2x)",
+                "ssim": "0,91",
+                "mos": "4,4/5,0",
+                "processingTime": "4,5 s (GPU)"
               },
               "bestUseCases": [
                 "Utilisation professionnelle generale",
@@ -835,7 +851,7 @@
                 "Meilleure gestion des couleurs",
                 "Amelioration consciente du style"
               ],
-              "bestFor": ["Anime art", "Manga", "Cartoons"]
+              "bestFor": ["Art danime", "Manga", "Bandes dessinées"]
             }
           ]
         }
@@ -845,43 +861,43 @@
         "scaleFactor": "4x",
         "results": [
           {
-            "model": "Bicubic",
-            "psnr": "24.3 dB",
-            "ssim": "0.75",
-            "time": "0.01s"
+            "model": "Bicubique",
+            "psnr": "24,3 dB",
+            "ssim": "0,75",
+            "time": "0,01 s"
           },
           {
             "model": "SRCNN",
-            "psnr": "26.8 dB",
-            "ssim": "0.82",
-            "time": "0.5s"
+            "psnr": "26,8 dB",
+            "ssim": "0,82",
+            "time": "0,5 s"
           },
           {
             "model": "EDSR",
-            "psnr": "30.2 dB",
-            "ssim": "0.89",
-            "time": "1.2s"
+            "psnr": "30,2 dB",
+            "ssim": "0,89",
+            "time": "1,2 s"
           },
           {
             "model": "ESRGAN",
-            "psnr": "27.8 dB",
-            "ssim": "0.85",
-            "mos": "4.3/5",
-            "time": "3.5s"
+            "psnr": "27,8 dB",
+            "ssim": "0,85",
+            "mos": "4,3/5",
+            "time": "3,5 s"
           },
           {
             "model": "Real-ESRGAN",
-            "psnr": "28.5 dB",
-            "ssim": "0.86",
-            "mos": "4.2/5",
-            "time": "2.8s"
+            "psnr": "28,5 dB",
+            "ssim": "0,86",
+            "mos": "4,2/5",
+            "time": "2,8 s"
           },
           {
             "model": "SwinIR",
-            "psnr": "31.8 dB",
-            "ssim": "0.92",
-            "mos": "4.5/5",
-            "time": "8.2s"
+            "psnr": "31,8 dB",
+            "ssim": "0,92",
+            "mos": "4,5/5",
+            "time": "8,2 s"
           }
         ]
       },
@@ -949,36 +965,36 @@
         "automatisation workflow"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "workflows",
+      "comparisonType": "flux de travail",
       "workflowTypes": [
         {
           "type": "Automatisation Bureau",
           "description": "Traitement local avec scripts et outils d automatisation",
-          "tools": ["Scripts Python", "Command line tools", "Watch folders"],
+          "tools": ["Scripts Python", "Outils en ligne de commande", "Dossiers de surveillance"],
           "pros": [
-            "Complete control over processing",
-            "No upload requirements",
-            "Works with sensitive data",
-            "One-time software cost"
+            "Contrôle total du traitement",
+            "Aucune exigence de téléchargement",
+            "Fonctionne avec des données sensibles",
+            "Coût unique du logiciel"
           ],
           "cons": [
-            "Hardware limitations",
-            "Manual setup required",
-            "Limited parallel processing",
-            "Maintenance overhead"
+            "Limitations matérielles",
+            "Configuration manuelle requise",
+            "Traitement parallèle limité",
+            "Surcharge de maintenance"
           ],
-          "bestFor": ["Photography studios", "Print shops", "Sensitive data processing"],
-          "setupComplexity": "Medium-High",
-          "costPerImage": "$0.001-0.01",
+          "bestFor": ["Studios de photographie", "Imprimeries", "Traitement de données sensibles"],
+          "setupComplexity": "Moyen-élevé",
+          "costPerImage": "0,001-0,01 $",
           "throughput": "100-500 Images/hour"
         },
         {
-          "type": "Cloud API Integration",
-          "description": "Programmatic access to cloud upscaling services",
-          "tools": ["REST APIs", "SDKs", "Webhooks"],
+          "type": "Intégration API cloud",
+          "description": "Accès programmatique aux services de mise à léchelle cloud",
+          "tools": ["API REST", "SDK", "Webhooks"],
           "pros": [
-            "Scalable processing",
-            "No hardware concerns",
+            "Traitement évolutif",
+            "Aucune préoccupation matérielle",
             "SLA professionnels",
             "Integration facile"
           ],
@@ -990,7 +1006,7 @@
           ],
           "bestFor": ["Applications web", "Plateformes e-commerce", "Integration SaaS"],
           "setupComplexity": "Moyen",
-          "costPerImage": "$0.05-0.50",
+          "costPerImage": "0,05-0,50 $",
           "throughput": "1000-10000 Images/hour"
         },
         {
@@ -1015,7 +1031,7 @@
             "Charges de travail variables"
           ],
           "setupComplexity": "Eleve",
-          "costPerImage": "$0.02-0.30",
+          "costPerImage": "0,02-0,30 $",
           "throughput": "500-5000 Images/hour"
         },
         {
@@ -1040,7 +1056,7 @@
             "Organisations de sante"
           ],
           "setupComplexity": "Eleve",
-          "costPerImage": "$0.10-1.00",
+          "costPerImage": "0,10-1,00 $",
           "throughput": "10000+ Images/hour"
         }
       ],
@@ -1054,85 +1070,93 @@
             "budget": "$500/mois"
           },
           "solution": {
-            "type": "Cloud API",
-            "provider": "MyImageUpscaler API",
-            "architecture": "Watch folder → Queue → API processing → CDN storage",
-            "cost": "$450/month",
-            "implementation": "2 weeks",
-            "roi": "40% reduction in manual work"
+            "type": "API cloud",
+            "provider": "API MyImageUpscaler",
+            "architecture": "Dossier de surveillance → File dattente → Traitement API → Stockage CDN",
+            "cost": "450 $/mois",
+            "implementation": "2 semaines",
+            "roi": "Réduction de 40 % du travail manuel"
           }
         },
         {
-          "scenario": "Photography Studio Wedding Packages",
+          "scenario": "Packages de mariage de studio de photographie",
           "requirements": {
             "volume": "5,000 Images/month",
             "quality": "Professionnel Impression Qualité",
-            "speed": "48-hour turnaround",
-            "budget": "$2,000 setup, $200/month"
+            "speed": "Délai de 48 heures",
+            "budget": "2 000 $ de configuration, 200 $/mois"
           },
           "solution": {
-            "type": "Desktop Automation",
-            "tools": "Python + Topaz Gigapixel + Watch folders",
-            "architecture": "Network storage → Watch folder → Batch processing → Final delivery",
-            "cost": "$2,200 initial, $25/month",
-            "implementation": "1 month",
-            "roi": "80% time savings"
+            "type": "Automatisation de bureau",
+            "tools": "Python + Topaz Gigapixel + Dossiers de surveillance",
+            "architecture": "Stockage réseau → Dossier de surveillance → Traitement par lots → Livraison finale",
+            "cost": "2 200 $ initial, 25 $/mois",
+            "implementation": "1 mois",
+            "roi": "Économie de temps de 80 %"
           }
         },
         {
-          "scenario": "Stock Photography Agency",
+          "scenario": "Agence de photographie stock",
           "requirements": {
             "volume": "100,000 Images/month",
             "quality": "Plusieurs Qualité levels",
-            "speed": "Real-time for submissions",
-            "budget": "$10,000/month"
+            "speed": "Temps réel pour les soumissions",
+            "budget": "10 000 $/mois"
           },
           "solution": {
-            "type": "Hybrid + Enterprise",
-            "architecture": "Edge processing + Cloud validation + Archive storage",
-            "cost": "$9,500/month",
-            "implementation": "6 months",
-            "roi": "60% operational efficiency"
+            "type": "Hybride + Entreprise",
+            "architecture": "Traitement edge + Validation cloud + Stockage archive",
+            "cost": "9 500 $/mois",
+            "implementation": "6 mois",
+            "roi": "Efficacité opérationnelle de 60 %"
           }
         }
       ],
       "automationTools": {
         "desktop": [
           {
-            "name": "Python with PIL/OpenCV",
+            "name": "Python avec PIL/OpenCV",
             "setup": "pip install pillow opencv-python requests",
-            "complexity": "Medium",
-            "features": ["File watching", "Format conversion", "Batch processing"],
-            "codeExample": "```python\nfrom PIL import Image\nimport os\nimport requests\n\ndef batch_upscale(folder_path, api_key):\n    for filename in os.listdir(folder_path):\n        if filename.lower().endswith(('.jpg', '.png')):\n            # API call here\n            pass\n```"
+            "complexity": "Moyen",
+            "features": [
+              "Surveillance des fichiers",
+              "Conversion de format",
+              "Traitement par lots"
+            ],
+            "codeExample": "```python\nfrom PIL import Image\nimport os\nimport requests\n\ndef batch_upscale(folder_path, api_key):\n    for filename in os.listdir(folder_path):\n        if filename.lower().endswith(('.jpg', '.png')):\n            # Appel API ici\n            pass\n```"
           },
           {
-            "name": "PowerShell/Bash scripting",
-            "setup": "Native to OS",
-            "complexity": "Low",
-            "features": ["File operations", "Process automation", "Integration"],
+            "name": "Scripts PowerShell/Bash",
+            "setup": "Natif du SE",
+            "complexity": "Faible",
+            "features": ["Opérations sur fichiers", "Automatisation des processus", "Intégration"],
             "limitation": "Limited Image Traitement capabilities"
           }
         ],
         "cloud": [
           {
             "name": "AWS Lambda + API Gateway",
-            "setup": "Serverless functions",
-            "complexity": "High",
-            "features": ["Auto-scaling", "Pay-per-use", "High availability"],
-            "cost": "$0.20 per 1M requests + compute"
+            "setup": "Fonctions serverless",
+            "complexity": "Élevé",
+            "features": ["Mise à léchelle automatique", "Paiement à lusage", "Haute disponibilité"],
+            "cost": "0,20 $ par 1M de requêtes + calcul"
           },
           {
             "name": "Google Cloud Functions",
-            "setup": "Serverless functions",
-            "complexity": "High",
-            "features": ["Multi-region", "Services integres", "Securite"],
+            "setup": "Fonctions serverless",
+            "complexity": "Élevé",
+            "features": ["Multi-région", "Services integres", "Securite"],
             "cost": "$0.40 par 1M invocations + calcul"
           },
           {
             "name": "Automatisation Zapier/Make",
             "setup": "Plateforme sans code",
             "complexity": "Faible",
-            "features": ["Constructeur visuel", "3000+ integrations", "Configuration rapide"],
+            "features": [
+              "Constructeur visuel",
+              "Plus de 3000 intégrations",
+              "Configuration rapide"
+            ],
             "cost": "$20-500/mois selon utilisation"
           }
         ]
@@ -1212,18 +1236,18 @@
             "processingTime": "Reduit de 48 heures a 4 heures",
             "cost": "Reduction 60% vs traitement manuel",
             "quality": "92% satisfaction des clients",
-            "uptime": "99.9%"
+            "uptime": "99,9 %"
           }
         },
         {
           "company": "Chaine de Studios Photographiques",
           "challenge": "Consistent Qualité across 100+ studios",
-          "solution": "Standardized desktop automation",
+          "solution": "Automatisation de bureau standardisée",
           "results": {
-            "consistency": "95% quality standardization",
-            "turnaround": "70% faster delivery",
-            "training": "80% reduction in training time",
-            "errors": "90% reduction in processing errors"
+            "consistency": "Standardisation de qualité à 95 %",
+            "turnaround": "Livraison 70 % plus rapide",
+            "training": "Réduction de 80 % du temps de formation",
+            "errors": "Réduction de 90 % des erreurs de traitement"
           }
         }
       ],
@@ -1518,30 +1542,30 @@
         {
           "useCase": "Imagerie Medicale",
           "requirements": {
-            "speed": "Under 30 seconds acceptable",
-            "quality": "Maximum accuracy required",
-            "validation": "Clinical validation needed"
+            "speed": "Moins de 30 secondes acceptable",
+            "quality": "Précision maximale requise",
+            "validation": "Validation clinique nécessaire"
           },
           "recommendations": [
-            "Ensemble methods",
-            "Domain-specific training",
-            "Uncertainty quantification",
-            "Clinical verification"
+            "Méthodes densemble",
+            "Formation spécifique au domaine",
+            "Quantification de lincertitude",
+            "Vérification clinique"
           ],
-          "optimalSetup": "Custom-trained ensemble models"
+          "optimalSetup": "Modèles densemble personnalisés"
         },
         {
-          "useCase": "Art Restoration",
+          "useCase": "Restauration dart",
           "requirements": {
-            "speed": "Minutes acceptable",
-            "quality": "Preserve artistic intent",
-            "control": "Manual override options"
+            "speed": "Minutes acceptables",
+            "quality": "Préserver lintention artistique",
+            "control": "Options de substitution manuelle"
           },
           "recommendations": [
-            "High-quality models",
-            "Expert review process",
-            "Iterative refinement",
-            "Multiple quality passes"
+            "Modèles de haute qualité",
+            "Processus dexamen expert",
+            "Raffinement itératif",
+            "Plusieurs passes de qualité"
           ],
           "optimalSetup": "SwinIR with manual refinement Outils"
         }
@@ -1549,56 +1573,56 @@
       "decisionFramework": {
         "factors": [
           {
-            "factor": "Time Sensitivity",
+            "factor": "Sensibilité au temps",
             "questions": [
-              "Is real-time processing required?",
-              "What's the maximum acceptable delay?",
-              "Can processing be deferred?"
+              "Un traitement en temps réel est-il requis ?",
+              "Quel est le délai maximum acceptable ?",
+              "Le traitement peut-il être différé ?"
             ],
             "impact": "High - determines Traitement method"
           },
           {
             "factor": "Qualité Requirements",
             "questions": [
-              "Is output for critical applications?",
-              "Will results be printed?",
-              "Is brand reputation at stake?"
+              "La sortie est-elle destinée à des applications critiques ?",
+              "Les résultats seront-ils imprimés ?",
+              "La réputation de la marque est-elle en jeu ?"
             ],
-            "impact": "High - affects model selection"
+            "impact": "Élevé - affecte le choix du modèle"
           },
           {
             "factor": "Volume",
             "questions": [
-              "How many images per day/month?",
-              "Are batches predictable?",
-              "Are there peak periods?"
+              "Combien dimages par jour/mois ?",
+              "Les lots sont-ils prévisibles ?",
+              "Y a-t-il des périodes de pointe ?"
             ],
-            "impact": "Medium - influences infrastructure"
+            "impact": "Moyen - influence linfrastructure"
           },
           {
-            "factor": "Cost Constraints",
+            "factor": "Contraintes de coûts",
             "questions": [
-              "What's the budget per image?",
-              "Are hardware costs acceptable?",
-              "Is operational budget flexible?"
+              "Quel est le budget par image ?",
+              "Les coûts matériels sont-ils acceptables ?",
+              "Le budget opérationnel est-il flexible ?"
             ],
-            "impact": "Medium - affects solution choice"
+            "impact": "Moyen - affecte le choix de la solution"
           },
           {
-            "factor": "Content Type",
+            "factor": "Type de contenu",
             "questions": [
-              "What types of images?",
-              "Is there sensitive content?",
-              "Are special formats needed?"
+              "Quels types dimages ?",
+              "Y a-t-il du contenu sensible ?",
+              "Des formats spéciaux sont-ils nécessaires ?"
             ],
-            "impact": "Medium - influences model choice"
+            "impact": "Moyen - influence le choix du modèle"
           }
         ],
         "recommendationMatrix": {
-          "urgent_lowQuality": "Bicubic/Lightweight CNN",
+          "urgent_lowQuality": "Bicubique/CNN léger",
           "urgent_mediumQuality": "Real-ESRGAN Lite",
           "urgent_highQuality": "Cloud GPU Traitement",
-          "normal_lowVolume_highQuality": "Desktop GPU solutions",
+          "normal_lowVolume_highQuality": "Solutions GPU de bureau",
           "normal_highVolume_mediumQuality": "Solutions API Cloud",
           "normal_highVolume_highQuality": "Solutions hybrides",
           "flexible_criticalQuality": "Modeles ensemble/personnalises"
@@ -1802,155 +1826,164 @@
             "Fonctionne sans internet"
           ],
           "cons": [
-            "Hardware maintenance",
-            "Software updates",
-            "Local security responsibility",
-            "Limited scalability"
+            "Maintenance matérielle",
+            "Mises à jour logicielles",
+            "Responsabilité de la sécurité locale",
+            "Évolutivité limitée"
           ],
-          "bestFor": "Healthcare, legal, government, sensitive corporate data",
+          "bestFor": "Santé, juridique, gouvernement, données dentreprise sensibles",
           "implementations": [
-            "Topaz Gigapixel (offline mode)",
-            "Open-source models (ESRGAN, Real-ESRGAN)",
-            "Custom-trained models",
-            "Air-gapped systems"
+            "Topaz Gigapixel (mode hors ligne)",
+            "Modèles open source (ESRGAN, Real-ESRGAN)",
+            "Modèles entraînés personnalisés",
+            "Systèmes isolés (air-gapped)"
           ]
         },
         "privacyFirstCloud": {
-          "security": "Good - designed with privacy focus",
-          "compliance": "GDPR/CCPA compliant options available",
+          "security": "Bon - conçu avec un focus sur la confidentialité",
+          "compliance": "Options conformes GDPR/CCPA disponibles",
           "pros": [
-            "Professional security infrastructure",
-            "Regular security audits",
-            "Compliance certifications",
-            "Scalable processing"
+            "Infrastructure de sécurité professionnelle",
+            "Audits de sécurité réguliers",
+            "Certifications de conformité",
+            "Traitement évolutif"
           ],
           "cons": [
-            "Still involves data transmission",
-            "Trust in provider necessary",
-            "Potential for provider changes",
-            "Subscription costs"
+            "Implique encore une transmission de données",
+            "Confiance dans le fournisseur nécessaire",
+            "Possibilité de changements de fournisseur",
+            "Coûts dabonnement"
           ],
-          "bestFor": "General business use, GDPR-regulated data",
+          "bestFor": "Usage commercial général, données régies par GDPR",
           "providers": [
-            "MyImageUpscaler (Privacy Mode)",
-            "Let's Enhance (EU servers)",
-            "Adobe (Enterprise)",
-            "Specialized privacy services"
+            "MyImageUpscaler (Mode confidentialité)",
+            "Lets Enhance (serveurs UE)",
+            "Adobe (Entreprise)",
+            "Services de confidentialité spécialisés"
           ]
         },
         "hybridApproach": {
           "security": "Very Good - selective cloud Traitement",
-          "compliance": "Flexible based on data classification",
+          "compliance": "Flexible basé sur la classification des données",
           "pros": [
-            "Best of both worlds",
-            "Cost optimization",
-            "Risk-based processing",
-            "Fallback options"
+            "Le meilleur des deux mondes",
+            "Optimisation des coûts",
+            "Traitement basé sur les risques",
+            "Options de secours"
           ],
-          "cons": ["Complex setup", "Multiple security domains", "Integration challenges"],
-          "bestFor": "Large organizations, mixed sensitivity data",
-          "implementation": "Content-aware routing, on-premise gateway"
+          "cons": [
+            "Configuration complexe",
+            "Plusieurs domaines de sécurité",
+            "Défis dintégration"
+          ],
+          "bestFor": "Grandes organisations, données à sensibilité mixte",
+          "implementation": "Routage sensible au contenu, passerelle sur site"
         },
         "zeroKnowledgeServices": {
-          "security": "Excellent - provider cannot access content",
-          "compliance": "Strong privacy protection",
+          "security": "Excellent - le fournisseur ne peut pas accéder au contenu",
+          "compliance": "Forte protection de la confidentialité",
           "pros": [
-            "Maximum privacy",
-            "Provider cannot access data",
-            "Strong encryption",
-            "Privacy by design"
+            "Confidentialité maximale",
+            "Le fournisseur ne peut pas accéder aux données",
+            "Chiffrement fort",
+            "Confidentialité par conception"
           ],
-          "cons": ["Limited availability", "Fewer features", "Higher costs", "Newer technology"],
-          "bestFor": "Maximum privacy requirements",
-          "providers": ["Emerging zero-knowledge services", "Homomorphic encryption"]
+          "cons": [
+            "Disponibilité limitée",
+            "Moins de fonctionnalités",
+            "Coûts plus élevés",
+            "Technologie plus récente"
+          ],
+          "bestFor": "Exigences de confidentialité maximale",
+          "providers": ["Services émergents de connaissance zéro", "Chiffrement homomorphe"]
         }
       },
       "bestPractices": {
         "dataClassification": [
           {
             "level": "Public",
-            "description": "Public domain or openly shared content",
-            "processing": "Any suitable service",
+            "description": "Contenu du domaine public ou ouvertement partagé",
+            "processing": "Tout service approprié",
             "examples": "Stock Photos, public domain Images"
           },
           {
-            "level": "Internal",
-            "description": "Internal business use only",
-            "processing": "Trusted cloud services or local",
-            "examples": "Internal presentations, draft designs"
+            "level": "Interne",
+            "description": "Usage interne commercial uniquement",
+            "processing": "Services cloud de confiance ou local",
+            "examples": "Présentations internes, brouillons de conception"
           },
           {
-            "level": "Confidential",
-            "description": "Business confidential information",
-            "processing": "Privacy-first cloud or local",
-            "examples": "Product designs, financial documents"
+            "level": "Confidentiel",
+            "description": "Informations commerciales confidentielles",
+            "processing": "Cloud respectueux de la confidentialité ou local",
+            "examples": "Conceptions de produits, documents financiers"
           },
           {
-            "level": "Restricted",
-            "description": "Legally protected or highly sensitive",
-            "processing": "Local or specialized secure services",
+            "level": "Restreint",
+            "description": "Légalement protégé ou hautement sensible",
+            "processing": "Local ou services sécurisés spécialisés",
             "examples": "Medical Images, legal evidence, personal data"
           }
         ],
         "securityMeasures": [
-          "Use HTTPS for all transmissions",
-          "Verify service provider certifications",
-          "Implement data retention policies",
-          "Use strong authentication and access controls",
-          "Regular security audits and assessments",
-          "Employee training on privacy and security",
-          "Incident response planning",
-          "Document all security procedures"
+          "Utiliser HTTPS pour toutes les transmissions",
+          "Vérifier les certifications du fournisseur de services",
+          "Mettre en œuvre des politiques de rétention des données",
+          "Utiliser une authentification forte et des contrôles daccès",
+          "Audits et évaluations de sécurité réguliers",
+          "Formation des employés sur la confidentialité et la sécurité",
+          "Planification de la réponse aux incidents",
+          "Documenter toutes les procédures de sécurité"
         ],
         "privacyByDesign": [
-          "Minimize data collection",
-          "Anonymize where possible",
-          "Automatic deletion after processing",
-          "Clear privacy policies and notices",
-          "User consent management",
-          "Data processing transparency"
+          "Minimiser la collecte de données",
+          "Anonymiser lorsque possible",
+          "Suppression automatique après traitement",
+          "Politiques et avis de confidentialité clairs",
+          "Gestion du consentement utilisateur",
+          "Transparence du traitement des données"
         ]
       },
       "implementationGuides": {
         "healthcareCompliance": {
           "steps": [
-            "Conduct HIPAA risk assessment",
-            "Choose HIPAA-compliant solution or on-premise",
-            "Implement Business Associate Agreement (BAA)",
-            "Encrypt all PHI in transit and at rest",
-            "Implement access controls and audit logging",
-            "Train staff on HIPAA requirements",
-            "Regular compliance audits",
-            "Document all processes"
+            "Effectuer une évaluation des risques HIPAA",
+            "Choisir une solution conforme HIPAA ou sur site",
+            "Mettre en œuvre un accord dassociation commerciale (BAA)",
+            "Chiffrer toutes les PHI en transit et au repos",
+            "Mettre en œuvre des contrôles daccès et des journaux daudit",
+            "Former le personnel aux exigences HIPAA",
+            "Audits de conformité réguliers",
+            "Documenter tous les processus"
           ],
           "recommended": "On-premise Traitement with validated software",
           "alternatives": "Specialized medical Image services"
         },
         "gdprCompliance": {
           "steps": [
-            "Map all data flows",
-            "Conduct Data Protection Impact Assessment (DPIA)",
-            "Choose EU-based or GDPR-compliant providers",
-            "Implement consent management",
-            "Set up data deletion procedures",
-            "Prepare breach notification process",
-            "Document compliance measures",
-            "Train privacy teams"
+            "Cartographier tous les flux de données",
+            "Effectuer une évaluation dimpact sur la protection des données (DPIA)",
+            "Choisir des fournisseurs basés dans lUE ou conformes au GDPR",
+            "Mettre en œuvre la gestion du consentement",
+            "Configurer les procédures de suppression des données",
+            "Préparer le processus de notification de violation",
+            "Documenter les mesures de conformité",
+            "Former les équipes de confidentialité"
           ],
           "dataSubjectRights": [
-            "Access to processed images",
-            "Correction of errors",
-            "Deletion requests ('right to be forgotten')",
-            "Restriction of processing",
-            "Data portability"
+            "Accès aux images traitées",
+            "Correction des erreurs",
+            "Demandes de suppression (« droit à loubli »)",
+            "Restriction du traitement",
+            "Portabilité des données"
           ]
         }
       },
       "riskMitigationChecklist": {
         "beforeProcessing": [
-          "□ Classify data sensitivity level",
-          "□ Verify service provider compliance",
-          "□ Check data retention policies",
+          "□ Classer le niveau de sensibilité des données",
+          "□ Vérifier la conformité du fournisseur de services",
+          "□ Vérifier les politiques de rétention des données",
           "☐ Examiner les conditions de service",
           "☐ Confirmer les methodes de chiffrement",
           "☐ Verifier les emplacements des centres de donnees",

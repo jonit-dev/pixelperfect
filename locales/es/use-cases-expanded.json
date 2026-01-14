@@ -272,15 +272,20 @@
       "technicalSpecs": {
         "supportedFormats": ["DICOM", "JPEG", "TIFF", "PNG", "RAW", "BMP"],
         "maxResolution": "Ilimitado for medical imaging and scientific photography",
-        "outputFormats": ["TIFF (high-res)", "JPEG (presentation)", "PNG (web)", "DICOM (medical)"],
+        "outputFormats": [
+          "TIFF (alta resolución)",
+          "JPEG (presentación)",
+          "PNG (web)",
+          "DICOM (médico)"
+        ],
         "batchProcessing": "Up to 1000 imágenes for research datasets",
-        "compliance": ["HIPAA compliant", "FDA registered", "ISO 13485 certified"]
+        "compliance": ["Cumple con HIPAA", "Registrado en FDA", "Certificado ISO 13485"]
       },
       "caseStudies": [
         {
           "title": "Eficiencia de laboratorio de investigación médica",
           "description": "Research laboratory implemented IA mejora for microscopy imágenes reducing imagen procesamiento time by 85% and improving publication acceptance rates by 45%.",
-          "metrics": "300+ research publications supported, 99.9% accuracy maintained"
+          "metrics": "Más de 300 publicaciones de investigación respaldadas, precisión del 99.9% mantenida"
         },
         {
           "title": "Telemedicine Plataforma Integracion",
@@ -300,13 +305,13 @@
         "medicalImaging": ["ImageJ", "3D Slicer", "OsiriX", "RadiAnt DICOM Viewer"],
         "microscopy": ["Fiji", "CellProfiler", "Imaris", "NIS-Elements"],
         "scientificImaging": ["MyImageUpscaler", "Adobe Photoshop", "GIMP"],
-        "researchTools": ["MATLAB", "Python (OpenCV, scikit-image)", "R (imager package)"]
+        "researchTools": ["MATLAB", "Python (OpenCV, scikit-image)", "R (paquete imager)"]
       },
       "fileSizeGuidelines": {
         "medicalImaging": "Original tamaño for diagnostic accuracy",
-        "publications": "300-600 DPI for journal requirements",
-        "presentations": "150-300 DPI for PowerPoint/presentations",
-        "educational": "72-150 DPI for web-based materials"
+        "publications": "300-600 DPI para requisitos de revistas",
+        "presentations": "150-300 DPI para PowerPoint/presentaciones",
+        "educational": "72-150 DPI para materiales basados en web"
       },
       "faqs": [
         {
@@ -339,7 +344,7 @@
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "architecture-construction",
+      "slug": "arquitectura-construccion",
       "title": "Imágenes de arquitectura y construcción",
       "metaTitle": "Imágenes de arquitectura y construcción | MyImageUpscaler",
       "metaDescription": "profesional architecture and construction foto mejora Improve architectural photography, construction progress fotos and building documentation with AI-powered imagen optimization.",
@@ -348,10 +353,10 @@
       "intro": "Comprehensive imagen mejora solutions for architects, construction profesionales and real estate developers, transforming architectural photography and construction documentation into profesional presentation-ready materials.",
       "primaryKeyword": "architecture construction foto mejora",
       "secondaryKeywords": [
-        "architectural photography",
-        "construction documentation",
+        "fotografía arquitectónica",
+        "documentación de construcción",
         "building progress fotos",
-        "architectural visualization"
+        "visualización arquitectónica"
       ],
       "description": "Specialized mejora solutions for architectural photography, construction progress documentation, and building project presentations. Our AI-powered herramientas improve clarity, lighting, and detail in architectural imágenes while maintaining technical accuracy and profesional standards.",
       "useCases": [
@@ -457,7 +462,7 @@
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "print-publishing-workflows",
+      "slug": "flujos-trabajo-impresion-publicacion",
       "title": "Print & Publishing Imagen Optimization",
       "metaTitle": "Print & Publishing Imagen Optimization | MyImageUpscaler",
       "metaDescription": "profesional imagen optimization for print and publishing. Mejorar book covers, magazine fotos marketing materials, and print publications with AI-powered imagen ampliación and optimization.",
@@ -468,7 +473,7 @@
       "secondaryKeywords": [
         "print imagen mejora",
         "publishing foto optimization",
-        "commercial printing",
+        "impresión comercial",
         "book cover mejora"
       ],
       "description": "Comprehensive imagen mejora solutions specifically designed for print publishing workflows. From book covers and magazine layouts to marketing materials and commercial printing, our AI-powered herramientas ensure your imágenes meet profesional printing standards and look their mejor in any print format.",
@@ -493,8 +498,8 @@
         "Selecciona el tipo de impresión y especificaciones (tamaño, DPI, espacio de color)",
         "Choose mejora focus: Resolution, color accuracy, or comprehensive",
         "Apply IA mejora optimized for print production standards",
-        "Preview in simulated print conditions with soft-proofing",
-        "Download print-ready files with proper color profiles and metadata"
+        "Vista previa en condiciones de impresión simuladas con soft-proofing",
+        "Descargar archivos listos para imprimir con perfiles de color y metadatos adecuados"
       ],
       "technicalSpecs": {
         "supportedFormats": ["JPEG", "TIFF", "PNG", "RAW", "PSD", "HEIC"],
@@ -576,19 +581,19 @@
     },
     {
       "benefits": [
-        "180% increase in social media engagement rates",
-        "Professional-quality content without expensive equipment",
-        "Platform-specific optimization for all major social networks",
+        "Aumento del 180% en tasas de participación en redes sociales",
+        "Contenido de calidad profesional sin equipo costoso",
+        "Optimización específica por plataforma para todas las redes sociales principales",
         "Automated workflow for consistent content calidad",
-        "A/B testing ready variations for performance optimization",
+        "Variaciones listas para pruebas A/B para optimización del rendimiento",
         "Time-saving batch procesamiento for content calendars"
       ],
       "workflow": [
         "Upload original fotos or video frames",
-        "Select target platform(s) and content type",
+        "Seleccionar plataforma(s) objetivo y tipo de contenido",
         "Choose mejora style: Profesional Artistic, or Platform-optimized",
         "Apply IA mejora trained on viral content analysis",
-        "Optional: Add text overlays, filters, or branding elements",
+        "Opcional: Agregar superposiciones de texto, filtros o elementos de marca",
         "Descargar platform-ready files with proper specifications"
       ],
       "technicalSpecs": {
@@ -602,28 +607,32 @@
           "LinkedIn",
           "Pinterest"
         ],
-        "outputFormats": ["Platform-optimized JPEG", "PNG with transparency", "WebP for web"],
-        "batchProcessing": "Up to 100 content pieces per batch",
-        "performanceOptimization": ["Rápido loading", "Mobile-first", "Alto engagement"]
+        "outputFormats": [
+          "JPEG optimizado por plataforma",
+          "PNG con transparencia",
+          "WebP para web"
+        ],
+        "batchProcessing": "Hasta 100 piezas de contenido por lote",
+        "performanceOptimization": ["Rápido loading", "Primero móvil", "Alto engagement"]
       },
       "caseStudies": [
         {
-          "title": "Content Creator Engagement Success",
+          "title": "Éxito de Participación de Creador de Contenido",
           "description": "Lifestyle content creator enhanced all social media content with IA optimization, achieving 300% increase in engagement and 2x follower growth within 3 months.",
-          "metrics": "5x ROI on content creation, consistent viral content performance"
+          "metrics": "ROI de 5x en creación de contenido, rendimiento consistente de contenido viral"
         },
         {
-          "title": "Brand Social Media Transformation",
+          "title": "Transformación de Redes Sociales de Marca",
           "description": "E-commerce brand implemented IA mejora across all social platforms, resulting in 150% increase in social-driven sales and improved brand perception.",
-          "metrics": "3x ROI, reduced content creation costs by 60%"
+          "metrics": "ROI de 3x, reducción de costos de creación de contenido en 60%"
         }
       ],
       "bestPractices": [
-        "Maintain consistent brand aesthetic across all platforms",
+        "Mantener estética de marca consistente en todas las plataformas",
         "Optimizar for mobile viewing - most social media is mobile-first",
         "Test different mejora styles for each platform's audience",
         "Uso platform-specific dimensions and requirements",
-        "Create content variations for A/B testing and optimization",
+        "Crear variaciones de contenido para pruebas A/B y optimización",
         "Stay current with plataforma trends and algorithm preferences"
       ],
       "softwareRecommendations": {
@@ -634,9 +643,9 @@
       },
       "fileSizeGuidelines": {
         "instagramFeed": "500KB-2MB for optimal loading and calidad",
-        "storiesContent": "1-5MB for high-quality Stories",
+        "storiesContent": "1-5MB para Stories de alta calidad",
         "youtubeThumbnails": "2-5MB for HD thumbnail calidad",
-        "tiktokContent": "1-3MB for optimal performance"
+        "tiktokContent": "1-3MB para rendimiento óptimo"
       },
       "faqs": [
         {
@@ -671,40 +680,40 @@
       "title": "Creación de Contenido para Redes Sociales",
       "metaTitle": "Creación de Contenido para Redes Sociales | MyImageUpscaler",
       "metaDescription": "Profesional social media imagen mejora for content creators. Optimize fotos for Instagram, TikTok, YouTube, Facebook, and all social platforms with AI-powered mejora",
-      "h1": "Social Media Content Creation",
+      "h1": "Creación de Contenido para Redes Sociales",
       "category": "use-cases",
       "intro": "Comprehensive imagen mejora solutions specifically designed for social media content creation, ensuring your visual content stands out across all platforms and drives maximum engagement.",
       "primaryKeyword": "social media content creation mejora",
       "secondaryKeywords": [
         "social media foto mejora",
         "content creator herramientas",
-        "Instagram optimization",
-        "viral content preparation"
+        "optimización de Instagram",
+        "preparación de contenido viral"
       ],
       "description": "Profesional imagen mejora solutions for social media content creators, influencers, and digital marketers. Our AI-powered herramientas optimize visual content for all major social platforms, improving engagement, reach, and visual appeal while maintaining platform-specific requirements and mejor practices.",
       "useCases": [
         "Instagram post and Stories mejora for maximum engagement",
-        "YouTube thumbnail optimization for higher click-through rates",
+        "Optimización de miniaturas de YouTube para mayores tasas de clics",
         "TikTok video cover and content mejora",
         "Facebook ad creative optimization for mejor performance",
         "LinkedIn profesional content mejora",
-        "Cross-platform content adaptation and optimization"
+        "Adaptación y optimización de contenido multiplataforma"
       ]
     },
     {
-      "slug": "web-design-development",
-      "title": "Web Design & Development Optimization",
-      "metaTitle": "Web Design & Development Optimization | MyImageUpscaler",
+      "slug": "diseno-web-desarrollo",
+      "title": "Optimización de Diseño Web y Desarrollo",
+      "metaTitle": "Optimización de Diseño Web y Desarrollo | MyImageUpscaler",
       "metaDescription": "profesional imagen optimization for web design and development. Mejorar website imágenes improve performance, and optimize usuario experience with AI-powered web imagen optimization.",
-      "h1": "Web Design & Development Optimization",
+      "h1": "Optimización de Diseño Web y Desarrollo",
       "category": "use-cases",
       "intro": "Comprehensive imagen optimization solutions specifically designed for web design and development, ensuring rápido loading, high calidad and responsive performance across all devices and platforms.",
       "primaryKeyword": "web design imagen optimization",
       "secondaryKeywords": [
         "website imagen mejora",
-        "web development optimization",
+        "optimización del desarrollo web",
         "responsive imagen optimization",
-        "website performance"
+        "rendimiento del sitio web"
       ],
       "description": "Profesional imagen mejora and optimization solutions for web designers, developers, and digital agencies. Our AI-powered herramientas optimize imágenes for web performance, responsive design, and usuario experience while maintaining visual calidad and brand consistency.",
       "useCases": [
@@ -725,18 +734,18 @@
       ],
       "workflow": [
         "Upload original imágenes (any source or quality)",
-        "Select web usage type: Hero, gallery, product, or general content",
+        "Seleccionar tipo de uso web: Hero, galería, producto o contenido general",
         "Choose optimization targets: Velocidad calidad or balanced approach",
-        "Specify responsive breakpoints and device requirements",
+        "Especificar puntos de interrupción responsivos y requisitos de dispositivo",
         "Apply IA web optimization with compression and format selection",
         "Download optimized imágenes with responsive variants and metadata"
       ],
       "technicalSpecs": {
         "supportedFormats": ["JPEG", "PNG", "WebP", "AVIF", "HEIC", "GIF"],
-        "outputFormats": ["Modern WebP/AVIF", "Fallback JPEG/PNG", "Responsive srcset"],
-        "optimizationTargets": ["Core Web Vitals", "Lighthouse scores", "Mobile performance"],
-        "responsiveSupport": ["Multi-device", "Multi-resolution", "Art direction"],
-        "webStandards": ["W3C", "Google PageSpeed", "GTmetrix optimization"]
+        "outputFormats": ["WebP/AVIF moderno", "JPEG/PNG de respaldo", "srcset responsivo"],
+        "optimizationTargets": ["Core Web Vitals", "Puntuaciones Lighthouse", "Rendimiento móvil"],
+        "responsiveSupport": ["Multi-dispositivo", "Multi-resolución", "Dirección artística"],
+        "webStandards": ["W3C", "Google PageSpeed", "Optimización GTmetrix"]
       },
       "caseStudies": [
         {
@@ -747,7 +756,7 @@
         {
           "title": "Portfolio Website Mejora",
           "description": "Design agency optimized portfolio imágenes across all client projects, achieving 80% faster loading times and mejor client presentation calidad",
-          "metrics": "3x ROI, enhanced client satisfaction, reduced bounce rates"
+          "metrics": "ROI de 3x, satisfacción del cliente mejorada, tasas de rebote reducidas"
         }
       ],
       "bestPractices": [
@@ -755,8 +764,8 @@
         "Implement responsive imágenes with appropriate breakpoints",
         "Optimizar for mobile-first design principles",
         "Balance file size and visual calidad for usuario experience",
-        "Include proper alt text and metadata for SEO",
-        "Test performance across different devices and network conditions"
+        "Incluir texto alt apropiado y metadatos para SEO",
+        "Probar rendimiento en diferentes dispositivos y condiciones de red"
       ],
       "softwareRecommendations": {
         "designTools": ["Figma", "Sketch", "Adobe XD", "Framer"],
@@ -765,10 +774,10 @@
         "performanceTools": ["Google PageSpeed Insights", "GTmetrix", "WebPageTest"]
       },
       "fileSizeGuidelines": {
-        "heroImages": "500KB-2MB for high-quality hero sections",
-        "contentImages": "100-500KB for general content",
-        "thumbnails": "50-200KB for gallery and grid layouts",
-        "mobileOptimized": "200KB-1MB for mobile-first optimization"
+        "heroImages": "500KB-2MB para secciones hero de alta calidad",
+        "contentImages": "100-500KB para contenido general",
+        "thumbnails": "50-200KB para diseños de galería y cuadrícula",
+        "mobileOptimized": "200KB-1MB para optimización primero móvil"
       },
       "faqs": [
         {
@@ -801,7 +810,7 @@
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "digital-marketing-materials",
+      "slug": "materiales-marketing-digital",
       "title": "Digital Marketing Materials Mejora",
       "metaTitle": "Digital Marketing Materials Mejora | MyImageUpscaler",
       "metaDescription": "profesional digital marketing materials mejora Optimize ads, banners, emAIl campAIgns, and marketing visuals with AI-powered imagen mejora for mejor performance.",
@@ -813,20 +822,20 @@
         "marketing imagen optimization",
         "ad creative mejora",
         "email campaign imágenes",
-        "digital advertising visuals"
+        "visuales de publicidad digital"
       ],
       "description": "Profesional mejora solutions for digital marketing materials including display ads, social media creatives, email campaigns, and landing page visuals. Our AI-powered herramientas optimize marketing imágenes for maximum performance, brand consistency, and conversion optimization.",
       "useCases": [
-        "Display advertising creative optimization for higher CTR",
+        "Optimización creativa de publicidad visual para mayores CTR",
         "Email marketing imagen mejora for mejor engagement",
-        "Landing page visual optimization for conversion improvement",
+        "Optimización visual de páginas de aterrizaje para mejora de conversión",
         "Social media ad creative mejora and testing",
-        "Marketing campaign visual consistency and branding",
-        "A/B testing ready creative variations and optimization"
+        "Consistencia visual y branding de campaña de marketing",
+        "Variaciones creativas listas para pruebas A/B y optimización"
       ],
       "benefits": [
-        "220% increase in ad click-through rates with enhanced creatives",
-        "45% improvement in email engagement rates",
+        "Aumento del 220% en tasas de clics en anuncios con creativos mejorados",
+        "Mejora del 45% en tasas de participación por correo electrónico",
         "Consistent brand calidad across all marketing materials",
         "Profesional creatives without design team dependency",
         "Rápido creative iteration for marketing campaign testing",
@@ -837,7 +846,7 @@
         "Select marketing channel and ad formato specifications",
         "Choose mejora style: Conversion-focused, Brand-aware, or Performance-optimized",
         "Apply IA mejora trained on successful marketing creatives",
-        "Optional: Generate multiple variations for A/B testing",
+        "Opcional: Generar múltiples variaciones para pruebas A/B",
         "Descargar platform-ready creatives with proper specifications"
       ],
       "technicalSpecs": {
@@ -846,32 +855,41 @@
           "Google Ads",
           "Facebook Ads",
           "LinkedIn Ads",
-          "Email Marketing",
-          "Display Networks"
+          "Marketing por Correo Electrónico",
+          "Redes de Display"
         ],
-        "adFormats": ["Banner ads", "Social ads", "Email creatives", "Landing page imágenes"],
-        "performanceOptimization": ["CTR focus", "Conversion optimization", "Brand consistency"],
-        "testingSupport": ["A/B testing variations", "Multivariate testing soporte"]
+        "adFormats": [
+          "Anuncios tipo banner",
+          "Anuncios sociales",
+          "Creativos de correo electrónico",
+          "Landing page imágenes"
+        ],
+        "performanceOptimization": [
+          "Enfoque en CTR",
+          "Optimización de conversión",
+          "Consistencia de marca"
+        ],
+        "testingSupport": ["Variaciones de pruebas A/B", "Multivariate testing soporte"]
       },
       "caseStudies": [
         {
-          "title": "Performance Marketing Campaign Success",
+          "title": "Éxito de Campaña de Marketing de Rendimiento",
           "description": "Digital marketing agency enhanced all campaign creatives with IA optimization, achieving 200% increase in ROAS and 65% reduction in cost-per-acquisition.",
-          "metrics": "5x ROI, consistent performance across multiple campaigns and channels"
+          "metrics": "ROI de 5x, rendimiento consistente en múltiples campañas y canales"
         },
         {
-          "title": "Email Marketing Engagement Transformation",
+          "title": "Transformación de Participación en Marketing por Correo Electrónico",
           "description": "E-commerce brand enhanced email marketing visuals with IA optimization, achieving 180% increase in email engagement and 120% increase in click-through rates.",
-          "metrics": "3x ROI, improved email deliverability and customer engagement"
+          "metrics": "ROI de 3x, mejor entregabilidad de correo electrónico y participación del cliente"
         }
       ],
       "bestPractices": [
-        "Maintain brand consistency across all marketing materials",
+        "Mantener consistencia de marca en todos los materiales de marketing",
         "Optimize for specific plataforma requirements and specifications",
-        "Test multiple creative variations for performance optimization",
-        "Focus on conversion-oriented design elements and messaging",
-        "Consider mobile optimization for all marketing materials",
-        "Track performance metrics and iterate based on results"
+        "Probar múltiples variaciones creativas para optimización del rendimiento",
+        "Enfocarse en elementos de diseño y mensajes orientados a la conversión",
+        "Considerar optimización móvil para todos los materiales de marketing",
+        "Rastrear métricas de rendimiento e iterar según los resultados"
       ],
       "softwareRecommendations": {
         "marketingPlatforms": ["Google Ads", "Facebook Ads Manager", "LinkedIn Campaign Manager"],
@@ -881,9 +899,9 @@
       },
       "fileSizeGuidelines": {
         "displayAds": "150KB-500KB for rápido loading display ads",
-        "socialAds": "500KB-2MB for high-quality social media creatives",
-        "emailImages": "200KB-1MB for email marketing optimization",
-        "landingPages": "300KB-2MB for conversion-focused landing pages"
+        "socialAds": "500KB-2MB para creativos de redes sociales de alta calidad",
+        "emailImages": "200KB-1MB para optimización de marketing por correo electrónico",
+        "landingPages": "300KB-2MB para páginas de aterrizaje enfocadas en conversión"
       },
       "faqs": [
         {
@@ -900,7 +918,7 @@
         },
         {
           "question": "¿Puede you maintain brand consistency across different creatives?",
-          "answer": "Absolutely! We apply brand-specific guidelines, color schemes, and visual identity elements across all marketing materials while optimizing for performance."
+          "answer": "¡Absolutamente! Aplicamos pautas específicas de marca, esquemas de color y elementos de identidad visual en todos los materiales de marketing mientras optimizamos para el rendimiento."
         },
         {
           "question": "¿Qué about email marketing optimization?",
@@ -916,7 +934,7 @@
       "ctaUrl": "/?signup=1"
     },
     {
-      "slug": "restoration-preservation",
+      "slug": "restauracion-preservacion",
       "title": "Restoration & Preservation Mejora",
       "metaTitle": "Restoration & Preservation Mejora | MyImageUpscaler",
       "metaDescription": "profesional foto restoration and preservation with AI. Mejorar old fotos restore damaged imágenes and preserve historical photographs with AI-powered restoration technology.",
@@ -937,73 +955,73 @@
         "Damaged foto repair for tears, scratches, and water damage",
         "Color restauración for faded and discolored photographs",
         "Detail mejora for low-resolution vintage fotos",
-        "Digital archiving and preservation of historical collections"
+        "Archivado digital y preservación de colecciones históricas"
       ],
       "benefits": [
         "Profesional restoration without expensive profesional services",
-        "Preservation of historical memories for future generations",
+        "Preservación de recuerdos históricos para futuras generaciones",
         "95% accuracy in damage repair and restauración",
         "Cost-effective solution for grande archive projects",
-        "Enhanced details while maintaining historical authenticity",
+        "Detalles mejorados manteniendo la autenticidad histórica",
         "Automated workflow for bulk restauración projects"
       ],
       "workflow": [
         "Scan or subir original damaged or old photographs",
         "Select restauración type: Damage repair, color restauración or comprehensive",
-        "Identify specific issues: tears, scratches, fading, or damage",
+        "Identificar problemas específicos: desgarros, rayaduras, decoloración o daños",
         "Apply IA restoration trained on historical foto archives",
         "Review restoration with before/after comparison herramientas",
         "Download high-resolution restored imágenes for archiving and printing"
       ],
       "technicalSpecs": {
-        "supportedFormats": ["JPEG", "TIFF", "PNG", "BMP", "GIF", "Scanned documents"],
+        "supportedFormats": ["JPEG", "TIFF", "PNG", "BMP", "GIF", "Documentos escaneados"],
         "damageTypes": [
-          "Tears",
-          "Scratches",
-          "Water damage",
-          "Fading",
-          "Color shifts",
-          "Mold damage"
+          "Desgarros",
+          "Rayaduras",
+          "Daños por agua",
+          "Decoloración",
+          "Cambios de color",
+          "Daños por moho"
         ],
-        "outputFormats": ["TIFF (archival)", "JPEG (sharing)", "PNG (web)", "DNG (professional)"],
-        "archiveStandards": ["FADGI", "METS", "PREMIS compliance for institutional archiving"],
+        "outputFormats": ["TIFF (archivado)", "JPEG (compartir)", "PNG (web)", "DNG (profesional)"],
+        "archiveStandards": ["FADGI", "METS", "Cumplimiento PREMIS para archivado institucional"],
         "qualityControl": [
-          "Historical accuracy",
-          "Authenticity preservation",
+          "Precisión histórica",
+          "Preservación de autenticidad",
           "Non-destructive procesamiento"
         ]
       },
       "caseStudies": [
         {
-          "title": "Family Heritage Preservation Project",
-          "description": "Family restored 500+ historical family photographs spanning 100+ years, preserving family history and creating digital archives for future generations.",
+          "title": "Proyecto de Preservación del Patrimonio Familiar",
+          "description": "Familia restauró más de 500 fotografías históricas familiares que abarcan más de 100 años, preservando la historia familiar y creando archivos digitales para futuras generaciones.",
           "metrics": "Priceless family heritage preserved, 95% restauración success rate"
         },
         {
           "title": "Historical Museum Archive Mejora",
-          "description": "Historical museum enhanced 10,000+ historical photographs from their collection, improving accessibility for researchers and public exhibitions.",
-          "metrics": "Institutional archival standards compliance, enhanced historical research access"
+          "description": "Museo histórico mejoró más de 10,000 fotografías históricas de su colección, mejorando la accesibilidad para investigadores y exposiciones públicas.",
+          "metrics": "Cumplimiento de estándares de archivo institucional, acceso mejorado a la investigación histórica"
         }
       ],
       "bestPractices": [
         "Uso high-quality scanning (300+ DPI) for mejor restoration results",
-        "Handle original photographs carefully to prevent further damage",
+        "Manejar fotografías originales con cuidado para evitar daños adicionales",
         "Document the original condition before restauración",
-        "Maintain historical accuracy - avoid over-restoration",
+        "Mantener precisión histórica - evitar sobre-restauración",
         "Create backups of original files before procesamiento",
         "Consider profesional consultation for valuable historical fotos"
       ],
       "softwareRecommendations": {
         "restorationTools": ["MyImageUpscaler", "Adobe Photoshop", "Topaz Labs", "Skylum"],
         "scanningSoftware": ["VueScan", "Epson Scan", "Canon ScanGear"],
-        "archiveTools": ["Adobe Lightroom", "DAM systems", "Digital archive software"],
+        "archiveTools": ["Adobe Lightroom", "Sistemas DAM", "Software de archivo digital"],
         "professionalServices": ["Profesional restoration services for valuable items"]
       },
       "fileSizeGuidelines": {
-        "archivalQuality": "20-100MB for archival TIFF files",
-        "sharingQuality": "2-10MB for sharing with family",
+        "archivalQuality": "20-100MB para archivos TIFF de calidad de archivo",
+        "sharingQuality": "2-10MB para compartir con familia",
         "webDisplay": "500KB-2MB for en línea galleries",
-        "printQuality": "10-50MB for high-quality prints"
+        "printQuality": "10-50MB para impresiones de alta calidad"
       },
       "faqs": [
         {
@@ -1024,11 +1042,11 @@
         },
         {
           "question": "¿Puede you handle severely damaged photos?",
-          "answer": "We can handle most damage including severe tears, water damage, and heavy deterioration. Results vary by damage extent, but we achieve 95% success rates even with challenging cases."
+          "answer": "Podemos manejar la mayoría de los daños, incluyendo desgarros severos, daños por agua y deterioro grave. Los resultados varían según la extensión del daño, pero logramos tasas de éxito del 95% incluso en casos desafiantes."
         },
         {
           "question": "¿Cómo do you preserve original files during restoration?",
-          "answer": "We always preserve original files and work non-destructively. Enhanced files are separate outputs, ensuring original photographs remain untouched and preserved."
+          "answer": "Siempre preservamos los archivos originales y trabajamos de forma no destructiva. Los archivos mejorados son salidas separadas, asegurando que las fotografías originales permanezcan intactas y preservadas."
         }
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
@@ -1037,7 +1055,7 @@
     },
     {
       "technicalSpecs": {
-        "printStandards": ["Gallery calidad", "Commercial printing", "Fine art reproduction"],
+        "printStandards": ["Gallery calidad", "Impresión comercial", "Reproducción de arte fina"],
         "formatSupport": ["PNG", "TIFF", "JPEG", "PSD", "WebP"],
         "supportedGenerators": [
           "Midjourney",
@@ -1048,11 +1066,11 @@
         ],
         "outputResolutions": ["4K", "6K", "8K", "Custom grande formato"],
         "supportedStyles": [
-          "Digital art",
-          "Photorealistic",
-          "Artistic",
-          "Abstract",
-          "Character design"
+          "Arte digital",
+          "Fotorrealista",
+          "Artístico",
+          "Abstracto",
+          "Diseño de personajes"
         ]
       },
       "caseStudies": [
@@ -1072,7 +1090,7 @@
         "Understand the intended uso case before mejora",
         "Consider the artistic style when choosing mejora settings",
         "Test print samples before grande formato printing",
-        "Maintain backup of original AI-generated files",
+        "Mantener copia de seguridad de archivos originales generados por IA",
         "Consider copyright and licensing for commercial uso"
       ],
       "softwareRecommendations": {
@@ -1080,15 +1098,15 @@
         "enhancementTools": ["MyImageUpscaler", "Topaz Gigapixel AI", "Adobe Photoshop"],
         "printingServices": [
           "Profesional art printing",
-          "Gallery printing services",
-          "Fine art reproduction"
+          "Servicios de impresión de galería",
+          "Reproducción de arte fina"
         ],
         "commercialTools": ["Adobe Creative Suite", "Profesional design software"]
       },
       "fileSizeGuidelines": {
         "largePrint": "50-200MB for grande formato art prints",
-        "galleryQuality": "20-100MB for gallery exhibition prints",
-        "commercialUse": "10-50MB for commercial applications",
+        "galleryQuality": "20-100MB para impresiones de exhibición de galería",
+        "commercialUse": "10-50MB para aplicaciones comerciales",
         "webPortfolio": "2-10MB for en línea portfolios and marketing"
       },
       "faqs": [
@@ -1120,7 +1138,7 @@
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Optimize Your AI-Generated Imágenes",
       "ctaUrl": "/?signup=1",
-      "slug": "ai-generated-optimization",
+      "slug": "optimizacion-generada-por-ia",
       "title": "AI-Generated Imagen Optimization",
       "metaTitle": "AI-Generated Imagen Optimization | MyImageUpscaler",
       "metaDescription": "Profesional AI-generated imagen optimization. Mejorar Midjourney, DALL-E, Stable Diffusion, and IA art imágenes with AI-powered optimization for profesional uso and printing.",
@@ -1130,7 +1148,7 @@
       "primaryKeyword": "AI-generated imagen optimization",
       "secondaryKeywords": [
         "IA art mejora",
-        "Midjourney optimization",
+        "optimización de Midjourney",
         "DALL-E ampliación",
         "IA imagen printing"
       ],
@@ -1140,7 +1158,7 @@
         "DALL-E generated imagen optimization for commercial uso",
         "Stable Diffusion artwork mejora for large format printing",
         "IA art ampliación for gallery-quality reproduction",
-        "AI-generated content optimization for marketing materials",
+        "Optimización de contenido generado por IA para materiales de marketing",
         "IA character and design mejora for profesional projects"
       ],
       "benefits": [
@@ -1148,7 +1166,7 @@
         "4K-8K resolution mejora without calidad loss",
         "Preservation of artistic style and intent during mejora",
         "Commercial-grade calidad for business applications",
-        "Optimized for various printing methods and materials",
+        "Optimizado para varios métodos de impresión y materiales",
         "Enhanced detail and clarity while maintaining IA aesthetics"
       ],
       "workflow": [
@@ -1158,7 +1176,8 @@
         "Specify output resolution and formato requirements",
         "Apply IA mejora trained on various IA art styles",
         "Download high-resolution, professionally enhanced IA artwork"
-      ]
+      ],
+      "formatSupport": ["PNG", "TIFF", "JPEG", "PSD", "WebP"]
     }
   ]
 }

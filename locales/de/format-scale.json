@@ -771,7 +771,7 @@
           "example": "Verbessern research graphics requiring maximum possible detail"
         },
         {
-          "title": "Forensic Graphics",
+          "title": "Forensische Grafik",
           "description": "Extract maximum detail von PNG graphics für analysis purposes.",
           "example": "Verbessern evidence oder forensic graphics zu maximum Auflösung"
         }
@@ -790,7 +790,7 @@
         {
           "title": "Specialized Qualität",
           "description": "für specialized applications requiring absolute maximum PNG Auflösung.",
-          "metric": "Maximum possible"
+          "metric": "Maximum möglich"
         }
       ],
       "bestPractices": [
@@ -803,7 +803,7 @@
           "description": "muss Starten mit der/die/das absolute Am besten PNG source für 16x Skalierung."
         },
         {
-          "title": "Manage File Sizes",
+          "title": "Dateigrößen verwalten",
           "description": "16x PNGs sind extremely Groß; carefully plan storage und transfer."
         },
         {
@@ -1011,11 +1011,11 @@
           "description": "Choose appropriate WebP Komprimierung Qualität nach 4x Upscaling based ein/eine content."
         },
         {
-          "title": "Fallback Strategy",
+          "title": "Fallback-Strategie",
           "description": "Provide JPEG fallbacks für older browsers that don't Support WebP."
         },
         {
-          "title": "File Size Management",
+          "title": "Dateigrößen-Management",
           "description": "4x WebPs wird be larger aber still mehr efficient als equivalent JPEGs."
         }
       ],
@@ -1204,7 +1204,7 @@
         {
           "title": "Specialized Verwenden",
           "description": "für specialized applications requiring maximum WebP Auflösung.",
-          "metric": "Maximum possible"
+          "metric": "Maximum möglich"
         }
       ],
       "bestPractices": [
@@ -1217,11 +1217,11 @@
           "description": "für die meisten practical uses, lower Skalierung factors oder Verlustfrei formats sind Besser."
         },
         {
-          "title": "Testing Required",
+          "title": "Tests erforderlich",
           "description": "Thoroughly Testen 16x WebP compatibility und Leistung vor deployment."
         },
         {
-          "title": "File Size Warning",
+          "title": "Warnung zur Dateigröße",
           "description": "16x WebPs wird be extremely Groß; carefully consider storage und bandwidth."
         }
       ],
@@ -1396,7 +1396,7 @@
           "metric": "10-20 Sekunden"
         },
         {
-          "title": "Apple Optimized",
+          "title": "Apple-optimiert",
           "description": "Specialized Verarbeitung für HEIC Format von Apple devices.",
           "metric": "Hervorragende Qualität"
         }
@@ -1661,7 +1661,7 @@
       ],
       "benefits": [
         {
-          "title": "Maximum RAW Data",
+          "title": "Maximum RAW-Daten",
           "description": "Utilizes complete RAW image data für 4x Verbesserung.",
           "metric": "Volle Daten"
         },
@@ -1762,7 +1762,7 @@
           "metric": "Kein Qualitätsverlust"
         },
         {
-          "title": "Data Preserved",
+          "title": "Daten erhalten",
           "description": "Utilizes complete RAW data even bei extreme 8x magnification.",
           "metric": "Studio-Qualität"
         }
@@ -1940,7 +1940,7 @@
           "metric": "Kein Qualitätsverlust"
         },
         {
-          "title": "Apple Optimized",
+          "title": "Apple-optimiert",
           "description": "Specialized Verarbeitung für Apple HEIC Format.",
           "metric": "Druckstandard"
         },
@@ -2249,7 +2249,7 @@
         {
           "title": "Extreme Auflösung",
           "description": "8x provides maximum practical Upscaling für TIFF.",
-          "metric": "Maximum detail"
+          "metric": "Maximum Details"
         }
       ],
       "bestPractices": [
@@ -2258,11 +2258,11 @@
           "description": "Our KI preserves TIFF's Verlustfrei nature during 8x Upscaling."
         },
         {
-          "title": "Specialized Application",
+          "title": "Spezialisierte Anwendung",
           "description": "8x TIFF ist für specialized applications requiring maximum Auflösung."
         },
         {
-          "title": "File Size Management",
+          "title": "Dateigrößen-Management",
           "description": "8x TIFFs sind extremely Groß; plan storage und transfer carefully."
         }
       ],
@@ -2316,7 +2316,7 @@
           "example": "Generate building-sized graphics von TIFF"
         },
         {
-          "title": "Archival Projects",
+          "title": "Archivierungsprojekte",
           "description": "Maximum Auflösung preservation von important TIFF Bilder.",
           "example": "Erstellen archival versions von historic TIFF Bilder"
         }
@@ -2330,10 +2330,10 @@
         {
           "title": "Maximum Auflösung",
           "description": "16x pushes TIFF zu der/die/das absolute maximum practical limit.",
-          "metric": "Maximum possible"
+          "metric": "Maximum möglich"
         },
         {
-          "title": "Specialized Grade",
+          "title": "Spezialisierte Qualität",
           "description": "für highly specialized Professionell applications.",
           "metric": "Specialized Verwenden"
         }
@@ -2348,7 +2348,7 @@
           "description": "muss Verwenden highest Qualität TIFF für 16x results."
         },
         {
-          "title": "File Size Warning",
+          "title": "Warnung zur Dateigröße",
           "description": "16x TIFFs sind extremely Groß; carefully plan storage."
         }
       ],
@@ -2402,7 +2402,7 @@
           "example": "Verbessern Windows BMP Bilder für Modern displays"
         },
         {
-          "title": "Legacy Image Modernization",
+          "title": "Modernisierung alter Bilder",
           "description": "Verbessern older BMP Bilder für Modern Verwenden.",
           "example": "Double Auflösung von legacy BMP graphics"
         },
@@ -2421,7 +2421,7 @@
         {
           "title": "Schnell Verarbeitung",
           "description": "Schnell 2x Verbesserung für BMP Bilder.",
-          "metric": "10-20 seconds"
+          "metric": "10-20 Sekunden"
         },
         {
           "title": "Qualität Improved",
@@ -2435,7 +2435,7 @@
           "description": "Consider converting BMP zu PNG oder JPEG nach 2x Upscaling für Besser compatibility."
         },
         {
-          "title": "File Size Awareness",
+          "title": "Dateigrößen-Bewusstsein",
           "description": "BMP files sind Groß; 2x Upscaling quadruples file size."
         },
         {
@@ -2526,11 +2526,11 @@
           "description": "Konvertieren zu PNG oder TIFF nach 4x Upscaling für Besser compatibility."
         },
         {
-          "title": "File Size Management",
+          "title": "Dateigrößen-Management",
           "description": "4x BMPs sind sehr Groß; plan storage accordingly."
         },
         {
-          "title": "Consider Modern Formats",
+          "title": "Moderne Formate in Betracht ziehen",
           "description": "BMP ist weniger Häufig; consider Modern formats nach Upscaling."
         }
       ],
@@ -2584,7 +2584,7 @@
           "example": "Verwandeln Alt BMP into maximum Auflösung versions"
         },
         {
-          "title": "Archival Projects",
+          "title": "Archivierungsprojekte",
           "description": "Future-proof important BMP Bilder mit maximum Auflösung.",
           "example": "Erstellen archival versions von historic BMP graphics"
         }
@@ -2598,12 +2598,12 @@
         {
           "title": "Qualität Preserved",
           "description": "KI Verbesserung maintains Qualität even bei extreme Auflösung.",
-          "metric": "Maximum detail"
+          "metric": "Maximum Details"
         },
         {
           "title": "Specialized Verwenden",
           "description": "für specialized applications requiring maximum BMP Auflösung.",
-          "metric": "Maximum possible"
+          "metric": "Maximum möglich"
         }
       ],
       "bestPractices": [
@@ -2612,7 +2612,7 @@
           "description": "Always Konvertieren zu PNG oder TIFF nach 8x Upscaling."
         },
         {
-          "title": "File Size Warning",
+          "title": "Warnung zur Dateigröße",
           "description": "8x BMPs sind extremely Groß; plan storage carefully."
         }
       ],
@@ -2661,7 +2661,7 @@
       "scaleExpectations": "16x Skalierung creates 256 times mehr Pixel. Extreme Vergrößerung für specialized Verwenden nur. Verarbeitung time: 2-5 minutes.",
       "useCases": [
         {
-          "title": "Specialized Archival",
+          "title": "Spezialisierte Archivierung",
           "description": "Maximum Auflösung preservation von important BMP Bilder.",
           "example": "Erstellen maximum Auflösung archival BMP versions"
         }
@@ -2675,7 +2675,7 @@
         {
           "title": "Specialized Qualität",
           "description": "für highly specialized applications requiring BMP Format.",
-          "metric": "Maximum possible"
+          "metric": "Maximum möglich"
         }
       ],
       "bestPractices": [
@@ -2739,7 +2739,7 @@
           "example": "Generate 2x AVIF für nächste-gen Web experiences"
         },
         {
-          "title": "Future-Proof Content",
+          "title": "Zukunftssichere Inhalte",
           "description": "Verbessern AVIF Bilder für future Web standards.",
           "example": "Prepare AVIF content für nächste-generation displays"
         }
@@ -2748,7 +2748,7 @@
         {
           "title": "nächste-Gen Format",
           "description": "AVIF ist der/die/das latest Bildformat mit Überlegen Komprimierung.",
-          "metric": "Future ready"
+          "metric": "Zukunftsbereit"
         },
         {
           "title": "Überlegen Qualität",
@@ -2758,16 +2758,16 @@
         {
           "title": "Schnell Verarbeitung",
           "description": "Schnell 2x Verbesserung mit AVIF Format.",
-          "metric": "10-20 seconds"
+          "metric": "10-20 Sekunden"
         }
       ],
       "bestPractices": [
         {
-          "title": "Browser Support Check",
+          "title": "Browser-Support prüfen",
           "description": "Ensure target browsers Support AVIF vor using exclusively."
         },
         {
-          "title": "Provide Fallbacks",
+          "title": "Fallbacks bereitstellen",
           "description": "Offer WebP/JPEG fallbacks für older browsers."
         },
         {
@@ -2820,7 +2820,7 @@
       "scaleExpectations": "4x Skalierung creates 16 times mehr Pixel. Hoch-Qualität nächste-gen Verbesserung. Verarbeitung time: 30-60 seconds.",
       "useCases": [
         {
-          "title": "Premium Web Experiences",
+          "title": "Premium-Web-Erlebnisse",
           "description": "Erstellen ultra-Hoch-Auflösung AVIF Bilder für luxury websites.",
           "example": "Generate 4x AVIF für Premium brand websites"
         },
@@ -2839,30 +2839,30 @@
         {
           "title": "Überlegen Qualität × Effizienz",
           "description": "4x AVIF provides Ausgezeichnet Qualität mit Überlegen Komprimierung.",
-          "metric": "Optimized balance"
+          "metric": "Optimiertes Gleichgewicht"
         },
         {
           "title": "nächste-Gen Standard",
           "description": "AVIF represents der/die/das future von Web image formats.",
-          "metric": "Future ready"
+          "metric": "Zukunftsbereit"
         },
         {
           "title": "Professionell Results",
           "description": "Suitable für Premium Web applications.",
-          "metric": "Premium grade"
+          "metric": "Premium-Qualität"
         }
       ],
       "bestPractices": [
         {
-          "title": "Browser Compatibility",
+          "title": "Browser-Kompatibilität",
           "description": "AVIF hat growing Support hinein Modern browsers."
         },
         {
-          "title": "Fallback Strategy",
+          "title": "Fallback-Strategie",
           "description": "Provide WebP/JPEG fallbacks für broader compatibility."
         },
         {
-          "title": "File Size Management",
+          "title": "Dateigrößen-Management",
           "description": "4x AVIFs remain efficient Im Vergleich zu andere formats."
         }
       ],
@@ -2911,7 +2911,7 @@
       "scaleExpectations": "8x Skalierung creates 64 times mehr Pixel. Extreme Verbesserung für specialized applications. Verarbeitung time: 60-120 seconds.",
       "useCases": [
         {
-          "title": "Ultra-Premium Web",
+          "title": "Ultra-Premium-Web",
           "description": "Erstellen maximum Auflösung AVIF für luxury Web experiences.",
           "example": "Generate 8x AVIF für ultra-Premium websites"
         },
@@ -2925,7 +2925,7 @@
         {
           "title": "Maximum Qualität",
           "description": "8x AVIF Skalierung provides maximum Auflösung mit Überlegen Komprimierung.",
-          "metric": "Maximum detail"
+          "metric": "Maximum Details"
         },
         {
           "title": "Format Effizienz",
@@ -2935,16 +2935,16 @@
         {
           "title": "nächste-Gen Ready",
           "description": "Maximum Auflösung für nächste-generation applications.",
-          "metric": "Future ready"
+          "metric": "Zukunftsbereit"
         }
       ],
       "bestPractices": [
         {
-          "title": "Specialized Application",
+          "title": "Spezialisierte Anwendung",
           "description": "8x AVIF ist für specialized Premium applications."
         },
         {
-          "title": "Bandwidth Planning",
+          "title": "Bandbreiten-Planung",
           "description": "8x AVIFs sind Groß despite Komprimierung Effizienz."
         }
       ],
@@ -3001,7 +3001,7 @@
           "metric": "256x mehr Pixel"
         },
         {
-          "title": "Format Preserved",
+          "title": "Format erhalten",
           "description": "Maintains AVIF characteristics even bei extreme magnification.",
           "metric": "Format Effizienz"
         }

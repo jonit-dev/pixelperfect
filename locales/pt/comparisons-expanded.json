@@ -8,7 +8,7 @@
       "metaDescription": "Comparação abrangente de upscaling de IA vs métodos de interpolação tradicionais (bicúbico, Lanczos). Testes reais, métricas de qualidade e análise de custo.",
       "h1": "Upscaling de IA vs Interpolação Tradicional: Qual Método tem Melhor Desempenho?",
       "intro": "Análise técnica detalhada comparando o upscaling impulsionado por IA com métodos de interpolação tradicionais. Inclui resultados de benchmark, métricas de qualidade e recomendações práticas para diferentes casos de uso.",
-      "primaryKeyword": "ai vs traditional upscaling",
+      "primaryKeyword": "IA vs traditional upscaling",
       "secondaryKeywords": [
         "comparação de upscaling de IA",
         "bicúbico vs lanczos",
@@ -46,7 +46,7 @@
               "bestFor": "Fotografia, preparação para impressão"
             },
             {
-              "method": "ESRGAN AI",
+              "method": "ESRGAN IA",
               "avgPSNR": "31.2 dB (2x), 27.8 dB (4x)",
               "avgSSIM": "0.94 (2x), 0.88 (4x)",
               "strengths": ["Excelente reconstrução de detalhes", "Lida bem com texturas"],
@@ -160,7 +160,7 @@
       "metaDescription": "Comparação entre soluções de upscaling de imagem online e desktop. Implicações de privacidade, velocidades de processamento, análise de custo e comparações de recursos para uma tomada de decisão informada.",
       "h1": "Upscalers Online vs Desktop: Comparação Completa de 2025",
       "intro": "Análise abrangente de upscalers online baseados em nuvem versus soluções de software para desktop. Cobre preocupações de privacidade, velocidades de processamento, conjuntos de recursos e custo total de propriedade.",
-      "primaryKeyword": "online vs desktop upscaler",
+      "primaryKeyword": "online vs Desktop upscaler",
       "secondaryKeywords": [
         "upscaler de imagem em nuvem",
         "software de upscaling para desktop",
@@ -332,7 +332,7 @@
             "path": "Solução Desktop",
             "recommendations": [
               "Topaz Gigapixel",
-              "Adobe Super Resolution",
+              "Adobe Super Resolução",
               "Instalações personalizadas"
             ]
           },
@@ -344,12 +344,12 @@
           {
             "condition": "Processamento de milhares de imagens mensalmente",
             "path": "Solução de API em Nuvem",
-            "recommendations": ["MyImageUpscaler API", "Cloudinary AI", "AWS Rekognition"]
+            "recommendations": ["MyImageUpscaler API", "Cloudinary IA", "AWS Rekognition"]
           },
           {
             "condition": "Orçamento limitado, uso ocasional",
             "path": "Plano gratuito online ou desktop de compra única",
-            "recommendations": ["MyImageUpscaler Free", "GIMP com plugins", "PhotoScape X"]
+            "recommendations": ["MyImageUpscaler Gratuito", "GIMP com plugins", "PhotoScape X"]
           }
         ]
       },
@@ -379,7 +379,7 @@
       "metaDescription": "Comparação detalhada de soluções de upscaling de imagem de IA gratuitas e pagas. Benchmarks de qualidade, limitações de recursos e análise de custo-benefício para diferentes necessidades do usuário.",
       "h1": "Upscalers de IA Gratuitos vs Pagos: Qual Oferece Melhor Valor?",
       "intro": "Análise abrangente comparando soluções de upscaling de IA gratuitas e pagas. Inclui testes de qualidade, comparações de recursos, limites de uso e recomendações para diferentes níveis de orçamento.",
-      "primaryKeyword": "free vs paid upscaler",
+      "primaryKeyword": "Gratuito vs paid upscaler",
       "secondaryKeywords": [
         "upscaler de ia gratuito",
         "upscaling de imagem pago",
@@ -393,7 +393,7 @@
         "qualityScores": {
           "freeSolutions": {
             "averageScore": "6,5/10",
-            "topPerformers": ["MyImageUpscaler Free", "BigJPG", "ImgUpscaler"],
+            "topPerformers": ["MyImageUpscaler Gratuito", "BigJPG", "ImgUpscaler"],
             "commonLimitations": [
               "Limites de resolução (2x-4x)",
               "Marcas d'água",
@@ -403,7 +403,7 @@
           },
           "paidSolutions": {
             "averageScore": "8,7/10",
-            "topPerformers": ["MyImageUpscaler Pro", "Topaz Gigapixel", "Adobe Super Resolution"],
+            "topPerformers": ["MyImageUpscaler Pro", "Topaz Gigapixel", "Adobe Super Resolução"],
             "advantages": [
               "Fatores de escala mais altos (8x-16x)",
               "Melhores modelos de IA",
@@ -610,7 +610,7 @@
       "metaDescription": "Comparação técnica de modelos de upscaling de IA. Benchmarks, casos de uso e recomendações para ESRGAN, Real-ESRGAN, SRCNN, EDVR e outras redes neurais.",
       "h1": "Modelos de Upscaling de IA: Comparação Técnica e Análise",
       "intro": "Mergulho profundo nas diferentes arquiteturas de IA usadas para upscaling de imagem. Comparação de modelos baseados em GAN, baseados em CNN e modelos transformer com métricas reais e recomendações de casos de uso.",
-      "primaryKeyword": "ai upscaling models comparison",
+      "primaryKeyword": "IA upscaling models comparison",
       "secondaryKeywords": [
         "esrgan vs real-esrgan",
         "srcnn upscaling",
@@ -626,7 +626,7 @@
           "description": "As Redes Neurais Convolucionais foram pioneiras no upscaling de IA com aprimoramentos previsíveis e confiáveis.",
           "models": [
             {
-              "name": "SRCNN (Super-Resolution CNN)",
+              "name": "SRCNN (Super-Resolução CNN)",
               "year": "2014",
               "architecture": "CNN de 3 camadas",
               "strengths": [
@@ -652,7 +652,7 @@
               ]
             },
             {
-              "name": "VDSR (Very Deep Super-Resolution)",
+              "name": "VDSR (Very Deep Super-Resolução)",
               "year": "2016",
               "architecture": "CNN de 20 camadas com aprendizado residual",
               "strengths": [
@@ -669,7 +669,7 @@
               "bestUseCases": ["Restauração de imagens comprimidas", "Upscaling de propósito geral"]
             },
             {
-              "name": "EDSR (Enhanced Deep Super-Resolution)",
+              "name": "EDSR (Enhanced Deep Super-Resolução)",
               "year": "2017",
               "architecture": "CNN profunda com normalização de lote removida",
               "strengths": ["PSNR de ponta", "Arquitetura eficiente", "Boa preservação de bordas"],
@@ -688,7 +688,7 @@
           "description": "As Redes Adversores Generativas criam texturas e detalhes mais realistas, muitas vezes produzindo resultados visualmente superiores.",
           "models": [
             {
-              "name": "SRGAN (Super-Resolution GAN)",
+              "name": "SRGAN (Super-Resolução GAN)",
               "year": "2017",
               "architecture": "Gerador + Discriminador GAN",
               "strengths": [
@@ -710,7 +710,7 @@
               "bestUseCases": ["Aprimoramento artístico", "Fotografia", "Foco na qualidade visual"]
             },
             {
-              "name": "ESRGAN (Enhanced Super-Resolution GAN)",
+              "name": "ESRGAN (Enhanced Super-Resolução GAN)",
               "year": "2018",
               "architecture": "SRGAN melhorado com GAN Relativística",
               "strengths": [
@@ -948,7 +948,7 @@
       "metaDescription": "Guia completo de fluxos de trabalho de upscaling de imagem em lote. Comparação de automação desktop, APIs em nuvem e soluções empresariais para processamento em massa eficiente.",
       "h1": "Fluxos de Trabalho de Upscaling de Imagem em Lote: Guia Completo de Automação",
       "intro": "Guia para implementar fluxos de trabalho de upscaling em lote eficientes. Abrange automação desktop, APIs em nuvem, soluções empresariais e melhores práticas para processar milhares de imagens.",
-      "primaryKeyword": "batch image upscaling workflow",
+      "primaryKeyword": "batch Imagem upscaling workflow",
       "secondaryKeywords": [
         "processamento de imagem em massa",
         "automação de upscaling de imagem",

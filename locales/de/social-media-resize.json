@@ -777,38 +777,38 @@
       "platformSpecifications": {
         "currentRequirements": {
           "feedPosts": {
-            "square": "1080x1080 pixels (1:1 ratio)",
-            "landscape": "1080x566 pixels (1.91:1 ratio)",
-            "portrait": "1080x1350 pixels (4:5 ratio)",
+            "square": "1080x1080 Pixel (1:1 Verhältnis)",
+            "landscape": "1080x566 Pixel (1.91:1 Verhältnis)",
+            "portrait": "1080x1350 Pixel (4:5 Verhältnis)",
             "fileFormat": "JPG, PNG",
             "maxFileSize": "30MB",
             "compression": "Instagram compresses to 70-80% Qualität"
           },
           "instagramStories": {
-            "dimensions": "1080x1920 pixels (9:16 ratio)",
-            "safeZone": "1080x1420 (avoid top/bottom 250px)",
+            "dimensions": "1080x1920 Pixel (9:16 Verhältnis)",
+            "safeZone": "1080x1420 (obere/untere 250px vermeiden)",
             "fileFormat": "JPG, PNG, MP4",
             "duration": "Up to 60 Sekunden per story",
             "interactiveElements": "Umfragen, Quiz, Sticker, Links"
           },
           "instagramReels": {
-            "videoDimensions": "1080x1920 pixels (9:16 ratio)",
-            "coverPhoto": "1080x1920 pixels",
+            "videoDimensions": "1080x1920 Pixel (9:16 Verhältnis)",
+            "coverPhoto": "1080x1920 Pixel",
             "duration": "15-90 Sekunden optimal",
             "fileFormat": "MP4, MOV für video; JPG, PNG für covers",
             "audioIntegration": "Licensed music und original Audio"
           },
           "instagramCarousels": {
-            "dimensions": "1080x1080 pixels (recommended)",
+            "dimensions": "1080x1080 Pixel (empfohlen)",
             "multipleAspects": "Supports 1:1, 4:5, or 1.91:1 mitin same carousel",
             "maxImages": "10 Bilder or Videos per carousel",
             "fileFormat": "JPG, PNG",
             "consistency": "pflegen Sie konsistentem Seitenverhältnis für best results"
           },
           "profilePictures": {
-            "uploadSize": "320x320 pixels minimum",
-            "displaySize": "110x110 pixels (profile), 40x40 (thumbnail)",
-            "aspectRatio": "1:1 (square)",
+            "uploadSize": "320x320 Pixel minimum",
+            "displaySize": "110x110 Pixel (Profil), 40x40 (Vorschau)",
+            "aspectRatio": "1:1 (quadratisch)",
             "fileFormat": "JPG, PNG",
             "cropType": "Circular crop on Anzeige"
           }
@@ -816,7 +816,7 @@
         "bestPractices": {
           "contentTypes": {
             "productPhotography": {
-              "dimensions": "1080x1080 for grid consistency",
+              "dimensions": "1080x1080 für Grid-Konsistenz",
               "background": "White or brund-konsistentem Hintergründe",
               "lighting": "Natural lighting preferred, konsistentem across Produkt-s",
               "angles": "mehrere Winkel in carousels für comprehensive view"
@@ -828,7 +828,7 @@
               "humanElement": "Include people when possible - 38% higher Engagement"
             },
             "educationalContent": {
-              "infographics": "1080x1350 portrait format for detailed information",
+              "infographics": "1080x1350 Hochformat für detaillierte Informationen",
               "textReadability": "Large fonts, hohem Kontralst, minimal text per image",
               "carousels": "Break down complex infürmation into multiple slides",
               "branding": "Include logo und brund Farben konsistentemly"
@@ -1216,48 +1216,48 @@
       "platformSpecifications": {
         "currentRequirements": {
           "videoThumbnails": {
-            "recommended": "1280x720 pixels (16:9 ratio)",
-            "minimum": "640x360 pixels",
-            "maximum": "1920x1080 pixels",
+            "recommended": "1280x720 Pixel (16:9 Verhältnis)",
+            "minimum": "640x360 Pixel",
+            "maximum": "1920x1080 Pixel",
             "fileFormat": "JPG, PNG, GIF, BMP",
             "maxFileSize": "2MB",
             "aspectRatio": "16:9 Empfohlen (supports various ratios)"
           },
           "channelBanners": {
-            "recommended": "2560x1440 pixels",
-            "safeZoneDesktop": "1546x423 pixels (center)",
-            "safeZoneMobile": "1546x423 pixels (center)",
-            "safeZoneTV": "1235x676 pixels (center)",
+            "recommended": "2560x1440 Pixel",
+            "safeZoneDesktop": "1546x423 Pixel (Mitte)",
+            "safeZoneMobile": "1546x423 Pixel (Mitte)",
+            "safeZoneTV": "1235x676 Pixel (Mitte)",
             "fileFormat": "JPG, PNG, BMP, GIF",
             "maxFileSize": "6MB",
-            "minimumSafe": "2560x423 pixels"
+            "minimumSafe": "2560x423 Pixel"
           },
           "profilePictures": {
-            "recommended": "800x800 pixels",
-            "displaySize": "98x98 pixels (desktop), 64x64 pixels (mobile)",
-            "aspectRatio": "1:1 (square)",
+            "recommended": "800x800 Pixel",
+            "displaySize": "98x98 Pixel (Desktop), 64x64 Pixel (Mobil)",
+            "aspectRatio": "1:1 (quadratisch)",
             "fileFormat": "JPG, PNG, BMP, GIF",
             "maxFileSize": "4MB",
             "cropType": "Circular crop on Anzeige"
           },
           "youtubeShorts": {
-            "videoDimensions": "1080x1920 pixels (9:16 ratio)",
-            "thumbnailSize": "1080x1920 pixels",
+            "videoDimensions": "1080x1920 Pixel (9:16 Verhältnis)",
+            "thumbnailSize": "1080x1920 Pixel",
             "duration": "60 Sekunden maximalimum",
             "fileFormat": "MP4, MOV, WEBM für video; JPG, PNG für thumbnails",
-            "aspectRatio": "9:16 vertical required"
+            "aspectRatio": "9:16 vertikal erforderlich"
           },
           "endScreens": {
-            "dimensions": "1920x1080 pixels (16:9 ratio)",
+            "dimensions": "1920x1080 Pixel (16:9 Verhältnis)",
             "safeZone": "85% of frame (center area mit 10% margin)",
             "elementSize": "maximalimum 300x300 Pixel per element",
             "maxElements": "4 elements maximalimum",
             "duration": "5-20 Sekunden befüre video end"
           },
           "videoWatermarks": {
-            "size": "150x150 pixels minimum, 190x190 maximum",
+            "size": "150x150 Pixel minimum, 190x190 maximum",
             "position": "Untere rechte Ecke (feste Position)",
-            "opacity": "50-75% transparency",
+            "opacity": "50-75% Transparenz",
             "display": "Anpassbare Start-/Endzeiten",
             "fileFormat": "PNG mit transparency Empfohlen"
           }
@@ -1437,7 +1437,7 @@
               "compressionLevel": "Use lossless Komprimierung für Grafiken",
               "transparencyHandling": "Properly hundle alpha channels und transparency",
               "colorDepth": "Optimize color depth für Dateigröße",
-              "formatSelection": "Use PNG only when transparency or sharp edges required"
+              "formatSelection": "PNG nur verwenden, wenn Transparenz oder scharfe Kanten erforderlich"
             },
             "webPFormat": {
               "modernBrowsers": "WebP Angebote 25-35% kleinere Dateien than JPG",
@@ -1746,55 +1746,55 @@
       "platformSpecifications": {
         "currentRequirements": {
           "feedPosts": {
-            "imagePosts": "1200x630 pixels (1.91:1 ratio) recommended",
-            "sharedLinks": "1200x630 pixels for optimal link preview",
-            "squarePosts": "1080x1080 pixels (1:1 ratio) accepted",
-            "portraitPosts": "1080x1350 pixels (4:5 ratio) supported",
+            "imagePosts": "1200x630 Pixel (1.91:1 Verhältnis) empfohlen",
+            "sharedLinks": "1200x630 Pixel für optimale Linkvorschau",
+            "squarePosts": "1080x1080 Pixel (1:1 Verhältnis) akzeptiert",
+            "portraitPosts": "1080x1350 Pixel (4:5 Verhältnis) unterstützt",
             "fileFormat": "JPG, PNG, GIF",
             "maxFileSize": "30MB"
           },
           "coverPhotos": {
-            "desktop": "851x315 pixels display size",
-            "uploadSize": "2048x1152 pixels recommended",
-            "mobile": "640x360 pixels display area",
+            "desktop": "851x315 Pixel Anzeigegröße",
+            "uploadSize": "2048x1152 Pixel empfohlen",
+            "mobile": "640x360 Pixel Anzeigebereich",
             "safeZone": "Lassen Sie 100px Ränder auf allen Seiten",
             "fileFormat": "JPG, PNG",
             "maxFileSize": "8MB"
           },
           "profilePictures": {
             "uploadSize": "Minimum 180x180 Pixel",
-            "displaySize": "170x170 on desktop, 128x128 on mobile",
-            "aspectRatio": "1:1 (square)",
+            "displaySize": "170x170 auf Desktop, 128x128 auf Mobil",
+            "aspectRatio": "1:1 (quadratisch)",
             "fileFormat": "JPG, PNG",
             "cropType": "Circular crop on Anzeige"
           },
           "facebookStories": {
-            "dimensions": "1080x1920 pixels (9:16 ratio)",
+            "dimensions": "1080x1920 Pixel (9:16 Verhältnis)",
             "duration": "Up to 20 Sekunden per story",
             "fileFormat": "JPG, PNG, MP4",
             "interactiveElements": "Umfragen, Sticker, Fragen, Links",
             "safeZone": "Leave 10% margin für UI elements"
           },
           "facebookAds": {
-            "feedAds": "1200x628 pixels (1.91:1) for single image ads",
-            "storyAds": "1080x1920 pixels (9:16) for story ads",
-            "collectionAds": "1080x1080 pixels (1:1) for main creative",
-            "carouselAds": "1080x1080 per card, 2-10 cards",
+            "feedAds": "1200x628 Pixel (1.91:1) für Einzelbildanzeigen",
+            "storyAds": "1080x1920 Pixel (9:16) für Story-Anzeigen",
+            "collectionAds": "1080x1080 Pixel (1:1) für Hauptkreativ",
+            "carouselAds": "1080x1080 pro Karte, 2-10 Karten",
             "fileFormat": "JPG, PNG",
             "maxFileSize": "30MB",
-            "textLimit": "20% text rule still applies"
+            "textLimit": "20%-Text-Regel gilt weiterhin"
           },
           "marketplaceListings": {
-            "primaryPhoto": "1200x900 pixels (4:3 ratio) recommended",
-            "additionalPhotos": "1200x900 pixels consistent aspect ratio",
-            "minimumSize": "800x600 pixels minimum",
+            "primaryPhoto": "1200x900 Pixel (4:3 Verhältnis) empfohlen",
+            "additionalPhotos": "1200x900 Pixel konsistentes Seitenverhältnis",
+            "minimumSize": "800x600 Pixel minimum",
             "fileFormat": "JPG, PNG",
-            "maxFileSize": "10MB per photo",
+            "maxFileSize": "10MB pro Foto",
             "maxPhotos": "20 Fotos per listing"
           },
           "eventCovers": {
-            "desktop": "1920x1080 pixels (16:9 ratio)",
-            "mobile": "640x360 pixels display area",
+            "desktop": "1920x1080 Pixel (16:9 Verhältnis)",
+            "mobile": "640x360 Pixel Anzeigebereich",
             "safeZone": "Critical Inhalt in center 1080x608 Pixel",
             "fileFormat": "JPG, PNG",
             "maxFileSize": "10MB"
@@ -1803,7 +1803,7 @@
         "bestPractices": {
           "contentTypes": {
             "businessPageContent": {
-              "professionalPosts": "1200x630 with consistent branding and messaging",
+              "professionalPosts": "1200x630 mit konsistentem Branding und Botschaften",
               "productShowcases": "High-Qualität Produkt- photography on white Hintergründe",
               "teamPhotos": "Professional headshots und team group Fotos",
               "behindScenes": "Authentic office or Produktion facility Fotos"
@@ -1878,7 +1878,7 @@
               "audienceSpecific": "Posten Sie, wenn 60% des Publikums aktiv sind"
             },
             "contentFrequency": {
-              "businessPages": "3-5 posts per week optimal",
+              "businessPages": "3-5 Beiträge pro Woche optimal",
               "personalProfiles": "1-2 posts per day maximalimum",
               "peakTimes": "Post during industry-spezifische peak Stunden",
               "consistency": "pflegen Sie konsistentem posting schedule"
@@ -1916,15 +1916,15 @@
           },
           "facebookWatch": {
             "videoThumbnails": {
-              "optimalSize": "1280x720 pixels (16:9 ratio)",
+              "optimalSize": "1280x720 Pixel (16:9 Verhältnis)",
               "compellingFrames": "Select ansprechendste Bilds von video",
               "textOverlays": "Add compelling Titels und hooks",
               "brandElements": "Include konsistentem brunding in thumbnails"
             },
             "coverImages": {
-              "playlistCovers": "1640x924 pixels for playlist covers",
-              "showCovers": "1640x924 pixels for Facebook Watch show covers",
-              "episodeThumbnails": "1280x720 pixels for individual episodes",
+              "playlistCovers": "1640x924 Pixel für Wiedergabelisten-Cover",
+              "showCovers": "1640x924 Pixel für Facebook Watch Show-Cover",
+              "episodeThumbnails": "1280x720 Pixel für einzelne Episoden",
               "brandConsistency": "pflegen Sie visueller Stil across all Inhalt"
             }
           }
@@ -2149,7 +2149,7 @@
           "example": "National brunds coordinating visuelle Identität across franchise und corpoRate pages"
         },
         {
-          "title": "Facebook advertising preparation",
+          "title": "Facebook-Werbungsvorbereitung",
           "description": "Prepare Anzeigen-Creatives that meet Facebook's Spezifikationen und perfürm well in feed",
           "example": "Digital agencies erstellen Facebook ad Kampagnen für multiple clients"
         }
@@ -2625,7 +2625,7 @@
           "example": "Perfect sizing für reddit Inhalt creation"
         },
         {
-          "title": "Community moderation",
+          "title": "Community-Moderation",
           "description": "Optimize Bilder für community moderation",
           "example": "Perfect sizing für community moderation"
         },

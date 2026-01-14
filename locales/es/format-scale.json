@@ -340,10 +340,10 @@
         }
       ],
       "relatedFormats": ["ampliar-imágenes-jpeg", "ampliar-imágenes-raw"],
-      "relatedScales": ["ampliar-8x", "jpeg-upscale-4x", "jpeg-upscale-16x"]
+      "relatedScales": ["ampliar-8x", "jpeg-escalar-4x", "jpeg-escalar-16x"]
     },
     {
-      "slug": "jpeg-upscale-16x",
+      "slug": "jpeg-escalar-16x",
       "title": "JPEG Escalar 16X",
       "metaTitle": "JPEG Escalar 16X - Decimosextuplo Resolución JPEG | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen JPEG con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -451,11 +451,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "jpeg-upscale-8x"]
+      "relatedFormats": ["escalar-jpeg-images", "escalar-raw-images"],
+      "relatedScales": ["escalar-16x", "jpeg-escalar-8x"]
     },
     {
-      "slug": "png-upscale-2x",
+      "slug": "png-escalar-2x",
       "title": "PNG Escalar 2X",
       "metaTitle": "PNG Escalar 2X - Doble Resolución PNG | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen PNG con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -563,11 +563,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x"]
+      "relatedFormats": ["escalar-png-images", "escalar-jpeg-images"],
+      "relatedScales": ["escalador-ia-2x", "png-escalar-4x"]
     },
     {
-      "slug": "png-upscale-4x",
+      "slug": "png-escalar-4x",
       "title": "PNG Escalar 4X",
       "metaTitle": "PNG Escalar 4X - Cuádruple Resolución PNG | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen PNG con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -675,11 +675,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-tiff-images"],
-      "relatedScales": ["ai-upscaler-4x", "png-upscale-2x", "png-upscale-8x"]
+      "relatedFormats": ["escalar-png-images", "escalar-tiff-images"],
+      "relatedScales": ["escalador-ia-4x", "png-escalar-2x", "png-escalar-8x"]
     },
     {
-      "slug": "png-upscale-8x",
+      "slug": "png-escalar-8x",
       "title": "PNG Escalar 8X",
       "metaTitle": "PNG Escalar 8X - Óctuple Resolución PNG | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen PNG con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -787,11 +787,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-8x", "png-upscale-4x", "png-upscale-16x"]
+      "relatedFormats": ["escalar-png-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-8x", "png-escalar-4x", "png-escalar-16x"]
     },
     {
-      "slug": "png-upscale-16x",
+      "slug": "png-escalar-16x",
       "title": "PNG Escalar 16X",
       "metaTitle": "PNG Escalar 16X - Decimosextuplo Resolución PNG | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen PNG con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -899,11 +899,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-png-images", "upscale-svg-images"],
-      "relatedScales": ["upscale-16x", "png-upscale-8x"]
+      "relatedFormats": ["escalar-png-images", "escalar-svg-images"],
+      "relatedScales": ["escalar-16x", "png-escalar-8x"]
     },
     {
-      "slug": "webp-upscale-2x",
+      "slug": "webp-escalar-2x",
       "title": "WebP Escalar 2X",
       "metaTitle": "WebP Escalar 2X - Doble Resolución WebP | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen WebP con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -1011,11 +1011,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "webp-upscale-4x"]
+      "relatedFormats": ["escalar-webp-images", "escalar-jpeg-images"],
+      "relatedScales": ["escalador-ia-2x", "webp-escalar-4x"]
     },
     {
-      "slug": "webp-upscale-4x",
+      "slug": "webp-escalar-4x",
       "title": "WebP Escalar 4X",
       "metaTitle": "WebP Escalar 4X - Cuádruple Resolución WebP | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen WebP con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -1123,11 +1123,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-4x", "webp-upscale-2x", "webp-upscale-8x"]
+      "relatedFormats": ["escalar-webp-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-4x", "webp-escalar-2x", "webp-escalar-8x"]
     },
     {
-      "slug": "webp-upscale-8x",
+      "slug": "webp-escalar-8x",
       "title": "WebP Escalar 8X",
       "metaTitle": "WebP Escalar 8X - Óctuple Resolución WebP | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen WebP con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -1235,11 +1235,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
-      "relatedScales": ["upscale-8x", "webp-upscale-4x"]
+      "relatedFormats": ["escalar-webp-images", "escalar-png-images"],
+      "relatedScales": ["escalar-8x", "webp-escalar-4x"]
     },
     {
-      "slug": "webp-upscale-16x",
+      "slug": "webp-escalar-16x",
       "title": "WebP Escalar 16X",
       "metaTitle": "WebP Escalar 16X - Decimosextuplo Resolución WebP | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen WebP con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -1342,11 +1342,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-webp-images", "upscale-png-images"],
-      "relatedScales": ["upscale-16x", "webp-upscale-8x"]
+      "relatedFormats": ["escalar-webp-images", "escalar-png-images"],
+      "relatedScales": ["escalar-16x", "webp-escalar-8x"]
     },
     {
-      "slug": "heic-upscale-2x",
+      "slug": "heic-escalar-2x",
       "title": "HEIC Escalar 2X",
       "metaTitle": "HEIC Escalar 2X - Doble Resolución HEIC | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen HEIC con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -1449,11 +1449,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-heic-images", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "heic-upscale-4x"]
+      "relatedFormats": ["escalar-heic-images", "escalar-jpeg-images"],
+      "relatedScales": ["escalador-ia-2x", "heic-escalar-4x"]
     },
     {
-      "slug": "heic-upscale-4x",
+      "slug": "heic-escalar-4x",
       "title": "HEIC Escalar 4X",
       "metaTitle": "HEIC Escalar 4X - Cuádruple Resolución HEIC | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen HEIC con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -1556,11 +1556,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-heic-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-4x", "heic-upscale-2x", "heic-upscale-8x"]
+      "relatedFormats": ["escalar-heic-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-4x", "heic-escalar-2x", "heic-escalar-8x"]
     },
     {
-      "slug": "heic-upscale-8x",
+      "slug": "heic-escalar-8x",
       "title": "HEIC Escalar 8X",
       "metaTitle": "HEIC Escalar 8X - Óctuple Resolución HEIC | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen HEIC con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -1658,11 +1658,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-heic-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-8x", "heic-upscale-4x"]
+      "relatedFormats": ["escalar-heic-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-8x", "heic-escalar-4x"]
     },
     {
-      "slug": "raw-upscale-2x",
+      "slug": "raw-escalar-2x",
       "title": "RAW Escalar 2X",
       "metaTitle": "RAW Escalar 2X - Doble Resolución RAW | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen RAW con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -1765,11 +1765,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
-      "relatedScales": ["ai-upscaler-2x", "raw-upscale-4x"]
+      "relatedFormats": ["escalar-raw-images", "escalar-tiff-images"],
+      "relatedScales": ["escalador-ia-2x", "raw-escalar-4x"]
     },
     {
-      "slug": "raw-upscale-4x",
+      "slug": "raw-escalar-4x",
       "title": "RAW Escalar 4X",
       "metaTitle": "RAW Escalar 4X - Cuádruple Resolución RAW | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen RAW con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -1872,11 +1872,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
-      "relatedScales": ["ai-upscaler-4x", "raw-upscale-2x", "raw-upscale-8x"]
+      "relatedFormats": ["escalar-raw-images", "escalar-tiff-images"],
+      "relatedScales": ["escalador-ia-4x", "raw-escalar-2x", "raw-escalar-8x"]
     },
     {
-      "slug": "raw-upscale-8x",
+      "slug": "raw-escalar-8x",
       "title": "RAW Escalar 8X",
       "metaTitle": "RAW Escalar 8X - Óctuple Resolución RAW | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen RAW con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -1979,11 +1979,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-8x", "raw-upscale-4x", "raw-upscale-16x"]
+      "relatedFormats": ["escalar-raw-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-8x", "raw-escalar-4x", "raw-escalar-16x"]
     },
     {
-      "slug": "raw-upscale-16x",
+      "slug": "raw-escalar-16x",
       "title": "RAW Escalar 16X",
       "metaTitle": "RAW Escalar 16X - Decimosextuplo Resolución RAW | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen RAW con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -2086,11 +2086,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-16x", "raw-upscale-8x"]
+      "relatedFormats": ["escalar-raw-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-16x", "raw-escalar-8x"]
     },
     {
-      "slug": "heic-upscale-16x",
+      "slug": "heic-escalar-16x",
       "title": "HEIC Escalar 16X",
       "metaTitle": "HEIC Escalar 16X - Decimosextuplo Resolución HEIC | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen HEIC con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -2188,11 +2188,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-heic-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-16x", "heic-upscale-8x"]
+      "relatedFormats": ["escalar-heic-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-16x", "heic-escalar-8x"]
     },
     {
-      "slug": "tiff-upscale-2x",
+      "slug": "tiff-escalar-2x",
       "title": "TIFF Escalar 2X",
       "metaTitle": "TIFF Escalar 2X - Doble Resolución TIFF | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen TIFF con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -2300,11 +2300,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-tiff-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-2x", "tiff-upscale-4x"]
+      "relatedFormats": ["escalar-tiff-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-2x", "tiff-escalar-4x"]
     },
     {
-      "slug": "tiff-upscale-4x",
+      "slug": "tiff-escalar-4x",
       "title": "TIFF Escalar 4X",
       "metaTitle": "TIFF Escalar 4X - Cuádruple Resolución TIFF | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen TIFF con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -2412,11 +2412,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
-      "relatedScales": ["ai-upscaler-4x", "tiff-upscale-2x", "tiff-upscale-8x"]
+      "relatedFormats": ["escalar-tiff-images", "escalar-raw-images"],
+      "relatedScales": ["escalador-ia-4x", "tiff-escalar-2x", "tiff-escalar-8x"]
     },
     {
-      "slug": "tiff-upscale-8x",
+      "slug": "tiff-escalar-8x",
       "title": "TIFF Escalar 8X",
       "metaTitle": "TIFF Escalar 8X - Óctuple Resolución TIFF | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen TIFF con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -2519,11 +2519,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-8x", "tiff-upscale-4x", "tiff-upscale-16x"]
+      "relatedFormats": ["escalar-tiff-images", "escalar-raw-images"],
+      "relatedScales": ["escalar-8x", "tiff-escalar-4x", "tiff-escalar-16x"]
     },
     {
-      "slug": "tiff-upscale-16x",
+      "slug": "tiff-escalar-16x",
       "title": "TIFF Escalar 16X",
       "metaTitle": "TIFF Escalar 16X - Decimosextuplo Resolución TIFF | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen TIFF con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -2621,11 +2621,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-tiff-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "tiff-upscale-8x"]
+      "relatedFormats": ["escalar-tiff-images", "escalar-raw-images"],
+      "relatedScales": ["escalar-16x", "tiff-escalar-8x"]
     },
     {
-      "slug": "bmp-upscale-2x",
+      "slug": "bmp-escalar-2x",
       "title": "BMP Escalar 2X",
       "metaTitle": "BMP Escalar 2X - Doble Resolución BMP | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen BMP con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -2728,11 +2728,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-bmp-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-2x", "bmp-upscale-4x"]
+      "relatedFormats": ["escalar-bmp-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-2x", "bmp-escalar-4x"]
     },
     {
-      "slug": "bmp-upscale-4x",
+      "slug": "bmp-escalar-4x",
       "title": "BMP Escalar 4X",
       "metaTitle": "BMP Escalar 4X - Cuádruple Resolución BMP | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen BMP con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -2835,11 +2835,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
-      "relatedScales": ["ai-upscaler-4x", "bmp-upscale-2x", "bmp-upscale-8x"]
+      "relatedFormats": ["escalar-bmp-images", "escalar-tiff-images"],
+      "relatedScales": ["escalador-ia-4x", "bmp-escalar-2x", "bmp-escalar-8x"]
     },
     {
-      "slug": "bmp-upscale-8x",
+      "slug": "bmp-escalar-8x",
       "title": "BMP Escalar 8X",
       "metaTitle": "BMP Escalar 8X - Óctuple Resolución BMP | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen BMP con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -2937,11 +2937,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-8x", "bmp-upscale-4x", "bmp-upscale-16x"]
+      "relatedFormats": ["escalar-bmp-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-8x", "bmp-escalar-4x", "bmp-escalar-16x"]
     },
     {
-      "slug": "bmp-upscale-16x",
+      "slug": "bmp-escalar-16x",
       "title": "BMP Escalar 16X",
       "metaTitle": "BMP Escalar 16X - Decimosextuplo Resolución BMP | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen BMP con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -3034,11 +3034,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-bmp-images", "upscale-tiff-images"],
-      "relatedScales": ["upscale-16x", "bmp-upscale-8x"]
+      "relatedFormats": ["escalar-bmp-images", "escalar-tiff-images"],
+      "relatedScales": ["escalar-16x", "bmp-escalar-8x"]
     },
     {
-      "slug": "avif-upscale-2x",
+      "slug": "avif-escalar-2x",
       "title": "AVIF Escalar 2X",
       "metaTitle": "AVIF Escalar 2X - Doble Resolución AVIF | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen AVIF con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -3141,11 +3141,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
-      "relatedScales": ["ai-upscaler-2x", "avif-upscale-4x"]
+      "relatedFormats": ["escalar-avif-images", "escalar-webp-images"],
+      "relatedScales": ["escalador-ia-2x", "avif-escalar-4x"]
     },
     {
-      "slug": "avif-upscale-4x",
+      "slug": "avif-escalar-4x",
       "title": "AVIF Escalar 4X",
       "metaTitle": "AVIF Escalar 4X - Cuádruple Resolución AVIF | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen AVIF con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -3248,11 +3248,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
-      "relatedScales": ["ai-upscaler-4x", "avif-upscale-2x", "avif-upscale-8x"]
+      "relatedFormats": ["escalar-avif-images", "escalar-webp-images"],
+      "relatedScales": ["escalador-ia-4x", "avif-escalar-2x", "avif-escalar-8x"]
     },
     {
-      "slug": "avif-upscale-8x",
+      "slug": "avif-escalar-8x",
       "title": "AVIF Escalar 8X",
       "metaTitle": "AVIF Escalar 8X - Óctuple Resolución AVIF | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen AVIF con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -3350,11 +3350,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
-      "relatedScales": ["upscale-8x", "avif-upscale-4x", "avif-upscale-16x"]
+      "relatedFormats": ["escalar-avif-images", "escalar-webp-images"],
+      "relatedScales": ["escalar-8x", "avif-escalar-4x", "avif-escalar-16x"]
     },
     {
-      "slug": "avif-upscale-16x",
+      "slug": "avif-escalar-16x",
       "title": "AVIF Escalar 16X",
       "metaTitle": "AVIF Escalar 16X - Decimosextuplo Resolución AVIF | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen AVIF con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -3447,11 +3447,11 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-avif-images", "upscale-webp-images"],
-      "relatedScales": ["upscale-16x", "avif-upscale-8x"]
+      "relatedFormats": ["escalar-avif-images", "escalar-webp-images"],
+      "relatedScales": ["escalar-16x", "avif-escalar-8x"]
     },
     {
-      "slug": "gif-upscale-2x",
+      "slug": "gif-escalar-2x",
       "title": "GIF Escalar 2X",
       "metaTitle": "GIF Escalar 2X - Doble Resolución GIF | MyImageUpscaler",
       "metaDescription": "Doble resolución de imagen GIF con escalado 2X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora moderada. Prueba gratis.",
@@ -3554,11 +3554,11 @@
           "answer": "El escalado 2X típicamente toma 10-20 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-2x", "gif-upscale-4x"]
+      "relatedFormats": ["escalar-gif-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-2x", "gif-escalar-4x"]
     },
     {
-      "slug": "gif-upscale-4x",
+      "slug": "gif-escalar-4x",
       "title": "GIF Escalar 4X",
       "metaTitle": "GIF Escalar 4X - Cuádruple Resolución GIF | MyImageUpscaler",
       "metaDescription": "Cuádruple resolución de imagen GIF con escalado 4X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora significativa. Prueba gratis.",
@@ -3661,11 +3661,11 @@
           "answer": "El escalado 4X típicamente toma 20-40 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
-      "relatedScales": ["ai-upscaler-4x", "gif-upscale-2x", "gif-upscale-8x"]
+      "relatedFormats": ["escalar-gif-images", "escalar-png-images"],
+      "relatedScales": ["escalador-ia-4x", "gif-escalar-2x", "gif-escalar-8x"]
     },
     {
-      "slug": "gif-upscale-8x",
+      "slug": "gif-escalar-8x",
       "title": "GIF Escalar 8X",
       "metaTitle": "GIF Escalar 8X - Óctuple Resolución GIF | MyImageUpscaler",
       "metaDescription": "Óctuple resolución de imagen GIF con escalado 8X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora extrema. Prueba gratis.",
@@ -3763,11 +3763,11 @@
           "answer": "El escalado 8X típicamente toma 40-60 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
-      "relatedScales": ["upscale-8x", "gif-upscale-4x", "gif-upscale-16x"]
+      "relatedFormats": ["escalar-gif-images", "escalar-png-images"],
+      "relatedScales": ["escalar-8x", "gif-escalar-4x", "gif-escalar-16x"]
     },
     {
-      "slug": "gif-upscale-16x",
+      "slug": "gif-escalar-16x",
       "title": "GIF Escalar 16X",
       "metaTitle": "GIF Escalar 16X - Decimosextuplo Resolución GIF | MyImageUpscaler",
       "metaDescription": "Decimosextuplo resolución de imagen GIF con escalado 16X IA. Mantén la calidad aumentando las dimensiones. Perfecto para mejora profesional. Prueba gratis.",
@@ -3860,8 +3860,8 @@
           "answer": "El escalado 16X típicamente toma 60-90 segundos por imagen, dependiendo del tamaño y contenido."
         }
       ],
-      "relatedFormats": ["upscale-gif-images", "upscale-png-images"],
-      "relatedScales": ["upscale-16x", "gif-upscale-8x"]
+      "relatedFormats": ["escalar-gif-images", "escalar-png-images"],
+      "relatedScales": ["escalar-16x", "gif-escalar-8x"]
     }
   ]
 }

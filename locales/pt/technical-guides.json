@@ -43,11 +43,11 @@
           "content": "Diferentes modelos de IA usam várias abordagens para upscaling de imagem, cada uma com forças e aplicações únicas.",
           "subsections": [
             {
-              "name": "SRCNN (Super-Resolution CNN)",
+              "name": "SRCNN (Super-Resolução CNN)",
               "description": "Abordagem pioneira usando redes convolucionais profundas para super-resolução de imagem."
             },
             {
-              "name": "ESRGAN (Enhanced Super-Resolution GAN)",
+              "name": "ESRGAN (Enhanced Super-Resolução GAN)",
               "description": "Abordagem avançada baseada em GAN, alcançando geração de detalhes superior e resultados naturais."
             },
             {
@@ -69,7 +69,7 @@
               "description": "Mede a similaridade estrutural entre a imagem original e a imagem upscaled."
             },
             {
-              "name": "LPIPS (Learned Perceptual Image Patch Similarity)",
+              "name": "LPIPS (Learned Perceptual Imagem Patch Similarity)",
               "description": "Métrica moderna melhor alinhada com a percepção humana da qualidade da imagem."
             }
           ]
@@ -167,7 +167,7 @@
               "description": "As imagens digitais são compostas de pixels organizados em uma grade. A resolução é o número total de pixels (largura × altura)."
             },
             {
-              "name": "DPI vs PPI",
+              "name": "dpi vs PPI",
               "description": "DPI (Pontos Por Polegada) refere-se à saída impressa, enquanto PPI (Pixels Por Polegada) refere-se à densidade de exibição digital."
             }
           ]
@@ -230,31 +230,31 @@
       "resolutionTable": [
         {
           "application": "Imagens para Web",
-          "recommendedResolution": "72-150 PPI",
+          "recommendedResolution": "72-150 ppi",
           "typicalDimensions": "1920x1080 a 2560x1440",
           "notes": "Otimizado para carregamento rápido"
         },
         {
           "application": "Redes Sociais",
-          "recommendedResolution": "150-300 PPI",
+          "recommendedResolution": "150-300 ppi",
           "typicalDimensions": "1080x1080 a 2048x2048",
           "notes": "Requisitos específicos da plataforma"
         },
         {
           "application": "Impressão Padrão",
-          "recommendedResolution": "300 DPI",
+          "recommendedResolution": "300 dpi",
           "typicalDimensions": "varia conforme a aplicação",
           "notes": "Padrão de impressão mais comum"
         },
         {
           "application": "Grande Formato",
-          "recommendedResolution": "150-200 DPI",
+          "recommendedResolution": "150-200 dpi",
           "typicalDimensions": "24x36 polegadas ou maior",
           "notes": "Visualizado à distância"
         },
         {
           "application": "Apps Móveis",
-          "recommendedResolution": "200-300 PPI",
+          "recommendedResolution": "200-300 ppi",
           "typicalDimensions": "específico do dispositivo",
           "notes": "Considere a densidade do dispositivo"
         }
@@ -304,9 +304,9 @@
       "intro": "Domine conceitos resolucao imagem com guias tecnicos.",
       "primaryKeyword": "comparação de formatos de imagem",
       "secondaryKeywords": [
-        "jpeg vs png",
+        "JPEG vs png",
         "formato webp",
-        "tiff vs jpeg",
+        "tiff vs JPEG",
         "melhor formato de imagem"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
@@ -345,11 +345,11 @@
               "description": "Formato moderno que oferece compressão com e sem perdas com eficiência superior."
             },
             {
-              "name": "GIF (Graphics Interchange Format)",
+              "name": "GIF (Graphics Interchange Formato)",
               "description": "Limitado a 256 cores, usado principalmente para animações simples e gráficos."
             },
             {
-              "name": "TIFF (Tagged Image File Format)",
+              "name": "TIFF (Tagged Image File Formato)",
               "description": "Formato profissional que suporta compressão sem perdas e altas profundidades de bits."
             },
             {
@@ -367,7 +367,7 @@
               "description": "Formato de próxima geração que oferece compressão e qualidade superiores."
             },
             {
-              "name": "HEIC (High Efficiency Image Container)",
+              "name": "HEIC (Alto Efficiency Image Container)",
               "description": "Formato da Apple que oferece excelente compressão com alta qualidade."
             },
             {
@@ -1356,7 +1356,7 @@
           "content": "Técnicas avançadas para otimizar como e quando as imagens são carregadas.",
           "subsections": [
             {
-              "name": "Lazy Loading",
+              "name": "Lazy Carregando",
               "description": "Carregar imagens apenas quando elas entram na janela de visualização (viewport)."
             },
             {
@@ -1397,7 +1397,7 @@
           "step": 4,
           "name": "Implementação",
           "description": "Implementar estratégias de carregamento e otimização",
-          "techniques": ["Lazy loading", "Atributos srcset", "Elemento picture"]
+          "techniques": ["Lazy Carregando", "Atributos srcset", "Elemento picture"]
         },
         {
           "step": 5,
@@ -1596,35 +1596,35 @@
           "step": 1,
           "name": "Importar e Organizar",
           "description": "Importar arquivos, aplicar metadados, organizar em pastas",
-          "tools": ["Lightroom", "Bridge", "Capture One"],
+          "tools": ["Lightroom", "Bridge", "Capture Um"],
           "duration": "5-10 minutos por lote"
         },
         {
           "step": 2,
           "name": "Seleção Inicial (Culling)",
           "description": "Revisar e selecionar as melhores imagens, marcar as rejeitadas",
-          "tools": ["Lightroom", "Photo Mechanic"],
+          "tools": ["Lightroom", "Foto Mechanic"],
           "duration": "1-2 minutos por imagem"
         },
         {
           "step": 3,
           "name": "Desenvolvimento RAW",
           "description": "Exposição, equilíbrio de branco, correções de lente",
-          "tools": ["Lightroom", "Capture One", "Camera Raw"],
+          "tools": ["Lightroom", "Capture Um", "Camera Raw"],
           "duration": "2-5 minutos por imagem"
         },
         {
           "step": 4,
           "name": "Ajustes Globais",
           "description": "Tom, contraste, cor, ajustes de claridade",
-          "tools": ["Lightroom", "Photoshop", "Capture One"],
+          "tools": ["Lightroom", "Photoshop", "Capture Um"],
           "duration": "3-8 minutos por imagem"
         },
         {
           "step": 5,
           "name": "Edição Seletiva",
           "description": "Máscaras, gradientes, ajustes locais",
-          "tools": ["Photoshop", "Lightroom", "Capture One"],
+          "tools": ["Photoshop", "Lightroom", "Capture Um"],
           "duration": "5-15 minutos por imagem"
         },
         {
@@ -1684,13 +1684,13 @@
       "outputOptimization": [
         {
           "format": "Imagens para Web",
-          "resolution": "72-150 PPI",
+          "resolution": "72-150 ppi",
           "colorSpace": "sRGB",
           "compression": "Otimizado para web, consideração de tamanho de arquivo"
         },
         {
           "format": "Imagens para Impressão",
-          "resolution": "300 DPI",
+          "resolution": "300 dpi",
           "colorSpace": "Adobe RGB ou ProPhoto RGB",
           "compression": "Sem perdas ou JPEG de alta qualidade"
         },
@@ -1704,12 +1704,12 @@
       "professionalTools": [
         {
           "category": "Processamento RAW",
-          "tools": ["Adobe Lightroom", "Capture One", "DxO PhotoLab", "RAW Power"],
+          "tools": ["Adobe Lightroom", "Capture Um", "DxO PhotoLab", "RAW Power"],
           "selection": "Baseado em preferências de fluxo de trabalho, suporte de câmera e necessidades de recursos"
         },
         {
           "category": "Edição de Pixel",
-          "tools": ["Adobe Photoshop", "Affinity Photo", "Capture One", "ON1"],
+          "tools": ["Adobe Photoshop", "Affinity Foto", "Capture Um", "ON1"],
           "selection": "Baseado em complexidade, necessidades de integração e orçamento"
         },
         {
@@ -1954,7 +1954,7 @@
           "factor": "Fator de Redimensionamento",
           "considerations": [
             "Pequenos ajustes vs grandes mudanças",
-            "Upscaling vs downscaling",
+            "Ampliação vs downscaling",
             "Redimensionamento por inteiro vs fracionário"
           ]
         }

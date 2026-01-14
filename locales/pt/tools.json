@@ -347,7 +347,7 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "toolName": "Removedor de Fundo com IA",
       "description": "Transforme qualquer imagem com remoção de fundo profissional. Nossa IA usa segmentação avançada para detectar assuntos com precisão perfeita de pixel, lidando com bordas complexas como cabelo e pele que ferramentas tradicionais lutam.",
       "features": [
@@ -457,7 +457,7 @@
       "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedGuides": [],
       "ctaText": "Remover Fundo Grátis",
-      "ctaUrl": "/tools/ai-background-remover"
+      "ctaUrl": "/tools/IA-background-remover"
     },
     {
       "slug": "remove-bg",
@@ -479,7 +479,7 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "toolName": "Ferramenta Remove BG",
       "description": "A maneira mais rápida de remover BG de qualquer imagem. Faça upload da sua foto e obtenha um fundo transparente em segundos. Perfeito para edições rápidas e processamento em lote.",
       "features": [
@@ -554,7 +554,7 @@
       "relatedTools": ["ai-background-remover", "ai-image-upscaler"],
       "relatedGuides": [],
       "ctaText": "Remover BG Agora",
-      "ctaUrl": "/tools/remove-bg"
+      "ctaUrl": "/tools/Remover-bg"
     },
     {
       "slug": "transparent-background-maker",
@@ -576,7 +576,7 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "toolName": "Criador de Fundo Transparente",
       "description": "Transforme qualquer imagem em um PNG transparente. Nossa IA remove o fundo e cria imagens transparentes limpas prontas para uso em designs, sites e apresentações.",
       "features": [
@@ -673,7 +673,7 @@
       "isInteractive": true,
       "toolComponent": "BackgroundRemover",
       "maxFileSizeMB": 10,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "toolName": "Ferramenta de Recorte de Imagem",
       "description": "Recortes de imagem profissionais sem Photoshop. Ferramenta com IA que recorta precisamente assuntos de fotos, lidando com bordas complexas como cabelo e pele automaticamente.",
       "features": [
@@ -748,7 +748,7 @@
       "relatedTools": ["ai-background-remover", "transparent-background-maker"],
       "relatedGuides": [],
       "ctaText": "Recortar Agora",
-      "ctaUrl": "/tools/image-cutout-tool"
+      "ctaUrl": "/tools/Imagem-cutout-tool"
     }
   ],
   "meta": {

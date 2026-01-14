@@ -241,7 +241,7 @@
           "notes": "Anforderungen je nach Plattform"
         },
         {
-          "application": "Standard Print",
+          "application": "Standard-Druck",
           "recommendedResolution": "300 DPI",
           "typicalDimensions": "variiert je nach Anwendung",
           "notes": "Häufigster Druckstandard"
@@ -637,7 +637,7 @@
           "tool": "Adobe Bridge",
           "type": "Desktop-Anwendung",
           "bestFor": "Kreative Profis, Adobe-Ökosystem-Benutzer",
-          "learningCurve": "Moderate",
+          "learningCurve": "Mäßig",
           "cost": "Kostenpflichtig"
         },
         {
@@ -715,11 +715,11 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "category": "technical-guides",
-      "difficulty": "Intermediate",
+      "difficulty": "Mittelstufe",
       "technicalLevel": "Fortgeschritten",
       "sections": [
         {
-          "title": "Color Fundamentals",
+          "title": "Farbgrundlagen",
           "content": "Verständnis der Grundlagen der Farbtheorie und der digitalen Farbdarstellung.",
           "subsections": [
             {
@@ -727,11 +727,11 @@
               "description": "RGB-, CMYK-, HSL- und LAB-Farbräume und ihre Anwendungen in der Bildverarbeitung."
             },
             {
-              "name": "Color Harmony",
+              "name": "Farbharmonie",
               "description": "Prinzipien der Farbbeziehungen und ihre Anwendung bei der Bildverbesserung."
             },
             {
-              "name": "Color Psychology",
+              "name": "Farbpsychologie",
               "description": "Wie Farben die Wahrnehmung und Emotion in Bildern beeinflussen."
             }
           ]
@@ -1056,7 +1056,7 @@
         {
           "application": "E-Mail-Anhänge",
           "strategy": "Starke Komprimierung zur Einhaltung von Größenbeschränkungen",
-          "formats": ["JPEG", "PNG for graphics"],
+          "formats": ["JPEG", "PNG für Grafiken"],
           "targetSize": "Unter 5 MB gesamt für die meisten E-Mail-Anbieter"
         }
       ],
@@ -1209,17 +1209,17 @@
         {
           "phase": "Datenvorbereitung",
           "description": "Sammlung, Bereinigung und Verbesserung von Bilddatensätzen",
-          "considerations": ["Datensatzgröße", "Qualität labels", "Augmentation strategies"]
+          "considerations": ["Datensatzgröße", "Qualität labels", "Augmentierungsstrategien"]
         },
         {
           "phase": "Modell Architecture",
           "description": "Entwerfen der Netzwerkstruktur für spezifische Aufgaben",
-          "considerations": ["Task requirements", "Computational resources", "Training time"]
+          "considerations": ["Aufgabenanforderungen", "Rechenressourcen", "Trainingszeit"]
         },
         {
-          "phase": "Training Loop",
+          "phase": "Trainingsschleife",
           "description": "Iterative Optimierung der Netzwerkparameter",
-          "considerations": ["Learning rate", "Batch size", "Regularisierung"]
+          "considerations": ["Lernrate", "Batchgröße", "Regularisierung"]
         },
         {
           "phase": "Validierung",
@@ -1244,7 +1244,7 @@
           "networks": ["DnCNN", "FFDNet", "CBDNet"],
           "applications": [
             "Verbesserung bei schlechten Lichtverhältnissen",
-            "Medical imaging",
+            "Medizinische Bildgebung",
             "Fotography"
           ]
         },
@@ -1252,10 +1252,10 @@
           "task": "Inpainting",
           "description": "Ausfüllen fehlender oder beschädigter Bildbereiche",
           "networks": ["Context Encoders", "Partial Convolutions", "CoModGAN"],
-          "applications": ["Foto restoration", "Object removal", "Damage repair"]
+          "applications": ["Foto restoration", "Objektentfernung", "Schadensreparatur"]
         },
         {
-          "task": "Style Transfer",
+          "task": "Stiltransfer",
           "description": "Anwenden künstlerischer Stile auf Bilder",
           "networks": ["Neural Style Transfer", "AdaIN", "CycleGAN"],
           "applications": ["Kunstgenerierung", "Filteranwendungen", "Kreative Tools"]
@@ -1383,11 +1383,11 @@
               "description": "Wie Bildgröße und -format die Core Web Vitals und Benutzererfahrung beeinflussen."
             },
             {
-              "name": "Bandwidth Usage",
+              "name": "Bandbreitennutzung",
               "description": "Datenverbrauch und Kostenimplikationen für Benutzer und Hosting."
             },
             {
-              "name": "SEO Impact",
+              "name": "SEO-Auswirkung",
               "description": "Wie Bildoptimierung die Suchmaschinenrankings beeinflusst."
             }
           ]
@@ -1397,7 +1397,7 @@
           "content": "Technische Ansätze zur Reduzierung der Bilddateigrößen unter Beibehaltung der Qualität.",
           "subsections": [
             {
-              "name": "Compression Optimization",
+              "name": "Komprimierungsoptimierung",
               "description": "Finden Sie das optimale Gleichgewicht zwischen Dateigröße und visueller Qualität."
             },
             {
@@ -1443,14 +1443,14 @@
           "considerations": [
             "WebP-Unterstützung",
             "Transparenz-Anforderungen",
-            "Animation requirements"
+            "Animationsanforderungen"
           ]
         },
         {
           "step": 3,
-          "name": "Responsive Preparation",
+          "name": "Responsive-Vorbereitung",
           "description": "Mehrere Größen für verschiedene Geräte erstellen",
-          "breakpoints": ["Mobile: 320-768px", "Tablet: 768-1024px", "Desktop: 1024px+"]
+          "breakpoints": ["Mobil: 320-768px", "Tablet: 768-1024px", "Desktop: 1024px+"]
         },
         {
           "step": 4,
@@ -1688,7 +1688,7 @@
           "step": 6,
           "name": "Retusche",
           "description": "Fleckentfernung, Hautglättung, Detailverbesserung",
-          "tools": ["Photoshop", "Lightroom", "Retouching software"],
+          "tools": ["Photoshop", "Lightroom", "Retuschier-Software"],
           "duration": "10-30 Minuten pro Bild"
         },
         {
@@ -1713,17 +1713,17 @@
         {
           "technique": "Frequenztrennung",
           "description": "Trennung von Textur und Tonform präzise Kontrolle",
-          "applications": ["Hautretusche", "Detail enhancement", "Noise reduction"]
+          "applications": ["Hautretusche", "Detailverbesserung", "Rauschreduzierung"]
         },
         {
           "technique": "Dodge and Burn",
           "description": "Selektives Aufhellen und Abdunkeln von Bildbereichen",
-          "applications": ["Portrait enhancement", "Landscape drama", "Local contrast"]
+          "applications": ["Porträtverbesserung", "Landschaftsdramatik", "Lokaler Kontrast"]
         }
       ],
       "qualityControl": [
         {
-          "check": "Color Accuracy",
+          "check": "Farbgenauigkeit",
           "method": "Vergleichen Sie mit neutralen Referenzen, überprüfen Sie Hauttöne",
           "tools": ["Farbkalibrierter Monitor", "Referenzbilder"]
         },
@@ -1823,14 +1823,14 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
       "difficulty": "Fortgeschritten",
-      "technicalLevel": "Technical",
+      "technicalLevel": "Technisch",
       "sections": [
         {
-          "title": "Scaling Fundamentals",
+          "title": "Skalierungsgrundlagen",
           "content": "Verständnis der Mathematik und Prinzipien hinter der Bildskalierung.",
           "subsections": [
             {
-              "name": "Interpolation Theory",
+              "name": "Interpolationstheorie",
               "description": "Mathematische Grundlagen der Pixelwertvorhersage und -rekonstruktion."
             },
             {
@@ -1885,21 +1885,21 @@
           "algorithm": "Nearest Neighbor",
           "complexity": "Very Niedrig",
           "speed": "Schnellest",
-          "quality": "Poor (blocky)",
-          "bestFor": ["Pixel art", "Schnell previews", "Real-time applications"],
-          "artifacts": ["Blockiness", "Aliasing"]
+          "quality": "Schlecht (blockig)",
+          "bestFor": ["Pixel-Art", "Schnell previews", "Echtzeitanwendungen"],
+          "artifacts": ["Blockigkeit", "Aliasing"]
         },
         {
           "algorithm": "Bilinear",
           "complexity": "Niedrig",
           "speed": "Schnell",
           "quality": "Akzeptabel (glatt, aber unscharf)",
-          "bestFor": ["General use", "Real-time", "Memory-constrained"],
-          "artifacts": ["Blurring", "Loss of detail"]
+          "bestFor": ["Allgemeine Nutzung", "Echtzeit", "Speicherbegrenzt"],
+          "artifacts": ["Unschärfe", "Detailverlust"]
         },
         {
           "algorithm": "Bikubisch",
-          "complexity": "Medium",
+          "complexity": "Mittel",
           "speed": "Mittel",
           "quality": "Gut (scharf mit einigen Artefakten)",
           "bestFor": ["Fotografien", "Allgemeinzweck", "Qualitätsdruck"],
@@ -1918,31 +1918,31 @@
           "complexity": "Sehr hoch",
           "speed": "Sehr langsam",
           "quality": "Hervorragend (intelligente Detailgenerierung)",
-          "bestFor": ["Significant upscaling", "Qualität-critical", "Professionell enhancement"],
-          "artifacts": ["Potential unrealistic details", "Style-dependent"]
+          "bestFor": ["Signifikantes Upscaling", "Qualität-critical", "Professionell enhancement"],
+          "artifacts": ["Potenziell unrealistische Details", "Stilabhängig"]
         }
       ],
       "mathematicalFoundations": [
         {
-          "concept": "Convolution Theory",
+          "concept": "Faltungstheorie",
           "description": "Skalierung als Faltung mit Interpolationskernels",
           "formula": "output(x) = Σ input(i) × kernel(x-i)"
         },
         {
-          "concept": "Sinc Function",
+          "concept": "Sinc-Funktion",
           "description": "Idealer Rekonstruktionsfilter für bandbegrenzte Signale",
-          "application": "Lanczos and other high-quality algorithms"
+          "application": "Lanczos und andere hochwertige Algorithmen"
         },
         {
           "concept": "Splines",
           "description": "Stückweise Polynomfunktionen für glatte Interpolation",
-          "types": ["Linear", "Cubic", "B-spline"]
+          "types": ["Linear", "Kubisch", "B-Spline"]
         }
       ],
       "practicalApplications": [
         {
           "useCase": "Web Bild Resizing",
-          "recommended": "Bicubic or Lanczos for downsizing",
+          "recommended": "Bicubic oder Lanczos für Verkleinerung",
           "reasoning": "Gute Balance aus Qualität und Geschwindigkeit für Web-Nutzung"
         },
         {
@@ -1981,34 +1981,34 @@
         },
         {
           "metric": "LPIPS",
-          "description": "Deep learning-based perceptual metric",
+          "description": "Deep Learning-basierte Wahrnehmungsmetrik",
           "use": "Schließenst to human perception",
-          "limitations": "Computationally expensive"
+          "limitations": "Rechenintensiv"
         }
       ],
       "implementationConsiderations": [
         {
-          "factor": "Computational Resources",
+          "factor": "Rechenressourcen",
           "considerations": [
-            "CPU vs GPU acceleration",
-            "Memory requirements",
-            "Real-time constraints"
+            "CPU vs GPU-Beschleunigung",
+            "Speicheranforderungen",
+            "Echtzeit-Beschränkungen"
           ]
         },
         {
-          "factor": "Content Type",
+          "factor": "Inhaltstyp",
           "considerations": [
             "Fotographs vs graphics",
-            "Text vs natural images",
-            "Edge preservation needs"
+            "Text vs natürliche Bilder",
+            "Kantenerhaltungsbedarf"
           ]
         },
         {
-          "factor": "Scaling Factor",
+          "factor": "Skalierungsfaktor",
           "considerations": [
-            "Small adjustments vs major changes",
+            "Kleine Anpassungen vs große Änderungen",
             "Skalierung vs downscaling",
-            "Integer vs fractional scaling"
+            "Ganzzahlige vs gebrochene Skalierung"
           ]
         }
       ],

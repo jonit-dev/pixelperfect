@@ -269,65 +269,161 @@
         {
           "platform": "Instagram",
           "imageTypes": [
-            { "type": "正方形投稿", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
-            { "type": "縦長投稿", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
-            { "type": "横長投稿", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
-            { "type": "ストーリー/リール", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "プロフィール画像", "dimensions": "320x320px", "aspectRatio": "1:1" }
+            {
+              "type": "正方形投稿",
+              "dimensions": "1080x1080px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "縦長投稿",
+              "dimensions": "1080x1350px",
+              "aspectRatio": "4:5"
+            },
+            {
+              "type": "横長投稿",
+              "dimensions": "1080x566px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "ストーリー/リール",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "プロフィール画像",
+              "dimensions": "320x320px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "縦長（4:5）はフィードでより多くの画面スペースを得ます。ストーリーは9:16垂直です。"
         },
         {
           "platform": "Facebook",
           "imageTypes": [
-            { "type": "共有画像", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
-            { "type": "正方形投稿", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
+            {
+              "type": "共有画像",
+              "dimensions": "1200x630px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "正方形投稿",
+              "dimensions": "1200x1200px",
+              "aspectRatio": "1:1"
+            },
             {
               "type": "カバー写真",
               "dimensions": "820x312px（デスクトップ）",
               "aspectRatio": "2.63:1"
             },
-            { "type": "プロフィール画像", "dimensions": "170x170px", "aspectRatio": "1:1" },
-            { "type": "ストーリー", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+            {
+              "type": "プロフィール画像",
+              "dimensions": "170x170px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "ストーリー",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            }
           ],
           "notes": "カバー写真はモバイルで異なって表示（640x360px可視領域）。重要なコンテンツを中央に配置してください。"
         },
         {
           "platform": "Twitter/X",
           "imageTypes": [
-            { "type": "インストリーム画像", "dimensions": "1600x900px", "aspectRatio": "16:9" },
-            { "type": "単一画像", "dimensions": "1200x675px", "aspectRatio": "16:9" },
-            { "type": "二つの画像", "dimensions": "それぞれ700x800px", "aspectRatio": "7:8" },
-            { "type": "プロフィール画像", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "ヘッダー", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+            {
+              "type": "インストリーム画像",
+              "dimensions": "1600x900px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "単一画像",
+              "dimensions": "1200x675px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "二つの画像",
+              "dimensions": "それぞれ700x800px",
+              "aspectRatio": "7:8"
+            },
+            {
+              "type": "プロフィール画像",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "ヘッダー",
+              "dimensions": "1500x500px",
+              "aspectRatio": "3:1"
+            }
           ],
           "notes": "16:9画像がタイムラインで最適に表示。正方形画像はクロップされます。"
         },
         {
           "platform": "LinkedIn",
           "imageTypes": [
-            { "type": "共有画像", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
-            { "type": "会社カバー", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
-            { "type": "プロフィール画像", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "背景", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+            {
+              "type": "共有画像",
+              "dimensions": "1200x627px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "会社カバー",
+              "dimensions": "1128x191px",
+              "aspectRatio": "5.9:1"
+            },
+            {
+              "type": "プロフィール画像",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "背景",
+              "dimensions": "1584x396px",
+              "aspectRatio": "4:1"
+            }
           ],
           "notes": "プロの写真はより良く機能します。フィルターと重い効果は避けてください。"
         },
         {
           "platform": "TikTok",
           "imageTypes": [
-            { "type": "ビデオ/写真", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "プロフィール画像", "dimensions": "200x200px", "aspectRatio": "1:1" }
+            {
+              "type": "ビデオ/写真",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "プロフィール画像",
+              "dimensions": "200x200px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "垂直9:16必須。水平コンテンツはレターボックスされます。"
         },
         {
           "platform": "Pinterest",
           "imageTypes": [
-            { "type": "標準ピン", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
-            { "type": "長いピン", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
-            { "type": "正方形ピン", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
-            { "type": "プロフィール画像", "dimensions": "165x165px", "aspectRatio": "1:1" }
+            {
+              "type": "標準ピン",
+              "dimensions": "1000x1500px",
+              "aspectRatio": "2:3"
+            },
+            {
+              "type": "長いピン",
+              "dimensions": "1000x2100px",
+              "aspectRatio": "1:2.1"
+            },
+            {
+              "type": "正方形ピン",
+              "dimensions": "1000x1000px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "プロフィール画像",
+              "dimensions": "165x165px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "2:3垂直ピンが最適に機能します。より高いピンはフィードでより多くの可視性を得ます。"
         }
@@ -400,7 +496,11 @@
             "dpi": "300 DPI",
             "use": "写真、アートプリント、雑誌"
           },
-          { "quality": "標準印刷", "dpi": "240-300 DPI", "use": "家庭印刷、スナップショット" },
+          {
+            "quality": "標準印刷",
+            "dpi": "240-300 DPI",
+            "use": "家庭印刷、スナップショット"
+          },
           {
             "quality": "大判（視聴距離3フィート以上）",
             "dpi": "150-200 DPI",

@@ -24,7 +24,7 @@
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Redimensionamento Instantneo no Navegador",
@@ -152,7 +152,7 @@
         "guia-de-resolução-de-imagem"
       ],
       "ctaText": "Experimentar Redimensionador de Imagem Gratuito",
-      "ctaUrl": "/tools/resize/image-resizer"
+      "ctaUrl": "/tools/resize/Imagem-resizer"
     },
     {
       "slug": "redimensionar-imagem-para-instagram",
@@ -181,7 +181,7 @@
         "presetFilter": "instagram"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Post do Instagram (1080x1080)",
@@ -323,7 +323,7 @@
         "presetFilter": "youtube"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Perfeito 1280x720",
@@ -432,7 +432,7 @@
       "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
       "relatedGuides": ["youtube-thumbnail-best-practices"],
       "ctaText": "Redimensionar para YouTube Gratuitamente",
-      "ctaUrl": "/tools/resize/resize-image-for-youtube"
+      "ctaUrl": "/tools/resize/resize-image-for-YouTube"
     },
     {
       "slug": "resize-image-for-facebook",
@@ -461,7 +461,7 @@
         "presetFilter": "facebook"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Postagem do Facebook (1200x630)",
@@ -603,7 +603,7 @@
         "presetFilter": "twitter"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Postagem do Twitter (1200x675)",
@@ -698,11 +698,11 @@
         },
         {
           "question": "What size is a Twitter header?",
-          "answer": "Twitter headers should be 1500x500 pixels. Note that parts of the header may be covered by your profile picture."
+          "answer": "Twitter headers should be 1500x500 pixels. Nãote that parts of the header may be covered by your profile picture."
         },
         {
           "question": "Does Twitter compress images?",
-          "answer": "Yes, Twitter compresses images. Use high-quality exports (90%+) and exact dimensions to minimize compression artifacts."
+          "answer": "Yes, Twitter compresses images. Use high-quality exports (90%+) and exact Dimensões to minimize compression artifacts."
         },
         {
           "question": "What's the maximum image size on Twitter?",
@@ -711,8 +711,8 @@
       ],
       "relatedTools": ["image-resizer", "resize-image-for-linkedin", "resize-image-for-facebook"],
       "relatedGuides": ["how-to-resize-images-for-social-media"],
-      "ctaText": "Resize for Twitter Free",
-      "ctaUrl": "/tools/resize/resize-image-for-twitter"
+      "ctaText": "Resize for Twitter Gratuito",
+      "ctaUrl": "/tools/resize/resize-image-for-Twitter"
     },
     {
       "slug": "resize-image-for-linkedin",
@@ -741,7 +741,7 @@
         "presetFilter": "linkedin"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Postagem do LinkedIn (1200x627)",
@@ -879,7 +879,7 @@
       "isInteractive": true,
       "toolComponent": "BulkImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Processe até 20 Imagens",
@@ -1004,7 +1004,7 @@
       "relatedTools": ["image-resizer", "image-compressor", "ai-image-upscaler"],
       "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
       "ctaText": "Experimente o Redimensionador de Imagens em Lote Gratuito",
-      "ctaUrl": "/tools/resize/bulk-image-resizer"
+      "ctaUrl": "/tools/resize/bulk-Imagem-resizer"
     },
     {
       "slug": "compressor-de-imagens",
@@ -1029,7 +1029,7 @@
       "isInteractive": true,
       "toolComponent": "ImageCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Algoritmo Inteligente de Compressão",
@@ -1171,10 +1171,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": ["image/png"]
+        "acceptedInputFormats": ["Imagem/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": ["Imagem/png"],
       "features": [
         {
           "title": "Manipulação de Transparência",
@@ -1204,29 +1204,29 @@
       "useCases": [
         {
           "title": "Reduzir Tamanhos de Arquivo",
-          "description": "PNG files are much larger than JPG. Convert to reduce file sizes by 70% or more.",
-          "example": "Convert a 5MB PNG screenshot to a 600KB JPG for emAIl"
+          "description": "PNG files are much larger than JPG. Converter to reduce file sizes by 70% or more.",
+          "example": "Converter a 5MB PNG screenshot to a 600KB JPG for emAIl"
         },
         {
           "title": "Social Media Uploads",
-          "description": "Many platforms prefer JPG format for photos. Convert PNGs for faster uploads and better compatibility.",
-          "example": "Convert Instagram photos from PNG to JPG for optimal size"
+          "description": "Many platforms prefer JPG format for photos. Converter PNGs for faster uploads and better compatibility.",
+          "example": "Converter Instagram photos from PNG to JPG for optimal size"
         },
         {
-          "title": "Website Optimization",
+          "title": "Website Otimização",
           "description": "JPG files load faster than PNG for photographs, improving website .",
-          "example": "Convert product photos from PNG to JPG to improve page speed"
+          "example": "Converter product photos from PNG to JPG to improve page speed"
         },
         {
           "title": "Printing",
-          "description": "Most print services prefer JPG format. Convert graphics and photos for printing.",
-          "example": "Prepare images for photo printing at CVS, Walgreens, etc."
+          "description": "Most print services prefer JPG format. Converter graphics and photos for printing.",
+          "example": "Prepare images for Foto printing at CVS, Walgreens, etc."
         }
       ],
       "benefits": [
         {
-          "title": "Massive File size Reduction",
-          "description": "JPG files are typically 70-90% smaller than PNG for photographs and complex images.",
+          "title": "Massive Tamanho de arquivo Reduction",
+          "description": "JPG files are typically 70-90% smaller than PNG for photographs and Complexo images.",
           "metric": "Up to 90% smaller"
         },
         {
@@ -1276,12 +1276,12 @@
           "answer": "PNG é sem perdas, enquanto JPG usa compressão. Em configurações de qualidade de 85-95%, a perda de qualidade é mínima e geralmente imperceptível. A economia de tamanho de arquivo vale a pequena perda de qualidade para a maioria dos usos."
         },
         {
-          "question": "Can I convert JPG back to PNG?",
-          "answer": "Yes! Our format converter also handles JPG to PNG conversion. However, converting JPG to PNG won't recover transparency or improve quality - it just changes the format."
+          "question": "Can I Converter JPG back to PNG?",
+          "answer": "Yes! Our format converter also handles JPG to PNG conversion. However, converting JPG to PNG won't recover transparency or improve Qualidade - it just changes the format."
         },
         {
-          "question": "What quality setting should I use?",
-          "answer": "For web and social media, 80-85% is perfect. For printing or use, 90-95%. For maximum file size reduction, 70-75% still looks good."
+          "question": "What Qualidade setting should I use?",
+          "answer": "For web and social media, 80-85% is perfect. For printing or use, 90-95%. For maximum Arquivo size reduction, 70-75% still looks good."
         }
       ],
       "relatedTools": ["image-compressor", "image-resizer", "jpg-to-png"],
@@ -1312,10 +1312,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": ["image/jpeg"]
+        "acceptedInputFormats": ["Imagem/jpeg"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg"],
+      "acceptedFormats": ["Imagem/jpeg"],
       "features": [
         {
           "title": "Conversão Sem Perdas",
@@ -1418,13 +1418,13 @@
         },
         {
           "question": "Posso adicionar transparência após a conversão?",
-          "answer": "Yes! Once in PNG format, you can use image editing software to remove backgrounds and add transparency. JPG doesn't support transparency."
+          "answer": "Yes! Once in PNG format, you can use image editing Software to remove backgrounds and add transparency. JPG doesn't support transparency."
         }
       ],
       "relatedTools": ["png-to-jpg", "image-compressor", "webp-to-png"],
       "relatedGuides": ["png-vs-jpg-guide"],
-      "ctaText": "Convert JPG to PNG Free",
-      "ctaUrl": "/tools/convert/jpg-to-png"
+      "ctaText": "Convert JPG to PNG Gratuito",
+      "ctaUrl": "/tools/Converter/jpg-to-png"
     },
     {
       "slug": "webp-to-jpg",
@@ -1449,34 +1449,34 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": ["image/webp"]
+        "acceptedInputFormats": ["Imagem/webp"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/webp"],
+      "acceptedFormats": ["Imagem/webp"],
       "features": [
         {
           "title": "Universal Compatibility",
-          "description": "JPG works everywhere - all devices, software, and platforms support it."
+          "description": "JPG works everywhere - all devices, Software, and platforms support it."
         },
         {
-          "title": "quality Control",
-          "description": "Adjust JPEG compression quality from 1-100% for the perfect balance."
+          "title": "Qualidade Control",
+          "description": "Adjust JPEG compression Qualidade from 1-100% for the perfect balance."
         },
         {
-          "title": "Instant Conversion",
-          "description": "Convert WebP to JPG in under a second with browser-based processing."
+          "title": "Instant Conversão",
+          "description": "Converter WebP to JPG in under a second with browser-based processing."
         },
         {
           "title": "Transparency Handling",
-          "description": "Choose background color for WebP images with transparency."
+          "description": "Escolher background color for WebP images with transparency."
         },
         {
-          "title": "No upload required",
-          "description": "All processing happens in your browser - images stay private."
+          "title": "Não upload required",
+          "description": "All Processando happens in your browser - images stay private."
         },
         {
-          "title": "Batch-Ready Workflow",
-          "description": "Quick conversion for multiple images one at a time."
+          "title": "Batch-Pronto Workflow",
+          "description": "Quick conversion for Múltiplos images one at a time."
         }
       ],
       "useCases": [
@@ -1521,47 +1521,47 @@
       "howItWorks": [
         {
           "step": 1,
-          "title": "Upload WebP Image",
-          "description": "Select or drag your WebP file. Supports all WebP variations including animated."
+          "title": "Fazer upload WebP Image",
+          "description": "Selecionar or drag your WebP file. Supports all WebP variations including animated."
         },
         {
           "step": 2,
           "title": "Set Background Color",
-          "description": "If your WebP has transparency, choose a background color for the JPG."
+          "description": "If your WebP has transparency, Escolher a background color for the JPG."
         },
         {
           "step": 3,
-          "title": "Adjust quality",
-          "description": "Set JPG quality level (80-90% recommended for most uses)."
+          "title": "Adjust Qualidade",
+          "description": "Set JPG Qualidade level (80-90% recommended for most uses)."
         },
         {
           "step": 4,
-          "title": "Download JPG",
-          "description": "Convert and download your universally compatible JPG file."
+          "title": "Fazer download JPG",
+          "description": "Converter and download your universally compatible JPG file."
         }
       ],
       "faq": [
         {
-          "question": "Why convert WebP to JPG?",
-          "answer": "WebP is a modern format not supported everywhere. JPG works on all devices, in all emAIl clients, and with all software - it's the universal standard."
+          "question": "Why Converter WebP to JPG?",
+          "answer": "WebP is a modern format not supported everywhere. JPG works on all devices, in all emAIl clients, and with all software - it's the universal Padrão."
         },
         {
           "question": "What happens to WebP transparency?",
-          "answer": "JPG doesn't support transparency. Our tool lets you choose a background color (white, black, or custom) to fill transparent areas."
+          "answer": "JPG doesn't support transparency. Our tool lets you Escolher a background color (white, black, or custom) to fill transparent areas."
         },
         {
-          "question": "Will file size increase?",
-          "answer": "Usually, yes. WebP typically offers better compression than JPG. Expect files to be 20-50% larger, but with guaranteed compatibility."
+          "question": "Will Arquivo size increase?",
+          "answer": "Usually, yes. WebP typically offers Melhor compression than JPG. Expect files to be 20-50% larger, but with guaranteed compatibility."
         },
         {
-          "question": "Can I convert animated WebP?",
-          "answer": "Converting animated WebP will capture the first frame as a static JPG. For animated images, consider GIF format instead."
+          "question": "Can I Converter animated WebP?",
+          "answer": "Converting animated WebP will capture the first frame as a static JPG. For animated images, consider GIF Formato instead."
         }
       ],
       "relatedTools": ["webp-to-png", "jpg-to-webp", "image-compressor"],
       "relatedGuides": ["webp-format-guide"],
       "ctaText": "Converter WebP para JPG Gratuitamente",
-      "ctaUrl": "/tools/convert/webp-to-jpg"
+      "ctaUrl": "/tools/Converter/webp-to-jpg"
     },
     {
       "slug": "webp-to-png",
@@ -1585,10 +1585,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": ["image/webp"]
+        "acceptedInputFormats": ["Imagem/webp"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/webp"],
+      "acceptedFormats": ["Imagem/webp"],
       "features": [
         {
           "title": "Preserve Transparência",
@@ -1608,33 +1608,33 @@
         },
         {
           "title": "Software Compatibility",
-          "description": "PNG works with older software that doesn't support WebP."
+          "description": "PNG works with older Software that doesn't support WebP."
         },
         {
-          "title": "100% Private",
-          "description": "Images never leave your browser - complete privacy guaranteed."
+          "title": "100% Privado",
+          "description": "Images never leave your browser - Completar privacy guaranteed."
         }
       ],
       "useCases": [
         {
           "title": "Design Work",
-          "description": "Convert WebP images for use in design software that prefers PNG.",
-          "example": "Open web-saved images in Adobe Illustrator"
+          "description": "Converter WebP images for use in design software that prefers PNG.",
+          "example": "Aberto web-saved images in Adobe Illustrator"
         },
         {
           "title": "Preserve Transparency",
           "description": "Keep transparent backgrounds when converting from WebP.",
-          "example": "Convert logo with transparency for editing"
+          "example": "Converter logo with transparency for editing"
         },
         {
           "title": "Archival",
-          "description": "Convert to lossless PNG for long-term image storage.",
-          "example": "Archive important images without quality loss"
+          "description": "Converter to lossless PNG for long-term image storage.",
+          "example": "Archive important images without Qualidade loss"
         },
         {
           "title": "Software Compatibility",
-          "description": "Use PNG when your software doesn't support WebP format.",
-          "example": "Open WebP in older image editors"
+          "description": "Use PNG when your Software doesn't support WebP format.",
+          "example": "Open WebP in older Imagem editors"
         }
       ],
       "benefits": [
@@ -1644,8 +1644,8 @@
           "metric": "Full alpha support"
         },
         {
-          "title": "Lossless format",
-          "description": "PNG doesn't add compression artifacts to your images.",
+          "title": "Lossless Formato",
+          "description": "PNG doesn't Adicionar compression artifacts to your images.",
           "metric": "Zero perda de qualidade"
         },
         {
@@ -1697,51 +1697,51 @@
       "relatedTools": ["webp-to-jpg", "png-to-webp", "image-compressor"],
       "relatedGuides": ["webp-format-guide"],
       "ctaText": "Converter WebP para PNG Gratuitamente",
-      "ctaUrl": "/tools/convert/webp-to-png"
+      "ctaUrl": "/tools/Converter/webp-to-png"
     },
     {
       "slug": "jpg-to-webp",
       "title": "Conversor de JPG para WebP",
       "metaTitle": "Conversor de JPG para WebP | MyImageUpscaler",
       "metaDescription": "Converta JPG para WebP online gratuitamente. Obtenha arquivos 25-35% menores com compressão moderna. Conversão rápida baseada em navegador sem upload necessário.",
-      "h1": "Free JPG to WebP Converter - Optimize Images Instantly",
-      "intro": "Convert JPG images to WebP format for 25-35% smaller files with equal quality. Perfect for web optimization. Works entirely in your browser.",
-      "primaryKeyword": "jpg to webp",
+      "h1": "Gratuito JPG to WebP Converter - Optimize Images Instantly",
+      "intro": "Converter JPG images to WebP format for 25-35% smaller files with equal quality. Perfect for web optimization. Works entirely in your browser.",
+      "primaryKeyword": "jpg to WebP",
       "secondaryKeywords": [
-        "convert jpg to webp",
-        "jpeg to webp",
-        "jpg to webp converter",
-        "jpg to webp online",
-        "convert jpeg to webp"
+        "Converter jpg to webp",
+        "JPEG to webp",
+        "jpg to WebP converter",
+        "jpg to WebP online",
+        "Converter jpeg to webp"
       ],
       "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "tools",
-      "toolName": "JPG to WebP Converter",
-      "description": "Convert JPG images to WebP format for superior web performance. Get smaller files with excellent quality using modern compression.",
+      "toolName": "JPG to WebP Converterer",
+      "description": "Converter JPG images to WebP format for superior web performance. Get smaller files with excellent quality using modern compression.",
       "isInteractive": true,
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": ["image/jpeg"]
+        "acceptedInputFormats": ["Imagem/jpeg"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg"],
+      "acceptedFormats": ["Imagem/jpeg"],
       "features": [
         {
-          "title": "Superior Compression",
-          "description": "WebP offers 25-35% smaller files than JPG at equivalent quality."
+          "title": "Superior Compressão",
+          "description": "WebP offers 25-35% smaller files than JPG at equivalent Qualidade."
         },
         {
-          "title": "quality Control",
-          "description": "Adjust compression quality from 1-100% for the perfect balance."
+          "title": "Qualidade Control",
+          "description": "Adjust compression Qualidade from 1-100% for the perfect balance."
         },
         {
-          "title": "Web Optimized",
-          "description": "WebP is designed for the web with excellent browser support."
+          "title": "Web Otimizard",
+          "description": "WebP is designed for the web with Excelente browser support."
         },
         {
-          "title": "Instant Conversion",
-          "description": "Convert in under a second with browser-based processing."
+          "title": "Instant Conversão",
+          "description": "Converter in under a second with browser-based processing."
         },
         {
           "title": "Formato Moderno",
@@ -1804,19 +1804,19 @@
         },
         {
           "step": 3,
-          "title": "Convert to WebP",
-          "description": "Click convert to process your image instantly."
+          "title": "Converter to WebP",
+          "description": "Click convert to Processar your image instantly."
         },
         {
           "step": 4,
-          "title": "Download WebP",
-          "description": "Download your optimized WebP file ready for the web."
+          "title": "Fazer download WebP",
+          "description": "Fazer download your optimized WebP file ready for the web."
         }
       ],
       "faq": [
         {
-          "question": "Why convert JPG to WebP?",
-          "answer": "WebP offers 25-35% smaller files than JPG at the same visual quality. This means faster website loading, lower bandwidth costs, and better user experience."
+          "question": "Why Converter JPG to WebP?",
+          "answer": "WebP offers 25-35% smaller files than JPG at the same visual Qualidade. This means faster website loading, lower bandwidth costs, and better user experience."
         },
         {
           "question": "Is WebP supported everywhere?",
@@ -1824,17 +1824,17 @@
         },
         {
           "question": "How much smaller will my files be?",
-          "answer": "Typically, WebP files are 25-35% smaller than equivalent JPG files. A 1MB JPG might become 650-750KB as WebP with identical visual quality."
+          "answer": "Typically, WebP files are 25-35% smaller than equivalent JPG files. A 1MB JPG might become 650-750KB as WebP with identical visual Qualidade."
         },
         {
           "question": "Should I use WebP for all my images?",
-          "answer": "For web use, yes! WebP is ideal for websites. For emAIl, printing, or older software, JPG may be more compatible."
+          "answer": "For web use, yes! WebP is ideal for websites. For emAIl, printing, or older Software, JPG may be more compatible."
         }
       ],
       "relatedTools": ["png-to-webp", "webp-to-jpg", "image-compressor"],
       "relatedGuides": ["webp-format-guide", "web-performance-images"],
-      "ctaText": "Convert JPG to WebP Free",
-      "ctaUrl": "/tools/convert/jpg-to-webp"
+      "ctaText": "Convert JPG to WebP Gratuito",
+      "ctaUrl": "/tools/Converter/jpg-to-webp"
     },
     {
       "slug": "png-para-webp",
@@ -1858,10 +1858,10 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": ["image/png"]
+        "acceptedInputFormats": ["Imagem/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": ["Imagem/png"],
       "features": [
         {
           "title": "Preserve Transparência",
@@ -1970,19 +1970,19 @@
       "relatedTools": ["jpg-to-webp", "webp-to-png", "image-compressor"],
       "relatedGuides": ["webp-format-guide", "web-performance-images"],
       "ctaText": "Converta PNG para WebP Gratuitamente",
-      "ctaUrl": "/tools/convert/png-to-webp"
+      "ctaUrl": "/tools/Converter/png-to-webp"
     },
     {
       "slug": "bulk-image-compressor",
-      "title": "Bulk Image Compressor",
-      "metaTitle": "Bulk Image Compressor | MyImageUpscaler",
-      "metaDescription": "Compress multiple images at once with our Free Bulk Image Compressor. Reduce file sizes by up to 80% with quality control. Browser-based, No upload required.",
-      "h1": "Free Bulk Image Compressor - Optimize Multiple Photos",
-      "intro": "Compress multiple images at once without losing quality. Our Free bulk compressor reduces file sizes by up to 80% using advanced browser technology. Download as ZIP.",
-      "primaryKeyword": "batch image compressor",
+      "title": "Bulk Imagem Compressor",
+      "metaTitle": "Bulk Imagem Compressor | MyImageUpscaler",
+      "metaDescription": "Compress multiple images at once with our Free Bulk Image Compressor. Reduce file sizes by up to 80% with quality control. Baseado no navegador, No upload required.",
+      "h1": "Gratuito Bulk Image Compressor - Optimize Multiple Photos",
+      "intro": "Compress multiple images at once without losing quality. Our Gratuito bulk compressor reduces file sizes by up to 80% using advanced browser technology. Download as ZIP.",
+      "primaryKeyword": "batch Imagem compressor",
       "secondaryKeywords": [
-        "batch image compressor",
-        "bulk image optimization",
+        "batch Imagem compressor",
+        "bulk Imagem optimization",
         "comprimir múltiplas imagens",
         "compressão de imagens em massa",
         "comprimir fotos em lote"
@@ -1994,7 +1994,7 @@
       "isInteractive": true,
       "toolComponent": "BulkImageCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": ["Imagem/jpeg", "Imagem/png", "Imagem/webp"],
       "features": [
         {
           "title": "Comprima Até 20 Imagens",
@@ -2078,48 +2078,48 @@
         },
         {
           "step": 4,
-          "title": "Download Results",
-          "description": "Download individual images or get all compressed images as a single ZIP file. See total space saved."
+          "title": "Fazer download Results",
+          "description": "Fazer download individual images or get all compressed images as a single ZIP file. See total space saved."
         }
       ],
       "faq": [
         {
-          "question": "How many images can I compress at once?",
-          "answer": "You can compress up to 20 images at once. This limit ensures optimal browser while providing efficient batch processing."
+          "question": "How Muitos images can I compress at once?",
+          "answer": "You can compress up to 20 images at once. This limit ensures optimal browser while providing efficient batch Processando."
         },
         {
-          "question": "What's the difference between quality and target size modes?",
-          "answer": "quality mode (1-100%) gives you direct control over compression level. Target size mode automatically finds the quality to achieve a specific file size in KB. Use target size when you need files under a certAIn limit."
+          "question": "What's the difference between Qualidade and target size modes?",
+          "answer": "Qualidade mode (1-100%) gives you direct control over compression level. Target size mode automatically finds the Qualidade to achieve a specific file size in KB. Use target size when you need files under a certAIn limit."
         },
         {
-          "question": "Will compression reduce image quality?",
-          "answer": "Compression involves a trade-off between file size and quality. At 70-80% quality, most people cannot see the difference. Target size mode automatically finds the quality for your size requirement."
+          "question": "Will compression reduce image Qualidade?",
+          "answer": "Compressão involves a trade-off between file size and quality. At 70-80% quality, most people cannot see the difference. Target size mode automatically finds the quality for your size requirement."
         },
         {
-          "question": "What's the format for compression?",
-          "answer": "WebP offers the compression (25-35% smaller than JPEG) with excellent quality. JPEG is for photos and has universal browser support. PNG is lossless but creates larger files."
+          "question": "What's the Formato for compression?",
+          "answer": "WebP offers the compression (25-35% smaller than JPEG) with Excelente quality. JPEG is for photos and has universal browser support. PNG is lossless but creates larger files."
         },
         {
           "question": "Are my images uploaded to your servers?",
-          "answer": "No! All compression happens directly in your browser using Canvas API technology. Your images never leave your device, ensuring complete privacy."
+          "answer": "No! All compression happens directly in your browser using Canvas API technology. Your images never leave your device, ensuring Completar privacy."
         },
         {
-          "question": "How does the target size mode work?",
-          "answer": "Target size mode uses binary search to automatically find the highest quality setting that achieves your target file size. It tests multiple quality levels until it finds the optimal balance."
+          "question": "How does the target Tamanho mode work?",
+          "answer": "Target size mode uses binary search to automatically find the highest quality setting that achieves your target file size. It tests Múltiplos quality levels until it finds the optimal balance."
         },
         {
-          "question": "Can I mix different image formats?",
-          "answer": "Yes! You can upload JPEG, PNG, and WebP images together. They'll all be converted to your chosen output format during compression."
+          "question": "Can I mix different Imagem formats?",
+          "answer": "Yes! You can upload JPEG, PNG, and WebP images together. They'll all be converted to your chosen output Formato during compression."
         },
         {
-          "question": "Is there a file size limit?",
-          "answer": "Each image can be up to 25MB. This limit is based on browser memory, not server restrictions (since we don't upload to servers)."
+          "question": "Is there a Arquivo size limit?",
+          "answer": "Each image can be up to 25MB. This limit is based on browser memory, not server restrictions (since we don't Fazer upload to servers)."
         }
       ],
       "relatedTools": ["image-compressor", "image-resizer", "jpg-to-webp"],
       "relatedGuides": ["image-optimization-guide", "web-performance-images"],
-      "ctaText": "Try Free Bulk Compressor",
-      "ctaUrl": "/tools/compress/bulk-image-compressor"
+      "ctaText": "Try Gratuito Bulk Compressor",
+      "ctaUrl": "/tools/compress/bulk-Imagem-compressor"
     }
   ],
   "meta": {
