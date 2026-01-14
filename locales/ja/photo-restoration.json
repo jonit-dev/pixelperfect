@@ -221,25 +221,21 @@
           "tool": "リファレンスベースのカラー化",
           "description": "リファレンス画像を使用して色の選択をガイド",
           "features": ["ユーザーコントロール", "リファレンスマッチング", "色の一貫性"],
-          "bestFor": ["歴史的正確さ", "特定の要件", "Artistic control"]
+          "bestFor": ["歴史的正確さ", "特定の要件", "芸術的コントロール"]
         }
       ],
       "manualColorizationProcess": [
         {
           "step": 1,
-          "name": "Research and Planning",
-          "description": "Research historical colors and plan color scheme",
-          "actions": ["Study era-appropriate colors", "Find reference images", "Plan color palette"]
+          "name": "調査と計画",
+          "description": "歴史的な色を調査し、配色計画を立てる",
+          "actions": ["時代に適した色を研究", "参考画像を見つける", "カラーパレットを計画"]
         },
         {
           "step": 2,
-          "name": "Base Color Application",
-          "description": "Apply basic colors using color fill layers",
-          "actions": [
-            "Create color fill layers",
-            "Use appropriate blending modes",
-            "特定領域をマスク"
-          ]
+          "name": "基本色の適用",
+          "description": "カラーフィルレイヤーを使用して基本的な色を適用",
+          "actions": ["カラーフィルレイヤーを作成", "適切な描画モードを使用", "特定領域をマスク"]
         },
         {
           "step": 3,
@@ -388,121 +384,121 @@
       "damageTypes": ["破れと裂け", "傷", "水害", "褪色", "汚れ", "カビ害"],
       "repairWorkflow": [
         {
-          "phase": "Assessment",
-          "description": "Thoroughly evaluate damage type and severity",
-          "actions": ["Document all damage", "Prioritize repairs", "Plan restoration approach"]
+          "phase": "評価",
+          "description": "損傷の種類と深刻さを徹底的に評価",
+          "actions": ["すべての損傷を文書化", "修復の優先順位を決定", "修復アプローチを計画"]
         },
         {
-          "phase": "Stabilization",
-          "description": "Stabilize the photo and prevent further damage",
-          "actions": ["Gentle cleaning", "Flattening", "Environmental control"]
+          "phase": "安定化",
+          "description": "写真を安定させ、さらなる損傷を防ぐ",
+          "actions": ["優しくクリーニング", "平坦化", "環境管理"]
         },
         {
-          "phase": "Digitization",
-          "description": "Create high-quality digital copies for repair work",
-          "actions": ["High-resolution scanning", "Multiple passes", "Format selection"]
+          "phase": "デジタル化",
+          "description": "修復作業用の高品質デジタルコピーを作成",
+          "actions": ["高解像度スキャン", "複数回のスキャン", "フォーマットの選択"]
         },
         {
-          "phase": "Digital Repair",
-          "description": "Repair damage using digital tools and techniques",
-          "actions": ["Structural repairs", "Color correction", "Detail restoration"]
+          "phase": "デジタル修復",
+          "description": "デジタルツールと技術を使用して損傷を修復",
+          "actions": ["構造的修復", "色補正", "詳細の修復"]
         },
         {
-          "phase": "Enhancement",
-          "description": "Enhance and finalize the restored image",
-          "actions": ["Sharpening", "Color balance", "Final adjustments"]
+          "phase": "強化",
+          "description": "修復された画像を強化して仕上げる",
+          "actions": ["シャープニング", "カラーバランス", "最終調整"]
         }
       ],
       "specificRepairTechniques": [
         {
-          "damage": "Torn Photos",
+          "damage": "破れた写真",
           "techniques": [
             {
-              "method": "Digital Reconstruction",
-              "description": "Reconstruct missing areas using surrounding content",
-              "steps": ["Align pieces", "Clone matching areas", "Blend edges", "Rebuild details"]
-            },
-            {
-              "method": "Content-Aware Fill",
-              "description": "Use AI to intelligently fill missing areas",
+              "method": "デジタル再構成",
+              "description": "周囲のコンテンツを使用して欠落した領域を再構成",
               "steps": [
-                "Select missing areas",
-                "Adjust fill settings",
-                "Refine results",
-                "Blend naturally"
+                "ピースを整列",
+                "一致する領域をクローン",
+                "エッジをブレンド",
+                "詳細を再構築"
               ]
             },
             {
-              "method": "Layered Assembly",
-              "description": "Digitally assemble torn pieces like a puzzle",
-              "steps": ["Separate pieces", "Align edges", "Blend seams", "Smooth transitions"]
+              "method": "コンテンツに応じた塗りつぶし",
+              "description": "AI を使用して欠落した領域をインテリジェントに埋める",
+              "steps": [
+                "欠落した領域を選択",
+                "塗りつぶし設定を調整",
+                "結果を調整",
+                "自然にブレンド"
+              ]
+            },
+            {
+              "method": "レイヤー組立",
+              "description": "パズルのように破れたピースをデジタルで組み立てる",
+              "steps": ["ピースを分離", "エッジを整列", "シームをブレンド", "滑らかな遷移"]
             }
           ]
         },
         {
-          "damage": "Scratches and Abrasions",
+          "damage": "傷と擦過",
           "techniques": [
             {
-              "method": "Healing Brush",
-              "description": "Sample and blend surrounding areas to cover scratches",
+              "method": "修復ブラシ",
+              "description": "傷を覆うために周囲の領域をサンプルしてブレンド",
               "steps": [
-                "Identify scratch patterns",
-                "Select source areas",
-                "Brush carefully",
-                "Vary brush size"
+                "傷のパターンを特定",
+                "ソース領域を選択",
+                "注意深くブラシ",
+                "ブラシサイズを変更"
               ]
             },
             {
-              "method": "Frequency Separation",
-              "description": "Separate texture and tone for targeted repair",
+              "method": "周波数分離",
+              "description": "ターゲット修復のためにテクスチャとトーンを分離",
               "steps": [
-                "Create frequency layers",
-                "Repair texture separately",
-                "Rebuild tone",
-                "Merge results"
+                "周波数レイヤーを作成",
+                "テクスチャを別々に修復",
+                "トーンを再構築",
+                "結果をマージ"
               ]
             },
             {
-              "method": "Clone Stamp",
-              "description": "Copy matching areas to cover damage",
+              "method": "スタンプツール",
+              "description": "一致する領域をコピーして損傷を覆う",
               "steps": [
-                "Find matching texture",
-                "Set appropriate opacity",
-                "Clone carefully",
-                "Blend edges"
+                "一致するテクスチャを見つける",
+                "適切な不透明度を設定",
+                "注意深くクローン",
+                "エッジをブレンド"
               ]
             }
           ]
         },
         {
-          "damage": "Water Damage",
+          "damage": "水損傷",
           "techniques": [
             {
-              "method": "Color Correction",
-              "description": "Correct color shifts and stains from water damage",
+              "method": "色補正",
+              "description": "水損傷による色の変化と染みを補正",
               "steps": [
-                "Identify stained areas",
-                "Adjust color balance",
-                "Use selective color",
-                "Blend corrections"
+                "染みのある領域を特定",
+                "カラーバランスを調整",
+                "選択的色を使用",
+                "補正をブレンド"
               ]
             },
             {
-              "method": "Stain Removal",
-              "description": "Remove water stains and discoloration",
-              "steps": [
-                "Isolate stained areas",
-                "Use healing tools",
-                "Adjust levels",
-                "Smooth transitions"
-              ]
+              "method": "染み除去",
+              "description": "水染みと変色を除去",
+              "steps": ["染みのある領域を分離", "修復ツールを使用", "レベルを調整", "滑らかな遷移"]
             },
             {
-              "method": "Texture Restoration",
-              "description": "Restore texture damaged by water",
+              "method": "テクスチャ修復",
+              "description": "水で損傷したテクスチャを修復",
               "steps": [
-                "Rebuild surface texture",
-                "Add appropriate grain",
+                "表面テクスチャを再構築",
+                "適切な粒度を追加",
                 "オリジナルの仕上がりに合わせる",
                 "自然にブレンド"
               ]
@@ -651,7 +647,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "focus": "予防と長期保存",
-      "conservationTypes": ["物理的保存", "デジタル保存", "環境管理", "Handling Procedures"],
+      "conservationTypes": ["物理的保存", "デジタル保存", "環境管理", "取り扱い手順"],
       "physicalConservation": [
         {
           "aspect": "保管材料",
@@ -726,58 +722,58 @@
         {
           "procedure": "環境",
           "description": "適切な環境条件で写真を扱う",
-          "details": "Clean work surface, no food or drinks, stable temperature and humidity"
+          "details": "清潔な作業面、飲食物なし、安定した温度と湿度"
         },
         {
-          "procedure": "Tools",
-          "description": "Use appropriate tools for photo handling",
-          "details": "Photographic tongs, cotton gloves, clean work surface, proper lighting"
+          "procedure": "ツール",
+          "description": "写真の取り扱いに適切なツールを使用",
+          "details": "写真用ピンセット、綿手袋、清潔な作業面、適切な照明"
         }
       ],
       "conservationSupplies": [
         {
-          "supply": "Archival Sleeves",
-          "types": ["Polypropylene", "Polyester", "Polyethylene"],
-          "features": ["Acid-free", "No PVC", "Static-free", "Chemically stable"]
+          "supply": "アーカイブスリーブ",
+          "types": ["ポリプロピレン", "ポリエステル", "ポリエチレン"],
+          "features": ["酸フリー", "PVCなし", "静電気フリー", "化学的に安定"]
         },
         {
-          "supply": "Storage Boxes",
-          "types": ["Conservation boxes", "Archival corrugated", "Metal enclosures"],
-          "features": ["Acid-free", "pH-neutral", "Light-tight", "Moisture resistant"]
+          "supply": "保存ボックス",
+          "types": ["保存ボックス", "アーカイブ波形", "金属エンクロージャー"],
+          "features": ["酸フリー", "pH ニュートラル", "遮光", "耐湿性"]
         },
         {
-          "supply": "Monitoring Equipment",
-          "types": ["Hygrometers", "Thermometers", "Light meters", "pH testing strips"],
-          "features": ["Calibrated accuracy", "Data logging", "Alarm functions", "Portability"]
+          "supply": "モニタリング機器",
+          "types": ["湿度計", "温度計", "露出メーター", "pH 試験紙"],
+          "features": ["校正済み精度", "データロギング", "アラーム機能", "携帯性"]
         }
       ],
       "conservationLevels": [
         {
-          "level": "Basic",
-          "description": "Essential conservation for family photos",
+          "level": "基本",
+          "description": "家族写真のための基本的な保存",
           "requirements": [
-            "Acid-free storage",
-            "Basic environmental control",
-            "Digital backup",
-            "Proper handling"
+            "酸フリー保存",
+            "基本的な環境管理",
+            "デジタルバックアップ",
+            "適切な取り扱い"
           ]
         },
         {
-          "level": "Intermediate",
-          "description": "Enhanced conservation for valuable collections",
+          "level": "中級",
+          "description": "貴重なコレクションのための強化保存",
           "requirements": [
-            "Archival materials",
-            "Environmental monitoring",
-            "Multiple digital backups",
-            "Documentation"
+            "アーカイブ素材",
+            "環境モニタリング",
+            "複数のデジタルバックアップ",
+            "文書化"
           ]
         },
         {
-          "level": "Professional",
-          "description": "Museum-quality conservation for historically significant photos",
+          "level": "プロフェッショナル",
+          "description": "歴史的に重要な写真のための博物館品質保存",
           "requirements": [
-            "Conservator consultation",
-            "Custom enclosures",
+            "保存専門家の相談",
+            "カスタムエンクロージャー",
             "気候管理システム",
             "プロフェッショナルな文書化"
           ]
@@ -826,11 +822,7 @@
       "professionalResources": [
         {
           "resource": "保存組織",
-          "examples": [
-            "American Institute for Conservation",
-            "Society of American Archivists",
-            "写真保存専門家グループ"
-          ]
+          "examples": ["アメリカ保存協会", "アメリカ古文書協会", "写真保存専門家グループ"]
         },
         {
           "resource": "サプライヤー",
@@ -900,97 +892,107 @@
             "インベントリーを作成",
             "写真にラベルを付ける",
             "ストーリーを記録",
-            "Family input"
+            "家族からの意見"
           ]
         },
         {
-          "stage": "Conservation and Repair",
-          "description": "Preserve physical photos and repair damage",
-          "actions": "Proper storage, gentle cleaning, professional repair, environmental control"
+          "stage": "保存と修復",
+          "description": "物理的な写真を保存し、損傷を修復",
+          "actions": "適切な保管、優しいクリーニング、プロによる修復、環境管理"
         },
         {
-          "stage": "Digitization and Backup",
-          "description": "Create digital copies and backup systems",
+          "stage": "デジタル化とバックアップ",
+          "description": "デジタルコピーとバックアップシステムを作成",
+          "actions": ["高品質スキャン", "複数のバックアップ", "クラウドストレージ", "家族共有"]
+        },
+        {
+          "stage": "共有と教育",
+          "description": "保存した写真を家族と共有",
           "actions": [
-            "High-quality scanning",
-            "Multiple backups",
-            "Cloud storage",
-            "Family sharing"
+            "家族アルバム",
+            "デジタルギャラリー",
+            "ストーリーテリング",
+            "教育的コンテキスト"
           ]
-        },
-        {
-          "stage": "Sharing and Education",
-          "description": "Share preserved photos with family members",
-          "actions": ["Family albums", "Digital galleries", "Story telling", "Educational context"]
         }
       ],
       "photoTypes": [
         {
-          "type": "19th Century Photos",
-          "characteristics": ["Daguerreotypes", "Tintypes", "Early paper prints", "Hand coloring"],
-          "challenges": ["Fragile materials", "Unique processes", "Specialized conservation needs"]
+          "type": "19世紀の写真",
+          "characteristics": ["ダゲレオタイプ", "ティントタイプ", "初期の紙プリント", "手彩色"],
+          "challenges": ["脆い素材", "ユニークなプロセス", "特殊な保存ニーズ"]
         },
         {
-          "type": "Early 20th Century",
-          "characteristics": ["Postcards", "Cabinet cards", "Early snapshots", "Albumen prints"],
-          "challenges": ["Acidic paper", "Fading", "Album damage", "Poor storage"]
-        },
-        {
-          "type": "Mid-20th Century",
-          "characteristics": ["35mm snapshots", "Color photos", "Instant photos", "Photo albums"],
-          "challenges": ["Color fading", "Plastic deterioration", "Magnetic album damage"]
-        },
-        {
-          "type": "Modern Digital Photos",
+          "type": "20世紀初頭",
           "characteristics": [
-            "Digital files",
-            "Social media",
-            "Smartphone photos",
-            "Cloud storage"
+            "絵葉書",
+            "キャビネットカード",
+            "初期のスナップショット",
+            "アルブメンプリント"
           ],
-          "challenges": ["Format obsolescence", "Data loss", "Metadata preservation"]
+          "challenges": ["酸性紙", "褪色", "アルバムの損傷", "不適切な保管"]
+        },
+        {
+          "type": "20世紀中頃",
+          "characteristics": [
+            "35mm スナップショット",
+            "カラー写真",
+            "インスタント写真",
+            "フォトアルバム"
+          ],
+          "challenges": ["色褪せ", "プラスチック劣化", "磁気アルバムの損傷"]
+        },
+        {
+          "type": "モダンデジタル写真",
+          "characteristics": [
+            "デジタルファイル",
+            "ソーシャルメディア",
+            "スマートフォン写真",
+            "クラウドストレージ"
+          ],
+          "challenges": ["フォーマットの陳腐化", "データ損失", "メタデータ保存"]
         }
       ],
       "organizationMethods": [
         {
-          "method": "Chronological Organization",
-          "description": "Organize photos by date and time period",
-          "benefits": ["Historical context", "Easy timeline building", "Generation tracking"],
-          "implementation": "Decade-based sorting, major events, family milestones"
+          "method": "年代順の編成",
+          "description": "日付と時期で写真を整理",
+          "benefits": ["歴史的文脈", "簡単なタイムライン構築", "世代追跡"],
+          "implementation": "10年単位のソート、主要なイベント、家族のマイルストーン"
         },
         {
-          "method": "Family Branch Organization",
-          "description": "Organize by family lines and relationships",
-          "benefits": ["Genealogy tracking", "Relationship clarity", "Inheritance patterns"],
-          "implementation": "Family trees, individual branches, group photos"
+          "method": "家族別編成",
+          "description": "家系と関係で整理",
+          "benefits": ["系図追跡", "関係の明確化", "継承パターン"],
+          "implementation": "家系図、個別の分枝、グループ写真"
         },
         {
-          "method": "Event-Based Organization",
-          "description": "Organize by specific events and occasions",
-          "benefits": ["Story telling", "Event history", "Celebration tracking"],
-          "implementation": "Weddings, holidays, births, graduations, travels"
+          "method": "イベントベース編成",
+          "description": "特定のイベントと機会で整理",
+          "benefits": ["ストーリーテリング", "イベント履歴", "祝賀追跡"],
+          "implementation": "結婚式、休日、誕生、卒業、旅行"
         },
         {
-          "method": "Location-Based Organization",
-          "description": "Organize by geographic locations",
-          "benefits": ["Family movements", "Historical geography", "Property history"],
-          "implementation": "Family homes, vacation spots, significant locations"
+          "method": "場所ベース編成",
+          "description": "地理的場所で整理",
+          "benefits": ["家族の移動", "歴史地理", "物件履歴"],
+          "implementation": "家族の家、休暇スポット、重要な場所"
         }
       ],
       "documentationEssentials": [
         {
-          "element": "People Identification",
-          "description": "Identify and document all individuals in photos",
-          "information": ["Full names", "Relationships", "Approximate ages", "Life dates"]
+          "element": "人物識別",
+          "description": "写真内のすべての個人を識別して文書化",
+          "information": ["フルネーム", "関係", "推定年齢", "生涯年"]
         },
         {
-          "element": "Dating and Context",
-          "description": "Determine when and where photos were taken",
-          "information": ["Date or period", "Location", "Occasion", "Photographer"]
+          "element": "年代と文脈",
+          "description": "写真がいつ、どこで撮られたかを特定",
+          "information": ["日付または時期", "場所", "機会", "写真家"]
         },
         {
-          "element": "Stories and Memories",
-          "description": "Record associated stories and family memories",
+          "element": "物語と思い出",
+          "description": "関連する物語と家族の思い出を記録",
           "information": ["イベント", "伝統", "感情", "文化的文脈"]
         },
         {
@@ -1044,7 +1046,7 @@
           "strategy": "クラウド共有",
           "description": "クラウドストレージサービスを通じて写真を共有",
           "benefits": ["大きなファイルサポート", "アクセスコントロール", "自動バックアップ"],
-          "tools": ["Google Photos", "Amazon Photos", "ファミリクラウドフォルダ"]
+          "tools": ["Google フォト", "Amazon フォト", "ファミリクラウドフォルダ"]
         }
       ],
       "familyInvolvement": [

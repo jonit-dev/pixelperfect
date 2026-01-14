@@ -660,9 +660,9 @@
               "strengths": ["より良い深さ再構成", "様々な劣化タイプを処理", "安定したトレーニング"],
               "weaknesses": ["より高い計算コスト", "限定的なテクスチャ合成"],
               "performance": {
-                "psnr": "29.2 dB (2x)",
+                "psnr": "29.2 dB (2倍)",
                 "ssim": "0.88",
-                "processingTime": "1.2s (CPU), 0.3s (GPU)"
+                "processingTime": "1.2秒 (CPU), 0.3秒 (GPU)"
               },
               "bestUseCases": ["圧縮画像復元", "汎用アップスケーリング"]
             },
@@ -673,9 +673,9 @@
               "strengths": ["最先端のPSNR", "効率的なアーキテクチャ", "良いエッジ保持"],
               "weaknesses": ["限定的なテクスチャ生成", "過度にスムーズになる可能性"],
               "performance": {
-                "psnr": "30.8 dB (2x)",
+                "psnr": "30.8 dB (2倍)",
                 "ssim": "0.90",
-                "processingTime": "0.8s (GPU)"
+                "processingTime": "0.8秒 (GPU)"
               },
               "bestUseCases": ["ベンチマーク", "技術的応用", "PSNR重視の作業"]
             }
@@ -696,10 +696,10 @@
                 "PSNRスコアが低い"
               ],
               "performance": {
-                "psnr": "26.8 dB (2x)",
+                "psnr": "26.8 dB (2倍)",
                 "ssim": "0.82",
                 "mos": "4.1/5.0",
-                "processingTime": "2.1s (GPU)"
+                "processingTime": "2.1秒 (GPU)"
               },
               "bestUseCases": ["芸術的強化", "写真", "視覚的品質重視"]
             },
@@ -719,10 +719,10 @@
                 "一貫性のない結果"
               ],
               "performance": {
-                "psnr": "27.5 dB (2x)",
+                "psnr": "27.5 dB (2倍)",
                 "ssim": "0.84",
                 "mos": "4.3/5.0",
-                "processingTime": "3.5s (GPU)"
+                "processingTime": "3.5秒 (GPU)"
               },
               "bestUseCases": ["写真", "アート修復", "テクスチャの多いコンテンツ"]
             },
@@ -738,10 +738,10 @@
               ],
               "weaknesses": ["あまり攻撃的な強化ではない", "クリーンなソースで苦戦することがある"],
               "performance": {
-                "psnr": "28.2 dB (2x)",
+                "psnr": "28.2 dB (2倍)",
                 "ssim": "0.86",
                 "mos": "4.2/5.0",
-                "processingTime": "2.8s (GPU)"
+                "processingTime": "2.8秒 (GPU)"
               },
               "bestUseCases": ["Web画像", "ビデオフレーム", "圧縮ソース"]
             }
@@ -763,10 +763,10 @@
               ],
               "weaknesses": ["高い計算要件", "処理が遅い", "メモリ集約型"],
               "performance": {
-                "psnr": "31.5 dB (2x)",
+                "psnr": "31.5 dB (2倍)",
                 "ssim": "0.92",
                 "mos": "4.5/5.0",
-                "processingTime": "8.2s (GPU)"
+                "processingTime": "8.2秒 (GPU)"
               },
               "bestUseCases": ["プロフェッショナル写真", "アーカイブ修復", "重要なアプリケーション"]
             },
@@ -781,10 +781,10 @@
               ],
               "weaknesses": ["複雑なアーキテクチャ", "慎重なチューニングが必要"],
               "performance": {
-                "psnr": "31.2 dB (2x)",
+                "psnr": "31.2 dB (2倍)",
                 "ssim": "0.91",
                 "mos": "4.4/5.0",
-                "processingTime": "4.5s (GPU)"
+                "processingTime": "4.5秒 (GPU)"
               },
               "bestUseCases": [
                 "一般的なプロフェッショナル用途",
@@ -825,46 +825,46 @@
       ],
       "performanceBenchmarks": {
         "testDataset": "Set14、BSD100、Urban100、DIV2K",
-        "scaleFactor": "4x",
+        "scaleFactor": "4倍",
         "results": [
           {
             "model": "Bicubic",
             "psnr": "24.3 dB",
             "ssim": "0.75",
-            "time": "0.01s"
+            "time": "0.01秒"
           },
           {
             "model": "SRCNN",
             "psnr": "26.8 dB",
             "ssim": "0.82",
-            "time": "0.5s"
+            "time": "0.5秒"
           },
           {
             "model": "EDSR",
             "psnr": "30.2 dB",
             "ssim": "0.89",
-            "time": "1.2s"
+            "time": "1.2秒"
           },
           {
             "model": "ESRGAN",
             "psnr": "27.8 dB",
             "ssim": "0.85",
             "mos": "4.3/5",
-            "time": "3.5s"
+            "time": "3.5秒"
           },
           {
             "model": "Real-ESRGAN",
             "psnr": "28.5 dB",
             "ssim": "0.86",
             "mos": "4.2/5",
-            "time": "2.8s"
+            "time": "2.8秒"
           },
           {
             "model": "SwinIR",
             "psnr": "31.8 dB",
             "ssim": "0.92",
             "mos": "4.5/5",
-            "time": "8.2s"
+            "time": "8.2秒"
           }
         ]
       },
@@ -877,17 +877,17 @@
           },
           {
             "priority": "品質",
-            "recommendation": "SwinIR or HAT",
+            "recommendation": "SwinIR または HAT",
             "reason": "最高の客観的 and 主観的品質メトリクス"
           },
           {
             "priority": "視覚的魅了",
-            "recommendation": "ESRGAN or Real-ESRGAN",
+            "recommendation": "ESRGAN または Real-ESRGAN",
             "reason": "最高のテクスチャ生成 and 知覚品質"
           },
           {
             "priority": "安定性",
-            "recommendation": "Real-ESRGAN or EDSR",
+            "recommendation": "Real-ESRGAN または EDSR",
             "reason": "一貫した結果、最小限のアーティファクト"
           },
           {
@@ -1238,13 +1238,13 @@
           "examples": [
             {
               "method": "バイキュービック補間",
-              "time": "0.2s",
+              "time": "0.2秒",
               "quality": "2/10",
               "bestFor": "迅速なプレビュー"
             },
             {
               "method": "軽量CNN",
-              "time": "0.8s",
+              "time": "0.8秒",
               "quality": "4/10",
               "bestFor": "リアルタイムアプリケーション"
             }
@@ -1263,13 +1263,13 @@
           "examples": [
             {
               "method": "Real-ESRGAN Lite",
-              "time": "2.5s",
+              "time": "2.5秒",
               "quality": "7/10",
               "bestFor": "Web最適化"
             },
             {
               "method": "モバイル最適化モデル",
-              "time": "1.8s",
+              "time": "1.8秒",
               "quality": "6/10",
               "bestFor": "モバイルアプリケーション"
             }
@@ -1288,13 +1288,13 @@
           "examples": [
             {
               "method": "ESRGAN",
-              "time": "12s",
+              "time": "12秒",
               "quality": "8.5/10",
               "bestFor": "写真"
             },
             {
               "method": "SwinIR",
-              "time": "18s",
+              "time": "18秒",
               "quality": "9.5/10",
               "bestFor": "プロフェッショナルワーク"
             }
@@ -1313,13 +1313,13 @@
           "examples": [
             {
               "method": "アンサンブルモデル",
-              "time": "45s",
+              "time": "45秒",
               "quality": "9.8/10",
               "bestFor": "重要な修復"
             },
             {
               "method": "カスタムトレーニングネットワーク",
-              "time": "90s",
+              "time": "90秒",
               "quality": "10/10",
               "bestFor": "特殊なコンテンツ"
             }
@@ -1329,14 +1329,14 @@
       "detailedBenchmarks": {
         "testConditions": {
           "imageSize": "1920x1080",
-          "scaleFactor": "4x",
+          "scaleFactor": "4倍",
           "hardware": "RTX 4090",
           "samples": "100枚の多様な画像"
         },
         "results": [
           {
             "model": "Bicubic",
-            "time": "0.15s",
+            "time": "0.15秒",
             "psnr": "24.3 dB",
             "ssim": "0.75",
             "mos": "2.1/5",
@@ -1345,7 +1345,7 @@
           },
           {
             "model": "SRCNN",
-            "time": "0.8s",
+            "time": "0.8秒",
             "psnr": "26.8 dB",
             "ssim": "0.82",
             "mos": "3.2/5",
@@ -1354,7 +1354,7 @@
           },
           {
             "model": "Real-ESRGAN",
-            "time": "2.8s",
+            "time": "2.8秒",
             "psnr": "28.5 dB",
             "ssim": "0.86",
             "mos": "4.2/5",
@@ -1363,7 +1363,7 @@
           },
           {
             "model": "ESRGAN",
-            "time": "3.5s",
+            "time": "3.5秒",
             "psnr": "27.8 dB",
             "ssim": "0.85",
             "mos": "4.3/5",
@@ -1372,7 +1372,7 @@
           },
           {
             "model": "SwinIR",
-            "time": "8.2s",
+            "time": "8.2秒",
             "psnr": "31.5 dB",
             "ssim": "0.92",
             "mos": "4.5/5",
@@ -1381,7 +1381,7 @@
           },
           {
             "model": "Ensemble (3 models)",
-            "time": "24s",
+            "time": "24秒",
             "psnr": "32.1 dB",
             "ssim": "0.93",
             "mos": "4.6/5",
@@ -1636,78 +1636,78 @@
             {
               "risk": "不正なデータアクセス",
               "description": "サービスプロバイダーによるアップロード画像へのアクセスまたは分析",
-              "severity": "High",
-              "mitigation": "Choose providers with strong privacy policies, use encryption"
+              "severity": "高",
+              "mitigation": "強力なプライバシーポリシーを持つプロバイダーを選択、暗号化を使用"
             },
             {
-              "risk": "Data retention after processing",
-              "description": "Images stored longer than necessary",
-              "severity": "Medium",
-              "mitigation": "Verify deletion policies, use self-destructing uploads"
+              "risk": "処理後のデータ保持",
+              "description": "画像が必要以上に長く保存される",
+              "severity": "中",
+              "mitigation": "削除ポリシーを確認、自己消滅アップロードを使用"
             },
             {
-              "risk": "Third-party data sharing",
-              "description": "Images shared with partners or advertisers",
-              "severity": "High",
-              "mitigation": "Read terms carefully, use privacy-first services"
+              "risk": "第三者とのデータ共有",
+              "description": "画像がパートナーや広告主と共有される",
+              "severity": "高",
+              "mitigation": "利用規約を注意深く読む、プライバシー優先サービスを使用"
             },
             {
-              "risk": "Model training on user data",
-              "description": "Your images used to train AI models",
-              "severity": "Medium",
-              "mitigation": "Opt-out where possible, check data usage policies"
+              "risk": "ユーザーデータでのモデルトレーニング",
+              "description": "あなたの画像がAIモデルのトレーニングに使用される",
+              "severity": "中",
+              "mitigation": "可能な場合はオプトアウト、データ使用ポリシーを確認"
             }
           ]
         },
         {
-          "category": "Security Vulnerabilities",
+          "category": "セキュリティ脆弱性",
           "risks": [
             {
-              "risk": "Man-in-the-middle attacks",
-              "description": "Interception of image uploads/downloads",
-              "severity": "Medium",
-              "mitigation": "Use HTTPS, verify SSL certificates"
+              "risk": "中間者攻撃",
+              "description": "画像のアップロード/ダウンロードの傍受",
+              "severity": "中",
+              "mitigation": "HTTPSを使用、SSL証明書を確認"
             },
             {
-              "risk": "Data breaches",
-              "description": "Hackers accessing stored images",
-              "severity": "High",
-              "mitigation": "Choose providers with strong security, encryption at rest"
+              "risk": "データ侵害",
+              "description": "ハッカーが保存された画像にアクセス",
+              "severity": "高",
+              "mitigation": "強力なセキュリティを持つプロバイダーを選択、保存時の暗号化"
             },
             {
-              "risk": "Supply chain attacks",
-              "description": "Compromised software libraries or APIs",
-              "severity": "High",
-              "mitigation": "Use trusted providers, regular security audits"
+              "risk": "サプライチェーン攻撃",
+              "description": "侵害されたソフトウェアライブラリまたはAPI",
+              "severity": "高",
+              "mitigation": "信頼できるプロバイダーを使用、定期的なセキュリティ監査"
             },
             {
-              "risk": "Insider threats",
-              "description": "Employees accessing sensitive data",
-              "severity": "Medium",
-              "mitigation": "Zero-knowledge architecture, access controls"
+              "risk": "内部脅威",
+              "description": "従業員が機密データにアクセス",
+              "severity": "中",
+              "mitigation": "ゼロ知識アーキテクチャ、アクセス制御"
             }
           ]
         }
       ],
       "complianceRequirements": {
         "gdpr": {
-          "applicable": "EU citizens' data",
+          "applicable": "EU市民のデータ",
           "keyRequirements": [
-            "Explicit consent for data processing",
-            "Right to deletion ('right to be forgotten')",
-            "Data processing transparency",
-            "Breach notification within 72 hours",
-            "Data protection by design"
+            "データ処理の明示的な同意",
+            "削除権利（「忘れられる権利」）",
+            "データ処理の透明性",
+            "72時間以内の侵害通知",
+            "設計によるデータ保護"
           ],
           "upscalingSpecific": [
-            "Clear notification of AI processing",
-            "Option to opt-out of model training",
-            "Automated deletion after processing",
-            "Documentation of data flows"
+            "AI処理の明確な通知",
+            "モデルトレーニングのオプトアウト选项",
+            "処理後の自動削除",
+            "データフローの文書化"
           ],
           "providerQuestions": [
-            "Where is data processed and stored?",
-            "How long are images retained?",
+            "データはどこで処理・保存されますか？",
+            "画像はどれくらいの期間保持されますか？",
             "画像がモデルトレーニングに使用されますか？",
             "どのようなセキュリティ対策が講じられていますか？",
             "違反通知はどのように処理されますか？"

@@ -627,15 +627,20 @@
             {
               "method": "Ensamblaje por capas",
               "description": "Ensamblar digitalmente piezas rotas como un rompecabezas",
-              "steps": ["Separar piezas", "Alinear piezas", "Blend seams", "Smooth transitions"]
+              "steps": [
+                "Separar piezas",
+                "Alinear piezas",
+                "Mezclar las uniones",
+                "Suavizar transiciones"
+              ]
             }
           ]
         },
         {
-          "damage": "Scratches and Abrasions",
+          "damage": "Rayaduras y Abrasiones",
           "techniques": [
             {
-              "method": "Healing Brush",
+              "method": "Pincel de Clone",
               "description": "Muestrear y mezclar áreas circundantes para cubrir rayaduras",
               "steps": [
                 "Identificar patrones de rayaduras",
@@ -667,26 +672,26 @@
           ]
         },
         {
-          "damage": "Water Damage",
+          "damage": "Danos por Agua",
           "techniques": [
             {
-              "method": "Color Correction",
-              "description": "Correct color shifts and stains from water damage",
+              "method": "Correccion de Color",
+              "description": "Corregir cambios de color y manchas de danos por agua",
               "steps": [
-                "Identify stained areas",
-                "Adjust color balance",
+                "Identificar areas manchadas",
+                "Ajustar balance de color",
                 "Uso selective color",
-                "Blend corrections"
+                "Mezclar correcciones"
               ]
             },
             {
-              "method": "Stain Removal",
+              "method": "Eliminacion de Manchas",
               "description": "Eliminar water stains and discoloration",
               "steps": [
-                "Isolate stained areas",
+                "Aislar areas manchadas",
                 "Uso healing herramientas",
-                "Adjust levels",
-                "Smooth transitions"
+                "Ajustar niveles",
+                "Suavizar transiciones"
               ]
             },
             {
@@ -932,7 +937,7 @@
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
-      "focus": "Prevention and long-term preservation",
+      "focus": "Prevencion y preservacion a largo plazo",
       "conservationTypes": [
         "Conservación Física",
         "Preservación Digital",
@@ -959,7 +964,7 @@
         {
           "aspect": "Condiciones Ambientales",
           "idealConditions": {
-            "temperature": "65-70°F (18-21°C)",
+            "temperature": "65-70F (18-21C)",
             "humidity": "30-50% de humedad relativa",
             "light": "Sin luz solar directa, exposición UV mínima",
             "airQuality": "Aire limpio y filtrado, sin contaminantes"
@@ -1213,77 +1218,85 @@
     {
       "digitizationStandards": [
         {
-          "standard": "Resolution",
+          "standard": "Resolucion",
           "recommendation": "300-600 DPI for prints, 1200+ DPI for small detailed fotos",
-          "reason": "Capture fine details and allow future enlargements"
+          "reason": "Capturar detalles finos y permitir ampliaciones futuras"
         },
         {
-          "reason": "Maximum detail capture and editing flexibility",
-          "standard": "Color Depth",
+          "reason": "Maxima captura de detalles y flexibilidad de edicion",
+          "standard": "Profundidad de Color",
           "recommendation": "48-bit color for color fotos 16-bit grayscale for B&W"
         },
         {
           "standard": "File Formato",
-          "recommendation": "TIFF for archival masters, JPEG for access copies",
+          "recommendation": "TIFF para maestros de archivo, JPEG para copias de acceso",
           "reason": "Preservation calidad vs practical usability"
         },
         {
-          "standard": "Metadata",
-          "recommendation": "Complete IPTC and EXIF metadata with family information",
-          "reason": "Preserve identification and context within files"
+          "standard": "Metadatos",
+          "recommendation": "Metadatos completos IPTC y EXIF con informacion familiar",
+          "reason": "Preservar identificacion y contexto dentro de archivos"
         }
       ],
       "sharingStrategies": [
         {
-          "strategy": "Family Website",
+          "strategy": "Sitio Web Familiar",
           "description": "Create dedicated family foto website",
-          "benefits": ["Centralized access", "Story telling", "Collaborative contributions"],
-          "tools": ["Dedicated hosting", "Foto galleries", "Family forums"]
+          "benefits": [
+            "Acceso centralizado",
+            "Narracion de historias",
+            "Contribuciones colaborativas"
+          ],
+          "tools": ["Alojamiento dedicado", "Foto galleries", "Foros familiares"]
         },
         {
-          "strategy": "Digital Albums",
+          "strategy": "Albumes Digitales",
           "description": "Create digital foto albums for family members",
-          "benefits": ["Portable sharing", "Printed gifts", "Fácil access"],
-          "tools": ["Foto book services", "Digital frames", "Tablet viewing"]
+          "benefits": ["Compartir portable", "Regalos impresos", "Fácil access"],
+          "tools": ["Foto book services", "Marcos digitales", "Visualizacion en tablet"]
         },
         {
-          "strategy": "Social Media Groups",
+          "strategy": "Grupos en Redes Sociales",
           "description": "Uso private social media groups for family sharing",
-          "benefits": ["Fácil access", "Mobile friendly", "Interactive discussions"],
-          "tools": ["Facebook groups", "WhatsApp", "Family apps"]
+          "benefits": ["Fácil access", "Compatible con moviles", "Discusiones interactivas"],
+          "tools": ["Grupos de Facebook", "WhatsApp", "Aplicaciones familiares"]
         },
         {
-          "strategy": "Cloud Sharing",
+          "strategy": "Compartir en la Nube",
           "description": "Share fotos through cloud storage services",
-          "benefits": ["Large file soporte", "Access control", "Automatic backup"],
-          "tools": ["Google Fotos", "Amazon Fotos", "Family cloud folders"]
+          "benefits": ["Large file soporte", "Control de acceso", "Respaldo automatico"],
+          "tools": ["Google Fotos", "Amazon Fotos", "Carpetas familiares en la nube"]
         }
       ],
       "familyInvolvement": [
         {
           "activity": "Foto Identification Parties",
-          "description": "Gather family members to identify people and stories",
-          "benefits": ["Collective memory", "Social bonding", "Story sharing"]
+          "description": "Reunir a miembros de la familia para identificar personas e historias",
+          "benefits": ["Memoria colectiva", "Vinculo social", "Compartir historias"]
         },
         {
-          "activity": "Memory Interviews",
+          "activity": "Entrevistas de Memoria",
           "description": "Interview older family members about foto context",
-          "benefits": ["Historical context", "Personal stories", "Oral history preservation"]
+          "benefits": [
+            "Contexto historico",
+            "Historias personales",
+            "Preservacion de historia oral"
+          ]
         },
         {
-          "activity": "Collaborative Tagging",
-          "description": "Enable family members to add tags and information",
-          "benefits": ["Crowdsourced knowledge", "Engagement", "Shared ownership"]
+          "activity": "Etiquetado Colaborativo",
+          "description": "Permitir que miembros de la familia anadan etiquetas e informacion",
+          "benefits": ["Conocimiento colaborativo", "Participacion", "Propiedad compartida"]
         },
         {
-          "activity": "Generational Transfer",
-          "description": "Teach younger family members preservation techniques",
-          "benefits": ["Skill transfer", "Continuity", "Future preservation"]
+          "activity": "Transferencia Generacional",
+          "description": "Ensenar tecnicas de preservacion a miembros mas jovenes de la familia",
+          "benefits": ["Transferencia de habilidades", "Continuidad", "Preservacion futura"]
         }
       ],
       "preservationChallenges": [
         {
-          "challenge": "Identifying Unknown People",
+          "challenge": "Identificar Personas Desconocidas",
           "solution": "Share with extended family, uso genealogy resources, compare with known fotos"
         },
         {
@@ -1291,20 +1304,20 @@
           "solution": "Profesional restoration services, IA mejora herramientas careful conservation"
         },
         {
-          "challenge": "Scattered Collections",
+          "challenge": "Colecciones Dispersas",
           "solution": "Family outreach, foto sharing networks, centralized digital repository"
         },
         {
-          "challenge": "Technology Obsolescence",
+          "challenge": "Obsolescencia Tecnologica",
           "solution": "Multiple formato preservation, regular formato migration, cloud storage"
         }
       ],
       "bestPractices": [
         "Iniciar preservation projects early before further deterioration",
-        "Involve multiple family members in identification and documentation",
-        "Create both physical and digital preservation systems",
-        "Establish clear organization systems that others can understand",
-        "Plan for long-term preservation and accessibility"
+        "Involucrar a multiples miembros de la familia en identificacion y documentacion",
+        "Crear sistemas de preservacion tanto fisicos como digitales",
+        "Establecer sistemas de organizacion claros que otros puedan entender",
+        "Planificar la preservacion y accesibilidad a largo plazo"
       ],
       "faq": [
         {
@@ -1336,7 +1349,7 @@
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
-      "focus": "Family heritage and genealogy",
+      "focus": "Patrimonio familiar y genealogia",
       "preservationStages": [
         {
           "stage": "Recolección y Evaluación",
@@ -1359,94 +1372,136 @@
           ]
         },
         {
-          "stage": "Conservation and Repair",
+          "stage": "Conservacion y Reparacion",
           "description": "Preserve physical fotos and repair damage",
           "actions": "Proper storage, gentle cleaning, profesional repair, environmental control"
         },
         {
-          "stage": "Digitization and Backup",
-          "description": "Create digital copies and backup systems",
+          "stage": "Digitalizacion y Respaldo",
+          "description": "Crear copias digitales y sistemas de respaldo",
           "actions": [
-            "High-quality scanning",
-            "Multiple backups",
-            "Cloud storage",
-            "Family sharing"
+            "Escaneo de alta calidad",
+            "Multiples respaldos",
+            "Almacenamiento en la nube",
+            "Compartir en familia"
           ]
         },
         {
-          "stage": "Sharing and Education",
+          "stage": "Compartir y Educacion",
           "description": "Share preserved fotos with family members",
-          "actions": ["Family albums", "Digital galleries", "Story telling", "Educational context"]
+          "actions": [
+            "Albumes familiares",
+            "Galerias digitales",
+            "Narracion de historias",
+            "Contexto educativo"
+          ]
         }
       ],
       "photoTypes": [
         {
           "type": "19th Century Fotos",
-          "characteristics": ["Daguerreotypes", "Tintypes", "Early paper prints", "Hand coloring"],
-          "challenges": ["Fragile materials", "Unique processes", "Specialized conservation needs"]
+          "characteristics": [
+            "Daguerrotipos",
+            "Ferrotipos",
+            "Impresiones en papel tempranas",
+            "Coloracion a mano"
+          ],
+          "challenges": [
+            "Materiales fragiles",
+            "Procesos unicos",
+            "Necesidades de conservacion especializadas"
+          ]
         },
         {
-          "type": "Early 20th Century",
-          "characteristics": ["Postcards", "Cabinet cards", "Early snapshots", "Albumen prints"],
-          "challenges": ["Acidic paper", "Fading", "Album damage", "Poor storage"]
+          "type": "Principios del siglo XX",
+          "characteristics": [
+            "Postales",
+            "Tarjetas de gabinete",
+            "Instantaneas tempranas",
+            "Impresiones a la albmina"
+          ],
+          "challenges": [
+            "Papel acido",
+            "Desvanecimiento",
+            "Danos del album",
+            "Almacenamiento deficiente"
+          ]
         },
         {
-          "type": "Mid-20th Century",
-          "characteristics": ["35mm snapshots", "Color fotos", "Instant fotos", "Foto albums"],
-          "challenges": ["Color fading", "Plastic deterioration", "Magnetic album damage"]
+          "type": "Mediados del siglo XX",
+          "characteristics": [
+            "Instantaneas de 35mm",
+            "Color fotos",
+            "Instant fotos",
+            "Foto albums"
+          ],
+          "challenges": [
+            "Desvanecimiento del color",
+            "Deterioro del plastico",
+            "Danos de albumes magneticos"
+          ]
         },
         {
           "type": "Modern Digital Fotos",
-          "characteristics": ["Digital files", "Social media", "Smartphone fotos", "Cloud storage"],
-          "challenges": ["Formato obsolescence", "Data loss", "Metadata preservation"]
+          "characteristics": [
+            "Archivos digitales",
+            "Redes sociales",
+            "Smartphone fotos",
+            "Almacenamiento en la nube"
+          ],
+          "challenges": ["Formato obsolescence", "Perdida de datos", "Preservacion de metadatos"]
         }
       ],
       "organizationMethods": [
         {
-          "method": "Chronological Organization",
+          "method": "Organizacion Cronologica",
           "description": "Organize fotos by date and time period",
-          "benefits": ["Historical context", "Fácil timeline building", "Generation tracking"],
-          "implementation": "Decade-based sorting, major events, family milestones"
+          "benefits": ["Contexto historico", "Fácil timeline building", "Seguimiento generacional"],
+          "implementation": "Clasificacion por decadas, eventos importantes, hitos familiares"
         },
         {
-          "method": "Family Branch Organization",
-          "description": "Organize by family lines and relationships",
-          "benefits": ["Genealogy tracking", "Relationship clarity", "Inheritance patterns"],
+          "method": "Organizacion por Ramas Familiares",
+          "description": "Organizar por lineas familiares y relaciones",
+          "benefits": ["Seguimiento genealogico", "Claridad de relaciones", "Patrones de herencia"],
           "implementation": "Family trees, individual branches, group fotos"
         },
         {
-          "method": "Event-Based Organization",
-          "description": "Organize by specific events and occasions",
-          "benefits": ["Story telling", "Event history", "Celebration tracking"],
-          "implementation": "Weddings, holidays, births, graduations, travels"
+          "method": "Organizacion Basada en Eventos",
+          "description": "Organizar por eventos y ocasiones especificas",
+          "benefits": [
+            "Narracion de historias",
+            "Historia de eventos",
+            "Seguimiento de celebraciones"
+          ],
+          "implementation": "Bodas, holidays, nacimientos, graduaciones, viajes"
         },
         {
-          "method": "Location-Based Organization",
-          "description": "Organize by geographic locations",
-          "benefits": ["Family movements", "Historical geography", "Property history"],
-          "implementation": "Family homes, vacation spots, significant locations"
+          "method": "Organizacion Basada en Ubicacion",
+          "description": "Organizar por ubicaciones geograficas",
+          "benefits": ["Movimientos familiares", "Geografia historica", "Historia de propiedades"],
+          "implementation": "Hogares familiares, lugares de vacaciones, ubicaciones importantes"
         }
       ],
       "documentationEssentials": [
         {
-          "element": "People Identification",
+          "element": "Identificacion de Personas",
           "description": "Identify and document all individuals in fotos",
-          "information": ["Full names", "Relationships", "Approximate ages", "Life dates"]
+          "information": ["Nombres completos", "Relaciones", "Edades aproximadas", "Fechas de vida"]
         },
         {
-          "element": "Dating and Context",
+          "element": "Fechado y Contexto",
           "description": "Determine when and where fotos were taken",
-          "information": ["Date or period", "Location", "Occasion", "Photographer"]
+          "information": ["Fecha o periodo", "Ubicacion", "Ocasion", "Fotografo"]
         },
         {
-          "element": "Stories and Memories",
-          "description": "Record associated stories and family memories",
-          "information": ["Events", "Traditions", "Emotions", "Cultural context"]
+          "element": "Historias y Recuerdos",
+          "description": "Registrar historias asociadas y recuerdos familiares",
+          "information": ["Eventos", "Tradiciones", "Emociones", "Contexto cultural"]
         },
         {
-          "element": "Technical Details",
-          "description": "Document technical and preservation information",
-          "information": ["Foto type", "Condition", "Conservation needs", "Location"]
+          "element": "Detalles Tecnicos",
+          "description": "Documentar informacion tecnica y de preservacion",
+          "information": ["Foto type", "Condicion", "Necesidades de conservacion", "Ubicacion"]
         }
       ]
     }

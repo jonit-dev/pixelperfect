@@ -1102,8 +1102,8 @@
               "description": "ダウンサンプリングと空間階層構築。"
             },
             {
-              "name": "Fully Connected Layers",
-              "description": "Classification and final decision making."
+              "name": "全結合層",
+              "description": "分類と最終意思決定。"
             }
           ]
         },
@@ -1129,19 +1129,19 @@
       "networkArchitectures": [
         {
           "name": "U-Net",
-          "type": "Encoder-Decoder CNN",
-          "use": "Image segmentation, denoising, restoration",
-          "advantages": ["Preserves spatial information", "Efficient training"]
+          "type": "エンコーダ-デコーダ CNN",
+          "use": "画像セグメンテーション、ノイズ除去、修復",
+          "advantages": ["空間情報を保持", "効率的なトレーニング"]
         },
         {
           "name": "ResNet",
-          "type": "Deep CNN with skip connections",
-          "use": "Classification, feature extraction",
+          "type": "スキップ接続付きディープ CNN",
+          "use": "分類、特徴抽出",
           "advantages": ["消失勾配を解決する", "非常に深いネットワーク"]
         },
         {
           "name": "StyleGAN",
-          "type": "Progressive GAN",
+          "type": "プログレッシブ GAN",
           "use": "高品質な画像生成、スタイル転送",
           "advantages": ["例外的な品質", "スタイル制御"]
         },
@@ -1267,38 +1267,38 @@
       "metaDescription": "Complete ガイド to web image optimization. Learn compression, フォーマット selection, lazy loading, and パフォーマンス optimization for faster websites and better SEO.",
       "h1": "Web Image Optimization: Technical ガイド",
       "intro": "Images often account for 50-70% of web page weight. Optimizing them is crucial for パフォーマンス, user experience, and SEO. This comprehensive ガイド covers all aspects of web image optimization.",
-      "primaryKeyword": "web image optimization",
+      "primaryKeyword": "ウェブ画像最適化",
       "secondaryKeywords": [
-        "image seo optimization",
-        "website performance optimization",
-        "lazy loading images"
+        "画像 SEO 最適化",
+        "ウェブサイトパフォーマンス最適化",
+        "画像の遅延読み込み"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
-      "difficulty": "Intermediate",
-      "technicalLevel": "Practical",
+      "difficulty": "中級",
+      "technicalLevel": "実践的",
       "sections": [
         {
-          "title": "Performance Impact",
-          "content": "Understanding how images affect web performance and user experience.",
+          "title": "パフォーマンスへの影響",
+          "content": "画像がウェブパフォーマンスとユーザーエクスペリエンスにどのように影響するかを理解する。",
           "subsections": [
             {
-              "name": "Page Load Speed",
-              "description": "How image size and format impact Core Web Vitals and user experience."
+              "name": "ページ読み込み速度",
+              "description": "画像サイズと形式がコアウェブバイタルとユーザーエクスペリエンスにどのように影響するか。"
             },
             {
-              "name": "Bandwidth Usage",
-              "description": "Data consumption and cost implications for users and hosting."
+              "name": "帯域幅使用量",
+              "description": "ユーザーとホスティングのデータ消費とコストへの影響。"
             },
             {
-              "name": "SEO Impact",
-              "description": "How image optimization affects search engine rankings."
+              "name": "SEO への影響",
+              "description": "画像最適化が検索エンジンランキングにどのように影響するか。"
             }
           ]
         },
         {
-          "title": "Optimization Techniques",
-          "content": "Technical approaches to reducing image file sizes while maintaining quality.",
+          "title": "最適化手法",
+          "content": "品質を維持しながら画像ファイルサイズを削減する技術的アプローチ。",
           "subsections": [
             {
               "name": "圧縮最適化",
@@ -1366,7 +1366,7 @@
           "step": 5,
           "name": "監視",
           "description": "パフォーマンスと最適化の有効性を追跡",
-          "metrics": ["読み込み時間", "ファイルサイズ", "Core Web Vitals"]
+          "metrics": ["読み込み時間", "ファイルサイズ", "コアウェブバイタル"]
         }
       ],
       "responsiveImageTechniques": [
@@ -1397,7 +1397,7 @@
           "benefits": ["シンプルな実装", "ブラウザー最適化"]
         },
         {
-          "strategy": "Intersection Observer",
+          "strategy": "インターセクションオブザーバー",
           "implementation": "ビューポート検出用JavaScript API",
           "browserSupport": "最新ブラウザー",
           "benefits": ["カスタマイズ可能", "より好いコントロール"]
@@ -1667,41 +1667,41 @@
           "selection": "ワークフロー設定、カメラサポート、機能ニーズに基づいています"
         },
         {
-          "category": "Pixel Editing",
+          "category": "ピクセル編集",
           "tools": ["Adobe Photoshop", "Affinity Photo", "Capture One", "ON1"],
-          "selection": "Based on complexity, integration needs, and budget"
+          "selection": "複雑さ、統合ニーズ、予算に基づいて選択"
         },
         {
-          "category": "Specialized",
+          "category": "専門的",
           "tools": ["DxO Nik Collection", "Topaz Labs", "Skylum", "Luminar"],
-          "selection": "Based on specific retouching and enhancement needs"
+          "selection": "特定のレタッチと強化ニーズに基づいて選択"
         }
       ],
       "bestPractices": [
-        "Always work on copies, never original files",
-        "Use color calibrated monitors for accurate color work",
-        "Maintain consistent editing style across image series",
-        "Regular backup of work files and original images",
-        "Develop and document personal editing workflows"
+        "常にコピーで作業し、元のファイルを決して操作しない",
+        "正確な色作業のためにキャリブレーションされたモニターを使用する",
+        "一連の画像で一貫した編集スタイルを維持する",
+        "作業ファイルと元の画像の定期的なバックアップ",
+        "個人の編集ワークフローを開発して文書化する"
       ],
       "commonMistakes": [
-        "Over-editing and creating unnatural results",
-        "Not using non-destructive editing techniques",
-        "Ignoring color management and calibration",
-        "Inconsistent editing across image sets",
-        "Not considering final output requirements"
+        "過度な編集と不自然な結果の作成",
+        "非破壊編集技術を使用しない",
+        "色管理とキャリブレーションを無視する",
+        "画像セット間での編集の一貫性の欠如",
+        "最終出力要件を考慮しない"
       ],
       "faq": [
         {
           "question": "How long should プロフェッショナル editing take per photo?",
-          "answer": "Varies by complexity: 5-15 minutes for basic edits, 30-60 minutes for portrAIt work, 1-2+ hours for high-end retouching."
+          "answer": "複雑さによって異なります：基本編集で 5-15 分、ポートレート作業で 30-60 分、ハイエンドレタッチで 1-2 時間以上。"
         },
         {
           "question": "Do I need to shoot in RAW for プロフェッショナル work?",
           "answer": "While not always required, RAW provides maximum editing flexibility and 品質. Most プロフェッショナルs prefer RAW for client work."
         },
         {
-          "question": "Should I edit in Lightroom or Photoshop?",
+          "question": "Lightroom と Photoshop のどちらで編集すべきですか？",
           "answer": "Use Lightroom for workflow management and global adjustments, Photoshop for complex retouching and composites. Most プロフェッショナルs use both."
         }
       ],
@@ -1713,248 +1713,240 @@
       "title": "Image Scaling Algorithms: Technical ガイド",
       "metaTitle": "Image Scaling Algorithms: Technical ガイド | MyImageUpscaler",
       "metaDescription": "Complete technical ガイド to image scaling algorithms. 比較 bilinear, bicubic, Lanczos, and AI-powered scaling methods for optimal image 品質.",
-      "h1": "Image Scaling Algorithms: Technical Deep Dive",
+      "h1": "画像スケーリングアルゴリズム：技術的ディープダイブ",
       "intro": "Image scaling algorithms determine how pixels are interpolated when resizing images. Understanding these algorithms helps achieve the 最高 品質 for different 使用例 and content types.",
-      "primaryKeyword": "image scaling algorithms",
+      "primaryKeyword": "画像スケーリングアルゴリズム",
       "secondaryKeywords": [
-        "image interpolation methods",
-        "bilinear vs bicubic",
-        "lanczos scaling",
-        "ai image upscaling"
+        "画像補間方法",
+        "バイリニア vs バイキュービック",
+        "ランチョススケーリング",
+        "AI 画像アップスケーリング"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
-      "difficulty": "Advanced",
-      "technicalLevel": "Technical",
+      "difficulty": "上級",
+      "technicalLevel": "技術的",
       "sections": [
         {
-          "title": "Scaling Fundamentals",
-          "content": "Understanding the mathematics and principles behind image scaling.",
+          "title": "スケーリングの基礎",
+          "content": "画像スケーリング背后の数学と原理を理解する。",
           "subsections": [
             {
-              "name": "Interpolation Theory",
-              "description": "Mathematical foundations of pixel value prediction and reconstruction."
+              "name": "補間理論",
+              "description": "ピクセル値予測と再構成の数学的基礎。"
             },
             {
-              "name": "Scaling Direction",
-              "description": "Upscaling vs downscaling and their different challenges."
+              "name": "スケーリング方向",
+              "description": "アップスケーリングとダウンスケーリングとそれらの異なる課題。"
             },
             {
-              "name": "Quality Metrics",
-              "description": "Measuring scaling quality and comparing algorithm performance."
+              "name": "品質メトリクス",
+              "description": "スケーリング品質の測定とアルゴリズムパフォーマンスの比較。"
             }
           ]
         },
         {
-          "title": "Traditional Interpolation Methods",
-          "content": "Classical algorithms used in most image processing software.",
+          "title": "従来の補間方法",
+          "content": "ほとんどの画像処理ソフトウェアで使用される古典的アルゴリズム。",
           "subsections": [
             {
-              "name": "Nearest Neighbor",
-              "description": "Simplest method, fast but produces blocky results."
+              "name": "最近傍補間",
+              "description": "最も単純な方法、高速ですがブロック状の結果を生成します。"
             },
             {
-              "name": "Bilinear Interpolation",
-              "description": "Uses 4 nearest pixels, smooth results but some blurring."
+              "name": "バイリニア補間",
+              "description": "4つの最も近いピクセルを使用し、滑らかな結果ですが多少のぼやけがあります。"
             },
             {
-              "name": "Bicubic Interpolation",
-              "description": "Uses 16 nearest pixels, better sharpness with more artifacts."
+              "name": "バイキュービック補間",
+              "description": "16の最も近いピクセルを使用し、より鮮明ですがより多くのアーティファクトがあります。"
             }
           ]
         },
         {
-          "title": "Advanced Algorithms",
-          "content": "Sophisticated methods for superior scaling quality.",
+          "title": "高度なアルゴリズム",
+          "content": "優れたスケーリング品質のための洗練された方法。",
           "subsections": [
             {
-              "name": "Lanczos Resampling",
-              "description": "Windowed sinc interpolation with excellent quality."
+              "name": "ランチョスリサンプリング",
+              "description": "優れた品質の窓付き sinc 補間。"
             },
             {
-              "name": "Spline Interpolation",
-              "description": "Curve-based interpolation for smooth results."
+              "name": "スプライン補間",
+              "description": "滑らかな結果のための曲線ベースの補間。"
             },
             {
-              "name": "AI-Powered Scaling",
-              "description": "Neural network approaches for intelligent detail generation."
+              "name": "AI駆動スケーリング",
+              "description": "インテリジェントな詳細生成のためのニューラルネットワークアプローチ。"
             }
           ]
         }
       ],
       "algorithmComparison": [
         {
-          "algorithm": "Nearest Neighbor",
-          "complexity": "Very Low",
-          "speed": "Fastest",
-          "quality": "Poor (blocky)",
-          "bestFor": ["Pixel art", "Fast previews", "Real-time applications"],
-          "artifacts": ["Blockiness", "Aliasing"]
+          "algorithm": "最近傍法",
+          "complexity": "非常に低い",
+          "speed": "最速",
+          "quality": "低い（ブロック状）",
+          "bestFor": ["ピクセルアート", "高速プレビュー", "リアルタイムアプリケーション"],
+          "artifacts": ["ブロック感", "エイリアシング"]
         },
         {
-          "algorithm": "Bilinear",
-          "complexity": "Low",
-          "speed": "Fast",
-          "quality": "Fair (smooth but blurry)",
-          "bestFor": ["General use", "Real-time", "Memory-constrained"],
-          "artifacts": ["Blurring", "Loss of detail"]
+          "algorithm": "バイリニア",
+          "complexity": "低い",
+          "speed": "高速",
+          "quality": "普通（滑らかですがぼやけている）",
+          "bestFor": ["一般的な使用", "リアルタイム", "メモリ制限環境"],
+          "artifacts": ["ぼやけ", "詳細の損失"]
         },
         {
-          "algorithm": "Bicubic",
-          "complexity": "Medium",
-          "speed": "Medium",
-          "quality": "Good (sharp with some artifacts)",
-          "bestFor": ["Photographs", "General purpose", "Quality printing"],
-          "artifacts": ["Ringing", "Sharpening halos"]
+          "algorithm": "バイキュービック",
+          "complexity": "中程度",
+          "speed": "中程度",
+          "quality": "良好（鮮明ですが多少のアーティファクト）",
+          "bestFor": ["写真", "汎用", "高品質印刷"],
+          "artifacts": ["リンギング", "シャープニングハロー"]
         },
         {
-          "algorithm": "Lanczos",
-          "complexity": "High",
-          "speed": "Slow",
-          "quality": "Excellent (sharp, minimal artifacts)",
-          "bestFor": ["High-quality printing", "Professional work", "Critical applications"],
-          "artifacts": ["Minor ringing", "Slight overshoot"]
+          "algorithm": "ランチョス",
+          "complexity": "高い",
+          "speed": "低速",
+          "quality": "優秀（鮮明、最小限のアーティファクト）",
+          "bestFor": ["高品質印刷", "プロフェッショナル作業", "重要なアプリケーション"],
+          "artifacts": ["わずかなリンギング", "わずかなオーバーシュート"]
         },
         {
-          "algorithm": "AI/Neural Networks",
-          "complexity": "Very High",
-          "speed": "Very Slow",
-          "quality": "Outstanding (intelligent detail generation)",
-          "bestFor": ["Significant upscaling", "Quality-critical", "Professional enhancement"],
-          "artifacts": ["Potential unrealistic details", "Style-dependent"]
+          "algorithm": "AI/ニューラルネットワーク",
+          "complexity": "非常に高い",
+          "speed": "非常に低速",
+          "quality": "卓越（インテリジェントな詳細生成）",
+          "bestFor": ["大幅なアップスケーリング", "品質重視", "プロフェッショナル強化"],
+          "artifacts": ["潜在的に非現実的な詳細", "スタイル依存"]
         }
       ],
       "mathematicalFoundations": [
         {
-          "concept": "Convolution Theory",
-          "description": "Scaling as convolution with interpolation kernels",
+          "concept": "畳み込み理論",
+          "description": "補間カーネルによる畳み込みとしてのスケーリング",
           "formula": "output(x) = Σ input(i) × kernel(x-i)"
         },
         {
-          "concept": "Sinc Function",
-          "description": "Ideal reconstruction filter for bandlimited signals",
-          "application": "Lanczos and other high-quality algorithms"
+          "concept": "Sinc 関数",
+          "description": "帯域制限信号のための理想的な再構成フィルター",
+          "application": "ランチョスおよびその他の高品質アルゴリズム"
         },
         {
-          "concept": "Splines",
-          "description": "Piecewise polynomial functions for smooth interpolation",
-          "types": ["Linear", "Cubic", "B-spline"]
+          "concept": "スプライン",
+          "description": "滑らかな補間のための区分的多項式関数",
+          "types": ["線形", "3次", "Bスプライン"]
         }
       ],
       "practicalApplications": [
         {
-          "useCase": "Web Image Resizing",
-          "recommended": "Bicubic or Lanczos for downsizing",
-          "reasoning": "Good balance of quality and speed for web use"
+          "useCase": "ウェブ画像サイズ変更",
+          "recommended": "ダウンサイジングにはバイキュービックまたはランチョス",
+          "reasoning": "ウェブ使用のための品質と速度の良いバランス"
         },
         {
-          "useCase": "Print Preparation",
-          "recommended": "Lanczos or specialized print algorithms",
-          "reasoning": "Maximum quality for critical print output"
+          "useCase": "印刷準備",
+          "recommended": "ランチョスまたは専門の印刷アルゴリズム",
+          "reasoning": "重要な印刷出力のための最大品質"
         },
         {
-          "useCase": "Real-time Applications",
-          "recommended": "Bilinear or hardware-accelerated methods",
-          "reasoning": "Speed prioritized over perfect quality"
+          "useCase": "リアルタイムアプリケーション",
+          "recommended": "バイリニアまたはハードウェアアクセラレーション方式",
+          "reasoning": "完璧な品質より速度を優先"
         },
         {
-          "useCase": "Large Upscaling",
-          "recommended": "AI-powered methods for significant enlargement",
-          "reasoning": "Intelligent detail generation for major upscaling"
+          "useCase": "大幅なアップスケーリング",
+          "recommended": "大幅な拡大には AI駆動方式",
+          "reasoning": "主要なアップスケーリングのためのインテリジェントな詳細生成"
         },
         {
-          "useCase": "Pixel Art",
-          "recommended": "Nearest Neighbor or specialized pixel art algorithms",
-          "reasoning": "Preserves intended blocky aesthetic"
+          "useCase": "ピクセルアート",
+          "recommended": "最近傍法または専門のピクセルアートアルゴリズム",
+          "reasoning": "意図されたブロック状の美学を保持"
         }
       ],
       "qualityAssessment": [
         {
-          "metric": "Peak Signal-to-Noise Ratio (PSNR)",
-          "description": "Technical measurement of reconstruction error",
-          "use": "Objective quality comparison",
-          "limitations": "Doesn't always match human perception"
+          "metric": "ピーク信号対雑音比（PSNR）",
+          "description": "再構成エラーの技術的測定",
+          "use": "客観的な品質比較",
+          "limitations": "常に人間の知覚と一致するとは限らない"
         },
         {
-          "metric": "Structural Similarity (SSIM)",
-          "description": "Perceptual similarity measurement",
-          "use": "Better correlation with perceived quality",
-          "limitations": "Complexity in calculation"
+          "metric": "構造類似性（SSIM）",
+          "description": "知覚的類似性測定",
+          "use": "知覚品質とのより良い相関",
+          "limitations": "計算の複雑さ"
         },
         {
           "metric": "LPIPS",
-          "description": "Deep learning-based perceptual metric",
-          "use": "Closest to human perception",
-          "limitations": "Computationally expensive"
+          "description": "ディープラーニングベースの知覚的メトリクス",
+          "use": "人間の知覚に最も近い",
+          "limitations": "計算コストが高い"
         }
       ],
       "implementationConsiderations": [
         {
-          "factor": "Computational Resources",
-          "considerations": [
-            "CPU vs GPU acceleration",
-            "Memory requirements",
-            "Real-time constraints"
-          ]
+          "factor": "計算リソース",
+          "considerations": ["CPU vs GPU アクセラレーション", "メモリ要件", "リアルタイム制約"]
         },
         {
-          "factor": "Content Type",
-          "considerations": [
-            "Photographs vs graphics",
-            "Text vs natural images",
-            "Edge preservation needs"
-          ]
+          "factor": "コンテンツタイプ",
+          "considerations": ["写真 vs グラフィックス", "テキスト vs 自然画像", "エッジ保持ニーズ"]
         },
         {
-          "factor": "Scaling Factor",
+          "factor": "スケーリング係数",
           "considerations": [
-            "Small adjustments vs major changes",
-            "Upscaling vs downscaling",
-            "Integer vs fractional scaling"
+            "小幅な調整 vs 大きな変更",
+            "アップスケーリング vs ダウンスケーリング",
+            "整数 vs 小数スケーリング"
           ]
         }
       ],
       "optimizationTechniques": [
         {
-          "technique": "Separable Filters",
-          "description": "Optimize 2D filters as sequential 1D operations",
-          "benefit": "2x performance improvement"
+          "technique": "分離可能フィルター",
+          "description": "2D フィルターを順次 1D 操作として最適化",
+          "benefit": "2倍のパフォーマンス向上"
         },
         {
-          "technique": "Lookup Tables",
-          "description": "Pre-calculate common kernel values",
-          "benefit": "Faster repeated operations"
+          "technique": "ルックアップテーブル",
+          "description": "一般的なカーネル値を事前計算",
+          "benefit": "より高速な反復操作"
         },
         {
-          "technique": "SIMD Optimization",
-          "description": "Single instruction, multiple data operations",
-          "benefit": "4-8x speedup on modern processors"
+          "technique": "SIMD 最適化",
+          "description": "シングルインストラクション、複数データ操作",
+          "benefit": "最新プロセッサで 4-8 倍の高速化"
         },
         {
-          "technique": "GPU Acceleration",
-          "description": "Parallel processing on graphics hardware",
-          "benefit": "10-100x speedup for large images"
+          "technique": "GPU アクセラレーション",
+          "description": "グラフィックスハードウェア上の並列処理",
+          "benefit": "大きな画像で 10-100 倍の高速化"
         }
       ],
       "bestPractices": [
-        "Choose algorithm based on content type and use case",
-        "Consider computational resources when selecting methods",
-        "Test algorithms with representative image samples",
-        "Use higher-quality algorithms for critical applications",
-        "Understand trade-offs between speed and quality"
+        "コンテンツタイプと使用例に基づいてアルゴリズムを選択",
+        "方法を選択するときに計算リソースを考慮",
+        "代表的な画像サンプルでアルゴリズムをテスト",
+        "重要なアプリケーションにはより高品質なアルゴリズムを使用",
+        "速度と品質のトレードオフを理解"
       ],
       "faq": [
         {
-          "question": "Which algorithm should I use for general photography?",
-          "answer": "Bicubic for most cases, Lanczos for critical applications. Consider AI upscaling for significant enlargement needs."
+          "question": "一般的な写真にはどのアルゴリズムを使用すべきですか？",
+          "answer": "ほとんどの場合はバイキュービック、重要なアプリケーションにはランチョス。大幅な拡大ニーズには AI アップスケーリングを検討。"
         },
         {
-          "question": "Why do different scaling algorithms produce different results?",
-          "answer": "They use different mathematical approaches to predict pixel values. Some prioritize speed, others prioritize accuracy or specific visual characteristics."
+          "question": "なぜ異なるスケーリングアルゴリズムが異なる結果を生成するのですか？",
+          "answer": "ピクセル値を予測するために異なる数学的アプローチを使用します。速度を優先するもの、精度や特定の視覚的特性を優先するものがあります。"
         },
         {
-          "question": "Is AI upscaling always better than traditional methods?",
-          "answer": "AI methods excel at significant upscaling but may be overkill for minor adjustments. They're also slower and more resource-intensive."
+          "question": "AI アップスケーリングは常に従来の方法よりも優れていますか？",
+          "answer": "AI 方式は大幅なアップスケーリングに優れていますが、小幅な調整には過剰な場合があります。また、より低速でリソース集約的でもあります。"
         }
       ],
       "relatedTools": ["ai-image-upscaler", "image-rescaler"],

@@ -1896,87 +1896,87 @@
         "dataClassification": [
           {
             "level": "Public",
-            "description": "Public domain or openly shared content",
-            "processing": "Any suitable service",
-            "examples": "Stock photos, public domain images"
+            "description": "No privacy concerns",
+            "processing": "Any online service acceptable",
+            "examples": "Stock photos, marketing materials"
           },
           {
             "level": "Internal",
             "description": "Internal business Usa only",
-            "processing": "Trusted cloud services or local",
-            "examples": "Internal presentations, draft designs"
+            "processing": "Corporate-approved cloud services",
+            "examples": "Internal documents, business photos"
           },
           {
             "level": "Confidential",
             "description": "Aziendale confidential information",
-            "processing": "Privacy-first cloud or local",
+            "processing": "On-premise or private cloud",
             "examples": "Prodotto designs, financial documents"
           },
           {
             "level": "Restricted",
-            "description": "Legally protected or highly sensitive",
-            "processing": "Local or specialized secure services",
-            "examples": "Medical images, legal evidence, personal data"
+            "description": "Highest sensitivity",
+            "processing": "Local processing only, air-gapped systems",
+            "examples": "Medical records, legal documents, government ID"
           }
         ],
         "securityMeasures": [
           "Usa HTTPS for all transmissions",
-          "Verify service provider certifications",
-          "Implement data retention policies",
+          "Data encryption in transit and at rest",
+          "Access controls and authentication",
           "Usa strong authentication and access controls",
-          "Regular security audits and assessments",
-          "Employee training on privacy and security",
+          "Regular security audits",
+          "Employee training and protocols",
           "Incident response pianoning",
           "Documento all security procedures"
         ],
         "privacyByDesign": [
           "Minimize data collection",
-          "Anonymize where possible",
-          "Automatic deletion after processing",
-          "Clear privacy policies and notices",
-          "User consent management",
-          "Data processing transparency"
+          "Automatic data deletion",
+          "Privacy-focused AI models",
+          "Transparent data handling",
+          "User control and consent",
+          "Regular privacy impact assessments"
         ]
       },
       "implementationGuides": {
         "healthcareCompliance": {
           "steps": [
-            "Conduct HIPAA risk assessment",
+            "Verify HIPAA compliance of service provider",
             "Scegli HIPAA-compliant solution or on-premise",
-            "Implement Business Associate Agreement (BAA)",
-            "Encrypt all PHI in transit and at rest",
-            "Implement access controls and audit logging",
+            "Implement access controls and audit logs",
+            "Enable data encryption at rest and in transit",
+            "Establish business associate agreements",
+            "Conduct regular security assessments",
             "Train staff on HIPAA requirements",
-            "Regular compliance audits",
-            "Document all processes"
+            "Document all data processing activities"
           ],
-          "recommended": "On-premise processing with validated software",
-          "alternatives": "Specialized medical image services"
+          "recommended": "On-premise AI upscalers with HIPAA compliance",
+          "alternatives": "Private cloud deployment with BAA"
         },
         "gdprCompliance": {
           "steps": [
-            "Map all data flows",
-            "Conduct Data Protection Impact Assessment (DPIA)",
+            "Conduct data protection impact assessment",
+            "Implement GDPR-compliant consent mechanisms",
             "Scegli EU-based or GDPR-compliant providers",
-            "Implement consent management",
-            "Set up data deletion procedures",
-            "Prepare breach notification process",
-            "Document compliance measures",
-            "Train privacy teams"
+            "Establish data processing agreements",
+            "Enable data portability features",
+            "Implement data breach notification procedures",
+            "Appoint a Data Protection Officer (DPO)",
+            "Maintain records of processing activities"
           ],
           "dataSubjectRights": [
-            "Access to processed images",
-            "Correction of errors",
-            "Deletion requests ('right to be forgotten')",
-            "Restriction of processing",
-            "Data portability"
+            "Right to access",
+            "Right to rectification",
+            "Right to erasure (right to be forgotten)",
+            "Right to restrict processing",
+            "Right to data portability"
           ]
         }
       },
       "riskMitigationChecklist": {
         "beforeProcessing": [
-          "□ Classify data sensitivity level",
-          "□ Verify service provider compliance",
+          "Classify image data sensitivity level",
+          "Verify service provider security certifications",
           "Verifica le politiche di conservazione dei dati",
           "Rivedi i termini di servizio",
           "Conferma i metodi di crittografia",
@@ -2003,7 +2003,7 @@
       "emergingTechnologies": {
         "privacyEnhancing": [
           {
-            "technology": "Federated Learning",
+            "technology": "Zero-knowledge proofs",
             "description": "Train modellos without sharing raw data",
             "benefit": "Miglioramento del modello senza perdita di privacy",
             "status": "Early adoption in ampliamento services"

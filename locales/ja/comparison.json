@@ -117,10 +117,10 @@
             "より高い最大アップスケール（16倍）"
           ],
           "cons": [
-            "Watermarks on free tier",
-            "Limited free credits (5/month)",
-            "Slower processing",
-            "Text can blur on upscaling"
+            "無料枠で透かしが入る",
+            "無料クレジットが制限されている（月5回）",
+            "処理速度が遅い",
+            "アップスケール時にテキストがぼやけることがある"
           ]
         },
         {
@@ -132,7 +132,7 @@
           "description": "豊富な無料枠を備えた基本的なウェブアップスケーラー。時折の使用に最適で、機能は限定的です。",
           "bestFor": ["時折のユーザー", "クイックアップスケール", "予算意識のあるユーザー"],
           "features": {
-            "maxUpscale": "4x",
+            "maxUpscale": "4倍",
             "batchProcessing": "いいえ",
             "textPreservation": "基本",
             "processingSpeed": "30～60秒",
@@ -157,64 +157,64 @@
               {
                 "product": "Topaz Gigapixel AI",
                 "score": "優秀",
-                "notes": "Best overall quality with multiple AI models"
+                "notes": "複数のAIモデルで最高の全体的な品質"
               },
               {
                 "product": "MyImageUpscaler",
-                "score": "Very Good",
-                "notes": "Excellent for most use cases"
+                "score": "とても良い",
+                "notes": "ほとんどの用途に最適"
               },
               {
                 "product": "Let's Enhance",
-                "score": "Good",
-                "notes": "Strong on product photos"
+                "score": "良い",
+                "notes": "商品写真に強い"
               },
               {
                 "product": "Upscale.media",
-                "score": "Adequate",
-                "notes": "Basic but functional"
+                "score": "普通",
+                "notes": "ベーシックだが機能的"
               }
             ]
           },
           {
-            "name": "Text/Logo Preservation",
-            "description": "Ability to keep text and logos sharp",
+            "name": "テキスト/ロゴの保存",
+            "description": "テキストとロゴを鮮明に保つ能力",
             "rankings": [
               {
                 "product": "MyImageUpscaler",
-                "score": "Very Good",
-                "notes": "Specialized training for text"
+                "score": "とても良い",
+                "notes": "テキスト専門のトレーニング"
               },
               {
                 "product": "Let's Enhance",
-                "score": "Good",
-                "notes": "Decent on product labels"
+                "score": "良い",
+                "notes": "商品ラベルでそこそこ良い"
               },
               {
                 "product": "Topaz Gigapixel AI",
-                "score": "Moderate",
-                "notes": "Not specialized for text"
+                "score": "普通",
+                "notes": "テキストに特化していない"
               },
               {
                 "product": "Upscale.media",
-                "score": "Basic",
-                "notes": "Text can blur"
+                "score": "基本",
+                "notes": "テキストがぼやけることがある"
               }
             ]
           },
           {
-            "name": "Ease of Use",
-            "description": "How simple it is to get good results",
+            "name": "使いやすさ",
+            "description": "良い結果を得るのがどれだけ簡単か",
             "rankings": [
               {
                 "product": "MyImageUpscaler",
-                "score": "Excellent",
-                "notes": "Upload and done"
+                "score": "優秀",
+                "notes": "アップロードして完了"
               },
               {
                 "product": "Upscale.media",
-                "score": "Excellent",
-                "notes": "Very simple"
+                "score": "優秀",
+                "notes": "とてもシンプル"
               },
               {
                 "product": "Let's Enhance",
@@ -239,29 +239,29 @@
               },
               {
                 "product": "MyImageUpscaler",
-                "score": "Very Good",
-                "notes": "Good free tier, reasonable subscription"
+                "score": "とても良い",
+                "notes": "良い無料枠、手頃なサブスクリプション"
               },
               {
                 "product": "Upscale.media",
-                "score": "Good",
-                "notes": "Generous free tier"
+                "score": "良い",
+                "notes": "寛大な無料枠"
               },
               {
                 "product": "Let's Enhance",
-                "score": "Moderate",
-                "notes": "Limited free tier with watermarks"
+                "score": "普通",
+                "notes": "透かし付きの制限された無料枠"
               }
             ]
           },
           {
-            "name": "Speed",
-            "description": "Time to process images",
+            "name": "速度",
+            "description": "画像処理時間",
             "rankings": [
               {
                 "product": "MyImageUpscaler",
-                "score": "Fast",
-                "notes": "Cloud GPU processing"
+                "score": "高速",
+                "notes": "クラウドGPU処理"
               },
               {
                 "product": "Upscale.media",
@@ -286,27 +286,27 @@
         {
           "useCase": "時折の個人使用",
           "recommendation": "MyImageUpscalerまたはUpscale.media",
-          "reason": "Free tiers are sufficient, no commitment needed"
+          "reason": "無料枠で十分、コミットメント不要"
         },
         {
-          "useCase": "Professional photography",
+          "useCase": "プロフェッショナル写真",
           "recommendation": "Topaz Gigapixel AI",
-          "reason": "Best quality, worth the investment if you process many images"
+          "reason": "最高品質、多くの画像を処理するなら投資する価値あり"
         },
         {
-          "useCase": "E-commerce product images",
-          "recommendation": "MyImageUpscaler or Let's Enhance",
-          "reason": "Good text preservation, batch processing available"
+          "useCase": "eコマースの商品画像",
+          "recommendation": "MyImageUpscaler または Let's Enhance",
+          "reason": "良いテキスト保存、バッチ処理利用可能"
         },
         {
-          "useCase": "High volume processing",
+          "useCase": "大量処理",
           "recommendation": "Topaz Gigapixel AI",
-          "reason": "One-time purchase, unlimited local processing"
+          "reason": "一度きりの購入、無制限のローカル処理"
         }
       ],
       "verdict": {
-        "summary": "There's no single 'best' upscaler - it depends on your needs. Topaz offers the highest quality but requires investment and good hardware. MyImageUpscaler is the best balance of quality and convenience for most users. Free options exist for occasional use.",
-        "bottomLine": "For most people, MyImageUpscaler's free tier is enough to start. Heavy users should consider Topaz for unlimited local processing."
+        "summary": "単一の「最高の」アップスケーラーは存在しません - ニーズによります。Topazは最高品質を提供しますが、投資と良いハードウェアが必要です。MyImageUpscalerは、ほとんどのユーザーにとって品質と利便性の最適なバランスです。たまに使う場合の無料オプションもあります。",
+        "bottomLine": "ほとんどの人にとって、MyImageUpscalerの無料枠で開始するのに十分です。ヘビーユーザーは無制限のローカル処理のためにTopazを検討すべきです。"
       },
       "faq": [
         {
@@ -334,40 +334,40 @@
       "secondaryKeywords": ["topaz gigapixel alternative", "web vs desktop upscaler"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "compare",
-      "comparisonType": "versus",
+      "comparisonType": "対比",
       "products": [
         {
           "name": "MyImageUpscaler",
           "type": "ウェブベース",
           "pricing": "無料 (10/月) | $9-$49/月サブスクリプション",
           "features": {
-            "maxUpscale": "8x",
+            "maxUpscale": "8倍",
             "batchProcessing": "最大50",
             "offline": "いいえ",
-            "installation": "None required",
-            "platforms": "Any browser",
-            "hardware": "Cloud-based (no GPU needed)"
+            "installation": "不要",
+            "platforms": "任意のブラウザ",
+            "hardware": "クラウドベース（GPU不要）"
           }
         },
         {
           "name": "Topaz Gigapixel AI",
-          "type": "Desktop software",
-          "pricing": "$99.99 one-time | $199/year for updates",
+          "type": "デスクトップソフトウェア",
+          "pricing": "$99.99 一度きり | $199/年 アップデート向け",
           "features": {
-            "maxUpscale": "6x",
-            "batchProcessing": "Unlimited",
-            "offline": "Yes",
-            "installation": "Required",
+            "maxUpscale": "6倍",
+            "batchProcessing": "無制限",
+            "offline": "はい",
+            "installation": "必要",
             "platforms": "Windows/Mac",
-            "hardware": "GPU recommended (NVIDIA preferred)"
+            "hardware": "GPU推奨（NVIDIA優先）"
           }
         }
       ],
       "comparisonPoints": [
         {
-          "category": "Image Quality",
-          "myimageupscaler": "Very good for most uses. Excellent text preservation.",
-          "topaz": "Slightly better overall, especially for complex textures and fine detail.",
+          "category": "画像品質",
+          "myimageupscaler": "ほとんどの用途にとても良い。優秀なテキスト保存。",
+          "topaz": "全体的にやや良い、特に複雑なテクスチャと細かいディテール。",
           "winner": "Topaz (わずかな差)",
           "note": "ほとんどの画像ではわずかな違いです。非常に詳細な写真で目に見える。"
         },
@@ -382,27 +382,27 @@
           "category": "速度",
           "myimageupscaler": "30～60秒が一般的 (クラウド処理)。",
           "topaz": "60～180秒 (GPUによって異なります)。",
-          "winner": "MyImageUpscaler (usually)",
-          "note": "Topaz can be faster with high-end GPUs, slower on modest hardware."
+          "winner": "MyImageUpscaler（通常）",
+          "note": "TopazはハイエンドGPUだと faster になる可能性、控えめなハードウェアでは slower。"
         },
         {
-          "category": "Cost for Light Users (<10 images/month)",
-          "myimageupscaler": "Free tier sufficient. $0/month.",
-          "topaz": "$99 upfront for occasional use.",
+          "category": "ライトユーザーのコスト（月10画像未満）",
+          "myimageupscaler": "無料枠で十分。月$0。",
+          "topaz": "たまに使うために前払い$99。",
           "winner": "MyImageUpscaler",
-          "note": "Free tier makes sense for light usage."
+          "note": "ライトユーザーには無料枠が理にかなっている。"
         },
         {
-          "category": "Cost for Heavy Users (50+ images/month)",
-          "myimageupscaler": "$29-49/month = $350-600/year.",
-          "topaz": "$99 one-time, then free forever.",
+          "category": "ヘビーユーザーのコスト（月50+画像）",
+          "myimageupscaler": "月$29-49 = 年$350-600。",
+          "topaz": "$99 一度きり、その後は永続無料。",
           "winner": "Topaz",
-          "note": "One-time purchase saves money long-term for heavy users."
+          "note": "一度きりの購入は長期的にヘビーユーザーのコストを節約。"
         },
         {
-          "category": "Text/Logo Preservation",
-          "myimageupscaler": "Specifically trained for text sharpness.",
-          "topaz": "General-purpose - text can soften.",
+          "category": "テキスト/ロゴ保存",
+          "myimageupscaler": "テキストの鮮明さのために特別にトレーニング。",
+          "topaz": "汎用 - テキストが柔らかくなる可能性。",
           "winner": "MyImageUpscaler",
           "note": "テキスト付きの製品画像の場合、MyImageUpscalerの方が優れています。"
         },
@@ -418,16 +418,16 @@
           "myimageupscaler": "インターネット接続が必要です。",
           "topaz": "完全にオフラインで動作します。",
           "winner": "Topaz",
-          "note": "Important if you work in areas with poor internet."
+          "note": "インターネットが不安定な地域で作業する場合に重要。"
         }
       ],
       "recommendations": {
         "chooseMyImageUpscaler": [
           "強力なGPUがない場合",
-          "You need quick results without software installation",
-          "Your images contain text or logos",
-          "You work from multiple devices",
-          "You don't have a powerful GPU"
+          "ソフトウェアをインストールせずに素早い結果が必要",
+          "画像にテキストやロゴが含まれている",
+          "複数のデバイスから作業する",
+          "強力なGPUを持っていない"
         ],
         "chooseTopaz": [
           "頻繁にアップスケールする専門家フォトグラファーである",

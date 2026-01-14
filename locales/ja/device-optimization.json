@@ -1,5 +1,5 @@
 {
-  "category": "device-optimization",
+  "category": "デバイス最適化",
   "pages": [
     {
       "slug": "mobile-device-image-optimization",
@@ -11,7 +11,7 @@
       "primaryKeyword": "モバイル画像最適化",
       "secondaryKeywords": ["iOS画像最適化", "Android画像最適化", "モバイルアプリパフォーマンス"],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "device-optimization",
+      "category": "デバイス最適化",
       "platform": "モバイル",
       "challenges": [
         {
@@ -175,7 +175,7 @@
       "primaryKeyword": "デスクトップ画像最適化",
       "secondaryKeywords": ["windows画像最適化", "mac画像パフォーマンス", "linux画像処理"],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "device-optimization",
+      "category": "デバイス最適化",
       "platform": "デスクトップ",
       "platforms": ["Windows", "macOS", "Linux"],
       "advantages": [
@@ -270,7 +270,7 @@
             },
             {
               "technique": "OpenCV統合",
-              "description": "Computer vision library for advanced processing",
+              "description": "高度な処理向けのコンピュータビジョンライブラリ",
               "implementation": "OpenCV Python/Cpp bindings"
             }
           ]
@@ -278,22 +278,22 @@
       ],
       "desktopSpecificFeatures": [
         {
-          "feature": "Multi-Monitor Support",
-          "description": "Optimize images for different display configurations",
-          "implementation": "DPI awareness, resolution detection"
+          "feature": "マルチモニターサポート",
+          "description": "異なるディスプレイ設定向けに画像を最適化",
+          "implementation": "DPI対応、解像度検出"
         },
         {
-          "feature": "High-DPI Support",
-          "description": "Support for Retina and 4K+ displays",
-          "implementation": "Vector graphics where possible, high-resolution raster images"
+          "feature": "高DPIサポート",
+          "description": "Retinaおよび4K+ディスプレイのサポート",
+          "implementation": "可能な場合はベクターグラフィックス、高解像度ラスター画像"
         },
         {
-          "feature": "Professional Quality",
-          "description": "Support for 16-bit color and wide gamut",
-          "implementation": "HDR image support, color management"
+          "feature": "プロフェッショナル品質",
+          "description": "16ビットカラーおよびワイドゲモットのサポート",
+          "implementation": "HDR画像サポート、カラーマネジメント"
         },
         {
-          "feature": "Batch Processing",
+          "feature": "バッチ処理",
           "description": "複数の画像の効率的な処理",
           "implementation": "マルチスレッド、バックグラウンド処理"
         }
@@ -408,7 +408,7 @@
       "primaryKeyword": "スマートTV画像最適化",
       "secondaryKeywords": ["4K TV最適化", "HDR画像準備", "スマートTVアプリパフォーマンス"],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "device-optimization",
+      "category": "デバイス最適化",
       "platform": "スマートTV",
       "tvStandards": ["4K UHD", "8K UHD", "HDR10", "Dolby Vision", "HLG"],
       "uniqueChallenges": [
@@ -429,62 +429,62 @@
           "description": "スマートTVはコンピュータやモバイルデバイスよりも処理能力が低い"
         },
         {
-          "challenge": "Remote Control Navigation",
-          "description": "UI must be optimized for navigation with remote controls, not touch or mouse."
+          "challenge": "リモコンナビゲーション",
+          "description": "UIはタッチやマウスではなく、リモコンでのナビゲーションに最適化する必要があります。"
         }
       ],
       "displayOptimization": [
         {
           "resolution": "4K UHD (3840x2160)",
           "requirements": {
-            "imageSize": "Minimum 3840x2160 for full-screen content",
-            "bitDepth": "10-bit for HDR content",
-            "colorSpace": "BT.2020 for wide color gamut",
-            "compression": "High-quality JPEG 90-95% or WebP"
+            "imageSize": "フルスクリーンコンテンツに最小3840x2160",
+            "bitDepth": "HDRコンテンツに10ビット",
+            "colorSpace": "ワイドカラーゲモットにBT.2020",
+            "compression": "高品質JPEG 90-95%またはWebP"
           }
         },
         {
           "resolution": "8K UHD (7680x4320)",
           "requirements": {
-            "imageSize": "Minimum 7680x4320 for native 8K content",
-            "bitDepth": "10-12-bit for premium content",
-            "colorSpace": "BT.2020 or wider",
-            "compression": "Lossless or very high-quality (95-98%)"
+            "imageSize": "ネイティブ8Kコンテンツに最小7680x4320",
+            "bitDepth": "プレミアムコンテンツに10-12ビット",
+            "colorSpace": "BT.2020またはそれ以上",
+            "compression": "可逆圧縮または非常に高品質（95-98%）"
           }
         },
         {
           "resolution": "HD (1920x1080)",
           "requirements": {
-            "imageSize": "1920x1080 for HD content",
-            "bitDepth": "8-bit sufficient",
-            "colorSpace": "sRGB or Rec.709",
+            "imageSize": "HDコンテンツに1920x1080",
+            "bitDepth": "8ビットで十分",
+            "colorSpace": "sRGBまたはRec.709",
             "compression": "JPEG 85-95%"
           }
         }
       ],
       "contentTypes": [
         {
-          "type": "User Interface Elements",
+          "type": "UI要素",
           "optimization": {
-            "resolution": "Design for 10-foot viewing experience",
-            "textSize": "Larger, more readable text",
-            "contrast": "High contrast for readability",
-            "format": "PNG with transparency for UI elements"
+            "resolution": "10フィート視聴体験に向けて設計",
+            "textSize": "より大きく、読みやすいテキスト",
+            "contrast": "可読性のための高コントラスト",
+            "format": "UI要素に透明度付きPNG"
           }
         },
         {
-          "type": "Content Thumbnails",
+          "type": "コンテンツサムネイル",
           "optimization": {
-            "resolution": "High-quality thumbnails for preview",
-            "compression": "Balance quality and load speed",
-            "aspectRatio": "Maintain proper aspect ratios",
-            "format": "WebP or JPEG with optimization"
+            "resolution": "プレビュー用の高品質サムネイル",
+            "compression": "品質と読み込み速度のバランス",
+            "aspectRatio": "適切なアスペクト比の維持",
+            "format": "最適化付きWebPまたはJPEG"
           }
         },
         {
-          "type": "Full-Screen Content",
+          "type": "フルスクリーンコンテンツ",
           "optimization": {
-            "resolution": "Native resolution for best quality",
+            "resolution": "最高品質のネイティブ解像度",
             "colorManagement": "適切なHDR/SDR処理",
             "compression": "プレゼンテーション用高品質",
             "format": "写真用JPEG、グラフィック用PNG"
@@ -656,7 +656,7 @@
         "タブレットアプリ開発"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "device-optimization",
+      "category": "デバイス最適化",
       "platform": "タブレット",
       "tabletTypes": ["iPad", "iPad Pro", "Androidタブレット", "Windowsタブレット"],
       "tabletCharacteristics": [
@@ -669,16 +669,16 @@
           "description": "コンテンツは縦向きと横向きの両方で動作する必要があります。"
         },
         {
-          "characteristic": "Touch Interface",
-          "description": "Tablets use touch input requiring appropriate touch targets and interactions."
+          "characteristic": "タッチインターフェース",
+          "description": "タブレットは適切なタッチターゲットとインタラクションを必要とするタッチ入力を使用します。"
         },
         {
-          "characteristic": "More Processing Power",
-          "description": "Tablets typically have better processors than phones but less than desktops."
+          "characteristic": "より高い処理能力",
+          "description": "タブレットは通常、電話よりも良いプロセッサを持っていますが、デスクトップよりも劣ります。"
         },
         {
-          "characteristic": "Wi-Fi Primary",
-          "description": "Most tablets use Wi-Fi rather than cellular networks, affecting optimization priorities."
+          "characteristic": "Wi-Fiメイン",
+          "description": "ほとんどのタブレットはセルラーネットワークではなくWi-Fiを使用しており、最適化の優先順位に影響します。"
         }
       ],
       "platformSpecific": [
@@ -686,39 +686,39 @@
           "platform": "iPad",
           "optimizations": [
             {
-              "technique": "Asset Catalogs",
-              "description": "Use iOS asset catalogs for multiple resolutions",
-              "implementation": "@1x, @2x, @3x variants with automatic selection"
+              "technique": "アセットカタログ",
+              "description": "複数の解像度にiOSアセットカタログを使用",
+              "implementation": "自動選択付き@1x, @2x, @3xバリアント"
             },
             {
-              "technique": "iPad Layouts",
-              "description": "Design specifically for iPad screen sizes",
-              "implementation": "Split-view support, adaptive layouts"
+              "technique": "iPadレイアウト",
+              "description": "iPadスクリーンサイズに特化して設計",
+              "implementation": "分割ビューサポート、適応レイアウト"
             },
             {
-              "technique": "Pencil Support",
-              "description": "Optimize for Apple Pencil interactions",
-              "implementation": "High-precision image editing, drawing support"
+              "technique": "ペンシルサポート",
+              "description": "Apple Pencilインタラクションに最適化",
+              "implementation": "高精度画像編集、描画サポート"
             },
             {
-              "technique": "Pro Display Optimization",
-              "description": "Support for ProMotion and high refresh rates",
-              "implementation": "120Hz content optimization, smooth animations"
+              "technique": "プロディスプレイ最適化",
+              "description": "ProMotionと高リフレッシュレートのサポート",
+              "implementation": "120Hzコンテンツ最適化、滑らかなアニメーション"
             }
           ]
         },
         {
-          "platform": "Android Tablets",
+          "platform": "Androidタブレット",
           "optimizations": [
             {
-              "technique": "Density Buckets",
-              "description": "Provide multiple density variants",
-              "implementation": "ldpi, mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi resources"
+              "technique": "密度バケット",
+              "description": "複数の密度バリアントを提供",
+              "implementation": "ldpi, mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi リソース"
             },
             {
-              "technique": "Multi-Window Support",
-              "description": "Optimize for split-screen and multi-window modes",
-              "implementation": "Responsive layouts, adaptable content"
+              "technique": "マルチウィンドウサポート",
+              "description": "分割画面とマルチウィンドウモードに最適化",
+              "implementation": "レスポンシブレイアウト、適応可能なコンテンツ"
             },
             {
               "technique": "Material Design",
@@ -797,25 +797,21 @@
       "tabletUseCases": [
         {
           "useCase": "生産性アプリ",
-          "optimizationNeeds": ["ドキュメント画像", "チャートとグラフ", "アイコン", "UI elements"],
+          "optimizationNeeds": ["ドキュメント画像", "チャートとグラフ", "アイコン", "UI要素"],
           "specificRequirements": [
-            "Clear text at any zoom",
-            "Professional appearance",
-            "Fast loading"
+            "任意のズームで鮮明なテキスト",
+            "プロフェッショナルな外観",
+            "高速読み込み"
           ]
         },
         {
-          "useCase": "Creative Applications",
-          "optimizationNeeds": ["High-resolution images", "Layer support", "Editing capabilities"],
-          "specificRequirements": ["Precision handling", "Large file support", "Color accuracy"]
+          "useCase": "クリエイティブアプリケーション",
+          "optimizationNeeds": ["高解像度画像", "レイヤーサポート", "編集機能"],
+          "specificRequirements": ["精度処理", "大きなファイルサポート", "色精度"]
         },
         {
-          "useCase": "Educational Content",
-          "optimizationNeeds": [
-            "Diagrams and illustrations",
-            "教科書のページ",
-            "インタラクティブ要素"
-          ],
+          "useCase": "教育コンテンツ",
+          "optimizationNeeds": ["図解とイラスト", "教科書のページ", "インタラクティブ要素"],
           "specificRequirements": ["可読性", "ズームサポート", "注釈機能"]
         },
         {
@@ -886,7 +882,7 @@
         "ウェアラブルアプリパフォーマンス"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "category": "device-optimization",
+      "category": "デバイス最適化",
       "platform": "ウェアラブル",
       "deviceTypes": ["スマートウォッチ", "フィットネストラッカー", "スマートリング", "ARグラス"],
       "extremeConstraints": [
@@ -1076,38 +1072,38 @@
       "specializedUseCases": [
         {
           "useCase": "フィットネストラッキング",
-          "optimizationNeeds": ["アクティビティアイコン", "実績バッジ", "Progress images"],
-          "specificRequirements": ["Low battery impact", "Quick loading", "Motivational quality"]
+          "optimizationNeeds": ["アクティビティアイコン", "実績バッジ", "進捗画像"],
+          "specificRequirements": ["低バッテリー影響", "高速読み込み", "モチベーショナル品質"]
         },
         {
-          "useCase": "Health Monitoring",
-          "optimizationNeeds": ["Medical icons", "Chart graphics", "Alert indicators"],
-          "specificRequirements": ["Clear at small sizes", "High contrast", "Reliability"]
+          "useCase": "ヘルスモニタリング",
+          "optimizationNeeds": ["医療アイコン", "チャートグラフィック", "アラートインジケーター"],
+          "specificRequirements": ["小さなサイズで鮮明", "高コントラスト", "信頼性"]
         },
         {
-          "useCase": "Navigation",
-          "optimizationNeeds": ["Map icons", "Direction arrows", "Landmark images"],
-          "specificRequirements": ["Quick recognition", "Clear meaning", "Low bandwidth"]
+          "useCase": "ナビゲーション",
+          "optimizationNeeds": ["地図アイコン", "方向矢印", "ランドマーク画像"],
+          "specificRequirements": ["高速認識", "明確な意味", "低帯域幅"]
         },
         {
-          "useCase": "Communication",
-          "optimizationNeeds": ["Contact photos", "Emoji", "Message attachments"],
-          "specificRequirements": ["Fast loading", "Privacy", "Quick glance reading"]
+          "useCase": "コミュニケーション",
+          "optimizationNeeds": ["連絡先写真", "絵文字", "メッセージ添付ファイル"],
+          "specificRequirements": ["高速読み込み", "プライバシー", "素早い視認読み取り"]
         }
       ],
       "bestPractices": [
-        "Use vector graphics and symbol systems whenever possible",
-        "Design for extremely small displays and quick glances",
-        "Optimize for battery life above all other considerations",
-        "Implement aggressive caching and offline-first strategies",
-        "Follow platform-specific design guidelines strictly"
+        "可能な限りベクターグラフィックとシンボルシステムを使用する",
+        "極端に小さなディスプレイと素早い視認のために設計する",
+        "他のすべての考慮事項よりもバッテリー寿命を最適化する",
+        "積極的なキャッシングとオフラインファースト戦略を実装する",
+        "プラットフォーム固有のデザインガイドラインを厳密に遵守する"
       ],
       "commonMistakes": [
-        "Using full-size mobile images that take too long to load",
-        "Not considering always-on display modes and burn-in protection",
-        "Implementing complex image processing that drains battery quickly",
-        "Using too many colors when indexed color would be sufficient",
-        "Not optimizing for Bluetooth LE bandwidth limitations"
+        "読み込みに時間がかかりすぎるフルサイズモバイル画像を使用する",
+        "常時オンディスプレイモードと焼き付き保護を考慮していない",
+        "バッテリーを急速に消耗する複雑な画像処理を実装する",
+        "インデックスカラーで十分な場合に色を使いすぎる",
+        "Bluetooth LEの帯域幅制限を最適化していない"
       ],
       "faq": [
         {
@@ -1115,12 +1111,12 @@
           "answer": "For smartwatches, keep images under 200px width. For icons, use 40-60px. Always consider the specific device's display constrAInts."
         },
         {
-          "question": "Should I use JPEG or PNG for wearable images?",
-          "answer": "Use PNG for icons and graphics with transparency. Use heavily compressed JPEG for photos. Consider indexed PNG or even monochrome for maximum efficiency."
+          "question": "ウェアラブル画像にJPEGとPNGのどちらを使用すべきですか？",
+          "answer": "透明度のあるアイコンやグラフィックにはPNGを使用。写真には強く圧縮されたJPEGを使用。最大効率のためにはインデックスPNG、さらにはモノクロも検討。"
         },
         {
-          "question": "How do I handle image loading on slow Bluetooth connections?",
-          "answer": "Implement companion app caching, load text-only versions first, and use aggressive compression. Pre-load content during phone charging when possible."
+          "question": "遅いBluetooth接続で画像の読み込みをどのように処理しますか？",
+          "answer": "コンパニオンアプリキャッシングを実装し、最初はテキストのみのバージョンを読み込み、積極的な圧縮を使用。可能な場合は電話充電中にコンテンツをプリロード。"
         }
       ],
       "relatedTools": ["wearable-image-optimizer", "icon-compressor"],

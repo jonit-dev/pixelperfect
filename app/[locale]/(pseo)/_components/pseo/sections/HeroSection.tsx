@@ -86,7 +86,7 @@ export function HeroSection({
             <Link
               href={ctaUrl}
               onClick={handleCTAClick}
-              className="group relative inline-flex items-center gap-3 px-10 py-5 text-white rounded-xl font-semibold text-xl transition-all duration-300 cta-gradient-cyan hover:-translate-y-1"
+              className="group relative inline-flex items-center gap-3 px-10 py-5 text-white rounded-xl font-semibold text-xl transition-all duration-300 gradient-cta shine-effect hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-accent/20"
             >
               {ctaText}
               <svg

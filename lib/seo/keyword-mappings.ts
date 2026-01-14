@@ -449,6 +449,33 @@ export const keywordPageMappings: IKeywordPageMapping[] = [
       internalLinks: 5,
     },
   },
+  {
+    primaryKeyword: 'midjourney vs stable diffusion upscaler',
+    secondaryKeywords: [
+      'midjourney upscaler',
+      'stable diffusion upscaler',
+      'midjourney image upscaler',
+      'stable diffusion image upscaler',
+      'midjourney vs stable diffusion',
+    ],
+    canonicalUrl: '/compare/midjourney-vs-stable-diffusion-upscaler',
+    intent: 'Comparison',
+    tier: 3,
+    priority: 'P1',
+    contentRequirements: {
+      minWords: 1400,
+      sections: [
+        'Introduction',
+        'Feature Comparison',
+        'Pricing Comparison',
+        'Performance Comparison',
+        'Use Case Recommendations',
+        'FAQ',
+      ],
+      faqCount: 6,
+      internalLinks: 5,
+    },
+  },
 
   // Guide Pages (Tier 1-3)
   {
