@@ -9,6 +9,18 @@ import { clientEnv } from '@shared/config/env';
 
 const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
+/**
+ * Escape special XML characters
+ */
+function escapeXml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 export async function GET() {
   const posts = getAllPosts();
 
@@ -32,7 +44,7 @@ ${posts
         ? `
     <image:image>
       <image:loc>${post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`}</image:loc>
-      <image:title>${post.title}</image:title>
+      <image:title>${escapeXml(post.title)}</image:title>
     </image:image>`
         : ''
     }
