@@ -5,13 +5,11 @@ import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { isDevelopment } from '@shared/config/env';
 
 /**
- * Route-level error boundary
- * Catches errors in route segments and displays a user-friendly error page
- * This renders INSIDE the layout (no html/body tags)
- *
- * For root-level errors that replace the entire app, see global-error.tsx
+ * Locale-specific error boundary
+ * Catches errors in locale route segments and displays a user-friendly error page
+ * This renders INSIDE the [locale]/layout.tsx (no html/body tags)
  */
-export default function Error({
+export default function LocaleError({
   error,
   reset,
 }: {
@@ -20,7 +18,7 @@ export default function Error({
 }) {
   useEffect(() => {
     // Log error to monitoring service
-    console.error('Route error caught:', error);
+    console.error('Locale route error caught:', error);
 
     if (typeof window !== 'undefined') {
       const baselime = (
@@ -29,7 +27,7 @@ export default function Error({
       if (baselime) {
         baselime.logError(error, {
           digest: error.digest,
-          boundary: 'route-error',
+          boundary: 'locale-error',
         });
       }
     }

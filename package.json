@@ -48,7 +48,10 @@
     "i18n:helper": "tsx scripts/translation-helper.ts",
     "i18n:stats": "tsx scripts/translation-helper.ts stats",
     "i18n:diff": "tsx scripts/translation-helper.ts diff",
-    "i18n:batch": "tsx scripts/translation-helper.ts get-batch"
+    "i18n:batch": "tsx scripts/translation-helper.ts get-batch",
+    "validate:sitemap": "tsx scripts/validate-sitemap-urls.ts",
+    "validate:sitemap:full": "tsx scripts/validate-sitemap-urls.ts --full",
+    "validate:sitemap:patterns": "tsx scripts/validate-sitemap-urls.ts --patterns-only"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^2.31.3",
@@ -102,6 +105,7 @@
     "@types/mdx": "^2.0.13",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.0",
+    "@types/xml2js": "^0.4.14",
     "@vitejs/plugin-react": "^5.1.1",
     "@vitest/ui": "^4.0.13",
     "autoprefixer": "^10.4.18",
@@ -124,7 +128,8 @@
     "typescript-eslint": "^8.3.0",
     "vercel": "^50.1.0",
     "vitest": "^4.0.13",
-    "wrangler": "^4.50.0"
+    "wrangler": "^4.50.0",
+    "xml2js": "^0.6.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "lint-staged": {
