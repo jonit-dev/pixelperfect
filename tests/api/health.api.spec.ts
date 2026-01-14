@@ -1,16 +1,32 @@
 import { test, expect } from '@playwright/test';
 
+interface IHealthCheckResponse {
+  status: 'healthy' | 'degraded' | 'unhealthy';
+  timestamp: string;
+  region: string;
+  checks: {
+    database: {
+      status: 'pass' | 'fail';
+      message: string;
+      duration?: number;
+    };
+  };
+}
+
 test.describe('API: Health Check', () => {
-  test('should return 200 OK with status', async ({ request }) => {
+  test('should return valid health status response', async ({ request }) => {
     const response = await request.get('/api/health');
 
-    expect(response.status()).toBe(200);
-    expect(response.ok()).toBeTruthy();
+    // Accept both 200 (healthy/degraded) and 503 (unhealthy)
+    expect([200, 503]).toContain(response.status());
 
-    const data = await response.json();
-    expect(data).toHaveProperty('status', 'ok');
+    const data: IHealthCheckResponse = await response.json();
+    expect(data).toHaveProperty('status');
+    expect(['healthy', 'degraded', 'unhealthy']).toContain(data.status);
     expect(data).toHaveProperty('timestamp');
     expect(data).toHaveProperty('region');
+    expect(data).toHaveProperty('checks');
+    expect(data.checks).toHaveProperty('database');
 
     // Validate ISO 8601 timestamp
     expect(new Date(data.timestamp).toISOString()).toBe(data.timestamp);
@@ -18,10 +34,22 @@ test.describe('API: Health Check', () => {
 
   test('should return correct region header', async ({ request }) => {
     const response = await request.get('/api/health');
-    const data = await response.json();
+    const data: IHealthCheckResponse = await response.json();
 
     // Local dev should return 'Local'
     expect(data.region).toBe('Local');
+  });
+
+  test('should have database check results', async ({ request }) => {
+    const response = await request.get('/api/health');
+    const data: IHealthCheckResponse = await response.json();
+
+    expect(data.checks.database).toHaveProperty('status');
+    expect(['pass', 'fail']).toContain(data.checks.database.status);
+    expect(data.checks.database).toHaveProperty('message');
+    expect(typeof data.checks.database.message).toBe('string');
+    expect(data.checks.database).toHaveProperty('duration');
+    expect(typeof data.checks.database.duration).toBe('number');
   });
 
   test('should have correct content-type header', async ({ request }) => {
@@ -38,5 +66,17 @@ test.describe('API: Health Check', () => {
 
     // Health check should respond in less than 3 seconds (allows for cold starts in dev)
     expect(duration).toBeLessThan(3000);
+  });
+
+  test('should return correct status code based on health', async ({ request }) => {
+    const response = await request.get('/api/health');
+    const data: IHealthCheckResponse = await response.json();
+
+    // Healthy or degraded should return 200, unhealthy should return 503
+    if (data.status === 'unhealthy') {
+      expect(response.status()).toBe(503);
+    } else {
+      expect(response.status()).toBe(200);
+    }
   });
 });
