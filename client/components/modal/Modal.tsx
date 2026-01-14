@@ -14,6 +14,9 @@ interface IModalProps {
   modalId?: string;
 }
 
+// Store scroll position when modal opens
+let scrollPosition = 0;
+
 export const Modal = forwardRef<HTMLDivElement, IModalProps>(
   (
     {
@@ -34,11 +37,20 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
 
     useEffect(() => {
       if (isOpen) {
+        // Save current scroll position
+        scrollPosition = window.scrollY;
+
         setShouldRender(true);
         // Small delay to ensure DOM is ready before animation
         requestAnimationFrame(() => {
           setIsAnimating(true);
         });
+
+        // Lock body scroll
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
 
         // Add escape key handler
         const handleEscape = (e: KeyboardEvent) => {
@@ -53,6 +65,16 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
         };
       } else {
         setIsAnimating(false);
+
+        // Restore scroll position after modal closes
+        requestAnimationFrame(() => {
+          document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+          window.scrollTo(0, scrollPosition);
+        });
+
         // Wait for animation to complete before removing from DOM
         const timer = setTimeout(() => setShouldRender(false), 200);
         return () => clearTimeout(timer);
@@ -75,6 +97,7 @@ export const Modal = forwardRef<HTMLDivElement, IModalProps>(
         <div
           ref={ref}
           id={modalId}
+          data-testid="modal"
           className={`relative w-11/12 max-w-md bg-card rounded-2xl shadow-2xl z-[101] max-h-[90vh] overflow-hidden border border-border/50 transition-all duration-200 ${
             isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'
           }`}

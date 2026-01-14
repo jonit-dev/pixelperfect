@@ -112,11 +112,13 @@ test.describe('SEO Redirects E2E Tests', () => {
   });
 
   test.describe('Tracking Parameter Cleanup for SEO', () => {
-    test('redirects ?signup=1 to clean URL (301)', async ({ page }) => {
+    test('redirects ?signup=1 to clean URL (301)', async ({ page, baseURL }) => {
       const response = await page.goto('/?signup=1');
 
-      // Should redirect to clean URL
-      expect(page.url()).toBe('http://localhost:3000/');
+      // Should redirect to clean URL (without query params)
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('signup');
 
       // Should be a 301 permanent redirect
       if (response?.request().redirectedFrom()) {
@@ -128,21 +130,25 @@ test.describe('SEO Redirects E2E Tests', () => {
       await expect(page.locator('h1')).toBeVisible();
     });
 
-    test('redirects UTM parameters to clean URL (301)', async ({ page }) => {
+    test('redirects UTM parameters to clean URL (301)', async ({ page, baseURL }) => {
       await page.goto('/?utm_source=google&utm_medium=cpc&utm_campaign=test');
 
-      // Should redirect to clean URL
-      expect(page.url()).toBe('http://localhost:3000/');
+      // Should redirect to clean URL (without query params)
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('utm_source');
+      expect(url).not.toContain('utm_medium');
+      expect(url).not.toContain('utm_campaign');
 
       // Page should load successfully
       await expect(page.locator('h1')).toBeVisible();
     });
 
     test('redirects ?signup=1 on pSEO pages to clean URL', async ({ page }) => {
-      await page.goto('/tools/ai-upscaler?signup=1');
+      await page.goto('/tools/resize/bulk-image-resizer?signup=1');
 
       // Should redirect to clean URL
-      expect(page.url()).toContain('/tools/ai-upscaler/');
+      expect(page.url()).toContain('/tools/resize/bulk-image-resizer');
       expect(page.url()).not.toContain('signup');
 
       // Page should load successfully
@@ -177,59 +183,63 @@ test.describe('SEO Redirects E2E Tests', () => {
       }
     });
 
-    test('handles multiple tracking parameters', async ({ page }) => {
+    test('handles multiple tracking parameters', async ({ page, baseURL }) => {
       await page.goto('/?signup=1&ref=email&utm_source=newsletter&fbclid=test123');
 
       // Should redirect to clean URL (all params are tracking params)
-      expect(page.url()).toBe('http://localhost:3000/');
-      expect(page.url()).not.toContain('signup');
-      expect(page.url()).not.toContain('ref');
-      expect(page.url()).not.toContain('utm_source');
-      expect(page.url()).not.toContain('fbclid');
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('signup');
+      expect(url).not.toContain('ref');
+      expect(url).not.toContain('utm_source');
+      expect(url).not.toContain('fbclid');
 
       // Page should load successfully
       await expect(page.locator('h1')).toBeVisible();
     });
 
-    test('handles Facebook Click ID (fbclid) parameter', async ({ page }) => {
+    test('handles Facebook Click ID (fbclid) parameter', async ({ page, baseURL }) => {
       await page.goto('/?fbclid=abc123xyz789');
 
       // Should redirect to clean URL
-      expect(page.url()).toBe('http://localhost:3000/');
-      expect(page.url()).not.toContain('fbclid');
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('fbclid');
 
       // Page should load successfully
       await expect(page.locator('h1')).toBeVisible();
     });
 
-    test('handles Google Click ID (gclid) parameter', async ({ page }) => {
+    test('handles Google Click ID (gclid) parameter', async ({ page, baseURL }) => {
       await page.goto('/?gclid=123abc789xyz');
 
       // Should redirect to clean URL
-      expect(page.url()).toBe('http://localhost:3000/');
-      expect(page.url()).not.toContain('gclid');
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('gclid');
 
       // Page should load successfully
       await expect(page.locator('h1')).toBeVisible();
     });
 
-    test('handles Microsoft Click ID (msclkid) parameter', async ({ page }) => {
+    test('handles Microsoft Click ID (msclkid) parameter', async ({ page, baseURL }) => {
       await page.goto('/?msclkid=test123');
 
       // Should redirect to clean URL
-      expect(page.url()).toBe('http://localhost:3000/');
-      expect(page.url()).not.toContain('msclkid');
+      const url = page.url();
+      expect(url).toBe(`${baseURL}/`);
+      expect(url).not.toContain('msclkid');
 
       // Page should load successfully
       await expect(page.locator('h1')).toBeVisible();
     });
 
-    test('canonical URL does not include tracking parameters', async ({ page }) => {
+    test('canonical URL does not include tracking parameters', async ({ page, baseURL }) => {
       // Navigate with tracking params
       await page.goto('/?signup=1&utm_source=google');
 
       // Wait for redirect to complete
-      await page.waitForURL('http://localhost:3000/');
+      await page.waitForURL(`${baseURL}/`);
 
       // Check the canonical link element
       const canonicalLink = page.locator('link[rel="canonical"]').first();

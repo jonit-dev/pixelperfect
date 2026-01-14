@@ -172,13 +172,14 @@ test.describe('Geolocation Auto-Redirect', () => {
       // Wait for page load
       await page.waitForLoadState('domcontentloaded');
 
-      // Click language switcher
+      // Click language switcher in footer - use locator with flag icon
       const switcherButton = page
         .locator('footer')
-        .getByRole('button')
+        .locator('button')
         .filter({
-          has: page.locator('svg'),
-        });
+          has: page.locator('svg').nth(0), // First SVG (flag icon)
+        })
+        .first();
 
       await switcherButton.click();
 
@@ -240,18 +241,19 @@ test.describe('Geolocation Auto-Redirect', () => {
       await page.goto('/');
       await page.waitForLoadState('domcontentloaded');
 
-      // Click language switcher
+      // Click language switcher in footer - use locator with flag icon
       const switcherButton = page
         .locator('footer')
-        .getByRole('button')
+        .locator('button')
         .filter({
-          has: page.locator('svg'),
-        });
+          has: page.locator('svg').nth(0), // First SVG (flag icon)
+        })
+        .first();
 
       await switcherButton.click();
 
       // Wait for dropdown
-      const dropdown = page.locator('footer').locator('.glass-dropdown, [role="menu"], .absolute');
+      const dropdown = page.locator('.glass-dropdown');
       await dropdown.waitFor({ state: 'visible', timeout: 5000 });
 
       // Check for all 7 locales
@@ -268,13 +270,14 @@ test.describe('Geolocation Auto-Redirect', () => {
       await page.goto('/');
       await page.waitForLoadState('domcontentloaded');
 
-      // Click language switcher
+      // Click language switcher in footer - use locator with flag icon
       const switcherButton = page
         .locator('footer')
-        .getByRole('button')
+        .locator('button')
         .filter({
-          has: page.locator('svg'),
-        });
+          has: page.locator('svg').nth(0), // First SVG (flag icon)
+        })
+        .first();
 
       await switcherButton.click();
 
@@ -298,13 +301,14 @@ test.describe('Geolocation Auto-Redirect', () => {
       const englishFooter = page.locator('footer').getByText(/product/i);
       await expect(englishFooter.first()).toBeVisible();
 
-      // Switch to Spanish
+      // Switch to Spanish using footer language switcher
       const switcherButton = page
         .locator('footer')
-        .getByRole('button')
+        .locator('button')
         .filter({
-          has: page.locator('svg'),
-        });
+          has: page.locator('svg').nth(0), // First SVG (flag icon)
+        })
+        .first();
 
       await switcherButton.click();
 
@@ -365,11 +369,11 @@ test.describe('Geolocation Auto-Redirect', () => {
       await page.waitForLoadState('domcontentloaded');
 
       // Should show Portuguese content
-      // Check for Portuguese text in the page
-      const portugueseContent = page.locator('body').getByText(/aumentador|ferramenta/i);
+      // Check for Portuguese footer text
+      const portugueseFooter = page.locator('footer').getByText(/produto|suporte|jurídico/i);
 
       // At least some Portuguese content should be visible
-      await expect(portugueseContent.first()).toBeVisible({ timeout: 10000 });
+      await expect(portugueseFooter.first()).toBeVisible({ timeout: 10000 });
     });
   });
 

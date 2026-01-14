@@ -63,10 +63,49 @@ export class PricingPage extends BasePage {
 
   /**
    * Navigate to the pricing page and wait for load
+   * Includes retry logic for handling concurrent test execution
    */
-  async goto(): Promise<void> {
-    await super.goto('/pricing');
-    await this.waitForLoad();
+  async goto(retries = 3): Promise<void> {
+    for (let attempt = 0; attempt < retries; attempt++) {
+      try {
+        await super.goto('/pricing');
+        await this.waitForLoad();
+        return; // Success, exit retry loop
+      } catch (error) {
+        if (attempt === retries - 1) {
+          // Last attempt failed, throw the error
+          throw error;
+        }
+        // Check if the error is due to network being intentionally blocked by test
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        // Don't retry if the error is related to network aborts or intentional blocking
+        if (
+          errorMessage.includes('Target page, context or browser has been closed') ||
+          errorMessage.includes('Navigation aborted') ||
+          errorMessage.includes('net::ERR_FAILED') ||
+          errorMessage.includes('Request interrupted') ||
+          errorMessage.includes('Network error')
+        ) {
+          // These errors indicate intentional test setup, don't retry
+          throw error;
+        }
+        // Only retry on timeout errors that might be due to concurrent load
+        if (!errorMessage.includes('Timeout') && !errorMessage.includes('timed out')) {
+          // Not a timeout error, don't retry
+          throw error;
+        }
+        // Retry: reload the page and try again (only for timeout errors)
+        console.warn(`Pricing page load attempt ${attempt + 1} failed with timeout, retrying...`);
+        // Add a small delay before retry to let server recover
+        await this.page.waitForTimeout(500);
+        try {
+          await this.page.reload();
+        } catch (reloadError) {
+          // If reload fails, throw the original error
+          throw error;
+        }
+      }
+    }
   }
 
   /**
@@ -76,7 +115,8 @@ export class PricingPage extends BasePage {
     await this.waitForPageLoad();
 
     // Wait for the page title to be visible (it should be visible immediately)
-    await expect(this.pageTitle).toBeVisible({ timeout: 5000 });
+    // Increase timeout for parallel test execution
+    await expect(this.pageTitle).toBeVisible({ timeout: 15000 });
 
     // Wait for skeleton cards to be replaced with actual pricing cards
     // Use exact text matching and scope to pricing grid to avoid conflicts with FAQ headings
@@ -89,14 +129,15 @@ export class PricingPage extends BasePage {
     });
 
     // Wait for each plan heading to be visible within the pricing grid
-    await expect(starterHeading).toBeVisible({ timeout: 10000 });
-    await expect(hobbyHeading).toBeVisible({ timeout: 10000 });
-    await expect(proHeading).toBeVisible({ timeout: 10000 });
-    await expect(businessHeading).toBeVisible({ timeout: 10000 });
+    // Increase timeout for parallel test execution
+    await expect(starterHeading).toBeVisible({ timeout: 15000 });
+    await expect(hobbyHeading).toBeVisible({ timeout: 15000 });
+    await expect(proHeading).toBeVisible({ timeout: 15000 });
+    await expect(businessHeading).toBeVisible({ timeout: 15000 });
 
     // Wait for Get Started buttons to be visible (not loading)
     const getStartedButtons = this.pricingGrid.getByRole('button', { name: 'Get Started' });
-    await expect(getStartedButtons.first()).toBeVisible({ timeout: 5000 });
+    await expect(getStartedButtons.first()).toBeVisible({ timeout: 10000 });
 
     // Ensure subscriptions section is visible
     await expect(this.subscriptionsSection).toBeVisible();

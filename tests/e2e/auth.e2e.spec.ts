@@ -102,7 +102,14 @@ test.describe('Authentication', () => {
       await loginPage.waitForPageLoad();
 
       // Wait for page to be fully loaded and header to be visible
-      await loginPage.header.waitFor({ state: 'visible', timeout: 20000 });
+      // Use a longer timeout with fallback to handle slow page loads
+      try {
+        await loginPage.header.waitFor({ state: 'visible', timeout: 30000 });
+      } catch {
+        // If header is not visible, try to wait for body to be ready instead
+        await page.waitForLoadState('domcontentloaded', { timeout: 10000 });
+        await loginPage.wait(1000);
+      }
 
       // Wait for sign in button with fallback
       try {

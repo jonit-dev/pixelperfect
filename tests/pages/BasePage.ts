@@ -117,8 +117,8 @@ export class BasePage {
    * Gets the modal dialog element
    */
   get modal(): Locator {
-    // Try multiple strategies to find the modal
-    return this.page.locator('div[role="dialog"]').first();
+    // Use data-testid for stable selection (matches Modal.tsx)
+    return this.page.locator('[data-testid="modal"]');
   }
 
   /**
@@ -248,18 +248,27 @@ export class BasePage {
     try {
       // Wait for skeleton loaders to disappear (the loading state in NavBar)
       const skeletonLoaders = this.page.locator('.animate-pulse, [data-testid="auth-skeleton"]');
-      const isVisible = await skeletonLoaders.first().isVisible().catch(() => false);
+      const isVisible = await skeletonLoaders
+        .first()
+        .isVisible()
+        .catch(() => false);
 
       if (isVisible) {
         // Wait for skeleton to disappear
-        await skeletonLoaders.first().waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {});
+        await skeletonLoaders
+          .first()
+          .waitFor({ state: 'hidden', timeout: 10000 })
+          .catch(() => {});
       }
 
       // Wait for auth buttons to be visible (sign in or user avatar)
       const authButtons = this.page.locator(
         'button:has-text("Sign In"), [data-testid="user-menu"], [aria-label="User menu"]'
       );
-      await authButtons.first().waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+      await authButtons
+        .first()
+        .waitFor({ state: 'visible', timeout: 5000 })
+        .catch(() => {});
     } catch {
       // If waiting fails, just continue - the auth state might already be settled
     }
