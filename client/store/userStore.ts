@@ -57,7 +57,15 @@ export interface IUserState {
   updatePassword: (newPassword: string) => Promise<void>;
 }
 
-const supabase = createClient();
+// Lazy initialization to avoid creating Supabase client during SSR/SSG
+let supabaseInstance: ReturnType<typeof createClient> | null = null;
+
+function getSupabase() {
+  if (!supabaseInstance) {
+    supabaseInstance = createClient();
+  }
+  return supabaseInstance;
+}
 
 // In-flight request deduplication
 let fetchPromise: Promise<void> | null = null;
@@ -119,7 +127,7 @@ export const useUserStore = create<IUserState>((set, get) => ({
             setTimeout(() => reject(new Error('RPC timeout after 5s')), 5000);
           });
 
-          const rpcPromise = supabase.rpc('get_user_data', {
+          const rpcPromise = getSupabase().rpc('get_user_data', {
             target_user_id: userId,
           });
 
@@ -233,13 +241,13 @@ export const useUserStore = create<IUserState>((set, get) => ({
 
   signInWithEmail: async (email, password) => {
     enablePostAuthRedirect();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await getSupabase().auth.signInWithPassword({ email, password });
     if (error) throw error;
   },
 
   signUpWithEmail: async (email, password) => {
     enablePostAuthRedirect();
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await getSupabase().auth.signUp({
       email,
       password,
       options: { emailRedirectTo: `${window.location.origin}/auth/confirm` },
@@ -249,7 +257,7 @@ export const useUserStore = create<IUserState>((set, get) => ({
   },
 
   signOut: async () => {
-    await supabase.auth.signOut();
+    await getSupabase().auth.signOut();
     // Auth state change listener will call reset()
   },
 
@@ -260,26 +268,26 @@ export const useUserStore = create<IUserState>((set, get) => ({
     }
 
     // Verify current password
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { error: signInError } = await getSupabase().auth.signInWithPassword({
       email: currentUser.email,
       password: currentPassword,
     });
     if (signInError) throw signInError;
 
     // Update to new password
-    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    const { error } = await getSupabase().auth.updateUser({ password: newPassword });
     if (error) throw error;
   },
 
   resetPassword: async email => {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    const { error } = await getSupabase().auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/auth/reset-password`,
     });
     if (error) throw error;
   },
 
   updatePassword: async newPassword => {
-    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    const { error } = await getSupabase().auth.updateUser({ password: newPassword });
     if (error) throw error;
   },
 }));
@@ -321,7 +329,7 @@ function clearUserCache(): void {
 // Only run client-side initialization
 if (typeof window !== 'undefined') {
   // Auth state listener (single source of truth)
-  supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
+  getSupabase().auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
     const store = useUserStore.getState();
 
     if (event === 'SIGNED_OUT' || !session) {

@@ -12,8 +12,15 @@ import {
 } from './authOperations';
 import type { IAuthState } from './types';
 
-// Single browser client instance
-const supabase = createClient();
+// Lazy initialization to avoid creating Supabase client during SSR/SSG
+let supabaseInstance: ReturnType<typeof createClient> | null = null;
+
+function getSupabase() {
+  if (!supabaseInstance) {
+    supabaseInstance = createClient();
+  }
+  return supabaseInstance;
+}
 
 export const useAuthStore = create<IAuthState>((set, get) => {
   // Create operation handlers with access to set/get
@@ -42,15 +49,15 @@ export const useAuthStore = create<IAuthState>((set, get) => {
     logout: () => set({ user: null, isAuthenticated: false }),
 
     // Auth operations
-    signInWithEmail: createSignInWithEmail(supabase, setState),
-    signUpWithEmail: createSignUpWithEmail(supabase),
-    signOut: createSignOut(supabase, setState),
-    initializeAuth: createInitializeAuth(supabase, setState),
+    signInWithEmail: createSignInWithEmail(getSupabase(), setState),
+    signUpWithEmail: createSignUpWithEmail(getSupabase()),
+    signOut: createSignOut(getSupabase(), setState),
+    initializeAuth: createInitializeAuth(getSupabase(), setState),
 
     // Password operations
-    changePassword: createChangePassword(supabase, getState),
-    resetPassword: createResetPassword(supabase),
-    updatePassword: createUpdatePassword(supabase),
+    changePassword: createChangePassword(getSupabase(), getState),
+    resetPassword: createResetPassword(getSupabase()),
+    updatePassword: createUpdatePassword(getSupabase()),
   };
 });
 
@@ -58,11 +65,11 @@ export const useAuthStore = create<IAuthState>((set, get) => {
 // This prevents a race condition where getSession returns a session
 // but onAuthStateChange isn't registered yet to handle it
 const authStateHandler = createAuthStateHandler(
-  supabase,
+  getSupabase(),
   () => useAuthStore.getState(),
   state => useAuthStore.setState(state)
 );
-supabase.auth.onAuthStateChange(authStateHandler);
+getSupabase().auth.onAuthStateChange(authStateHandler);
 
 // Now initialize auth state (getSession will trigger onAuthStateChange)
 useAuthStore.getState().initializeAuth();
