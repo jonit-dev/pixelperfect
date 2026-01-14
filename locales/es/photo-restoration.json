@@ -610,24 +610,24 @@
               "steps": [
                 "Alinea piezas",
                 "Clona áreas coincidentes",
-                "Blend edges",
-                "Rebuild details"
+                "Mezclar bordes",
+                "Reconstruir detalles"
               ]
             },
             {
-              "method": "Content-Aware Fill",
+              "method": "Relleno con reconocimiento de contenido",
               "description": "Uso IA to intelligently fill missing areas",
               "steps": [
-                "Select missing areas",
-                "Adjust fill settings",
-                "Refine results",
-                "Blend naturally"
+                "Seleccionar áreas faltantes",
+                "Ajustar configuraciones de relleno",
+                "Refinar resultados",
+                "Mezclar naturalmente"
               ]
             },
             {
-              "method": "Layered Assembly",
-              "description": "Digitally assemble torn pieces like a puzzle",
-              "steps": ["Separate pieces", "Align edges", "Blend seams", "Smooth transitions"]
+              "method": "Ensamblaje por capas",
+              "description": "Ensamblar digitalmente piezas rotas como un rompecabezas",
+              "steps": ["Separar piezas", "Alinear piezas", "Blend seams", "Smooth transitions"]
             }
           ]
         },

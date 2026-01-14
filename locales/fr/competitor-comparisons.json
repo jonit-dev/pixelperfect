@@ -86,31 +86,31 @@
       "criteria": [
         {
           "name": "Tarification",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Traitement Speed",
-          "key": "speed"
+          "key": "vitesse"
         },
         {
           "name": "Sans Installation",
-          "key": "no_installation"
+          "key": "sans_installation"
         },
         {
           "name": "Support RAW",
-          "key": "raw_support"
+          "key": "support_raw"
         },
         {
           "name": "Lot Traitement",
-          "key": "batch_processing"
+          "key": "traitement_lot"
         },
         {
           "name": "Accès API",
-          "key": "api_access"
+          "key": "acces_api"
         }
       ],
       "verdict": {
@@ -220,7 +220,7 @@
       "criteria": [
         {
           "name": "Tarification",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Specialized Outil",
@@ -228,7 +228,7 @@
         },
         {
           "name": "Traitement Speed",
-          "key": "speed"
+          "key": "vitesse"
         },
         {
           "name": "Courbe d\"Apprentissage",
@@ -236,7 +236,7 @@
         },
         {
           "name": "Lot Traitement",
-          "key": "batch_processing"
+          "key": "traitement_lot"
         },
         {
           "name": "Basé sur le Web",
@@ -244,7 +244,7 @@
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         }
       ],
       "verdict": {
@@ -367,7 +367,7 @@
         },
         {
           "name": "Accès API",
-          "key": "api_access"
+          "key": "acces_api"
         },
         {
           "name": "Pro Fonctionnalités",
@@ -375,7 +375,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         }
       ],
       "verdict": {
@@ -482,7 +482,7 @@
       "criteria": [
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Modern IA",
@@ -506,7 +506,7 @@
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         }
       ],
       "verdict": {
@@ -613,11 +613,11 @@
       "criteria": [
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Professionnel Qualité",
@@ -629,7 +629,7 @@
         },
         {
           "name": "Accès API",
-          "key": "api_access"
+          "key": "acces_api"
         },
         {
           "name": "Unlimited Traitement",
@@ -637,7 +637,7 @@
         },
         {
           "name": "Lot Traitement",
-          "key": "batch_processing"
+          "key": "traitement_lot"
         }
       ],
       "verdict": {
@@ -761,7 +761,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Professionnel Use",
@@ -869,7 +869,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Upscaling Qualité",
@@ -889,7 +889,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Rapport qualité-prix",
@@ -1021,7 +1021,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Professionnel Use",
@@ -1176,7 +1176,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Polyvalence",
@@ -1283,7 +1283,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "IA Qualité",
@@ -1303,7 +1303,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Proposition de valeur",
@@ -1435,7 +1435,7 @@
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Accessibility",
@@ -1551,7 +1551,7 @@
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Qualité",
@@ -1559,7 +1559,7 @@
         },
         {
           "name": "Lot Traitement",
-          "key": "batch_processing"
+          "key": "traitement_lot"
         },
         {
           "name": "Pas de filigranes",
@@ -1567,7 +1567,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Professionnel Use",
@@ -1680,7 +1680,7 @@
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Traitement Qualité",
@@ -1688,7 +1688,7 @@
         },
         {
           "name": "Vitesse",
-          "key": "speed"
+          "key": "vitesse"
         },
         {
           "name": "Support client",
@@ -1696,7 +1696,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Valeur pour l'augmentation de résolution",
@@ -1805,7 +1805,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Qualité",
@@ -1821,7 +1821,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Confiance marque",
@@ -1954,7 +1954,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Professionnel Qualité",
@@ -2063,7 +2063,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "IA Qualité",
@@ -2079,11 +2079,11 @@
         },
         {
           "name": "Lot Traitement",
-          "key": "batch_processing"
+          "key": "traitement_lot"
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Rapport qualité-prix",
@@ -2167,7 +2167,7 @@
             "price": "$99.99",
             "free_tier": "No",
             "quality": "Excellent",
-            "speed": "Slow",
+            "speed": "Lent",
             "customer_support": "Email",
             "ease_of_use": "Complex"
           },
@@ -2196,7 +2196,7 @@
             "price": "$22.99/month",
             "free_tier": "7-day trial",
             "quality": "Good",
-            "speed": "Slow",
+            "speed": "Lent",
             "customer_support": "Professionnel",
             "ease_of_use": "Complex"
           },
@@ -2216,20 +2216,20 @@
       ],
       "criteria": [
         {
-          "name": "Price",
-          "key": "price"
+          "name": "prix",
+          "key": "prix"
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Qualité",
           "key": "Qualité"
         },
         {
-          "name": "Speed",
-          "key": "speed"
+          "name": "vitesse",
+          "key": "vitesse"
         },
         {
           "name": "Customer Support",
@@ -2365,7 +2365,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Professionnel Use",
@@ -2499,11 +2499,11 @@
       "criteria": [
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Qualité",
@@ -2511,7 +2511,7 @@
         },
         {
           "name": "Vitesse",
-          "key": "speed"
+          "key": "vitesse"
         },
         {
           "name": "Support client",
@@ -2674,7 +2674,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Polyvalence",
@@ -2780,7 +2780,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Taille max fichier",
@@ -2800,7 +2800,7 @@
         },
         {
           "name": "Prix",
-          "key": "price"
+          "key": "prix"
         },
         {
           "name": "Specialized Fonctionnalités",
@@ -2907,7 +2907,7 @@
       "criteria": [
         {
           "name": "Gratuit Tier",
-          "key": "free_tier"
+          "key": "version_gratuite"
         },
         {
           "name": "Max Filesize",
@@ -2926,8 +2926,8 @@
           "key": "specialization"
         },
         {
-          "name": "Price",
-          "key": "price"
+          "name": "prix",
+          "key": "prix"
         },
         {
           "name": "Feature Focus",

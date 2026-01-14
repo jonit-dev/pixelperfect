@@ -1305,8 +1305,8 @@
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
-      "difficulty": "Intermediate",
-      "technicalLevel": "Practical",
+      "difficulty": "Intermédiaire",
+      "technicalLevel": "Pratique",
       "sections": [
         {
           "title": "Performance Impact",
@@ -1523,7 +1523,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
       "difficulty": "Intermédiaire",
-      "technicalLevel": "Professional",
+      "technicalLevel": "Professionnel",
       "sections": [
         {
           "title": "Workflow Fundamentals",
@@ -1681,13 +1681,13 @@
           "format": "Impression Images",
           "resolution": "300 DPI",
           "colorSpace": "Adobe RGB or ProPhoto RGB",
-          "compression": "Lossless or high-quality JPEG"
+          "compression": "Sans perte ou JPEG haute qualité"
         },
         {
           "format": "Archival Files",
           "resolution": "Native capture Résolution",
           "colorSpace": "ProPhoto RGB or Adobe RGB",
-          "compression": "Lossless (TIFF, PSD)"
+          "compression": "Sans perte (TIFF, PSD)"
         }
       ],
       "professionalTools": [
@@ -1754,8 +1754,8 @@
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
-      "difficulty": "Advanced",
-      "technicalLevel": "Technical",
+      "difficulty": "Avancé",
+      "technicalLevel": "Technique",
       "sections": [
         {
           "title": "Scaling Fundamentals",
@@ -1815,41 +1815,41 @@
       "algorithmComparison": [
         {
           "algorithm": "Nearest Neighbor",
-          "complexity": "Very Low",
-          "speed": "Fastest",
-          "quality": "Poor (blocky)",
+          "complexity": "Très faible",
+          "speed": "Le plus rapide",
+          "quality": "Médiocre (bloc)",
           "bestFor": ["Pixel art", "Fast previews", "Real-time applications"],
           "artifacts": ["Blockiness", "Aliasing"]
         },
         {
           "algorithm": "Bilinear",
-          "complexity": "Low",
+          "complexity": "Faible",
           "speed": "Rapide",
-          "quality": "Fair (smooth but blurry)",
+          "quality": "Moyen (lisse mais flou)",
           "bestFor": ["General use", "Real-time", "Memory-constrained"],
           "artifacts": ["Blurring", "Loss of detail"]
         },
         {
           "algorithm": "Bicubic",
-          "complexity": "Medium",
-          "speed": "Medium",
-          "quality": "Good (sharp with some artifacts)",
+          "complexity": "Moyen",
+          "speed": "Moyen",
+          "quality": "Bon (net avec quelques artefacts)",
           "bestFor": ["Photographs", "General purpose", "Quality printing"],
           "artifacts": ["Ringing", "Sharpening halos"]
         },
         {
           "algorithm": "Lanczos",
-          "complexity": "High",
-          "speed": "Slow",
-          "quality": "Excellent (sharp, minimal artifacts)",
+          "complexity": "Élevé",
+          "speed": "Lent",
+          "quality": "Excellent (net, artefacts minimaux)",
           "bestFor": ["High-quality printing", "Professional work", "Critical applications"],
           "artifacts": ["Minor ringing", "Slight overshoot"]
         },
         {
           "algorithm": "IA/Neural Networks",
-          "complexity": "Very High",
-          "speed": "Very Slow",
-          "quality": "Outstanding (intelligent detail generation)",
+          "complexity": "Très élevé",
+          "speed": "Très lent",
+          "quality": "Exceptionnel (génération intelligente de détails)",
           "bestFor": ["Significant upscaling", "Quality-critical", "Professional enhancement"],
           "artifacts": ["Potential unrealistic details", "Style-dependent"]
         }

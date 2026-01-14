@@ -560,7 +560,7 @@
           "answer": "Facebook comprime las imágenes cargadas. Usa nuestra herramienta para redimensionar a dimensiones exactas y exportar a alta calidad para minimizar los artefactos de compresión."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-instagram", "resize-image-for-twitter"],
+      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
       "relatedGuides": ["how-to-resize-images-for-social-media"],
       "ctaText": "Redimensionar para Facebook Gratis",
       "ctaUrl": "/tools/resize/resize-image-for-facebook"
@@ -574,9 +574,9 @@
       "intro": "Redimensiona tus imágenes a dimensiones perfectas de Twitter/X. Publicaciones y encabezados optimizados para máxima participación. Funciona en tu navegador.",
       "primaryKeyword": "redimensionador de fotos de twitter",
       "secondaryKeywords": [
-        "twitter image size",
-        "twitter post size",
-        "twitter header size",
+        "resize linkedin photo",
+        "linkedin image size",
+        "linkedin banner size",
         "redimensionar para twitter",
         "tamano de imagen x"
       ],
@@ -589,7 +589,7 @@
       "toolConfig": {
         "defaultWidth": 1200,
         "defaultHeight": 675,
-        "presetFilter": "twitter"
+        "presetFilter": "linkedin"
       },
       "maxFileSizeMB": 25,
       "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
@@ -698,14 +698,10 @@
           "answer": "Twitter permite imagenes de hasta 5MB para fotos. Los GIF pueden ser de hasta 15MB. Nuestra herramienta te ayuda a mantenerse dentro de estos limites."
         }
       ],
-      "relatedTools": [
-        "image-resizer",
-        "resize-image-for-linkedin",
-        "redimensionar-imagen-para-facebook"
-      ],
-      "relatedGuides": ["cómo-redimensionar-imágenes-para-redes-sociales"],
+      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
+      "relatedGuides": ["how-to-resize-images-for-social-media"],
       "ctaText": "Redimensionar para Twitter Gratis",
-      "ctaUrl": "/tools/resize/redimensionar-imagen-para-twitter"
+      "ctaUrl": "/tools/resize/resize-image-for-linkedin"
     },
     {
       "slug": "redimensionador-de-imagen-para-linkedin",
@@ -716,9 +712,9 @@
       "intro": "Redimensiona tus imágenes a dimensiones perfectas de LinkedIn. Publicaciones y banners optimizados para participación. Funciona en tu navegador.",
       "primaryKeyword": "redimensionador de fotos para linkedin",
       "secondaryKeywords": [
-        "tamaño de imagen de linkedin",
-        "tamaño de publicación de linkedin",
-        "tamaño de banner de linkedin",
+        "resize twitter photo",
+        "twitter header size",
+        "twitter banner size",
         "redimensionar para linkedin",
         "tamaño de foto de linkedin"
       ],
@@ -727,11 +723,11 @@
       "toolName": "Redimensionador de Imagen para LinkedIn",
       "description": "Redimensiona al instante imágenes a dimensiones recomendadas de LinkedIn. Soporta publicaciones (1200x627) e imágenes de banner (1584x396).",
       "isInteractive": true,
-      "toolComponent": "Redimensionador de Imágenes",
+      "toolComponent": "ImageResizer",
       "toolConfig": {
         "defaultWidth": 1200,
         "defaultHeight": 627,
-        "presetFilter": "linkedin"
+        "presetFilter": "twitter"
       },
       "maxFileSizeMB": 25,
       "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
@@ -840,10 +836,10 @@
           "answer": "LinkedIn comprime las imagenes. Comienza con imagenes de alta calidad en dimensiones exactas y exporta al 90%+ de calidad para minimizar la compresion."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-twitter", "resize-image-for-facebook"],
+      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
       "relatedGuides": ["how-to-resize-images-for-social-media"],
       "ctaText": "Redimensionar para LinkedIn Gratis",
-      "ctaUrl": "/tools/resize/resize-image-for-linkedin"
+      "ctaUrl": "/tools/resize/resize-image-for-twitter"
     },
     {
       "slug": "redimensionador-de-imagenes-por-lotes",
@@ -854,19 +850,19 @@
       "intro": "Redimensiona múltiples imágenes a las mismas dimensiones al instante. Nuestro Redimensionador de Imágenes por Lotes Gratis procesa hasta 20 fotos a la vez, completamente en tu navegador. Sin cargas, sin registro, sin esperas.",
       "primaryKeyword": "redimensionador de imagenes por lotes",
       "secondaryKeywords": [
-        "redimensionamiento masivo",
-        "redimensionar fotos masivamente",
-        "redimensionar multiples imagenes",
+        "resize pinterest photo",
+        "pinterest image size",
+        "pinterest pin size",
         "redimensionador de imagenes masivo",
         "redimensionar imagenes por lotes",
         "redimensionar en masa"
       ],
-      "lastUpdated": "2025-12-26T00:00:00Z",
+      "lastUpdated": "2025-12-10T00:00:00Z",
       "category": "herramientas",
       "toolName": "Redimensionador de Imágenes por Lotes",
       "description": "Herramienta profesional de redimensionamiento de imágenes por lotes que funciona completamente en tu navegador. Redimensiona hasta 20 imágenes a la vez a dimensiones exactas, con opciones para mantener la relación de aspecto o llenar los límites. Descarga todas las imágenes redimensionadas como un archivo ZIP conveniente.",
       "isInteractive": true,
-      "toolComponent": "BulkImageResizer",
+      "toolComponent": "ImageResizer",
       "maxFileSizeMB": 25,
       "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
@@ -990,10 +986,13 @@
           "answer": "¡Sí! Puedes eliminar imágenes individuales del lote antes o después del procesamiento haciendo clic en el botón X junto a cada imagen."
         }
       ],
-      "relatedTools": ["image-resizer", "image-compressor", "ai-image-upscaler"],
-      "relatedGuides": ["batch-image-processing-guide", "image-resolution-guide"],
+      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
+      "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
       "ctaText": "Procesar Lote Gratis",
-      "ctaUrl": "/tools/bulk/bulk-image-resizer"
+      "ctaUrl": "/tools/resize/resize-image-for-pinterest",
+      "toolConfig": {
+        "presetFilter": "pinterest"
+      }
     },
     {
       "slug": "image-compressor",
@@ -1004,9 +1003,9 @@
       "intro": "Comprime tus imágenes sin perder calidad. Nuestro compresor en línea gratis reduce el tamaño del archivo hasta un 80% usando tecnología avanzada de navegador. Perfecto para optimización web, correo electrónico y almacenamiento.",
       "primaryKeyword": "compresor de imagenes",
       "secondaryKeywords": [
-        "comprimir imagen online",
-        "compresor de imagenes en linea",
-        "comprimir imagen",
+        "resize tiktok photo",
+        "tiktok image size",
+        "tiktok profile size",
         "herramienta de compresion de imagenes",
         "reducir tamano de imagen",
         "compresor de fotos"
@@ -1016,7 +1015,7 @@
       "toolName": "Compresor de imagenes",
       "description": "Herramienta profesional de compresion de imagenes que funciona completamente en tu navegador. Reduce los tamano de archivo hasta en un 80% manteniendo la calidad visual. Admite formatos JPEG, PNG y WebP con vistas previas de compresion en tiempo real.",
       "isInteractive": true,
-      "toolComponent": "ImageCompressor",
+      "toolComponent": "ImageResizer",
       "maxFileSizeMB": 25,
       "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
@@ -1132,10 +1131,13 @@
           "answer": "Para uso web, 70-80% es optimo. Para impresion o uso comercial, 85-95%. Para compresion maxima (como correo electronico), 60-70% funciona bien."
         }
       ],
-      "relatedTools": ["image-resizer", "png-to-jpg", "ai-image-upscaler"],
-      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
+      "relatedGuides": ["how-to-resize-images-for-social-media", "web-performance-images"],
       "ctaText": "Prueba el compresor de imagenes gratis",
-      "ctaUrl": "/tools/compress/image-compressor"
+      "ctaUrl": "/tools/resize/resize-image-for-tiktok",
+      "toolConfig": {
+        "presetFilter": "tiktok"
+      }
     },
     {
       "slug": "png-a-jpg",
@@ -1157,13 +1159,13 @@
       "toolName": "Convertidor PNG a JPG",
       "description": "Convierte imágenes PNG al formato JPG con control total sobre la calidad y el manejo de transparencia. Elige colores de fondo personalizados para áreas transparentes, ajusta la compresión y descarga al instante.",
       "isInteractive": true,
-      "toolComponent": "FormatConverter",
+      "toolComponent": "ImageCompressor",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
         "acceptedInputFormats": ["image/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
       "features": [
         {
           "title": "Manejo de transparencia",
@@ -1273,10 +1275,10 @@
           "answer": "Para web y redes sociales, 80-85% es perfecto. Para impresión o uso profesional, 90-95%. Para máxima reducción de tamaño, 70-75% todavía se ve bien."
         }
       ],
-      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-png"],
-      "relatedGuides": ["png-vs-jpg-guide", "when-to-use-jpg"],
+      "relatedTools": ["ai-image-upscaler", "image-resizer", "png-to-jpg"],
+      "relatedGuides": ["image-compression-guide", "when-to-use-jpg"],
       "ctaText": "Convertir PNG a JPG Gratis",
-      "ctaUrl": "/tools/convert/png-to-jpg"
+      "ctaUrl": "/tools/compress/image-compressor"
     },
     {
       "slug": "jpg-to-png",
@@ -1298,13 +1300,13 @@
       "toolName": "Convertidor de JPG a PNG",
       "description": "Convierte imagenes JPG/JPEG al formato PNG para calidad sin perdidas y soporte de transparencia. Ideal para graficos, logotipos e imagenes que necesitan edicion.",
       "isInteractive": true,
-      "toolComponent": "FormatConverter",
+      "toolComponent": "PngToJpgConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
         "acceptedInputFormats": ["image/jpeg"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg"],
+      "acceptedFormats": ["image/png"],
       "features": [
         {
           "title": "Conversión Sin Pérdidas",
@@ -1410,10 +1412,10 @@
           "answer": "¡Sí! Una vez en formato PNG, puedes usar software de edición de imágenes para eliminar fondos y agregar transparencia. JPG no admite transparencia."
         }
       ],
-      "relatedTools": ["png-to-jpg", "image-compressor", "webp-to-png"],
+      "relatedTools": ["image-compressor", "jpg-to-png", "ai-image-upscaler"],
       "relatedGuides": ["png-vs-jpg-guide"],
       "ctaText": "Convertir JPG a PNG Gratis",
-      "ctaUrl": "/tools/convert/jpg-to-png"
+      "ctaUrl": "/tools/convert/png-to-jpg"
     },
     {
       "slug": "webp-a-jpg",
@@ -1435,13 +1437,13 @@
       "toolName": "Convertidor de WebP a JPG",
       "description": "Convierte imágenes WebP al formato JPG para compatibilidad universal. Funciona en tu navegador sin carga requerida.",
       "isInteractive": true,
-      "toolComponent": "FormatConverter",
+      "toolComponent": "JpgToPngConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
         "acceptedInputFormats": ["image/webp"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/webp"],
+      "acceptedFormats": ["image/jpeg"],
       "features": [
         {
           "title": "Compatibilidad Universal",
@@ -1547,10 +1549,10 @@
           "answer": "Sí, completamente seguro. La conversión ocurre localmente en tu dispositivo y tus imágenes nunca se suben a ningún servidor."
         }
       ],
-      "relatedTools": ["jpg-to-png", "png-to-jpg", "image-compressor"],
-      "relatedGuides": ["webp-vs-jpg-guide"],
+      "relatedTools": ["png-to-jpg", "image-compressor", "ai-image-upscaler"],
+      "relatedGuides": ["png-vs-jpg-guide"],
       "ctaText": "Convertir WebP a JPG Gratis",
-      "ctaUrl": "/tools/convert/webp-to-jpg"
+      "ctaUrl": "/tools/convert/jpg-to-png"
     },
     {
       "slug": "png-to-webp",
@@ -1571,13 +1573,13 @@
       "toolName": "Convertidor de PNG a WebP",
       "description": "Convierte imágenes PNG al formato WebP moderno para optimización web. Funciona en tu navegador sin carga requerida.",
       "isInteractive": true,
-      "toolComponent": "FormatConverter",
+      "toolComponent": "WebpConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
         "acceptedInputFormats": ["image/png"]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": ["image/jpeg", "image/png"],
       "features": [
         {
           "title": "Archivos Más Pequeños",
@@ -1683,10 +1685,10 @@
           "answer": "WebP sin pérdidas es como PNG (sin pérdida de calidad, compresión moderada). WebP con pérdidas reduce más el tamaño con una ligera pérdida de calidad visual, ideal para fotografías."
         }
       ],
-      "relatedTools": ["webp-to-png", "jpg-to-webp", "image-compressor"],
-      "relatedGuides": ["webp-optimization-guide"],
+      "relatedTools": ["ai-image-upscaler", "image-compressor", "png-to-jpg"],
+      "relatedGuides": ["webp-guide"],
       "ctaText": "Convertir PNG a WebP Gratis",
-      "ctaUrl": "/tools/convert/png-to-webp"
+      "ctaUrl": "/tools/convert/convert-to-webp"
     },
     {
       "slug": "jpg-a-webp",

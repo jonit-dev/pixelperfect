@@ -1,8 +1,8 @@
 {
-  "category": "comparisons",
+  "category": "comparacoes",
   "pages": [
     {
-      "slug": "ai-vs-traditional-upscaling",
+      "slug": "ia-vs-aumento-tradicional",
       "title": "Upscaling de IA vs Interpolação Tradicional: Comparação Técnica Completa",
       "metaTitle": "Upscaling de IA vs Interpolação Tradicional: Comparação Técnica Completa | MyImageUpscaler",
       "metaDescription": "Comparação abrangente de upscaling de IA vs métodos de interpolação tradicionais (bicúbico, Lanczos). Testes reais, métricas de qualidade e análise de custo.",
@@ -17,7 +17,7 @@
         "upscaling de rede neural"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "technical",
+      "comparisonType": "tecnico",
       "methodology": {
         "testDataset": "100 imagens diversas (fotografias, texto, gráficos, imagens médicas)",
         "scaleFactors": ["2x", "4x", "8x"],
@@ -154,7 +154,7 @@
       ]
     },
     {
-      "slug": "online-vs-desktop-upscalers",
+      "slug": "aumentadores-online-vs-desktop",
       "title": "Upscalers Online vs Desktop: Comparação de Privacidade, Velocidade e Recursos",
       "metaTitle": "Upscalers Online vs Desktop: Comparação de Privacidade, Velocidade e Recursos | MyImageUpscaler",
       "metaDescription": "Comparação entre soluções de upscaling de imagem online e desktop. Implicações de privacidade, velocidades de processamento, análise de custo e comparações de recursos para uma tomada de decisão informada.",
@@ -169,7 +169,7 @@
         "soluções de upscaling em lote"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "platform",
+      "comparisonType": "plataforma",
       "comparisonMatrix": [
         {
           "category": "Privacidade e Segurança",
@@ -373,7 +373,7 @@
       ]
     },
     {
-      "slug": "free-vs-paid-upscaling-solutions",
+      "slug": "solucoes-gratuitas-vs-pagas-de-aumento",
       "title": "Upscalers de IA Gratuitos vs Pagos: Qualidade, Limites e Análise de Valor 2025",
       "metaTitle": "Upscalers de IA Gratuitos vs Pagos: Qualidade, Limites e Análise de Valor 2025 | MyImageUpscaler",
       "metaDescription": "Comparação detalhada de soluções de upscaling de imagem de IA gratuitas e pagas. Benchmarks de qualidade, limitações de recursos e análise de custo-benefício para diferentes necessidades do usuário.",
@@ -388,7 +388,7 @@
         "preço de upscaler de imagem"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "value",
+      "comparisonType": "valor",
       "testResults": {
         "qualityScores": {
           "freeSolutions": {
@@ -604,7 +604,7 @@
       ]
     },
     {
-      "slug": "ai-models-comparison",
+      "slug": "comparacao-de-modelos-de-ia",
       "title": "Comparação de Modelos de Upscaling de IA: ESRGAN, Real-ESRGAN, SRCNN, EDVR e Mais",
       "metaTitle": "Comparação de Modelos de Upscaling de IA: ESRGAN, Real-ESRGAN, SRCNN, EDVR e Mais | MyImageUpscaler",
       "metaDescription": "Comparação técnica de modelos de upscaling de IA. Benchmarks, casos de uso e recomendações para ESRGAN, Real-ESRGAN, SRCNN, EDVR e outras redes neurais.",
@@ -613,13 +613,13 @@
       "primaryKeyword": "IA upscaling models comparison",
       "secondaryKeywords": [
         "esrgan vs real-esrgan",
-        "srcnn upscaling",
+        "aumento srcnn",
         "upscaling de rede neural",
         "upscaling gan vs cnn",
         "modelos de aprimoramento de imagem de IA"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "technical-models",
+      "comparisonType": "modelos-tecnicos",
       "modelCategories": [
         {
           "category": "Modelos Baseados em CNN",
@@ -942,7 +942,7 @@
       ]
     },
     {
-      "slug": "batch-processing-workflows",
+      "slug": "fluxos-de-trabalho-de-processamento-em-lote",
       "title": "Fluxos de Trabalho de Upscaling de Imagem em Lote: Guia de Automação, API e Eficiência 2025",
       "metaTitle": "Fluxos de Trabalho de Upscaling de Imagem em Lote: Guia de Automação, API e Eficiência 2025 | MyImageUpscaler",
       "metaDescription": "Guia completo de fluxos de trabalho de upscaling de imagem em lote. Comparação de automação desktop, APIs em nuvem e soluções empresariais para processamento em massa eficiente.",
@@ -957,7 +957,7 @@
         "automação de fluxo de trabalho"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "workflows",
+      "comparisonType": "fluxos-de-trabalho",
       "workflowTypes": [
         {
           "type": "Automação Desktop",
@@ -1259,7 +1259,7 @@
       ]
     },
     {
-      "slug": "speed-vs-quality-tradeoffs",
+      "slug": "compromissos-velocidade-vs-qualidade",
       "title": "Velocidade vs Qualidade no Upscaling de IA: Compromissos e Otimização 2025",
       "metaTitle": "Velocidade vs Qualidade no Upscaling de IA: Compromissos e Otimização 2025 | MyImageUpscaler",
       "metaDescription": "Análise abrangente dos compromissos entre velocidade e qualidade no upscaling de imagem de IA. Benchmarks, estratégias de otimização e recomendações para diferentes casos de uso.",
@@ -1274,7 +1274,7 @@
         "análise de qualidade vs velocidade"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "performance",
+      "comparisonType": "desempenho",
       "performanceQuadrants": [
         {
           "quadrant": "Rápido e Baixa Qualidade",
@@ -1672,7 +1672,7 @@
       ]
     },
     {
-      "slug": "privacy-security-upscaling",
+      "slug": "privacidade-seguranca-aumento",
       "title": "Privacidade e Segurança no Upscaling de Imagem: Guia de Proteção de Dados e Conformidade 2025",
       "metaTitle": "Privacidade e Segurança no Upscaling de Imagem: Guia de Proteção de Dados e Conformidade 2025 | MyImageUpscaler",
       "metaDescription": "Guia completo sobre privacidade e segurança no upscaling de imagem de IA. Conformidade com GDPR, requisitos HIPAA, proteção de dados e práticas de segurança para imagens sensíveis.",
@@ -1687,7 +1687,7 @@
         "ia que preserva a privacidade"
       ],
       "lastUpdated": "2025-12-19T00:00:00Z",
-      "comparisonType": "security",
+      "comparisonType": "seguranca",
       "riskCategories": [
         {
           "category": "Riscos de Privacidade de Dados",
