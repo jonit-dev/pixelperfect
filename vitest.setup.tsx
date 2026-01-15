@@ -3,11 +3,6 @@ import React from 'react';
 import { vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
-// Cleanup after each test to prevent DOM pollution
-afterEach(() => {
-  cleanup();
-});
-
 // Mock React cache function - needed for data-loader tests
 vi.mock('react', async () => {
   const actual = await vi.importActual<typeof React>('react');
@@ -217,5 +212,6 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  cleanup();
   vi.clearAllMocks();
 });

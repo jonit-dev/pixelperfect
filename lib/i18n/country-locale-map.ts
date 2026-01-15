@@ -4,8 +4,8 @@
  * Maps ISO 3166-1 alpha-2 country codes to supported locales.
  * Used for geolocation-based auto-redirect via Cloudflare's CF-IPCountry header.
  *
- * Priority: Portuguese > German > French > Italian > Japanese > Spanish
- * for countries with multiple official languages.
+ * Policy: Maps to majority spoken language. Countries with no clear majority
+ * or unsupported languages default to English.
  */
 
 import type { Locale } from '@/i18n/config';
@@ -29,7 +29,7 @@ export const COUNTRY_LOCALE_MAP: Record<string, Locale> = {
   CV: 'pt', // Cape Verde
   GW: 'pt', // Guinea-Bissau
   ST: 'pt', // São Tomé and Príncipe
-  TL: 'pt', // Timor-Leste
+  // Note: Timor-Leste (TL) excluded - Portuguese spoken by <25%, defaults to English
 
   // =====================
   // German (de)
@@ -38,16 +38,17 @@ export const COUNTRY_LOCALE_MAP: Record<string, Locale> = {
   AT: 'de', // Austria
   LI: 'de', // Liechtenstein
   CH: 'de', // Switzerland (German-speaking majority - 62%)
-  LU: 'de', // Luxembourg (German-speaking - administrative)
+  // Note: Luxembourg (LU) moved to French (more commonly used)
 
   // =====================
   // French (fr)
   // =====================
   FR: 'fr', // France (highest priority - large market)
-  BE: 'fr', // Belgium (French-speaking majority)
   MC: 'fr', // Monaco
-  AD: 'fr', // Andorra
-  // Note: Canada (CA) excluded - defaults to English (majority language)
+  LU: 'fr', // Luxembourg (French more commonly used than German)
+  // Note: Belgium (BE) excluded - Dutch 60% / French 40%, defaults to English
+  // Note: Canada (CA) excluded - English majority, defaults to English
+  // Note: Andorra (AD) moved to Spanish (more commonly spoken than French)
 
   // =====================
   // Italian (it)
@@ -62,10 +63,11 @@ export const COUNTRY_LOCALE_MAP: Record<string, Locale> = {
   JP: 'ja', // Japan
 
   // =====================
-  // Spanish (es) - Already supported
+  // Spanish (es)
   // =====================
   ES: 'es', // Spain
   MX: 'es', // Mexico
+  AD: 'es', // Andorra (Spanish more commonly spoken than Catalan/French)
   AR: 'es', // Argentina
   CO: 'es', // Colombia
   CL: 'es', // Chile
