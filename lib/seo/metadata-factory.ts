@@ -128,6 +128,10 @@ export function generateCategoryMetadata(category: PSEOCategory, locale: Locale 
     'device-use': `Device-Specific Image Enhancement | ${APP_NAME}`,
     'format-scale': `Format & Scale Enhancement Tools | ${APP_NAME}`,
     'platform-format': `Platform & Format Tools | ${APP_NAME}`,
+    'photo-restoration': `Photo Restoration Services | ${APP_NAME}`,
+    'camera-raw': `Camera RAW Image Enhancement | ${APP_NAME}`,
+    'industry-insights': `Industry Insights & Solutions | ${APP_NAME}`,
+    'device-optimization': `Device Optimization Tools | ${APP_NAME}`,
   };
 
   const categoryDescriptions: Record<PSEOCategory, string> = {
@@ -156,6 +160,10 @@ export function generateCategoryMetadata(category: PSEOCategory, locale: Locale 
       'Combined format and scale enhancement. Resize images to specific dimensions while converting formats.',
     'platform-format':
       'Platform and format combinations. Export from AI platforms in your preferred image format.',
+    'photo-restoration': `Professional AI-powered photo restoration services. Bring old and damaged photos back to life with our advanced technology.`,
+    'camera-raw': `Camera RAW image processing and enhancement for professional photographers. Support for all major camera brands.`,
+    'industry-insights': `Industry-specific insights and solutions for image enhancement. See how AI is transforming different industries.`,
+    'device-optimization': `Device optimization tools for better image performance. Optimize images for mobile, desktop, and various platforms.`,
   };
 
   return {

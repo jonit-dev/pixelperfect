@@ -10,20 +10,28 @@ import { Locale } from '@/i18n/config';
 
 /**
  * Categories that have full translations for all supported locales
+ * Updated: 2025-01-15 - Added categories that have been translated
  */
-export const LOCALIZED_CATEGORIES: PSEOCategory[] = ['tools', 'formats', 'free', 'guides', 'scale'];
-
-/**
- * Categories that are English-only (no translations available)
- */
-export const ENGLISH_ONLY_CATEGORIES: PSEOCategory[] = [
-  'compare',
+export const LOCALIZED_CATEGORIES: PSEOCategory[] = [
+  'tools',
+  'formats',
+  'free',
+  'guides',
+  'scale',
   'alternatives',
-  'platforms',
   'use-cases',
   'format-scale',
   'platform-format',
   'device-use',
+];
+
+/**
+ * Categories that are English-only (no translations available)
+ * Note: compare, platforms remain English-only due to limited translations
+ */
+export const ENGLISH_ONLY_CATEGORIES: PSEOCategory[] = [
+  'compare',
+  'platforms',
 ];
 
 /**
@@ -123,6 +131,7 @@ const ALL_SUPPORTED_LOCALES: Locale[] = ['en', 'es', 'pt', 'de', 'fr', 'it', 'ja
 
 /**
  * Configuration for each category's localization status
+ * Updated: 2025-01-15 - Reflected completed translation work
  */
 export const LOCALIZATION_STATUS = {
   tools: {
@@ -150,39 +159,39 @@ export const LOCALIZATION_STATUS = {
     supportedLocales: ALL_SUPPORTED_LOCALES,
     notes: 'Scale pages fully localized for all 7 languages',
   },
+  alternatives: {
+    localized: true,
+    supportedLocales: ALL_SUPPORTED_LOCALES,
+    notes: 'Alternative pages fully localized for all 7 languages (updated 2025-01-15)',
+  },
+  'use-cases': {
+    localized: true,
+    supportedLocales: ALL_SUPPORTED_LOCALES,
+    notes: 'Use case pages fully localized for all 7 languages (updated 2025-01-15)',
+  },
+  'format-scale': {
+    localized: true,
+    supportedLocales: ALL_SUPPORTED_LOCALES,
+    notes: 'Format-scale multiplier pages fully localized for all 7 languages (updated 2025-01-15)',
+  },
+  'platform-format': {
+    localized: true,
+    supportedLocales: ALL_SUPPORTED_LOCALES,
+    notes: 'Platform-format multiplier pages fully localized for all 7 languages (updated 2025-01-15)',
+  },
+  'device-use': {
+    localized: true,
+    supportedLocales: ALL_SUPPORTED_LOCALES,
+    notes: 'Device-use pages fully localized for all 7 languages (updated 2025-01-15)',
+  },
   compare: {
     localized: false,
     supportedLocales: ['en'] as Locale[],
     notes: 'Comparison pages are English-only',
   },
-  alternatives: {
-    localized: false,
-    supportedLocales: ['en'] as Locale[],
-    notes: 'Alternative pages are English-only',
-  },
   platforms: {
     localized: false,
     supportedLocales: ['en'] as Locale[],
     notes: 'Platform pages are English-only',
-  },
-  'use-cases': {
-    localized: false,
-    supportedLocales: ['en'] as Locale[],
-    notes: 'Use case pages are English-only',
-  },
-  'format-scale': {
-    localized: false,
-    supportedLocales: ['en'] as Locale[],
-    notes: 'Format-scale multiplier pages are English-only',
-  },
-  'platform-format': {
-    localized: false,
-    supportedLocales: ['en'] as Locale[],
-    notes: 'Platform-format multiplier pages are English-only',
-  },
-  'device-use': {
-    localized: false,
-    supportedLocales: ['en'] as Locale[],
-    notes: 'Device-use pages are English-only',
   },
 } as const;

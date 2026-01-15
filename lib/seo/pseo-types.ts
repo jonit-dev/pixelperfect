@@ -361,6 +361,115 @@ export interface IDeviceUseCasePage extends IBasePSEOPage {
 }
 
 /**
+ * Photo restoration page data structure
+ * For pages like /photo-restoration/restore-old-photos, /photo-restoration/fix-faded-prints
+ */
+export interface IPhotoRestorationPage extends IBasePSEOPage {
+  category: 'photo-restoration';
+  restorationType: string;
+  description: string;
+  challenges: string[];
+  solutions: string[];
+  techniques: string[];
+  features: IFeature[];
+  useCases: IUseCase[];
+  benefits: IBenefit[];
+  howItWorks: IHowItWorksStep[];
+  beforeAfterExamples?: IBeforeAfterExample[];
+  tips: string[];
+  faq: IFAQ[];
+  relatedRestorations: string[];
+  relatedTools: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+/**
+ * Camera RAW page data structure
+ * For pages like /camera-raw/canon-raw-upscaler, /camera-raw/nikon-nef-enhancement
+ */
+export interface ICameraRawPage extends IBasePSEOPage {
+  category: 'camera-raw';
+  cameraBrand: string;
+  rawFormat: string;
+  description: string;
+  rawChallenges: string[];
+  solutions: string[];
+  features: IFeature[];
+  useCases: IUseCase[];
+  benefits: IBenefit[];
+  howItWorks: IHowItWorksStep[];
+  bestPractices: string[];
+  tips: string[];
+  faq: IFAQ[];
+  relatedRawFormats: string[];
+  relatedTools: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+/**
+ * Industry insights page data structure
+ * For pages like /industry-insights/real-estate-photo-enhancement, /industry-insights/ecommerce-product-photos
+ */
+export interface IIndustryInsightPage extends IBasePSEOPage {
+  category: 'industry-insights';
+  industry: string;
+  description: string;
+  problem: {
+    title: string;
+    description: string;
+  };
+  solution: {
+    title: string;
+    description: string;
+  };
+  applications: IUseCase[];
+  caseStudies: Array<{
+    title: string;
+    scenario: string;
+    solution: string;
+    results: string;
+  }>;
+  techniques: Array<{
+    name: string;
+    description: string;
+  }>;
+  bestPractices: string[];
+  faq: IFAQ[];
+  relatedTools: string[];
+  relatedPages: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+/**
+ * Device optimization page data structure
+ * For pages like /device-optimization/mobile-image-optimization, /device-optimization/desktop-image-performance
+ */
+export interface IDeviceOptimizationPage extends IBasePSEOPage {
+  category: 'device-optimization';
+  platform: 'Mobile' | 'Desktop' | 'Smart TV' | 'Tablet' | 'Wearable';
+  description: string;
+  challenges: Array<{
+    challenge: string;
+    description: string;
+  }>;
+  optimizations: Array<{
+    technique: string;
+    description: string;
+    implementation?: string;
+  }>;
+  bestPractices: string[];
+  commonMistakes: string[];
+  faq: IFAQ[];
+  relatedTools: string[];
+  relatedPages: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+/**
  * Union type for all pSEO pages
  */
 export type PSEOPage =
@@ -378,7 +487,11 @@ export type PSEOPage =
   | IAIFeaturePage
   | IFormatScalePage
   | IPlatformFormatPage
-  | IDeviceUseCasePage;
+  | IDeviceUseCasePage
+  | IPhotoRestorationPage
+  | ICameraRawPage
+  | IIndustryInsightPage
+  | IDeviceOptimizationPage;
 
 /**
  * Supporting interfaces

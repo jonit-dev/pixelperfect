@@ -33,6 +33,12 @@ const CATEGORIES = [
   'platform-format',
   'device-use',
   'ai-features',
+  'content',
+  'photo-restoration',
+  'camera-raw',
+  'industry-insights',
+  'device-optimization',
+  'bulk-tools',
 ];
 
 /**

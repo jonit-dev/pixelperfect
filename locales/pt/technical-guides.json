@@ -61,11 +61,11 @@
           "content": "Entender como avaliar a qualidade do upscaling ajuda a escolher a abordagem certa para suas necessidades.",
           "subsections": [
             {
-              "name": "PSNR (Peak Signal-to-Noise Ratio)",
+              "name": "PSNR (Razão de Pico de Sinal para Ruído)",
               "description": "Métrica técnica que mede a qualidade da reconstrução, embora nem sempre se correlacione com a qualidade percebida."
             },
             {
-              "name": "SSIM (Structural Similarity Index)",
+              "name": "SSIM (Índice de Similaridade Estrutural)",
               "description": "Mede a similaridade estrutural entre a imagem original e a imagem upscaled."
             },
             {
@@ -384,7 +384,7 @@
         },
         {
           "format": "PNG",
-          "compression": "Lossless",
+          "compression": "Sem Perdas",
           "transparency": "Sim (canal alfa)",
           "colorSupport": "16,7 milhões de cores",
           "bestFor": "Gráficos, logotipos, imagens com transparência",
@@ -402,7 +402,7 @@
         },
         {
           "format": "GIF",
-          "compression": "Lossless",
+          "compression": "Sem Perdas",
           "transparency": "Sim (1-bit)",
           "colorSupport": "256 cores",
           "bestFor": "Animações simples, gráficos",
@@ -411,7 +411,7 @@
         },
         {
           "format": "TIFF",
-          "compression": "Lossless",
+          "compression": "Sem Perdas",
           "transparency": "Sim",
           "colorSupport": "Bilhões de cores",
           "bestFor": "Fotografia profissional, impressão",
@@ -588,7 +588,7 @@
           "description": "Utilize múltiplos núcleos de CPU ou processamento distribuído para maior produtividade"
         },
         {
-          "technique": "Caching",
+          "technique": "Cache",
           "description": "Armazene em cache resultados intermediários e imagens processadas para evitar trabalho redundante"
         },
         {
@@ -842,7 +842,7 @@
           "description": "Isole e ajuste intervalos de cores específicos sem afetar outras áreas"
         },
         {
-          "technique": "Split Toning",
+          "technique": "Divisão de Tons",
           "description": "Aplique cores diferentes às sombras e realces para efeitos artísticos"
         },
         {
@@ -920,7 +920,7 @@
           "content": "Técnicas que preservam todos os dados da imagem enquanto reduzem o tamanho do arquivo.",
           "subsections": [
             {
-              "name": "Run-Length Encoding",
+              "name": "Codificação Run-Length",
               "description": "Compressão de sequências de pixels ou valores idênticos."
             },
             {
@@ -942,7 +942,7 @@
               "description": "Redução da precisão das informações de cor para economizar espaço."
             },
             {
-              "name": "Chroma Subsampling",
+              "name": "Subamostragem de Crominância",
               "description": "Redução da resolução de cores mantendo os detalhes da luminância."
             },
             {
@@ -1014,12 +1014,12 @@
           "target": "Quanto maior, melhor para economia de espaço"
         },
         {
-          "metric": "PSNR (Peak Signal-to-Noise Ratio)",
+          "metric": "PSNR (Razão de Pico de Sinal para Ruído)",
           "description": "Medição técnica de qualidade",
           "target": "30-40 dB para qualidade aceitável"
         },
         {
-          "metric": "SSIM (Structural Similarity)",
+          "metric": "SSIM (Similaridade Estrutural)",
           "description": "Medição perceptual de qualidade",
           "target": "0.9+ para boa qualidade"
         },
@@ -1220,7 +1220,7 @@
         {
           "task": "Transferência de Estilo (Style Transfer)",
           "description": "Aplicar estilos artísticos às imagens",
-          "networks": ["Neural Style Transfer", "AdaIN", "CycleGAN"],
+          "networks": ["Transferência de Estilo Neural", "AdaIN", "CycleGAN"],
           "applications": ["Geração de arte", "Aplicações de filtro", "Ferramentas criativas"]
         }
       ],
@@ -1890,13 +1890,13 @@
       ],
       "qualityAssessment": [
         {
-          "metric": "Peak Signal-to-Noise Ratio (PSNR)",
+          "metric": "Razão de Pico de Sinal para Ruído (PSNR)",
           "description": "Medição técnica do erro de reconstrução",
           "use": "Comparação de qualidade objetiva",
           "limitations": "Nem sempre corresponde à percepção humana"
         },
         {
-          "metric": "Structural Similarity (SSIM)",
+          "metric": "Similaridade Estrutural (SSIM)",
           "description": "Medição de similaridade perceptual",
           "use": "Melhor correlação com a qualidade percebida",
           "limitations": "Complexidade no cálculo"

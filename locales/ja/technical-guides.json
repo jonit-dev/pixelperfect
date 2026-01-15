@@ -9,20 +9,12 @@
       "h1": "画像処理テクニカルガイド",
       "intro": "テクニカルガイドで画像処理をマスター。基本から上級テクニックまで、プロフェッショナル結果のためのガイド。",
       "primaryKeyword": "AI アップスケーリング技術ガイド",
-      "secondaryKeywords": [
-        "ニューラルネットワークアップスケーリング",
-        "画像スーパーレゾリューション",
-        "AI アップスケーリングアルゴリズム"
-      ],
+      "secondaryKeywords": ["ニューラルネットワークアップスケーリング", "画像スーパーレゾリューション", "AI アップスケーリングアルゴリズム"],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "category": "技術ガイド",
       "difficulty": "中級",
       "technicalLevel": "包括的",
-      "prerequisites": [
-        "画像解像度とピクセルの基本的な理解",
-        "画像ファイル形式の知識",
-        "機械学習の概念への関心"
-      ],
+      "prerequisites": ["画像解像度とピクセルの基本的な理解", "画像ファイル形式の知識", "機械学習の概念への関心"],
       "sections": [
         {
           "title": "AIアップスケーリングの仕組み",
@@ -298,12 +290,7 @@
       "h1": "画像解像度ガイド",
       "intro": "画像解像度概念包括的ガイドで理解。",
       "primaryKeyword": "画像フォーマット比較",
-      "secondaryKeywords": [
-        "jpeg対png",
-        "webpフォーマット",
-        "tiff対jpeg",
-        "最高の画像フォーマット"
-      ],
+      "secondaryKeywords": ["jpeg対png", "webpフォーマット", "tiff対jpeg", "最高の画像フォーマット"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
       "difficulty": "中級",
@@ -846,13 +833,7 @@
           "description": "テクスチャと色を分離して、正確な強化制御"
         }
       ],
-      "bestPractices": [
-        "色較正環境で作業",
-        "非破壊的編集技術を使用",
-        "タスクに適切な色空間で色を調整",
-        "中立的な参照と定期的に確認",
-        "色決定時に最終出力媒体を考慮"
-      ],
+      "bestPractices": ["色較正環境で作業", "非破壊的編集技術を使用", "タスクに適切な色空間で色を調整", "中立的な参照と定期的に確認", "色決定時に最終出力媒体を考慮"],
       "faq": [
         {
           "question": "色調整でHSL vs RGBをいつ使用するべきですか？",
@@ -1268,11 +1249,7 @@
       "h1": "Web Image Optimization: Technical ガイド",
       "intro": "Images often account for 50-70% of web page weight. Optimizing them is crucial for パフォーマンス, user experience, and SEO. This comprehensive ガイド covers all aspects of web image optimization.",
       "primaryKeyword": "ウェブ画像最適化",
-      "secondaryKeywords": [
-        "画像 SEO 最適化",
-        "ウェブサイトパフォーマンス最適化",
-        "画像の遅延読み込み"
-      ],
+      "secondaryKeywords": ["画像 SEO 最適化", "ウェブサイトパフォーマンス最適化", "画像の遅延読み込み"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
       "difficulty": "中級",
@@ -1350,11 +1327,7 @@
           "step": 3,
           "name": "レスポンシブ準備",
           "description": "異なるデバイス用に複数のサイズを作成",
-          "breakpoints": [
-            "モバイル: 320～768px",
-            "タブレット: 768～1024px",
-            "デスクトップ: 1024px以上"
-          ]
+          "breakpoints": ["モバイル: 320～768px", "タブレット: 768～1024px", "デスクトップ: 1024px以上"]
         },
         {
           "step": 4,
@@ -1485,11 +1458,7 @@
       "h1": "プロフェッショナル Photo Editing: Complete Workflow ガイド",
       "intro": "プロフェッショナル photo editing follows systematic workflows that ensure consistent, high-品質 results. This ガイド covers industry-standard processes from capture to final output.",
       "primaryKeyword": "プロフェッショナル写真編集ワークフロー",
-      "secondaryKeywords": [
-        "写真編集プロセス",
-        "非破壊的編集",
-        "プロフェッショナル写真ワークフロー"
-      ],
+      "secondaryKeywords": ["写真編集プロセス", "非破壊的編集", "プロフェッショナル写真ワークフロー"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "技術ガイド",
       "difficulty": "中級",
@@ -1716,12 +1685,7 @@
       "h1": "画像スケーリングアルゴリズム：技術的ディープダイブ",
       "intro": "Image scaling algorithms determine how pixels are interpolated when resizing images. Understanding these algorithms helps achieve the 最高 品質 for different 使用例 and content types.",
       "primaryKeyword": "画像スケーリングアルゴリズム",
-      "secondaryKeywords": [
-        "画像補間方法",
-        "バイリニア vs バイキュービック",
-        "ランチョススケーリング",
-        "AI 画像アップスケーリング"
-      ],
+      "secondaryKeywords": ["画像補間方法", "バイリニア vs バイキュービック", "ランチョススケーリング", "AI 画像アップスケーリング"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "technical-guides",
       "difficulty": "上級",
@@ -1899,11 +1863,7 @@
         },
         {
           "factor": "スケーリング係数",
-          "considerations": [
-            "小幅な調整 vs 大きな変更",
-            "アップスケーリング vs ダウンスケーリング",
-            "整数 vs 小数スケーリング"
-          ]
+          "considerations": ["小幅な調整 vs 大きな変更", "アップスケーリング vs ダウンスケーリング", "整数 vs 小数スケーリング"]
         }
       ],
       "optimizationTechniques": [

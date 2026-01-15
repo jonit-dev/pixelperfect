@@ -64,6 +64,10 @@ export const PSEO_CATEGORIES = [
   'device-use',
   'format-scale',
   'platform-format',
+  'photo-restoration',
+  'camera-raw',
+  'industry-insights',
+  'device-optimization',
 ] as const;
 
 export type PSEOCategory = (typeof PSEO_CATEGORIES)[number];

@@ -166,7 +166,7 @@
           "answer": "Size images for the actual display area at the device's pixel density. Typically 320-640px width for most mobile use cases."
         }
       ],
-      "relatedTools": ["mobile-image-optimizer", "device-image-resizer"],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedPages": ["app-performance-optimization", "mobile-development-image-handling"]
     },
     {
@@ -411,7 +411,7 @@
           "answer": "PNG for graphics and transparency, TIFF for professional work, JPEG for photographs. Consider WebP for modern applications with fallback support."
         }
       ],
-      "relatedTools": ["desktop-image-processor", "gpu-accelerated-upscaler"],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedPages": ["professional-image-editing", "multi-platform-image-handling"]
     },
     {
@@ -659,7 +659,7 @@
           "answer": "Check TV platform support. Most modern Smart TVs support WebP, but always provide JPEG fallbacks for older or incompatible devices."
         }
       ],
-      "relatedTools": ["tv-image-optimizer", "hdr-image-converter"],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedPages": ["4k-content-preparation", "smart-tv-app-development"]
     },
     {
@@ -889,7 +889,7 @@
           "answer": "Use WebP where supported, with JPEG fallbacks. PNG for UI elements and transparency. HEIF on iOS devices with appropriate fallbacks."
         }
       ],
-      "relatedTools": ["tablet-image-optimizer", "responsive-image-generator"],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedPages": ["mobile-tablet-development", "cross-platform-image-handling"]
     },
     {
@@ -1143,7 +1143,7 @@
           "answer": "Implement companion app caching, load text-only versions first, and use aggressive compression. Pre-load content during phone charging when possible."
         }
       ],
-      "relatedTools": ["wearable-image-optimizer", "icon-compressor"],
+      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"],
       "relatedPages": ["wearable-app-development", "low-power-display-optimization"]
     }
   ],

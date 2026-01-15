@@ -385,8 +385,15 @@ function checkPSEODataFiles(translationNamespaces: string[]): IPSEODataFile[] {
     const data = loadPSEOData(pseoFile);
     if (!data) continue;
 
-    // Check if there's a corresponding translation file
-    const hasTranslation = translationNamespaces.includes(pseoFile);
+    // Check if there's a corresponding translation file in ANY non-English locale
+    // We check all locales (not just English) to see if translations exist
+    const allLocales = getLocales();
+    const hasTranslationInAnyLocale = allLocales.some(locale => {
+      if (locale === REFERENCE_LOCALE) return false; // Skip English
+      const localeNamespaces = getNamespaces(locale);
+      return localeNamespaces.includes(pseoFile);
+    });
+    const hasTranslation = hasTranslationInAnyLocale || translationNamespaces.includes(pseoFile);
 
     // Get page count if it's a pSEO data file with pages array
     const pages = data.pages as Array<Record<string, unknown>> | undefined;

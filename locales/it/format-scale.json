@@ -7,7 +7,7 @@
   },
   "pages": [
     {
-      "slug": "jpeg-upscale-2x",
+      "slug": "aumento-jpeg-2x",
       "title": "Upscale JPEG 2X",
       "metaTitle": "JPEG Upscale 2X - Doppio Risoluzione Miglioramento JPEG | MyImageUpscaler",
       "metaDescription": "Raddoppia la risoluzione delle immagini JPEG con upscaling AI 2X. Mantieni la qualità aumentando le dimensioni. Perfetto per miglioramento moderato. Prova gratis.",
@@ -108,10 +108,10 @@
         }
       ],
       "relatedFormats": ["upscale-immagini-jpeg", "upscale-png-immagini"],
-      "relatedScales": ["upscaler-ai-2x", "jpeg-upscale-4x"]
+      "relatedScales": ["upscaler-ai-2x", "aumento-jpeg-4x"]
     },
     {
-      "slug": "jpeg-upscale-4x",
+      "slug": "aumento-jpeg-4x",
       "title": "Upscale JPEG 4X",
       "metaTitle": "JPEG Upscale 4X - Quadruplo Risoluzione Miglioramento JPEG | MyImageUpscaler",
       "metaDescription": "Quadrupla la risoluzione delle immagini JPEG con upscaling AI 4X. Migliora drasticamente la qualità mantenendo i dettagli. Perfetto per stampe grandi e display. Prova gratis.",
@@ -212,7 +212,7 @@
         }
       ],
       "relatedFormats": ["upscale-immagini-jpeg", "upscale-png-immagini"],
-      "relatedScales": ["upscaler-ai-4x", "jpeg-upscale-2x", "jpeg-upscale-8x"]
+      "relatedScales": ["upscaler-ai-4x", "aumento-jpeg-2x", "aumento-jpeg-8x"]
     },
     {
       "slug": "png-upscale-2x",
@@ -229,7 +229,7 @@
         "raddoppiatore immagine png"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "PNG",
       "scaleFactor": "2X",
       "formatDescription": "PNG è essenziale per grafiche con trasparenza e artwork senza perdita di qualità. Il nostro upscaler preserva la trasparenza e migliora la qualità delle immagini PNG.",
@@ -316,7 +316,7 @@
         }
       ],
       "relatedFormats": ["upscale-png-immagini", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x", "jpeg-upscale-16x"]
+      "relatedScales": ["ai-upscaler-2x", "png-upscale-4x", "aumento-jpeg-16x"]
     },
     {
       "slug": "png-upscale-4x",
@@ -333,7 +333,7 @@
         "quadruplicatore immagine png"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "PNG",
       "scaleFactor": "4X",
       "formatDescription": "Il stampa PNG riceve benefici di qualità significativi dall'upscaling 4X mantenendo la trasparenza per uso professionale.",
@@ -437,7 +437,7 @@
         "massimo jpeg upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "JPEG",
       "scaleFactor": "8X",
       "formatDescription": "JPEG permat achieves massimo qualità miglioramento con 8X ridimensionamento, pushing the boundaries of what's possible da compressed immagini.",
@@ -541,7 +541,7 @@
         "massima risoluzione jpeg"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "JPEG",
       "scaleFactor": "16X",
       "formatDescription": "Formato JPEG spinto ai suoi limiti con ridimensionamento 16X per applicazioni specializzate che richiedono ingrandimento estremo.",
@@ -628,10 +628,10 @@
         }
       ],
       "relatedFormats": ["upscale-jpeg-images", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "jpeg-upscale-8x", "png-upscale-8x"]
+      "relatedScales": ["upscale-16x", "jpeg-upscale-8x", "aumento-png-8x"]
     },
     {
-      "slug": "png-upscale-8x",
+      "slug": "aumento-png-8x",
       "title": "Upscale PNG 8X",
       "metaTitle": "PNG Upscale 8X - Massimo miglioramento della risoluzione PNG | MyImageUpscaler",
       "metaDescription": "Upscale PNG immagini by 8x con AI mentre preserving transparency. Maximum risoluzione miglioramento per professionale graphics. Prova gratis.",
@@ -645,7 +645,7 @@
         "upscale png 8 times"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "PNG",
       "scaleFactor": "8X",
       "formatDescription": "PNG permat pushed to massimo qualità con 8X ridimensionamento mentre mantenendo perfetto lossless characteristics and alpha channel transparency.",
@@ -732,10 +732,10 @@
         }
       ],
       "relatedFormats": ["upscale-png-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["png-upscale-4x", "png-upscale-16x", "png-upscale-16x"]
+      "relatedScales": ["png-upscale-4x", "png-upscale-16x", "aumento-png-16x"]
     },
     {
-      "slug": "png-upscale-16x",
+      "slug": "aumento-png-16x",
       "title": "Upscale PNG 16X",
       "metaTitle": "PNG Upscale 16X - Miglioramento Estremo Risoluzione PNG | MyImageUpscaler",
       "metaDescription": "Upscale immagini PNG di 16x con AI. Miglioramento estremo della risoluzione preservando la trasparenza. Solo per applicazioni specializzate. Prova gratis.",
@@ -749,7 +749,7 @@
         "upscale png 16 times"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "PNG",
       "scaleFactor": "16X",
       "formatDescription": "Formato PNG ai limiti estremi con ridimensionamento 16X per applicazioni specializzate che richiedono la massima risoluzione possibile con trasparenza.",
@@ -839,7 +839,7 @@
       "relatedScales": ["png-upscale-8x", "png-upscale-32x"]
     },
     {
-      "slug": "webp-upscale-2x",
+      "slug": "aumento-webp-2x",
       "title": "Upscale WebP 2X",
       "metaTitle": "Upscale WebP 2X - Raddoppia Risoluzione WebP | MyImageUpscaler",
       "metaDescription": "Double WebP immagine risoluzione con 2X AI upscaling. Maintain WebP efficiency con increased risoluzione. Perfect per web optimization. Prova gratis.",
@@ -853,7 +853,7 @@
         "upscale webp 2 times"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "WebP",
       "scaleFactor": "2X",
       "formatDescription": "WebP is Google's modern immagine permat offering superior compression and qualità. Our AI upscaler works excellently con WebP mentre mantenendo its compression benefits.",
@@ -939,11 +939,11 @@
           "answer": "While possible, WebP is primarily a web permat. For print, consider converting 2X upscaled WebP to PNG or TIFF per better print workflow compatibility."
         }
       ],
-      "relatedFormats": ["upscale-webp-immagini", "upscale-jpeg-images"],
-      "relatedScales": ["upscale-2x", "webp-upscale-4x"]
+      "relatedFormats": ["upscale-webp-immagini", "aumenta-immagini-jpeg"],
+      "relatedScales": ["upscale-2x", "aumento-webp-4x"]
     },
     {
-      "slug": "webp-upscale-4x",
+      "slug": "aumento-webp-4x",
       "title": "Upscale WebP 4X",
       "metaTitle": "Upscale WebP 4X - Miglioramento WebP Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple WebP immagine risoluzione con 4X AI upscaling. High-qualità WebP miglioramento per professionale web use. Prova gratis.",
@@ -957,7 +957,7 @@
         "upscale webp 4 times"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "WebP",
       "scaleFactor": "4X",
       "formatDescription": "WebP permat receives dramatic qualità improvement con 4X ridimensionamento mentre mantenendo superior compression compared to JPEG.",
@@ -1044,10 +1044,10 @@
         }
       ],
       "relatedFormats": ["upscale-webp-immagini", "upscale-png-immagini"],
-      "relatedScales": ["upscale-4x", "webp-upscale-2x", "webp-upscale-8x"]
+      "relatedScales": ["upscale-4x", "aumento-webp-2x", "aumento-webp-8x"]
     },
     {
-      "slug": "webp-upscale-8x",
+      "slug": "aumento-webp-8x",
       "title": "Upscale WebP 8X",
       "metaTitle": "Upscale WebP 8X - Miglioramento Massimo Risoluzione WebP | MyImageUpscaler",
       "metaDescription": "Upscale WebP immagini by 8x con AI. Maximum risoluzione WebP miglioramento per specializzato applicazioni. Prova gratis.",
@@ -1061,7 +1061,7 @@
         "upscale webp 8 times"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "WebP",
       "scaleFactor": "8X",
       "formatDescription": "WebP permat achieves massimo qualità miglioramento con 8X ridimensionamento mentre mantenendo superior compression compared to traditional permats.",
@@ -1148,10 +1148,10 @@
         }
       ],
       "relatedFormats": ["upscale-webp-immagini", "upscale-png-immagini"],
-      "relatedScales": ["upscale-8x", "webp-upscale-4x"]
+      "relatedScales": ["aumento-8x", "aumento-webp-4x"]
     },
     {
-      "slug": "webp-upscale-16x",
+      "slug": "aumento-webp-16x",
       "title": "Upscale WebP 16X",
       "metaTitle": "WebP Upscale 16X - Miglioramento Estremo Risoluzione WebP | MyImageUpscaler",
       "metaDescription": "Upscale WebP immagini by 16x con AI. Extreme risoluzione WebP miglioramento per specializzato applicazioni. Prova gratis.",
@@ -1165,7 +1165,7 @@
         "massimo webp risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "WebP",
       "scaleFactor": "16X",
       "formatDescription": "WebP permat at estremo limits con 16X ridimensionamento per specializzato applicazioni requiring absolute massimo risoluzione con web efficiency.",
@@ -1247,10 +1247,10 @@
         }
       ],
       "relatedFormats": ["upscale-webp-immagini", "upscale-png-immagini"],
-      "relatedScales": ["upscale-16x", "webp-upscale-8x"]
+      "relatedScales": ["aumento-16x", "aumento-webp-8x"]
     },
     {
-      "slug": "heic-upscale-2x",
+      "slug": "aumento-heic-2x",
       "title": "Upscale HEIC 2X",
       "metaTitle": "Upscale HEIC 2X - Raddoppia Risoluzione HEIC | MyImageUpscaler",
       "metaDescription": "Double HEIC immagine risoluzione con 2X AI upscaling. Enhance iPhone photos and Apple device immagini. Prova gratis.",
@@ -1264,7 +1264,7 @@
         "upscaler foto iPhone"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "HEIC",
       "scaleFactor": "2X",
       "formatDescription": "HEIC is Apple's modern immagine permat offering excellent compression. Our AI upscaler works perfettoly con HEIC mentre preserving qualità.",
@@ -1341,11 +1341,11 @@
           "answer": "Yes! 2X upscaling is ideale per iPhone photos, providing percettibile improvement mentre mantenendo natural appearance and managing dimensione del file efficiently."
         }
       ],
-      "relatedFormats": ["upscale-heic-immagini", "upscale-jpeg-images"],
-      "relatedScales": ["ai-upscaler-2x", "heic-upscale-4x"]
+      "relatedFormats": ["upscale-heic-immagini", "aumenta-immagini-jpeg"],
+      "relatedScales": ["aumento-ia-2x", "aumento-heic-4x"]
     },
     {
-      "slug": "heic-upscale-4x",
+      "slug": "aumento-heic-4x",
       "title": "Upscale HEIC 4X",
       "metaTitle": "Upscale HEIC 4X - Miglioramento HEIC Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple HEIC immagine risoluzione con 4X AI upscaling. Enhance iPhone photos to print qualità. Prova gratis.",
@@ -1359,7 +1359,7 @@
         "iphone photo upscaler"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "HEIC",
       "scaleFactor": "4X",
       "formatDescription": "HEIC permat receives dramatic qualità improvement con 4X ridimensionamento mentre mantenendo its excellent compression.",
@@ -1437,10 +1437,10 @@
         }
       ],
       "relatedFormats": ["upscale-heic-immagini", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "heic-upscale-2x", "heic-upscale-8x"]
+      "relatedScales": ["aumento-ia-4x", "aumento-heic-2x", "aumento-heic-8x"]
     },
     {
-      "slug": "heic-upscale-8x",
+      "slug": "aumento-heic-8x",
       "title": "Upscale HEIC 8X",
       "metaTitle": "Upscale HEIC 8X - Miglioramento Massimo Risoluzione HEIC | MyImageUpscaler",
       "metaDescription": "Upscale HEIC immagini by 8x con AI. Maximum risoluzione miglioramento per iPhone photos. Prova gratis.",
@@ -1454,7 +1454,7 @@
         "estremo heic upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "HEIC",
       "scaleFactor": "8X",
       "formatDescription": "HEIC permat achieves massimo qualità miglioramento con 8X ridimensionamento per specializzato applicazioni.",
@@ -1526,10 +1526,10 @@
         }
       ],
       "relatedFormats": ["upscale-heic-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["ai-upscaler-8x", "heic-upscale-4x", "heic-upscale-16x"]
+      "relatedScales": ["ai-upscaler-8x", "aumento-heic-4x", "heic-upscale-16x"]
     },
     {
-      "slug": "raw-upscale-2x",
+      "slug": "aumento-raw-2x",
       "title": "Upscale RAW 2X",
       "metaTitle": "Upscale RAW 2X - Raddoppia Risoluzione RAW | MyImageUpscaler",
       "metaDescription": "Double RAW immagine risoluzione con 2X AI upscaling. Perfect per professionale RAW photos da DSLR/mirrorless cameras. Prova gratis.",
@@ -1543,7 +1543,7 @@
         "upscaler RAW DSLR"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "RAW",
       "scaleFactor": "2X",
       "formatDescription": "RAW permat da professionale cameras contains massimo immagine data. Our AI upscaler preserves this qualità during 2X miglioramento.",
@@ -1616,11 +1616,11 @@
           "answer": "Always upscale RAW files first, then convert to other permats. This preserves massimo immagine data per the AI to work con."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-immagini"],
-      "relatedScales": ["ai-upscaler-2x", "raw-upscale-4x"]
+      "relatedFormats": ["aumenta-immagini-raw", "upscale-tiff-immagini"],
+      "relatedScales": ["aumento-ia-2x", "aumento-raw-4x"]
     },
     {
-      "slug": "raw-upscale-4x",
+      "slug": "aumento-raw-4x",
       "title": "Upscale RAW 4X",
       "metaTitle": "Upscale RAW 4X - Miglioramento RAW Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple RAW immagine risoluzione con 4X AI upscaling. Qualità massima miglioramento per professionale RAW photos. Prova gratis.",
@@ -1634,7 +1634,7 @@
         "enhancer DSLR RAW"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "RAW",
       "scaleFactor": "4X",
       "formatDescription": "RAW permat achieves massimo qualità miglioramento con 4X ridimensionamento, utilizing complete immagine data da professionale cameras.",
@@ -1707,11 +1707,11 @@
           "answer": "Absolutely! 4X upscaled RAW photos are ideale per large permat printing, gallery exhibitions, and commercial applicazioni."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "raw-upscale-2x", "raw-upscale-8x"]
+      "relatedFormats": ["aumenta-immagini-raw", "upscale-tiff-immagini"],
+      "relatedScales": ["aumento-ia-4x", "aumento-raw-2x", "aumento-raw-8x"]
     },
     {
-      "slug": "raw-upscale-8x",
+      "slug": "aumento-raw-8x",
       "title": "Upscale RAW 8X",
       "metaTitle": "Upscale RAW 8X - Miglioramento Massimo Risoluzione RAW | MyImageUpscaler",
       "metaDescription": "Upscale RAW immagini by 8x con AI. Maximum risoluzione miglioramento per professionale RAW photos. Prova gratis.",
@@ -1725,7 +1725,7 @@
         "estremo raw upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "RAW",
       "scaleFactor": "8X",
       "formatDescription": "RAW permat achieves massimo qualità miglioramento con 8X ridimensionamento, pushing the boundaries of professionale photography.",
@@ -1798,11 +1798,11 @@
           "answer": "Absolutely! 8X upscaled RAW photos are ideale per the most demanding printing applicazioni, da fine art to commercial advertising."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-immagini"],
-      "relatedScales": ["upscale-8x", "raw-upscale-4x", "raw-upscale-16x"]
+      "relatedFormats": ["aumenta-immagini-raw", "upscale-tiff-immagini"],
+      "relatedScales": ["aumento-8x", "aumento-raw-4x", "aumento-raw-16x"]
     },
     {
-      "slug": "raw-upscale-16x",
+      "slug": "aumento-raw-16x",
       "title": "Upscale RAW 16X",
       "metaTitle": "Upscale RAW 16X - Miglioramento Estremo Risoluzione RAW | MyImageUpscaler",
       "metaDescription": "Upscale RAW immagini by 16x con AI. Extreme risoluzione miglioramento per specializzato professionale applicazioni. Prova gratis.",
@@ -1816,7 +1816,7 @@
         "massimo raw risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "scaleFactor": "16X",
       "format": "RAW",
       "formatDescription": "RAW permat at estremo limits con 16X ridimensionamento per specializzato applicazioni requiring absolute massimo risoluzione.",
@@ -1889,11 +1889,11 @@
           "answer": "No. 16X RAW upscaling is per specializzato applicazioni only. Most photographers will find 2X, 4X, or 8X sufficient."
         }
       ],
-      "relatedFormats": ["upscale-raw-images", "upscale-tiff-immagini"],
-      "relatedScales": ["upscale-16x", "raw-upscale-8x"]
+      "relatedFormats": ["aumenta-immagini-raw", "upscale-tiff-immagini"],
+      "relatedScales": ["aumento-16x", "aumento-raw-8x"]
     },
     {
-      "slug": "heic-upscale-16x",
+      "slug": "aumento-heic-16x",
       "title": "Upscale HEIC 16X",
       "metaTitle": "Upscale HEIC 16X - Miglioramento Estremo Risoluzione HEIC | MyImageUpscaler",
       "metaDescription": "Upscale HEIC immagini by 16x con AI. Extreme risoluzione miglioramento per specializzato iPhone photo applicazioni. Prova gratis.",
@@ -1907,7 +1907,7 @@
         "massimo heic risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "HEIC",
       "scaleFactor": "16X",
       "formatDescription": "HEIC permat at estremo limits con 16X ridimensionamento per specializzato applicazioni requiring absolute massimo risoluzione.",
@@ -1976,10 +1976,10 @@
         }
       ],
       "relatedFormats": ["upscale-heic-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["upscale-16x", "heic-upscale-8x"]
+      "relatedScales": ["aumento-16x", "aumento-heic-8x"]
     },
     {
-      "slug": "tiff-upscale-2x",
+      "slug": "aumento-tiff-2x",
       "title": "Upscale TIFF 2X",
       "metaTitle": "Upscale TIFF 2X - Raddoppia Risoluzione TIFF | MyImageUpscaler",
       "metaDescription": "Double TIFF immagine risoluzione con 2X AI upscaling mentre mantenendo lossless qualità. Perfect per professionale print workflows. Prova gratis.",
@@ -1993,7 +1993,7 @@
         "lossless immagine upscaler"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "TIFF",
       "scaleFactor": "2X",
       "formatDescription": "TIFF is the industry standard per professionale imaging and print workflows. Our AI upscaler mantiene lossless qualità during 2X ridimensionamento.",
@@ -2080,10 +2080,10 @@
         }
       ],
       "relatedFormats": ["upscale-tiff-immagini", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-2x", "tiff-upscale-4x"]
+      "relatedScales": ["aumento-ia-2x", "aumento-tiff-4x"]
     },
     {
-      "slug": "tiff-upscale-4x",
+      "slug": "aumento-tiff-4x",
       "title": "Upscale TIFF 4X",
       "metaTitle": "Upscale TIFF 4X - Miglioramento TIFF Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple TIFF immagine risoluzione con 4X AI upscaling mentre mantenendo lossless qualità. Perfect per large permat printing. Prova gratis.",
@@ -2097,7 +2097,7 @@
         "high-risoluzione tiff upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "scaleFactor": "4X",
       "format": "TIFF",
       "formatDescription": "TIFF permat achieves massimo qualità con 4X ridimensionamento mentre mantenendo lossless characteristics per professionale applicazioni.",
@@ -2183,11 +2183,11 @@
           "answer": "Absolutely! 4X upscaled TIFFs are perfetto per gallery exhibitions and fine art printing."
         }
       ],
-      "relatedFormats": ["upscale-tiff-immagini", "upscale-raw-images"],
-      "relatedScales": ["ai-upscaler-4x", "tiff-upscale-2x", "tiff-upscale-8x"]
+      "relatedFormats": ["upscale-tiff-immagini", "aumenta-immagini-raw"],
+      "relatedScales": ["aumento-ia-4x", "aumento-tiff-2x", "aumento-tiff-8x"]
     },
     {
-      "slug": "tiff-upscale-8x",
+      "slug": "aumento-tiff-8x",
       "title": "Upscale TIFF 8X",
       "metaTitle": "Upscale TIFF 8X - Miglioramento Massimo Risoluzione TIFF | MyImageUpscaler",
       "metaDescription": "Upscale TIFF immagini by 8x con AI mentre mantenendo lossless qualità. Maximum risoluzione per professionale printing. Prova gratis.",
@@ -2201,7 +2201,7 @@
         "estremo tiff upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "TIFF",
       "scaleFactor": "8X",
       "formatDescription": "TIFF permat pushed to massimo qualità con 8X ridimensionamento mentre mantenendo lossless characteristics per demanding professionale applicazioni.",
@@ -2274,11 +2274,11 @@
           "answer": "Yes! Our AI mantiene perfetto lossless qualità even at 8X magnification, making it ideale per the most demanding applicazioni."
         }
       ],
-      "relatedFormats": ["upscale-tiff-immagini", "upscale-raw-images"],
-      "relatedScales": ["upscale-8x", "tiff-upscale-4x", "tiff-upscale-16x"]
+      "relatedFormats": ["upscale-tiff-immagini", "aumenta-immagini-raw"],
+      "relatedScales": ["aumento-8x", "aumento-tiff-4x", "aumento-tiff-16x"]
     },
     {
-      "slug": "tiff-upscale-16x",
+      "slug": "aumento-tiff-16x",
       "title": "Upscale TIFF 16X",
       "metaTitle": "TIFF Upscale 16X - Miglioramento Estremo Risoluzione TIFF | MyImageUpscaler",
       "metaDescription": "Upscale TIFF immagini by 16x con AI. Extreme risoluzione miglioramento mentre mantenendo lossless qualità. Specialized applicazioni. Prova gratis.",
@@ -2292,7 +2292,7 @@
         "massimo tiff risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "TIFF",
       "scaleFactor": "16X",
       "formatDescription": "TIFF permat at estremo limits con 16X ridimensionamento per specializzato applicazioni requiring absolute massimo risoluzione con lossless qualità.",
@@ -2360,11 +2360,11 @@
           "answer": "No. 16X TIFF upscaling is per specializzato applicazioni only. Most users will find 2X, 4X, or 8X sufficient."
         }
       ],
-      "relatedFormats": ["upscale-tiff-immagini", "upscale-raw-images"],
-      "relatedScales": ["upscale-16x", "tiff-upscale-8x"]
+      "relatedFormats": ["upscale-tiff-immagini", "aumenta-immagini-raw"],
+      "relatedScales": ["aumento-16x", "aumento-tiff-8x"]
     },
     {
-      "slug": "bmp-upscale-2x",
+      "slug": "aumento-bmp-2x",
       "title": "Upscale BMP 2X",
       "metaTitle": "Upscale BMP 2X - Raddoppia Risoluzione BMP | MyImageUpscaler",
       "metaDescription": "Double BMP immagine risoluzione con 2X AI upscaling. Enhance Windows bitmap immagini efficiently. Prova gratis.",
@@ -2378,7 +2378,7 @@
         "bitmap immagine upscaler"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "BMP",
       "scaleFactor": "2X",
       "formatDescription": "BMP is the Windows bitmap permat supporting uncompressed immagini. Our AI upscaler enhances BMP qualità during 2X ridimensionamento.",
@@ -2452,10 +2452,10 @@
         }
       ],
       "relatedFormats": ["upscale-bmp-immagini", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-2x", "bmp-upscale-4x"]
+      "relatedScales": ["aumento-ia-2x", "aumento-bmp-4x"]
     },
     {
-      "slug": "bmp-upscale-4x",
+      "slug": "aumento-bmp-4x",
       "title": "Upscale BMP 4X",
       "metaTitle": "Upscale BMP 4X - Miglioramento BMP Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple BMP immagine risoluzione con 4X AI upscaling. High-qualità miglioramento per Windows bitmap immagini. Prova gratis.",
@@ -2469,7 +2469,7 @@
         "high-risoluzione bmp upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "BMP",
       "scaleFactor": "4X",
       "formatDescription": "BMP permat receives significativo qualità improvement con 4X ridimensionamento.",
@@ -2543,10 +2543,10 @@
         }
       ],
       "relatedFormats": ["upscale-bmp-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "bmp-upscale-2x", "bmp-upscale-8x"]
+      "relatedScales": ["aumento-ia-4x", "aumento-bmp-2x", "aumento-bmp-8x"]
     },
     {
-      "slug": "bmp-upscale-8x",
+      "slug": "aumento-bmp-8x",
       "title": "Upscale BMP 8X",
       "metaTitle": "Upscale BMP 8X - Miglioramento Massimo Risoluzione BMP | MyImageUpscaler",
       "metaDescription": "Upscale BMP immagini by 8x con AI. Maximum risoluzione miglioramento per Windows bitmap immagini. Prova gratis.",
@@ -2560,7 +2560,7 @@
         "estremo bmp upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "BMP",
       "scaleFactor": "8X",
       "formatDescription": "BMP permat achieves massimo qualità miglioramento con 8X ridimensionamento.",
@@ -2625,10 +2625,10 @@
         }
       ],
       "relatedFormats": ["upscale-bmp-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["upscale-8x", "bmp-upscale-4x", "bmp-upscale-16x"]
+      "relatedScales": ["aumento-8x", "aumento-bmp-4x", "aumento-bmp-16x"]
     },
     {
-      "slug": "bmp-upscale-16x",
+      "slug": "aumento-bmp-16x",
       "title": "Upscale BMP 16X",
       "metaTitle": "Upscale BMP 16X - Miglioramento Estremo Risoluzione BMP | MyImageUpscaler",
       "metaDescription": "Upscale BMP immagini by 16x con AI. Extreme risoluzione miglioramento per specializzato applicazioni. Prova gratis.",
@@ -2642,7 +2642,7 @@
         "massimo bmp risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "BMP",
       "scaleFactor": "16X",
       "formatDescription": "BMP permat at estremo limits con 16X ridimensionamento per specializzato applicazioni.",
@@ -2693,10 +2693,10 @@
         }
       ],
       "relatedFormats": ["upscale-bmp-immagini", "upscale-tiff-immagini"],
-      "relatedScales": ["upscale-16x", "bmp-upscale-8x"]
+      "relatedScales": ["aumento-16x", "aumento-bmp-8x"]
     },
     {
-      "slug": "avif-upscale-2x",
+      "slug": "aumento-avif-2x",
       "title": "Upscale AVIF 2X",
       "metaTitle": "Upscale AVIF 2X - Raddoppia Risoluzione AVIF | MyImageUpscaler",
       "metaDescription": "Double AVIF immagine risoluzione con 2X AI upscaling. Next-generation permat con superior compression. Prova gratis.",
@@ -2710,7 +2710,7 @@
         "avif immagine doubler"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "AVIF",
       "scaleFactor": "2X",
       "formatDescription": "AVIF is the next-generation immagine permat offering superior compression and qualità. Our AI upscaler works excellently con AVIF permat.",
@@ -2784,10 +2784,10 @@
         }
       ],
       "relatedFormats": ["upscale-avif-immagini", "upscale-webp-immagini"],
-      "relatedScales": ["ai-upscaler-2x", "avif-upscale-4x"]
+      "relatedScales": ["aumento-ia-2x", "aumento-avif-4x"]
     },
     {
-      "slug": "avif-upscale-4x",
+      "slug": "aumento-avif-4x",
       "title": "Upscale AVIF 4X",
       "metaTitle": "Upscale AVIF 4X - Miglioramento AVIF Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple AVIF immagine risoluzione con 4X AI upscaling. Next-generation permat per premium web experiences. Prova gratis.",
@@ -2801,7 +2801,7 @@
         "high-risoluzione avif upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "AVIF",
       "scaleFactor": "4X",
       "formatDescription": "AVIF permat receives dramatic qualità improvement con 4X ridimensionamento mentre mantenendo superior compression characteristics.",
@@ -2875,10 +2875,10 @@
         }
       ],
       "relatedFormats": ["upscale-avif-immagini", "upscale-webp-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "avif-upscale-2x", "avif-upscale-8x"]
+      "relatedScales": ["aumento-ia-4x", "aumento-avif-2x", "aumento-avif-8x"]
     },
     {
-      "slug": "avif-upscale-8x",
+      "slug": "aumento-avif-8x",
       "title": "Upscale AVIF 8X",
       "metaTitle": "Upscale AVIF 8X - Miglioramento Massimo Risoluzione AVIF | MyImageUpscaler",
       "metaDescription": "Upscale AVIF immagini by 8x con AI. Maximum risoluzione per next-generation permat. Prova gratis.",
@@ -2892,7 +2892,7 @@
         "estremo avif upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "AVIF",
       "scaleFactor": "8X",
       "formatDescription": "AVIF permat achieves massimo qualità miglioramento con 8X ridimensionamento mentre mantenendo superior compression.",
@@ -2953,10 +2953,10 @@
         }
       ],
       "relatedFormats": ["upscale-avif-immagini", "upscale-webp-immagini"],
-      "relatedScales": ["upscale-8x", "avif-upscale-4x", "avif-upscale-16x"]
+      "relatedScales": ["aumento-8x", "aumento-avif-4x", "aumento-avif-16x"]
     },
     {
-      "slug": "avif-upscale-16x",
+      "slug": "aumento-avif-16x",
       "title": "Upscale AVIF 16X",
       "metaTitle": "Upscale AVIF 16X - Miglioramento Estremo Risoluzione AVIF | MyImageUpscaler",
       "metaDescription": "Upscale AVIF immagini by 16x con AI. Extreme risoluzione per next-generation permat. Specialized applicazioni. Prova gratis.",
@@ -2970,7 +2970,7 @@
         "massimo avif risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "AVIF",
       "scaleFactor": "16X",
       "formatDescription": "AVIF permat at estremo limits con 16X ridimensionamento per specializzato applicazioni.",
@@ -3016,10 +3016,10 @@
         }
       ],
       "relatedFormats": ["upscale-avif-immagini", "upscale-webp-immagini"],
-      "relatedScales": ["upscale-16x", "avif-upscale-8x"]
+      "relatedScales": ["aumento-16x", "aumento-avif-8x"]
     },
     {
-      "slug": "gif-upscale-2x",
+      "slug": "aumento-gif-2x",
       "title": "Upscale GIF 2X",
       "metaTitle": "Upscale GIF 2X - Raddoppia Risoluzione GIF | MyImageUpscaler",
       "metaDescription": "Double GIF immagine risoluzione con 2X AI upscaling. Enhance graphics and simple immagini efficiently. Prova gratis.",
@@ -3033,7 +3033,7 @@
         "graphics immagine upscaler"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "GIF",
       "scaleFactor": "2X",
       "formatDescription": "GIF is ideale per simple graphics and immagini con limited colors. Our AI upscaler enhances GIF qualità during 2X ridimensionamento.",
@@ -3107,10 +3107,10 @@
         }
       ],
       "relatedFormats": ["upscale-gif-immagini", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-2x", "gif-upscale-4x"]
+      "relatedScales": ["aumento-ia-2x", "aumento-gif-4x"]
     },
     {
-      "slug": "gif-upscale-4x",
+      "slug": "aumento-gif-4x",
       "title": "Upscale GIF 4X",
       "metaTitle": "Upscale GIF 4X - Miglioramento GIF Alta Risoluzione | MyImageUpscaler",
       "metaDescription": "Quadruple GIF immagine risoluzione con 4X AI upscaling. High-qualità miglioramento per graphics and logos. Prova gratis.",
@@ -3124,7 +3124,7 @@
         "high-risoluzione gif upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "GIF",
       "scaleFactor": "4X",
       "formatDescription": "GIF permat receives significativo qualità improvement con 4X ridimensionamento per graphics applicazioni.",
@@ -3198,10 +3198,10 @@
         }
       ],
       "relatedFormats": ["upscale-gif-immagini", "upscale-png-immagini"],
-      "relatedScales": ["ai-upscaler-4x", "gif-upscale-2x", "gif-upscale-8x"]
+      "relatedScales": ["aumento-ia-4x", "aumento-gif-2x", "aumento-gif-8x"]
     },
     {
-      "slug": "gif-upscale-8x",
+      "slug": "aumento-gif-8x",
       "title": "Upscale GIF 8X",
       "metaTitle": "Upscale GIF 8X - Miglioramento Massimo Risoluzione GIF | MyImageUpscaler",
       "metaDescription": "Upscale GIF immagini by 8x con AI. Maximum risoluzione miglioramento per graphics and logos. Prova gratis.",
@@ -3215,7 +3215,7 @@
         "estremo gif upscaling"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "GIF",
       "scaleFactor": "8X",
       "formatDescription": "GIF permat achieves massimo qualità miglioramento con 8X ridimensionamento per graphics applicazioni.",
@@ -3275,10 +3275,10 @@
         }
       ],
       "relatedFormats": ["upscale-gif-immagini", "upscale-png-immagini"],
-      "relatedScales": ["upscale-8x", "gif-upscale-4x", "gif-upscale-16x"]
+      "relatedScales": ["aumento-8x", "aumento-gif-4x", "aumento-gif-16x"]
     },
     {
-      "slug": "gif-upscale-16x",
+      "slug": "aumento-gif-16x",
       "title": "Upscale GIF 16X",
       "metaTitle": "Upscale GIF 16X - Miglioramento Estremo Risoluzione GIF | MyImageUpscaler",
       "metaDescription": "Upscale GIF immagini by 16x con AI. Extreme risoluzione miglioramento per specializzato applicazioni. Prova gratis.",
@@ -3292,7 +3292,7 @@
         "massimo gif risoluzione"
       ],
       "lastUpdated": "2026-01-06",
-      "category": "format-scale",
+      "category": "formato-dimensione",
       "format": "GIF",
       "scaleFactor": "16X",
       "formatDescription": "GIF permat at estremo limits con 16X ridimensionamento per specializzato applicazioni.",
@@ -3343,7 +3343,7 @@
         }
       ],
       "relatedFormats": ["upscale-gif-immagini", "upscale-png-immagini"],
-      "relatedScales": ["upscale-16x", "gif-upscale-8x"]
+      "relatedScales": ["aumento-16x", "aumento-gif-8x"]
     }
   ]
 }

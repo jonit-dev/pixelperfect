@@ -39,6 +39,10 @@ import type {
   IFormatScalePage,
   IPlatformFormatPage,
   IDeviceUseCasePage,
+  IPhotoRestorationPage,
+  ICameraRawPage,
+  IIndustryInsightPage,
+  IDeviceOptimizationPage,
   PSEOPage,
   IPSEODataFile,
 } from './pseo-types';
@@ -490,6 +494,166 @@ export const getAllDeviceUse = cache(async (): Promise<IDeviceUseCasePage[]> => 
   }));
 });
 
+// Photo Restoration Pages
+export const getAllPhotoRestorationSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const data = await import('@/app/seo/data/photo-restoration.json');
+    return (data as unknown as IPSEODataFile<IPhotoRestorationPage>).pages.map(page => page.slug);
+  } catch {
+    return [];
+  }
+});
+
+export const getPhotoRestorationData = cache(async (slug: string): Promise<IPhotoRestorationPage | null> => {
+  try {
+    const data = await import('@/app/seo/data/photo-restoration.json');
+    const photoRestorationData = data as unknown as IPSEODataFile<IPhotoRestorationPage>;
+    return photoRestorationData.pages.find(page => page.slug === slug) || null;
+  } catch {
+    return null;
+  }
+});
+
+export const getAllPhotoRestorationPages = cache(async (): Promise<IPhotoRestorationPage[]> => {
+  try {
+    const data = await import('@/app/seo/data/photo-restoration.json');
+    return (data as unknown as IPSEODataFile<IPhotoRestorationPage>).pages.map(page => ({
+      ...page,
+      category: 'photo-restoration' as const,
+    }));
+  } catch {
+    return [];
+  }
+});
+
+// Camera RAW Pages
+export const getAllCameraRawSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const data = await import('@/app/seo/data/camera-raw.json');
+    return (data as unknown as IPSEODataFile<ICameraRawPage>).pages.map(page => page.slug);
+  } catch {
+    return [];
+  }
+});
+
+export const getCameraRawData = cache(async (slug: string): Promise<ICameraRawPage | null> => {
+  try {
+    const data = await import('@/app/seo/data/camera-raw.json');
+    const cameraRawData = data as unknown as IPSEODataFile<ICameraRawPage>;
+    return cameraRawData.pages.find(page => page.slug === slug) || null;
+  } catch {
+    return null;
+  }
+});
+
+export const getAllCameraRawPages = cache(async (): Promise<ICameraRawPage[]> => {
+  try {
+    const data = await import('@/app/seo/data/camera-raw.json');
+    return (data as unknown as IPSEODataFile<ICameraRawPage>).pages.map(page => ({
+      ...page,
+      category: 'camera-raw' as const,
+    }));
+  } catch {
+    return [];
+  }
+});
+
+// Industry Insights Pages
+export const getAllIndustryInsightsSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const data = await import('@/app/seo/data/industry-insights.json');
+    return (data as unknown as IPSEODataFile<IIndustryInsightPage>).pages.map(page => page.slug);
+  } catch {
+    return [];
+  }
+});
+
+export const getIndustryInsightsData = cache(async (slug: string): Promise<IIndustryInsightPage | null> => {
+  try {
+    const data = await import('@/app/seo/data/industry-insights.json');
+    const industryInsightsData = data as unknown as IPSEODataFile<IIndustryInsightPage>;
+    return industryInsightsData.pages.find(page => page.slug === slug) || null;
+  } catch {
+    return null;
+  }
+});
+
+export const getAllIndustryInsightsPages = cache(async (): Promise<IIndustryInsightPage[]> => {
+  try {
+    const data = await import('@/app/seo/data/industry-insights.json');
+    return (data as unknown as IPSEODataFile<IIndustryInsightPage>).pages.map(page => ({
+      ...page,
+      category: 'industry-insights' as const,
+    }));
+  } catch {
+    return [];
+  }
+});
+
+// Device Optimization Pages
+export const getAllDeviceOptimizationSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const data = await import('@/app/seo/data/device-optimization.json');
+    return (data as unknown as IPSEODataFile<IDeviceOptimizationPage>).pages.map(page => page.slug);
+  } catch {
+    return [];
+  }
+});
+
+export const getDeviceOptimizationData = cache(async (slug: string): Promise<IDeviceOptimizationPage | null> => {
+  try {
+    const data = await import('@/app/seo/data/device-optimization.json');
+    const deviceOptimizationData = data as unknown as IPSEODataFile<IDeviceOptimizationPage>;
+    return deviceOptimizationData.pages.find(page => page.slug === slug) || null;
+  } catch {
+    return null;
+  }
+});
+
+export const getAllDeviceOptimizationPages = cache(async (): Promise<IDeviceOptimizationPage[]> => {
+  try {
+    const data = await import('@/app/seo/data/device-optimization.json');
+    return (data as unknown as IPSEODataFile<IDeviceOptimizationPage>).pages.map(page => ({
+      ...page,
+      category: 'device-optimization' as const,
+    }));
+  } catch {
+    return [];
+  }
+});
+
+// Bulk Tools Pages
+export const getAllBulkToolsSlugs = cache(async (): Promise<string[]> => {
+  try {
+    const data = await import('@/app/seo/data/bulk-tools.json');
+    return (data as unknown as IPSEODataFile<IBulkToolPage>).pages.map(page => page.slug);
+  } catch {
+    return [];
+  }
+});
+
+export const getBulkToolsData = cache(async (slug: string): Promise<IBulkToolPage | null> => {
+  try {
+    const data = await import('@/app/seo/data/bulk-tools.json');
+    const bulkToolsData = data as unknown as IPSEODataFile<IBulkToolPage>;
+    return bulkToolsData.pages.find(page => page.slug === slug) || null;
+  } catch {
+    return null;
+  }
+});
+
+export const getAllBulkToolsPages = cache(async (): Promise<IBulkToolPage[]> => {
+  try {
+    const data = await import('@/app/seo/data/bulk-tools.json');
+    return (data as unknown as IPSEODataFile<IBulkToolPage>).pages.map(page => ({
+      ...page,
+      category: 'bulk-tools' as const,
+    }));
+  } catch {
+    return [];
+  }
+});
+
 // Aggregate function for sitemap
 export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
   const [
@@ -507,6 +671,11 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     formatScalePages,
     platformFormatPages,
     deviceUsePages,
+    photoRestorationPages,
+    cameraRawPages,
+    industryInsightsPages,
+    deviceOptimizationPages,
+    bulkToolsPages,
   ] = await Promise.all([
     getAllTools(),
     getAllFormats(),
@@ -522,6 +691,11 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     getAllFormatScale(),
     getAllPlatformFormat(),
     getAllDeviceUse(),
+    getAllPhotoRestorationPages(),
+    getAllCameraRawPages(),
+    getAllIndustryInsightsPages(),
+    getAllDeviceOptimizationPages(),
+    getAllBulkToolsPages(),
   ]);
 
   return [
@@ -539,6 +713,11 @@ export const getAllPSEOPages = cache(async (): Promise<PSEOPage[]> => {
     ...formatScalePages,
     ...platformFormatPages,
     ...deviceUsePages,
+    ...photoRestorationPages,
+    ...cameraRawPages,
+    ...industryInsightsPages,
+    ...deviceOptimizationPages,
+    ...bulkToolsPages,
   ];
 });
 

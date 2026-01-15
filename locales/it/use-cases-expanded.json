@@ -336,7 +336,12 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "migliora Medical & Scientific Images",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "outputFormats": [
+        null,
+        null,
+        "PNG (web)"
+      ]
     },
     {
       "slug": "architettura-costruzione",
@@ -446,7 +451,12 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "migliora Architecture & Construction Photos",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "outputFormats": [
+        null,
+        null,
+        "PNG (web)"
+      ]
     },
     {
       "slug": "flussi-di-lavoro-stampa-editoria",
@@ -555,7 +565,12 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "ottimizza Images for Print Publishing",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "outputFormats": [
+        "TIFF (CMYK)",
+        null,
+        "JPEG (RGB)"
+      ]
     },
     {
       "slug": "creazione-contenuiti-social-media",
@@ -793,7 +808,8 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "ottimizza Your Website Images",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "optimizationTargets": ["Core Web Vitals"]
     },
     {
       "slug": "materiali-marketing-digitale",
@@ -1052,7 +1068,12 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Ripristina le Tue Foto Preziose",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "outputFormats": [
+        null,
+        null,
+        "PNG (web)"
+      ]
     },
     {
       "slug": "ai-generated-ottimizzazione",

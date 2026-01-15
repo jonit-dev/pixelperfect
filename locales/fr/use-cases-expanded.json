@@ -550,7 +550,8 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Optimize Images for Impression Publishing",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "printStandards": ["ISO 12647", "GRACoL", "SWOP", "FOGRA"]
     },
     {
       "slug": "creation-contenus-reseaux-sociaux",
@@ -791,7 +792,8 @@
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Optimisez vos images de site web",
       "ctaUrl": "/?signup=1",
-      "outputFormats": ["WebP/AVIF moderne", "JPEG/PNG repli", "srcset responsive"]
+      "outputFormats": ["WebP/AVIF moderne", "JPEG/PNG repli", "srcset responsive"],
+      "optimizationTargets": ["Core Web Vitals"]
     },
     {
       "slug": "supports-marketing-numerique",
@@ -909,7 +911,8 @@
       ],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Améliorez vos supports marketing",
-      "ctaUrl": "/?signup=1"
+      "ctaUrl": "/?signup=1",
+      "marketingChannels": ["Google Ads", "Facebook Ads", "LinkedIn Ads", "Email Marketing"]
     },
     {
       "slug": "restoration-preservation",
