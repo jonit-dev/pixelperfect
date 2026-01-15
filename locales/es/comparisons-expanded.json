@@ -272,11 +272,7 @@
               "Dependencia de internet",
               "Disponibilidad de características ligada al nivel de suscripción"
             ],
-            "uniqueFeatures": [
-              "Integración API",
-              "Colaboración en equipo",
-              "Actualizaciones automáticas"
-            ]
+            "uniqueFeatures": ["Integración API", "Colaboración en equipo", "Actualizaciones automáticas"]
           },
           "desktop": {
             "pros": [
@@ -330,11 +326,7 @@
           {
             "condition": "La privacidad es crítica",
             "path": "Solución de escritorio",
-            "recommendations": [
-              "Topaz Gigapixel",
-              "Súper Resolución de Adobe",
-              "Instalaciones personalizadas"
-            ]
+            "recommendations": ["Topaz Gigapixel", "Súper Resolución de Adobe", "Instalaciones personalizadas"]
           },
           {
             "condition": "Necesidad de colaboración/uso en equipo",
@@ -466,11 +458,7 @@
             "✓ Acceso a API",
             "✓ Procesamiento por lotes"
           ],
-          "limitations": [
-            "✗ Sistema de créditos",
-            "✗ Caros para alto volumen",
-            "✗ Requiere internet"
-          ],
+          "limitations": ["✗ Sistema de créditos", "✗ Caros para alto volumen", "✗ Requiere internet"],
           "bestFor": "Usuarios empresariales, integración con API",
           "upgradePath": "Niveles superiores para más créditos"
         },
@@ -501,11 +489,7 @@
             "✓ Controles avanzados",
             "✓ Flujo de trabajo no destructivo"
           ],
-          "limitations": [
-            "✗ Suscripción cara",
-            "✗ Requiere ecosistema Adobe",
-            "✗ Interfaz compleja"
-          ],
+          "limitations": ["✗ Suscripción cara", "✗ Requiere ecosistema Adobe", "✗ Interfaz compleja"],
           "bestFor": "Profesionales creativos, usuarios de Adobe",
           "upgradePath": "Creative Cloud completo por $52.99/mes"
         }
@@ -749,10 +733,7 @@
                 "Bueno con entradas ruidosas",
                 "Más estable que ESRGAN"
               ],
-              "weaknesses": [
-                "Mejora menos agresiva",
-                "Puede tener dificultades con fuentes limpias"
-              ],
+              "weaknesses": ["Mejora menos agresiva", "Puede tener dificultades con fuentes limpias"],
               "performance": {
                 "psnr": "28,2 dB (2x)",
                 "ssim": "0,86",
@@ -788,11 +769,7 @@
                 "mos": "4,5/5,0",
                 "processingTime": "8,2s (GPU)"
               },
-              "bestUseCases": [
-                "Fotografía profesional",
-                "Restauración de archivos",
-                "Aplicaciones críticas"
-              ]
+              "bestUseCases": ["Fotografía profesional", "Restauración de archivos", "Aplicaciones críticas"]
             },
             {
               "name": "HAT (Transformador de Atención Híbrida)",
@@ -825,11 +802,7 @@
             {
               "name": "Modelos específicos para rostros (GFPGAN, CodeFormer)",
               "focus": "Mejora de rostros humanos",
-              "strengths": [
-                "Preserva los rasgos faciales",
-                "Mejora de aspecto natural",
-                "Reduce artefactos"
-              ],
+              "strengths": ["Preserva los rasgos faciales", "Mejora de aspecto natural", "Reduce artefactos"],
               "bestFor": ["Retratos fotográficos", "Videoconferencias", "Redes sociales"]
             },
             {
@@ -1003,11 +976,7 @@
             "Consideraciones de privacidad de datos",
             "Limitación de tasa"
           ],
-          "bestFor": [
-            "Aplicaciones web",
-            "Plataformas de comercio electrónico",
-            "Integración SaaS"
-          ],
+          "bestFor": ["Aplicaciones web", "Plataformas de comercio electrónico", "Integración SaaS"],
           "setupComplexity": "Medio",
           "costPerImage": "$0,05-0,50",
           "throughput": "1000-10000 imágenes/hora"
@@ -1028,11 +997,7 @@
             "Desafíos de integración",
             "Costo inicial más alto"
           ],
-          "bestFor": [
-            "Grandes empresas",
-            "Datos de sensibilidad mixta",
-            "Cargas de trabajo variables"
-          ],
+          "bestFor": ["Grandes empresas", "Datos de sensibilidad mixta", "Cargas de trabajo variables"],
           "setupComplexity": "Alto",
           "costPerImage": "$0,02-0,30",
           "throughput": "500-5000 imágenes/hora"
@@ -1125,11 +1090,7 @@
             "name": "Python con PIL/OpenCV",
             "setup": "pip install pillow opencv-python requests",
             "complexity": "Medio",
-            "features": [
-              "Monitoreo de archivos",
-              "Conversión de formato",
-              "Procesamiento por lotes"
-            ],
+            "features": ["Monitoreo de archivos", "Conversión de formato", "Procesamiento por lotes"],
             "codeExample": "```python\nfrom PIL import Image\nimport os\nimport requests\n\ndef batch_upscale(folder_path, api_key):\n    for filename in os.listdir(folder_path):\n        if filename.lower().endswith((.jpg, .png)):\n            # Llamada API aquí\n            pass\n```"
           },
           {
@@ -1463,11 +1424,7 @@
           "characteristics": {
             "processingTime": "0.1-1 segundo por imagen",
             "quality": "Mejora básica solamente",
-            "useCases": [
-              "Video en tiempo real",
-              "Generación de vistas previas",
-              "Prototipado rápido"
-            ],
+            "useCases": ["Video en tiempo real", "Generación de vistas previas", "Prototipado rápido"],
             "hardware": "CPU suficiente",
             "cost": "Mínimo"
           },

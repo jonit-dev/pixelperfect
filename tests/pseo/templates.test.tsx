@@ -27,6 +27,11 @@ vi.mock('lucide-react', () => ({
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   ),
+  ChevronDown: ({ className }: { className?: string }) => (
+    <svg data-testid="chevron-down" className={className}>
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  ),
   Link2: ({ className }: { className?: string }) => (
     <svg data-testid="link-icon" className={className}>
       <circle cx="12" cy="12" r="10" />

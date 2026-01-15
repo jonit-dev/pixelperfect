@@ -2,7 +2,7 @@
   "category": "Fotorestauration",
   "pages": [
     {
-      "slug": "old-photo-restoration-guide",
+      "slug": "alte-foto-wiederherstellung-anleitung",
       "title": "Alte Fotos restaurieren: Vollständiger Leitfaden",
       "metaTitle": "Alte Fotos restaurieren: Vollständiger Leitfaden | MyImageUpscaler",
       "metaDescription": "Vollständiger Leitfaden zur Restaurierung alter Fotos. Lernen Sie beschädigte, verblasste und gerissene Vintage-Fotos mit KI und traditionellen Techniken zu restaurieren. Schritt-für-Schritt-Anleitungen.",
@@ -97,11 +97,7 @@
         {
           "tool": "Neuronale Netzwerk-Restaurierung",
           "description": "Deep-Learning-Modelle trainiert auf Vintage-Foto-Restaurierung",
-          "features": [
-            "Intelligente Rekonstruktion",
-            "Mustererkennung",
-            "Kontextbewusste Reparatur"
-          ]
+          "features": ["Intelligente Rekonstruktion", "Mustererkennung", "Kontextbewusste Reparatur"]
         },
         {
           "tool": "KI-Einfärbung",
@@ -190,7 +186,7 @@
       "relatedPages": ["vintage-foto-einfärbung", "familienfoto-erhaltung"]
     },
     {
-      "slug": "vintage-photo-colorization",
+      "slug": "vintage-foto-kolorisierung",
       "title": "Vintage-Foto-Einfärbungs-Leitfaden",
       "metaTitle": "Vintage-Foto-Einfärbungs-Leitfaden | MyImageUpscaler",
       "metaDescription": "Vollständiger Leitfaden zur Vintage-Foto-Einfärbung. Lernen Sie, realistische Farben zu Schwarz-Weiß-Fotos mit KI-Werkzeugen und manuellen Techniken für authentische Ergebnisse hinzuzufügen.",
@@ -205,12 +201,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "difficulty": "Fortgeschritten",
-      "colorizationMethods": [
-        "KI-Automatisch",
-        "KI-unterstützt manuell",
-        "Rein manuell",
-        "Hybrider Ansatz"
-      ],
+      "colorizationMethods": ["KI-Automatisch", "KI-unterstützt manuell", "Rein manuell", "Hybrider Ansatz"],
       "historicalConsiderations": [
         {
           "consideration": "Periodenfarben recherchieren",
@@ -241,11 +232,7 @@
         {
           "tool": "Deep-Learning-Einfärbung",
           "description": "Neuronale Netze trainiert auf Millionen von Farbbildern",
-          "features": [
-            "Automatische Farberkennung",
-            "Natürliche Farbpaletten",
-            "Historisches Lernen"
-          ],
+          "features": ["Automatische Farberkennung", "Natürliche Farbpaletten", "Historisches Lernen"],
           "bestFor": ["Schnelle Ergebnisse", "Natürliche Szenen", "Allgemeine Einfärbung"]
         },
         {
@@ -377,11 +364,7 @@
         },
         {
           "period": "Frühes 20. Jahrhundert (1900-1920)",
-          "characteristics": [
-            "Beginn der Farbfotografie",
-            "Art nouveau Einflüsse",
-            "Industrielle Farben"
-          ],
+          "characteristics": ["Beginn der Farbfotografie", "Art nouveau Einflüsse", "Industrielle Farben"],
           "commonColors": [
             "Gedämpfte Töne",
             "Aufkommende synthetische Farbstoffe",
@@ -442,7 +425,7 @@
       "relatedPages": ["alter-foto-restaurierung", "historisches-foto-erhaltung"]
     },
     {
-      "slug": "damaged-photo-repair",
+      "slug": "beschaedigte-foto-reparatur",
       "title": "Beschädigte-Foto-Reparatur-Techniken",
       "metaTitle": "Beschädigte-Foto-Reparatur-Techniken | MyImageUpscaler",
       "metaDescription": "Vollständiger Leitfaden zur Reparatur beschädigter Fotos. Lernen Sie gerissene, kratzige, wasserbeschädigte und verblasste Fotos mit professionellen Restaurierungstechniken und KI-Werkzeugen zu reparieren.",
@@ -636,12 +619,7 @@
       "advancedRepairTools": [
         {
           "tool": "Photoshop-Restaurierungswerkzeuge",
-          "features": [
-            "Content-Aware-Füllung",
-            "Repinatur-Pinsel",
-            "Klonstempel",
-            "Flicken-Werkzeug"
-          ],
+          "features": ["Content-Aware-Füllung", "Repinatur-Pinsel", "Klonstempel", "Flicken-Werkzeug"],
           "bestFor": ["Professionelle Restaurierung", "Komplexe Schäden", "Präzise Kontrolle"]
         },
         {
@@ -756,18 +734,14 @@
       "relatedPages": ["alter-foto-restaurierung", "foto-konservierungsmethoden"]
     },
     {
-      "slug": "photo-conservation-methods",
+      "slug": "foto-konservierungsmethoden",
       "title": "Foto-Konservierung: Erhaltungsmethoden",
       "metaTitle": "Foto-Konservierung: Erhaltungsmethoden | MyImageUpscaler",
       "metaDescription": "Vollständiger Leitfaden zur Foto-Konservierung. Lernen Sie geeignete Fotospeicherung, Erhaltungsmethoden, Umweltkontrolle und Archivierungstechniken zum Schutz von Fotografien für zukünftige Generationen.",
       "h1": "Foto-Konservierung: Vollständiger Erhaltungs-Leitfaden",
       "intro": "Geeignete Foto-Konservierung schützt kostbare Erinnerungen für zukünftige Generationen. Dieser umfassende Leitfaden deckt archivgerechte Lagerungsmethoden, Umweltkontrolle und Erhaltungstechniken für sowohl physische als auch digitale Fotografien ab.",
       "primaryKeyword": "foto-konservierung",
-      "secondaryKeywords": [
-        "foto-erhaltungsmethoden",
-        "archiv-foto-speicherung",
-        "fotografie-konservierung"
-      ],
+      "secondaryKeywords": ["foto-erhaltungsmethoden", "archiv-foto-speicherung", "fotografie-konservierung"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "focus": "Prävention und langfristige Erhaltung",
@@ -806,12 +780,7 @@
             "light": "Kein direktes Sonnenlicht, minimale UV-Exposition",
             "airQuality": "Saubere, gefilterte Luft, keine Schadstoffe"
           },
-          "monitoring": [
-            "Hygrometer",
-            "Thermometer",
-            "Belichtungsmesser",
-            "Regelmäßige Inspektionen"
-          ]
+          "monitoring": ["Hygrometer", "Thermometer", "Belichtungsmesser", "Regelmäßige Inspektionen"]
         },
         {
           "aspect": "Anzeige-Überlegungen",
@@ -984,19 +953,11 @@
         },
         {
           "frequency": "Quartalsweise",
-          "tasks": [
-            "Detaillierte Fotoinspektion",
-            "Sicherungsüberprüfung",
-            "Versandzustandsprüfung"
-          ]
+          "tasks": ["Detaillierte Fotoinspektion", "Sicherungsüberprüfung", "Versandzustandsprüfung"]
         },
         {
           "frequency": "Jährlich",
-          "tasks": [
-            "Professionelle Bewertung",
-            "Umfassende Inventur",
-            "Langzeitplanungsüberprüfung"
-          ]
+          "tasks": ["Professionelle Bewertung", "Umfassende Inventur", "Langzeitplanungsüberprüfung"]
         }
       ],
       "professionalResources": [
@@ -1052,18 +1013,14 @@
       "relatedPages": ["alter-foto-restaurierung", "museumsqualität-erhaltung"]
     },
     {
-      "slug": "family-photo-preservation",
+      "slug": "familienfoto-aufbewahrung",
       "title": "Familienfoto-Erhaltung: Vollständiger Leitfaden",
       "metaTitle": "Familienfoto-Erhaltung: Vollständiger Leitfaden | MyImageUpscaler",
       "metaDescription": "Vollständiger Leitfaden zur Familienfoto-Erhaltung. Lernen Sie, Familienfotos und -alben zu organisieren, restaurieren, digitalisieren und für zukünftige Generationen zu erhalten.",
       "h1": "Familienfoto-Erhaltung: Vollständiger Leitfaden",
       "intro": "Familienfotos erfassen unersetzliche Erinnerungen und Verbindungen zu unserer Vergangenheit. Dieser umfassende Leitfaden hilft Ihnen, die fotografische Erbfolge Ihrer Familie zu bewahren, zu organisieren und für zukünftige Generationen zu teilen.",
       "primaryKeyword": "familienfoto-erhaltung",
-      "secondaryKeywords": [
-        "familienfoto-organisation",
-        "fotoalbum-erhaltung",
-        "familiengeschichte-fotos"
-      ],
+      "secondaryKeywords": ["familienfoto-organisation", "fotoalbum-erhaltung", "familiengeschichte-fotos"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "focus": "Familien-Erbe und Genealogie",
@@ -1106,23 +1063,13 @@
         {
           "stage": "Teilung und Bildung",
           "description": "Erhaltene Fotos mit Familienmitgliedern teilen",
-          "actions": [
-            "Familienalben",
-            "Digitale Galerien",
-            "Geschichtenerzählung",
-            "Bildungskontext"
-          ]
+          "actions": ["Familienalben", "Digitale Galerien", "Geschichtenerzählung", "Bildungskontext"]
         }
       ],
       "photoTypes": [
         {
           "type": "19. Jahrhundert Fotos",
-          "characteristics": [
-            "Daguerreotypien",
-            "Ferrotypien",
-            "Frühe Papierabzüge",
-            "Handkolorierung"
-          ],
+          "characteristics": ["Daguerreotypien", "Ferrotypien", "Frühe Papierabzüge", "Handkolorierung"],
           "challenges": [
             "Zarte Materialien",
             "Einzigartige Prozesse",
@@ -1131,18 +1078,8 @@
         },
         {
           "type": "Frühes 20. Jahrhundert",
-          "characteristics": [
-            "Postkarten",
-            "Kabinettkarten",
-            "Frühe Schnappschüsse",
-            "Albumenabzüge"
-          ],
-          "challenges": [
-            "Säurehaltiges Papier",
-            "Verblasstheit",
-            "Albumschäden",
-            "Schlechte Lagerung"
-          ]
+          "characteristics": ["Postkarten", "Kabinettkarten", "Frühe Schnappschüsse", "Albumenabzüge"],
+          "challenges": ["Säurehaltiges Papier", "Verblasstheit", "Albumschäden", "Schlechte Lagerung"]
         },
         {
           "type": "Mitte-20. Jahrhundert",
@@ -1151,12 +1088,7 @@
         },
         {
           "type": "Moderne Digitale Fotos",
-          "characteristics": [
-            "Digitale Dateien",
-            "Soziale Medien",
-            "Smartphone-Fotos",
-            "Cloud-Speicherung"
-          ],
+          "characteristics": ["Digitale Dateien", "Soziale Medien", "Smartphone-Fotos", "Cloud-Speicherung"],
           "challenges": ["Format-Obsoleszenz", "Datenverlust", "Metadaten-Erhaltung"]
         }
       ],
@@ -1238,11 +1170,7 @@
         {
           "strategy": "Familien-Website",
           "description": "Dedizierte Familienfoto-Website erstellen",
-          "benefits": [
-            "Zentralisierter Zugang",
-            "Geschichtenerzählung",
-            "Gemeinschaftliche Beiträge"
-          ],
+          "benefits": ["Zentralisierter Zugang", "Geschichtenerzählung", "Gemeinschaftliche Beiträge"],
           "tools": ["Dediziertes Hosting", "Fotogalerien", "Familienforen"]
         },
         {
@@ -1260,11 +1188,7 @@
         {
           "strategy": "Cloud-Sharing",
           "description": "Fotos durch Cloud-Speicherungsdienste teilen",
-          "benefits": [
-            "Unterstützung großer Dateien",
-            "Zugangskontrolle",
-            "Automatische Sicherung"
-          ],
+          "benefits": ["Unterstützung großer Dateien", "Zugangskontrolle", "Automatische Sicherung"],
           "tools": ["Google Fotos", "Amazon Fotos", "Familien-Cloud-Ordner"]
         }
       ],

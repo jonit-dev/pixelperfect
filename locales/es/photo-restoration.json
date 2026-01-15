@@ -326,12 +326,7 @@
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "difficulty": "Avanzado",
-      "colorizationMethods": [
-        "IA Automatic",
-        "Manual asistida por IA",
-        "Puramente manual",
-        "Enfoque híbrido"
-      ],
+      "colorizationMethods": ["IA Automatic", "Manual asistida por IA", "Puramente manual", "Enfoque híbrido"],
       "historicalConsiderations": [
         {
           "consideration": "Investigar colores del período",
@@ -386,11 +381,7 @@
         {
           "tool": "Colorización Basada en Referencia",
           "description": "Usar imágenes de referencia para guiar las opciones de color",
-          "features": [
-            "Control del usuario",
-            "Coincidencia de referencia",
-            "Consistencia de color"
-          ],
+          "features": ["Control del usuario", "Coincidencia de referencia", "Consistencia de color"],
           "bestFor": ["Precisión histórica", "Requisitos específicos", "Control artístico"]
         }
       ],
@@ -471,11 +462,7 @@
             "Materiales de tela",
             "Indicadores de estatus social"
           ],
-          "solutions": [
-            "Investigación histórica",
-            "Moda de referencia",
-            "Elecciones de color probables"
-          ]
+          "solutions": ["Investigación histórica", "Moda de referencia", "Elecciones de color probables"]
         },
         {
           "challenge": "Colores ambientales",
@@ -517,12 +504,7 @@
       "historicalPeriods": [
         {
           "period": "Era Victoriana (1837-1901)",
-          "characteristics": [
-            "Tonos sepia",
-            "Ropa formal",
-            "Colores ricos y oscuros",
-            "Tintes naturales"
-          ],
+          "characteristics": ["Tonos sepia", "Ropa formal", "Colores ricos y oscuros", "Tintes naturales"],
           "commonColors": ["Marrones", "Rojos oscuros", "Azules profundos", "Tonos terrosos"]
         },
         {
@@ -541,11 +523,7 @@
         },
         {
           "period": "Años 1920-1940",
-          "characteristics": [
-            "Audacia art déco",
-            "Restricciones económicas",
-            "Influencia de Hollywood"
-          ],
+          "characteristics": ["Audacia art déco", "Restricciones económicas", "Influencia de Hollywood"],
           "commonColors": [
             "Contrastes audaces",
             "Elegancia monocromática",
@@ -909,11 +887,7 @@
         {
           "phase": "Reparación Digital",
           "description": "Repara daños usando herramientas y técnicas digitales",
-          "actions": [
-            "Reparaciones estructurales",
-            "Corrección de color",
-            "Restauración de detalle"
-          ]
+          "actions": ["Reparaciones estructurales", "Corrección de color", "Restauración de detalle"]
         },
         {
           "phase": "Mejora",
@@ -923,18 +897,14 @@
       ]
     },
     {
-      "slug": "photo-conservation-methods",
+      "slug": "metodos-de-conservacion-de-fotos",
       "title": "Foto Conservation: Preservation Methods",
       "metaTitle": "Foto Conservation: Preservation Methods | MyImageUpscaler",
       "metaDescription": "Complete guide to foto conservation. Learn proper foto storage, preservation methods, environmental control, and archival techniques to protect photographs for future generations.",
       "h1": "Foto Conservation: Complete Preservation Guide",
       "intro": "Proper foto conservation protects precious memories for future generations. This comprehensive guide covers archival-quality storage methods, environmental control, and preservation techniques for both physical and digital photographs.",
       "primaryKeyword": "foto conservation",
-      "secondaryKeywords": [
-        "foto preservation methods",
-        "archival foto storage",
-        "fotografía conservation"
-      ],
+      "secondaryKeywords": ["foto preservation methods", "archival foto storage", "fotografía conservation"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "focus": "Prevencion y preservacion a largo plazo",
@@ -1046,12 +1016,7 @@
         {
           "supply": "Equipo de Monitoreo",
           "types": ["Higrómetros", "Termómetros", "Medidores de luz", "Tiras de prueba de pH"],
-          "features": [
-            "Precisión calibrada",
-            "Registro de datos",
-            "Funciones de alarma",
-            "Portabilidad"
-          ]
+          "features": ["Precisión calibrada", "Registro de datos", "Funciones de alarma", "Portabilidad"]
         }
       ],
       "conservationLevels": [
@@ -1095,12 +1060,7 @@
             "Exposición a la luz",
             "Contaminación del aire"
           ],
-          "mitigation": [
-            "Control climático",
-            "Protección UV",
-            "Filtración de aire",
-            "Monitoreo regular"
-          ]
+          "mitigation": ["Control climático", "Protección UV", "Filtración de aire", "Monitoreo regular"]
         },
         {
           "threat": "Biológico",
@@ -1242,11 +1202,7 @@
         {
           "strategy": "Sitio Web Familiar",
           "description": "Create dedicated family foto website",
-          "benefits": [
-            "Acceso centralizado",
-            "Narracion de historias",
-            "Contribuciones colaborativas"
-          ],
+          "benefits": ["Acceso centralizado", "Narracion de historias", "Contribuciones colaborativas"],
           "tools": ["Alojamiento dedicado", "Foto galleries", "Foros familiares"]
         },
         {
@@ -1277,11 +1233,7 @@
         {
           "activity": "Entrevistas de Memoria",
           "description": "Interview older family members about foto context",
-          "benefits": [
-            "Contexto historico",
-            "Historias personales",
-            "Preservacion de historia oral"
-          ]
+          "benefits": ["Contexto historico", "Historias personales", "Preservacion de historia oral"]
         },
         {
           "activity": "Etiquetado Colaborativo",
@@ -1335,18 +1287,14 @@
       ],
       "relatedTools": ["family-photo-organizer", "photo-digitization-service"],
       "relatedPages": ["photo-conservation-methods", "genealogy-photo-management"],
-      "slug": "family-photo-preservation",
+      "slug": "preservacion-de-fotos-familiares",
       "title": "Family Foto Preservation: Complete Guide",
       "metaTitle": "Family Foto Preservation: Complete Guide | MyImageUpscaler",
       "metaDescription": "Complete guide to family foto preservation. Learn to organize, restore, digitize, and preserve family fotos and foto albums for future generations.",
       "h1": "Family Foto Preservation: Complete Guide",
       "intro": "Family fotos capture irreplaceable memories and connections to our past. This comprehensive guide helps you preserve, organize, and share your family's photographic heritage for future generations.",
       "primaryKeyword": "family foto preservation",
-      "secondaryKeywords": [
-        "family foto organization",
-        "foto album preservation",
-        "family history fotos"
-      ],
+      "secondaryKeywords": ["family foto organization", "foto album preservation", "family history fotos"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "photo-restoration",
       "focus": "Patrimonio familiar y genealogia",
@@ -1364,12 +1312,7 @@
         {
           "stage": "Organización y Documentación",
           "description": "Organiza y documenta sistemáticamente la colección",
-          "actions": [
-            "Crear inventario",
-            "Etiquetar fotos",
-            "Registrar historias",
-            "Aporte familiar"
-          ]
+          "actions": ["Crear inventario", "Etiquetar fotos", "Registrar historias", "Aporte familiar"]
         },
         {
           "stage": "Conservacion y Reparacion",
@@ -1420,21 +1363,11 @@
             "Instantaneas tempranas",
             "Impresiones a la albmina"
           ],
-          "challenges": [
-            "Papel acido",
-            "Desvanecimiento",
-            "Danos del album",
-            "Almacenamiento deficiente"
-          ]
+          "challenges": ["Papel acido", "Desvanecimiento", "Danos del album", "Almacenamiento deficiente"]
         },
         {
           "type": "Mediados del siglo XX",
-          "characteristics": [
-            "Instantaneas de 35mm",
-            "Color fotos",
-            "Instant fotos",
-            "Foto albums"
-          ],
+          "characteristics": ["Instantaneas de 35mm", "Color fotos", "Instant fotos", "Foto albums"],
           "challenges": [
             "Desvanecimiento del color",
             "Deterioro del plastico",
@@ -1468,11 +1401,7 @@
         {
           "method": "Organizacion Basada en Eventos",
           "description": "Organizar por eventos y ocasiones especificas",
-          "benefits": [
-            "Narracion de historias",
-            "Historia de eventos",
-            "Seguimiento de celebraciones"
-          ],
+          "benefits": ["Narracion de historias", "Historia de eventos", "Seguimiento de celebraciones"],
           "implementation": "Bodas, holidays, nacimientos, graduaciones, viajes"
         },
         {

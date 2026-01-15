@@ -234,11 +234,7 @@
         {
           "consideration": "Iluminação Natural vs. Artificial",
           "description": "Leve em conta as condições de iluminação ao aplicar as cores",
-          "effects": [
-            "Iluminação interna quente",
-            "Luz do dia fria",
-            "Condições de iluminação mista"
-          ]
+          "effects": ["Iluminação interna quente", "Luz do dia fria", "Condições de iluminação mista"]
         }
       ],
       "aiColorizationTools": [
@@ -265,11 +261,7 @@
         {
           "tool": "Colorização baseada em Referência",
           "description": "Use imagens de referência para guiar as escolhas de cores",
-          "features": [
-            "Controle do usuário",
-            "Correspondência de referência",
-            "Consistência de cor"
-          ],
+          "features": ["Controle do usuário", "Correspondência de referência", "Consistência de cor"],
           "bestFor": ["Precisão histórica", "Requisitos específicos", "Controle artístico"]
         }
       ],
@@ -360,11 +352,7 @@
             "Locais desconhecidos",
             "Efeitos de iluminação"
           ],
-          "solutions": [
-            "Pesquisa do local",
-            "Paletas de cores naturais",
-            "Consistência de iluminação"
-          ]
+          "solutions": ["Pesquisa do local", "Paletas de cores naturais", "Consistência de iluminação"]
         }
       ],
       "technicalTechniques": [
@@ -392,12 +380,7 @@
       "historicalPeriods": [
         {
           "period": "Era Vitoriana (1837-1901)",
-          "characteristics": [
-            "Tons sépia",
-            "Roupas formais",
-            "Cores ricas e escuras",
-            "Corantes naturais"
-          ],
+          "characteristics": ["Tons sépia", "Roupas formais", "Cores ricas e escuras", "Corantes naturais"],
           "commonColors": ["Marrons", "Vermelhos escuros", "Azuis profundos", "Tons terrosos"]
         },
         {
@@ -407,20 +390,11 @@
             "Influências do Art Nouveau",
             "Cores industriais"
           ],
-          "commonColors": [
-            "Tons suaves",
-            "Novos corante sintéticos",
-            "Cinzos industriais",
-            "Pastéis suaves"
-          ]
+          "commonColors": ["Tons suaves", "Novos corante sintéticos", "Cinzos industriais", "Pastéis suaves"]
         },
         {
           "period": "Décadas de 1920-1940",
-          "characteristics": [
-            "Ousadia do Art Déco",
-            "Restrições econômicas",
-            "Influência de Hollywood"
-          ],
+          "characteristics": ["Ousadia do Art Déco", "Restrições econômicas", "Influência de Hollywood"],
           "commonColors": [
             "Contrastes ousados",
             "Elegância monocromática",
@@ -430,11 +404,7 @@
         },
         {
           "period": "Décadas de 1950-1970",
-          "characteristics": [
-            "Modernismo de meados do século",
-            "Cores vibrantes",
-            "Influência da cultura pop"
-          ],
+          "characteristics": ["Modernismo de meados do século", "Cores vibrantes", "Influência da cultura pop"],
           "commonColors": [
             "Primárias brilhantes",
             "Tendências pastéis",
@@ -516,11 +486,7 @@
         {
           "phase": "Digitalização",
           "description": "Crie cópias digitais de alta qualidade para o trabalho de reparo",
-          "actions": [
-            "Digitalização em alta resolução",
-            "Múltiplas passagens",
-            "Seleção de formato"
-          ]
+          "actions": ["Digitalização em alta resolução", "Múltiplas passagens", "Seleção de formato"]
         },
         {
           "phase": "Reparo Digital",
@@ -916,12 +882,7 @@
         {
           "supply": "Equipamento de Monitoramento",
           "types": ["Higrômetros", "Termômetros", "Medidores de luz", "Tiras de teste de pH"],
-          "features": [
-            "Precisão calibrada",
-            "Registro de dados",
-            "Funções de alarme",
-            "Portabilidade"
-          ]
+          "features": ["Precisão calibrada", "Registro de dados", "Funções de alarme", "Portabilidade"]
         }
       ],
       "conservationLevels": [
@@ -959,18 +920,8 @@
       "threatAssessment": [
         {
           "threat": "Ambiental",
-          "risks": [
-            "Flutuações de temperatura",
-            "Alta umidade",
-            "Exposição à luz",
-            "Poluição do ar"
-          ],
-          "mitigation": [
-            "Controle climático",
-            "Proteção UV",
-            "Filtragem de ar",
-            "Monitoramento regular"
-          ]
+          "risks": ["Flutuações de temperatura", "Alta umidade", "Exposição à luz", "Poluição do ar"],
+          "mitigation": ["Controle climático", "Proteção UV", "Filtragem de ar", "Monitoramento regular"]
         },
         {
           "threat": "Biológica",
@@ -984,12 +935,7 @@
         },
         {
           "threat": "Mecânica",
-          "risks": [
-            "Danos físicos",
-            "Estresse de manuseio",
-            "Armazenamento inadequado",
-            "Acidentes"
-          ],
+          "risks": ["Danos físicos", "Estresse de manuseio", "Armazenamento inadequado", "Acidentes"],
           "mitigation": [
             "Manuseio adequado",
             "Armazenamento com suporte",
@@ -1058,12 +1004,7 @@
         },
         {
           "resource": "Recursos Educacionais",
-          "examples": [
-            "Workshops de conservação",
-            "Cursos online",
-            "Publicações",
-            "Redes profissionais"
-          ]
+          "examples": ["Workshops de conservação", "Cursos online", "Publicações", "Redes profissionais"]
         }
       ],
       "bestPractices": [
@@ -1217,21 +1158,13 @@
         {
           "method": "Organização por Ramo Familiar",
           "description": "Organizar por linhagens familiares e relacionamentos",
-          "benefits": [
-            "Rastreamento genealógico",
-            "Clareza de relacionamentos",
-            "Padrões de herança"
-          ],
+          "benefits": ["Rastreamento genealógico", "Clareza de relacionamentos", "Padrões de herança"],
           "implementation": "Árvores genealógicas, ramos individuais, fotos em grupo"
         },
         {
           "method": "Organização por Evento",
           "description": "Organizar por eventos e ocasiões específicas",
-          "benefits": [
-            "Narração de histórias",
-            "Histórico de eventos",
-            "Rastreamento de celebrações"
-          ],
+          "benefits": ["Narração de histórias", "Histórico de eventos", "Rastreamento de celebrações"],
           "implementation": "Casamentos, feriados, nascimentos, formaturas, viagens"
         },
         {
@@ -1245,12 +1178,7 @@
         {
           "element": "Identificação de Pessoas",
           "description": "Identificar e documentar todos os indivíduos nas fotos",
-          "information": [
-            "Nomes completos",
-            "Relacionamentos",
-            "Idades aproximadas",
-            "Datas de vida"
-          ]
+          "information": ["Nomes completos", "Relacionamentos", "Idades aproximadas", "Datas de vida"]
         },
         {
           "element": "Data e Contexto",
@@ -1294,11 +1222,7 @@
         {
           "strategy": "Site da Família",
           "description": "Criar um site dedicado para fotos da família",
-          "benefits": [
-            "Acesso centralizado",
-            "Narração de histórias",
-            "Contribuições colaborativas"
-          ],
+          "benefits": ["Acesso centralizado", "Narração de histórias", "Contribuições colaborativas"],
           "tools": ["Hospedagem dedicada", "Galerias de fotos", "Fóruns familiares"]
         },
         {
@@ -1310,11 +1234,7 @@
         {
           "strategy": "Grupos em Redes Sociais",
           "description": "Usar grupos privados em redes sociais para compartilhamento familiar",
-          "benefits": [
-            "Acesso fácil",
-            "Amigável para dispositivos móveis",
-            "Discussões interativas"
-          ],
+          "benefits": ["Acesso fácil", "Amigável para dispositivos móveis", "Discussões interativas"],
           "tools": ["Grupos de Facebook", "WhatsApp", "Apps de família"]
         },
         {

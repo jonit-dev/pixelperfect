@@ -147,12 +147,7 @@
       "h1": "Leitfaden zur Bildgrößenänderung",
       "intro": "Meisterhafte Bildgrößenänderung ohne Qualitätsverlust. Unser Leitfaden zeigt Ihnen die besten Methoden und Techniken für alle Bildformate und Anwendungsfälle.",
       "primaryKeyword": "bildgröße ändern",
-      "secondaryKeywords": [
-        "bild verkleinern",
-        "bild vergrößern",
-        "bildgröße anpassen",
-        "bild skalieren"
-      ],
+      "secondaryKeywords": ["bild verkleinern", "bild vergrößern", "bildgröße anpassen", "bild skalieren"],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "category": "Technische Leitfäden",
       "difficulty": "Anfänger",
@@ -707,12 +702,7 @@
       "h1": "Leitfaden zur Bildverbesserung",
       "intro": "Verwandeln Sie gewöhnliche Fotos in beeindruckende Bilder mit unseren professionellen Verbesserungstechniken. Lernen Sie Helligkeit, Kontrast, Schärfe und mehr.",
       "primaryKeyword": "bildverbesserung",
-      "secondaryKeywords": [
-        "helligkeit anpassen",
-        "kontrast erhöhen",
-        "bild schärfen",
-        "farbkorrektur"
-      ],
+      "secondaryKeywords": ["helligkeit anpassen", "kontrast erhöhen", "bild schärfen", "farbkorrektur"],
       "lastUpdated": "2024-12-19T10:00:00Z",
       "category": "Technische Leitfäden",
       "difficulty": "Mittelstufe",
@@ -1224,11 +1214,7 @@
         {
           "phase": "Validierung",
           "description": "Evaluierung der Modellleistung auf ungesehenen Daten",
-          "considerations": [
-            "Metrik-Auswahl",
-            "Erkennung von Overfitting",
-            "Hyperparameter-Optimierung"
-          ]
+          "considerations": ["Metrik-Auswahl", "Erkennung von Overfitting", "Hyperparameter-Optimierung"]
         }
       ],
       "imageProcessingTasks": [
@@ -1440,11 +1426,7 @@
           "step": 2,
           "name": "Formatauswahl",
           "description": "Optimales Format basierend auf Inhaltstyp wählen",
-          "considerations": [
-            "WebP-Unterstützung",
-            "Transparenz-Anforderungen",
-            "Animationsanforderungen"
-          ]
+          "considerations": ["WebP-Unterstützung", "Transparenz-Anforderungen", "Animationsanforderungen"]
         },
         {
           "step": 3,
@@ -1989,19 +1971,11 @@
       "implementationConsiderations": [
         {
           "factor": "Rechenressourcen",
-          "considerations": [
-            "CPU vs GPU-Beschleunigung",
-            "Speicheranforderungen",
-            "Echtzeit-Beschränkungen"
-          ]
+          "considerations": ["CPU vs GPU-Beschleunigung", "Speicheranforderungen", "Echtzeit-Beschränkungen"]
         },
         {
           "factor": "Inhaltstyp",
-          "considerations": [
-            "Fotographs vs graphics",
-            "Text vs natürliche Bilder",
-            "Kantenerhaltungsbedarf"
-          ]
+          "considerations": ["Fotographs vs graphics", "Text vs natürliche Bilder", "Kantenerhaltungsbedarf"]
         },
         {
           "factor": "Skalierungsfaktor",

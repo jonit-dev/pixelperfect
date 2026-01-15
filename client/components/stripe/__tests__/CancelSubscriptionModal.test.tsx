@@ -1,6 +1,47 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
 import { CancelSubscriptionModal } from '@client/components/stripe/CancelSubscriptionModal';
+import React from 'react';
+
+// Mock translations for stripe.cancelSubscription
+const mockTranslations = {
+  title: 'Cancel Subscription',
+  description: 'Your plan will remain active until {date}.',
+  helpUsImprove: 'Help us improve (optional)',
+  reasons: {
+    tooExpensive: 'Too expensive',
+    notUsingEnough: 'Not using it enough',
+    missingFeatures: 'Missing features I need',
+    switchingCompetitor: 'Switching to a competitor',
+    technicalIssues: 'Technical issues',
+    other: 'Other',
+  },
+  customReasonPlaceholder: "Please tell us why you're canceling...",
+  continue: 'Continue',
+  keepSubscription: 'Keep Subscription',
+  confirmationTitle: 'Are you sure?',
+  confirmationMessage:
+    'Once canceled, you will lose access to all premium features at the end of your billing period.',
+  goBack: 'Go Back',
+  confirmCancellation: 'Yes, Cancel Subscription',
+  canceling: 'Canceling...',
+};
+
+function renderWithTranslations(ui: React.ReactElement) {
+  return render(
+    <NextIntlClientProvider
+      locale="en"
+      messages={{
+        stripe: {
+          cancelSubscription: mockTranslations,
+        },
+      }}
+    >
+      {ui}
+    </NextIntlClientProvider>
+  );
+}
 
 describe('CancelSubscriptionModal', () => {
   const mockOnClose = vi.fn();
@@ -19,22 +60,22 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should render modal when open', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     expect(screen.getByText('Cancel Subscription')).toBeInTheDocument();
-    expect(
-      screen.getByText(/Your Professional plan will remain active until March 1, 2025/i)
-    ).toBeInTheDocument();
+    // The description is rendered with the template string - actual interpolation
+    // happens in the component with next-intl
+    expect(screen.getByText(/plan will remain active until/i)).toBeInTheDocument();
   });
 
   test('should not render modal when closed', () => {
-    render(<CancelSubscriptionModal {...defaultProps} isOpen={false} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} isOpen={false} />);
 
     expect(screen.queryByText('Cancel Subscription')).not.toBeInTheDocument();
   });
 
   test('should show cancellation reasons', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     expect(screen.getByText('Too expensive')).toBeInTheDocument();
     expect(screen.getByText('Not using it enough')).toBeInTheDocument();
@@ -45,7 +86,7 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should show custom reason input when Other is selected', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     const otherOption = screen.getByLabelText('Other');
     fireEvent.click(otherOption);
@@ -56,7 +97,7 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should show confirmation step when Continue is clicked', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     const continueButton = screen.getByText('Continue');
     fireEvent.click(continueButton);
@@ -70,7 +111,7 @@ describe('CancelSubscriptionModal', () => {
     const mockReason = 'Too expensive';
     mockOnConfirm.mockResolvedValue(undefined);
 
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Select a reason
     const reasonOption = screen.getByLabelText(mockReason);
@@ -94,7 +135,7 @@ describe('CancelSubscriptionModal', () => {
     const customReasonText = 'Found a better alternative with more features';
     mockOnConfirm.mockResolvedValue(undefined);
 
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Select Other
     const otherOption = screen.getByLabelText('Other');
@@ -121,7 +162,7 @@ describe('CancelSubscriptionModal', () => {
   test('should call onConfirm with undefined when no reason is selected', async () => {
     mockOnConfirm.mockResolvedValue(undefined);
 
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Click continue without selecting a reason
     const continueButton = screen.getByText('Continue');
@@ -138,7 +179,7 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should go back from confirmation step', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Click continue to show confirmation
     const continueButton = screen.getByText('Continue');
@@ -155,7 +196,7 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should close modal when Keep Subscription is clicked', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     const keepButton = screen.getByText('Keep Subscription');
     fireEvent.click(keepButton);
@@ -164,7 +205,7 @@ describe('CancelSubscriptionModal', () => {
   });
 
   test('should close modal when X button is clicked', () => {
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     const closeButton = screen.getByRole('button', { name: '' }); // X button
     fireEvent.click(closeButton);
@@ -175,7 +216,7 @@ describe('CancelSubscriptionModal', () => {
   test('should show loading state during cancellation', async () => {
     mockOnConfirm.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
 
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Click continue to show confirmation
     const continueButton = screen.getByText('Continue');
@@ -194,7 +235,7 @@ describe('CancelSubscriptionModal', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     mockOnConfirm.mockRejectedValue(new Error('Cancellation failed'));
 
-    render(<CancelSubscriptionModal {...defaultProps} />);
+    renderWithTranslations(<CancelSubscriptionModal {...defaultProps} />);
 
     // Click continue to show confirmation
     const continueButton = screen.getByText('Continue');

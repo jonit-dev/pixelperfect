@@ -272,11 +272,7 @@
               "Dipendenza da internet",
               "Feature availability tied to subscription livello"
             ],
-            "uniqueFeatures": [
-              "Integrazione API",
-              "Collaborazione tra team",
-              "Aggiornamenti automatici"
-            ]
+            "uniqueFeatures": ["Integrazione API", "Collaborazione tra team", "Aggiornamenti automatici"]
           },
           "desktop": {
             "pros": [
@@ -330,11 +326,7 @@
           {
             "condition": "La privacy e critica",
             "path": "Soluzione desktop",
-            "recommendations": [
-              "Topaz Gigapixel",
-              "Adobe Super Risoluzione",
-              "Installazioni personalizzate"
-            ]
+            "recommendations": ["Topaz Gigapixel", "Adobe Super Risoluzione", "Installazioni personalizzate"]
           },
           {
             "condition": "Need for collaboration/team Usa",
@@ -485,11 +477,7 @@
             "✓ Color miglioramento",
             "Interfaccia web"
           ],
-          "limitations": [
-            "✗ Prezzi basati su crediti",
-            "✗ Size limitazioni",
-            "✗ Ads on free livello"
-          ],
+          "limitations": ["✗ Prezzi basati su crediti", "✗ Size limitazioni", "✗ Ads on free livello"],
           "bestFor": "Occasional professional Usa",
           "upgradePath": "$5 per 100 crediti"
         },
@@ -651,11 +639,7 @@
                 "ssim": "0,85",
                 "processingTime": "0,5s (CPU), 0,1s (GPU)"
               },
-              "bestUseCases": [
-                "Tempo reale applications",
-                "Video ampliamento",
-                "Mild miglioramento"
-              ]
+              "bestUseCases": ["Tempo reale applications", "Video ampliamento", "Mild miglioramento"]
             },
             {
               "name": "VDSR (Very Deep Super-Risoluzione)",
@@ -706,11 +690,7 @@
                 "Migliore qualità visiva",
                 "Perceptual loss ottimizzazione"
               ],
-              "weaknesses": [
-                "Può introdurre artefatti",
-                "Formazione instabile",
-                "Punteggi PSNR inferiori"
-              ],
+              "weaknesses": ["Può introdurre artefatti", "Formazione instabile", "Punteggi PSNR inferiori"],
               "performance": {
                 "psnr": "26,8 dB (2x)",
                 "ssim": "0,82",
@@ -752,10 +732,7 @@
                 "Buono with noisy inputs",
                 "Piu stabile di ESRGAN"
               ],
-              "weaknesses": [
-                "Less aggressive miglioramento",
-                "Puoe avere difficolta con sorgenti pulite"
-              ],
+              "weaknesses": ["Less aggressive miglioramento", "Puoe avere difficolta con sorgenti pulite"],
               "performance": {
                 "psnr": "28,2 dB (2x)",
                 "ssim": "0,86",
@@ -791,11 +768,7 @@
                 "mos": "4,5/5,0",
                 "processingTime": "8,2s (GPU)"
               },
-              "bestUseCases": [
-                "Professionale photography",
-                "Restauro dell archivio",
-                "Applicazioni critiche"
-              ]
+              "bestUseCases": ["Professionale photography", "Restauro dell archivio", "Applicazioni critiche"]
             },
             {
               "name": "HAT (Hybrid Attention Transformer)",
@@ -813,11 +786,7 @@
                 "mos": "4,4/5,0",
                 "processingTime": "4,5s (GPU)"
               },
-              "bestUseCases": [
-                "General professional Usa",
-                "Contenuto ricco di bordi",
-                "Esigenze equilibrate"
-              ]
+              "bestUseCases": ["General professional Usa", "Contenuto ricco di bordi", "Esigenze equilibrate"]
             }
           ]
         },
@@ -1027,11 +996,7 @@
             "Integrazione challenges",
             "Altoer initial cost"
           ],
-          "bestFor": [
-            "Grande enterprises",
-            "Dati a sensibilita mista",
-            "Carichi di lavoro variabili"
-          ],
+          "bestFor": ["Grande enterprises", "Dati a sensibilita mista", "Carichi di lavoro variabili"],
           "setupComplexity": "Alto",
           "costPerImage": "0,02-0,30$",
           "throughput": "500-5000 immagini/ora"
@@ -1355,11 +1320,7 @@
         },
         {
           "quadrant": "Very Lento & Migliore Qualità",
-          "methods": [
-            "Ensemble modellos",
-            "Addestramento personalizzato",
-            "Elaborazione multi-pass"
-          ],
+          "methods": ["Ensemble modellos", "Addestramento personalizzato", "Elaborazione multi-pass"],
           "characteristics": {
             "processingTime": "30-120+ secondi per immagine",
             "quality": "All'avanguardia",

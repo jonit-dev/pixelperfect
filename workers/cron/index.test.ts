@@ -36,7 +36,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '*/15 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({
@@ -70,7 +70,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '5 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({
@@ -96,7 +96,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '5 3 * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({
@@ -122,7 +122,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '* * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
@@ -141,7 +141,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '*/15 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({
@@ -171,7 +171,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '*/15 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockRejectedValue(new Error('Network error'));
@@ -269,7 +269,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '*/15 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({
@@ -299,7 +299,7 @@ describe('Cloudflare Cron Worker', () => {
       const event = {
         cron: '*/15 * * * *',
         scheduledTime: Date.now(),
-        // eslint-disable-next-line no-undef
+         
       } as ScheduledEvent;
 
       const fetchMock = vi.fn().mockResolvedValue({

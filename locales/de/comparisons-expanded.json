@@ -11,7 +11,7 @@
       "primaryKeyword": "ki vs herkömmliches upscaling",
       "secondaryKeywords": [
         "ki upscaling vergleich",
-        "bicubic vs lanczos",
+        "Bikubisch vs. Lanczos",
         "bild interpolationsmethoden",
         "upscaling qualitätsvergleich",
         "neuronales netzwerk upscaling"
@@ -160,10 +160,10 @@
       "metaDescription": "Vergleich von Online- und Desktop-Bild-Upscaling-Lösungen. Datenschutzimplikationen, Verarbeitungszeiten, Kostenanalyse und Feature-Vergleiche für fundierte Entscheidungen.",
       "h1": "Online vs. Desktop-Bild-Upscaler: Vollständiger 2025-Vergleich",
       "intro": "Umfassende Analyse von Online-Cloud-basierten Upscalern im Vergleich zu Desktop-Software-Lösungen. Abdeckt Datenschutzbedenken, Verarbeitungszeiten, Feature-Sets und Gesamtbetriebskosten.",
-      "primaryKeyword": "online vs desktop upscaler",
+      "primaryKeyword": "Online-vs-Desktop-Upscaler",
       "secondaryKeywords": [
         "cloud bild upscaler",
-        "desktop upscaling software",
+        "Desktop-Upscaling-Software",
         "bildverarbeitung datenschutz",
         "upscaler kostenvergleich",
         "stapel upscaling lösungen"
@@ -322,11 +322,7 @@
           {
             "condition": "Datenschutz ist kritisch",
             "path": "Desktop-Lösung",
-            "recommendations": [
-              "Topaz Gigapixel",
-              "Adobe Super Resolution",
-              "Benutzerdefinierte Installationen"
-            ]
+            "recommendations": ["Topaz Gigapixel", "Adobe Super Resolution", "Benutzerdefinierte Installationen"]
           },
           {
             "condition": "Bedarf an Zusammenarbeit/Team-Nutzung",
@@ -489,11 +485,7 @@
             "✓ Erweiterte Steuerelemente",
             "✓ Nicht-destruktiver Workflow"
           ],
-          "limitations": [
-            "✗ Teures Abonnement",
-            "✗ Adobe-Ökosystem erforderlich",
-            "✗ Komplexe Oberfläche"
-          ],
+          "limitations": ["✗ Teures Abonnement", "✗ Adobe-Ökosystem erforderlich", "✗ Komplexe Oberfläche"],
           "bestFor": "Kreativprofis, Adobe-Benutzer",
           "upgradePath": "Vollständiges Creative Cloud 52,99 $/Monat"
         }
@@ -684,22 +676,14 @@
                 "Bessere visuelle Qualität",
                 "Wahrnehmungs-Verlust-Optimierung"
               ],
-              "weaknesses": [
-                "Kann Artefakte einführen",
-                "Instabiles Training",
-                "Niedrigere PSNR-Werte"
-              ],
+              "weaknesses": ["Kann Artefakte einführen", "Instabiles Training", "Niedrigere PSNR-Werte"],
               "performance": {
                 "psnr": "26,8 dB (2x)",
                 "ssim": "0,82",
                 "mos": "4,1/5,0",
                 "processingTime": "2,1s (GPU)"
               },
-              "bestUseCases": [
-                "Künstlerische Verbesserung",
-                "Fotografie",
-                "Fokus auf visuelle Qualität"
-              ]
+              "bestUseCases": ["Künstlerische Verbesserung", "Fotografie", "Fokus auf visuelle Qualität"]
             },
             {
               "name": "ESRGAN (Enhanced Super-Resolution GAN)",
@@ -711,11 +695,7 @@
                 "Bessere Trainingsstabilität",
                 "Mehrere Skalierungsfaktoren"
               ],
-              "weaknesses": [
-                "Kann Texturen übertönen",
-                "Höhere Rechenkosten",
-                "Inkonsistente Ergebnisse"
-              ],
+              "weaknesses": ["Kann Texturen übertönen", "Höhere Rechenkosten", "Inkonsistente Ergebnisse"],
               "performance": {
                 "psnr": "27,5 dB (2x)",
                 "ssim": "0,84",
@@ -762,22 +742,14 @@
                 "Verarbeitet verschiedene Verschlechterungstypen",
                 "Bester Leistung"
               ],
-              "weaknesses": [
-                "Hohe Rechenanforderungen",
-                "Langsamere Verarbeitung",
-                "Speicherintensiv"
-              ],
+              "weaknesses": ["Hohe Rechenanforderungen", "Langsamere Verarbeitung", "Speicherintensiv"],
               "performance": {
                 "psnr": "31,5 dB (2x)",
                 "ssim": "0,92",
                 "mos": "4,5/5,0",
                 "processingTime": "8,2s (GPU)"
               },
-              "bestUseCases": [
-                "Professionelle Fotografie",
-                "Archivwiederherstellung",
-                "Kritische Anwendungen"
-              ]
+              "bestUseCases": ["Professionelle Fotografie", "Archivwiederherstellung", "Kritische Anwendungen"]
             },
             {
               "name": "HAT (Hybrid Attention Transformer)",
@@ -820,21 +792,13 @@
             {
               "name": "Textspezifische Modelle (TATT)",
               "focus": "Text- und Linienkunst-Erhaltung",
-              "strengths": [
-                "Scharfe Textwiedergabe",
-                "Erhält Linienkunst",
-                "Reduziert Zeichenartefakte"
-              ],
+              "strengths": ["Scharfe Textwiedergabe", "Erhält Linienkunst", "Reduziert Zeichenartefakte"],
               "bestFor": ["Dokumentenscans", "OCR-Vorbereitung", "Technische Zeichnungen"]
             },
             {
               "name": "Anime/Manga-Modelle",
               "focus": "Linienkunst und flache Farben",
-              "strengths": [
-                "Erhält Linienqualität",
-                "Bessere Farbverarbeitung",
-                "Stilbewusste Verbesserung"
-              ],
+              "strengths": ["Erhält Linienqualität", "Bessere Farbverarbeitung", "Stilbewusste Verbesserung"],
               "bestFor": ["Anime-Kunst", "Manga", "Cartoons"]
             }
           ]
@@ -845,7 +809,7 @@
         "scaleFactor": "4x",
         "results": [
           {
-            "model": "Bicubic",
+            "model": "Bikubisch",
             "psnr": "24,3 dB",
             "ssim": "0,75",
             "time": "0,01s"
@@ -1258,7 +1222,7 @@
       "performanceQuadrants": [
         {
           "quadrant": "Schnell & Niedrige Qualität",
-          "methods": ["Bicubic", "Nearest Neighbor", "Einfache CNN"],
+          "methods": ["Bikubisch", "Nearest Neighbor", "Einfache CNN"],
           "characteristics": {
             "processingTime": "0,1-1 Sekunde pro Bild",
             "quality": "Nur grundlegende Verbesserung",
@@ -1337,11 +1301,7 @@
           "characteristics": {
             "processingTime": "30-120+ Sekunden pro Bild",
             "quality": "State-of-the-art",
-            "useCases": [
-              "Kritische Anwendungen",
-              "Medizinische Bildgebung",
-              "Kunstwiederherstellung"
-            ],
+            "useCases": ["Kritische Anwendungen", "Medizinische Bildgebung", "Kunstwiederherstellung"],
             "hardware": "High-End GPU/Cloud",
             "cost": "Hoch"
           },
@@ -1370,7 +1330,7 @@
         },
         "results": [
           {
-            "model": "Bicubic",
+            "model": "Bikubisch",
             "time": "0,15s",
             "psnr": "24,3 dB",
             "ssim": "0,75",
@@ -1591,7 +1551,7 @@
           }
         ],
         "recommendationMatrix": {
-          "urgent_lowQuality": "Bicubic/Lightweight CNN",
+          "urgent_lowQuality": "Bikubisch/Lightweight CNN",
           "urgent_mediumQuality": "Real-ESRGAN Lite",
           "urgent_highQuality": "Cloud GPU-Verarbeitung",
           "normal_lowVolume_highQuality": "Desktop GPU-Lösungen",

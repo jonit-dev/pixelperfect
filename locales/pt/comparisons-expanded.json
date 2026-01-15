@@ -272,11 +272,7 @@
               "Dependência de internet",
               "Disponibilidade de recursos ligada ao nível de assinatura"
             ],
-            "uniqueFeatures": [
-              "Integração de API",
-              "Colaboração em equipe",
-              "Atualizações automáticas"
-            ]
+            "uniqueFeatures": ["Integração de API", "Colaboração em equipe", "Atualizações automáticas"]
           },
           "desktop": {
             "pros": [
@@ -330,11 +326,7 @@
           {
             "condition": "Privacidade é crítica",
             "path": "Solução Desktop",
-            "recommendations": [
-              "Topaz Gigapixel",
-              "Adobe Super Resolução",
-              "Instalações personalizadas"
-            ]
+            "recommendations": ["Topaz Gigapixel", "Adobe Super Resolução", "Instalações personalizadas"]
           },
           {
             "condition": "Necessidade de colaboração/uso em equipe",
@@ -497,11 +489,7 @@
             "✓ Controles avançados",
             "✓ Fluxo de trabalho não destrutivo"
           ],
-          "limitations": [
-            "✗ Assinatura cara",
-            "✗ Requer ecossistema Adobe",
-            "✗ Interface complexa"
-          ],
+          "limitations": ["✗ Assinatura cara", "✗ Requer ecossistema Adobe", "✗ Interface complexa"],
           "bestFor": "Profissionais criativos, usuários de Adobe",
           "upgradePath": "Creative Cloud completa por $52,99/mês"
         }
@@ -645,11 +633,7 @@
                 "ssim": "0,85",
                 "processingTime": "0,5s (CPU), 0,1s (GPU)"
               },
-              "bestUseCases": [
-                "Aplicações em tempo real",
-                "Upscaling de vídeo",
-                "Aprimoramento leve"
-              ]
+              "bestUseCases": ["Aplicações em tempo real", "Upscaling de vídeo", "Aprimoramento leve"]
             },
             {
               "name": "VDSR (Very Deep Super-Resolução)",
@@ -696,11 +680,7 @@
                 "Melhor qualidade visual",
                 "Otimização de perda perceptual"
               ],
-              "weaknesses": [
-                "Pode introduzir artefatos",
-                "Treinamento instável",
-                "Pontuações PSNR menores"
-              ],
+              "weaknesses": ["Pode introduzir artefatos", "Treinamento instável", "Pontuações PSNR menores"],
               "performance": {
                 "psnr": "26,8 dB (2x)",
                 "ssim": "0,82",
@@ -742,10 +722,7 @@
                 "Bom com entradas ruidosas",
                 "Mais estável que o ESRGAN"
               ],
-              "weaknesses": [
-                "Aprimoramento menos agressivo",
-                "Pode ter dificuldade com fontes limpas"
-              ],
+              "weaknesses": ["Aprimoramento menos agressivo", "Pode ter dificuldade com fontes limpas"],
               "performance": {
                 "psnr": "28,2 dB (2x)",
                 "ssim": "0,86",
@@ -781,11 +758,7 @@
                 "mos": "4,5/5,0",
                 "processingTime": "8,2s (GPU)"
               },
-              "bestUseCases": [
-                "Fotografia profissional",
-                "Restauração de arquivos",
-                "Aplicações críticas"
-              ]
+              "bestUseCases": ["Fotografia profissional", "Restauração de arquivos", "Aplicações críticas"]
             },
             {
               "name": "HAT (Hybrid Attention Transformer)",
@@ -1282,11 +1255,7 @@
           "characteristics": {
             "processingTime": "0,1-1 segundo por imagem",
             "quality": "Apenas aprimoramento básico",
-            "useCases": [
-              "Vídeo em tempo real",
-              "Geração de pré-visualização",
-              "Prototipagem rápida"
-            ],
+            "useCases": ["Vídeo em tempo real", "Geração de pré-visualização", "Prototipagem rápida"],
             "hardware": "CPU suficiente",
             "cost": "Mínimo"
           },
@@ -1357,11 +1326,7 @@
         },
         {
           "quadrant": "Muito Lento e Melhor Qualidade",
-          "methods": [
-            "Modelos Ensemble",
-            "Treinados sob medida",
-            "Processamento em múltiplas etapas"
-          ],
+          "methods": ["Modelos Ensemble", "Treinados sob medida", "Processamento em múltiplas etapas"],
           "characteristics": {
             "processingTime": "30-120+ segundos por imagem",
             "quality": "Estado da arte",

@@ -126,6 +126,21 @@ export function ScalePageTemplate({
             </FadeIn>
           )}
 
+          {/* Before/After Slider */}
+          <FadeIn delay={0.25}>
+            <div className="py-12">
+              <div className="max-w-3xl mx-auto">
+                <BeforeAfterSlider
+                  beforeUrl="/before-after/women-before.webp"
+                  afterUrl="/before-after/women-after.webp"
+                  beforeLabel={sliderLabels.before}
+                  afterLabel={sliderLabels.after}
+                  className="shadow-2xl shadow-accent/10"
+                />
+              </div>
+            </div>
+          </FadeIn>
+
           {/* Resolution Specs */}
           {data.dimensions && (
             <FadeIn delay={0.3}>

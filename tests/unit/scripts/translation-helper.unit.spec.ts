@@ -97,7 +97,8 @@ describe('translation-helper', () => {
       const batch2 = JSON.parse(runScript('get-batch de common.json 2 2'));
 
       // Batches should have different entries (if there are enough)
-      if (batch1.entries.length > 0 && batch2.entries.length > 0) {
+      // batch2 may have no entries if offset is past the available entries
+      if (batch1.entries?.length > 0 && batch2.entries?.length > 0) {
         expect(batch1.entries[0].key).not.toBe(batch2.entries[0].key);
       }
     });

@@ -268,11 +268,7 @@
               "Dépendance à Internet",
               "Disponibilité des fonctionnalités liée au niveau dabonnement"
             ],
-            "uniqueFeatures": [
-              "Intégration API",
-              "Collaboration déquipe",
-              "Mises à jour automatiques"
-            ]
+            "uniqueFeatures": ["Intégration API", "Collaboration déquipe", "Mises à jour automatiques"]
           },
           "desktop": {
             "pros": [
@@ -326,11 +322,7 @@
           {
             "condition": "La confidentialité est critique",
             "path": "Solution de bureau",
-            "recommendations": [
-              "Topaz Gigapixel",
-              "Super Resolution Adobe",
-              "Installations personnalisees"
-            ]
+            "recommendations": ["Topaz Gigapixel", "Super Resolution Adobe", "Installations personnalisees"]
           },
           {
             "condition": "Besoin de collaboration/utilisation en equipe",
@@ -462,11 +454,7 @@
             "✓ Acces API",
             "✓ Traitement par lot"
           ],
-          "limitations": [
-            "✗ Systeme de credit",
-            "✗ Cher pour grand volume",
-            "✗ Necessite internet"
-          ],
+          "limitations": ["✗ Systeme de credit", "✗ Cher pour grand volume", "✗ Necessite internet"],
           "bestFor": "Utilisateurs professionnels, integration API",
           "upgradePath": "Niveaux superieurs pour plus de credits"
         },
@@ -497,11 +485,7 @@
             "✓ Contrôles avancés",
             "✓ Flux de travail non destructif"
           ],
-          "limitations": [
-            "✗ Abonnement coûteux",
-            "✗ Écosystème Adobe requis",
-            "✗ Interface complexe"
-          ],
+          "limitations": ["✗ Abonnement coûteux", "✗ Écosystème Adobe requis", "✗ Interface complexe"],
           "bestFor": "Professionnels créatifs, utilisateurs Adobe",
           "upgradePath": "Creative Cloud complet 52,99 $/mois"
         }
@@ -645,11 +629,7 @@
                 "ssim": "0,85",
                 "processingTime": "0,5 s (CPU), 0,1 s (GPU)"
               },
-              "bestUseCases": [
-                "Applications en temps réel",
-                "Mise à léchelle vidéo",
-                "Amélioration légère"
-              ]
+              "bestUseCases": ["Applications en temps réel", "Mise à léchelle vidéo", "Amélioration légère"]
             },
             {
               "name": "VDSR (Very Deep Super-Résolution)",
@@ -672,11 +652,7 @@
               "name": "EDSR (Enhanced Deep Super-Résolution)",
               "year": "2017",
               "architecture": "Deep CNN with removed Lot normalization",
-              "strengths": [
-                "PSNR de pointe",
-                "Architecture efficace",
-                "Bonne preservation des bords"
-              ],
+              "strengths": ["PSNR de pointe", "Architecture efficace", "Bonne preservation des bords"],
               "weaknesses": ["Generation de texture limitee", "Peut etre excessivement lisse"],
               "performance": {
                 "psnr": "30,8 dB (2x)",
@@ -711,11 +687,7 @@
                 "mos": "4,1/5,0",
                 "processingTime": "2,1 s (GPU)"
               },
-              "bestUseCases": [
-                "Amélioration artistique",
-                "Photographie",
-                "Focus sur la qualité visuelle"
-              ]
+              "bestUseCases": ["Amélioration artistique", "Photographie", "Focus sur la qualité visuelle"]
             },
             {
               "name": "ESRGAN (Enhanced Super-Résolution GAN)",
@@ -778,11 +750,7 @@
                 "Gere differents types de degradation",
                 "Performance de pointe"
               ],
-              "weaknesses": [
-                "Exigences de calcul élevées",
-                "Traitement plus lent",
-                "Gourmand en mémoire"
-              ],
+              "weaknesses": ["Exigences de calcul élevées", "Traitement plus lent", "Gourmand en mémoire"],
               "performance": {
                 "psnr": "31,5 dB (2x)",
                 "ssim": "0,92",
@@ -1118,11 +1086,7 @@
             "name": "Python avec PIL/OpenCV",
             "setup": "pip install pillow opencv-python requests",
             "complexity": "Moyen",
-            "features": [
-              "Surveillance des fichiers",
-              "Conversion de format",
-              "Traitement par lots"
-            ],
+            "features": ["Surveillance des fichiers", "Conversion de format", "Traitement par lots"],
             "codeExample": "```python\nfrom PIL import Image\nimport os\nimport requests\n\ndef batch_upscale(folder_path, api_key):\n    for filename in os.listdir(folder_path):\n        if filename.lower().endswith(('.jpg', '.png')):\n            # Appel API ici\n            pass\n```"
           },
           {
@@ -1152,11 +1116,7 @@
             "name": "Automatisation Zapier/Make",
             "setup": "Plateforme sans code",
             "complexity": "Faible",
-            "features": [
-              "Constructeur visuel",
-              "Plus de 3000 intégrations",
-              "Configuration rapide"
-            ],
+            "features": ["Constructeur visuel", "Plus de 3000 intégrations", "Configuration rapide"],
             "cost": "$20-500/mois selon utilisation"
           }
         ]
@@ -1871,11 +1831,7 @@
             "Traitement basé sur les risques",
             "Options de secours"
           ],
-          "cons": [
-            "Configuration complexe",
-            "Plusieurs domaines de sécurité",
-            "Défis dintégration"
-          ],
+          "cons": ["Configuration complexe", "Plusieurs domaines de sécurité", "Défis dintégration"],
           "bestFor": "Grandes organisations, données à sensibilité mixte",
           "implementation": "Routage sensible au contenu, passerelle sur site"
         },

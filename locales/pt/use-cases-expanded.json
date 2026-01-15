@@ -186,11 +186,7 @@
       "softwareRecommendations": {
         "professionalTools": ["Adobe Photoshop", "Capture Um", "Phase Um"],
         "ecommerceTools": ["MyImageUpscaler", "Remover.bg", "Pixelcut", "Canva Pro"],
-        "platformSpecific": [
-          "Amazon Product Imaging",
-          "Shopify Image Editaror",
-          "eBay Foto Services"
-        ],
+        "platformSpecific": ["Amazon Product Imaging", "Shopify Image Editaror", "eBay Foto Services"],
         "batchProcessing": ["Adobe Lightroom", "Bridge", "Fluxos de Trabalho Automatizados"]
       },
       "fileSizeGuidelines": {
@@ -272,12 +268,7 @@
       "technicalSpecs": {
         "supportedFormats": ["DICOM", "JPEG", "TIFF", "PNG", "RAW", "BMP"],
         "maxResolution": "Ilimitada para imagens médicas e fotografia científica",
-        "outputFormats": [
-          "TIFF (alta resolução)",
-          "JPEG (apresentação)",
-          "PNG (Web)",
-          "DICOM (médico)"
-        ],
+        "outputFormats": ["TIFF (alta resolução)", "JPEG (apresentação)", "PNG (Web)", "DICOM (médico)"],
         "batchProcessing": "Até 1.000 imagens para conjuntos de dados de pesquisa",
         "compliance": ["Compatível com HIPAA", "Registrado no FDA", "Certificado ISO 13485"]
       },
@@ -386,18 +377,9 @@
       "technicalSpecs": {
         "supportedFormats": ["JPEG", "TIFF", "RAW", "PNG", "DNG", "HEIC"],
         "maxResolution": "Até 100MP para câmeras arquitetônicas profissionais",
-        "outputFormats": [
-          "JPEG (apresentação)",
-          "TIFF (impressão)",
-          "PNG (Web)",
-          "PDF (documentação)"
-        ],
+        "outputFormats": ["JPEG (apresentação)", "TIFF (impressão)", "PNG (Web)", "PDF (documentação)"],
         "batchProcessing": "Até 500 fotos de progresso de construção por lote",
-        "specializedFeatures": [
-          "Correção de perspectiva",
-          "Processamento HDR",
-          "Aprimoramento de detalhes"
-        ]
+        "specializedFeatures": ["Correção de perspectiva", "Processamento HDR", "Aprimoramento de detalhes"]
       },
       "caseStudies": [
         {
@@ -504,12 +486,7 @@
       "technicalSpecs": {
         "supportedFormats": ["JPEG", "TIFF", "PNG", "RAW", "PSD", "HEIC"],
         "maxResolution": "Ilimitada para aplicações de impressão",
-        "outputFormats": [
-          "TIFF (CMYK)",
-          "PDF (pronto para impressão)",
-          "JPEG (RGB)",
-          "PSD (camadas)"
-        ],
+        "outputFormats": ["TIFF (CMYK)", "PDF (pronto para impressão)", "JPEG (RGB)", "PSD (camadas)"],
         "colorSpaces": ["CMYK", "RGB", "Tons de cinza", "Cores especiais (Spot)"],
         "printStandards": ["ISO 12647", "GRACoL", "SWOP", "FOGRA"]
       },
@@ -630,11 +607,7 @@
           "LinkedIn",
           "Pinterest"
         ],
-        "outputFormats": [
-          "JPEG otimizado para plataforma",
-          "PNG com transparência",
-          "WebP para web"
-        ],
+        "outputFormats": ["JPEG otimizado para plataforma", "PNG com transparência", "WebP para web"],
         "batchProcessing": "Até 100 peças de conteúdo por lote",
         "performanceOptimization": ["Carregamento rápido", "Mobile-first", "Alto engajamento"]
       },
@@ -708,7 +681,10 @@
         "LinkedIn",
         "Pinterest"
       ],
-      "performanceOptimization": [null, "Mobile-first"]
+      "performanceOptimization": [
+        null,
+        "Mobile-first"
+      ]
     },
     {
       "slug": "design-e-desenvolvimento-web",
@@ -874,11 +850,7 @@
           "Criativos de e-mail",
           "Imagens de landing pages"
         ],
-        "performanceOptimization": [
-          "Foco em CTR",
-          "Otimização de conversão",
-          "Consistência da marca"
-        ],
+        "performanceOptimization": ["Foco em CTR", "Otimização de conversão", "Consistência da marca"],
         "testingSupport": ["Variações de teste A/B", "Suporte a teste multivariado"]
       },
       "caseStudies": [
@@ -1072,7 +1044,11 @@
       "lastUpdated": "2024-12-19T10:00:00Z",
       "ctaText": "Restaure Suas Fotos Preciosas",
       "ctaUrl": "/?signup=1",
-      "archiveStandards": [null, "METS", "Conformidade PREMIS para arquivamento institucional"]
+      "archiveStandards": [
+        null,
+        "METS",
+        "Conformidade PREMIS para arquivamento institucional"
+      ]
     },
     {
       "slug": "otimizacao-de-imagens-geradas-por-ia",
@@ -1115,26 +1091,10 @@
         "Baixe a obra de arte de IA aprimorada profissionalmente em alta resolução"
       ],
       "technicalSpecs": {
-        "supportedGenerators": [
-          "Midjourney",
-          "DALL-E",
-          "Stable Diffusion",
-          "Leonardo AI",
-          "Leonardo IA"
-        ],
+        "supportedGenerators": ["Midjourney", "DALL-E", "Stable Diffusion", "Leonardo AI", "Leonardo IA"],
         "outputResolutions": ["4K", "6K", "8K", "Grande formato personalizado"],
-        "supportedStyles": [
-          "Arte digital",
-          "Fotorrealista",
-          "Artístico",
-          "Abstrato",
-          "Design de personagens"
-        ],
-        "printStandards": [
-          "Qualidade de galeria",
-          "Impressão comercial",
-          "Reprodução de belas artes"
-        ],
+        "supportedStyles": ["Arte digital", "Fotorrealista", "Artístico", "Abstrato", "Design de personagens"],
+        "printStandards": ["Qualidade de galeria", "Impressão comercial", "Reprodução de belas artes"],
         "formatSupport": ["PNG", "TIFF", "JPEG", "PSD", "WebP"]
       },
       "caseStudies": [

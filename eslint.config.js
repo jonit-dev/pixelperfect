@@ -275,6 +275,13 @@ export default [
       '**/vitest.config.ts',
       '**/playwright.config.ts',
     ],
+    languageOptions: {
+      globals: {
+        ...globals.vitest,
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
     rules: {
       'no-restricted-syntax': 'off',
       'react-hooks/rules-of-hooks': 'off', // Playwright fixtures use 'use' function that triggers this
@@ -291,7 +298,7 @@ export default [
       'import/no-default-export': 'off', // Test configs often need default exports
       '@typescript-eslint/explicit-module-boundary-types': 'off', // Not needed for test functions
       '@typescript-eslint/no-require-imports': 'off', // Some tests use require() for dynamic imports
-      'no-undef': 'warn', // Workers tests may have globals like ScheduledEvent
+      'no-undef': 'off', // Vitest globals are defined above
       'no-empty-pattern': 'off', // Test fixtures may have empty destructuring
       '@typescript-eslint/no-empty-function': 'off', // Empty functions are fine in test mocks
     },

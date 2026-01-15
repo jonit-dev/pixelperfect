@@ -30,8 +30,8 @@ import type { PSEOCategory } from './url-utils';
 export function generateHreflangAlternates(path: string): Record<string, string> {
   const alternates: Record<string, string> = {};
 
-  // Ensure path has trailing slash for consistency
-  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+  // Ensure path does NOT have trailing slash for consistency (except root)
+  const normalizedPath = path === '/' ? '/' : path.replace(/\/$/, '');
 
   // Generate URL for each supported locale
   for (const locale of SUPPORTED_LOCALES) {
@@ -118,19 +118,34 @@ export function formatHreflangForMetadata(
 /**
  * Generate canonical URL for a page
  * Uses the default locale (English) as the canonical version
+ * Strips any locale prefix from the path
  *
- * @param path - The page path without locale prefix
+ * @param path - The page path (may or may not include locale prefix)
  * @returns Full canonical URL
  *
  * @example
  * ```ts
  * getCanonicalUrl('/tools/ai-upscaler');
- * // Returns: 'https://myimageupscaler.com/tools/ai-upscaler/'
+ * // Returns: 'https://myimageupscaler.com/tools/ai-upscaler'
+ *
+ * getCanonicalUrl('/es/tools/upscaler');
+ * // Returns: 'https://myimageupscaler.com/tools/upscaler'
  * ```
  */
 export function getCanonicalUrl(path: string): string {
-  // Ensure path has trailing slash for consistency
-  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+  // Strip locale prefix if present (e.g., /es/tools -> /tools)
+  const pathWithoutLocale = SUPPORTED_LOCALES.reduce((acc, locale) => {
+    const prefix = `/${locale}/`;
+    if (acc.startsWith(prefix)) {
+      return acc.slice(prefix.length - 1); // Keep leading slash
+    }
+    return acc;
+  }, path);
+
+  // Remove trailing slash for consistency (except root)
+  const normalizedPath =
+    pathWithoutLocale === '/' ? '/' : pathWithoutLocale.replace(/\/$/, '');
+
   return `${clientEnv.BASE_URL}${normalizedPath}`;
 }
 

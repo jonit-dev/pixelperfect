@@ -34,20 +34,6 @@ export function DeviceUsePageTemplate({
   const pageMapping = getPageMappingByUrl(`/device-use/${data.slug}`);
   const tier = pageMapping?.tier;
 
-  // Get device icon
-  const getDeviceIcon = (device: string) => {
-    switch (device) {
-      case 'mobile':
-        return '📱';
-      case 'desktop':
-        return '🖥️';
-      case 'tablet':
-        return '📲';
-      default:
-        return '💻';
-    }
-  };
-
   // Get locale-aware labels for before/after slider
   const getBeforeAfterLabels = (locale?: string) => {
     const labels: Record<string, { before: string; after: string }> = {
@@ -63,6 +49,20 @@ export function DeviceUsePageTemplate({
   };
 
   const sliderLabels = getBeforeAfterLabels(locale);
+
+  // Get device icon
+  const getDeviceIcon = (device: string) => {
+    switch (device) {
+      case 'mobile':
+        return '📱';
+      case 'desktop':
+        return '🖥️';
+      case 'tablet':
+        return '📲';
+      default:
+        return '💻';
+    }
+  };
 
   return (
     <div className="min-h-screen bg-main relative">
@@ -141,6 +141,21 @@ export function DeviceUsePageTemplate({
                     <p className="text-text-secondary text-sm">{data.useCaseDescription}</p>
                   </div>
                 )}
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Before/After Slider */}
+          <FadeIn delay={0.25}>
+            <div className="py-12">
+              <div className="max-w-3xl mx-auto">
+                <BeforeAfterSlider
+                  beforeUrl="/before-after/women-before.webp"
+                  afterUrl="/before-after/women-after.webp"
+                  beforeLabel={sliderLabels.before}
+                  afterLabel={sliderLabels.after}
+                  className="shadow-2xl shadow-accent/10"
+                />
               </div>
             </div>
           </FadeIn>

@@ -164,6 +164,11 @@ describe('Hreflang Generator', () => {
       const alternates = {
         en: 'https://myimageupscaler.com/tools/upscaler',
         es: 'https://myimageupscaler.com/es/tools/upscaler',
+        pt: 'https://myimageupscaler.com/pt/tools/upscaler',
+        de: 'https://myimageupscaler.com/de/tools/upscaler',
+        fr: 'https://myimageupscaler.com/fr/tools/upscaler',
+        it: 'https://myimageupscaler.com/it/tools/upscaler',
+        ja: 'https://myimageupscaler.com/ja/tools/upscaler',
         'x-default': 'https://myimageupscaler.com/tools/upscaler',
       };
 
@@ -174,6 +179,11 @@ describe('Hreflang Generator', () => {
       const alternates = {
         en: 'https://myimageupscaler.com/tools/upscaler',
         es: 'https://myimageupscaler.com/es/tools/upscaler',
+        pt: 'https://myimageupscaler.com/pt/tools/upscaler',
+        de: 'https://myimageupscaler.com/de/tools/upscaler',
+        fr: 'https://myimageupscaler.com/fr/tools/upscaler',
+        it: 'https://myimageupscaler.com/it/tools/upscaler',
+        ja: 'https://myimageupscaler.com/ja/tools/upscaler',
       };
 
       expect(validateHreflangAlternates(alternates)).toBe(false);
@@ -182,6 +192,11 @@ describe('Hreflang Generator', () => {
     it('should return false when a locale is missing', () => {
       const alternates = {
         en: 'https://myimageupscaler.com/tools/upscaler',
+        es: 'https://myimageupscaler.com/es/tools/upscaler',
+        pt: 'https://myimageupscaler.com/pt/tools/upscaler',
+        de: 'https://myimageupscaler.com/de/tools/upscaler',
+        fr: 'https://myimageupscaler.com/fr/tools/upscaler',
+        it: 'https://myimageupscaler.com/it/tools/upscaler',
         'x-default': 'https://myimageupscaler.com/tools/upscaler',
       };
 
@@ -192,6 +207,11 @@ describe('Hreflang Generator', () => {
       const alternates = {
         en: 'not-a-valid-url',
         es: 'https://myimageupscaler.com/es/tools/upscaler',
+        pt: 'https://myimageupscaler.com/pt/tools/upscaler',
+        de: 'https://myimageupscaler.com/de/tools/upscaler',
+        fr: 'https://myimageupscaler.com/fr/tools/upscaler',
+        it: 'https://myimageupscaler.com/it/tools/upscaler',
+        ja: 'https://myimageupscaler.com/ja/tools/upscaler',
         'x-default': 'https://myimageupscaler.com/tools/upscaler',
       };
 
@@ -214,7 +234,7 @@ describe('Hreflang Generator', () => {
 
     it('should default to en_US for unknown locales', () => {
       // @ts-expect-error - Testing with invalid locale
-      const ogLocale = getOpenGraphLocale('de');
+      const ogLocale = getOpenGraphLocale('zz');
 
       expect(ogLocale).toBe('en_US');
     });
@@ -226,8 +246,9 @@ describe('Hreflang Generator', () => {
       const slug = 'ai-image-upscaler';
       const alternates = generatePSEOHreflangAlternates(category, slug);
 
-      // Verify structure matches Google's hreflang requirements
-      expect(Object.keys(alternates).sort()).toEqual(['en', 'es', 'x-default'].sort());
+      // Verify structure includes all supported locales + x-default
+      const expectedKeys = [...['en', 'es', 'pt', 'de', 'fr', 'it', 'ja'], 'x-default'];
+      expect(Object.keys(alternates).sort()).toEqual(expectedKeys.sort());
 
       // Verify all URLs are valid
       for (const [_locale, url] of Object.entries(alternates)) {

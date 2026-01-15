@@ -147,10 +147,7 @@
         }
       ],
       "relatedTools": ["ai-image-upscaler", "image-compressor", "png-to-jpg"],
-      "relatedGuides": [
-        "como-redimensionar-imagens-para-mídia-social",
-        "guia-de-resolução-de-imagem"
-      ],
+      "relatedGuides": ["como-redimensionar-imagens-para-mídia-social", "guia-de-resolução-de-imagem"],
       "ctaText": "Experimentar Redimensionador de Imagem Gratuito",
       "ctaUrl": "/tools/resize/Imagem-resizer"
     },
@@ -698,11 +695,11 @@
         },
         {
           "question": "Qual é o tamanho de um cabeçalho do Twitter?",
-          "answer": "Twitter headers should be 1500x500 pixels. Nãote that parts of the header may be covered by your profile picture."
+          "answer": "Os cabeçalhos do Twitter devem ter 1500x500 pixels. Observe que partes do cabeçalho podem ser cortadas em dispositivos móveis."
         },
         {
           "question": "O Twitter comprime imagens?",
-          "answer": "Yes, Twitter compresses images. Use high-quality exports (90%+) and exact Dimensões to minimize compression artifacts."
+          "answer": "Sim, o Twitter compacta imagens. Use exportações de alta qualidade (90%+) e dimensões exatas para melhor resultado."
         },
         {
           "question": "Qual é o tamanho máximo de imagem no Twitter?",
@@ -718,9 +715,9 @@
       "slug": "resize-image-for-linkedin",
       "title": "Redimensionador de Imagens do LinkedIn",
       "metaTitle": "Redimensionador de Imagens do LinkedIn | MyImageUpscaler",
-      "metaDescription": "Redimensione imagens para o LinkedIn instantaneamente. Obtenha dimensões perfeitas para postagens (1200x627) e banners (1584x396). Gratuito, não requer upload.",
-      "h1": "Redimensionador Gratuito de Imagens do LinkedIn - Tamanhos Perfeitos Instantaneamente",
-      "intro": "Redimensione suas imagens para dimensões perfeitas do LinkedIn. Postagens e banners otimizados para engajamento. Funciona no seu navegador.",
+      "metaDescription": "Redimensione imagens para LinkedIn instantaneamente. Publicações, banners, fotos de perfil - dimensões perfeitas. Gratuito, sem upload.",
+      "h1": "Redimensionador de Imagens LinkedIn Gratuito",
+      "intro": "Redimensione suas imagens para LinkedIn instantaneamente. Publicações, banners, fotos de perfil - dimensões perfeitas. Gratuito, sem upload.",
       "primaryKeyword": "redimensionador de fotos do linkedin",
       "secondaryKeywords": [
         "tamanho de imagem do linkedin",
@@ -1010,9 +1007,9 @@
       "slug": "image-compressor",
       "title": "Compressor de Imagens",
       "metaTitle": "Compressor de Imagens Gratuito - Comprima Imagens Online | MyImageUpscaler",
-      "metaDescription": "Comprima imagens online gratuitamente. Reduza o tamanho do arquivo em até 80% mantendo a qualidade. Funciona no seu navegador - sem upload necessário. Suporte para JPEG, PNG, WebP.",
-      "h1": "Compressor de Imagens Online Gratuito - Reduza o Tamanho do Arquivo Instantaneamente",
-      "intro": "Comprima suas imagens sem perder qualidade. Nosso compressor online gratuito reduz o tamanho do arquivo em até 80% usando tecnologia avançada de navegador. Perfeito para otimização web, email e armazenamento.",
+      "metaDescription": "Comprima imagens online gratuitamente. Nenhum upload necessário - todo processamento acontece no seu navegador. Suporta JPEG, PNG, WebP. Perfeito para web, email e armazenamento.",
+      "h1": "Compressor de Imagens Online Gratuito",
+      "intro": "Reduza o tamanho do arquivo de suas imagens em segundos. Nosso compressor de imagens online gratuito funciona inteiramente no seu navegador - sem upload, sem cadastro, sem marcas d'água. Perfeito para web, email e armazenamento.",
       "primaryKeyword": "compressor de imagens",
       "secondaryKeywords": [
         "comprimir imagem online",
@@ -1226,7 +1223,7 @@
       "benefits": [
         {
           "title": "Massive Tamanho de arquivo Reduction",
-          "description": "JPG files are typically 70-90% smaller than PNG for photographs and Complexo images.",
+          "description": "Arquivos JPG são normalmente 70-90% menores que PNG para fotografias e imagens complexas. Ideal para fotos e imagens coloridas.",
           "metric": "Até 90% menor"
         },
         {
@@ -1367,7 +1364,7 @@
       "benefits": [
         {
           "title": "Formato Sem Perdas",
-          "description": "PNG não adiciona artefatos de compressão, preservando sua qualidade de imagem.",
+          "description": "PNG suporta transparência, tornando-o ideal para logotipos, gráficos e imagens que necessitam de fundo transparente.",
           "metric": "Zero artefatos adicionados"
         },
         {
@@ -1504,7 +1501,7 @@
       "benefits": [
         {
           "title": "Funciona em Todos os Lugares",
-          "description": "JPG é o formato de imagem mais universalmente suportado em todos os dispositivos.",
+          "description": "WebP oferece melhor compressão que JPEG e PNG, mantendo alta qualidade. Ideal para otimização web e imagens modernas.",
           "metric": "100% compatível"
         },
         {
@@ -1640,7 +1637,7 @@
       "benefits": [
         {
           "title": "Mantém Transparência",
-          "description": "Ao contrário do JPG, o PNG preserva qualquer transparência do seu WebP.",
+          "description": "PNG suporta transparência, tornando-o ideal para logotipos, gráficos e imagens que necessitam de fundo transparente.",
           "metric": "Suporte alfa completo"
         },
         {
@@ -1777,7 +1774,7 @@
       "benefits": [
         {
           "title": "Arquivos Menores",
-          "description": "WebP oferece 25-35% melhor compressão que JPEG.",
+          "description": "WebP oferece melhor compressão que JPEG e PNG, mantendo alta qualidade. Ideal para otimização web e imagens modernas.",
           "metric": "25-35% menor"
         },
         {
@@ -1913,7 +1910,7 @@
       "benefits": [
         {
           "title": "Arquivos Menores",
-          "description": "WebP oferece 26% melhor compressão que PNG em média.",
+          "description": "WebP oferece melhor compressão que JPEG e PNG, mantendo alta qualidade. Ideal para otimização web e imagens modernas.",
           "metric": "26% menor"
         },
         {

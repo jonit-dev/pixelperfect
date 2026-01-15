@@ -7,7 +7,6 @@
 'use client';
 
 import { ReactElement } from 'react';
-import { motion } from 'framer-motion';
 import { MarkdownRenderer } from './MarkdownRenderer';
 
 interface IFAQAccordionProps {

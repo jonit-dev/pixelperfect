@@ -303,12 +303,7 @@
       "h1": "Guia Resolucao Imagem",
       "intro": "Domine conceitos resolucao imagem com guias tecnicos.",
       "primaryKeyword": "comparação de formatos de imagem",
-      "secondaryKeywords": [
-        "JPEG vs png",
-        "formato webp",
-        "tiff vs JPEG",
-        "melhor formato de imagem"
-      ],
+      "secondaryKeywords": ["JPEG vs png", "formato webp", "tiff vs JPEG", "melhor formato de imagem"],
       "lastUpdated": "2025-12-19T00:00:00Z",
       "category": "guias-tecnicos",
       "difficulty": "Intermediário",
@@ -1190,11 +1185,7 @@
         {
           "phase": "Arquitetura do Modelo",
           "description": "Projeto da estrutura da rede para tarefas específicas",
-          "considerations": [
-            "Requisitos da tarefa",
-            "Recursos computacionais",
-            "Tempo de treinamento"
-          ]
+          "considerations": ["Requisitos da tarefa", "Recursos computacionais", "Tempo de treinamento"]
         },
         {
           "phase": "Loop de Treinamento",
@@ -1204,11 +1195,7 @@
         {
           "phase": "Validação",
           "description": "Avaliando o desempenho do modelo em dados não vistos",
-          "considerations": [
-            "Seleção de métricas",
-            "Detecção de overfitting",
-            "Ajuste de hiperparâmetros"
-          ]
+          "considerations": ["Seleção de métricas", "Detecção de overfitting", "Ajuste de hiperparâmetros"]
         }
       ],
       "imageProcessingTasks": [
@@ -1381,11 +1368,7 @@
           "step": 2,
           "name": "Seleção de Formato",
           "description": "Escolha o formato ideal com base no tipo de conteúdo",
-          "considerations": [
-            "Suporte a WebP",
-            "Necessidade de transparência",
-            "Requisitos de animação"
-          ]
+          "considerations": ["Suporte a WebP", "Necessidade de transparência", "Requisitos de animação"]
         },
         {
           "step": 3,
@@ -1468,11 +1451,7 @@
           "tool": "Squoosh",
           "type": "Baseado na web",
           "bestFor": "Otimização rápida, comparação de formatos",
-          "features": [
-            "Múltiplos formatos",
-            "Visualização em tempo real",
-            "Comparação de qualidade"
-          ]
+          "features": ["Múltiplos formatos", "Visualização em tempo real", "Comparação de qualidade"]
         },
         {
           "tool": "ImageOptim",
@@ -1853,11 +1832,7 @@
           "complexity": "Alta",
           "speed": "Lento",
           "quality": "Excelente (nítida, artefatos mínimos)",
-          "bestFor": [
-            "Impressão de alta qualidade",
-            "Trabalho profissional",
-            "Aplicações críticas"
-          ],
+          "bestFor": ["Impressão de alta qualidade", "Trabalho profissional", "Aplicações críticas"],
           "artifacts": ["Ringing menor", "Leve overshoot"]
         },
         {
@@ -1936,11 +1911,7 @@
       "implementationConsiderations": [
         {
           "factor": "Recursos Computacionais",
-          "considerations": [
-            "Aceleração por CPU vs GPU",
-            "Requisitos de memória",
-            "Restrições de tempo real"
-          ]
+          "considerations": ["Aceleração por CPU vs GPU", "Requisitos de memória", "Restrições de tempo real"]
         },
         {
           "factor": "Tipo de Conteúdo",
