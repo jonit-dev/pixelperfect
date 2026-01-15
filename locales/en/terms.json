@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Terms of Service",
-    "description": "Read the terms and conditions for using {{APP_NAME}} image upscaling and enhancement services."
+    "description": "Read the terms and conditions for using {APP_NAME} image upscaling and enhancement services."
   },
-  "lastUpdated": "Last updated: {{date}}",
+  "lastUpdated": "Last updated: {date}",
   "title": "Terms of Service",
   "viewPrivacy": "View Privacy Policy",
   "acceptance": {
     "title": "1. Acceptance of Terms",
-    "paragraph1": "By accessing or using {{APP_NAME}} (\"Service\"), you agree to be bound by these Terms of Service (\"Terms\"). If you do not agree to these Terms, you may not use the Service.",
+    "paragraph1": "By accessing or using {APP_NAME} (\"Service\"), you agree to be bound by these Terms of Service (\"Terms\"). If you do not agree to these Terms, you may not use the Service.",
     "paragraph2": "We reserve the right to modify these Terms at any time. Continued use of the Service after changes constitutes acceptance of the modified Terms."
   },
   "description": {
     "title": "2. Description of Service",
-    "intro": "{{APP_NAME}} provides AI-powered image upscaling and enhancement services. The Service allows users to:",
+    "intro": "{APP_NAME} provides AI-powered image upscaling and enhancement services. The Service allows users to:",
     "features": [
       "Upload images for AI-powered enhancement",
       "Upscale images to higher resolutions (2x, 4x)",
@@ -60,7 +60,7 @@
         "Service unavailability"
       ],
       "contact": "For refund requests, contact",
-      "email": "{{SUPPORT_EMAIL}}"
+      "email": "{SUPPORT_EMAIL}"
     }
   },
   "subscriptions": {
@@ -97,7 +97,7 @@
     },
     "ourService": {
       "title": "7.2 Our Service",
-      "description": "{{APP_NAME}}, including its technology, branding, and content, is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission."
+      "description": "{APP_NAME}, including its technology, branding, and content, is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission."
     }
   },
   "availability": {
@@ -112,7 +112,7 @@
   },
   "limitation": {
     "title": "9. Limitation of Liability",
-    "intro": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, {{APP_NAME}} SHALL NOT BE LIABLE FOR:",
+    "intro": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, {APP_NAME} SHALL NOT BE LIABLE FOR:",
     "exclusions": [
       "Indirect, incidental, special, or consequential damages",
       "Loss of profits, data, or business opportunities",
@@ -134,7 +134,7 @@
   },
   "indemnification": {
     "title": "11. Indemnification",
-    "description": "You agree to indemnify and hold harmless {{APP_NAME}} and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the Service, violation of these Terms, or infringement of any third-party rights."
+    "description": "You agree to indemnify and hold harmless {APP_NAME} and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the Service, violation of these Terms, or infringement of any third-party rights."
   },
   "termination": {
     "title": "12. Termination",
@@ -160,6 +160,6 @@
     "title": "15. Contact",
     "intro": "For questions about these Terms:",
     "emailLabel": "Email:",
-    "email": "{{LEGAL_EMAIL}}"
+    "email": "{LEGAL_EMAIL}"
   }
 }

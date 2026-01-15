@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "Privacy Policy",
-    "description": "Learn how {{APP_NAME}} collects, uses, and protects your personal information and uploaded images."
+    "description": "Learn how {APP_NAME} collects, uses, and protects your personal information and uploaded images."
   },
-  "lastUpdated": "Last updated: {{date}}",
+  "lastUpdated": "Last updated: {date}",
   "title": "Privacy Policy",
   "viewTerms": "View Terms of Service",
   "introduction": {
     "title": "1. Introduction",
-    "paragraph1": "Welcome to {{APP_NAME}} (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered image upscaling and enhancement service.",
-    "paragraph2": "By using {{APP_NAME}}, you agree to the collection and use of information in accordance with this policy."
+    "paragraph1": "Welcome to {APP_NAME} (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered image upscaling and enhancement service.",
+    "paragraph2": "By using {APP_NAME}, you agree to the collection and use of information in accordance with this policy."
   },
   "collection": {
     "title": "2. Information We Collect",
@@ -125,7 +125,7 @@
       }
     ],
     "contact": "To exercise these rights, please contact us at",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "cookies": {
     "title": "8. Cookies and Tracking",
@@ -154,6 +154,6 @@
     "title": "12. Contact Us",
     "intro": "If you have questions about this Privacy Policy or our data practices, please contact us:",
     "emailLabel": "Email:",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   }
 }

@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "Datenschutzrichtlinie",
-    "description": "Erfahren Sie, wie {{APP_NAME}} Ihre persönlichen Informationen und hochgeladenen Bilder sammelt, nutzt und schützt."
+    "description": "Erfahren Sie, wie {APP_NAME} Ihre persönlichen Informationen und hochgeladenen Bilder sammelt, nutzt und schützt."
   },
-  "lastUpdated": "Zuletzt aktualisiert: {{date}}",
+  "lastUpdated": "Zuletzt aktualisiert: {date}",
   "title": "Datenschutzrichtlinie",
   "viewTerms": "Nutzungsbedingungen anzeigen",
   "introduction": {
     "title": "1. Einleitung",
-    "paragraph1": "Willkommen bei {{APP_NAME}} (\"wir\", \"unser\" oder \"uns\"). Wir sind verpflichtet, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Informationen zu gewährleisten. Diese Datenschutzrichtlinie erklärt, wie wir Informationen sammeln, nutzen, offenlegen und schützen, wenn Sie unseren KI-gestützten Bildskalierungs- und -verbesserungsdienst nutzen.",
-    "paragraph2": "Durch die Nutzung von {{APP_NAME}} stimmen Sie der Sammlung und Nutzung von Informationen gemäß dieser Richtlinie zu."
+    "paragraph1": "Willkommen bei {APP_NAME} (\"wir\", \"unser\" oder \"uns\"). Wir sind verpflichtet, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Informationen zu gewährleisten. Diese Datenschutzrichtlinie erklärt, wie wir Informationen sammeln, nutzen, offenlegen und schützen, wenn Sie unseren KI-gestützten Bildskalierungs- und -verbesserungsdienst nutzen.",
+    "paragraph2": "Durch die Nutzung von {APP_NAME} stimmen Sie der Sammlung und Nutzung von Informationen gemäß dieser Richtlinie zu."
   },
   "collection": {
     "title": "2. Informationen, die wir sammeln",
@@ -125,7 +125,7 @@
       }
     ],
     "contact": "Um diese Rechte auszuüben, kontaktieren Sie uns bitte unter",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "cookies": {
     "title": "8. Cookies und Tracking",
@@ -154,7 +154,7 @@
     "title": "12. Kontaktieren Sie uns",
     "intro": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenpraktiken haben, kontaktieren Sie uns bitte:",
     "emailLabel": "E-Mail:",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "nav": {
     "blog": "Blog"

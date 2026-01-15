@@ -115,9 +115,9 @@ export function InteractiveToolPageTemplate({
         <div className="pt-6 pb-4">
           <BreadcrumbNav
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Tools', href: '/tools' },
-              { label: data.title, href: `/tools/${data.slug}` },
+              { label: 'Home', href: locale ? `/${locale}` : '/' },
+              { label: 'Tools', href: locale ? `/${locale}/tools` : '/tools' },
+              { label: data.title, href: locale ? `/${locale}/tools/${data.slug}` : `/tools/${data.slug}` },
             ]}
           />
         </div>

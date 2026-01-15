@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Batch-Verarbeitungslimit erreicht",
     "clientEnforcedTitle": "Batch-Limit erreicht",
     "serverEnforcedMessage": "Sie haben das Verarbeitungslimit für Ihren Plan erreicht. Sie haben {currentCount} Bilder verarbeitet, aber Ihr Plan erlaubt maximal {limit} Bilder pro Stunde.",
-    "clientEnforcedMessage": "Sie haben versucht, {attempted} Bild{plural, plural, one {} other {er}} hinzuzufügen, aber Ihr Plan erlaubt maximal {limit} Bild{limitPlural, plural, one {} other {er}} in der Warteschlange.",
+    "clientEnforcedMessage": "Sie haben versucht, {attempted} Bild{plural, plural, one {} other {er} hinzuzufügen, aber Ihr Plan erlaubt maximal {limit} Bild{limitPlural, plural, one {} other {er} in der Warteschlange.",
     "freeUserMessage": "Kostenlose Nutzer können 1 Bild gleichzeitig verarbeiten. Führen Sie ein Upgrade durch, um höhere Batch-Limits freizuschalten und mehrere Bilder zu verarbeiten.",
     "securityMessage": "Dies ist eine Sicherheitsmaßnahme gegen Missbrauch. Das Limit wird in etwa 1 Stunde zurückgesetzt. Führen Sie ein Upgrade durch für höhere Limits.",
     "upgradeButton": "Plan upgraden",
-    "addPartialButton": "{availableSlots} {count, plural, one {Bild} other {Bilder}} hinzufügen",
+    "addPartialButton": "{availableSlots} {count, plural, one {Bild} other {Bilder} hinzufügen",
     "cancelButton": "Abbrechen"
   },
   "queue": {

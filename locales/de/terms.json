@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Nutzungsbedingungen",
-    "description": "Lesen Sie die Geschäftsbedingungen für die Nutzung der Bildskalierungs- und -verbesserungsdienste von {{APP_NAME}}."
+    "description": "Lesen Sie die Geschäftsbedingungen für die Nutzung der Bildskalierungs- und -verbesserungsdienste von {APP_NAME}."
   },
-  "lastUpdated": "Zuletzt aktualisiert: {{date}}",
+  "lastUpdated": "Zuletzt aktualisiert: {date}",
   "title": "Nutzungsbedingungen",
   "viewPrivacy": "Datenschutzrichtlinie anzeigen",
   "acceptance": {
     "title": "1. Annahme der Bedingungen",
-    "paragraph1": "Durch den Zugang zu oder die Nutzung von {{APP_NAME}} (\"Service\") stimmen Sie zu, an diese Nutzungsbedingungen (\"Bedingungen\") gebunden zu sein. Wenn Sie diesen Bedingungen nicht zustimmen, dürfen Sie den Service nicht nutzen.",
+    "paragraph1": "Durch den Zugang zu oder die Nutzung von {APP_NAME} (\"Service\") stimmen Sie zu, an diese Nutzungsbedingungen (\"Bedingungen\") gebunden zu sein. Wenn Sie diesen Bedingungen nicht zustimmen, dürfen Sie den Service nicht nutzen.",
     "paragraph2": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Die fortgesetzte Nutzung des Service nach Änderungen stellt die Annahme der geänderten Bedingungen dar."
   },
   "description": {
     "title": "2. Beschreibung des Service",
-    "intro": "{{APP_NAME}} bietet KI-gestützte Bildskalierungs- und -verbesserungsdienste an. Der Service ermöglicht Benutzern:",
+    "intro": "{APP_NAME} bietet KI-gestützte Bildskalierungs- und -verbesserungsdienste an. Der Service ermöglicht Benutzern:",
     "features": [
       "Bilder zum KI-gestützten Enhancen hochzuladen",
       "Bilder auf höhere Auflösungen zu skalieren (2x, 4x)",
@@ -60,7 +60,7 @@
         "Service-Unverfügbarkeit"
       ],
       "contact": "Für Rückerstattungsanträge kontaktieren Sie",
-      "email": "{{SUPPORT_EMAIL}}"
+      "email": "{SUPPORT_EMAIL}"
     }
   },
   "subscriptions": {
@@ -97,7 +97,7 @@
     },
     "ourService": {
       "title": "7.2 Unser Service",
-      "description": "{{APP_NAME}}, einschließlich seiner Technologie, Marke und Inhalte, ist durch Gesetze zum geistigen Eigentum geschützt. Sie dürfen nicht kopieren, modifizieren, verbreiten oder abgeleitete Werke erstellen ohne unsere schriftliche Genehmigung."
+      "description": "{APP_NAME}, einschließlich seiner Technologie, Marke und Inhalte, ist durch Gesetze zum geistigen Eigentum geschützt. Sie dürfen nicht kopieren, modifizieren, verbreiten oder abgeleitete Werke erstellen ohne unsere schriftliche Genehmigung."
     }
   },
   "availability": {
@@ -112,7 +112,7 @@
   },
   "limitation": {
     "title": "9. Haftungsbeschränkung",
-    "intro": "IM MAXIMALUMFANG, DER NACH GESETZ ZULÄSSIG IST, HAFTET {{APP_NAME}} NICHT FÜR:",
+    "intro": "IM MAXIMALUMFANG, DER NACH GESETZ ZULÄSSIG IST, HAFTET {APP_NAME} NICHT FÜR:",
     "exclusions": [
       "Indirekte, zufällige, besondere oder Folgeschäden",
       "Verlust von Gewinnen, Daten oder Geschäftsmöglichkeiten",
@@ -134,7 +134,7 @@
   },
   "indemnification": {
     "title": "11. Schadloshaltung",
-    "description": "Sie verpflichten sich, {{APP_NAME}} und seine leitenden Angestellten, Direktoren, Mitarbeiter und Agenten von allen Ansprüchen, Schäden, Verlusten oder Aufwendungen schadlos zu halten, die aus Ihrer Nutzung des Service, der Verletzung dieser Bedingungen oder der Verletzung von Rechten Dritter resultieren."
+    "description": "Sie verpflichten sich, {APP_NAME} und seine leitenden Angestellten, Direktoren, Mitarbeiter und Agenten von allen Ansprüchen, Schäden, Verlusten oder Aufwendungen schadlos zu halten, die aus Ihrer Nutzung des Service, der Verletzung dieser Bedingungen oder der Verletzung von Rechten Dritter resultieren."
   },
   "termination": {
     "title": "12. Kündigung",
@@ -160,7 +160,7 @@
     "title": "15. Kontakt",
     "intro": "Für Fragen zu diesen Bedingungen:",
     "emailLabel": "E-Mail:",
-    "email": "{{LEGAL_EMAIL}}"
+    "email": "{LEGAL_EMAIL}"
   },
   "nav": {
     "blog": "Blog"

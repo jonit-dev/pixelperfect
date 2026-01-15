@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "Informativa sulla Privacy",
-    "description": "Scopri come {{APP_NAME}} raccoglie, utilizza e protegge le tue informazioni personali e le immagini caricate."
+    "description": "Scopri come {APP_NAME} raccoglie, utilizza e protegge le tue informazioni personali e le immagini caricate."
   },
-  "lastUpdated": "Ultimo aggiornamento: {{date}}",
+  "lastUpdated": "Ultimo aggiornamento: {date}",
   "title": "Informativa sulla Privacy",
   "viewTerms": "Visualizza Termini di Servizio",
   "introduction": {
     "title": "1. Introduzione",
-    "paragraph1": "Benvenuto su {{APP_NAME}} (\"noi\", \"nostro\" o \"ci\"). Ci impegniamo a proteggere la tua privacy e garantire la sicurezza delle tue informazioni personali. Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni quando utilizzi il nostro servizio di upscaling e miglioramento immagini basato sull'IA.",
-    "paragraph2": "Utilizzando {{APP_NAME}}, accetti la raccolta e l'utilizzo delle informazioni in conformità con questa informativa."
+    "paragraph1": "Benvenuto su {APP_NAME} (\"noi\", \"nostro\" o \"ci\"). Ci impegniamo a proteggere la tua privacy e garantire la sicurezza delle tue informazioni personali. Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni quando utilizzi il nostro servizio di upscaling e miglioramento immagini basato sull'IA.",
+    "paragraph2": "Utilizzando {APP_NAME}, accetti la raccolta e l'utilizzo delle informazioni in conformità con questa informativa."
   },
   "collection": {
     "title": "2. Informazioni che Raccogliamo",
@@ -125,7 +125,7 @@
       }
     ],
     "contact": "Per esercitare questi diritti, ti preghiamo di contattarci a",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "cookies": {
     "title": "8. Cookie e Tracciamento",
@@ -154,7 +154,7 @@
     "title": "12. Contattaci",
     "intro": "Se hai domande su questa Informativa sulla Privacy o sulle nostre pratiche dati, ti preghiamo di contattarci:",
     "emailLabel": "Email:",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "nav": {
     "blog": "Blog"

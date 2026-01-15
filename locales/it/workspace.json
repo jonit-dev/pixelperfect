@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Limite di elaborazione batch raggiunto",
     "clientEnforcedTitle": "Limite batch raggiunto",
     "serverEnforcedMessage": "Hai raggiunto il limite di elaborazione del tuo piano. Hai elaborato {currentCount} immagini, ma il tuo piano permette un massimo di {limit} immagini all'ora.",
-    "clientEnforcedMessage": "Hai cercato di aggiungere {attempted} {plural, plural, one {immagine} other {immagini}}, ma il tuo piano permette un massimo di {limit} {limitPlural, plural, one {immagine} other {immagini}} nella coda.",
+    "clientEnforcedMessage": "Hai cercato di aggiungere {attempted} {plural, plural, one {immagine} other {immagini}, ma il tuo piano permette un massimo di {limit} {limitPlural, plural, one {immagine} other {immagini} nella coda.",
     "freeUserMessage": "Gli utenti gratuiti possono elaborare 1 immagine alla volta. Effettua l'upgrade per sbloccare limiti batch più elevati ed elaborare più immagini.",
     "securityMessage": "Questa è una misura di sicurezza per prevenire abusi. Il limite verrà resettato tra circa 1 ora. Aggiorna il tuo piano per limiti più elevati.",
     "upgradeButton": "Aggiorna piano",
-    "addPartialButton": "Aggiungi {availableSlots} {count, plural, one {immagine} other {immagini}}",
+    "addPartialButton": "Aggiungi {availableSlots} {count, plural, one {immagine} other {immagini}",
     "cancelButton": "Annulla"
   },
   "queue": {

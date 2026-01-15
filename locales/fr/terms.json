@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Conditions d'Utilisation",
-    "description": "Lisez les termes et conditions pour utiliser les services de mise à l'échelle et d'amélioration d'images de {{APP_NAME}}."
+    "description": "Lisez les termes et conditions pour utiliser les services de mise à l'échelle et d'amélioration d'images de {APP_NAME}."
   },
-  "lastUpdated": "Dernière mise à jour : {{date}}",
+  "lastUpdated": "Dernière mise à jour : {date}",
   "title": "Conditions d'Utilisation",
   "viewPrivacy": "Voir la Politique de Confidentialité",
   "acceptance": {
     "title": "1. Acceptation des Conditions",
-    "paragraph1": "En accédant à ou en utilisant {{APP_NAME}} (\"Service\"), vous acceptez d'être lié par ces Conditions d'Utilisation (\"Conditions\"). Si vous n'acceptez pas ces Conditions, vous ne pouvez pas utiliser le Service.",
+    "paragraph1": "En accédant à ou en utilisant {APP_NAME} (\"Service\"), vous acceptez d'être lié par ces Conditions d'Utilisation (\"Conditions\"). Si vous n'acceptez pas ces Conditions, vous ne pouvez pas utiliser le Service.",
     "paragraph2": "Nous nous réservons le droit de modifier ces Conditions à tout moment. L'utilisation continue du Service après les modifications constitue une acceptation des Conditions modifiées."
   },
   "description": {
     "title": "2. Description du Service",
-    "intro": "{{APP_NAME}} fournit des services d'amélioration et de mise à l'échelle d'images par IA. Le Service permet aux utilisateurs de :",
+    "intro": "{APP_NAME} fournit des services d'amélioration et de mise à l'échelle d'images par IA. Le Service permet aux utilisateurs de :",
     "features": [
       "Télécharger des images pour amélioration par IA",
       "Mettre à l'échelle des images vers des résolutions supérieures (2x, 4x)",
@@ -60,7 +60,7 @@
         "Indisponibilité du service"
       ],
       "contact": "Pour les demandes de remboursement, contactez",
-      "email": "{{SUPPORT_EMAIL}}"
+      "email": "{SUPPORT_EMAIL}"
     }
   },
   "subscriptions": {
@@ -97,7 +97,7 @@
     },
     "ourService": {
       "title": "7.2 Notre Service",
-      "description": "{{APP_NAME}}, y compris sa technologie, sa marque et son contenu, est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez pas copier, modifier, distribuer ou créer des œuvres dérivées sans notre autorisation écrite."
+      "description": "{APP_NAME}, y compris sa technologie, sa marque et son contenu, est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez pas copier, modifier, distribuer ou créer des œuvres dérivées sans notre autorisation écrite."
     }
   },
   "availability": {
@@ -112,7 +112,7 @@
   },
   "limitation": {
     "title": "9. Limitation de Responsabilité",
-    "intro": "DANS LA MESURE MAXIMALE PERMISE PAR LA LOI, {{APP_NAME}} NE SERA PAS RESPONSABLE POUR :",
+    "intro": "DANS LA MESURE MAXIMALE PERMISE PAR LA LOI, {APP_NAME} NE SERA PAS RESPONSABLE POUR :",
     "exclusions": [
       "Dommages indirects, accidentels, spéciaux ou consécutifs",
       "Perte de profits, de données ou d'opportunités commerciales",
@@ -134,7 +134,7 @@
   },
   "indemnification": {
     "title": "11. Indemnisation",
-    "description": "Vous acceptez d'indemniser et de dégager de toute responsabilité {{APP_NAME}} et ses dirigeants, administrateurs, employés et agents de toute réclamation, dommage, perte ou dépense découlant de votre utilisation du Service, de la violation de ces Conditions, ou de la contrefaçon de droits de tiers."
+    "description": "Vous acceptez d'indemniser et de dégager de toute responsabilité {APP_NAME} et ses dirigeants, administrateurs, employés et agents de toute réclamation, dommage, perte ou dépense découlant de votre utilisation du Service, de la violation de ces Conditions, ou de la contrefaçon de droits de tiers."
   },
   "termination": {
     "title": "12. Résiliation",
@@ -160,6 +160,6 @@
     "title": "15. Contact",
     "intro": "Pour des questions sur ces Conditions :",
     "emailLabel": "Email :",
-    "email": "{{LEGAL_EMAIL}}"
+    "email": "{LEGAL_EMAIL}"
   }
 }

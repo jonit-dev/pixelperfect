@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Límite de procesamiento por lotes alcanzado",
     "clientEnforcedTitle": "Límite de lote alcanzado",
     "serverEnforcedMessage": "Has alcanzado el límite de procesamiento de tu plan. Procesaste {currentCount} imágenes, pero tu plan permite un máximo de {limit} imágenes por hora.",
-    "clientEnforcedMessage": "Intentaste agregar {attempted} imagen{plural, plural, one {} other {es}}, pero tu plan permite un máximo de {limit} imagen{limitPlural, plural, one {} other {es}} en la cola.",
+    "clientEnforcedMessage": "Intentaste agregar {attempted} imagen{plural, plural, one {} other {es}, pero tu plan permite un máximo de {limit} imagen{limitPlural, plural, one {} other {es} en la cola.",
     "freeUserMessage": "Los usuarios gratuitos pueden procesar 1 imagen a la vez. Actualiza tu plan para desbloquear límites de lote más altos y procesar múltiples imágenes.",
     "securityMessage": "Esta es una medida de seguridad para prevenir abusos. El límite se restablecerá en aproximadamente 1 hora. Actualiza tu plan para obtener límites más altos.",
     "upgradeButton": "Actualizar plan",
-    "addPartialButton": "Agregar {availableSlots} {count, plural, one {imagen} other {imágenes}}",
+    "addPartialButton": "Agregar {availableSlots} {count, plural, one {imagen} other {imágenes}",
     "cancelButton": "Cancelar"
   },
   "queue": {

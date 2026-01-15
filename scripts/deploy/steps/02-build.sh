@@ -12,8 +12,8 @@ step_build() {
     log_info "Building blog data..."
     npx tsx scripts/build-blog.ts
 
-    log_info "OpenNext build..."
-    npx opennextjs-cloudflare build
+    log_info "OpenNext build (using webpack for smaller bundles)..."
+    TURBOPACK=0 npx opennextjs-cloudflare build
 
     # Clean up .env.local after build
     rm -f .env.local

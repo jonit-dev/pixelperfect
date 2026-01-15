@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Termini di Servizio",
-    "description": "Leggi i termini e condizioni per l'utilizzo dei servizi di upscaling e miglioramento immagini di {{APP_NAME}}."
+    "description": "Leggi i termini e condizioni per l'utilizzo dei servizi di upscaling e miglioramento immagini di {APP_NAME}."
   },
-  "lastUpdated": "Ultimo aggiornamento: {{date}}",
+  "lastUpdated": "Ultimo aggiornamento: {date}",
   "title": "Termini di Servizio",
   "viewPrivacy": "Visualizza Informativa sulla Privacy",
   "acceptance": {
     "title": "1. Accettazione dei Termini",
-    "paragraph1": "Accedendo a o utilizzando {{APP_NAME}} (\"Servizio\"), accetti di essere vincolato da questi Termini di Servizio (\"Termini\"). Se non accetti questi Termini, non puoi utilizzare il Servizio.",
+    "paragraph1": "Accedendo a o utilizzando {APP_NAME} (\"Servizio\"), accetti di essere vincolato da questi Termini di Servizio (\"Termini\"). Se non accetti questi Termini, non puoi utilizzare il Servizio.",
     "paragraph2": "Ci riserviamo il diritto di modificare questi Termini in qualsiasi momento. L'uso continuato del Servizio dopo le modifiche costituisce accettazione dei Termini modificati."
   },
   "description": {
     "title": "2. Descrizione del Servizio",
-    "intro": "{{APP_NAME}} fornisce servizi di upscaling e miglioramento immagini basati sull'IA. Il Servizio permette agli utenti di:",
+    "intro": "{APP_NAME} fornisce servizi di upscaling e miglioramento immagini basati sull'IA. Il Servizio permette agli utenti di:",
     "features": [
       "Caricare immagini per il miglioramento con IA",
       "Upscalare immagini a risoluzioni più elevate (2x, 4x)",
@@ -60,7 +60,7 @@
         "Indisponibilità del servizio"
       ],
       "contact": "Per richieste di rimborso, contatta",
-      "email": "{{SUPPORT_EMAIL}}"
+      "email": "{SUPPORT_EMAIL}"
     }
   },
   "subscriptions": {
@@ -97,7 +97,7 @@
     },
     "ourService": {
       "title": "7.2 Il Nostro Servizio",
-      "description": "{{APP_NAME}}, inclusa la sua tecnologia, marchio e contenuti, è protetto dalle leggi sulla proprietà intellettuale. Non puoi copiare, modificare, distribuire o creare opere derivate senza il nostro permesso scritto."
+      "description": "{APP_NAME}, inclusa la sua tecnologia, marchio e contenuti, è protetto dalle leggi sulla proprietà intellettuale. Non puoi copiare, modificare, distribuire o creare opere derivate senza il nostro permesso scritto."
     }
   },
   "availability": {
@@ -112,7 +112,7 @@
   },
   "limitation": {
     "title": "9. Limitazione di Responsabilità",
-    "intro": "NEL MASSIMO ESTENTO CONSENTITO DALLA LEGGE, {{APP_NAME}} NON SARÀ RESPONSABILE PER:",
+    "intro": "NEL MASSIMO ESTENTO CONSENTITO DALLA LEGGE, {APP_NAME} NON SARÀ RESPONSABILE PER:",
     "exclusions": [
       "Danni indiretti, incidentali, speciali o consequenziali",
       "Perdita di profitti, dati o opportunità commerciali",
@@ -134,7 +134,7 @@
   },
   "indemnification": {
     "title": "11. Indennizzo",
-    "description": "Accetti di indennizzare e manlevare {{APP_NAME}} e i suoi funzionari, direttori, dipendenti e agenti da qualsiasi pretesa, danno, perdita o spesa derivante dall'uso del Servizio, violazione di questi Termini, o violazione di diritti di terze parti."
+    "description": "Accetti di indennizzare e manlevare {APP_NAME} e i suoi funzionari, direttori, dipendenti e agenti da qualsiasi pretesa, danno, perdita o spesa derivante dall'uso del Servizio, violazione di questi Termini, o violazione di diritti di terze parti."
   },
   "termination": {
     "title": "12. Risoluzione",
@@ -160,7 +160,7 @@
     "title": "15. Contatto",
     "intro": "Per domande su questi Termini:",
     "emailLabel": "Email:",
-    "email": "{{LEGAL_EMAIL}}"
+    "email": "{LEGAL_EMAIL}"
   },
   "nav": {
     "blog": "Blog"

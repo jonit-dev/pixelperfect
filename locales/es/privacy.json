@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "Política de Privacidad",
-    "description": "Aprenda cómo {{APP_NAME}} recopila, usa y protege su información personal e imágenes cargadas."
+    "description": "Aprenda cómo {APP_NAME} recopila, usa y protege su información personal e imágenes cargadas."
   },
-  "lastUpdated": "Última actualización: {{date}}",
+  "lastUpdated": "Última actualización: {date}",
   "title": "Política de Privacidad",
   "viewTerms": "Ver Términos de Servicio",
   "introduction": {
     "title": "1. Introducción",
-    "paragraph1": "Bienvenido a {{APP_NAME}} (\"nosotros\", \"nuestro\" o \"nos\"). Estamos comprometidos a proteger su privacidad y asegurar la seguridad de su información personal. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando usa nuestro servicio de mejora y aumento de escala de imágenes con IA.",
-    "paragraph2": "Al usar {{APP_NAME}}, acepta la recopilación y uso de información de acuerdo con esta política."
+    "paragraph1": "Bienvenido a {APP_NAME} (\"nosotros\", \"nuestro\" o \"nos\"). Estamos comprometidos a proteger su privacidad y asegurar la seguridad de su información personal. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando usa nuestro servicio de mejora y aumento de escala de imágenes con IA.",
+    "paragraph2": "Al usar {APP_NAME}, acepta la recopilación y uso de información de acuerdo con esta política."
   },
   "collection": {
     "title": "2. Información que Recopilamos",
@@ -125,7 +125,7 @@
       }
     ],
     "contact": "Para ejercer estos derechos, por favor contáctenos en",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "cookies": {
     "title": "8. Cookies y Rastreo",
@@ -154,6 +154,6 @@
     "title": "12. Contáctenos",
     "intro": "Si tiene preguntas sobre esta Política de Privacidad o nuestras prácticas de datos, por favor contáctenos:",
     "emailLabel": "Correo electrónico:",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   }
 }

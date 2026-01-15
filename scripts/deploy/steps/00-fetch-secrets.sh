@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Configuration
-GCLOUD_SECRET_API="pixelperfect-api-prod"
-GCLOUD_SECRET_CLIENT="pixelperfect-client-prod"
+GCLOUD_SECRET_API="myimageupscaler-api-prod"
+GCLOUD_SECRET_CLIENT="myimageupscaler-client-prod"
 ENV_API_PROD="$PROJECT_ROOT/.env.api.prod"
 ENV_CLIENT_PROD="$PROJECT_ROOT/.env.client.prod"
 

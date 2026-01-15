@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "Politique de Confidentialité",
-    "description": "Apprenez comment {{APP_NAME}} collecte, utilise et protège vos informations personnelles et images téléchargées."
+    "description": "Apprenez comment {APP_NAME} collecte, utilise et protège vos informations personnelles et images téléchargées."
   },
-  "lastUpdated": "Dernière mise à jour : {{date}}",
+  "lastUpdated": "Dernière mise à jour : {date}",
   "title": "Politique de Confidentialité",
   "viewTerms": "Voir les Conditions d'Utilisation",
   "introduction": {
     "title": "1. Introduction",
-    "paragraph1": "Bienvenue sur {{APP_NAME}} (\"nous\", \"notre\" ou \"nos\"). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre service d'amélioration et de mise à l'échelle d'images par IA.",
-    "paragraph2": "En utilisant {{APP_NAME}}, vous acceptez la collecte et l'utilisation des informations conformément à cette politique."
+    "paragraph1": "Bienvenue sur {APP_NAME} (\"nous\", \"notre\" ou \"nos\"). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre service d'amélioration et de mise à l'échelle d'images par IA.",
+    "paragraph2": "En utilisant {APP_NAME}, vous acceptez la collecte et l'utilisation des informations conformément à cette politique."
   },
   "collection": {
     "title": "2. Informations que Nous Collectons",
@@ -125,7 +125,7 @@
       }
     ],
     "contact": "Pour exercer ces droits, veuillez nous contacter à",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   },
   "cookies": {
     "title": "8. Cookies et Suivi",
@@ -154,6 +154,6 @@
     "title": "12. Contactez-nous",
     "intro": "Si vous avez des questions sur cette Politique de Confidentialité ou nos pratiques de données, veuillez nous contacter :",
     "emailLabel": "Email :",
-    "email": "{{PRIVACY_EMAIL}}"
+    "email": "{PRIVACY_EMAIL}"
   }
 }

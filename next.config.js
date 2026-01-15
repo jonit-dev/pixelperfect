@@ -37,7 +37,33 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     // Optimize package imports for smaller bundles
-    optimizePackageImports: ['lucide-react', 'react-icons', 'date-fns', '@supabase/supabase-js'],
+    optimizePackageImports: [
+      'lucide-react',
+      'react-icons',
+      'date-fns',
+      '@supabase/supabase-js',
+      'framer-motion',
+      'stripe',
+      'marked',
+      'zod',
+      'zustand',
+    ],
+  },
+  // External packages that shouldn't be bundled into the server
+  serverExternalPackages: [
+    '@imgly/background-removal',
+    'onnxruntime-web',
+  ],
+  // Webpack configuration for bundle size optimization
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Enable server-side minification
+      config.optimization = {
+        ...config.optimization,
+        minimize: true,
+      };
+    }
+    return config;
   },
   async redirects() {
     return [
