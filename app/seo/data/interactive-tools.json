@@ -24,7 +24,11 @@
       "isInteractive": true,
       "toolComponent": "ImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Instant Browser-Based Resizing",
@@ -146,8 +150,10 @@
           "answer": "Currently, you can resize one image at a time. For batch processing and advanced AI enhancement, check out our premium AI Image Upscaler."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "image-compressor", "png-to-jpg"],
-      "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
+      "relatedTools": [
+        "ai-image-upscaler",
+        "image-compressor"
+      ],
       "ctaText": "Try Free Image Resizer",
       "ctaUrl": "/tools/resize/image-resizer"
     },
@@ -178,7 +184,11 @@
         "presetFilter": "instagram"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Instagram Post (1080x1080)",
@@ -284,8 +294,10 @@
           "answer": "Yes! Instagram Reels use the same 1080x1920 (9:16) dimensions as Stories."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-facebook", "image-compressor"],
-      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "relatedTools": [
+        "image-resizer",
+        "image-compressor"
+      ],
       "ctaText": "Resize for Instagram Free",
       "ctaUrl": "/tools/resize/resize-image-for-instagram"
     },
@@ -316,7 +328,11 @@
         "presetFilter": "youtube"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Perfect 1280x720",
@@ -338,7 +354,10 @@
           "title": "Under 2MB Guaranteed",
           "description": "Automatically optimize to meet YouTube's file size limit."
         },
-        { "title": "Instant Processing", "description": "Resize thumbnails in under a second." }
+        {
+          "title": "Instant Processing",
+          "description": "Resize thumbnails in under a second."
+        }
       ],
       "useCases": [
         {
@@ -419,8 +438,10 @@
           "answer": "Yes! 1280x720 thumbnails scale perfectly to all screen sizes, from mobile phones to 4K TVs."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-instagram", "image-compressor"],
-      "relatedGuides": ["youtube-thumbnail-best-practices"],
+      "relatedTools": [
+        "image-resizer",
+        "image-compressor"
+      ],
       "ctaText": "Resize for YouTube Free",
       "ctaUrl": "/tools/resize/resize-image-for-youtube"
     },
@@ -451,7 +472,11 @@
         "presetFilter": "facebook"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Facebook Post (1200x630)",
@@ -557,8 +582,9 @@
           "answer": "Facebook compresses uploaded images. Use our tool to resize to exact dimensions and export at high quality to minimize compression artifacts."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-instagram", "resize-image-for-twitter"],
-      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "relatedTools": [
+        "image-resizer"
+      ],
       "ctaText": "Resize for Facebook Free",
       "ctaUrl": "/tools/resize/resize-image-for-facebook"
     },
@@ -589,7 +615,11 @@
         "presetFilter": "twitter"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Twitter Post (1200x675)",
@@ -603,8 +633,14 @@
           "title": "Card Optimized",
           "description": "Ideal for Twitter Card meta images on websites."
         },
-        { "title": "No Cropping", "description": "Images display exactly as you intend them." },
-        { "title": "Fast Export", "description": "Resize and download in under a second." },
+        {
+          "title": "No Cropping",
+          "description": "Images display exactly as you intend them."
+        },
+        {
+          "title": "Fast Export",
+          "description": "Resize and download in under a second."
+        },
         {
           "title": "Quality Control",
           "description": "Adjust compression to balance quality and file size."
@@ -665,7 +701,11 @@
           "title": "Adjust Quality",
           "description": "Set output quality and format preferences."
         },
-        { "step": 4, "title": "Download", "description": "Get your Twitter-ready image instantly." }
+        {
+          "step": 4,
+          "title": "Download",
+          "description": "Get your Twitter-ready image instantly."
+        }
       ],
       "faq": [
         {
@@ -685,8 +725,9 @@
           "answer": "Twitter allows images up to 5MB for photos. GIFs can be up to 15MB. Our tool helps you stay within these limits."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-linkedin", "resize-image-for-facebook"],
-      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "relatedTools": [
+        "image-resizer"
+      ],
       "ctaText": "Resize for Twitter Free",
       "ctaUrl": "/tools/resize/resize-image-for-twitter"
     },
@@ -717,7 +758,11 @@
         "presetFilter": "linkedin"
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "LinkedIn Post (1200x627)",
@@ -731,8 +776,14 @@
           "title": "Professional Quality",
           "description": "High-resolution output for professional appearance."
         },
-        { "title": "Article Images", "description": "Sized for LinkedIn article featured images." },
-        { "title": "Company Page Ready", "description": "Perfect for company page cover images." },
+        {
+          "title": "Article Images",
+          "description": "Sized for LinkedIn article featured images."
+        },
+        {
+          "title": "Company Page Ready",
+          "description": "Perfect for company page cover images."
+        },
         {
           "title": "Privacy Focused",
           "description": "All processing happens locally on your device."
@@ -817,8 +868,9 @@
           "answer": "LinkedIn compresses images. Start with high-quality images at exact dimensions and export at 90%+ quality to minimize compression."
         }
       ],
-      "relatedTools": ["image-resizer", "resize-image-for-twitter", "resize-image-for-facebook"],
-      "relatedGuides": ["how-to-resize-images-for-social-media"],
+      "relatedTools": [
+        "image-resizer"
+      ],
       "ctaText": "Resize for LinkedIn Free",
       "ctaUrl": "/tools/resize/resize-image-for-linkedin"
     },
@@ -845,7 +897,11 @@
       "isInteractive": true,
       "toolComponent": "BulkImageResizer",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Process Up to 20 Images",
@@ -967,8 +1023,11 @@
           "answer": "Yes! You can remove individual images from the batch before or after processing by clicking the X button next to each image."
         }
       ],
-      "relatedTools": ["image-resizer", "image-compressor", "ai-image-upscaler"],
-      "relatedGuides": ["how-to-resize-images-for-social-media", "image-resolution-guide"],
+      "relatedTools": [
+        "image-resizer",
+        "image-compressor",
+        "ai-image-upscaler"
+      ],
       "ctaText": "Try Bulk Image Resizer Free",
       "ctaUrl": "/tools/resize/bulk-image-resizer"
     },
@@ -995,7 +1054,11 @@
       "isInteractive": true,
       "toolComponent": "ImageCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Smart Compression Algorithm",
@@ -1109,8 +1172,10 @@
           "answer": "For web use, 70-80% is optimal. For printing or professional use, 85-95%. For maximum compression (like email), 60-70% works well."
         }
       ],
-      "relatedTools": ["image-resizer", "png-to-jpg", "ai-image-upscaler"],
-      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "relatedTools": [
+        "image-resizer",
+        "ai-image-upscaler"
+      ],
       "ctaText": "Try Free Image Compressor",
       "ctaUrl": "/tools/compress/image-compressor"
     },
@@ -1137,10 +1202,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": ["image/png"]
+        "acceptedInputFormats": [
+          "image/png"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": [
+        "image/png"
+      ],
       "features": [
         {
           "title": "Transparency Handling",
@@ -1250,8 +1319,10 @@
           "answer": "For web and social media, 80-85% is perfect. For printing or professional use, 90-95%. For maximum file size reduction, 70-75% still looks good."
         }
       ],
-      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-png"],
-      "relatedGuides": ["png-vs-jpg-guide", "when-to-use-jpg"],
+      "relatedTools": [
+        "image-compressor",
+        "image-resizer"
+      ],
       "ctaText": "Convert PNG to JPG Free",
       "ctaUrl": "/tools/convert/png-to-jpg"
     },
@@ -1278,10 +1349,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": ["image/jpeg"]
+        "acceptedInputFormats": [
+          "image/jpeg"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg"],
+      "acceptedFormats": [
+        "image/jpeg"
+      ],
       "features": [
         {
           "title": "Lossless Conversion",
@@ -1387,8 +1462,9 @@
           "answer": "Yes! Once in PNG format, you can use image editing software to remove backgrounds and add transparency. JPG doesn't support transparency."
         }
       ],
-      "relatedTools": ["png-to-jpg", "image-compressor", "webp-to-png"],
-      "relatedGuides": ["png-vs-jpg-guide"],
+      "relatedTools": [
+        "image-compressor"
+      ],
       "ctaText": "Convert JPG to PNG Free",
       "ctaUrl": "/tools/convert/jpg-to-png"
     },
@@ -1415,10 +1491,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "jpeg",
-        "acceptedInputFormats": ["image/webp"]
+        "acceptedInputFormats": [
+          "image/webp"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/webp"],
+      "acceptedFormats": [
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Universal Compatibility",
@@ -1524,8 +1604,13 @@
           "answer": "Converting animated WebP will capture the first frame as a static JPG. For animated images, consider GIF format instead."
         }
       ],
-      "relatedTools": ["webp-to-png", "jpg-to-webp", "image-compressor"],
-      "relatedGuides": ["webp-format-guide"],
+      "relatedTools": [
+        "jpg-to-webp",
+        "image-compressor"
+      ],
+      "relatedGuides": [
+        "webp-format-guide"
+      ],
       "ctaText": "Convert WebP to JPG Free",
       "ctaUrl": "/tools/convert/webp-to-jpg"
     },
@@ -1551,10 +1636,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "png",
-        "acceptedInputFormats": ["image/webp"]
+        "acceptedInputFormats": [
+          "image/webp"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/webp"],
+      "acceptedFormats": [
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Preserve Transparency",
@@ -1660,8 +1749,12 @@
           "answer": "Use PNG if you need transparency or lossless quality for editing. Use JPG for smaller files and universal compatibility when transparency isn't needed."
         }
       ],
-      "relatedTools": ["webp-to-jpg", "png-to-webp", "image-compressor"],
-      "relatedGuides": ["webp-format-guide"],
+      "relatedTools": [
+        "image-compressor"
+      ],
+      "relatedGuides": [
+        "webp-format-guide"
+      ],
       "ctaText": "Convert WebP to PNG Free",
       "ctaUrl": "/tools/convert/webp-to-png"
     },
@@ -1688,10 +1781,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": ["image/jpeg"]
+        "acceptedInputFormats": [
+          "image/jpeg"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg"],
+      "acceptedFormats": [
+        "image/jpeg"
+      ],
       "features": [
         {
           "title": "Superior Compression",
@@ -1797,8 +1894,12 @@
           "answer": "For web use, yes! WebP is ideal for websites. For email, printing, or older software, JPG may be more compatible."
         }
       ],
-      "relatedTools": ["png-to-webp", "webp-to-jpg", "image-compressor"],
-      "relatedGuides": ["webp-format-guide", "web-performance-images"],
+      "relatedTools": [
+        "image-compressor"
+      ],
+      "relatedGuides": [
+        "webp-format-guide"
+      ],
       "ctaText": "Convert JPG to WebP Free",
       "ctaUrl": "/tools/convert/jpg-to-webp"
     },
@@ -1824,10 +1925,14 @@
       "toolComponent": "FormatConverter",
       "toolConfig": {
         "defaultTargetFormat": "webp",
-        "acceptedInputFormats": ["image/png"]
+        "acceptedInputFormats": [
+          "image/png"
+        ]
       },
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/png"],
+      "acceptedFormats": [
+        "image/png"
+      ],
       "features": [
         {
           "title": "Preserve Transparency",
@@ -1933,8 +2038,13 @@
           "answer": "Yes! Use our WebP to PNG converter if you need the PNG format for compatibility or editing in software that doesn't support WebP."
         }
       ],
-      "relatedTools": ["jpg-to-webp", "webp-to-png", "image-compressor"],
-      "relatedGuides": ["webp-format-guide", "web-performance-images"],
+      "relatedTools": [
+        "jpg-to-webp",
+        "image-compressor"
+      ],
+      "relatedGuides": [
+        "webp-format-guide"
+      ],
       "ctaText": "Convert PNG to WebP Free",
       "ctaUrl": "/tools/convert/png-to-webp"
     },
@@ -1960,7 +2070,11 @@
       "isInteractive": true,
       "toolComponent": "BulkImageCompressor",
       "maxFileSizeMB": 25,
-      "acceptedFormats": ["image/jpeg", "image/png", "image/webp"],
+      "acceptedFormats": [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ],
       "features": [
         {
           "title": "Compress Up to 20 Images",
@@ -2082,8 +2196,11 @@
           "answer": "Each image can be up to 25MB. This limit is based on browser memory, not server restrictions (since we don't upload to servers)."
         }
       ],
-      "relatedTools": ["image-compressor", "image-resizer", "jpg-to-webp"],
-      "relatedGuides": ["image-optimization-guide", "web-performance-images"],
+      "relatedTools": [
+        "image-compressor",
+        "image-resizer",
+        "jpg-to-webp"
+      ],
       "ctaText": "Try Free Bulk Compressor",
       "ctaUrl": "/tools/compress/bulk-image-compressor"
     }

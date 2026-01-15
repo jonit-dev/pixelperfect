@@ -106,8 +106,13 @@
           "answer": "Starting from Midjourney's PNG export (typically 1024x1024 or higher for v5), we can upscale up to 8x, achieving resolutions up to 8192x8192 pixels."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-png", "dalle-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "midjourney-upscaler-webp"],
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-png",
+        "dalle-upscaler-png"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-webp"
+      ],
       "detailedDescription": "Midjourney's PNG format output represents the highest quality export option from the platform, providing lossless compression and the maximum detail that the AI model can generate. However, even at Midjourney's maximum resolution settings, the output may not meet the demands of large format printing, ultra-high-resolution displays, or applications that require exceptional detail. Our specialized Midjourney PNG upscaler enhances these lossless exports to professional standards while preserving the unique artistic style, transparency (if present), and overall quality that makes Midjourney PNG output the preferred choice for serious AI art users.\n\nPNG format from Midjourney offers significant advantages over JPEG exports—no compression artifacts, optional transparency support, and maximum preservation of the AI model's output quality. Our upscaler is designed to work with these advantages rather than introducing limitations. The enhancement process maintains the lossless quality chain from Midjourney generation through upscaling to final output, ensuring that no quality is lost through compression artifacts at any stage. This is particularly important for AI art, where the subtle details and textures that define the style can be diminished by compression.\n\nThe use cases for Midjourney PNG upscaling span the full spectrum of AI art applications. Digital artists can create print-ready artwork for gallery exhibitions, canvas prints, and merchandise. NFT creators can prepare high-resolution versions suitable for minting. Content creators can generate social media graphics that stand out with exceptional quality. Designers can incorporate AI art into professional projects without quality limitations. Whatever your Midjourney workflow, PNG upscaling ensures your final output matches the quality of your vision.",
       "technicalDetails": "Our Midjourney PNG upscaler utilizes neural network architectures specifically optimized for AI-generated imagery and PNG's lossless format characteristics. The model has been trained on extensive datasets of Midjourney PNG exports across all model versions, enabling it to recognize and appropriately enhance the unique characteristics of Midjourney's output style. The training includes understanding of Midjourney's artistic patterns, color palettes, and detail rendering approaches, allowing the upscaler to add detail that feels consistent with the original generation rather than artificial or incongruous.\n\nThe upscaling process supports Midjourney's various PNG output resolutions and aspect ratios. For standard square outputs (typically 1024x1024 or higher for v5+), the upscaler maintains aspect ratio while enhancing to 2x, 4x, or 8x the original resolution. For rectangular outputs from Midjourney's aspect ratio parameters, dimensions are scaled correctly. The process handles both grid images (the initial 2x2 output) and individual upscaled images, with best results from using Midjourney's upscale buttons first. Processing time ranges from 15-30 seconds for 2x to 1-2 minutes for 8x depending on image complexity.\n\nTechnical features include preservation of transparency channels in PNG exports, making it suitable for Midjourney images with transparent backgrounds. The upscaler handles the full color depth and dynamic range of Midjourney PNG exports without introducing banding or color shift. Maximum output resolution is 8192 pixels on the longest dimension, accommodating virtually any professional application. The process maintains PNG format with lossless compression, preserving the quality chain from Midjourney through upscaling to final use.",
       "bestPractices": [
@@ -223,8 +228,13 @@
           "answer": "WebP is primarily a web format. For print, we recommend upscaling Midjourney PNGs or TIFFs. Use WebP for web display only."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-webp", "dalle-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-webp",
+        "dalle-upscaler-webp"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-jpg",
@@ -327,8 +337,13 @@
           "answer": "Yes, but for best print results, consider upscaling the PNG export and converting to JPEG after, or using PNG/TIFF directly for print workflows."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-jpg", "dalle-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-jpg",
+        "dalle-upscaler-jpg"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-png",
@@ -431,8 +446,13 @@
           "answer": "Yes, our upscaler works excellently with anime-style models and checkpoints, preserving line quality and cel-shading techniques while enhancing resolution."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-png", "dalle-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "stable-diffusion-upscaler-webp"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-png",
+        "dalle-upscaler-png"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-webp"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-webp",
@@ -535,8 +555,13 @@
           "answer": "WebP is supported by all modern browsers. For displaying SD art on websites, it's the optimal choice. For print, use PNG or TIFF."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-webp", "dalle-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-webp",
+        "dalle-upscaler-webp"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-jpg",
@@ -639,8 +664,13 @@
           "answer": "If you must save as JPEG, use quality 95-100. Better yet, save as PNG and let our upscaler handle the conversion after enhancement."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-jpg", "dalle-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-jpg",
+        "dalle-upscaler-jpg"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-png",
@@ -742,8 +772,13 @@
           "answer": "Yes, 4K upscaled DALL-E PNGs are excellent for printing. We recommend testing a small print first to ensure quality meets your standards."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-png", "stable-diffusion-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "dalle-upscaler-jpg"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-png",
+        "stable-diffusion-upscaler-png"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-jpg"
+      ]
     },
     {
       "slug": "dalle-upscaler-webp",
@@ -846,8 +881,13 @@
           "answer": "Yes! Our tool works excellently with both DALL-E 2 and DALL-E 3 images, converting both to high-quality WebP format during upscaling."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-webp", "stable-diffusion-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-webp",
+        "stable-diffusion-upscaler-webp"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-jpg",
@@ -949,8 +989,13 @@
           "answer": "JPEG can work for printing, but for best print results, consider upscaling DALL-E PNG exports and converting to JPEG after, or using PNG directly."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-jpg", "stable-diffusion-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-jpg",
+        "stable-diffusion-upscaler-jpg"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-png",
@@ -1052,8 +1097,12 @@
           "answer": "Yes! 4K-8K upscaled Canva PNGs work well for posters, banners, and other large format print applications."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-png", "figma-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "canva-upscaler-jpg"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-png"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-jpg"
+      ]
     },
     {
       "slug": "canva-upscaler-webp",
@@ -1156,8 +1205,12 @@
           "answer": "WebP is primarily a web format. For printing Canva designs, consider using PNG or TIFF formats instead."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-webp", "figma-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-webp"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-jpg",
@@ -1259,8 +1312,12 @@
           "answer": "For upscaling, export as PNG and convert to JPEG after. If you must export as JPEG, use the highest quality setting available (usually quality slider at maximum)."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-jpg", "figma-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-jpg"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-png",
@@ -1363,8 +1420,12 @@
           "answer": "Yes, CMYK Photoshop PNGs for print can be upscaled. Color accuracy is preserved throughout the process."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-png", "lightroom-upscaler-png"],
-      "relatedFormats": ["upscale-png-images", "photoshop-upscaler-tiff"]
+      "relatedPlatforms": [
+        "canva-upscaler-png"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-tiff"
+      ]
     },
     {
       "slug": "photoshop-upscaler-webp",
@@ -1467,8 +1528,12 @@
           "answer": "Yes! Gen Fill outputs work great with our upscaler when converted to WebP format for web display."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-webp", "lightroom-upscaler-webp"],
-      "relatedFormats": ["upscale-webp-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-webp"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-jpg",
@@ -1570,8 +1635,12 @@
           "answer": "Yes, CMYK images can be upscaled. For print workflows, you may want to maintain CMYK throughout or convert to sRGB for web use."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-jpg", "lightroom-upscaler-jpg"],
-      "relatedFormats": ["upscale-jpeg-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-jpg"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-heic",
@@ -1664,8 +1733,13 @@
           "answer": "HEIC is natively supported on all modern Apple devices (iPhone, iPad, Mac) running recent iOS and macOS versions."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-heic", "dalle-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-heic",
+        "dalle-upscaler-heic"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-tiff",
@@ -1758,8 +1832,13 @@
           "answer": "Both TIFF and PNG are lossless, but TIFF is more widely supported in professional printing workflows. Either format provides excellent quality."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-tiff", "dalle-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-tiff",
+        "dalle-upscaler-tiff"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-heic",
@@ -1847,8 +1926,13 @@
           "answer": "Yes! HEIC conversion works with all Stable Diffusion models - anime, realistic, artistic, and SDXL."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-heic", "dalle-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-heic",
+        "dalle-upscaler-heic"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-tiff",
@@ -1942,8 +2026,13 @@
           "answer": "Yes! TIFF conversion works with all Stable Diffusion checkpoints and LoRAs, preserving their unique style characteristics."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-tiff", "dalle-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-tiff",
+        "dalle-upscaler-tiff"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-heic",
@@ -2031,8 +2120,13 @@
           "answer": "Yes! Our tool works excellently with both DALL-E 2 and DALL-E 3 images, converting both to high-quality HEIC format."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-heic", "stable-diffusion-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-heic",
+        "stable-diffusion-upscaler-heic"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-tiff",
@@ -2125,8 +2219,13 @@
           "answer": "Yes! Our tool works excellently with both DALL-E 2 and DALL-E 3 images, creating high-quality TIFF files for print and archival."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-tiff", "stable-diffusion-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-tiff",
+        "stable-diffusion-upscaler-tiff"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-heic",
@@ -2214,8 +2313,12 @@
           "answer": "Yes! HEIC conversion is compatible with all Canva design elements. After upscaling, you can re-import to Canva if needed."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-heic", "figma-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-heic"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-tiff",
@@ -2308,8 +2411,12 @@
           "answer": "Yes! TIFF conversion works with all Canva Pro features, maintaining the highest quality for professional designs."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-tiff", "figma-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-tiff"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-heic",
@@ -2397,8 +2504,12 @@
           "answer": "Yes! Gen Fill outputs work great with our upscaler when converted to HEIC format for Apple ecosystem integration."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-heic", "lightroom-upscaler-heic"],
-      "relatedFormats": ["upscale-heic-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-heic"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-tiff",
@@ -2501,8 +2612,12 @@
           "answer": "Yes, CMYK Photoshop TIFFs for print can be upscaled. Color accuracy is preserved throughout the process."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-tiff", "lightroom-upscaler-tiff"],
-      "relatedFormats": ["upscale-tiff-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-tiff"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-raw",
@@ -2600,8 +2715,13 @@
           "answer": "RAW format preserves maximum quality and color depth, giving you more headroom for professional editing and achieving the best possible results."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-raw", "dalle-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-raw",
+        "dalle-upscaler-raw"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-bmp",
@@ -2699,8 +2819,13 @@
           "answer": "Yes! BMP is natively supported by all versions of Windows and virtually all Windows applications."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-bmp", "dalle-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "midjourney-upscaler-png"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-bmp",
+        "dalle-upscaler-bmp"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-png"
+      ]
     },
     {
       "slug": "midjourney-upscaler-avif",
@@ -2798,8 +2923,13 @@
           "answer": "For web use, AVIF is excellent. For print or archival storage, consider lossless formats like PNG or TIFF instead."
         }
       ],
-      "relatedPlatforms": ["stable-diffusion-upscaler-avif", "dalle-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "midjourney-upscaler-webp"]
+      "relatedPlatforms": [
+        "stable-diffusion-upscaler-avif",
+        "dalle-upscaler-avif"
+      ],
+      "relatedFormats": [
+        "midjourney-upscaler-webp"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-raw",
@@ -2897,8 +3027,13 @@
           "answer": "Both provide excellent quality. RAW offers more editing flexibility in professional photo software, while PNG is more universally supported."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-raw", "dalle-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-raw",
+        "dalle-upscaler-raw"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-bmp",
@@ -2996,8 +3131,13 @@
           "answer": "Yes! BMP is natively supported by all versions of Windows and virtually all Windows applications."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-bmp", "dalle-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "stable-diffusion-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-bmp",
+        "dalle-upscaler-bmp"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-png"
+      ]
     },
     {
       "slug": "stable-diffusion-upscaler-avif",
@@ -3095,8 +3235,13 @@
           "answer": "For modern web use, AVIF is excellent. For print or archival storage, consider lossless formats like PNG or TIFF instead."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-avif", "dalle-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "stable-diffusion-upscaler-webp"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-avif",
+        "dalle-upscaler-avif"
+      ],
+      "relatedFormats": [
+        "stable-diffusion-upscaler-webp"
+      ]
     },
     {
       "slug": "dalle-upscaler-raw",
@@ -3194,8 +3339,13 @@
           "answer": "Download as PNG from DALL-E, then convert to RAW with our upscaler for maximum editing flexibility in professional software."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-raw", "stable-diffusion-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-raw",
+        "stable-diffusion-upscaler-raw"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-bmp",
@@ -3293,8 +3443,13 @@
           "answer": "Yes! BMP is natively supported by all versions of Windows and virtually all Windows applications."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-bmp", "stable-diffusion-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "dalle-upscaler-png"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-bmp",
+        "stable-diffusion-upscaler-bmp"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-png"
+      ]
     },
     {
       "slug": "dalle-upscaler-avif",
@@ -3392,8 +3547,13 @@
           "answer": "For modern web use, AVIF is excellent. For print or archival storage, consider lossless formats like PNG or TIFF instead."
         }
       ],
-      "relatedPlatforms": ["midjourney-upscaler-avif", "stable-diffusion-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "dalle-upscaler-webp"]
+      "relatedPlatforms": [
+        "midjourney-upscaler-avif",
+        "stable-diffusion-upscaler-avif"
+      ],
+      "relatedFormats": [
+        "dalle-upscaler-webp"
+      ]
     },
     {
       "slug": "canva-upscaler-raw",
@@ -3491,8 +3651,13 @@
           "answer": "Download as PNG from Canva, then convert to RAW with our upscaler for maximum editing flexibility in professional software."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-raw", "lightroom-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-raw",
+        "lightroom-upscaler-raw"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-bmp",
@@ -3590,8 +3755,13 @@
           "answer": "Yes! BMP is natively supported by all versions of Windows and virtually all Windows applications."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-bmp", "lightroom-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "canva-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-bmp",
+        "lightroom-upscaler-bmp"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-png"
+      ]
     },
     {
       "slug": "canva-upscaler-avif",
@@ -3689,8 +3859,13 @@
           "answer": "For modern web use, AVIF is excellent. For print or archival storage, consider lossless formats like PNG or TIFF instead."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-avif", "lightroom-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "canva-upscaler-webp"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-avif",
+        "lightroom-upscaler-avif"
+      ],
+      "relatedFormats": [
+        "canva-upscaler-webp"
+      ]
     },
     {
       "slug": "photoshop-upscaler-raw",
@@ -3788,8 +3963,13 @@
           "answer": "Export as PNG or TIFF from Photoshop for maximum quality input before RAW conversion with our upscaler."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-raw", "lightroom-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-raw",
+        "lightroom-upscaler-raw"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-bmp",
@@ -3887,8 +4067,13 @@
           "answer": "Yes! BMP is natively supported by all versions of Windows and virtually all Windows applications."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-bmp", "lightroom-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "photoshop-upscaler-png"]
+      "relatedPlatforms": [
+        "canva-upscaler-bmp",
+        "lightroom-upscaler-bmp"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-png"
+      ]
     },
     {
       "slug": "photoshop-upscaler-avif",
@@ -3986,8 +4171,13 @@
           "answer": "For modern web use, AVIF is excellent. For print or archival storage, consider lossless formats like PNG or TIFF instead."
         }
       ],
-      "relatedPlatforms": ["canva-upscaler-avif", "lightroom-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "photoshop-upscaler-webp"]
+      "relatedPlatforms": [
+        "canva-upscaler-avif",
+        "lightroom-upscaler-avif"
+      ],
+      "relatedFormats": [
+        "photoshop-upscaler-webp"
+      ]
     },
     {
       "slug": "lightroom-upscaler-raw",
@@ -4089,8 +4279,10 @@
           "answer": "We support RAW formats from major camera manufacturers including Canon, Nikon, Sony, Fuji, and others compatible with Lightroom."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-raw", "canva-upscaler-raw"],
-      "relatedFormats": ["upscale-raw-images", "lightroom-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-raw",
+        "canva-upscaler-raw"
+      ]
     },
     {
       "slug": "lightroom-upscaler-bmp",
@@ -4192,8 +4384,10 @@
           "answer": "Yes! Our upscaler works with photos exported from both Lightroom Classic and Lightroom CC."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-bmp", "canva-upscaler-bmp"],
-      "relatedFormats": ["upscale-bmp-images", "lightroom-upscaler-png"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-bmp",
+        "canva-upscaler-bmp"
+      ]
     },
     {
       "slug": "lightroom-upscaler-avif",
@@ -4295,8 +4489,10 @@
           "answer": "Yes! Our upscaler works with photos exported from both Lightroom Classic and Lightroom CC."
         }
       ],
-      "relatedPlatforms": ["photoshop-upscaler-avif", "canva-upscaler-avif"],
-      "relatedFormats": ["upscale-avif-images", "lightroom-upscaler-webp"]
+      "relatedPlatforms": [
+        "photoshop-upscaler-avif",
+        "canva-upscaler-avif"
+      ]
     }
   ]
 }

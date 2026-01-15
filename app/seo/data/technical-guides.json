@@ -135,7 +135,7 @@
         }
       ],
       "relatedTools": ["ai-image-upscaler"],
-      "relatedPages": ["image-resolution-guide", "neural-network-basics"]
+      "relatedPages": []
     },
     {
       "slug": "image-resolution-explained",
@@ -290,8 +290,8 @@
           "answer": "Check the pixel dimensions and compare to your intended output requirements. Online calculators can help determine if resolution is adequate."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "image-resolution-calculator"],
-      "relatedPages": ["print-production-guide", "digital-image-optimization"]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": []
     },
     {
       "slug": "image-formats-comparison",
@@ -492,8 +492,8 @@
           "answer": "Lossless to lossless conversion preserves quality, but converting from lossy to any format won't restore lost data."
         }
       ],
-      "relatedTools": ["image-format-converter", "image-optimizer"],
-      "relatedPages": ["image-compression-guide", "web-optimization-techniques"]
+      "relatedTools": [],
+      "relatedPages": []
     },
     {
       "slug": "batch-image-processing-guide",
@@ -687,8 +687,8 @@
           "answer": "Implement pre-processing to categorize images and apply appropriate operations for each type."
         }
       ],
-      "relatedTools": ["batch-image-upscaler", "image-processor"],
-      "relatedPages": ["automation-workflows", "image-optimization-strategies"]
+      "relatedTools": [],
+      "relatedPages": []
     },
     {
       "slug": "color-theory-for-image-enhancement",
@@ -873,8 +873,8 @@
           "answer": "Use 16-bit for extensive color editing to avoid banding, 8-bit for minor adjustments or final output preparation."
         }
       ],
-      "relatedTools": ["color-correction-tool", "image-enhancer"],
-      "relatedPages": ["professional-photo-editing", "color-calibration-guide"]
+      "relatedTools": [],
+      "relatedPages": []
     },
     {
       "slug": "image-compression-techniques",
@@ -1065,8 +1065,8 @@
           "answer": "Lossless compression provides size reduction without quality loss, but ratios are typically 2:1 to 5:1 compared to 10:1+ for lossy compression."
         }
       ],
-      "relatedTools": ["image-optimizer", "image-compressor"],
-      "relatedPages": ["web-performance-optimization", "image-format-guide"]
+      "relatedTools": [],
+      "relatedPages": []
     },
     {
       "slug": "neural-networks-image-processing",
@@ -1272,8 +1272,8 @@
           "answer": "Yes, with proper optimization and model selection. Efficient architectures and hardware acceleration enable real-time processing for many applications."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "neural-network-trainer"],
-      "relatedPages": ["deep-learning-basics", "computer-vision-applications"]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": []
     },
     {
       "slug": "web-optimization-images",
@@ -1485,8 +1485,8 @@
           "answer": "Not for above-the-fold images that should load immediately. Use lazy loading for images that appear below the initial viewport."
         }
       ],
-      "relatedTools": ["image-optimizer", "web-performance-analyzer"],
-      "relatedPages": ["core-web-vitals-guide", "website-speed-optimization"]
+      "relatedTools": [],
+      "relatedPages": []
     },
     {
       "slug": "professional-photo-editing-workflows",
@@ -1716,8 +1716,8 @@
           "answer": "Use Lightroom for workflow management and global adjustments, Photoshop for complex retouching and composites. Most professionals use both."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "photo-editor"],
-      "relatedPages": ["color-correction-guide", "photo-retouching-techniques"]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": []
     },
     {
       "slug": "image-scaling-algorithms",
@@ -1968,8 +1968,8 @@
           "answer": "AI methods excel at significant upscaling but may be overkill for minor adjustments. They're also slower and more resource-intensive."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "image-rescaler"],
-      "relatedPages": ["image-resolution-guide", "interpolation-methods-comparison"]
+      "relatedTools": ["ai-image-upscaler"],
+      "relatedPages": []
     }
   ],
   "meta": {

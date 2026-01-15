@@ -82,8 +82,13 @@
           "answer": "Yes, significantly better. AI upscaling uses neural networks to intelligently generate new details, while bicubic interpolation just smooths between existing pixels. AI produces sharper, more detailed results with fewer artifacts."
         }
       ],
-      "relatedGuides": ["how-to-upsize-images", "webp-format-guide", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "webp-format-guide",
@@ -167,8 +172,13 @@
           "answer": "For web use, mostly yes. Convert JPEG and PNG images to WebP for better performance. However, keep originals as backup, and don't convert RAW files or images destined for print."
         }
       ],
-      "relatedGuides": ["avif-next-gen-format", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler", "format-converter"]
+      "relatedGuides": [
+        "avif-next-gen-format",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "heic-format-guide",
@@ -252,8 +262,13 @@
           "answer": "Converting HEIC to PNG is lossless and preserves full quality. Converting to JPEG introduces some quality loss (especially in 16-bit to 8-bit conversion), but using 90-95% quality minimizes visible differences."
         }
       ],
-      "relatedGuides": ["raw-photography-guide", "tiff-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "raw-photography-guide",
+        "tiff-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "raw-photography-guide",
@@ -337,8 +352,13 @@
           "answer": "Not necessarily. Adobe Lightroom is the industry standard, but free options like RawTherapee or camera manufacturer software work well. Choose based on your needs and budget."
         }
       ],
-      "relatedGuides": ["tiff-format-guide", "heic-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "tiff-format-guide",
+        "heic-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "tiff-format-guide",
@@ -422,8 +442,12 @@
           "answer": "Most print shops prefer TIFF, but many now accept high-quality JPEG or native files from InDesign/Illustrator. Always check with your printer for their preferred format and specifications."
         }
       ],
-      "relatedGuides": ["raw-photography-guide", "print-resolution-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "raw-photography-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "bmp-format-guide",
@@ -507,8 +531,13 @@
           "answer": "Absolutely not. Use PNG for lossless graphics, JPEG for photos, or WebP for modern web use. BMP has no advantages over these formats."
         }
       ],
-      "relatedGuides": ["svg-vector-guide", "tiff-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "svg-vector-guide",
+        "tiff-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "svg-vector-guide",
@@ -592,8 +621,13 @@
           "answer": "You can convert simple PNG graphics (logos, icons) to SVG using vectorization tools like Adobe Illustrator's Image Trace. However, photographs don't convert well to SVG - they're best left as raster images."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "bmp-format-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "bmp-format-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "gif-animation-guide",
@@ -677,8 +711,13 @@
           "answer": "Not dead, but outdated. GIF is still used for simple animations and universal compatibility. However, WebP and MP4 are superior for most use cases. Use GIF only when you specifically need its broad compatibility."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "avif-next-gen-format"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "avif-next-gen-format"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "avif-next-gen-format",
@@ -724,7 +763,7 @@
         {
           "step": 5,
           "title": "AVIF for Web Performance",
-      "content": "AVIF provides significant web performance benefits.\n\n**Performance Improvements:**\n- **70% smaller files**: Faster page loads\n- **Less bandwidth**: Lower data costs and hosting\n- **Better caching**: More content fits in browser cache\n- **Faster rendering**: Smaller files decode faster\n- **Better user experience**: Especially on mobile and slow connections\n\n**Real-World Impact:**\nE-commerce site example:\n- **Before**: 50MB of product images (JPEG)\n- **After AVIF**: 15MB of product images (AVIF)\n- **Result**: 70% faster page load, 70% less bandwidth\n\n**Implementation Strategy:**\n1. **Audit current images**: Identify largest files\n2. **Convert to AVIF**: Start with high-traffic pages\n3. **Implement progressive enhancement**: AVIF → WebP → JPEG\n4. **Monitor metrics**: Track load times, bandwidth usage\n5. **Measure impact**: Compare before/after performance\n\n**CDN Considerations:**\nMany CDNs now support AVIF:\n- **Cloudinary**: Automatic format conversion\n- **CloudFront**: AVIF support added\n- **Cloudflare**: Automatic AVIF delivery\n- **Imgix**: AVIF generation on-the-fly\n\nConfigure your CDN to:\n- Serve AVIF to supported browsers\n- Provide WebP/JPEG fallbacks\n- Cache all format variants\n- Monitor format delivery statistics"
+          "content": "AVIF provides significant web performance benefits.\n\n**Performance Improvements:**\n- **70% smaller files**: Faster page loads\n- **Less bandwidth**: Lower data costs and hosting\n- **Better caching**: More content fits in browser cache\n- **Faster rendering**: Smaller files decode faster\n- **Better user experience**: Especially on mobile and slow connections\n\n**Real-World Impact:**\nE-commerce site example:\n- **Before**: 50MB of product images (JPEG)\n- **After AVIF**: 15MB of product images (AVIF)\n- **Result**: 70% faster page load, 70% less bandwidth\n\n**Implementation Strategy:**\n1. **Audit current images**: Identify largest files\n2. **Convert to AVIF**: Start with high-traffic pages\n3. **Implement progressive enhancement**: AVIF → WebP → JPEG\n4. **Monitor metrics**: Track load times, bandwidth usage\n5. **Measure impact**: Compare before/after performance\n\n**CDN Considerations:**\nMany CDNs now support AVIF:\n- **Cloudinary**: Automatic format conversion\n- **CloudFront**: AVIF support added\n- **Cloudflare**: Automatic AVIF delivery\n- **Imgix**: AVIF generation on-the-fly\n\nConfigure your CDN to:\n- Serve AVIF to supported browsers\n- Provide WebP/JPEG fallbacks\n- Cache all format variants\n- Monitor format delivery statistics"
         },
         {
           "step": 6,
@@ -763,8 +802,13 @@
           "answer": "Yes, AVIF supports 8-bit alpha transparency, just like PNG and WebP. This makes it suitable for logos, icons, and graphics that need transparent backgrounds."
         }
       ],
-      "relatedGuides": ["webp-format-guide", "gif-animation-guide"],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedGuides": [
+        "webp-format-guide",
+        "gif-animation-guide"
+      ],
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     }
   ],
   "meta": {

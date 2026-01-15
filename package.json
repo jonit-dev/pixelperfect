@@ -53,7 +53,8 @@
     "validate:sitemap": "tsx scripts/validate-sitemap-urls.ts",
     "validate:sitemap:full": "tsx scripts/validate-sitemap-urls.ts --full",
     "validate:sitemap:patterns": "tsx scripts/validate-sitemap-urls.ts --patterns-only",
-    "validate:sitemap:structure": "tsx scripts/validate-sitemap-structure.ts"
+    "validate:sitemap:structure": "tsx scripts/validate-sitemap-structure.ts",
+    "validate:internal-links": "npx tsx scripts/validate-internal-links.ts"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^2.31.3",

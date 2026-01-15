@@ -35,6 +35,8 @@ GRANT EXECUTE ON FUNCTION consume_credits_v2(UUID, INTEGER, TEXT, TEXT) TO servi
 
 **Issue:** While other credit-modifying RPCs were correctly revoked from the `authenticated` role in migration `20250303_revoke_credit_rpc_from_authenticated.sql`, the newer `consume_credits_v2` function is still granted to authenticated users.
 
+**Validation:** ✅ Valid — `consume_credits_v2` is granted to `authenticated` in this migration and not revoked later.
+
 **Exploit Vector:** An authenticated user could call `consume_credits_v2` with `target_user_id` set to another user's UUID, potentially draining their credits.
 
 **Impact:** Cross-user credit manipulation, financial loss
@@ -61,6 +63,8 @@ RETURNING credits_balance INTO new_balance;
 
 **Issue:** The `admin_adjust_credits` function references the old `credits_balance` column, but the schema was migrated to dual-pool (`subscription_credits_balance` + `purchased_credits_balance`) in migration `20251205_separate_credit_pools.sql`.
 
+**Validation:** ✅ Valid — the function still updates `credits_balance`, which was renamed in the dual-pool migration.
+
 **Impact:** Admin credit adjustments will fail or update a non-existent column, causing data corruption or silent failures.
 
 **Recommended Fix:** Update function to work with dual-pool schema.
@@ -86,6 +90,8 @@ export async function requireAdmin(req: NextRequest): Promise<IAdminCheckResult>
 
 **Issue:** The `requireAdmin` function trusts the `X-User-Id` header without verifying it came from the middleware. If an attacker can bypass middleware or send a direct request with a forged `X-User-Id` header, they could impersonate any user including admins.
 
+**Validation:** ✅ Valid — `requireAdmin` reads `X-User-Id` and skips JWT verification when the header is present.
+
 **Impact:** Privilege escalation, unauthorized admin access
 
 **Recommended Fix:** Always verify the JWT token directly within `requireAdmin` rather than trusting headers.
@@ -103,6 +109,8 @@ const { userId } = await params;
 ```
 
 **Issue:** The `userId` path parameter is not validated as a UUID before being used in database queries.
+
+**Validation:** ✅ Valid — `userId` is used directly in Supabase queries with no UUID parsing/validation.
 
 **Impact:** IDOR (Insecure Direct Object Reference) - potential access/modification of unintended records.
 
@@ -133,6 +141,8 @@ for (const field of allowedFields) {
 
 **Issue:** The PATCH endpoint accepts request body without Zod validation. While it has an allowlist for fields, the values are not validated.
 
+**Validation:** ✅ Valid — allowlist only checks field names; values can be any type.
+
 **Impact:** Injection of unexpected values (objects, arrays, SQL payloads) into profile fields.
 
 **Recommended Fix:**
@@ -162,6 +172,8 @@ body = JSON.parse(text) as ISubscriptionChangeRequest;
 
 **Issue:** Request body is parsed with `JSON.parse()` and cast directly to interface type without Zod validation.
 
+**Validation:** ⚠️ Partial — JSON parsing lacks schema validation, but `targetPriceId` is required and validated via `assertKnownPriceId`.
+
 **Impact:** Malformed payloads could bypass type safety, causing unexpected behavior or information leakage.
 
 **Recommended Fix:**
@@ -190,6 +202,8 @@ const validatedBody = subscriptionChangeSchema.parse(JSON.parse(text));
 
 Both use different `ref_id` formats, so idempotency by transaction reference won't prevent duplicate credits.
 
+**Validation:** ✅ Valid — checkout and invoice handlers both add credits; there is no dedupe between `session_*` and `invoice_*` refs.
+
 **Impact:** Users could receive double credits on initial subscription.
 
 **Recommended Fix:**
@@ -207,6 +221,8 @@ Both use different `ref_id` formats, so idempotency by transaction reference won
 **Lines:** 216-244 (check) and 624 (increment)
 
 **Issue:** Batch limit is checked early in request handler but only incremented after successful processing. Multiple concurrent requests could all pass the check before any increments occur.
+
+**Validation:** ✅ Valid — `batchLimitCheck.check()` and `increment()` are separate calls, allowing concurrent passes.
 
 **Exploit Vector:** User on free tier (limit: 1) fires 10 concurrent requests; all 10 pass batch check.
 
@@ -227,6 +243,8 @@ const batchStore = new Map<string, IBatchEntry>();
 
 **Issue:** Batch limits stored in-memory only. Lost on server restart or across Cloudflare Workers instances.
 
+**Validation:** ✅ Valid — `batchStore` is an in-memory `Map`, so state is ephemeral per instance.
+
 **Impact:** Batch limit bypass in production.
 
 **Recommended Fix:** Use Redis or database-backed persistent storage.
@@ -244,6 +262,8 @@ const offset = parseInt(searchParams.get('offset') || '0', 10);
 ```
 
 **Issue:** No upper bound on limit parameter.
+
+**Validation:** ✅ Valid — `limit` is parsed without a maximum cap.
 
 **Impact:** DoS through `?limit=999999999` causing database/memory exhaustion.
 
@@ -267,6 +287,8 @@ const { data: authUsers } = await supabaseAdmin.auth.admin.listUsers();
 
 **Issue:** Fetches ALL auth users without pagination, then filters client-side.
 
+**Validation:** ✅ Valid — `auth.admin.listUsers()` is called without pagination and filtered in memory.
+
 **Impact:** Performance degradation and DoS as user base grows. Exposes all user emails in memory.
 
 **Recommended Fix:** Use Supabase pagination and server-side search.
@@ -288,6 +310,8 @@ if (serverEnv.ENV === 'test') {
 
 **Issue:** Test authentication relies entirely on `ENV` variable. If misconfigured to 'test' in production, attackers could bypass authentication.
 
+**Validation:** ✅ Valid — test auth bypass is gated only by `serverEnv.ENV === 'test'`.
+
 **Impact:** Complete authentication bypass if ENV misconfigured.
 
 **Recommended Fix:** Add multiple safeguards (hostname check, deployment context), log warnings when test mode detected.
@@ -302,6 +326,8 @@ if (serverEnv.ENV === 'test') {
 **Lines:** 69-158
 
 **Issue:** Function does not validate that `p_amount` is positive. Negative amount could add credits.
+
+**Validation:** ✅ Valid — no guard for non-positive `p_amount` in `clawback_credits_v2`.
 
 **Recommended Fix:**
 ```sql
@@ -323,6 +349,8 @@ const credits = parseInt(session.metadata?.credits || '0', 10);
 
 **Issue:** Credits count read from metadata without server-side verification against price configuration.
 
+**Validation:** ✅ Valid — credits are sourced from `session.metadata.credits`, which can be overridden by client-supplied metadata.
+
 **Recommended Fix:** Re-resolve credit amount from price ID in webhook handler.
 
 ---
@@ -334,7 +362,11 @@ const credits = parseInt(session.metadata?.credits || '0', 10);
 
 **Issue:** `refund_credits` function doesn't track which credit pool the original deduction came from.
 
+**Validation:** ✅ Valid — refunds still use legacy `refund_credits` with no pool selection after dual-pool migration.
+
 **Impact:** Refunds may go to wrong pool (subscription vs purchased).
+
+**Recommended Fix:** Make refunds pool-aware by logging pool usage in `consume_credits_v2` and refunding via `clawback_from_transaction_v2` (using `job_id` as `reference_id`) or `refund_credits_to_pool`.
 
 ---
 
@@ -344,6 +376,8 @@ const credits = parseInt(session.metadata?.credits || '0', 10);
 **Lines:** 86-142
 
 **Issue:** `returnUrl` validated for protocol but not domain. Could redirect to phishing sites.
+
+**Validation:** ✅ Valid — protocol and XSS patterns are checked, but no allowlist for domains/hosts.
 
 **Recommended Fix:**
 ```typescript
@@ -366,6 +400,8 @@ if (!allowedDomains.some(d => url.hostname.includes(d))) {
 
 **Issue:** `JSON.stringify()` does not escape `</script>` sequence. If user-controlled data contains this, it could break out of script tag.
 
+**Validation:** ✅ Valid — `dangerouslySetInnerHTML` uses raw `JSON.stringify` output without escaping `</script>`.
+
 **Recommended Fix:**
 ```typescript
 JSON.stringify(data).replace(/<\/script/gi, '<\\/script')
@@ -384,6 +420,8 @@ const html = DOMPurify ? DOMPurify.sanitize(parsedMarkdown) : parsedMarkdown;
 
 **Issue:** During SSR, `DOMPurify` is null, so markdown rendered without sanitization.
 
+**Validation:** ⚠️ Partial — SSR output is unsanitized, but the component comment indicates content is trusted; risk depends on data source.
+
 **Recommended Fix:** Use isomorphic sanitization library like `isomorphic-dompurify`.
 
 ---
@@ -401,6 +439,8 @@ response.cookies.set(LOCALE_COOKIE, detectedLocale, {
 ```
 
 **Issue:** Locale cookie set without `Secure` flag.
+
+**Validation:** ✅ Valid — `secure: true` is not set on the locale cookie.
 
 **Recommended Fix:** Add `secure: true` in production environments.
 
@@ -422,6 +462,8 @@ if (!accessToken && !isTestEnvironment) {
 
 **Issue:** Attacker could set `window.__TEST_ENV__ = true` in console to bypass client-side auth check.
 
+**Validation:** ⚠️ Partial — bypass is client-side only; server auth still gates actual API access.
+
 **Recommended Fix:** Remove client-side test bypass entirely; server enforces auth properly.
 
 ---
@@ -440,6 +482,8 @@ export function isTestEnvironment(): boolean {
 
 **Issue:** Rate limiting disabled if Stripe key is test key. Staging environments using test Stripe keys would have no rate limiting.
 
+**Validation:** ✅ Valid — `isTestEnvironment()` checks `STRIPE_SECRET_KEY.startsWith('sk_test_')`.
+
 **Recommended Fix:** Only disable rate limiting based on explicit test flags, not inferred from service keys.
 
 ---
@@ -455,7 +499,11 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** Any authenticated user can query whether any other user is an admin.
 
+**Validation:** ✅ Valid — `public.is_admin(UUID)` is granted to `authenticated`.
+
 **Impact:** Information disclosure about admin users.
+
+**Recommended Fix:** Change `is_admin` to ignore arbitrary input and only evaluate `auth.uid()` (or enforce `user_id = auth.uid()`), then update policies accordingly.
 
 ---
 
@@ -466,6 +514,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** When upgrading, tier difference is always added without checking if result exceeds `maxRollover` cap.
 
+**Validation:** ✅ Valid — upgrade credits add tier difference without applying `maxRollover`.
+
+**Recommended Fix:** Pass `maxRollover` into the upgrade calculation and cap the resulting balance (reduce `creditsToAdd` so `currentBalance + creditsToAdd` does not exceed the cap).
+
 ---
 
 ### 24. Idempotency Check Race Condition
@@ -474,6 +526,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 **Lines:** 14-46
 
 **Issue:** SELECT then INSERT pattern has TOCTOU race. Should use `INSERT ... ON CONFLICT`.
+
+**Validation:** ❌ Invalid — `event_id` is unique and the insert handles 23505 conflicts, so concurrent claims are mitigated.
+
+**Recommended Fix:** No change required; optional hardening is to replace the SELECT+INSERT with `INSERT ... ON CONFLICT DO NOTHING RETURNING` to reduce round-trips.
 
 ---
 
@@ -486,6 +542,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** Refund failures only logged, not tracked/alerted.
 
+**Validation:** ✅ Valid — failures are logged but not retried or surfaced.
+
+**Recommended Fix:** Persist refund failures and retry (queue/job) or alert; avoid silent drops.
+
 ---
 
 ### 26. Missing dispute_events Table Check
@@ -494,6 +554,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 **Lines:** 88-100
 
 **Issue:** Inserts to `dispute_events` without checking table exists; error swallowed.
+
+**Validation:** ✅ Valid — insert errors are logged and processing continues.
+
+**Recommended Fix:** Treat insert failures as actionable: return an error to trigger Stripe retry or surface to monitoring, and/or add a startup migration check to ensure the table exists.
 
 ---
 
@@ -504,6 +568,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** Direct UPDATE bypasses transaction logging for scheduled downgrades.
 
+**Validation:** ✅ Valid — credits are updated directly, and the attempted log call uses `amount: 0` which will error.
+
+**Recommended Fix:** Add a dedicated RPC to reset subscription credits with logging, or compute a delta and use `add_subscription_credits`/`clawback_credits_v2` to record the change.
+
 ---
 
 ### 28. Profile Not Found Handling Inconsistency
@@ -511,6 +579,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 **Multiple Files:** Various webhook handlers
 
 **Issue:** Inconsistent error handling when profile not found - some throw, some return.
+
+**Validation:** ⚠️ Partial — inconsistency exists, but test-mode branches intentionally return early.
+
+**Recommended Fix:** Centralize profile lookup handling; in prod always throw to trigger Stripe retry, while test mode returns early in a shared helper.
 
 ---
 
@@ -521,6 +593,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** Refund handler reference ID formats may not match original transaction.
 
+**Validation:** ⚠️ Partial — multiple ref formats are attempted, but older `session_*` references can still miss.
+
+**Recommended Fix:** Normalize reference IDs (e.g., `invoice_${invoice.id}` for subscriptions, `pi_${payment_intent}` for packs) and store checkout session IDs in charge metadata for reliable fallback.
+
 ---
 
 ### 30. Server Import in Client Code
@@ -529,6 +605,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 **Line:** 7
 
 **Issue:** Imports from `@server/` path in client code (though content is browser-safe).
+
+**Validation:** ⚠️ Partial — import is from a server path but the module is browser-safe; mainly a layering concern.
+
+**Recommended Fix:** Move to a client-safe Supabase module (e.g., `@shared/utils/supabase/client`) and forbid `@server/*` imports in client code via lint rules.
 
 ---
 
@@ -539,6 +619,10 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** Imports `serverEnv` in client code (only uses non-secret value).
 
+**Validation:** ✅ Valid — `serverEnv` includes secrets in `shared/config/env.ts`, risking client bundle exposure.
+
+**Recommended Fix:** Replace with `clientEnv` or a `NEXT_PUBLIC_*` flag and ensure server-only envs are never imported into client bundles.
+
 ---
 
 ### 32. Free Tier Abuse via Account Creation
@@ -548,6 +632,9 @@ GRANT EXECUTE ON FUNCTION public.is_admin(UUID) TO authenticated;
 
 **Issue:** No mechanism to prevent multiple account creation for repeated free credits.
 
+**Validation:** ⚠️ Partial — no explicit anti-abuse controls found; this is a product/abuse risk rather than a concrete code defect.
+
+**Recommended Fix:** Add signup abuse controls (rate limits per IP/device, CAPTCHA, email verification before credit grant, and/or per-device credit caps).
 ---
 
 ## Positive Security Findings
@@ -566,6 +653,55 @@ The codebase demonstrates several good security practices:
 10. **CORS Configuration:** Properly restricts origins, no wildcard
 11. **SSRF Protection:** Proxy-image has domain allowlist with subdomain check
 12. **Open Redirect Protection:** Same-origin validation in auth redirect manager
+
+---
+
+## Manual Verification Checklist
+
+After fixes are implemented, manually verify the following systems to confirm risk is eliminated:
+
+| System | Manual Check | Expected Result |
+|--------|--------------|-----------------|
+| Credit RPC permissions | Attempt `consume_credits_v2` as `authenticated` user | Request denied; only `service_role` can execute |
+| Admin auth middleware | Send request with forged `X-User-Id` without valid JWT | Request rejected (401/403) |
+| Admin user endpoints | Provide non-UUID `userId` and invalid PATCH body values | 400 with validation errors |
+| Subscription change endpoints | Send malformed JSON and invalid `targetPriceId` | 400 with schema validation errors |
+| Stripe checkout + invoice | Simulate subscription checkout + first invoice | Credits added exactly once |
+| Refund clawback | Trigger refunds for pack and subscription | Credits claw back from correct pool |
+| Batch limits | Fire concurrent upscale requests for free tier | Only 1 request allowed |
+| Rate limiting | Use `sk_test_` in staging and exceed limits | Rate limiting still enforced |
+| Portal returnUrl | Supply external domain return URL | 400 invalid return URL |
+| JSON-LD + Markdown rendering | Inject `</script>` or unsafe markdown content | Output is escaped/sanitized |
+| Locale cookie | Inspect cookie in production | `Secure` flag present |
+| Admin discovery | Call `is_admin` for another user | Not possible unless caller is admin |
+| listUsers pagination | Large user set and search | Server paginates; search done server-side |
+| Subscription upgrade rollover | Upgrade with high balance | New balance capped to `maxRollover` |
+| dispute_events logging | Create dispute and insert record | Record is persisted; failures trigger retry/alert |
+
+---
+
+## Suggested Test Cases
+
+Automated tests to confirm fixes and prevent regressions:
+
+| Area | Test Type | Scenario | Expected Result |
+|------|-----------|----------|-----------------|
+| Admin auth | Unit | `requireAdmin` with `X-User-Id` but missing/invalid JWT | 401/403; header alone is insufficient |
+| Admin users | API | GET/PATCH with non-UUID `userId` | 400 with validation error |
+| Admin PATCH | API | PATCH with invalid types (arrays/objects) | 400 with schema error |
+| Subscription change | API | Invalid JSON payload | 400 `INVALID_JSON` |
+| Subscription change | API | Valid JSON but unknown price ID | 400 `INVALID_PRICE_ID` |
+| Checkout vs invoice | Integration | Simulate checkout + first invoice | Credits added once; no duplicate transaction |
+| Refund pool | Integration | Refund pack vs subscription | Clawback/refund applies correct pool and reference ID |
+| Batch limits | API | Concurrent upscale requests for free tier | Only first allowed; others 429 |
+| Rate limit | Unit | `isTestEnvironment()` with `sk_test_` in non-test env | Returns false; limits enforced |
+| Portal returnUrl | API | External domain return URL | 400 invalid return URL |
+| JSON-LD | Unit | Data contains `</script>` | Output escaped; no script break-out |
+| Markdown SSR | Unit | Unsafe markdown content | Sanitized output on SSR |
+| Locale cookie | Integration | Production env request with locale redirect | Cookie has `Secure` flag |
+| is_admin | DB policy | Call `is_admin` for another user | Rejected or returns only for `auth.uid()` |
+| listUsers | API | Large user set + search | Server paginates and search is server-side |
+| Rollover cap | Unit | Upgrade with high balance | `creditsToAdd` capped by `maxRollover` |
 
 ---
 
