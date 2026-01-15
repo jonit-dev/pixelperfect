@@ -5,6 +5,7 @@
 
 import type { IComparisonPage } from '@/lib/seo/pseo-types';
 import { getPageMappingByUrl } from '@/lib/seo/keyword-mappings';
+import type { IRelatedPage } from '@/lib/seo/related-pages';
 import { ReactElement } from 'react';
 import { clientEnv } from '@shared/config/env';
 import { PSEOPageTracker } from '../analytics/PSEOPageTracker';
@@ -12,6 +13,7 @@ import { ScrollTracker } from '../analytics/ScrollTracker';
 import { CTASection } from '../sections/CTASection';
 import { FAQSection } from '../sections/FAQSection';
 import { HeroSection } from '../sections/HeroSection';
+import { RelatedPagesSection } from '../sections/RelatedPagesSection';
 import { BreadcrumbNav } from '../ui/BreadcrumbNav';
 import { FadeIn } from '@/app/(pseo)/_components/ui/MotionWrappers';
 import { Check, X, Star, Award, ArrowRight } from 'lucide-react';
@@ -19,9 +21,10 @@ import Link from 'next/link';
 
 interface IComparePageTemplateProps {
   data: IComparisonPage;
+  relatedPages?: IRelatedPage[];
 }
 
-export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactElement {
+export function ComparePageTemplate({ data, relatedPages = [] }: IComparePageTemplateProps): ReactElement {
   // Look up tier from keyword mappings
   const pageMapping = getPageMappingByUrl(`/compare/${data.slug}`);
   const tier = pageMapping?.tier;
@@ -254,6 +257,9 @@ export function ComparePageTemplate({ data }: IComparePageTemplateProps): ReactE
               </section>
             </FadeIn>
           )}
+
+          {/* Related Pages */}
+          {relatedPages.length > 0 && <RelatedPagesSection relatedPages={relatedPages} />}
 
           {/* FAQ */}
           {data.faq && data.faq.length > 0 && (

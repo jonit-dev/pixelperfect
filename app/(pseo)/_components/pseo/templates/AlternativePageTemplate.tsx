@@ -5,12 +5,14 @@
 
 import type { IAlternativePage } from '@/lib/seo/pseo-types';
 import { getPageMappingByUrl } from '@/lib/seo/keyword-mappings';
+import type { IRelatedPage } from '@/lib/seo/related-pages';
 import { ReactElement } from 'react';
 import { PSEOPageTracker } from '../analytics/PSEOPageTracker';
 import { ScrollTracker } from '../analytics/ScrollTracker';
 import { CTASection } from '../sections/CTASection';
 import { FAQSection } from '../sections/FAQSection';
 import { HeroSection } from '../sections/HeroSection';
+import { RelatedPagesSection } from '../sections/RelatedPagesSection';
 import { BreadcrumbNav } from '../ui/BreadcrumbNav';
 import { FadeIn } from '@/app/(pseo)/_components/ui/MotionWrappers';
 
@@ -33,11 +35,13 @@ interface IAlternativePageTemplateProps {
     }>;
   };
   locale?: string;
+  relatedPages?: IRelatedPage[];
 }
 
 export function AlternativePageTemplate({
   data,
   locale,
+  relatedPages = [],
 }: IAlternativePageTemplateProps): ReactElement {
   // Look up tier from keyword mappings
   const pageMapping = getPageMappingByUrl(`/alternatives/${data.slug}`);
@@ -221,6 +225,9 @@ export function AlternativePageTemplate({
               </section>
             </FadeIn>
           )}
+
+          {/* Related Pages */}
+          {relatedPages.length > 0 && <RelatedPagesSection relatedPages={relatedPages} />}
 
           {/* FAQ */}
           {data.faq && data.faq.length > 0 && (

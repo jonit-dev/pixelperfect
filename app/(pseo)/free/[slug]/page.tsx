@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFreeData, getAllFreeSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { FreePageTemplate } from '@/app/(pseo)/_components/pseo/templates/FreePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { HreflangLinks } from '@client/components/seo/HreflangLinks';
@@ -35,6 +36,9 @@ export default async function FreePage({ params }: IFreePageProps) {
   }
 
   const canonicalUrl = `${clientEnv.BASE_URL}/free/${slug}`;
+
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('free', slug, 'en');
 
   // Build the graph array with WebPage and optional FAQPage
   const graphItems: object[] = [
@@ -107,7 +111,7 @@ export default async function FreePage({ params }: IFreePageProps) {
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
-      <FreePageTemplate data={freeTool} />
+      <FreePageTemplate data={freeTool} relatedPages={relatedPages} />
     </>
   );
 }

@@ -46,25 +46,32 @@ export async function generateMetadata({ params }: IPageProps): Promise<Metadata
     };
   }
 
+  const canonicalUrl = `${clientEnv.BASE_URL}/blog/${slug}`;
+  const defaultOgImage = '/og-image.png';
+
   return {
     title: post.title,
     description: post.description,
     authors: [{ name: post.author }],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
+      url: canonicalUrl,
       publishedTime: post.date,
       authors: [post.author],
       images: post.image
         ? [{ url: post.image, width: 1200, height: 630, alt: post.title }]
-        : undefined,
+        : [{ url: defaultOgImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : undefined,
+      images: post.image ? [post.image] : [defaultOgImage],
     },
   };
 }

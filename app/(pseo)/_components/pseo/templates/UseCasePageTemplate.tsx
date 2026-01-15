@@ -5,12 +5,14 @@
 
 import type { IUseCasePage } from '@/lib/seo/pseo-types';
 import { getPageMappingByUrl } from '@/lib/seo/keyword-mappings';
+import type { IRelatedPage } from '@/lib/seo/related-pages';
 import { ReactElement } from 'react';
 import { PSEOPageTracker } from '../analytics/PSEOPageTracker';
 import { ScrollTracker } from '../analytics/ScrollTracker';
 import { CTASection } from '../sections/CTASection';
 import { FAQSection } from '../sections/FAQSection';
 import { HeroSection } from '../sections/HeroSection';
+import { RelatedPagesSection } from '../sections/RelatedPagesSection';
 import { BreadcrumbNav } from '../ui/BreadcrumbNav';
 import { FadeIn } from '@/app/(pseo)/_components/ui/MotionWrappers';
 
@@ -39,9 +41,10 @@ interface IUseCasePageTemplateProps {
     }>;
   };
   locale?: string;
+  relatedPages?: IRelatedPage[];
 }
 
-export function UseCasePageTemplate({ data, locale }: IUseCasePageTemplateProps): ReactElement {
+export function UseCasePageTemplate({ data, locale, relatedPages = [] }: IUseCasePageTemplateProps): ReactElement {
   // Look up tier from keyword mappings
   const pageMapping = getPageMappingByUrl(`/use-cases/${data.slug}`);
   const tier = pageMapping?.tier;
@@ -237,6 +240,9 @@ export function UseCasePageTemplate({ data, locale }: IUseCasePageTemplateProps)
               </section>
             </FadeIn>
           )}
+
+          {/* Related Pages */}
+          {relatedPages.length > 0 && <RelatedPagesSection relatedPages={relatedPages} />}
 
           {/* FAQ */}
           {data.faq && data.faq.length > 0 && (

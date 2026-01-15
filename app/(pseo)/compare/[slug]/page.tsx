@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getComparisonData, getAllComparisonSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { ComparePageTemplate } from '@/app/(pseo)/_components/pseo/templates/ComparePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { generateComparisonSchema } from '@/lib/seo/schema-generator';
@@ -32,12 +33,15 @@ export default async function ComparisonPage({ params }: IComparisonPageProps) {
     notFound();
   }
 
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('compare', slug, 'en');
+
   const schema = generateComparisonSchema(comparison);
 
   return (
     <>
       <SchemaMarkup schema={schema} />
-      <ComparePageTemplate data={comparison} />
+      <ComparePageTemplate data={comparison} relatedPages={relatedPages} />
     </>
   );
 }

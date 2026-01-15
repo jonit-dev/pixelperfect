@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getFormatScaleData, getAllFormatScaleSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
 import { generatePSEOSchema } from '@/lib/seo/schema-generator';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { FormatScalePageTemplate } from '@/app/(pseo)/_components/pseo/templates/FormatScalePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { HreflangLinks } from '@client/components/seo/HreflangLinks';
@@ -34,6 +35,9 @@ export default async function FormatScalePage({ params }: IFormatScalePageProps)
     notFound();
   }
 
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('format-scale', slug, 'en');
+
   // Generate rich schema markup with FAQPage and BreadcrumbList
   const schema = generatePSEOSchema(formatScale, 'format-scale', 'en');
 
@@ -46,7 +50,7 @@ export default async function FormatScalePage({ params }: IFormatScalePageProps)
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
-      <FormatScalePageTemplate data={formatScale} locale="en" />
+      <FormatScalePageTemplate data={formatScale} locale="en" relatedPages={relatedPages} />
     </>
   );
 }

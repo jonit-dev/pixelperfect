@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getUseCaseData, getAllUseCaseSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { generateUseCaseSchema } from '@/lib/seo/schema-generator';
 import { UseCasePageTemplate } from '@/app/(pseo)/_components/pseo/templates/UseCasePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
@@ -34,6 +35,9 @@ export default async function UseCasePage({ params }: IUseCasePageProps) {
     notFound();
   }
 
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('use-cases', slug, 'en');
+
   // Generate rich schema markup with FAQPage and BreadcrumbList
   const schema = generateUseCaseSchema(useCase);
 
@@ -46,7 +50,7 @@ export default async function UseCasePage({ params }: IUseCasePageProps) {
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
-      <UseCasePageTemplate data={useCase} locale="en" />
+      <UseCasePageTemplate data={useCase} locale="en" relatedPages={relatedPages} />
     </>
   );
 }

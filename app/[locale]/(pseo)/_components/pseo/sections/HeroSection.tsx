@@ -51,7 +51,7 @@ export function HeroSection({
   const subtitle = h1Parts[1];
 
   return (
-    <section className="pt-20 pb-16 md:pt-28 md:pb-20 relative overflow-hidden">
+    <section className="pt-12 pb-16 md:pt-16 md:pb-20 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-accent/10 via-accent/5 to-transparent rounded-full blur-[140px] -z-10" />
 

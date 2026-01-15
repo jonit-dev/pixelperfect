@@ -64,7 +64,7 @@ export function FAQSection({
   }
 
   return (
-    <section className="py-20 bg-base">
+    <section className="py-12 bg-base">
       <FadeIn>
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">{title}</h2>

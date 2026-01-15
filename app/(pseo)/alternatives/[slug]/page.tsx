@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAlternativeData, getAllAlternativeSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { generateAlternativeSchema } from '@/lib/seo/schema-generator';
 import { AlternativePageTemplate } from '@/app/(pseo)/_components/pseo/templates/AlternativePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
@@ -34,6 +35,9 @@ export default async function AlternativePage({ params }: IAlternativePageProps)
     notFound();
   }
 
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('alternatives', slug, 'en');
+
   // Generate rich schema markup with FAQPage, ItemList, and BreadcrumbList
   const schema = generateAlternativeSchema(alternative);
 
@@ -46,7 +50,7 @@ export default async function AlternativePage({ params }: IAlternativePageProps)
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
-      <AlternativePageTemplate data={alternative} locale="en" />
+      <AlternativePageTemplate data={alternative} locale="en" relatedPages={relatedPages} />
     </>
   );
 }
