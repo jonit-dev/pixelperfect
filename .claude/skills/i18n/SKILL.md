@@ -5,6 +5,8 @@ description: Internationalization and translation management. Use when adding ne
 
 # i18n (Internationalization)
 
+**CRITICAL: NEVER use the Edit tool on JSON locale files.** Multi-byte UTF-8 characters (Japanese, etc.) cause crashes. ALWAYS use `apply-inline` command from the translation-helper.ts script to update translations.
+
 ## Quick Reference
 
 ### Directory Structure

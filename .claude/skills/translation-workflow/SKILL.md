@@ -1,5 +1,7 @@
 # Translation Workflow
 
+**CRITICAL: NEVER use the Edit tool on JSON locale files.** Multi-byte UTF-8 characters (Japanese, etc.) cause crashes. ALWAYS use `apply-inline` command to update translations.
+
 ## Overview
 
 This project uses `scripts/translation-helper.ts` for i18n management. English (`locales/en/`) is the source of truth. All translations are stored as JSON files in `locales/{locale}/`.
