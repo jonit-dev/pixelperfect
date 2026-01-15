@@ -70,7 +70,7 @@
     },
     "expirationUrgent": "Créditos expirando pronto",
     "expirationModerate": "Los créditos expirarán",
-    "expirationText": "Tu{s} {creditCount} crédito{creditPlural, plural, one {} other {s} expirarán el {formattedDate}{...",
+    "expirationText": "Tus {creditCount} crédito{creditPlural, plural, one {} other {s}} expirarán el {formattedDate}{timeRemainder}. ¡Úsalos antes de que desaparezcan!",
     "timeRemainder": {
       "today": " (hoy)",
       "tomorrow": " (mañana)",

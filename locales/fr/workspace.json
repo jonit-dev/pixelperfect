@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Limite de traitement par lots atteinte",
     "clientEnforcedTitle": "Limite de lot atteinte",
     "serverEnforcedMessage": "Vous avez atteint la limite de traitement de votre forfait. Vous avez traité {currentCount} images, mais votre forfait permet un maximum de {limit} images par heure.",
-    "clientEnforcedMessage": "Vous avez essayé d'ajouter {attempted} image{plural, plural, one {} other {s}, mais votre forfait permet un maximum de {limit} image{limitPlural, plural, one {} other {s} dans la file.",
+    "clientEnforcedMessage": "Vous avez essayé d'ajouter {attempted} image{plural, plural, one {} other {s}}, mais votre forfait permet un maximum de {limit} image{limitPlural, plural, one {} other {s}} dans la file.",
     "freeUserMessage": "Les utilisateurs gratuits peuvent traiter 1 image à la fois. Passez à une version supérieure pour débloquer des limites de lot plus élevées et traiter plusieurs images.",
     "securityMessage": "Ceci est une mesure de sécurité pour prévenir les abus. La limite sera réinitialisée dans environ 1 heure. Passez à une version supérieure pour des limites plus élevées.",
     "upgradeButton": "Améliorer le forfait",
-    "addPartialButton": "Ajouter {availableSlots} {count, plural, one {image} other {images}",
+    "addPartialButton": "Ajouter {availableSlots} {count, plural, one {image} other {images}}",
     "cancelButton": "Annuler"
   },
   "queue": {

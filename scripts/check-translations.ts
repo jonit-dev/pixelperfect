@@ -58,11 +58,20 @@ interface IInvalidJsonFile {
   error: string;
 }
 
+interface IICUFormatError {
+  locale: string;
+  namespace: string;
+  key: string;
+  value: string;
+  issue: string;
+}
+
 interface ITranslationReport {
   summary: {
     totalLocales: number;
     totalNamespaces: number;
     invalidJsonFiles: number;
+    icuFormatErrors: number;
     missingFiles: number;
     missingKeys: number;
     untranslatedFiles: number;
@@ -70,6 +79,7 @@ interface ITranslationReport {
     pseoWithoutI18n: number;
   };
   invalidJsonFiles: IInvalidJsonFile[];
+  icuFormatErrors: IICUFormatError[];
   missingFiles: Array<{
     locale: string;
     namespace: string;
@@ -104,6 +114,7 @@ interface ICLIOptions {
   keysOnly: boolean;
   filesOnly: boolean;
   checkPseo: boolean;
+  icuOnly: boolean;
   json: boolean;
   verbose: boolean;
   debug: boolean;
@@ -115,6 +126,7 @@ function parseArgs(): ICLIOptions {
     keysOnly: false,
     filesOnly: false,
     checkPseo: true, // Check pSEO by default
+    icuOnly: false,
     json: false,
     verbose: false,
     debug: false,
@@ -139,6 +151,9 @@ function parseArgs(): ICLIOptions {
         break;
       case '--no-pseo':
         options.checkPseo = false;
+        break;
+      case '--icu-only':
+        options.icuOnly = true;
         break;
       case '--json':
         options.json = true;
@@ -171,6 +186,7 @@ Options:
   --locale <code>      Check specific locale (e.g., pt, de, fr)
   --keys-only          Only check for missing keys, not files
   --files-only         Only check for missing files, not keys
+  --icu-only           Only check ICU message format (double braces, unbalanced braces)
   --check-pseo         Check pSEO data files for i18n coverage (default: on)
   --no-pseo            Skip pSEO data file checks
   --json               Output as JSON (useful for CI/CD)
@@ -466,12 +482,69 @@ function flattenKeyValues(obj: Record<string, unknown>, prefix = ''): Map<string
   return keyValues;
 }
 
+/**
+ * Validate ICU message format in translation strings
+ * Checks for common issues like double braces {{variable}} which should be {variable}
+ */
+function validateICUFormat(
+  locale: string,
+  namespace: string,
+  keyValues: Map<string, string>
+): IICUFormatError[] {
+  const errors: IICUFormatError[] = [];
+
+  keyValues.forEach((value, key) => {
+    // Check for double braces {{variable}} - should be {variable}
+    // But skip if it looks like a template literal (e.g., Mustache syntax)
+    const doubleBraceMatch = value.match(/\{\{[^}]+\}\}/g);
+    if (doubleBraceMatch) {
+      errors.push({
+        locale,
+        namespace,
+        key,
+        value: value.length > 100 ? value.substring(0, 100) + '...' : value,
+        issue: `Double braces found: ${doubleBraceMatch.join(', ')}. Use single braces {variable} for ICU format.`,
+      });
+    }
+
+    // Check for unclosed braces using a stack-based approach
+    // This properly handles nested ICU plural/select syntax like {count, plural, one {item} other {items}}
+    let depth = 0;
+    let maxDepth = 0;
+    for (const char of value) {
+      if (char === '{') {
+        depth++;
+        maxDepth = Math.max(maxDepth, depth);
+      } else if (char === '}') {
+        depth--;
+        if (depth < 0) break; // More closes than opens
+      }
+    }
+    if (depth !== 0) {
+      errors.push({
+        locale,
+        namespace,
+        key,
+        value: value.length > 100 ? value.substring(0, 100) + '...' : value,
+        issue: `Unbalanced braces: final depth is ${depth} (should be 0)`,
+      });
+    }
+
+    // Note: Empty braces {} are valid in ICU plural/select syntax
+    // e.g., {count, plural, one {} other {s}} means "nothing" for singular
+    // So we don't flag standalone {} as errors
+  });
+
+  return errors;
+}
+
 function checkTranslations(options: ICLIOptions): ITranslationReport {
   const report: ITranslationReport = {
     summary: {
       totalLocales: 0,
       totalNamespaces: 0,
       invalidJsonFiles: 0,
+      icuFormatErrors: 0,
       missingFiles: 0,
       missingKeys: 0,
       untranslatedFiles: 0,
@@ -479,6 +552,7 @@ function checkTranslations(options: ICLIOptions): ITranslationReport {
       pseoWithoutI18n: 0,
     },
     invalidJsonFiles: [],
+    icuFormatErrors: [],
     missingFiles: [],
     missingKeys: [],
     untranslatedContent: [],
@@ -512,7 +586,7 @@ function checkTranslations(options: ICLIOptions): ITranslationReport {
   report.summary.totalLocales = locales.length;
   report.summary.totalNamespaces = referenceNamespaces.length;
 
-  // First pass: validate all JSON files for syntax errors
+  // First pass: validate all JSON files for syntax errors and ICU format
   const allLocales = [REFERENCE_LOCALE, ...locales];
   for (const locale of allLocales) {
     const namespaces = getNamespaces(locale);
@@ -533,8 +607,29 @@ function checkTranslations(options: ICLIOptions): ITranslationReport {
           });
           report.summary.invalidJsonFiles++;
         }
+      } else if (result.data) {
+        // Check ICU format for all locales including reference
+        const keyValues = flattenKeyValues(result.data);
+        const icuErrors = validateICUFormat(locale, namespace, keyValues);
+        if (icuErrors.length > 0) {
+          // Avoid duplicates
+          for (const err of icuErrors) {
+            const alreadyRecorded = report.icuFormatErrors.some(
+              e => e.locale === err.locale && e.namespace === err.namespace && e.key === err.key
+            );
+            if (!alreadyRecorded) {
+              report.icuFormatErrors.push(err);
+              report.summary.icuFormatErrors++;
+            }
+          }
+        }
       }
     }
+  }
+
+  // If icuOnly, skip all other checks
+  if (options.icuOnly) {
+    return report;
   }
 
   // Check each locale against the reference
@@ -731,6 +826,7 @@ function printReport(report: ITranslationReport, options: ICLIOptions): void {
   const {
     summary,
     invalidJsonFiles,
+    icuFormatErrors,
     missingFiles,
     missingKeys,
     untranslatedContent,
@@ -761,6 +857,40 @@ function printReport(report: ITranslationReport, options: ICLIOptions): void {
     console.log('');
   } else if (options.verbose) {
     console.log('All JSON files are valid.');
+    console.log('');
+  }
+
+  // ICU format errors (malformed message arguments)
+  if (icuFormatErrors.length > 0) {
+    console.log('----------------------------------------');
+    console.log(`ICU FORMAT ERRORS (${icuFormatErrors.length})`);
+    console.log('----------------------------------------');
+    console.log('\nThese translation strings have invalid ICU message format.\n');
+
+    // Group by locale/namespace
+    const byFile = icuFormatErrors.reduce(
+      (acc, err) => {
+        const key = `${err.locale}/${err.namespace}`;
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(err);
+        return acc;
+      },
+      {} as Record<string, IICUFormatError[]>
+    );
+
+    for (const [file, errors] of Object.entries(byFile)) {
+      console.log(`  📁 ${file}.json (${errors.length} errors):`);
+      for (const err of errors.slice(0, 5)) {
+        console.log(`    - ${err.key}`);
+        console.log(`      Issue: ${err.issue}`);
+      }
+      if (errors.length > 5) {
+        console.log(`    ... and ${errors.length - 5} more errors`);
+      }
+      console.log('');
+    }
+  } else if (options.verbose) {
+    console.log('No ICU format errors found.');
     console.log('');
   }
 
@@ -944,6 +1074,7 @@ function printReport(report: ITranslationReport, options: ICLIOptions): void {
 
   const hasIssues =
     summary.invalidJsonFiles > 0 ||
+    summary.icuFormatErrors > 0 ||
     summary.missingFiles > 0 ||
     summary.missingKeys > 0 ||
     summary.untranslatedFiles > 0 ||
@@ -952,6 +1083,7 @@ function printReport(report: ITranslationReport, options: ICLIOptions): void {
 
   if (hasIssues) {
     console.log(`\n  Invalid JSON files:  ${summary.invalidJsonFiles}`);
+    console.log(`  ICU format errors:   ${summary.icuFormatErrors}`);
     console.log(`  Missing files:       ${summary.missingFiles}`);
     console.log(`  Missing keys:        ${summary.missingKeys}`);
     console.log(`  Untranslated files:  ${summary.untranslatedFiles}`);
@@ -974,6 +1106,7 @@ printReport(report, options);
 // Exit with error code if there are any issues
 if (
   report.summary.invalidJsonFiles > 0 ||
+  report.summary.icuFormatErrors > 0 ||
   report.summary.missingFiles > 0 ||
   report.summary.missingKeys > 0 ||
   report.summary.untranslatedFiles > 0 ||

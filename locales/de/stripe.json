@@ -70,7 +70,7 @@
     },
     "expirationUrgent": "Gutschriften verfallen bald!",
     "expirationModerate": "Gutschriften verfallen",
-    "expirationText": "Ihre {creditCount} Gutschrift{creditPlural, plural, one {} other {en} verfallen am {formattedDate}{...",
+    "expirationText": "Ihre {creditCount} Gutschrift{creditPlural, plural, one {} other {en}} verfallen am {formattedDate}{timeRemainder}. Nutzen Sie sie, bevor sie verschwinden!",
     "timeRemainder": {
       "today": " (heute)",
       "tomorrow": " (morgen)",

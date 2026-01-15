@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Limite de Processamento em Lote Atingido",
     "clientEnforcedTitle": "Limite de Lote Atingido",
     "serverEnforcedMessage": "Você atingiu o limite de processamento do seu plano. Você processou {currentCount} imagens, mas seu plano permite um máximo de {limit} imagens por hora.",
-    "clientEnforcedMessage": "Você tentou adicionar {attempted} imagem{plural, plural, one {} other {s}, mas seu plano permite um máximo de {limit} imagem{limitPlural, plural, one {} other {s} na fila.",
+    "clientEnforcedMessage": "Você tentou adicionar {attempted} imagem{plural, plural, one {} other {s}}, mas seu plano permite um máximo de {limit} imagem{limitPlural, plural, one {} other {s}} na fila.",
     "freeUserMessage": "Usuários gratuitos podem processar 1 imagem por vez. Faça upgrade para desbloquear limites de lote mais altos e processar múltiplas imagens.",
     "securityMessage": "Esta é uma medida de segurança para prevenir abuso. O limite será redefinido em aproximadamente 1 hora. Faça upgrade do seu plano para limites maiores.",
     "upgradeButton": "Fazer Upgrade do Plano",
-    "addPartialButton": "Adicionar {availableSlots} {count, plural, one {imagem} other {imagens}",
+    "addPartialButton": "Adicionar {availableSlots} {count, plural, one {imagem} other {imagens}}",
     "cancelButton": "Cancelar"
   },
   "queue": {

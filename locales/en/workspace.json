@@ -3,11 +3,11 @@
     "serverEnforcedTitle": "Batch Processing Limit Reached",
     "clientEnforcedTitle": "Batch Limit Reached",
     "serverEnforcedMessage": "You've reached the processing limit for your plan. You processed <currentCount>{currentCountValue}</currentCount> images, but your plan allows a maximum of <limit>{limitValue}</limit> images per hour.",
-    "clientEnforcedMessage": "You tried to add {attempted} image{plural, plural, one {} other {s}, but your plan allows a maximum of {limit} image{limitPlural, plural, one {} other {s} in the queue.",
+    "clientEnforcedMessage": "You tried to add {attempted} image{plural, plural, one {} other {s}}, but your plan allows a maximum of {limit} image{limitPlural, plural, one {} other {s}} in the queue.",
     "freeUserMessage": "Free users can process 1 image at a time. Upgrade to unlock higher batch limits and process multiple images.",
     "securityMessage": "This is a security measure to prevent abuse. The limit will reset in approximately 1 hour. Upgrade your plan for higher limits.",
     "upgradeButton": "Upgrade Plan",
-    "addPartialButton": "Add {availableSlots} {count, plural, one {image} other {images}",
+    "addPartialButton": "Add {availableSlots} {count, plural, one {image} other {images}}",
     "cancelButton": "Cancel"
   },
   "queue": {
