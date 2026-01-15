@@ -3,8 +3,6 @@
 import { Clock, Image } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export const dynamic = 'force-dynamic';
-
 export default function HistoryPage() {
   const t = useTranslations('dashboard.history');
 

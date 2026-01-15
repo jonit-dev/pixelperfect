@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
 import React from 'react';
 import { DashboardLayout } from '@client/components/dashboard';
 import { useUserStore } from '@client/store/userStore';
