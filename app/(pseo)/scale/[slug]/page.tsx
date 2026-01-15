@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getScaleData, getAllScaleSlugs } from '@/lib/seo/data-loader';
 import { generateMetadata as generatePageMetadata } from '@/lib/seo/metadata-factory';
+import { getRelatedPages } from '@/lib/seo/related-pages';
 import { ScalePageTemplate } from '@/app/(pseo)/_components/pseo/templates/ScalePageTemplate';
 import { SchemaMarkup } from '@/app/(pseo)/_components/seo/SchemaMarkup';
 import { HreflangLinks } from '@client/components/seo/HreflangLinks';
@@ -35,6 +36,9 @@ export default async function ScalePage({ params }: IScalePageProps) {
   }
 
   const canonicalUrl = `${clientEnv.BASE_URL}/scale/${slug}`;
+
+  // Get related pages for internal linking
+  const relatedPages = await getRelatedPages('scale', slug, 'en');
 
   // Build the graph array with WebPage and optional FAQPage
   const graphItems: object[] = [
@@ -107,7 +111,7 @@ export default async function ScalePage({ params }: IScalePageProps) {
       {/* Hreflang links for multi-language SEO */}
       <HreflangLinks path={path} />
       <SchemaMarkup schema={schema} />
-      <ScalePageTemplate data={scale} />
+      <ScalePageTemplate data={scale} relatedPages={relatedPages} />
     </>
   );
 }

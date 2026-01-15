@@ -35,6 +35,10 @@ export function generateMetadata(
   const canonicalUrl = getCanonicalUrl(path);
   // Note: og:locale is rendered via SeoMetaTags component to avoid duplicates
 
+  // Default og:image for all pSEO pages if not provided
+  const defaultOgImage = '/og-image.png';
+  const ogImageUrl = page.ogImage || defaultOgImage;
+
   return {
     title: page.metaTitle,
     description: page.metaDescription,
@@ -47,16 +51,14 @@ export function generateMetadata(
       type: 'website',
       url: canonicalUrl,
       siteName: APP_NAME,
-      ...(page.ogImage && {
-        images: [
-          {
-            url: page.ogImage,
-            width: 1200,
-            height: 630,
-            alt: page.title,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: page.title,
+        },
+      ],
     },
 
     // Twitter
@@ -64,7 +66,7 @@ export function generateMetadata(
       card: 'summary_large_image',
       title: page.metaTitle,
       description: page.metaDescription,
-      ...(page.ogImage && { images: [page.ogImage] }),
+      images: [ogImageUrl],
       creator: `@${TWITTER_HANDLE}`,
     },
 
@@ -106,6 +108,9 @@ export function generateCategoryMetadata(category: PSEOCategory, locale: Locale 
   const canonicalUrl = getCanonicalUrl(path);
   const ogLocale = getOpenGraphLocale(locale);
   // Note: hreflang links are rendered via HreflangLinks component to avoid duplicates
+
+  // Default og:image for category pages
+  const defaultOgImage = '/og-image.png';
 
   const categoryTitles: Record<PSEOCategory, string> = {
     tools: `AI Image Tools - Upscaler, Enhancer & More | ${APP_NAME}`,
@@ -164,12 +169,21 @@ export function generateCategoryMetadata(category: PSEOCategory, locale: Locale 
       url: canonicalUrl,
       siteName: APP_NAME,
       locale: ogLocale,
+      images: [
+        {
+          url: defaultOgImage,
+          width: 1200,
+          height: 630,
+          alt: categoryTitles[category],
+        },
+      ],
     },
 
     twitter: {
       card: 'summary_large_image',
       title: categoryTitles[category],
       description: categoryDescriptions[category],
+      images: [defaultOgImage],
       creator: `@${TWITTER_HANDLE}`,
     },
 

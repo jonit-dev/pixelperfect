@@ -29,7 +29,11 @@ interface IScalePageTemplateProps {
   relatedPages?: IRelatedPage[];
 }
 
-export function ScalePageTemplate({ data, locale, relatedPages = [] }: IScalePageTemplateProps): ReactElement {
+export function ScalePageTemplate({
+  data,
+  locale,
+  relatedPages = [],
+}: IScalePageTemplateProps): ReactElement {
   // Look up tier from keyword mappings
   const pageMapping = getPageMappingByUrl(`/scale/${data.slug}`);
   const tier = pageMapping?.tier;
@@ -211,6 +215,190 @@ export function ScalePageTemplate({ data, locale, relatedPages = [] }: IScalePag
               </section>
             </FadeIn>
           )}
+
+          {/* How It Works */}
+          <FadeIn delay={0.55}>
+            <section className="py-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+                How AI Upscaling to {data.resolution} Works
+              </h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Our advanced AI technology analyzes your image and intelligently adds detail,
+                resulting in crystal clear {data.resolution} output.
+              </p>
+              <div className="max-w-3xl mx-auto space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Upload Your Image</h3>
+                    <p className="text-muted-foreground">
+                      Simply drag and drop or select any image from your device. Our system supports
+                      all common formats including JPEG, PNG, WebP, and more.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">AI Analysis & Enhancement</h3>
+                    <p className="text-muted-foreground">
+                      Our neural network analyzes your image at the pixel level, identifying edges,
+                      textures, and patterns. It then intelligently generates new pixels to enlarge
+                      your image to {data.resolution} while maintaining sharpness and clarity.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">
+                      Download {data.resolution} Result
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Within seconds, your upscaled image is ready. Download it in full{' '}
+                      {data.resolution} quality, perfect for printing, professional use, or
+                      high-resolution displays.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* When to Use This Resolution */}
+          <FadeIn delay={0.6}>
+            <section className="py-12 bg-surface-light rounded-2xl px-8 border border-border">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+                When to Use {data.resolution}
+              </h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Understanding the right resolution for your needs ensures optimal quality and file
+                size.
+              </p>
+              <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-accent">✓</span> Ideal For
+                  </h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• High-quality photo printing and posters</li>
+                    <li>• Professional photography portfolios</li>
+                    <li>• Retina and 4K display backgrounds</li>
+                    <li>• Marketing materials and brochures</li>
+                    <li>• Social media cover photos and banners</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-accent">✓</span> Technical Benefits
+                  </h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Crisp details on large format prints</li>
+                    <li>• Future-proof for higher resolution displays</li>
+                    <li>• Professional editing headroom</li>
+                    <li>• Consistent quality across all devices</li>
+                    <li>• Meets industry standard requirements</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* Comparison with Other Resolutions */}
+          <FadeIn delay={0.65}>
+            <section className="py-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+                {data.resolution} vs Other Resolutions
+              </h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Compare {data.resolution} with common image resolutions to understand the difference
+                in quality and use cases.
+              </p>
+              <div className="max-w-3xl mx-auto overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-border">
+                      <th className="text-left py-3 px-4 font-semibold">Resolution</th>
+                      <th className="text-left py-3 px-4 font-semibold">Dimensions</th>
+                      <th className="text-left py-3 px-4 font-semibold">Best For</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-border">
+                      <td className="py-3 px-4 font-medium">720p (HD)</td>
+                      <td className="py-3 px-4">1280 × 720</td>
+                      <td className="py-3 px-4">Web sharing, social media</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 px-4 font-medium">1080p (Full HD)</td>
+                      <td className="py-3 px-4">1920 × 1080</td>
+                      <td className="py-3 px-4">YouTube, presentations</td>
+                    </tr>
+                    <tr className="border-b border-border bg-accent/5">
+                      <td className="py-3 px-4 font-medium text-accent">{data.resolution}</td>
+                      <td className="py-3 px-4">
+                        {data.dimensions?.width || '—'} × {data.dimensions?.height || '—'}
+                      </td>
+                      <td className="py-3 px-4">Professional print, 4K displays</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 px-4 font-medium">8K (UHD)</td>
+                      <td className="py-3 px-4">7680 × 4320</td>
+                      <td className="py-3 px-4">Large format printing, cinema</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* Technical Details */}
+          <FadeIn delay={0.7}>
+            <section className="py-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+                Technical Details: AI-Powered Upscaling
+              </h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Learn about the technology behind our {data.resolution} upscaling process.
+              </p>
+              <div className="max-w-3xl mx-auto space-y-6">
+                <div className="bg-surface-light rounded-xl p-6 border border-border">
+                  <h3 className="font-semibold text-lg mb-3">Neural Network Architecture</h3>
+                  <p className="text-muted-foreground">
+                    Our upscaling system uses deep convolutional neural networks (CNNs) trained on
+                    millions of high-resolution image pairs. The network learns to intelligently
+                    predict and generate missing pixel information when enlarging images to{' '}
+                    {data.resolution}, resulting in natural-looking details without artifacts or
+                    blurring.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-6 border border-border">
+                  <h3 className="font-semibold text-lg mb-3">Edge-Preserving Algorithms</h3>
+                  <p className="text-muted-foreground">
+                    Unlike traditional interpolation methods that blur edges, our AI detects and
+                    preserves important edges and fine details. When upscaling to {data.resolution},
+                    lines remain sharp, textures look natural, and text stays readable even at
+                    significant enlargement ratios.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-6 border border-border">
+                  <h3 className="font-semibold text-lg mb-3">Format & Color Preservation</h3>
+                  <p className="text-muted-foreground">
+                    Your {data.resolution} output maintains the original color profile and supports
+                    the same format as your input. Whether you&apos;re working with sRGB for web or
+                    Adobe RGB for print, color accuracy is preserved throughout the upscaling
+                    process.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
 
           {/* FAQ */}
           {data.faq && data.faq.length > 0 && (

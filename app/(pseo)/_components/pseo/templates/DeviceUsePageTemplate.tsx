@@ -202,9 +202,206 @@ export function DeviceUsePageTemplate({
             </FadeIn>
           )}
 
+          {/* How It Works */}
+          <FadeIn delay={0.45}>
+            <section className="py-12">
+              <h2 className="text-2xl font-semibold text-text-primary text-center mb-4">
+                How to Upscale Images for {data.useCase} on {data.device}
+              </h2>
+              <p className="text-center text-text-secondary mb-8 max-w-2xl mx-auto">
+                Optimize your images specifically for {data.useCase.toLowerCase()} on {data.device}{' '}
+                devices with our AI-powered upscaling.
+              </p>
+              <div className="max-w-3xl mx-auto space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent-primary text-white rounded-full flex items-center justify-center font-bold">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Upload Your Image</h3>
+                    <p className="text-text-secondary">
+                      Simply drag and drop or select any image from your device. Our system supports
+                      all common formats including JPEG, PNG, WebP, and more.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent-primary text-white rounded-full flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Automatic Device Optimization</h3>
+                    <p className="text-text-secondary">
+                      Our AI automatically detects optimal settings for {data.device} displays and{' '}
+                      {data.useCase.toLowerCase()} requirements, ensuring perfect output every time.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-accent-primary text-white rounded-full flex items-center justify-center font-bold">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Download Optimized Image</h3>
+                    <p className="text-text-secondary">
+                      Get your perfectly upscaled image ready for {data.useCase.toLowerCase()} on{' '}
+                      {data.device}. Download instantly and start using right away.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* Device-Specific Best Practices */}
+          <FadeIn delay={0.5}>
+            <section className="py-12 bg-surface-light rounded-2xl px-8 border border-border-default">
+              <h2 className="text-2xl font-semibold text-text-primary text-center mb-4">
+                Best Practices for {data.useCase} on {data.device}
+              </h2>
+              <p className="text-center text-text-secondary mb-8 max-w-2xl mx-auto">
+                Follow these guidelines to get the best results when upscaling images for your
+                specific use case.
+              </p>
+              <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-accent-primary">✓</span> Image Preparation
+                  </h3>
+                  <ul className="space-y-2 text-text-secondary text-sm">
+                    <li>• Start with the highest quality source available</li>
+                    <li>• Use proper lighting for product photos</li>
+                    <li>• Ensure correct orientation before upload</li>
+                    <li>• Remove any compression artifacts first</li>
+                    <li>• Check color accuracy before upscaling</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-accent-primary">✓</span> Output Settings
+                  </h3>
+                  <ul className="space-y-2 text-text-secondary text-sm">
+                    <li>• Match {data.device} display resolution</li>
+                    <li>• Consider file size for mobile data usage</li>
+                    <li>• Use appropriate format for the platform</li>
+                    <li>• Test on actual {data.device} devices</li>
+                    <li>• Keep backups of original images</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* Common Use Cases for This Device/Category */}
+          <FadeIn delay={0.55}>
+            <section className="py-12">
+              <h2 className="text-2xl font-semibold text-text-primary text-center mb-4">
+                Popular {data.useCase} Scenarios on {data.device}
+              </h2>
+              <p className="text-center text-text-secondary mb-8 max-w-2xl mx-auto">
+                Discover how others are using AI upscaling for their {data.useCase.toLowerCase()}{' '}
+                needs on {data.device}.
+              </p>
+              <div className="max-w-3xl mx-auto grid gap-4 md:grid-cols-2">
+                <div className="bg-surface-light rounded-xl p-5 border border-border-default">
+                  <h3 className="font-semibold mb-2">Content Creation</h3>
+                  <p className="text-text-secondary text-sm">
+                    Creators upscale thumbnails and preview images to ensure they look crisp when
+                    viewed on {data.device} screens.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-5 border border-border-default">
+                  <h3 className="font-semibold mb-2">E-commerce</h3>
+                  <p className="text-text-secondary text-sm">
+                    Online retailers enhance product photos to provide detailed views for customers
+                    browsing on {data.device}.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-5 border border-border-default">
+                  <h3 className="font-semibold mb-2">Social Media</h3>
+                  <p className="text-text-secondary text-sm">
+                    Marketers and influencers optimize images for maximum impact when shared on{' '}
+                    {data.device} platforms.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-5 border border-border-default">
+                  <h3 className="font-semibold mb-2">Professional Portfolio</h3>
+                  <p className="text-text-secondary text-sm">
+                    Photographers and designers showcase work with high-resolution images optimized
+                    for {data.device} viewing.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
+          {/* Technical Information */}
+          <FadeIn delay={0.6}>
+            <section className="py-12">
+              <h2 className="text-2xl font-semibold text-text-primary text-center mb-4">
+                Understanding {data.device} Display Requirements
+              </h2>
+              <p className="text-center text-text-secondary mb-8 max-w-2xl mx-auto">
+                Technical insights to help you make informed decisions about image upscaling for{' '}
+                {data.device}.
+              </p>
+              <div className="max-w-3xl mx-auto space-y-6">
+                <div className="bg-surface-light rounded-xl p-6 border border-border-default">
+                  <h3 className="font-semibold text-lg mb-3">Display Resolution Considerations</h3>
+                  <p className="text-text-secondary text-sm">
+                    {data.device === 'mobile' && (
+                      <>
+                        Mobile devices typically range from 1080p to 1440p resolution, with premium
+                        models reaching 4K. Our AI upscales images to match these pixel densities,
+                        ensuring your content looks sharp on any smartphone screen.
+                      </>
+                    )}
+                    {data.device === 'desktop' && (
+                      <>
+                        Desktop monitors commonly support 1080p, 1440p, and 4K resolutions.
+                        Upscaling ensures your images maintain clarity across all these display
+                        sizes, from standard laptop screens to large desktop monitors.
+                      </>
+                    )}
+                    {data.device === 'tablet' && (
+                      <>
+                        Tablets bridge the gap between mobile and desktop, typically featuring 2K to
+                        3K displays. Our upscaling optimizes images specifically for these
+                        intermediate screen sizes and aspect ratios.
+                      </>
+                    )}
+                    {!['mobile', 'desktop', 'tablet'].includes(data.device) && (
+                      <>
+                        Different devices have varying screen resolutions and pixel densities. Our
+                        AI automatically detects optimal settings to ensure your images look their
+                        best on the target device.
+                      </>
+                    )}
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-6 border border-border-default">
+                  <h3 className="font-semibold text-lg mb-3">Aspect Ratio & Layout</h3>
+                  <p className="text-text-secondary text-sm">
+                    When upscaling for {data.useCase} on {data.device}, we consider common aspect
+                    ratios and layout patterns. This ensures your images fit perfectly within their
+                    intended display context without cropping or distortion.
+                  </p>
+                </div>
+                <div className="bg-surface-light rounded-xl p-6 border border-border-default">
+                  <h3 className="font-semibold text-lg mb-3">File Size Optimization</h3>
+                  <p className="text-text-secondary text-sm">
+                    Higher resolutions increase file size, which affects loading times and data
+                    usage. Our upscaling balances quality with efficiency, especially important for
+                    mobile users and bandwidth-constrained scenarios.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </FadeIn>
+
           {/* Tips */}
           {data.tips && data.tips.length > 0 && (
-            <FadeIn delay={0.5}>
+            <FadeIn delay={0.65}>
               <section className="py-12">
                 <h2 className="text-2xl font-semibold text-text-primary text-center mb-8">
                   Pro Tips
