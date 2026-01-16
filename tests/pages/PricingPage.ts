@@ -100,7 +100,7 @@ export class PricingPage extends BasePage {
         await this.page.waitForTimeout(500);
         try {
           await this.page.reload();
-        } catch (reloadError) {
+        } catch (_reloadError) {
           // If reload fails, throw the original error
           throw error;
         }

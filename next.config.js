@@ -12,10 +12,8 @@ const nextConfig = {
   // IMPORTANT: Disabled trailingSlash to prevent 308 redirects on API routes (especially webhooks)
   // trailingSlash: true causes Stripe webhooks to fail with 308 redirects
   // SEO trailing slashes are handled via explicit redirects below instead
-  // Skip static generation for OpenNext migration
-  ...(process.env.OPENNEXT && {
-    output: 'export',
-  }),
+  // Standalone output for OpenNext/Cloudflare deployment
+  output: 'standalone',
   // Transpile packages for proper ESM handling
   transpilePackages: ['react-markdown', 'remark-gfm', 'unified', 'bail'],
   // Performance optimizations
