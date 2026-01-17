@@ -86,6 +86,7 @@ test.describe('Internal Link Validation', () => {
 
   // Test interactive tool pages exist at correct paths
   test('Interactive tool pages should be accessible at correct paths', async ({ page }) => {
+    test.setTimeout(60000); // Increase timeout to 60 seconds for all 15 tools
     for (const tool of VALID_INTERACTIVE_TOOLS) {
       const url = tool.path;
       const response = await page.goto(url);
