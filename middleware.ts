@@ -436,10 +436,24 @@ async function handleApiRoute(req: NextRequest, pathname: string): Promise<NextR
   }
 
   // Handle public routes - they don't require authentication
+  // But optionally add user context if user is authenticated
   if (isPublic) {
-    const res = NextResponse.next();
+    let res = NextResponse.next();
     applySecurityHeaders(res);
     applyCorsHeaders(res, req.headers.get('origin') || undefined);
+
+    // Optionally add user context if authenticated (for routes like /api/support/*)
+    // This allows public routes to still know who the user is when available
+    if (req.headers.get('Authorization')) {
+      const authResult = await verifyApiAuth(req);
+      if (!('error' in authResult)) {
+        // Auth succeeded - add user context headers
+        res = addUserContextHeaders(req, authResult.user);
+        applySecurityHeaders(res);
+        applyCorsHeaders(res, req.headers.get('origin') || undefined);
+      }
+      // If auth fails, still allow the request (public route)
+    }
 
     // Apply public rate limiting
     const rateLimitResponse = await applyPublicRateLimit(req, res);

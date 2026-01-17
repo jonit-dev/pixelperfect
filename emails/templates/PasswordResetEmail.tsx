@@ -1,0 +1,159 @@
+import React from 'react';
+import {
+  Html,
+  Head,
+  Body,
+  Container,
+  Section,
+  Text,
+  Button,
+  Hr,
+  Link,
+} from '@react-email/components';
+
+interface IPasswordResetEmailProps {
+  userName?: string;
+  resetUrl?: string;
+  baseUrl: string;
+  supportEmail: string;
+  appName?: string;
+}
+
+export function PasswordResetEmail({
+  userName = 'there',
+  resetUrl,
+  baseUrl,
+  supportEmail,
+  appName = 'MyImageUpscaler',
+}: IPasswordResetEmailProps): React.JSX.Element {
+  return (
+    <Html>
+      <Head />
+      <Body style={main}>
+        <Container style={container}>
+          <Section style={header}>
+            <Text style={logo}>{appName}</Text>
+          </Section>
+
+          <Section style={content}>
+            <Text style={heading}>Reset Your Password</Text>
+            <Text style={paragraph}>Hi {userName},</Text>
+            <Text style={paragraph}>
+              We received a request to reset your password. Click the button below to create a new
+              password.
+            </Text>
+            <Text style={paragraph}>
+              If you didn&apos;t request this change, you can safely ignore this email.
+            </Text>
+
+            {resetUrl ? (
+              <Button href={resetUrl} style={button}>
+                Reset Password
+              </Button>
+            ) : (
+              <Button href={`${baseUrl}/login`} style={button}>
+                Go to Login
+              </Button>
+            )}
+
+            <Text style={smallText}>This link will expire in 24 hours for your security.</Text>
+          </Section>
+
+          <Hr style={hr} />
+
+          <Section style={footer}>
+            <Text style={footerText}>
+              Questions?{' '}
+              <Link href={`mailto:${supportEmail}`} style={footerLink}>
+                Contact us
+              </Link>
+            </Text>
+            <Text style={footerText}>
+              &copy; {new Date().getFullYear()} {appName}. All rights reserved.
+            </Text>
+          </Section>
+        </Container>
+      </Body>
+    </Html>
+  );
+}
+
+const main = {
+  backgroundColor: '#f6f9fc',
+  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+};
+
+const container = {
+  maxWidth: '600px',
+  margin: '0 auto',
+  backgroundColor: '#ffffff',
+};
+
+const header = {
+  backgroundColor: '#3b82f6',
+  padding: '24px',
+  textAlign: 'center' as const,
+};
+
+const logo = {
+  color: '#ffffff',
+  fontSize: '24px',
+  fontWeight: 'bold',
+  margin: '0',
+};
+
+const content = {
+  padding: '32px 24px',
+};
+
+const heading = {
+  fontSize: '24px',
+  fontWeight: 'bold',
+  color: '#0f172a',
+  marginBottom: '16px',
+};
+
+const paragraph = {
+  fontSize: '16px',
+  lineHeight: '24px',
+  color: '#334155',
+  marginBottom: '16px',
+};
+
+const button = {
+  backgroundColor: '#3b82f6',
+  borderRadius: '8px',
+  color: '#ffffff',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  textDecoration: 'none',
+  padding: '12px 24px',
+  display: 'inline-block',
+};
+
+const smallText = {
+  fontSize: '14px',
+  color: '#64748b',
+  marginTop: '16px',
+};
+
+const hr = {
+  borderColor: '#e2e8f0',
+  margin: '0',
+};
+
+const footer = {
+  padding: '24px',
+  textAlign: 'center' as const,
+};
+
+const footerText = {
+  fontSize: '14px',
+  color: '#64748b',
+  margin: '4px 0',
+};
+
+const footerLink = {
+  color: '#3b82f6',
+  textDecoration: 'underline',
+};

@@ -5,6 +5,7 @@ import { serverEnv } from '@shared/config/env';
 import { getPlanForPriceId, resolvePlanOrPack, assertKnownPriceId } from '@shared/config/stripe';
 import { getTrialConfig } from '@shared/config/subscription.config';
 import { SubscriptionCreditsService } from '@server/services/SubscriptionCredits';
+import { getEmailService } from '@server/services/email.service';
 import { isTest } from '@shared/config/env';
 import Stripe from 'stripe';
 import dayjs from 'dayjs';
@@ -481,6 +482,34 @@ export class SubscriptionHandler {
             credits: newCredits,
           });
         }
+
+        // Send plan change email notification
+        try {
+          const { data: profileWithEmail } = await supabaseAdmin
+            .from('profiles')
+            .select('email')
+            .eq('id', userId)
+            .single();
+
+          if (profileWithEmail?.email) {
+            const emailService = getEmailService();
+            await emailService.send({
+              to: profileWithEmail.email,
+              template: 'subscription-update',
+              data: {
+                userName: profileWithEmail.email.split('@')[0] || 'there',
+                status: creditDifference > 0 ? 'upgraded' : 'changed',
+                action: `Your plan has been ${creditDifference > 0 ? 'upgraded' : 'changed'} from ${previousPlanMetadata.name} to ${planMetadata.name}`,
+                newPlan: planMetadata.name,
+                previousPlan: previousPlanMetadata.name,
+              },
+              userId,
+            });
+          }
+        } catch (emailError) {
+          // Log but don't fail the webhook
+          console.error('Failed to send plan change email:', emailError);
+        }
       }
     }
 
@@ -610,6 +639,33 @@ export class SubscriptionHandler {
         },
         { apiKey: serverEnv.AMPLITUDE_API_KEY, userId }
       );
+
+      // Send cancellation email notification
+      try {
+        const { data: profileWithEmail } = await supabaseAdmin
+          .from('profiles')
+          .select('email')
+          .eq('id', userId)
+          .single();
+
+        if (profileWithEmail?.email) {
+          const emailService = getEmailService();
+          await emailService.send({
+            to: profileWithEmail.email,
+            template: 'subscription-update',
+            data: {
+              userName: profileWithEmail.email.split('@')[0] || 'there',
+              status: 'canceled',
+              action:
+                'Your subscription has been canceled. Your remaining credits will be available until the end of your billing period.',
+            },
+            userId,
+          });
+        }
+      } catch (emailError) {
+        // Log but don't fail the webhook
+        console.error('Failed to send cancellation email:', emailError);
+      }
     }
   }
 
@@ -662,10 +718,22 @@ export class SubscriptionHandler {
     console.log(`Trial ending in ${daysUntilEnd} days for user ${userId}`);
 
     // Send trial ending soon email notification
-    // When email service is integrated, add code here to send notification
-    console.log(
-      `Trial ending soon notification: Email would be sent to ${profile.email} (${daysUntilEnd} days remaining)`
-    );
+    try {
+      const emailService = getEmailService();
+      await emailService.send({
+        to: profile.email || '',
+        template: 'subscription-update',
+        data: {
+          userName: profile.email?.split('@')[0] || 'there',
+          status: 'trial ending soon',
+          action: `Your trial ends in ${daysUntilEnd} days`,
+        },
+        userId,
+      });
+    } catch (emailError) {
+      // Log but don't fail the webhook
+      console.error('Failed to send trial ending email:', emailError);
+    }
 
     // Log this notification attempt for tracking
     await supabaseAdmin.from('credit_transactions').insert({

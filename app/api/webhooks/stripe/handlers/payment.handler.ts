@@ -3,6 +3,7 @@ import { trackServerEvent } from '@server/analytics';
 import { stripe } from '@server/stripe';
 import { serverEnv } from '@shared/config/env';
 import { assertKnownPriceId, getPlanForPriceId, resolvePlanOrPack } from '@shared/config/stripe';
+import { getEmailService } from '@server/services/email.service';
 import Stripe from 'stripe';
 
 // Charge interface for accessing invoice property
@@ -121,6 +122,25 @@ export class PaymentHandler {
                   );
                 }
               }
+
+              // Send payment success email for subscription
+              try {
+                const emailService = getEmailService();
+                await emailService.send({
+                  to: session.customer_email || '',
+                  template: 'payment-success',
+                  data: {
+                    userName: session.customer_details?.name || 'there',
+                    amount: `$${(session.amount_total || 0) / 100}`,
+                    planName: planKey,
+                    receiptUrl: (session as unknown as { receipt_url?: string }).receipt_url,
+                  },
+                  userId,
+                });
+              } catch (emailError) {
+                // Log but don't fail the webhook
+                console.error('Failed to send subscription payment email:', emailError);
+              }
             }
           }
         } catch (error) {
@@ -237,6 +257,25 @@ export class PaymentHandler {
     } catch (error) {
       console.error('Failed to process credit purchase:', error);
       throw error; // Re-throw for webhook retry
+    }
+
+    // Send payment success email for credit pack
+    try {
+      const emailService = getEmailService();
+      await emailService.send({
+        to: session.customer_email || '',
+        template: 'payment-success',
+        data: {
+          userName: session.customer_details?.name || 'there',
+          amount: `$${(session.amount_total || 0) / 100}`,
+          credits,
+          receiptUrl: (session as unknown as { receipt_url?: string }).receipt_url,
+        },
+        userId,
+      });
+    } catch (emailError) {
+      // Log but don't fail the webhook
+      console.error('Failed to send credit pack payment email:', emailError);
     }
   }
 

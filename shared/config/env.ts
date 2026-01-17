@@ -151,6 +151,8 @@ export const clientEnv = loadClientEnv();
 
 const serverEnvSchema = z.object({
   ENV: z.enum(['development', 'production', 'test']).default('development'),
+  // App Name
+  APP_NAME: z.string().default('MyImageUpscaler'),
   // Node environment
   NODE_ENV: z.string().optional(),
   // Test flags
@@ -222,6 +224,18 @@ const serverEnvSchema = z.object({
   ENABLE_PREMIUM_MODELS: z.coerce.boolean().default(true),
 
   // ==========================================
+  // EMAIL PROVIDERS
+  // ==========================================
+  // Brevo (Primary) - 9,000 free emails/month
+  BREVO_API_KEY: z.string().default(''),
+  // Resend (Fallback) - 3,000 free emails/month
+  RESEND_API_KEY: z.string().default(''),
+  // Common email settings
+  EMAIL_FROM_ADDRESS: z.string().email().default('noreply@myimageupscaler.com'),
+  SUPPORT_EMAIL: z.string().email().default('support@myimageupscaler.com'),
+  BASE_URL: z.string().url().default('http://localhost:3000'),
+
+  // ==========================================
   // MODEL VERSION OVERRIDES (optional)
   // Only set these if you need non-default versions
   // Defaults are defined in model-registry.ts
@@ -240,6 +254,8 @@ export type IServerEnv = z.infer<typeof serverEnvSchema>;
 function loadServerEnv(): IServerEnv {
   const env = {
     ENV: process.env.ENV || process.env.NODE_ENV || 'development',
+    // App Name
+    APP_NAME: process.env.APP_NAME || process.env.NEXT_PUBLIC_APP_NAME || 'MyImageUpscaler',
     // Node environment
     NODE_ENV: process.env.NODE_ENV,
     // Test flags
@@ -304,6 +320,16 @@ function loadServerEnv(): IServerEnv {
     // Feature Flags
     ENABLE_AUTO_MODEL_SELECTION: process.env.ENABLE_AUTO_MODEL_SELECTION ?? 'true',
     ENABLE_PREMIUM_MODELS: process.env.ENABLE_PREMIUM_MODELS ?? 'true',
+
+    // Email Providers
+    BREVO_API_KEY: process.env.BREVO_API_KEY || '',
+    RESEND_API_KEY: process.env.RESEND_API_KEY || '',
+    EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS || 'noreply@myimageupscaler.com',
+    SUPPORT_EMAIL:
+      process.env.SUPPORT_EMAIL ||
+      process.env.NEXT_PUBLIC_SUPPORT_EMAIL ||
+      'support@myimageupscaler.com',
+    BASE_URL: process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
 
     // Model Version Overrides (optional)
     MODEL_VERSION_REAL_ESRGAN: process.env.MODEL_VERSION_REAL_ESRGAN,

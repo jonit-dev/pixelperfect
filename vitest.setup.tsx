@@ -67,6 +67,29 @@ process.env.NEXT_PUBLIC_SUPABASE_URL = 'http://test-supabase-url';
 // eslint-disable-next-line no-restricted-syntax
 process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
 
+// Mock server environment variables - needed for server-side tests
+// eslint-disable-next-line no-restricted-syntax
+process.env.ENV = 'test';
+// eslint-disable-next-line no-restricted-syntax
+process.env.BASE_URL = 'http://localhost:3000';
+// eslint-disable-next-line no-restricted-syntax
+process.env.NEXT_PUBLIC_BASE_URL = 'http://localhost:3000';
+// eslint-disable-next-line no-restricted-syntax
+process.env.EMAIL_FROM_ADDRESS = 'noreply@test.com';
+// eslint-disable-next-line no-restricted-syntax
+process.env.SUPPORT_EMAIL = 'support@test.com';
+// eslint-disable-next-line no-restricted-syntax
+process.env.APP_NAME = 'TestApp';
+// Email provider API keys
+// eslint-disable-next-line no-restricted-syntax
+process.env.RESEND_API_KEY = 'test-resend-key';
+// eslint-disable-next-line no-restricted-syntax
+process.env.SENDPULSE_API_USER_ID = 'test-user-id';
+// eslint-disable-next-line no-restricted-syntax
+process.env.SENDPULSE_API_SECRET = 'test-secret';
+// eslint-disable-next-line no-restricted-syntax
+process.env.BREVO_API_KEY = 'test-brevo-key';
+
 // Mock Supabase client
 vi.mock('@supabase/supabase-js', () => ({
   createClient: vi.fn(() => ({

@@ -1,7 +1,11 @@
 {
   "page": {
     "title": "Help & FAQ",
-    "subtitle": "Find answers to common questions about using {appName}"
+    "subtitle": "Find answers to common questions about using {appName}",
+    "searchPlaceholder": "Search for answers...",
+    "noResults": "No results found for \"{query}\"",
+    "noResultsDescription": "Try using different keywords or browse the categories below.",
+    "clearSearch": "Clear Search"
   },
   "quickLinks": {
     "gettingStarted": "Getting Started",
@@ -144,7 +148,9 @@
     "title": "Still need help?",
     "description": "Can't find the answer you're looking for? Our support team is here to help.",
     "emailSupport": "Email Support",
-    "viewPricing": "View Pricing"
+    "viewPricing": "View Pricing",
+    "contactSupport": "Contact Support",
+    "supportTeam": "Support Team"
   },
   "relatedLinks": {
     "privacy": "Privacy Policy",

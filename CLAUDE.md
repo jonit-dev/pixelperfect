@@ -41,3 +41,25 @@ Check `.claude/skills/` for relevant patterns.
 ## Stack
 
 Next.js 15 (App Router), Supabase, Stripe, Cloudflare Pages, Baselime, Zod, Zustand
+
+## API Routes
+
+### Public API Routes
+
+Add public routes to `PUBLIC_API_ROUTES` in `shared/config/security.ts`:
+
+```typescript
+export const PUBLIC_API_ROUTES = [
+  '/api/health', // Health checks
+  '/api/webhooks/*', // External services with own auth
+  '/api/support/*', // Public forms (validated + rate limited)
+] as const;
+```
+
+**Public routes** don't require authentication but still get:
+
+- Security headers
+- CORS handling
+- Rate limiting (public tier)
+
+**Optional auth**: Public routes can still access authenticated user info via `X-User-Id` header if the client sends an Authorization header. Useful for things like support forms where you want to know who's submitting when available.

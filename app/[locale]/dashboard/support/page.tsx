@@ -1,11 +1,14 @@
 'use client';
 
-import { BookOpen, Mail, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { BookOpen, Mail, MessageCircle, Send } from 'lucide-react';
 import { clientEnv } from '@shared/config/env';
 import { useTranslations } from 'next-intl';
+import { SupportModal } from '@client/components/modal/support';
 
 export default function SupportPage() {
   const t = useTranslations('dashboard.support');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="space-y-6">
@@ -58,31 +61,25 @@ export default function SupportPage() {
           </div>
         </div>
 
-        <form className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-white mb-1">{t('subject')}</label>
-            <input
-              type="text"
-              placeholder={t('subjectPlaceholder')}
-              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white placeholder:text-muted-foreground"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-white mb-1">{t('message')}</label>
-            <textarea
-              rows={4}
-              placeholder={t('messagePlaceholder')}
-              className="w-full px-4 py-2 bg-surface-light border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none text-white placeholder:text-muted-foreground"
-            />
-          </div>
-          <button
-            type="submit"
-            className="px-6 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
-          >
-            {t('sendMessage')}
-          </button>
-        </form>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="w-full px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+        >
+          <Send size={18} />
+          <span>{t('openContactForm')}</span>
+        </button>
+
+        <div className="mt-4 p-4 bg-surface-light/50 rounded-lg">
+          <p className="text-sm text-muted-foreground">
+            <strong className="text-white">{t('emailSupport')}:</strong>{' '}
+            {clientEnv.SUPPORT_EMAIL.replace('mailto:', '')}
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">{t('responseTime')}</p>
+        </div>
       </div>
+
+      {/* Support Modal */}
+      <SupportModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

@@ -105,4 +105,5 @@ export const PUBLIC_API_ROUTES = [
   '/api/analytics/*', // Analytics events support both anonymous and authenticated tracking
   '/api/cron/*', // Cron routes use x-cron-secret header auth, not JWT
   '/api/proxy-image', // Download proxy for CORS bypass (validates allowed domains internally)
+  '/api/support/*', // Support contact form (public, uses validation and rate limiting)
 ] as const;
