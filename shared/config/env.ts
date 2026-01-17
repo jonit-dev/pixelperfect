@@ -386,9 +386,13 @@ export function isDevelopment(): boolean {
 
 /**
  * Check if running in test environment
+ * NOTE: Checks process.env directly to handle dynamic environment changes during tests
  */
 export function isTest(): boolean {
-  return serverEnv.ENV === 'test';
+  // Check both the cached serverEnv and the raw process.env for dynamic test detection
+  return (
+    serverEnv.ENV === 'test' || process.env.ENV === 'test' || process.env.PLAYWRIGHT_TEST === 'true'
+  );
 }
 
 // =============================================================================
