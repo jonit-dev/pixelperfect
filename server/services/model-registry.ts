@@ -188,27 +188,26 @@ export class ModelRegistry {
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
       },
       // Flux-2-Pro (Premium Face Restoration)
+      // Enhancement-only model - no true upscaling (no scale parameter, just enhancement)
       {
         id: 'flux-2-pro',
         displayName: 'Premium Face Restore',
         provider: 'replicate',
         modelVersion: this.getModelVersion('flux-2-pro'),
-        capabilities: ['upscale', 'enhance', 'face-restoration', 'denoise'],
+        capabilities: ['enhance', 'face-restoration', 'denoise'],
         costPerRun: MODEL_COSTS['flux-2-pro'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['flux-2-pro'],
         qualityScore: 9.6,
         processingTimeMs: TIMEOUTS.CLARITY_UPSCALER_PROCESSING_TIME, // Similar processing time
         maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
         maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-        supportedScales: [
-          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
-          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
-          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
-        ],
+        supportedScales: [], // Enhancement-only, no scale support
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
         tierRestriction: 'hobby',
       },
       // Nano Banana Pro (Upscale Ultra - Premium)
+      // Uses resolution presets (1K/2K/4K), not true pixel multiplication
+      // Only supports 2x and 4x scale mapping to resolution presets
       {
         id: 'nano-banana-pro',
         displayName: 'Upscale Ultra',
@@ -229,32 +228,25 @@ export class ModelRegistry {
         processingTimeMs: TIMEOUTS.NANO_BANANA_PRO_PROCESSING_TIME,
         maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
         maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION_ULTRA,
-        supportedScales: [
-          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
-          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
-          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
-        ],
+        supportedScales: [2, 4], // Resolution-based, not true 8x scale
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
         tierRestriction: 'hobby',
       },
       // Qwen Image Edit (Budget Image Editing - Premium)
+      // Enhancement-only model - no scale parameter (only prompt mentions scale)
       {
         id: 'qwen-image-edit',
         displayName: 'Image Edit',
         provider: 'replicate',
         modelVersion: this.getModelVersion('qwen-image-edit'),
-        capabilities: ['upscale', 'enhance', 'denoise', 'damage-repair'],
+        capabilities: ['enhance', 'denoise', 'damage-repair'],
         costPerRun: MODEL_COSTS['qwen-image-edit'],
         creditMultiplier: MODEL_CREDIT_MULTIPLIERS['qwen-image-edit'],
         qualityScore: 9.2,
         processingTimeMs: TIMEOUTS.CLARITY_UPSCALER_PROCESSING_TIME, // ~4-5 seconds
         maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
         maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-        supportedScales: [
-          CONFIG_MODEL_COSTS.DEFAULT_SCALE,
-          CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
-          CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
-        ],
+        supportedScales: [], // Enhancement-only, no scale support
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
         tierRestriction: 'hobby',
       },

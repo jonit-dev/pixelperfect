@@ -9,14 +9,25 @@ import { useLowCreditWarning } from '@client/hooks/useLowCreditWarning';
 
 // Grace period to allow auth state to settle after OAuth redirect
 const AUTH_GRACE_PERIOD_MS = 500;
+// Minimum interval between credit refreshes (30 seconds)
+const MIN_REFRESH_INTERVAL_MS = 30_000;
 
 export default function DashboardRootLayout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useUserStore();
+  const { isAuthenticated, isLoading, user, lastFetched, fetchUserData } = useUserStore();
   const router = useRouter();
   const [authGracePeriodElapsed, setAuthGracePeriodElapsed] = useState(false);
 
   // Initialize low credit warning for authenticated users
   useLowCreditWarning();
+
+  // Refresh user data (including credits) when entering dashboard
+  useEffect(() => {
+    if (!isAuthenticated || !user?.id) return;
+    const shouldRefresh = !lastFetched || Date.now() - lastFetched > MIN_REFRESH_INTERVAL_MS;
+    if (shouldRefresh) {
+      fetchUserData(user.id);
+    }
+  }, [isAuthenticated, user?.id, lastFetched, fetchUserData]);
 
   // Start grace period timer on mount
   useEffect(() => {

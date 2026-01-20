@@ -5,6 +5,7 @@ import {
   IUpscaleConfig,
   ProcessingStatus,
   QUALITY_TIER_CREDITS,
+  QUALITY_TIER_SCALES,
   QualityTier,
 } from '@/shared/types/coreflow.types';
 import { useUserData } from '@client/store/userStore';
@@ -173,11 +174,12 @@ export const BatchSidebar: React.FC<IBatchSidebarProps> = ({
           isFreeUser={isFreeUser}
         />
 
-        {/* 2. Upscale Factor Selector (unchanged) */}
+        {/* 2. Upscale Factor Selector (dynamic options based on tier) */}
         <UpscaleFactorSelector
           scale={config.scale}
           onChange={handleScaleChange}
           disabled={isProcessing}
+          availableScales={QUALITY_TIER_SCALES[config.qualityTier]}
         />
 
         {/* 3. Enhancement Options (always visible) */}

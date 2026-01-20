@@ -7,6 +7,20 @@ When adding a new AI model to the image upscaler, follow these steps in order. E
 - **Provider**: Replicate (primary), Gemini (alternative)
 - **Pricing**: USD cost per API call + credit multiplier
 - **Tiers**: Models can be restricted to subscription tiers (free, hobby, pro, business)
+- **Scale Support**: Models must accurately report which scales they actually support
+- **Capabilities**: Models must correctly declare 'upscale' vs enhancement-only capabilities
+
+## Important: Scale Support Accuracy
+
+**DO NOT claim scales that the model doesn't natively support:**
+- If the model has no scale parameter → `supportedScales: []` and remove 'upscale' capability
+- If the model caps at 4x → `supportedScales: [2, 4]` (NOT [2, 4, 8])
+- Only models with native 8x+ support should include 8 in `supportedScales`
+
+**Common mistakes to avoid:**
+- ❌ Setting `supportedScales: [2, 4, 8]` when the model only supports 2x and 4x
+- ❌ Including 'upscale' capability for enhancement-only models
+- ❌ Using "two-pass hacks" to simulate unsupported scales
 
 ## Required Files (in order)
 
@@ -42,11 +56,11 @@ Add MODEL_CONFIG entry:
   processingTime: MODEL_COSTS.PROCESSING_TIME_MEDIUM,
   maxInputResolution: MODEL_COSTS.MAX_INPUT_RESOLUTION,
   maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-  supportedScales: [
-    MODEL_COSTS.DEFAULT_SCALE,
-    MODEL_COSTS.MAX_SCALE_STANDARD,
-    MODEL_COSTS.MAX_SCALE_PREMIUM,
-  ],
+  // IMPORTANT: Only include scales the model ACTUALLY supports
+  // - If no scale param: [] (enhancement-only)
+  // - If 2x/4x only: [2, 4]
+  // - If native 8x: [2, 4, 8]
+  supportedScales: [2, 4], // Adjust based on actual model support
   tierRestriction: 'hobby', // null for free, 'hobby'/'pro'/'business' for paid
 },
 ```
@@ -138,6 +152,16 @@ And add QUALITY_TIER_CONFIG entry:
 },
 ```
 
+**IMPORTANT:** Add QUALITY_TIER_SCALES entry (defines which scales the tier's model supports):
+
+```typescript
+export const QUALITY_TIER_SCALES: Record<QualityTier, (2 | 4 | 8)[]> = {
+  // ... existing tiers
+  'new-tier': [2, 4], // Must match model's actual supportedScales
+  // ...
+};
+```
+
 ---
 
 ### 5. Validation Schema
@@ -205,6 +229,8 @@ Add model config to loadModelsFromEnvironment():
   displayName: 'Display Name',
   provider: 'replicate',
   modelVersion: this.getModelVersion('new-model-id'),
+  // CRITICAL: Only include 'upscale' if the model actually changes dimensions
+  // - Enhancement-only models: remove 'upscale', keep 'enhance', 'denoise', etc.
   capabilities: ['upscale', 'enhance', 'denoise'],
   costPerRun: MODEL_COSTS['new-model-id'],
   creditMultiplier: MODEL_CREDIT_MULTIPLIERS['new-model-id'],
@@ -212,11 +238,11 @@ Add model config to loadModelsFromEnvironment():
   processingTimeMs: TIMEOUTS.CLARITY_UPSCALER_PROCESSING_TIME,
   maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
   maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-  supportedScales: [
-    CONFIG_MODEL_COSTS.DEFAULT_SCALE,
-    CONFIG_MODEL_COSTS.MAX_SCALE_STANDARD,
-    CONFIG_MODEL_COSTS.MAX_SCALE_PREMIUM,
-  ],
+  // IMPORTANT: Match this to the model's actual scale support
+  // - Enhancement-only: []
+  // - 2x/4x max: [2, 4]
+  // - Native 8x+: [2, 4, 8]
+  supportedScales: [2, 4], // Adjust based on actual model support
   isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
   tierRestriction: 'hobby',
 },

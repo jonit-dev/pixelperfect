@@ -342,32 +342,39 @@ if (typeof window !== 'undefined') {
     }
 
     if (session?.user) {
-      // Set basic user info immediately
+      const currentUser = store.user;
+      const isSameUser = currentUser?.id === session.user.id;
+
+      // If same user, preserve existing profile/subscription data (avoids flicker on visibility change)
+      // Only reset to null for new users or fresh logins
       const basicUser: IUserData = {
         id: session.user.id,
         email: session.user.email ?? '',
         name: session.user.user_metadata?.name,
         provider: session.user.app_metadata?.provider ?? 'email',
-        role: 'user', // Default, will be updated
-        profile: null,
-        subscription: null,
+        role: isSameUser ? (currentUser?.role ?? 'user') : 'user',
+        profile: isSameUser ? currentUser?.profile ?? null : null,
+        subscription: isSameUser ? currentUser?.subscription ?? null : null,
       };
 
-      // NON-BLOCKING: Show UI immediately with basic user data
+      // NON-BLOCKING: Show UI immediately with user data
       useUserStore.setState({
         user: basicUser,
         isAuthenticated: true,
-        isLoading: false, // Don't block UI!
+        isLoading: false,
       });
 
-      // Fetch full data in background (non-blocking)
-      // Use setTimeout with delay to allow OAuth PKCE code exchange to fully complete
-      // and for auth.uid() to be available in RPC calls
-      setTimeout(() => {
-        store.fetchUserData(session.user.id).catch(err => {
-          console.error('Background fetch failed:', err);
-        });
-      }, 1500);
+      // Only fetch fresh data for new logins, not for visibility-triggered session recoveries
+      // Credits are refreshed explicitly: on dashboard visit and after processing
+      if (!isSameUser) {
+        // Use setTimeout with delay to allow OAuth PKCE code exchange to fully complete
+        // and for auth.uid() to be available in RPC calls
+        setTimeout(() => {
+          store.fetchUserData(session.user.id).catch(err => {
+            console.error('Background fetch failed:', err);
+          });
+        }, 1500);
+      }
 
       // Redirect to dashboard for active login/signup (email/password only)
       // OAuth redirects directly to /dashboard via redirectTo option

@@ -169,11 +169,7 @@ export const MODEL_CONFIG = {
     processingTime: MODEL_COSTS.PROCESSING_TIME_SLOW,
     maxInputResolution: MODEL_COSTS.MAX_INPUT_RESOLUTION,
     maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-    supportedScales: [
-      MODEL_COSTS.DEFAULT_SCALE,
-      MODEL_COSTS.MAX_SCALE_STANDARD,
-      MODEL_COSTS.MAX_SCALE_PREMIUM,
-    ],
+    supportedScales: [], // Enhancement-only, no scale support
     tierRestriction: 'hobby',
   },
   'nano-banana-pro': {
@@ -183,11 +179,7 @@ export const MODEL_CONFIG = {
     processingTime: MODEL_COSTS.PROCESSING_TIME_ULTRA,
     maxInputResolution: MODEL_COSTS.MAX_INPUT_RESOLUTION,
     maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION_ULTRA,
-    supportedScales: [
-      MODEL_COSTS.DEFAULT_SCALE,
-      MODEL_COSTS.MAX_SCALE_STANDARD,
-      MODEL_COSTS.MAX_SCALE_PREMIUM,
-    ],
+    supportedScales: [2, 4], // Resolution-based (1K/2K/4K), not true 8x scale
     tierRestriction: 'hobby',
   },
   'qwen-image-edit': {
@@ -197,11 +189,7 @@ export const MODEL_CONFIG = {
     processingTime: MODEL_COSTS.PROCESSING_TIME_MEDIUM,
     maxInputResolution: MODEL_COSTS.MAX_INPUT_RESOLUTION,
     maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
-    supportedScales: [
-      MODEL_COSTS.DEFAULT_SCALE,
-      MODEL_COSTS.MAX_SCALE_STANDARD,
-      MODEL_COSTS.MAX_SCALE_PREMIUM,
-    ],
+    supportedScales: [], // Enhancement-only, no scale support
     tierRestriction: 'hobby',
   },
 } as const;

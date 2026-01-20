@@ -101,6 +101,17 @@ export const QUALITY_TIER_CREDITS: Record<QualityTier, number | 'variable'> = Ob
   Object.entries(QUALITY_TIER_CONFIG).map(([k, v]) => [k, v.credits])
 ) as Record<QualityTier, number | 'variable'>;
 
+// Available scales per quality tier (based on actual model support)
+export const QUALITY_TIER_SCALES: Record<QualityTier, (2 | 4 | 8)[]> = {
+  auto: [2, 4, 8], // Auto can select any model
+  quick: [2, 4], // real-esrgan only supports 2x and 4x
+  'face-restore': [2, 4], // gfpgan only supports 2x and 4x
+  'budget-edit': [], // qwen-image-edit is enhancement-only (no upscale)
+  'hd-upscale': [2, 4, 8], // clarity-upscaler supports up to 16x natively
+  'face-pro': [], // flux-2-pro is enhancement-only (no upscale)
+  ultra: [2, 4], // nano-banana-pro is resolution-based (1K/2K/4K), not true 8x scale
+};
+
 // Additional options (replaces mode + toggles)
 export interface IAdditionalOptions {
   smartAnalysis: boolean; // AI suggests enhancements (hidden when tier='auto')
@@ -335,6 +346,13 @@ export interface IAnalyzeImageResponse {
   recommendation: IModelRecommendation;
 }
 
+// Dimension information for upscaling results
+export interface IDimensionsInfo {
+  input: { width: number; height: number };
+  output: { width: number; height: number };
+  actualScale: number; // Computed: output / input
+}
+
 export interface IUpscaleResponse {
   success: boolean;
   imageData?: string; // Legacy base64 data URL (deprecated for Workers)
@@ -355,4 +373,6 @@ export interface IUpscaleResponse {
     contentType?: string;
     modelRecommendation?: string;
   };
+  // Dimension reporting for verification
+  dimensions?: IDimensionsInfo;
 }
