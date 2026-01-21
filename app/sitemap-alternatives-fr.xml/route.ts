@@ -1,7 +1,6 @@
 /**
- * Alternatives Sitemap Route - English (en)
- * Based on PRD-PSEO-04 Section 1.3: Category Sitemap Implementation
- * Phase 4: Added hreflang links for all 7 languages
+ * Alternatives Sitemap Route - French (fr)
+ * Based on PRD-PSEO-I18N-001 Phase 4: Multi-language sitemap support
  */
 
 import { NextResponse } from 'next/server';
@@ -9,12 +8,11 @@ import { getAllAlternatives } from '@/lib/seo/data-loader';
 import { generateSitemapUrlEntry, getSitemapResponseHeaders } from '@/lib/seo/sitemap-generator';
 import type { Locale } from '@/i18n/config';
 
-const LOCALE: Locale = 'en';
+const LOCALE: Locale = 'fr';
 
 export async function GET() {
   const alternatives = await getAllAlternatives();
 
-  // Generate category index entry
   const categoryEntry = generateSitemapUrlEntry({
     path: '/alternatives',
     locale: LOCALE,
@@ -23,7 +21,6 @@ export async function GET() {
     includeHreflang: true,
   });
 
-  // Generate alternative page entries with hreflang
   const alternativeEntries = alternatives.map(alternative =>
     generateSitemapUrlEntry({
       path: `/alternatives/${alternative.slug}`,

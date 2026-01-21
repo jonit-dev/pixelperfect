@@ -9,6 +9,8 @@
 import { clientEnv } from '@shared/config/env';
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { generateSitemapHreflangLinks } from './hreflang-generator';
+import { isCategoryLocalized as checkCategoryLocalized } from './localization-config';
+import type { PSEOCategory } from './url-utils';
 
 // Re-export for convenience
 export { generateSitemapHreflangLinks };
@@ -188,16 +190,9 @@ export function generateSitemapIndexEntries(
  * @returns True if category is localized for this locale
  */
 export function isCategoryLocalized(category: string, locale: Locale): boolean {
-  // Categories that are fully localized
-  const LOCALIZED_CATEGORIES = ['tools', 'formats', 'free', 'guides'];
-
-  // Default locale (English) always has content
-  if (locale === DEFAULT_LOCALE) {
-    return true;
-  }
-
-  // Check if category is in the localized list
-  return LOCALIZED_CATEGORIES.includes(category);
+  // Use localization config for single source of truth
+  // Cast to PSEOCategory as sitemaps may use string category names
+  return checkCategoryLocalized(category as PSEOCategory, locale);
 }
 
 /**

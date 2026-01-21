@@ -10,12 +10,11 @@
 import { NextResponse } from 'next/server';
 import { clientEnv } from '@shared/config/env';
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '@/i18n/config';
-// generateSitemapIndexEntries available in '@/lib/seo/sitemap-generator' if needed
+import { LOCALIZED_CATEGORIES as LOCALIZED_PSEO_CATEGORIES } from '@/lib/seo/localization-config';
 
 const BASE_URL = `https://${clientEnv.PRIMARY_DOMAIN}`;
 
 // Categories that should have sitemaps
-// Note: Compare and alternatives are English-only (no localized content)
 const CATEGORIES = [
   'static',
   'blog',
@@ -43,8 +42,10 @@ const CATEGORIES = [
 
 /**
  * Categories that have localized content for all 7 languages
+ * Imported from localization-config.ts to maintain single source of truth
+ * Cast to string[] for comparison with CATEGORIES array
  */
-const LOCALIZED_CATEGORIES = ['tools', 'formats', 'free', 'guides'];
+const LOCALIZED_CATEGORIES = LOCALIZED_PSEO_CATEGORIES as readonly string[];
 
 /**
  * Generate sitemap index with locale-specific sitemaps

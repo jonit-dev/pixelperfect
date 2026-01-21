@@ -1,36 +1,33 @@
 /**
- * Alternatives Sitemap Route - English (en)
- * Based on PRD-PSEO-04 Section 1.3: Category Sitemap Implementation
- * Phase 4: Added hreflang links for all 7 languages
+ * Device × Use Case Sitemap Route - Japanese (ja)
+ * Based on PRD-PSEO-I18N-001 Phase 4: Multi-language sitemap support
  */
 
 import { NextResponse } from 'next/server';
-import { getAllAlternatives } from '@/lib/seo/data-loader';
+import { getAllDeviceUse } from '@/lib/seo/data-loader';
 import { generateSitemapUrlEntry, getSitemapResponseHeaders } from '@/lib/seo/sitemap-generator';
 import type { Locale } from '@/i18n/config';
 
-const LOCALE: Locale = 'en';
+const LOCALE: Locale = 'ja';
 
 export async function GET() {
-  const alternatives = await getAllAlternatives();
+  const deviceUsePages = await getAllDeviceUse();
 
-  // Generate category index entry
   const categoryEntry = generateSitemapUrlEntry({
-    path: '/alternatives',
+    path: '/device-use',
     locale: LOCALE,
     changeFrequency: 'weekly',
-    priority: 0.75,
+    priority: 0.8,
     includeHreflang: true,
   });
 
-  // Generate alternative page entries with hreflang
-  const alternativeEntries = alternatives.map(alternative =>
+  const pageEntries = deviceUsePages.map(page =>
     generateSitemapUrlEntry({
-      path: `/alternatives/${alternative.slug}`,
+      path: `/device-use/${page.slug}`,
       locale: LOCALE,
-      lastModified: alternative.lastUpdated,
+      lastModified: page.lastUpdated,
       changeFrequency: 'weekly',
-      priority: 0.75,
+      priority: 0.8,
       includeHreflang: true,
     })
   );
@@ -40,7 +37,7 @@ export async function GET() {
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${categoryEntry}
-${alternativeEntries.join('\n')}
+${pageEntries.join('\n')}
 </urlset>`;
 
   return new NextResponse(xml, { headers: getSitemapResponseHeaders() });
