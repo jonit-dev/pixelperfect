@@ -139,7 +139,7 @@
       "slug": "real-estate-listings",
       "title": "Real Estate Photo Guidelines",
       "metaTitle": "Real Estate Photo Requirements by Platform | MLS, Zillow, Realtor.com",
-      "metaDescription": "Image requirements for MLS, Zillow, Realtor.com, and Redfin. Learn optimal sizes, aspect ratios, and how to prepare listing photos.",
+      "metaDescription": "Image requirements for MLS, Zillow, Realtor.com, and Redfin. Learn optimal sizes, aspect ratios, and quality standards for real estate photography with guide...",
       "h1": "Real Estate Listing Photo Requirements",
       "intro": "Different real estate platforms have different image specifications. Here's what you need for the major listing sites.",
       "primaryKeyword": "real estate listing photos",
@@ -267,61 +267,161 @@
         {
           "platform": "Instagram",
           "imageTypes": [
-            { "type": "Square Post", "dimensions": "1080x1080px", "aspectRatio": "1:1" },
-            { "type": "Portrait Post", "dimensions": "1080x1350px", "aspectRatio": "4:5" },
-            { "type": "Landscape Post", "dimensions": "1080x566px", "aspectRatio": "1.91:1" },
-            { "type": "Story/Reel", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Profile Picture", "dimensions": "320x320px", "aspectRatio": "1:1" }
+            {
+              "type": "Square Post",
+              "dimensions": "1080x1080px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Portrait Post",
+              "dimensions": "1080x1350px",
+              "aspectRatio": "4:5"
+            },
+            {
+              "type": "Landscape Post",
+              "dimensions": "1080x566px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Story/Reel",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "320x320px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Portrait (4:5) gets more screen real estate in feeds. Stories are 9:16 vertical."
         },
         {
           "platform": "Facebook",
           "imageTypes": [
-            { "type": "Shared Image", "dimensions": "1200x630px", "aspectRatio": "1.91:1" },
-            { "type": "Square Post", "dimensions": "1200x1200px", "aspectRatio": "1:1" },
-            { "type": "Cover Photo", "dimensions": "820x312px (desktop)", "aspectRatio": "2.63:1" },
-            { "type": "Profile Picture", "dimensions": "170x170px", "aspectRatio": "1:1" },
-            { "type": "Story", "dimensions": "1080x1920px", "aspectRatio": "9:16" }
+            {
+              "type": "Shared Image",
+              "dimensions": "1200x630px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Square Post",
+              "dimensions": "1200x1200px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Cover Photo",
+              "dimensions": "820x312px (desktop)",
+              "aspectRatio": "2.63:1"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "170x170px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Story",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            }
           ],
           "notes": "Cover photo displays differently on mobile (640x360px visible area). Center important content."
         },
         {
           "platform": "Twitter/X",
           "imageTypes": [
-            { "type": "In-Stream Image", "dimensions": "1600x900px", "aspectRatio": "16:9" },
-            { "type": "Single Image", "dimensions": "1200x675px", "aspectRatio": "16:9" },
-            { "type": "Two Images", "dimensions": "700x800px each", "aspectRatio": "7:8" },
-            { "type": "Profile Picture", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Header", "dimensions": "1500x500px", "aspectRatio": "3:1" }
+            {
+              "type": "In-Stream Image",
+              "dimensions": "1600x900px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Single Image",
+              "dimensions": "1200x675px",
+              "aspectRatio": "16:9"
+            },
+            {
+              "type": "Two Images",
+              "dimensions": "700x800px each",
+              "aspectRatio": "7:8"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Header",
+              "dimensions": "1500x500px",
+              "aspectRatio": "3:1"
+            }
           ],
           "notes": "16:9 images display best in timeline. Square images get cropped."
         },
         {
           "platform": "LinkedIn",
           "imageTypes": [
-            { "type": "Shared Image", "dimensions": "1200x627px", "aspectRatio": "1.91:1" },
-            { "type": "Company Cover", "dimensions": "1128x191px", "aspectRatio": "5.9:1" },
-            { "type": "Profile Picture", "dimensions": "400x400px", "aspectRatio": "1:1" },
-            { "type": "Background", "dimensions": "1584x396px", "aspectRatio": "4:1" }
+            {
+              "type": "Shared Image",
+              "dimensions": "1200x627px",
+              "aspectRatio": "1.91:1"
+            },
+            {
+              "type": "Company Cover",
+              "dimensions": "1128x191px",
+              "aspectRatio": "5.9:1"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "400x400px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Background",
+              "dimensions": "1584x396px",
+              "aspectRatio": "4:1"
+            }
           ],
           "notes": "Professional photos perform better. Avoid filters and heavy effects."
         },
         {
           "platform": "TikTok",
           "imageTypes": [
-            { "type": "Video/Photo", "dimensions": "1080x1920px", "aspectRatio": "9:16" },
-            { "type": "Profile Picture", "dimensions": "200x200px", "aspectRatio": "1:1" }
+            {
+              "type": "Video/Photo",
+              "dimensions": "1080x1920px",
+              "aspectRatio": "9:16"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "200x200px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "Vertical 9:16 is required. Horizontal content gets letterboxed."
         },
         {
           "platform": "Pinterest",
           "imageTypes": [
-            { "type": "Standard Pin", "dimensions": "1000x1500px", "aspectRatio": "2:3" },
-            { "type": "Long Pin", "dimensions": "1000x2100px", "aspectRatio": "1:2.1" },
-            { "type": "Square Pin", "dimensions": "1000x1000px", "aspectRatio": "1:1" },
-            { "type": "Profile Picture", "dimensions": "165x165px", "aspectRatio": "1:1" }
+            {
+              "type": "Standard Pin",
+              "dimensions": "1000x1500px",
+              "aspectRatio": "2:3"
+            },
+            {
+              "type": "Long Pin",
+              "dimensions": "1000x2100px",
+              "aspectRatio": "1:2.1"
+            },
+            {
+              "type": "Square Pin",
+              "dimensions": "1000x1000px",
+              "aspectRatio": "1:1"
+            },
+            {
+              "type": "Profile Picture",
+              "dimensions": "165x165px",
+              "aspectRatio": "1:1"
+            }
           ],
           "notes": "2:3 vertical pins perform best. Taller pins get more visibility in feed."
         }
@@ -370,7 +470,7 @@
       "slug": "print-preparation",
       "title": "Print Size Guide",
       "metaTitle": "Image Resolution for Printing Guide | DPI Calculator & Size Chart",
-      "metaDescription": "Calculate exact pixel dimensions for any print size. DPI requirements, paper sizes, and how to prepare images for professional printing.",
+      "metaDescription": "Calculate exact pixel dimensions for any print size. DPI requirements, paper sizes, and how to prepare images for printing. Perfect for professional printing...",
       "h1": "Print Resolution Guide",
       "intro": "Print requires higher resolution than screen display. Here's exactly what you need for different print sizes.",
       "primaryKeyword": "image resolution for printing",
@@ -393,7 +493,11 @@
             "dpi": "300 DPI",
             "use": "Photos, art prints, magazines"
           },
-          { "quality": "Standard prints", "dpi": "240-300 DPI", "use": "Home printing, snapshots" },
+          {
+            "quality": "Standard prints",
+            "dpi": "240-300 DPI",
+            "use": "Home printing, snapshots"
+          },
           {
             "quality": "Large format (viewing distance 3ft+)",
             "dpi": "150-200 DPI",
@@ -464,8 +568,8 @@
       ],
       "calculationFormula": {
         "title": "Calculate Required Pixels",
-        "formula": "Pixels = Print Size (inches) × DPI",
-        "example": "For 8x10 inch print at 300 DPI: 8×300 = 2400 pixels wide, 10×300 = 3000 pixels tall"
+        "formula": "Pixels = Print Size (inches) \u00d7 DPI",
+        "example": "For 8x10 inch print at 300 DPI: 8\u00d7300 = 2400 pixels wide, 10\u00d7300 = 3000 pixels tall"
       },
       "upscalingForPrint": [
         {
@@ -529,7 +633,7 @@
       "slug": "old-photo-restoration",
       "title": "Old Photo Restoration",
       "metaTitle": "How to Restore Old Photos | Scanning & Enhancement Guide",
-      "metaDescription": "Complete guide to restoring old and damaged photos. Scanning tips, enhancement workflow, and realistic expectations for photo restoration.",
+      "metaDescription": "Complete guide to restoring old and damaged photos. Scanning tips, enhancement workflow, and realistic restoration. Perfect for preserving family memories. T...",
       "h1": "Old Photo Restoration Guide",
       "intro": "Restoring old photos involves multiple steps: proper scanning, enhancement, and realistic expectations about what's possible.",
       "primaryKeyword": "restore old photos",
@@ -678,7 +782,7 @@
       "slug": "amazon-product-photos",
       "title": "Amazon Product Photo Upscaling",
       "metaTitle": "Upscale Product Photos for Amazon Listings | MyImageUpscaler",
-      "metaDescription": "Meet Amazon's 2000x2000px image requirement with AI upscaling. Turn supplier photos into zoom-ready product images. Free tool, no watermarks.",
+      "metaDescription": "Meet Amazon's 2000x2000px image requirement with AI upscaling. Turn supplier photos into zoom-ready product images. Free tool, no watermarks.. Try free today!",
       "h1": "Upscale Product Photos for Amazon",
       "intro": "Amazon requires minimum 1000x1000px images and recommends 2000x2000px for zoom. Here's how to upscale supplier photos to meet these requirements.",
       "primaryKeyword": "upscale product photos amazon",
@@ -803,7 +907,7 @@
       "slug": "real-estate-photo-enhancement",
       "title": "Real Estate Photo Enhancement",
       "metaTitle": "Enhance Real Estate Photos with AI | Property Listing Images",
-      "metaDescription": "Transform property photos with AI enhancement. Fix lighting, upscale resolution, and make listings stand out. Used by agents and photographers.",
+      "metaDescription": "Transform property photos with AI enhancement. Fix lighting, upscale resolution, and make listings stand out. Used by agents and photographers.. Try free today!",
       "h1": "AI Real Estate Photo Enhancement",
       "intro": "Professional-looking listing photos sell properties faster. Enhance and upscale property images to meet MLS standards and outshine the competition.",
       "primaryKeyword": "real estate photography enhancement",
@@ -956,7 +1060,7 @@
       "slug": "anime-image-upscaler",
       "title": "Anime Image Upscaler",
       "metaTitle": "Anime Image Upscaler Online - Upscale Anime & Manga Art | MyImageUpscaler",
-      "metaDescription": "Upscale anime images, manga panels, and illustrations without artifacts. AI preserves clean lines and flat colors. Free online tool for anime fans.",
+      "metaDescription": "Upscale anime images, manga panels, and illustrations without artifacts. AI preserves clean lines and flat colors. Free online tool for anime fans. Try it free!",
       "h1": "Anime Image Upscaler Online",
       "intro": "Upscale your favorite anime screenshots, manga scans, and digital art while preserving the clean lines and vibrant colors that define anime style.",
       "primaryKeyword": "anime image upscaler",
@@ -1117,7 +1221,7 @@
       "slug": "cartoon-image-upscaler",
       "title": "Cartoon Image Upscaler",
       "metaTitle": "Cartoon Image Upscaler Online - Enhance Cartoons & Comics | MyImageUpscaler",
-      "metaDescription": "Upscale cartoon images, comics, and illustrations with AI. Clean lines, vibrant colors preserved. Free online cartoon upscaler.",
+      "metaDescription": "Upscale cartoon images, comics, and illustrations. Clean lines, vibrant colors preserved. Free online tool, no signup, batch processing, instant HD results. ...",
       "h1": "Cartoon Image Upscaler Online",
       "intro": "Enhance your favorite cartoon screenshots, comic panels, and illustrations while preserving the clean lines and flat colors that define cartoon and comic art styles.",
       "primaryKeyword": "cartoon image upscaler",
@@ -1214,7 +1318,7 @@
       "slug": "portrait-photo-upscaler",
       "title": "Portrait Photo Upscaler",
       "metaTitle": "Portrait Photo Upscaler - AI Face Enhancement | MyImageUpscaler",
-      "metaDescription": "Upscale portrait photos with AI face enhancement. Improve facial details, skin texture, and overall quality. Free online portrait upscaler.",
+      "metaDescription": "Upscale portrait photos with AI face enhancement. Improve facial details, skin texture, and overall quality with no signup. Batch processing, instant HD resu...",
       "h1": "Portrait Photo Upscaler - AI Face Enhancement",
       "intro": "Transform your portrait photos with specialized AI face enhancement technology. Improve facial features, skin texture, and overall image quality while maintaining natural appearance.",
       "primaryKeyword": "portrait photo upscaler",

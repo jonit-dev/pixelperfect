@@ -1,3 +1,6 @@
+// Import dayjs mock BEFORE any other imports
+import '../bugfixes/dayjs-mock.setup';
+
 import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import { NextRequest } from 'next/server';
 import { POST } from '../../../app/api/webhooks/stripe/route';

@@ -160,15 +160,14 @@ test.describe('E2E: Model Selection UI', () => {
     await expect(page.getByText('Upscale Factor')).toBeVisible({ timeout: 10000 });
 
     // Look for scale buttons - they are rendered as buttons by ToggleButtonGroup
-    // The buttons contain the scale text (2x, 4x, 8x)
-    // We need to verify these buttons are visible and clickable
+    // The buttons contain the scale text (2x, 4x)
+    // Note: The quick model (default for free tier) only supports 2x and 4x
+    // The 8x option is only available for HD Upscale tier
     const twoXButton = page.locator('button').filter({ hasText: '2x' }).first();
     const fourXButton = page.locator('button').filter({ hasText: '4x' }).first();
-    const eightXButton = page.locator('button').filter({ hasText: '8x' }).first();
 
     await expect(twoXButton).toBeVisible({ timeout: 5000 });
     await expect(fourXButton).toBeVisible({ timeout: 5000 });
-    await expect(eightXButton).toBeVisible({ timeout: 5000 });
   });
 
   test('should show processing options', async ({ page }) => {

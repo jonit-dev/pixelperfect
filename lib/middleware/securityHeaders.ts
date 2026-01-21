@@ -1,15 +1,29 @@
+/* eslint-disable no-restricted-syntax */
 import { NextResponse, NextRequest } from 'next/server';
 import { getSecurityHeaders, buildCspHeader } from '@shared/config/security';
-import { clientEnv } from '@shared/config/env';
+import { clientEnv, serverEnv } from '@shared/config/env';
 
 /**
  * Allowed origins for CORS
+ * In test mode, includes the test server port (random port like 3100-4000)
  */
-const ALLOWED_ORIGINS = [
-  'http://localhost:3000',
-  'https://localhost:3000',
-  clientEnv.BASE_URL,
-].filter(Boolean) as string[];
+function getAllowedOrigins(): string[] {
+  const origins = ['http://localhost:3000', 'https://localhost:3000', clientEnv.BASE_URL];
+
+  // In test environment, add the test server port
+  if (serverEnv.ENV === 'test' && process.env.TEST_PORT) {
+    origins.push(`http://localhost:${process.env.TEST_PORT}`);
+  }
+
+  return origins.filter(Boolean) as string[];
+}
+
+let ALLOWED_ORIGINS: string[] = [];
+export function refreshAllowedOrigins(): void {
+  ALLOWED_ORIGINS = getAllowedOrigins();
+}
+// Initialize on load
+refreshAllowedOrigins();
 
 /**
  * Apply security headers to a NextResponse

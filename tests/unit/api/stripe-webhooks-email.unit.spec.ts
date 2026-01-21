@@ -99,7 +99,7 @@ describe('Stripe Webhooks - Email Integration', () => {
           email: 'customer@example.com',
         },
         amount_total: 4900,
-        subscription: 'sub_test_123',
+        subscription: 'sub_1234567890',
         invoice: 'in_test_123',
         metadata: {
           user_id: 'user-123',
@@ -132,7 +132,7 @@ describe('Stripe Webhooks - Email Integration', () => {
           // name is missing
         },
         amount_total: 4900,
-        subscription: 'sub_test_123',
+        subscription: 'sub_1234567890',
         invoice: 'in_test_123',
         metadata: {
           user_id: 'user-123',
@@ -161,7 +161,7 @@ describe('Stripe Webhooks - Email Integration', () => {
           email: 'customer@example.com',
         },
         amount_total: 4900,
-        subscription: 'sub_test_123',
+        subscription: 'sub_1234567890',
         metadata: {
           user_id: 'user-123',
         },
@@ -190,7 +190,7 @@ describe('Stripe Webhooks - Email Integration', () => {
           email: 'customer@example.com',
         },
         amount_total: 4900,
-        subscription: 'sub_test_123',
+        subscription: 'sub_1234567890',
         invoice: 'in_test_123',
         metadata: {
           user_id: 'user-123',
@@ -215,7 +215,7 @@ describe('Stripe Webhooks - Email Integration', () => {
           email: 'customer@example.com',
         },
         amount_total: 4900,
-        subscription: 'sub_test_123',
+        subscription: 'sub_1234567890',
         metadata: {
           user_id: 'user-123',
         },
