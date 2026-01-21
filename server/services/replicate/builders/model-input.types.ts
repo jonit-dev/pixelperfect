@@ -1,0 +1,174 @@
+import type { IUpscaleInput } from '@shared/validation/upscale.schema';
+import type { INanoBananaProConfig, IEnhancementSettings } from '@shared/types/coreflow.types';
+import { DEFAULT_ENHANCEMENT_SETTINGS } from '@shared/types/coreflow.types';
+
+/**
+ * Default enhancement settings for when none are provided
+ */
+const DEFAULT_ENHANCEMENT = DEFAULT_ENHANCEMENT_SETTINGS;
+
+/**
+ * Context for building model inputs
+ */
+export interface IModelInputContext {
+  imageDataUrl: string;
+  scale: number;
+  enhance: boolean;
+  enhanceFaces: boolean;
+  preserveText: boolean;
+  enhancementSettings: IEnhancementSettings;
+  customPrompt?: string;
+  nanoBananaProConfig?: INanoBananaProConfig;
+}
+
+/**
+ * Base interface for model input builders
+ */
+export interface IModelInputBuilder<T = unknown> {
+  /**
+   * The model ID this builder handles
+   */
+  readonly modelId: string;
+
+  /**
+   * Build the input for this model
+   *
+   * @param context - The build context
+   * @returns The model-specific input
+   */
+  build(context: IModelInputContext): T;
+}
+
+/**
+ * Model input type union
+ */
+export type IModelInput =
+  | IRealEsrganInput
+  | IGfpganInput
+  | IClarityUpscalerInput
+  | IFluxKontextInput
+  | IFlux2ProInput
+  | INanoBananaProInput
+  | IQwenImageEditInput
+  | ISeedreamInput
+  | IRealEsrganAnimeInput;
+
+/**
+ * Real-ESRGAN input
+ */
+export interface IRealEsrganInput {
+  image: string;
+  scale: 2 | 4;
+  face_enhance: boolean;
+}
+
+/**
+ * GFPGAN input
+ */
+export interface IGfpganInput {
+  img: string;
+  scale: 2 | 4;
+  version: 'v1.2' | 'v1.3' | 'v1.4' | 'RestoreFormer';
+}
+
+/**
+ * Clarity Upscaler input
+ */
+export interface IClarityUpscalerInput {
+  image: string;
+  prompt: string;
+  scale_factor: number;
+  output_format: string;
+}
+
+/**
+ * Flux Kontext Pro input
+ */
+export interface IFluxKontextInput {
+  prompt: string;
+  input_image: string;
+  aspect_ratio: string;
+  output_format: string;
+}
+
+/**
+ * Flux-2-Pro input
+ */
+export interface IFlux2ProInput {
+  prompt: string;
+  input_images: string[];
+  aspect_ratio: string;
+  output_format: string;
+  safety_tolerance: number;
+  prompt_upsampling: boolean;
+}
+
+/**
+ * Nano Banana Pro input
+ */
+export interface INanoBananaProInput {
+  prompt: string;
+  image_input: string[];
+  aspect_ratio: string;
+  resolution: '1K' | '2K' | '4K';
+  output_format: string;
+  safety_filter_level: string;
+}
+
+/**
+ * Qwen Image Edit input
+ */
+export interface IQwenImageEditInput {
+  prompt: string;
+  image: string[];
+  aspect_ratio: string;
+  output_format: string;
+  output_quality: number;
+  go_fast: boolean;
+}
+
+/**
+ * Seedream input
+ */
+export interface ISeedreamInput {
+  prompt: string;
+  image_input: string[];
+  size: '2K' | '4K';
+}
+
+/**
+ * Real-ESRGAN Anime input
+ */
+export interface IRealEsrganAnimeInput {
+  img: string;
+  scale: 2 | 4;
+  version: string;
+  face_enhance: boolean;
+}
+
+/**
+ * Create model input context from upscale input
+ */
+export function createModelInputContext(input: IUpscaleInput): IModelInputContext {
+  const { imageData, mimeType, config } = input;
+  const { scale, additionalOptions, nanoBananaProConfig } = config;
+  const { enhance, enhanceFaces, preserveText, enhancement, customInstructions } =
+    additionalOptions;
+
+  // Ensure image is a data URL
+  let imageDataUrl = imageData;
+  if (!imageData.startsWith('data:')) {
+    imageDataUrl = `data:${mimeType || 'image/jpeg'};base64,${imageData}`;
+  }
+
+  return {
+    imageDataUrl,
+    scale,
+    enhance: enhance ?? false,
+    enhanceFaces: enhanceFaces ?? false,
+    preserveText: preserveText ?? false,
+    enhancementSettings: enhancement ?? DEFAULT_ENHANCEMENT,
+    customPrompt: customInstructions,
+    nanoBananaProConfig,
+  };
+}

@@ -1,14 +1,9 @@
-import {
-  DEFAULT_ENHANCEMENT_SETTINGS,
-  type IEnhancementSettings,
-} from '@/shared/types/coreflow.types';
-import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { isRateLimitError, withRetry } from '@server/utils/retry';
 import { serverEnv } from '@shared/config/env';
 import { serializeError } from '@shared/utils/errors';
 import type { IUpscaleInput } from '@shared/validation/upscale.schema';
 import Replicate from 'replicate';
-import { calculateCreditCost, InsufficientCreditsError } from './image-generation.service';
+import { calculateCreditCost } from './image-generation.service';
 import type {
   IImageProcessor,
   IImageProcessorResult,
@@ -16,192 +11,27 @@ import type {
 } from './image-processor.interface';
 import { ModelRegistry } from './model-registry';
 
+// Refactored utilities
+import { buildModelInput, type IModelInput } from './replicate/builders';
+import { creditManager } from './replicate/utils/credit-manager';
+import { replicateErrorMapper } from './replicate/utils/error-mapper';
+import { parseReplicateResponse } from './replicate/utils/output-parser';
+
 /**
- * Custom error for Replicate-specific failures
+ * Re-export ReplicateError for backward compatibility
  */
-export class ReplicateError extends Error {
-  public readonly code: string;
-
-  constructor(message: string, code: string = 'REPLICATE_ERROR') {
-    super(message);
-    this.name = 'ReplicateError';
-    this.code = code;
-  }
-}
+export { ReplicateError } from './replicate/utils/error-mapper';
 
 /**
- * Replicate API input for Real-ESRGAN
- */
-interface IRealEsrganInput {
-  image: string; // URL or data URL
-  scale?: number; // 2 or 4 (default 4)
-  face_enhance?: boolean; // Use GFPGAN for faces
-}
-
-/**
- * Replicate API input for GFPGAN
- */
-interface IGfpganInput {
-  img: string; // URL or data URL (note: 'img' not 'image')
-  scale?: number; // Rescaling factor (default 2)
-  version?: 'v1.2' | 'v1.3' | 'v1.4' | 'RestoreFormer';
-}
-
-/**
- * Replicate API input for Clarity Upscaler
- */
-interface IClarityUpscalerInput {
-  image: string;
-  prompt?: string;
-  scale_factor?: number; // Magnification (2-16, default 2)
-  creativity?: number; // 0-1, default 0.35
-  resemblance?: number; // 0-3, default 0.6
-  dynamic?: number; // HDR intensity (1-50, default 6)
-  output_format?: string;
-}
-
-/**
- * Replicate API input for Flux-Kontext-Pro
- */
-interface IFluxKontextInput {
-  prompt: string;
-  input_image: string;
-  aspect_ratio: string;
-  output_format: string;
-}
-
-/**
- * Replicate API input for Flux-2-Pro (Black Forest Labs)
- * Premium face restoration model
- */
-interface IFlux2ProInput {
-  prompt: string;
-  input_images: string[]; // Array of image URLs/data URLs
-  aspect_ratio?: string;
-  output_format?: 'jpg' | 'png' | 'webp';
-  safety_tolerance?: number; // 1-6, default 2
-  prompt_upsampling?: boolean;
-}
-
-/**
- * Replicate API input for Nano Banana Pro (Google)
- */
-interface INanoBananaProInput {
-  prompt: string;
-  image_input?: string[];
-  aspect_ratio?:
-    | 'match_input_image'
-    | '1:1'
-    | '2:3'
-    | '3:2'
-    | '3:4'
-    | '4:3'
-    | '4:5'
-    | '5:4'
-    | '9:16'
-    | '16:9'
-    | '21:9';
-  resolution?: '1K' | '2K' | '4K';
-  output_format?: 'jpg' | 'png';
-  safety_filter_level?: 'block_low_and_above' | 'block_medium_and_above' | 'block_only_high';
-}
-
-/**
- * Replicate API input for Qwen Image Edit 2511
- * Budget image editing model - cheaper alternative to nano-banana-pro
- */
-interface IQwenImageEditInput {
-  prompt: string;
-  image: string[]; // Array of image URIs
-  seed?: number;
-  aspect_ratio?: 'match_input_image' | '1:1' | '16:9' | '9:16' | '4:3' | '3:4';
-  output_format?: 'webp' | 'jpg' | 'png';
-  output_quality?: number; // 0-100, default 95
-  go_fast?: boolean;
-  disable_safety_checker?: boolean;
-}
-
-/**
- * Replicate API input for Seedream 4.5 (ByteDance)
- * Advanced image editing with strong spatial understanding
- */
-interface ISeedreamInput {
-  prompt: string;
-  image_input: string[]; // Array of image URIs (required for image editing)
-  size?: '2K' | '4K'; // 2048px or 4096px (default 2K)
-  width?: number; // Output width in pixels
-  height?: number; // Output height in pixels
-  aspect_ratio?:
-    | 'match_input_image'
-    | '1:1'
-    | '4:3'
-    | '3:4'
-    | '16:9'
-    | '9:16'
-    | '3:2'
-    | '2:3'
-    | '21:9';
-  sequential_image_generation?: 'disabled' | 'auto';
-  max_images?: number; // 1-4 (default 1)
-}
-
-/**
- * Replicate API input for Real-ESRGAN (xinntao)
- * Anime-specialized upscaling
- */
-interface IRealEsrganAnimeInput {
-  img: string; // Image URI
-  scale?: number; // Upscaling multiplier (default 2)
-  version?: 'General - RealESRGANplus' | 'General - v3' | 'Anime - anime6B' | 'AnimeVideo - v3';
-  face_enhance?: boolean; // GFPGAN face enhancement
-  tile?: number; // Tile size for memory management (default 0)
-}
-
-/**
- * Generate enhancement instructions from the enhancement settings.
- * This mirrors the client-side logic in prompt-utils.ts to ensure consistency.
- */
-function generateEnhancementInstructions(enhancement: IEnhancementSettings): string {
-  const actions: string[] = [];
-
-  if (enhancement.clarity) {
-    actions.push('sharpen edges and improve overall clarity');
-  }
-
-  if (enhancement.color) {
-    actions.push('balance color saturation and correct color casts');
-  }
-
-  if (enhancement.lighting) {
-    actions.push('optimize exposure and lighting balance');
-  }
-
-  if (enhancement.denoise) {
-    actions.push('remove sensor noise and grain while preserving details');
-  }
-
-  if (enhancement.artifacts) {
-    actions.push('eliminate compression artifacts and blocky patterns');
-  }
-
-  if (enhancement.details) {
-    actions.push('enhance fine textures and subtle details');
-  }
-
-  if (actions.length === 0) {
-    return '';
-  }
-
-  return actions.join(', ') + '. ';
-}
-
-/**
- * Service for image upscaling via Replicate Real-ESRGAN
+ * Service for image upscaling via Replicate
+ *
+ * Refactored to follow SOLID principles:
+ * - Single Responsibility: Delegates to specialized utilities
+ * - Open/Closed: Extensible through model builders
+ * - Dependency Inversion: Depends on abstractions
  *
  * Cost: ~$0.0017/image on T4 GPU
  * Speed: ~1-2 seconds per image
- *
- * Implements IImageProcessor interface for provider abstraction.
  */
 export class ReplicateService implements IImageProcessor {
   public readonly providerName = 'Replicate';
@@ -222,9 +52,6 @@ export class ReplicateService implements IImageProcessor {
 
   /**
    * Check if Replicate supports the given processing mode
-   *
-   * Replicate (Real-ESRGAN) is optimized for pure upscaling operations.
-   * For creative enhancement, use Gemini instead.
    */
   supportsMode(mode: string): boolean {
     return ['upscale', 'both'].includes(mode);
@@ -232,43 +59,20 @@ export class ReplicateService implements IImageProcessor {
 
   /**
    * Process an image upscale request via Replicate
-   *
-   * @param userId - The authenticated user's ID
-   * @param input - The validated upscale input
-   * @param options - Optional processing options (e.g., pre-calculated credit cost)
-   * @returns The upscaled image data and remaining credits
-   * @throws InsufficientCreditsError if user has no credits
-   * @throws ReplicateError if API call fails
    */
   async processImage(
     userId: string,
     input: IUpscaleInput,
     options?: IProcessImageOptions
   ): Promise<IImageProcessorResult> {
-    const jobId = `rep_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
-    // Use pre-calculated credit cost if provided, otherwise calculate locally
     const creditCost = options?.creditCost ?? calculateCreditCost(input.config);
 
-    // Step 1: Deduct credits atomically using FIFO (subscription first, then purchased)
-    const { data: balanceResult, error: creditError } = await supabaseAdmin.rpc(
-      'consume_credits_v2',
-      {
-        target_user_id: userId,
-        amount: creditCost,
-        ref_id: jobId,
-        description: `Image processing via Replicate (${creditCost} credits)`,
-      }
+    // Step 1: Deduct credits atomically using CreditManager
+    const { newBalance, jobId } = await creditManager.deductCredits(
+      userId,
+      creditCost,
+      this.providerName
     );
-
-    if (creditError) {
-      if (creditError.message?.includes('Insufficient credits')) {
-        throw new InsufficientCreditsError(creditError.message);
-      }
-      throw new Error(`Failed to deduct credits: ${creditError.message}`);
-    }
-
-    // Extract total balance from result (returns array with single row)
-    const newBalance = balanceResult?.[0]?.new_total_balance ?? 0;
 
     try {
       // Step 2: Call Replicate API
@@ -280,23 +84,8 @@ export class ReplicateService implements IImageProcessor {
       };
     } catch (error) {
       // Step 3: Refund on failure
-      await this.refundCredits(userId, jobId, creditCost);
+      await creditManager.refundCredits(userId, jobId, creditCost);
       throw error;
-    }
-  }
-
-  /**
-   * Refund credits for a failed upscale
-   */
-  private async refundCredits(userId: string, jobId: string, amount: number): Promise<void> {
-    const { error } = await supabaseAdmin.rpc('refund_credits', {
-      target_user_id: userId,
-      amount,
-      job_id: jobId,
-    });
-
-    if (error) {
-      console.error('Failed to refund credits:', error);
     }
   }
 
@@ -311,238 +100,47 @@ export class ReplicateService implements IImageProcessor {
       return model.modelVersion;
     }
 
-    // Fallback to default model version
     return this.modelVersion;
   }
 
   /**
-   * Build model-specific input parameters
+   * Build model input for testing purposes
+   *
+   * Exposes the builder system for testing while keeping the main implementation private
+   *
+   * @param modelId - The model ID
+   * @param imageDataUrl - The image data URL
+   * @param input - The upscale input
+   * @returns The model-specific input
+   */
+  public buildModelInputForTest(
+    modelId: string,
+    imageDataUrl: string,
+    input: IUpscaleInput
+  ): IModelInput {
+    const inputWithUrl = {
+      ...input,
+      imageData: imageDataUrl,
+    };
+    return buildModelInput(modelId, inputWithUrl);
+  }
+
+  /**
+   * Build model input using the orchestrator (private method)
+   *
+   * This is now a simple delegation to the builder system
    */
   private buildModelInput(
     modelId: string,
     imageDataUrl: string,
     input: IUpscaleInput
-  ):
-    | IFluxKontextInput
-    | IRealEsrganInput
-    | IGfpganInput
-    | IClarityUpscalerInput
-    | IFlux2ProInput
-    | INanoBananaProInput
-    | IQwenImageEditInput
-    | ISeedreamInput
-    | IRealEsrganAnimeInput {
-    const scale = input.config.scale;
-    const customPrompt = input.config.additionalOptions.customInstructions;
-    const { enhance, enhanceFaces, preserveText } = input.config.additionalOptions;
-    const enhancement = input.config.additionalOptions.enhancement || DEFAULT_ENHANCEMENT_SETTINGS;
-
-    // Generate enhancement instructions from the detailed settings
-    const enhancementInstructions = enhance ? generateEnhancementInstructions(enhancement) : '';
-
-    switch (modelId) {
-      case 'clarity-upscaler': {
-        // Use custom prompt if provided, otherwise build from enhancement settings
-        let effectivePrompt = customPrompt;
-        if (!effectivePrompt) {
-          effectivePrompt = 'masterpiece, best quality, highres';
-          if (enhancementInstructions) {
-            effectivePrompt += `. ${enhancementInstructions}`;
-          }
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally.';
-          }
-          if (preserveText) {
-            effectivePrompt += ' Preserve text and logos clearly.';
-          }
-        }
-        return {
-          image: imageDataUrl,
-          prompt: effectivePrompt,
-          scale_factor: scale, // Supports 2-16
-          output_format: 'png',
-        };
-      }
-
-      case 'gfpgan':
-        return {
-          img: imageDataUrl, // Note: GFPGAN uses 'img' not 'image'
-          scale: scale <= 4 ? scale : 4, // GFPGAN max scale is 4
-          version: 'v1.4',
-        };
-
-      case 'flux-kontext-pro': {
-        let effectivePrompt = customPrompt;
-        if (!effectivePrompt) {
-          effectivePrompt = 'enhance and upscale this image, improve quality and details';
-          if (enhancementInstructions) {
-            effectivePrompt += `. ${enhancementInstructions}`;
-          }
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally without altering identity.';
-          }
-          if (preserveText) {
-            effectivePrompt += ' Preserve and sharpen any text or logos.';
-          }
-        }
-        return {
-          prompt: effectivePrompt,
-          input_image: imageDataUrl,
-          aspect_ratio: 'match_input_image',
-          output_format: 'png',
-        };
-      }
-
-      case 'flux-2-pro': {
-        let effectivePrompt = customPrompt;
-        if (!effectivePrompt) {
-          effectivePrompt = 'Restore this image exactly as it would look in higher resolution.';
-          if (enhancementInstructions) {
-            effectivePrompt += ` ${enhancementInstructions}`;
-          }
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally without altering identity.';
-          }
-          if (preserveText) {
-            effectivePrompt += ' Preserve text and logos clearly.';
-          }
-          effectivePrompt += ' No creative changes.';
-        }
-
-        return {
-          prompt: effectivePrompt,
-          input_images: [imageDataUrl],
-          aspect_ratio: 'match_input_image',
-          output_format: 'png',
-          safety_tolerance: 2,
-          prompt_upsampling: false,
-        };
-      }
-
-      case 'nano-banana-pro': {
-        // Build a descriptive prompt based on the operation mode
-        const ultraConfig = input.config.nanoBananaProConfig;
-        let effectivePrompt = customPrompt;
-
-        if (!effectivePrompt) {
-          // Generate a default prompt based on new quality tier system
-          effectivePrompt = enhance
-            ? `Upscale this image to ${scale}x resolution while enhancing for a crisp, professional result.`
-            : `Upscale this image to ${scale}x resolution with enhanced sharpness and detail.`;
-
-          // Add specific enhancement instructions from the detailed settings
-          if (enhancementInstructions) {
-            effectivePrompt += ` ${enhancementInstructions}`;
-          }
-
-          // Add face enhancement instruction if enabled
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally without altering identity.';
-          }
-
-          // Add text preservation instruction if enabled
-          if (preserveText) {
-            effectivePrompt += ' Preserve and sharpen any text or logos in the image.';
-          }
-        }
-
-        // Map scale to resolution
-        const scaleToResolution: Record<number, '1K' | '2K' | '4K'> = {
-          2: '2K',
-          4: '4K',
-          8: '4K', // Max supported is 4K
-        };
-
-        return {
-          prompt: effectivePrompt,
-          image_input: [imageDataUrl],
-          aspect_ratio: ultraConfig?.aspectRatio || 'match_input_image',
-          resolution: ultraConfig?.resolution || scaleToResolution[scale] || '2K',
-          output_format: ultraConfig?.outputFormat || 'png',
-          safety_filter_level: ultraConfig?.safetyFilterLevel || 'block_only_high',
-        };
-      }
-
-      case 'qwen-image-edit': {
-        // Qwen Image Edit - budget alternative for enhancement (no upscaling support)
-        let effectivePrompt = customPrompt;
-
-        if (!effectivePrompt) {
-          effectivePrompt = enhance
-            ? 'Enhance this image with improved clarity, detail, and quality.'
-            : 'Improve this image while maintaining its original quality and sharpness.';
-
-          if (enhancementInstructions) {
-            effectivePrompt += ` ${enhancementInstructions}`;
-          }
-
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally without altering identity.';
-          }
-
-          if (preserveText) {
-            effectivePrompt += ' Preserve and sharpen any text or logos in the image.';
-          }
-        }
-
-        return {
-          prompt: effectivePrompt,
-          image: [imageDataUrl],
-          aspect_ratio: 'match_input_image',
-          output_format: 'png',
-          output_quality: 95,
-          go_fast: true,
-        };
-      }
-
-      case 'seedream': {
-        // Seedream 4.5 - Advanced image editing with spatial understanding
-        let effectivePrompt = customPrompt;
-
-        if (!effectivePrompt) {
-          effectivePrompt = enhance
-            ? `Enhance this image with improved clarity and detail.`
-            : `Improve this image quality while maintaining its original appearance.`;
-
-          if (enhancementInstructions) {
-            effectivePrompt += ` ${enhancementInstructions}`;
-          }
-
-          if (enhanceFaces) {
-            effectivePrompt += ' Enhance facial features naturally without altering identity.';
-          }
-
-          if (preserveText) {
-            effectivePrompt += ' Preserve and sharpen any text or logos in the image.';
-          }
-        }
-
-        return {
-          prompt: effectivePrompt,
-          image_input: [imageDataUrl], // Seedream uses image_input, not image
-          size: '4K', // Default to 4K for best quality
-        };
-      }
-
-      case 'realesrgan-anime': {
-        // Anime-specialized upscaling
-        return {
-          img: imageDataUrl, // Note: uses 'img' not 'image'
-          scale: scale <= 4 ? scale : 4, // Max scale is 4
-          version: 'Anime - anime6B', // Best for anime/illustrations
-          face_enhance: enhanceFaces || false,
-        };
-      }
-
-      case 'real-esrgan':
-      default:
-        // Real-ESRGAN only supports scale 2 or 4
-        return {
-          image: imageDataUrl,
-          scale: scale === 2 ? 2 : 4,
-          face_enhance: enhanceFaces || false,
-        };
-    }
+  ): IModelInput {
+    // For image URL consistency, ensure we use the passed imageDataUrl
+    const inputWithUrl = {
+      ...input,
+      imageData: imageDataUrl,
+    };
+    return buildModelInput(modelId, inputWithUrl);
   }
 
   /**
@@ -565,43 +163,8 @@ export class ReplicateService implements IImageProcessor {
     const modelVersion =
       selectedModel !== 'auto' ? this.getModelVersionForId(selectedModel) : this.modelVersion;
 
-    // Prepare Replicate input based on model type
+    // Prepare Replicate input using the builder system
     const replicateInput = this.buildModelInput(selectedModel, imageDataUrl, input);
-
-    // Helper to extract URL string from various Replicate output formats
-    const extractUrl = (value: unknown): string | null => {
-      if (typeof value === 'string') {
-        return value;
-      }
-
-      if (value && typeof value === 'object') {
-        // FileOutput objects can be converted to string (they extend URL class)
-        if (typeof (value as { toString?: () => string }).toString === 'function') {
-          const stringified = String(value);
-          if (stringified.startsWith('http')) {
-            return stringified;
-          }
-        }
-
-        // Try .url property (could be string or function)
-        if ('url' in value) {
-          const urlValue = (value as { url: unknown }).url;
-          if (typeof urlValue === 'function') {
-            return urlValue();
-          }
-          if (typeof urlValue === 'string') {
-            return urlValue;
-          }
-        }
-
-        // Try .href property (URL-like objects)
-        if ('href' in value && typeof (value as { href: unknown }).href === 'string') {
-          return (value as { href: string }).href;
-        }
-      }
-
-      return null;
-    };
 
     try {
       // Run with retry for rate limits
@@ -620,68 +183,11 @@ export class ReplicateService implements IImageProcessor {
         }
       );
 
-      // Handle different output formats
-      let outputUrl: string;
-
-      if (Array.isArray(output)) {
-        const first = output[0];
-        const extracted = extractUrl(first);
-        if (extracted) {
-          outputUrl = extracted;
-        } else {
-          throw new ReplicateError('Unexpected array output format from Replicate', 'NO_OUTPUT');
-        }
-      } else {
-        const extracted = extractUrl(output);
-        if (extracted) {
-          outputUrl = extracted;
-        } else {
-          throw new ReplicateError('No output URL returned from Replicate', 'NO_OUTPUT');
-        }
-      }
-
-      if (!outputUrl) {
-        throw new ReplicateError('Output URL is empty', 'NO_OUTPUT');
-      }
-
-      // Return URL directly - browser will fetch the image
-      // This avoids CPU-intensive Buffer operations on the server (Cloudflare Workers 10ms limit)
-      // Replicate URLs are valid for ~1 hour
-      const mimeType = outputUrl.toLowerCase().includes('.png')
-        ? 'image/png'
-        : outputUrl.toLowerCase().includes('.webp')
-          ? 'image/webp'
-          : 'image/jpeg';
-
-      return {
-        imageUrl: outputUrl,
-        mimeType,
-        expiresAt: Date.now() + 3600000, // 1 hour
-      };
+      // Parse response using output parser
+      return parseReplicateResponse(output);
     } catch (error) {
-      // Map Replicate-specific errors
-      const message = serializeError(error);
-
-      if (isRateLimitError(message)) {
-        throw new ReplicateError(
-          'Replicate rate limit exceeded. Please try again.',
-          'RATE_LIMITED'
-        );
-      }
-
-      if (message.includes('NSFW') || message.includes('safety')) {
-        throw new ReplicateError('Image flagged by safety filter.', 'SAFETY');
-      }
-
-      if (message.includes('timeout') || message.includes('timed out')) {
-        throw new ReplicateError('Processing timed out. Please try a smaller image.', 'TIMEOUT');
-      }
-
-      if (error instanceof ReplicateError) {
-        throw error;
-      }
-
-      throw new ReplicateError(`Upscale failed: ${message}`, 'PROCESSING_FAILED');
+      // Map errors using error mapper
+      throw replicateErrorMapper.mapError(error);
     }
   }
 }
