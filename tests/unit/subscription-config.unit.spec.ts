@@ -52,8 +52,8 @@ describe('Starter Tier Configuration', () => {
       '100 credits per month',
       'Credits roll over (up to 300)',
       'Email support',
-      'All AI models included',
-      'Batch upload up to 5 images',
+      'All API features included',
+      'Batch up to 5 requests',
     ];
     expect(starterPlan?.features).toEqual(expectedFeatures);
   });

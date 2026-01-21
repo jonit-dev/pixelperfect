@@ -12,7 +12,7 @@ import { TIMEOUTS } from './timeouts.config';
 
 /**
  * Default subscription configuration
- * Modify this to change subscription behavior
+ * Modify this to change subscription behavior for your SaaS application
  */
 export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
   version: '1.0.0',
@@ -45,17 +45,15 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       features: [
         '10 credits per month',
         'Credits roll over (up to 60)',
-        'Quick & Face Restore quality',
-        '2x & 4x upscaling',
-        '5MB file limit',
+        'Basic API access',
         'Community support',
-        'Single image only (no batch processing)',
+        'Single request at a time',
       ],
       recommended: false,
       description: 'Perfect for getting started',
       displayOrder: 0,
       enabled: false, // Free tier is handled via freeUser config, not as a subscription plan
-      batchLimit: 1, // Single image only for free tier
+      batchLimit: 1, // Single request only for free tier
     },
     {
       key: 'starter',
@@ -85,14 +83,14 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         '100 credits per month',
         'Credits roll over (up to 300)',
         'Email support',
-        'All AI models included',
-        'Batch upload up to 5 images',
+        'All API features included',
+        'Batch up to 5 requests',
       ],
       recommended: false,
       description: 'Perfect for getting started',
       displayOrder: 1,
       enabled: true,
-      batchLimit: 5, // Allow batch upload up to 5 images
+      batchLimit: 5, // Allow batch up to 5 requests
     },
     {
       key: 'hobby',
@@ -123,13 +121,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'Credits roll over (up to 1,200)',
         'Email support',
         'All features included',
-        'Batch upload up to 10 images',
+        'Batch up to 10 requests',
       ],
       recommended: false,
       description: 'For personal projects',
       displayOrder: 2,
       enabled: true,
-      batchLimit: 10, // Up to 10 images in batch
+      batchLimit: 10, // Up to 10 requests in batch
     },
     {
       key: 'pro',
@@ -161,13 +159,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'Priority support',
         'All features included',
         'Early access to new features',
-        'Batch upload up to 50 images',
+        'Batch up to 50 requests',
       ],
       recommended: true,
       description: 'For professionals',
       displayOrder: 3,
       enabled: true,
-      batchLimit: 50, // Up to 50 images in batch
+      batchLimit: 50, // Up to 50 requests in batch
     },
     {
       key: 'business',
@@ -177,7 +175,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       currency: 'usd',
       interval: 'month',
       creditsPerCycle: CREDIT_COSTS.BUSINESS_MONTHLY_CREDITS,
-      maxRollover: 0, // No rollover - use it or lose it (like Lets Enhance)
+      maxRollover: 0, // No rollover - use it or lose it
       rolloverMultiplier: 0,
       trial: {
         enabled: false,
@@ -200,13 +198,13 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
         'All features included',
         'Dedicated account manager',
         'Custom integrations',
-        'Batch upload up to 500 images',
+        'Batch up to 500 requests',
       ],
       recommended: false,
       description: 'For teams and agencies',
       displayOrder: 4,
       enabled: true,
-      batchLimit: 500, // Up to 500 images in batch
+      batchLimit: 500, // Up to 500 requests in batch
     },
   ],
 
@@ -248,31 +246,24 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
 
   creditCosts: {
     modes: {
-      upscale: CREDIT_COSTS.BASE_UPSCALE_COST, // Basic upscaling - cheapest operation
-      enhance: CREDIT_COSTS.BASE_ENHANCE_COST, // AI enhancement - more compute intensive
-      both: CREDIT_COSTS.BASE_BOTH_COST, // Upscale + enhance - same as enhance alone
-      custom: CREDIT_COSTS.BASE_CUSTOM_COST, // Custom prompt - AI-intensive
+      api: CREDIT_COSTS.API_CALL, // Base API call cost (1 credit)
+      basic: CREDIT_COSTS.API_CALL * 1, // Basic mode (1 credit)
+      premium: CREDIT_COSTS.API_CALL * 2, // Premium mode (2 credits)
+      enterprise: CREDIT_COSTS.API_CALL * 5, // Enterprise mode (5 credits)
     },
-    // Model-based multipliers for different AI models
-    modelMultipliers: {
-      'real-esrgan': CREDIT_COSTS.REAL_ESRGAN_MULTIPLIER,
-      gfpgan: CREDIT_COSTS.GFPGAN_MULTIPLIER,
-      'clarity-upscaler': CREDIT_COSTS.CLARITY_UPSCALER_MULTIPLIER,
-      'flux-2-pro': CREDIT_COSTS.FLUX_2_PRO_MULTIPLIER,
-      'nano-banana-pro': CREDIT_COSTS.NANO_BANANA_PRO_MULTIPLIER,
+    // Option multipliers for different features
+    featureMultipliers: {
+      basic: 1.0,
+      premium: 2.0,
+      enterprise: 5.0,
     },
-    scaleMultipliers: {
-      '2x': 1.0,
-      '4x': 1.0,
-      '8x': 1.0,
-    },
+    // Options
     options: {
-      customPrompt: 0, // Included in 'custom' mode cost
       priorityProcessing: 1, // Future feature
-      batchPerImage: 0, // No extra cost per batch image
+      batchPerRequest: 0, // No extra cost per batch request
     },
-    minimumCost: CREDIT_COSTS.BASE_UPSCALE_COST, // At least 1 credit per operation
-    maximumCost: CREDIT_COSTS.NANO_BANANA_PRO_MULTIPLIER * CREDIT_COSTS.BASE_ENHANCE_COST * 1.25, // Safety cap for premium models
+    minimumCost: CREDIT_COSTS.API_CALL, // At least 1 credit per operation
+    maximumCost: CREDIT_COSTS.API_CALL * 10, // Safety cap
   },
 
   freeUser: {
@@ -280,7 +271,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     monthlyRefresh: false, // Free users don't get monthly refresh
     monthlyCredits: CREDIT_COSTS.DEFAULT_TRIAL_CREDITS, // Only for paid subscriptions
     maxBalance: CREDIT_COSTS.DEFAULT_FREE_CREDITS, // Free users capped at initial credits
-    batchLimit: 1, // Up to 1 image at a time for free users
+    batchLimit: 1, // Up to 1 request at a time for free users
   },
 
   warnings: {
@@ -294,7 +285,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     defaultCurrency: 'usd',
     defaultInterval: 'month',
     creditsRolloverDefault: true, // Credits roll over by default
-    defaultRolloverMultiplier: 6, // Default to 6× monthly credits
+    defaultRolloverMultiplier: 6, // Default to 6x monthly credits
   },
 } as const;
 

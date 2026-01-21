@@ -13,7 +13,23 @@ import {
   handlePageAuth,
 } from '@lib/middleware';
 import { DEFAULT_LOCALE, isValidLocale, LOCALE_COOKIE, type Locale } from '@/i18n/config';
-import { getLocaleFromCountry } from '@lib/i18n/country-locale-map';
+
+// Stub for deleted country-locale-map
+function getLocaleFromCountry(country: string): Locale | null {
+  // Simple mapping - return null for unknown countries (will use DEFAULT_LOCALE)
+  const countryMap: Record<string, Locale> = {
+    US: 'en',
+    GB: 'en',
+    CA: 'en',
+    AU: 'en',
+    NZ: 'en',
+    IE: 'en',
+    ZA: 'en',
+    IN: 'en',
+    // Add more as needed
+  };
+  return countryMap[country.toUpperCase()] || null;
+}
 
 /**
  * Tracking and analytics query parameters that should be stripped from canonical URLs
@@ -99,7 +115,7 @@ function stripTrackingParams(url: URL): URL {
 
 /**
  * Handle WWW to non-WWW redirect for SEO consistency
- * Redirects www.myimageupscaler.com to myimageupscaler.com
+ * Redirects www.example.com to example.com
  */
 function handleWWWRedirect(req: NextRequest): NextResponse | null {
   const hostname = req.nextUrl.hostname;

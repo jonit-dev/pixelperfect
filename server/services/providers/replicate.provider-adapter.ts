@@ -4,10 +4,7 @@
  * Adapter for Replicate AI provider with credit tracking and usage monitoring.
  */
 
-import type {
-  IImageProcessor,
-  IProcessImageOptions,
-} from '@server/services/image-processor.interface';
+import type { IImageProcessor, IProcessImageOptions } from '@shared/types/provider-adapter.types';
 import type { IProviderConfig } from '@shared/types/provider-adapter.types';
 import { AIProvider, ProviderTier } from '@shared/types/provider-adapter.types';
 import { BaseProviderAdapter } from './base-provider-adapter';

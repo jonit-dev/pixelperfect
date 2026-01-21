@@ -28,8 +28,8 @@ export interface IZipDownloadOptions {
  *
  * @example
  * ```typescript
- * const filename = generateZipFilename(); // "myimageupscaler_batch_1704067200000.zip"
- * const customFilename = generateZipFilename('upscale', '4x'); // "upscale_4x_1704067200000.zip"
+ * const filename = generateZipFilename(); // "saas-boilerplate_batch_1704067200000.zip"
+ * const customFilename = generateZipFilename('export', 'batch'); // "saas-boilerplate_export_batch_1704067200000.zip"
  * ```
  */
 export function generateZipFilename(prefix?: string, suffix?: string): string {

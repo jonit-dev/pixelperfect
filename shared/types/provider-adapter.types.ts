@@ -7,12 +7,60 @@
  * - Fallback provider support
  */
 
-import type {
-  IImageProcessor,
-  IProcessImageOptions,
-  IImageProcessorResult,
-} from '@server/services/image-processor.interface';
-import type { IUpscaleInput } from '@shared/validation/upscale.schema';
+// Image processor interface types (extracted from deleted image-processor.interface.ts)
+export interface IProcessImageOptions {
+  creditCost?: number;
+  // Add other options as needed
+}
+
+export interface IImageProcessorResult {
+  imageUrl: string;
+  mimeType: string;
+  expiresAt?: number;
+  creditsRemaining?: number;
+  imageData?: string;
+}
+
+export interface IImageProcessor {
+  processImage(
+    userId: string,
+    input: IUpscaleInput,
+    options?: IProcessImageOptions
+  ): Promise<IImageProcessorResult>;
+  providerName: string;
+  supportsMode(mode: string): boolean;
+}
+
+// Input types (extracted from deleted upscale.schema.ts)
+export interface IUpscaleInput {
+  imageData: string;
+  imageUrl?: string;
+  mimeType: string;
+  config: IUpscaleConfig;
+}
+
+export interface IUpscaleConfig {
+  qualityTier: string;
+  scale: number;
+  mode?: string;
+  modelId?: string;
+  additionalOptions?: {
+    smartAnalysis?: boolean;
+    enhance?: boolean;
+    enhanceFaces?: boolean;
+    preserveText?: boolean;
+    customInstructions?: string;
+    enhancement?: {
+      clarity?: boolean;
+      color?: boolean;
+      lighting?: boolean;
+      denoise?: boolean;
+      artifacts?: boolean;
+      details?: boolean;
+    };
+  };
+  nanoBananaProConfig?: unknown;
+}
 
 /**
  * Supported AI providers

@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 
 /**
- * Sitemap URL Validator for PixelPerfect
+ * Sitemap URL Validator
  *
  * Crawls sitemap URLs and checks for:
  * - HTTP 404 status codes
@@ -13,7 +13,7 @@
  *   npx tsx scripts/validate-sitemap-urls.ts                        # Validate ALL URLs
  *   npx tsx scripts/validate-sitemap-urls.ts --patterns-only        # Validate one sample per route pattern (fast)
  *   npx tsx scripts/validate-sitemap-urls.ts --one-per-category     # Validate one page per pSEO category
- *   npx tsx scripts/validate-sitemap-urls.ts --base-url=https://myimageupscaler.com
+ *   npx tsx scripts/validate-sitemap-urls.ts --base-url=https://example.com
  *   npx tsx scripts/validate-sitemap-urls.ts --port=3003            # Custom port for localhost
  *   npx tsx scripts/validate-sitemap-urls.ts --delay=1000           # Custom delay between requests (ms)
  */

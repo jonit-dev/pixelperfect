@@ -247,18 +247,29 @@ export function isPriceIdCreditPack(priceId: string): boolean {
 
 /**
  * Get all model multipliers for display
+ * Returns credits cost from QUALITY_TIER_CONFIG as model multipliers
  */
 export function getAllModelMultipliers(): Record<string, number> {
-  const { creditCosts } = getSubscriptionConfig();
-  return { ...creditCosts.modelMultipliers };
+  const multipliers: Record<string, number> = {};
+  for (const [tier, config] of Object.entries(QUALITY_TIER_CONFIG)) {
+    if (typeof config.credits === 'number') {
+      multipliers[tier] = config.credits;
+    }
+  }
+  return multipliers;
 }
 
 /**
- * Get model multiplier for a specific model
+ * Get model multiplier for a specific model/quality tier
+ * Returns credits cost from QUALITY_TIER_CONFIG
  */
 export function getModelMultiplier(modelId: string): number {
-  const { creditCosts } = getSubscriptionConfig();
-  return creditCosts.modelMultipliers[modelId] ?? 1;
+  // If modelId matches a quality tier, return its credit cost
+  const tierConfig = QUALITY_TIER_CONFIG[modelId as QualityTier];
+  if (tierConfig && typeof tierConfig.credits === 'number') {
+    return tierConfig.credits;
+  }
+  return 1; // Default to 1 credit
 }
 
 /**
@@ -670,6 +681,7 @@ export function getCreditCostForMode(mode: ProcessingMode): number {
 
 /**
  * Calculate credit cost with model-based multiplier (legacy)
+ * Updated to use QUALITY_TIER_CONFIG instead of deleted modelMultipliers
  */
 export function calculateModelCreditCost(params: {
   mode: ProcessingMode;
@@ -681,12 +693,13 @@ export function calculateModelCreditCost(params: {
   // Base cost from mode
   const baseCost = creditCosts.modes[params.mode] ?? creditCosts.modes.enhance;
 
-  // Get model multiplier (default to 1 if model not found)
-  const modelMultiplier = creditCosts.modelMultipliers[params.modelId] ?? 1;
+  // Get model multiplier from QUALITY_TIER_CONFIG (default to 1 if model not found)
+  const tierConfig = QUALITY_TIER_CONFIG[params.modelId as QualityTier];
+  const modelMultiplier =
+    tierConfig && typeof tierConfig.credits === 'number' ? tierConfig.credits : 1;
 
-  // Get scale multiplier
-  const scaleKey = `${params.scale}x` as '2x' | '4x' | '8x';
-  const scaleMultiplier = creditCosts.scaleMultipliers[scaleKey] ?? 1.0;
+  // Get scale multiplier (use 1.0 since scaleMultipliers was deleted)
+  const scaleMultiplier = 1.0;
 
   // Apply formula: baseCreditCost × modelMultiplier × scaleMultiplier
   let totalCost = Math.ceil(baseCost * modelMultiplier * scaleMultiplier);
@@ -705,8 +718,8 @@ export function calculateModelCreditCost(params: {
 export function calculateCreditCost(params: { mode: ProcessingMode; scale?: number }): number {
   const { creditCosts } = getSubscriptionConfig();
 
-  // Base cost from mode (default to enhance cost if mode not found)
-  let baseCost = creditCosts.modes[params.mode] ?? creditCosts.modes.enhance;
+  // Base cost from mode (default to api cost if mode not found)
+  let baseCost = creditCosts.modes[params.mode] ?? creditCosts.modes.api;
 
   // Apply bounds (minimum and maximum cost limits)
   baseCost = Math.max(baseCost, creditCosts.minimumCost);

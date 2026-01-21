@@ -20,7 +20,7 @@ export class ClientLogger {
       level,
       message,
       context,
-      source: 'myimageupscaler-web',
+      source: 'saas-boilerplate-web',
     };
 
     if (isDevelopment()) {

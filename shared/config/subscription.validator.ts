@@ -43,19 +43,21 @@ const PlanConfigSchema = z.object({
 
 const CreditCostConfigSchema = z.object({
   modes: z.object({
-    upscale: z.number().positive(),
-    enhance: z.number().positive(),
-    both: z.number().positive(),
-    custom: z.number().positive(),
+    api: z.number().positive(),
+    basic: z.number().positive(),
+    premium: z.number().positive(),
+    enterprise: z.number().positive(),
   }),
-  scaleMultipliers: z.object({
-    '2x': z.number().positive(),
-    '4x': z.number().positive(),
-  }),
+  scaleMultipliers: z
+    .object({
+      '2x': z.number().positive().optional(),
+      '4x': z.number().positive().optional(),
+    })
+    .optional(), // Made optional for boilerplate
   options: z.object({
-    customPrompt: z.number().min(0),
+    customPrompt: z.number().min(0).optional(),
     priorityProcessing: z.number().min(0),
-    batchPerImage: z.number().min(0),
+    batchPerRequest: z.number().min(0), // Renamed from batchPerImage
   }),
   minimumCost: z.number().positive(),
   maximumCost: z.number().positive(),

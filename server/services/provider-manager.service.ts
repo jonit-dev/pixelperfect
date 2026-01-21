@@ -11,13 +11,11 @@ import type {
   IProviderSelectionContext,
   IProviderConfig,
   IProviderUsage,
-} from '@shared/types/provider-adapter.types';
-import { AIProvider } from '@shared/types/provider-adapter.types';
-import type {
   IImageProcessorResult,
   IProcessImageOptions,
-} from '@server/services/image-processor.interface';
-import type { IUpscaleInput } from '@shared/validation/upscale.schema';
+  IUpscaleInput,
+} from '@shared/types/provider-adapter.types';
+import { AIProvider } from '@shared/types/provider-adapter.types';
 import { getProviderCreditTracker } from './provider-credit-tracker.service';
 
 /**

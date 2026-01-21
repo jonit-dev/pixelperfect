@@ -4,7 +4,7 @@
  * Adapter for Google Gemini AI provider with free tier tracking and usage monitoring.
  */
 
-import type { IImageProcessor } from '@server/services/image-processor.interface';
+import type { IImageProcessor } from '@shared/types/provider-adapter.types';
 import type { IProviderConfig } from '@shared/types/provider-adapter.types';
 import { AIProvider, ProviderTier } from '@shared/types/provider-adapter.types';
 import { BaseProviderAdapter } from './base-provider-adapter';

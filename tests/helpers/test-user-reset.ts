@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
  * Fixed test user for all tests - reuses the same account
  */
 const FIXED_TEST_USER = {
-  email: 'fixed-test-user@myimageupscaler.test',
+  email: 'fixed-test-user@saas-boilerplate.test',
   password: 'TestPassword123!SecureForTests',
 };
 

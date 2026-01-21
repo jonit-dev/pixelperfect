@@ -1,6 +1,6 @@
 import type { IAuthUser } from './types';
 
-const AUTH_CACHE_KEY = 'myimageupscaler_auth_cache';
+const AUTH_CACHE_KEY = 'saas-boilerplate_auth_cache';
 const CACHE_VERSION = 1;
 
 interface IAuthCache {

@@ -1,16 +1,16 @@
 #!/usr/bin/env tsx
 /**
- * SEO Site Crawler for MyImageUpscaler
+ * SEO Site Crawler
  * Crawls the site to find broken links, redirect chains, and orphan pages
  *
  * Usage:
- *   yarn tsx scripts/seo-crawl-site.ts --base-url=https://myimageupscaler.com
- *   yarn tsx scripts/seo-crawl-site.ts --base-url=https://myimageupscaler.com --depth=5 --max-pages=100
+ *   yarn tsx scripts/seo-crawl-site.ts --base-url=https://example.com
+ *   yarn tsx scripts/seo-crawl-site.ts --base-url=https://example.com --depth=5 --max-pages=100
  *   yarn tsx scripts/seo-crawl-site.ts --base-url=http://localhost:3000 --check-external
  */
 
-import { chromium, Browser, Page } from "playwright";
-import * as fs from "fs";
+import { chromium, Browser, Page } from 'playwright';
+import * as fs from 'fs';
 
 interface ICrawledPage {
   url: string;
@@ -53,7 +53,7 @@ interface IArgs {
 function parseArgs(): IArgs {
   const args = process.argv.slice(2);
   const result: IArgs = {
-    baseUrl: process.env.SITE_URL || "",
+    baseUrl: process.env.SITE_URL || '',
     depth: 3,
     maxPages: 50,
     checkExternal: false,
@@ -61,27 +61,23 @@ function parseArgs(): IArgs {
   };
 
   for (const arg of args) {
-    if (arg.startsWith("--base-url=")) {
-      result.baseUrl = arg.split("=")[1];
-    } else if (arg.startsWith("--depth=")) {
-      result.depth = parseInt(arg.split("=")[1], 10);
-    } else if (arg.startsWith("--max-pages=")) {
-      result.maxPages = parseInt(arg.split("=")[1], 10);
-    } else if (arg === "--check-external") {
+    if (arg.startsWith('--base-url=')) {
+      result.baseUrl = arg.split('=')[1];
+    } else if (arg.startsWith('--depth=')) {
+      result.depth = parseInt(arg.split('=')[1], 10);
+    } else if (arg.startsWith('--max-pages=')) {
+      result.maxPages = parseInt(arg.split('=')[1], 10);
+    } else if (arg === '--check-external') {
       result.checkExternal = true;
-    } else if (arg.startsWith("--slow-threshold=")) {
-      result.slowThreshold = parseInt(arg.split("=")[1], 10);
+    } else if (arg.startsWith('--slow-threshold=')) {
+      result.slowThreshold = parseInt(arg.split('=')[1], 10);
     }
   }
 
   if (!result.baseUrl) {
-    console.error(
-      "Error: --base-url is required (or set SITE_URL env var)",
-    );
-    console.log("\nUsage:");
-    console.log(
-      "  yarn tsx scripts/seo-crawl-site.ts --base-url=https://myimageupscaler.com",
-    );
+    console.error('Error: --base-url is required (or set SITE_URL env var)');
+    console.log('\nUsage:');
+    console.log('  yarn tsx scripts/seo-crawl-site.ts --base-url=https://example.com');
     process.exit(1);
   }
 
@@ -91,7 +87,7 @@ function parseArgs(): IArgs {
 function normalizeUrl(url: string, baseUrl: string): string {
   try {
     const parsed = new URL(url, baseUrl);
-    let normalized = parsed.origin + parsed.pathname.replace(/\/$/, "");
+    let normalized = parsed.origin + parsed.pathname.replace(/\/$/, '');
     return normalized || baseUrl;
   } catch {
     return url;
@@ -118,7 +114,7 @@ function shouldCrawl(url: string): boolean {
     /\?/,
   ];
 
-  return !skipPatterns.some((pattern) => pattern.test(url));
+  return !skipPatterns.some(pattern => pattern.test(url));
 }
 
 async function crawlPage(
@@ -126,13 +122,13 @@ async function crawlPage(
   url: string,
   depth: number,
   foundOn: string,
-  baseUrl: string,
+  baseUrl: string
 ): Promise<ICrawledPage | null> {
   const startTime = Date.now();
 
   try {
     const response = await page.goto(url, {
-      waitUntil: "domcontentloaded",
+      waitUntil: 'domcontentloaded',
       timeout: 15000,
     });
 
@@ -143,9 +139,9 @@ async function crawlPage(
     const redirectedTo = finalUrl !== url ? finalUrl : undefined;
 
     const pageInfo = await page.evaluate(() => {
-      const anchors = document.querySelectorAll("a[href]");
+      const anchors = document.querySelectorAll('a[href]');
       const links = Array.from(anchors)
-        .map((a) => a.getAttribute("href"))
+        .map(a => a.getAttribute('href'))
         .filter((href): href is string => !!href);
 
       return {
@@ -160,13 +156,10 @@ async function crawlPage(
     for (const link of pageInfo.links) {
       const normalizedLink = normalizeUrl(link, baseUrl);
       if (isInternalUrl(normalizedLink, baseUrl)) {
-        if (
-          shouldCrawl(normalizedLink) &&
-          !internalLinks.includes(normalizedLink)
-        ) {
+        if (shouldCrawl(normalizedLink) && !internalLinks.includes(normalizedLink)) {
           internalLinks.push(normalizedLink);
         }
-      } else if (link.startsWith("http")) {
+      } else if (link.startsWith('http')) {
         if (!externalLinks.includes(link)) {
           externalLinks.push(link);
         }
@@ -188,7 +181,7 @@ async function crawlPage(
     return {
       url,
       status: 0,
-      title: "",
+      title: '',
       internalLinks: [],
       externalLinks: [],
       loadTime: Date.now() - startTime,
@@ -199,16 +192,10 @@ async function crawlPage(
 }
 
 async function main() {
-  const {
-    baseUrl,
-    depth: maxDepth,
-    maxPages,
-    checkExternal,
-    slowThreshold,
-  } = parseArgs();
+  const { baseUrl, depth: maxDepth, maxPages, checkExternal, slowThreshold } = parseArgs();
 
-  console.log("\n🕷️  SEO SITE CRAWLER");
-  console.log("═".repeat(60));
+  console.log('\n🕷️  SEO SITE CRAWLER');
+  console.log('═'.repeat(60));
   console.log(`Base URL: ${baseUrl}`);
   console.log(`Max Depth: ${maxDepth}`);
   console.log(`Max Pages: ${maxPages}`);
@@ -217,19 +204,19 @@ async function main() {
 
   const browser: Browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
-    userAgent: "Mozilla/5.0 (compatible; SEOCrawler/1.0)",
+    userAgent: 'Mozilla/5.0 (compatible; SEOCrawler/1.0)',
   });
   const page = await context.newPage();
 
   const visited = new Set<string>();
   const queue: Array<{ url: string; depth: number; foundOn: string }> = [
-    { url: normalizeUrl(baseUrl, baseUrl), depth: 0, foundOn: "start" },
+    { url: normalizeUrl(baseUrl, baseUrl), depth: 0, foundOn: 'start' },
   ];
 
   const pages: ICrawledPage[] = [];
-  const brokenLinks: ICrawlResult["brokenLinks"] = [];
-  const redirects: ICrawlResult["redirects"] = [];
-  const slowPages: ICrawlResult["slowPages"] = [];
+  const brokenLinks: ICrawlResult['brokenLinks'] = [];
+  const redirects: ICrawlResult['redirects'] = [];
+  const slowPages: ICrawlResult['slowPages'] = [];
   const externalLinksToCheck: Array<{ url: string; foundOn: string }> = [];
 
   const startedAt = new Date().toISOString();
@@ -241,7 +228,7 @@ async function main() {
     visited.add(url);
 
     process.stdout.write(
-      `\rCrawling: ${pages.length + 1}/${maxPages} - ${url.substring(0, 50)}...`,
+      `\rCrawling: ${pages.length + 1}/${maxPages} - ${url.substring(0, 50)}...`
     );
 
     const result = await crawlPage(page, url, depth, foundOn, baseUrl);
@@ -287,9 +274,7 @@ async function main() {
 
   // Check external links if requested
   if (checkExternal && externalLinksToCheck.length > 0) {
-    console.log(
-      `\n\nChecking ${externalLinksToCheck.length} external links...`,
-    );
+    console.log(`\n\nChecking ${externalLinksToCheck.length} external links...`);
     const checkedExternal = new Set<string>();
 
     for (const { url, foundOn } of externalLinksToCheck.slice(0, 50)) {
@@ -298,7 +283,7 @@ async function main() {
 
       try {
         const response = await fetch(url, {
-          method: "HEAD",
+          method: 'HEAD',
           signal: AbortSignal.timeout(5000),
         });
         if (!response.ok) {
@@ -322,16 +307,16 @@ async function main() {
     }
   }
   const orphanPages = pages.filter(
-    (p) => p.depth > 0 && !linkedPages.has(p.url) && p.foundOn === p.url,
+    p => p.depth > 0 && !linkedPages.has(p.url) && p.foundOn === p.url
   );
 
   // Print results
-  console.log("\n\n" + "═".repeat(60));
-  console.log("                      CRAWL RESULTS");
-  console.log("═".repeat(60) + "\n");
+  console.log('\n\n' + '═'.repeat(60));
+  console.log('                      CRAWL RESULTS');
+  console.log('═'.repeat(60) + '\n');
 
   console.log(`📊 SUMMARY`);
-  console.log("-".repeat(40));
+  console.log('-'.repeat(40));
   console.log(`  Pages crawled:    ${pages.length}`);
   console.log(`  Broken links:     ${brokenLinks.length}`);
   console.log(`  Redirects:        ${redirects.length}`);
@@ -339,10 +324,10 @@ async function main() {
   console.log(`  Orphan pages:     ${orphanPages.length}`);
 
   if (brokenLinks.length > 0) {
-    console.log("\n🔴 BROKEN LINKS");
-    console.log("-".repeat(40));
-    brokenLinks.slice(0, 10).forEach((link) => {
-      console.log(`  ${link.status || "ERR"}: ${link.url}`);
+    console.log('\n🔴 BROKEN LINKS');
+    console.log('-'.repeat(40));
+    brokenLinks.slice(0, 10).forEach(link => {
+      console.log(`  ${link.status || 'ERR'}: ${link.url}`);
       console.log(`       Found on: ${link.foundOn}`);
     });
     if (brokenLinks.length > 10) {
@@ -351,9 +336,9 @@ async function main() {
   }
 
   if (redirects.length > 0) {
-    console.log("\n🔄 REDIRECTS");
-    console.log("-".repeat(40));
-    redirects.slice(0, 10).forEach((redir) => {
+    console.log('\n🔄 REDIRECTS');
+    console.log('-'.repeat(40));
+    redirects.slice(0, 10).forEach(redir => {
       console.log(`  ${redir.from}`);
       console.log(`  → ${redir.to}`);
     });
@@ -363,32 +348,30 @@ async function main() {
   }
 
   if (slowPages.length > 0) {
-    console.log("\n🐢 SLOW PAGES (>${slowThreshold}ms)");
-    console.log("-".repeat(40));
+    console.log('\n🐢 SLOW PAGES (>${slowThreshold}ms)');
+    console.log('-'.repeat(40));
     slowPages
       .sort((a, b) => b.loadTime - a.loadTime)
       .slice(0, 10)
-      .forEach((p) => {
+      .forEach(p => {
         console.log(`  ${(p.loadTime / 1000).toFixed(2)}s: ${p.url}`);
       });
   }
 
   // Link distribution
-  console.log("\n🔗 INTERNAL LINKING");
-  console.log("-".repeat(40));
-  const linkCounts = pages.map((p) => p.internalLinks.length);
+  console.log('\n🔗 INTERNAL LINKING');
+  console.log('-'.repeat(40));
+  const linkCounts = pages.map(p => p.internalLinks.length);
   const avgLinks =
-    linkCounts.length > 0
-      ? linkCounts.reduce((a, b) => a + b, 0) / linkCounts.length
-      : 0;
-  const pagesWithFewLinks = pages.filter((p) => p.internalLinks.length < 3);
+    linkCounts.length > 0 ? linkCounts.reduce((a, b) => a + b, 0) / linkCounts.length : 0;
+  const pagesWithFewLinks = pages.filter(p => p.internalLinks.length < 3);
 
   console.log(`  Average links per page: ${avgLinks.toFixed(1)}`);
   console.log(`  Pages with < 3 links:   ${pagesWithFewLinks.length}`);
 
   if (pagesWithFewLinks.length > 0) {
-    console.log("\n  Pages needing more internal links:");
-    pagesWithFewLinks.slice(0, 5).forEach((p) => {
+    console.log('\n  Pages needing more internal links:');
+    pagesWithFewLinks.slice(0, 5).forEach(p => {
       console.log(`    - ${p.url} (${p.internalLinks.length} links)`);
     });
   }
@@ -412,14 +395,14 @@ async function main() {
     pages,
   };
 
-  const dateStr = new Date().toISOString().split("T")[0];
+  const dateStr = new Date().toISOString().split('T')[0];
   const reportDir = `/home/joao/projects/pixelperfect/seo-reports/${dateStr}`;
   fs.mkdirSync(reportDir, { recursive: true });
   const exportPath = `${reportDir}/seo-crawl.json`;
   fs.writeFileSync(exportPath, JSON.stringify(result, null, 2));
 
   console.log(`\n📁 Full report: ${exportPath}`);
-  console.log("\n✅ Crawl complete!\n");
+  console.log('\n✅ Crawl complete!\n');
 
   process.exit(brokenLinks.length > 0 ? 1 : 0);
 }

@@ -9,8 +9,8 @@ import type {
   IImageProcessor,
   IProcessImageOptions,
   IImageProcessorResult,
-} from '@server/services/image-processor.interface';
-import type { IUpscaleInput } from '@shared/validation/upscale.schema';
+  IUpscaleInput,
+} from '@shared/types/provider-adapter.types';
 import type {
   IProviderAdapter,
   IProviderConfig,

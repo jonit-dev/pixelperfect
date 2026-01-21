@@ -1,18 +1,18 @@
 #!/usr/bin/env tsx
 
 /**
- * Sitemap Structure Validator for PixelPerfect
+ * Sitemap Structure Validator
  *
  * Validates sitemap XML structure for:
  * - Canonical URL correctness (points to proper locale)
- * - Hreflang completeness (all 7 locales + x-default)
+ * - Hreflang completeness (all supported locales + x-default)
  * - XML namespace validity
  * - Hreflang URL format consistency
  * - Proper sitemap index structure
  *
  * Usage:
  *   npx tsx scripts/validate-sitemap-structure.ts                        # Localhost (default)
- *   npx tsx scripts/validate-sitemap-structure.ts --base-url=https://myimageupscaler.com
+ *   npx tsx scripts/validate-sitemap-structure.ts --base-url=https://example.com
  *   npx tsx scripts/validate-sitemap-structure.ts --port=3003            # Custom port
  */
 

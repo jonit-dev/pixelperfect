@@ -1,27 +1,18 @@
 import type { ModelId } from '@/shared/types/coreflow.types';
-import { ModelRegistry } from '../model-registry';
 import { MODEL_DESCRIPTIONS, PROMPT_TEMPLATES } from './prompt-constants';
 
 /**
  * Get model description for a given model ID
  */
 function getModelDescription(id: ModelId): string | null {
-  // Check predefined descriptions first
+  // Use predefined descriptions from prompt-constants
   const predefined = MODEL_DESCRIPTIONS[id as keyof typeof MODEL_DESCRIPTIONS];
   if (predefined) {
     return `${id} (${predefined.credits}x credits): ${predefined.description}`;
   }
 
-  // Fallback: build from registry
-  const registry = ModelRegistry.getInstance();
-  const model = registry.getModel(id);
-  if (!model) return null;
-
-  const caps = model.capabilities;
-  const cost = model.creditMultiplier;
-  const canUpscale = caps.includes('upscale');
-
-  return `${id} (${cost}x credits): ${canUpscale ? 'Upscaler' : 'Enhancement-only'}. Capabilities: ${caps.join(', ')}.`;
+  // Fallback for unknown models
+  return `${id} (Unknown credits)`;
 }
 
 /**

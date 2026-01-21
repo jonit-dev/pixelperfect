@@ -1,12 +1,12 @@
 #!/usr/bin/env tsx
 /**
- * Sitemap URL Counter for PixelPerfect
+ * Sitemap URL Counter
  *
  * Crawls all nested sitemaps and counts total URLs
  * Usage: tsx scripts/count-sitemap-urls.ts [base-url]
  *
  * Example:
- *   tsx scripts/count-sitemap-urls.ts https://myimageupscaler.com
+ *   tsx scripts/count-sitemap-urls.ts https://example.com
  *   tsx scripts/count-sitemap-urls.ts http://localhost:3000
  */
 

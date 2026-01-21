@@ -88,10 +88,10 @@ function validateInternalLinks(markdown: string, slug: string, allSlugs: string[
 
     // Convert same-domain URLs to relative
     const domainPatterns = [
-      'https://myimageupscaler.com',
-      'https://www.myimageupscaler.com',
-      'http://myimageupscaler.com',
-      'http://www.myimageupscaler.com',
+      'https://example.com',
+      'https://www.example.com',
+      'http://example.com',
+      'http://www.example.com',
     ];
     for (const domain of domainPatterns) {
       if (url.startsWith(domain)) {

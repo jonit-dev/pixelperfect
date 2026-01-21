@@ -386,7 +386,7 @@ describe('Authentication Middleware', () => {
         supabaseResponse: NextResponse.next(),
       });
 
-      const request = new NextRequest('http://localhost/pt/dashboard', {
+      const request = new NextRequest('http://localhost/en/dashboard', {
         method: 'GET',
       });
 
@@ -395,7 +395,7 @@ describe('Authentication Middleware', () => {
       // Should have locale cookie set
       const cookies = response.headers.getSetCookie();
       const localeCookie = cookies.find(c => c.startsWith('locale='));
-      expect(localeCookie).toContain('locale=pt');
+      expect(localeCookie).toContain('locale=en');
     });
 
     test('should detect dashboard paths with locale prefix correctly', async () => {

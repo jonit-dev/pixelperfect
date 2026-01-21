@@ -1,4 +1,12 @@
-import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
+// Image validation constants (extracted from deleted upscale.schema.ts)
+const IMAGE_VALIDATION = {
+  ALLOWED_TYPES: ['image/jpeg', 'image/png', 'image/webp', 'image/heic'] as const,
+  MAX_SIZE_FREE: 5 * 1024 * 1024, // 5MB
+  MAX_SIZE_PAID: 25 * 1024 * 1024, // 25MB
+  MAX_PIXELS: 8192 * 8192, // GPU limit
+} as const;
+
+export type AllowedImageType = (typeof IMAGE_VALIDATION.ALLOWED_TYPES)[number];
 
 export interface IFileValidationResult {
   valid: boolean;
@@ -14,11 +22,7 @@ export interface IProcessFilesResult {
 
 export function validateImageFile(file: File, isPaidUser: boolean): IFileValidationResult {
   // Check file type
-  if (
-    !IMAGE_VALIDATION.ALLOWED_TYPES.includes(
-      file.type as 'image/jpeg' | 'image/png' | 'image/webp' | 'image/heic'
-    )
-  ) {
+  if (!IMAGE_VALIDATION.ALLOWED_TYPES.includes(file.type as AllowedImageType)) {
     return { valid: false, reason: 'type' };
   }
 

@@ -3,7 +3,13 @@
  * Uses Canvas API for resizing and format conversion
  */
 
-import { IMAGE_VALIDATION } from '@shared/validation/upscale.schema';
+// Image validation constants (extracted from deleted upscale.schema.ts)
+const IMAGE_VALIDATION = {
+  ALLOWED_TYPES: ['image/jpeg', 'image/png', 'image/webp', 'image/heic'] as const,
+  MAX_SIZE_FREE: 5 * 1024 * 1024, // 5MB
+  MAX_SIZE_PAID: 25 * 1024 * 1024, // 25MB
+  MAX_PIXELS: 8192 * 8192, // GPU limit
+} as const;
 
 export interface ICompressionOptions {
   targetSizeBytes?: number; // Target file size in bytes

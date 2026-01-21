@@ -1,22 +1,18 @@
 'use client';
 
 import { AmbientBackground } from '@client/components/landing/AmbientBackground';
-import { HeroBeforeAfter } from '@client/components/landing/HeroBeforeAfter';
 import { FadeIn } from '@client/components/ui/MotionWrappers';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
 import { getSubscriptionConfig } from '@shared/config/subscription.config';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Rocket, Zap, Shield, CheckCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, lazy, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
-// Lazy load below-the-fold sections to reduce initial JS bundle
-// These sections will only load when user scrolls near them
-const Features = lazy(() => import('@client/components/features/landing/Features'));
-const HowItWorks = lazy(() => import('@client/components/features/landing/HowItWorks'));
+// Lazy load FAQ component
 const FAQ = lazy(() => import('@client/components/ui/FAQ').then(m => ({ default: m.FAQ })));
 
 // Animation variants for hero section
@@ -105,12 +101,12 @@ export function HomePageClient(): JSX.Element {
           animate="visible"
           variants={heroContainerVariants}
         >
-          {/* Badge - with glassmorphism */}
+          {/* Badge */}
           <motion.div
             variants={heroItemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-strong text-xs font-semibold text-accent mb-8 hover:shadow-xl hover:shadow-accent/20 transition-all duration-300 cursor-default group"
           >
-            <Sparkles size={14} className="text-secondary animate-pulse" />
+            <Rocket size={14} className="text-secondary animate-pulse" />
             <span className="group-hover:scale-105 transition-transform">{t('badge')}</span>
             <span className="w-px h-3 bg-white/10 mx-1"></span>
             <span className="text-muted-foreground group-hover:text-white transition-colors">
@@ -130,9 +126,7 @@ export function HomePageClient(): JSX.Element {
             variants={heroItemVariants}
             className="mx-auto mt-6 max-w-2xl text-2xl sm:text-3xl text-text-secondary leading-relaxed font-semibold"
           >
-            {t('heroSubtitle')}
-            <br />
-            <span className="text-white">{t('heroSubtitleHighlight')}</span>
+            {t('heroSubtitle')} <span className="text-white">{t('heroSubtitleHighlight')}</span>
           </motion.h2>
 
           <motion.p
@@ -159,8 +153,8 @@ export function HomePageClient(): JSX.Element {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-              {hasTrialEnabled ? t('ctaFixImages') : t('ctaUpscaleFirst')}
+              <Rocket size={20} className="group-hover:rotate-12 transition-transform" />
+              {hasTrialEnabled ? t('ctaGetStarted') : t('ctaStartBuilding')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
             <motion.button
@@ -176,28 +170,54 @@ export function HomePageClient(): JSX.Element {
           <motion.p variants={heroItemVariants} className="mt-4 text-sm text-text-muted">
             {t('ctaSubtext')}
           </motion.p>
-
-          {/* Hero Before/After Slider */}
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] as const }}
-          >
-            <HeroBeforeAfter />
-          </motion.div>
         </motion.div>
       </section>
 
-      {/* Landing Page Sections - Lazy loaded for performance */}
-      <Suspense fallback={<div className="h-screen" />}>
-        <Features />
-      </Suspense>
-      <Suspense fallback={<div className="h-screen" />}>
-        <HowItWorks />
-      </Suspense>
+      {/* Features Section */}
+      <FadeIn>
+        <section id="features" className="py-24 relative">
+          <AmbientBackground variant="section" />
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+                {t('featuresTitle')}
+              </h2>
+              <p className="text-lg text-text-secondary">{t('featuresSubtitle')}</p>
+            </div>
 
-      {/* FAQ Section - Lazy loaded for performance */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="glass-card p-8 rounded-2xl hover:border-accent/30 transition-all duration-300">
+                <div className="w-14 h-14 gradient-cta rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-accent/20">
+                  <Zap size={28} className="text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{t('feature1Title')}</h3>
+                <p className="text-text-secondary">{t('feature1Description')}</p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="glass-card p-8 rounded-2xl hover:border-accent/30 transition-all duration-300">
+                <div className="w-14 h-14 gradient-cta rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-accent/20">
+                  <Shield size={28} className="text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{t('feature2Title')}</h3>
+                <p className="text-text-secondary">{t('feature2Description')}</p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="glass-card p-8 rounded-2xl hover:border-accent/30 transition-all duration-300">
+                <div className="w-14 h-14 gradient-cta rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-accent/20">
+                  <CheckCircle size={28} className="text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{t('feature3Title')}</h3>
+                <p className="text-text-secondary">{t('feature3Description')}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* FAQ Section */}
       <FadeIn>
         <section id="faq" className="py-24 relative">
           <AmbientBackground variant="section" />
@@ -206,6 +226,7 @@ export function HomePageClient(): JSX.Element {
               <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">{t('faqTitle')}</h2>
               <p className="text-lg text-text-secondary">{t('faqSubtitle')}</p>
             </div>
+
             <Suspense fallback={<div className="animate-pulse h-64 bg-white/5 rounded-xl" />}>
               <FAQ
                 items={[
@@ -250,7 +271,7 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {t('ctaSeeWhatItCosts')}
+                {t('ctaSeePricing')}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.button
@@ -259,7 +280,7 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {hasTrialEnabled ? t('ctaTryFreeCredits') : t('ctaGetFreeCredits')}
+                {hasTrialEnabled ? t('ctaTryFree') : t('ctaGetFree')}
               </motion.button>
             </div>
             <p className="mt-6 text-sm text-text-muted">{t('pricingCtaSubtext')}</p>
@@ -290,8 +311,8 @@ export function HomePageClient(): JSX.Element {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Sparkles size={22} className="group-hover:rotate-12 transition-transform" />
-                {hasTrialEnabled ? t('ctaFixImagesNow') : t('ctaStartUpscaling')}
+                <Rocket size={22} className="group-hover:rotate-12 transition-transform" />
+                {t('ctaStartNow')}
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.a

@@ -1,13 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { HomePageClient } from '@client/components/pages/HomePageClient';
-import { JsonLd } from '@client/components/seo/JsonLd';
-import { generateHomepageSchema } from '@lib/seo/schema-generator';
-import {
-  getCanonicalUrl,
-  getOpenGraphLocale,
-  generateHreflangAlternates,
-} from '@/lib/seo/hreflang-generator';
 import { clientEnv } from '@shared/config/env';
 import type { Locale } from '@/i18n/config';
 
@@ -17,13 +10,8 @@ interface ILocaleHomePageProps {
 
 export async function generateMetadata({ params }: ILocaleHomePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const title = 'AI Image Upscaler & Photo Enhancer | Enhance Quality Free Online';
-  const description =
-    'Professional AI image enhancer that upscales photos to 4K with stunning quality. Enhance image quality, remove blur, and restore details in seconds.';
-
-  const canonicalUrl = getCanonicalUrl('/');
-  const ogLocale = getOpenGraphLocale(locale);
-  const hreflangAlternates = generateHreflangAlternates('/');
+  const title = `${clientEnv.APP_NAME} - Build Your SaaS Faster`;
+  const description = `Powerful API platform for developers. Start building with ${clientEnv.APP_NAME} - simple, fast, and reliable infrastructure for your next project.`;
 
   return {
     title,
@@ -33,7 +21,7 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
       description,
       type: 'website',
       url: '/',
-      locale: ogLocale,
+      locale: locale,
       siteName: clientEnv.APP_NAME,
       images: [
         {
@@ -51,19 +39,17 @@ export async function generateMetadata({ params }: ILocaleHomePageProps): Promis
       images: ['/og-image.png'],
     },
     alternates: {
-      canonical: canonicalUrl,
-      languages: hreflangAlternates,
+      canonical: `${clientEnv.BASE_URL}/`,
     },
   };
 }
 
 export default async function LocaleHomePage({ params }: ILocaleHomePageProps) {
-  const { locale } = await params;
-  const homepageSchema = generateHomepageSchema(locale);
+  // Locale is available in params but not used in this generic page
+  await params;
 
   return (
     <>
-      <JsonLd data={homepageSchema} />
       <Suspense
         fallback={
           <div className="min-h-screen flex items-center justify-center bg-background">

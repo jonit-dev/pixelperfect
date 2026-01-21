@@ -46,10 +46,11 @@ describe('Subscription Configuration', () => {
 
     test('credit costs are positive', () => {
       const config = getSubscriptionConfig();
-      expect(config.creditCosts.modes.upscale).toBeGreaterThan(0);
-      expect(config.creditCosts.modes.enhance).toBeGreaterThan(0);
-      expect(config.creditCosts.modes.both).toBeGreaterThan(0);
-      expect(config.creditCosts.modes.custom).toBeGreaterThan(0);
+      expect(config.creditCosts.modes.api).toBeGreaterThan(0);
+      expect(config.creditCosts.modes.basic).toBeGreaterThan(0);
+      expect(config.creditCosts.modes.premium).toBeGreaterThan(0);
+      expect(config.creditCosts.modes.enterprise).toBeGreaterThan(0);
+      // Note: enterprise is 5 credits (premium tier)
     });
 
     test('minimumCost <= maximumCost', () => {
@@ -104,42 +105,36 @@ describe('Subscription Configuration', () => {
   });
 
   describe('Credit Cost Calculations', () => {
-    test('calculateCreditCost for upscale mode', () => {
-      const cost = calculateCreditCost({ mode: 'upscale', scale: 2 });
+    test('calculateCreditCost for api mode', () => {
+      const cost = calculateCreditCost({ mode: 'api' });
       expect(cost).toBe(1);
     });
 
-    test('calculateCreditCost for enhance mode', () => {
-      const cost = calculateCreditCost({ mode: 'enhance', scale: 2 });
-      expect(cost).toBe(2);
-    });
-
-    test('calculateCreditCost for both mode', () => {
-      const cost = calculateCreditCost({ mode: 'both', scale: 2 });
-      expect(cost).toBe(2);
-    });
-
-    test('calculateCreditCost for custom mode', () => {
-      const cost = calculateCreditCost({ mode: 'custom', scale: 2 });
-      expect(cost).toBe(2);
-    });
-
-    test('calculateCreditCost with 4x scale', () => {
-      // Currently no difference, but configurable
-      const cost = calculateCreditCost({ mode: 'upscale', scale: 4 });
+    test('calculateCreditCost for basic mode', () => {
+      const cost = calculateCreditCost({ mode: 'basic' });
       expect(cost).toBe(1);
+    });
+
+    test('calculateCreditCost for premium mode', () => {
+      const cost = calculateCreditCost({ mode: 'premium' });
+      expect(cost).toBe(2);
+    });
+
+    test('calculateCreditCost for enterprise mode', () => {
+      const cost = calculateCreditCost({ mode: 'enterprise' });
+      expect(cost).toBe(5);
     });
 
     test('calculateCreditCost respects minimum cost', () => {
-      const cost = calculateCreditCost({ mode: 'upscale' });
+      const cost = calculateCreditCost({ mode: 'api' });
       expect(cost).toBeGreaterThanOrEqual(1); // minimumCost = 1
     });
 
     test('getCreditCostForMode returns correct costs', () => {
-      expect(getCreditCostForMode('upscale')).toBe(1);
-      expect(getCreditCostForMode('enhance')).toBe(2);
-      expect(getCreditCostForMode('both')).toBe(2);
-      expect(getCreditCostForMode('custom')).toBe(2);
+      expect(getCreditCostForMode('api')).toBe(1);
+      expect(getCreditCostForMode('basic')).toBe(1);
+      expect(getCreditCostForMode('premium')).toBe(2);
+      expect(getCreditCostForMode('enterprise')).toBe(5);
     });
   });
 

@@ -1,10 +1,10 @@
 /**
  * Centralized Subscription Configuration Types
  * All subscription-related configuration interfaces
+ * Generic SaaS boilerplate - customize for your needs
  */
 
-export type ProcessingMode = 'upscale' | 'enhance' | 'both' | 'custom';
-export type ScaleFactor = '2x' | '4x' | '8x';
+export type ProcessingMode = 'api' | 'basic' | 'premium' | 'enterprise';
 export type Currency = 'usd' | 'eur' | 'gbp';
 export type BillingInterval = 'month' | 'year';
 export type ExpirationMode = 'never' | 'end_of_cycle' | 'rolling_window';
@@ -65,7 +65,7 @@ export interface IPlanConfig {
   creditsPerCycle: number;
   /** Maximum rollover balance (null = unlimited, but not recommended) */
   maxRollover: number | null;
-  /** Rollover multiplier (e.g., 6 = 6× monthly credits) */
+  /** Rollover multiplier (e.g., 6 = 6x monthly credits) */
   rolloverMultiplier: number;
   /** Trial configuration (TODO: see trial-periods.md) */
   trial: ITrialConfig;
@@ -81,7 +81,7 @@ export interface IPlanConfig {
   displayOrder: number;
   /** Whether plan is currently available */
   enabled: boolean;
-  /** Maximum images allowed in batch queue (null = unlimited) */
+  /** Maximum requests allowed in batch queue (null = unlimited) */
   batchLimit: number | null;
 }
 
@@ -90,19 +90,15 @@ export interface IPlanConfig {
  */
 export interface ICreditCostConfig {
   /** Base costs per processing mode */
-  modes: Record<ProcessingMode, number>;
-  /** Multipliers for different AI models */
-  modelMultipliers: Record<string, number>;
-  /** Multipliers for scale factors (1.0, 1.5, 2.0) */
-  scaleMultipliers: Record<ScaleFactor, number>;
+  modes: Record<string, number>;
+  /** Multipliers for different features/models */
+  featureMultipliers: Record<string, number>;
   /** Additional costs for premium options (future features) */
   options: {
-    /** Extra cost for custom prompt */
-    customPrompt: number;
     /** Extra cost for priority processing (future) */
     priorityProcessing: number;
-    /** Extra cost for batch processing per image (future) */
-    batchPerImage: number;
+    /** Extra cost for batch processing per request (future) */
+    batchPerRequest: number;
   };
   /** Minimum credit cost for any operation */
   minimumCost: number;
@@ -122,7 +118,7 @@ export interface IFreeUserConfig {
   monthlyCredits: number;
   /** Maximum balance for free users */
   maxBalance: number;
-  /** Maximum images in batch queue for free users */
+  /** Maximum requests in batch queue for free users */
   batchLimit: number;
 }
 

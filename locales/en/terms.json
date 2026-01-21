@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Terms of Service",
-    "description": "Read the terms and conditions for using {APP_NAME} image upscaling and enhancement services."
+    "description": "Read the terms and conditions for using {APP_NAME} API services."
   },
   "lastUpdated": "Last updated: {date}",
   "title": "Terms of Service",
@@ -13,12 +13,12 @@
   },
   "description": {
     "title": "2. Description of Service",
-    "intro": "{APP_NAME} provides AI-powered image upscaling and enhancement services. The Service allows users to:",
+    "intro": "{APP_NAME} provides API services for various operations. The Service allows users to:",
     "features": [
-      "Upload images for AI-powered enhancement",
-      "Upscale images to higher resolutions (2x, 4x)",
-      "Improve image quality while preserving text and logos",
-      "Download processed images"
+      "Make API requests to process data",
+      "Access various endpoints for different operations",
+      "Integrate with their applications",
+      "Receive results in standard formats"
     ]
   },
   "registration": {
@@ -36,7 +36,7 @@
     "title": "4. Credits and Payments",
     "system": {
       "title": "4.1 Credit System",
-      "description": "The Service operates on a credit-based system. Each image processing action consumes credits based on the operation type and image size."
+      "description": "The Service operates on a credit-based system. Each API request consumes credits based on the operation type and resources used."
     },
     "free": {
       "title": "4.2 Free Credits",
@@ -78,9 +78,9 @@
     "intro": "You agree NOT to use the Service to:",
     "prohibitions": [
       "Process illegal, harmful, or offensive content",
-      "Process images you do not have rights to use",
+      "Process data you do not have rights to use",
       "Generate or enhance content depicting minors in inappropriate ways",
-      "Create deepfakes or misleading content intended to deceive",
+      "Create misleading content intended to deceive",
       "Violate intellectual property rights of others",
       "Attempt to reverse-engineer or exploit the Service",
       "Use automated systems to abuse the Service",
@@ -93,7 +93,7 @@
     "title": "7. Intellectual Property",
     "yourContent": {
       "title": "7.1 Your Content",
-      "description": "You retain all rights to images you upload. By using the Service, you grant us a limited license to process your images solely for providing the requested service."
+      "description": "You retain all rights to data you process. By using the Service, you grant us a limited license to process your data solely for providing the requested service."
     },
     "ourService": {
       "title": "7.2 Our Service",
@@ -130,7 +130,7 @@
       "Non-infringement",
       "Accuracy or reliability of results"
     ],
-    "caveat": "AI-generated enhancements may not always meet expectations. Results depend on input image quality and other factors."
+    "caveat": "API results may not always meet expectations. Results depend on input data quality and other factors."
   },
   "indemnification": {
     "title": "11. Indemnification",

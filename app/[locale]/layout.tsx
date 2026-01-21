@@ -8,10 +8,19 @@ import { ClientProviders } from '@client/components/ClientProviders';
 import { AhrefsAnalytics } from '@client/components/analytics/AhrefsAnalytics';
 import { GoogleAnalytics } from '@client/components/analytics/GoogleAnalytics';
 import { Layout } from '@client/components/layout/Layout';
-import { JsonLd } from '@client/components/seo/JsonLd';
 import { SUPPORTED_LOCALES, isValidLocale } from '@/i18n/config';
 import { clientEnv } from '@shared/config/env';
 import '@client/styles/index.css';
+
+// Simple JsonLd component replacement
+interface IJsonLdProps {
+  data: Record<string, unknown>;
+}
+function JsonLd({ data }: IJsonLdProps) {
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  );
+}
 
 const APP_NAME = clientEnv.APP_NAME;
 

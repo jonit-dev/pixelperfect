@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Workspace from '@client/components/features/workspace/Workspace';
 
 export default function DashboardPage() {
   const t = useTranslations('dashboard');
@@ -14,8 +13,14 @@ export default function DashboardPage() {
         <p className="text-muted-foreground mt-1">{t('subtitle')}</p>
       </div>
 
-      {/* Workspace with Upload Dropzone */}
-      <Workspace />
+      {/* Workspace placeholder - feature components were extracted to boilerplate */}
+      <div className="p-8 border rounded-lg bg-muted/50">
+        <p className="text-center text-muted-foreground">
+          Workspace component has been extracted to the boilerplate.
+          <br />
+          Please implement your custom workspace UI here.
+        </p>
+      </div>
     </div>
   );
 }

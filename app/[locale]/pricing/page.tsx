@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import PricingPageClient from './PricingPageClient';
-import { generatePricingSchema } from '@lib/seo/schema-generator';
 import { clientEnv } from '@shared/config/env';
 
 export const metadata: Metadata = {
@@ -32,21 +31,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${clientEnv.BASE_URL}/pricing`,
   },
-  other: {
-    'application/ld+json': JSON.stringify(generatePricingSchema()),
-  },
 };
 
 export default function PricingPage() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generatePricingSchema()),
-        }}
-      />
-      <PricingPageClient />
-    </>
-  );
+  return <PricingPageClient />;
 }

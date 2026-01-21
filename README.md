@@ -1,6 +1,6 @@
-# myimageupscaler.com
+# SaaS Boilerplate
 
-AI-powered image processing SaaS application built with Next.js, Supabase, and Stripe.
+A production-ready Next.js SaaS boilerplate with authentication, payments, credits system, and all the essential features you need to launch your SaaS product quickly.
 
 ## Tech Stack
 

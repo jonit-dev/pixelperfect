@@ -49,7 +49,7 @@ const nextConfig = {
     ],
   },
   // External packages that shouldn't be bundled into the server
-  serverExternalPackages: ['@imgly/background-removal', 'onnxruntime-web'],
+  serverExternalPackages: [],
   // Webpack configuration for bundle size optimization
   webpack: (config, { isServer }) => {
     if (isServer) {
@@ -62,45 +62,7 @@ const nextConfig = {
     return config;
   },
   async redirects() {
-    return [
-      // Legacy URL redirects
-      {
-        source: '/upscale',
-        destination: '/tools/ai-image-upscaler',
-        permanent: true,
-      },
-      {
-        source: '/enhance',
-        destination: '/tools/ai-photo-enhancer',
-        permanent: true,
-      },
-      // Category redirects (singular to plural)
-      {
-        source: '/tool/:slug',
-        destination: '/tools/:slug',
-        permanent: true,
-      },
-      {
-        source: '/format/:slug',
-        destination: '/formats/:slug',
-        permanent: true,
-      },
-      {
-        source: '/guide/:slug',
-        destination: '/guides/:slug',
-        permanent: true,
-      },
-      {
-        source: '/use-case/:slug',
-        destination: '/use-cases/:slug',
-        permanent: true,
-      },
-      {
-        source: '/alternative/:slug',
-        destination: '/alternatives/:slug',
-        permanent: true,
-      },
-    ];
+    return [];
   },
   // Headers handled by middleware (lib/middleware/securityHeaders.ts)
   // Static asset caching handled by Cloudflare CDN automatically

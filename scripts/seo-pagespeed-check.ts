@@ -1,12 +1,12 @@
 #!/usr/bin/env tsx
 /**
- * PageSpeed Insights Check for MyImageUpscaler
+ * PageSpeed Insights Check
  * Fetches Core Web Vitals and performance data from Google PageSpeed API
  *
  * Usage:
- *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://myimageupscaler.com
- *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://myimageupscaler.com --url=/pricing
- *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://myimageupscaler.com --strategy=desktop
+ *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://example.com
+ *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://example.com --url=/pricing
+ *   yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://example.com --strategy=desktop
  *
  * Note: Set PAGESPEED_API_KEY in .env.api for higher quotas
  */
@@ -97,7 +97,7 @@ function parseArgs(): IArgs {
   if (!result.baseUrl) {
     console.error('Error: --base-url is required (or set SITE_URL env var)');
     console.log('\nUsage:');
-    console.log('  yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://myimageupscaler.com');
+    console.log('  yarn tsx scripts/seo-pagespeed-check.ts --base-url=https://example.com');
     process.exit(1);
   }
 

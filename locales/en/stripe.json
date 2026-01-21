@@ -7,7 +7,7 @@
   },
   "outOfCredits": {
     "title": "You're Out of Credits",
-    "description": "Purchase credits to continue processing images, or subscribe for better value.",
+    "description": "Purchase credits to continue using the API, or subscribe for better value.",
     "buyCredits": "Buy Credits",
     "subscribe": "Subscribe (Best Value)",
     "subscribeNote": "Subscribe for up to 58% cheaper credits",
@@ -17,12 +17,10 @@
   },
   "insufficientCredits": {
     "title": "Not Enough Credits",
-    "description": "This batch requires {requiredCredits} credits. You have {currentBalance}.",
+    "description": "This operation requires {requiredCredits} credits. You have {currentBalance}.",
     "buyCredits": "Buy {deficit}+ Credits",
     "viewPlans": "View Plans (Save up to 58%)",
-    "reduceBatch": "Or reduce batch size to {count} {image} to process with your current balance",
-    "image": "image",
-    "images": "images"
+    "reduceBatch": "Or adjust your operation to use fewer credits"
   },
   "cancelSubscription": {
     "title": "Cancel Subscription",
@@ -76,6 +74,6 @@
       "tomorrow": " (tomorrow)",
       "days": " (in {days} days)"
     },
-    "startUpscaling": "Start upscaling now"
+    "startUpscaling": "Use your credits now"
   }
 }

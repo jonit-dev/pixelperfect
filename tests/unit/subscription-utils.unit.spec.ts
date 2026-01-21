@@ -284,8 +284,8 @@ describe('buildHomepageTiers', () => {
     expect(starterTier?.features).toContain('100 credits per month');
     expect(starterTier?.features).toContain('Credits roll over (up to 300)');
     expect(starterTier?.features).toContain('Email support');
-    expect(starterTier?.features).toContain('All AI models included');
-    expect(starterTier?.features).toContain('Batch upload up to 5 images');
+    // Note: Removed image-specific features "All AI models included" and "Batch upload up to 5 images"
+    // These are replaced with generic API features
   });
 
   test('should have correct CTA for Starter tier', () => {

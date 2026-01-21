@@ -29,15 +29,15 @@
     "title": "Frequently Asked Questions",
     "creditsUsedFor": {
       "question": "What are credits used for?",
-      "answer": "Credits are used for image processing actions. Each image processed consumes a certain number of credits based on the upscaling factor and features used."
+      "answer": "Credits are used for API requests. Each request consumes a certain number of credits based on the operation and resources used."
     },
     "creditsExpire": {
       "question": "Do credits expire?",
       "answer": "Subscription credits roll over month-to-month up to your plan's maximum limit as long as your subscription is active."
     },
     "batchProcessing": {
-      "question": "What is batch processing?",
-      "answer": "Batch processing allows you to upload and process multiple images at once. Free users can process 1 image at a time, while paid plans support batch processing of up to 10, 50, or 500 images simultaneously depending on your plan."
+      "question": "What are the rate limits?",
+      "answer": "Free users have basic rate limits. Paid plans support higher request volumes and concurrent requests depending on your plan tier."
     },
     "cancelSubscription": {
       "question": "Can I cancel my subscription anytime?",
@@ -49,7 +49,7 @@
     },
     "freePlan": {
       "question": "Is there a free plan?",
-      "answer": "Yes! Free users get initial credits to try the service. However, batch processing and advanced features require a paid subscription. Free users can process one image at a time."
+      "answer": "Yes! Free users get initial credits to try the service. However, higher rate limits and advanced features require a paid subscription."
     }
   },
   "customPlan": {

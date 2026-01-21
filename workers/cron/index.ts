@@ -99,7 +99,7 @@ export default {
       return new Response(
         JSON.stringify({
           status: 'ok',
-          worker: env.CRON_SERVICE_NAME || 'myimageupscaler-cron',
+          worker: env.CRON_SERVICE_NAME || 'saas-boilerplate-cron',
           timestamp: new Date().toISOString(),
         }),
         {

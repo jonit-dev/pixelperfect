@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Privacy Policy",
-    "description": "Learn how {APP_NAME} collects, uses, and protects your personal information and uploaded images."
+    "description": "Learn how {APP_NAME} collects, uses, and protects your personal information and data."
   },
   "lastUpdated": "Last updated: {date}",
   "title": "Privacy Policy",
   "viewTerms": "View Terms of Service",
   "introduction": {
     "title": "1. Introduction",
-    "paragraph1": "Welcome to {APP_NAME} (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered image upscaling and enhancement service.",
+    "paragraph1": "Welcome to {APP_NAME} (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our API service.",
     "paragraph2": "By using {APP_NAME}, you agree to the collection and use of information in accordance with this policy."
   },
   "collection": {
@@ -23,13 +23,13 @@
         "Authentication data from third-party providers (Google) if you choose to sign in with OAuth"
       ]
     },
-    "images": {
-      "title": "2.2 Uploaded Images",
-      "intro": "When you use our service, you upload images for processing. We:",
+    "apiData": {
+      "title": "2.2 API Data",
+      "intro": "When you use our service, you send data for processing. We:",
       "items": [
-        "Process your images using AI technology to enhance or upscale them",
-        "Do not permanently store your original or processed images on our servers after processing is complete",
-        "Do not use your images to train AI models or for any purpose other than providing the requested service"
+        "Process your data to provide the requested API service",
+        "Do not permanently store your data on our servers after processing is complete",
+        "Do not use your data to train models or for any purpose other than providing the requested service"
       ]
     },
     "payment": {
@@ -46,7 +46,7 @@
         "Pages visited and time spent",
         "Device information",
         "Referring website",
-        "Processing history (number of images processed, credits used)"
+        "API usage history (number of requests, credits used)"
       ]
     }
   },
@@ -55,7 +55,7 @@
     "intro": "We use the collected information to:",
     "items": [
       "Provide, maintain, and improve our services",
-      "Process your image enhancement requests",
+      "Process your API requests",
       "Manage your account and credit balance",
       "Process payments and send transaction receipts",
       "Send service-related communications (password resets, account notifications)",
@@ -97,7 +97,7 @@
   "retention": {
     "title": "6. Data Retention",
     "paragraph1": "We retain your account information for as long as your account is active. You may request deletion of your account and associated data at any time.",
-    "paragraph2": "Uploaded images are processed in real-time and are not permanently stored. Transaction records are retained for legal and accounting purposes."
+    "paragraph2": "API data is processed in real-time and is not permanently stored. Transaction records are retained for legal and accounting purposes."
   },
   "rights": {
     "title": "7. Your Rights",
