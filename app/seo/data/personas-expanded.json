@@ -4,7 +4,7 @@
     {
       "slug": "photographers",
       "title": "Image Upscaler for Photographers",
-      "metaTitle": "Professional Image Upscaler for Photographers | Studio Quality Enhancement",
+      "metaTitle": "Pro Image Upscaler for Photographers: Studio Quality",
       "metaDescription": "Professional AI image upscaler designed for photographers. Enhance RAW files, improve resolution, and maintain quality. Perfect for wedding, portrait, and la...",
       "h1": "Professional Image Upscaling for Photographers",
       "intro": "Elevate your photography with AI-powered image enhancement technology designed specifically for professional photographers. Maintain artistic integrity while achieving superior resolution and quality.",
@@ -280,7 +280,7 @@
     {
       "slug": "graphic-designers",
       "title": "Image Upscaler for Designers",
-      "metaTitle": "Professional Image Upscaler for Graphic Designers | Creative Workflow",
+      "metaTitle": "Pro Image Upscaler for Designers: Creative Workflow",
       "metaDescription": "AI-powered image upscaler for graphic designers. Enhance assets, improve resolution, and maintain quality for print and web design. Perfect for creative prof...",
       "h1": "Image Upscaling for Graphic Designers",
       "intro": "Professional AI image enhancement tailored for graphic designers. Elevate your design projects with superior image quality while maintaining your creative vision and workflow efficiency.",
@@ -558,7 +558,7 @@
     {
       "slug": "ecommerce-sellers",
       "title": "Product Image Upscaler for E-commerce",
-      "metaTitle": "E-commerce Product Image Upscaler | Increase Sales with Better Photos",
+      "metaTitle": "E-commerce Product Upscaler: Increase Sales",
       "metaDescription": "Professional AI upscaler for e-commerce product images. Enhance product photos, improve resolution, and boost conversions. Perfect for Amazon, Shopify, and o...",
       "h1": "Product Image Enhancement for E-commerce",
       "intro": "Transform your product photography with AI-powered enhancement designed specifically for e-commerce. Higher quality images lead to increased customer trust and better conversion rates.",
@@ -836,7 +836,7 @@
     {
       "slug": "real-estate-agents",
       "title": "Real Estate Photo Upscaler",
-      "metaTitle": "Real Estate Photo Enhancer | Professional Property Photography",
+      "metaTitle": "Real Estate Photo Enhancer: Property Photos",
       "metaDescription": "Professional AI photo upscaler for real estate agents. Enhance property photos, improve listing quality, and attract more buyers. Perfect for MLS and Zillow.",
       "h1": "Real Estate Photo Enhancement",
       "intro": "Transform your property photography with AI-powered enhancement designed specifically for real estate. Higher quality photos attract more buyers and sell properties faster.",
@@ -2614,7 +2614,13 @@
         }
       ],
       "technicalSpecs": {
-        "outputFormats": ["WebP", "AVIF", "JPEG", "PNG", "GIF"],
+        "outputFormats": [
+          "WebP",
+          "AVIF",
+          "JPEG",
+          "PNG",
+          "GIF"
+        ],
         "optimization": {
           "compression": "Advanced compression algorithms for web optimization",
           "resizing": "Smart resizing with content-aware cropping",

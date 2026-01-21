@@ -4,7 +4,7 @@
     {
       "slug": "ecommerce-product-photos",
       "title": "E-commerce Product Photos",
-      "metaTitle": "E-commerce Product Photo Requirements by Platform | MyImageUpscaler",
+      "metaTitle": "E-commerce Product Photo Requirements by Platform",
       "metaDescription": "Exact image requirements for Amazon, eBay, Etsy, Shopify. Learn minimum sizes, aspect ratios, and how to upscale product photos to meet platform standards.",
       "h1": "E-commerce Product Photo Requirements",
       "intro": "Every marketplace has specific image requirements. Here's exactly what you need for each platform and how to get there.",
@@ -133,12 +133,14 @@
           "answer": "Most platforms prefer 1:1 (square). If your product is rectangular, either add white space to make it square, or crop to fit. Amazon's main image must be square."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "real-estate-listings",
       "title": "Real Estate Photo Guidelines",
-      "metaTitle": "Real Estate Photo Requirements by Platform | MLS, Zillow, Realtor.com",
+      "metaTitle": "Real Estate Photo Requirements: MLS, Zillow",
       "metaDescription": "Image requirements for MLS, Zillow, Realtor.com, and Redfin. Learn optimal sizes, aspect ratios, and quality standards for real estate photography with guide...",
       "h1": "Real Estate Listing Photo Requirements",
       "intro": "Different real estate platforms have different image specifications. Here's what you need for the major listing sites.",
@@ -243,12 +245,15 @@
           "answer": "Yes, but quality depends on the source. iPhone 6 era photos (2-3MP) can upscale reasonably to 4-6MP. Very old photos have limits."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"]
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ]
     },
     {
       "slug": "social-media-images",
       "title": "Social Media Image Sizes",
-      "metaTitle": "Social Media Image Size Guide 2025 | Instagram, Facebook, Twitter, LinkedIn",
+      "metaTitle": "Social Media Image Size Guide | IG, FB, Twitter, LinkedIn",
       "metaDescription": "Complete guide to social media image dimensions. Optimal sizes for Instagram, Facebook, Twitter, LinkedIn, TikTok, and Pinterest with exact pixel dimensions.",
       "h1": "Social Media Image Size Guide",
       "intro": "Every platform has different optimal image sizes. Here are the exact dimensions for each platform in 2025.",
@@ -464,12 +469,14 @@
           "answer": "JPEG for photos (smaller file, good enough quality). PNG for graphics with text or transparency. All platforms accept both."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "print-preparation",
       "title": "Print Size Guide",
-      "metaTitle": "Image Resolution for Printing Guide | DPI Calculator & Size Chart",
+      "metaTitle": "Image Resolution for Print: DPI Calculator Guide",
       "metaDescription": "Calculate exact pixel dimensions for any print size. DPI requirements, paper sizes, and how to prepare images for printing. Perfect for professional printing...",
       "h1": "Print Resolution Guide",
       "intro": "Print requires higher resolution than screen display. Here's exactly what you need for different print sizes.",
@@ -568,8 +575,8 @@
       ],
       "calculationFormula": {
         "title": "Calculate Required Pixels",
-        "formula": "Pixels = Print Size (inches) \u00d7 DPI",
-        "example": "For 8x10 inch print at 300 DPI: 8\u00d7300 = 2400 pixels wide, 10\u00d7300 = 3000 pixels tall"
+        "formula": "Pixels = Print Size (inches) × DPI",
+        "example": "For 8x10 inch print at 300 DPI: 8×300 = 2400 pixels wide, 10×300 = 3000 pixels tall"
       },
       "upscalingForPrint": [
         {
@@ -627,7 +634,9 @@
           "answer": "Divide pixel dimensions by 300 for max size at full quality. A 3000x2000px image prints at 10x6.7 inches at 300 DPI, or 20x13.3 inches at 150 DPI."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "old-photo-restoration",
@@ -776,7 +785,10 @@
           "answer": "Moderately damaged photos see significant improvement. Severely damaged photos will look better but won't become perfect. Very old photos (pre-1900) have inherent limitations."
         }
       ],
-      "relatedTools": ["ai-photo-enhancer", "ai-image-upscaler"]
+      "relatedTools": [
+        "ai-photo-enhancer",
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "amazon-product-photos",
@@ -901,7 +913,9 @@
           "answer": "JPEG is preferred for most product photos due to smaller file sizes. Use 85-95% quality setting. PNG is better only if you need transparency (though Amazon main images require white backgrounds anyway)."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "real-estate-photo-enhancement",
@@ -1054,12 +1068,15 @@
           "answer": "25-50 photos is optimal for most properties. Include exterior, all main rooms, key features (kitchen, bathrooms, closets), and any unique selling points. Quality matters more than quantity - 25 great photos beat 50 mediocre ones."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"]
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ]
     },
     {
       "slug": "anime-image-upscaler",
       "title": "Anime Image Upscaler",
-      "metaTitle": "Anime Image Upscaler Online - Upscale Anime & Manga Art | MyImageUpscaler",
+      "metaTitle": "Anime Image Upscaler Online - Upscale Anime & Manga Art",
       "metaDescription": "Upscale anime images, manga panels, and illustrations without artifacts. AI preserves clean lines and flat colors. Free online tool for anime fans. Try it free!",
       "h1": "Anime Image Upscaler Online",
       "intro": "Upscale your favorite anime screenshots, manga scans, and digital art while preserving the clean lines and vibrant colors that define anime style.",
@@ -1215,12 +1232,14 @@
           "answer": "Yes, our AI upscaler handles anime images for free with no watermarks. You can upscale anime screenshots, manga panels, and digital art up to 4x without paying. Premium plans offer batch processing and higher file size limits."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "cartoon-image-upscaler",
       "title": "Cartoon Image Upscaler",
-      "metaTitle": "Cartoon Image Upscaler Online - Enhance Cartoons & Comics | MyImageUpscaler",
+      "metaTitle": "Cartoon Image Upscaler Online - Enhance Cartoons & Comics",
       "metaDescription": "Upscale cartoon images, comics, and illustrations. Clean lines, vibrant colors preserved. Free online tool, no signup, batch processing, instant HD results. ...",
       "h1": "Cartoon Image Upscaler Online",
       "intro": "Enhance your favorite cartoon screenshots, comic panels, and illustrations while preserving the clean lines and flat colors that define cartoon and comic art styles.",
@@ -1312,12 +1331,14 @@
           "answer": "Yes! Our AI upscaler handles cartoon and comic images with a free tier. You can upscale cartoons, comics, and illustrations without watermarks. Premium plans offer batch processing for entire collections."
         }
       ],
-      "relatedTools": ["ai-image-upscaler"]
+      "relatedTools": [
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "portrait-photo-upscaler",
       "title": "Portrait Photo Upscaler",
-      "metaTitle": "Portrait Photo Upscaler - AI Face Enhancement | MyImageUpscaler",
+      "metaTitle": "Portrait Photo Upscaler - AI Face Enhancement",
       "metaDescription": "Upscale portrait photos with AI face enhancement. Improve facial details, skin texture, and overall quality with no signup. Batch processing, instant HD resu...",
       "h1": "Portrait Photo Upscaler - AI Face Enhancement",
       "intro": "Transform your portrait photos with specialized AI face enhancement technology. Improve facial features, skin texture, and overall image quality while maintaining natural appearance.",
@@ -1418,7 +1439,10 @@
           "answer": "Batch processing is available on paid tiers (Starter: 5 images, Hobby: 10 images, Pro: 50 images, Business: 500 images per batch). Free tier processes single images only."
         }
       ],
-      "relatedTools": ["ai-image-upscaler", "ai-photo-enhancer"]
+      "relatedTools": [
+        "ai-image-upscaler",
+        "ai-photo-enhancer"
+      ]
     },
     {
       "slug": "product-photo-background-removal",
@@ -1496,7 +1520,10 @@
           "answer": "The AI removes background completely, including shadows. For product photos with natural shadows, you may want to add a subtle drop shadow after removal for a polished look."
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-image-upscaler"]
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-image-upscaler"
+      ]
     },
     {
       "slug": "portrait-background-removal",
@@ -1574,7 +1601,10 @@
           "answer": "Yes, you can remove backgrounds and add compliant white or blue backgrounds. Note that official ID photos may have specific lighting and composition requirements beyond background color."
         }
       ],
-      "relatedTools": ["ai-background-remover", "ai-photo-enhancer"]
+      "relatedTools": [
+        "ai-background-remover",
+        "ai-photo-enhancer"
+      ]
     }
   ],
   "meta": {
