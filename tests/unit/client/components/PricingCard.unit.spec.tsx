@@ -48,6 +48,7 @@ vi.mock('@client/components/stripe/CheckoutModal', () => ({
 vi.mock('@client/store/modalStore', () => ({
   useModalStore: vi.fn(() => ({
     openAuthModal: vi.fn(),
+    openAuthRequiredModal: vi.fn(),
   })),
 }));
 
@@ -113,6 +114,7 @@ const mockHistory = window.history as { replaceState: ReturnType<typeof vi.fn> }
 
 describe('PricingCard', () => {
   const mockOpenAuthModal = vi.fn();
+  const mockOpenAuthRequiredModal = vi.fn();
   const mockShowToast = vi.fn();
 
   beforeEach(() => {
@@ -125,7 +127,8 @@ describe('PricingCard', () => {
 
     mockUseModalStore.mockReturnValue({
       openAuthModal: mockOpenAuthModal,
-    } as { openAuthModal: typeof mockOpenAuthModal });
+      openAuthRequiredModal: mockOpenAuthRequiredModal,
+    } as { openAuthModal: typeof mockOpenAuthModal; openAuthRequiredModal: typeof mockOpenAuthRequiredModal });
 
     mockUseToastStore.mockReturnValue({
       showToast: mockShowToast,
@@ -241,7 +244,7 @@ describe('PricingCard', () => {
     });
   });
 
-  it('handles authentication errors by opening auth modal', async () => {
+  it('handles authentication errors by opening auth required modal', async () => {
     simulateMobileViewport(); // Use mobile to trigger redirectToCheckout
     const user = userEvent.setup();
     const authError = new Error('User not authenticated');
@@ -258,7 +261,7 @@ describe('PricingCard', () => {
         '',
         'http://localhost:3000/pricing?checkout_price=price_pro_monthly_123'
       );
-      expect(mockOpenAuthModal).toHaveBeenCalledWith('login');
+      expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
     });
   });
 
@@ -380,6 +383,12 @@ describe('PricingCard', () => {
       mockUseUserStore.mockReturnValue({
         isAuthenticated: false,
       } as { isAuthenticated: boolean });
+
+      // Also ensure modal store mock is still available
+      mockUseModalStore.mockReturnValue({
+        openAuthModal: mockOpenAuthModal,
+        openAuthRequiredModal: mockOpenAuthRequiredModal,
+      } as { openAuthModal: typeof mockOpenAuthModal; openAuthRequiredModal: typeof mockOpenAuthRequiredModal });
     });
 
     it('should reset processing state when unauthenticated user clicks subscribe', async () => {
@@ -396,7 +405,7 @@ describe('PricingCard', () => {
       });
     });
 
-    it('should open login modal when unauthenticated user clicks subscribe', async () => {
+    it('should open auth required modal when unauthenticated user clicks subscribe', async () => {
       const user = userEvent.setup();
       renderWithTranslations(<PricingCard {...defaultProps} />);
 
@@ -404,7 +413,7 @@ describe('PricingCard', () => {
       await user.click(subscribeButton);
 
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledWith('login');
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
       });
     });
 
@@ -434,6 +443,7 @@ describe('PricingCard', () => {
       await waitFor(() => {
         expect(mockShowToast).toHaveBeenCalledWith(
           expect.objectContaining({
+            message: 'Please sign in or create an account to complete your purchase',
             type: 'info',
           })
         );
@@ -448,7 +458,7 @@ describe('PricingCard', () => {
       await user.click(subscribeButton);
 
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalled();
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
       });
 
       expect(mockStripeService.redirectToCheckout).not.toHaveBeenCalled();
@@ -465,11 +475,11 @@ describe('PricingCard', () => {
       // First click - should open auth modal
       await user.click(subscribeButton);
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledTimes(1);
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalledTimes(1);
       });
 
       // Reset mock to check for second call
-      mockOpenAuthModal.mockClear();
+      mockOpenAuthRequiredModal.mockClear();
 
       // Wait for debounce period (500ms)
       vi.advanceTimersByTime(600);
@@ -477,7 +487,7 @@ describe('PricingCard', () => {
       // Second click - should work again (not stuck on Processing...)
       await user.click(subscribeButton);
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledTimes(1);
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalledTimes(1);
       });
 
       vi.useRealTimers();
@@ -1203,7 +1213,7 @@ describe('PricingCard', () => {
       await user.click(subscribeButton);
 
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledWith('login');
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
         expect(mockHistory.replaceState).toHaveBeenCalledWith(
           {},
           '',
@@ -1223,7 +1233,7 @@ describe('PricingCard', () => {
       await user.click(subscribeButton);
 
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledWith('login');
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
       });
     });
 
@@ -1238,7 +1248,7 @@ describe('PricingCard', () => {
       await user.click(subscribeButton);
 
       await waitFor(() => {
-        expect(mockOpenAuthModal).toHaveBeenCalledWith('login');
+        expect(mockOpenAuthRequiredModal).toHaveBeenCalled();
       });
     });
   });

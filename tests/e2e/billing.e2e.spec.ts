@@ -51,16 +51,16 @@ test.describe('Billing E2E Tests', () => {
       // Wait a moment for the modal/toast to appear (avoid networkIdle due to Supabase connection)
       await page.waitForTimeout(1000);
 
-      // Check that auth modal is shown - the AuthenticationModal uses modalId 'authenticationModal'
+      // Check that auth modal is shown - now opens register modal for new users
       const authModal = page
         .locator('#authenticationModal')
-        .or(page.locator('div[role="dialog"]').filter({ hasText: /sign in|login/i }));
+        .or(page.locator('div[role="dialog"]').filter({ hasText: /create account|register|email/i }));
 
       // Also check for toast notification
       const toast = page
         .locator('[role="status"]')
         .or(page.locator('.toast'))
-        .or(page.locator('text=/Please sign in/i'));
+        .or(page.locator('text=/Please create an account/i'));
 
       // Wait a moment for the modal/toast to appear
       await page.waitForTimeout(500);
@@ -417,12 +417,12 @@ test.describe('Billing E2E Tests', () => {
       // Check for auth modal or toast notification
       const authModal = page
         .locator('#authenticationModal')
-        .or(page.locator('div[role="dialog"]').filter({ hasText: /sign in|login/i }));
+        .or(page.locator('div[role="dialog"]').filter({ hasText: /create account|register|email/i }));
 
       const toast = page
         .locator('[role="status"]')
         .or(page.locator('.toast'))
-        .or(page.locator('text=/Please sign in/i'));
+        .or(page.locator('text=/Please create an account/i'));
 
       // Wait a moment for the modal/toast to appear
       await page.waitForTimeout(500);

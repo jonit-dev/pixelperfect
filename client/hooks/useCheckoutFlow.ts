@@ -3,6 +3,7 @@ import { useUserStore } from '@client/store/userStore';
 import { useModalStore } from '@client/store/modalStore';
 import { useToastStore } from '@client/store/toastStore';
 import { StripeService } from '@client/services/stripeService';
+import { prepareAuthRedirect } from '@client/utils/authRedirectManager';
 
 interface IUseCheckoutFlowOptions {
   priceId: string;
@@ -36,7 +37,7 @@ export function useCheckoutFlow({
   disabled = false,
 }: IUseCheckoutFlowOptions): IUseCheckoutFlowReturn {
   const { isAuthenticated } = useUserStore();
-  const { openAuthModal } = useModalStore();
+  const { openAuthRequiredModal } = useModalStore();
   const { showToast } = useToastStore();
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -94,11 +95,15 @@ export function useCheckoutFlow({
       }
 
       // If not authenticated, redirect to auth
+      // Use auth required modal which lets users choose sign in or create account
       if (!isAuthenticated) {
+        // Store checkout intent so user returns to checkout after auth
+        prepareAuthRedirect('checkout', { context: { priceId } });
+
         window.history.replaceState({}, '', `${window.location.href}?checkout_price=${priceId}`);
-        openAuthModal('login');
+        openAuthRequiredModal();
         showToast({
-          message: 'Please sign in to complete your purchase',
+          message: 'Please sign in or create an account to complete your purchase',
           type: 'info',
         });
         setIsProcessing(false);
@@ -135,14 +140,18 @@ export function useCheckoutFlow({
       });
 
       // Handle authentication errors
+      // Use auth required modal which lets users choose sign in or create account
       if (
         error instanceof Error &&
         (error.message.includes('User not authenticated') ||
           error.message.includes('Missing authorization header') ||
           error.message.includes('Invalid authentication token'))
       ) {
+        // Store checkout intent so user returns to checkout after auth
+        prepareAuthRedirect('checkout', { context: { priceId } });
+
         window.history.replaceState({}, '', `${window.location.href}?checkout_price=${priceId}`);
-        openAuthModal('login');
+        openAuthRequiredModal();
         setIsProcessing(false);
         return;
       }
@@ -180,7 +189,7 @@ export function useCheckoutFlow({
     onSelect,
     priceId,
     isAuthenticated,
-    openAuthModal,
+    openAuthRequiredModal,
     showToast,
     lastClickTime,
   ]);

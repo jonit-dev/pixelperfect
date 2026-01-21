@@ -19,6 +19,7 @@ interface IModalStore {
   // Auth modal specific actions
   setAuthModalView: (view: AuthModalView) => void;
   openAuthModal: (view: AuthModalView) => void;
+  openAuthRequiredModal: () => void;
 }
 
 export const useModalStore = create<IModalStore>((set, get) => ({
@@ -37,4 +38,6 @@ export const useModalStore = create<IModalStore>((set, get) => ({
   setAuthModalView: (view: AuthModalView) => set({ authModalView: view }),
   openAuthModal: (view: AuthModalView) =>
     set({ isOpen: true, modalId: 'authenticationModal', authModalView: view }),
+  openAuthRequiredModal: () =>
+    set({ isOpen: true, modalId: 'authRequiredModal', authModalView: 'login' }),
 }));
