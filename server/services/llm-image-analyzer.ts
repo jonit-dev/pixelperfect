@@ -1,67 +1,10 @@
 import type { ModelId } from '@/shared/types/coreflow.types';
 import type { ILLMAnalysisResult } from './llm-image-analyzer.types';
-import { ModelRegistry } from './model-registry';
 import { OpenRouterService } from './openrouter.service';
+import { buildAnalysisPrompt } from './internal/prompt-builder';
+import { DEFAULT_ENHANCEMENT_PROMPT, ISSUE_TYPE_PROMPTS } from './internal/prompt-constants';
 
-/**
- * Build the analysis prompt dynamically based on eligible models
- * This ensures the VL model only recommends from available models
- */
-function buildAnalysisPrompt(eligibleModelIds: ModelId[]): string {
-  const registry = ModelRegistry.getInstance();
-
-  // Build model descriptions dynamically from registry
-  const modelDescriptions = eligibleModelIds
-    .map(id => {
-      const model = registry.getModel(id);
-      if (!model) return null;
-
-      // Generate use-case description based on capabilities
-      const capabilities = model.capabilities;
-      let useCase = '';
-
-      if (capabilities.includes('face-restoration')) {
-        useCase =
-          'Face restoration specialist. Best for portraits, old family photos, images with faces.';
-      } else if (capabilities.includes('text-preservation')) {
-        useCase = 'Text and logo preservation. Best for documents, screenshots, images with text.';
-      } else if (capabilities.includes('damage-repair') && model.creditMultiplier >= 8) {
-        useCase =
-          'Premium heavy restoration. Best for severely damaged, very old, or heavily degraded images.';
-      } else if (capabilities.includes('enhance') && model.creditMultiplier >= 4) {
-        useCase =
-          'High-quality upscaling with detail enhancement. Best for photos with moderate noise.';
-      } else {
-        useCase = 'Fast general upscaling. Best for clean images needing higher resolution.';
-      }
-
-      return `- ${id}: ${useCase}`;
-    })
-    .filter(Boolean)
-    .join('\n');
-
-  const modelIdList = eligibleModelIds.join('|');
-
-  return `You are an image quality analyst for a photo restoration service. Analyze this image and determine what improvements it needs.
-
-Available restoration models:
-${modelDescriptions}
-
-Analyze the image and respond with ONLY valid JSON (no markdown, no explanation):
-{
-  "issues": [{ "type": "blur|noise|compression|damage|low_resolution|faces|text", "severity": "low|medium|high", "description": "..." }],
-  "contentType": "photo|portrait|document|vintage|product|artwork",
-  "recommendedModel": "${modelIdList}",
-  "reasoning": "Brief explanation",
-  "confidence": 0.0-1.0,
-  "alternatives": ["model-id", ...],
-  "enhancementPrompt": "Specific instructions for the enhancement model, e.g., 'Restore facial details, reduce film grain, fix scratches on upper left'"
-}
-
-The enhancementPrompt should be a detailed instruction for the restoration model describing exactly what to fix.
-Prioritize accuracy over complexity - if a simple upscale will suffice, recommend the basic upscaler.
-IMPORTANT: Only recommend models from the available list above.`;
-}
+export { buildAnalysisPrompt };
 
 export class LLMImageAnalyzer {
   private openRouter: OpenRouterService;
@@ -76,12 +19,8 @@ export class LLMImageAnalyzer {
     eligibleModels: ModelId[]
   ): Promise<ILLMAnalysisResult> {
     const startTime = Date.now();
-    // Support both raw base64 and data URLs
-    const dataUrl = base64Image.startsWith('data:')
-      ? base64Image
-      : `data:${mimeType};base64,${base64Image}`;
+    const dataUrl = this.formatDataUrl(base64Image, mimeType);
 
-    // Try OpenRouter (Seed VL)
     try {
       const result = await this.analyzeWithOpenRouter(dataUrl, eligibleModels);
       return {
@@ -89,8 +28,8 @@ export class LLMImageAnalyzer {
         provider: 'openrouter',
         processingTimeMs: Date.now() - startTime,
       };
-    } catch (openRouterError) {
-      console.error('OpenRouter analysis failed, using default fallback:', openRouterError);
+    } catch {
+      console.error('OpenRouter analysis failed, using default fallback');
       return {
         ...this.getDefaultResult(eligibleModels),
         provider: 'fallback',
@@ -99,77 +38,58 @@ export class LLMImageAnalyzer {
     }
   }
 
+  private formatDataUrl(base64Image: string, mimeType: string): string {
+    return base64Image.startsWith('data:') ? base64Image : `data:${mimeType};base64,${base64Image}`;
+  }
+
   private async analyzeWithOpenRouter(
     imageDataUrl: string,
     eligibleModels: ModelId[]
   ): Promise<Omit<ILLMAnalysisResult, 'provider' | 'processingTimeMs'>> {
-    // Build prompt dynamically based on eligible models
     const prompt = buildAnalysisPrompt(eligibleModels);
-
     console.log('[LLM Analyzer] OpenRouter prompt:', prompt);
 
-    // Call OpenRouter service
     const responseText = await this.openRouter.analyzeImage(imageDataUrl, prompt);
     console.log('[LLM Analyzer] OpenRouter response:', responseText);
 
-    // Parse JSON from response
+    const result = this.parseJsonResponse(responseText);
+    return this.validateAndAdjustResult(result, eligibleModels);
+  }
+
+  private parseJsonResponse(responseText: string): ILLMAnalysisResult {
     const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       throw new Error('No JSON found in OpenRouter response');
     }
-
-    const result = JSON.parse(jsonMatch[0]) as ILLMAnalysisResult;
-    return this.validateAndAdjustResult(result, eligibleModels);
+    return JSON.parse(jsonMatch[0]);
   }
 
   private validateAndAdjustResult(
     result: ILLMAnalysisResult,
     eligibleModels: ModelId[]
-  ): Omit<ILLMAnalysisResult, 'provider' | 'processingTimeMs'> {
-    // Validate recommended model is eligible for user's tier
+  ): ILLMAnalysisResult {
     if (!eligibleModels.includes(result.recommendedModel)) {
       result.recommendedModel = this.findBestEligibleModel(result, eligibleModels);
       result.reasoning += ' (Adjusted for your subscription tier)';
     }
 
-    // Ensure enhancementPrompt exists
     if (!result.enhancementPrompt) {
-      result.enhancementPrompt = this.generateDefaultEnhancementPrompt(result);
+      result.enhancementPrompt = this.generateEnhancementPrompt(result);
     }
 
     return result;
   }
 
   private findBestEligibleModel(result: ILLMAnalysisResult, eligible: ModelId[]): ModelId {
-    for (const alt of result.alternatives || []) {
-      if (eligible.includes(alt)) return alt;
-    }
-    return eligible[0] || 'real-esrgan';
+    return result.alternatives?.find(alt => eligible.includes(alt)) ?? eligible[0] ?? 'real-esrgan';
   }
 
-  private generateDefaultEnhancementPrompt(result: ILLMAnalysisResult): string {
+  private generateEnhancementPrompt(result: ILLMAnalysisResult): string {
     const fixes = result.issues
       .filter(i => i.severity !== 'low')
-      .map(i => {
-        switch (i.type) {
-          case 'blur':
-            return 'sharpen and restore detail';
-          case 'noise':
-            return 'reduce noise while preserving detail';
-          case 'damage':
-            return 'repair damaged areas';
-          case 'faces':
-            return 'restore facial features';
-          case 'compression':
-            return 'remove compression artifacts';
-          default:
-            return i.description;
-        }
-      });
+      .map(i => ISSUE_TYPE_PROMPTS[i.type as keyof typeof ISSUE_TYPE_PROMPTS] ?? i.description);
 
-    return fixes.length > 0
-      ? `Enhance image: ${fixes.join(', ')}`
-      : 'Upscale and enhance image quality';
+    return fixes.length > 0 ? `Enhance image: ${fixes.join(', ')}` : DEFAULT_ENHANCEMENT_PROMPT;
   }
 
   private getDefaultResult(
@@ -178,11 +98,11 @@ export class LLMImageAnalyzer {
     return {
       issues: [],
       contentType: 'photo',
-      recommendedModel: eligible[0] || 'real-esrgan',
+      recommendedModel: eligible[0] ?? 'real-esrgan',
       reasoning: 'Standard upscaling selected (analysis unavailable).',
       confidence: 0.5,
       alternatives: eligible.slice(1, 3),
-      enhancementPrompt: 'Upscale and enhance image quality',
+      enhancementPrompt: DEFAULT_ENHANCEMENT_PROMPT,
     };
   }
 }

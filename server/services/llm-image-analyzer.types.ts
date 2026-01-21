@@ -9,7 +9,14 @@ export type IssueType =
   | 'faces'
   | 'text';
 export type IssueSeverity = 'low' | 'medium' | 'high';
-export type ContentType = 'photo' | 'portrait' | 'document' | 'vintage' | 'product' | 'artwork';
+export type ContentType =
+  | 'photo'
+  | 'portrait'
+  | 'document'
+  | 'vintage'
+  | 'product'
+  | 'artwork'
+  | 'anime';
 export type AnalysisProvider = 'openrouter' | 'replicate' | 'gemini' | 'fallback';
 
 export interface IDetectedIssue {
