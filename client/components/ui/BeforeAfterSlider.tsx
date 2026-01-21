@@ -103,10 +103,10 @@ export const BeforeAfterSlider: React.FC<IBeforeAfterSliderProps> = ({
 
       {/* Slider Handle */}
       <div
-        className="absolute top-0 bottom-0 w-1 bg-border/50 backdrop-blur-sm shadow-[0_0_10px_rgba(var(--color-text-primary),0.3)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
+        className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_8px_rgba(0,0,0,0.5)] cursor-col-resize flex items-center justify-center z-10 transform -translate-x-1/2"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="w-10 h-10 gradient-cta rounded-full shadow-xl shadow-accent/20 flex items-center justify-center border border-border">
+        <div className="w-10 h-10 gradient-cta rounded-full shadow-xl shadow-black/30 flex items-center justify-center border-2 border-white">
           <ArrowLeftRight size={14} className="text-white" />
         </div>
       </div>

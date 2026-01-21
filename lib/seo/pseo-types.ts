@@ -44,6 +44,13 @@ export interface IToolPage extends IBasePSEOPage {
   toolConfig?: IToolConfig; // Configuration passed to tool component
   maxFileSizeMB?: number;
   acceptedFormats?: string[];
+  // Custom before/after slider images (optional)
+  beforeAfterImages?: {
+    before: string;
+    after: string;
+    beforeLabel?: string;
+    afterLabel?: string;
+  };
 }
 
 /**

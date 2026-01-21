@@ -6,7 +6,8 @@ import {
   IEnhancementSettings,
   QualityTier,
 } from '@/shared/types/coreflow.types';
-import { Brain, ChevronDown, Edit3, Sparkles, Type, UserSquare2 } from 'lucide-react';
+import { Brain, ChevronDown, Edit3, ExternalLink, Sparkles, Type, UserSquare2 } from 'lucide-react';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 export interface IEnhancementOptionsProps {
@@ -89,9 +90,21 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
               <p
                 className={`text-xs mt-1 ${isFreeUser ? 'text-muted-foreground' : 'text-muted-foreground'}`}
               >
-                {isFreeUser
-                  ? 'Upgrade to let AI detect content type and optimize settings automatically.'
-                  : 'AI automatically detects image content and optimizes parameters for best results.'}
+                {isFreeUser ? (
+                  'Upgrade to let AI detect content type and optimize settings automatically.'
+                ) : (
+                  <>
+                    AI automatically detects image content and optimizes parameters for best results.{' '}
+                    <Link
+                      href="/tools/smart-ai-enhancement"
+                      className="inline-flex items-center gap-0.5 text-accent hover:text-accent/80 transition-colors"
+                      target="_blank"
+                    >
+                      Learn more
+                      <ExternalLink className="h-2.5 w-2.5" />
+                    </Link>
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -108,7 +121,15 @@ export const EnhancementOptions: React.FC<IEnhancementOptionsProps> = ({
             <div>
               <div className="font-medium text-sm text-white">Smart Analysis Active</div>
               <p className="text-xs text-muted-foreground mt-1">
-                AI will automatically select the best enhancements for your image.
+                AI will automatically select the best enhancements for your image.{' '}
+                <Link
+                  href="/tools/smart-ai-enhancement"
+                  className="inline-flex items-center gap-0.5 text-accent hover:text-accent/80 transition-colors"
+                  target="_blank"
+                >
+                  Learn more
+                  <ExternalLink className="h-2.5 w-2.5" />
+                </Link>
               </p>
             </div>
           </div>

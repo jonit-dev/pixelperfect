@@ -123,10 +123,10 @@ export function ToolPageTemplate({ data, locale, relatedPages = [] }: IToolPageT
             <div className="py-12">
               <div className="max-w-3xl mx-auto">
                 <BeforeAfterSlider
-                  beforeUrl="/before-after/women-before.webp"
-                  afterUrl="/before-after/women-after.webp"
-                  beforeLabel={sliderLabels.before}
-                  afterLabel={sliderLabels.after}
+                  beforeUrl={data.beforeAfterImages?.before ?? '/before-after/women-before.webp'}
+                  afterUrl={data.beforeAfterImages?.after ?? '/before-after/women-after.webp'}
+                  beforeLabel={data.beforeAfterImages?.beforeLabel ?? sliderLabels.before}
+                  afterLabel={data.beforeAfterImages?.afterLabel ?? sliderLabels.after}
                   className="shadow-2xl shadow-accent/10"
                 />
               </div>

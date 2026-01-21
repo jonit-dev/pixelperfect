@@ -3,6 +3,80 @@ import React from 'react';
 import { vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
+// Mock dayjs and its plugins
+let mockDateOffset = 0;
+let mockMonthOffset = 0;
+
+const createMockDayjs = (utcMode = false, dateOffset = 0, monthOffset = 0) => {
+  const baseDate = new Date('2024-01-15T00:00:00.000Z');
+  const adjustedDate = new Date(baseDate);
+  adjustedDate.setDate(adjustedDate.getDate() + dateOffset);
+  adjustedDate.setMonth(adjustedDate.getMonth() + monthOffset);
+
+  const formattedDate = adjustedDate.toISOString();
+
+  return {
+    format: vi.fn((formatStr?: string) => {
+      if (formatStr === 'YYYY-MM') {
+        const d = new Date('2024-01-15T00:00:00.000Z');
+        d.setMonth(d.getMonth() + dateOffset + monthOffset);
+        return d.toISOString().slice(0, 7); // YYYY-MM
+      }
+      if (formatStr === 'YYYY-MM-DD') {
+        const d = new Date('2024-01-15T00:00:00.000Z');
+        d.setDate(d.getDate() + dateOffset);
+        return d.toISOString().slice(0, 10); // YYYY-MM-DD
+      }
+      return utcMode ? '2024-01-15T00:00:00Z' : '2024-01-15';
+    }),
+    toISOString: vi.fn(() => {
+      const d = new Date('2024-01-15T00:00:00.000Z');
+      d.setDate(d.getDate() + dateOffset);
+      d.setMonth(d.getMonth() + monthOffset);
+      return d.toISOString();
+    }),
+    toDate: vi.fn(() => {
+      const d = new Date('2024-01-15T00:00:00.000Z');
+      d.setDate(d.getDate() + dateOffset);
+      d.setMonth(d.getMonth() + monthOffset);
+      return new Date(d);
+    }),
+    utc: vi.fn(() => createMockDayjs(true, dateOffset, monthOffset)),
+    add: vi.fn((amount: number, unit: string) => {
+      if (unit === 'day') return createMockDayjs(utcMode, dateOffset + amount, monthOffset);
+      if (unit === 'month') return createMockDayjs(utcMode, dateOffset, monthOffset + amount);
+      return createMockDayjs(utcMode, dateOffset, monthOffset);
+    }),
+    subtract: vi.fn((amount: number, unit: string) => {
+      if (unit === 'day') return createMockDayjs(utcMode, dateOffset - amount, monthOffset);
+      if (unit === 'month') return createMockDayjs(utcMode, dateOffset, monthOffset - amount);
+      return createMockDayjs(utcMode, dateOffset, monthOffset);
+    }),
+    diff: vi.fn(() => 1),
+    isBefore: vi.fn(() => false),
+    isAfter: vi.fn(() => true),
+    isSame: vi.fn(() => false),
+    startOf: vi.fn(() => createMockDayjs(utcMode, dateOffset, monthOffset)),
+    endOf: vi.fn(() => createMockDayjs(utcMode, dateOffset, monthOffset)),
+  };
+};
+
+const mockDayjsFn = Object.assign(
+  vi.fn((...args: unknown[]) => createMockDayjs(false, mockDateOffset, mockMonthOffset)),
+  {
+    extend: vi.fn(),
+    utc: vi.fn((...args: unknown[]) => createMockDayjs(true, mockDateOffset, mockMonthOffset)),
+  }
+);
+
+vi.mock('dayjs', () => ({
+  default: mockDayjsFn,
+}));
+
+vi.mock('dayjs/plugin/utc', () => ({
+  default: {},
+}));
+
 // Mock React cache function - needed for data-loader tests
 vi.mock('react', async () => {
   const actual = await vi.importActual<typeof React>('react');

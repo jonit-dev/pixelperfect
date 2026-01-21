@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { PaymentHandler } from '@server/stripe/handlers/payment.handler';
+import { PaymentHandler } from '@/app/api/webhooks/stripe/handlers/payment.handler';
 import Stripe from 'stripe';
+import { getEmailService } from '@server/services/email.service';
 
 // Mock dependencies
 vi.mock('@server/supabase/supabaseAdmin', () => ({
@@ -74,8 +75,7 @@ describe('Stripe Webhooks - Email Integration', () => {
     vi.clearAllMocks();
 
     // Reset email service mock
-    const { getEmailService } = require('@server/services/email.service');
-    getEmailService.mockReturnValue({
+    (getEmailService as ReturnType<typeof vi.fn>).mockReturnValue({
       send: mockSend.mockResolvedValue({
         success: true,
         messageId: 'test-email-id',
