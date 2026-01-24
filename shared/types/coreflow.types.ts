@@ -17,6 +17,7 @@ export type QualityTier =
   | 'auto'
   | 'quick'
   | 'face-restore'
+  | 'fast-edit'
   | 'budget-edit'
   | 'seedream-edit'
   | 'anime-upscale'
@@ -58,6 +59,14 @@ export const QUALITY_TIER_CONFIG: Record<
     modelId: 'gfpgan',
     description: 'Restore faces in old/damaged photos',
     bestFor: 'Old photos, AI-generated faces',
+    smartAnalysisAlwaysOn: false,
+  },
+  'fast-edit': {
+    label: 'Fast Edit',
+    credits: 2,
+    modelId: 'p-image-edit',
+    description: 'Sub-second AI image editing',
+    bestFor: 'Quick edits, fast turnaround',
     smartAnalysisAlwaysOn: false,
   },
   'budget-edit': {
@@ -124,6 +133,7 @@ export const QUALITY_TIER_SCALES: Record<QualityTier, (2 | 4 | 8)[]> = {
   auto: [2, 4, 8], // Auto can select any model
   quick: [2, 4], // real-esrgan only supports 2x and 4x
   'face-restore': [2, 4], // gfpgan only supports 2x and 4x
+  'fast-edit': [], // p-image-edit is enhancement-only (no upscale)
   'budget-edit': [], // qwen-image-edit is enhancement-only (no upscale)
   'seedream-edit': [], // seedream is enhancement-only (no upscale)
   'anime-upscale': [2, 4], // realesrgan-anime supports 2x and 4x
@@ -193,7 +203,8 @@ export type ModelId =
   | 'flux-2-pro'
   | 'qwen-image-edit'
   | 'seedream'
-  | 'realesrgan-anime';
+  | 'realesrgan-anime'
+  | 'p-image-edit';
 
 export type ModelCapability =
   | 'upscale'

@@ -12,6 +12,7 @@ import {
   QwenImageEditBuilder,
   SeedreamBuilder,
   RealEsrganAnimeBuilder,
+  PImageEditBuilder,
 } from './models';
 
 /**
@@ -41,6 +42,7 @@ export class ModelInputBuilderOrchestrator {
     this.register(new QwenImageEditBuilder());
     this.register(new SeedreamBuilder());
     this.register(new RealEsrganAnimeBuilder());
+    this.register(new PImageEditBuilder());
   }
 
   /**

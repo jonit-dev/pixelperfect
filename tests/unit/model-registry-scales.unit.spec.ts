@@ -95,6 +95,29 @@ describe('Model Registry: Accurate Scale Support (PRD: True Image Upscaling)', (
       });
     });
 
+    describe('p-image-edit (Fast Edit tier)', () => {
+      let model: IModelConfig | null;
+
+      beforeAll(() => {
+        model = registry.getModel('p-image-edit');
+      });
+
+      it('should have empty supportedScales (enhancement-only)', () => {
+        expect(model?.supportedScales).toEqual([]);
+        expect(model?.supportedScales).not.toContain(2);
+        expect(model?.supportedScales).not.toContain(4);
+        expect(model?.supportedScales).not.toContain(8);
+      });
+
+      it('should NOT have upscale capability', () => {
+        expect(model?.capabilities).not.toContain('upscale');
+      });
+
+      it('should have enhance capability', () => {
+        expect(model?.capabilities).toContain('enhance');
+      });
+    });
+
     describe('clarity-upscaler (HD Upscale tier)', () => {
       let model: IModelConfig | null;
 

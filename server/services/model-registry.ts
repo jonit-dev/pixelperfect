@@ -34,6 +34,7 @@ const DEFAULT_MODEL_VERSIONS: Record<string, string> = {
   seedream: 'bytedance/seedream-4.5',
   'realesrgan-anime':
     'xinntao/realesrgan:1b976a4d456ed9e4d1a846597b7614e79eadad3032e9124fa63859db0fd59b56',
+  'p-image-edit': 'prunaai/p-image-edit',
 };
 
 /**
@@ -49,6 +50,7 @@ const MODEL_COSTS: Record<string, number> = {
   'qwen-image-edit': CONFIG_MODEL_COSTS.QWEN_IMAGE_EDIT_COST,
   seedream: CONFIG_MODEL_COSTS.SEEDREAM_COST,
   'realesrgan-anime': CONFIG_MODEL_COSTS.REALESRGAN_ANIME_COST,
+  'p-image-edit': CONFIG_MODEL_COSTS.P_IMAGE_EDIT_COST,
 };
 
 /**
@@ -64,6 +66,7 @@ const MODEL_CREDIT_MULTIPLIERS: Record<string, number> = {
   'qwen-image-edit': CREDIT_COSTS.QWEN_IMAGE_EDIT_MULTIPLIER,
   seedream: CREDIT_COSTS.SEEDREAM_MULTIPLIER,
   'realesrgan-anime': CREDIT_COSTS.REALESRGAN_ANIME_MULTIPLIER,
+  'p-image-edit': CREDIT_COSTS.P_IMAGE_EDIT_MULTIPLIER,
 };
 
 /**
@@ -113,6 +116,7 @@ export class ModelRegistry {
       'qwen-image-edit': serverEnv.MODEL_VERSION_QWEN_IMAGE_EDIT,
       seedream: serverEnv.MODEL_VERSION_SEEDREAM,
       'realesrgan-anime': serverEnv.MODEL_VERSION_REALESRGAN_ANIME,
+      'p-image-edit': serverEnv.MODEL_VERSION_P_IMAGE_EDIT,
     };
     return overrides[modelId] || DEFAULT_MODEL_VERSIONS[modelId];
   }
@@ -276,6 +280,24 @@ export class ModelRegistry {
         supportedScales: [], // Enhancement-only, no scale support
         isEnabled: serverEnv.ENABLE_PREMIUM_MODELS,
         tierRestriction: 'hobby',
+      },
+      // P-Image-Edit (Fast Budget Image Editing - Free)
+      // Sub-second enhancement-only model, cheaper alternative to qwen-image-edit
+      {
+        id: 'p-image-edit',
+        displayName: 'Fast Edit',
+        provider: 'replicate',
+        modelVersion: this.getModelVersion('p-image-edit'),
+        capabilities: ['enhance', 'denoise', 'damage-repair'],
+        costPerRun: MODEL_COSTS['p-image-edit'],
+        creditMultiplier: MODEL_CREDIT_MULTIPLIERS['p-image-edit'],
+        qualityScore: 8.8,
+        processingTimeMs: TIMEOUTS.REAL_ESRGAN_PROCESSING_TIME, // Sub-second
+        maxInputResolution: CONFIG_MODEL_COSTS.MAX_INPUT_RESOLUTION,
+        maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+        supportedScales: [], // Enhancement-only, no scale support
+        isEnabled: true,
+        tierRestriction: null,
       },
       // Real-ESRGAN Anime (Anime Upscaling - Premium)
       // Specialized upscaler for anime and illustrations

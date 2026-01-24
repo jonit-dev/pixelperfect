@@ -22,6 +22,7 @@ const DEFAULT_PROMPTS = {
   'nano-banana-pro': (scale: number) =>
     `Upscale this image to ${scale}x resolution with enhanced sharpness and detail.`,
   'qwen-image-edit': 'Improve this image while maintaining its original quality and sharpness.',
+  'p-image-edit': 'Improve this image while maintaining its original quality and sharpness.',
   seedream: 'Improve this image quality while maintaining its original appearance.',
 } as const;
 

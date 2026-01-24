@@ -33,7 +33,8 @@ export type ModelId =
   | 'clarity-upscaler'
   | 'qwen-image-edit'
   | 'seedream'
-  | 'realesrgan-anime';
+  | 'realesrgan-anime'
+  | 'p-image-edit';
 
 /**
  * Model configuration interface as defined in the PRD

@@ -14,3 +14,4 @@ export { NanoBananaProBuilder } from './nano-banana-pro.builder';
 export { QwenImageEditBuilder } from './qwen-image-edit.builder';
 export { SeedreamBuilder } from './seedream.builder';
 export { RealEsrganAnimeBuilder } from './realesrgan-anime.builder';
+export { PImageEditBuilder } from './p-image-edit.builder';

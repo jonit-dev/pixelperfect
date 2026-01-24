@@ -56,7 +56,8 @@ export type IModelInput =
   | INanoBananaProInput
   | IQwenImageEditInput
   | ISeedreamInput
-  | IRealEsrganAnimeInput;
+  | IRealEsrganAnimeInput
+  | IPImageEditInput;
 
 /**
  * Real-ESRGAN input
@@ -157,6 +158,16 @@ export interface IRealEsrganAnimeInput {
   scale: 2 | 4;
   version: string;
   face_enhance: boolean;
+}
+
+/**
+ * P-Image-Edit input
+ */
+export interface IPImageEditInput {
+  prompt: string;
+  images: string[];
+  aspect_ratio: string;
+  turbo: boolean;
 }
 
 /**

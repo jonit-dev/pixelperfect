@@ -14,6 +14,7 @@ export const MODEL_COSTS = {
   QWEN_IMAGE_EDIT_COST: 0.03, // qwen/qwen-image-edit-2511 - budget image editing
   SEEDREAM_COST: 0.04, // bytedance/seedream-4.5 - image editing
   REALESRGAN_ANIME_COST: 0.0022, // xinntao/realesrgan - anime upscaling
+  P_IMAGE_EDIT_COST: 0.01, // prunaai/p-image-edit - fast budget image editing
 
   // Cost calculation thresholds
   COST_CENT_MULTIPLIER: 100, // Convert dollars to cents
@@ -37,7 +38,7 @@ export const MODEL_COSTS = {
 
   // Model tier restrictions
   // Note: These are informational constants for UI/reference. Actual enforcement is handled via tierRestriction in MODEL_CONFIG.
-  FREE_MODELS: ['real-esrgan', 'gfpgan', 'nano-banana'], // All models with tierRestriction: null
+  FREE_MODELS: ['real-esrgan', 'gfpgan', 'nano-banana', 'p-image-edit'], // All models with tierRestriction: null
   HOBBY_MODELS: [
     'real-esrgan',
     'gfpgan',
@@ -48,6 +49,7 @@ export const MODEL_COSTS = {
     'qwen-image-edit',
     'seedream',
     'realesrgan-anime',
+    'p-image-edit',
   ], // All models accessible with hobby tier
   PRO_MODELS: [
     'real-esrgan',
@@ -59,6 +61,7 @@ export const MODEL_COSTS = {
     'qwen-image-edit',
     'seedream',
     'realesrgan-anime',
+    'p-image-edit',
   ], // All models accessible with pro tier
   BUSINESS_MODELS: [
     'real-esrgan',
@@ -70,6 +73,7 @@ export const MODEL_COSTS = {
     'qwen-image-edit',
     'seedream',
     'realesrgan-anime',
+    'p-image-edit',
   ], // All models accessible with business tier
 
   // Quality tiers requiring paid subscription (free users blocked)
@@ -227,6 +231,16 @@ export const MODEL_CONFIG = {
     maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
     supportedScales: [MODEL_COSTS.DEFAULT_SCALE, MODEL_COSTS.MAX_SCALE_STANDARD], // Supports 2x and 4x
     tierRestriction: 'hobby',
+  },
+  'p-image-edit': {
+    cost: MODEL_COSTS.P_IMAGE_EDIT_COST,
+    multiplier: 2,
+    qualityScore: 8.8,
+    processingTime: MODEL_COSTS.PROCESSING_TIME_FAST, // Sub-second processing
+    maxInputResolution: MODEL_COSTS.MAX_INPUT_RESOLUTION,
+    maxOutputResolution: MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
+    supportedScales: [], // Enhancement-only, no scale support
+    tierRestriction: null,
   },
 } as const;
 

@@ -166,6 +166,7 @@ export const upscaleSchema = z.object({
         'auto',
         'quick',
         'face-restore',
+        'fast-edit',
         'budget-edit',
         'seedream-edit',
         'anime-upscale',
