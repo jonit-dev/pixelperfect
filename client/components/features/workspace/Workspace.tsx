@@ -6,7 +6,10 @@ import {
   IBatchItem,
   IUpscaleConfig,
   ProcessingStatus,
+  QUALITY_TIER_CONFIG,
+  QualityTier,
 } from '@/shared/types/coreflow.types';
+import { MODEL_COSTS } from '@shared/config/model-costs.config';
 import { Dropzone } from '@client/components/features/image-processing/Dropzone';
 import { BatchSidebar } from '@client/components/features/workspace/BatchSidebar';
 import { PreviewArea } from '@client/components/features/workspace/PreviewArea';
@@ -17,7 +20,8 @@ import { TabButton } from '@client/components/ui/TabButton';
 import { useUserData } from '@client/store/userStore';
 import { cn } from '@client/utils/cn';
 import { downloadSingle } from '@client/utils/download';
-import { CheckCircle2, Image, Layers, List, Loader2, Settings, Wand2 } from 'lucide-react';
+import { CheckCircle2, Image, Layers, List, Lock, Loader2, Settings, Wand2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { BatchLimitModal } from './BatchLimitModal';
@@ -48,6 +52,9 @@ const Workspace: React.FC = () => {
 
   const { subscription } = useUserData();
   const hasSubscription = !!subscription?.price_id;
+  const isFreeUser = !hasSubscription;
+  const router = useRouter();
+  const premiumTiers = MODEL_COSTS.PREMIUM_QUALITY_TIERS as readonly QualityTier[];
 
   // Mobile tab state
   const [mobileTab, setMobileTab] = useState<MobileTab>('upload');
@@ -332,6 +339,44 @@ const Workspace: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Mobile Quality Tier Selector Strip */}
+      <div className="md:hidden border-t border-border bg-surface/80 px-3 py-2">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar">
+          {(Object.keys(QUALITY_TIER_CONFIG) as QualityTier[]).map(tierKey => {
+            const tierConfig = QUALITY_TIER_CONFIG[tierKey];
+            const isPremium = premiumTiers.includes(tierKey);
+            const isLocked = isFreeUser && isPremium;
+            const isSelected = config.qualityTier === tierKey;
+
+            return (
+              <button
+                key={tierKey}
+                onClick={() => {
+                  if (isLocked) {
+                    router.push('/pricing');
+                    return;
+                  }
+                  setConfig(prev => ({ ...prev, qualityTier: tierKey }));
+                }}
+                disabled={isProcessingBatch}
+                className={cn(
+                  'flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap shrink-0 transition-all',
+                  isSelected
+                    ? 'bg-accent text-white shadow-sm shadow-accent/30'
+                    : isLocked
+                      ? 'bg-white/5 text-text-muted'
+                      : 'bg-white/10 text-white/80 hover:bg-white/15',
+                  isProcessingBatch && 'opacity-50 cursor-not-allowed'
+                )}
+              >
+                {isLocked && <Lock className="h-3 w-3" />}
+                {tierConfig.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Mobile Tab Bar */}
       <nav className="md:hidden flex border-t border-border bg-surface">

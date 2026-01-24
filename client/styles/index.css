@@ -99,6 +99,15 @@
     border-radius: 4px;
   }
 
+  /* Hide scrollbar but keep scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
   /* Override browser autofill styles for dark theme */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

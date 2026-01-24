@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { DashboardSidebar } from '@client/components/dashboard/DashboardSidebar';
 import { CreditsDisplay } from '@client/components/stripe/CreditsDisplay';
 import { Menu } from 'lucide-react';
+import Image from 'next/image';
 import React from 'react';
-import { clientEnv, getAppLogoAbbr } from '@shared/config/env';
+import { clientEnv } from '@shared/config/env';
 
 interface IDashboardLayoutProps {
   children: React.ReactNode;
@@ -20,11 +21,15 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) =
       <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-surface border-b border-border">
         <div className="flex items-center justify-between gap-3 px-4 h-14">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">{getAppLogoAbbr()}</span>
-            </div>
-            <span className="font-semibold text-white">{clientEnv.APP_NAME}</span>
+          <div className="flex items-center">
+            <Image
+              src="/logo/horizontal-logo-compact.png"
+              alt={clientEnv.APP_NAME}
+              width={100}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </div>
 
           {/* Credits Display */}
