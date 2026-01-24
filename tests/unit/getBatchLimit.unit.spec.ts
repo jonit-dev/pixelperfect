@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { getBatchLimit } from '../../shared/config/subscription.utils';
+import { getBatchLimit, getHourlyProcessingLimit } from '../../shared/config/subscription.utils';
 
 describe('getBatchLimit', () => {
   describe('Free User Limits', () => {
@@ -79,6 +79,61 @@ describe('getBatchLimit', () => {
       expect(getBatchLimit('false')).toBe(1);
       expect(getBatchLimit('null')).toBe(1);
       expect(getBatchLimit('undefined')).toBe(1);
+    });
+  });
+});
+
+describe('getHourlyProcessingLimit', () => {
+  describe('Free User Limits', () => {
+    test('should return 5 for null subscription tier (free user)', () => {
+      const limit = getHourlyProcessingLimit(null);
+      expect(limit).toBe(5);
+    });
+
+    test('should return 5 for undefined subscription tier', () => {
+      const limit = getHourlyProcessingLimit(undefined as unknown as string);
+      expect(limit).toBe(5);
+    });
+  });
+
+  describe('Paid Plan Limits', () => {
+    test('should return 20 for starter tier', () => {
+      expect(getHourlyProcessingLimit('starter')).toBe(20);
+    });
+
+    test('should return 40 for hobby tier', () => {
+      expect(getHourlyProcessingLimit('hobby')).toBe(40);
+    });
+
+    test('should return 200 for pro tier', () => {
+      expect(getHourlyProcessingLimit('pro')).toBe(200);
+    });
+
+    test('should return 2000 for business tier', () => {
+      expect(getHourlyProcessingLimit('business')).toBe(2000);
+    });
+  });
+
+  describe('Unknown Tier Handling', () => {
+    test('should return free limit for unknown tier', () => {
+      expect(getHourlyProcessingLimit('unknown_tier')).toBe(5);
+    });
+  });
+
+  describe('Separation from batchLimit', () => {
+    test('hourly limit should be higher than batch limit for free users', () => {
+      const batchLimit = getBatchLimit(null);
+      const hourlyLimit = getHourlyProcessingLimit(null);
+      expect(hourlyLimit).toBeGreaterThan(batchLimit);
+    });
+
+    test('hourly limit should be higher than batch limit for all tiers', () => {
+      const tiers = ['starter', 'hobby', 'pro', 'business'];
+      for (const tier of tiers) {
+        const batch = getBatchLimit(tier);
+        const hourly = getHourlyProcessingLimit(tier);
+        expect(hourly).toBeGreaterThan(batch);
+      }
     });
   });
 });

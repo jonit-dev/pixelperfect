@@ -407,6 +407,28 @@ export function getBatchLimit(subscriptionTier: string | null): number {
   return plan.batchLimit ?? Infinity;
 }
 
+/**
+ * Get hourly processing rate limit for a user based on their subscription tier
+ * This is separate from batchLimit (queue size) - it controls how many images
+ * can be processed per hour to prevent abuse.
+ * @param subscriptionTier - The user's subscription tier key (null = free user)
+ * @returns Maximum images allowed per hour
+ */
+export function getHourlyProcessingLimit(subscriptionTier: string | null): number {
+  const config = getSubscriptionConfig();
+
+  if (!subscriptionTier) {
+    return config.freeUser.hourlyProcessingLimit;
+  }
+
+  const plan = config.plans.find(p => p.key === subscriptionTier);
+  if (!plan) {
+    return config.freeUser.hourlyProcessingLimit;
+  }
+
+  return plan.hourlyProcessingLimit ?? Infinity;
+}
+
 // ============================================
 // Backward Compatibility Exports
 // ============================================

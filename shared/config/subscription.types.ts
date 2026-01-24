@@ -83,6 +83,8 @@ export interface IPlanConfig {
   enabled: boolean;
   /** Maximum images allowed in batch queue (null = unlimited) */
   batchLimit: number | null;
+  /** Maximum images processed per hour (rate limit, null = unlimited) */
+  hourlyProcessingLimit: number | null;
 }
 
 /**
@@ -124,6 +126,8 @@ export interface IFreeUserConfig {
   maxBalance: number;
   /** Maximum images in batch queue for free users */
   batchLimit: number;
+  /** Maximum images processed per hour (rate limit, separate from queue size) */
+  hourlyProcessingLimit: number;
 }
 
 /**

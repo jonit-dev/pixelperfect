@@ -56,6 +56,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       displayOrder: 0,
       enabled: false, // Free tier is handled via freeUser config, not as a subscription plan
       batchLimit: 1, // Single image only for free tier
+      hourlyProcessingLimit: 5, // Allow 5 images per hour (rate limit)
     },
     {
       key: 'starter',
@@ -93,6 +94,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       displayOrder: 1,
       enabled: true,
       batchLimit: 5, // Allow batch upload up to 5 images
+      hourlyProcessingLimit: 20, // 20 images per hour
     },
     {
       key: 'hobby',
@@ -130,6 +132,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       displayOrder: 2,
       enabled: true,
       batchLimit: 10, // Up to 10 images in batch
+      hourlyProcessingLimit: 40, // 40 images per hour
     },
     {
       key: 'pro',
@@ -168,6 +171,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       displayOrder: 3,
       enabled: true,
       batchLimit: 50, // Up to 50 images in batch
+      hourlyProcessingLimit: 200, // 200 images per hour
     },
     {
       key: 'business',
@@ -207,6 +211,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
       displayOrder: 4,
       enabled: true,
       batchLimit: 500, // Up to 500 images in batch
+      hourlyProcessingLimit: 2000, // 2000 images per hour
     },
   ],
 
@@ -281,6 +286,7 @@ export const SUBSCRIPTION_CONFIG: ISubscriptionConfig = {
     monthlyCredits: CREDIT_COSTS.DEFAULT_TRIAL_CREDITS, // Only for paid subscriptions
     maxBalance: CREDIT_COSTS.DEFAULT_FREE_CREDITS, // Free users capped at initial credits
     batchLimit: 1, // Up to 1 image at a time for free users
+    hourlyProcessingLimit: 5, // Allow 5 images per hour (rate limit)
   },
 
   warnings: {

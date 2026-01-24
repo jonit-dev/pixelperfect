@@ -13,27 +13,27 @@ describe('batch-limit.service', () => {
 
       expect(result.allowed).toBe(true);
       expect(result.current).toBe(0);
-      expect(result.limit).toBe(1);
+      expect(result.limit).toBe(5); // hourlyProcessingLimit for free users
       expect(result.resetAt).toBeInstanceOf(Date);
     });
 
     test('should allow requests within limit for paid users', async () => {
-      // Test hobby user (10 limit)
+      // Test hobby user (40 hourly limit)
       let result = await batchLimitCheck.checkAndIncrement('user456', 'hobby');
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(10);
+      expect(result.limit).toBe(40);
       expect(result.current).toBe(0);
 
-      // Test pro user (50 limit)
+      // Test pro user (200 hourly limit)
       result = await batchLimitCheck.checkAndIncrement('user789', 'pro');
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(50);
+      expect(result.limit).toBe(200);
       expect(result.current).toBe(0);
 
-      // Test business user (500 limit)
+      // Test business user (2000 hourly limit)
       result = await batchLimitCheck.checkAndIncrement('user101112', 'business');
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(500);
+      expect(result.limit).toBe(2000);
       expect(result.current).toBe(0);
     });
 
@@ -41,7 +41,7 @@ describe('batch-limit.service', () => {
       const result = await batchLimitCheck.checkAndIncrement('unknown-user', 'unknown_tier');
 
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(1);
+      expect(result.limit).toBe(5); // hourlyProcessingLimit for free users
       expect(result.current).toBe(0);
     });
 
@@ -67,7 +67,7 @@ describe('batch-limit.service', () => {
 
       expect(result.allowed).toBe(true);
       expect(result.current).toBe(0);
-      expect(result.limit).toBe(1);
+      expect(result.limit).toBe(5); // hourlyProcessingLimit for free users
       expect(result.resetAt).toBeInstanceOf(Date);
     });
 
@@ -75,7 +75,7 @@ describe('batch-limit.service', () => {
       const result = await batchLimitCheck.check('unknown-user', 'unknown_tier');
 
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(1);
+      expect(result.limit).toBe(5); // hourlyProcessingLimit for free users
       expect(result.current).toBe(0);
     });
   });
@@ -97,31 +97,31 @@ describe('batch-limit.service', () => {
       const usage = await batchLimitCheck.getUsage(userId, 'hobby');
 
       expect(usage.current).toBe(0);
-      expect(usage.limit).toBe(10);
-      expect(usage.remaining).toBe(10);
+      expect(usage.limit).toBe(40); // hourlyProcessingLimit for hobby
+      expect(usage.remaining).toBe(40);
       expect(usage.resetAt).toBeInstanceOf(Date);
     });
 
     test('should return correct usage for different tiers', async () => {
-      // Test hobby user (10 limit)
+      // Test hobby user (40 hourly limit)
       const hobbyUsage = await batchLimitCheck.getUsage('user-hobby', 'hobby');
-      expect(hobbyUsage.limit).toBe(10);
-      expect(hobbyUsage.remaining).toBe(10);
+      expect(hobbyUsage.limit).toBe(40);
+      expect(hobbyUsage.remaining).toBe(40);
 
-      // Test pro user (50 limit)
+      // Test pro user (200 hourly limit)
       const proUsage = await batchLimitCheck.getUsage('user-pro', 'pro');
-      expect(proUsage.limit).toBe(50);
-      expect(proUsage.remaining).toBe(50);
+      expect(proUsage.limit).toBe(200);
+      expect(proUsage.remaining).toBe(200);
 
-      // Test business user (500 limit)
+      // Test business user (2000 hourly limit)
       const businessUsage = await batchLimitCheck.getUsage('user-business', 'business');
-      expect(businessUsage.limit).toBe(500);
-      expect(businessUsage.remaining).toBe(500);
+      expect(businessUsage.limit).toBe(2000);
+      expect(businessUsage.remaining).toBe(2000);
 
-      // Test free user (1 limit)
+      // Test free user (5 hourly limit)
       const freeUsage = await batchLimitCheck.getUsage('user-free', null);
-      expect(freeUsage.limit).toBe(1);
-      expect(freeUsage.remaining).toBe(1);
+      expect(freeUsage.limit).toBe(5);
+      expect(freeUsage.remaining).toBe(5);
     });
 
     test('should return 0 remaining when at limit in test env', async () => {
@@ -131,16 +131,16 @@ describe('batch-limit.service', () => {
       const usage = await batchLimitCheck.getUsage(userId, null);
 
       expect(usage.current).toBe(0);
-      expect(usage.limit).toBe(1);
-      expect(usage.remaining).toBe(1);
+      expect(usage.limit).toBe(5); // hourlyProcessingLimit for free users
+      expect(usage.remaining).toBe(5);
     });
 
     test('should handle unknown tier as free user', async () => {
       const usage = await batchLimitCheck.getUsage('unknown-user', 'unknown_tier');
 
       expect(usage.current).toBe(0);
-      expect(usage.limit).toBe(1);
-      expect(usage.remaining).toBe(1);
+      expect(usage.limit).toBe(5); // hourlyProcessingLimit for free users
+      expect(usage.remaining).toBe(5);
     });
 
     test('should set reset time to 1 hour from now', async () => {
@@ -207,7 +207,7 @@ describe('batch-limit.service', () => {
 
       const usage = await batchLimitCheck.getUsage(userId, 'pro');
       expect(usage.current).toBe(0);
-      expect(usage.remaining).toBe(50);
+      expect(usage.remaining).toBe(200); // hourlyProcessingLimit for pro
     });
   });
 });

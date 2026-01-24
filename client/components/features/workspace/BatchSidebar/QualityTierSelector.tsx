@@ -97,89 +97,101 @@ export const QualityTierSelector: React.FC<IQualityTierSelectorProps> = ({
       {isOpen && (
         <div className="absolute top-full left-0 right-0 mt-3 glass-dropdown rounded-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top">
           <div className="p-2 space-y-1">
-            {/* Auto Tier */}
-            <button
-              onClick={() => handleTierSelect('auto')}
-              title={isFreeUser ? 'Paid plans only' : undefined}
-              className={`
-                w-full flex items-start p-3 rounded-xl transition-all text-left group
-                ${tier === 'auto' ? 'bg-secondary/20 text-secondary border border-secondary/30' : 'hover:bg-surface-light text-white border border-transparent'}
-                ${isFreeUser ? 'opacity-60 cursor-pointer' : ''}
-              `}
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm tracking-tight text-white group-hover:text-secondary transition-colors">
-                    Auto-Optimize
-                  </span>
-                  {isFreeUser && <Lock className="h-3 w-3 text-secondary/70" />}
-                  <span className="text-[9px] bg-secondary/20 text-secondary px-1.5 py-0.5 rounded-full font-black border border-secondary/20 uppercase">
-                    Smart
-                  </span>
-                </div>
-                <div className="text-[11px] text-text-muted mt-1 font-light leading-snug">
-                  {QUALITY_TIER_CONFIG.auto.description}
-                </div>
-              </div>
-              <div className="flex flex-col items-end ml-3 shrink-0">
-                {tier === 'auto' && (
-                  <Check className="h-4 w-4 text-secondary mb-1" strokeWidth={3} />
-                )}
-                <div className="text-[10px] text-text-muted font-bold tracking-widest uppercase bg-main px-2 py-1 rounded-lg border border-border">
-                  1-4 CR
-                </div>
-              </div>
-            </button>
+            {/* Sort Tiers: Available first, then Paid */}
+            {(() => {
+              const allTiers = Object.entries(QUALITY_TIER_CONFIG).map(([id, config]) => ({
+                id: id as QualityTier,
+                ...config,
+              }));
 
-            <div className="h-px bg-white/5 mx-3 my-2" />
+              const freeTiers = allTiers.filter((t) => !PREMIUM_TIERS.includes(t.id));
+              const paidTiers = allTiers.filter((t) => PREMIUM_TIERS.includes(t.id));
 
-            {/* Explicit Tiers */}
-            {Object.entries(QUALITY_TIER_CONFIG)
-              .filter(([id]) => id !== 'auto')
-              .map(([id, tierConfig]) => {
-                const tierId = id as QualityTier;
-                const isSelected = tier === tierId;
-                const isLocked = isFreeUser && PREMIUM_TIERS.includes(tierId);
+              const renderTier = (t: (typeof allTiers)[0]) => {
+                const isSelected = tier === t.id;
+                const isLocked = isFreeUser && PREMIUM_TIERS.includes(t.id);
+                const isAuto = t.id === 'auto';
 
                 return (
                   <button
-                    key={id}
-                    onClick={() => handleTierSelect(tierId)}
+                    key={t.id}
+                    onClick={() => handleTierSelect(t.id)}
                     title={isLocked ? 'Paid plans only' : undefined}
                     className={`
-                      w-full flex items-start p-3 rounded-xl transition-all text-left group
-                      ${isSelected ? 'bg-accent/20 text-accent border border-accent/30' : 'hover:bg-surface-light text-white border border-transparent'}
-                      ${isLocked ? 'opacity-60 cursor-pointer' : ''}
+                      w-full flex items-start p-3 rounded-xl transition-all text-left group relative overflow-hidden
+                      ${isSelected
+                        ? isAuto
+                          ? 'bg-secondary/10 text-secondary border border-secondary/30'
+                          : 'bg-accent/10 text-accent border border-accent/30'
+                        : 'hover:bg-surface-light text-white border border-transparent'
+                      }
+                      ${isLocked ? 'grayscale-[0.5] opacity-60' : ''}
                     `}
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm tracking-tight group-hover:text-accent transition-colors">
-                          {tierConfig.label}
+                        <span
+                          className={`font-bold text-sm tracking-tight transition-colors ${isSelected
+                              ? isAuto
+                                ? 'text-secondary'
+                                : 'text-accent'
+                              : 'text-white group-hover:text-accent'
+                            }`}
+                        >
+                          {t.label}
                         </span>
-                        {isLocked && <Lock className="h-3 w-3 text-accent/70" />}
+                        {isAuto && (
+                          <span className="text-[8px] bg-secondary/20 text-secondary px-1.5 py-0.5 rounded-full font-black border border-secondary/20 uppercase tracking-tighter">
+                            Smart
+                          </span>
+                        )}
+                        {isLocked && <Lock className="h-3 w-3 text-text-muted/60" />}
                       </div>
-                      <div className="text-[11px] text-text-muted mt-0.5 font-light truncate pr-2">
-                        {tierConfig.bestFor}
+                      <div className="text-[11px] text-text-muted mt-0.5 font-medium truncate pr-2">
+                        {t.bestFor}
                       </div>
                     </div>
                     <div className="flex flex-col items-end ml-3 shrink-0">
-                      {isSelected && <Check className="h-4 w-4 text-accent mb-1" strokeWidth={3} />}
+                      {isSelected && (
+                        <Check
+                          className={`h-4 w-4 mb-1 ${isAuto ? 'text-secondary' : 'text-accent'}`}
+                          strokeWidth={3}
+                        />
+                      )}
                       <div
-                        className={`text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded-lg border ${
-                          isSelected
-                            ? 'text-accent bg-main border-accent/20'
+                        className={`text-[9px] font-black tracking-widest uppercase px-2 py-1 rounded-lg border ${isSelected
+                            ? isAuto
+                              ? 'text-secondary bg-main border-secondary/20'
+                              : 'text-accent bg-main border-accent/20'
                             : 'text-text-muted bg-main border-border'
-                        }`}
+                          }`}
                       >
-                        {formatCredits(tierConfig.credits)
+                        {formatCredits(t.credits)
                           .replace(' credits', ' CR')
                           .replace(' credit', ' CR')}
                       </div>
                     </div>
+                    {isLocked && <div className="absolute inset-y-0 right-0 w-1 bg-white/5" />}
                   </button>
                 );
-              })}
+              };
+
+              return (
+                <>
+                  <div className="px-3 py-1.5 text-[10px] font-black text-accent/60 uppercase tracking-widest">
+                    Available
+                  </div>
+                  {freeTiers.map(renderTier)}
+
+                  <div className="h-px bg-white/5 mx-3 my-2" />
+
+                  <div className="px-3 py-1.5 text-[10px] font-black text-secondary/60 uppercase tracking-widest flex items-center gap-2">
+                    Professional Tiers <Lock className="h-2.5 w-2.5" />
+                  </div>
+                  {paidTiers.map(renderTier)}
+                </>
+              );
+            })()}
           </div>
 
           {/* Upgrade Prompt inside dropdown */}

@@ -297,7 +297,7 @@ export class ModelRegistry {
         maxOutputResolution: CONFIG_MODEL_COSTS.MAX_OUTPUT_RESOLUTION,
         supportedScales: [], // Enhancement-only, no scale support
         isEnabled: true,
-        tierRestriction: null,
+        tierRestriction: undefined,
       },
       // Real-ESRGAN Anime (Anime Upscaling - Premium)
       // Specialized upscaler for anime and illustrations

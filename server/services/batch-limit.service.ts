@@ -8,7 +8,7 @@
  * Uses Supabase RPC functions for atomic operations.
  */
 
-import { getBatchLimit } from '@shared/config/subscription.utils';
+import { getHourlyProcessingLimit } from '@shared/config/subscription.utils';
 import { supabaseAdmin } from '@server/supabase/supabaseAdmin';
 import { serverEnv } from '@shared/config/env';
 
@@ -53,7 +53,7 @@ export const batchLimitCheck = {
    * @returns Result with allowed status, current count, limit, and reset time
    */
   async checkAndIncrement(userId: string, tier: string | null): Promise<IBatchLimitResult> {
-    const limit = getBatchLimit(tier);
+    const limit = getHourlyProcessingLimit(tier);
 
     // Skip batch limit in test environment
     if (isTestEnvironment()) {
@@ -149,7 +149,7 @@ export const batchLimitCheck = {
     remaining: number;
     resetAt: Date;
   }> {
-    const limit = getBatchLimit(tier);
+    const limit = getHourlyProcessingLimit(tier);
 
     // Skip batch limit in test environment
     if (isTestEnvironment()) {

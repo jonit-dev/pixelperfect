@@ -54,8 +54,8 @@ export const ActionPanel: React.FC<IActionPanelProps> = ({
       return;
     }
 
-    // Show premium upsell modal for free users on first process click
-    if (isFreeUser && !hasSeenPremiumUpsell && pendingQueue.length > 0) {
+    // Show premium upsell modal for free users ~25% of the time (not every click)
+    if (isFreeUser && !hasSeenPremiumUpsell && pendingQueue.length > 0 && Math.random() < 0.25) {
       setShowPremiumUpsellModal(true);
       return;
     }
